@@ -293,9 +293,9 @@ local function onSync(self, ...)
 	if self.proxy.OnSync then self.proxy:OnSync(...) end
 end
 
-local function onCombatStart(self, ...)
+local function onCombatStart(self, delay, ...)
 	self.proxy.InCombat = true
-	if self.proxy.OnCombatStart then self.proxy:OnCombatStart(...) end
+	if self.proxy.OnCombatStart then self.proxy:OnCombatStart(delay or 0, ...) end
 end
 
 local function onCombatEnd(self, ...)
