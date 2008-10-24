@@ -26,8 +26,8 @@ Illidan:RegisterEvents(
 
 Illidan:AddOption("RangeCheck", true, DBM_ILLIDAN_OPTION_RANGECHECK)
 Illidan:AddOption("WarnPhases", true, DBM_ILLIDAN_OPTION_PHASES)
-Illidan:AddOption("WarnShearCast", false, DBM_ILLIDAN_OPTION_SHEARCAST)
-Illidan:AddOption("WarnShear", true, DBM_ILLIDAN_OPTION_SHEAR)
+--Illidan:AddOption("WarnShearCast", false, DBM_ILLIDAN_OPTION_SHEARCAST)
+--Illidan:AddOption("WarnShear", true, DBM_ILLIDAN_OPTION_SHEAR)
 Illidan:AddOption("WarnShadowfiend", true, DBM_ILLIDAN_OPTION_SHADOWFIEND)
 Illidan:AddOption("IconShadowfiend", true, DBM_ILLIDAN_OPTION_ICONFIEND)
 Illidan:AddOption("WarnBarrage", true, DBM_ILLIDAN_OPTION_BARRAGE)
@@ -41,7 +41,7 @@ Illidan:AddOption("WarnShadowDemons", true, DBM_ILLIDAN_OPTION_SHADOWDEMONS)
 
 Illidan:AddBarOption("Enrage")
 Illidan:AddBarOption("Illidan Stormrage")
-Illidan:AddBarOption("Shear: (.*)")
+--Illidan:AddBarOption("Shear: (.*)")
 Illidan:AddBarOption("Shadowfiend: (.*)")
 Illidan:AddBarOption("Next Dark Barrage")
 Illidan:AddBarOption("Dark Barrage: (.*)")
@@ -58,7 +58,7 @@ function Illidan:OnCombatStart(delay)
 	flameBursts = 0
 	phase2 = nil
 	phase4 = nil
-	delay = delay - 7 - 33 -- 7 = time until combat starts and 33 because the timer will stop while illidan is switching from phase 1->2, 2->3 and 3->4; according to my combatlogs this should be quite accurate
+	delay = (delay or 0) - 7 - 33 -- 7 = time until combat starts and 33 because the timer will stop while illidan is switching from phase 1->2, 2->3 and 3->4; according to my combatlogs this should be quite accurate
 	self:StartStatusBarTimer(1500 - delay, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy");	
 	self:ScheduleAnnounce(900 - delay, DBM_GENERIC_ENRAGE_WARN:format(10, DBM_MIN), 1)
 	self:ScheduleAnnounce(1200 - delay, DBM_GENERIC_ENRAGE_WARN:format(5, DBM_MIN), 1)
@@ -90,8 +90,8 @@ function Illidan:OnEvent(event, args)
 	elseif event == "SPELL_AURA_APPLIED" then
 		if args.spellId == 40647 then
 			self:SendSync("Prison")
-		elseif args.spellId == 41032 then
-			self:SendSync("Shear"..tostring(args.destName))
+--		elseif args.spellId == 41032 then
+--			self:SendSync("Shear"..tostring(args.destName))
 		elseif args.spellId == 41917 or args.spellId == 41914 then
 			self:SendSync("Shadowfiend"..tostring(args.destName))
 		elseif args.spellId == 40585 then
@@ -138,10 +138,10 @@ function Illidan:OnEvent(event, args)
 		if args.spellId == 41131 then
 			self:SendSync("Flameburst")
 		end
-	elseif event == "SPELL_CAST_START" then
-		if args.spellId == 41032 then
-			self:SendSync("CastShear")
-		end
+--	elseif event == "SPELL_CAST_START" then
+--		if args.spellId == 41032 then
+--			self:SendSync("CastShear")
+--		end
 	end
 end
 
@@ -153,15 +153,15 @@ end
 
 function Illidan:OnSync(msg)
 	if msg:sub(0, 5) == "Shear" then
-		msg = msg:sub(6)
-		if self.Options.WarnShear then
-			self:Announce(DBM_ILLIDAN_WARN_SHEAR:format(msg), 1)
-		end
-		self:StartStatusBarTimer(7, "Shear: "..msg, "Interface\\Icons\\Spell_Shadow_FocusedPower")
+--		msg = msg:sub(6)
+--		if self.Options.WarnShear then
+--			self:Announce(DBM_ILLIDAN_WARN_SHEAR:format(msg), 1)
+--		end
+--		self:StartStatusBarTimer(7, "Shear: "..msg, "Interface\\Icons\\Spell_Shadow_FocusedPower")
 	elseif msg == "CastShear" then
-		if self.Options.WarnShearCast then
-			self:Announce(DBM_ILLIDAN_WARN_CASTSHEAR, 1)
-		end
+--		if self.Options.WarnShearCast then
+--			self:Announce(DBM_ILLIDAN_WARN_CASTSHEAR, 1)
+--		end
 	elseif msg:sub(0, 11) == "Shadowfiend" then
 		msg = msg:sub(12)
 		if msg == UnitName("player") then
