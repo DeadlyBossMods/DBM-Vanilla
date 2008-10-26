@@ -303,8 +303,12 @@ local function onCombatEnd(self, ...)
 	self.proxy.InCombat = false
 end
 
+local function onUpdate(self, elapsed)
+	if self.proxy.OnUpdate then self.proxy:OnUpdate(elapsed) end
+end
+
 local function onInitialize(self)
-	if self.proxy.OnUpdate then	self:RegisterOnUpdateHandler(self.proxy.OnUpdate, self.proxy.UpdateInterval or 0.2) end
+	if self.proxy.OnUpdate then	self:RegisterOnUpdateHandler(onUpdate, self.proxy.UpdateInterval or 0.2) end
 	self.proxy.Options = self.Options
 end
 
