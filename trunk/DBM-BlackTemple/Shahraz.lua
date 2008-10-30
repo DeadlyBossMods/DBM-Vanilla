@@ -8,7 +8,7 @@ Shahraz:RegisterCombat("yell", DBM_SHAHRAZ_YELL_PULL)
 
 Shahraz:AddOption("WarnBeam", false, DBM_SHAHRAZ_OPTION_BEAM)
 Shahraz:AddOption("WarnBeamSoon", false, DBM_SHAHRAZ_OPTION_BEAM_SOON)
-Shahraz:AddOption("WhisperFA", false, DBM_SHAHRAZ_OPTION_WHISPER_FA)
+Shahraz:AddOption("WhisperFA", false, DBM_SEND_WHISPER)
 
 Shahraz:AddBarOption("Enrage")
 Shahraz:AddBarOption("Next Beam", false)
