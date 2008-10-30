@@ -17,7 +17,7 @@ Supremus:RegisterEvents(
 
 Supremus:AddOption("WarnKiteTarget", true, DBM_SUPREMUS_OPTION_TARGETWARN)
 Supremus:AddOption("IconKiteTarget", true, DBM_SUPREMUS_OPTION_TARGETICON)
-Supremus:AddOption("WhisperKiteTarget", true, DBM_SUPREMUS_OPTION_TARGETWHISPER)
+Supremus:AddOption("WhisperKiteTarget", false, DBM_SUPREMUS_OPTION_TARGETWHISPER)
 
 Supremus:AddBarOption("Enrage")
 Supremus:AddBarOption("Kite Phase")

@@ -29,7 +29,7 @@ Souls:AddOption("WarnFixate", false, DBM_SOULS_OPTION_FIXATE)
 Souls:AddOption("WarnScream", false, DBM_SOULS_OPTION_SCREAM)
 Souls:AddOption("WarnSpite", true, DBM_SOULS_OPTION_SPITE)
 Souls:AddOption("SpecWarnSpite", true, DBM_SOULS_OPTION_SPECWARN_SPITE)
-Souls:AddOption("SpiteWhisper", true, DBM_SOULS_OPTION_WHISPER_SPITE)
+Souls:AddOption("SpiteWhisper", false, DBM_SOULS_OPTION_WHISPER_SPITE)
 
 Souls:AddBarOption("Enrage")
 Souls:AddBarOption("Next Enrage")
