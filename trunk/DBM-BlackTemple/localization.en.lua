@@ -138,6 +138,7 @@ DBM_SHAHRAZ_YELL_PULL				= "So... business or pleasure?"
 
 DBM_SHAHRAZ_WARN_ENRAGE				= "*** Enrage in %s %s ***"
 DBM_SHAHRAZ_WARN_FA					= "*** Fatal Attraction on %s ***"
+DBM_SHAHRAZ_OPTION_WHISPER_FA			= "Send whisper to Fatal Attraction targets"
 DBM_SHAHRAZ_SPECWARN_FA				= "Fatal Attraction"
 DBM_SHAHRAZ_WHISPER_FA				= "Fatal Attraction on you!"
 DBM_SHAHRAZ_WARN_BEAM_VILE			= "*** Vile Beam ***"

@@ -8,6 +8,7 @@ Shahraz:RegisterCombat("yell", DBM_SHAHRAZ_YELL_PULL)
 
 Shahraz:AddOption("WarnBeam", false, DBM_SHAHRAZ_OPTION_BEAM)
 Shahraz:AddOption("WarnBeamSoon", false, DBM_SHAHRAZ_OPTION_BEAM_SOON)
+Shahraz:AddOption("WhisperFA", false, DBM_SHAHRAZ_OPTION_WHISPER_FA)
 
 Shahraz:AddBarOption("Enrage")
 Shahraz:AddBarOption("Next Beam", false)
@@ -74,7 +75,9 @@ function Shahraz:OnSync(msg)
 		msg = msg:sub(3)
 		table.insert(fa, msg)
 		if self.Options.Announce and DBM.Rank >= 1 then
-			self:SendHiddenWhisper(DBM_SHAHRAZ_WHISPER_FA, msg)
+			if self.Options.WhisperFA then
+				self:SendHiddenWhisper(DBM_SHAHRAZ_WHISPER_FA, msg)
+			end
 			self:SetIcon(msg, 7.5, icon)
 			icon = icon - 1
 		end
