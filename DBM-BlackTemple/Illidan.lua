@@ -6,6 +6,7 @@ Illidan.MinRevision = 764
 
 Illidan:SetCreatureID(22917)
 Illidan:RegisterCombat("yell", DBM_ILLIDAN_YELL_PULL)
+Illidan:SetMinCombatTime(20)
 
 local flameTargets = {}
 local flamesDown = 0
