@@ -2,7 +2,7 @@
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Zul'Aman|r
 ## Author: Tandanu
 ## LoadOnDemand: 1
-## RequiredDeps: DBM-Core
+## RequiredDeps: DBM-Core, DBM-BurningCrusade
 ## SavedVariablesPerCharacter: DBMZulAman_SavedVars, DBMZulAman_SavedStats
 ## X-DBM-BC-AddOn: 1
 ## X-DBM-Tab-ID: DBM_ZULAMAN_TAB

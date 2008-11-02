@@ -1,7 +1,7 @@
 ﻿## Interface: 30000
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Black Temple|r
 ## Author: Tandanu
-## RequiredDeps: DBM-Core
+## RequiredDeps: DBM-Core, DBM-BurningCrusade
 ## SavedVariablesPerCharacter: DBMBlackTemple_SavedVars, DBMBlackTemple_SavedStats
 ## DefaultState: Enabled
 ## LoadOnDemand: 1
