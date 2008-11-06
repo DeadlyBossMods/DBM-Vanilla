@@ -6,13 +6,13 @@
 -- This addon is written and copyrighted by:
 --    * Paul Emmerich (Tandanu @ EU-Aegwynn) (DBM-Core)
 --    * Martin Verges (Nitram @ EU-Azshara) (DBM-GUI)
--- 
+--
 -- The localizations are written by:
 --    * deDE: Tandanu/Nitram
 --    * enGB: Nitram/Tandanu
 --    * (add your names here!)
 --
--- 
+--
 -- The code of this addon is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 License. (see license.txt)
 -- All included textures and sounds are copyrighted by their respective owners.
 --
@@ -133,6 +133,10 @@ function proxy:IsWipe()
 		dead = dead + ((UnitIsDeadOrGhost("raid"..i) and 1) or 0)
 	end
 	return dead >= 18
+end
+
+function proxy:SetBossHealthInfo(...)
+	self.mod:SetBossHealthInfo(...)
 end
 
 
@@ -400,7 +404,7 @@ do
 	local function updateRank()
 		DBM.Rank = DBM:GetRaidRank() or 0
 	end
-	
+
 	function DBMBC:RAID_ROSTER_UPDATE()
 		DBM:Schedule(0, updateRank)
 	end
