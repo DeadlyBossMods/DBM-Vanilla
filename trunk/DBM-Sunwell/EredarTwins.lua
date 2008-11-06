@@ -41,9 +41,13 @@ Twins:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE"
 )
 
+Twins:SetBossHealthInfo(
+	25165, DBM_TWINS_MOB_SOCR,
+	25166, DBM_TWINS_MOB_WL
+)
 
 function Twins:OnCombatStart(delay)
-	self:StartStatusBarTimer(360 - delay, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy") 
+	self:StartStatusBarTimer(360 - delay, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy")
 	self:ScheduleAnnounce(180 - delay, DBM_GENERIC_ENRAGE_WARN:format(3, DBM_MIN), 1)
 	self:ScheduleAnnounce(300 - delay, DBM_GENERIC_ENRAGE_WARN:format(1, DBM_MIN), 2)
 	self:ScheduleAnnounce(330 - delay, DBM_GENERIC_ENRAGE_WARN:format(30, DBM_SEC), 3)
@@ -51,18 +55,12 @@ function Twins:OnCombatStart(delay)
 	if self.Options.RangeCheck then
 		DBM_Gui_DistanceFrame_Show()
 	end
-	if self.Options.HealthFrame then
-		DBM.BossHealth:Show(DBM_TWINS_NAME)
-		DBM.BossHealth:AddBoss(25165, DBM_TWINS_MOB_SOCR)
-		DBM.BossHealth:AddBoss(25166, DBM_TWINS_MOB_WL)
-	end
 end
 
 function Twins:OnCombatEnd()
 	if self.Options.RangeCheck then
 		DBM_Gui_DistanceFrame_Hide()
 	end
-	DBM.BossHealth:Hide()
 end
 
 function Twins:OnEvent(event, args)
@@ -90,7 +88,7 @@ function Twins:OnEvent(event, args)
 			self:SendSync("Conflagration"..target)
 		end
 		target = nil
-		
+
 		local _, _, target = (args or ""):find(DBM_TWINS_EMOTE_NOVA)
 		if target then
 			self:SendSync("ShadowNova"..target)
@@ -122,7 +120,7 @@ function Twins:OnSync(msg)
 	elseif msg:sub(0, 13) == "Conflagration" then
 		msg = msg:sub(14)
 		self:StartStatusBarTimer(31, "Conflagration CD", 45321)
-		self:StartStatusBarTimer(3.5, "Conflagration", 45321) 
+		self:StartStatusBarTimer(3.5, "Conflagration", 45321)
 		if self.Options.WarnConflagration then
 			self:Announce(DBM_TWINS_WARN_CONFLAG_ON:format(msg), 4)
 		end
