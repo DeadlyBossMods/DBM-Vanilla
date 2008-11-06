@@ -22,6 +22,7 @@ Twins:AddOption("SpecWarnNova", true, DBM_TWINS_OPTION_NOVA3)
 Twins:AddOption("IconNova", false, DBM_TWINS_OPTION_NOVA4)
 Twins:AddOption("DarkTouch", true, DBM_TWINS_OPTION_TOUCH1)
 Twins:AddOption("FlameTouch", false, DBM_TWINS_OPTION_TOUCH2)
+Twins:AddOption("HealthFrame", true, "")
 
 Twins:AddBarOption("Enrage")
 Twins:AddBarOption("Shadow Blades", false)
@@ -50,12 +51,18 @@ function Twins:OnCombatStart(delay)
 	if self.Options.RangeCheck then
 		DBM_Gui_DistanceFrame_Show()
 	end
+	if self.Options.HealthFrame then
+		DBM.BossHealth:Show(DBM_TWINS_NAME)
+		DBM.BossHealth:AddBoss(25165, DBM_TWINS_MOB_SOCR)
+		DBM.BossHealth:AddBoss(25166, DBM_TWINS_MOB_WL)
+	end
 end
 
 function Twins:OnCombatEnd()
 	if self.Options.RangeCheck then
 		DBM_Gui_DistanceFrame_Hide()
 	end
+	DBM.BossHealth:Hide()
 end
 
 function Twins:OnEvent(event, args)
