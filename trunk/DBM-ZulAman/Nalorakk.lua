@@ -31,6 +31,7 @@ function Nalorakk:OnCombatStart()
 	self:ScheduleAnnounce(40, DBM_NALO_WARN_BEAR_SOON, 1)
 end
 
+local silenceSpam = 0
 function Nalorakk:OnEvent(event, args)
 	if event == "CHAT_MSG_MONSTER_YELL" then
 		if arg1 == DBM_NALO_YELL_NORMAL then
@@ -47,7 +48,8 @@ function Nalorakk:OnEvent(event, args)
 			end
 		end
 	elseif event == "SPELL_AURA_APPLIED" and self.Options.SilenceWarn then
-		if args.spellId == DBM_NALO_SPELLID_SILENCE then
+		if args.spellId == DBM_NALO_SPELLID_SILENCE and (GetTime() - silenceSpam) > 4 then
+			silenceSpam = GetTime()
 			self:Announce(DBM_NALO_WARN_SILENCE, 2)
 		end
 	end
