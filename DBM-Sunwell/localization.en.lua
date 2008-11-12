@@ -133,7 +133,7 @@ DBM_TWINS_OPTION_TOUCH2			= "Show special warning for Fire Touched debuffs"
 
 DBM_TWINS_MOB_WL				= "Grand Warlock Alythess"
 DBM_TWINS_MOB_SOCR				= "Lady Sacrolash"
-DBM_TWINS_EMOTE_CONFLAG			= "Alythess directs Conflagration at (.+)"
+DBM_TWINS_EMOTE_CONFLAG			= "Alythess directs Conflagration at (.+)%."
 DBM_TWINS_EMOTE_NOVA			= "Sacrolash directs Shadow Nova at (.+)%."
 
 DBM_TWINS_WARN_BLADES			= "Shadow Blades"
