@@ -7,4 +7,6 @@
 ## Author: Tandanu and Nitram
 ## X-Website: http://www.deadlybossmods.com
 localization.en.lua
+localization.cn.lua
+localization.tw.lua
 DBMv3-Compatibility.lua
