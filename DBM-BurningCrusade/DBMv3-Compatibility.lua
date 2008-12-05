@@ -10,6 +10,8 @@
 -- The localizations are written by:
 --    * deDE: Tandanu/Nitram
 --    * enGB: Nitram/Tandanu
+--    * zhCN: yleaf(yaroot@gmail.com)
+--    * zhTW: yleaf(yaroot@gmail.com)
 --    * (add your names here!)
 --
 --
