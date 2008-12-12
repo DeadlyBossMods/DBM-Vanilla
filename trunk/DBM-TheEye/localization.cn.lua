@@ -32,9 +32,11 @@ if (GetLocale() == "zhCN") then
 
 	DBM_VOIDREAVER_R_FURY					= "正义之怒"
 
+--[[
 	DBM_SBT["Enrage"]			= "激怒";
 	DBM_SBT["Next Pounding"]	= "下一次重击";
 	DBM_SBT["Pounding"]			= "重击";
+]]
 
 
 -- Solarian
@@ -44,11 +46,13 @@ if (GetLocale() == "zhCN") then
 	DBM_SOLARIAN_OPTION_ICON_WRATH			= "对星术师之怒的目标添加标注";
 	DBM_SOLARIAN_OPTION_SPECWARN_WRATH		= "当你受到星术师之怒效果时显示特殊警报";
 	DBM_SOLARIAN_OPTION_WARN_PHASE			= "警报下属出现";
-	DBM_SOLARIAN_OPTION_SOUND				= "当你受到星术师之怒效果时播放声音警报"
 	DBM_SOLARIAN_OPTION_WHISPER_WRATH		= "向受到星术师之怒效果的目标发送密语"
+	DBM_SOLARIAN_OPTION_SOUND				= "当你受到星术师之怒效果时播放声音警报"
 
+--[[
 	DBM_SOLARIAN_DEBUFF_WRATH				= "([^%s]+)受([^%s]+)星术师之怒效果的影响。"
 	DBM_SOLARIAN_CAST_SPLIT					= "大星术师索兰莉安施放了星术师分裂。";
+]]
 	DBM_SOLARIAN_YELL_ENRAGE				= "我受够了！现在我要让你们看看宇宙的愤怒！"
 
 	DBM_SOLARIAN_SPECWARN_WRATH				= "星术师之怒！";
@@ -60,6 +64,7 @@ if (GetLocale() == "zhCN") then
 	DBM_SOLARIAN_ANNOUNCE_SPLIT_SOON		= "*** 5秒后分裂 ***";
 	DBM_SOLARIAN_ANNOUNCE_ENRAGE_PHASE		= "*** 虚空行者阶段 ***";
 
+--[[
 	DBM_SBT["Split"]				= "分裂";
 	DBM_SBT["Priests & Solarian"]	= "祭司与索兰莉安";
 	DBM_SBT["Agents"]				= "密探";
@@ -68,6 +73,7 @@ if (GetLocale() == "zhCN") then
 		  [1] = {"Wrath: (.*)", "星术师之怒 -> %1"},
 	}
 	DBM_SBT["大星术师索兰莉安"] = DBM_SBT["Solarian"]
+]]
 
 
 -- Al'ar
@@ -76,9 +82,11 @@ if (GetLocale() == "zhCN") then
 	DBM_ALAR_OPTION_MELTARMOR	= "警报熔化护甲";
 	DBM_ALAR_OPTION_METEOR		= "警报流星";
 
+--[[
 	DBM_ALAR_CAST_REBIRTH		= "奥开始施放复生。";
 	DBM_ALAR_DEBUFF_MELTARMOR	= "([^%s]+)受([^%s]+)熔化护甲效果的影响。";
 	DBM_ALAR_DEBUFF_FIRE_YOU	= "你受到了烈焰之地效果的影响。";
+]]
 	DBM_ALAR_FLAME_BUFFET		= "烈焰击打";
 
 	DBM_ALAR_WARN_MELTARMOR		= "*** 熔化护甲 -> >%s< ***";
@@ -89,6 +97,7 @@ if (GetLocale() == "zhCN") then
 	DBM_ALAR_WARN_METEOR_SOON	= "*** 流星 - 即将施放 ***";
 	DBM_ALAR_WARN_ENRAGE		= "*** %s%s后激怒 ***";
 
+--[[
 	DBM_SBT["Next Platform"]	= "下一个位置";
 	DBM_SBT["Meteor"]			= "流星";
 	DBM_SBT["Enrage"]			= "激怒";
@@ -97,6 +106,7 @@ if (GetLocale() == "zhCN") then
 		  [1] = {"Melt Armor: (.*)", "熔化护甲 -> %1"},
 	}
 	DBM_SBT["奥"] = DBM_SBT["Alar"]
+]]
 
 
 -- Kael'thas
@@ -124,18 +134,22 @@ if (GetLocale() == "zhCN") then
 	DBM_KAEL_OPTION_GRAVITY					= "警报引力失效";
 
 	DBM_KAEL_YELL_PHASE1					= "魔法，能量，我的人民陷入其中不能自拔……自从太阳之井被摧毁之后就是如此。欢迎来到未来。真遗憾，你们无法阻止什么。没有人可以阻止我了！Selama ashal’anore！！";
+--[[
 	DBM_KAEL_YELL_PHASE1_SANGUINAR			= "你们击败了我最强大的顾问……但是没有人能战胜鲜血之锤。出来吧，萨古纳尔男爵！";
 	DBM_KAEL_YELL_PHASE1_CAPERNIAN			= "卡波妮娅会很快解决你们的。";
 	DBM_KAEL_YELL_PHASE1_TELONICUS			= "干得不错。看来你们有能力挑战我的首席技师，塔隆尼库斯。";
 	DBM_KAEL_YELL_THALA_DOWN				= "原谅我，王子殿下！我……失败了。";
 	DBM_KAEL_YELL_CAPERNIAN_DOWN			= "还没完！";
+]]
 
 	DBM_KAEL_EMOTE_THALADRED_TARGET			= "凝视着([^%s]+)！";
+--[[
 	DBM_KAEL_CAST_FEAR						= "萨古纳尔男爵开始施放咆哮。";
 	DBM_KAEL_DEBUFF_FEAR1					= "受到了咆哮效果的影响";
 	DBM_KAEL_DEBUFF_FEAR2					= "萨古纳尔男爵的咆哮";
 	DBM_KAEL_DEBUFF_CONFLAGRATION			= "([^%s]+)受([^%s]+)燃烧效果的影响。";
 	DBM_KAEL_DEBUFF_REMOTETOY				= "([^%s]+)受([^%s]+)遥控玩具效果的影响。";
+]]
 
 	DBM_KAEL_YELL_PHASE2					= "你们看，我的个人收藏中有许多武器……";
 	DBM_KAEL_YELL_PHASE3					= "也许我确实低估了你们。虽然让你们同时面对我的四位顾问显得有些不公平，但是我的人民从来都没有得到过公平的待遇。我只是在以牙还牙。";
@@ -151,7 +165,6 @@ if (GetLocale() == "zhCN") then
 		["灵弦长弓"] = 6,
 		["相位壁垒"] = 7
 	};
-
 	DBM_KAEL_WEAPONS_NAMES = {
 		"法杖",
 		"匕首",
@@ -161,6 +174,7 @@ if (GetLocale() == "zhCN") then
 		"弓",
 		"盾牌"
 	};
+
 
 	DBM_KAEL_ADVISORS = {
 		["亵渎者萨拉德雷"] = 1,
@@ -181,6 +195,7 @@ if (GetLocale() == "zhCN") then
 
 	DBM_KAEL_CAST_PHOENIX_REBIRTH			= "凤凰开始施放复生。";
 	DBM_KAEL_EMOTE_PYROBLAST				= "开始施放炎爆术";
+--[[
 	DBM_KAEL_CAST_PYROBLAST					= "凯尔萨斯·逐日者开始施放炎爆术。";
 	DBM_KAEL_GAIN_SHOCK_BARRIER				= "凯尔萨斯·逐日者获得了冲击屏障的效果。";
 	DBM_KAEL_FADE_SHOCK_BARRIER				= "冲击屏障效果从凯尔萨斯·逐日者身上消失。";
@@ -188,9 +203,11 @@ if (GetLocale() == "zhCN") then
 	DBM_KAEL_DEBUFF_MINDCONTROL				= "([^%s]+)受([^%s]+)精神控制效果的影响。";
 	DBM_KAEL_FADE_MINDCONTROL				= "([^%s]+)的精神控制被移除了。";
 	DBM_KAEL_FADE_MINDCONTROL_YOU			= "你的精神控制制被移除了。";
+]]
 	DBM_KAEL_EGG							= "凤凰卵";
 	DBM_KAEL_YELL_GRAVITY_LAPSE				= "站不住脚了吗？";
 	DBM_KAEL_YELL_GRAVITY_LAPSE2			= "如果世界变得上下颠倒，你们会怎么办呢？";
+
 
 	DBM_KAEL_SPECWARN_THALADRED_TARGET		= "快跑！";
 	DBM_KAEL_WARN_THALADRED_TARGET			= "*** 萨拉德雷注视着>%s< ***";
@@ -221,6 +238,7 @@ if (GetLocale() == "zhCN") then
 	DBM_KAEL_GRAVITY_SOON					= "*** 引力失效 - 即将释放 ***";
 	DBM_KAEL_GRAVITY_END_SOON				= "*** 引力失效 - 5秒后结束 ***";
 
+--[[
 	DBM_SBT["Thaladred"]			= "萨拉德雷";
 	DBM_SBT["Lord Sanguinar"]		= "萨古纳尔";
 	DBM_SBT["Capernian"]			= "卡波妮娅";
@@ -243,6 +261,7 @@ if (GetLocale() == "zhCN") then
 		  [2] = {"Remote Toy: (.*)", "遥控玩具 -> %1"},
 	}
 	DBM_SBT["凯尔萨斯·逐日者"] = DBM_SBT["KaelThas"]
+]]
 
 end
 

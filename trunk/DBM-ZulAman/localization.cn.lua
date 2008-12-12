@@ -19,7 +19,9 @@ if (GetLocale() == "zhCN") then
 	DBM_NALO_YELL_PULL				= "你马上就要死了！"
 	DBM_NALO_YELL_BEAR				= "你们召唤野兽？你马上就要大大的后悔了！"
 	DBM_NALO_YELL_NORMAL			= "纳洛拉克，变形，出发！"
+--[[
 	DBM_NALO_DEBUFF_SILENCE			= "受到了震耳咆哮效果的影响"
+]]
 	DBM_NALO_SPELLID_SILENCE		= 42398
 	
 	DBM_NALO_WARN_NORMAL_SOON		= "5秒后变为人形态"
@@ -28,8 +30,10 @@ if (GetLocale() == "zhCN") then
 	DBM_NALO_WARN_BEAR				= "熊形态"
 	DBM_NALO_WARN_SILENCE			= "沉默"
 
+--[[
 	DBM_SBT["Bear Form"]	= "熊形态";
 	DBM_SBT["Normal Form"]	= "人形态";
+]]
 
 
 -- Akil'zon
@@ -38,14 +42,18 @@ if (GetLocale() == "zhCN") then
 	DBM_AKIL_OPTION_RANGE			= "显示距离框体"
 
 	DBM_AKIL_YELL_PULL				= "我是猎鹰，而你们，就是猎物！"
+--[[
 	DBM_AKIL_DEBUFF_STORM			= "([^%s]+)受([^%s]+)电能风暴效果的影响。"
+]]
 	DBM_AKIL_SPELLID_STORM			= 43648
 
 	DBM_AKIL_WARN_STORM_SOON		= "电能风暴 - 即将施放"
 	DBM_AKIL_WARN_STORM_ON			= "电能风暴 -> >%s<"
 
+--[[
 	DBM_SBT["Enrage"]			= "激怒";
 	DBM_SBT["Electrical Storm"]	= "电能风暴";
+]]
 
 
 -- Jan'alai
@@ -61,9 +69,11 @@ if (GetLocale() == "zhCN") then
 	DBM_JANALAI_WARN_HATCHER		= "孵化者出现"
 	DBM_JANALAI_WARN_HATCHER_SOON	= "孵化者10秒后出现"
 
+--[[
 	DBM_SBT["Enrage"]		= "激怒";
 	DBM_SBT["Hatcher"]		= "孵化者";
 	DBM_SBT["Explosion"]	= "爆炸";
+]]
 
 
 -- Halazzi
@@ -75,8 +85,11 @@ if (GetLocale() == "zhCN") then
 	DBM_HALAZZI_YELL_PULL			= "在利爪与尖牙面前，下跪吧，祈祷吧，颤栗吧！"
 	DBM_HALAZZI_YELL_SPIRIT			= "狂野的灵魂与我同在……"
 	DBM_HALAZZI_YELL_SPIRIT_DESP	= "灵魂，到我这里来！"
+--[[
 	DBM_HALAZZI_CAST_TOTEM			= "哈尔拉兹开始施放闪电图腾。" -- 2 spaces? wtf?
 	DBM_HALAZZI_GAIN_FRENZY			= "哈尔拉兹获得了狂乱的效果。"
+]]
+	DBM_HALAZZI_SPELL_FRENZY		= "狂乱"
 	DBM_HALAZZI_SPELLID_TOTEM		= 43302
 
 	DBM_HALAZZI_WARN_SPIRIT			= "灵魂分裂"
@@ -92,7 +105,9 @@ if (GetLocale() == "zhCN") then
 	DBM_MALACRASS_OPTION_MC			= "警报精神控制"
 
 	DBM_MALACRASS_YELL_PULL			= "阴影将会降临在你们头上……"
+--[[
 	DBM_MALACRASS_DEBUFF_SIPHON		= "([^%s]+)受([^%s]+)灵魂虹吸效果的影响。"
+]]
 	DBM_MALACRASS_YELL_BOLTS		= "你的灵魂在流血！"
 	DBM_MALACRASS_SPELLID_SIPHON	= 43501
 
@@ -101,6 +116,7 @@ if (GetLocale() == "zhCN") then
 	DBM_MALACRASS_WARN_BOLTS		= "灵魂之箭"
 	DBM_MALACRASS_WARN_BOLTS_SOON	= "灵魂之箭 - 5秒后施放"
 	
+--[[
 	DBM_SBT["Next Spirit Bolts"]	= "下一次灵魂之箭";
 	DBM_SBT["Spirit Bolts"]			= "灵魂之箭";
 
@@ -108,6 +124,7 @@ if (GetLocale() == "zhCN") then
 		  [1] = {"Siphon Soul: (.*)", "灵魂虹吸 -> %1"},
 	}
 	DBM_SBT["妖术领主玛拉卡斯"] = DBM_SBT["Malacrass"]
+]]
 
 
 -- Zul'jin
@@ -123,9 +140,11 @@ if (GetLocale() == "zhCN") then
 	DBM_ZULJIN_YELL_PHASE_4			= "现在来让你看看我的尖牙和利爪！"
 	DBM_ZULJIN_YELL_PHASE_5			= "龙鹰，不用抬头就能看见！"
 
+--[[
 	DBM_ZULJIN_DEBUFF_PARALYSIS		= "受到了麻痹蔓延"
 	DBM_ZULJIN_DEBUFF_LYNX			= "([^%s]+)受([^%s]+)利爪之怒效果的影响。"
 	DBM_ZULJIN_DEBUFF_DOT			= "([^%s]+)受([^%s]+)重伤投掷效果的影响。"
+]]
 	DBM_ZULJIN_SPELLID_PARALYSIS	= 43095
 	DBM_ZULJIN_SPELLID_LYNX			= 43150
 	DBM_ZULJIN_SPELLID_DOT			= 43093
@@ -141,6 +160,8 @@ if (GetLocale() == "zhCN") then
 	DBM_ZULJIN_WARN_LYNX			= "利爪之怒 -> >%s<"
 	DBM_ZULJIN_WARN_DOT				= "重伤投掷 -> >%s<"
 
+--[[
 	DBM_SBT["Creeping Paralysis"]	= "麻痹蔓延";
+]]
 
 end
