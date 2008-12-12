@@ -25,9 +25,11 @@ if (GetLocale() == "zhCN") then
 	DBM_HYDROSS_YELL_NATURE		= "啊……毒性侵袭了我……";
 	DBM_HYDROSS_YELL_FROST		= "感觉好多了。";
 
+--[[
 	DBM_HYDROSS_MARK_FROST		= "受到了海度斯印记效果的影响";
 	DBM_HYDROSS_MARK_NATURE		= "受到了腐蚀印记效果的影响";
 	DBM_HYDROSS_WATER_TOMB		= "([^%s]+)受([^%s]+)水之墓效果的影响。";
+]]
 
 	DBM_HYDROSS_FROST_MARK_NOW	= "*** 冰霜印记 #%s ***";
 	DBM_HYDROSS_NATURE_MARK_NOW	= "*** 自然印记 #%s ***";
@@ -39,6 +41,7 @@ if (GetLocale() == "zhCN") then
 
 	DBM_HYDROSS_TOMB_WARN		= "*** 水之墓 -> >%s< ***";
 
+--[[
 	DBM_SBT["Enrage"]		= "激怒";
 	DBM_SBT["Water Tomb"]	= "水之墓";
 	
@@ -47,6 +50,7 @@ if (GetLocale() == "zhCN") then
 		  [2] = {"Mark of Corruption #", "腐蚀印记 #"},
 	}
 	DBM_SBT["不稳定的海度斯"] = DBM_SBT["Hydross"]
+]]
 
 
 -- Morogrim Tidewalker
@@ -66,8 +70,10 @@ if (GetLocale() == "zhCN") then
 	DBM_TIDEWALKER_WARN_GRAVE			= "*** 水之墓穴 -> %s ***";
 	DBM_TIDEWALKER_WARN_GLOBES			= "*** 水泡 ***";
 
+--[[
 	DBM_SBT["Murlocs"]		= "鱼人群";
 	DBM_SBT["Watery Grave"]	= "水之墓穴";
+]]
 
 
 -- Fathom-Lord Karathress
@@ -87,8 +93,10 @@ if (GetLocale() == "zhCN") then
 	DBM_FATHOMLORD_SFTOTEM2_WARN		= "*** 溅火图腾 @ 卡拉瑟雷斯 ***";
 	DBM_FATHOMLORD_HEAL_WARN			= "*** 治疗波 ***";
 
+--[[
 	DBM_SBT["Enrage"]		= "激怒";
 	DBM_SBT["Healing Wave"]	= "治疗波";
+]]
 
 
 -- The Lurker Below
@@ -113,11 +121,13 @@ if (GetLocale() == "zhCN") then
 
 	DBM_LURKER_WARN_SUBMERGE_SOON		= "*** %s秒后下潜 ***";
 
+--[[
 	DBM_SBT["Submerge"]		= "下潜";
 	DBM_SBT["Emerge"]		= "重新出现";
 	DBM_SBT["Spout"]		= "喷涌";
 	DBM_SBT["Next Spout"]	= "下一次喷涌";
 	DBM_SBT["Whirl"]		= "旋风";
+]]
 
 
 -- Leotheras the Blind
@@ -130,11 +140,13 @@ if (GetLocale() == "zhCN") then
 	DBM_LEO_YELL_PULL					= "我的放逐终于结束了！";
 	DBM_LEO_YELL_DEMON					= "滚开吧，脆弱的精灵。现在我说了算！";
 	DBM_LEO_YELL_SHADOW					= "不……不！你在干什么？我才是主宰！你听到没有？我……啊啊啊啊！控制……不住了。";
+	DBM_LEO_YELL_WHISPER				= "所有人的内心之中都有一只恶魔……";
+--[[
 	DBM_LEO_GAIN_WHIRLWIND				= "盲眼者莱欧瑟拉斯获得了旋风斩的效果。";
 	DBM_LEO_FADE_WHIRLWIND				= "旋风斩效果从盲眼者莱欧瑟拉斯身上消失。";
 	DBM_LEO_DEBUFF_WHISPER				= "([^%s]+)受([^%s]+)因斯迪安低语效果的影响。";
 	DBM_LEO_CAST_WHISPER				= "盲眼者莱欧瑟拉斯开始施放因斯迪安低语。";
-	DBM_LEO_YELL_WHISPER				= "所有人的内心之中都有一只恶魔……";
+]]
 
 	DBM_LEO_WARN_ENRAGE					= "*** %s%s后激怒 ***";
 	DBM_LEO_WARN_WHIRL					= "*** 旋风斩 ***";
@@ -152,12 +164,14 @@ if (GetLocale() == "zhCN") then
 	DBM_LEO_WARN_DEMONS_NOW				= "*** 心魔 ***";
 	DBM_LEO_WARN_DEMON_TARGETS			= "*** 心魔 -> %s ***";
 
+--[[
 	DBM_SBT["Enrage"]			= "激怒";
 	DBM_SBT["Demon Form"]		= "恶魔形态";
 	DBM_SBT["Normal Form"]		= "一般形态";
 	DBM_SBT["Next Whirlwind"]	= "下一次旋风斩";
 	DBM_SBT["Inner Demons"]		= "心魔";
 	DBM_SBT["Whirlwind"]		= "旋风斩";
+]]
 
 
 -- Lady Vashj
@@ -176,12 +190,17 @@ if (GetLocale() == "zhCN") then
 	DBM_VASHJ_YELL_PULL2				= "伊利丹大人必胜！";
 	DBM_VASHJ_YELL_PULL3 				= "我要把你们全都杀死！";
 	DBM_VASHJ_YELL_PULL4				= "我不想贬低自己来获取你的宽容，但是你让我别无选择……";
+--[[
 	DBM_VASHJ_CAST_CHARGE				= "([^%s]+)受([^%s]+)静电充能效果的影响。";
+]]
 	DBM_VASHJ_YELL_PHASE2				= "机会来了！一个活口都不要留下！";
 	DBM_VASHJ_ELEMENT_DIES				= "被污染的元素";
+--[[
 	DBM_VASHJ_FADE_SHIELD				= "魔法屏障效果从瓦丝琪身上消失。";
 	DBM_VASHJ_DEBUFF_CORE				= "([^%s]+)受([^%s]+)麻痹效果的影响。";
+]]
 	DBM_VASHJ_YELL_PHASE3				= "你们最好找掩护。";
+	DBM_VASHJ_LOOT						= "(.+)(.*)了物品：(%d+)。";
 
 	DBM_VASHJ_WARN_CHARGE				= "*** 静电充能 -> >%s< ***";
 	DBM_VASHJ_SPECWARN_CHARGE			= "你受到了静电充能效果！";
@@ -196,11 +215,11 @@ if (GetLocale() == "zhCN") then
 	DBM_VASHJ_WARN_SHIELD_FADED			= "*** 护盾 - %d/4被击碎 ***";
 	DBM_VASHJ_WARN_CORE_LOOT			= "*** >%s<获得了污染之核 ***";
 	DBM_VASHJ_SPECWARN_CORE				= "你获得了污染之核！";
-	DBM_VASHJ_LOOT						= "(.+)(.*)了物品：(%d+)。";
 
 	DBM_VASHJ_WARN_PHASE3				= "*** 护盾被完全击碎 - 第三阶段开始 ***";
 	DBM_VASHJ_WARN_ENRAGE				= "*** %s%s后激怒 ***";
 
+--[[
 	DBM_SBT["Enrage"]				= "激怒";
 	DBM_SBT["Strider"]				= "盘牙巡逻者";
 	DBM_SBT["Tainted Elemental"]	= "被污染的元素";
@@ -210,6 +229,7 @@ if (GetLocale() == "zhCN") then
 		  [1] = {"Static Charge: (.*)", "静电充能 -> %1"},
 	}
 	DBM_SBT["瓦丝琪"] = DBM_SBT["Vashj"]
+]]
 
 
 end

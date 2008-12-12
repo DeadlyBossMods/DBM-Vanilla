@@ -72,6 +72,9 @@ DBM_SUNWELL						= "太阳之井高地"
 	
 	DBM_KAL_HEALTHFRAME_TITLE		= "首领生命值"
 
+	DBM_KAL_STATUS_MSG				= "龙: %d%%%% 恶魔: %d%%%%"
+
+--[[
 	DBM_SBT["Arcane Buffet"]		= "奥术打击";
 	DBM_SBT["Frost Breath"]			= "冰霜吐息";
 	DBM_SBT["Next Portal"]			= "下一次传送";
@@ -84,7 +87,7 @@ DBM_SUNWELL						= "太阳之井高地"
 		  [3] = {"Portal #(.*)", "传送 #%1"},	
 	}
 	DBM_SBT["卡雷苟斯"] = DBM_SBT["Kal"]
-
+]]
 
 -- Brutallus 
 	DBM_BRUTALLUS_NAME				= "布鲁塔卢斯" 
@@ -110,6 +113,7 @@ DBM_SUNWELL						= "太阳之井高地"
 	DBM_BRUTALLUS_WARN_DEL_BURN		= ">%s<的燃烧还有15秒"
 	DBM_BRUTALLUS_WARN_STOMP_SOON	= "践踏 - 5秒后施放"
 
+--[[
 	DBM_SBT["Enrage"]		= "激怒";
 	DBM_SBT["Next Burn"]	= "下一次燃烧";
 	DBM_SBT["Next Meteor"]	= "下一次流星猛击";
@@ -119,7 +123,7 @@ DBM_SUNWELL						= "太阳之井高地"
 		  [2] = {"Jumped Burn: (.*)", "燃烧蔓延 -> %1"},
 	}
 	DBM_SBT["布鲁塔卢斯"] = DBM_SBT["Brutallus"]
-
+]]
 
 -- Felmyst
 	DBM_FELMYST_NAME				= "菲米丝"
@@ -143,6 +147,7 @@ DBM_SUNWELL						= "太阳之井高地"
 	DBM_FELMYST_ENCAPS_WARN_SAY		= "我被压缩了！远离我！"
 	DBM_FELMYST_WARN_VAPOR			= "恶魔蒸汽 -> >%s<"
 
+--[[
 	DBM_SBT["Enrage"]			= "激怒";
 	DBM_SBT["Air Phase"]		= "空中阶段";
 	DBM_SBT["Ground Phase"]		= "地面阶段";
@@ -150,7 +155,7 @@ DBM_SUNWELL						= "太阳之井高地"
 	DBM_SBT["Gas Nova"]			= "毒气新星";
 	DBM_SBT["Next Deep Breath"]	= "下一次深呼吸";
 	DBM_SBT["Deep Breath"]		= "深呼吸";
-
+]]
 
 -- Eredar Twins
 	DBM_TWINS_NAME					= "艾瑞达双子"
@@ -188,13 +193,14 @@ DBM_SUNWELL						= "太阳之井高地"
 	DBM_TWINS_SPECWARN_SHADOW		= "黑暗触摸: %d"
 	DBM_TWINS_SPECWARN_FIRE			= "烈焰触摸: %d"
 
+--[[
 	DBM_SBT["Shadow Blades"]			= "暗影之刃";
 	DBM_SBT["Next Shadow Blades"]		= "下一次暗影之刃";
 	DBM_SBT["Next Shadow Nova"]			= "下一次暗影新星";
 	DBM_SBT["Shadow Nova"]				= "暗影新星";
 	DBM_SBT["Confounding Blow"]			= "混乱重击";
 	DBM_SBT["Next Confounding Blow"]	= "下一次混乱重击";
-
+]]
 
 -- M'uru
 	DBM_MURU_NAME					= "穆鲁"
@@ -222,12 +228,13 @@ DBM_SUNWELL						= "太阳之井高地"
 	DBM_MURU_WARN_BLACKHOLE_SOON	= "黑洞 - 即将出现"
 	DBM_MURU_WARN_P2				= "第二阶段"
 
+--[[
 	DBM_SBT["Enrage"]				= "激怒";
 	DBM_SBT["Humanoids"]			= "暗誓精灵";
 	DBM_SBT["Void Sentinel"]		= "虚空戒卫";
 	DBM_SBT["Next Darkness"]		= "下一次黑暗";
 	DBM_SBT["Next Black Hole"]		= "下一次黑洞";
-
+]]
 
 -- Kil'jaeden
 	DBM_KIL_NAME					= "基尔加丹"
@@ -276,9 +283,10 @@ DBM_SUNWELL						= "太阳之井高地"
 	DBM_KIL_FRAME_UPWARDS2			= DBM_KAL_FRAME_UPWARDS2
 	DBM_KIL_FRAME_HIDE				= DBM_KAL_FRAME_HIDE
 
+--[[
 	DBM_SBT["Fire Bloom CD"]		= "火焰之花冷却";
 	DBM_SBT["Flame Darts"]			= "烈焰之刺";
 	DBM_SBT["Dragon Orb"]			= "龙类宝珠";
-
+]]
 
 end
