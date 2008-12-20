@@ -34,8 +34,6 @@ function BBW:OnEvent(event, arg1)
 			self:ScheduleSelf(23, "FearWarning", "soon");
 		end
 		
-	elseif event == "ClearIcon" and arg1 then
-		DBM.ClearIconByName(arg1);
 		
 	elseif event == "FearWarning" and arg1 == "soon" and self.Options.FearWarn then
 		self:Announce(DBM_BBW_FEAR_SOON, 2);
