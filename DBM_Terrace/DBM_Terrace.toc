@@ -1,0 +1,30 @@
+## Interface: 30200
+## Title: |cff0055FFDeadly Party Boss Mods Magisters' Terrace|r
+## Notes: Boss Mods for Magisters' Terrace
+## Author: Arta
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## X-DBM-BC-AddOn: 1
+## X-DBM-Tab-ID: TerraceTab
+## X-DBM-Tab-BCTab: 1
+## X-DBM-Tab-Sort: 15
+## X-DBM-Name: Magisters' Terrace
+## X-DBM-Tab-Text: Terrace
+## X-DBM-Tab-Title: Magisters' Terrace Boss Mods
+## X-DBM-Tab-LoadZone: Magisters' Terrace
+## X-DBM-Tab-LoadZone-zhTW: 博學者殿堂
+## X-DBM-Tab-LoadZone-esES: Bancal del Magister
+## X-DBM-Tab-LoadZone-deDE: Terrasse der Magister
+## X-DBM-Tab-LoadZone-frFR: Terrasse des Magistères
+## X-DBM-Tab-LoadZone-zhCN: 魔导师平台
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.es.lua
+localization.kr.lua
+localization.cn.lua
+localization.tw.lua
+Selin.lua
+Vexallus.lua
+Delrissa.lua
+Kael'thas.lua
