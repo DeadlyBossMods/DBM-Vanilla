@@ -5,7 +5,7 @@
 ## RequiredDeps: DBM-Core
 ## DefaultState: enabled
 ## Author: Tandanu and Nitram
-## X-Website: http://www.deadlybossmods.com
+## X-Website: http://www.deadlybossmods.com/
 localization.en.lua
 localization.cn.lua
 localization.tw.lua
