@@ -176,11 +176,17 @@ end
 -----------------
 --  Announces  --
 -----------------
+local lastWarning
+local lastWarningTime = 0
 function proxy:Announce(msg, color, noBroadcast)
 	local warning = self["warning"..(color or 1)]
 	if not warning then return end
 	msg = msg:gsub("%s*%*%*%*%s*", "")
-	warning:Show(msg)
+	if msg ~= lastWarning or GetTime() - lastWarningTime > 1.5 then
+		lastWarning = msg
+		lastWarningTime = GetTime()
+		warning:Show(msg)
+	end
 end
 
 function proxy:ScheduleAnnounce(timer, msg, color)
