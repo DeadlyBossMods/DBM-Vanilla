@@ -11,12 +11,12 @@
 ## X-DBM-Name: Caverns of Time
 ## X-DBM-Tab-Text: CoT
 ## X-DBM-Tab-Title: Caverns of Time Boss Mods
-## X-DBM-Tab-LoadZone: The Black Morass, Old Hillsbrad Foothills
-## X-DBM-Tab-LoadZone-zhCN: 旧希尔希布莱德, 黑色沼泽
-## X-DBM-Tab-LoadZone-zhTW: 希爾斯布萊德丘陵舊址, 黑色沼澤
-## X-DBM-Tab-LoadZone-deDE: Vorgebirge des Alten Hügellands, Der schwarze Morast
-## X-DBM-Tab-LoadZone-frFR: Contreforts d'Hautebrande d'antan, Le Noir Marécage
-## X-DBM-Tab-LoadZone-esES: Laderas de Trabalomas, La Ciénaga Negra
+## X-DBM-Tab-LoadZone: The Black Morass,Old Hillsbrad Foothills
+## X-DBM-Tab-LoadZone-zhCN: 旧希尔希布莱德,黑色沼泽
+## X-DBM-Tab-LoadZone-zhTW: 希爾斯布萊德丘陵舊址,黑色沼澤
+## X-DBM-Tab-LoadZone-deDE: Vorgebirge des Alten Hügellands,Der schwarze Morast
+## X-DBM-Tab-LoadZone-frFR: Contreforts d'Hautebrande d'antan,Le Noir Marécage
+## X-DBM-Tab-LoadZone-esES: Laderas de Trabalomas,La Ciénaga Negra
 localization.en.lua
 localization.de.lua
 localization.fr.lua

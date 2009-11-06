@@ -11,12 +11,12 @@
 ## X-DBM-Name: Coilfang Reservoir
 ## X-DBM-Tab-Text: Coilfang
 ## X-DBM-Tab-Title: Coilfang Reservoir Boss Mods
-## X-DBM-Tab-LoadZone: The Slave Pens, The Underbog, The Steamvault
-## X-DBM-Tab-LoadZone-deDE: Die Sklavenunterkünfte, Der Tiefensumpf, Die Dampfkammer
-## X-DBM-Tab-LoadZone-frFR: Les enclos aux esclaves, La Basse-tourbière, Le Caveau de la vapeur
-## X-DBM-Tab-LoadZone-esES: Recinto de los Esclavos, La Sotiénaga, La Cámara de Vapor
-## X-DBM-Tab-LoadZone-zhCN: 奴隶围栏, 幽暗沼泽, 蒸汽地窟
-## X-DBM-Tab-LoadZone-zhTW: 奴隸監獄, 毒牙沼澤, 蒸汽洞窟
+## X-DBM-Tab-LoadZone: The Slave Pens,The Underbog,The Steamvault
+## X-DBM-Tab-LoadZone-deDE: Die Sklavenunterkünfte,Der Tiefensumpf,Die Dampfkammer
+## X-DBM-Tab-LoadZone-frFR: Les enclos aux esclaves,La Basse-tourbière,Le Caveau de la vapeur
+## X-DBM-Tab-LoadZone-esES: Recinto de los Esclavos,La Sotiénaga,La Cámara de Vapor
+## X-DBM-Tab-LoadZone-zhCN: 奴隶围栏,幽暗沼泽,蒸汽地窟
+## X-DBM-Tab-LoadZone-zhTW: 奴隸監獄,毒牙沼澤,蒸汽洞窟
 localization.en.lua
 localization.de.lua
 localization.fr.lua

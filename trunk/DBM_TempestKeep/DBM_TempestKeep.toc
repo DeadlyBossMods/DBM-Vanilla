@@ -11,12 +11,12 @@
 ## X-DBM-Name: Tempest Keep
 ## X-DBM-Tab-Text: Tempest
 ## X-DBM-Tab-Title: Tempest Keep Boss Mods
-## X-DBM-Tab-LoadZone: The Mechanar, The Botanica, The Arcatraz
-## X-DBM-Tab-LoadZone-deDE: Die Mechanar, Die Botanika, Die Arkatraz
-## X-DBM-Tab-LoadZone-esES: El Mechanar, El Invernáculo, El Arcatraz
-## X-DBM-Tab-LoadZone-frFR: Le Méchanar, La Botanica, L'Arcatraz
-## X-DBM-Tab-LoadZone-zhCN: 能源舰, 生态船, 禁魔监狱
-## X-DBM-Tab-LoadZone-zhTW: 麥克那爾, 波塔尼卡, 亞克崔茲
+## X-DBM-Tab-LoadZone: The Mechanar,The Botanica,The Arcatraz
+## X-DBM-Tab-LoadZone-deDE: Die Mechanar,Die Botanika,Die Arkatraz
+## X-DBM-Tab-LoadZone-esES: El Mechanar,El Invernáculo,El Arcatraz
+## X-DBM-Tab-LoadZone-frFR: Le Méchanar,La Botanica,L'Arcatraz
+## X-DBM-Tab-LoadZone-zhCN: 能源舰,生态船,禁魔监狱
+## X-DBM-Tab-LoadZone-zhTW: 麥克那爾,波塔尼卡,亞克崔茲
 localization.en.lua
 localization.de.lua
 localization.fr.lua
