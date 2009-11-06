@@ -37,7 +37,7 @@ function Kael:OnEvent(event, args)
 			self:SendSync("Gravity")
 		end
 	elseif event == "SPELL_CAST_SUCCESS" then
-		if args.spellId == 44192 then
+		if args.spellId == 46162 then
 			self:SendSync("Flamestrike")
 		elseif args.spellId == 44194 then
 			self:SendSync("Phoenix")
