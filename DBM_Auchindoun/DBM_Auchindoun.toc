@@ -11,7 +11,7 @@
 ## X-DBM-Name: Auchindoun
 ## X-DBM-Tab-Text: Auchindoun
 ## X-DBM-Tab-Title: Auchindoun Boss Mods
-## X-DBM-Tab-LoadZone: Mana-Tombs,Auchenai Crypts,Sethekk Halls,Shadow Labyrinth
+## X-DBM-Tab-LoadZone: Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth
 ## X-DBM-Tab-LoadZone-zhCN: 奥金尼地穴,法力陵墓,塞泰克大厅,暗影迷宫
 ## X-DBM-Tab-LoadZone-deDE: Auchenaikrypta,Managruft,Sethekkhallen,Schattenlabyrinth
 ## X-DBM-Tab-LoadZone-esES: Criptas Auchenai,Tumbas de maná,Salas Sethekk,Laberinto de las Sombras
