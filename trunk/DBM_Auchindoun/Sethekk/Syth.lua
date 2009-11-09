@@ -13,7 +13,7 @@ Syth:AddOption("WarnSummon", true, DBM_SYTH_OPTION_SUMMON)
 
 function Syth:OnEvent(event, args)
 	if event == "SPELL_CAST_START" then
-		if args.spellId == 33538 then
+		if args.spellId == 33537 or args.spellId == 33538 or args.spellId == 33539 or args.spellId == 33540 then
 			self:SendSync("Summon")
 		end
 	end
