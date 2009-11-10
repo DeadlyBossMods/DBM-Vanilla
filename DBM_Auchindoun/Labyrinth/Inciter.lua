@@ -1,13 +1,14 @@
-local Inciter = DBM:NewBossMod("Inciter", DBM_INCITER_NAME, DBM_INCITER_DESCRIPTION, DBM_LABYRINTH, DBM_AUCH_TAB, 10);
+local Inciter = DBM:NewBossMod("Inciter", DBM_INCITER_NAME, DBM_INCITER_DESCRIPTION, DBM_LABYRINTH, DBM_AUCH_TAB, 10)
 
-Inciter.Version	= "1.0";
-Inciter.Author	= "Arta";
+Inciter.Version	= "1.0"
+Inciter.Author	= "Arta"
 
-Inciter:RegisterCombat("COMBAT");
+Inciter:SetCreatureID(18667)
+Inciter:RegisterCombat("combat")
 
 Inciter:RegisterEvents(
 	"SPELL_CAST_START"
-);
+)
 
 Inciter:AddOption("WarnChaos", true, DBM_INCITER_OPTION_CHAOS)
 Inciter:AddBarOption("Chaos")

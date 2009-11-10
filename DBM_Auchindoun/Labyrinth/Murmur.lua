@@ -1,14 +1,15 @@
-local Murmur = DBM:NewBossMod("Murmur", DBM_MURMUR_NAME, DBM_MURMUR_DESCRIPTION, DBM_LABYRINTH, DBM_AUCH_TAB, 12);
+local Murmur = DBM:NewBossMod("Murmur", DBM_MURMUR_NAME, DBM_MURMUR_DESCRIPTION, DBM_LABYRINTH, DBM_AUCH_TAB, 12)
 
-Murmur.Version	= "1.1";
-Murmur.Author	= "Arta";
+Murmur.Version	= "1.1"
+Murmur.Author	= "Arta"
 
-Murmur:RegisterCombat("COMBAT");
+Murmur:SetCreatureID(18708)
+Murmur:RegisterCombat("combat")
 
 Murmur:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_EMOTE"
-);
+)
 
 Murmur:AddOption("IconTouch", true, DBM_MURMUR_OPTION_TOUCH_ICON)
 Murmur:AddOption("WarnTouch", true, DBM_MURMUR_OPTION_TOUCH)
@@ -31,13 +32,13 @@ function Murmur:OnSync(msg)
 	if msg:sub(0,5) == "Touch" then
 		target = msg:sub(6)
 		if self.Options.IconTouch then
-			self:SetIcon(target);
+			self:SetIcon(target)
 		end
 		if self.Option.WarnTouch then
 			self:Announce(DBM_MURMUR_WARN_TOUCH:format(target), 4)
 		end
 		if self.Options.WhisperTouch then
-			self:SendHiddenWhisper(DBM_MURMUR_WHISPER_TOUCH, target);
+			self:SendHiddenWhisper(DBM_MURMUR_WHISPER_TOUCH, target)
 		end
 	elseif msg == "Boom" and self.Options.WarnBoom then
 		self:Announce(SBM_MURMUR_WARN_BOOM, 4)

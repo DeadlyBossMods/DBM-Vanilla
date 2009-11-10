@@ -1,15 +1,16 @@
-local Ikiss = DBM:NewBossMod("Ikiss", DBM_IKISS_NAME, DBM_IKISS_DESCRIPTION, DBM_SETHEKK, DBM_AUCH_TAB, 8);
+local Ikiss = DBM:NewBossMod("Ikiss", DBM_IKISS_NAME, DBM_IKISS_DESCRIPTION, DBM_SETHEKK, DBM_AUCH_TAB, 8)
 
-Ikiss.Version		= "1.0";
-Ikiss.Author		= "Arta";
+Ikiss.Version		= "1.0"
+Ikiss.Author		= "Arta"
 
-Ikiss:RegisterCombat("COMBAT");
+Ikiss:SetCreatureID(18473)
+Ikiss:RegisterCombat("combat")
 
 Ikiss:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Ikiss:AddOption("WarnAE", true, DBM_IKISS_OPTION_AE)
 Ikiss:AddOption("WarnPoly", true, DBM_IKISS_OPTION_POLY)

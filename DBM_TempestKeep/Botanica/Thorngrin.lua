@@ -1,13 +1,14 @@
-local Thorngrin = DBM:NewBossMod("Thorngrin", DBM_THORNGRIN_NAME, DBM_THORNGRIN_DESCRIPTION, DBM_BOTANICA, DBM_TK_TAB, 6);
+local Thorngrin = DBM:NewBossMod("Thorngrin", DBM_THORNGRIN_NAME, DBM_THORNGRIN_DESCRIPTION, DBM_BOTANICA, DBM_TK_TAB, 6)
 
-Thorngrin.Version	= "1.0";
-Thorngrin.Author	= "Arta";
+Thorngrin.Version	= "1.0"
+Thorngrin.Author	= "Arta"
 
-Thorngrin:RegisterCombat("COMBAT");
+Thorngrin:SetCreatureID(17978)
+Thorngrin:RegisterCombat("combat")
 
 Thorngrin:RegisterEvents(
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Thorngrin:AddOption("WarnSacrifice", true, DBM_THORNGRIN_OPTION_SACRIFICE)
 Thorngrin:AddBarOption("Next sacrifice")

@@ -3,7 +3,8 @@ local Delrissa = DBM:NewBossMod("Delrissa", DBM_DELRISSA_msg, DBM_DELRISSA_DESCR
 Delrissa.Version	= "1.0"
 Delrissa.Author		= "Arta"
 
-Delrissa:RegisterCombat("YELL",DBM_DELRISSA_PULL)
+Delrissa:SetCreatureID(24560)
+Delrissa:RegisterCombat("yell",DBM_DELRISSA_PULL)
 
 Delrissa:RegisterEvents(
 	"SPELL_CAST_START",
@@ -51,16 +52,16 @@ function Delrissa:OnSync(msg)
 		if msg:sub(9) == "Heal" and self.Options.WarnHeal then
 			self:Announce(DBM_DELRISSA_WARN_HEAL, 3)
 		elseif msg:sub(9,13) == "Renew" and self.Options.WarnRenew then
-			target = msg:sub(14);
+			target = msg:sub(14)
 			self:Announce(DBM_DELRISSA_WARN_RENEW:format(target), 3)
 		elseif msg:sub(9,14) == "Shield" and self.Options.WarnShield then
-			target = msg:sub(15);
+			target = msg:sub(15)
 			self:Announce(DBM_DELRISSA_WARN_SHIELD:format(target), 3)
 		end
 	elseif msg:sub(0,6) == "Ellrys" then
 		if msg:sub(7,9) == "SOC" and self.Options.WarnSOC then
-			target = msg:sub(10);
-			self:Announce(DBM_DELRISSA_WARN_SOC:format(target), 3);
+			target = msg:sub(10)
+			self:Announce(DBM_DELRISSA_WARN_SOC:format(target), 3)
 		end
 	elseif msg:sub(0,5) == "Apoko" then
 		if msg:sub(6) == "LHW" and self.Options.WarnLHW then
@@ -72,7 +73,7 @@ function Delrissa:OnSync(msg)
 		if msg:sub(7) == "Blizzard" and self.Options.WarnBlizzard then
 			self:Announce(DBM_DELRISSA_WARN_BLIZZARD, 3)
 		elseif msg:sub(7,10) == "Poly" and self.Options.WarnPoly then
-			target = msg:sub(11);
+			target = msg:sub(11)
 			self:Announce(DBM_DELRISSA_WARN_POLY:format(target),3)
 		end
 	end

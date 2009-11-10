@@ -1,9 +1,10 @@
-local Ironhand = DBM:NewBossMod("Ironhand", DBM_IRONHAND_NAME, DBM_IRONHAND_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 0);
+local Ironhand = DBM:NewBossMod("Ironhand", DBM_IRONHAND_NAME, DBM_IRONHAND_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 0)
 
-Ironhand.Version	= "1.0";
-Ironhand.Author	= "Arta";
+Ironhand.Version	= "1.0"
+Ironhand.Author	= "Arta"
 
-Ironhand:RegisterCombat("COMBAT");
+Ironhand:SetCreatureID(19710)
+Ironhand:RegisterCombat("combat")
 
 Ironhand:AddOption("WarnShadow", true, DBM_IRONHAND_OPTION_SHADOW)
 Ironhand:AddOption("WarnHammer", true, DBM_IRONHAND_OPTION_HAMMER)
@@ -14,7 +15,7 @@ Ironhand:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"CHAT_MSG_RAID_BOSS_EMOTE"
-);
+)
 
 function Ironhand:OnEvent(event, args)
 	if event == "SPELL_CAST_START" then

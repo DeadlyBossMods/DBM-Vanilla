@@ -1,9 +1,10 @@
-local Gyrokill = DBM:NewBossMod("Gyrokill", DBM_GYROKILL_NAME, DBM_GYROKILL_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 0);
+local Gyrokill = DBM:NewBossMod("Gyrokill", DBM_GYROKILL_NAME, DBM_GYROKILL_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 0)
 
-Gyrokill.Version	= "1.0";
-Gyrokill.Author	= "Arta";
+Gyrokill.Version	= "1.0"
+Gyrokill.Author	= "Arta"
 
-Gyrokill:RegisterCombat("COMBAT");
+Gyrokill:SetCreatureID(19218)
+Gyrokill:RegisterCombat("combat")
 
 Gyrokill:AddOption("WarnShadow", true, DBM_GYROKILL_OPTION_SHADOW)
 Gyrokill:AddBarOption("Shadow Power")
@@ -12,7 +13,7 @@ Gyrokill:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED"
-);
+)
 
 function Gyrokill:OnEvent(event, args)
 	if event == "SPELL_CAST_START" then

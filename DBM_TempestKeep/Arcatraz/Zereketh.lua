@@ -1,14 +1,15 @@
-local Zereketh = DBM:NewBossMod("Zereketh", DBM_ZEREKETH_NAME, DBM_ZEREKETH_DESCRIPTION, DBM_ARCATRAZ, DBM_TK_TAB, 9);
+local Zereketh = DBM:NewBossMod("Zereketh", DBM_ZEREKETH_NAME, DBM_ZEREKETH_DESCRIPTION, DBM_ARCATRAZ, DBM_TK_TAB, 9)
 
-Zereketh.Version	= "1.0";
-Zereketh.Author		= "Arta";
+Zereketh.Version	= "1.0"
+Zereketh.Author		= "Arta"
 
-Zereketh:RegisterCombat("COMBAT");
+Zereketh:SetCreatureID(20870)
+Zereketh:RegisterCombat("combat")
 
 Zereketh:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Zereketh:AddOption("WarnNova", true, DBM_ZEREKETH_OPTION_NOVA)
 Zereketh:AddOption("WarnVoid", true, DBM_ZEREKETH_OPTION_VOID)
@@ -35,7 +36,7 @@ function Zereketh:OnSync(msg)
 	elseif msg == "Void" and self.Options.WarnVoid then
 		self:Announce(DBM_ZEREKETH_WARN_VOID, 3)
 	elseif msg:sub(0,3) == "SOC" then
-		target = msg:sub(4);
+		target = msg:sub(4)
 		if self.Options.WarnSOC then
 			self:Announce(DBM_ZEREKETH_WARN_SOC:format(target), 3)
 		end

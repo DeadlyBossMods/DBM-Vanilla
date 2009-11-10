@@ -1,13 +1,14 @@
-local Hellmaw = DBM:NewBossMod("Hellmaw", DBM_HELLMAW_NAME, DBM_HELLMAW_DESCRIPTION, DBM_LABYRINTH, DBM_AUCH_TAB, 9);
+local Hellmaw = DBM:NewBossMod("Hellmaw", DBM_HELLMAW_NAME, DBM_HELLMAW_DESCRIPTION, DBM_LABYRINTH, DBM_AUCH_TAB, 9)
 
-Hellmaw.Version	= "1.0";
-Hellmaw.Author	= "Arta";
+Hellmaw.Version	= "1.0"
+Hellmaw.Author	= "Arta"
 
-Hellmaw:RegisterCombat("COMBAT");
+Hellmaw:SetCreatureID(18731)
+Hellmaw:RegisterCombat("combat")
 
 Hellmaw:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
-);
+)
 
 Hellmaw:AddOption("WarnEnrage", true, DBM_HELLMAW_OPTION_ENRAGE)
 Hellmaw:AddOption("WarnFear", true, DBM_HELLMAW_OPTION_FEAR)
@@ -16,10 +17,10 @@ Hellmaw:AddBarOption("Next Fear")
 
 function Hellmaw:OnCombatStart(delay)
 	if GetInstanceDifficulty() == 2 then
-		self:StartStatusBarTimer(180 - delay, "Enrage");
-		self:ScheduleSelf(120 - delay, "EnrageWarn", 60);
-		self:ScheduleSelf(150 - delay, "EnrageWarn", 30);
-		self:ScheduleSelf(170 - delay, "EnrageWarn", 10);
+		self:StartStatusBarTimer(180 - delay, "Enrage")
+		self:ScheduleSelf(120 - delay, "EnrageWarn", 60)
+		self:ScheduleSelf(150 - delay, "EnrageWarn", 30)
+		self:ScheduleSelf(170 - delay, "EnrageWarn", 10)
 	end
 end
 

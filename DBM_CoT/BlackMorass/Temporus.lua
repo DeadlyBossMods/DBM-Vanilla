@@ -1,13 +1,14 @@
-local Temporus = DBM:NewBossMod("Temporus", DBM_TEMPORUS_NAME, DBM_TEMPORUS_DESCRIPTION, DBM_BLACK_MORASS, DBM_COT_TAB, 5);
+local Temporus = DBM:NewBossMod("Temporus", DBM_TEMPORUS_NAME, DBM_TEMPORUS_DESCRIPTION, DBM_BLACK_MORASS, DBM_COT_TAB, 5)
 
-Temporus.Version	= "1.0";
-Temporus.Author		= "Arta";
+Temporus.Version	= "1.0"
+Temporus.Author		= "Arta"
 
-Temporus:RegisterCombat("COMBAT");
+Temporus:SetCreatureID(17880)
+Temporus:RegisterCombat("combat")
 
 Temporus:RegisterEvents(
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Temporus:AddOption("WarnHasten", true, DBM_TEMPORUS_OPTION_HASTEN)
 

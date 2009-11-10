@@ -1,13 +1,14 @@
-local Socco = DBM:NewBossMod("Socco", DBM_SOCCO_NAME, DBM_SOCCO_DESCRIPTION, DBM_ARCATRAZ, DBM_TK_TAB, 10);
+local Socco = DBM:NewBossMod("Socco", DBM_SOCCO_NAME, DBM_SOCCO_DESCRIPTION, DBM_ARCATRAZ, DBM_TK_TAB, 10)
 
-Socco.Version	= "1.0";
-Socco.Author	= "Arta";
+Socco.Version	= "1.0"
+Socco.Author	= "Arta"
 
-Socco:RegisterCombat("COMBAT");
+Socco:SetCreatureID(20886)
+Socco:RegisterCombat("combat")
 
 Socco:RegisterEvents(
 	"SPELL_CAST_START"
-);
+)
 
 Socco:AddOption("WarnKnock", true, DBM_SOCCO_OPTION_KNOCK)
 
