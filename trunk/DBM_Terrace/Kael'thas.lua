@@ -52,7 +52,7 @@ function Kael:OnEvent(event, args)
 			self:SendSync("Barrier")
 		end
 	elseif event == "NextBarrier" then
-		if self.Option.WarnBarrier then
+		if self.Options.WarnBarrier then
 			self:Announce(DBM_KAEL_WARN_BARRIER2, 3)
 		end
 	end			
