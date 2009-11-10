@@ -1,13 +1,14 @@
-local Aeonus = DBM:NewBossMod("Aeonus", DBM_AEONUS_NAME, DBM_AEONUS_DESCRIPTION, DBM_BLACK_MORASS, DBM_COT_TAB, 6);
+local Aeonus = DBM:NewBossMod("Aeonus", DBM_AEONUS_NAME, DBM_AEONUS_DESCRIPTION, DBM_BLACK_MORASS, DBM_COT_TAB, 6)
 
-Aeonus.Version	= "1.0";
-Aeonus.Author	= "Arta";
+Aeonus.Version	= "1.0"
+Aeonus.Author	= "Arta"
 
-Aeonus:RegisterCombat("COMBAT");
+Aeonus:SetCreatureID(17881)
+Aeonus:RegisterCombat("combat")
 
 Aeonus:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE"
-);
+)
 Aeonus:AddOption("WarnFrenzy", true, DBM_AEONUS_OPTION_FENZY)
 
 function Aeonus:OnEvent(event, args)

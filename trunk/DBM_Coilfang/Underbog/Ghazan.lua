@@ -1,12 +1,13 @@
-local Ghazan = DBM:NewBossMod("Ghazan", DBM_GHAZAN_NAME, DBM_GHAZAN_DESCRIPTION, DBM_UNDERBOG, DBM_COILFANG_TAB, 5);
+local Ghazan = DBM:NewBossMod("Ghazan", DBM_GHAZAN_NAME, DBM_GHAZAN_DESCRIPTION, DBM_UNDERBOG, DBM_COILFANG_TAB, 5)
 
-Ghazan.Version	= "0.1";
-Ghazan.Author	= "Arta";
+Ghazan.Version	= "0.1"
+Ghazan.Author	= "Arta"
 
-Ghazan:RegisterCombat("COMBAT");
+Ghazan:SetCreatureID(18105)
+Ghazan:RegisterCombat("combat")
 
 Ghazan:RegisterEvents(
-);
+)
 
 function Ghazan:OnEvent(event, args)
 end

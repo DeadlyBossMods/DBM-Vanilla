@@ -1,25 +1,26 @@
-local Capacitus = DBM:NewBossMod("Capacitus", DBM_CAPACITUS_NAME, DBM_CAPACITUS_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 1);
+local Capacitus = DBM:NewBossMod("Capacitus", DBM_CAPACITUS_NAME, DBM_CAPACITUS_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 1)
 
-Capacitus.Version	= "1.0";
-Capacitus.Author	= "Arta";
+Capacitus.Version	= "1.0"
+Capacitus.Author	= "Arta"
 
-Capacitus:RegisterCombat("COMBAT");
+Capacitus:SetCreatureID(19219)
+Capacitus:RegisterCombat("combat")
 
 Capacitus:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED"
-);
+)
 
-Capacitus:AddOption("WarnEnrage", true, DBM_CAPACITUS_OPTION_ENRAGE);
-Capacitus:AddOption("WarnPolarity", true, DBM_CAPACITUS_OPTION_POLARITY);
-Capacitus:AddOption("WarnMagic", true, DBM_CAPACITUS_OPTION_MAGIC);
-Capacitus:AddOption("WarnDamage", true, DBM_CAPACITUS_OPTION_DAMAGE);
+Capacitus:AddOption("WarnEnrage", true, DBM_CAPACITUS_OPTION_ENRAGE)
+Capacitus:AddOption("WarnPolarity", true, DBM_CAPACITUS_OPTION_POLARITY)
+Capacitus:AddOption("WarnMagic", true, DBM_CAPACITUS_OPTION_MAGIC)
+Capacitus:AddOption("WarnDamage", true, DBM_CAPACITUS_OPTION_DAMAGE)
 
 function Capacitus:OnCombatStart(delay)
 	if GetInstanceDificulty() == 2 then
 		self:StartStatusTimerBar(180 - delay, "Enrage")
-		self:ScheduleSelf(135 - delay, "Enrage", 45);
-		self:ScheduleSelf(165 - delay, "Enrage", 15);
+		self:ScheduleSelf(135 - delay, "Enrage", 45)
+		self:ScheduleSelf(165 - delay, "Enrage", 15)
 	end
 end
 

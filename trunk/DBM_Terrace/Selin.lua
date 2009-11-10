@@ -3,7 +3,8 @@ local Selin = DBM:NewBossMod("Selin", DBM_SELIN_NAME, DBM_SELIN_DESCRIPTION, DBM
 Selin.Version		= "1.0"
 Selin.Author		= "Arta"
 
-Selin:RegisterCombat("YELL", DBM_SELIN_PULL)
+Selin:SetCreatureID(24723)
+Selin:RegisterCombat("yell", DBM_SELIN_PULL)
 
 Selin:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE" 

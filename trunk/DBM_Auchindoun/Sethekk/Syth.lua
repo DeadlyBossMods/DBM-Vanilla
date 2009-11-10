@@ -1,13 +1,14 @@
-local Syth = DBM:NewBossMod("Syth", DBM_SYTH_NAME, DBM_SYTH_DESCRIPTION, DBM_SETHEKK, DBM_AUCH_TAB, 7);
+local Syth = DBM:NewBossMod("Syth", DBM_SYTH_NAME, DBM_SYTH_DESCRIPTION, DBM_SETHEKK, DBM_AUCH_TAB, 7)
 
-Syth.Version		= "1.0";
-Syth.Author		= "Arta";
+Syth.Version		= "1.0"
+Syth.Author		= "Arta"
 
-Syth:RegisterCombat("COMBAT");
+Syth:SetCreatureID(18472)
+Syth:RegisterCombat("combat")
 
 Syth:RegisterEvents(
 	"SPELL_CAST_START"
-);
+)
 
 Syth:AddOption("WarnSummon", true, DBM_SYTH_OPTION_SUMMON)
 

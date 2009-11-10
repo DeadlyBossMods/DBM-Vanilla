@@ -1,13 +1,14 @@
-local Laj = DBM:NewBossMod("Laj", DBM_LAJ_NAME, DBM_LAJ_DESCRIPTION, DBM_BOTANICA, DBM_TK_TAB, 7);
+local Laj = DBM:NewBossMod("Laj", DBM_LAJ_NAME, DBM_LAJ_DESCRIPTION, DBM_BOTANICA, DBM_TK_TAB, 7)
 
-Laj.Version	= "1.0";
-Laj.Author	= "Arta";
+Laj.Version	= "1.0"
+Laj.Author	= "Arta"
 
-Laj:RegisterCombat("COMBAT");
+Laj:SetCreatureID(17980)
+Laj:RegisterCombat("combat")
 
 Laj:RegisterEvents(
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Laj:AddOption("WarnAllergic", true, DBM_LAJ_OPTION_ALLERGIC)
 
@@ -21,7 +22,7 @@ end
 
 function Laj:OnSync(msg)
 	if msg:sub(0,8) == "Allergic" and self.Options.WarnAllergic then
-		target = msg:sub(9);
+		target = msg:sub(9)
 		self:Announce(DBM_LAJ_WARN_ALLERGIC:format(target), 3)
 	end
 end

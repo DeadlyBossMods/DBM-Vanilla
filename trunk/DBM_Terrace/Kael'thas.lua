@@ -3,7 +3,8 @@ local Kael = DBM:NewBossMod("Kael", DBM_KAEL_NAME, DBM_KAEL_DESCRIPTION, DBM_TER
 Kael.Version		= "1.0"
 Kael.Author		= "Arta"
 
-Kael:RegisterCombat("COMBAT")
+Kael:SetCreatureID(24664)
+Kael:RegisterCombat("combat")
 
 Kael:RegisterEvents(
 	"SPELL_CAST_START",
@@ -59,8 +60,8 @@ end
 
 function Kael:OnSync(msg)	
 	if msg == "Gravity" then
-		self:StartStatusBarTimer(35, "Gravity Lapse", 44224);
-		self:StartStatusBarTimer(45, "Next Gravity Lapse", 44224);
+		self:StartStatusBarTimer(35, "Gravity Lapse", 44224)
+		self:StartStatusBarTimer(45, "Next Gravity Lapse", 44224)
 		if self.Options.WarnGravity then
 			self:Announce(DBM_KAEL_WARN_GRAVITY, 3)
 		end
@@ -70,14 +71,14 @@ function Kael:OnSync(msg)
 			self:Announce(DBM_KAEL_WARN_PHOENIX, 3)
 		end
 	elseif msg == "Flamestrike" then
-		self:StartStatusBarTimer(30, "Next Flame Strike", 44192);
+		self:StartStatusBarTimer(30, "Next Flame Strike", 44192)
 		if self.Options.WarnFlamestrike then
 			self:Announce(DBM_KAEL_WARN_FLAMESTRIKE, 3)
 		end
 	elseif msg == "Phase2" and self.Options.WarnPhase2 then
-		self:Announce(DBM_KAEL_WARN_PHASE2, 3);
-		self:EndStatusBarTimer("Next Flame Strike");
-		self:EndStatusBarTimer("Next Phoenix");
+		self:Announce(DBM_KAEL_WARN_PHASE2, 3)
+		self:EndStatusBarTimer("Next Flame Strike")
+		self:EndStatusBarTimer("Next Phoenix")
 	elseif msg == "Barrier" and self.Options.WarnBarrier then
 		self:Announce(DBM_KAEL_WARN_BARRIER, 3)
 		self:StartStatusTimerBar(60, "Next Shock Barrier", 46165)

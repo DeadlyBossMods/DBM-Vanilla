@@ -3,7 +3,8 @@ local Vex = DBM:NewBossMod("Vex", DBM_VEXALLUS_NAME, DBM_VEXALLUS_DESCRIPTION, D
 Vex.Version		= "1.0"
 Vex.Author		= "Arta"
 
-Vex:RegisterCombat("COMBAT")
+Vex:SetCreatureID(24744)
+Vex:RegisterCombat("combat")
 
 Vex:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE" 

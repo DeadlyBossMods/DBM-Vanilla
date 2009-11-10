@@ -1,14 +1,15 @@
-local Dalliah = DBM:NewBossMod("Dalliah", DBM_DALLIAH_NAME, DBM_DALLIAH_DESCRIPTION, DBM_ARCATRAZ, DBM_TK_TAB, 11);
+local Dalliah = DBM:NewBossMod("Dalliah", DBM_DALLIAH_NAME, DBM_DALLIAH_DESCRIPTION, DBM_ARCATRAZ, DBM_TK_TAB, 11)
 
-Dalliah.Version	= "1.0";
-Dalliah.Author	= "Arta";
+Dalliah.Version	= "1.0"
+Dalliah.Author	= "Arta"
 
-Dalliah:RegisterCombat("COMBAT");
+Dalliah:SetCreatureID(20885)
+Dalliah:RegisterCombat("combat")
 
 Dalliah:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Dalliah:AddOption("WarnHeal", true, DBM_DALLIAH_OPTION_HEAL)
 Dalliah:AddOption("WarnWW", true, DBM_DALLIAH_OPTION_WW)
@@ -36,8 +37,8 @@ function Dalliah:OnSync(msg)
 	elseif msg == "WW" and self.Options.WarnWW then
 		self:Announce(DBM_DALLIAH_WARN_WW, 3)
 	elseif msg:sub(0,4) == "Gift" and self.Options.WarnGift then
-		target = msg:sub(5);
-		self:Announce(DBM_DALLIAH_WARN_GIFT:format(target), 3);
-		self:StartStatusTimerBar(10, "Gift");
+		target = msg:sub(5)
+		self:Announce(DBM_DALLIAH_WARN_GIFT:format(target), 3)
+		self:StartStatusTimerBar(10, "Gift")
 	end
 end

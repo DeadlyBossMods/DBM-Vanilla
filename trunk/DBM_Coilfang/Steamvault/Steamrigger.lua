@@ -1,13 +1,14 @@
-local Steamrigger = DBM:NewBossMod("Steamrigger", DBM_STEAMRIGGER_NAME, DBM_STEAMRIGGER_DESCRIPTION, DBM_STEAMVAULTS, DBM_COILFANG_TAB, 9);
+local Steamrigger = DBM:NewBossMod("Steamrigger", DBM_STEAMRIGGER_NAME, DBM_STEAMRIGGER_DESCRIPTION, DBM_STEAMVAULTS, DBM_COILFANG_TAB, 9)
 
-Steamrigger.Version	= "1.0";
-Steamrigger.Author	= "Arta";
+Steamrigger.Version	= "1.0"
+Steamrigger.Author	= "Arta"
 
-Steamrigger:RegisterCombat("COMBAT");
+Steamrigger:SetCreatureID(17796)
+Steamrigger:RegisterCombat("combat")
 
 Steamrigger:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
-);
+)
 
 Steamrigger:AddOption("WarnSummon", true, DBM_STEAMRIGGER_OPTION_SUMMON)
 

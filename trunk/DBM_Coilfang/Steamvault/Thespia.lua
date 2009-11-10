@@ -1,13 +1,14 @@
-local Thespia = DBM:NewBossMod("Thespia", DBM_THESPIA_NAME, DBM_THESPIA_DESCRIPTION, DBM_STEAMVAULTS, DBM_COILFANG_TAB, 8);
+local Thespia = DBM:NewBossMod("Thespia", DBM_THESPIA_NAME, DBM_THESPIA_DESCRIPTION, DBM_STEAMVAULTS, DBM_COILFANG_TAB, 8)
 
-Thespia.Version	= "1.0";
-Thespia.Author	= "Arta";
+Thespia.Version	= "1.0"
+Thespia.Author	= "Arta"
 
-Thespia:RegisterCombat("COMBAT");
+Thespia:SetCreatureID(17797)
+Thespia:RegisterCombat("combat")
 
 Thespia:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
-);
+)
 
 Thespia:AddOption("WarnCloud", true, DBM_THESPIA_OPTION_CLOUD)
 

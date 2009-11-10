@@ -1,14 +1,15 @@
-local Kalithresh = DBM:NewBossMod("Kalithresh", DBM_KALITHRESH_NAME, DBM_KALITHRESH_DESCRIPTION, DBM_STEAMVAULTS, DBM_COILFANG_TAB, 10);
+local Kalithresh = DBM:NewBossMod("Kalithresh", DBM_KALITHRESH_NAME, DBM_KALITHRESH_DESCRIPTION, DBM_STEAMVAULTS, DBM_COILFANG_TAB, 10)
 
-Kalithresh.Version	= "1.0";
-Kalithresh.Author	= "Arta";
+Kalithresh.Version	= "1.0"
+Kalithresh.Author	= "Arta"
 
-Kalithresh:RegisterCombat("COMBAT");
+Kalithresh:SetCreatureID(17798)
+Kalithresh:RegisterCombat("combat")
 
 Kalithresh:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS"	
-);
+)
 
 Kalithresh:AddOption("WarnChannel", true, DBM_KALITHRESH_OPTION_CHANNEL)
 Kalithresh:AddOption("WarnReflect", true, DBM_KALITHRESH_OPTION_REFLECT)

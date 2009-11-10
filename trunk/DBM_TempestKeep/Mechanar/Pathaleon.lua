@@ -1,14 +1,15 @@
-local Pathaleon = DBM:NewBossMod("Pathaleon", DBM_PATHALEON_NAME, DBM_PATHALEON_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 3);
+local Pathaleon = DBM:NewBossMod("Pathaleon", DBM_PATHALEON_NAME, DBM_PATHALEON_DESCRIPTION, DBM_MECHANAR, DBM_TK_TAB, 3)
 
-Pathaleon.Version	= "1.0";
-Pathaleon.Author	= "Arta";
+Pathaleon.Version	= "1.0"
+Pathaleon.Author	= "Arta"
 
-Pathaleon:RegisterCombat("COMBAT");
+Pathaleon:SetCreatureID(19220)
+Pathaleon:RegisterCombat("combat")
 
 Pathaleon:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED"
-);
+)
 
 Pathaleon:AddOption("WarnSummon", true, DBM_PATHALEON_OPTION_SUMMON)
 Pathaleon:AddOption("WarnMC", true, DBM_PATHALEON_OPTION_MC)
