@@ -5,8 +5,7 @@ mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
 
 mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)
 mod:RegisterCombat("combat")
---mod:RegisterCombat("yell", L.DelrissaPull)--May need this, need to test first
---mod:RegisterKill("yell", L.DelrissaEnd)--May need this, need to test first.
+mod:RegisterKill("yell", L.DelrissaEnd)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
@@ -16,12 +15,12 @@ mod:RegisterEvents(
 
 local warnFlashHeal		= mod:NewSpellAnnounce(17843)
 local warnLHW           = mod:NewSpellAnnounce(46181)
-local warnWindFury		= mod:NewSpellAnnounce(27621)
+local warnWindFury		= mod:NewSpellAnnounce(27621, false)
 local warnBlizzard		= mod:NewSpellAnnounce(46195)
 local warnRenew         = mod:NewSpellAnnounce(46192)
 local warnSoC           = mod:NewTargetAnnounce(44141)
 local warnPolymorph     = mod:NewTargetAnnounce(13323)
-local warnPWShield      = mod:NewTargetAnnounce(44175)
+local warnPWShield      = mod:NewTargetAnnounce(44175, false)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(17843) then                                                      -- Delrissa's Flash Heal

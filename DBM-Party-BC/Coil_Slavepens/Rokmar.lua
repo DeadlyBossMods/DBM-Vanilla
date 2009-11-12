@@ -16,7 +16,7 @@ local WarnWound   = mod:NewTargetAnnounce(38801)
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(31956, 38801) then
 		WarnWound:Show(args.destName)
-	elseif args:IsSpellID(34970) then
+	elseif args:IsSpellID(34970) and self:IsInCombat() then
 		WarnFrenzy:Show(args.destName)
 	end
 end
