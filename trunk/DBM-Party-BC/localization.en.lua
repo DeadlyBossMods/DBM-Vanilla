@@ -1072,7 +1072,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Discharge		= "%s discharges pure energy!"
+	Discharge		= "discharges pure energy!"
 })
 
 --------------------------

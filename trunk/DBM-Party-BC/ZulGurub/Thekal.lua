@@ -37,7 +37,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 21060 then     --Blind Daze
 		warnBlind:Show(args.destName)
 		timerBlind:Start(args.destName)
-	elseif args.spellId == 12540 then --Gouge Stun
+	elseif args.spellId == 12540 and self:IsInCombat() then --Gouge Stun
 		warnGouge:Show(args.destName)
 		timerGouge:Start(args.destName)
 	end

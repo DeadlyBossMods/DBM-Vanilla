@@ -45,14 +45,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(44165) then
+	if args:IsSpellID(46165) then
 		WarnShockBarrior:Show(args.destName)
         timerShockBarrior:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(44165) then
+	if args:IsSpellID(46165) then
         specwarnPyroblast:Show()
 	end
 end
