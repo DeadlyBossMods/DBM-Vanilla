@@ -24,9 +24,9 @@ local timerPhoenix      = mod:NewNextTimer(45, 44194)--Best guess based on limit
 local specwarnPyroblast = mod:NewSpecialWarning("specwarnPyroblast")
 
 function mod:OnCombatStart(delay)
+    timerPhoenix:Start(10-delay)
 	if mod:IsDifficulty("heroic5") then
         timerShockBarrior:Start(-delay)
-        timerPhoenix:Start(10-delay)
     end
 end
 
