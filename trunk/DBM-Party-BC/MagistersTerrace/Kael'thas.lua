@@ -20,7 +20,7 @@ local WarnShockBarrior  = mod:NewSpellAnnounce(46165)
 local warnPyroblast		= mod:NewCastAnnounce(36819)
 local timerPyroblast	= mod:NewCastTimer(4, 36819)
 local timerShockBarrior = mod:NewNextTimer(60, 46165)--Best guess based on limited CL data
-local timerPhoenix      = mod:NewNextTimer(45, 44194)--Best guess based on limited CL data
+local timerPhoenix      = mod:NewCDTimer(45, 44194)--Best guess based on limited CL data
 local specwarnPyroblast = mod:NewSpecialWarning("specwarnPyroblast")
 
 function mod:OnCombatStart(delay)
@@ -61,5 +61,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.KaelP2 then
 		warnPhase2:Show()
 		timerShockBarrior:Cancel()
+		timerPhoenix:Cancel()
 	end
 end
