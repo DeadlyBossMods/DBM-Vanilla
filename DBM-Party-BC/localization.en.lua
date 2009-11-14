@@ -30,14 +30,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnBane	= "You have Bane of Treachery"
+	specwarnBane	= "Bane of Treachery"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnBane	= "Show special warning when Bane of Treachery is on you"
+	specwarnBane	= "Show special warning you are affected by Bane of Treachery"
 })
 
 ------------------------
@@ -362,9 +362,9 @@ L:SetMiscLocalization({
 	Mechs		= "Tune 'em up good boys!"
 })
 
--------------------------
+--------------------------
 --  Warlord Kalithresh  --
--------------------------
+--------------------------
 L = DBM:GetModLocalization("Kalithresh")
 
 L:SetGeneralLocalization({
@@ -580,14 +580,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnTouch	= "Murmur's Touch is on you - Move Away"
+	specWarnTouch	= "Murmur's Touch - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnTouch      = "Show special warning when Murmur's Touch is on you",
+	specWarnTouch      = "Show special warning when you are affected by Murmur's Touch",
 	PlaySoundOnBoom    = "Play sound on Sonic Boom"
 })
 
@@ -621,14 +621,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnConsecration	= "Consecration - MOVE"
+	specWarnConsecration	= "Consecration - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnConsecration	= "Show special warning when you take damage from Consecration"
+	specWarnConsecration	= "Show special warning when you are affected by Consecration"
 })
 
 --------------------
@@ -685,7 +685,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnHasten			= "Show special warning when the Temporus gains Hasten (to dispel/steal)"
+	specWarnHasten			= "Show special warning when Temporus gains Hasten (to dispel/steal)"
 })
 --------------
 --  Aeonus  --
@@ -732,10 +732,10 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    WarnWavePortalSoon	= "Show pre-warning for New portal",
-    WarnWavePortal		= "Show warning for New portal",
-    WarnBossPortalSoon	= "Show pre-warning for Boss incoming",
-    WarnBossPortal		= "Show warning for Boss incoming",
+    WarnWavePortalSoon	= "Show pre-warning for new portal",
+    WarnWavePortal		= "Show warning for new portal",
+    WarnBossPortalSoon	= "Show pre-warning for boss incoming",
+    WarnBossPortal		= "Show warning for boss incoming",
 	TimerNextPortal     = "Show timer for portal number"
 })
 
@@ -762,7 +762,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower			= "Show special warning when Gatewatcher gains Shadow Power (to dispel/steal)"
+	specWarnShadowpower			= "Show special warning when Gatewatcher Gyro-Kill gains Shadow Power (to dispel/steal)"
 })
 
 -----------------------------
@@ -776,14 +776,14 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	specWarnShadowpower    = "Shadow Power on %s - Dispel now",
-	WarnJackHammer         = "Jackhammer - Move Away!"
+	WarnJackHammer         = "Jackhammer - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower    = "Show special warning when Gatewatcher gains Shadow Power (to dispel/steal)",
+	specWarnShadowpower    = "Show special warning when Gatewatcher Iron-Hand gains Shadow Power (to dispel/steal)",
 	WarnJackHammer         = "Show warning for Jackhammer",
 	PlaySoundOnJackHammer  = "Play sound on JackHammer"
 })
@@ -828,9 +828,9 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 })
 
------------------------------
+--------------------------------
 --  Pathaleon the Calculator  --
------------------------------
+--------------------------------
 L = DBM:GetModLocalization("Pathaleon")
 
 L:SetGeneralLocalization({
@@ -846,9 +846,9 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 })
 
-------------------------------------
+--------------------
 --  The Botanica  --
-------------------------------------
+--------------------------
 --  Commander Sarannis  --
 --------------------------
 L = DBM:GetModLocalization("Sarannis")
@@ -876,7 +876,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnTranq			= "Tranquility - Kill the Frayers!"
+	WarnTranq			= "Tranquility - Kill Frayer Protectors"
 })
 
 L:SetTimerLocalization({
@@ -886,9 +886,9 @@ L:SetOptionLocalization({
 	WarnTranq			= "Show warning for Tranquility"
 })
 
-------------------------------
+-----------------------------
 --  Thorngrin the Tender  --
-------------------------------
+-----------------------------
 L = DBM:GetModLocalization("Thorngrin")
 
 L:SetGeneralLocalization({
@@ -978,7 +978,7 @@ L:SetTimerLocalization({
 
 L:SetOptionLocalization({
 	warnWW			= "Show warning for Whirlwind",
-	PlaySoundOnWW  = "Play sound on Whirlwind"
+	PlaySoundOnWW	= "Play sound on Whirlwind"
 })
 
 ---------------------------------
@@ -1009,7 +1009,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnSplit	= "Split",
+	warnSplit		= "Split",
 	warnSplitSoon	= "Split soon"
 })
 
@@ -1017,12 +1017,12 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnSplit	= "Show warning for Split",
+	warnSplit		= "Show warning for Split",
 	warnSplitSoon	= "Show warning for Split soon"
 })
 
 L:SetMiscLocalization({
-	Split		= "We span the universe, as countless as the stars!"
+	Split			= "We span the universe, as countless as the stars!"
 })
 
 --------------------------
@@ -1044,16 +1044,16 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnChanneling	= "Announce Fel Crystal Channeling"
+	warnChanneling		= "Announce Fel Crystal Channeling"
 })
 
 L:SetMiscLocalization({
 	ChannelCrystal		= "%s begins to channel from the nearby Fel Crystal..."
 })
 
---------------------------
+----------------
 --  Vexallus  --
------------------------
+----------------
 L = DBM:GetModLocalization("Vexallus")
 
 L:SetGeneralLocalization({
@@ -1068,7 +1068,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy	= "Announce Pure Energy."
+	WarnEnergy		= "Announce Pure Energy"
 })
 
 L:SetMiscLocalization({
@@ -1077,7 +1077,7 @@ L:SetMiscLocalization({
 
 --------------------------
 --  Priestess Delrissa  --
------------------------
+--------------------------
 L = DBM:GetModLocalization("Delrissa")
 
 L:SetGeneralLocalization({
@@ -1098,9 +1098,9 @@ L:SetMiscLocalization({
 	DelrissaEnd		= "Not what I had... planned."
 })
 
---------------------------
+------------------------------------
 --  Kael'thas Sunstrider (Party)  --
------------------------
+------------------------------------
 L = DBM:GetModLocalization("Kael")
 
 L:SetGeneralLocalization({
@@ -1156,7 +1156,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSimulKill			= "Resurrection"
+	TimerSimulKill	= "Resurrection"
 })
 
 L:SetOptionLocalization({
