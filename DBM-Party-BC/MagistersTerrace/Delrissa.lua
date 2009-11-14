@@ -15,12 +15,12 @@ mod:RegisterEvents(
 
 local warnFlashHeal		= mod:NewSpellAnnounce(17843)
 local warnLHW           = mod:NewSpellAnnounce(46181)
-local warnWindFury		= mod:NewSpellAnnounce(27621, false)
+local warnWindFury		= mod:NewSpellAnnounce(27621, 2, false)
 local warnBlizzard		= mod:NewSpellAnnounce(46195)
 local warnRenew         = mod:NewSpellAnnounce(46192)
 local warnSoC           = mod:NewTargetAnnounce(44141)
 local warnPolymorph     = mod:NewTargetAnnounce(13323)
-local warnPWShield      = mod:NewTargetAnnounce(44175, false)
+local warnPWShield      = mod:NewTargetAnnounce(44175, 2, false)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(17843) then                                                      -- Delrissa's Flash Heal
