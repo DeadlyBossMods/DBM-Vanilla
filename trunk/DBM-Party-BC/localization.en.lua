@@ -30,7 +30,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnBane	= "Bane of Treachery"
+	specwarnBane	= "Bane of Treachery on you"
 })
 
 L:SetTimerLocalization({
@@ -580,7 +580,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnTouch	= "Murmur's Touch - Move away"
+	specWarnTouch	= "Murmur's Touch on you - Move away"
 })
 
 L:SetTimerLocalization({
@@ -704,7 +704,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    warnFrenzy		= "Show warning for Frenzy"
+    warnFrenzy			= "Show warning for Frenzy"
 })
 
 L:SetMiscLocalization({
@@ -755,14 +755,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnShadowpower			= "Shadow Power on %s - Dispel now"
+	specWarnShadowpower		= "Shadow Power on %s - Dispel now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower			= "Show special warning when Gatewatcher Gyro-Kill gains Shadow Power (to dispel/steal)"
+	specWarnShadowpower		= "Show special warning when Gatewatcher Gyro-Kill gains Shadow Power (to dispel/steal)"
 })
 
 -----------------------------
@@ -876,14 +876,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnTranq			= "Tranquility - Kill Frayer Protectors"
+	WarnTranq		= "Tranquility - Kill Frayer Protectors"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnTranq			= "Show warning for Tranquility"
+	WarnTranq		= "Show warning for Tranquility"
 })
 
 -----------------------------
@@ -1018,7 +1018,7 @@ L:SetTimerLocalization({
 
 L:SetOptionLocalization({
 	warnSplit		= "Show warning for Split",
-	warnSplitSoon	= "Show warning for Split soon"
+	warnSplitSoon	= "Show pre-warning for Split"
 })
 
 L:SetMiscLocalization({
@@ -1037,14 +1037,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnChanneling	= "Fel Crystal Channeling"
+	warnChanneling		= "Fel Crystal channeling"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnChanneling		= "Announce Fel Crystal Channeling"
+	warnChanneling		= "Show warning for Fel Crystal channeling"
 })
 
 L:SetMiscLocalization({
@@ -1068,7 +1068,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy		= "Announce Pure Energy"
+	WarnEnergy		= "Show warning for Pure Energy"
 })
 
 L:SetMiscLocalization({
@@ -1108,18 +1108,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "Interrupt now"
+	specwarnPyroblast	= "Pyroblast - Interrupt now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "Show special warning when you have to interrupt"
+	specwarnPyroblast	= "Show special warning for Pyroblast (to interrupt)"
 })
 
 L:SetMiscLocalization({
-	KaelP2		= "I'll turn your world... upside... down."
+	KaelP2				= "I'll turn your world... upside... down."
 })
 
 ------------------------------------
