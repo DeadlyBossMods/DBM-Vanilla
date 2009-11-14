@@ -16,7 +16,7 @@ local warnTimeStop		= mod:NewSpellAnnounce(31422)
 local timerTimeStop		= mod:NewBuffActiveTimer(4, 31422)
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.AeonusFrenzy then		-- Frenzy
+	if msg == L.AeonusFrenzy and self:IsInCombat() then		-- Frenzy
 		warnFrenzy:Show()
 	end
 end
