@@ -7,12 +7,12 @@ mod:SetCreatureID(24744)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local WarnEnergy		= mod:NewAnnounce("WarnEnergy")
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Discharge then
         WarnEnergy:Show()
 	end

@@ -1068,11 +1068,11 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy		= "Show warning for Pure Energy"
+	WarnEnergy     = "Show warning for Pure Energy"
 })
 
 L:SetMiscLocalization({
-	Discharge		= "discharges pure energy!"
+	Discharge      = "Un...con...tainable."
 })
 
 --------------------------
