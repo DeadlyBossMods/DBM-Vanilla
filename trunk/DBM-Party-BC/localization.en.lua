@@ -580,15 +580,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnTouch	= "Murmur's Touch on you - Move away"
+	specWarnTouch		= "Murmur's Touch on you - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnTouch      = "Show special warning when you are affected by Murmur's Touch",
-	PlaySoundOnBoom    = "Play sound on Sonic Boom"
+	specWarnTouch		= "Show special warning when you are affected by Murmur's Touch",
+	PlaySoundOnBoom		= "Play sound on Sonic Boom"
 })
 
 -------------------------------
@@ -678,14 +678,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnHasten			= "Hasten on %s - Dispel now"
+	specWarnHasten		= "Hasten on %s - Dispel now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnHasten			= "Show special warning when Temporus gains Hasten (to dispel/steal)"
+	specWarnHasten		= "Show special warning when Temporus gains Hasten (to dispel/steal)"
 })
 --------------
 --  Aeonus  --
@@ -704,11 +704,11 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    warnFrenzy			= "Show warning for Frenzy"
+    warnFrenzy		= "Show warning for Frenzy"
 })
 
 L:SetMiscLocalization({
-    AeonusFrenzy		= "%s goes into a frenzy!"
+    AeonusFrenzy	= "%s goes into a frenzy!"
 })
 
 ---------------------
@@ -728,7 +728,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerNextPortal     = "Portal %d",
+	TimerNextPortal		= "Portal %d",
 })
 
 L:SetOptionLocalization({
@@ -736,11 +736,11 @@ L:SetOptionLocalization({
     WarnWavePortal		= "Show warning for new portal",
     WarnBossPortalSoon	= "Show pre-warning for boss incoming",
     WarnBossPortal		= "Show warning for boss incoming",
-	TimerNextPortal     = "Show timer for portal number"
+	TimerNextPortal		= "Show timer for portal number"
 })
 
 L:SetMiscLocalization({
-	PortalCheck		= "Time Rifts Opened: (%d+)/18"
+	PortalCheck			= "Time Rifts Opened: (%d+)/18"
 })
 
 --------------------
@@ -775,21 +775,21 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnShadowpower    = "Shadow Power on %s - Dispel now",
-	WarnJackHammer         = "Jackhammer - Move away"
+	specWarnShadowpower		= "Shadow Power on %s - Dispel now",
+	WarnJackHammer			= "Jackhammer - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower    = "Show special warning when Gatewatcher Iron-Hand gains Shadow Power (to dispel/steal)",
-	WarnJackHammer         = "Show warning for Jackhammer",
-	PlaySoundOnJackHammer  = "Play sound on JackHammer"
+	specWarnShadowpower		= "Show special warning when Gatewatcher Iron-Hand gains Shadow Power (to dispel/steal)",
+	WarnJackHammer			= "Show warning for Jackhammer",
+	PlaySoundOnJackHammer	= "Play sound on JackHammer"
 })
 
 L:SetMiscLocalization({
-	JackHammer             = "With the precise angle and velocity..."
+	JackHammer				= "With the precise angle and velocity..."
 })
 
 ------------------------------
@@ -1061,18 +1061,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnEnergy	= "Pure Energy"
+	WarnEnergy		= "Pure Energy"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy     = "Show warning for Pure Energy"
+	WarnEnergy		= "Show warning for Pure Energy"
 })
 
 L:SetMiscLocalization({
-	Discharge      = "Un...con...tainable."
+	Discharge		= "Un...con...tainable."
 })
 
 --------------------------
