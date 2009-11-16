@@ -244,9 +244,9 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 })
 
-----------------
---  Underbog  --
------------------
+--------------------
+--  The Underbog  --
+--------------------
 --  Hungarfen  --
 -----------------
 L = DBM:GetModLocalization("Hungarfen")
@@ -282,13 +282,13 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 })
 
--------------------------
---  Swamplord Muselek  --
--------------------------
+--------------------------
+--  Swamplord Musel'ek  --
+--------------------------
 L = DBM:GetModLocalization("Muselek")
 
 L:SetGeneralLocalization({
-	name = "Swamplord Muselek"
+	name = "Swamplord Musel'ek"
 })
 
 L:SetWarningLocalization({
@@ -515,7 +515,7 @@ L:SetOptionLocalization({
 })
 
 ------------------------
---  Shadow labyrinth  --
+--  Shadow Labyrinth  --
 --------------------------
 --  Ambassador Hellmaw  --
 --------------------------
