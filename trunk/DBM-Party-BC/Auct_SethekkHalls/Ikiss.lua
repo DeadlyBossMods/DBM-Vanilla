@@ -12,11 +12,13 @@ mod:RegisterEvents(
 )
 
 local warnArcaneExplosion   = mod:NewCastAnnounce(38197)
+local timerArcaneExplosion  = mod:NewCastTimer(5, 38197)
 local warnSheep             = mod:NewTargetAnnounce(12826)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(38197, 40425) then
 		warnArcaneExplosion:Show()
+		timerArcaneExplosion:Start()
 	end
 end
 
