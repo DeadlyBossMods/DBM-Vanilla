@@ -382,6 +382,44 @@ L:SetOptionLocalization({
 	WarnChannel	= "Show warning when channeling"
 })
 
+-----------------------
+--  Auchenai Crypts  --
+--------------------------------
+--  Shirrak the Dead Watcher  --
+--------------------------------
+L = DBM:GetModLocalization("Shirrak")
+
+L:SetGeneralLocalization({
+	name = "Shirrak the Dead Watcher"
+})
+
+L:SetWarningLocalization({
+})
+
+L:SetTimerLocalization({
+})
+
+L:SetOptionLocalization({
+})
+
+-----------------------
+--  Exarch Maladaar  --
+-----------------------
+L = DBM:GetModLocalization("Maladaar")
+
+L:SetGeneralLocalization({
+	name = "Exarch Maladaar"
+})
+
+L:SetWarningLocalization({
+})
+
+L:SetTimerLocalization({
+})
+
+L:SetOptionLocalization({
+})
+
 ------------------
 --  Mana-Tombs  --
 -------------------
