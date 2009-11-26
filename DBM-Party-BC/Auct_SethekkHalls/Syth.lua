@@ -14,7 +14,7 @@ local warnSummon   = mod:NewAnnounce("SummonElementals")
 
 local spam = 0
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(33537, 33538, 33539, 33540) and GetTime() - spam > 5 then
+	if args:IsSpellID(33537, 33538, 33539, 33540) and GetTime() - spam > 3 then
 		warnSummon:Show()
 		spam = GetTime()
 	end
