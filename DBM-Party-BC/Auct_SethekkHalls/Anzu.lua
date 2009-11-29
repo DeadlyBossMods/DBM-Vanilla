@@ -1,7 +1,7 @@
 local mod = DBM:NewMod("Anzu", "DBM-Party-BC", 9)
 local L = mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 9 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 13 $"):sub(12, -3))
 
 mod:SetCreatureID(23035, 23132)
 mod:RegisterCombat("combat")
@@ -10,10 +10,12 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"UNIT_HEALTH"
+	"UNIT_HEALTH",
+	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warnBirds             = mod:NewAnnounce("warnBirds", 2)
+local warnBirds             = mod:NewAnnounce("warnBirds")
+local warnStoned            = mod:NewAnnounce("warnStoned")
 local warnScreech           = mod:NewSpellAnnounce(40184)
 local warnCyclone           = mod:NewTargetAnnounce(40321)
 local warnSpellBomb         = mod:NewTargetAnnounce(40303)
@@ -65,5 +67,11 @@ function mod:UNIT_HEALTH(uId)
 	elseif not warnedbirds2 and self:GetUnitCreatureId(uId) == 23035 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.36 then
 		warnedbirds2 = true
 		warnBirds:Show()	
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	if msg == L.BirdStone then		-- Spirits returning to stone.
+		warnStoned:Show()
 	end
 end

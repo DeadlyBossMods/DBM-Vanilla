@@ -526,14 +526,20 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnBirds	= "Brood of Anzu soon"
+	warnBirds	= "Brood of Anzu soon",
+	warnStoned	= "%s returned to stone"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnBirds	= "Show pre-warning for Brood of Anzu"
+	warnBirds	= "Show pre-warning for Brood of Anzu",
+	warnStoned	= "Show warning for spirits returning to stone"
+})
+
+L:SetMiscLocalization({
+    BirdStone	= "%s returns to stone."
 })
 
 ------------------------
