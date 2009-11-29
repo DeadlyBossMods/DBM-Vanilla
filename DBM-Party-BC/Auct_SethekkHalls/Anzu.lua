@@ -9,9 +9,11 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_REMOVED",
+	"UNIT_HEALTH"
 )
 
+local warnBirds             = mod:NewAnnounce("warnBirds", 2)
 local warnScreech           = mod:NewSpellAnnounce(40184)
 local warnCyclone           = mod:NewTargetAnnounce(40321)
 local warnSpellBomb         = mod:NewTargetAnnounce(40303)
@@ -21,8 +23,13 @@ local timerCyclone          = mod:NewTargetTimer(6, 40321)
 local timerSpellBomb        = mod:NewTargetTimer(8, 40303)
 local timerScreechCD		= mod:NewCDTimer(30, 40184)--Best guess on screech CD. Might need tweaking.
 
+local warnedbirds1 = false
+local warnedbirds2 = false
+
 function mod:OnCombatStart(delay)
 	timerScreechCD:Start()
+    warnedbirds1 = false
+    warnedbirds2 = false
 end
 
 function mod:SPELL_CAST_START(args)
@@ -48,5 +55,15 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 40303 then
 		timerSpellBomb:Cancel(args.destName)
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	if not warnedbirds1 and self:GetUnitCreatureId(uId) == 23035 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.69 then
+		warnedbirds1 = true
+		warnBirds:Show()	
+	elseif not warnedbirds2 and self:GetUnitCreatureId(uId) == 23035 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.36 then
+		warnedbirds2 = true
+		warnBirds:Show()	
 	end
 end

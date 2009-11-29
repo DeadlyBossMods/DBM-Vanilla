@@ -526,12 +526,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
+	warnBirds	= "Brood of Anzu soon"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
+	warnBirds	= "Show pre-warning for Brood of Anzu"
 })
 
 ------------------------
