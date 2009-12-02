@@ -25,7 +25,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(13005) then
+	if args:IsSpellID(13005) and self:IsInCombat() then
 		warnHammer:Show(args.destName)
 		timerHammer:Start(args.destName)
 	end
