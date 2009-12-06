@@ -359,7 +359,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Mechs		= "Tune 'em up good boys!"
+	Mechs	= "Tune 'em up good boys!"
 })
 
 --------------------------
@@ -626,15 +626,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnTouch		= "Murmur's Touch on you - Move away"
+	specWarnTouch	= "Murmur's Touch on you - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnTouch		= "Show special warning when you are affected by Murmur's Touch",
-	PlaySoundOnBoom		= "Play sound on Sonic Boom"
+	specWarnTouch	= "Show special warning when you are affected by Murmur's Touch",
+	PlaySoundOnBoom	= "Play sound on Sonic Boom"
 })
 
 -------------------------------
@@ -724,14 +724,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnHasten		= "Hasten on %s - Dispel now"
+	specWarnHasten	= "Hasten on %s - Dispel now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnHasten		= "Show special warning when Temporus gains Hasten (to dispel/steal)"
+	specWarnHasten	= "Show special warning when Temporus gains Hasten (to dispel/steal)"
 })
 --------------
 --  Aeonus  --
@@ -743,14 +743,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-    warnFrenzy		= "Frenzy"
+    warnFrenzy	= "Frenzy"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    warnFrenzy		= "Show warning for Frenzy"
+    warnFrenzy	= "Show warning for Frenzy"
 })
 
 L:SetMiscLocalization({
@@ -801,14 +801,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnShadowpower		= "Shadow Power on %s - Dispel now"
+	specWarnShadowpower	= "Shadow Power on %s - Dispel now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower		= "Show special warning when Gatewatcher Gyro-Kill gains Shadow Power (to dispel/steal)"
+	specWarnShadowpower	= "Show special warning when Gatewatcher Gyro-Kill gains Shadow Power (to dispel/steal)"
 })
 
 -----------------------------
@@ -821,8 +821,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnShadowpower		= "Shadow Power on %s - Dispel now",
-	WarnJackHammer			= "Jackhammer - Move away"
+	specWarnShadowpower	= "Shadow Power on %s - Dispel now",
+	WarnJackHammer		= "Jackhammer - Move away"
 })
 
 L:SetTimerLocalization({
@@ -835,7 +835,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	JackHammer				= "With the precise angle and velocity..."
+	JackHammer	= "With the precise angle and velocity..."
 })
 
 ------------------------------
@@ -922,14 +922,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnTranq		= "Tranquility - Kill Frayer Protectors"
+	WarnTranq	= "Tranquility - Kill Frayer Protectors"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnTranq		= "Show warning for Tranquility"
+	WarnTranq	= "Show warning for Tranquility"
 })
 
 -----------------------------
@@ -1016,7 +1016,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnWW			= "Whirlwind - Move away"
+	warnWW	= "Whirlwind - Move away"
 })
 
 L:SetTimerLocalization({
@@ -1068,7 +1068,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Split			= "We span the universe, as countless as the stars!"
+	Split	= "We span the universe, as countless as the stars!"
 })
 
 --------------------------
@@ -1083,18 +1083,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnChanneling		= "Fel Crystal channeling"
+	warnChanneling	= "Fel Crystal channeling"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnChanneling		= "Show warning for Fel Crystal channeling"
+	warnChanneling	= "Show warning for Fel Crystal channeling"
 })
 
 L:SetMiscLocalization({
-	ChannelCrystal		= "%s begins to channel from the nearby Fel Crystal..."
+	ChannelCrystal	= "%s begins to channel from the nearby Fel Crystal..."
 })
 
 ----------------
@@ -1107,18 +1107,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnEnergy		= "Pure Energy"
+	WarnEnergy	= "Pure Energy"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy		= "Show warning for Pure Energy"
+	WarnEnergy	= "Show warning for Pure Energy"
 })
 
 L:SetMiscLocalization({
-	Discharge		= "Un...con...tainable."
+	Discharge	= "Un...con...tainable."
 })
 
 --------------------------
@@ -1165,7 +1165,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	KaelP2				= "I'll turn your world... upside... down."
+	KaelP2	= "I'll turn your world... upside... down."
 })
 
 ------------------------------------
@@ -1211,7 +1211,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PriestDied		= "%s dies.",
-	YellPhase2		= "Shirvallah, fill me with your RAGE!",
-	YellKill		= "Hakkar binds me no more!  Peace at last!"
+	PriestDied	= "%s dies.",
+	YellPhase2	= "Shirvallah, fill me with your RAGE!",
+	YellKill	= "Hakkar binds me no more!  Peace at last!"
 })
+
