@@ -13,9 +13,9 @@ mod:RegisterEvents(
 
 local WarnSummon    = mod:NewAnnounce("WarnSummon")
 local WarnNe        = mod:NewTargetAnnounce(35107)
-local timerNet      = mod:NewTargetTimer(6, 35107)
+local timerNet      = mod:NewBerserkTimer(6, 35107)
 
-local enrageTimer	= mod:NewEnrageTimer(300)
+local enrageTimer	= mod:NewBerserkTimer(300)
 
 function mod:OnCombatStart(delay)
 	if mod:IsDifficulty("heroic5") then

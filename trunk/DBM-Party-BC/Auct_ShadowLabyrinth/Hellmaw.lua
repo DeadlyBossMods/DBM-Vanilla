@@ -13,7 +13,7 @@ mod:RegisterEvents(
 local warnFear      = mod:NewSpellAnnounce(33547)
 local timerFear     = mod:NewNextTimer(25, 33547)
 
-local enrageTimer	= mod:NewEnrageTimer(180)
+local enrageTimer	= mod:NewBerserkTimer(180)
 
 function mod:OnCombatStart(delay)
 	if mod:IsDifficulty("heroic5") then
