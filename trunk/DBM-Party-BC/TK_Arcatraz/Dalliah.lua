@@ -12,21 +12,26 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED"
 )
 
-local warnHeal      = mod:NewSpellAnnounce(39013)
-local warnWW        = mod:NewAnnounce("warnWW")
-local warnGift       = mod:NewTargetAnnounce(39009)
-local timerGift      = mod:NewTargetTimer(10, 39009)
+local isMelee = select(2, UnitClass("player")) == "ROGUE"
+             or select(2, UnitClass("player")) == "WARRIOR"
+             or select(2, UnitClass("player")) == "DEATHKNIGHT"
 
-mod:AddBoolOption("PlaySoundOnWW", isMelee)
+local warnHeal			= mod:NewSpellAnnounce(39013)
+local warnWhirlwind		= mod:NewSpellAnnounce(36175)
+local warnGift			= mod:NewTargetAnnounce(39009)
+local timerGift			= mod:NewTargetTimer(10, 39009)
+
+local specwarnWhirlwind	= mod:NewSpecialWarningRun(36175, isMelee)
+
+local soundWhirlwind	= mod:NewSound(36175, isMelee)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(39013, 36144) then
 		warnHeal:Show()
 	elseif args:IsSpellID(36175, 36142) then
-		warnWW:Show()
-		if self.Options.PlaySoundOnWW then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		warnWhirlwind:Show()
+		specwarnWhirlwind:Show()
+		soundWhirlwind:Play()
 	end
 end
 

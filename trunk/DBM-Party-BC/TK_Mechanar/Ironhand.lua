@@ -24,10 +24,11 @@ local isMelee = select(2, UnitClass("player")) == "ROGUE"
 local warnShadowpower       = mod:NewSpellAnnounce(35322)
 local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
 local timerJackhammer       = mod:NewBuffActiveTimer(8, 39194)
-local WarnJackHammer		= mod:NewAnnounce("WarnJackHammer")
-local specWarnShadowpower   = mod:NewSpecialWarning("specWarnShadowpower", isDispeller)
+local WarnJackHammer		= mod:NewSpellAnnounce(39194)
+local specWarnJackHammer	= mod:NewSpecialWarningRun(39194, isMelee)
+local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, isDispeller)
 
-mod:AddBoolOption("PlaySoundOnJackHammer", isMelee)
+local soundJackhammer = mod:NewSound(39194, isMelee)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() then     --Shadow Power
@@ -52,8 +53,7 @@ end
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg == L.JackHammer then
 		WarnJackHammer:Show()
-		if self.Options.PlaySoundOnJackHammer then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		specWarnJackHammer:Show()
+		soundJackhammer:Play()
 	end
 end

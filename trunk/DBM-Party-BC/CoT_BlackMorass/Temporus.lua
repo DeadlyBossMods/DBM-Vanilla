@@ -20,7 +20,7 @@ local warnSpellReflect  = mod:NewSpellAnnounce(38592)
 local warnHasten		= mod:NewSpellAnnounce(31458)
 local timerSpellReflect	= mod:NewBuffActiveTimer(6, 38592)
 local timerHasten		= mod:NewBuffActiveTimer(10, 31458)
-local specWarnHasten	= mod:NewSpecialWarning("specWarnHasten", isDispeller)
+local specWarnHasten	= mod:NewSpecialWarningDispel(31458, isDispeller)
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 38592 then
