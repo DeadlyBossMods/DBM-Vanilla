@@ -28,7 +28,7 @@ local WarnJackHammer		= mod:NewSpellAnnounce(39194)
 local specWarnJackHammer	= mod:NewSpecialWarningRun(39194, isMelee)
 local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, isDispeller)
 
-local soundJackhammer = mod:NewSound(39194, isMelee)
+local soundJackhammer = mod:NewSound(39194, nil, isMelee)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() then     --Shadow Power
