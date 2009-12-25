@@ -821,7 +821,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	JackHammer	= "With the precise angle and velocity..."
+	JackHammer	= "%s raises his hammer menacingly..."
 })
 
 ------------------------------
