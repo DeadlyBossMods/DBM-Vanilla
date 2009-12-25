@@ -20,7 +20,7 @@ local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
 local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, isDispeller)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() then     --Shadow Power
+	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() and self:IsInCombat() then     --Shadow Power
 		warnShadowpower:Show(args.destName)
 		timerShadowpower:Start(args.destName)
 		specWarnShadowpower:Show(args.destName)
