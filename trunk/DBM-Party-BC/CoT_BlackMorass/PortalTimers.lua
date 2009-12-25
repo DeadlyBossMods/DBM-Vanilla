@@ -5,7 +5,8 @@ mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
 
 mod:RegisterEvents(
 	"UPDATE_WORLD_STATES",
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 mod:RemoveOption("HealthFrame")
@@ -31,7 +32,7 @@ end
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 17879 or cid == 17880 then
-		timerNextPortal:Start(140)
+		timerNextPortal:Start(140, currentPortal + 1)
 		self:ScheduleMethod(110, "PortalSoon")
 	end
 end
@@ -50,12 +51,25 @@ currentPortal = tonumber(currentPortal)
 		if currentPortal == 6 or currentPortal == 12 or currentPortal == 18 then
 			warnBossPortal:Show()
 		else
-			timerNextPortal:Start(currentPortal)
+			timerNextPortal:Start(120, currentPortal + 1)
 			self:ScheduleMethod(110, "PortalSoon")
 			warnWavePortal:Show(currentPortal)
 		end
 		lastPortal = currentPortal
 	elseif currentPortal < lastPortal then
 		lastPortal = 0
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Shielddown or msg:find(L.Shielddown) then
+		self:SendSync("Wipe")
+	end
+end
+
+function mod:OnSync(msg, arg)
+	if msg == "Wipe" then
+		self:UnscheduleMethod("PortalSoon")
+		timerNextPortal:Cancel()
 	end
 end
