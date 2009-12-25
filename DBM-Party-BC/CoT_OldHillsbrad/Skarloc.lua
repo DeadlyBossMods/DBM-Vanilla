@@ -16,7 +16,7 @@ mod:RegisterEvents(
 local warnHeal                  = mod:NewSpellAnnounce(29427)
 local warnHammer                = mod:NewTargetAnnounce(13005)
 local timerHammer               = mod:NewTargetTimer(6, 13005)
-local specWarnConsecration      = mod:NewSpecialWarning("specWarnConsecration")
+local specWarnConsecration      = mod:NewSpecialWarningMove(38385)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(29427) then

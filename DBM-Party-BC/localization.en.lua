@@ -30,14 +30,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnBane	= "Bane of Treachery on you"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnBane	= "Show special warning you are affected by Bane of Treachery"
+	SetIconOnBaneTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37566)
 })
 
 ------------------------
@@ -626,15 +625,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnTouch	= "Murmur's Touch on you - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnTouch	= "Show special warning when you are affected by Murmur's Touch",
-	PlaySoundOnBoom	= "Play sound on Sonic Boom"
+	SetIconOnTouchTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(33711)
 })
 
 -------------------------------
@@ -667,14 +664,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnConsecration	= "Consecration - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnConsecration	= "Show special warning when you are affected by Consecration"
 })
 
 --------------------
@@ -724,14 +719,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnHasten	= "Hasten on %s - Dispel now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnHasten	= "Show special warning when Temporus gains Hasten (to dispel/steal)"
 })
 --------------
 --  Aeonus  --
@@ -801,14 +794,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnShadowpower	= "Shadow Power on %s - Dispel now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower	= "Show special warning when Gatewatcher Gyro-Kill gains Shadow Power (to dispel/steal)"
 })
 
 -----------------------------
@@ -821,17 +812,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specWarnShadowpower	= "Shadow Power on %s - Dispel now",
-	WarnJackHammer		= "Jackhammer - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specWarnShadowpower		= "Show special warning when Gatewatcher Iron-Hand gains Shadow Power (to dispel/steal)",
-	WarnJackHammer			= "Show warning for Jackhammer",
-	PlaySoundOnJackHammer	= "Play sound on JackHammer"
 })
 
 L:SetMiscLocalization({
@@ -1016,15 +1002,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnWW	= "Whirlwind - Move away"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnWW			= "Show warning for Whirlwind",
-	PlaySoundOnWW	= "Play sound on Whirlwind"
 })
 
 ---------------------------------

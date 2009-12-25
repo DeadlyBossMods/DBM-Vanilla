@@ -17,7 +17,7 @@ local isDispeller = select(2, UnitClass("player")) == "MAGE"
 
 local warnShadowpower       = mod:NewSpellAnnounce(35322)
 local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
-local specWarnShadowpower   = mod:NewSpecialWarning("specWarnShadowpower", isDispeller)
+local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, isDispeller)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() then     --Shadow Power
