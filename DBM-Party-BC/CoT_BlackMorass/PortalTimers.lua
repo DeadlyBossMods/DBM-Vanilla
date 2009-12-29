@@ -14,29 +14,21 @@ mod:RemoveOption("HealthFrame")
 -- Portals
 local warnWavePortalSoon	= mod:NewAnnounce("WarnWavePortalSoon", 2)
 local warnWavePortal		= mod:NewAnnounce("WarnWavePortal", 3)
---local warnBossPortalSoon	= mod:NewAnnounce("WarnBossPortalSoon", 3)
 local warnBossPortal		= mod:NewAnnounce("WarnBossPortal", 4)
 local timerNextPortal		= mod:NewTimer(120, "TimerNextPortal")
 
+--mod:AddBoolOption("ShowAllPortalTimers", false, "timer")
 
 local lastPortal = 0
-
-function mod:PortalSoon()
-	if lastPortal == 5 or lastPortal == 11 or lastPortal == 17 then	
---		warnBossPortalSoon:Show()
-	else
-		warnWavePortalSoon:Show()
-	end
-end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 17879 then
-		timerNextPortal:Start(127, lastPortal + 1)
-		self:ScheduleMethod(117, "PortalSoon")
+		timerNextPortal:Start(126, lastPortal + 1)
+		warnWavePortalSoon:Schedule(116)
 	elseif cid == 17880 then
-		timerNextPortal:Start(123, lastPortal + 1)
-		self:ScheduleMethod(113, "PortalSoon")
+		timerNextPortal:Start(122, lastPortal + 1)
+		warnWavePortalSoon:Schedule(112)
 	end
 end
 
@@ -50,14 +42,16 @@ function mod:UPDATE_WORLD_STATES()
 	currentPortal = tonumber(currentPortal)
 	lastPortal = tonumber(lastPortal)
 	if currentPortal > lastPortal then
-		self:UnscheduleMethod("PortalSoon")
+		warningPortalSoon:Cancel()
 		timerNextPortal:Cancel()
 		if currentPortal == 6 or currentPortal == 12 or currentPortal == 18 then
 			warnBossPortal:Show()
 		else
---			timerNextPortal:Start(122, currentPortal + 1)--requires complete overhaul I haven't patience to do.
---			self:ScheduleMethod(112, "PortalSoon")--because portals spawn faster and faster each time.
 			warnWavePortal:Show(currentPortal)
+--[[		if self.Options.ShowAllPortalTimers then
+				timerNextPortal:Start(122, currentPortal + 1)--requires complete overhaul I haven't patience to do.
+				warnWavePortalSoon:Schedule(112)--because portals spawn faster and faster each time.
+			end--]]
 		end
 		lastPortal = currentPortal
 	elseif currentPortal < lastPortal then

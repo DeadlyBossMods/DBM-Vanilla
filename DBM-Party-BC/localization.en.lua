@@ -762,7 +762,6 @@ L:SetGeneralLocalization({
 L:SetWarningLocalization({
     WarnWavePortalSoon	= "New portal soon",
     WarnWavePortal		= "Portal %d",
-    WarnBossPortalSoon	= "Boss incoming soon",
     WarnBossPortal		= "Boss incoming"
 })
 
@@ -773,9 +772,9 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
     WarnWavePortalSoon	= "Show pre-warning for new portal",
     WarnWavePortal		= "Show warning for new portal",
-    WarnBossPortalSoon	= "Show pre-warning for boss incoming",
     WarnBossPortal		= "Show warning for boss incoming",
-	TimerNextPortal		= "Show timer for next portal (after Boss)"
+	TimerNextPortal		= "Show timer for next portal (after Boss)",
+	ShowAllPortalTimers	= "Show timers for all portals (inaccurate)"
 })
 
 L:SetMiscLocalization({
