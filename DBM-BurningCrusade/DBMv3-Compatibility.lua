@@ -27,6 +27,7 @@
 --    * Noncommercial. You may not use this work for commercial purposes.
 --    * Share Alike. If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
 
+
 ---------------
 --  Globals  --
 ---------------
@@ -40,6 +41,14 @@ DBM_SBT = {}
 --------------
 local frame = CreateFrame("Frame")
 
+local function checkEntry(t, val)
+	for i, v in ipairs(t) do
+		if v == val then
+			return true
+		end
+	end
+	return false
+end
 
 ----------------------
 --  Event Handling  --
@@ -65,10 +74,18 @@ end
 --------------
 --  OnLoad  --
 --------------
+local bannedMods = { -- a list of "banned" (meaning they are replaced by another mod like DBM-Battlegrounds (replaced by DBM-PvP)) boss mods, these mods will not be loaded by DBM (and they wont show up in the GUI)
+	"DBM_Auchindoun",	-- replaced by DBM-Party-BC
+	"DBM_Coilfang",		-- replaced by DBM-Party-BC
+	"DBM_CoT",			-- replaced by DBM-Party-BC
+	"DBM_TempestKeep",	-- replaced by DBM-Party-BC
+	"DBM_Terrace",		-- replaced by DBM-Party-BC
+}
+
 function DBMBC:ADDON_LOADED(mod)
 	if mod ~= "DBM-BurningCrusade" then return end
 	for i = 1, GetNumAddOns() do
-		if GetAddOnMetadata(i, "X-DBM-BC-AddOn") then
+		if GetAddOnMetadata(i, "X-DBM-BC-AddOn") and not checkEntry(bannedMods, GetAddOnInfo(i)) then
 			table.insert(DBM.AddOns, {
 				sort		= tonumber(GetAddOnMetadata(i, "X-DBM-Tab-Sort") or math.huge) or math.huge,
 				category	= "BC",
@@ -379,7 +396,7 @@ end
 
 function DBM.Capitalize(s)
 	s = tostring(s)
-	if GetLocale() == "krKR" or GetLocale() == "zhCN" or GetLocale() == "zhTW"  or GetLocale() == "ruRU" then
+	if GetLocale() == "krKR" or GetLocale() == "zhCN" or GetLocale() == "zhTW"  or GetLocale() == "ruRU" then -- todo: this could be changed to be UTF-8 compatible
 		return s
 	else
 		return s:sub(0, 1):upper()..s:sub(2)
@@ -426,9 +443,9 @@ do
 	local old = DBM.Schedule
 	function DBM:Schedule(t, ...)
 		if type(self) == "number" then
-			old(DBM, self, t, ...)
+			return old(DBM, self, t, ...)
 		else
-			old(self, t, ...)
+			return old(self, t, ...)
 		end
 	end
 end
@@ -437,13 +454,13 @@ do
 	local old = DBM.Unschedule
 	function DBM:Unschedule(...)
 		if type(self) == "function" then
-			old(DBM, self, ...)
+			return old(DBM, self, ...)
 		else
-			old(self, ...)
+			return old(self, ...)
 		end
 	end
 end
 
 function DBM.UnSchedule(...)
-	DBM:Unschedule(...)
+	return DBM:Unschedule(...)
 end
