@@ -1151,51 +1151,5 @@ L:SetMiscLocalization({
 	KaelP2	= "I'll turn your world... upside... down."
 })
 
-------------------------------------
---  Zul'Gurub (Mount run bosses)  --
-------------------------------------
---  Bloodlord Mandokir  --
---------------------------
-L = DBM:GetModLocalization("Mandokir")
 
-L:SetGeneralLocalization({
-	name = "Bloodlord Mandokir"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
---------------------------
---  High Priest Thekal  --
---------------------------
-L = DBM:GetModLocalization("Thekal")
-
-L:SetGeneralLocalization({
-	name = "High Priest Thekal"
-})
-
-L:SetWarningLocalization({
-	WarnSimulKill	= "First add down - Resurrection in ~12 seconds"
-})
-
-L:SetTimerLocalization({
-	TimerSimulKill	= "Resurrection"
-})
-
-L:SetOptionLocalization({
-	WarnSimulKill	= "Announce first mob down",
-	TimerSimulKill	= "Show timer for priest resurrection"
-})
-
-L:SetMiscLocalization({
-	PriestDied	= "%s dies.",
-	YellPhase2	= "Shirvallah, fill me with your RAGE!",
-	YellKill	= "Hakkar binds me no more!  Peace at last!"
-})
 

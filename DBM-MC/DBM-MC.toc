@@ -1,0 +1,22 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Molten Core|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: Classic
+## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Name: Molten Core
+## X-DBM-Mod-Sort: 0
+## X-DBM-Mod-LoadZone: Molten Core
+localization.en.lua
+Lucifron.lua
+Magmadar.lua
+Gehennas.lua
+Garr.lua
+Geddon.lua
+Shazzrah.lua
+Sulfuron.lua
+Golemagg.lua
+Majordomo.lua
+Ragnaros.lua

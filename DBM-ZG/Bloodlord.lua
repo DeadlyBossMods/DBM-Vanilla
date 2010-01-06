@@ -1,10 +1,14 @@
-local mod = DBM:NewMod("Mandokir", "DBM-Party-BC", 17)
+local mod = DBM:NewMod("Bloodlord", "DBM-ZG", 1)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
 
 mod:SetCreatureID(11382, 14988)
 mod:RegisterCombat("combat")
+mod:SetBossHealthInfo(
+	11382, L.Bloodlord,
+	14988, L.Ohgan
+)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
