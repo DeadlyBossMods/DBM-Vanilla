@@ -1,0 +1,21 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Temple of Ahn'Qiraj|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariablesPerCharacter: DBMAQ40_SavedVars, DBMAQ40_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: Classic
+## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Name: The Temple of Ahn'Qiraj
+## X-DBM-Mod-Sort: 2
+## X-DBM-Mod-LoadZone: The Temple of Ahn'Qiraj
+localization.en.lua
+Skeram.lua
+ThreeBugs.lua
+Sartura.lua
+Fankriss.lua
+Viscidus.lua
+Huhuran.lua
+TwinEmps.lua
+CThun.lua
+Ouro.lua

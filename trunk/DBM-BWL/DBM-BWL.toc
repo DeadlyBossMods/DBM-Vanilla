@@ -1,0 +1,20 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Blackwing Lair|r
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariablesPerCharacter: DBMBWL_SavedVars, DBMBWL_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: Classic
+## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Name: Blackwing Lair
+## X-DBM-Mod-Sort: 1
+## X-DBM-Mod-LoadZone: Blackwing Lair
+localization.en.lua
+Razorgore.lua
+Vaelastrasz.lua
+Broodlord.lua
+Firemaw.lua
+Ebonroc.lua
+Flamegor.lua
+Chromaggus.lua
+Nefarian.lua

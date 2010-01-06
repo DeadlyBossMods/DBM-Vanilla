@@ -6,13 +6,13 @@
 ## SavedVariablesPerCharacter: DBMPartyBC_SavedVars, DBMPartyBC_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: BC
-## X-DBM-Mod-SubCategories: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace,Zul'Gurub (Mounts)
-## X-DBM-Mod-SubCategories-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров,Зул'Гуруб (ездовые животные)
+## X-DBM-Mod-SubCategories: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace
+## X-DBM-Mod-SubCategories-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров
 ## X-DBM-Mod-Name: Party-BC
 ## X-DBM-Mod-Name-ruRU: Групповые подземелья-BC
 ## X-DBM-Mod-Sort: 101
-## X-DBM-Mod-LoadZone: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace,Zul'Gurub
-## X-DBM-Mod-LoadZone-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров,Зул'Гуруб
+## X-DBM-Mod-LoadZone: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace
+## X-DBM-Mod-LoadZone-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров
 localization.en.lua
 localization.ru.lua
 Hellfire_Ramp\Gargolmar.lua
@@ -73,5 +73,3 @@ MagistersTerrace\Selin.lua
 MagistersTerrace\Vexallus.lua
 MagistersTerrace\Delrissa.lua
 MagistersTerrace\Kael'thas.lua
-ZulGurub\Mandokir.lua
-ZulGurub\Thekal.lua
