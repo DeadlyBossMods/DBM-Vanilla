@@ -16,9 +16,9 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(16099) then
+	if args:IsSpellID(16099) and self:IsInCombat() then
 		warnBreath:Show()
-	elseif args:IsSpellID(22421) then
+	elseif args:IsSpellID(22421) and self:IsInCombat() then
 		warnGeyser:Show()
 	end
 end

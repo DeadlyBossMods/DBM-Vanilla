@@ -48,7 +48,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(24664) and GetTime() - spamSleep > 5 then
 		warnSleep:Show()
 		timerSleep:Start()
-	elseif args:IsSpellID(8269) then
+	elseif args:IsSpellID(8269) and self:IsInCombat() then
 		warnFrenzy:Show()
 	end
 end

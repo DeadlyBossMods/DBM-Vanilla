@@ -64,16 +64,24 @@ end
 local killTime = 0
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.PriestDied then		-- Starts timer before ressurection of adds.
-		if (GetTime() - killTime) > 20 then
-			warnSimulKill:Show()
-			timerSimulKill:Start()
-			killTime = GetTime()
-		end
+		self:SendSync("PriestDied")
 	end
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellPhase2 then		-- Bossfight (tank and spank)
+		self:SendSync("YellPhase2")
+	end
+end
+
+function mod:OnSync(msg, arg)
+	if msg == "PriestDied" then
+		if (GetTime() - killTime) > 20 then
+			warnSimulKill:Show()
+			timerSimulKill:Start()
+			killTime = GetTime()
+		end
+	else msg == "YellPhase2" then
 		warnPhase2:Show()
 		timerSimulKill:Cancel()
 	end
