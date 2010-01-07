@@ -1,4 +1,4 @@
-local mod = DBM:NewMod("Bloodlord", "DBM-ZG", 1)
+﻿local mod = DBM:NewMod("Bloodlord", "DBM-ZG", 1)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
@@ -16,14 +16,19 @@ mod:RegisterEvents(
 
 local warnFrenzy	= mod:NewSpellAnnounce(24318)
 local warnGaze		= mod:NewTargetAnnounce(24314)
+local warnMortal	= mod:NewTargetAnnounce(16856)
 local timerGaze 	= mod:NewTargetTimer(6, 24314)
+local timerMortal	= mod:NewTargetTimer(5, 16856)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 24314 then
+	if args:IsSpellID(24314) then
 		warnGaze:Show(args.destName)
 		timerGaze:Start(args.destName)
-	elseif args.spellId == 24318 then
+	elseif args:IsSpellID(24318) then
 		warnFrenzy:Show(args.destName)
+	elseif args:IsSpellID(16856) then
+		warnMortal:Show(args.destName)
+		timerMortal:Start(args.destName)
 	end
 end
 

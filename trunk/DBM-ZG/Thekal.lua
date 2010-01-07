@@ -1,4 +1,4 @@
-local mod = DBM:NewMod("Thekal", "DBM-ZG", 1)
+﻿local mod = DBM:NewMod("Thekal", "DBM-ZG", 1)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 7 $"):sub(12, -3))
@@ -11,43 +11,53 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
+	"SPELL_SUMMON",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
 
 local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1)
-local timerSimulKill	= mod:NewTimer(12, "TimerSimulKill")
 local warnHeal			= mod:NewCastAnnounce(24208)
-local timerHeal			= mod:NewCastTimer(4, 24208)
 local warnBlind			= mod:NewTargetAnnounce(21060)
-local timerBlind		= mod:NewTargetTimer(10, 21060)
 local warnGouge			= mod:NewTargetAnnounce(12540)
-local timerGouge		= mod:NewTargetTimer(4, 12540)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnAdds			= mod:NewSpellAnnounce(24183)
+
+local timerSimulKill	= mod:NewTimer(12, "TimerSimulKill")
+local timerHeal			= mod:NewCastTimer(4, 24208)
+local timerBlind		= mod:NewTargetTimer(10, 21060)
+local timerGouge		= mod:NewTargetTimer(4, 12540)
+
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 24208 then
+	if args:IsSpellID(24208) then
 		warnHeal:Show()
 		timerHeal:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 21060 then     --Blind Daze
+	if args:IsSpellID(21060) then     --Blind Daze
 		warnBlind:Show(args.destName)
 		timerBlind:Start(args.destName)
-	elseif args.spellId == 12540 and self:IsInCombat() then --Gouge Stun
+	elseif args:IsSpellID(12540) and self:IsInCombat() then --Gouge Stun
 		warnGouge:Show(args.destName)
 		timerGouge:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 21060 then
+	if args:IsSpellID(21060) then
 		timerBlind:Cancel(args.destName)
-    elseif args.spellId == 12540 then
+    elseif args:IsSpellID(12540) then
         timerGouge:Cancel(args.destName)
+	end
+end
+
+function mod:SPELL_SUMMON(args)
+	if args:IsSpellID(24813) then
+		warnAdds:Show()
 	end
 end
 
