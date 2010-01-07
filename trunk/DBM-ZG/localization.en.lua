@@ -102,10 +102,10 @@ L:SetGeneralLocalization{
 	name = "Edge of Madness"
 }
 L:SetMiscLocalization{
-	boss1 = "Boss 1",
-	boss2 = "Boss 2",
-	boss3 = "Boss 3",
-	boss4 = "Boss 4"
+	Hazzarah = "Hazza'rah",
+	Renataki = "Renataki",
+	Wushoolay = "Wushoolay",
+	Grilek = "Gri'lek"
 }
 
 -------------------

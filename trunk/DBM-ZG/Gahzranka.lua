@@ -6,4 +6,19 @@ mod:SetCreatureID(15114)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
+	"SPELL_CAST_START"
 )
+
+local warnBreath	= mod:NewCastAnnounce(16099)
+local warnGeyser	= mod:NewCastAnnounce(22421)
+
+function mod:OnCombatStart(delay)
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(16099) then
+		warnBreath:Show()
+	elseif args:IsSpellID(22421) then
+		warnGeyser:Show()
+	end
+end
