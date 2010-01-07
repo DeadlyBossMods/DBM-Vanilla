@@ -8,7 +8,7 @@
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: Zul'Gurub
 ## X-DBM-Mod-Sort: 3
-## X-DBM-Mod-LoadZone: Zul'Gurub
+## X-DBM-Mod-LoadZone: Nitram,Zul'Gurub
 localization.en.lua
 Venoxis.lua
 Jeklik.lua
