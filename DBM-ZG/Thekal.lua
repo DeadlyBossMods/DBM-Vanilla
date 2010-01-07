@@ -81,7 +81,7 @@ function mod:OnSync(msg, arg)
 			timerSimulKill:Start()
 			killTime = GetTime()
 		end
-	else msg == "YellPhase2" then
+	elseif msg == "YellPhase2" then
 		warnPhase2:Show()
 		timerSimulKill:Cancel()
 	end
