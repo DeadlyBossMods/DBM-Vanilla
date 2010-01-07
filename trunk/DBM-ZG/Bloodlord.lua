@@ -26,7 +26,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerGaze:Start(args.destName)
 	elseif args:IsSpellID(24318) then
 		warnFrenzy:Show(args.destName)
-	elseif args:IsSpellID(16856) then
+	elseif args:IsSpellID(16856) and self:IsInCombat() and args:IsDestTypePlayer() then
 		warnMortal:Show(args.destName)
 		timerMortal:Start(args.destName)
 	end

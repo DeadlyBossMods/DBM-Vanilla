@@ -33,7 +33,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(26607) then
+	if args:IsSpellID(26607) and self:IsInCombat() then
 		warnBlizzard:Show()
 	end
 end

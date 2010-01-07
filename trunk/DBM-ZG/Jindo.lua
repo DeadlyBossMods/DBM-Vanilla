@@ -34,7 +34,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnDelusion:Show()
 		end
-	elseif args:IsSpellID(17172) then
+	elseif args:IsSpellID(17172) and self:IsInCombat() then
 		timerHex:Start(args.destName)
 		warnHex:Show(args.destName)
 	elseif args:IsSpellID(24261) then
