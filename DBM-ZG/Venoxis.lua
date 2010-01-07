@@ -26,10 +26,17 @@ local timerFire		= mod:NewTargetTimer(8, 23860)
 mod:AddBoolOption("RangeFrame", true)
 
 local prewarn_Phase2
+
 function mod:OnCombatStart(delay)
 	prewarn_Phase2 = false
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(10)
+	end
+end
+
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
 	end
 end
 
