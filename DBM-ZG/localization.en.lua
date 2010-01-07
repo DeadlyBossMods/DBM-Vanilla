@@ -8,6 +8,13 @@ L = DBM:GetModLocalization("Venoxis")
 L:SetGeneralLocalization{
 	name = "High Priest Venoxis"
 }
+L:SetWarningLocalization{
+	warnPhase2Soon	= "Phase 2 soon"
+}
+L:SetOptionLocalization{
+	warnPhase2Soon	= "Announce when phase 2 is about to start",
+	RangeFrame		= "Show range frame"
+}
 
 -------------------
 --  Jeklik  --
