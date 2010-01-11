@@ -6,4 +6,43 @@ mod:SetCreatureID(12056)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
+	"SPELL_CAST_SUCCESS"
 )
+
+local warnInferno	= mod:NewSpellAnnounce(19695)
+local warnIgnite	= mod:NewSpellAnnounce(19659)
+local warnBomb		= mod:NewTargetAnnounce(20475)
+local warnArmageddon	= mod:NewSpellAnnounce(20478)
+
+local timerInferno		= mod:NewCastTimer(8, 19695)
+local timerBomb			= mod:NewTargetTimer(8, 20475)
+local timerArmageddon	= mod:NewCastTimer(8, 20478)
+
+local specWarnBomb	= mod:NewSpecialWarningYou(20475)
+
+function mod:OnCombatStart(delay)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(20475) and self:IsInCombat() then
+		timerBomb:Start(args.destName)
+		warnBomb:Show(args.destName)
+		if args:IsPlayer() then
+			specWarnBomb:Show()
+		end
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(19695) then
+		warnInferno:Show()
+		timerInferno:Start()
+	elseif args:IsSpellID(19659) then
+		warnIgnite:Show()
+		timerIgnite:Start()
+	elseif args:IsSpellID(20478) then
+		warnArmageddon:Show()
+		timerArmageddon:Start()
+	end
+end
