@@ -16,7 +16,7 @@ local warnGrounding	= mod:NewSpellAnnounce(19714)
 local warnCntrSpell	= mod:NewSpellAnnounce(19715)
 local warnBlink		= mod:NewSpellAnnounce(21655)
 
-local timerGrounding	= mod:NewBuffActiveTimer(19714)
+local timerGrounding	= mod:NewBuffActiveTimer(30, 19714)
 
 function mod:OnCombatStart(delay)
 end

@@ -11,7 +11,7 @@ mod:RegisterEvents(
 )
 
 local warnImmolate	= mod:NewTargetAnnounce(20294)
-local timerImmolate	= mod:NewTargetTimer(20294)
+local timerImmolate	= mod:NewTargetTimer(21, 20294)
 
 function mod:OnCombatStart(delay)
 end
