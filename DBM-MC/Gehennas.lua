@@ -13,7 +13,7 @@ local warnRainFire	= mod:NewSpellAnnounce(19717)
 local warnCurse		= mod:NewSpellAnnounce(19716)
 local warnFist		= mod:NewSpellAnnounce(20277)
 
-local timerFist		= mod:NewBuffActiveTimer(20277)
+local timerFist		= mod:NewBuffActiveTimer(4, 20277)
 
 function mod:OnCombatStart(delay)
 end

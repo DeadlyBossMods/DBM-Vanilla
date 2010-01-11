@@ -6,7 +6,7 @@ mod:SetCreatureID(11988)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-)	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED",
 	"UNIT_HEALTH"
 )
 
