@@ -14,11 +14,11 @@ mod:RegisterEvents(
 
 local warnBreathSoon	= mod:NewAnnounce("WarnBreathSoon", 2)
 local warnBreath		= mod:NewAnnounce("WarnBreath")
-local warnRed			= mod:NewTargetAnnounce(23155, 2. nil, false)
-local warnGreen			= mod:NewTargetAnnounce(23169, 2. nil, false)
-local warnBlue			= mod:NewTargetAnnounce(23153, 2. nil, false)
-local warnBlack			= mod:NewTargetAnnounce(23154, 2. nil, false)
-local warnBronze		= mod:NewTargetAnnounce(23170, 2. nil, false)
+local warnRed			= mod:NewTargetAnnounce(23155, 2, nil, false)
+local warnGreen			= mod:NewTargetAnnounce(23169, 2, nil, false)
+local warnBlue			= mod:NewTargetAnnounce(23153, 2, nil, false)
+local warnBlack			= mod:NewTargetAnnounce(23154, 2, nil, false)
+local warnBronze		= mod:NewTargetAnnounce(23170, 2, nil, false)
 local warnEnrage		= mod:NewSpellAnnounce(23128)
 local warnPhase2Soon	= mod:NewAnnounce("WarnPhase2Soon")
 local wanrPhase2		= mod:NewPhaseAnnounce(2)
@@ -42,6 +42,7 @@ function mod:SPELL_CAST_START(args)
 		warnBreathSoon:Schedule(25)
 		warnBreath:Show(args.spellName)
 		timerBreath:Start(args.spellName)
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
