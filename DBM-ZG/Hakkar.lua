@@ -21,7 +21,7 @@ local timerBlood		= mod:NewTargetTimer(10, 24328)
 
 local specWarnBlood		= mod:NewSpecialWarningYou(24328)
 
-local enrageTimer			= mod:NewBerserkTimer(585)
+local enrageTimer		= mod:NewBerserkTimer(585)
 
 function mod:OnCombatStart(delay)
 	enrageTimer:Start(-delay)

@@ -10,9 +10,9 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
 )
 
-local warnInferno	= mod:NewSpellAnnounce(19695)
-local warnIgnite	= mod:NewSpellAnnounce(19659)
-local warnBomb		= mod:NewTargetAnnounce(20475)
+local warnInferno		= mod:NewSpellAnnounce(19695)
+local warnIgnite		= mod:NewSpellAnnounce(19659)
+local warnBomb			= mod:NewTargetAnnounce(20475)
 local warnArmageddon	= mod:NewSpellAnnounce(20478)
 
 local timerInferno		= mod:NewCastTimer(8, 19695)
