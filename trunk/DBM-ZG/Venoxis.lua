@@ -9,11 +9,10 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
-	"SPELL_SUMMON",
 	"UNIT_HEALTH"
 )
 
-local warnSerpent	= mod:NewSpellAnnounce(23865)
+local warnSerpent	= mod:NewTargetAnnounce(23865)
 local warnCloud		= mod:NewSpellAnnounce(23861)
 local warnRenew		= mod:NewTargetAnnounce(23895)
 local warnFire		= mod:NewTargetAnnounce(23860)
@@ -47,6 +46,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(23860) then
 		warnFire:Show(args.destName)
 		timerFire:Start(args.destName)
+	elseif args:IsSpellID(23865) then
+		warnSerpent:Show(args.destName)
 	end
 end
 
@@ -60,12 +61,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(23861) then
 		warnCloud:Show()
 		timerCloud:Start()
-	end
-end
-
-function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(23865) then
-		warnSerpent:Show()
 	end
 end
 

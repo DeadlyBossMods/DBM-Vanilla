@@ -9,8 +9,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"SPELL_SUMMON"
+	"SPELL_AURA_REMOVED"
 )
 
 local warnSonicBurst	= mod:NewSpellAnnounce(23918)
@@ -22,6 +21,7 @@ local timerSonicBurst	= mod:NewBuffActiveTimer(6, 23918)
 local timerScreech		= mod:NewBuffActiveTimer(4, 6605)
 local timerPain			= mod:NewTargetTimer(18, 23952)
 local timerHeal			= mod:NewCastTimer(4, 23954)
+local timerHealCD		= mod:NewNextTimer(20, 23954)
 
 function mod:OnCombatStart(delay)
 end
@@ -29,6 +29,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(23954) then
 		timerHeal:Start()
+		timerHealCD:Start()
 		warnHeal:Show()
 	end
 end
