@@ -10,9 +10,9 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnDoom	= mod:NewSpellAnnounce(19702)
-local warnCurse	= mod:NewSpellAnnounce(19703)
-local warnMC	= mod:NewTargetAnnounce(15859)
+local warnDoom		= mod:NewSpellAnnounce(19702)
+local warnCurse		= mod:NewSpellAnnounce(19703)
+local warnMC		= mod:NewTargetAnnounce(15859)
 
 local timerDoom		= mod:NewCastTimer(10, 19702)
 local timerMC		= mod:NewTargetTimer(5, 15859)
