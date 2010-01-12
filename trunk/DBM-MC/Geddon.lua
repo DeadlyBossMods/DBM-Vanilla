@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
 mod:SetCreatureID(12056)
+mod:SetUsedIcons(8)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
@@ -19,7 +20,9 @@ local timerInferno		= mod:NewCastTimer(8, 19695)
 local timerBomb			= mod:NewTargetTimer(8, 20475)
 local timerArmageddon	= mod:NewCastTimer(8, 20478)
 
-local specWarnBomb	= mod:NewSpecialWarningYou(20475)
+local specWarnBomb		= mod:NewSpecialWarningYou(20475)
+
+mod:AddBoolOption("SetIconOnBombTarget", true)
 
 function mod:OnCombatStart(delay)
 end
@@ -28,6 +31,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(20475) and self:IsInCombat() then
 		timerBomb:Start(args.destName)
 		warnBomb:Show(args.destName)
+		if self.Options.SetIconOnBombTarget then
+			self:SetIcon(args.destName, 8, 8)
+		end
 		if args:IsPlayer() then
 			specWarnBomb:Show()
 		end
