@@ -52,3 +52,4 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerArmageddon:Start()
 	end
 end
+
