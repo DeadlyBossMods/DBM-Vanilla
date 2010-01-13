@@ -13,6 +13,7 @@ local warnRainFire	= mod:NewSpellAnnounce(19717)
 local warnCurse		= mod:NewSpellAnnounce(19716)
 local warnFist		= mod:NewSpellAnnounce(20277)
 
+local timerCurse	= mod:NewNextTimer(30, 19716)
 local timerFist		= mod:NewBuffActiveTimer(4, 20277)
 
 function mod:OnCombatStart(delay)
@@ -22,6 +23,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(19717) and self:IsInCombat() then
 		warnRainFire:Show()
 	elseif args:IsSpellID(19716) then
+		timerCurse:Start()
 		warnCurse:Show()
 	elseif args:IsSpellID(20277) then
 		warnFist:Show()

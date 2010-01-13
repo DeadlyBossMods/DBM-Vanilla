@@ -14,6 +14,8 @@ local warnDoom		= mod:NewSpellAnnounce(19702)
 local warnCurse		= mod:NewSpellAnnounce(19703)
 local warnMC		= mod:NewTargetAnnounce(15859)
 
+local timerCurseCD	= mod:NewNextTimer(20, 19703)
+local timerDoomCD	= mod:NewNextTimer(20, 19702)
 local timerDoom		= mod:NewCastTimer(10, 19702)
 local timerMC		= mod:NewTargetTimer(5, 15859)
 
@@ -24,7 +26,9 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(19702) and self:IsInCombat() then
 		warnDoom:Show()
 		timerDoom:Start()
+		timerDoomCD:Start()
 	elseif args:IsSpellID(19703) and self:IsInCombat() then
+		timerCurseCD:Start()
 		warnCurse:Show()
 	end
 end
