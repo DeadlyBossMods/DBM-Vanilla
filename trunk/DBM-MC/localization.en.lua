@@ -99,3 +99,24 @@ L = DBM:GetModLocalization("Ragnaros")
 L:SetGeneralLocalization{
 	name = "Ragnaros"
 }
+L:SetWarningLocalization{
+	WarnSubmerge		= "Submerge",
+	WarnSubmergeSoon	= "Submerge soon",
+	WarnEmerge			= "Emerge",
+	WarnEmergeSoon		= "EmergeSoon"
+}
+L:SetTimerLocalization{
+	TimerSubmerge		= "Submerge - 90secs till Emerge",
+	TimerEmerge			= "Emerge - 3mins till Submerge"
+}
+L:SetOptionLocalization{
+	WarnSubmerge		= "Show warning for submerge",
+	WarnSubmergeSoon	= "Show pre-warning for submerge",
+	TimerSubmerge		= "Show timer for submerge",
+	WarnEmerge			= "Show warning for emerge",
+	WarnEmergeSoon		= "Show pre-warning for emerge",
+	TimerEmerge			= "Show timer for emerge"
+}
+L:SetMiscLocalization{
+	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!"
+}

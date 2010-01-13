@@ -16,7 +16,9 @@ local warnGrounding	= mod:NewSpellAnnounce(19714)
 local warnCntrSpell	= mod:NewSpellAnnounce(19715)
 local warnBlink		= mod:NewSpellAnnounce(21655)
 
+local timerCurseCD		= mod:NewNextTimer(20, 19713)
 local timerGrounding	= mod:NewBuffActiveTimer(30, 19714)
+local timerBlinkCD		= mod:NewNextTimer(30, 21655)
 
 function mod:OnCombatStart(delay)
 end
@@ -37,9 +39,11 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(19713) and self:IsInCombat() then
 		warnCurse:Show()
+		timerCurseCD:Start()
 	elseif args:IsSpellID(19715) and self:IsInCombat() then
 		warnCntrSpell:Show()
 	elseif args:IsSpellID(21655) and self:IsInCombat() then
 		warnBlink:Show()
+		timerBlinkCD:Start()
 	end
 end
