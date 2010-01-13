@@ -19,7 +19,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellI(19717) and self:IsInCombat() then
+	if args:IsSpellID(19717) and self:IsInCombat() then
 		warnRainFire:Show()
 	elseif args:IsSpellID(19716) then
 		warnCurse:Show()
