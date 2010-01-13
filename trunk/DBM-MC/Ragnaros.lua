@@ -32,7 +32,7 @@ function mod:OnCombatStart(delay)
 	warnSubmergeSoon:Schedule(170-delay)
 end
 
-function mod:submerge()
+function mod:emerged()
 	warnEmerge:Show()
 	timerSubmerge:Start()
 	warnSubmergeSoon:Schedule(170)
@@ -51,6 +51,8 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Submerge then
 		self:SendSync("Submerge")
+	elseif msg ~= L.Submerge and submerged then
+		self:SendSync("Emerge")
 	end
 end
 
@@ -60,6 +62,8 @@ function mod:OnSync(msg, arg)
 		warnSubmerge:Show()
 		timerEmerge:Start()
 		warnEmergeSoon:Schedule(80)
-		self:ScheduleMethod(90, "submerge")
+		self:ScheduleMethod(90, "emerged")
+	elseif msg == "Emerge" then
+		emerged()
 	end
 end
