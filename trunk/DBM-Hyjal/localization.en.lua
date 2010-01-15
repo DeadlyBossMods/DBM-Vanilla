@@ -105,7 +105,7 @@ DBM_MHT_BOSS_DIES				= "%s dies.";
 DBM_MHT_WAVE_INC_WARNING1			= "*** Wave %s/8 - %s %s  ***";
 DBM_MHT_WAVE_INC_WARNING2			= "*** Wave %s/8 - %s %s and %s %s ***";
 DBM_MHT_WAVE_INC_WARNING3			= "*** Wave %s/8 - %s %s, %s %s and %s %s ***";
-DBM_MHT_WAVE_INC_WARNING4			= "*** Wave %s/8 - %s %s, %s %s, %s %s and %s %s ***";
+L.WarnWave_4			= "*** Wave %s/8 - %s %s, %s %s, %s %s and %s %s ***";
 DBM_MHT_WAVE_INC_WARNING5			= "*** Wave %s/8 - %s %s, %s %s, %s %s, %s %s and %s %s ***";
 
 DBM_MHT_GHOUL					= "Ghouls";
@@ -118,3 +118,56 @@ DBM_MHT_WYRM					= "Frost Wyrm";
 DBM_MHT_STALKER					= "Fel Stalkers";
 DBM_MHT_INFERNAL				= "Infernals";
 DBM_MHT_ARCHIMONDE				= "Good luck on Archimonde";
+
+
+
+local L
+
+----------------
+-- WaveTimers --
+----------------
+L = DBM:GetModLocalization("HyjalWaveTimers")
+
+L:SetGeneralLocalization{
+	name 		= "Trash features"
+}
+L:SetWarningLocalization{
+	WarnWave	= "%s"
+}
+L:SetTimerLocalization{
+	TimerWave	= "Next wave"
+}
+L:SetOptionLocalization{
+	WarnWave		= "Warn when a new wave is incoming",
+	DetailedWave	= "Detailed warning when a new wave is incoming (which mobs)",
+	TimerWave		= "Show a timer for next wave"
+}
+L:SetMiscLocalization{
+	HyjalZoneName	= "Hyjal Summit",
+	Thrall			= "Thrall",
+	Jaina			= "Lady Jaina Proudmoore",
+	RageWinterchill	= "Rage Winterchill",
+	Anetheron		= "Anetheron",
+	Kazrogal		= "Kazrogal",
+	Azgalor			= "Azgalor",
+	WaveCheck		= "Current Wave = (%d+) of 8",
+	WarnWave_0		= "Wave %s/8",
+	WarnWave_1		= "Wave %s/8 - %s %s",
+	WarnWave_2		= "Wave %s/8 - %s %s and %s %s",
+	WarnWave_3		= "Wave %s/8 - %s %s, %s %s and %s %s",
+	WarnWave_4		= "Wave %s/8 - %s %s, %s %s, %s %s and %s %s",
+	WarnWave_5		= "Wave %s/8 - %s %s, %s %s, %s %s, %s %s and %s %s",
+	RageGossip		= "My companions and I are with you, Lady Proudmoore.",
+	AnetheronGossip	= "We are ready for whatever Archimonde might send our way, Lady Proudmoore.",
+	KazrogalGossip	= "I am with you, Thrall.",
+	AzgalorGossip	= "We have nothing to fear.",
+	Ghoul			= "Ghouls",
+	Abomination		= "Abominations",
+	Necromancer		= "Necromancers",
+	Banshee			= "Banshees",
+	Fiend			= "Crypt Fiends",
+	Gargoyle		= "Gargoyles",
+	Wyrm			= "Frost Wyrm",
+	Stalker			= "Fel Stalkers",
+	Infernal		= "Infernals"
+}

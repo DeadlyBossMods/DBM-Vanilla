@@ -1,197 +1,201 @@
-﻿local MHT = DBM:NewBossMod("MHT", DBM_MHT_NAME, DBM_MHT_DESCRIPTION, DBM_HYJAL, DBM_HYJAL_TAB, 0);
+﻿local mod	= DBM:NewMod("HyjalWaveTimers", "DBM-Hyjal", 1)
+local L		= mod:GetLocalizedStrings()
 
-local lastwave = 0;
-local boss = 0;
+mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
 
-MHT.Version = "1.6.2";
-MHT.Author = "Arta, kc10577";
-
-MHT:RegisterEvents(
+mod:RegisterEvents(
 	"UPDATE_WORLD_STATES",
 	"GOSSIP_SHOW",
 	"QUEST_PROGRESS",
 	"UNIT_DIED",
 	"SPELL_AURA_APPLIED"
-);
+)
 
-MHT:AddOption("Mobs", false, DBM_MHT_DESCRIPTION1);
-MHT:AddOption("Ghoul", false, DBM_MHT_DESCRIPTION2);
+local warnWave			= mod:NewAnnounce("WarnWaveSoon")
+local warnWave			= mod:NewAnnounce("WarnWave")
+local warnCannibalize	= mod:NewSpellAnnounce(31538)
 
-MHT:AddBarOption("Next Wave");
+local timerWave	= mod:NewTimer("TimerWave")
 
-function MHT:OnEvent(event, arg1)
-	if (event == "GOSSIP_SHOW" or event=="QUEST_PROGRESS") and GetRealZoneText() == DBM_MOUNT_HYJAL then
-		local target = UnitName("target");
-		if target == DBM_MHT_THRALL or target == DBM_MHT_JAINA then
-			local Selection = GetGossipOptions();
-			if Selection == DBM_MHT_RAGE_MSG then
-				self:SendSync("Winterchill");
-			elseif Selection == DBM_MHT_ANETHERON_MSG then
-				self:SendSync("Anetheron");
-			elseif Selection == DBM_MHT_KAZROGAL_MSG then
-				self:SendSync("Kazrogal");
-			elseif Selection == DBM_MHT_AZGALOR_MSG then
-				self:SendSync("Azgalor");
+mod:AddBoolOption("DetailedWave")
+mod:RemoveOption("HealthFrame")
+
+local lastWave = 0
+local boss = 0
+local bossNames[] = {
+	[1] = L.RageWinterchill,
+	[2] = L.Anetheron,
+	[3] = L.Kazrogal,
+	[4] = L.Azgalor
+}
+
+mod.GOSSIP_SHOW = mod.QUEST_PROGRESS
+function mod:QUEST_PROGRESS()
+	if not GetRealZoneText() == L.HyjalZoneName then return end
+		local target = UnitName("target")
+		if target == L.Thrall or target == L.Jaina then
+			local selection = GetGossipOptions()
+			if selection == L.RageGossip then
+				self:SendSync("boss", 1)
+			elseif selection == L.AnetheronGossip then
+				self:SendSync("boss", 2)
+			elseif selection == L.KazrogalGossip then
+				self:SendSync("boss", 3)
+			elseif selection == L.AzgalorGossip then
+				self:SendSync("boss", 4)
 			end
-		end
-	elseif event == "UPDATE_WORLD_STATES" then
-		local text = select(3, GetWorldStateUIInfo(3));
-		if not text then return	end
-		local _, _, currentwave = string.find(text, DBM_MHT_WAVE_CHECK);
-		if not currentwave then
-			currentwave = 0;
-		end
-		self:SendSync("NewWave"..currentwave);
-	elseif event == "UNIT_DIED" then
-		local target = tostring(arg1.destName)
-		if target == DBM_MHT_THRALL or target == DBM_MHT_JAINA then
-			self:SendSync("reset");
-		elseif target == DBM_RAGE_NAME then
-			self:SendSync("Winterchill");
-		elseif target == DBM_ANETHERON_NAME then
-			self:SendSync("Kazrogal");
-		elseif target == DBM_KAZROGAL_NAME then
-			self:SendSync("Azgalor");
-		end
-	elseif event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 31538 then
-			self:SendSync("Cannibalize");
-		end
-	elseif event == "WaveSoon" then
-		if lastwave == 8 then
-			self:Announce(DBM_MHT_BOSS_SOON, 3);
-		else
-			self:Announce(DBM_MHT_WAVE_SOON, 3);
 		end
 	end
-		
 end
 
-function MHT:OnSync(msg)
-	if msg:sub(0, 7) == "NewWave" then
-		local timer = 0;
-		local wave = string.sub(msg, 8, 8);
-		wave = tonumber(wave);
-		if not wave then return end
-		   	lastwave = tonumber(lastwave);
-		if wave > lastwave then
-			if not MHT.Options.Mobs then
-				self:Announce(DBM_MHT_WAVE_NOW, 4);
-			end
-			self:UnScheduleSelf("WaveSoon");
-			if boss == 1 or boss == 2 then	
-				timer = 125;
-				if wave == 8 then
-					timer = 140;
-				end
-				if MHT.Options.Mobs and boss == 1 then
-					if wave == 1 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING1, wave, 10, DBM_MHT_GHOUL), 1);
-					elseif wave == 2 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 10, DBM_MHT_GHOUL, 2, DBM_MHT_FIEND), 1);
-					elseif wave == 3 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 6, DBM_MHT_GHOUL, 6, DBM_MHT_FIEND), 1);
-					elseif wave == 4 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_GHOUL, 4, DBM_MHT_FIEND, 2, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 5 then				
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 2, DBM_MHT_GHOUL, 6, DBM_MHT_FIEND, 4, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 6 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 6, DBM_MHT_GHOUL, 6, DBM_MHT_ABOMINATION), 1);
-					elseif wave == 7 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 4, DBM_MHT_GHOUL, 4, DBM_MHT_ABOMINATION, 4, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 8 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING4, wave, 6, DBM_MHT_GHOUL, 4, DBM_MHT_FIEND, 2, DBM_MHT_ABOMINATION, 2, DBM_MHT_NECROMANCER), 1);
-					end
-				elseif MHT.Options.Mobs and boss == 2 then
-					if wave == 1 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING1, wave, 10, DBM_MHT_GHOUL), 1);
-					elseif wave == 2 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 8, DBM_MHT_GHOUL, 4, DBM_MHT_ABOMINATION), 1);
-					elseif wave == 3 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 4, DBM_MHT_GHOUL, 4, DBM_MHT_FIEND, 4, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 4 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_FIEND, 4, DBM_MHT_NECROMANCER, 2, DBM_MHT_BANSHEE), 1);
-					elseif wave == 5 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_GHOUL, 4, DBM_MHT_BANSHEE, 2, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 6 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_GHOUL, 2, DBM_MHT_ABOMINATION, 4, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 7 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING4, wave, 2, DBM_MHT_GHOUL, 4, DBM_MHT_FIEND, 4, DBM_MHT_ABOMINATION, 2, DBM_MHT_BANSHEE), 1);
-					elseif wave == 8 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING5, wave, 3, DBM_MHT_GHOUL, 3, DBM_MHT_FIEND, 4, DBM_MHT_ABOMINATION, 2, DBM_MHT_NECROMANCER, 2, DBM_MHT_BANSHEE), 1);
-					end
-				end
-			elseif boss == 3 or boss == 4 then
-				timer = 135;
-				if wave == 2 or wave == 4 then
-					timer = 165;
-				elseif wave == 3 then
-					timer = 160;
-				elseif wave == 7 then
-					timer = 195;
-				elseif wave == 8 then
-					timer = 225;
-				end
-				if MHT.Options.Mobs and boss == 3 then
-					if wave == 1 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING4, wave, 4, DBM_MHT_GHOUL, 4, DBM_MHT_ABOMINATION, 2, DBM_MHT_NECROMANCER, 2, DBM_MHT_BANSHEE), 1); 
-					elseif wave == 2 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 4, DBM_MHT_GHOUL, 10, DBM_MHT_GARGOYLE), 1); 
-					elseif wave == 3 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_GHOUL, 6, DBM_MHT_FIEND, 2, DBM_MHT_NECROMANCER), 1);  
-					elseif wave == 4 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_FIEND, 2, DBM_MHT_NECROMANCER, 6, DBM_MHT_GARGOYLE), 1); 
-					elseif wave == 5 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 4, DBM_MHT_GHOUL, 6, DBM_MHT_ABOMINATION, 4, DBM_MHT_NECROMANCER), 1); 
-					elseif wave == 6 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 8, DBM_MHT_GARGOYLE, 1, DBM_MHT_WYRM), 1); 
-					elseif wave == 7 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 6, DBM_MHT_GHOUL, 4, DBM_MHT_ABOMINATION, 1, DBM_MHT_WYRM), 1); 
-					elseif wave == 8 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING5, wave, 6, DBM_MHT_GHOUL, 2, DBM_MHT_FIEND, 4, DBM_MHT_ABOMINATION, 2, DBM_MHT_NECROMANCER, 2, DBM_MHT_BANSHEE), 1); 
-					end
-				elseif MHT.Options.Mobs and boss == 4 then
-					if wave == 1 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 6, DBM_MHT_ABOMINATION, 6, DBM_MHT_NECROMANCER), 1);
-					elseif wave == 2 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 5, DBM_MHT_GHOUL, 8, DBM_MHT_GARGOYLE, 1, DBM_MHT_WYRM), 1);
-					elseif wave == 3 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 4, DBM_MHT_GHOUL, 8, DBM_MHT_INFERNAL), 1);
-					elseif wave == 4 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 8, DBM_MHT_STALKER, 6, DBM_MHT_INFERNAL), 1);
-					elseif wave == 5 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING3, wave, 4, DBM_MHT_ABOMINATION, 4, DBM_MHT_NECROMANCER, 6, DBM_MHT_STALKER), 1);
-					elseif wave == 6 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING2, wave, 6, DBM_MHT_NECROMANCER, 6, DBM_MHT_BANSHEE), 1);
-					elseif wave == 7 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING4, wave, 2, DBM_MHT_GHOUL, 2, DBM_MHT_FIEND, 2, DBM_MHT_STALKER, 8, DBM_MHT_INFERNAL), 1);
-					elseif wave == 8 then
-						self:Announce(string.format(DBM_MHT_WAVE_INC_WARNING5, wave, 4, DBM_MHT_ABOMINATION, 4, DBM_MHT_FIEND, 2, DBM_MHT_NECROMANCER, 4, DBM_MHT_STALKER, 2, DBM_MHT_BANSHEE), 1);
-					end
-				end
-			end
-			self:StartStatusBarTimer(timer, "Next Wave");
-			self:ScheduleSelf(timer-10, "WaveSoon");
-			lastwave = wave;
-		elseif lastwave > wave then
-			if lastwave == 8 then
-				self:Announce(DBM_MHT_BOSS_NOW, 4);
-			end
-			self:UnScheduleSelf("WaveSoon");
-			self:EndStatusBarTimer("Next Wave");
-			lastwave = wave;
-		end
-	elseif msg == "Cannibalize" and MHT.Options.Ghoul then
-		self:Announce(DBM_MHT_WARN_GHOUL,2);
-	elseif msg == "Winterchill" then
-		boss = 1;
-	elseif msg == "Anetheron" then
-		boss = 2;
-	elseif msg == "Kazrogal" then
-		boss = 3;
-	elseif msg == "Azgalor" then
-		boss = 4;
+function mod:UPDATE_WORLD_STATES()
+	local text = select(2, GetWorldStateUIInfo(2))
+	if not text then return end
+	local _,_,currentWave = text:find(L.WaveCheck)
+	if not currentWave then
+		currentWave = 0
+	end
+	self:SendSync("wave", currentWave)
+end
+
+function mod:OnSync(msg, arg)
+	if msg == "boss" then
+		boss = arg
+	elseif msg == "wave" then
+		waveFunction(arg)
 	elseif msg == "reset" then
-		lastwave = 0;
+		lastWave = 0
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 17852 or 17772 then
+		self:SendSync("reset")
+	elseif cid == 17767 then
+		self:SendSync("boss", 2)
+	elseif cid == 17808 then
+		self:SendSync("boss", 3)
+	elseif cid == 17888 then
+		self:SendSync("boss", 4)
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(31538) then
+		warnCannibalize:Show()
+	end
+end
+
+
+function mod:waveFunction(currentWave)
+	local timer = 0
+	currentWave = tonumber(currentWave)
+	lastWave = tonumber(lastWave)
+	if currentWave > lastWave then
+		if not self.Options.DetailedWave then
+			warnWave:Show(L.WarnWave_0:format(currentWave))
+		end
+		if boss == 1 or boss == 2 then
+			timer = 125
+			if currentWave == 8 then
+				timer = 140
+			end
+			if self.Options.DetailedWave and boss == 1 then
+				if currentWave == 1 then
+					warnWave:Show(L.WarnWave_1:format(currentWave, 10, L.Ghoul))
+				elseif currentWave == 2 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 10, L.Ghoul, 2, L.Fiend))
+				elseif currentWave == 3 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 6, L.Ghoul, 6 , L.Fiend))
+				elseif currentWave == 4 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Ghoul, 4, L.Fiend, 2, L.Necromancer))
+				elseif currentWave == 5 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 2, L.Ghoul, 6, L.Fiend, 4, L.Necromancer))
+				elseif currentWave == 6 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 6, L.Ghoul, 6, L.Abomination))
+				elseif currentWave == 7 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 4, L.Ghoul, 4, L.Abomination, 4, L.Necromancer))
+				elseif currentWave == 8 then
+					warnWave:Show(L.WarnWave_4:format(currentWave, 6, L.Ghoul, 4, L.Fiend, 2, L.Abomination, 2, L.Necromancer))
+				end
+			elseif self.Options.DetailedWave and boss == 2 then
+				if currentWave == 1 then
+					warnWave:Show(L.WarnWave_1:format(currentWave, 10, L.Ghoul))
+				elseif currentWave == 2 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 8, L.Ghoul, 4, L.Abomination))
+				elseif currentWave == 3 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 4, L.Ghoul, 4, L.Fiend, 4, L.Necromancer))
+				elseif currentWave == 4 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Fiend, 4, L.Necromancer, 2, L.Banshee))
+				elseif currentWave == 5 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Ghoul, 4, L.Banshee, 2, L.Necromancer))
+				elseif currentWave == 6 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Ghoul, 2, L.Abomination, 4, L.Necromancer))
+				elseif currentWave == 7 then
+					warnWave:Show(L.WarnWave_4:format(currentWave, 2, L.Ghoul, 4, L.Fiend, 4, L.Abomination, 2, L.Banshee))
+				elseif currentWave == 8 then
+					warnWave:Show(L.WarnWave_5:format(currentWave, 3, L.Ghoul, 3, L.Fiend, 4, L.Abomination, 2, L.Necromancer, 2, L.Banshee))
+				end
+			end
+		elseif boss == 3 or boss == 4 then
+			timer = 135
+			if currentWave == 2 or currentWave == 4 then
+				timer = 165
+			elseif currentWave == 3 then
+				timer = 160;
+			elseif currentWave == 7 then
+				timer = 195;
+			elseif currentWave == 8 then
+				timer = 225;
+			end
+			if self.Options.DetailedWave and boss == 3 then
+				if currentWave == 1 then
+					warnWave:Show(L.WarnWave_4:format(currentWave, 4, L.Ghoul, 4, L.Abomination, 2, L.Necromancer, 2, L.Banshee)) 
+				elseif currentWave == 2 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 4, L.Ghoul, 10, L.Gargoyle)) 
+				elseif currentWave == 3 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Ghoul, 6, L.Fiend, 2, L.Necromancer))  
+				elseif currentWave == 4 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Fiend, 2, L.Necromancer, 6, L.Gargoyle)) 
+				elseif currentWave == 5 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 4, L.Ghoul, 6, L.Abomination, 4, L.Necromancer)) 
+				elseif currentWave == 6 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 8, L.Gargoyle, 1, L.Wyrm)) 
+				elseif currentWave == 7 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 6, L.Ghoul, 4, L.Abomination, 1, L.Wyrm)) 
+				elseif currentWave == 8 then
+					warnWave:Show(L.WarnWave_5:format(currentWave, 6, L.Ghoul, 2, L.Fiend, 4, L.Abomination, 2, L.Necromancer, 2, L.Banshee)) 
+				end
+			elseif self.Options.DetailedWave and boss == 4 then
+				if currentWave == 1 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 6, L.Abomination, 6, L.Necromancer))
+				elseif currentWave == 2 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 5, L.Ghoul, 8, L.Gargoyle, 1, L.Wyrm))
+				elseif currentWave == 3 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 4, L.Ghoul, 8, L.Infernal))
+				elseif currentWave == 4 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 8, L.Stalker, 6, L.Infernal))
+				elseif currentWave == 5 then
+					warnWave:Show(L.WarnWave_3:format(currentWave, 4, L.Abomination, 4, L.Necromancer, 6, L.Stalker))
+				elseif currentWave == 6 then
+					warnWave:Show(L.WarnWave_2:format(currentWave, 6, L.Necromancer, 6, L.Banshee))
+				elseif currentWave == 7 then
+					warnWave:Show(L.WarnWave_4:format(currentWave, 2, L.Ghoul, 2, L.Fiend, 2, L.Stalker, 8, L.Infernal))
+				elseif currentWave == 8 then
+					warnWave:Show(L.WarnWave_5:format(currentWave, 4, L.Abomination, 4, L.Fiend, 2, L.Necromancer, 4, L.Stalker, 2, L.Banshee))
+				end
+			end
+		end
+		timerWave:Start(timer)
+		warnWaveSoon:Schedule(timer-10)
+		lastWave = currentWave
+	elseif lastWave > currentWave then
+		if lastWave == 8 then
+			warnWave:Show(bossNames[boss])
+		end
+		timerWave:Cancel()
+		warnWaveSoon:Cancel()
+		lastWave == curentWave
 	end
 end

@@ -20,7 +20,7 @@ local warnSubmerge		= mod:NewAnnounce("WarnSubmerge")
 local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge")
 
-local timerWrathRag		= mod:NewNextTimer(111, 20566)
+local timerWrathRag		= mod:NewNextTimer(30, 20566)
 --local timerHandRag		= mod:NewNextTimer(111, 19780)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge")
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge")
