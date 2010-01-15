@@ -22,8 +22,8 @@ local warnEmerge		= mod:NewAnnounce("WarnEmerge")
 
 local timerWrathRag		= mod:NewNextTimer(111, 20566)
 --local timerHandRag		= mod:NewNextTimer(111, 19780)
-local timerSubmerge		= mod:NewNextTimer(180, "TimerSubmerge")
-local timerEmerge		= mod:NewNextTimer(90, "TimerEmerge")
+local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge")
+local timerEmerge		= mod:NewTimer(90, "TimerEmerge")
 
 local submerged
 function mod:OnCombatStart(delay)
