@@ -16,7 +16,7 @@ local warnBlood			= mod:NewTargetAnnounce(24328)
 
 local timerSiphon		= mod:NewNextTimer(90, 24324)
 local timerInsanity		= mod:NewTargetTimer(10, 24327)
-local timerInsnityCD	= mod:NewCDTimer(20, 24327)
+local timerInsanityCD	= mod:NewCDTimer(20, 24327)
 local timerBlood		= mod:NewTargetTimer(10, 24328)
 
 local specWarnBlood		= mod:NewSpecialWarningYou(24328)
