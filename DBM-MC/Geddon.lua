@@ -18,6 +18,7 @@ local warnArmageddon	= mod:NewSpellAnnounce(20478)
 
 local timerInferno		= mod:NewCastTimer(8, 19695)
 local timerBomb			= mod:NewTargetTimer(8, 20475)
+local timerIgnite		= mod:NewBuffActiveTimer(300, 19659)
 local timerArmageddon	= mod:NewCastTimer(8, 20478)
 
 local specWarnBomb		= mod:NewSpecialWarningYou(20475)
