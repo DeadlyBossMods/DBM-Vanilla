@@ -12,19 +12,19 @@ mod:RegisterEvents(
 )
 
 local warnCurse		= mod:NewSpellAnnounce(19713)
-local warnGrounding	= mod:NewSpellAnnounce(19714)
+local warnGrounding	= mod:NewSpellAnnounce(19714, 2, nil, false)
 local warnCntrSpell	= mod:NewSpellAnnounce(19715)
 local warnBlink		= mod:NewSpellAnnounce(21655)
 
 local timerCurseCD		= mod:NewNextTimer(20, 19713)
-local timerGrounding	= mod:NewBuffActiveTimer(30, 19714)
+local timerGrounding	= mod:NewBuffActiveTimer(30, 19714, nil, false)
 local timerBlinkCD		= mod:NewNextTimer(30, 21655)
 
 function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(19714) and self:IsInCombat() then
+	if args:IsSpellID(19714) and self:IsInCombat() and not args:IsDestTypePlayer() then
 		warnGrounding:Show()
 		timerGrounding:Start()
 	end
