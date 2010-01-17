@@ -14,7 +14,7 @@ mod:RegisterEvents(
 local warnPanic		= mod:NewSpellAnnounce(19408)
 local warnEnrage	= mod:NewSpellAnnounce(19451)
 
-local timerPanicCD	= mod:NewNextTimer(30, 19408)
+local timerPanicCD	= mod:NewNextTimer(40, 19408)
 local timerPanic	= mod:NewBuffActiveTimer(8, 19408)
 local timerEnrage	= mod:NewBuffActiveTimer(8, 19451)
 
