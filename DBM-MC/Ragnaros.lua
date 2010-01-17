@@ -14,7 +14,7 @@ mod:RegisterEvents(
 )
 
 local warnWrathRag		= mod:NewSpellAnnounce(20566)
-local warnHandRag		= mod:NewSpellAnnounce(19780)
+--local warnHandRag		= mod:NewSpellAnnounce(19780)--does not show in combat log. need transciptor to get more data on this later
 local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon")
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge")
 local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon")
@@ -43,8 +43,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(20566) then
 		warnWrathRag:Show()
 		timerWrathRag:Start()
-	elseif args:IsSpellID(19780) then
-		warnHandRag:Show()
+--	elseif args:IsSpellID(19780) then
+--		warnHandRag:Show()
 	end
 end
 
