@@ -34,7 +34,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnRainFire:Show()
 	elseif args:IsSpellID(19716) then
 		timerCurse:Start()
-		warnCurse:Show(args.destName)
+		warnCurse:Show()
 	end
 end
 
