@@ -24,7 +24,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:warnFistTargets()
-		warnFist:Show(table.concat(args.destName, "<, >"))
+		warnFist:Show(table.concat(FistTargets, "<, >"))
 		timerFist:Start()
 		table.wipe(FistTargets)
 end
