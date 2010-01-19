@@ -32,7 +32,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:warnMCTargets()
-		warnMindControl:Show(table.concat(args.destName, "<, >"))
+		warnMindControl:Show(table.concat(MCTargets, "<, >"))
 		timerMindControl:Start()
 		table.wipe(MCTargets)
 end
