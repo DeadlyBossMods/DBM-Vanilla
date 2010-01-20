@@ -10,7 +10,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnRainFire	= mod:NewSpellAnnounce(19717)
+--local warnRainFire	= mod:NewSpellAnnounce(19717)
 local warnCurse		= mod:NewSpellAnnounce(19716)
 local warnFist		= mod:NewSpellAnnounce(20277)
 
@@ -30,11 +30,11 @@ function mod:warnFistTargets()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(19717) and self:IsInCombat() then
-		warnRainFire:Show()
-	elseif args:IsSpellID(19716) then
+	if args:IsSpellID(19716) then
 		timerCurse:Start()
 		warnCurse:Show()
+--	elseif args:IsSpellID(19717) and self:IsInCombat() then
+--		warnRainFire:Show()
 	end
 end
 
