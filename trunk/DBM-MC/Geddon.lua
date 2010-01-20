@@ -29,7 +29,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(20475) and self:IsInCombat() then
+	if args:IsSpellID(20475) then
 		timerBomb:Start(args.destName)
 		warnBomb:Show(args.destName)
 		if self.Options.SetIconOnBombTarget then
