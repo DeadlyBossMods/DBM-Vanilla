@@ -11,33 +11,31 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
 )
 
+local isMelee = select(2, UnitClass("player")) == "ROGUE"
+	     or select(2, UnitClass("player")) == "WARRIOR"
+	     or select(2, UnitClass("player")) == "DEATHKNIGHT"
+
 local warnMagicReflect	= mod:NewSpellAnnounce(20619)
 local warnDamageShield	= mod:NewSpellAnnounce(21075)
-local warnTeleport		= mod:NewTargetAnnounce(20618)
-local warnHeal			= mod:NewCastAnnounce(29564)
+local warnTeleport		= mod:NewTargetAnnounce(20534)
+
+local specWarnMagicReflect		= mod:NewSpecialWarningSpell(20619, not isMelee)
 
 local timerMagicReflect	= mod:NewBuffActiveTimer(10, 20619)
 local timerDamageShield	= mod:NewBuffActiveTimer(10, 21075)
-local timerHeal			= mod:NewCastTimer(2.5, 20564)
 
 function mod:OnCombatStart(delay)
 end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(29564) and self:IsInCombat() then
-		warnHeal:Show()
-		timerHeal:Start()
-	end
-end
-
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(20619) and self:IsInCombat() then
+	if args:IsSpellID(20619) then
 		warnMagicReflect:Show()
+		specWarnMagicReflect:Show()
 		timerMagicReflect:Start()
-	elseif args:IsSpellID(21075) and self:IsInCombat() then
+	elseif args:IsSpellID(21075) then
 		warnDamageShield:Show()
 		timerDamageShield:Start()
-	elseif args:IsSpellID(20618) and self:IsInCombat() then
-		warnTeleport:Show(args.destName or "")
+	elseif args:IsSpellID(20534) then
+		warnTeleport:Show(args.destName)
 	end
 end
