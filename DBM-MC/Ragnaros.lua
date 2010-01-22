@@ -24,6 +24,7 @@ local timerWrathRag		= mod:NewNextTimer(30, 20566)
 --local timerHandRag		= mod:NewNextTimer(111, 19780)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge")
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge")
+local timerCombatStart	= mod:NewTimer(78, "TimerCombatStart", 2457)
 
 local submerged
 function mod:OnCombatStart(delay)
@@ -53,6 +54,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("Submerge")
 	elseif msg ~= L.Submerge and submerged then
 		self:SendSync("Emerge")
+	elseif msg == L.Pull then
+		self:SendSync("RagPulled")
 	end
 end
 
@@ -65,5 +68,7 @@ function mod:OnSync(msg, arg)
 		self:ScheduleMethod(90, "emerged")
 	elseif msg == "Emerge" then
 		emerged()
+	elseif msg == "RagPulled" then
+		timerCombatStart:Start()
 	end
 end
