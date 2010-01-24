@@ -22,7 +22,7 @@ mod:RemoveOption("HealthFrame")
 
 local lastWave = 0
 local boss = 0
-local bossNames[] = {
+local bossNames = {
 	[1] = L.RageWinterchill,
 	[2] = L.Anetheron,
 	[3] = L.Kazrogal,
@@ -49,7 +49,7 @@ function mod:QUEST_PROGRESS()
 end
 
 function mod:UPDATE_WORLD_STATES()
-	local text = select(2, GetWorldStateUIInfo(2))
+	local text = select(2, GetWorldStateUIInfo(0))
 	if not text then return end
 	local _,_,currentWave = text:find(L.WaveCheck)
 	if not currentWave then
