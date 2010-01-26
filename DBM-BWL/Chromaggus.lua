@@ -21,7 +21,7 @@ local warnBlack			= mod:NewTargetAnnounce(23154, 2, nil, false)
 local warnBronze		= mod:NewTargetAnnounce(23170, 2, nil, false)
 local warnEnrage		= mod:NewSpellAnnounce(23128)
 local warnPhase2Soon	= mod:NewAnnounce("WarnPhase2Soon")
-local wanrPhase2		= mod:NewPhaseAnnounce(2)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath")
 local timerBreathCD		= mod:NewTimer(60, "TimberBreathCD")

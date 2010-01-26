@@ -35,6 +35,6 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(23342) and self:IsInCombat() then
 		warnEnrage:Show()
-		timerEnrage:Start()
+		timerEnrageNext:Start()
 	end
 end
