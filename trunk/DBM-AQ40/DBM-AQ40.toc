@@ -8,7 +8,7 @@
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: The Temple of Ahn'Qiraj
 ## X-DBM-Mod-Sort: 2
-## X-DBM-Mod-LoadZone: The Temple of Ahn'Qiraj
+## X-DBM-Mod-LoadZone: Nitram,The Temple of Ahn'Qiraj
 localization.en.lua
 Skeram.lua
 ThreeBugs.lua
