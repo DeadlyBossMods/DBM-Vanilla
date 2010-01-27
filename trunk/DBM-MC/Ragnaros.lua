@@ -34,6 +34,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:emerged()
+	timerEmerge:Cancel()
 	warnEmerge:Show()
 	timerSubmerge:Start()
 	warnSubmergeSoon:Schedule(170)
