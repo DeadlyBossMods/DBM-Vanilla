@@ -8,7 +8,7 @@
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: The Ruins of Ahn'Qiraj
 ## X-DBM-Mod-Sort: 4
-## X-DBM-Mod-LoadZone: The Ruins of Ahn'Qiraj
+## X-DBM-Mod-LoadZone: Nitram,The Ruins of Ahn'Qiraj
 localization.en.lua
 Kurinnaxx.lua
 Rajaxx.lua
