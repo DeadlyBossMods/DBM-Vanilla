@@ -110,10 +110,12 @@ L:SetWarningLocalization{
 	WarnEmergeSoon		= "EmergeSoon"
 }
 L:SetTimerLocalization{
+	TimerCombatStart	= "Combat starts",
 	TimerSubmerge		= "Submerge",
 	TimerEmerge			= "Emerge"
 }
 L:SetOptionLocalization{
+	TimerCombatStart	= "Show time for start of combat",
 	WarnSubmerge		= "Show warning for submerge",
 	WarnSubmergeSoon	= "Show pre-warning for submerge",
 	TimerSubmerge		= "Show timer for submerge",
