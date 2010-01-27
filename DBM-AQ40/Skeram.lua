@@ -38,7 +38,7 @@ function mod:warnMCTargets()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(2313) then
+	if args:IsSpellID(747) then
 		self:UnscheduleMethod("warnMCTargets")
 		MCTargets[#MCTargets + 1] = args.destName
 		self:ScheduleMethod(0.3, "warnMCTargets")
