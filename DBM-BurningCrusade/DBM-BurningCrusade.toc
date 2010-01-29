@@ -9,4 +9,5 @@
 localization.en.lua
 localization.cn.lua
 localization.tw.lua
+localization.es.lua
 DBMv3-Compatibility.lua
