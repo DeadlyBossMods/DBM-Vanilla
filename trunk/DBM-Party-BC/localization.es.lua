@@ -359,7 +359,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Mechs	= "Tune 'em up good boys!"
+	Mechs	= "Tune 'em up good boys!" --translate
 })
 
 --------------------------
@@ -780,7 +780,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PortalCheck			= "Fallas temporales abiertas: (%d+)/18",
-	Shielddown			= "No! Damn this feeble, mortal coil!"
+	Shielddown			= "No! Damn this feeble, mortal coil!" --translate
 })
 
 --------------------
@@ -1052,7 +1052,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Split	= "We span the universe, as countless as the stars!"
+	Split	= "We span the universe, as countless as the stars!" --translate
 })
 
 --------------------------
@@ -1102,7 +1102,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Discharge	= "Un...con...tainable."
+	Discharge	= "Un...con...tainable." --translate
 })
 
 --------------------------
@@ -1124,8 +1124,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	DelrissaPull	= "Annihilate them.",
-	DelrissaEnd		= "Not what I had... planned."
+	DelrissaPull	= "Annihilate them.", --translate
+	DelrissaEnd		= "Not what I had... planned." --translate
 })
 
 ------------------------------------
@@ -1149,8 +1149,6 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	KaelP2	= "I'll turn your world... upside... down."
+	KaelP2	= "I'll turn your world... upside... down." --translate
 })
-
-
 

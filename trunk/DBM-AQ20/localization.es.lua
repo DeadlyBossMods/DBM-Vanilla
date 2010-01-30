@@ -31,13 +31,13 @@ L:SetOptionLocalization{
 	WarnWave	= "Mostrar aviso para oleada siguiente"
 }
 L:SetMiscLocalization{
-	Wave1		= "They come now. Try not to get yourself killed, young blood.",
-	Wave3		= "The time of our retribution is at hand! Let darkness reign in the hearts of our enemies!",
-	Wave4		= "No longer will we wait behind barred doors and walls of stone! No longer will our vengeance be denied! The dragons themselves will tremble before our wrath!",
-	Wave5		= "Fear is for the enemy! Fear and death!",
-	Wave6		= "Staghelm will whimper and beg for his life, just as his whelp of a son did! One thousand years of injustice will end this day!",
-	Wave7		= "Fandral! Your time has come! Go and hide in the Emerald Dream and pray we never find you!",
-	Wave8		= "Impudent fool! I will kill you myself!"
+	Wave1		= "They come now. Try not to get yourself killed, young blood.", --translate
+	Wave3		= "The time of our retribution is at hand! Let darkness reign in the hearts of our enemies!", --translate
+	Wave4		= "No longer will we wait behind barred doors and walls of stone! No longer will our vengeance be denied! The dragons themselves will tremble before our wrath!", --translate
+	Wave5		= "Fear is for the enemy! Fear and death!", --translate
+	Wave6		= "Staghelm will whimper and beg for his life, just as his whelp of a son did! One thousand years of injustice will end this day!", --translate
+	Wave7		= "Fandral! Your time has come! Go and hide in the Emerald Dream and pray we never find you!", --translate
+	Wave8		= "Impudent fool! I will kill you myself!" --translate
 }
 
 ----------
