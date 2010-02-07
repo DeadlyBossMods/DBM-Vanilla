@@ -6,7 +6,7 @@ Tidewalker.GraveTargets	= {};
 Tidewalker.GraveCounter	= 0;
 Tidewalker.MinVersionToSync  = 2.51;
 
-Tidewalker:RegisterCombat("YELL", DBM_TIDEWALKER_YELL_PULL);
+Tidewalker:RegisterCombat("yell", DBM_TIDEWALKER_YELL_PULL);
 
 Tidewalker:AddOption("Murlocs", true, DBM_TIDEWALKER_OPTION_1);
 Tidewalker:AddOption("Grave", false, DBM_TIDEWALKER_OPTION_2);
