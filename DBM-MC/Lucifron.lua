@@ -12,29 +12,29 @@ mod:RegisterEvents(
 
 local warnDoom		= mod:NewSpellAnnounce(19702)
 local warnCurse		= mod:NewSpellAnnounce(19703)
-local warnMC		= mod:NewTargetAnnounce(15859)
+local warnMC		= mod:NewTargetAnnounce(20604)
 
 local timerCurseCD	= mod:NewNextTimer(20, 19703)
 local timerDoomCD	= mod:NewNextTimer(20, 19702)
 local timerDoom		= mod:NewCastTimer(10, 19702)
-local timerMC		= mod:NewTargetTimer(5, 15859)
+local timerMC		= mod:NewTargetTimer(5, 20604)
 
 function mod:OnCombatStart(delay)
 end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(19702) and self:IsInCombat() then
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(19702) then
 		warnDoom:Show()
 		timerDoom:Start()
 		timerDoomCD:Start()
-	elseif args:IsSpellID(19703) and self:IsInCombat() then
+	elseif args:IsSpellID(19703) then
 		timerCurseCD:Start()
 		warnCurse:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(15859) and self:IsInCombat() then
+	if args:IsSpellID(20604) then
 		warnMC:Show(args.destName)
 		timerMC:Start(args.destName)
 	end

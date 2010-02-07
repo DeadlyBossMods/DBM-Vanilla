@@ -14,7 +14,7 @@ mod:RegisterEvents(
 local warnPanic		= mod:NewSpellAnnounce(19408)
 local warnEnrage	= mod:NewSpellAnnounce(19451)
 
-local timerPanicCD	= mod:NewNextTimer(40, 19408)
+local timerPanicCD	= mod:NewCDTimer(35, 19408)
 local timerPanic	= mod:NewBuffActiveTimer(8, 19408)
 local timerEnrage	= mod:NewBuffActiveTimer(8, 19451)
 
@@ -22,7 +22,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(19451) and self:IsInCombat() then
+	if args:IsSpellID(19451) then
 		warnEnrage:Show()
 		timerEnrage:Start()
 	end
@@ -35,7 +35,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(19408) and self:IsInCombat() then
+	if args:IsSpellID(19408) then
 		warnPanic:Show()
 		timerPanic:Start()
 		timerPanicCD:Start()
