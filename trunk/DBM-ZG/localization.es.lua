@@ -1,4 +1,4 @@
-if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
+ï»¿if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
 -------------------
@@ -13,7 +13,7 @@ L:SetWarningLocalization{
 	warnPhase2Soon	= "Fase 2 pronto"
 }
 L:SetOptionLocalization{
-	warnPhase2Soon	= "Anunciar cuando la fase 2 esté a punto de comenzar",
+	warnPhase2Soon	= "Anunciar cuando la fase 2 estÃ© a punto de comenzar",
 	RangeFrame		= "Mostrar distancia"
 }
 
@@ -45,22 +45,22 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization({
-	WarnSimulKill	= "Primer add muerto - Resurrección en ~12 segundos"
+	WarnSimulKill	= "Primer add muerto - ResurrecciÃ³n en ~12 segundos"
 })
 
 L:SetTimerLocalization({
-	TimerSimulKill	= "Resurrección"
+	TimerSimulKill	= "ResurrecciÃ³n"
 })
 
 L:SetOptionLocalization({
 	WarnSimulKill	= "Anunciar primer add muerto",
-	TimerSimulKill	= "Mostrar tiempo para resurrección de sacerdote"
+	TimerSimulKill	= "Mostrar tiempo para resurrecciÃ³n de sacerdote"
 })
 
 L:SetMiscLocalization({
 	PriestDied	= "%s muere.",
-	YellPhase2	= "Shirvallah, fill me with your RAGE!", --translate
-	YellKill	= "Hakkar binds me no more!  Peace at last!" --translate
+	YellPhase2	= "Shirvallah, Â¡llÃ©name de IRA!",
+	YellKill	= "Â¡Hakkar ya no me controla! Â¡Por fin algo de paz!"
 })
 
 -------------------
@@ -87,10 +87,10 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Bloodlord")
 
 L:SetGeneralLocalization{
-	name = "Señor sangriento Mandokir"
+	name = "SeÃ±or sangriento Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Señor sangriento Mandokir",
+	Bloodlord 	= "SeÃ±or sangriento Mandokir",
 	Ohgan		= "Ohgan"
 }
 
@@ -100,7 +100,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
-	name = "Blandón de la Locura"
+	name = "BlandÃ³n de la Locura"
 }
 L:SetMiscLocalization{
 	Hazzarah = "Hazza'rah",
