@@ -15,7 +15,7 @@ local warnWave			= mod:NewAnnounce("WarnWaveSoon")
 local warnWave			= mod:NewAnnounce("WarnWave")
 local warnCannibalize	= mod:NewSpellAnnounce(31538)
 
-local timerWave	= mod:NewTimer("TimerWave")
+local timerWave	= mod:NewTimer(125, "TimerWave")
 
 mod:AddBoolOption("DetailedWave")
 mod:RemoveOption("HealthFrame")
@@ -32,18 +32,17 @@ local bossNames = {
 mod.GOSSIP_SHOW = mod.QUEST_PROGRESS
 function mod:QUEST_PROGRESS()
 	if not GetRealZoneText() == L.HyjalZoneName then return end
-		local target = UnitName("target")
-		if target == L.Thrall or target == L.Jaina then
-			local selection = GetGossipOptions()
-			if selection == L.RageGossip then
-				self:SendSync("boss", 1)
-			elseif selection == L.AnetheronGossip then
-				self:SendSync("boss", 2)
-			elseif selection == L.KazrogalGossip then
-				self:SendSync("boss", 3)
-			elseif selection == L.AzgalorGossip then
-				self:SendSync("boss", 4)
-			end
+	local target = UnitName("target")
+	if target == L.Thrall or target == L.Jaina then
+		local selection = GetGossipOptions()
+		if selection == L.RageGossip then
+			self:SendSync("boss", 1)
+		elseif selection == L.AnetheronGossip then
+			self:SendSync("boss", 2)
+		elseif selection == L.KazrogalGossip then
+			self:SendSync("boss", 3)
+		elseif selection == L.AzgalorGossip then
+			self:SendSync("boss", 4)
 		end
 	end
 end
@@ -196,6 +195,6 @@ function mod:waveFunction(currentWave)
 		end
 		timerWave:Cancel()
 		warnWaveSoon:Cancel()
-		lastWave == curentWave
+		lastWave = curentWave
 	end
 end

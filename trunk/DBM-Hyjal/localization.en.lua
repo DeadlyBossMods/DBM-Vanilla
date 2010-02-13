@@ -132,13 +132,15 @@ L:SetGeneralLocalization{
 	name 		= "Trash features"
 }
 L:SetWarningLocalization{
-	WarnWave	= "%s"
+	WarnWave	= "%s",
+	WarnWaveSoon= "New wave soon"
 }
 L:SetTimerLocalization{
 	TimerWave	= "Next wave"
 }
 L:SetOptionLocalization{
 	WarnWave		= "Warn when a new wave is incoming",
+	WarnWaveSoon	= "Warn when a new wave is incoming soon",
 	DetailedWave	= "Detailed warning when a new wave is incoming (which mobs)",
 	TimerWave		= "Show a timer for next wave"
 }
