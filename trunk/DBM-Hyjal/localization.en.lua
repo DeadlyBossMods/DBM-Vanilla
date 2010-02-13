@@ -105,7 +105,7 @@ DBM_MHT_BOSS_DIES				= "%s dies.";
 DBM_MHT_WAVE_INC_WARNING1			= "*** Wave %s/8 - %s %s  ***";
 DBM_MHT_WAVE_INC_WARNING2			= "*** Wave %s/8 - %s %s and %s %s ***";
 DBM_MHT_WAVE_INC_WARNING3			= "*** Wave %s/8 - %s %s, %s %s and %s %s ***";
-L.WarnWave_4			= "*** Wave %s/8 - %s %s, %s %s, %s %s and %s %s ***";
+DBM_MHT_WAVE_INC_WARNING4			= "*** Wave %s/8 - %s %s, %s %s, %s %s and %s %s ***";
 DBM_MHT_WAVE_INC_WARNING5			= "*** Wave %s/8 - %s %s, %s %s, %s %s, %s %s and %s %s ***";
 
 DBM_MHT_GHOUL					= "Ghouls";
