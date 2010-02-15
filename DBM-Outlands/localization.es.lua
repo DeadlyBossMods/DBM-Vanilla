@@ -1,4 +1,4 @@
-﻿if GetLocale() == "esES" then
+﻿if GetLocale() == "esES" or GetLocale() == "esMX" then
 	-- Maulgar
 	DBM_MAULGAR_NAME			= "Su majestad Maulgar";
 	DBM_MAULGAR_DESCRIPTION		= "Anuncia escudo y sanación y muestra tiempo para Machaque, Torbellino y salida de manáfago.";

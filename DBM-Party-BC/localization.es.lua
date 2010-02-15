@@ -1,4 +1,4 @@
-if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
+Ôªøif GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
 -------------------------
@@ -9,7 +9,7 @@ local L
 L = DBM:GetModLocalization("Gargolmar")
 
 L:SetGeneralLocalization({
-	name = "Guardi·n vigÌa Gargolmar"
+	name = "Guardi√°n vig√≠a Gargolmar"
 })
 
 L:SetWarningLocalization({
@@ -288,7 +288,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Muselek")
 
 L:SetGeneralLocalization({
-	name = "SeÒor del pantano Musel'ek"
+	name = "Se√±or del pantano Musel'ek"
 })
 
 L:SetWarningLocalization({
@@ -326,7 +326,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Thespia")
 
 L:SetGeneralLocalization({
-	name = "Hidrom·ntica Thespia"
+	name = "Hidrom√°ntica Thespia"
 })
 
 L:SetWarningLocalization({
@@ -348,14 +348,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnSummon	= "Mec·nicos Vaporinos vienen"
+	WarnSummon	= "Mec√°nicos Vaporinos vienen"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnSummon	= "Mostrar aviso para Mec·nicos Vaporinos"
+	WarnSummon	= "Mostrar aviso para Mec√°nicos Vaporinos"
 })
 
 L:SetMiscLocalization({
@@ -368,7 +368,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Kalithresh")
 
 L:SetGeneralLocalization({
-	name = "SeÒor de la guerra Kalithresh"
+	name = "Se√±or de la guerra Kalithresh"
 })
 
 L:SetWarningLocalization({
@@ -379,7 +379,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnChannel	= "Mostrar aviso cuando estÈ canalizando"
+	WarnChannel	= "Mostrar aviso cuando est√© canalizando"
 })
 
 -----------------------
@@ -390,7 +390,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Shirrak")
 
 L:SetGeneralLocalization({
-	name = "Shirrak el VigÌa de los Muertos"
+	name = "Shirrak el Vig√≠a de los Muertos"
 })
 
 L:SetWarningLocalization({
@@ -464,7 +464,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Shaffar")
 
 L:SetGeneralLocalization({
-	name = "PrÌncipe-nexo Shaffar"
+	name = "Pr√≠ncipe-nexo Shaffar"
 })
 
 L:SetWarningLocalization({
@@ -586,7 +586,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Inciter")
 
 L:SetGeneralLocalization({
-	name = "NegrozÛn el Incitador"
+	name = "Negroz√≥n el Incitador"
 })
 
 L:SetWarningLocalization({
@@ -661,7 +661,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Skarloc")
 
 L:SetGeneralLocalization({
-	name = "Capit·n Skarloc"
+	name = "Capit√°n Skarloc"
 })
 
 L:SetWarningLocalization({
@@ -679,7 +679,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("EpochHunter")
 
 L:SetGeneralLocalization({
-	name = "Cazador de …poca"
+	name = "Cazador de √âpoca"
 })
 
 L:SetWarningLocalization({
@@ -737,18 +737,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-    warnFrenzy	= "FrenesÌ"
+    warnFrenzy	= "Frenes√≠"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    warnFrenzy	= "Mostrar aviso para FrenesÌ"
+    warnFrenzy	= "Mostrar aviso para Frenes√≠"
 })
 
 L:SetMiscLocalization({
-    AeonusFrenzy	= "%s entra en FrenesÌ!"
+    AeonusFrenzy	= "%s entra en Frenes√≠!"
 })
 
 ---------------------
@@ -774,7 +774,7 @@ L:SetOptionLocalization({
     WarnWavePortalSoon	= "Mostrar pre-aviso para nuevo portal",
     WarnWavePortal		= "Mostrar aviso para nuevo portal",
     WarnBossPortal		= "Mostrar aviso cuando sale Boss",
-	TimerNextPortal		= "Mostrar tiempo para siguiente portal (despuÈs del Boss)",
+	TimerNextPortal		= "Mostrar tiempo para siguiente portal (despu√©s del Boss)",
 	ShowAllPortalTimers	= "Mostrar tiempo para todos los portales (poco acurado)"
 })
 
@@ -791,7 +791,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Gyrokill")
 
 L:SetGeneralLocalization({
-	name = "VigÌa de las puertas Giromata"
+	name = "Vig√≠a de las puertas Giromata"
 })
 
 L:SetWarningLocalization({
@@ -809,7 +809,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Ironhand")
 
 L:SetGeneralLocalization({
-	name = "VigÌa de las puertas Manoyerro"
+	name = "Vig√≠a de las puertas Manoyerro"
 })
 
 L:SetWarningLocalization({
@@ -849,7 +849,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Sepethrea")
 
 L:SetGeneralLocalization({
-	name = "Abis·lica Sepethrea"
+	name = "Abis√°lica Sepethrea"
 })
 
 L:SetWarningLocalization({
@@ -905,7 +905,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Freywinn")
 
 L:SetGeneralLocalization({
-	name = "Gran bot·nico Freywinn"
+	name = "Gran bot√°nico Freywinn"
 })
 
 L:SetWarningLocalization({
@@ -961,7 +961,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("WarpSplinter")
 
 L:SetGeneralLocalization({
-	name = "Disidente de distorsiÛn"
+	name = "Disidente de distorsi√≥n"
 })
 
 L:SetWarningLocalization({
@@ -1017,7 +1017,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Soccothrates")
 
 L:SetGeneralLocalization({
-	name = "Ar˙spice de cÛlera Soccothrates"
+	name = "Ar√∫spice de c√≥lera Soccothrates"
 })
 
 L:SetWarningLocalization({
@@ -1047,8 +1047,8 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnSplit		= "Mostrar aviso para DivisiÛn",
-	warnSplitSoon	= "Mostrar pre-aviso para DivisiÛn"
+	warnSplit		= "Mostrar aviso para Divisi√≥n",
+	warnSplitSoon	= "Mostrar pre-aviso para Divisi√≥n"
 })
 
 L:SetMiscLocalization({
@@ -1063,7 +1063,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Selin")
 
 L:SetGeneralLocalization({
-	name = "Selin CorazÛn de Fuego"
+	name = "Selin Coraz√≥n de Fuego"
 })
 
 L:SetWarningLocalization({
@@ -1078,7 +1078,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	ChannelCrystal	= "%s empieza a canalizar de un Cristal vil prÛximo"
+	ChannelCrystal	= "%s empieza a canalizar de un Cristal vil pr√≥ximo"
 })
 
 ----------------
@@ -1091,14 +1091,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnEnergy	= "EnergÌa pura"
+	WarnEnergy	= "Energ√≠a pura"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy	= "Mostrar aviso para EnergÌa pura"
+	WarnEnergy	= "Mostrar aviso para Energ√≠a pura"
 })
 
 L:SetMiscLocalization({
@@ -1138,14 +1138,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "PiroexplosiÛn! Interrumpe!"
+	specwarnPyroblast	= "Piroexplosi√≥n! Interrumpe!"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "Mostrar aviso especial para PiroexplosiÛn (para interrumpir)"
+	specwarnPyroblast	= "Mostrar aviso especial para Piroexplosi√≥n (para interrumpir)"
 })
 
 L:SetMiscLocalization({
