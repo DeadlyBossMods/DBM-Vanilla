@@ -1,5 +1,6 @@
 ﻿## Interface: 30300
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Molten Core|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Núcleo de Magma|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
@@ -7,9 +8,12 @@
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: Molten Core
+## X-DBM-Mod-Name-esES: Núcleo de Magma
 ## X-DBM-Mod-Sort: 0
 ## X-DBM-Mod-LoadZone: Molten Core
+## X-DBM-Mod-LoadZone-esES: Núcleo de Magma
 localization.en.lua
+localization.es.lua
 Lucifron.lua
 Magmadar.lua
 Gehennas.lua

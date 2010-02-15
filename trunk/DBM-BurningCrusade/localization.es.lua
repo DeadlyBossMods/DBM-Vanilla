@@ -1,10 +1,10 @@
-if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
+﻿if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 
 DBM_BC_TARGET		= "<target>"
 
 DBM_GRUULS_LAIR		= "Guarida de Gruul"
 DBM_MAGS_LAIR		= "Guarida de Magtheridon"
-DBM_HELLFIRE		= "Pen�nsula del Fuego Infernal"
+DBM_HELLFIRE		= "Península del Fuego Infernal"
 DBM_SHADOWMOON		= "Valle Sombraluna"
 
 DBM_GENERIC_ENRAGE_WARN		= "Enrage en %s %s"

@@ -1,4 +1,4 @@
-if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
+ï»¿if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
 local L
 
 -----------------
@@ -31,7 +31,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Broodlord")
 
 L:SetGeneralLocalization{
-	name = "Señor de linaje Capazote"
+	name = "SeÃ±or de linaje Capazote"
 }
 
 ---------------
@@ -102,7 +102,7 @@ L:SetTimerLocalization{
 	TimerClassCall		= "%s Debuff de clase"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Mostrar duración de debuff de clase",
+	TimerClassCall		= "Mostrar duraciÃ³n de debuff de clase",
 	WarnClassCallSoon	= "Mostrar pre-aviso para debuff de clase",
 	WarnClassCall		= "Mostrar aviso para debuff de clase",
 	WarnPhaseSoon		= "Mostrar pre-aviso para cambio de fase",

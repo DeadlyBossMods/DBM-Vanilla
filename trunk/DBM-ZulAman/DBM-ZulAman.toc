@@ -29,6 +29,7 @@ localization.de.lua
 localization.cn.lua
 localization.tw.lua
 localization.ru.lua
+localization.es.lua
 Nalorakk.lua
 Akil'zon.lua
 Jan'alai.lua
