@@ -61,7 +61,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(19775) and self:IsInCombat() then
+	if args:IsSpellID(19775) then
 		warnHeal:Show()
 		timerHeal:Start()
 	end
