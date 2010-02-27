@@ -11,7 +11,7 @@
 ## X-DBM-Mod-Name-esES: Templo de Ahn'Qiraj
 ## X-DBM-Mod-Sort: 2
 ## X-DBM-Mod-LoadZone: Nitram,The Temple of Ahn'Qiraj
-## X-DBM-Mod-LoadZone-esES: Nitram,Templo de Ahn'Qiraj
+## X-DBM-Mod-LoadZone-esES: Nitram,Templo de Ahn'Qiraj, Ahn'Qiraj
 localization.en.lua
 localization.es.lua
 Skeram.lua

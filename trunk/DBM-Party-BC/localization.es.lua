@@ -1078,7 +1078,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	ChannelCrystal	= "%s empieza a canalizar de un Cristal vil próximo"
+	ChannelCrystal	= "%s comienza a canalizar el cristal vil cercano..."
 })
 
 ----------------
@@ -1102,7 +1102,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Discharge	= "Un...con...tainable." --translate
+	Discharge	= "In... contenible."
 })
 
 --------------------------
@@ -1124,8 +1124,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	DelrissaPull	= "Annihilate them.", --translate
-	DelrissaEnd		= "Not what I had... planned." --translate
+	DelrissaPull	= "Aniquiladlos.",
+	DelrissaEnd		= "Esto no lo había planeado."
 })
 
 ------------------------------------
@@ -1138,7 +1138,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "Piroexplosión! Interrumpe!"
+	specwarnPyroblast	= "¡Piroexplosión! ¡Interrumpe!"
 })
 
 L:SetTimerLocalization({
@@ -1149,6 +1149,6 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	KaelP2	= "I'll turn your world... upside... down." --translate
+	KaelP2	= "Pondré vuestro mundo... cabeza... abajo."
 })
 

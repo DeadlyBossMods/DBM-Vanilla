@@ -19,7 +19,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellId(26034) then
+	if args:IsSpellID(26034) then
 		warnFreeze:Show(1)
 	elseif args:IsSpellID(26036) then
 		warnFreeze:Show(2)
