@@ -359,7 +359,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Mechs	= "Tune 'em up good boys!" --translate
+	Mechs	= "¡Dadles bien, chicos!"
 })
 
 --------------------------
