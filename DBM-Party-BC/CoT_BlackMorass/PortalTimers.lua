@@ -42,7 +42,7 @@ function mod:UPDATE_WORLD_STATES()
 	currentPortal = tonumber(currentPortal)
 	lastPortal = tonumber(lastPortal)
 	if currentPortal > lastPortal then
-		warningPortalSoon:Cancel()
+		warnWavePortalSoon:Cancel()
 		timerNextPortal:Cancel()
 		if currentPortal == 6 or currentPortal == 12 or currentPortal == 18 then
 			warnBossPortal:Show()
