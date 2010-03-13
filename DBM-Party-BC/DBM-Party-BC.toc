@@ -9,7 +9,7 @@
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-SubCategories: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace
-## X-DBM-Mod-SubCategories-deDE: Höllenfeuerbollwerk,Der Blutkessel,Die zerschmetterten Hallen,Die Sklavenunterkünfte,Tiefensumpf,Die 
+## X-DBM-Mod-SubCategories-deDE: Höllenfeuerbollwerk,Der Blutkessel,Die zerschmetterten Hallen,Die Sklavenunterkünfte,Tiefensumpf,Die Dampfkammer,Auchenaikrypta,Managruft,Sethekkhallen,Schattenlabyrinth,Vorgebirge des Alten Hügellands,Der schwarze Morast,Die Mechanar,Die Botanika,Die Arkatraz,Terrasse der Magister
 ## X-DBM-Mod-SubCategories-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров
 ## X-DBM-Mod-SubCategories-esES: Murallas del Fuego Infernal,El Horno de Sangre,Las Salas Arrasadas,Recinto de los Esclavos,La Sotiénaga,La Cámara de Vapor,Criptas Auchenai,Tumbas de Maná,Salas Sethekk,Laberinto de las Sombras,Antiguas Laderas de Trabalomas,La Ciénaga Negra,El Mechanar,El Invernáculo,El Arcatraz,Bancal del Magister
 ## X-DBM-Mod-Name: Party-BC
