@@ -1,6 +1,6 @@
 ﻿if GetLocale() ~= "deDE" then return end
 
-﻿local L
+local L
 
 -------------------------
 --  Hellfire Ramparts  --
