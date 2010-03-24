@@ -394,6 +394,7 @@ function DBM.SecondsToTime(t)
 	end
 end
 
+--[[
 function DBM.Capitalize(s)
 	s = tostring(s)
 	if GetLocale() == "krKR" or GetLocale() == "zhCN" or GetLocale() == "zhTW"  or GetLocale() == "ruRU" then -- todo: this could be changed to be UTF-8 compatible
@@ -402,6 +403,7 @@ function DBM.Capitalize(s)
 		return s:sub(0, 1):upper()..s:sub(2)
 	end
 end
+--]]
 
 function DBM.GetBuff(unitID, buff)
 	local i = 1
