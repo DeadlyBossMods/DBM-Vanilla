@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Steamrigger", "DBM-Party-BC", 6)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
+mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17796)
 
 mod:RegisterCombat("combat")
@@ -12,7 +12,7 @@ mod:RegisterEvents(
 )
 
 local WarnSummon    = mod:NewAnnounce("WarnSummon")
-local WarnNe        = mod:NewTargetAnnounce(35107)
+local WarnNet        = mod:NewTargetAnnounce(35107)
 local timerNet      = mod:NewTargetTimer(6, 35107)
 
 local enrageTimer	= mod:NewBerserkTimer(300)
@@ -25,7 +25,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(35107) then
-		WarnNe:Show(args.destName)
+		WarnNet:Show(args.destName)
 		timerNet:Start(args.destName)
 	end
 end
