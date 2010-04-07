@@ -12,7 +12,7 @@ mod:RegisterEvents(
 
 --local warnRainFire	= mod:NewSpellAnnounce(19717)
 local warnCurse		= mod:NewSpellAnnounce(19716)
-local warnFist		= mod:NewSpellAnnounce(20277)
+local warnFist		= mod:NewTargetAnnounce(20277)
 
 local timerCurse	= mod:NewNextTimer(30, 19716)
 local timerFist		= mod:NewBuffActiveTimer(4, 20277)
@@ -39,7 +39,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(20277) then
+	if args:IsSpellID(20277) and args:IsDestTypePlayer() then
 		self:UnscheduleMethod("warnFistTargets")
 		FistTargets[#FistTargets + 1] = args.destName
 		self:ScheduleMethod(0.3, "warnFistTargets")

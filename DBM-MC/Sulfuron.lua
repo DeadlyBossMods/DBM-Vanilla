@@ -39,7 +39,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(19779) then
 		warnInspire:Show(args.destName)
 		timerInspire:Start(args.destName)
-	elseif args:IsSpellID(19780) then
+	elseif args:IsSpellID(19780) and args:IsDestTypePlayer() then
 		self:UnscheduleMethod("warnHandofRagTargets")
 		HandofRagTargets[#HandofRagTargets + 1] = args.destName
 		self:ScheduleMethod(0.3, "warnHandofRagTargets")
