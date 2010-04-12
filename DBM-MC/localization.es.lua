@@ -126,5 +126,5 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",--translate
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"--translate
+	Pull		= "¡Y AHORA VOSOTROS, INSECTOS! CON ARROGANCIA, ANSIABAIS EL PODER DE RAGNAROS. ¡AHORA LO CONOCERÉIS DE PRIMERA MANO!"
 }
