@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Rajaxx", "DBM-AQ20", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
+mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15341)
 mod:RegisterCombat("yell", L.Wave1)
 mod:SetMinCombatTime(60)
