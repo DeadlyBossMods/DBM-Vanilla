@@ -1,7 +1,7 @@
 ﻿local mod = DBM:NewMod("Thekal", "DBM-ZG", 1)
 local L = mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 7 $"):sub(12, -3))
+mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(14509, 11348, 11347)
 mod:RegisterCombat("combat")
