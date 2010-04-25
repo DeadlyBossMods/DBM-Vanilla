@@ -19,29 +19,42 @@ local warnSummonSoon	= mod:NewSoonAnnounce(747, 2)
 
 local timerMindControl	= mod:NewBuffActiveTimer(20, 785)
 
+mod:AddBoolOption("SetIconOnMC", true)
+
 local split1
 local split2
 local split3
 local MCTargets = {}
+local MCIcon 	= 8
 
 function mod:OnCombatStart(delay)
 	split1 = false
 	split2 = false
 	split3 = false
 	table.wipe(MCTargets)
+	MCIcon = 8
 end
 
-function mod:warnMCTargets()
-		warnMindControl:Show(table.concat(MCTargets, "<, >"))
-		timerMindControl:Start()
-		table.wipe(MCTargets)
+local function warnMCTargets()
+	warnMindControl:Show(table.concat(MCTargets, "<, >"))
+	timerMindControl:Start()
+	table.wipe(MCTargets)
+	MCIcon = 8
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(747) then
-		self:UnscheduleMethod("warnMCTargets")
+	if args:IsSpellID(785) then
 		MCTargets[#MCTargets + 1] = args.destName
-		self:ScheduleMethod(0.3, "warnMCTargets")
+		self:Unschedule(warnMCTargets)
+		if #MCTargets >= 3 then
+			warnMCTargets()
+		else
+			self:Schedule(0.3, warnMCTargets)
+		end
+		if self.Options.SetIconOnMC then
+			self:SetIcon(args.destName, MCIcon, 20)
+			MCIcon = MCIcon - 1
+		end
 	end
 end
 
