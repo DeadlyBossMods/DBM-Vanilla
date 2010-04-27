@@ -779,7 +779,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PortalCheck			= "Fallas temporales abiertas: (%d+)/18",
+	PortalCheck			= "Grietas en el Tiempo abiertas: (%d+)/18",
 	Shielddown			= "No! Damn this feeble, mortal coil!" --translate
 })
 
