@@ -19,7 +19,7 @@ local timerHammer               = mod:NewTargetTimer(6, 13005)
 local specWarnConsecration      = mod:NewSpecialWarningMove(38385)
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(29427) then
+	if args:IsSpellID(29427) and self:IsInCombat() then
 		warnHeal:Show()
 	end
 end
