@@ -10,6 +10,10 @@ L:SetGeneralLocalization{
 	name = "El profeta Skeram"
 }
 
+L:SetOptionLocalization{
+	SetIconOnMC		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(785)
+}
+
 ----------------
 -- Three Bugs --
 ----------------
