@@ -1,6 +1,7 @@
 ﻿## Interface: 30300
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Ruins of Ahn'Qiraj|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Ruinas de Ahn'Qiraj|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Руины Ан'Киража|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMAQ20_SavedVars, DBMAQ20_SavedStats
@@ -9,11 +10,14 @@
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: The Ruins of Ahn'Qiraj
 ## X-DBM-Mod-Name-esES: Ruinas de Ahn'Qiraj
+## X-DBM-Mod-Name-ruRU: Руины Ан'Киража
 ## X-DBM-Mod-Sort: 4
 ## X-DBM-Mod-LoadZone: Nitram,The Ruins of Ahn'Qiraj
 ## X-DBM-Mod-LoadZone-esES: Nitram,Ruinas de Ahn'Qiraj
+## X-DBM-Mod-LoadZone-ruRU: Nitram,Руины Ан'Киража
 localization.en.lua
 localization.es.lua
+localization.ru.lua
 Kurinnaxx.lua
 Rajaxx.lua
 Moam.lua
