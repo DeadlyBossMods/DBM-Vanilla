@@ -1,6 +1,7 @@
 ﻿## Interface: 30300
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Zul'Gurub|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Zul'Gurub|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Зул'Гуруб|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMZG_SavedVars, DBMZG_SavedStats
@@ -9,11 +10,14 @@
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: Zul'Gurub
 ## X-DBM-Mod-Name-esES: Zul'Gurub
+## X-DBM-Mod-Name-ruRU: Зул'Гуруб
 ## X-DBM-Mod-Sort: 3
 ## X-DBM-Mod-LoadZone: Nitram,Zul'Gurub
 ## X-DBM-Mod-LoadZone-esES: Nitram,Zul'Gurub
+## X-DBM-Mod-LoadZone-ruRU: Nitram,Зул'Гуруб
 localization.en.lua
 localization.es.lua
+localization.ru.lua
 Venoxis.lua
 Jeklik.lua
 Marli.lua
