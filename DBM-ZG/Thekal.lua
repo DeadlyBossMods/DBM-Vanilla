@@ -7,6 +7,12 @@ mod:SetCreatureID(14509, 11348, 11347)
 mod:RegisterCombat("combat")
 mod:RegisterKill("yell", L.YellKill)
 
+mod:SetBossHealthInfo(
+	14509, L.Thekal,
+	11348, L.Zath,
+	11347, L.LorKhan
+)
+
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
@@ -24,7 +30,7 @@ local warnGouge			= mod:NewTargetAnnounce(12540)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnAdds			= mod:NewSpellAnnounce(24183)
 
-local timerSimulKill	= mod:NewTimer(12, "TimerSimulKill")
+local timerSimulKill	= mod:NewTimer(15, "TimerSimulKill")
 local timerHeal			= mod:NewCastTimer(4, 24208)
 local timerBlind		= mod:NewTargetTimer(10, 21060)
 local timerGouge		= mod:NewTargetTimer(4, 12540)
@@ -84,5 +90,7 @@ function mod:OnSync(msg, arg)
 	elseif msg == "YellPhase2" then
 		warnPhase2:Show()
 		timerSimulKill:Cancel()
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:AddBoss(14509, L.Thekal)
 	end
 end
