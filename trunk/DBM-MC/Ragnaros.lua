@@ -15,15 +15,15 @@ mod:RegisterEvents(
 
 local warnWrathRag		= mod:NewSpellAnnounce(20566)
 --local warnHandRag		= mod:NewSpellAnnounce(19780)--does not show in combat log. need transciptor to get more data on this later
-local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon")
-local warnSubmerge		= mod:NewAnnounce("WarnSubmerge")
-local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon")
-local warnEmerge		= mod:NewAnnounce("WarnEmerge")
+local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
+local warnEmerge		= mod:NewAnnounce("WarnEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 
 local timerWrathRag		= mod:NewNextTimer(30, 20566)
 --local timerHandRag		= mod:NewNextTimer(111, 19780)
-local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge")
-local timerEmerge		= mod:NewTimer(90, "TimerEmerge")
+local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local timerCombatStart	= mod:NewTimer(78, "TimerCombatStart", 2457)
 
 local submerged
