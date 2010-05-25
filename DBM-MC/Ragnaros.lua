@@ -31,7 +31,7 @@ function mod:OnCombatStart(delay)
 	submerged = false
 	timerSubmerge:Start(-delay)
 	warnSubmergeSoon:Schedule(170-delay)
-	timerWrathRag:Start(-delay)
+	timerWrathRag:Start(27-delay)
 end
 
 function mod:emerged()
