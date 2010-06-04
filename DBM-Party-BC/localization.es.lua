@@ -539,7 +539,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-    BirdStone	= "%s vuelve a la piedra."
+    BirdStone	= "%s se vuelve de piedra."
 })
 
 ------------------------
