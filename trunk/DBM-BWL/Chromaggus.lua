@@ -24,7 +24,7 @@ local warnPhase2Soon	= mod:NewAnnounce("WarnPhase2Soon")
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath")
-local timerBreathCD		= mod:NewTimer(60, "TimberBreathCD")
+local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD")
 local timerEnrage		= mod:NewBuffActiveTimer(8, 23128)
 
 
