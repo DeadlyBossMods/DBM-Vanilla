@@ -1,4 +1,4 @@
-if GetLocale() ~= "ruRU" then return end
+﻿if GetLocale() ~= "ruRU" then return end
 
 local L
 
@@ -78,10 +78,10 @@ L:SetGeneralLocalization{
 	name = "Големагг Испепелитель"
 }
 L:SetWarningLocalization{
-	WarnP2Soon	= "Phase 2 soon"
+	WarnP2Soon	= "Скоро 2-ая фаза"
 }
 L:SetOptionLocalization{
-	WarnP2Soon 	= "Warn when phase 2 is about to start"
+	WarnP2Soon 	= "Предупреждать о скором начале второй фазы"
 }
 
 -----------------
@@ -106,24 +106,24 @@ L:SetGeneralLocalization{
 	name = "Рагнарос"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submerge",
-	WarnSubmergeSoon	= "Submerge soon",
-	WarnEmerge			= "Emerge",
-	WarnEmergeSoon		= "EmergeSoon"
+	WarnSubmerge		= "Погружение",
+	WarnSubmergeSoon	= "Скоро погружение",
+	WarnEmerge			= "Появление",
+	WarnEmergeSoon		= "Скоро появление"
 }
 L:SetTimerLocalization{
-	TimerCombatStart	= "Combat starts",
-	TimerSubmerge		= "Submerge",
-	TimerEmerge			= "Emerge"
+	TimerCombatStart	= "Начало боя",
+	TimerSubmerge		= "Погружение",
+	TimerEmerge			= "Появление"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "Show time for start of combat",
-	WarnSubmerge		= "Show warning for submerge",
-	WarnSubmergeSoon	= "Show pre-warning for submerge",
-	TimerSubmerge		= "Show timer for submerge",
-	WarnEmerge			= "Show warning for emerge",
-	WarnEmergeSoon		= "Show pre-warning for emerge",
-	TimerEmerge			= "Show timer for emerge"
+	TimerCombatStart	= "Показывать время до начала боя",
+	WarnSubmerge		= "Показывать предупреждение о погружении",
+	WarnSubmergeSoon	= "Показывать предварительное предупреждение о погружении",
+	TimerSubmerge		= "Показывать время до погружения",
+	WarnEmerge			= "Показывать предупреждение о появлении",
+	WarnEmergeSoon		= "Показывать предварительное предупреждение о появлении",
+	TimerEmerge			= "Показывать время до появления"
 }
 L:SetMiscLocalization{
 	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",

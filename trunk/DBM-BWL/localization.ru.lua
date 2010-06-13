@@ -1,4 +1,4 @@
-if GetLocale() ~= "ruRU" then return end
+﻿if GetLocale() ~= "ruRU" then return end
 
 local L
 
@@ -11,10 +11,10 @@ L:SetGeneralLocalization{
 	name = "Бритвосмерт Неукротимый"
 }
 L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds spawning"
+	TimerAddsSpawn	= "Появление аддов"
 }
 L:SetOptionLocalization{
-	TimerAddsSpawn	= "Show timer for first adds spawning"
+	TimerAddsSpawn	= "Показывать таймер до первого появления аддов"
 }
 
 -------------------
@@ -71,18 +71,18 @@ L:SetGeneralLocalization{
 	name = "Хромаггус"
 }
 L:SetWarningLocalization{
-	WarnBreathSoon	= "Breath soon",
+	WarnBreathSoon	= "Скоро дыхание",
 	WarnBreath		= "%s",
-	WarnPhase2Soon	= "Phase 2 soon"
+	WarnPhase2Soon	= "Скоро 2-ая фаза"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s CD"
+	TimerBreathCD	= "%s восстановление"
 }
 L:SetOptionLocalization{
-	WarnBreathSoon	= "Show pre-warning for Chromaggus' Breaths",
-	WarnBreath		= "Show warning when Chromaggus casts one of his Breaths",
-	TimerBreathCD	= "Show Breath CD",
-	WarnPhase2Soon	= "Announce when phase 2 is about to start"
+	WarnBreathSoon	= "Предварительное предупреждение Дыхания Хромаггуса",
+	WarnBreath		= "Показывать предупреждение о дыханиях Хромаггуса",
+	TimerBreathCD	= "Показывать время восстановления дыханий",
+	WarnPhase2Soon	= "Предупреждать о второй фазе"
 }
 
 ----------------
@@ -94,32 +94,32 @@ L:SetGeneralLocalization{
 	name = "Нефариан"
 }
 L:SetWarningLocalization{
-	WarnClassCallSoon	= "Class call soon",
-	WarnClassCall		= "%s call",
-	WarnPhaseSoon		= "Phase %s soon",
-	WarnPhase			= "Phase %s"
+	WarnClassCallSoon	= "Скоро вызов класса",
+	WarnClassCall		= "Дебафф на %s",
+	WarnPhaseSoon		= "Скоро фаза %s",
+	WarnPhase			= "Фаза %s"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s call"
+	TimerClassCall		= "%s зов"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Show timer for class call duration",
-	WarnClassCallSoon	= "Pre-warn class calls",
-	WarnClassCall		= "Announce class calls",
-	WarnPhaseSoon		= "Announce when a new phase is about to start",
-	WarnPhase			= "Announce phase change"
+	TimerClassCall		= "Показывать таймер классовых вызовов",
+	WarnClassCallSoon	= "Предупреждение классовых вызовов",
+	WarnClassCall		= "Объявлять классовый вызов",
+	WarnPhaseSoon		= "Объявлять, когда следующая фаза скоро начнется",
+	WarnPhase			= "Объявлять смену фаз"
 }
 L:SetMiscLocalization{
-	YellPull	= "Let the games begin!",
-	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",
-	YellP3		= "Impossible! Rise my minions!  Serve your master once more!",
-	YellShaman	= "Shamans, show me",
-	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",
-	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",
-	YellPriest	= "Priests! If you're going to keep healing like that, we might as well make it a little more interesting!",
-	YellWarrior	= "Warriors, I know you can hit harder than that! Lets see it!",
+	YellPull	= "Ну что ж, поиграем!",
+	YellP2		= "Браво, слуги мои! Смертные утрачивают мужество! Поглядим же, как они справятся с истинным Повелителем Черной горы!!!",
+	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
+	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",
+	YellPaladin	= "Паладины… Я слышал, у вас несколько жизней. Докажите.",
+	YellDruid	= "Друиды и их дурацкие превращения… Ну что ж, поглядим!",
+	YellPriest	= "Жрецы! Если вы собираетесь продолжать так лечить, то давайте хоть немного разнообразим процесс!",
+	YellWarrior	= "Воины! Я знаю, вы можете бить сильнее! Ну-ка, покажите!",
 	YellRogue	= "Rogues? Stop hiding and face me!",
-	YellWarlock	= "Warlocks, you shouldn't be playing with magic you don't understand. See what happens?",
-	YellHunter	= "Hunters and your annoying pea-shooters!",
-	YellMage	= "Mages too? You should be more careful when you play with magic..."
+	YellWarlock	= "Чернокнижники, ну не беритесь вы за волшебство, которого сами не понимаете! Видите, что получилось?",
+	YellHunter	= "Охотники со своими жалкими пугачами!",
+	YellMage	= "И маги тоже? Осторожнее надо быть, когда играешь с магией…"
 }

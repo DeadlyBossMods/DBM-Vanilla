@@ -1,4 +1,4 @@
-if GetLocale() ~= "ruRU" then return end
+﻿if GetLocale() ~= "ruRU" then return end
 
 local L
 
@@ -11,11 +11,11 @@ L:SetGeneralLocalization{
 	name = "Верховный жрец Веноксис"
 }
 L:SetWarningLocalization{
-	warnPhase2Soon	= "Phase 2 soon"
+	warnPhase2Soon	= "Скоро 2-ая фаза"
 }
 L:SetOptionLocalization{
-	warnPhase2Soon	= "Announce when phase 2 is about to start",
-	RangeFrame		= "Show range frame"
+	warnPhase2Soon	= "Объявлять о скором начале 2-ой фазы",
+	RangeFrame		= "Показывать окно дистанции"
 }
 
 -------------------
@@ -46,16 +46,16 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization({
-	WarnSimulKill	= "First add down - Resurrection in ~12 seconds"
+	WarnSimulKill	= "Первый адд пал - воскрешение через ~12 сек."
 })
 
 L:SetTimerLocalization({
-	TimerSimulKill	= "Resurrection"
+	TimerSimulKill	= "Воскрешение"
 })
 
 L:SetOptionLocalization({
-	WarnSimulKill	= "Announce first mob down",
-	TimerSimulKill	= "Show timer for priest resurrection"
+	WarnSimulKill	= "Объявлять о смерти первого адда",
+	TimerSimulKill	= "Показывать время до воскрешения жреца"
 })
 
 L:SetMiscLocalization({
@@ -105,9 +105,9 @@ L:SetGeneralLocalization{
 }
 L:SetMiscLocalization{
 	Hazzarah = "Хазза'рах",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
+	Renataki = "Ренатаки",
+	Wushoolay = "Вушулай",
+	Grilek = "Гри'лек"
 }
 
 -------------------
