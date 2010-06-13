@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"UNIT_HEALTH"
 )
 
---local warnSplitSoon     = mod:NewAnnounce("warnSplitSoon") Doesn't work, just errors. Someone else can fix it I spent enough hours on this.
+local warnSplitSoon     = mod:NewAnnounce("warnSplitSoon")
 local warnSplit         = mod:NewAnnounce("warnSplit")
 local warnMindControl   = mod:NewTargetAnnounce(39019)
 local timerMindControl  = mod:NewTargetTimer(6, 39019)
@@ -43,15 +43,12 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
---[[function mod:UNIT_HEALTH(uId)
-    if self:GetUnitCreatureID(uId) == 20912 then
-        local h = UnitHealth(uId) / UnitHealthMax(uId)
-        if h > 0.66 and h < 0.70 and not warnedSplit1 then
-           warnSplitSoon:Show()
-           warnedSplit1 = true
-        elseif h > 0.33 and h < 0.37 and not warnedSplit2 then
-           warnSplitSoon:Show()
-           warnedSplit2 = true
-        end
-    end
-end--]]
+function mod:UNIT_HEALTH(uId)
+	if not warnedSplit1 and self:GetUnitCreatureId(uId) == 20912 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
+		warnedSplit1 = true
+		warnSplitSoon:Show()
+	elseif not warnedSplit2 and mod:IsDifficulty("heroic5") and self:GetUnitCreatureId(uId) == 20912 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.37 then
+		warnedSplit2 = true
+		warnSplitSoon:Show()
+	end
+end

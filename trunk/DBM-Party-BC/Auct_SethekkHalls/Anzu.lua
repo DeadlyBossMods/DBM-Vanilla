@@ -14,11 +14,11 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warnBirds             = mod:NewAnnounce("warnBirds")
-local warnStoned            = mod:NewAnnounce("warnStoned", false)
-local warnScreech           = mod:NewSpellAnnounce(40184)
-local warnCyclone           = mod:NewTargetAnnounce(40321)
-local warnSpellBomb         = mod:NewTargetAnnounce(40303)
+local warnBirds             = mod:NewAnnounce("warnBirds", 2, 32038)
+local warnStoned            = mod:NewAnnounce("warnStoned", 1, 32810, false)
+local warnScreech           = mod:NewSpellAnnounce(40184, 3)
+local warnCyclone           = mod:NewTargetAnnounce(40321, 2)
+local warnSpellBomb         = mod:NewTargetAnnounce(40303, 2)
 local timerScreech          = mod:NewCastTimer(5, 40184)
 local timerScreechDebuff    = mod:NewBuffActiveTimer(6, 40184)
 local timerCyclone          = mod:NewTargetTimer(6, 40321)
