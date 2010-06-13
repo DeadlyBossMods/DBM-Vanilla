@@ -17,18 +17,14 @@ local isDispeller = select(2, UnitClass("player")) == "MAGE"
 				 or select(2, UnitClass("player")) == "PRIEST"
 				 or select(2, UnitClass("player")) == "SHAMAN"
 
-local isMelee = select(2, UnitClass("player")) == "ROGUE"
-             or select(2, UnitClass("player")) == "WARRIOR"
-             or select(2, UnitClass("player")) == "DEATHKNIGHT"
-
 local warnShadowpower       = mod:NewSpellAnnounce(35322)
 local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
 local timerJackhammer       = mod:NewBuffActiveTimer(8, 39194)
 local WarnJackHammer		= mod:NewSpellAnnounce(39194)
-local specWarnJackHammer	= mod:NewSpecialWarningRun(39194, isMelee)
+local specWarnJackHammer	= mod:NewSpecialWarningRun(39194, mod:IsMelee())
 local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, isDispeller)
 
-local soundJackhammer = mod:NewSound(39194, nil, isMelee)
+local soundJackhammer = mod:NewSound(39194, nil, mod:IsMelee())
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() and self:IsInCombat() then     --Shadow Power
