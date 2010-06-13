@@ -1,4 +1,4 @@
-if GetLocale() ~= "ruRU" then return end
+﻿if GetLocale() ~= "ruRU" then return end
 
 local L
 
@@ -11,7 +11,7 @@ L:SetGeneralLocalization{
 	name 		= "Куриннакс"
 }
 L:SetWarningLocalization{
-	WarnWound	= "%s on >%s< (%s)"
+	WarnWound	= "%s на >%s< (%s)"
 }
 L:SetOptionLocalization{
 	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unknown"),	
@@ -25,11 +25,11 @@ L:SetGeneralLocalization{
 	name 		= "Генерал Раджакс"
 }
 L:SetWarningLocalization{
-	WarnWave	= "Wave %s",
-	WarnBoss	= "Boss incoming"
+	WarnWave	= "Волна %s",
+	WarnBoss	= "Появление босса"
 }
 L:SetOptionLocalization{
-	WarnWave	= "Show announce for next incoming wave"
+	WarnWave	= "Показывать предупреждение о следующей волне"
 }
 L:SetMiscLocalization{
 	Wave1		= "They come now. Try not to get yourself killed, young blood.",
@@ -59,12 +59,12 @@ L:SetGeneralLocalization{
 	name 		= "Буру Ненасытный"
 }
 L:SetWarningLocalization{
-	WarnPursue		= "Pursue on >%s<",
-	SpecWarnPursue	= "Pursue on you"
+	WarnPursue		= "Преследует >%s<",
+	SpecWarnPursue	= "Преследует вас!"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Announce pursue targets",
-	SpecWarnPursue	= "Show special warning when you are being pursued"
+	WarnPursue		= "Называть преследуемые цели",
+	SpecWarnPursue	= "Показывать специальное предупреждение, когда преследование на вас"
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "%s sets eyes on %s!"
@@ -94,6 +94,6 @@ L:SetTimerLocalization{
 	TimerVulnerable	= "%s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable	= "Announce weaknesses",
-	TimerVulnerable	= "Show timer for weaknesses"
+	WarnVulnerable	= "Объявлять слабость",
+	TimerVulnerable	= "Показывать таймер до слабости"
 }

@@ -1,4 +1,4 @@
-if GetLocale() ~= "ruRU" then return end
+﻿if GetLocale() ~= "ruRU" then return end
 
 local L
 
@@ -21,7 +21,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "Bug Trio"
+	name = "Семейство жуков"
 }
 L:SetMiscLocalization{
 	Yauj = "Принцесса Яудж",
@@ -47,7 +47,7 @@ L:SetGeneralLocalization{
 	name = "Фанкрисс Непреклонный"
 }
 L:SetWarningLocalization{
-	WarnWound	= "%s on >%s< (%s)"
+	WarnWound	= "%s на >%s< (%s)"
 }
 L:SetOptionLocalization{
 	WarnWound = DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unknown")
@@ -61,7 +61,7 @@ L:SetGeneralLocalization{
 	name = "Нечистотон"
 }
 L:SetWarningLocalization{
-	WarnFreeze	= "Freeze: %d/3",
+	WarnFreeze	= "Заморожен: %d/3",
 	WarnShatter	= "Shatter: %d/3"
 }
 L:SetOptionLocalization{
@@ -69,8 +69,8 @@ L:SetOptionLocalization{
 	WarnShatter	= "Announce Shatter status",
 }
 L:SetMiscLocalization{
-	Phase4 	= "begins to crack",
-	Phase5 	= "looks ready to shatter",
+	Phase4 	= "Нечистотон начинает раскалываться!",
+	Phase5 	= "Нечистотон едва держится!",
 	Phase6 	= "Explodes."
 }
 -------------
@@ -82,7 +82,7 @@ L:SetGeneralLocalization{
 	name = "Принцесса Хухуран"
 }
 L:SetWarningLocalization{
-	WarnAcid	= "%s on >%s< (%s)"
+	WarnAcid	= "%s на >%s< (%s)"
 }
 L:SetOptionLocalization{
 	WarnAcid	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(26180, GetSpellInfo(26180) or "unknown")
@@ -93,7 +93,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
-	name = "Twin Emperors"
+	name = "Императоры-близнецы"
 }
 L:SetMiscLocalization{
 	Veklor = "Император Век'лор",
@@ -108,8 +108,22 @@ L = DBM:GetModLocalization("CThun")
 L:SetGeneralLocalization{
 	name = "К'Тун"
 }
+L:SetWarningLocalization{
+	WarnEyeTentacle 	= "Появляются глазные отростки!",
+	WarnClawTentacle	= "Появляется когтещупальце!",
+	WarnGiantEyeTentacle	= "Появляется гигантский глазной отросток!",
+	WarnGiantClawTentacle	= "Появляется гигантское когтещупальце!",
+	WarnWeakened 		= "К'Тун ослаблен! Бейте его!"
+}
+L:SetTimerLocalization{
+	TimerEyeTentacle	= "Глазных отроски",
+	TimerGiantEyeTentacle	= "Гигантский глазной отросток",
+	TimerClawTentacle	= "Когтещупальце",
+	TimerGiantClawTentacle	= "Гигантское когтещупальце",
+	TimerWeakened		= "К'Тун ослаблен"
+}
 L:SetOptionLocalization{
-	RangeFrame	= "Show range frame"
+	RangeFrame	= "Показывать окно дистанции"
 }
 ----------------
 -- Ouro --
@@ -120,20 +134,20 @@ L:SetGeneralLocalization{
 	name = "Оуро"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submerge",
-	WarnEmerge			= "Emerge",
-	WarnSubmergeSoon	= "Submerge soon",
-	WarnEmergeSoon		= "Emerge soon"
+	WarnSubmerge		= "Закапывание",
+	WarnEmerge			= "Появление",
+	WarnSubmergeSoon	= "Скоро закапывание",
+	WarnEmergeSoon		= "Скоро появление"
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submerge",
-	TimerEmerge			= "Emerge"
+	TimerSubmerge		= "Закапывание",
+	TimerEmerge			= "Появление"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Show warning for submerge",
-	WarnSubmergeSoon	= "Show pre-warning for submerge",
-	TimerSubmerge		= "Show timer for submerge",
-	WarnEmerge			= "Show warning for emerge",
-	WarnEmergeSoon		= "Show pre-warning for emerge",
-	TimerEmerge			= "Show timer for emerge"
+	WarnSubmerge		= "Показывать предупреждение о закапывании",
+	WarnSubmergeSoon	= "Предупреждать заранее о закапывании",
+	TimerSubmerge		= "Показывать таймер до закапывания",
+	WarnEmerge			= "Показывать предупреждение о появлении",
+	WarnEmergeSoon		= "Предупреждать заранее о появлении",
+	TimerEmerge			= "Показывать таймер до появления"
 }
