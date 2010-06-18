@@ -23,14 +23,14 @@ mod:RegisterEvents(
 )
 
 
-local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1)
+local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1, 24173)
 local warnHeal			= mod:NewCastAnnounce(24208)
 local warnBlind			= mod:NewTargetAnnounce(21060)
 local warnGouge			= mod:NewTargetAnnounce(12540)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnAdds			= mod:NewSpellAnnounce(24183)
 
-local timerSimulKill	= mod:NewTimer(15, "TimerSimulKill")
+local timerSimulKill	= mod:NewTimer(15, "TimerSimulKill", 24173)
 local timerHeal			= mod:NewCastTimer(4, 24208)
 local timerBlind		= mod:NewTargetTimer(10, 21060)
 local timerGouge		= mod:NewTargetTimer(4, 12540)
