@@ -52,7 +52,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnSimulKill	= "Announce first mob down",
+	WarnSimulKill	= "Announce first mob down, resurrection soon",
 	TimerSimulKill	= "Show timer for priest resurrection"
 })
 
