@@ -781,7 +781,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PortalCheck			= "Time Rifts Opened: (%d+)/18",
+	PortalCheck			= "Врат Времени открыто: (%d+)/18",
 	Shielddown			= "No! Damn this feeble, mortal coil!"
 })
 
