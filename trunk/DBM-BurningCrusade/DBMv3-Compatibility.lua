@@ -91,9 +91,18 @@ function DBMBC:ADDON_LOADED(mod)
 				category	= "BC",
 				name		= GetAddOnMetadata(i, "X-DBM-Name") or "",
 				zone		= {strsplit(",", GetAddOnMetadata(i, "X-DBM-Tab-LoadZone") or "")},
+				zoneId		= {strsplit(",", GetAddOnMetadata(i, "X-DBM-Mod-LoadZoneID") or "")},
 				v3Tab		= GetAddOnMetadata(i, "X-DBM-Tab-ID"),
 				modId		= GetAddOnInfo(i),
 			})
+		end
+		for i = #DBM.AddOns[#DBM.AddOns].zoneId, 1, -1 do
+			local id = tonumber(DBM.AddOns[#DBM.AddOns].zoneId[i])
+			if id then
+				DBM.AddOns[#DBM.AddOns].zoneId[i] = id
+			else
+				table.remove(DBM.AddOns[#DBM.AddOns].zoneId, i)
+			end
 		end
 	end
 	table.sort(DBM.AddOns, function(v1, v2) return v1.sort < v2.sort end)
@@ -393,17 +402,6 @@ function DBM.SecondsToTime(t)
 		return ("%d:%0.2d"):format(t/60, math.fmod(t, 60))
 	end
 end
-
---[[
-function DBM.Capitalize(s)
-	s = tostring(s)
-	if GetLocale() == "krKR" or GetLocale() == "zhCN" or GetLocale() == "zhTW"  or GetLocale() == "ruRU" then -- todo: this could be changed to be UTF-8 compatible
-		return s
-	else
-		return s:sub(0, 1):upper()..s:sub(2)
-	end
-end
---]]
 
 function DBM.GetBuff(unitID, buff)
 	local i = 1
