@@ -12,9 +12,15 @@
 ## X-DBM-Mod-Name-esES: Templo de Ahn'Qiraj
 ## X-DBM-Mod-Name-ruRU: Храм Ан'Киража
 ## X-DBM-Mod-Sort: 2
-## X-DBM-Mod-LoadZone: Nitram,The Temple of Ahn'Qiraj
-## X-DBM-Mod-LoadZone-esES: Nitram,Templo de Ahn'Qiraj, Ahn'Qiraj
+## X-DBM-Mod-LoadZone: Nitram,Ahn'Qiraj
+## X-DBM-Mod-LoadZone-esES: Nitram,Ahn'Qiraj
 ## X-DBM-Mod-LoadZone-ruRU: Nitram,Ан'Кираж
+## X-DBM-Mod-LoadZone-frFR: Nitram,Ahn'Qiraj
+## X-DBM-Mod-LoadZone-esMX: Nitram,Ahn'Qiraj
+## X-DBM-Mod-LoadZone-zhTW: 安其拉
+## X-DBM-Mod-LoadZone-zhCN: 安其拉
+## X-DBM-Mod-LoadZone-koKR: 안퀴라즈
+## X-DBM-Mod-LoadZone-deDE: Nitram,Ahn'Qiraj
 localization.en.lua
 localization.es.lua
 localization.ru.lua
