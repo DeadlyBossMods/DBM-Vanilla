@@ -350,7 +350,7 @@ function Kael:OnSync(msg)
 		if self.Options.WarnPhase then
 			self:Announce(DBM_KAEL_WARN_PHASE4, 1);
 		end
-		self:EndStatusBarTimer("Phase 4")
+		self:EndStatusBarTimer("Phase 4");
 		self:ScheduleSelf(55, "BarrierWarn");
 		self:StartStatusBarTimer(60, "Next Shock Barrier", "Interface\\Icons\\Spell_Nature_LightningShield");
 		self:StartStatusBarTimer(50, "Phoenix", "Interface\\Icons\\Spell_FireResistanceTotem_01");
@@ -360,6 +360,8 @@ function Kael:OnSync(msg)
 		if self.Options.WarnPhase then
 			self:Announce(DBM_KAEL_WARN_PHASE5, 1);
 		end
+		self:EndStatusBarTimer("Next Shock Barrier");
+		self:UnScheduleSelf("BarrierWarn");
 		gravityLapse = false;
 		self:ScheduleSelf(53, "GravityWarn");
 		self:StartStatusBarTimer(58, "Next Gravity Lapse", "Interface\\Icons\\Spell_Magic_FeatherFall");
