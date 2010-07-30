@@ -58,11 +58,13 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnPursue		= "Pursue on >%s<",
-	SpecWarnPursue	= "Pursue on you"
+	SpecWarnPursue	= "Pursue on you",
+	WarnDismember	= "%s on >%s< (%s)"
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Announce pursue targets",
-	SpecWarnPursue	= "Show special warning when you are being pursued"
+	SpecWarnPursue	= "Show special warning when you are being pursued",
+	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unknown"),	
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "%s sets eyes on %s!"
