@@ -11,8 +11,8 @@ mod:RegisterEvents(
 
 local warnSupreme	= mod:NewSpellAnnounce(25176, 4)
 local warnSupremeSoon	= mod:NewSoonAnnounce(25176, 3)
---local warnVulnerable	= mod:NewAnnounce("WarnVulnerable", 3)
---local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable")
+local warnVulnerable	= mod:NewAnnounce("WarnVulnerable", 3)
+local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable")
 
 function mod:OnCombatStart(delay)
 	--warnSupremeSoon:Schedule(25)
