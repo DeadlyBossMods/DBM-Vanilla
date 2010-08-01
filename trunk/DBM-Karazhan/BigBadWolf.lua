@@ -38,11 +38,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.RRHIcon then
 			self:SetIcon(targetname, 8, 20)
 		end
-	elseif args:IsSpellID(30752) time() - lastFear > 2 then
+	elseif args:IsSpellID(30752) and GetTime() - lastFear > 2 then
 		warningFear:Show()
 		warningFearSoon:Cancel()
 		warningFearSoon:Schedule(19)
 		timerFearCD:Start()
-		lastFear = time()
+		lastFear = GetTime()
 	end
 end

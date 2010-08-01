@@ -6,7 +6,7 @@ mod:SetCreatureID(15688)
 
 mod:SetBossHealthInfo(
 	15688, L.name,
-	17229, L.Kilrek,
+	17229, L.Kilrek
 )
 
 mod:RegisterCombat("yell", L.DBM_TI_YELL_PULL)
