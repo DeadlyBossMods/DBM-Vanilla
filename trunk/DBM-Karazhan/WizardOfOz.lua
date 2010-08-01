@@ -1,60 +1,73 @@
-local Oz = DBM:NewBossMod("Oz", DBM_OZ_NAME, DBM_OZ_DESCRIPTION, DBM_KARAZHAN, DBM_KARAZHAN_TAB, 7);
+local mod	= DBM:NewMod("Oz", "Karazhan")
+local L		= mod:GetLocalizedStrings()
 
-Oz.Version			= "1.0";
-Oz.Author			= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(18168)
+mod:RegisterCombat("yell", DBM_OZ_YELL_DOROTHEE)
+mod:SetMinCombatTime(25)
 
-Oz:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_CAST_START"
-);
+mod:RegisterEvents(
+	"SPELL_CAST_START",
+	"CHAT_MSG_MONSTER_YELL"
+)
 
-Oz:SetCreatureID(18168)
-Oz:RegisterCombat("yell", DBM_OZ_YELL_DOROTHEE)
-Oz:SetMinCombatTime(25)
+local WarnRoar		= mod:NewAnnounce("DBM_OZ_WARN_ROAR", 2, nil, nil, false)
+local WarnStrawman	= mod:NewAnnounce("DBM_OZ_WARN_STRAWMAN", 2, nil, nil, false)
+local WarnTinhead	= mod:NewAnnounce("DBM_OZ_WARN_TINHEAD", 2, nil, nil, false)
+local WarnTido		= mod:NewAnnounce("DBM_OZ_WARN_TITO", 2, nil, nil, false)
+local WarnCrone		= mod:NewAnnounce("DBM_OZ_WARN_CRONE", 2, nil, nil, false)
 
-Oz:AddOption("RangeCheck", true, DBM_OZ_OPTION_1);
+local timerRoar		= mod:NewTimer(14.5, "DBM_OZ_WARN_ROAR", "Interface\\Icons\\Ability_Druid_ChallangingRoar", nil, false)
+local timerStrawman	= mod:NewTimer(24, "DBM_OZ_WARN_STRAWMAN", "Interface\\Icons\\INV_Helmet_34", nil, false)
+local timerTinhead	= mod:NewTimer(33, "DBM_OZ_WARN_TINHEAD", "Interface\\Icons\\INV_Helmet_02", nil, false)
+local timerTito		= mod:NewTimer(47.5, "DBM_OZ_WARN_TITO", "Interface\\Icons\\Ability_Mount_WhiteDireWolf", nil, false)
 
-Oz:AddBarOption("Roar")
-Oz:AddBarOption("Strawman")
-Oz:AddBarOption("Tinhead")
-Oz:AddBarOption("Tito")
+mod:AddBoolOption("AnnounceBosses", true, "announce")
+mod:AddBoolOption("ShowBossTimers", true, "timer")
+mod:AddBoolOption("DBM_OZ_OPTION_1")
 
-function Oz:OnCombatStart(delay)
-	self:StartStatusBarTimer(14.5 - delay, "Roar", "Interface\\Icons\\Ability_Druid_ChallangingRoar");
-	self:StartStatusBarTimer(24 - delay, "Strawman", "Interface\\Icons\\INV_Helmet_34");
-	self:StartStatusBarTimer(33 - delay, "Tinhead", "Interface\\Icons\\INV_Helmet_02");
-	self:StartStatusBarTimer(47.5 - delay, "Tito", "Interface\\Icons\\Ability_Mount_WhiteDireWolf");
-end
-
-function Oz:OnCombatEnd()
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Hide();
+function mod:OnCombatStart(delay)
+	if self.Options.ShowBossTimers then
+		timerRoar:Start(-delay)
+		timerStrawman:Start(-delay)
+		timerTinhead:Start(-delay)
+		timerTito:Start(-delay)
 	end
 end
 
-function Oz:OnEvent(event, arg1)
-	if event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 == DBM_OZ_YELL_ROAR then
-			self:Announce(DBM_OZ_WARN_ROAR, 2);
-		elseif arg1 == DBM_OZ_YELL_STRAWMAN then
-			self:Announce(DBM_OZ_WARN_STRAWMAN, 2);
-		elseif arg1 == DBM_OZ_YELL_TINHEAD then
-			self:Announce(DBM_OZ_WARN_TINHEAD, 2);
-		elseif arg1 == DBM_OZ_YELL_CRONE then
-			self:Announce(DBM_OZ_WARN_CRONE, 3);
-			if self.Options.RangeCheck then
-				DBM_Gui_DistanceFrame_Show();
-			end
+function mod:OnCombatEnd()
+	if self.Options.DBM_OZ_OPTION_1 then
+		DBM.RangeCheck:Hide()
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.DBM_OZ_YELL_ROAR then
+		if self.Options.AnnounceBosses then
+			WarnRoar:Show()
 		end
-		
-	elseif event == "SPELL_CAST_START" then
-		if arg1.spellId == 31014 then
-			if not self:GetStatusBarTimerTimeLeft("Tito") then
-				self:StartStatusBarTimer(47.5, "Tito", "Interface\\Icons\\Ability_Mount_WhiteDireWolf");
-			end
-			self:UpdateStatusBarTimer("Tito", 46.5, 47.5);
-			
-			self:Announce(DBM_OZ_WARN_TITO, 2);
+	elseif msg == L.DBM_OZ_YELL_STRAWMAN then
+		if self.Options.AnnounceBosses then
+			WarnStrawman:Show()
+		end
+	elseif msg == L.DBM_OZ_YELL_TINHEAD then
+		if self.Options.AnnounceBosses then
+			WarnTinhead:Show()
+		end
+	elseif msg == L.DBM_OZ_YELL_CRONE then
+		if self.Options.AnnounceBosses then
+			WarnCrone:Show()
+		end
+		if self.Options.DBM_OZ_OPTION_1 then
+			DBM.RangeCheck:Show(10)
+		end
+	end
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(31014) then
+		if self.Options.AnnounceBosses then
+			WarnTido:Schedule(1)
 		end
 	end
 end

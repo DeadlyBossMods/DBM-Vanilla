@@ -1,49 +1,85 @@
-local TerestianIllhoof = DBM:NewBossMod("TerestianIllhoof", DBM_TI_NAME, DBM_TI_DESCRIPTION, DBM_KARAZHAN, DBM_KARAZHAN_TAB, 9);
+local mod	= DBM:NewMod("TerestianIllhoof", "Karazhan")
+local L		= mod:GetLocalizedStrings()
 
-TerestianIllhoof.Version			= "1.0";
-TerestianIllhoof.Author			= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(15688)
 
-TerestianIllhoof:RegisterEvents(
+mod:SetBossHealthInfo(
+	15688, L.name,
+	17229, L.Kilrek,
+)
+
+mod:RegisterCombat("yell", L.DBM_TI_YELL_PULL)
+
+mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED",
+	"SPELL_CAST_SUCCESS",
 	"CHAT_MSG_MONSTER_EMOTE",
-	"SPELL_CAST_SUCCESS"
-);
+	"UNIT_DIED"
+)
 
-TerestianIllhoof:SetCreatureID(15688)
-TerestianIllhoof:RegisterCombat("yell", DBM_TI_YELL_PULL)
+local warningWeakened	= mod:NewTargetAnnounce(30065, 2)
+local warningImpSoon	= mod:NewSoonAnnounce(30066, 2)
+local warningImp		= mod:NewSpellAnnounce(30066, 3)
+local warningSacSoon	= mod:NewSoonAnnounce(30115, 3)
+local warningSacrifice	= mod:NewTargetAnnounce(30115, 4)
 
-TerestianIllhoof:AddOption("WarnSoon", true, DBM_TI_OPTION_1);
+local specWarnSacrifice	= mod:NewSpecialWarningYou(30115)
 
-TerestianIllhoof:AddBarOption("Weakened")
-TerestianIllhoof:AddBarOption("Sacrifice")
+local timerWeakened		= mod:NewBuffActiveTimer(31, 30065)
+local timerSacrifice	= mod:NewTargetTimer(30, 30115)
+local timerSacrificeCD	= mod:NewNextTimer(43, 30115)
 
-function TerestianIllhoof:OnEvent(event, arg1)
-	if event == "SacrificeWarning" then
-		self:Announce(DBM_TI_SACRIFICE_SOON, 2);
-	
-	elseif event == "CHAT_MSG_MONSTER_EMOTE" then
-		if arg1 == DBM_TI_EMOTE_IMP then
-			self:StartStatusBarTimer(31, "Weakened", "Interface\\Icons\\Spell_Shadow_BloodBoil");
-			self:Announce(DBM_TI_WEAKENED_WARN, 1);
-			self:ScheduleSelf(26, "ImpRespawn", "soon");
+local berserkTimer		= mod:NewBerserkTimer(600)
+
+mod:AddBoolOption("HealthFrame", true)
+
+function mod:OnCombatStart(delay)
+	berserkTimer:Start(-delay)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(30115) then
+		DBM.BossHealth:AddBoss(17248, L.DChains)
+		warningSacrifice:Show(args.destName)
+		timerSacrifice:Start(args.destName)
+		timerSacrificeCD:Start()
+		warningSacSoon:Cancel()
+		warningSacSoon:Schedule(38)
+		if args:IsPlayer() then
+			specWarnSacrifice:Show()
 		end
-	elseif event == "ImpRespawn" and self.Options.WarnSoon then
-		if arg1 == "soon" then
-			self:Announce(DBM_TI_IMP_SOON, 1);
-		end
-	elseif event == "SPELL_CAST_SUCCESS" then
-		if arg1.spellId == 30066 and self.Options.WarnSoon then
-			self:Announce(DBM_TI_IMP_RESPAWNED, 2);
-		end
-	elseif event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 30115 then
-			local target = arg1.destName
-			if target then
-				self:Announce(string.format(DBM_TI_SACRIFICE_WARN, target), 3);
-				self:StartStatusBarTimer(43, "Sacrifice", "Interface\\Icons\\Spell_Shadow_AntiMagicShell");
-				self:UnScheduleSelf("SacrificeWarning", "soon");
-				self:ScheduleSelf(41, "SacrificeWarning", "soon");
-			end
-		end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(30115) then
+		timerSacrifice:Cancel(args.destName)
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(30066) then
+		warningImpSoon:Cancel()
+		warningImp:Show()
+		DBM.BossHealth:AddBoss(17229, L.Kilrek)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	if msg == L.DBM_TI_EMOTE_IMP then
+		warningWeakened:Show()
+		timerWeakened:Start()
+		warningImpSoon:Schedule(26)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 17229 then--Kil'rek
+		DBM.BossHealth:RemoveBoss(cid)
+	elseif cid == 17248 then--Demon Chains
+		DBM.BossHealth:RemoveBoss(cid)
 	end
 end

@@ -1,52 +1,99 @@
-﻿local RaJ = DBM:NewBossMod("RomuloAndJulianne", DBM_RJ_NAME, DBM_RJ_DESCRIPTION, DBM_KARAZHAN, DBM_KARAZHAN_TAB, 6);
---Edit by Nightkiller@日落沼澤(kc10577@巴哈;Azael)
-RaJ.Version			= "1.1";
-RaJ.Author			= "Tandanu";
+﻿local mod	= DBM:NewMod("RomuloAndJulianne", "Karazhan")
+local L		= mod:GetLocalizedStrings()
 
-RaJ:RegisterEvents(
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(17534, 17533)
+
+mod:RegisterCombat("combat")--May need changing to yell if kill detection is funny.
+mod:SetMinCombatTime(25)--guesswork
+mod:SetWipeTime(25)--guesswork
+
+mod:RegisterEvents(
+	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED_DOSE",
+	"SPELL_AURA_REMOVED",
 	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_CAST_START"
-);
+	"UNIT_DIED"
+)
 
-RaJ:SetCreatureID(17534)
-RaJ:RegisterCombat("combat", 17534, 17533)
-RaJ:SetMinCombatTime(25)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warningHeal		= mod:NewCastAnnounce(30878, 4)
+local warningDaring		= mod:NewTargetAnnounce(30841, 3)
+local warningDevotion	= mod:NewTargetAnnounce(30887, 3)
+local warningPosion		= mod:NewAnnounce("warningPosion", 2, 30830, mod:IsHealer() or mod:IsTank())
 
-RaJ:AddOption("WarnHeal", true, DBM_RJ_OPTION_1);
-RaJ:AddOption("PosionWarn", true, DBM_RJ_OPTION_2);
+local timerHeal			= mod:NewCastTimer(2.5, 30878)
+local timerDaring		= mod:NewTargetTimer(8, 30841)
+local timerDevotion		= mod:NewTargetTimer(10, 30887)
 
-RaJ:AddBarOption("Heal")
+mod:AddBoolOption("HealthFrame", true)
 
-function RaJ:OnEvent(event, arg1)
-	if event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 30841 then
-			self:Announce(DBM_RJ_DARING_WARN, 2);
-		elseif arg1.spellId == 30887 then
-			self:Announce(DBM_RJ_DEVOTION_WARN, 2);
-		elseif arg1.spellId == 30822 or arg1.spellId == 30830 then
-			if target and self.Options.PosionWarn then
-				self:Announce(string.format(DBM_RJ_POISON_WARN, tostring(arg1.destName)), 2);
-			end
-		end
-	elseif event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 == DBM_RJ_PHASE2_YELL then
-			self:ScheduleSelf(3, "SetPhase");
-		end
-	elseif event == "SetPhase" then
-		self.Phase = 2; --needed for combat end detection, because the "xyz dies." event is fired when you kill one of them in phase 1.
-	elseif event == "SPELL_CAST_START" then
-		if arg1.spellId == 30878 and self.Options.WarnHeal then
-			self:Announce(DBM_RJ_HEAL_WARN);
-			self:StartStatusBarTimer(2, "Heal", "Interface\\Icons\\Spell_Holy_Heal");
-		end
+local phases = {}
+
+local function updateHealthFrame(phase)--WIP
+	if phases[phase] then
+		return
+	end
+	phases[phase] = true
+	if phase == 1 then
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:AddBoss(17534, L.Julianne)
+	elseif phase == 2 then--UNIT_DIED event triggers not tested yet
+		DBM.BossHealth:AddBoss(17533, L.Romulo)
+	elseif phase == 3 then
+		DBM.BossHealth:AddBoss(17534, L.Julianne)
+		DBM.BossHealth:AddBoss(17533, L.Romulo)
 	end
 end
 
-function RaJ:OnCombatStart()
-	self.Phase = 0;
+function mod:OnCombatStart(delay)
+	updateHealthFrame(1)
 end
 
-function RaJ:OnCombatEnd()
-	self.Phase = 0;
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(30878) then
+		warningHeal:Show()
+		timerHeal:Start()
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(30822, 30830) then
+		warningPosion:Show(args.spellName, args.destName, args.amount or 1)
+	elseif args:IsSpellID(30841) then
+		warningDaring:Show(args.destName)
+		timerDaring:Start(args.destName)
+	elseif args:IsSpellID(30887) then
+		warningDevotion:Show(args.destName)
+		timerDevotion:Start(args.destName)
+	end
+end
+
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(30841) then
+		timerDaring:Cancel(args.destName)
+	elseif args:IsSpellID(30887) then
+		timerDevotion:Cancel(args.destName)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == DBM_RJ_PHASE2_YELL then
+		warnPhase2:Show()
+		updateHealthFrame(3)
+	end
+end
+
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 17534 then
+		DBM.BossHealth:RemoveBoss(cid)
+		updateHealthFrame(2)
+	elseif cid == 17533 then
+		DBM.BossHealth:RemoveBoss(cid)
+	end
 end

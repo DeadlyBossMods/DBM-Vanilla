@@ -1,69 +1,106 @@
-local Prince = DBM:NewBossMod("Prince", DBM_PRINCE_NAME, DBM_PRINCE_DESCRIPTION, DBM_KARAZHAN, DBM_KARAZHAN_TAB, 12);
+local mod	= DBM:NewMod("Prince", "Karazhan")
+local L		= mod:GetLocalizedStrings()
 
-Prince.Version			= "1.0";
-Prince.Author			= "Tandanu";
-Prince.Infernals 		= 0;
-Prince.Phase			= 1;
-Prince.LastEnfeeble		= 0;
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(15690)
+mod:RegisterCombat("yell", DBM_PRINCE_YELL_PULL)
 
-Prince:RegisterEvents(
-	"SPELL_AURA_APPLIED",
+mod:RegisterEvents(
 	"SPELL_CAST_START",
+	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL"
-);
+)
 
-Prince:SetCreatureID(15690)
-Prince:RegisterCombat("yell", DBM_PRINCE_YELL_PULL)
+local warnPhase2				= mod:NewPhaseAnnounce(2)
+local warnPhase3				= mod:NewPhaseAnnounce(3)
+local warningNovaCast			= mod:NewCastAnnounce(30852, 3)
+local warningInfernalSoon		= mod:NewSoonAnnounce(37277, 2)
+local warningInfernal			= mod:NewSpellAnnounce(37277, 3)
+local warningEnfeeble			= mod:NewTargetAnnounce(30843, 4)
+local warningAmpMagic			= mod:NewTargetAnnounce(39095, 3)
+local warningSWP				= mod:NewTargetAnnounce(30898, 2, nil, false)
 
-Prince:AddOption("WarnNova", true, DBM_PRINCE_OPTION_1);
-Prince:AddOption("WarnEnfeeble", true, DBM_PRINCE_OPTION_2);
-Prince:AddOption("SendWhisper", false, DBM_PRINCE_OPTION_3);
-Prince:AddOption("WarnSWP", true, DBM_PRINCE_OPTION_4);
-Prince:AddOption("WarnInfernal", true, DBM_PRINCE_OPTION_5);
+local specWarnEnfeeble			= mod:NewSpecialWarningYou(37277)
+local specWarnNova				= mod:NewSpecialWarningRun(30852, mod:IsMelee())
+
+local timerNovaCast				= mod:NewNextTimer(2, 30852)
+local timerNextInfernal			= mod:NewNextTimer(45, 37277)
+local timerEnfeeble				= mod:NewBuffActiveTimer(8, 30843)
+
+local phase	= 0
+local enfeebleTargets = {}
+local firstInfernal = false
 
 Prince:AddBarOption("Infernal")
-Prince:AddBarOption("Enfeeble")
-Prince:AddBarOption("Shadow Nova")
 
-function Prince:OnCombatStart(delay)
-	Prince.Infernals 		= 0;
-	Prince.Phase			= 1;
-	self:StartStatusBarTimer(40 - delay, "Infernal", "Interface\\Icons\\Spell_Shadow_SummonInfernal");
+local function showEnfeebleWarning()
+	warningEnfeeble:Show(table.concat(enfeebleTargets, "<, >"))
+	table.wipe(enfeebleTargets)
 end
 
-function Prince:OnCombatEnd()
-	Prince.Infernals 		= 0;
-	Prince.Phase			= 1;
+function mod:OnCombatStart(delay)
+	phase = 1
+	timerNextInfernal:Start(40-delay)
+	table.wipe(enfeebleTargets)
+	firstInfernal = false
 end
 
-function Prince:OnEvent(event, arg1)
-	if event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 30843 then
-			local target = arg1.destName
-			if target then
-				if self.Options.SendWhisper and DBM.Rank >= 1 then
-					self:SendHiddenWhisper(DBM_PRINCE_WHISP_ENFEEBLE, target)
-				end
-				if (GetTime() - self.LastEnfeeble) > 12 then
-					if self.Options.WarnEnfeeble then
-						self:Announce(DBM_PRINCE_WARN_ENFEEBLE, 3);
-					end
-					self:StartStatusBarTimer(8, "Enfeeble", "Interface\\Icons\\Spell_Shadow_LifeDrain02")
-					self.LastEnfeeble = GetTime();
-				end
-			end
-		elseif arg1.spellId == 30854 or arg1.spellId == 30898 then
-			if self.Options.WarnSWP then
-				self:Announce(string.format(DBM_PRINCE_WARN_SWP, tostring(arg1.destName)), 1);
-			end
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(30852) then
+		warningNovaCast:Show()
+		timerNovaCast:Start()
+		specWarnNova:Show()
+	end
+end
+
+function mod:Infernals()
+	warningInfernal:Show()
+	if Phase == 3 then
+		timerNextInfernal:Start(22.5)
+	else		
+		timerNextInfernal:Start()
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(30854, 30898) then
+		warningSWP:Show(args.destName)
+	elseif args:IsSpellID(39095) then
+		warningAmpMagic:Show(args.destName)
+	elseif args:IsSpellID(30843) then
+		enfeebleTargets[#enfeebleTargets + 1] = args.destName
+		timerEnfeeble:Start()
+		if args:IsPlayer() then
+			specWarnEnfeeble:Show()
 		end
-	elseif event == "SPELL_CAST_START" then
-		if arg1.spellId == 30852 then
-			if self.Options.WarnNova then
-				self:Announce(DBM_PRINCE_WARN_NOVA, 3);
-			end
-			self:StartStatusBarTimer(2, "Shadow Nova", "Interface\\Icons\\Spell_Shadow_Shadowfury");
+		self:Unschedule(showEnfeebleWarning)
+		self:Schedule(0.3, showEnfeebleWarning)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == DBM_PRINCE_YELL_INF1 or msg == DBM_PRINCE_YELL_INF2 then
+		warningInfernalSoon:Schedule(11.5)
+		self:ScheduleMethod(18.5, "Infernals")--Infernal actually spawns 18.5sec after yell.
+		if not firstInfernal then
+			timerNextInfernal:Start(18.5)
+			firstInfernal = true
 		end
+		if Phase == 3 then
+			timerNextInfernal:Update(3.5, 22.5)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.
+		else		
+			timerNextInfernal:Update(26.5, 45)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.
+		end
+	elseif msg == DBM_PRINCE_YELL_P3 then
+		phase = 3
+		warnPhase3:Show()
+	elseif msg == DBM_PRINCE_YELL_P2 then
+		warnPhase2:Show()
+	end
+end
+
+--Not sure if i implimented this right, or if it update bar works with generics so keeping old code commented for reference in case this needs fixing later.
+--[[function Prince:OnEvent(event, arg1)
 	elseif event == "CHAT_MSG_MONSTER_YELL" then
 		if arg1 == DBM_PRINCE_YELL_INF1 or arg1 == DBM_PRINCE_YELL_INF2 then
 			self:ScheduleSelf(11.5, "InfernalSoon");
@@ -76,7 +113,7 @@ function Prince:OnEvent(event, arg1)
 			if self.Phase == 1 then
 				self:UpdateStatusBarTimer("Infernal", 26.5, 45);
 			elseif self.Phase == 3 then			
-				self:UpdateStatusBarTimer("Infernal", 4, 22.5);
+				self:UpdateStatusBarTimer("Infernal", 3.5, 22.5);
 			end
 		
 		elseif arg1 == DBM_PRINCE_YELL_P3 then
@@ -101,4 +138,4 @@ function Prince:OnEvent(event, arg1)
 			self:StartStatusBarTimer(22.5, "Infernal", "Interface\\Icons\\Spell_Shadow_SummonInfernal");
 		end
 	end
-end
+end--]]

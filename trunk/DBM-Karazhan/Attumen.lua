@@ -1,55 +1,50 @@
-local Attumen = DBM:NewBossMod("Attumen", DBM_ATH_NAME, DBM_ATH_DESCRIPTION, DBM_KARAZHAN, DBM_KARAZHAN_TAB, 1);
+local mod	= DBM:NewMod("Attumen", "Karazhan")
+local L		= mod:GetLocalizedStrings()
 
-Attumen.Version			= "1.0";
-Attumen.Author			= "Tandanu";
-Attumen.LastCurse		= 0;
-Attumen.Phase			= 1;
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(15550, 16151)--16151
+mod:RegisterCombat("combat")
+--mod:RegisterKill("yell", L.KillAttumen)
 
-Attumen:AddOption("PreWarning", false, DBM_ATH_OPTION_1)
-
-Attumen:AddBarOption("Curse")
-
-Attumen:RegisterEvents(
-	"SPELL_AURA_APPLIED",	
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL"
-);
+)
 
-Attumen:SetCreatureID(16151)
-Attumen:RegisterCombat("combat", 15550)
+local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warningCurseSoon		= mod:NewSoonAnnounce(43127, 2)
+local warningCurse			= mod:NewSpellAnnounce(43127, 3)
 
-function Attumen:OnCombatStart()
-	self.Phase = 1;
+local timerCurseCD			= mod:NewNextTimer(31, 43127)
+
+local Phase	= 1
+local lastCurse = 0
+
+function mod:OnCombatStart(delay)
+	Phase = 1
 end
 
-function Attumen:OnCombatEnd()
-	self.Phase = 1;
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(43127, 29833) and GetTime() - lastCurse > 5 then
+		warningCurse:Show()
+		timerCurseCD:Show()
+		warningCurseSoon:Cancel()
+		if Phase == 2 then
+			timerCurseCD:Start(41)
+			warningCurseSoon:Schedule(36)
+		else
+			timerCurseCD:Start()
+			warningCurseSoon:Schedule(26)
+		end
+		lastCurse = GetTime()
+	end
 end
 
-function Attumen:OnEvent(event, arg1)
-	if event == "CurseWarning" and arg1 and self.Options.PreWarning then
-		self:Announce(DBM_ATH_CURSE_SOON, 1);
-		
-	elseif event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 == DBM_ATH_YELL_1 then
-			self.Phase = 2;
-			self:UnScheduleSelf("CurseWarning", 5);
-			self:EndStatusBarTimer("Curse");
-		end
-		
-	elseif event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 43127 or arg1.spellId == 29833 then
-			self:EndStatusBarTimer("Curse");
-			self:UnScheduleSelf("CurseWarning", 5);
-			self:Announce(DBM_ATH_WARN_CURSE, 2);
-			self.LastCurse = GetTime();
-			
-			if self.Phase == 2 then
-				self:StartStatusBarTimer(41, "Curse", "Interface\\Icons\\Spell_Holy_SenseUndead");
-				self:ScheduleSelf(36, "CurseWarning", 5);
-			else
-				self:StartStatusBarTimer(31, "Curse", "Interface\\Icons\\Spell_Holy_SenseUndead");
-				self:ScheduleSelf(26, "CurseWarning", 5);
-			end
-		end
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.DBM_ATH_YELL_1 then
+		Phase = 2
+		warnPhase2:Show()
+		warningCurseSoon:Cancel()
+		timerCurseCD:Cancel()
 	end
 end
