@@ -55,7 +55,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(30129) and args:IsPlayer() then
 		specWarnCharred:Show()
-	elseif args:IsSpellID(37098) GetTime() - BoneRain > 60 then
+	elseif args:IsSpellID(37098) and GetTime() - BoneRain > 60 then
 		warningBone:Show()
 		BoneRain = GetTime()
 	elseif args:IsSpellID(30130) then

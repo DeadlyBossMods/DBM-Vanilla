@@ -167,7 +167,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_ARAN_YELL_ADDS		= "Со мной еще не покончено! Нет, у меня есть еще туз в рукаве..."",
+	DBM_ARAN_YELL_ADDS		= "Со мной еще не покончено! Нет, у меня есть еще туз в рукаве...",
 	DBM_ARAN_YELL_BLIZZ1	= "Отправляйся в холодную тьму!",
 	DBM_ARAN_YELL_BLIZZ2	= "Всех заморожу!"
 }
