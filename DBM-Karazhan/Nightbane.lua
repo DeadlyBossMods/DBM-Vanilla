@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod("Nightbane", "Karazhan")
+local mod	= DBM:NewMod("Nightbane", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
@@ -9,13 +9,8 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL",
-	"CHAT_MSG_MONSTER_EMOTE",
+	"CHAT_MSG_MONSTER_EMOTE"
 )
-
-Nightbane.Version			= "1.2";
-Nightbane.Author			= "Tandanu";
-Nightbane.BoneRain			= 0;
-Nightbane.LastYell			= 0;
 
 local warningBone			= mod:NewSpellAnnounce(30130, 3)
 local warningFearSoon		= mod:NewSoonAnnounce(36922, 2)
