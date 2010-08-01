@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod("Prince", "Karazhan")
+local mod	= DBM:NewMod("Prince", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
@@ -30,8 +30,6 @@ local timerEnfeeble				= mod:NewBuffActiveTimer(8, 30843)
 local phase	= 0
 local enfeebleTargets = {}
 local firstInfernal = false
-
-Prince:AddBarOption("Infernal")
 
 local function showEnfeebleWarning()
 	warningEnfeeble:Show(table.concat(enfeebleTargets, "<, >"))
