@@ -1,70 +1,59 @@
-local Maiden = DBM:NewBossMod("Maiden", DBM_MOV_NAME, DBM_MOV_DESCRIPTION, DBM_KARAZHAN, DBM_KARAZHAN_TAB, 3);
+local mod	= DBM:NewMod("Maiden", "Karazhan")
+local L		= mod:GetLocalizedStrings()
 
-Maiden.Version		= "1.2";
-Maiden.Author		= "Tandanu";
-Maiden.MinVersionToSync = 2.7
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(16457)
+mod:RegisterCombat("yell", L.DBM_MOV_YELL_PULL)
 
-Maiden:AddOption("HolyFireWarn", true, DBM_MOV_OPTION_2);
-Maiden:AddOption("RangeCheck", true, DBM_MOV_OPTION_1, function()
-	DBM:GetMod("Maiden").Options.RangeCheck = not DBM:GetMod("Maiden").Options.RangeCheck;
-	
-	if DBM:GetMod("Maiden").Options.RangeCheck and DBM:GetMod("Maiden").InCombat then
-		DBM_Gui_DistanceFrame_Show();
-	elseif not DBM:GetMod("Maiden").Options.RangeCheck and DBM:GetMod("Maiden").InCombat then
-		DBM_Gui_DistanceFrame_Hide();
-	end
-end);
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED",
+	"CHAT_MSG_MONSTER_YELL"
+)
 
-Maiden:AddBarOption("Repentance")
-Maiden:AddBarOption("Next Repentance")
+local warningRepentanceSoon	= mod:NewSoonAnnounce(29511, 2)
+local warningRepentance		= mod:NewSpellAnnounce(29511, 3)
+local warningHolyFire		= mod:NewTargetAnnounce(29522, 3)
 
-Maiden:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_AURA_APPLIED"
-);
+local timerRepentance		= mod:NewBuffActiveTimer(12, 29511)
+local timerRepentanceCD		= mod:NewCDTimer(33, 29511)
+local timerHolyFire			= mod:NewTargetTimer(12, 29522)
 
-Maiden:SetCreatureID(16457)
-Maiden:RegisterCombat("yell", DBM_MOV_YELL_PULL)
+mod:AddBoolOption("RangeFrame")
 
-function Maiden:OnCombatStart()
-	self:EndStatusBarTimer("Repentance");
-	self:StartStatusBarTimer(45, "Next Repentance", "Interface\\Icons\\Spell_Holy_PrayerOfHealing");
-	self:ScheduleSelf(40, "RepWarning");
-	
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Show();
+function mod:OnCombatStart(delay)
+	timerRepentanceCD:Start(45-delay)
+	warningRepentanceSoon:Schedule(40-delay)
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Show(10)
 	end
 end
 
-function Maiden:OnCombatEnd()
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Hide();
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
 	end
 end
 
-function Maiden:OnEvent(event, arg1)
-	if event == "RepWarning" then
-		self:Announce(DBM_MOV_WARN_REP_SOON, 1);
-		
-	elseif event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 and (string.find(arg1, DBM_MOV_YELL_REP_1) or string.find(arg1, DBM_MOV_YELL_REP_2)) then
-			self:SendSync("Rep");
-		end
-		
-	elseif event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 29522 then
-			self:Announce(string.format(DBM_MOV_WARN_HOLYFIRE, tostring(arg1.destName)), 2);
-		end
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(29522) then
+		warningHolyFire:Show(args.destName)
+		timerHolyFire:Start(args.destName)
 	end
 end
 
-function Maiden:OnSync(msg)
-	if msg == "Rep" then
-		self:Announce(DBM_MOV_WARN_REP, 3);
-		self:EndStatusBarTimer("Next Repentance");
-		self:UnScheduleSelf("RepWarning");
-		self:StartStatusBarTimer(33, "Next Repentance", "Interface\\Icons\\Spell_Holy_PrayerOfHealing");
-		self:StartStatusBarTimer(12, "Repentance", "Interface\\Icons\\Spell_Holy_PrayerOfHealing");
-		self:ScheduleSelf(29, "RepWarning");
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(29522) then
+		timerHolyFire:Cancel(args.destName)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.DBM_MOV_YELL_REP_1 or msg == L.DBM_MOV_YELL_REP_2 then--Does this really need a yell trigger?
+		warningRepentanceSoon:Cancel()
+		warningRepentance:Show()
+		timerRepentance:Start()
+		timerRepentanceCD:Start()
+		warningRepentanceSoon:Schedule(28)
 	end
 end

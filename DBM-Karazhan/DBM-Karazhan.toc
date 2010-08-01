@@ -1,28 +1,19 @@
 ﻿## Interface: 30300
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Karazhan|r
-## Author: Tandanu
 ## LoadOnDemand: 1
-## RequiredDeps: DBM-Core, DBM-BurningCrusade
+## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMKarazhan_SavedVars, DBMKarazhan_SavedStats
-## X-DBM-BC-AddOn: 1
-## X-DBM-Tab-ID: Karazhan
-## X-DBM-Tab-BCTab: 1
-## X-DBM-Tab-Sort: 7
-## X-DBM-Name: Karazhan
-## X-DBM-Name-zhCN: 卡拉赞
-## X-DBM-Name-zhTW: 卡拉贊
-## X-DBM-Name-ruRU: Каражан
-## X-DBM-Tab-Text: Karazhan
-## X-DBM-Tab-Text-zhCN: 卡拉赞
-## X-DBM-Tab-Text-zhTW: 卡拉贊
-## X-DBM-Tab-Text-ruRU: Каражан
-## X-DBM-Tab-Title: Karazhan Boss Mods
-## X-DBM-Tab-Title-zhCN: 卡拉赞
-## X-DBM-Tab-Title-zhTW: 卡拉贊
-## X-DBM-Tab-LoadZone: Karazhan
-## X-DBM-Tab-LoadZone-zhCN: 卡拉赞
-## X-DBM-Tab-LoadZone-zhTW: 卡拉贊
-## X-DBM-Tab-LoadZone-ruRU: Каражан
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Name: Karazhan
+## X-DBM-Mod-Name-ruRU: Каражан
+## X-DBM-Mod-Name-zhTW: 卡拉贊
+## X-DBM-Mod-Name-zhCN: 卡拉赞
+## X-DBM-Mod-Sort: 7
+## X-DBM-Mod-LoadZone: Karazhan
+## X-DBM-Mod-LoadZone-zhTW: 卡拉贊
+## X-DBM-Mod-LoadZone-zhCN: 卡拉赞
+## X-DBM-Mod-LoadZone-ruRU: Каражан
 localization.en.lua
 localization.de.lua
 localization.fr.lua
