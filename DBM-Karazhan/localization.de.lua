@@ -142,7 +142,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_TI_YELL_PULL		= "Ah, Ihr kommt genau richtig. Die Rituale fangen gleich an!",
-	DBM_TI_EMOTE_IMP		= "%s stößt einen Schmerzensschrei aus und zeigt auf ihren Meister.",
 	Kilrek					= "Kil'rek",
 	DChains					= "Demon Chains"
 }

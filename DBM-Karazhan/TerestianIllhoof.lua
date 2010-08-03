@@ -9,13 +9,13 @@ mod:SetBossHealthInfo(
 	17229, L.Kilrek
 )
 
-mod:RegisterCombat("yell", L.DBM_TI_YELL_PULL)
+--mod:RegisterCombat("yell", L.DBM_TI_YELL_PULL)
+mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_DIED"
 )
 
@@ -50,6 +50,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnSacrifice:Show()
 		end
+	elseif args:IsSpellID(30065) then
+		warningWeakened:Show(args.destName)
+		timerWeakened:Start()
+		warningImpSoon:Schedule(26)
 	end
 end
 
@@ -64,14 +68,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warningImpSoon:Cancel()
 		warningImp:Show()
 		DBM.BossHealth:AddBoss(17229, L.Kilrek)
-	end
-end
-
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.DBM_TI_EMOTE_IMP then
-		warningWeakened:Show()
-		timerWeakened:Start()
-		warningImpSoon:Schedule(26)
 	end
 end
 
