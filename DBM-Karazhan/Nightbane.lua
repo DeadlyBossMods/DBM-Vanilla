@@ -31,8 +31,8 @@ mod:AddBoolOption("PrewarnGroundPhase", true, "announce")
 
 local BoneRain = 0
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg == DBM_NB_EMOTE_PULL then
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	if msg == L.DBM_NB_EMOTE_PULL then
 		timerNightbane:Start()
 	end
 end
@@ -58,15 +58,15 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == DBM_NB_YELL_AIR then
+function mod:CHAT_MSG_MONSTER_YELL(msg)--This isn't working, don't know why, gonna need to run transcriptor
+	if msg == L.DBM_NB_YELL_AIR then
 		WarnAir:Show()
 		timerAirPhase:Start()
 		if self.Options.PrewarnGroundPhase then
 			WarnNBDown1:Schedule(42)
 			WarnNBDown2:Schedule(52)
 		end
-	elseif msg == DBM_NB_YELL_GROUND or msg == DBM_NB_YELL_GROUND2 then
+	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then
 		timerAirPhase:Update("timerAirPhase", 43, 57)--this may not be needed, or even work for that matter. More so for testing purposes to see if i understood code right :)
 	end
 end

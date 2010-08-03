@@ -77,7 +77,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == DBM_PRINCE_YELL_INF1 or msg == DBM_PRINCE_YELL_INF2 then
+	if msg == L.DBM_PRINCE_YELL_INF1 or msg == L.DBM_PRINCE_YELL_INF2 then
 		warningInfernalSoon:Schedule(11.5)
 		self:ScheduleMethod(18.5, "Infernals")--Infernal actually spawns 18.5sec after yell.
 		if not firstInfernal then
@@ -89,10 +89,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		else		
 			timerNextInfernal:Update(26.5, 45)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.
 		end
-	elseif msg == DBM_PRINCE_YELL_P3 then
+	elseif msg == L.DBM_PRINCE_YELL_P3 then
 		phase = 3
 		warnPhase3:Show()
-	elseif msg == DBM_PRINCE_YELL_P2 then
+	elseif msg == L.DBM_PRINCE_YELL_P2 then
 		warnPhase2:Show()
 	end
 end

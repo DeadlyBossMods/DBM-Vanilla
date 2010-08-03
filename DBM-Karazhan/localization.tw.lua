@@ -167,9 +167,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_ARAN_YELL_ADDS		= "我還沒有結束!不，我還有一些小伎倆沒施展出來呢…",
-	DBM_ARAN_YELL_BLIZZ1		= "滾回你那冰冷的黑暗之中!",
-	DBM_ARAN_YELL_BLIZZ2		= "我會把你們全都凍死!"
 }
 
 

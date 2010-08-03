@@ -81,7 +81,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == DBM_RJ_PHASE2_YELL then
+	if msg == L.DBM_RJ_PHASE2_YELL then
 		warnPhase2:Show()
 		updateHealthFrame(3)
 	end
