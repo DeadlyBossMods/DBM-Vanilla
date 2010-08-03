@@ -3,7 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17521)
-mod:RegisterCombat("yell", DBM_BBW_YELL_1)
+mod:RegisterCombat("yell", L.DBM_BBW_YELL_1)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"

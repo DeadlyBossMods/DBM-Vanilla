@@ -3,7 +3,8 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(16457)
-mod:RegisterCombat("yell", L.DBM_MOV_YELL_PULL)
+--mod:RegisterCombat("yell", L.DBM_MOV_YELL_PULL)
+mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
@@ -19,7 +20,7 @@ local timerRepentance		= mod:NewBuffActiveTimer(12, 29511)
 local timerRepentanceCD		= mod:NewCDTimer(33, 29511)
 local timerHolyFire			= mod:NewTargetTimer(12, 29522)
 
-mod:AddBoolOption("RangeFrame")
+mod:AddBoolOption("RangeFrame", true)
 
 function mod:OnCombatStart(delay)
 	timerRepentanceCD:Start(45-delay)

@@ -142,7 +142,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_TI_YELL_PULL		= "啊，你來的正好。儀式正要開始!",
-	DBM_TI_EMOTE_IMP		= "%s痛苦的尖叫並指著他的主人。",
 	Kilrek					= "Kil'rek",
 	DChains					= "Demon Chains"
 }

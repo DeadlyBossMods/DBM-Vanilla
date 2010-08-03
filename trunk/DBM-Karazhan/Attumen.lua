@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("Attumen", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(15550, 16151)--16151
+mod:SetCreatureID(15550, 16151)
 mod:RegisterCombat("combat")
 mod:RegisterKill("yell", L.KillAttumen)
 

@@ -142,7 +142,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_TI_YELL_PULL		= "Ah, you're just in time. The rituals are about to begin!",
-	DBM_TI_EMOTE_IMP		= "%s shrieks in pain and points at his master.",
 	Kilrek					= "Kil'rek",
 	DChains					= "Demon Chains"
 }
@@ -156,7 +155,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "Do not move!"
+	DBM_ARAN_DO_NOT_MOVE	= "Flame Wreath - Do not move!"
 }
 
 L:SetTimerLocalization{
@@ -166,7 +165,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	timerSpecial			= "Show timer for special ability cooldown",
 	DBM_ARAN_DO_NOT_MOVE	= "Show special warning for $spell:30004",
-	ElementalIcons			= "Set icons on Blood Beasts",
+	ElementalIcons			= "Set icons on $spell:37053",
 	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 

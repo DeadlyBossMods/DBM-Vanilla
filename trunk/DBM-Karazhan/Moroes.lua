@@ -37,7 +37,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	end
 end
---this function does nto work, probably didn't in original mod either since this actually doesn't fire in combat log
+--this function does not work, probably didn't in original mod either since this actually doesn't fire in combat log
 --[[function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(29448) then
 		warnVanishFaded:Show()
