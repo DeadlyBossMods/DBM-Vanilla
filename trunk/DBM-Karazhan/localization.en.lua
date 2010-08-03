@@ -160,16 +160,17 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
+	timerSpecial			= "Special ability CD"
 }
 
 L:SetOptionLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "Show special warning for $spell:30004"
+	timerSpecial			= "Show timer for special ability cooldown",
+	DBM_ARAN_DO_NOT_MOVE	= "Show special warning for $spell:30004",
+	ElementalIcons			= "Set icons on Blood Beasts",
+	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 
 L:SetMiscLocalization{
-	DBM_ARAN_YELL_ADDS		= "I'm not finished yet! No, I have a few more tricks up my sleeve...",
-	DBM_ARAN_YELL_BLIZZ1	= "Back to the cold dark with you!",
-	DBM_ARAN_YELL_BLIZZ2	= "I'll freeze you all!"
 }
 
 

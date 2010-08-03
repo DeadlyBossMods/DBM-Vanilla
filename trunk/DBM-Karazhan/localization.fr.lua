@@ -167,9 +167,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_ARAN_YELL_ADDS		= "Je ne suis pas encore vaincu\194\160! Non, j\226\128\153ai encore quelques tours dans mon sac\226\128\166",
-	DBM_ARAN_YELL_BLIZZ1	= "Retournez dans les t\195\169n\195\168bres glaciales\194\160!",
-	DBM_ARAN_YELL_BLIZZ2	= "Je vais tous vous congeler\194\160!"
 }
 
 

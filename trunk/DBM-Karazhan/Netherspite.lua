@@ -57,12 +57,12 @@ do
 end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg == DBM_NS_EMOTE_PHASE_2 then
+	if msg == L.DBM_NS_EMOTE_PHASE_2 then
 		timerPortalPhase:Cancel()
 		warningBanish:Show()
 		timerBanishPhase:Start()
 		warningPortalSoon:Schedule(26)
-	elseif msg == DBM_NS_EMOTE_PHASE_1 then
+	elseif msg == L.DBM_NS_EMOTE_PHASE_1 then
 		timerBanishPhase:Cancel()
 		warningPortal:Show()
 		timerPortalPhase:Start()

@@ -167,9 +167,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_ARAN_YELL_ADDS		= "Ich bin noch nicht fertig! Nein, ich habe noch ein paar Tricks auf Lager…",
-	DBM_ARAN_YELL_BLIZZ1	= "Zurück in die eisige Finsternis mit Euch!",
-	DBM_ARAN_YELL_BLIZZ2	= "Ich werde Euch alle einfrieren!"
 }
 
 
