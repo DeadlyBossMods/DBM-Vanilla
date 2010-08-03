@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warningBone			= mod:NewSpellAnnounce(30130, 3)
+local warningBone			= mod:NewSpellAnnounce(37098, 3)
 local warningFearSoon		= mod:NewSoonAnnounce(36922, 2)
 local warningFear			= mod:NewSpellAnnounce(36922, 3)
 local warningAsh			= mod:NewTargetAnnounce(30130, 2, nil, false)
