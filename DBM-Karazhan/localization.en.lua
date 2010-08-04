@@ -54,9 +54,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_MOV_YELL_PULL	= "Your behavior will not be tolerated.",
-	DBM_MOV_YELL_REP_1	= "Cast out your corrupt thoughts.",
-	DBM_MOV_YELL_REP_2	= "Your impurity must be cleansed."
 }
 
 

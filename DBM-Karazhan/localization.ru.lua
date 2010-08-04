@@ -56,9 +56,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_MOV_YELL_PULL	= "Ваше поведение нестерпимо.",
-	DBM_MOV_YELL_REP_1	= "Отбросьте свои нечистые помыслы.",
-	DBM_MOV_YELL_REP_2	= "Нужно очистить мир от вас!"
 }
 
 

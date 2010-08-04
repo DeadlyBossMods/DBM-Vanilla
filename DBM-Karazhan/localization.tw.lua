@@ -56,9 +56,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_MOV_YELL_PULL		= "你的行為不能被容忍。",
-	DBM_MOV_YELL_REP_1		= "逐出你墮落的思想。",
-	DBM_MOV_YELL_REP_2		= "你的不潔必須被淨化。"
 }
 
 
