@@ -66,10 +66,12 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)--This isn't working, don't know why, gon
 		WarnAir:Show()
 		timerAirPhase:Start()
 		if self.Options.PrewarnGroundPhase then
+			WarnNBDown1:Cancel()
+			WarnNBDown2:Cancel()
 			WarnNBDown1:Schedule(42)
 			WarnNBDown2:Schedule(52)
 		end
-	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then
-		timerAirPhase:Update("timerAirPhase", 43, 57)--this may not be needed, or even work for that matter. More so for testing purposes to see if i understood code right :)
+--[[	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then
+		timerAirPhase:Update(43, 57)--this may not be needed, or even work for that matter. More so for testing purposes to see if i understood code right :)--]]
 	end
 end
