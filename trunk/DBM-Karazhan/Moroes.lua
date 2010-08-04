@@ -15,13 +15,13 @@ local warningVanish		= mod:NewSpellAnnounce(29448, 3)
 local warningGarrote	= mod:NewTargetAnnounce(37066, 4)
 --local warnVanishFaded	= mod:NewAnnounce("DBM_MOROES_VANISH_FADED", 2)
 
-local timerVanishCD		= mod:NewCDTimer(33, 29448)
+local timerVanishCD		= mod:NewCDTimer(35, 29448)
 
 local lastVanish = 0
 
 function mod:OnCombatStart(delay)
 	timerVanishCD:Start(-delay)
-	warningVanishSoon:Schedule(28-delay)
+	warningVanishSoon:Schedule(30-delay)
 	lastVanish = 0
 end
 
@@ -32,8 +32,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(37066) then
 		warningGarrote:Show(args.destName)
 		if (GetTime() - lastVanish) < 20 then--firing this event here instead, since he does garrote as soon as he comes out of vanish.
-			timerVanishCD:Start(36.5)
-			warningVanishSoon:Schedule(31.5)
+			timerVanishCD:Start()
+			warningVanishSoon:Schedule(30)
 		end
 	end
 end

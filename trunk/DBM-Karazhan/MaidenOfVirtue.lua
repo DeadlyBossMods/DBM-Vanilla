@@ -7,16 +7,16 @@ mod:SetCreatureID(16457)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
+	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"CHAT_MSG_MONSTER_YELL"
+	"SPELL_AURA_REMOVED"
 )
 
 local warningRepentanceSoon	= mod:NewSoonAnnounce(29511, 2)
 local warningRepentance		= mod:NewSpellAnnounce(29511, 3)
 local warningHolyFire		= mod:NewTargetAnnounce(29522, 3)
 
-local timerRepentance		= mod:NewBuffActiveTimer(12, 29511)
+local timerRepentance		= mod:NewBuffActiveTimer(12.6, 29511)
 local timerRepentanceCD		= mod:NewCDTimer(33, 29511)
 local timerHolyFire			= mod:NewTargetTimer(12, 29522)
 
@@ -36,6 +36,16 @@ function mod:OnCombatEnd()
 	end
 end
 
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(29511) then
+		warningRepentanceSoon:Cancel()
+		warningRepentance:Show()
+		timerRepentance:Start()
+		timerRepentanceCD:Start()
+		warningRepentanceSoon:Schedule(28)
+	end
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(29522) then
 		warningHolyFire:Show(args.destName)
@@ -46,15 +56,5 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(29522) then
 		timerHolyFire:Cancel(args.destName)
-	end
-end
-
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.DBM_MOV_YELL_REP_1 or msg == L.DBM_MOV_YELL_REP_2 then--Does this really need a yell trigger?
-		warningRepentanceSoon:Cancel()
-		warningRepentance:Show()
-		timerRepentance:Start()
-		timerRepentanceCD:Start()
-		warningRepentanceSoon:Schedule(28)
 	end
 end
