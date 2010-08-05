@@ -25,7 +25,7 @@ local specWarnDontMove		= mod:NewSpecialWarning("DBM_ARAN_DO_NOT_MOVE")
 local specWarnArcane		= mod:NewSpecialWarningRun(29973)
 local specWarnBlizzard		= mod:NewSpecialWarningMove(29951)
 
-local timerSpecial			= mod:NewTimer(30, "timerSpecial")
+local timerSpecial			= mod:NewTimer(30, "timerSpecial", "Interface\\Icons\\INV_Enchant_EssenceMagicLarge")
 local timerFlameCast		= mod:NewCastTimer(5, 30004)
 local timerArcaneExplosion	= mod:NewCastTimer(10, 29973)
 local timerBlizzadCast		= mod:NewCastTimer(3.7, 29969)
@@ -80,7 +80,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warningChains:Show(args.destName)
 		timerChains:Start(args.destName)
 	elseif args:IsSpellID(29946) then
-		flameWreathTargets[#flameWreathTargets + 1] = args.destName
+		WreathTargets[#WreathTargets + 1] = args.destName
 		timerFlame:Start()
 		if args:IsPlayer() then
 			specWarnDontMove:Show()
