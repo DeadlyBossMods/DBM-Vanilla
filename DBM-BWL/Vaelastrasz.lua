@@ -22,7 +22,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(23461) and self:IsInCombat() then
+	if args:IsSpellID(23461) then
 		warnBreath:Show()
 		timerBreath:Start()
 	end

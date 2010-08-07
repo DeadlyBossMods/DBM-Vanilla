@@ -7,7 +7,8 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
-	"SPELL_AURA_APPLIED"
+	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED"
 )
 
 local warnWingBuffet	= mod:NewCastAnnounce(23339)
@@ -22,7 +23,7 @@ function mod:OnCombatStart(delay)
 	timerWingBuffet:Start(-delay)
 end
 
-function mod:SPELL_CAST_START(args)
+function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
 	if args:IsSpellID(23339) and self:IsInCombat() then
 		warnWingBuffet:Show()
 		timerWingBuffet:Start()
@@ -36,5 +37,11 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(23340) then
 		warnShadow:Show(args.destName)
 		timerShadow:Start(args.destName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(23340) then
+		timerShadow:Cancel(args.destName)
 	end
 end
