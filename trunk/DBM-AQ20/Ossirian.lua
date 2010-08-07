@@ -9,10 +9,12 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnSupreme	= mod:NewSpellAnnounce(25176, 4)
+local WeaknessIcon
+
+local warnSupreme		= mod:NewSpellAnnounce(25176, 4)
 local warnSupremeSoon	= mod:NewSoonAnnounce(25176, 3)
-local warnVulnerable	= mod:NewAnnounce("WarnVulnerable", 3)
-local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable")
+local warnVulnerable	= mod:NewAnnounce("WarnVulnerable", 3, WeaknessIcon)
+local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable", WeaknessIcon)
 
 function mod:OnCombatStart(delay)
 	--warnSupremeSoon:Schedule(25)
@@ -21,7 +23,32 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(25176) then
 		warnSupreme:Show()
-	elseif args:IsSpellID(25177,25178,25180, 25181) or args:IsSpellID(25183) then
+	elseif args:IsSpellID(25177) then
+		WeaknessIcon = 25177
+		warnSupremeSoon:Cancel()
+		warnSupremeSoon:Schedule(40)
+		warnVulnerable:Show(args.spellName)
+		timerVulnerable:Show(args.spellName)
+	elseif args:IsSpellID(25178) then
+		WeaknessIcon = 25178
+		warnSupremeSoon:Cancel()
+		warnSupremeSoon:Schedule(40)
+		warnVulnerable:Show(args.spellName)
+		timerVulnerable:Show(args.spellName)
+	elseif args:IsSpellID(25180)then
+		WeaknessIcon = 25180
+		warnSupremeSoon:Cancel()
+		warnSupremeSoon:Schedule(40)
+		warnVulnerable:Show(args.spellName)
+		timerVulnerable:Show(args.spellName)
+	elseif args:IsSpellID(25181) then
+		WeaknessIcon = 25181
+		warnSupremeSoon:Cancel()
+		warnSupremeSoon:Schedule(40)
+		warnVulnerable:Show(args.spellName)
+		timerVulnerable:Show(args.spellName)
+	elseif args:IsSpellID(25183) then
+		WeaknessIcon = 25183
 		warnSupremeSoon:Cancel()
 		warnSupremeSoon:Schedule(40)
 		warnVulnerable:Show(args.spellName)
