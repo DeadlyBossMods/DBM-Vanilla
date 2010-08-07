@@ -42,7 +42,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(22687) and self:IsInCombat() then
+	if args:IsSpellID(22687) then
 		warnVeilShadow:Show(args.destName)
 		timerVeilShadow:Start(args.destName)
 	end
