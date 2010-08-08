@@ -125,6 +125,6 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Mostrar tiempo para emersión"
 }
 L:SetMiscLocalization{
-	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",--translate
-	Pull		= "¡Y AHORA VOSOTROS, INSECTOS! CON ARROGANCIA, ANSIABAIS EL PODER DE RAGNAROS. ¡AHORA LO CONOCERÉIS DE PRIMERA MANO!"
+	Submerge	= "¡AVANZAD, MIS SIRVIENTES! ¡DEFENDED A VUESTRO MAESTRO!",
+	Pull		= "¡Crías imprudentes! ¡Os habéis precipitado hasta vuestra propia muerte! ¡Ahora mirad, el maestro se agita!"
 }
