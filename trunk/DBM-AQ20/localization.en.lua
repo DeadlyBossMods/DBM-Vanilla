@@ -30,7 +30,8 @@ L:SetOptionLocalization{
 	WarnWave	= "Show announce for next incoming wave"
 }
 L:SetMiscLocalization{
-	Wave1		= "They come now. Try not to get yourself killed, young blood.",
+	NpcPull		= "They come now. Try not to get yourself killed, young blood.",
+	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?",
 	Wave3		= "The time of our retribution is at hand! Let darkness reign in the hearts of our enemies!",
 	Wave4		= "No longer will we wait behind barred doors and walls of stone! No longer will our vengeance be denied! The dragons themselves will tremble before our wrath!",
 	Wave5		= "Fear is for the enemy! Fear and death!",
