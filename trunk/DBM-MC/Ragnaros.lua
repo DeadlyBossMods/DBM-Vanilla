@@ -57,7 +57,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	elseif msg ~= L.Submerge and submerged then
 		self:SendSync("Emerge")
 	elseif msg == L.Pull then
-		self:SendSync("RagPulled")
+		timerCombatStart:Start()
 	end
 end
 
@@ -70,7 +70,5 @@ function mod:OnSync(msg, arg)
 		self:ScheduleMethod(90, "emerged")
 	elseif msg == "Emerge" then
 		emerged()
-	elseif msg == "RagPulled" then
-		timerCombatStart:Start()
 	end
 end

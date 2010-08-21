@@ -4,7 +4,7 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17534, 17533)
 
-mod:RegisterCombat("combat")--May need changing to yell if kill detection is funny.
+mod:RegisterCombat("yell", L.RJ_Pull)
 mod:RegisterKill("yell", L.Bogus)--there isn't actually a yell, but we use this to prevent mod from ending combat early using UNIT_DIED after they both die once.
 mod:SetWipeTime(25)--guesswork
 
@@ -27,6 +27,7 @@ local warningPosion		= mod:NewAnnounce("warningPosion", 2, 30830, mod:IsHealer()
 local timerHeal			= mod:NewCastTimer(2.5, 30878)
 local timerDaring		= mod:NewTargetTimer(8, 30841)
 local timerDevotion		= mod:NewTargetTimer(10, 30887)
+local timerCombatStart	= mod:NewTimer(55, "TimerCombatStart", 2457)
 
 mod:AddBoolOption("HealthFrame", true)
 
@@ -90,6 +91,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_RJ_PHASE2_YELL then
 		warnPhase3:Show()
 		updateHealthFrame(3)
+	elseif msg == L.Pull then
+		timerCombatStart:Start()
 	end
 end
 

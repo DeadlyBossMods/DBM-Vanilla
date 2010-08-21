@@ -68,11 +68,17 @@ L:SetWarningLocalization{
 	warningPosion	= "%s on >%s< (%s)",		-- Mortal Wound on >args.destName< (args.amount)
 }
 
+L:SetTimerLocalization{
+	TimerCombatStart	= "Combat starts"
+}
+
 L:SetOptionLocalization{
+	TimerCombatStart	= "Show time for start of combat",
 	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830, GetSpellInfo(30830) or "unknown")
 }
 
 L:SetMiscLocalization{
+	RJ_Pull				= "What devil art thou, that dost torment me thus?,
 	DBM_RJ_PHASE2_YELL	= "Come, gentle night; and give me back my Romulo!",
 	Romulo				= "Romulo",
 	Julianne			= "Julianne"
