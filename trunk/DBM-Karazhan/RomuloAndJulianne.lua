@@ -91,7 +91,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_RJ_PHASE2_YELL then
 		warnPhase3:Show()
 		updateHealthFrame(3)
-	elseif msg == L.Pull then
+	elseif msg == L.Event then
 		timerCombatStart:Start()
 	end
 end
