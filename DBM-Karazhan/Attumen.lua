@@ -45,6 +45,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		Phase = 2
 		warnPhase2:Show()
 		warningCurseSoon:Cancel()
-		timerCurseCD:Cancel()
+		timerCurseCD:Start(27)
 	end
 end
