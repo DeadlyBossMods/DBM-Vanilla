@@ -78,7 +78,8 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	RJ_Pull				= "What devil art thou, that dost torment me thus?,
+	Event				= "Tonight... we explore a tale of forbidden love!",
+	RJ_Pull				= "What devil art thou, that dost torment me thus?",
 	DBM_RJ_PHASE2_YELL	= "Come, gentle night; and give me back my Romulo!",
 	Romulo				= "Romulo",
 	Julianne			= "Julianne"
