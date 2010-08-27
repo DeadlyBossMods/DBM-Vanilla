@@ -7,16 +7,18 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
-	"SPELL_AURA_APPLIED"
+	"SPELL_AURA_APPLIED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local warnBreath		= mod:NewCastAnnounce(23461)
 local warnAdrenaline	= mod:NewTargetAnnounce(18173)
 
+local specWarnAdrenaline	= mod:NewSpecialWarningYou(18173)
+
 local timerBreath		= mod:NewCastTimer(2, 23461)
 local timerAdrenaline	= mod:NewTargetTimer(20, 18173)
-
-local specWarnAdrenaline	= mod:NewSpecialWarningYou(18173)
+local timerCombatStart	= mod:NewTimer(43, "TimerCombatStart", 2457)
 
 function mod:OnCombatStart(delay)
 end
@@ -35,5 +37,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnAdrenaline:Show()
 		end
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Event or msg:find(L.Event) then
+		timerCombatStart:Start()
 	end
 end
