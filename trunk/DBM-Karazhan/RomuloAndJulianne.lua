@@ -88,10 +88,10 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.DBM_RJ_PHASE2_YELL then
+	if msg == L.DBM_RJ_PHASE2_YELL or msg:find(L.DBM_RJ_PHASE2_YELL) then
 		warnPhase3:Show()
 		updateHealthFrame(3)
-	elseif msg == L.Event then
+	elseif msg == L.Event or msg:find(L.Event) then
 		timerCombatStart:Start()
 	end
 end

@@ -65,7 +65,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	warningPosion	= "%s on >%s< (%s)",		-- Mortal Wound on >args.destName< (args.amount)
+	warningPosion	= "%s on >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
 }
 
 L:SetTimerLocalization{
