@@ -72,6 +72,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			WarnNBDown2:Schedule(52)
 		end
 --[[	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then
-		timerAirPhase:Update(43, 57)--this may not be needed
+		timerAirPhase:Update(43, 57)--this may not be needed--]]
 	end
 end
