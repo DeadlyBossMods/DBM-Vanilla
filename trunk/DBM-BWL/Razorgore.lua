@@ -15,14 +15,14 @@ mod:RegisterEvents(
 local warnConflagration		= mod:NewTargetAnnounce(23023)
 
 local timerConflagration	= mod:NewTargetTimer(10, 23023)
---local timerAddsSpawn		= mod:NewTimer(45, "TimerAddsSpawn")--Its bugged, adds always spawn, forever and ever and ever.
+local timerAddsSpawn		= mod:NewTimer(45, "TimerAddsSpawn")--Only for start of adds, not adds after the adds heh.
 
 function mod:OnCombatStart(delay)
---	timerAddsSpawn:Start()
+	timerAddsSpawn:Start()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(23023) then
+	if args:IsSpellID(23023) and args:IsDestTypePlayer() then
 		warnConflagration:Show(args.destName)
 		timerConflagration:Start(args.destName)
 	end
