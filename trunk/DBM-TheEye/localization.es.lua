@@ -48,19 +48,19 @@ DBM_SOLARIAN_ANNOUNCE_ENRAGE_PHASE		= "*** Voidwalker Phase ***";--translate
 
 -- Al'ar
 DBM_ALAR_NAME							= "Al'ar";
-DBM_ALAR_DESCRIPTION					= "Shows timers and warnings for Al'ar.";--translate
-DBM_ALAR_OPTION_MELTARMOR				= "Announce Melt Armor";--translate
-DBM_ALAR_OPTION_METEOR					= "Announce Meteor";--translate
+DBM_ALAR_DESCRIPTION					= "Mostrar tiempos y avisos para Al'ar.";
+DBM_ALAR_OPTION_MELTARMOR				= "Anunciar Fundir armadura";
+DBM_ALAR_OPTION_METEOR					= "Anunciar Meteorito";
 
-DBM_ALAR_FLAME_BUFFET					= "Flame Buffet";--translate
+DBM_ALAR_FLAME_BUFFET					= "Sacudida de llamas";
 
-DBM_ALAR_WARN_MELTARMOR					= "*** Melt Armor on >%s< ***";--translate
-DBM_ALAR_WARN_REBIRTH					= "*** Phase 2 ***";--translate
-DBM_ALAR_WARN_FIRE						= "Flame Patch";--translate
-DBM_ALAR_WARN_ADD						= "*** Next platform - add incoming ***";--translate
-DBM_ALAR_WARN_METEOR					= "*** Meteor ***";--translate
-DBM_ALAR_WARN_METEOR_SOON				= "*** Meteor soon ***";--translate
-DBM_ALAR_WARN_ENRAGE					= "*** Enrage in %s %s ***";--translate
+DBM_ALAR_WARN_MELTARMOR					= "*** Fundir armadura en >%s< ***";
+DBM_ALAR_WARN_REBIRTH					= "*** Fase 2 ***";
+DBM_ALAR_WARN_FIRE						= "Zona en llamas";
+DBM_ALAR_WARN_ADD						= "*** Siguiente Plataforma - Salen adds ***";
+DBM_ALAR_WARN_METEOR					= "*** Meteorito ***";
+DBM_ALAR_WARN_METEOR_SOON				= "*** Meteorito pronto ***";
+DBM_ALAR_WARN_ENRAGE					= "*** Enrage en %s %s ***";
 
 -- Kael'thas
 DBM_KAEL_NAME							= "Kael'thas Caminante del Sol";
