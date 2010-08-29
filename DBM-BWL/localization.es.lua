@@ -109,17 +109,17 @@ L:SetOptionLocalization{
 	WarnPhase			= "Mostrar aviso al cambiar de fase"
 }
 L:SetMiscLocalization{
-	YellPull	= "Let the games begin!",--translate
-	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",--translate
-	YellP3		= "Impossible! Rise my minions!  Serve your master once more!",--translate
+	YellPull	= "¡Que comiencen los juegos!",
+	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cubre de Roca Negra!",
+	YellP3		= "¡Imposible! ¡Erguíos, mis esbirros! ¡Servid a vuestro maestro una vez más!",
 	YellShaman	= "Shamans, show me",--translate
 	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",--translate
 	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",--translate
-	YellPriest	= "Priests! If you're going to keep healing like that, we might as well make it a little more interesting!",--translate
-	YellWarrior	= "Warriors, I know you can hit harder than that! Lets see it!",--translate
+	YellPriest	= "¡Sacerdotes! Si vais a seguir curando de esa forma, ¡podíamos hacerlo más interesante!",
+	YellWarrior	= "¡Vamos guerreros, sé que podéis golpear más fuerte que eso! ¡Veámoslo!",
 	YellRogue	= "Rogues? Stop hiding and face me!",--translate
 	YellWarlock	= "Warlocks, you shouldn't be playing with magic you don't understand. See what happens?",--translate
 	YellHunter	= "Hunters and your annoying pea-shooters!",--translate
-	YellMage	= "Mages too? You should be more careful when you play with magic...",--translate
-	YellDK		= ""--translate
+	YellMage	= "¿Magos también? Deberíais tener más cuidado cuando jugáis con la magia...",
+	YellDK		= "Caballero de la muerte"--translate
 }
