@@ -3,9 +3,9 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(12435)
---mod:RegisterCombat("combat")
+mod:SetMinSyncRevision(168)
 mod:RegisterCombat("yell", L.YellPull)--Will fail if msg find isn't used, msg match won't find yell since a line break is omitted
-mod:SetWipeTime(25)--guesswork
+mod:SetWipeTime(45)--guesswork
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
