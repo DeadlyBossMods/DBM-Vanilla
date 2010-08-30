@@ -15,7 +15,7 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Show timer for first adds spawning"
 }
 L:SetMiscLocalization{
-	YellPull = "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\n"--This yell actually has a return in it, so message match WILL fail. not sure if pulls can use msg find or not?
+	YellPull = "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
 }
 -------------------
 --  Vaelastrasz  --
