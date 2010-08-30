@@ -10,7 +10,7 @@ mod:SetBossHealthInfo(
 )
 
 --mod:RegisterCombat("yell", L.DBM_TI_YELL_PULL)
-mod:RegisterCombat("combat")
+mod:RegisterCombat("combat", 15688, 17229)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",

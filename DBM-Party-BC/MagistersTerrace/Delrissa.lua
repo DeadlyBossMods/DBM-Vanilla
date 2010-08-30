@@ -3,9 +3,9 @@ local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
-mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)
-mod:RegisterCombat("combat")
-mod:RegisterKill("yell", L.DelrissaEnd)
+mod:SetCreatureID(24560)
+mod:RegisterCombat("combat", 24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)
+--mod:RegisterKill("yell", L.DelrissaEnd)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
