@@ -3,7 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(12018)
-mod:RegisterCombat("combat")
+mod:RegisterCombat("combat", 12018, 11663, 11664)
 mod:RegisterKill("yell", L.Kill)
 
 mod:RegisterEvents(
@@ -11,15 +11,11 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
 )
 
-local isMelee = select(2, UnitClass("player")) == "ROGUE"
-	     or select(2, UnitClass("player")) == "WARRIOR"
-	     or select(2, UnitClass("player")) == "DEATHKNIGHT"
-
 local warnMagicReflect	= mod:NewSpellAnnounce(20619)
 local warnDamageShield	= mod:NewSpellAnnounce(21075)
 local warnTeleport		= mod:NewTargetAnnounce(20534)
 
-local specWarnMagicReflect		= mod:NewSpecialWarningSpell(20619, not isMelee)
+local specWarnMagicReflect		= mod:NewSpecialWarningSpell(20619, not mod:IsMelee())
 
 local timerMagicReflect	= mod:NewBuffActiveTimer(10, 20619)
 local timerDamageShield	= mod:NewBuffActiveTimer(10, 21075)
