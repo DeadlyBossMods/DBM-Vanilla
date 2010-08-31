@@ -2,8 +2,8 @@ local mod	= DBM:NewMod("Lucifron", "DBM-MC", 1)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(12118)
-mod:RegisterCombat("combat", 12118, 12119)
+mod:SetCreatureID(12118, 12119)
+mod:RegisterCombat("combat", 12118)
 
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",

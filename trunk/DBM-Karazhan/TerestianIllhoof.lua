@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("TerestianIllhoof", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(15688)
+mod:SetCreatureID(15688, 17229)
 
 mod:SetBossHealthInfo(
 	15688, L.name,
@@ -10,7 +10,7 @@ mod:SetBossHealthInfo(
 )
 
 --mod:RegisterCombat("yell", L.DBM_TI_YELL_PULL)
-mod:RegisterCombat("combat", 15688, 17229)
+mod:RegisterCombat("combat", 15688)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
