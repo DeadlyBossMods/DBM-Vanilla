@@ -4,7 +4,7 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15550, 16151)
 mod:RegisterCombat("combat", 15550)
---mod:RegisterKill("yell", L.KillAttumen)
+mod:RegisterKill("yell", L.KillAttumen)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
@@ -45,6 +45,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		Phase = 2
 		warnPhase2:Show()
 		warningCurseSoon:Cancel()
-		timerCurseCD:Start(27)
+		timerCurseCD:Start(25)
 	end
 end
