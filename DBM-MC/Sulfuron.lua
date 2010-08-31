@@ -2,8 +2,8 @@ local mod	= DBM:NewMod("Sulfuron", "DBM-MC", 1)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(12098)
-mod:RegisterCombat("combat", 12098, 11662)
+mod:SetCreatureID(12098, 11662)
+mod:RegisterCombat("combat", 12098)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
