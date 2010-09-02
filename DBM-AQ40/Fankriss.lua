@@ -26,7 +26,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnWound:Show(args.spellName, args.destName, args.amount or 1)
 		timerWound:Show(args.destName)
 		if (args.amount or 1) >= 5 then
-			specWarnWound:Show()
+			specWarnWound:Show(args.amount)
 		end
 	end
 end

@@ -21,13 +21,17 @@ local warnHeal	= mod:NewCastAnnounce(25807, 3)
 local timerFear	= mod:NewBuffActiveTimer(8, 26580)
 local timerHeal	= mod:NewCastTimer(2, 25807)
 
+local lastfear = 0
+
 function mod:OnCombatStart(delay)
+	lastfear = 0
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(26580) then
+	if args:IsSpellID(26580) and GetTime() - lastfear > 2 then
 		warnFear:Show()
 		timerFear:Start()
+		lastfear = GetTime()
 	end
 end
 
