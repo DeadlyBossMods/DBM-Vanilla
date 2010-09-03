@@ -16,22 +16,31 @@ local warnSting			= mod:NewTargetAnnounce(26180, 2)
 local warnAcid			= mod:NewAnnounce("WarnAcid", 3)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 
-local timerSting		= mod:NewTargetTimer(12, 26180)
+local timerSting		= mod:NewBuffActiveTimer(12, 26180)
 local timerStingCD		= mod:NewCDTimer(20, 26180)
 local timerAcid			= mod:NewTargetTimer(30, 26050)
 
 local specWarnAcid		= mod:NewSpecialWarningStack(26050, nil, 10)
 
 local prewarn_berserk
+local StingTargets = {}
+
 function mod:OnCombatStart(delay)
 	prewarn_berserk = false
+	table.wipe(StingTargets)
+end
+
+local function warnStingTargets()
+	warnSting:Show(table.concat(StingTargets, "<, >"))
+	timerSting:Start()
+	table.wipe(StingTargets)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(26180) then
-		warnSting:Show(args.destName)
-		timerSting:Start(args.destName)
-		timerStingCD:Start()
+		StingTargets[#StingTargets + 1] = args.destName
+		self:Unschedule(warnStingTargets)
+		self:Schedule(0.3, warnStingTargets)
 	elseif args:IsSpellID(26050) then
 		warnAcid:Show(args.spellName, args.destName, args.amount or 1)
 		timerAcid:Start(args.destName)
