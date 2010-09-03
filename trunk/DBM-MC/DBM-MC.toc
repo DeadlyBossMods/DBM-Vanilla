@@ -11,7 +11,7 @@
 ## X-DBM-Mod-Name: Molten Core
 ## X-DBM-Mod-Name-esES: Núcleo de Magma
 ## X-DBM-Mod-Name-ruRU: Огненные Недра
-## X-DBM-Mod-Sort: 0
+## X-DBM-Mod-Sort: 400
 ## X-DBM-Mod-LoadZone: Molten Core
 ## X-DBM-Mod-LoadZone-esES: Núcleo de Magma
 ## X-DBM-Mod-LoadZone-ruRU: Огненные Недра
