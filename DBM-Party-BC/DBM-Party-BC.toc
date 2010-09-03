@@ -16,7 +16,7 @@
 ## X-DBM-Mod-Name-deDE: Gruppe-BC
 ## X-DBM-Mod-Name-ruRU: Групповые подземелья-BC
 ## X-DBM-Mod-Name-esES: Mazmorras TBC
-## X-DBM-Mod-Sort: 101
+## X-DBM-Mod-Sort: 325
 ## X-DBM-Mod-LoadZone: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace
 ## X-DBM-Mod-LoadZone-deDE: Höllenfeuerbollwerk,Der Blutkessel,Die zerschmetterten Hallen,Die Sklavenunterkünfte,Tiefensumpf,Die Dampfkammer,Auchenaikrypta,Managruft,Sethekkhallen,Schattenlabyrinth,Vorgebirge des Alten Hügellands,Der schwarze Morast,Die Mechanar,Die Botanika,Die Arkatraz,Terrasse der Magister
 ## X-DBM-Mod-LoadZone-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров
