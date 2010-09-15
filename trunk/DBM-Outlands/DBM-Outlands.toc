@@ -11,7 +11,7 @@
 ## X-DBM-Tab-Sort: 307
 ## X-DBM-Name: Outlands
 ## X-DBM-Name-esES: Terrallende
-## X-DBM-Tab-LoadZone: Gruul's Lair,Magtheridon's Lair
+## X-DBM-Tab-LoadZone: Gruul's Lair,Magtheridon's Lair,Hellfire Peninsula,Shadowmoon Valley
 ## X-DBM-Tab-LoadZone-esES: Guarida de Gruul,Guarida de Magtheridon
 localization.en.lua
 localization.de.lua
