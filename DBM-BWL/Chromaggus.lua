@@ -7,6 +7,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"UNIT_HEALTH"
@@ -18,7 +19,7 @@ local warnRed			= mod:NewTargetAnnounce(23155, 2, nil, false)
 local warnGreen			= mod:NewTargetAnnounce(23169, 2, nil, false)
 local warnBlue			= mod:NewTargetAnnounce(23153, 2, nil, false)
 local warnBlack			= mod:NewTargetAnnounce(23154, 2, nil, false)
-local warnBronze		= mod:NewTargetAnnounce(23170, 2, nil, false)
+local warnBronze		= mod:NewSpellAnnounce(23170, 2)
 local warnEnrage		= mod:NewSpellAnnounce(23128)
 local warnPhase2Soon	= mod:NewAnnounce("WarnPhase2Soon")
 local warnPhase2		= mod:NewPhaseAnnounce(2)
@@ -47,6 +48,12 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(23170) then
+		warnBronze:Show()
+	end
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(23155) then
 		warnRed:Show(args.destName)
@@ -57,14 +64,14 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(23154) then
 		warnBlack:Show(args.destName)
 	elseif args:IsSpellID(23170) then
-		warnBronze:Show(args.destName)
+		warnBronze:Show()
 		if args:IsPlayer() then
 			specWarnBronze:Show()
 		end
-	elseif args:IsSpellID(23128) and self:IsInCombat() then
+	elseif args:IsSpellID(23128) then
 		warnEnrage:Show()
 		timerEnrage:Start()
-	elseif args:IsSpellID(23537) and self:IsInCombat() then
+	elseif args:IsSpellID(23537) then
 		warnPhase2:Show()
 	end
 end
