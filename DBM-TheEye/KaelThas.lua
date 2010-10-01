@@ -88,6 +88,7 @@ Kael:AddBarOption("Gravity Lapse")
 Kael:AddBarOption("Next Gravity Lapse")
 
 Kael:SetCreatureID(19622)
+--9/30 15:02:29.788  UNIT_DIED,0x0000000000000000,nil,0x80000000,0xF130004CA6000270,"Kael'thas Sunstrider",0x10a48
 Kael:RegisterCombat("yell", DBM_KAEL_YELL_PHASE1)
 Kael:SetMinCombatTime(60)
 
