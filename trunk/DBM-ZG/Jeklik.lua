@@ -13,12 +13,12 @@ mod:RegisterEvents(
 )
 
 local warnSonicBurst	= mod:NewSpellAnnounce(23918)
-local warnScreech		= mod:NewSpellAnnounce(6605)
+local warnScreech		= mod:NewSpellAnnounce(22884)
 local warnPain			= mod:NewTargetAnnounce(23952)
 local warnHeal			= mod:NewCastAnnounce(23954, 4)
 
-local timerSonicBurst	= mod:NewBuffActiveTimer(6, 23918)
-local timerScreech		= mod:NewBuffActiveTimer(4, 6605)
+local timerSonicBurst	= mod:NewBuffActiveTimer(10, 23918)
+local timerScreech		= mod:NewBuffActiveTimer(4, 22884)
 local timerPain			= mod:NewTargetTimer(18, 23952)
 local timerHeal			= mod:NewCastTimer(4, 23954)
 local timerHealCD		= mod:NewNextTimer(20, 23954)
@@ -38,7 +38,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(23918) then
 		timerSonicBurst:Start()
 		warnSonicBurst:Show()
-	elseif args:IsSpellID(6605) and self:IsInCombat() then
+	elseif args:IsSpellID(22884) and self:IsInCombat() then
 		timerScreech:Start()
 		warnScreech:Show()
 	end

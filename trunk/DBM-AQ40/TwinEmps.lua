@@ -39,7 +39,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(800) then
+	if args:IsSpellID(800, 799) then
 		warnTeleport:Show()
 		warnTeleportSoon:Schedule(30)
 		timerTeleport:Start()
