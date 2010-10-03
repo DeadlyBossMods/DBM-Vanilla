@@ -12,6 +12,7 @@
 ## X-DBM-Mod-Name-esES: Guarida Alanegra
 ## X-DBM-Mod-Name-ruRU: Логово Крыла Тьмы
 ## X-DBM-Mod-Sort: 401
+--## X-DBM-Mod-LoadZoneID: 755
 ## X-DBM-Mod-LoadZone: Blackwing Lair
 ## X-DBM-Mod-LoadZone-esES: Guarida Alanegra
 ## X-DBM-Mod-LoadZone-ruRU: Логово Крыла Тьмы
@@ -24,6 +25,7 @@
 localization.en.lua
 localization.es.lua
 localization.ru.lua
+MapSizes.lua
 Razorgore.lua
 Vaelastrasz.lua
 Broodlord.lua
