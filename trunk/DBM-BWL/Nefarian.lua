@@ -16,12 +16,14 @@ mod:RegisterEvents(
 
 local warnClassCallSoon	= mod:NewAnnounce("WarnClassCallSoon", 2)
 local warnClassCall		= mod:NewAnnounce("WarnClassCall", 3)
-local warnPhaseSoon		= mod:NewAnnounce("WarnPhaseSoon", 2)
+local warnPhaseSoon		= mod:NewAnnounce("WarnPhaseSoon", 2, "Interface\\Icons\\Spell_Nature_WispSplode")
 local warnPhase			= mod:NewAnnounce("WarnPhase", 3)
 local warnShadowFlame	= mod:NewCastAnnounce(22539, 2)
 local warnFear			= mod:NewCastAnnounce(22686, 2)
 local warnVeilShadow	= mod:NewTargetAnnounce(22687, 3)
 local warnMC			= mod:NewTargetAnnounce(22667, 4)
+
+local specwarnMC		= mod:NewSpecialWarningTarget(22667, mod:IsTank())
 
 local timerClassCall	= mod:NewTimer(30, "TimerClassCall")
 local timerShadowFlame	= mod:NewCastTimer(2, 22539)
@@ -30,6 +32,7 @@ local timerVeilShadow	= mod:NewTargetTimer(6, 22687)
 local timerMC			= mod:NewTargetTimer(15, 22667)
 
 local prewarn_P3
+
 function mod:OnCombatStart(delay)
 	prewarn_P3 = false
 end
@@ -50,6 +53,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerVeilShadow:Start(args.destName)
 	elseif args:IsSpellID(22667) then
 		warnMC:Show(args.destName)
+		specwarnMC:Show(args.destName)
 		timerMC:Start(args.destName)
 	end
 end
