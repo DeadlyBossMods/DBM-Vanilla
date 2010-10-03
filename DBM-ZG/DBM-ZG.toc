@@ -12,6 +12,7 @@
 ## X-DBM-Mod-Name-esES: Zul'Gurub
 ## X-DBM-Mod-Name-ruRU: Зул'Гуруб
 ## X-DBM-Mod-Sort: 403
+--## X-DBM-Mod-LoadZoneID: 697
 ## X-DBM-Mod-LoadZone: Nitram,Zul'Gurub
 ## X-DBM-Mod-LoadZone-esES: Nitram,Zul'Gurub
 ## X-DBM-Mod-LoadZone-ruRU: Nitram,Зул'Гуруб
@@ -24,6 +25,7 @@
 localization.en.lua
 localization.es.lua
 localization.ru.lua
+--MapSizes.lua
 Venoxis.lua
 Jeklik.lua
 Marli.lua
