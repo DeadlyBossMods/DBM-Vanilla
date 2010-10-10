@@ -112,8 +112,8 @@ L:SetMiscLocalization{
 	YellPull	= "¡Que comiencen los juegos!",
 	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cubre de Roca Negra!",
 	YellP3		= "¡Imposible! ¡Erguíos, mis esbirros! ¡Servid a vuestro maestro una vez más!",
-	YellShaman	= "Shamans, show me",--translate
-	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",--translate
+	YellShaman	= "¡Chamanes, mostradme lo que pueden hacer vuestros tótems!",
+	YellPaladin	= "Paladines... He oído que tenéis muchas vidas. Demostrádmelo.",
 	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",--translate
 	YellPriest	= "¡Sacerdotes! Si vais a seguir curando de esa forma, ¡podíamos hacerlo más interesante!",
 	YellWarrior	= "¡Vamos guerreros, sé que podéis golpear más fuerte que eso! ¡Veámoslo!",

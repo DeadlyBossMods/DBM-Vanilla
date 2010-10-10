@@ -12,7 +12,7 @@ DBM_RAGE_OPTION_DND						= "Anuncia Muerte y descomposición";
 DBM_RAGE_OPTION_ICON					= "Poner icono en el objetivo de Descarga de hielo";
 DBM_RAGE_OPTION_DND_SOON				= "Mostrar aviso de \"Muerte y descomposición\" pronto";
 
-DBM_RAGE_YELL_PULL						= "The Legion's final conquest has begun! Once again the subjugation of this world is within our grasp. Let none survive!";--translate
+DBM_RAGE_YELL_PULL						= "¡La conquista final de la Legión está en marcha! ¡De nuevo la subyugación de este mundo está a nuestro alcance. ¡Que mueran todos!";
 
 DBM_RAGE_SPELL_DEATH_DECAY				= "Muerte y descomposición";
 
@@ -52,7 +52,7 @@ DBM_AZGALOR_DESCRIPTION					= "Anuncia Fatalidad y Silenciar";
 DBM_AZGALOR_OPTION_SILENCE				= "Anunciar Silenciar";
 DBM_AZGALOR_OPTION_ICON					= "Poner icono en el objetivo de Fatalidad";
 
-DBM_AZGALOR_YELL_PULL					= "Abandon all hope! The Legion has returned to finish what was begun so many years ago. This time, there will be no escape!";--translate
+DBM_AZGALOR_YELL_PULL					= "¡Abandonad toda esperanza! ¡La Legión ha vuelto para acabar lo que se empezó hace tantos años. ¡Esta vez, no habrá escapatoria!";
 
 
 DBM_AZGALOR_SPECWARN_DOOM_YOU			= "¡Fatalidad!";
@@ -69,7 +69,7 @@ DBM_ARCHIMONDE_OPTION_BURSTICON			= "Poner icono en el objetivo de Ráfaga de air
 DBM_ARCHIMONDE_OPTION_BURSTSAY			= "Enviar un mensaje de chat cuando te haga Ráfaga de aire."
 DBM_ARCHIMONDE_OPTION_BURSTSPECWARN		= "Mostrar un aviso especial cuando te haga Ráfaga de aire."
 
-DBM_ARCHIMONDE_YELL_PULL				= "Your resistance is insignificant."; --translate
+DBM_ARCHIMONDE_YELL_PULL				= "Vuestra resistencia es insignificante.";
 
 DBM_ARCHIMONDE_WARN_GRIP				= "*** Apretón: >%s< ****"
 DBM_ARCHIMONDE_WARN_ENRAGE				= "*** Enrage en %s %s ***";
@@ -153,7 +153,7 @@ L:SetMiscLocalization{
 	Anetheron		= "Anetheron",
 	Kazrogal		= "Kazrogal",
 	Azgalor			= "Azgalor",
-	WaveCheck		= "Oleada Actual = (%d+) de 8",--translate
+	WaveCheck		= "Oleada actual = (%d+) de 8",
 	WarnWave_0		= "Oleada %s/8",
 	WarnWave_1		= "Oleada %s/8 - %s %s",
 	WarnWave_2		= "Oleada %s/8 - %s %s y %s %s",
