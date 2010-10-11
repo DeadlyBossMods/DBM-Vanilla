@@ -1,4 +1,5 @@
-﻿## Interface: 30300
+﻿## Interface: 40000
+## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Black Temple|r
 ## Author: Tandanu
 ## RequiredDeps: DBM-Core, DBM-BurningCrusade
