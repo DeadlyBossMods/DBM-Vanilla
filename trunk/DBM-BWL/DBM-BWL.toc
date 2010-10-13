@@ -13,7 +13,7 @@
 ## X-DBM-Mod-Name-esES: Guarida Alanegra
 ## X-DBM-Mod-Name-ruRU: Логово Крыла Тьмы
 ## X-DBM-Mod-Sort: 401
---## X-DBM-Mod-LoadZoneID: 755
+--## X-DBM-Mod-LoadZoneID: 754
 ## X-DBM-Mod-LoadZone: Blackwing Lair
 ## X-DBM-Mod-LoadZone-esES: Guarida Alanegra
 ## X-DBM-Mod-LoadZone-ruRU: Логово Крыла Тьмы

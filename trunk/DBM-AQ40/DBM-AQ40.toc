@@ -13,7 +13,7 @@
 ## X-DBM-Mod-Name-esES: Templo de Ahn'Qiraj
 ## X-DBM-Mod-Name-ruRU: Храм Ан'Киража
 ## X-DBM-Mod-Sort: 402
---## X-DBM-Mod-LoadZoneID: 766
+--## X-DBM-Mod-LoadZoneID: 765
 ## X-DBM-Mod-LoadZone: Nitram,Ahn'Qiraj
 ## X-DBM-Mod-LoadZone-esES: Nitram,Ahn'Qiraj
 ## X-DBM-Mod-LoadZone-ruRU: Nitram,Ан'Кираж
