@@ -1,4 +1,5 @@
-if select(4, _G.GetBuildInfo()) < 40000 then return end
+local WowBuild = select(2, GetBuildInfo())
+if tonumber(WowBuild) < 13165 then return end
 
 DBM:RegisterMapSize("TheUnderbog",
 	1, 894.918014526367, 596.612991333008,
