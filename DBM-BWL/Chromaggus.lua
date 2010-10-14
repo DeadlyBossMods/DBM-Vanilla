@@ -75,7 +75,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnBronze:Show()
 		end
-		if GetTime() - lastbronze > 3 
+		if GetTime() - lastbronze > 3 then
 			warnBronze:Show()
 			lastbronze = GetTime()
 		end
