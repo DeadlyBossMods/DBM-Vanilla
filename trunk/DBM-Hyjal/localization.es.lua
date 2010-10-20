@@ -1,40 +1,40 @@
-if GetLocale() == "esES" or GetLocale() == "esMX" then
+ï»¿if GetLocale() == "esES" or GetLocale() == "esMX" then
 DBM_HYJAL_TAB		= "HyjalTab"
 DBM_MOUNT_HYJAL		= "La Cima Hyjal";
 
 
 -- Rage Winterchill
-DBM_RAGE_NAME							= "Ira Fríoinvierno";
-DBM_RAGE_DESCRIPTION					= "Anuncia Descarga de hielo y Muerte y descomposición.";
+DBM_RAGE_NAME							= "Ira FrÃ­oinvierno";
+DBM_RAGE_DESCRIPTION					= "Anuncia Descarga de hielo y Muerte y descomposiciÃ³n.";
 
 DBM_RAGE_OPTION_ICEBOLT					= "Anuncia Descarga de hielo";
-DBM_RAGE_OPTION_DND						= "Anuncia Muerte y descomposición";
+DBM_RAGE_OPTION_DND						= "Anuncia Muerte y descomposiciÃ³n";
 DBM_RAGE_OPTION_ICON					= "Poner icono en el objetivo de Descarga de hielo";
-DBM_RAGE_OPTION_DND_SOON				= "Mostrar aviso de \"Muerte y descomposición\" pronto";
+DBM_RAGE_OPTION_DND_SOON				= "Mostrar aviso de \"Muerte y descomposiciÃ³n\" pronto";
 
-DBM_RAGE_YELL_PULL						= "¡La conquista final de la Legión está en marcha! ¡De nuevo la subyugación de este mundo está a nuestro alcance. ¡Que mueran todos!";
+DBM_RAGE_YELL_PULL						= "Â¡La conquista final de la LegiÃ³n estÃ¡ en marcha! Â¡De nuevo la subyugaciÃ³n de este mundo estÃ¡ a nuestro alcance. Â¡Que mueran todos!";
 
-DBM_RAGE_SPELL_DEATH_DECAY				= "Muerte y descomposición";
+DBM_RAGE_SPELL_DEATH_DECAY				= "Muerte y descomposiciÃ³n";
 
 DBM_RAGE_WARN_ICEBOLT					= "*** Descarga de hielo en >%s< ***";
-DBM_RAGE_WARN_DND						= "*** Muerte y descomposición ***";
-DBM_RAGE_WARN_DND_END					= "*** Muerte y descomposición finalizó ***";
-DBM_RAGE_WARN_DND_SOON					= "*** Muerte y descomposición pronto ***";
-DBM_RAGE_SPECWARN_DND_YOU				= "Muerte y descomposición en ti ¡Muévete!";
+DBM_RAGE_WARN_DND						= "*** Muerte y descomposiciÃ³n ***";
+DBM_RAGE_WARN_DND_END					= "*** Muerte y descomposiciÃ³n finalizÃ³ ***";
+DBM_RAGE_WARN_DND_SOON					= "*** Muerte y descomposiciÃ³n pronto ***";
+DBM_RAGE_SPECWARN_DND_YOU				= "Muerte y descomposiciÃ³n en ti Â¡MuÃ©vete!";
 
 
 -- Anetheron
 DBM_ANETHERON_NAME						= "Anetheron";
-DBM_ANETHERON_DESCRIPTION				= "Anunciar Infernales y Enjambre de carroña";
-DBM_ANEETHERON_OPTION_CARRION			= "Anunciar Enjambre de carroña";
+DBM_ANETHERON_DESCRIPTION				= "Anunciar Infernales y Enjambre de carroÃ±a";
+DBM_ANEETHERON_OPTION_CARRION			= "Anunciar Enjambre de carroÃ±a";
 DBM_ANEETHERON_OPTION_INFERNAL			= "Anunciar Infernales";
 
-DBM_ANETHERON_YELL_PULL					= "You are defenders of a doomed world! Flee here, and perhaps you will prolong your pathetic lives!"; --translate
+DBM_ANETHERON_YELL_PULL					= "Â¡Sois defensores de un mundo condenado! Â¡Huid y quizÃ¡ prolonguÃ©is vuestras patÃ©ticas vidas!";
 
 DBM_ANETHERON_INFERNO					= "Inferno";
-DBM_ANETHERON_CARRION_SWARM				= "Enjambre de carroña";
+DBM_ANETHERON_CARRION_SWARM				= "Enjambre de carroÃ±a";
 
-DBM_ANETHERON_WARN_CARRION				= "*** Enjambre de carroña ***";
+DBM_ANETHERON_WARN_CARRION				= "*** Enjambre de carroÃ±a ***";
 DBM_ANETHERON_WARN_INFERNO				= "*** Infernal en >%s< ***";
 DBM_ANETHERON_WARN_INFERNO_SOON			= "*** Infernal pronto ***";
 
@@ -42,7 +42,7 @@ DBM_ANETHERON_WARN_INFERNO_SOON			= "*** Infernal pronto ***";
 DBM_KAZROGAL_NAME						= "Kaz'rogal";
 DBM_KAZROGAL_DESCRIPTION				= "Anuncia de Marca de Kaz'rogal.";
 
-DBM_KAZROGAL_YELL_PULL					= "Cry for mercy! Your meaningless lives will soon be forfeit!";--translate
+DBM_KAZROGAL_YELL_PULL					= "Â¡Implorad clemencia! Â¡Pronto perderÃ©is vuestras insignificantes vidas!";
 
 DBM_KAZROGAL_WARN_MARK					= "*** Marca #%s ***";
 
@@ -52,46 +52,46 @@ DBM_AZGALOR_DESCRIPTION					= "Anuncia Fatalidad y Silenciar";
 DBM_AZGALOR_OPTION_SILENCE				= "Anunciar Silenciar";
 DBM_AZGALOR_OPTION_ICON					= "Poner icono en el objetivo de Fatalidad";
 
-DBM_AZGALOR_YELL_PULL					= "¡Abandonad toda esperanza! ¡La Legión ha vuelto para acabar lo que se empezó hace tantos años. ¡Esta vez, no habrá escapatoria!";
+DBM_AZGALOR_YELL_PULL					= "Â¡Abandonad toda esperanza! Â¡La LegiÃ³n ha vuelto para acabar lo que se empezÃ³ hace tantos aÃ±os. Â¡Esta vez, no habrÃ¡ escapatoria!";
 
 
-DBM_AZGALOR_SPECWARN_DOOM_YOU			= "¡Fatalidad!";
+DBM_AZGALOR_SPECWARN_DOOM_YOU			= "Â¡Fatalidad!";
 DBM_AZGALOR_WARN_DOOM					= "*** Fatalidad en >%s< ***";
 DBM_AZGALOR_WARN_SILENCE				= "*** Silenciar ***";
 DBM_AZGALOR_WARN_SILENCESOON			= "*** Silenciar pronto ***";
 
 -- Archimonde
 DBM_ARCHIMONDE_NAME						= "Archimonde";
-DBM_ARCHIMONDE_DESCRIPTION				= "Anuncia Apretón, Miedo, Enrage y Ráfaga de aire.";
-DBM_ARCHIMONDE_OPTION_GRIP				= "Anunciar Apretón"
-DBM_ARCHIMONDE_OPTION_BURST				= "Anunciar Ráfaga de aire"
-DBM_ARCHIMONDE_OPTION_BURSTICON			= "Poner icono en el objetivo de Ráfaga de aire"
-DBM_ARCHIMONDE_OPTION_BURSTSAY			= "Enviar un mensaje de chat cuando te haga Ráfaga de aire."
-DBM_ARCHIMONDE_OPTION_BURSTSPECWARN		= "Mostrar un aviso especial cuando te haga Ráfaga de aire."
+DBM_ARCHIMONDE_DESCRIPTION				= "Anuncia ApretÃ³n, Miedo, Enrage y RÃ¡faga de aire.";
+DBM_ARCHIMONDE_OPTION_GRIP				= "Anunciar ApretÃ³n"
+DBM_ARCHIMONDE_OPTION_BURST				= "Anunciar RÃ¡faga de aire"
+DBM_ARCHIMONDE_OPTION_BURSTICON			= "Poner icono en el objetivo de RÃ¡faga de aire"
+DBM_ARCHIMONDE_OPTION_BURSTSAY			= "Enviar un mensaje de chat cuando te haga RÃ¡faga de aire."
+DBM_ARCHIMONDE_OPTION_BURSTSPECWARN		= "Mostrar un aviso especial cuando te haga RÃ¡faga de aire."
 
 DBM_ARCHIMONDE_YELL_PULL				= "Vuestra resistencia es insignificante.";
 
-DBM_ARCHIMONDE_WARN_GRIP				= "*** Apretón: >%s< ****"
+DBM_ARCHIMONDE_WARN_GRIP				= "*** ApretÃ³n: >%s< ****"
 DBM_ARCHIMONDE_WARN_ENRAGE				= "*** Enrage en %s %s ***";
 DBM_ARCHIMONDE_WARN_FEAR				= "*** Miedo ***";
 DBM_ARCHIMONDE_WARN_FEARSOON			= "*** Miedo pronto ***";
-DBM_ARCHIMONDE_WARN_BURST				= "*** Ráfaga de aire: >%s< ***";
-DBM_ARCHIMONDE_WARN_BURST_ME			= "¡Ráfaga de aire viene!";
-DBM_ARCHIMONDE_SPECWARN_BURST			= "¡Ráfaga de aire en ti!";
+DBM_ARCHIMONDE_WARN_BURST				= "*** RÃ¡faga de aire: >%s< ***";
+DBM_ARCHIMONDE_WARN_BURST_ME			= "Â¡RÃ¡faga de aire viene!";
+DBM_ARCHIMONDE_SPECWARN_BURST			= "Â¡RÃ¡faga de aire en ti!";
 
 -- MHTrash
 DBM_MHT_NAME					= "Avisos de trash";
-DBM_MHT_DESCRIPTION				= "Tiempos de oleadas, Anuncios de monstruos, Canibalismo de Necrófagos";
-DBM_MHT_DESCRIPTION1				= "Anunciar qué monstruos vienen";
-DBM_MHT_DESCRIPTION2				= "Anunciar cuando un Necrófago empieze Canibalismo";
+DBM_MHT_DESCRIPTION				= "Tiempos de oleadas, Anuncios de monstruos, Canibalismo de NecrÃ³fagos";
+DBM_MHT_DESCRIPTION1				= "Anunciar quÃ© monstruos vienen";
+DBM_MHT_DESCRIPTION2				= "Anunciar cuando un NecrÃ³fago empieze Canibalismo";
 DBM_MHT_OPTION_WAVE				= "Anunciar nueva oleada";
 
-DBM_MHT_WARN_GHOUL				= "Necrófago gana Canibalismo"
+DBM_MHT_WARN_GHOUL				= "NecrÃ³fago gana Canibalismo"
 DBM_MHT_WAVE_CHECK				= "Oleada actual = (%d+) de 8";
 DBM_MHT_WAVE_SOON				= "Nueva oleada pronto";
-DBM_MHT_WAVE_NOW				= "¡Nueva oleada!";
+DBM_MHT_WAVE_NOW				= "Â¡Nueva oleada!";
 DBM_MHT_BOSS_SOON				= "Boss pronto";
-DBM_MHT_BOSS_NOW				= "¡Viene Boss!";
+DBM_MHT_BOSS_NOW				= "Â¡Viene Boss!";
 
 DBM_MHT_THRALL					= "Thrall";
 DBM_MHT_JAINA					= "Lady Jaina Valiente" ;
@@ -149,7 +149,7 @@ L:SetMiscLocalization{
 	HyjalZoneName	= "La Cima Hyjal",
 	Thrall			= "Thrall",
 	Jaina			= "Lady Jaina Valiente",
-	RageWinterchill	= "Ira Fríoinvierno",
+	RageWinterchill	= "Ira FrÃ­oinvierno",
 	Anetheron		= "Anetheron",
 	Kazrogal		= "Kazrogal",
 	Azgalor			= "Azgalor",
@@ -164,7 +164,7 @@ L:SetMiscLocalization{
 	AnetheronGossip	= "We are ready for whatever Archimonde might send our way, Lady Proudmoore.",--translate
 	KazrogalGossip	= "I am with you, Thrall.",--translate
 	AzgalorGossip	= "We have nothing to fear.",--translate
-	Ghoul			= "Necrófagos",
+	Ghoul			= "NecrÃ³fagos",
 	Abomination		= "Abominaciones",
 	Necromancer		= "Nigromantes",
 	Banshee			= "Almas en pena",
