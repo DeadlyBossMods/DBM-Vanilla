@@ -86,18 +86,18 @@ DBM_KAEL_OPTION_WARNMC					= "Anunciar control mental";
 DBM_KAEL_OPTION_ICONMC					= "Poner iconos en los objetivos de control mental";
 DBM_KAEL_OPTION_GRAVITY					= "Anunciar Gravedad cero";
 
-DBM_KAEL_YELL_PHASE1					= "Energía. Poder. Mi gente es adicta a ellos… una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos… al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal’anore!";
+DBM_KAEL_YELL_PHASE1					= "Energía. Poder. Mi gente es adicta a ellos... una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos... al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal’anore!";
 DBM_KAEL_EMOTE_THALADRED_TARGET			= "mira a ([^%s]+)!";
-DBM_KAEL_YELL_PHASE1_SANGUINAR			= "You have persevered against some of my best advisors... but none can withstand the might of the Blood Hammer. Behold, Lord Sanguinar!";--translate
-DBM_KAEL_YELL_PHASE1_CAPERNIAN			= "Capernian will see to it that your stay here is a short one.";--translate
-DBM_KAEL_YELL_PHASE1_TELONICUS			= "Well done, you have proven worthy to test your skills against my master engineer, Telonicus.";--translate
-DBM_KAEL_YELL_THALA_DOWN				= "Forgive me, my prince! I have... failed.";--translate
-DBM_KAEL_YELL_CAPERNIAN_DOWN			= "This is not over!";--translate
+DBM_KAEL_YELL_PHASE1_SANGUINAR			= "Habéis sobrevivido a algunos de mis mejores consejeros... pero nadie puede resistir el poder del Martillo de Sangre. ¡He aquí Lord Sanguinar!";
+DBM_KAEL_YELL_PHASE1_CAPERNIAN			= "Capernian se encargará de que vuestra visita sea breve.";
+DBM_KAEL_YELL_PHASE1_TELONICUS			= "Bien hecho. Parecéis dignos de probar vuestras habilidades con mi maestro ingeniero Telonicus.";
+DBM_KAEL_YELL_THALA_DOWN				= "¡Perdóname mi Príncipe! He... fracasado.";
+DBM_KAEL_YELL_CAPERNIAN_DOWN			= "¡Aún no se ha acabado!";
 
-DBM_KAEL_YELL_PHASE2					= "As you see, I have many weapons in my arsenal....";--translate
-DBM_KAEL_YELL_PHASE3					= "Perhaps I underestimated you. It would be unfair to make you fight all four advisors at once, but... fair treatment was never shown to my people. I'm just returning the favor.";--translate
-DBM_KAEL_YELL_PHASE4					= "Alas, sometimes one must take matters into one's own hands. Balamore shanal!";--translate
-DBM_KAEL_YELL_PHASE5					= "I have not come this far to be stopped! The future I have planned will not be jeopardized! Now you will taste true power!!";--translate
+DBM_KAEL_YELL_PHASE2					= "Como veis, dispongo de un amplio arsenal...";
+DBM_KAEL_YELL_PHASE3					= "Quizás os subestimé. Sería injusto que os enfrentarais a los cuatro consejeros al mismo tiempo, pero... nunca se le ha brindado un trato justo a mi gente. Así que os devuelvo el favor.";
+DBM_KAEL_YELL_PHASE4					= "Desafortunadamente hay veces en las que tienes que hacer las cosas con tus propias manos. ¡Balamore shanal!";
+DBM_KAEL_YELL_PHASE5					= "¡No he llegado hasta aquí para que me detengáis! ¡El futuro que he planeado no se pondrá en peligro! ¡Vais a probar el verdadero poder!";
 
 DBM_KAEL_WEAPONS = {
 	["Bastón de desintegración"] = 1,
@@ -139,7 +139,7 @@ DBM_KAEL_INFOFRAME_ADDS_TITLE			= "Consejeros";
 DBM_KAEL_CAST_PHOENIX_REBIRTH			= "Phoenix begins to cast Rebirth.";--translate
 DBM_KAEL_EMOTE_PYROBLAST				= "begins to cast Pyroblast";--translate
 DBM_KAEL_EGG							= "Huevo de fénix";
-DBM_KAEL_YELL_GRAVITY_LAPSE				= "Having trouble staying grounded?";--translate
+DBM_KAEL_YELL_GRAVITY_LAPSE				= "Hay que andar con pies de plomo.";
 DBM_KAEL_YELL_GRAVITY_LAPSE2			= "Let us see how you fare when your world is turned upside down.";--translate
 
 
