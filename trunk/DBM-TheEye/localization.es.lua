@@ -6,45 +6,45 @@ DBM_TEMPEST_KEEP	= "Castillo de la Tempestad";
 
 -- Void Reaver
 DBM_VOIDREAVER_NAME						= "Atracador del vacío";
-DBM_VOIDREAVER_DESCRIPTION				= "Announces Arcane Orb and Pounding.";--translate
-DBM_VOIDREAVER_OPTION_WARN_ORB			= "Announce Arcane Orb targets";--translate
-DBM_VOIDREAVER_OPTION_YELL_ORB			= "Send chat message when he casts Arcane Orb on you";--translate
-DBM_VOIDREAVER_OPTION_ORB_ICON			= "Set icon on Arcane Orb target";--translate
-DBM_VOIDREAVER_OPTION_WARN_POUNDING		= "Announce Pounding";--translate
-DBM_VOIDREAVER_OPTION_WARN_POUNDINGSOON	= "Show \"Pounding soon\" warning";--translate
-DBM_VOIDREAVER_OPTION_SOUND				= "Play sound when he casts Arcane Orb on you"--translate
+DBM_VOIDREAVER_DESCRIPTION				= "Anuncia Orbe Arcano y Aporreo";
+DBM_VOIDREAVER_OPTION_WARN_ORB			= "Anunciar los objetivos de Orbe Arcano";
+DBM_VOIDREAVER_OPTION_YELL_ORB			= "Enviar un mensaje cuando te vaya a tirar Orbe Arcano";
+DBM_VOIDREAVER_OPTION_ORB_ICON			= "Poner icono en el objetivo de Orbe Arcano";
+DBM_VOIDREAVER_OPTION_WARN_POUNDING		= "Anunciar Aporreo";
+DBM_VOIDREAVER_OPTION_WARN_POUNDINGSOON	= "Mostrar aviso de 'Aporreo pronto'";
+DBM_VOIDREAVER_OPTION_SOUND				= "Reproducir un sonido cuando te tire Orbe Arcano"
 
-DBM_VOIDREAVER_POUNDING					= "Pounding";--translate
+DBM_VOIDREAVER_POUNDING					= "Aporreo";
 
-DBM_VOIDREAVER_WARN_ORB					= "*** Arcane Orb on >%s< ***";--translate
-DBM_VOIDREAVER_YELL_ORB					= "Arcane Orb incoming! Run away from me!";--translate
-DBM_VOIDREAVER_WARN_ENRAGE				= "*** Enrage in %s %s ***";--translate
-DBM_VOIDREAVER_WARN_POUNDING			= "*** Pounding ***";--translate
-DBM_VOIDREAVER_WARN_POUNDING_SOON		= "*** Pounding soon ***";--translate
-DBM_VOIDREAVER_SPECWARN_ORB				= "Arcane Orb on you!";--translate
+DBM_VOIDREAVER_WARN_ORB					= "*** Orbe Arcano en >%s< ***";
+DBM_VOIDREAVER_YELL_ORB					= "¡Orbe Arcano viene hacia mí! ¡Apártate!";
+DBM_VOIDREAVER_WARN_ENRAGE				= "*** Enrage en %s %s ***";
+DBM_VOIDREAVER_WARN_POUNDING			= "*** Aporreo ***";
+DBM_VOIDREAVER_WARN_POUNDING_SOON		= "*** Aporreo pronto ***";
+DBM_VOIDREAVER_SPECWARN_ORB				= "¡Orbe Arcano en tí!";
 
-DBM_VOIDREAVER_R_FURY					= "Righteous Fury"--translate
+DBM_VOIDREAVER_R_FURY					= "Furia Recta"
 
 -- Solarian
 DBM_SOLARIAN_NAME						= "Gran astromante Solarian";
-DBM_SOLARIAN_DESCRIPTION				= "Announces Wrath and her adds.";--translate
-DBM_SOLARIAN_OPTION_WARN_WRATH			= "Announce Wrath";--translate
-DBM_SOLARIAN_OPTION_ICON_WRATH			= "Set icon on Wrath target";--translate
-DBM_SOLARIAN_OPTION_SPECWARN_WRATH		= "Show special warning when you are afflicted by Wrath";--translate
-DBM_SOLARIAN_OPTION_WARN_PHASE			= "Announce adds";--translate
-DBM_SOLARIAN_OPTION_WHISPER_WRATH		= "Send whisper to Wrath targets"--translate
-DBM_SOLARIAN_OPTION_SOUND				= "Play sound when you are afflicted by Wrath"--translate
+DBM_SOLARIAN_DESCRIPTION				= "Anuncia Cólera y sus adds.";
+DBM_SOLARIAN_OPTION_WARN_WRATH			= "Anunciar Cólera";
+DBM_SOLARIAN_OPTION_ICON_WRATH			= "Poner icono en el objetivo de Cólera";
+DBM_SOLARIAN_OPTION_SPECWARN_WRATH		= "Mostrar un aviso especial cuando te afecte Cólera";
+DBM_SOLARIAN_OPTION_WARN_PHASE			= "Anunciar adds";
+DBM_SOLARIAN_OPTION_WHISPER_WRATH		= "Enviar susurro a los objetivos de Cólera"
+DBM_SOLARIAN_OPTION_SOUND				= "Reproducir sonido cuando te afecte Cólera"
 
 DBM_SOLARIAN_YELL_ENRAGE				= "Enough of this!%s*Now I call upon the fury of the cosmos itself."--translate
 
-DBM_SOLARIAN_SPECWARN_WRATH				= "Wrath on you!";--translate
-DBM_SOLARIAN_ANNOUNCE_WRATH				= "*** Wrath on >%s< ***";--translate
-DBM_SOLARIAN_ANNOUNCE_SPLIT				= "*** Adds incoming ***";--translate
-DBM_SOLARIAN_ANNOUNCE_PRIESTS_SOON		= "*** Priests & Solarian in 5 sec ***";--translate
-DBM_SOLARIAN_ANNOUNCE_PRIESTS_NOW		= "*** Priests & Solarian spawned ***";--translate
-DBM_SOLARIAN_ANNOUNCE_AGENTS_NOW		= "*** Agents spawned ***";--translate
-DBM_SOLARIAN_ANNOUNCE_SPLIT_SOON		= "*** Split in 5 seconds ***";--translate
-DBM_SOLARIAN_ANNOUNCE_ENRAGE_PHASE		= "*** Voidwalker Phase ***";--translate
+DBM_SOLARIAN_SPECWARN_WRATH				= "¡Cólera en tí!";
+DBM_SOLARIAN_ANNOUNCE_WRATH				= "*** Cólera en >%s< ***";
+DBM_SOLARIAN_ANNOUNCE_SPLIT				= "*** Salen adds ***";
+DBM_SOLARIAN_ANNOUNCE_PRIESTS_SOON		= "*** Sacerdotes y Solarian en 5 seg ***";
+DBM_SOLARIAN_ANNOUNCE_PRIESTS_NOW		= "*** Sacerdotes y Solarian salen ***";
+DBM_SOLARIAN_ANNOUNCE_AGENTS_NOW		= "*** Salen Agentes ***";
+DBM_SOLARIAN_ANNOUNCE_SPLIT_SOON		= "*** División en 5 seg ***";
+DBM_SOLARIAN_ANNOUNCE_ENRAGE_PHASE		= "*** Fase de abisario ***";
 
 -- Al'ar
 DBM_ALAR_NAME							= "Al'ar";
