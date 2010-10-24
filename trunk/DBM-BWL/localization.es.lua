@@ -15,7 +15,9 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	TimerAddsSpawn	= "Mostrar tiempo para que salgan los primeros adds"
 }
-
+L:SetMiscLocalization{
+	YellPull = "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--translate
+}
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -24,7 +26,17 @@ L = DBM:GetModLocalization("Vaelastrasz")
 L:SetGeneralLocalization{
 	name = "Vaelastrasz el Corrupto"
 }
+L:SetTimerLocalization{
+	TimerCombatStart	= "Empieza el combate"
+}
 
+L:SetOptionLocalization{
+	TimerCombatStart	= "Mostrar tiempo para el inicio del combate"
+}
+
+L:SetMiscLocalization{
+	Event				= "¡Demasiado tarde, amigos! Ahora estoy poseído por la corrupción de Nefarius... No puedo... controlarme."
+}
 -----------------
 --  Broodlord  --
 -----------------
