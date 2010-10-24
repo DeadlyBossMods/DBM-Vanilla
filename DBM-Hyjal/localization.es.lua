@@ -97,10 +97,10 @@ DBM_MHT_THRALL					= "Thrall";
 DBM_MHT_JAINA					= "Lady Jaina Valiente" ;
 DBM_MHT_THRALL_DIES				= "Thrall ha muerto.";
 DBM_MHT_JAINA_DIES				= "Lady Jaina Valiente ha muerto.";
-DBM_MHT_RAGE_MSG				= "My companions and I are with you, Lady Proudmoore.";--translate
-DBM_MHT_ANETHERON_MSG			= "We are ready for whatever Archimonde might send our way, Lady Proudmoore.";--translate
-DBM_MHT_KAZROGAL_MSG				= "I am with you, Thrall.";--translate
-DBM_MHT_AZGALOR_MSG				= "We have nothing to fear.";--translate
+DBM_MHT_RAGE_MSG				= "Mis compañeros y yo estamos contigo, Lady Valiente.";
+DBM_MHT_ANETHERON_MSG			= "Estamos listos para cualquier cosa que Archimonde nos mande, lady Valiente.";
+DBM_MHT_KAZROGAL_MSG				= "Estoy contigo, Thrall.";
+DBM_MHT_AZGALOR_MSG				= "No tenemos nada que temer.";
 DBM_MHT_BOSS_DIES				= "%s ha muerto.";
 
 DBM_MHT_WAVE_INC_WARNING1			= "*** Oleada %s/8 - %s %s  ***";
@@ -109,16 +109,16 @@ DBM_MHT_WAVE_INC_WARNING3			= "*** Oleada %s/8 - %s %s, %s %s y %s %s ***";
 DBM_MHT_WAVE_INC_WARNING4			= "*** Oleada %s/8 - %s %s, %s %s, %s %s y %s %s ***";
 DBM_MHT_WAVE_INC_WARNING5			= "*** Oleada %s/8 - %s %s, %s %s, %s %s, %s %s y %s %s ***";
 
-DBM_MHT_GHOUL					= "Ghouls";
-DBM_MHT_ABOMINATION				= "Abominations";
-DBM_MHT_NECROMANCER				= "Necromancers";
-DBM_MHT_BANSHEE					= "Banshees";
-DBM_MHT_FIEND					= "Crypt Fiends";
-DBM_MHT_GARGOYLE				= "Gargoyles";
-DBM_MHT_WYRM					= "Frost Wyrm";
-DBM_MHT_STALKER					= "Fel Stalkers";
-DBM_MHT_INFERNAL				= "Infernals";
-DBM_MHT_ARCHIMONDE				= "Good luck on Archimonde";
+DBM_MHT_GHOUL					= "Necrófagos";
+DBM_MHT_ABOMINATION				= "Abominaciones";
+DBM_MHT_NECROMANCER				= "Nigromantes";
+DBM_MHT_BANSHEE					= "Almas en pena";
+DBM_MHT_FIEND					= "Malignos de cripta";
+DBM_MHT_GARGOYLE				= "Gargolas";
+DBM_MHT_WYRM					= "Vermis de escarcha";
+DBM_MHT_STALKER					= "Acechadores viles";
+DBM_MHT_INFERNAL				= "Infernales";
+DBM_MHT_ARCHIMONDE				= "Good luck on Archimonde";--translate
 
 
 
@@ -160,10 +160,10 @@ L:SetMiscLocalization{
 	WarnWave_3		= "Oleada %s/8 - %s %s, %s %s y %s %s",
 	WarnWave_4		= "Oleada %s/8 - %s %s, %s %s, %s %s y %s %s",
 	WarnWave_5		= "Oleada %s/8 - %s %s, %s %s, %s %s, %s %s y %s %s",
-	RageGossip		= "My companions and I are with you, Lady Proudmoore.",--translate
-	AnetheronGossip	= "We are ready for whatever Archimonde might send our way, Lady Proudmoore.",--translate
-	KazrogalGossip	= "I am with you, Thrall.",--translate
-	AzgalorGossip	= "We have nothing to fear.",--translate
+	RageGossip		= "Mis compañeros y yo estamos contigo, Lady Valiente.",
+	AnetheronGossip	= "Estamos listos para cualquier cosa que Archimonde nos mande, Lady Valiente.",
+	KazrogalGossip	= "Estoy contigo, Thrall.",
+	AzgalorGossip	= "No tenemos nada que temer.",
 	Ghoul			= "Necrófagos",
 	Abomination		= "Abominaciones",
 	Necromancer		= "Nigromantes",

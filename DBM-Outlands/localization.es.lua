@@ -37,7 +37,7 @@
 	DBM_GRUUL_CAVE_OPTION		= "Mostrar aviso especial para Sepultar";
 	DBM_GRUUL_OPTION_GROWBAR	= "Crece"
 
-	DBM_GRUUL_SAY_PULL			= "Come.... and die."--translate
+	DBM_GRUUL_SAY_PULL			= "Venid... y morid."
 	DBM_GRUUL_GROW_EMOTE		= "%s crece de tamaño!";
 	DBM_GRUUL_EMOTE_SHATTER		= "%s ruge!";
 	DBM_GRUUL_SILENCE			= "Reverberación";
@@ -79,9 +79,9 @@
 	DBM_MAG_OPTION_2		= "Anunciar Sanación";
 	DBM_MAG_OPTION_3		= "Anunciar Nova explosiva";
 
-	DBM_MAG_EMOTE_PULL		= "¡Las cadenas de %s empiezan a debilitarse!";
-	DBM_MAG_YELL_PHASE2		= "I... am... unleashed!"--translate
-	DBM_MAG_EMOTE_NOVA		= "¡%s empieza a castear Nova explosiva!";
+	DBM_MAG_EMOTE_PULL		= "¡Las cuerdas de Magtheridon empiezan a aflojarse!";
+	DBM_MAG_YELL_PHASE2		= "¡He... sido... liberado!"
+	DBM_MAG_EMOTE_NOVA		= "¡Magtheridon comienza a lanzar una Nova explosiva!";
 
 	DBM_MAG_PHASE2_WARN		= "*** Fase 2 en %s seg ***";
 	DBM_MAG_WARN_P2			= "*** Magtheridon se libera ***";
