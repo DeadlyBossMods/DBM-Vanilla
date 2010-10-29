@@ -16,7 +16,7 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Mostrar tiempo para que salgan los primeros adds"
 }
 L:SetMiscLocalization{
-	YellPull = "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--translate
+	YellPull = "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 -------------------
 --  Vaelastrasz  --
