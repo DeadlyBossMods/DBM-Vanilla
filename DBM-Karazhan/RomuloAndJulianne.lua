@@ -2,10 +2,9 @@
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(17534, 17533)
+mod:SetCreatureID(17534, 17533, 99999)--99999 bogus screature id to keep mod from pre mature combat end.
 
 mod:RegisterCombat("yell", L.RJ_Pull)
-mod:RegisterKill("yell", L.Bogus)--there isn't actually a yell, but we use this to prevent mod from ending combat early using UNIT_DIED after they both die once.
 mod:SetWipeTime(25)--guesswork
 
 mod:RegisterEvents(
@@ -31,31 +30,29 @@ local timerCombatStart	= mod:NewTimer(55, "TimerCombatStart", 2457)
 
 mod:AddBoolOption("HealthFrame", true)
 
-local phases = {}
+local phase	= 0
 local JulianneDied = 0
 local RomuloDied = 0
 
-local function updateHealthFrame(phase)--WIP
-	if phases[phase] then
-		return
-	end
-	phases[phase] = true
+function mod:OnCombatStart(delay)
+	JulianneDied = 0
+	RomuloDied = 0
+	phase = 0
+	self:NextPhase()
+end
+
+function mod:NextPhase()
+	phase = phase + 1
 	if phase == 1 then
 		DBM.BossHealth:Clear()
 		DBM.BossHealth:AddBoss(17534, L.Julianne)
-	elseif phase == 2 then--UNIT_DIED event triggers not tested yet
+	elseif phase == 2 then
 		DBM.BossHealth:AddBoss(17533, L.Romulo)
 		warnPhase2:Show()
 	elseif phase == 3 then
 		DBM.BossHealth:AddBoss(17534, L.Julianne)
 		DBM.BossHealth:AddBoss(17533, L.Romulo)
 	end
-end
-
-function mod:OnCombatStart(delay)
-	updateHealthFrame(1)
-	JulianneDied = 0
-	RomuloDied = 0
 end
 
 function mod:SPELL_CAST_START(args)
@@ -90,7 +87,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_RJ_PHASE2_YELL or msg:find(L.DBM_RJ_PHASE2_YELL) then
 		warnPhase3:Show()
-		updateHealthFrame(3)
+		self:NextPhase()--Trigger Phase 3
 	elseif msg == L.Event or msg:find(L.Event) then
 		timerCombatStart:Start()
 	end
@@ -107,7 +104,7 @@ function mod:UNIT_DIED(args)
 			end
 		else
 			DBM.BossHealth:RemoveBoss(cid)
-			updateHealthFrame(2)
+			self:NextPhase()--Trigger phase 2
 		end
 	elseif cid == 17533 then
 		if phase == 3 then--Only want to remove from boss health frame first time they die, and kill only in phase 3.
