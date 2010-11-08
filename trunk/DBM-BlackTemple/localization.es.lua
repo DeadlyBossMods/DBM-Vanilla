@@ -1,4 +1,6 @@
-﻿DBM_BT_TAB			= "TempleTab"
+﻿if GetLocale() == "esES" or GetLocale() == "esMX" then
+
+DBM_BT_TAB			= "TempleTab"
 DBM_BLACK_TEMPLE	= "Templo Oscuro";
 
 
@@ -246,3 +248,5 @@ DBM_ILLIDAN_SELFWARN_SHADOW			= "Agonizing Flames"--translate
 DBM_ILLIDAN_SELFWARN_DEMONS			= "Shadow Demon"--translate
 
 DBM_SBT["Enrage2"]					= "Enrage" -- you cannot have two timers with the same id, so the 2nd enrage bar needs a "localization"
+
+end
