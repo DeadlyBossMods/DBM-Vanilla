@@ -1,4 +1,4 @@
-﻿if (GetLocale() == "esES") then
+﻿if GetLocale() == "esES" or GetLocale() == "esMX" then
 
 DBM_EYE_TAB			= "EyeTab"
 DBM_TEMPEST_KEEP	= "Castillo de la Tempestad";
