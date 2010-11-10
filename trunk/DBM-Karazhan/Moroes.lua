@@ -19,6 +19,7 @@ local warningGarrote		= mod:NewTargetAnnounce(37066, 4)
 local warningGouge			= mod:NewTargetAnnounce(29425, 4)
 local warningBlind			= mod:NewTargetAnnounce(34694, 3)
 local warningMortalStrike	= mod:NewTargetAnnounce(29572, 2)
+local warningFrenzy			= mod:NewSpellAnnounce(37023, 3)
 local warningManaBurn		= mod:NewCastAnnounce(29405, 3, nil, false)
 local warningGreaterHeal	= mod:NewCastAnnounce(35096, 3, nil, false)
 local warningHolyLight		= mod:NewCastAnnounce(29562, 3, nil, false)
@@ -32,7 +33,7 @@ local lastVanish = 0
 
 function mod:OnCombatStart(delay)
 	timerVanishCD:Start(-delay)
-	warningVanishSoon:Schedule(31-delay)
+	warningVanishSoon:Schedule(26-delay)
 	lastVanish = 0
 end
 
@@ -59,6 +60,10 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(29572) then
 		warningMortalStrike:Show(args.destName)
 		timerMortalStrike:Show(args.destName)
+	elseif args:IsSpellID(37023) then--Frenzy, he's no longer going to vanish.
+		warningFrenzy:Show()
+		warningVanishSoon:Cancel()
+		timerVanishCD:Cancel()
 	elseif args:IsSpellID(37066) then
 		warningGarrote:Show(args.destName)
 		if (GetTime() - lastVanish) < 20 then--firing this event here instead, since he does garrote as soon as he comes out of vanish.
