@@ -100,7 +100,7 @@ function mod:UNIT_DIED(args)
 		if phase == 3 then--Only want to remove from boss health frame first time they die, and kill only in phase 3.
 			JulianneDied = GetTime()
 			if (GetTime() - RomuloDied) < 10 then
-				mod:EndCombat()
+				DBM:EndCombat("RomuloAndJulianne", false)
 			end
 		else
 			DBM.BossHealth:RemoveBoss(cid)
@@ -110,7 +110,7 @@ function mod:UNIT_DIED(args)
 		if phase == 3 then--Only want to remove from boss health frame first time they die, and kill only in phase 3.
 			RomuloDied = GetTime()
 			if (GetTime() - JulianneDied) < 10 then
-				mod:EndCombat()
+				DBM:EndCombat("RomuloAndJulianne", false)
 			end
 		else
 			DBM.BossHealth:RemoveBoss(cid)
