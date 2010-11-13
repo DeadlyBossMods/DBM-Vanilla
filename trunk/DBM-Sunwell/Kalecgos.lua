@@ -104,11 +104,11 @@ function Kal:OnEvent(event, args)
 		if bit.band(args.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 then
 			self:SendSync("Down"..tostring(args.destName))
 		end
-	elseif event == "UNIT_HEALTH" and UnitIsEnemy(unit, "player") then
-		if UnitName(unit) == DBM_KAL_NAME then
-			self:SendSync("HPDragon"..tostring(UnitHealth(unit)))
-		elseif UnitName(unit) == DBM_KAL_KILL_NAME then
-			self:SendSync("HPDemon"..tostring(UnitHealth(unit)))
+	elseif event == "UNIT_HEALTH" and UnitIsEnemy(args, "player") then
+		if UnitName(args) == DBM_KAL_NAME then
+			self:SendSync("HPDragon"..tostring(UnitHealth(args)))
+		elseif UnitName(args) == DBM_KAL_KILL_NAME then
+			self:SendSync("HPDemon"..tostring(UnitHealth(args)))
 		end
 	end
 end
