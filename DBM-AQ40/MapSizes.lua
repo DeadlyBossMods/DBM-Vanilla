@@ -1,5 +1,5 @@
 local WowBuild = select(2, GetBuildInfo())
-if tonumber(WowBuild) < 13165 then return end
+if tonumber(WowBuild) < 13329 then return end
 
 DBM:RegisterMapSize("AhnQiraj",
 	1, 2777.54411315918, 1851.6904296875,

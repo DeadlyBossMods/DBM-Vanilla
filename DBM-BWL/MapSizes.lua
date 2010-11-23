@@ -1,5 +1,5 @@
 local WowBuild = select(2, GetBuildInfo())
-if tonumber(WowBuild) < 13165 then return end
+if tonumber(WowBuild) < 13329 then return end
 
 DBM:RegisterMapSize("BlackwingLair",
 	1, 499.428039550781, 332.94970703125,
