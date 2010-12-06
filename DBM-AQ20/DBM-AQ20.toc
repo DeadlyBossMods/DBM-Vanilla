@@ -13,16 +13,7 @@
 ## X-DBM-Mod-Name-esES: Ruinas de Ahn'Qiraj
 ## X-DBM-Mod-Name-ruRU: Руины Ан'Киража
 ## X-DBM-Mod-Sort: 404
---## X-DBM-Mod-LoadZoneID: 716
-## X-DBM-Mod-LoadZone: Nitram,Ruins of Ahn'Qiraj
-## X-DBM-Mod-LoadZone-esES: Nitram,Ruinas de Ahn'Qiraj
-## X-DBM-Mod-LoadZone-ruRU: Nitram,Руины Ан'Киража
-## X-DBM-Mod-LoadZone-frFR: Nitram,Ruines d'Ahn'Qiraj
-## X-DBM-Mod-LoadZone-esMX: Nitram,Ruinas de Ahn'Qiraj
-## X-DBM-Mod-LoadZone-zhTW: 安其拉廢墟
-## X-DBM-Mod-LoadZone-zhCN: 安其拉废墟
-## X-DBM-Mod-LoadZone-koKR: 안퀴라즈 폐허
-## X-DBM-Mod-LoadZone-deDE: Nitram,Ruinen von Ahn'Qiraj
+## X-DBM-Mod-LoadZoneID: 717
 localization.en.lua
 localization.es.lua
 localization.ru.lua
