@@ -1,6 +1,7 @@
 ﻿## Interface: 40000
 ## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Ruins of Ahn'Qiraj|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Ruinen von Ahn'Qiraj|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Ruinas de Ahn'Qiraj|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Руины Ан'Киража|r
 ## LoadOnDemand: 1
@@ -10,11 +11,13 @@
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: The Ruins of Ahn'Qiraj
+## X-DBM-Mod-Name-deDE: Ruinen von Ahn'Qiraj
 ## X-DBM-Mod-Name-esES: Ruinas de Ahn'Qiraj
 ## X-DBM-Mod-Name-ruRU: Руины Ан'Киража
 ## X-DBM-Mod-Sort: 404
 ## X-DBM-Mod-LoadZoneID: 717
 localization.en.lua
+localization.de.lua
 localization.es.lua
 localization.ru.lua
 MapSizes.lua
