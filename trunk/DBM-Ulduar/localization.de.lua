@@ -107,7 +107,7 @@ L:SetMiscLocalization{
 	YellAir				= "Gebt uns einen Moment, damit wir uns auf den Bau der Geschütze vorbereiten können.",
 	YellAir2			= "Feuer einstellen! Lasst uns diese Geschütze reparieren!",
 	YellGround			= "Beeilt Euch! Sie wird nicht lange am Boden bleiben!", 
-	EmotePhase2			= "%%s grounded permanently!",
+	EmotePhase2			= "%%s grounded permanently!", -- translate!
 	FlamecastUnknown		= DBM_CORE_UNKNOWN
 }
 
@@ -508,7 +508,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	EmoteSaroniteVapors		= "A cloud of saronite vapors coalesces nearby!",	--to be translated
+	EmoteSaroniteVapors		= "Eine Wolke Saronitdämpfe bildet sich in der Nähe!",
 	CrashWhisper			= "Schattengeschoss auf dir - lauf weg!",
 	YellLeech			= "Mal der Gesichtslosen auf mir!",
 	YellCrash			= "Schattengeschoss auf mir!"
@@ -524,8 +524,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	YellPull 					= "The time to strike at the head of the beast will soon be upon us! Focus your anger and hatred on his minions!",	--to be translated
-	YellPhase2 					= "I am the lucid dream.",	--to be translated
+	YellPull 					= "Bald ist die Zeit gekommen, dem Untier den Kopf abzuschlagen! Konzentriert Euren Zorn und Euren Hass auf seine Diener!",
+	YellPhase2 					= "Ich bin der strahlende Traum.",
 	Sara 						= "Sara",
 	WarningYellSqueeze			= "Quetschen auf mir! Hilfe!"
 }
