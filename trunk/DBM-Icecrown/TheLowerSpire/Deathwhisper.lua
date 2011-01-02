@@ -58,9 +58,9 @@ mod:AddBoolOption("ShieldHealthFrame", true, "misc")
 mod:RemoveOption("HealthFrame")
 
 
-local lastDD	= 0
-local dominateMindTargets	= {}
-local dominateMindIcon 	= 6
+local lastDD = 0
+local dominateMindTargets = {}
+local dominateMindIcon = 6
 local deformedFanatic
 local empoweredAdherent
 
