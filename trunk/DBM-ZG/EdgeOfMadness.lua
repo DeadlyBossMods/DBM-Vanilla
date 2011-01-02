@@ -1,3 +1,5 @@
+-- Delete ZG mods? :)
+
 local mod	= DBM:NewMod("EdgeOfMadness", "DBM-ZG", 1)
 local L		= mod:GetLocalizedStrings()
 
