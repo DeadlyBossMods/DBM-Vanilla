@@ -1,4 +1,6 @@
-﻿local mod = DBM:NewMod("Bloodlord", "DBM-ZG", 1)
+﻿-- ZG mods can be deleted
+
+local mod = DBM:NewMod("Bloodlord", "DBM-ZG", 1)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
