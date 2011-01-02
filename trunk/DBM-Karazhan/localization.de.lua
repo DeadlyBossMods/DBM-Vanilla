@@ -94,7 +94,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_BBW_YELL_1			= "The better to own you with!"
+	DBM_BBW_YELL_1			= "The better to own you with!" --translate
 }
 
 
@@ -204,7 +204,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Prince")
 
 L:SetGeneralLocalization{
-	name = "Prince Malchezaar"
+	name = "Prinz Malchezaar"
 }
 
 L:SetWarningLocalization{
