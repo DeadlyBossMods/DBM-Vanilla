@@ -64,7 +64,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
-	name = "Sulfuron Harbringer"
+	name = "Sulfuron Harbinger"
 }
 
 ----------------
