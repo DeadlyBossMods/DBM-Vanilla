@@ -61,13 +61,13 @@ DBM_HALAZZI_OPTION_TOTEM		= "Blitzschlagtotem ansagen"
 DBM_HALAZZI_YELL_PULL			= "Auf die Knie und verneigt Euch... vor den Reißzähnen und der Klaue!"
 DBM_HALAZZI_YELL_SPIRIT			= "Ich kämpfe mit wildem Geist..."
 DBM_HALAZZI_YELL_SPIRIT_DESP	= "Geist, zurück zu mir!"
-DBM_HALAZZI_CAST_TOTEM			= "Halazzi beginnt Blitzschlagtotem zu wirken." -- 2 spaces? wtf? -- okay im deutschen nicht...
+DBM_HALAZZI_CAST_TOTEM			= "Halazzi beginnt Blitzschlagtotem zu wirken."
 DBM_HALAZZI_GAIN_FRENZY			= "Halazzi bekommt 'Raserei'."
 
 DBM_HALAZZI_WARN_SPIRIT			= "Geist spawned"
 DBM_HALAZZI_WARN_SPIRIT_DESP	= "Geist despawned"
 DBM_HALAZZI_WARN_TOTEM			= "Blitzschlagtotem"
-DBM_HALAZZI_WARN_FRENZY			= "Raserei - Tranq Shot" -- tranq shot...wtf....
+DBM_HALAZZI_WARN_FRENZY			= "Raserei - Einlullender Schuss"
 
 
 -- Malacrass
