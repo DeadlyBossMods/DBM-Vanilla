@@ -1,4 +1,4 @@
-if GetLocale() ~= "deDE" then return end
+﻿if GetLocale() ~= "deDE" then return end
 
 local L
 
@@ -81,7 +81,7 @@ L:SetWarningLocalization{
 	WarnP2Soon	= "Phase 2 bald"
 }
 L:SetOptionLocalization{
-	WarnP2Soon 	= "Warn when phase 2 is about to start"
+	WarnP2Soon 	= "Warnung bei baldigem Beginn von Phase 2"
 }
 
 -----------------
@@ -94,7 +94,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Kill	= "Impossible! Stay your attack, mortals... I submit! I submit!"
+	Kill	= "Unmöglich! Haltet ein, Sterbliche... Ich gebe auf! Ich gebe auf!"
 }
 
 ----------------
@@ -106,26 +106,26 @@ L:SetGeneralLocalization{
 	name = "Ragnaros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submerge",
-	WarnSubmergeSoon	= "Submerge soon",
-	WarnEmerge			= "Emerge",
-	WarnEmergeSoon		= "EmergeSoon"
+	WarnSubmerge		= "Abtauchen",
+	WarnSubmergeSoon	= "Abtauchen bald",
+	WarnEmerge			= "Auftauchen",
+	WarnEmergeSoon		= "Auftauchen bald"
 }
 L:SetTimerLocalization{
-	TimerCombatStart	= "Combat starts",
-	TimerSubmerge		= "Submerge",
-	TimerEmerge			= "Emerge"
+	TimerCombatStart	= "Kampf beginnt",
+	TimerSubmerge		= "Abtauchen",
+	TimerEmerge			= "Auftauchen"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "Show time for start of combat",
-	WarnSubmerge		= "Show warning for submerge",
-	WarnSubmergeSoon	= "Show pre-warning for submerge",
-	TimerSubmerge		= "Show timer for submerge",
-	WarnEmerge			= "Show warning for emerge",
-	WarnEmergeSoon		= "Show pre-warning for emerge",
-	TimerEmerge			= "Show timer for emerge"
+	TimerCombatStart	= "Zeige Zeit bis zum Beginn des Kampfes",
+	WarnSubmerge		= "Zeige Warnung für Abtauchen",
+	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
+	TimerSubmerge		= "Zeige Timer für Abtauchen",
+	WarnEmerge			= "Zeige Warnung für Auftauchen",
+	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
+	TimerEmerge			= "Zeige Timer für Auftauchen"
 }
 L:SetMiscLocalization{
-	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"
+	Submerge	= "Kommt herbei, meine Diener! Verteidigt euren Herren!", -- needs translation / unverified translation (current translation source: GTDB)
+	Pull		= "Unverschämte Welpen! Ihr seid sehenden Auges dem Tod in die Arme gelaufen! Seht her, der Meister regt sich!"
 }

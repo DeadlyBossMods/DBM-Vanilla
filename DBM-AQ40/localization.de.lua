@@ -1,4 +1,4 @@
-if GetLocale() ~= "deDE" then return end
+﻿if GetLocale() ~= "deDE" then return end
 
 local L
 
@@ -21,7 +21,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "K�fer-Trio"
+	name = "Käferfamilie"
 }
 L:SetMiscLocalization{
 	Yauj = "Prinzessin Yauj",
@@ -61,17 +61,17 @@ L:SetGeneralLocalization{
 	name = "Viscidus"
 }
 L:SetWarningLocalization{
-	WarnFreeze	= "Freeze: %d/3",
-	WarnShatter	= "Shatter: %d/3"
+	WarnFreeze	= "Einfrieren: %d/3",
+	WarnShatter	= "Zerspringen: %d/3"
 }
 L:SetOptionLocalization{
-	WarnFreeze	= "Announce Freeze status",
-	WarnShatter	= "Announce Shatter status",
+	WarnFreeze	= "Verkünde Einfrieren Status",
+	WarnShatter	= "Verkünde Zerspringen Status",
 }
 L:SetMiscLocalization{
-	Phase4 	= "begins to crack", --translate
-	Phase5 	= "looks ready to shatter", --translate
-	Phase6 	= "Explodes." --translate
+	Phase4 	= "geht die Puste aus!",
+	Phase5 	= "ist kurz davor, zu zerspringen.",
+	Phase6 	= "Explodes."	-- needs translation
 }
 -------------
 -- Huhuran --
@@ -93,7 +93,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
-	name = "Zwillings Imperatoren"
+	name = "Zwillingsimperatoren"
 }
 L:SetMiscLocalization{
 	Veklor = "Imperator Vek'lor",
@@ -109,7 +109,7 @@ L:SetGeneralLocalization{
 	name = "C'Thun"
 }
 L:SetOptionLocalization{
-	RangeFrame	= "Show range frame"
+	RangeFrame	= "Zeige Abstandsfenster"
 }
 ----------------
 -- Ouro --
@@ -120,20 +120,20 @@ L:SetGeneralLocalization{
 	name = "Ouro"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submerge",
-	WarnEmerge			= "Emerge",
-	WarnSubmergeSoon	= "Submerge soon",
-	WarnEmergeSoon		= "Emerge soon"
+	WarnSubmerge		= "Abtauchen",
+	WarnEmerge			= "Auftauchen",
+	WarnSubmergeSoon	= "Abtauchen bald",
+	WarnEmergeSoon		= "Auftauchen bald"
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submerge",
-	TimerEmerge			= "Emerge"
+	TimerSubmerge		= "Abtauchen",
+	TimerEmerge			= "Auftauchen"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Show warning for submerge",
-	WarnSubmergeSoon	= "Show pre-warning for submerge",
-	TimerSubmerge		= "Show timer for submerge",
-	WarnEmerge			= "Show warning for emerge",
-	WarnEmergeSoon		= "Show pre-warning for emerge",
-	TimerEmerge			= "Show timer for emerge"
+	WarnSubmerge		= "Zeige Warnung für Abtauchen",
+	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
+	TimerSubmerge		= "Zeige Timer für Abtauchen",
+	WarnEmerge			= "Zeige Warnung für Auftauchen",
+	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
+	TimerEmerge			= "Zeige Timer für Auftauchen"
 }

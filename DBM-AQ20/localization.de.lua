@@ -1,4 +1,4 @@
-if GetLocale() ~= "deDE" then return end
+﻿if GetLocale() ~= "deDE" then return end
 
 local L
 
@@ -29,17 +29,17 @@ L:SetWarningLocalization{
 	WarnBoss	= "Boss kommt"
 }
 L:SetOptionLocalization{
-	WarnWave	= "Show announce for next incoming wave"
+	WarnWave	= "Zeige Meldung für nächste Angriffswelle"
 }
 L:SetMiscLocalization{
-	NpcPull		= "They come now. Try not to get yourself killed, young blood.",--translate
-	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?",--translate
-	Wave3		= "The time of our retribution is at hand! Let darkness reign in the hearts of our enemies!",--translate
-	Wave4		= "No longer will we wait behind barred doors and walls of stone! No longer will our vengeance be denied! The dragons themselves will tremble before our wrath!",--translate
-	Wave5		= "Fear is for the enemy! Fear and death!",--translate
-	Wave6		= "Staghelm will whimper and beg for his life, just as his whelp of a son did! One thousand years of injustice will end this day!",--translate
-	Wave7		= "Fandral! Your time has come! Go and hide in the Emerald Dream and pray we never find you!",--translate
-	Wave8		= "Impudent fool! I will kill you myself!" --translate
+	NpcPull		= "Hier kommen sie. Bleibt am Leben, Welpen.",
+	Wave1		= "Erinnerst du dich, Rajaxx? Ich habe dir doch versprochen, dich zuletzt zu töten.",
+	Wave3		= "Die Zeit der Vergeltung ist gekommen! Lasst uns die Herzen unserer Feinde mit Dunkelheit erfüllen!",
+	Wave4		= "Wir werden nicht länger hinter verbarrikadierten Toren und Mauern aus Stein ausharren! Die Rache wird unser sein! Selbst die Drachen werden im Angesicht unseres Zornes erzittern!",
+	Wave5		= "Wir kennen keine Furcht! Und wir werden unseren Feinden den Tod bringen!",
+	Wave6		= "Hirschhaupt wird winseln und um sein Leben betteln, genau wie sein räudiger Sohn! Eintausend Jahre der Ungerechtigkeit werden heute enden!",
+	Wave7		= "Fandral! Deine Zeit ist gekommen! Geh und verstecke dich im Smaragdgrünen Traum, und bete, dass wir dich nie finden werden!",
+	Wave8		= "Unverschämter Narr! Ich werde Euch höchstpersönlich töten!"
 }
 
 ----------
@@ -60,17 +60,17 @@ L:SetGeneralLocalization{
 	name 		= "Buru der Verschlinger"
 }
 L:SetWarningLocalization{
-	WarnPursue		= "Pursue on >%s<", 
-	SpecWarnPursue	= "Pursue on you",
-	WarnDismember	= "%s on >%s< (%s)"
+	WarnPursue		= "Verfolgung auf >%s<",
+	SpecWarnPursue	= "Du wirst verfolgt",
+	WarnDismember	= "%s auf >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Announce pursue targets",
-	SpecWarnPursue	= "Show special warning when you are being pursued",
+	WarnPursue		= "Verkünde Ziele von Verfolgung",
+	SpecWarnPursue	= "Zeige Spezialwarnung wenn du verfolgt wirst",
 	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unknown"),	
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "%s sets eyes on %s!"
+	PursueEmote 	= "%s behält %s im Blickfeld!"
 }
 
 -------------
@@ -79,7 +79,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ayamiss")
 
 L:SetGeneralLocalization{
-	name 		= "Ayamiss der J�ger"
+	name 		= "Ayamiss der Jäger"
 }
 
 --------------
@@ -97,6 +97,6 @@ L:SetTimerLocalization{
 	TimerVulnerable	= "%s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable	= "Announce weaknesses",
-	TimerVulnerable	= "Show timer for weaknesses"
+	WarnVulnerable	= "Verkünde Schwächen",
+	TimerVulnerable	= "Zeige Timer für Schwächen"
 }

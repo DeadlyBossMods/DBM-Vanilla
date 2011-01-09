@@ -1,4 +1,4 @@
-if GetLocale() ~= "deDE" then return end
+﻿if GetLocale() ~= "deDE" then return end
 
 local L
 
@@ -8,17 +8,17 @@ local L
 L = DBM:GetModLocalization("Razorgore")
 
 L:SetGeneralLocalization{
-	name = "Feuerkralle der Ungez�hmte"
+	name = "Feuerkralle der Ungezähmte"
 }
 L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds spawning"
+	TimerAddsSpawn	= "Adds spawnen"
 }
 L:SetOptionLocalization{
-	TimerAddsSpawn	= "Show timer for first adds spawning"
+	TimerAddsSpawn	= "Zeige Timer für Spawn der ersten Adds"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "Orb of Domination loses power and shuts off!",
-	YellPull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
+	Phase2Emote	= "Kugel der Herrschaft verliert Energie und schaltet sich ab!",
+	YellPull 	= "Eindringlinge sind in die Brutstätte vorgestoßen! Schlagt Alarm! Beschützt die Eier um jeden Preis!"
 }
 -------------------
 --  Vaelastrasz  --
@@ -30,15 +30,15 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerCombatStart	= "Combat starts"
+	TimerCombatStart	= "Kampf beginnt"
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "Show time for start of combat"
+	TimerCombatStart	= "Zeige Zeit bis zum Beginn des Kampfes"
 }
 
 L:SetMiscLocalization{
-	Event				= "Too late, friends! Nefarius' corruption has taken hold...I cannot...control myself."
+	Event				= "Zu spät, Freunde! Nefarius üble Macht wirkt bereits... Ich habe mich nicht... nicht mehr unter Kontrolle.."
 }
 -----------------
 --  Broodlord  --
@@ -46,7 +46,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Broodlord")
 
 L:SetGeneralLocalization{
-	name = "Brutw�chter Dreschbringer"
+	name = "Brutwächter Dreschbringer"
 }
 
 ---------------
@@ -85,18 +85,18 @@ L:SetGeneralLocalization{
 	name = "Chromaggus"
 }
 L:SetWarningLocalization{
-	WarnBreathSoon	= "Breath soon",
+	WarnBreathSoon	= "Atem bald",
 	WarnBreath		= "%s",
-	WarnPhase2Soon	= "Phase 2 soon"
+	WarnPhase2Soon	= "Phase 2 bald"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s CD"
+	TimerBreathCD	= "%s Cooldown"
 }
 L:SetOptionLocalization{
-	WarnBreathSoon	= "Show pre-warning for Chromaggus' Breaths",
-	WarnBreath		= "Show warning when Chromaggus casts one of his Breaths",
-	TimerBreathCD	= "Show Breath CD",
-	WarnPhase2Soon	= "Announce when phase 2 is about to start"
+	WarnBreathSoon	= "Zeige Vorwarnung für die Atem des Chromaggus",
+	WarnBreath		= "Zeige Warnung wenn Chromaggus einen seiner Atem wirkt",
+	TimerBreathCD	= "Zeige Atem Cooldown",
+	WarnPhase2Soon	= "Verkünde baldigen Beginn von Phase 2"
 }
 
 ----------------
@@ -108,32 +108,33 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnClassCallSoon	= "Class call soon",
-	WarnClassCall		= "%s call",
-	WarnPhaseSoon		= "Phase %s soon",
+	WarnClassCallSoon	= "Klassenruf bald",
+	WarnClassCall		= "%s Ruf",
+	WarnPhaseSoon		= "Phase %s bald",
 	WarnPhase			= "Phase %s"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s call"
+	TimerClassCall		= "%s Ruf"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Show timer for class call duration",
-	WarnClassCallSoon	= "Pre-warn class calls",
-	WarnClassCall		= "Announce class calls",
-	WarnPhaseSoon		= "Announce when a new phase is about to start",
-	WarnPhase			= "Announce phase change"
+	TimerClassCall		= "Zeige Timer für Dauer der Klassenrufe",
+	WarnClassCallSoon	= "Vorwarnung für Klassenrufe",
+	WarnClassCall		= "Verkünde Klassenrufe",
+	WarnPhaseSoon		= "Verkünde baldigen Phasenwechsel",
+	WarnPhase			= "Verkünde Phasenwechsel"
 }
 L:SetMiscLocalization{
-	YellPull	= "Let the games begin!",
-	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",
-	YellP3		= "Impossible! Rise my minions!  Serve your master once more!",
-	YellShaman	= "Shamans, show me",
-	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",
-	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",
-	YellPriest	= "Priests! If you're going to keep healing like that, we might as well make it a little more interesting!",
-	YellWarrior	= "Warriors, I know you can hit harder than that! Lets see it!",
-	YellRogue	= "Rogues? Stop hiding and face me!",
-	YellWarlock	= "Warlocks, you shouldn't be playing with magic you don't understand. See what happens?",
-	YellHunter	= "Hunters and your annoying pea-shooters!",
-	YellMage	= "Mages too? You should be more careful when you play with magic..."
+	YellPull	= "Lasst die Spiele beginnen!",
+	YellP2		= "Sehr gut, meine Diener. Der Mut der Sterblichen scheint zu schwinden! Nun lasst uns sehen, wie sie sich gegen den wahren Herrscher des Schwarzfels behaupten werden!",
+	YellP3		= "Unmöglich! Erhebt Euch, meine Diener! Kämpft erneut für Euren Meister!",
+	YellShaman	= "Schamane, zeigt mir was eure Totems können!", -- unverified translation (current translation source: rpguides)
+	YellPaladin	= "Paladine... ich habe gehört, dass Ihr viele Leben habt. Zeigt es mir.",
+	YellDruid	= "Druiden und ihre lächerliche Gestaltwandlung. Zeigt mal was Ihr könnt!",
+	YellPriest	= "Priester! Wenn Ihr weiterhin so heilt, können wir es auch gerne etwas interessanter gestalten!",
+	YellWarrior	= "Krieger, Ich bin mir sicher, dass ihr kräftiger als das zuschlagen könnt!",
+	YellRogue	= "Schurken? Kommt aus den Schatten und zeigt Euch!",
+	YellWarlock	= "Hexenmeister, ihr solltet nicht mit Magie spielen, die ihr nicht versteht. Seht ihr was ich meine?", -- unverified translation (current translation source: rpguides)
+	YellHunter	= "Jäger und ihre lästigen Knallbüchsen!",
+	YellMage	= "Auch Magier? Ihr solltet vorsichtiger sein, wenn Ihr mit Magie spielt...",
+	YellDK		= "Todesritter... kommt hierher!"
 }
