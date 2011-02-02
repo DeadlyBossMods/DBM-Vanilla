@@ -1,27 +1,23 @@
 ﻿## Interface: 40000
 ## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Outlands|r
-## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Terrallende|r
-## Author: Tandanu and Nitram
 ## LoadOnDemand: 1
-## RequiredDeps: DBM-Core, DBM-BurningCrusade
+## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMOutlands_SavedVars, DBMOutlands_SavedStats
-## X-DBM-BC-AddOn: 1
-## X-DBM-Tab-ID: Outlands
-## X-DBM-Tab-BCTab: 1
-## X-DBM-Tab-Sort: 307
-## X-DBM-Name: Outlands
-## X-DBM-Name-esES: Terrallende
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Name: Outlands
+## X-DBM-Mod-Name-esES: Terrallende
+## X-DBM-Mod-Sort: 307
 --## X-DBM-Mod-LoadZoneID: 465,473
-## X-DBM-Tab-LoadZone: Gruul's Lair,Magtheridon's Lair,Hellfire Peninsula,Shadowmoon Valley
-## X-DBM-Tab-LoadZone-esES: Guarida de Gruul,Guarida de Magtheridon
+## X-DBM-Mod-LoadZone: Gruul's Lair,Magtheridon's Lair
+## X-DBM-Mod-LoadZone-esES: Guarida de Gruul,Guarida de Magtheridon
 localization.en.lua
 localization.de.lua
-localization.fr.lua
+localization.es.lua
 localization.tw.lua
 localization.cn.lua
 localization.ru.lua
-localization.es.lua
 Maulgar.lua
 Gruul.lua
 Magtheridon.lua
