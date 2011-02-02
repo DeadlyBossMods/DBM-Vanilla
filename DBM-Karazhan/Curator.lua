@@ -3,7 +3,6 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15691)
---mod:RegisterCombat("yell", L.DBM_CURA_YELL_PULL)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(

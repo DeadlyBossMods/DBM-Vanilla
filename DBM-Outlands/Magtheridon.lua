@@ -1,62 +1,64 @@
-local Mag = DBM:NewBossMod("Magtheridon", DBM_MAG_NAME, DBM_MAG_DESCRIPTION, DBM_MAGS_LAIR, DBMGUI_TAB_OTHER_BC, 3);
+local mod	= DBM:NewMod("Magtheridon", "DBM-Outlands")
+local L		= mod:GetLocalizedStrings()
 
-Mag.Version		= "1.0";
-Mag.Author		= "Tandanu";
+mod:SetRevision(("$Revision: 164 $"):sub(12, -3))
+mod:SetCreatureID(17257)
+mod:RegisterCombat("emote", L.DBM_MAG_EMOTE_PULL)
 
-Mag:SetCreatureID(17257)
-Mag:RegisterCombat("emote", DBM_MAG_EMOTE_PULL)
-
-Mag:RegisterEvents(
+mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_MONSTER_YELL",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"CHAT_MSG_MONSTER_YELL"
 )
 
-Mag:AddOption("WarnInfernal", true, DBM_MAG_OPTION_1);
-Mag:AddOption("WarnHeal", true, DBM_MAG_OPTION_2);
-Mag:AddOption("WarnNova", true, DBM_MAG_OPTION_3);
+local warningHeal			= mod:NewSpellAnnounce(30528, 3)
+local warningInfernal		= mod:NewSpellAnnounce(30511, 2)
+local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warningBlastNovaSoon	= mod:NewSoonAnnounce(30616, 3)
+local warningBlastNova		= mod:NewSpellAnnounce(30616, 4)
+local warnPhase3			= mod:NewPhaseAnnounce(3)
 
-Mag:AddBarOption("Phase 2")
-Mag:AddBarOption("Heal")
-Mag:AddBarOption("Blast Nova")
+local specWarnBlastNova		= mod:NewSpecialWarningSpell(30616)
+local specWarnHeal			= mod:NewSpecialWarningInterrupt(30528)
 
-function Mag:OnCombatStart(delay)
-	self:StartStatusBarTimer(120 - delay, "Phase 2", "Interface\\Icons\\INV_Weapon_Halberd16");
-	self:ScheduleSelf(60, "Phase2Warn", 60);
-	self:ScheduleSelf(90, "Phase2Warn", 30);
-	self:ScheduleSelf(110, "Phase2Warn", 10);
+local timerHeal				= mod:NewCastTimer(2, 30528)
+local timerPhase2			= mod:NewTimer(120, "timerP2", "Interface\\Icons\\INV_Weapon_Halberd16")
+local timerBlastNovaCD		= mod:NewCDTimer(54, 30616)
+local timerDebris			= mod:NewNextTimer(15, 36449)--Only happens once per fight, after the phase 3 yell.
+
+function mod:OnCombatStart(delay)
+	timerPhase2:Start(-delay)
 end
 
-function Mag:OnEvent(event, arg1)
-	if event == "SPELL_CAST_SUCCESS" then
-		if arg1.spellId == 30511 and self.Options.WarnInfernal then
-			self:Announce(DBM_MAG_WARN_INFERNAL, 2);
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(30528) then
+		warningHeal:Show()
+		if args.sourceGUID == UnitGUID("target") then
+			specWarnHeal:Show()
+			timerHeal:Start()
 		end
-	elseif event == "SPELL_CAST_START" then
-		if arg1.spellId == 30528 then
-			if self.Options.WarnHeal then
-				self:Announce(DBM_MAG_WARN_HEAL, 1);
-			end
-			self:StartStatusBarTimer(2, "Heal", "Interface\\Icons\\Spell_Shadow_ChillTouch");
-		end
-	elseif event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 and string.find(arg1, DBM_MAG_YELL_PHASE2) then -- to support stupid german localization :(
-			self:Announce(DBM_MAG_WARN_P2, 3);
-			self:StartStatusBarTimer(54, "Blast Nova", "Interface\\Icons\\Spell_Fire_SealOfFire");
-			self:ScheduleSelf(48, "NovaWarn");
-		end
-	elseif event == "CHAT_MSG_RAID_BOSS_EMOTE" then
-		if arg1 == DBM_MAG_EMOTE_NOVA then
-			if self.Options.WarnNova then
-				self:Announce(DBM_MAG_WARN_NOVA_NOW, 3)
-			end
-			self:StartStatusBarTimer(54, "Blast Nova", "Interface\\Icons\\Spell_Fire_SealOfFire");
-			self:ScheduleSelf(48, "NovaWarn");
-		end
-	elseif event == "Phase2Warn" and arg1 then
-		self:Announce(string.format(DBM_MAG_PHASE2_WARN, arg1), 2);
-	elseif event == "NovaWarn" and self.Options.WarnNova then
-		self:Announce(DBM_MAG_WARN_NOVA_SOON, 2);
+	elseif args:IsSpellID(30616) then
+		warningBlastNova:Show()
+		warningBlastNovaSoon:Cancel()
+		warningBlastNovaSoon:Schedule(48)
+		timerBlastNovaCD:Start()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(30511) then
+		warningInfernal:Show()
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.DBM_MAG_YELL_PHASE2 or msg:find(L.DBM_MAG_YELL_PHASE2) then
+		warnPhase2:Show()
+		warningBlastNovaSoon:Schedule(48)
+		timerBlastNovaCD:Start()
+		timerPhase2:Cancel()
+	elseif msg == L.DBM_MAG_YELL_PHASE3 or msg:find(L.DBM_MAG_YELL_PHASE3) then
+		warnPhase3:Show()
+		timerDebris:Start()
 	end
 end
