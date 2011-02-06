@@ -216,6 +216,7 @@ function mod:NextPhase()
 		timerNextShockblast:Stop()
 		timerProximityMines:Stop()
 		timerFlameSuppressant:Stop()
+		timerPlasmaBlastCD:Stop()
 		timerP1toP2:Start()
 		if self.Options.HealthFrame then
 			DBM.BossHealth:Clear()
