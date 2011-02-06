@@ -11,17 +11,14 @@ mod:RegisterCombat("yell", L.YellAir)
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE",
-	"UNIT_TARGET",
 	"CHAT_MSG_MONSTER_YELL",
 	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
 
 local warnTurretsReadySoon			= mod:NewAnnounce("warnTurretsReadySoon", 1, 48642)
 local warnTurretsReady				= mod:NewAnnounce("warnTurretsReady", 3, 48642)
-local warnDevouringFlameCast		= mod:NewAnnounce("WarnDevouringFlameCast", 2, 64733, false, "OptionDevouringFlame") -- new option is just a work-around...the saved variable handling will be updated to allow changing and updating default values soon
 
 local specWarnDevouringFlame		= mod:NewSpecialWarningMove(64733)
-local specWarnDevouringFlameCast	= mod:NewSpecialWarning("SpecWarnDevouringFlameCast")
 
 local enrageTimer					= mod:NewBerserkTimer(900)
 local timerDeepBreathCooldown		= mod:NewCDTimer(21, 64021)
@@ -32,9 +29,6 @@ local timerTurret3					= mod:NewTimer(93, "timerTurret3", 48642)
 local timerTurret4					= mod:NewTimer(113, "timerTurret4", 48642)
 local timerGrounded                 = mod:NewTimer(45, "timerGrounded")
 
-mod:AddBoolOption("PlaySoundOnDevouringFlame", false)
-
-local castFlames
 local combattime = 0
 
 function mod:OnCombatStart(delay)
@@ -58,9 +52,6 @@ end
 function mod:SPELL_DAMAGE(args)
 	if args:IsSpellID(64733, 64704) and args:IsPlayer() then
 		specWarnDevouringFlame:Show()
-		if self.Options.PlaySoundOnDevouringFlame then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
 	end
 end
 
@@ -101,32 +92,6 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(64021) then	-- deep breath
 		timerDeepBreathCast:Start()
 		timerDeepBreathCooldown:Start()
-	elseif args:IsSpellID(63236) then
-		local target = self:GetBossTarget(self.creatureId)
-		if target then
-			self:CastFlame(target)
-		else
-			castFlames = GetTime()
-		end
 	end
 end
 
-function mod:UNIT_TARGET(unit)	-- I think this is useless, why would anyone in the raid target razorflame right after the flame stuff?
-	if castFlames and GetTime() - castFlames <= 1 and self:GetUnitCreatureId(unit.."target") == self.creatureId then
-		local target = UnitName(unit.."targettarget")
-		if target then
-			self:CastFlame(target)
-		else
-			self:CastFlame(L.FlamecastUnknown)
-		end
-		castFlames = false
-	end
-end 
-
-function mod:CastFlame(target)
-	warnDevouringFlameCast:Show(target)
-	if target == UnitName("player") then
-		specWarnDevouringFlameCast:Show()
-	end
-	self:SetIcon(target, 8, 9)
-end 
