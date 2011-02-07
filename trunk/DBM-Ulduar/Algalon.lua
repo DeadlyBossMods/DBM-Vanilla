@@ -55,20 +55,12 @@ local warned_star = false
 function mod:OnCombatStart(delay)
 	warned_preP2 = false
 	warned_star = false
-	enrageTimer:Start(368-delay)
+	enrageTimer:Start(368-delay)--All timers +8 for combat start RP
 	timerNextBigBang:Start(98-delay)
 	announcePreBigBang:Schedule(88-delay)
 	timerCDCosmicSmash:Start(33-delay)
 	timerNextCollapsingStar:Start(23-delay)
 	timerCombatStart:Start(-delay)
-end
-
-function mod:startTimers()
-	enrageTimer:Start(368)
-	timerNextBigBang:Start(98.5)
-	announcePreBigBang:Schedule(88)
-	timerCDCosmicSmash:Start(33)
-	timerNextCollapsingStar:Start(23)
 end
 
 function mod:SPELL_CAST_START(args)
@@ -114,13 +106,13 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.FirstPull or msg:find(L.FirstPull) then--Additional pull yell on first pull, auto correct timers. Not cleanest way to do it but only real way to do it accurately.
-		enrageTimer:Start(386.5)
-		timerNextBigBang:Start(116.5)
-		announcePreBigBang:Schedule(106.5)
-		timerCDCosmicSmash:Start(51.5)
-		timerNextCollapsingStar:Start(41.5)
-		timerCombatStart:Start(18.5)
+	if msg == L.FirstPull or msg:find(L.FirstPull) then--Additional pull yell on first pull 11 seconds before actual combat, all timers +11, auto correct timers.
+		enrageTimer:Start(371)
+		timerNextBigBang:Start(101)
+		announcePreBigBang:Schedule(91)
+		timerCDCosmicSmash:Start(36)
+		timerNextCollapsingStar:Start(26)
+		timerCombatStart:Start(11)
 		warnFirstPull:Show()
 	elseif msg == L.Phase2 or msg:find(L.Phase2) then
 		timerNextCollapsingStar:Cancel()
