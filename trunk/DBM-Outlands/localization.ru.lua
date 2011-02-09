@@ -72,7 +72,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Doomwalker")
 
 L:SetGeneralLocalization{
-	name = "Судьболом
+	name = "Судьболом"
 }
 
 L:SetWarningLocalization{
