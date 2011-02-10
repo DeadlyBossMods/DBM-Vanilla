@@ -25,6 +25,7 @@
 ## X-DBM-Mod-LoadZone-esES: Murallas del Fuego Infernal,El Horno de Sangre,Las Salas Arrasadas,Recinto de los Esclavos,La Sotiénaga,La Cámara de Vapor,Criptas Auchenai,Tumbas de Maná,Salas Sethekk,Laberinto de las Sombras,Antiguas Laderas de Trabalomas,La Ciénaga Negra,El Mechanar,El Invernáculo,El Arcatraz,Bancal del Magister
 localization.en.lua
 localization.de.lua
+localization.kr.lua
 localization.ru.lua
 localization.es.lua
 --Hellfire_Ramp\MapSizes.lua
