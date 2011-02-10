@@ -18,6 +18,7 @@ localization.es.lua
 localization.tw.lua
 localization.cn.lua
 localization.ru.lua
+localization.kr.lua
 Maulgar.lua
 Gruul.lua
 Magtheridon.lua
