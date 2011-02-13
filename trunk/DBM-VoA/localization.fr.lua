@@ -77,8 +77,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	SpecWarnCinder		= "Montre une alerte spéciale quand vous êtes dans les Braises enflammées",
-	PlaySoundOnCinder	= "Joue un son quand vous êtes dans les Braises enflammées",
+	SpecWarnCinder		= "Montre une alerte spéciale quand vous êtes dans les Braises enflammées"
 }
 
 L:SetMiscLocalization{

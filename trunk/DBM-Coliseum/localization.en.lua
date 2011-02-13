@@ -94,7 +94,6 @@ L:SetOptionLocalization{
 	IncinerateFleshIcon			= "Set icons on Incinerate Flesh targets",
 	LegionFlameIcon				= "Set icons on Legion Flame targets",
 	LegionFlameWhisper			= "Send whisper to Legion Flame targets (requires Raid Leader)",
-	LegionFlameRunSound			= "Play sound on Legion Flame",
 	IncinerateShieldFrame		= "Show boss health with a health bar for Incinerate Flesh"
 }
 
@@ -155,7 +154,6 @@ L:SetMiscLocalization{
 } 
 
 L:SetOptionLocalization{
-	PlaySoundOnBladestorm	= "Play sound on Bladestorm"
 }
 
 ---------------------
@@ -245,7 +243,6 @@ L:SetOptionLocalization{
 	timerAdds				= "Show timer for new adds",
 	TimerEmerge				= "Show timer for emerge",
 	TimerSubmerge			= "Show timer for submerge",
-	PlaySoundOnPursue		= "Play sound when you are being pursued",
 	PursueIcon				= "Set icons on pursued targets",
 	SpecWarnShadowStrike	= "Show special warning for $spell:66134 (to interrupt)",
 	SetIconsOnPCold         = "Set icons on $spell:68510 targets",

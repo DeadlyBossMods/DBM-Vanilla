@@ -57,7 +57,6 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-   PlaySoundOnFireWall   = "Spiele Sound bei Feuerwand",
    AnnounceFails      = "Verkünde Spieler, die bei Feuerwand und Zone der Leere scheitern, im Raidchat (benötigt aktivierte Ankündigungen und (L)- oder (A)-Status)",
    TimerTenebron      = "Zeige Timer für Tenebrons Ankunft",
    TimerShadron      = "Zeige Timer für Shadrons Ankunft",

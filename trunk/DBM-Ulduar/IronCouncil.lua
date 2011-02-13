@@ -36,9 +36,9 @@ local timerLightningWhirl		= mod:NewCastTimer(5, 63483)
 local specwarnLightningTendrils	= mod:NewSpecialWarningRun(63486)
 local timerLightningTendrils	= mod:NewBuffActiveTimer(27, 63486)
 local specwarnOverload			= mod:NewSpecialWarningRun(63481) 
+local soundTendrils			= mod:NewSound(63486)
+local soundOverload			= mod:NewSound(63481)
 mod:AddBoolOption("AlwaysWarnOnOverload", false, "announce")
-mod:AddBoolOption("PlaySoundOnOverload", true)
-mod:AddBoolOption("PlaySoundLightningTendrils", true)
 
 -- Steelbreaker
 -- High Voltage ... don't know what to show here - 63498
@@ -62,7 +62,7 @@ local specwarnRuneofDeath		= mod:NewSpecialWarningMove(63490)
 local specWarnRuneofShields		= mod:NewSpecialWarningDispel(63967, isDispeller)
 local timerRuneofDeath			= mod:NewCDTimer(30, 63490)
 local timerRuneofPower			= mod:NewCDTimer(30, 61974)
-mod:AddBoolOption("PlaySoundDeathRune", true, "announce")
+local soundRuneofDeath			= mod:NewSound(63490)
 
 local enrageTimer				= mod:NewBerserkTimer(900)
 
@@ -115,9 +115,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerOverload:Start()
 		if self.Options.AlwaysWarnOnOverload or UnitName("target") == L.StormcallerBrundir then
 			specwarnOverload:Show()
-			if self.Options.PlaySoundOnOverload then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-			end
+			soundOverload:Play()
 		end
 	end
 end
@@ -128,9 +126,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(62269, 63490) then	-- Rune of Death - move away from it
 		if args:IsPlayer() then
 			specwarnRuneofDeath:Show()
-			if self.Options.PlaySoundDeathRune then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-			end
+			soundRuneofDeath:Play()
 		end
 	elseif args:IsSpellID(62277, 63967) and not args:IsDestTypePlayer() then		-- Shield of Runes
 		specWarnRuneofShields:Show(args.destName)
@@ -152,9 +148,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(63486, 61887) then	-- Lightning Tendrils
 		timerLightningTendrils:Start()
 		specwarnLightningTendrils:Show()
-		if self.Options.PlaySoundLightningTendrils then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundTendrils:Play()
 	elseif args:IsSpellID(61912, 63494) then	-- Static Disruption (Hard Mode)
 		disruptTargets[#disruptTargets + 1] = args.destName
 		if self.Options.SetIconOnStaticDisruption then 

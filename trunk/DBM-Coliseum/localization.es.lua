@@ -98,7 +98,6 @@ L:SetOptionLocalization{
 	IncinerateFleshIcon		= "Poner icono quien tenga Carne",
 	LegionFlameIcon			= "Poner icono quien tenga Llama de la Legion",
 	LegionFlameWhisper		= "Susurrar a quien tenga la Llama de la Legion",
-	LegionFlameRunSound		= "Reproducir sonido en Llama de la Legion",
 	IncinerateShieldFrame	= "Mostrar la vida del boss con la barra de incinerar carne"
 }
 

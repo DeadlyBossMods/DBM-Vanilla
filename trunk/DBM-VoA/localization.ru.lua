@@ -46,7 +46,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "Звуковой сигнал при $spell:65279",
 	timerMobOvercharge	= "Отсчет времени для Перегрузки (суммирующийся отрицательный эффект)",
 	EmalonEnrage		= "Отсчет времени до $spell:26662",
 	RangeFrame			= "Показывать окно проверки дистанции"
@@ -70,7 +69,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder	= "Звуковой сигнал, когда под вами $spell:67332",
 	BurningFury			= "Предупреждение для $spell:66721",
 	KoralonEnrage		= "Отсчет времени до $spell:26662"
 }

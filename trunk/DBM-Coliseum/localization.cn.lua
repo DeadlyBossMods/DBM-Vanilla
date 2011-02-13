@@ -103,7 +103,6 @@ L:SetOptionLocalization{
 	IncinerateFleshIcon		= "为血肉成灰的目标设置标记(骷髅)",
 	LegionFlameIcon			= "为军团烈焰的目标设置标记(方形)",
 	LegionFlameWhisper		= "密语提示军团烈焰的目标",
-	LegionFlameRunSound		= "为军团烈焰播放音效",
 	IncinerateShieldFrame		= "在首领血量里显示血肉成灰目标的血量"
 }
 
@@ -164,8 +163,7 @@ L:SetMiscLocalization{
 } 
 
 L:SetOptionLocalization{
-	SoundWOP = "为重要技能播放额外的警报语音",
-	PlaySoundOnBladestorm		= "为剑刃风暴播放音效"
+	SoundWOP = "为重要技能播放额外的警报语音"
 }
 
 ---------------------
@@ -257,7 +255,6 @@ L:SetOptionLocalization{
 	timerAdds			= "为下一次掘地者出现显示计时器",
 	TimerEmerge			= "为首领钻地显示计时器",
 	TimerSubmerge			= "为下一次钻地显示计时器",
-	PlaySoundOnPursue		= "当你开始被追击时播放音效",
 	PursueIcon			= "为被追击的目标设置标记(骷髅)",
 	SpecWarnShadowStrike		= "为$spell:66134显示特殊警报(打断用)",
 	SetIconsOnPCold			= "为$spell:68510的目标设置标记",

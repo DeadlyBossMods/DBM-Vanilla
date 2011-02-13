@@ -88,7 +88,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpecWarnDevouringFlame		= "Activer l'avertissement spécial pour les Flammes dévorantes",
-	PlaySoundOnDevouringFlame	= "Jouer un son quand vous êtes affecté par la Flamme dévorante",
 	warnTurretsReadySoon		= "Activer le pré-avertissement pour les tourelles",
 	warnTurretsReady			= "Activer l'avertissement pour les tourelles",
 	SpecWarnDevouringFlameCast	= "Montre une alerte spéciale quand les Flammes dévorantes sont cast sur Vous",
@@ -156,14 +155,11 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarningSupercharge			= "Activer l'avertissement quand la Supercharge est incanté",
 	LightningTendrils			= "Activer l'avertissement spécial pour les Vrilles d'éclair",
-	PlaySoundLightningTendrils	= "Jouer un son pour les Vrilles d'éclair",
 	SetIconOnOverwhelmingPower	= "Mettre un icône sur la cible de la Puissance accablante",
 	RuneofDeath					= "Activer l'avertissement spécial pour les runes de mort",
 	SetIconOnStaticDisruption	= "Met une icône sur la cible de Static Disruption",
 	Overload					= "Montre une alerte spéciale pour la Surcharge",
-	AlwaysWarnOnOverload		= "Toujours alerter pour la surcharge (sinon seulement quand ciblé)",
-	PlaySoundOnOverload			= "Joue un son à la surcharge",
-	PlaySoundDeathRune			= "Joue un son pour les runes de mort"
+	AlwaysWarnOnOverload		= "Toujours alerter pour la surcharge (sinon seulement quand ciblé)"
 }
 
 L:SetMiscLocalization{
@@ -311,7 +307,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarningFlashFreeze		= "Activer l'avertissement pour le gel instantané",
-	PlaySoundOnFlashFreeze	= "Jouer un son lors de l'incantation du gel instantané",
 	YellOnStormCloud		= "Crie quand la tempête de glace est active",
 	SetIconOnStormCloud		= "Met une icône sur la cible de la tempête de glace",
 	specWarnBitingCold		= "Montre une alerte spéciale quand vous êtes affecter par Froid mordant"
@@ -389,7 +384,6 @@ L:SetOptionLocalization{
 	WarnRoots		= "Annonce les cibles des racines de fer",
 	SpecWarnFury	= "Montre des alertes spéciales pour la Fureur de la Nature",
 	WarningTremor	= "Montre une alerte spéciale pour le tremblement de terre (Hard-Mode)",
-	PlaySoundOnFury = "Joue un sons quand vous êtes affecter par la Fureur de la nature",
 	TimerSimulKill	= "Montre le timer de la résurrection des mobs",
 	UnstableEnergy	= "Montre une alerte spéciale pour l'énergie instable"
 }
@@ -415,7 +409,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	SpecWarnFistOfStone		= "Montre une alerte spéciale pour le coup de poings de pierre",
 	SpecWarnGroundTremor	= "Montre une alerte spéciale pour le tremblement de terre",
-	PlaySoundOnFistOfStone	= "Joue un son à l'incantation des poings de pierre",
 	TrashRespawnTimer		= "Montre le timer du repop des trashs"
 }
 
@@ -452,8 +445,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "Met le butin en accès libre durant la phase 3",
 	WarnBombSpawn			= "Annonce les Robots Bombes",
 	TimerHardmode			= "Montre le timer pour le Hard Mode",
-	PlaySoundOnShockBlast	= "Joue un son lors des Horions explosifs",
-	PlaySoundOnDarkGlare	= "Joue un son au Barrage laser",
 	ShockBlastWarningInP1	= "Montre une alerte spéciale pour les Horions explosifs durant la Phase 1",
 	ShockBlastWarningInP4	= "Montre une alerte spéciale pour les Horions explosifs durant la Phase 4",
 	RangeFrame				= "Affiche la fenêtre de portée pour la phase 1"

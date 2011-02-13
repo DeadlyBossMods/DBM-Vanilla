@@ -77,7 +77,6 @@ L:SetTimerLocalization{
 	timerGrounded		    = "En el suelo"
 }
 L:SetOptionLocalization{
-	PlaySoundOnDevouringFlame	= "Mostrar aviso por sonido si pisas $spell:64733.",
 	warnTurretsReadySoon		= "Mostrar aviso antes de que las torretas esten listas",
 	warnTurretsReady		    = "Mostrar aviso si estan listas las torretas.",
 	SpecWarnDevouringFlameCast	= "Mostrar aviso especial cuando $spell:64733 se lanze a ti.",
@@ -134,12 +133,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundLightningTendrils		= "Sonido para $spell:63486",
 	SetIconOnOverwhelmingPower	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61888),
 	SetIconOnStaticDisruption	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61912),
-	AlwaysWarnOnOverload			= "Siempre avisar de $spell:63481 (Sino solo se avisara cuando sea objetivo)",
-	PlaySoundOnOverload			= "Reproducir sonido para $spell:63481",
-	PlaySoundDeathRune			= "Reproducir sonido para $spell:63490"
+	AlwaysWarnOnOverload			= "Siempre avisar de $spell:63481 (Sino solo se avisara cuando sea objetivo)"
 }
 
 L:SetMiscLocalization{
@@ -216,7 +212,6 @@ L:SetOptionLocalization{
 	achievementDisarmed		= "Mostrar tiempo para el logro Desarmar",
 	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
 	SetIconOnEyebeamTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	PlaySoundOnEyebeam		= "Reproducir sonido al ser ojetivo de $spell:63346",
 	YellOnBeam				= "Gritar cuando tengas $spell:63346",
 }
 
@@ -278,7 +273,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFlashFreeze	= "Reproducir sonido cuando castee $spell:61968",
 	YellOnStormCloud		= "Gritar cuando tengas $spell:65133",
 	SetIconOnStormCloud		= "Poner iconos en los objetivos de $spell:65133"
 }
@@ -346,7 +340,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnSimulKill		= "Anunciar primer mob muerto",
-	PlaySoundOnFury 	= "Reproducir sonido cuando te afecte $spell:63571",
 	TimerSimulKill		= "Mostrar resureccion de los mobs"
 }
 
@@ -368,7 +361,6 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFistOfStone	= "Reproducir sonido cuando castee Puños de piedra",
 	TrashRespawnTimer	= "Mostrar tiempo para reaparición de adds"
 }
 
@@ -404,8 +396,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "Canviar el loot a Botín Libre en la fase 3",
 	WarnBombSpawn			= "Mostrar aviso para Robot bum",
 	TimerHardmode			= "Mostrar tiempo para Modo Difícil",
-	PlaySoundOnShockBlast	= "Reproducir sonido en $spell:63631",
-	PlaySoundOnDarkGlare	= "Reproducir sonido en $spell:63414",
 	ShockBlastWarningInP1	= "Mostrar aviso especial para $spell:63631 en Fase 1",
 	ShockBlastWarningInP4	= "Mostrar aviso especial para $spell:63631 en Fase 4",
 	RangeFrame				= "Mostrar distáncia en Fase 1 (6 yardas)",

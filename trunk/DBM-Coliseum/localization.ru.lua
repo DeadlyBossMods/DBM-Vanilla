@@ -96,7 +96,6 @@ L:SetOptionLocalization{
 	IncinerateFleshIcon			= "Установить метку на игрока с Испепелением плоти",
 	LegionFlameIcon				= "Установить метку на игрока с Пламенем легиона",
 	LegionFlameWhisper			= "Сообщить цели, под воздействием Пламени легиона",
-	LegionFlameRunSound			= "Звуковой сигнал при Пламени легиона",
 	IncinerateShieldFrame		= "Показать здоровье босса с индикатором здоровья для Испепеления плоти"
 }
 

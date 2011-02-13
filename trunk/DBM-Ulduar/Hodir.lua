@@ -28,8 +28,9 @@ local timerFrozenBlows		= mod:NewBuffActiveTimer(20, 63512)
 local timerFlashFrCD		= mod:NewCDTimer(50, 61968)
 local timerAchieve			= mod:NewAchievementTimer(179, 3182, "TimerSpeedKill")
 
+local soundFlashFreeze			= mod:NewSound(61968)
+
 mod:AddBoolOption("SetIconOnStormCloud")
-mod:AddBoolOption("PlaySoundOnFlashFreeze", true, "announce")
 mod:AddBoolOption("YellOnStormCloud", true, "announce")
 
 local stormCloudIcon
@@ -46,9 +47,7 @@ function mod:SPELL_CAST_START(args)
 		timerFlashFreeze:Start()
 		warnFlashFreeze:Show()
 		timerFlashFrCD:Start()
-		if self.Options.PlaySoundOnFlashFreeze then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundFlashFreeze:Play()
 	end
 end
 

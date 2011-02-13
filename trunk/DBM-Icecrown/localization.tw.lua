@@ -479,7 +479,6 @@ L:SetOptionLocalization{
 	AnnounceFrostBeaconIcons	= "公佈$spell:70126目標設置的標記到團隊頻道\n(需要團隊隊長)",
 	SetIconOnFrostBeacon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70126),
 	SetIconOnUnchainedMagic		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69762),
-	PlaySoundOnFrostTomb		= "為$spell:70126播放音效",
 	ClearIconsOnAirphase		= "空中階段前清除所有標記",
 	AchievementCheck		= "公佈 '吃到飽' 成就警告到團隊頻道\n(需助理權限)",
 	RangeFrame			= "顯示距離框 (普通10碼, 困難20碼)"

@@ -125,12 +125,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundLightningTendrils	= "Play sound on $spell:63486",
 	SetIconOnOverwhelmingPower	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61888),
 	SetIconOnStaticDisruption	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61912),
-	AlwaysWarnOnOverload		= "Always warn on $spell:63481 (otherwise, only when targeted)",
-	PlaySoundOnOverload			= "Play sound on $spell:63481",
-	PlaySoundDeathRune			= "Play sound on $spell:63490"
+	AlwaysWarnOnOverload		= "Always warn on $spell:63481 (otherwise, only when targeted)"
 }
 
 L:SetMiscLocalization{
@@ -205,8 +202,7 @@ L:SetOptionLocalization{
 	achievementDisarmed		= "Show timer for Disarm achievement",
 	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
 	SetIconOnEyebeamTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	PlaySoundOnEyebeam		= "Play sound on $spell:63346",
-	YellOnBeam				= "Yell on $spell:63346",
+	YellOnBeam				= "Yell on $spell:63346"
 }
 
 L:SetMiscLocalization{
@@ -266,7 +262,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFlashFreeze	= "Play sound on $spell:61968 cast",
 	YellOnStormCloud		= "Yell on $spell:65133",
 	SetIconOnStormCloud		= "Set icons on $spell:65133 targets"
 }
@@ -334,7 +329,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnSimulKill	= "Announce first mob down",
-	PlaySoundOnFury = "Play sound when you are affected by $spell:63571",
 	TimerSimulKill	= "Show timer for mob resurrection"
 }
 
@@ -355,7 +349,6 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFistOfStone	= "Play sound on Fists of Stone",
 	TrashRespawnTimer		= "Show timer for trash respawn"
 }
 
@@ -390,8 +383,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "Switch loot mode to Free for All in Phase 3",
 	WarnBombSpawn			= "Show warning for Bomb Bots",
 	TimerHardmode			= "Show timer for hard mode",
-	PlaySoundOnShockBlast	= "Play sound on $spell:63631",
-	PlaySoundOnDarkGlare	= "Play sound on $spell:63414",
 	ShockBlastWarningInP1	= "Show special warning for $spell:63631 in Phase 1",
 	ShockBlastWarningInP4	= "Show special warning for $spell:63631 in Phase 4",
 	RangeFrame				= "Show range frame in Phase 1 (6 yards)",

@@ -26,8 +26,6 @@ local specWarnCinder		= mod:NewSpecialWarningMove(67332)
 
 local timerKoralonEnrage	= mod:NewTimer(300, "KoralonEnrage", 26662)
 
-mod:AddBoolOption("PlaySoundOnCinder")
-
 function mod:OnCombatStart(delay)
 	timerKoralonEnrage:Start(-delay)
 	timerNextMeteor:Start(-delay)
@@ -51,9 +49,6 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsPlayer() and args:IsSpellID(66684, 67332) then
 		specWarnCinder:Show()
-		if self.Options.PlaySoundOnCinder then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
 	elseif args:IsSpellID(66721) then
 		WarnBurningFury:Show(args.amount or 1)
 		timerNextBurningFury:Start()

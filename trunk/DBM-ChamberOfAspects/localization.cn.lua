@@ -61,7 +61,6 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	PlaySoundOnFireWall	    = "为烈焰之啸播放音效",
 	AnnounceFails           = "公布踩中暗影裂隙和撞上烈焰之啸的玩家到团队频道 (需要团长或助理权限)",
 	TimerTenebron           = "为塔尼布隆到来显示计时条",
 	TimerShadron            = "为沙德隆到来显示计时条",

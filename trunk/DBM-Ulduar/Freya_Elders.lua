@@ -20,7 +20,8 @@ local timerImpale			= mod:NewTargetTimer(5, 62928)
 local specWarnFistofStone	= mod:NewSpecialWarningSpell(62344, mod:IsTank())
 local specWarnGroundTremor	= mod:NewSpecialWarningCast(62932, true)
 
-mod:AddBoolOption("PlaySoundOnFistOfStone", false)
+local soundFistofStone			= mod:NewSound(62344, nil, false)
+
 mod:AddBoolOption("TrashRespawnTimer", true, "timer")
 
 --
@@ -40,9 +41,7 @@ mod:AddBoolOption("TrashRespawnTimer", true, "timer")
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(62344) then 					-- Fists of Stone
 		specWarnFistofStone:Show()
-		if self.Options.PlaySoundOnFistOfStone then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundFistofStone:Play()
 	elseif args:IsSpellID(62325, 62932) then		-- Ground Tremor
 		specWarnGroundTremor:Show()
 	end
