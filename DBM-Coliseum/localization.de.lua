@@ -96,7 +96,6 @@ L:SetOptionLocalization{
 	IncinerateFleshIcon			= "Setze Zeichen auf Ziele von Fleisch einäschern",
 	LegionFlameIcon				= "Setze Zeichen auf Ziele von Legionsflamme",
 	LegionFlameWhisper			= "Sende Flüsternachricht an Ziele von Legionsflamme",
-	LegionFlameRunSound			= "Spiele Sound bei Legionsflamme",
 	IncinerateShieldFrame		= "Zeige Boss-Lebenspunkte mit Lebenspunktbalken für Fleisch einäschern"
 }
 
@@ -140,7 +139,6 @@ L:SetMiscLocalization{
 } 
 
 L:SetOptionLocalization{
-	PlaySoundOnBladestorm	= "Spiele Sound bei Klingensturm"
 }
 
 ---------------------
@@ -230,7 +228,6 @@ L:SetOptionLocalization{
 	timerAdds				= "Zeige Timer für neue Adds",
 	TimerEmerge				= "Zeige Timer für Auftauchen",
 	TimerSubmerge			= "Zeige Timer für Abtauchen",
-	PlaySoundOnPursue		= "Spiele Sound wenn du verfolgt wirst",
 	PursueIcon				= "Setze Zeichen auf verfolgte Spieler",
 	SpecWarnShadowStrike	= "Zeige Spezialwarnung für $spell:66134 (zum Unterbrechen)",
 	SetIconsOnPCold         = "Setze Zeichen auf Ziele von $spell:68510",

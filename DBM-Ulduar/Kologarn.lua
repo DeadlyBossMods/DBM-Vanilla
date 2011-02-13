@@ -37,9 +37,10 @@ local timerRespawnLeftArm		= mod:NewTimer(48, "timerLeftArm")
 local timerRespawnRightArm		= mod:NewTimer(48, "timerRightArm")
 local timerTimeForDisarmed		= mod:NewTimer(10, "achievementDisarmed")	-- 10 HC / 12 nonHC
 
+local soundEyebeam			= mod:NewSound(63346)
+
 mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("SetIconOnGripTarget", true)
-mod:AddBoolOption("PlaySoundOnEyebeam", true)
 mod:AddBoolOption("SetIconOnEyebeamTarget", true)
 mod:AddBoolOption("YellOnBeam", true, "announce")
 
@@ -82,9 +83,7 @@ function mod:OnSync(msg, target)
 		timerNextEyebeam:Start()
 		if target == UnitName("player") then
 			specWarnEyebeam:Show()
-			if self.Options.PlaySoundOnEyebeam then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav") 
-			end
+			soundEyebeam:Play()
 			if self.Options.YellOnBeam then
 				SendChatMessage(L.YellBeam, "SAY")
 			end

@@ -49,7 +49,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "$spell:65279의 특수 소리 재생",	
 	timerMobOvercharge	= "과충전 된 몹의 시간 보기(디버프 중첩)",
 	EmalonEnrage		= "$spell:26662 타이머 보기",
 	RangeFrame			= "거리 프레임 보기(10 m)"
@@ -74,7 +73,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder	= "$spell:67332의 영향을 받을 경우 특수 소리 재생하기",
 	BurningFury			= "$spell:66721 경고 보기",
 	KoralonEnrage		= "$spell:26662 타이머 보기"
 }

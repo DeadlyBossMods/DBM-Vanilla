@@ -91,7 +91,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpecWarnDevouringFlame		= "Zeige Spezialwarnung wenn in einer Verschlingende Flamme",
-	PlaySoundOnDevouringFlame	= "Spiele Sound wenn betroffen durch Verschlingende Flamme",
 	warnTurretsReadySoon		= "Zeige Vorwarnung für Turmfertigstellung",
 	warnTurretsReady		= "Zeige Warnung für fertige Türme",
 	SpecWarnDevouringFlameCast	= "Zeige Spezialwarnung wenn Verschlingende Flamme auf dich gezaubert wird",
@@ -155,12 +154,9 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarningSupercharge			= "Zeige Warnung wenn Superladung",
-	PlaySoundLightningTendrils		= "Spiele Sound bei Blitzranken",
 	SetIconOnOverwhelmingPower		= "Setze Zeichen auf Ziel von Überwältigende Kraft",
 	SetIconOnStaticDisruption		= "Setze Zeichen auf Ziel von Statische Störung",
-	AlwaysWarnOnOverload			= "Warne immer bei Überladen (ansonsten nur wenn Boss im Ziel)",
-	PlaySoundOnOverload			= "Spiele Sound bei Überladen",
-	PlaySoundDeathRune			= "Spiele Sound bei Rune des Todes"
+	AlwaysWarnOnOverload			= "Warne immer bei Überladen (ansonsten nur wenn Boss im Ziel)"
 }
 
 L:SetMiscLocalization{
@@ -241,8 +237,7 @@ L:SetOptionLocalization{
 	achievementDisarmed		= "Zeige Timer für Erfolg 'Arm dran, weil Arm ab'",
 	WarnGrip				= "Verkünde Ziele von Steinerner Griff",
 	SetIconOnGripTarget		= "Setze Zeichen auf Steinerner-Griff-Ziele",
-	SetIconOnEyebeamTarget	= "Setze Zeichen auf Ziele von Fokussierter Augenstrahl (Mond)",
-	PlaySoundOnEyebeam		= "Spiele Sound bei Fokussiertem Augenstrahl"
+	SetIconOnEyebeamTarget	= "Setze Zeichen auf Ziele von Fokussierter Augenstrahl (Mond)"
 }
 
 L:SetMiscLocalization{
@@ -308,7 +303,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarningFlashFreeze	= "Zeige Spezialwarnung für Blitzeis",
-	PlaySoundOnFlashFreeze	= "Spiele Sound bei Blitzeis-Zauber",
 	YellOnStormCloud	= "Schreie bei Sturmwolke auf dir",
 	SetIconOnStormCloud	= "Setze Zeichen auf Spieler mit Sturmwolke",
 	specWarnBitingCold		= "Zeige Spezialwarnung wenn du von Beißende Kälte betroffen bist"
@@ -386,7 +380,6 @@ L:SetOptionLocalization{
 	WarnRoots		= "Warnung für Verstärkte Eiserne Wurzeln",
 	SpecWarnFury		= "Zeige Spezialwarnung für Furor der Natur",
 	WarningTremor		= "Zeige Spezialwarnung für Bebende Erde",
-	PlaySoundOnFury = "Spiele Sound wenn du von Furor der Natur betroffen bist",
 	TimerSimulKill		= "Zeige Timer für Gegner-Wiederbelebung",
 	UnstableEnergy		= "Zeige Spezialwarnung für Instabile Energie"
 }
@@ -412,7 +405,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	SpecWarnFistOfStone		= "Zeige Spezialwarnung für Fäuste aus Stein",
 	SpecWarnGroundTremor	= "Zeige Spezialwarnung für Bebende Erde",
-	PlaySoundOnFistOfStone	= "Spiele Sound bei Fäuste aus Stein",
 	TrashRespawnTimer		= "Zeige Timer für Trash-Respawn"
 }
 
@@ -449,8 +441,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA	= "Automatisch in Phase 3 Plündern auf 'Jeder gegen jeden' einstellen",
 	WarnBombSpawn		= "Zeige Warnung für Bombenbot",
 	TimerHardmode		= "Zeige Timer für Hard Mode",
-	PlaySoundOnShockBlast	= "Spiele Sound bei Schockschlag",
-	PlaySoundOnDarkGlare	= "Spiele Sound bei Lasersalve",
 	ShockBlastWarningInP1	= "Zeige Spezialwarnung für Schockschlag in Phase 1",
 	ShockBlastWarningInP4	= "Zeige Spezialwarnung für Schockschlag in Phase 4",
 	RangeFrame				= "Zeige Abstandsfenster in Phase 1 (6 m)"

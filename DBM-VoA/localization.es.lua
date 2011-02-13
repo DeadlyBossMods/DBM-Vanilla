@@ -48,7 +48,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "Reproducir sonido en $spell:65279",
 	timerMobOvercharge	= "Mostrar tiempo para que un Mob se haga grande.",
 	EmalonEnrage		= "Mostrar tiempo para $spell:26662",
 	RangeFrame			= "Mostrar distancia"
@@ -73,7 +72,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder	= "Reproducir sonido si estas en Ceniza flamigera",
 	BurningFury			= "Mostrar aviso para $spell:66721",
 	KoralonEnrage		= "Mostrar tiempo para $spell:26662"
 }

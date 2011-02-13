@@ -49,8 +49,9 @@ local timerNextFlames			= mod:NewNextTimer(27.5, 64566)
 local timerNextFrostBomb        = mod:NewNextTimer(30, 64623)
 local timerBombExplosion		= mod:NewCastTimer(15, 65333)
 
-mod:AddBoolOption("PlaySoundOnShockBlast", isMelee)
-mod:AddBoolOption("PlaySoundOnDarkGlare", true)
+local soundShockBlast			= mod:NewSound(63631, nil, mod:IsMelee())
+local soundDarkGlare			= mod:NewSound(63414)
+
 mod:AddBoolOption("HealthFramePhase4", true)
 mod:AddBoolOption("AutoChangeLootToFFA", true)
 mod:AddBoolOption("SetIconOnNapalm", true)
@@ -143,9 +144,7 @@ function mod:SPELL_CAST_START(args)
 		end
 		timerShockBlast:Start()
 		timerNextShockblast:Start()
-		if self.Options.PlaySoundOnShockBlast then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundShockBlast:Play()
 	end
 	if args:IsSpellID(64529, 62997) then -- plasma blast
 		timerPlasmaBlastCD:Start()
@@ -181,9 +180,7 @@ end
 local function show_warning_for_spinup()
 	if is_spinningUp then
 		warnDarkGlare:Show()
-		if mod.Options.PlaySoundOnDarkGlare then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundDarkGlare:Play()
 	end
 end
 

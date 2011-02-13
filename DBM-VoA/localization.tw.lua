@@ -48,7 +48,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "為$spell:65279播放音效",
 	timerMobOvercharge		= "為超載的小兵顯示計時器(減益疊加)",
 	EmalonEnrage			= "為$spell:26662顯示計時器",
 	RangeFrame			= "顯示距離框 (10碼)"
@@ -74,7 +73,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder		= "當你中了$spell:67332時播放音效",
 	BurningFury			= "為$spell:66721顯示警告",
 	KoralonEnrage			= "為$spell:26662顯示計時器"
 }

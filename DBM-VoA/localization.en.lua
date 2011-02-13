@@ -44,7 +44,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "Play sound on $spell:65279",
 	timerMobOvercharge	= "Show timer for Overcharged mob (stacking debuff)",
 	EmalonEnrage		= "Show timer for $spell:26662",
 	RangeFrame			= "Show range frame (10)"
@@ -68,7 +67,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder	= "Play sound when you are affected by $spell:67332",
 	BurningFury			= "Show warning for $spell:66721",
 	KoralonEnrage		= "Show timer for $spell:26662"
 }

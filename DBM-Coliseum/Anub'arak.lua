@@ -43,7 +43,8 @@ local timerHoP				= mod:NewBuffActiveTimer(10, 10278, nil, false)--So we will tr
 
 local enrageTimer			= mod:NewBerserkTimer(570)	-- 9:30 ? hmpf (no enrage while submerged... this sucks)
 
-mod:AddBoolOption("PlaySoundOnPursue")
+local soundPursue			= mod:NewSound(67574)
+
 mod:AddBoolOption("PursueIcon")
 mod:AddBoolOption("SetIconsOnPCold", true)
 mod:AddBoolOption("AnnouncePColdIcons", false)
@@ -118,9 +119,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(67574) then			-- Pursue
 		if args:IsPlayer() then
 			specWarnPursue:Show()
-			if self.Options.PlaySoundOnPursue then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-			end
+			soundPursue:Play()
 		end
 		if self.Options.PursueIcon then
 			self:SetIcon(args.destName, 8, 15)

@@ -85,7 +85,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SoundWOP = "为重要技能播放额外的警报语音",
-	PlaySoundOnDevouringFlame		= "当你中了$spell:64733时播放音效",
 	warnTurretsReadySoon		= "为炮塔显示提前警报",
 	warnTurretsReady		= "为炮塔显示警报",
 	SpecWarnDevouringFlameCast	= "当你中了$spell:64733时显示特别警报",
@@ -143,12 +142,9 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SoundWOP = "为重要技能播放额外的警报语音",
-	PlaySoundLightningTendrils	= "为$spell:63486播放音效",
 	SetIconOnOverwhelmingPower	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61888),
 	SetIconOnStaticDisruption	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61912),
-	AlwaysWarnOnOverload		= "总是对$spell:63481显示警报(否则只有当目标是唤雷者的时候显示)",
-	PlaySoundOnOverload		= "当$spell:63481施放时播放音效",
-	PlaySoundDeathRune		= "当$spell:63490施放时播放音效"
+	AlwaysWarnOnOverload		= "总是对$spell:63481显示警报(否则只有当目标是唤雷者的时候显示)"
 }
 
 L:SetMiscLocalization{
@@ -223,7 +219,6 @@ L:SetOptionLocalization{
 	achievementDisarmed		= "为成就：断其臂膀显示计时条",
 	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
 	SetIconOnEyebeamTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	PlaySoundOnEyebeam		= "为$spell:63346播放音效",
 	YellOnBeam			= "当你中了$spell:63346时大喊"
 }
 
@@ -286,7 +281,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SoundWOP = "为重要技能播放额外的警报语音",
-	PlaySoundOnFlashFreeze		= "当施放$spell:61968时播放音效",
 	YellOnStormCloud		= "当你中了$spell:65133时大喊",
 	SetIconOnStormCloud		= "为$spell:65133的目标设置标记"
 }
@@ -359,7 +353,6 @@ L:SetOptionLocalization{
 	SoundWOP = "为重要技能播放额外的警报语音",
 	WarningTree   		= "当首领召唤艾欧娜尔的礼物时显示特别警告",
 	WarnSimulKill			= "提示第一只元素死亡",
-	PlaySoundOnFury			= "当你中了$spell:63571时播放音效",
 	TimerSimulKill			= "为三元素复活显示计时条"
 }
 
@@ -381,7 +374,6 @@ L:SetWarningLocalization{
 
 L:SetOptionLocalization{
 	SoundWOP = "为重要技能播放额外的警报语音",
-	PlaySoundOnFistOfStone		= "为岩石之拳播放音效",
 	TrashRespawnTimer		= "为弗蕾亚的小怪重生显示计时条"
 }
 
@@ -417,8 +409,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "第3阶段自动转换拾取方式为自由拾取",
 	WarnBombSpawn			= "为炸弹机器人显示警报",
 	TimerHardmode			= "为困难模式显示计时条",
-	PlaySoundOnShockBlast		= "当$spell:63631施放时播放音效",
-	PlaySoundOnDarkGlare		= "当$spell:63414施放前播放音效",
 	ShockBlastWarningInP1		= "为第1阶段的$spell:63631显示特别警报",
 	ShockBlastWarningInP4		= "为第4阶段的$spell:63631显示特别警报",
 	RangeFrame			= "在第1阶段显示距离框(6码)",

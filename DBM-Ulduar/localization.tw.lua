@@ -129,12 +129,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundLightningTendrils	= "為$spell:63486播放音效",
 	SetIconOnOverwhelmingPower	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61888),
 	SetIconOnStaticDisruption	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61912),
-	AlwaysWarnOnOverload		= "總是對$spell:63481顯示警告(否則只有當目標是風暴召喚者的時候顯示)",
-	PlaySoundOnOverload		= "當$spell:63481施放時播放音效",
-	PlaySoundDeathRune		= "當$spell:63490施放時播放音效"
+	AlwaysWarnOnOverload		= "總是對$spell:63481顯示警告(否則只有當目標是風暴召喚者的時候顯示)"
 }
 
 L:SetMiscLocalization{
@@ -209,7 +206,6 @@ L:SetOptionLocalization{
 	achievementDisarmed		= "為成就:卸除手臂顯示計時器",
 	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
 	SetIconOnEyebeamTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	PlaySoundOnEyebeam		= "為$spell:63346播放音效",
 	YellOnBeam			= "當你中了$spell:63346時大喊"
 }
 
@@ -270,9 +266,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFlashFreeze		= "當施放$spell:61968時播放音效",
 	YellOnStormCloud		= "當你中了$spell:65133時大喊",
-	SetIconOnStormCloud		= "為$spell:65133的目標設置標記",
+	SetIconOnStormCloud		= "為$spell:65133的目標設置標記"
 }
 
 L:SetMiscLocalization{
@@ -338,7 +333,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnSimulKill			= "提示第一隻元素死亡",
-	PlaySoundOnFury			= "當你中了$spell:63571時播放音效",
 	TimerSimulKill			= "為三元素復活顯示計時器"
 }
 
@@ -359,7 +353,6 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFistOfStone		= "為石拳連擊播放音效",
 	TrashRespawnTimer		= "為芙蕾雅的小怪重生顯示計時器"
 }
 
@@ -394,8 +387,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "第3階段自動轉換拾取方式為自由拾取",
 	WarnBombSpawn			= "為炸彈機器人顯示警告",
 	TimerHardmode			= "為困難模式顯示計時器",
-	PlaySoundOnShockBlast		= "當$spell:63631施放時播放音效",
-	PlaySoundOnDarkGlare		= "當$spell:63414施放前播放音效",
 	ShockBlastWarningInP1		= "為第1階段的$spell:63631顯示特別警告",
 	ShockBlastWarningInP4		= "為第4階段的$spell:63631顯示特別警告",
 	RangeFrame			= "在第1階段顯示距離框"

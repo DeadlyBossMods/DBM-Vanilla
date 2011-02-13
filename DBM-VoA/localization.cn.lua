@@ -50,7 +50,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "为$spell:65279播放音效",
 	timerMobOvercharge		= "为能量超载的小怪显示爆炸倒计时(debuff叠加)",
 	EmalonEnrage			= "为$spell:26662显示计时条",
 	RangeFrame			= "显示距离框 (10码)"
@@ -74,7 +73,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder		= "当你中了$spell:67332时播放音效",
 	BurningFury			= "为$spell:66721显示警报",
 	KoralonEnrage			= "为$spell:26662显示计时条"
 }

@@ -87,7 +87,6 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	SpecWarnDevouringFlame		= "파멸의 불길 대상 특수 경고 보기",
 	SpecWarnDevouringFlameCast	= "파멸의 불길 대상이 되었을 때 특수 경고 보기",	
-	PlaySoundOnDevouringFlame	= "파멸의 불길 데미지를 받을 때 사운드 재생",
 	warnTurretsReadySoon		= "포탑 사전 경고 보기",
 	warnTurretsReady			= "포탑 경고 보기",
 	timerTurret1				= "첫번째 포탑 타이머 보기",
@@ -152,9 +151,6 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarningSupercharge				= "전기 충전 시전 경고 보기",
 	AlwaysWarnOnOverload			= "과부하 일 때 지속적인 경고 알리기(타겟일 경우만)",
-	PlaySoundOnOverload				= "과부화 일 때 소리 재생",	
-	PlaySoundLightningTendrils		= "번개 덩굴일 때 소리 재생",
-	PlaySoundDeathRune				= "죽음의 룬일 때 소리 재생",
 	SetIconOnOverwhelmingPower		= "압도적인 힘 대상 아이콘 설정",
 	SetIconOnStaticDisruption		= "전자기 붕괴 대상 타겟 아이콘 설정하기(하드 모드)"	
 }
@@ -246,8 +242,7 @@ L:SetOptionLocalization{
 	WarnGrip				= "바위 손아귀 대상 알리기",
 	SetIconOnGripTarget		= "바위 손아귀 대상 아이콘 설정",
 	achievementDisarmed		= "무장해제 타이머 보기",
-	SetIconOnEyebeamTarget	= "안광 집중 대상 공격대 아이콘 설정(달)",
-	PlaySoundOnEyebeam		= "안광 집중 특수 소리 재생"	
+	SetIconOnEyebeamTarget	= "안광 집중 대상 공격대 아이콘 설정(달)"
 }
 
 L:SetMiscLocalization{
@@ -314,7 +309,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarningFlashFreeze		= "순간 빙결 경고 보기",
- 	PlaySoundOnFlashFreeze	= "순간 빙결 경고 소리 듣기",	
 	YellOnStormCloud		= "폭풍 구름을 얻을 경우 외치기",
 	SetIconOnStormCloud		= "폭풍 구름 대상 아이콘 설정 하기",
 	specWarnBitingCold		= "매서운 추위의 영향을 받을 경우 특수 경고 보기"	
@@ -391,7 +385,6 @@ L:SetOptionLocalization{
 	WarnSimulKill			= "첫번째 소환수 죽음 알리기",
 	WarnRoots 				= "무쇠뿌리 대상 알리기",	
 	SpecWarnFury 			= "당신이 자연의 격노일 경우 특수 경고 보기",
-	PlaySoundOnFury			= "자연의 격노 특수 사운드 재생",
 	WarningTremor  	 		= "지진 시전 특수 경고 보기 (하드 모드)",
 	TimerSimulKill			= "소환수 부활 타이머 보기",	
 	UnstableEnergy			= "당신이 불안정한 힘에게 영향을 받을 때 특수 경고 보기"	
@@ -417,7 +410,6 @@ L:SetMiscLocalization{
 
 L:SetOptionLocalization{
 	SpecWarnFistOfStone		= "돌덩이 주먹 특수 경고 보기",
-	PlaySoundOnFistOfStone	= "돌덩이 주먹 특수 사운드 재생",
 	SpecWarnGroundTremor	= "지진 특수 경고 보기",
 	TrashRespawnTimer		= "프레이야 지역 리젠 타이머 보기"
 }
@@ -455,8 +447,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "3 페이즈에서 루팅 옵션 자동 변경하기",	
 	WarnBombSpawn			= "폭탄 로봇 생성 알리기",
 	TimerHardmode			= "하드 모드를 위한 타이머 보기",
-	PlaySoundOnShockBlast 	= "충격파 특수 사운드 경고 재생",
-	PlaySoundOnDarkGlare 	= "레이저 탄막 대상 특수 사운드 경고 재생",
 	ShockBlastWarningInP1	= "1 페이즈 충격파의 특수 경고 보기(근접 딜러)",
 	ShockBlastWarningInP4	= "4 페이즈 충격파의 특수 경고 보기(근접 딜러)",
 	RangeFrame				= "1 페이즈에서 거리 프레임 보기(6 미터)"

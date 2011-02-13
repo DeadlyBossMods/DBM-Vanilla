@@ -84,8 +84,7 @@ local specWarnHandofProt	= mod:NewSpecialWarningDispel(66009, isDispeller)
 local specWarnDivineShield	= mod:NewSpecialWarningDispel(66010, isDispeller) 
 local specWarnIceBlock		= mod:NewSpecialWarningDispel(65802, isDispeller)
 
-mod:AddBoolOption("PlaySoundOnBladestorm", mod:IsMelee())
-
+local soundBladestorm		= mod:NewSound(65947, nil, mod:IsMelee())
 
 function mod:OnCombatStart(delay)
 end
@@ -98,9 +97,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerBladestorm:Start()
 		timerBladestormCD:Start()
 		preWarnBladestorm:Schedule(85)                      -- Pre-Warn will only announce for 2nd and later bladestorm.
-		if self.Options.PlaySoundOnBladestorm then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundBladestorm:Play()
 	elseif args:IsSpellID(65983) then						-- Shamen Heroism
 		warnHeroism:Show()
 	elseif args:IsSpellID(65980) then						-- Shamen Blood lust

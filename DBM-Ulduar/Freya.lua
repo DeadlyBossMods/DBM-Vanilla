@@ -40,8 +40,9 @@ local timerSimulKill		= mod:NewTimer(12, "TimerSimulKill")
 local timerFury				= mod:NewTargetTimer(10, 63571)
 local timerTremorCD 		= mod:NewCDTimer(28, 62859)
 
+local soundFury				= mod:NewSound(63571)
+
 mod:AddBoolOption("HealthFrame", true)
-mod:AddBoolOption("PlaySoundOnFury")
 
 local adds		= {}
 local rootedPlayers 	= {}
@@ -83,9 +84,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self:SetIcon(args.destName, altIcon and 7 or 8, 10)
 		warnFury:Show(args.destName)
 		if args:IsPlayer() then -- only cast on players; no need to check destFlags
-			if self.Options.PlaySoundOnFury then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-			end
+			soundFury:Play()
 			specWarnFury:Show()
 		end
 		timerFury:Start(args.destName)

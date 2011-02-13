@@ -33,7 +33,7 @@ local timerTenebron         = mod:NewTimer(30, "TimerTenebron", 61248)
 local timerShadron          = mod:NewTimer(80, "TimerShadron", 58105)
 local timerVesperon         = mod:NewTimer(120, "TimerVesperon", 61251)
 
-mod:AddBoolOption("PlaySoundOnFireWall")
+local soundFlameWall		= mod:NewSound(76223)
 
 local lastvoids = {}
 local lastfire = {}
@@ -55,18 +55,11 @@ function mod:OnSync(event)
 	if event == "FireWall" then
 		timerWall:Start()
 		warnFireWall:Show()
-		
-		if self.Options.PlaySoundOnFireWall then
---			PlaySoundFile("Sound\\Spells\\PVPFlagTaken.wav")
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
-
+		soundFlameWall:Play()
 	elseif event == "VesperonPortal" then
 		warnVesperonPortal:Show()
-
 	elseif event == "TenebronPortal" then
 		warnTenebronPortal:Show()
-
 	elseif event == "ShadronPortal" then
 		warnShadronPortal:Show()
 	end

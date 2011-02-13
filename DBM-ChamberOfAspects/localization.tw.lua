@@ -57,7 +57,6 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	PlaySoundOnFireWall	= "為火焰障壁播放音效",
 	AnnounceFails		= "公佈踩中暗影裂縫和撞上火焰障壁的玩家到團隊頻道 (需要團隊隊長或助理權限)",
 	TimerTenebron		= "為坦納伯朗到來顯示計時器",
 	TimerShadron		= "為夏德朗到來顯示計時器",

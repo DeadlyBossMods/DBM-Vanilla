@@ -77,7 +77,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnDevouringFlame	= "Звуковой сигнал, когда на вас $spell:64733",
 	warnTurretsReadySoon		= "Пред-предупреждение для пушек",
 	warnTurretsReady			= "Предупреждение для пушек",
 	SpecWarnDevouringFlameCast	= "Спец-предупреждение, когда $spell:64733 применяется на вас",
@@ -133,12 +132,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundLightningTendrils	= "Звуковой сигнал при $spell:63486",
 	SetIconOnOverwhelmingPower	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61888),
 	SetIconOnStaticDisruption	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(61912),
-	AlwaysWarnOnOverload		= "Всегда предупреждать при $spell:63481\n(иначе, только когда босс в цели)",
-	PlaySoundOnOverload			= "Звуковой сигнал при $spell:63481",
-	PlaySoundDeathRune			= "Звуковой сигнал при $spell:63490"
+	AlwaysWarnOnOverload		= "Всегда предупреждать при $spell:63481\n(иначе, только когда босс в цели)"
 }
 
 L:SetMiscLocalization{
@@ -211,8 +207,7 @@ L:SetOptionLocalization{
 	achievementDisarmed		= "Отсчет времени для достижения Обезоружен",
 	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
 	SetIconOnEyebeamTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	PlaySoundOnEyebeam		= "Звуковой сигнал при $spell:63346",
-	YellOnBeam				= "Кричать, когда на вас $spell:63346",
+	YellOnBeam				= "Кричать, когда на вас $spell:63346"
 }
 
 L:SetMiscLocalization{
@@ -272,9 +267,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFlashFreeze	= "Звуковой сигнал при применении $spell:61968",
 	YellOnStormCloud		= "Кричать, когда на вас $spell:65133",
-	SetIconOnStormCloud		= "Устанавливать метки на цели заклинания $spell:65133",
+	SetIconOnStormCloud		= "Устанавливать метки на цели заклинания $spell:65133"
 }
 
 L:SetMiscLocalization{
@@ -340,7 +334,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnSimulKill	= "Объявлять, когда первый монстр погибает",
-	PlaySoundOnFury = "Звуковой сигнал, когда на вас $spell:63571",
 	TimerSimulKill	= "Отсчет времени до воскрешения монстров"
 }
 
@@ -361,7 +354,6 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnFistOfStone	= "Звуковой сигнал при Каменных кулаках",
 	TrashRespawnTimer		= "Отсчет времени до возрождения монстров"
 }
 
@@ -396,8 +388,6 @@ L:SetOptionLocalization{
 	AutoChangeLootToFFA		= "Смена режима добычи на Каждый за себя в фазе 3",
 	WarnBombSpawn			= "Предупреждение о Бомботах",
 	TimerHardmode			= "Отсчет времени для сложного режима",
-	PlaySoundOnShockBlast	= "Звуковой сигнал при $spell:63631",
-	PlaySoundOnDarkGlare	= "Звуковой сигнал при $spell:63414",
 	ShockBlastWarningInP1	= "Спец-предупреждение для $spell:63631 в фазе 1",
 	ShockBlastWarningInP4	= "Спец-предупреждение для $spell:63631 в фазе 4",
 	RangeFrame				= "Показывать окно проверки дистанции в фазе 1 (6 м)",

@@ -51,8 +51,9 @@ local timerFleshCD				= mod:NewCDTimer(23, 67051)
 local timerPortalCD				= mod:NewCDTimer(120, 67900)
 local timerVolcanoCD			= mod:NewCDTimer(120, 67901)
 
+local soundLegionFlame			= mod:NewSound(68123)
+
 mod:AddBoolOption("LegionFlameWhisper", false, "announce")
-mod:AddBoolOption("LegionFlameRunSound", true)
 mod:AddBoolOption("LegionFlameIcon", true)
 mod:AddBoolOption("IncinerateFleshIcon", true)
 
@@ -84,9 +85,6 @@ do
 		if args:IsPlayer() and args:IsSpellID(66877, 67070, 67071, 67072) then		-- Legion Flame
 			if GetTime() - 3 > lastflame then
 				specWarnFlame:Show()
-				if self.Options.LegionFlameRunSound then
-					PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-				end
 				lastflame = GetTime()
 			end
 		elseif args:IsPlayer() and args:IsSpellID(66496, 68716, 68717, 68718) then	-- Fel Inferno
@@ -153,9 +151,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerFlameCD:Start()		
 		if args:IsPlayer() then
 			specWarnFlame:Show()
-			if self.Options.LegionFlameRunSound then
-				PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-			end
+			soundLegionFlame:Play()
 		end		
 		if self.Options.LegionFlameIcon then
 			self:SetIcon(args.destName, 7, 8)

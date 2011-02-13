@@ -46,7 +46,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NovaSound			= "Spiele Sound bei $spell:65279",
 	timerMobOvercharge	= "Zeige Timer für Überladen (stapelnder Debuff)",
 	EmalonEnrage		= "Zeige Timer für $spell:26662",
 	RangeFrame			= "Zeige Abstandsfenster (10 m)"
@@ -70,7 +69,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	PlaySoundOnCinder	= "Spiele Sound wenn du von $spell:67332 betroffen bist",
 	BurningFury			= "Zeige Warnung für $spell:66721",
 	KoralonEnrage		= "Zeige Timer für $spell:26662"
 }

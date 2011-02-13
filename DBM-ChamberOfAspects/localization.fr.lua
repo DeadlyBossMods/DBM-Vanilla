@@ -55,7 +55,6 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	PlaySoundOnFireWall	= "Joue un son pour les Tsunamis de flammes",
 	AnnounceFails		= "Affiche les joueurs qui n'ont pas évité les zones de vide / Tsunamis de flammes (Nécessite l'activation des annonces et être promu ou leader)",
 	TimerTenebron		= "Montre le timer pour Ténébron",
 	TimerShadron		= "Montre le timer pour Obscuron",

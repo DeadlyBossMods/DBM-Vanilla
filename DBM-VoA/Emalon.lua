@@ -27,9 +27,9 @@ local timerMobOvercharge	= mod:NewTimer(20, "timerMobOvercharge", 64217)
 
 local timerEmalonEnrage		= mod:NewTimer(360, "EmalonEnrage", 26662)
 
-mod:AddBoolOption("NovaSound")
-mod:AddBoolOption("RangeFrame")
+local soundNova				= mod:NewSound(65279, nil, mod:IsMelee())
 
+mod:AddBoolOption("RangeFrame")
 
 local overchargedMob
 function mod:OnCombatStart(delay)
@@ -54,9 +54,7 @@ function mod:SPELL_CAST_START(args)
 		timerNovaCD:Start()
 		warnNova:Show()
 		specWarnNova:Show()
-		if self.Options.NovaSound then
-			PlaySoundFile("Sound\\Creature\\HoodWolf\\HoodWolfTransformPlayer01.wav")
-		end
+		soundNova:Play()
 	end
 end
 
