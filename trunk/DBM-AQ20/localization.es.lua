@@ -31,7 +31,8 @@ L:SetOptionLocalization{
 	WarnWave	= "Mostrar aviso para oleada siguiente"
 }
 L:SetMiscLocalization{
-	Wave1		= "They come now. Try not to get yourself killed, young blood.", --translate
+	NpcPull		= "They come now. Try not to get yourself killed, young blood.", --translate
+	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?", --translate
 	Wave3		= "The time of our retribution is at hand! Let darkness reign in the hearts of our enemies!", --translate
 	Wave4		= "No longer will we wait behind barred doors and walls of stone! No longer will our vengeance be denied! The dragons themselves will tremble before our wrath!", --translate
 	Wave5		= "Fear is for the enemy! Fear and death!", --translate
@@ -59,11 +60,13 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnPursue		= "Persigue a >%s<",
-	SpecWarnPursue	= "Te persigue a ti"
+	SpecWarnPursue	= "Te persigue a ti",
+	WarnDismember	= "%s en >%s< (%s)"
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Anunciar los objetivos perseguidos",
-	SpecWarnPursue	= "Mostrar aviso especial cuando te persigan"
+	SpecWarnPursue	= "Mostrar aviso especial cuando te persigan",
+	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unknown"),
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "%s fija su mirada en %s!"

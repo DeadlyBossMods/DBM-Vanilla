@@ -66,8 +66,6 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{	
 	warnTurretsReadySoon		= "La torreta estara lista en 20 segundos",
 	warnTurretsReady		    = "La torreta esta LISTA",
-	SpecWarnDevouringFlameCast	= "Llava devoradora en Ti",
-	WarnDevouringFlameCast		= "Llama devoradora en >%s<" 
 }
 L:SetTimerLocalization{
 	timerTurret1			    = "Torreta 1",
@@ -79,12 +77,10 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	warnTurretsReadySoon		= "Mostrar aviso antes de que las torretas esten listas",
 	warnTurretsReady		    = "Mostrar aviso si estan listas las torretas.",
-	SpecWarnDevouringFlameCast	= "Mostrar aviso especial cuando $spell:64733 se lanze a ti.",
 	timerTurret1			    = "Mostrar aviso para Torreta 1",
 	timerTurret2			    = "Mostrar aviso para Torreta 2",
 	timerTurret3			    = "Mostrar aviso para Torreta 3 ( solo en banda 25 ).",
 	timerTurret4			    = "Mostrar aviso para Torreta 4 ( solo en banda 25 ).",
-	OptionDevouringFlame		= "Mostrar aviso a quien lanza $spell:64733 ( poco fiable )",
 	timerGrounded		    = "Mostrar cuanto durara en el suelo."
 }
 

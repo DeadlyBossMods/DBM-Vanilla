@@ -1030,6 +1030,10 @@ L:SetOptionLocalization({
 ---------------
 L = DBM:GetModLocalization("Cyanigosa")
 
+L:SetGeneralLocalization({
+	name = "Cyanigosa"
+})
+
 L:SetWarningLocalization({
 })
 
