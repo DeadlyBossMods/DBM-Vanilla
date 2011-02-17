@@ -250,7 +250,6 @@ L:SetOptionLocalization{
 	timerAdds				= "Mostrar tiempo para nuevos adds",
 	TimerEmerge				= "Mostrar tiempo para Emerger",
 	TimerSubmerge			= "Mostrar tiempo para Sumerger",
-	PlaySoundOnPursue		= "Reproducir sonidos si te persigue",
 	PursueIcon				= "Poner icono en jugador",
 	SpecWarnShadowStrike	= "Mostrar aviso especial para Golpe de sombras ( para cortar )",
 	SetIconsOnPCold         = "Poner iconos en los objetivos de $spell:68510",
