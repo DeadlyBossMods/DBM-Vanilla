@@ -297,11 +297,11 @@ L:SetMiscLocalization{
 	DBM_OZ_WARN_STRAWMAN	= "Espantapájaros",
 	DBM_OZ_WARN_TINHEAD		= "Cabezalata",
 	DBM_OZ_WARN_CRONE		= "La Vieja Bruja",
-	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, we simply must find a way home! The old wizard could be our only hope! Strawman, Roar, Tinhead, will you - wait... oh golly, look we have visitors!",--translate
-	DBM_OZ_YELL_ROAR		= "I'm not afraid a' you! Do you wanna' fight? Huh, do ya'? C'mon! I'll fight ya' with both paws behind my back!",--translate
-	DBM_OZ_YELL_STRAWMAN	= "Now what should I do with you? I simply can't make up my mind.",--translate
-	DBM_OZ_YELL_TINHEAD		= "I could really use a heart. Say, can I have yours?",--translate
-	DBM_OZ_YELL_CRONE		= "Woe to each and every one of you, my pretties!"--translate
+	DBM_OZ_YELL_DOROTHEE	= "¡Oh, Tito, solo tenemos que buscar la manera de volver a casa! ¡El viejo zahorí puede ser nuestra única esperanza! Espantapájaros, Rugido, Cabezalata, podeis -esperad... ¡Oh, caray, mirad tenemos visita!",
+	DBM_OZ_YELL_ROAR		= "¡No os tengo miedo! ¿Queréis pelea? ¿Eh? ¡Vamos, con las garras a la espalda os reto!",
+	DBM_OZ_YELL_STRAWMAN	= "¿Ahora que tengo que hacer contigo? No me puedo decidir.",
+	DBM_OZ_YELL_TINHEAD		= "¿Me vendría bien un corazón? Digamos, ¿el tuyo?",
+	DBM_OZ_YELL_CRONE		= "¡Pronto acabará todo!"
 }
 
 
