@@ -394,7 +394,7 @@ L:SetOptionLocalization{
 	TimerHardmode			= "Mostrar tiempo para Modo Difícil",
 	ShockBlastWarningInP1	= "Mostrar aviso especial para $spell:63631 en Fase 1",
 	ShockBlastWarningInP4	= "Mostrar aviso especial para $spell:63631 en Fase 4",
-	RangeFrame				= "Mostrar distáncia en Fase 1 (6 yardas)",
+	RangeFrame				= "Mostrar distancia en Fase 1 (6 yardas)",
 	SetIconOnNapalm			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(65026),
 	SetIconOnPlasmaBlast	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(62997)
 }
