@@ -22,14 +22,14 @@
 		</Layers>
 		<Scripts>
 			<OnMouseDown>
-				if arg1 == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
+				if button == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
 					self:StartMoving()
 				end
 			</OnMouseDown>
 			<OnMouseUp>
 				self:StopMovingOrSizing()
 				DBM:GetMod("Kal"):SaveFramePosition()
-				if arg1 == "RightButton" then
+				if button == "RightButton" then
 					UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetMod("Kal").InitializeMenu, "MENU")
 					ToggleDropDownMenu(1, nil, DBMKalMenu, "DBMKalMenu", 30, 50)
 				end
@@ -122,7 +122,7 @@
 						<NormalTexture name="$parentTextureNormal" file="Interface\PaperDollInfoFrame\UI-Character-Skills-BarBorder"/>
 						<Scripts>
 							<OnMouseDown>
-								if arg1 == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
+								if button == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
 									self.moving = true
 									DBMKalFrameDrag:StartMoving()
 								end
@@ -131,7 +131,7 @@
 								self.moving = false
 								DBMKalFrameDrag:StopMovingOrSizing()
 								DBM:GetMod("Kal"):SaveFramePosition()
-								if arg1 == "RightButton" then
+								if button == "RightButton" then
 									UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetMod("Kal").InitializeMenu, "MENU")
 									ToggleDropDownMenu(1, nil, DBMKalMenu, "DBMKalMenu", 30, 50)
 								end
@@ -153,14 +153,14 @@
 						self:SetMinMaxValues(0, 60)
 					</OnLoad>
 					<OnUpdate>
-						self:GetParent().entry:Update(arg1)
+						self:GetParent().entry:Update(elapsed)
 					</OnUpdate>
 				</Scripts>
 			</StatusBar>
 		</Frames>
 		<Scripts>
 			<OnMouseDown>
-				if arg1 == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
+				if button == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
 					self.moving = true
 					DBMKalFrameDrag:StartMoving()
 				end
@@ -168,7 +168,7 @@
 			<OnMouseUp>
 				self.moving = false
 				DBMKalFrameDrag:StopMovingOrSizing()
-				if arg1 == "RightButton" then
+				if button == "RightButton" then
 					UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetMod("Kal").InitializeMenu, "MENU")
 					ToggleDropDownMenu(1, nil, DBMKalMenu, "DBMKalMenu", 30, 50)
 				end
