@@ -96,7 +96,7 @@ end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 17534 then
+	if cid == 17534 and self:IsInCombat() then
 		if phase == 3 then--Only want to remove from boss health frame first time they die, and kill only in phase 3.
 			JulianneDied = GetTime()
 			if (GetTime() - RomuloDied) < 10 then
@@ -106,7 +106,7 @@ function mod:UNIT_DIED(args)
 			DBM.BossHealth:RemoveBoss(cid)
 			self:NextPhase()--Trigger phase 2
 		end
-	elseif cid == 17533 then
+	elseif cid == 17533 and self:IsInCombat() then
 		if phase == 3 then--Only want to remove from boss health frame first time they die, and kill only in phase 3.
 			RomuloDied = GetTime()
 			if (GetTime() - JulianneDied) < 10 then
