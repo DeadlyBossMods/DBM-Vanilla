@@ -1,44 +1,62 @@
-local Jan = DBM:NewBossMod("Janalai", DBM_JANALAI_NAME, DBM_JANALAI_DESCRIPTION, DBM_ZULAMAN, DBM_ZULAMAN_TAB, 3);
+﻿local mod	= DBM:NewMod("Janalai", "DBM-ZulAman")
+local L		= mod:GetLocalizedStrings()
 
-Jan.Version	= "1.0";
-Jan.Author	= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(23578)
+mod:SetZone()
+mod:SetUsedIcons(8)
 
-Jan:RegisterEvents(
+mod:RegisterCombat("combat")
+
+mod:RegisterEvents(
+	"SPELL_CAST_START",
 	"CHAT_MSG_MONSTER_YELL"
---	"UNIT_SPELLCAST_START"
 )
 
-Jan:AddBarOption("Enrage")
-Jan:AddBarOption("Hatcher")
-Jan:AddBarOption("Explosion")
+local warnFlame			= mod:NewTargetAnnounce(43140, 3)
+local warnAdds			= mod:NewSpellAnnounce(43962, 4)
+local warnAddsSoon		= mod:NewSoonAnnounce(43962, 3)
+local warnFireBomb		= mod:NewSpellAnnounce(42630, 3)
 
-Jan:SetCreatureID(23578)
-Jan:RegisterCombat("yell", DBM_JANALAI_YELL_PULL)
+local specWarnAdds		= mod:NewSpecialWarningSpell(43962)
+local specWarnBomb		= mod:NewSpecialWarningSpell(42630)
 
-function Jan:OnCombatStart()
-	self:StartStatusBarTimer(300, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy") 
-	self:ScheduleAnnounce(120, DBM_GENERIC_ENRAGE_WARN:format(3, DBM_MIN), 1)
-	self:ScheduleAnnounce(240, DBM_GENERIC_ENRAGE_WARN:format(1, DBM_MIN), 2)
-	self:ScheduleAnnounce(270, DBM_GENERIC_ENRAGE_WARN:format(30, DBM_SEC), 3)
-	self:ScheduleAnnounce(290, DBM_GENERIC_ENRAGE_WARN:format(10, DBM_SEC), 4)
+local timerBomb			= mod:NewCastTimer(12, 42630)
+local timerAdds			= mod:NewNextTimer(92, 43962)
 
-	self:Announce(DBM_JANALAI_WARN_HATCHER_SOON, 1)
-	self:StartStatusBarTimer(10, "Hatcher", "Interface\\Icons\\INV_Misc_Head_Troll_01")
+local berserkTimer		= mod:NewBerserkTimer(600)
+
+mod:AddBoolOption("FlameIcon", true)
+
+function mod:FlameTarget()
+	local targetname = self:GetBossTarget(23578)
+	if not targetname then return end
+	warnFlame:Show(targetname)
+	if self.Options.FlameIcon and mod:LatencyCheck() then--Latency check when using icons with target scanning to reduce false icons on tanks
+		self:SetIcon(targetname, 8, 8)
+	end	
 end
 
-function Jan:OnEvent(event)
-	if event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 == DBM_JANALAI_YELL_EXPLOSION then
-			self:Announce(DBM_JANALAI_WARN_EXPLOSION, 3)
-			self:StartStatusBarTimer(11.4, "Explosion", "Interface\\Icons\\Spell_Shadow_MindBomb")
-			self:ScheduleAnnounce(10.4, DBM_JANALAI_WARN_EXPLOSION_INC, 4)
-		elseif arg1 == DBM_JANALAI_YELL_HATCHER then
-			self:Announce(DBM_JANALAI_WARN_HATCHER, 2)
-			self:ScheduleAnnounce(80, DBM_JANALAI_WARN_HATCHER_SOON, 1)
-			self:StartStatusBarTimer(90, "Hatcher", "Interface\\Icons\\INV_Misc_Head_Troll_01")
-		end		
---	elseif event == "UNIT_SPELLCAST_START" then -- doesn't work + useless!
---		self:AddMsg(arg1, arg2)
---		self:AddMsg(UnitName(arg1.."target"))
+function mod:OnCombatStart(delay)
+	timerAdds:Start(10)
+	berserkTimer:Start(-delay)
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(43140) then
+		self:ScheduleMethod(0.2, "FlameTarget")
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.YellAdds or msg:find(L.YellAdds) then
+		warnAdds:Show()
+		specWarnAdds:Show()
+		warnAddsSoon:Schedule(82)
+		timerAdds:Start()
+	elseif msg == L.YellBomb or msg:find(L.YellBomb) then
+		warnFireBomb:Show()
+		specWarnBomb:Show()
+		timerBomb:Start()
 	end
 end

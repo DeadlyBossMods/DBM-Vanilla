@@ -1,56 +1,56 @@
-local Nalorakk = DBM:NewBossMod("Nalorakk", DBM_NALO_NAME, DBM_NALO_DESCRIPTION, DBM_ZULAMAN, DBM_ZULAMAN_TAB, 1);
+﻿local mod	= DBM:NewMod("Nalorakk", "DBM-ZulAman")
+local L		= mod:GetLocalizedStrings()
 
-Nalorakk.Version	= "1.0";
-Nalorakk.Author		= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(23576)
+mod:SetZone()
 
-Nalorakk:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_AURA_APPLIED"
+mod:RegisterCombat("combat")
+
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
-Nalorakk:SetCreatureID(23576)
-Nalorakk:RegisterCombat("yell", DBM_NALO_YELL_PULL)
+local warnBear			= mod:NewAnnounce("WarnBear", 4, 39414)
+local warnBearSoon		= mod:NewAnnounce("WarnBearSoon", 3, 39414)
+local warnNormal		= mod:NewAnnounce("WarnNormal", 4, 39414)
+local warnNormalSoon	= mod:NewAnnounce("WarnNormalSoon", 3, 39414)
+local warnSilence		= mod:NewSpellAnnounce(42398, 3)
 
-Nalorakk:AddOption("PrePhaseWarn", true, DBM_NALO_OPTION_PHASEPRE)
-Nalorakk:AddOption("SilenceWarn", true, DBM_NALO_OPTION_SILENCE)
+local timerBear			= mod:NewTimer(45, "TimerBear", 39414)
+local timerNormal		= mod:NewTimer(30, "TimerNormal", 39414)
 
-Nalorakk:AddBarOption("Bear Form")
-Nalorakk:AddBarOption("Normal Form")
-
-
-function Nalorakk:OnCombatStart()
--- ??
---[[self:StartStatusBarTimer(600, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy") 
-	self:ScheduleAnnounce(300, DBM_GENERIC_ENRAGE_WARN:format(5, DBM_MIN), 1)
-	self:ScheduleAnnounce(420, DBM_GENERIC_ENRAGE_WARN:format(3, DBM_MIN), 1)
-	self:ScheduleAnnounce(540, DBM_GENERIC_ENRAGE_WARN:format(1, DBM_MIN), 2)
-	self:ScheduleAnnounce(570, DBM_GENERIC_ENRAGE_WARN:format(30, DBM_SEC), 3)
-	self:ScheduleAnnounce(590, DBM_GENERIC_ENRAGE_WARN:format(10, DBM_SEC), 4)]]--
-	
-	self:StartStatusBarTimer(45, "Bear Form", "Interface\\Icons\\Ability_Hunter_Pet_Bear")
-	self:ScheduleAnnounce(40, DBM_NALO_WARN_BEAR_SOON, 1)
-end
+local berserkTimer		= mod:NewBerserkTimer(600)
 
 local silenceSpam = 0
-function Nalorakk:OnEvent(event, args)
-	if event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 == DBM_NALO_YELL_NORMAL then
-			self:Announce(DBM_NALO_WARN_NORMAL, 3)
-			self:StartStatusBarTimer(45, "Bear Form", "Interface\\Icons\\Ability_Hunter_Pet_Bear")
-			if self.Options.PrePhaseWarn then
-				self:ScheduleAnnounce(40, DBM_NALO_WARN_BEAR_SOON, 1)
-			end
-		elseif arg1 == DBM_NALO_YELL_BEAR then
-			self:Announce(DBM_NALO_WARN_BEAR, 3)
-			self:StartStatusBarTimer(30, "Normal Form", "Interface\\Icons\\Ability_Racial_BearForm")
-			if self.Options.PrePhaseWarn then
-				self:ScheduleAnnounce(25, DBM_NALO_WARN_NORMAL_SOON, 1)
-			end
-		end
-	elseif event == "SPELL_AURA_APPLIED" and self.Options.SilenceWarn then
-		if args.spellId == DBM_NALO_SPELLID_SILENCE and (GetTime() - silenceSpam) > 4 then
-			silenceSpam = GetTime()
-			self:Announce(DBM_NALO_WARN_SILENCE, 2)
-		end
+
+function mod:OnCombatStart(delay)
+	silenceSpam = 0
+	timerBear:Start()
+	warnBearSoon:Schedule(40)
+	berserkTimer:Start(-delay)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(42398) and GetTime() - silenceSpam > 4 then
+		warnSilence:Show()
+		silenceSpam = GetTime()
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.YellBear or msg:find(L.YellBear) then
+		timerBear:Cancel()
+		warnBearSoon:Cancel()
+		warnBear:Show()
+		timerNormal:Start()
+		warnNormalSoon:Schedule(25)
+	elseif msg == L.YellNormal or msg:find(L.YellNormal) then
+		timerNormal:Cancel()
+		warnNormalSoon:Cancel()
+		warnNormal:Show()
+		timerBear:Start()
+		warnBearSoon:Schedule(40)
 	end
 end

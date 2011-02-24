@@ -1,110 +1,158 @@
-﻿if GetLocale() == "esES" or GetLocale() == "esMX" then
-	DBM_ZULAMAN		= "Zul'Aman"
+if GetLocale() ~= "esMX" or GetLocale() ~= "esES" then return end
+local L
 
-	-- Nalorakk
-	DBM_NALO_NAME					= "Nalorakk"
-	DBM_NALO_DESCRIPTION			= "Anuncia y muestra el tiempo de las fases de oso/normal y silenciar."
-	DBM_NALO_OPTION_PHASEPRE		= "Mostrar pre aviso para cambio de fase"
-	DBM_NALO_OPTION_SILENCE			= "Anunciar Silenciar"
+---------------
+--  Nalorakk --
+---------------
+L = DBM:GetModLocalization("Nalorakk")
 
-	DBM_NALO_YELL_PULL				= "¡Moriréis pronto!"
-	DBM_NALO_YELL_BEAR				= "¡Si llamáis a la bestia, vais a recibir más de lo que esperáis!"
-	DBM_NALO_YELL_NORMAL			= "¡Dejad paso al Nalorakk!"
-	DBM_NALO_SPELLID_SILENCE		= 42398
+L:SetGeneralLocalization{
+	name = "Nalorakk"
+}
 
-	DBM_NALO_WARN_NORMAL_SOON		= "Forma normal en 5 seg"
-	DBM_NALO_WARN_BEAR_SOON			= "Forma de oso en 5 seg"
-	DBM_NALO_WARN_NORMAL			= "Forma normal"
-	DBM_NALO_WARN_BEAR				= "Forma de oso"
-	DBM_NALO_WARN_SILENCE			= "Silenciar"
+L:SetWarningLocalization{
+	WarnBear		= "Forma de oso",
+	WarnBearSoon	= "Forma de oso en 5 seg",
+	WarnNormal		= "Forma normal",
+	WarnNormalSoon	= "Forma normal en 5 seg"
+}
 
-	-- Akil'zon
-	DBM_AKIL_NAME					= "Akil'zon"
-	DBM_AKIL_DESCRIPTION			= "Anuncia Tormenta eléctrica y muestra el objetivo en el mini-mapa."
-	DBM_AKIL_OPTION_RANGE			= "Mostrar distancia"
+L:SetTimerLocalization{
+	TimerBear		= "Bär",
+	TimerNormal		= "Normale Form"
+}
 
-	DBM_AKIL_YELL_PULL				= "¡Yo soy el depredador! Vosotros la presa..."
-	DBM_AKIL_SPELLID_STORM			= 43648
+L:SetOptionLocalization{
+	WarnBear		= "Show warning for Bear form",--Translate
+	WarnBearSoon	= "Show pre-warning for Bear form",--Translate
+	WarnNormal		= "Show warning for Normal form",--Translate
+	WarnNormalSoon	= "Show pre-warning for Normal form",--Translate
+	TimerBear		= "Show timer for Bear form",--Translate
+	TimerNormal		= "Show timer for Normal form"--Translate
+}
 
-	DBM_AKIL_WARN_STORM_SOON		= "Tormenta eléctrica pronto"
-	DBM_AKIL_WARN_STORM_ON			= "Tormenta eléctrica en >%s<"
+L:SetMiscLocalization{
+	YellBear 	= "¡Si llamáis a la bestia, vais a recibir más de lo que esperáis!",
+	YellNormal	= "¡Dejad paso al Nalorakk!"
+}
 
+---------------
+--  Akil'zon --
+---------------
+L = DBM:GetModLocalization("Akilzon")
 
+L:SetGeneralLocalization{
+	name = "Akil'zon"
+}
 
-	-- Jan'alai
-	DBM_JANALAI_NAME				= "Jan'alai"
-	DBM_JANALAI_DESCRIPTION			= "Anuncia Teletransporte y Criadores."
+L:SetWarningLocalization{
+}
 
-	DBM_JANALAI_YELL_PULL			= "¡Elegid, intrusos! Mis sacerdotes estará encantados de buscaros alojamiento..."
-	DBM_JANALAI_YELL_EXPLOSION		= "¡Ahora os quemaré!"
-	DBM_JANALAI_YELL_HATCHER		= "¿Dónde está mi criador? ¡A por los huevos!"
+L:SetTimerLocalization{
+}
 
-	DBM_JANALAI_WARN_EXPLOSION		= "Teletransporte"
-	DBM_JANALAI_WARN_EXPLOSION_INC	= "Explosión en 1 seg"
-	DBM_JANALAI_WARN_HATCHER		= "Criador"
-	DBM_JANALAI_WARN_HATCHER_SOON	= "Criador en 10 seg"
+L:SetOptionLocalization{
+	StormIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(43648),
+	RangeFrame	= "Mostrar distancia"
+}
 
-	-- Halazzi
-	DBM_HALAZZI_NAME				= "Halazzi"
-	DBM_HALAZZI_DESCRIPTION			= "Anuncia las fases, los Totems y Frenesí."
-	DBM_HALAZZI_OPTION_FRENZY		= "Anunciar Frenesí"
-	DBM_HALAZZI_OPTION_TOTEM		= "Anunciar Tótem de relámpagos"
+L:SetMiscLocalization{
+}
 
-	DBM_HALAZZI_YELL_PULL			= "¡Arrodillaos... ante la garra y el colmillo!"
-	DBM_HALAZZI_YELL_SPIRIT			= "Lucho con libertad de espíritu..."
-	DBM_HALAZZI_YELL_SPIRIT_DESP	= "¡Espíritu, vuelve a mí!"
-	DBM_HALAZZI_SPELL_FRENZY		= "Frenesí"
-	DBM_HALAZZI_SPELLID_TOTEM		= 43302
+---------------
+--  Jan'alai --
+---------------
+L = DBM:GetModLocalization("Janalai")
 
-	DBM_HALAZZI_WARN_SPIRIT			= "Sale espíritu"
-	DBM_HALAZZI_WARN_SPIRIT_DESP	= "Desaparece espíritu"
-	DBM_HALAZZI_WARN_TOTEM			= "Tótem de relámpagos"
-	DBM_HALAZZI_WARN_FRENZY			= "Frenesí! Tranquilizad!" -- tranq shot...wtf....
+L:SetGeneralLocalization{
+	name = "Jan'alai"
+}
 
+L:SetWarningLocalization{
+}
 
+L:SetTimerLocalization{
+}
 
+L:SetOptionLocalization{
+	FlameIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(43140)
+}
 
-	-- Malacrass
-	DBM_MALACRASS_NAME				= "Señor aojador Malacrass"
-	DBM_MALACRASS_DESCRIPTION		= "Announces Siphon Soul and Spirit Bolts."
+L:SetMiscLocalization{
+	YellBomb	= "¡Ahora os quemaré!",
+	YellAdds	= "¿Dónde está mi criador? ¡A por los huevos!"
+}
 
-	DBM_MALACRASS_OPTION_MC			= "Announce Mind Control"
+--------------
+--  Halazzi --
+--------------
+L = DBM:GetModLocalization("Halazzi")
 
-	DBM_MALACRASS_YELL_PULL			= "Las sombras caerán sobre vosotros..."
-	DBM_MALACRASS_YELL_BOLTS		= "¡Vuestra alma sangrará!"
-	DBM_MALACRASS_SPELLID_SIPHON	= 43501
+L:SetGeneralLocalization{
+	name = "Halazzi"
+}
 
-	DBM_MALACRASS_WARN_SIPHON		= "Succionar Alma en >%s<"
-	DBM_MALACRASS_WARN_MC			= "Control mental en >%s<"
-	DBM_MALACRASS_WARN_BOLTS		= "Descargas de espíritu"
-	DBM_MALACRASS_WARN_BOLTS_SOON	= "Descargas de espíritu en 5 seg"
+L:SetWarningLocalization{
+	WarnSpirit	= "Sale espíritu",
+	WarnNormal	= "Desaparece espíritu"
+}
 
+L:SetTimerLocalization{
+}
 
-	-- Zul'jin
-	DBM_ZULJIN_NAME					= "Zul'jin"
-	DBM_ZULJIN_DESCRIPTION			= "Anuncia las fases, Lanzamiento doloroso, Parálisis progresiva y Ira de zarpa."
+L:SetOptionLocalization{
+	WarnSpirit	= "Show warning for Spirit phase",--Translate
+	WarnNormal	= "Show warning for Normal phase"--Translate
+}
 
-	DBM_ZULJIN_OPTION_PARA			= "Anunciar Parálisis progresiva"
-	DBM_ZULJIN_OPTION_LYNX			= "Anunciar Ira de zarpa"
+L:SetMiscLocalization{
+	YellSpirit	= "Lucho con libertad de espíritu...",
+	YellNormal	= "¡Espíritu, vuelve a mí!"
+}
 
-	DBM_ZULJIN_YELL_PULL			= "¡No hay nadie más bruto que yo!"
-	DBN_ZULJIN_YELL_PHASE_2			= "Tengo algunos trucos nuevos... como mi hermano el oso..."
-	DBM_ZULJIN_YELL_PHASE_3			= "¡No podéis esconderos del águila!"
-	DBM_ZULJIN_YELL_PHASE_4			= "¡Dejad que os presente a mis nuevos hermanos: colmillo y garra!"
-	DBM_ZULJIN_YELL_PHASE_5			= "¡No tenéis que mirar al cielo para ver al dracohalcón!"
+--------------------------
+--  Hex Lord Malacrass --
+--------------------------
+L = DBM:GetModLocalization("Malacrass")
 
-	DBM_ZULJIN_SPELLID_PARALYSIS	= 43095
-	DBM_ZULJIN_SPELLID_LYNX			= 43150
-	DBM_ZULJIN_SPELLID_DOT			= 43093
+L:SetGeneralLocalization{
+	name = "Señor aojador Malacrass"
+}
 
-	DBM_ZULJIN_WARN_PHASE_1			= "Fase 1 - Trol"
-	DBM_ZULJIN_WARN_PHASE_2			= "Fase 2 - Oso"
-	DBM_ZULJIN_WARN_PHASE_3			= "Fase 3 - Águila"
-	DBM_ZULJIN_WARN_PHASE_4			= "Fase 4 - Lince"
-	DBM_ZULJIN_WARN_PHASE_5			= "Fase 5 - Dracohalcón"
+L:SetWarningLocalization{
+}
 
-	DBM_ZULJIN_WARN_PARALYSIS		= "Parálisis progresiva"
-	DBM_ZULJIN_WARN_PARALYSIS_SOON	= "Parálisis progresiva pronto"
-	DBM_ZULJIN_WARN_LYNX			= "Ira de zarpa en >%s<"
-	DBM_ZULJIN_WARN_DOT				= "Lanzamiento doloroso en >%s<"
-end
+L:SetTimerLocalization{
+}
+
+L:SetOptionLocalization{
+}
+
+L:SetMiscLocalization{
+	YellPull	= "Las sombras caerán sobre vosotros..."
+}
+
+--------------
+--  Zul'jin --
+--------------
+L = DBM:GetModLocalization("ZulJin")
+
+L:SetGeneralLocalization{
+	name = "Zul'jin"
+}
+
+L:SetWarningLocalization{
+}
+
+L:SetTimerLocalization{
+}
+
+L:SetOptionLocalization{
+}
+
+L:SetMiscLocalization{
+	YellPhase2	= "Tengo algunos trucos nuevos... como mi hermano el oso...",
+	YellPhase3	= "¡No podéis esconderos del águila!",
+	YellPhase4	= "¡Dejad que os presente a mis nuevos hermanos: colmillo y garra!",
+	YellPhase5	= "¡No tenéis que mirar al cielo para ver al dracohalcón!"
+}

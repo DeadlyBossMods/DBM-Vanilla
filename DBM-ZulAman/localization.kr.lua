@@ -1,4 +1,4 @@
-if GetLocale() ~= "deDE" then return end
+if GetLocale() ~= "koKR" then return end
 local L
 
 ---------------
@@ -7,33 +7,33 @@ local L
 L = DBM:GetModLocalization("Nalorakk")
 
 L:SetGeneralLocalization{
-	name = "Nalorakk"
+	name = "날로라크"
 }
 
 L:SetWarningLocalization{
-	WarnBear		= "Bärform",
-	WarnBearSoon	= "Bärform in 5 Sek",
-	WarnNormal		= "Normale Form",
-	WarnNormalSoon	= "Normale Form in 5 Sek"
+	WarnBear		= "곰 형상",
+	WarnBearSoon	= "곧 곰 형상",
+	WarnNormal		= "인간 형상",
+	WarnNormalSoon	= "곧 인간 형상"
 }
 
 L:SetTimerLocalization{
-	TimerBear		= "Bär",
-	TimerNormal		= "Normale Form"
+	TimerBear		= "다음 곰 형상",
+	TimerNormal		= "다음 인간 형상"
 }
 
 L:SetOptionLocalization{
-	WarnBear		= "Show warning for Bear form",--Translate
-	WarnBearSoon	= "Show pre-warning for Bear form",--Translate
-	WarnNormal		= "Show warning for Normal form",--Translate
-	WarnNormalSoon	= "Show pre-warning for Normal form",--Translate
-	TimerBear		= "Show timer for Bear form",--Translate
-	TimerNormal		= "Show timer for Normal form"--Translate
+	WarnBear		= "곰 형상 경고 보기",
+	WarnBearSoon	= "곰 형상 사전 경고 보기(soon)",
+	WarnNormal		= "인간 형상 경고 보기",
+	WarnNormalSoon	= "인간 형상 사전 경고 보기(soon)",
+	TimerBear		= "다음 곰 형상 타이머 보기",
+	TimerNormal		= "다음 인간 형상 타이머 보기"
 }
 
 L:SetMiscLocalization{
-	YellBear 	= "Ihr provoziert die Bestie, jetzt werdet Ihr sie kennenlernen!",
-	YellNormal	= "Macht Platz für Nalorakk!"
+	YellBear 	= "너희들이 짐승을 불러냈다. 놀랄 준비나 해라!",
+	YellNormal	= "날로라크 나가신다!"
 }
 
 ---------------
@@ -42,7 +42,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Akilzon")
 
 L:SetGeneralLocalization{
-	name = "Akil'zon"
+	name = "아킬존"
 }
 
 L:SetWarningLocalization{
@@ -53,7 +53,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	StormIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(43648),
-	RangeFrame	= "Range Frame anzeigen"
+	RangeFrame	= "거리 프레임 보기"
 }
 
 L:SetMiscLocalization{
@@ -65,7 +65,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Janalai")
 
 L:SetGeneralLocalization{
-	name = "Jan'alai"
+	name = "잔알라이"
 }
 
 L:SetWarningLocalization{
@@ -79,8 +79,8 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	YellBomb	= "Jetzt sollt Ihr brennen!",
-	YellAdds	= "Wo is' meine Brut? Was ist mit den Eiern?"
+	YellBomb	= "태워버리겠다!",
+	YellAdds	= "다 어디 갔지? 당장 알을 부화시켜!"
 }
 
 --------------
@@ -89,25 +89,25 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Halazzi")
 
 L:SetGeneralLocalization{
-	name = "Halazzi"
+	name = "할라지"
 }
 
 L:SetWarningLocalization{
-	WarnSpirit	= "Geist spawned",
-	WarnNormal	= "Geist despawned"
+	WarnSpirit	= "영혼 단계",
+	WarnNormal	= "보통 단계"
 }
 
 L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnSpirit	= "Show warning for Spirit phase",--Translate
-	WarnNormal	= "Show warning for Normal phase"--Translate
+	WarnSpirit	= "영혼 단계 경고 보기",
+	WarnNormal	= "보통 단계 경고 보기"
 }
 
 L:SetMiscLocalization{
-	YellSpirit	= "Ich kämpfe mit wildem Geist...",
-	YellNormal	= "Geist, zurück zu mir!"
+	YellSpirit	= "야생의 혼이 내 편이다...",
+	YellNormal	= "혼이여, 이리 돌아오라!"
 }
 
 --------------------------
@@ -116,7 +116,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Malacrass")
 
 L:SetGeneralLocalization{
-	name = "Hexlord Malacrass"
+	name = "주술군주 말라크라스"
 }
 
 L:SetWarningLocalization{
@@ -129,7 +129,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	YellPull	= "Der Schatten wird Euch verschlingen..."
+	YellPull	= "너희에게 그림자가 드리우리라..."
 }
 
 --------------
@@ -138,7 +138,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("ZulJin")
 
 L:SetGeneralLocalization{
-	name = "Zul'jin"
+	name = "줄진"
 }
 
 L:SetWarningLocalization{
@@ -151,8 +151,8 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	YellPhase2	= "Sagt 'Hallo' zu Bruder Bär...",
-	YellPhase3	= "Niemand versteckt sich vor dem Adler!",
-	YellPhase4	= "Lernt meine Brüder kennen: Reißzahn und Klaue!",
-	YellPhase5	= "Was starrt Ihr in die Luft? Der Drachenfalke steht schon vor Euch!"
+	YellPhase2	= "새로운 기술을 익혔지... 내 형제, 곰처럼...",
+	YellPhase3	= "독수리의 눈을 피할 수는 없다!",
+	YellPhase4	= "내 새로운 형제, 송곳니와 발톱을 보아라!",
+	YellPhase5	= "용매를 하늘에서만 찾을 필요는 없다!"
 }
