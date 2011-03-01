@@ -1,17 +1,21 @@
 ﻿## Interface: 40000
 ## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Outlands|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0아웃랜드|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMOutlands_SavedVars, DBMOutlands_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-Name: Outlands
 ## X-DBM-Mod-Name-esES: Terrallende
+## X-DBM-Mod-Name-koKR: 아웃랜드
 ## X-DBM-Mod-Sort: 307
 --## X-DBM-Mod-LoadZoneID: 465,473
 ## X-DBM-Mod-LoadZone: Gruul's Lair,Magtheridon's Lair
 ## X-DBM-Mod-LoadZone-esES: Guarida de Gruul,Guarida de Magtheridon
+## X-DBM-Tab-LoadZone-koKR: 그룰의 둥지,마그테리돈의 둥지
 localization.en.lua
 localization.de.lua
 localization.es.lua
