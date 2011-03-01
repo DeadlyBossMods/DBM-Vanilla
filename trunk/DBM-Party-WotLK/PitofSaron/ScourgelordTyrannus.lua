@@ -73,9 +73,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	local target = msg and msg:match(L.HoarfrostTarget)
-	if target then
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
+	if msg == L.HoarfrostTarget or msg:find(L.HoarfrostTarget) then
+		if not target then return end
 		warnHoarfrost:Show(target)
 		if target == UnitName("player") then
 			specWarnHoarfrost:Show()

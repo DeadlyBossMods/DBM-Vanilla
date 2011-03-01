@@ -42,10 +42,10 @@ local timerNextFrostBreath		= mod:NewNextTimer(22, 71056, nil, mod:IsTank() or m
 local timerNextBlisteringCold	= mod:NewCDTimer(67, 70123)
 local timerNextBeacon			= mod:NewNextTimer(16, 70126)
 local timerBlisteringCold		= mod:NewCastTimer(6, 70123)
-local timerUnchainedMagic		= mod:NewBuffActiveTimer(30, 69762)
+local timerUnchainedMagic		= mod:NewCDTimer(30, 69762)
 local timerInstability			= mod:NewBuffActiveTimer(5, 69766)
 local timerChilledtotheBone		= mod:NewBuffActiveTimer(8, 70106)
-local timerMysticBuffet			= mod:NewBuffActiveTimer(8, 70128)
+local timerMysticBuffet			= mod:NewBuffActiveTimer(10, 70128)
 local timerNextMysticBuffet		= mod:NewNextTimer(6, 70128)
 local timerMysticAchieve		= mod:NewAchievementTimer(30, 4620, "AchievementMystic")
 
@@ -102,7 +102,11 @@ end
 
 local function warnUnchainedTargets()
 	warnUnchainedMagic:Show(table.concat(unchainedTargets, "<, >"))
-	timerUnchainedMagic:Start()
+	if phase >= 2 then
+		timerUnchainedMagic:Start(80)
+	else
+		timerUnchainedMagic:Start()
+	end
 	table.wipe(unchainedTargets)
 	unchainedIcons = 7
 end

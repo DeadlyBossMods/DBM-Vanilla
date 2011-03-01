@@ -4,6 +4,7 @@
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Tempel von Ahn'Qiraj|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Templo de Ahn'Qiraj|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Храм Ан'Киража|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0안퀴라즈 사원|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMAQ40_SavedVars, DBMAQ40_SavedStats
@@ -14,12 +15,14 @@
 ## X-DBM-Mod-Name-deDE: Tempel von Ahn'Qiraj
 ## X-DBM-Mod-Name-esES: Templo de Ahn'Qiraj
 ## X-DBM-Mod-Name-ruRU: Храм Ан'Киража
+## X-DBM-Mod-Name-koKR: 안퀴라즈 사원
 ## X-DBM-Mod-Sort: 402
 ## X-DBM-Mod-LoadZoneID: 766
 localization.en.lua
 localization.de.lua
 localization.es.lua
 localization.ru.lua
+localization.kr.lua
 MapSizes.lua
 Skeram.lua
 ThreeBugs.lua

@@ -195,7 +195,7 @@ L:SetMiscLocalization{
 	AddsAlliance		= "Reavers, Sergeants, attack",
 	AddsHorde			= "해병, 하사관, 공격하라!",
 	MageAlliance		= "We're taking hull damage, get a battle-mage out here to shut down those cannons!",
-	MageHorde			= "We're taking hull damage, get a sorcerer out here to shut down those cannons!"	
+	MageHorde			= "선체가 공격받고 있다. 마술사를 불러 저 대포를 막아버려라!"	
 }
 
 -----------------------------
@@ -251,12 +251,12 @@ L:SetOptionLocalization{
 	WarnGastricBloat		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72551, GetSpellInfo(72551) or "알 수 없음"),	
 	SetIconOnGasSpore		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69279),
 	AnnounceSporeIcons		= "$spell:69279 대상 공격대 징표 채팅으로 알리기\n(공대장 권한을 가진 사람만 사용 가능)",
-	AchievementCheck		= "Announce 'Flu Shot Shortage' achievement failure to raid chat\n(requires promoted status)"	
+	AchievementCheck		= "'역병 예방 접종' 업적 경고를 공격대 채팅으로 알리기\n(공대장 권한을 가진 사람만 사용 가능)"	
 }
 
 L:SetMiscLocalization{
 	SporeSet				= "가스 포자 징표{rt%d} : %s",
-	AchievementFailed		= ">> ACHIEVEMENT FAILED: %s has %d stacks of Inoculated <<"
+	AchievementFailed		= ">> 업적 실패 : 역병 저항 : %s - %d <<"
 }
 
 ---------------
@@ -425,7 +425,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerPortalsOpen			= "차원문 열림",
 	TimerBlazingSkeleton		= "다음 타오르는 해골",
-	TimerAbom					= "Next Abomination"
+	TimerAbom					= "다음 누더기골렘"
 }
 
 L:SetOptionLocalization{
@@ -433,7 +433,7 @@ L:SetOptionLocalization{
 	WarnPortalOpen				= "$spell:72483 열림 경고 보기",	
 	TimerPortalsOpen			= "악몽의 차원문이 열릴 때 타이머 보기",
 	TimerBlazingSkeleton		= "타오르는 해골 다음 생성 타이머 보기",
-	TimerAbom					= "Show timer for next Gluttonous Abomination spawn (Experimental)",	
+	TimerAbom					= "걸신들린 누더기골렘 다음 생성 타이머 보기 (테스트용)",	
 	WarnCorrosion				= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(70751, GetSpellInfo(70751) or "알 수 없음")
 }
 
@@ -554,7 +554,7 @@ L:SetOptionLocalization{
 	LKBugWorkaround				= "$spell:73539 또는 $spell:72762의 동기화를 사용하지 않거나 네트워크 체크를 하지 않습니다.\n(만약 DBM 사용에 문제가 생기면 사용하세요.)",	
 	AnnounceValkGrabs			= "발키리가 납치할 때 대상과 대상 공격대 아이콘으로 채팅 알리기\n(알림 권한이 있을 경우)",
 	SpecWarnValkyrLow			= "발키리의 HP가 55%이하가 될 경우 특수 경고 보기",
-	AnnouncePlagueStack			= "$spell:73912의 중첩이 쌓일 경우 공격대에 알리기 (10 중첩, every 5 after 10)\n(공격대 알림 권한이 있을경우)"	
+	AnnouncePlagueStack			= "$spell:73912의 중첩이 쌓일 경우 공격대에 알리기 (10 중첩이상, 5 중첩마다)\n(공격대 알림 권한이 있을경우)"	
 }
 L:SetMiscLocalization{
 	LKPull					= "그러니까 성스러운 빛이 자랑하던 정의가 마침내 왔다 이건가? 폴드링, 서리한을 내려놓고 자비라도 애걸하라는 건가?",
@@ -566,6 +566,6 @@ L:SetMiscLocalization{
 	ValkGrabbedIcon			= "발키리 납치 : {rt%d} %s",
 	ValkGrabbed				= "발키리 납치 : %s",
 	PlagueStackWarning		= "경고: %s의 괴저역병 %d 중첩",
-	AchievementCompleted	= ">> ACHIEVEMENT COMPLETE: %s has %d stacks of Necrotic Plague <<",
+	AchievementCompleted	= ">> 업적 성공 : 괴저역병 : %s - %d <<",
 	PlagueWhisper			= "에 감염되었습니다!" --역병 전이 : You have been infected by
 }

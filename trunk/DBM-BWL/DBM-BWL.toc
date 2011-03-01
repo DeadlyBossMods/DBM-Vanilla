@@ -4,6 +4,7 @@
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Pechschwingenhort|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Guarida de Alanegra|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Логово Крыла Тьмы|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0검은날개 둥지|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMBWL_SavedVars, DBMBWL_SavedStats
@@ -14,12 +15,14 @@
 ## X-DBM-Mod-Name-deDE: Pechschwingenhort
 ## X-DBM-Mod-Name-esES: Guarida de Alanegra
 ## X-DBM-Mod-Name-ruRU: Логово Крыла Тьмы
+## X-DBM-Mod-Name-koKR: 검은날개 둥지
 ## X-DBM-Mod-Sort: 401
 ## X-DBM-Mod-LoadZoneID: 755
 localization.en.lua
 localization.de.lua
 localization.es.lua
 localization.ru.lua
+localization.kr.lua
 MapSizes.lua
 Razorgore.lua
 Vaelastrasz.lua

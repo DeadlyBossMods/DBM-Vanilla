@@ -21,7 +21,7 @@ local preWarnShadowStrike	= mod:NewSoonAnnounce(66134, 3)
 local warnShadowStrike		= mod:NewSpellAnnounce(66134, 4)
 local warnPursue			= mod:NewTargetAnnounce(67574, 4)
 local warnFreezingSlash		= mod:NewTargetAnnounce(66012, 2, nil, mod:IsHealer() or mod:IsTank())
-local warnHoP				= mod:NewTargetAnnounce(10278, 2, nil, false)--Heroic strat revolves around kiting pursue and using Hand of Protection.
+local warnHoP				= mod:NewTargetAnnounce(1022, 2, nil, false)--Heroic strat revolves around kiting pursue and using Hand of Protection.
 local warnEmerge			= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnEmergeSoon		= mod:NewAnnounce("WarnEmergeSoon", 1, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnSubmerge			= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
@@ -39,7 +39,7 @@ local timerEmerge			= mod:NewTimer(65, "TimerEmerge", "Interface\\AddOns\\DBM-Co
 local timerFreezingSlash	= mod:NewCDTimer(20, 66012, nil, mod:IsHealer() or mod:IsTank())
 local timerPCold			= mod:NewBuffActiveTimer(15, 68509)
 local timerShadowStrike		= mod:NewNextTimer(30.5, 66134)
-local timerHoP				= mod:NewBuffActiveTimer(10, 10278, nil, false)--So we will track bops to make this easier.
+local timerHoP				= mod:NewBuffActiveTimer(10, 1022, nil, false)--So we will track bops to make this easier.
 
 local enrageTimer			= mod:NewBerserkTimer(570)	-- 9:30 ? hmpf (no enrage while submerged... this sucks)
 
@@ -144,7 +144,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(66012) then							-- Freezing Slash
 		warnFreezingSlash:Show(args.destName)
 		timerFreezingSlash:Start()
-	elseif args:IsSpellID(10278) and self:IsInCombat() then		-- Hand of Protection
+	elseif args:IsSpellID(1022) and self:IsInCombat() then		-- Hand of Protection
 		warnHoP:Show(args.destName)
 		timerHoP:Start(args.destName)
 	end
@@ -178,7 +178,7 @@ function mod:SPELL_AURA_REMOVED(args)
 				SendChatMessage(L.PcoldIconRemoved:format(args.destName), "RAID")
 			end
 		end
-	elseif args:IsSpellID(10278) and self:IsInCombat() then		-- Hand of Protection
+	elseif args:IsSpellID(1022) and self:IsInCombat() then		-- Hand of Protection
 		timerHoP:Cancel(args.destName)
 	end
 end
