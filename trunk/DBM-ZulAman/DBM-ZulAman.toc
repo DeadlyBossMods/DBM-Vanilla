@@ -19,6 +19,7 @@
 ## X-DBM-Mod-LoadZone-zhCN: 祖阿曼
 ## X-DBM-Mod-LoadZone-zhTW: 祖阿曼
 ## X-DBM-Mod-LoadZone-koKR: 줄아만
+localization.en.lua
 localization.cn.lua
 localization.de.lua
 localization.es.lua
