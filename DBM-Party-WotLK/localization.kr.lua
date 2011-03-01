@@ -249,7 +249,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveNow		= "웨이브 %d: %s 등장했습니다.",
+	WarningWaveNow		= "웨이브 %d: %s 등장",
 })
 
 L:SetTimerLocalization({
@@ -266,7 +266,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Meathook		= "살덩이갈고리",
 	Salramm			= "살덩이창조자 살람",
-	Devouring		= "개걸스러운 구울",
+	Devouring		= "게걸스러운 구울",
 	Enraged			= "격노한 구울",
 	Necro			= "정예 강령술사",
 	Fiend			= "어둠의 강령술사",
@@ -274,12 +274,12 @@ L:SetMiscLocalization({
 	Abom			= "위액 골렘",
 	Acolyte			= "수행 사제",
 	Wave1			= "%d %s",
-	Wave2			= "%d %s 그리고 %d %s",
-	Wave3			= "%d %s, %d %s 그리고 %d %s",
-	Wave4			= "%d %s, %d %s, %d %s 그리고 %d %s",
+	Wave2			= "%d %s, %d %s",
+	Wave3			= "%d %s, %d %s, %d %s",
+	Wave4			= "%d %s, %d %s, %d %s, %d %s",
 	WaveBoss		= "%s",
 	WaveCheck		= "스컬지 공격 = (%d+)/10",
-	Roleplay		= "드디어 나타나셨군, 우서",
+	Roleplay		= "드디어 나타나셨군, 우서.",
 	Roleplay2		= "준비가 된 것 같군. 명심해라. 이들은 끔찍한 역병에 걸렸고, 어차피 죽을 것이다. 스컬지의 손아귀에서 로데론을 지키려면 스트라솔름을 정화해야 한다. 가자."
 })
 
@@ -313,23 +313,23 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnCrystalHandler		= "Crystal Handler spawned (%d remaining)"
+	WarnCrystalHandler	= "수정 제어사 등장 (%d 남음)"
 })
 
 L:SetTimerLocalization({
-	timerCrystalHandler		= "Crystal Handler spawns"
+	timerCrystalHandler	= "다음 수정 제어사"
 })
 
 L:SetOptionLocalization({
-	WarnCrystalHandler		= "Show warning when Crystal Handler spawns",
-	timerCrystalHandler		= "Show timer for next Crystal Handler spawn"
+	WarnCrystalHandler	= "수정 제어사 등장 경고 보기",
+	timerCrystalHandler	= "다음 수정 제어사 등장 타이머 보기"
 })
 
 L:SetMiscLocalization({
-	YellPull				= "The chill you feel is the herald of your doom!",
-	HandlerYell				= "Bolster my defenses! Hurry, curse you!",
-	Phase2					= "Surely you can see the futility of it all!",
-	YellKill				= "Your efforts... are in vain."
+	YellPull				= "견딜 수 없는 한기가 죽음을 몰고 오리니.",
+	HandlerYell				= "와서 나를 보호해라! 어서! 망할 놈들아!",
+	Phase2					= "부질없는 짓인 줄 잘 알고 있겠지!",
+	YellKill				= "이래 봤자... 아무 소용 없다."
 })
 
 ---------------------
@@ -608,7 +608,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("BrannBronzebeard")
 
 L:SetGeneralLocalization({
-	name = "브란 브론즈비어드를 보호하라"
+	name = "시대의 심판장"
 })
 
 L:SetWarningLocalization({
@@ -999,7 +999,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	CyanArrived			= "훌륭한 방어였다만, 도시를 지키게 둘 수는 없지! 직접 말리고스 님의 의지를 실현하리라!"
+	CyanArrived			= "훌륭한 방어였다만, 도시를 지키게 둘 수는 없지! 내 직접 말리고스 님의 의지를 실현하리라!"
 })
 
 ------------
@@ -1173,7 +1173,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Well done. You have proven yourself today-",
+	Pull					= "잘했네. 오늘 자네의 가치를 잘 보여주었...",
 	YellCombatEnd			= "축하하네, 용사들이여. 예정된 시험이든 뜻밖의 시험이든, 그대들은 모두 이겨냈군."	-- can also be "No! I must not fail... again ..."
 })
 
@@ -1326,7 +1326,6 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	CombatStart					= "아아. 용감하고 용감한 모험가들아, 참견도 이제 끝이다. 네놈들 뒤에 있는 굴에서 뼈와 칼이 부딪치는 소리가 들리는가? 네놈들에게 곧 닥칠 죽음의 소리다.", --Cannot promise just yet if this is right emote, it may be the second emote after this, will need to do more testing.
---	HoarfrostTarget				= "(%S+)|1을;를; 노려보며 얼음 공격을 준비합니다!",
 	HoarfrostTarget				= "노려보며 얼음 공격을 준비합니다!",
 	YellCombatEnd				= "말도 안 돼... 서릿발송곳니... 경고를..."
 })

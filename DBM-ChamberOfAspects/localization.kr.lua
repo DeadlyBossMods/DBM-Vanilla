@@ -193,10 +193,10 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Halion					= "Halion",
+	Halion					= "할리온",
 	MeteorCast				= "하늘이 타오른다!",
 	Phase2					= "황혼 세계에서는 고통만이 있으리라! 자신 있다면 들어와 봐라!",
-	Phase3					= "나는 빛이자 어둠이다! 필멸자들어, 데스윙의 사자 앞에 무릎 꿇어라!",
+	Phase3					= "나는 빛이자 어둠이다! 필멸자들아, 데스윙의 사자 앞에 무릎 꿇어라!",
 	twilightcutter			= "주위를 회전하는 구슬들이 고동치며 어둠의 기운을 내뿜습니다!",
 	YellCombustion			= "나에게 맹렬한 발화!",
 	WhisperCombustion		= "당신에게 맹렬한 발화! 외곽으로 뛰셈!",	

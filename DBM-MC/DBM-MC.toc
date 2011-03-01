@@ -4,6 +4,7 @@
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Núcleo de Magma|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Огненные Недра|r
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Der geschmolzene Kern|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0화산 심장부|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
@@ -14,12 +15,14 @@
 ## X-DBM-Mod-Name-esES: Núcleo de Magma
 ## X-DBM-Mod-Name-ruRU: Огненные Недра
 ## X-DBM-Mod-Name-deDE: Der geschmolzene Kern
+## X-DBM-Mod-Name-koKR: 화산 심장부
 ## X-DBM-Mod-Sort: 400
 ## X-DBM-Mod-LoadZoneID: 696
 localization.en.lua
 localization.es.lua
 localization.ru.lua
 localization.de.lua
+localization.kr.lua
 MapSizes.lua
 Lucifron.lua
 Magmadar.lua
