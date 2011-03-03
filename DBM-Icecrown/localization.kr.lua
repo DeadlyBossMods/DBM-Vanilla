@@ -222,7 +222,7 @@ L:SetOptionLocalization{
 --	MarkCastIcon			= "$spell:72444 대상에게 공격대 징표 설정",	
 	RangeFrame				= "거리 창 보기 (12 미터)",
 	RunePowerFrame			= "보스 체력 바와 함께 $spell:72371 바 보기",
-	BeastIcons				= "피의 괴물 공격대 징표 설정"	
+	BeastIcons				= "피의 괴물에 전술 목표 아이콘 설정"
 }
 
 L:SetMiscLocalization{
@@ -248,10 +248,10 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	InhaledBlight			= "$spell:71912 경고 보기",
 	RangeFrame				= "거리 창 보기(8 미터)",	
-	WarnGastricBloat		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72551, GetSpellInfo(72551) or "알 수 없음"),	
+	WarnGastricBloat		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72551, GetSpellInfo(72551) or "알 수 없음"),
 	SetIconOnGasSpore		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69279),
-	AnnounceSporeIcons		= "$spell:69279 대상 공격대 징표 채팅으로 알리기\n(공대장 권한을 가진 사람만 사용 가능)",
-	AchievementCheck		= "'역병 예방 접종' 업적 경고를 공격대 채팅으로 알리기\n(공대장 권한을 가진 사람만 사용 가능)"	
+	AnnounceSporeIcons		= "$spell:69279의 전술 목표 아이콘 설정을 공격대 대화로 알리기\n(공격대장 권한 필요)",
+	AchievementCheck		= "'역병 예방 접종' 업적 경고를 공격대 대화로 알리기\n(공격대장 권한 필요)"
 }
 
 L:SetMiscLocalization{
@@ -321,10 +321,10 @@ L:SetOptionLocalization{
 	OozeAdhesiveIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70447),
 	GaseousBloatIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70672),
 	UnboundPlagueIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72856),
-	NextUnboundPlagueTargetIcon	= "$spell:72856의 다음 대상 공격대 징표 설정하기",
-	MalleableGooIcon			= "$spell:72295 대상 공격대 징표 설정하기",
+	NextUnboundPlagueTargetIcon	= "$spell:72856의 다음 대상 전술 목표 아이콘 설정하기",
+	MalleableGooIcon			= "$spell:72295 대상 전술 목표 아이콘 설정하기",
 	YellOnMalleableGoo			= "$spell:72295 외치기",
-	YellOnUnbound				= "$spell:72856 말하기",	
+	YellOnUnbound				= "$spell:72856 외치기",	
 	GooArrow					= "당신 주변의 $spell:72295를 DBM 화살표로 표시",	
 	SpecWarnUnboundPlague		= "$spell:72856 전달자 특수 경고 보기",
 	SpecWarnNextPlageSelf		= "당신이 다음 $spell:72856 대상이 될 때 특수 경고 보기",
@@ -364,7 +364,7 @@ L:SetOptionLocalization{
 	SpecWarnVortex				= "당신이 $spell:72037에 해당 될 경우 특수 경고 보기",
 	SpecWarnVortexNear			= "당신 주변에 $spell:72037가 있을 경우 특수 경고 보기",	
 	EmpoweredFlameIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72040),
-	ActivePrinceIcon			= "활성화 된 공작에게 공격대 징표 설정하기 (해골)",
+	ActivePrinceIcon			= "활성화 된 공작에게 전술 목표 아이콘 설정하기 (해골)",
 	RangeFrame					= "거리 창 보기 (12 m)",
 	VortexArrow					= "당신 주변의 $spell:72037를 DBM 화살표로 표시",	
 	BypassLatencyCheck			= "$spell:72037의 동기화를 사용하지 않거나 네트워크 체크를 하지 않습니다.\n(만약 DBM 사용에 문제가 생기면 사용하세요.)"	
@@ -399,7 +399,7 @@ L:SetOptionLocalization{
 	SwarmingShadowsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71266),
 	BloodMirrorIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70838),
 	RangeFrame				= "거리 창 보기 (8 m)",
-	YellOnFrenzy			= "$spell:71474 말하기"
+	YellOnFrenzy			= "$spell:71474 외치기"
 }
 
 L:SetMiscLocalization{
@@ -429,7 +429,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	SetIconOnBlazingSkeleton	= "타오르는 해골에게 공격대 징표 설정(해골)",
+	SetIconOnBlazingSkeleton	= "타오르는 해골에게 전술 목표 아이콘 설정(해골)",
 	WarnPortalOpen				= "$spell:72483 열림 경고 보기",	
 	TimerPortalsOpen			= "악몽의 차원문이 열릴 때 타이머 보기",
 	TimerBlazingSkeleton		= "타오르는 해골 다음 생성 타이머 보기",
@@ -477,11 +477,11 @@ L:SetOptionLocalization{
 	WarnInstability				= "당신의 $spell:69766 중첩 경고 보기",
 	WarnChilledtotheBone		= "당신의 $spell:70106 중첩 경고 보기",
 	WarnMysticBuffet			= "당신의 $spell:70128 중첩 경고 보기",
-	AnnounceFrostBeaconIcons	= "$spell:70126 대상 공격대 징표을 채팅으로 알리기\n(공대장 권한이 있을 경우)",	
+	AnnounceFrostBeaconIcons	= "$spell:70126의 전술 목표 아이콘 설정을 공격대 대화로 알리기\n(공격대장 권한 필요)",
 	SetIconOnFrostBeacon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70126),
 	SetIconOnUnchainedMagic		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69762),
-	ClearIconsOnAirphase		= "공중 단계 전 모든 공격대 징표 제거",
-	AchievementCheck			= "'신비한 아픔' 업적 경고를 공격대 채팅으로 알리기\n(공격대 권한이 있을 경우)",	
+	ClearIconsOnAirphase		= "공중 단계 전 모든 전술 목표 아이콘 제거",
+	AchievementCheck			= "'신비한 아픔' 업적 경고를 공격대 대화로 알리기\n(공격대장 권한 필요)",
 	RangeFrame					= "거리 창 보기(일반 10m, 영웅 20m) (해당 플레이어만 보임)"
 
 }
@@ -541,20 +541,20 @@ L:SetOptionLocalization{
 	SpecWarnDefileCast			= "당신에게 $spell:72762이 시전된 경우 특수 경고 보기",
 	SpecWarnDefileNear			= "당신 주변에 $spell:72762이 시전된 경우 특수 경고 보기",
 	SpecWarnTrapNear			= "주변에 $spell:73539을 하면 특수 경고 보기",	
-	YellOnDefile				= "$spell:72762의 대상이 됐을 때 말하기",
-	YellOnTrap					= "$spell:73539 말하기",
+	YellOnDefile				= "$spell:72762의 대상이 됐을 때 외치기",
+	YellOnTrap					= "$spell:73539 외치기",
 	DefileIcon					= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72762),
 	HarvestSoulIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(74327),	
 	NecroticPlagueIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(73912),
 	RagingSpiritIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69200),
 	TrapIcon					= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(73539),
-	ValkyrIcon					= "발키리에 공격대 징표 설정",
+	ValkyrIcon					= "발키리에 전술 목표 아이콘 설정",
 	DefileArrow					= "$spell:72762이 당신 주변에 생성되면 DBM 화살표 보기",
 	TrapArrow					= "주변에 $spell:73539을 할 경우 DBM 화살표 보기",
 	LKBugWorkaround				= "$spell:73539 또는 $spell:72762의 동기화를 사용하지 않거나 네트워크 체크를 하지 않습니다.\n(만약 DBM 사용에 문제가 생기면 사용하세요.)",	
-	AnnounceValkGrabs			= "발키리가 납치할 때 대상과 대상 공격대 아이콘으로 채팅 알리기\n(알림 권한이 있을 경우)",
+	AnnounceValkGrabs			= "발키리 납치 대상과 전술 목표 아이콘을 공격대 대화로 알리기\n(공격대장 권한 필요)",
 	SpecWarnValkyrLow			= "발키리의 HP가 55%이하가 될 경우 특수 경고 보기",
-	AnnouncePlagueStack			= "$spell:73912의 중첩이 쌓일 경우 공격대에 알리기 (10 중첩이상, 5 중첩마다)\n(공격대 알림 권한이 있을경우)"	
+	AnnouncePlagueStack			= "$spell:73912의 중첩이 쌓일 경우 공격대에 알리기 (10 중첩이상, 5 중첩씩)\n(공격대장 권한 필요)"
 }
 L:SetMiscLocalization{
 	LKPull					= "그러니까 성스러운 빛이 자랑하던 정의가 마침내 왔다 이건가? 폴드링, 서리한을 내려놓고 자비라도 애걸하라는 건가?",

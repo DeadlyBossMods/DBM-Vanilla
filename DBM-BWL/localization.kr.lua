@@ -86,7 +86,7 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnBreathSoon	= "곧 브레스",
 	WarnBreath		= "%s",
-	WarnPhase2Soon	= "곧 페이즈 2"
+	WarnPhase2Soon	= "곧 2 단계"
 }
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s 쿨다운"
@@ -95,7 +95,7 @@ L:SetOptionLocalization{
 	WarnBreathSoon	= "브레스의 사전 경고 보기",
 	WarnBreath		= "브레스를 시전할 때 알림",
 	TimerBreathCD	= "브레스 쿨다운 타이머 보기",
-	WarnPhase2Soon	= "페이즈 2 의 사전 경고 보기"
+	WarnPhase2Soon	= "2 단계 사전 경고 보기"
 }
 
 ----------------
@@ -109,8 +109,8 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnClassCallSoon	= "곧 직업 지목",
 	WarnClassCall		= "%s 직업 지목",
-	WarnPhaseSoon		= "곧 페이즈 %s",
-	WarnPhase			= "페이즈 %s"
+	WarnPhaseSoon		= "곧 %s 단계",
+	WarnPhase			= "%s 단계"
 }
 L:SetTimerLocalization{
 	TimerClassCall		= "%s 직업 지목"
@@ -119,8 +119,8 @@ L:SetOptionLocalization{
 	TimerClassCall		= "직업 지목 타이머 보기",
 	WarnClassCallSoon	= "직업 지목 사전 경고 보기",
 	WarnClassCall		= "직업 지목 경고 보기",
-	WarnPhaseSoon		= "페이즈 변환 사전 경고 보기",
-	WarnPhase			= "페이즈 변환 경고 보기"
+	WarnPhaseSoon		= "단계 전환 사전 경고 보기",
+	WarnPhase			= "단계 전환 경고 보기"
 }
 L:SetMiscLocalization{
 	YellPull	= "흐흐흐흐... 게임을 시작하자!",

@@ -416,16 +416,16 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningElemental	= "드라카리 정령 페이즈",		-- translate :)
-	WarningStone		= "드라카리 거대골렘 페이즈"		-- translate :)
+	WarningElemental	= "드라카리 정령 단계",		-- translate :)
+	WarningStone		= "드라카리 거대골렘 단계"		-- translate :)
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningElemental	= "드라카리 정령 페이즈 경고 보기",	-- translate ;)
-	WarningStone		= "드라카리 거대골렘 페이즈 경고 보기"		-- translate :)
+	WarningElemental	= "드라카리 정령 단계 경고 보기",	-- translate ;)
+	WarningStone		= "드라카리 거대골렘 단계 경고 보기"		-- translate :)
 })
 
 ---------------
@@ -612,7 +612,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningPhase	= "%d 페이즈"
+	WarningPhase	= "%d 단계"
 })
 
 L:SetTimerLocalization({
@@ -620,7 +620,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningPhase	= optionWarning:format("# 페이즈"),
+	WarningPhase	= optionWarning:format("# 단계"),
 	timerEvent		= "이벤트 타이머 보기"
 })
 
@@ -1368,7 +1368,7 @@ L:SetWarningLocalization({
 L:SetOptionLocalization({
 	specwarnMirroredSoul		= "$spell:69051 딜 중지 특수 경고 보기",
 	specwarnWailingSouls		= "$spell:68899을 시전 할 경우 특수 경고 보기",	
-	SetIconOnMirroredTarget		= "$spell:69051 대상 공격대 아이콘 설정"	
+	SetIconOnMirroredTarget		= "$spell:69051 대상 전술 목표 아이콘 설정"
 })
 
 -------------------------

@@ -187,7 +187,7 @@ L:SetOptionLocalization({
 	TwilightCutterCast		= "$spell:77844을 시전할 때 경고 보기",	
 	AnnounceAlternatePhase	= "해당 위치에 없을 경우에도 모든 단계의 경고/타이머 보기",
 	SoundOnConsumption		= "$spell:74562 또는 $spell:74792 소리 재생",--We use localized text for these functions
-	SetIconOnConsumption	= "$spell:74562 또는 $spell:74792 대상 공격대 아이콘 설정",--So we can use single functions for both versions of spell.
+	SetIconOnConsumption	= "$spell:74562 또는 $spell:74792 대상 전술 목표 아이콘 설정",--So we can use single functions for both versions of spell.
 	YellOnConsumption		= "$spell:74562 또는 $spell:74792 외치기",
 	WhisperOnConsumption	= "$spell:74562 또는 $spell:74792의 대상에게 귓속말 보내기(공대 경보 권한이 있을 경우)"	
 })

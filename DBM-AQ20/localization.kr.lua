@@ -31,7 +31,7 @@ L:SetOptionLocalization{
 	WarnWave	= "다음 웨이브 알림"
 }
 L:SetMiscLocalization{
-	NpcPull	= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",
+	NpcPull		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",
 	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?",
 	Wave3		= "응보의 날이 다가왔다! 암흑이 적들의 마음을 지배하게 되리라!",
 	Wave4		= "‘더는’ 돌벽과 성문 뒤에서 기다릴 수 없다! 복수의 기회를 놓칠 수 없다. 우리가 분노를 터뜨리는 날 용족은 두려움에 떨리라.",
@@ -69,7 +69,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unknown"),	
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "%s sets eyes on %s!"
+	PursueEmote 	= "시선을"
 }
 
 -------------
