@@ -26,15 +26,15 @@ L:SetMiscLocalization{
 L:SetOptionLocalization{
 	WarningSnobold				= "스노볼트 부하 생성 경고 보기",
 	SpecialWarningImpale3		= "꿰뚫기 특수 경보 보기(3 중첩이거나 그 이상일 경우)",
-	SpecialWarningAnger3		= "솟구치는 분노 특수 경고 보기(3 중첩이거나 그 이상일 경우)",	
+	SpecialWarningAnger3		= "솟구치는 분노 특수 경고 보기(3 중첩이거나 그 이상일 경우)",
 	SpecialWarningSilence		= "진동의 발구르기 특수 경보 보기",
 	SpecialWarningCharge		= "얼음울음이 당신에게 사나운 돌진을 할 경우 특수 경보 보기",
 	SpecialWarningChargeNear	= "얼음울음이 당신 주변에 사나운 돌진을 할 경우 특수 경보 보기",
-	SpecialWarningTranq			= "얼음울음이 거품 이는 분노를 얻었을 경우 특수 경고 보기(평정 사용 클래스)",	
-	SetIconOnChargeTarget		= "사나운 돌진 대상 아이콘 설정 (해골)",
-	SetIconOnBileTarget			= "타오르는 담즙 대상 아이콘 설정",
-	ClearIconsOnIceHowl			= "얼음울음의 사나운 돌진 이후 모든 공격대 아이콘 없앰",
-	PingCharge					= "얼음울음에게 사나운 돌진의 대상이 될 경우 미니맵에 핑 표시하기",		
+	SpecialWarningTranq			= "얼음울음이 거품 이는 분노를 얻었을 경우 특수 경고 보기(평정 사용 클래스)",
+	SetIconOnChargeTarget		= "사나운 돌진 대상 전술 목표 아이콘 설정 (해골)",
+	SetIconOnBileTarget			= "타오르는 담즙 대상 전술 목표 아이콘 설정",
+	ClearIconsOnIceHowl			= "얼음울음의 사나운 돌진 이후 모든 전술 목표 아이콘 없앰",
+	PingCharge					= "얼음울음에게 사나운 돌진의 대상이 될 경우 미니맵에 핑 표시하기",
 	TimerNextBoss				= "다음 보스 등장 타이머 보기",
 	TimerCombatStart			= "전투 시작 타이머 보기",
 	TimerEmerge					= "출현 타이머 보기",
@@ -94,9 +94,9 @@ L:SetOptionLocalization{
 	SpecWarnTouch				= "당신이 자락서스의 손길에 걸렸을 경우 특수 경고 알리기",
 	SpecWarnTouchNear			= "당신 주변의 플레이어가 자락서스의 손길에 걸렸을 경우 특수 경고 알리기",
 	SpecWarnNetherPower			= "황천의 힘 특수 경고 알리기 (자락서스 해제클래스-법사/사제/주술사)",
-	TouchJaraxxusIcon			= "자락서스의 손길 대상 공격대 아이콘 설정",
-	IncinerateFleshIcon			= "살점 소각의 공격대 대상 아이콘 설정",
-	LegionFlameIcon				= "군단 불꽃의 공격대 대상 아이콘 설정",
+	TouchJaraxxusIcon			= "자락서스의 손길 대상 전술 목표 아이콘 설정",
+	IncinerateFleshIcon			= "살점 소각의 공격대 대상 전술 목표 아이콘 설정",
+	LegionFlameIcon				= "군단 불꽃의 공격대 대상 전술 목표 아이콘 설정",
 	LegionFlameWhisper			= "군단 불꽃 대상에게 귓속말 보내기",
 	IncinerateShieldFrame		= "보스 체력 프레임과 함께 살점 소각 대상자 체력바 보기"
 }
@@ -195,7 +195,7 @@ L:SetOptionLocalization{
 	SpecWarnSwitchTarget		= "다른 보스에게 시전해야 할 경우 특수 경고 보기",
 	SpecWarnKickNow				= "당신이 차단을 해야할 경우 특수 경고 보기",
 	SpecialWarnOnDebuff			= "디버프일 경우 특수 경고 보기 (디버프를 바꿀 경우)",
-	SetIconOnDebuffTarget		= "손길 디버프 대상에게 공격대 아이콘 설정하기(영웅 모드)",
+	SetIconOnDebuffTarget		= "손길 디버프 대상에게 전술 목표 아이콘 설정하기(영웅 모드)",
 	WarningTouchDebuff			= "빛/어둠의 손길 디버프 대상 알리기",
 	WarningPoweroftheTwins		= "쌍둥이의 힘의 현재 대상 알리기",
 	SpecWarnPoweroftheTwins		= "쌍둥이의 힘의 특수 경고 보기(탱커일 경우)"
@@ -233,8 +233,8 @@ L:SetMiscLocalization{
 --	Swarm					= "착취의 무리가 너희를 덮치리라!",
 	Emerge					= "땅속에서 모습을 드러냅니다!",
 	Burrow					= "땅속으로 숨어버립니다!",
-	PcoldIconSet			= "냉기 관통 아이콘{rt%d} : %s",
-	PcoldIconRemoved		= "냉기 관통 아이콘 제거 : %s"	
+	PcoldIconSet			= "냉기 관통 징표{rt%d} : %s",
+	PcoldIconRemoved		= "냉기 관통 징표 제거 : %s"
 }
 
 L:SetOptionLocalization{
@@ -245,13 +245,13 @@ L:SetOptionLocalization{
 	specWarnSubmergeSoon		= "숨기 10초전 특수 경고 보기",	
 	SpecWarnPursue				= "당신을 추격하기 시작할 때 특수 경고 알리기",
 	warnAdds					= "새로운 네루비안 땅무지가 추가 될 때 경고 보기",
-	timerAdds					= "새로운 네루비안 땅무지 추가 타이머 보기",	
+	timerAdds					= "새로운 네루비안 땅무지 추가 타이머 보기",
 	TimerEmerge					= "출현 타이머 보기",
 	TimerSubmerge				= "숨기 타이머 보기",
 	PlaySoundOnPursue			= "당신을 추격하기 시작할 때 특수 소리 재생",
-	PursueIcon					= "추격 대상자 공격대 아이콘 설정하기",
-	SetIconsOnPCold				= "$spell:68510 대상자 공격대 아이콘 설정하기",
+	PursueIcon					= "추격 대상자 전술 목표 아이콘 설정하기",
+	SetIconsOnPCold				= "$spell:68510 대상자 전술 목표 아이콘 설정하기",
 	SpecWarnShadowStrike		= "$spell:66134 특수 경고 보기(차단 관련)",
-	AnnouncePColdIcons			= "$spell:68510 대상자 및 공격대 아이콘 설정을 공격대 채팅창으로 알리기(공대장 권한)",
-	AnnouncePColdIconsRemoved	= "$spell:68510의 공격대 아이콘이 언제 사라지는지 알리기 \n(위의 옵션을 포함해야 함)"	
+	AnnouncePColdIcons			= "$spell:68510의 전술 목표 아이콘 설정을 공격대 대화로 알리기(공격대장 권한 필요)",
+	AnnouncePColdIconsRemoved	= "$spell:68510의 전술 목표 아이콘이 언제 사라지는지 알리기 \n(위의 옵션을 포함해야 함)"
 }

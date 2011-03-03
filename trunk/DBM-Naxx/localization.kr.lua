@@ -184,7 +184,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	SpecialWarningInjection		= "돌연변이 유발 특수 경고 보기",
-	SetIconOnInjectionTarget	= "돌연변이 유발 대상 공격대 아이콘 설정"
+	SetIconOnInjectionTarget	= "돌연변이 유발 대상 전술 목표 아이콘 설정"
 })
 
 L:SetWarningLocalization({
@@ -278,17 +278,17 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerWave			= "다음 웨이브 타이머 보기",
-	TimerPhase2			= "2 페이즈 타이머 보기",
+	TimerPhase2			= "2 단계 타이머 보기",
 	WarningWaveSoon		= "웨이브 사전 경고 보기",
 	WarningWaveSpawned	= "웨이브 생성 경고 보기",
 	WarningRiderDown	= "죽음의 기병이 죽었을 때 경고 보기",
 	WarningKnightDown	= "죽음의 기사가 죽었을 때 경고 보기",
-	WarningPhase2		= "2 페이즈 경고 보기"
+	WarningPhase2		= "2 단계 경고 보기"
 })
 
 L:SetTimerLocalization({
 	TimerWave	= "웨이브 #%d",
-	TimerPhase2	= "2 페이즈"
+	TimerPhase2	= "2 단계"
 })
 
 L:SetWarningLocalization({
@@ -296,7 +296,7 @@ L:SetWarningLocalization({
 	WarningWaveSpawned	= "웨이브 %d: %s 등장",
 	WarningRiderDown	= "무자비한 죽음의 기병 죽음",
 	WarningKnightDown	= "무자비한 죽음의 기사 죽음",
-	WarningPhase2		= "2 페이즈 시작"
+	WarningPhase2		= "2 단계 시작"
 })
 
 L:SetMiscLocalization({
@@ -355,10 +355,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningAirPhaseSoon		= "비행 페이즈 사전 경고 보기",
-	WarningAirPhaseNow		= "비행 페이즈 경고 보기",
-	WarningLanded			= "지상 페이즈 경고 보기",
-	TimerAir				= "비행 페이즈 타이머 보기",
+	WarningAirPhaseSoon		= "비행 단계 사전 경고 보기",
+	WarningAirPhaseNow		= "비행 단계 경고 보기",
+	WarningLanded			= "지상 단계 경고 보기",
+	TimerAir				= "비행 단계 타이머 보기",
 	TimerLanding			= "착지 타이머 보기",
 	TimerIceBlast			= "냉기 숨결 타이머 보기",
 	WarningDeepBreath		= "냉기 숨결 특수 경고 보기",
@@ -372,14 +372,14 @@ L:SetMiscLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon		= "비행 페이즈 10초 전",
-	WarningAirPhaseNow		= "비행 페이즈",
+	WarningAirPhaseSoon		= "비행 단계 10초 전",
+	WarningAirPhaseNow		= "비행 단계",
 	WarningLanded			= "사피론 착지",
 	WarningDeepBreath		= "냉기의 숨결!!",
 })
 
 L:SetTimerLocalization({
-	TimerAir				= "비행 페이즈",
+	TimerAir				= "비행 단계",
 	TimerLanding			= "착지",
 	TimerIceBlast			= "냉기 숨결"	
 })
@@ -395,13 +395,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2			= "2 페이즈 타이머 보기",
-	specwarnP2Soon		= "2 페이즈 시작하기 전 특수 경고 보기",
+	TimerPhase2			= "2 단계 타이머 보기",
+	specwarnP2Soon		= "2 단계 시작하기 전 특수 경고 보기",
 	warnAddsSoon		= "얼음왕관의 수호자 등장 사전 경고 보기",
 	SetIconOnMC			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(28410),
 	SetIconOnManaBomb	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(27819),
 	SetIconOnFrostTomb	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(27808),	
-	ShowRange			= "2 페이즈가 시작되면 거리 프레임 보기"
+	ShowRange			= "2 단계가 시작되면 거리 프레임 보기"
 })
 
 L:SetMiscLocalization({
@@ -409,10 +409,10 @@ L:SetMiscLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon		= "10초 후 2 페이즈",
+	specwarnP2Soon		= "10초 후 2 단계",
 	warnAddsSoon		= "곧 얼음왕관의 수호자 등장"
 })
 
 L:SetTimerLocalization({
-	TimerPhase2			= "2 페이즈"
+	TimerPhase2			= "2 단계"
 })

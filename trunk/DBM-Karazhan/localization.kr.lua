@@ -170,7 +170,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	timerSpecial			= "신비한 폭발 예상 타이머 보기",
 	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 시전 시 특수 경고 보기",
-	ElementalIcons			= "$spell:37053 대상에게 공격대 징표 설정하기",
+	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정하기",
 	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 

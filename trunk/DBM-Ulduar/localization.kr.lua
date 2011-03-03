@@ -56,7 +56,7 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	SpecWarnJetsCast		= "화염 분출 시전의 특수 경고 보기",
 	WarningSlagPot			= "용암재 단지 대상 알리기",
-	SlagPotIcon				= "용암재 단지 대상 공격대 아이콘 설정"	
+	SlagPotIcon				= "용암재 단지 대상 전술 목표 아이콘 설정 하기"
 }
 
 ------------------
@@ -127,9 +127,9 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	SpecialWarningLightBomb			= "당신이 타오르는 빛의 영향을 받을 때 특수 경고 보기",
 	SpecialWarningGravityBomb		= "당신이 중력 폭탄의 영향을 받을 때 특수 경고 보기",
-	specWarnConsumption				= "공허의 지대로부터 데미지를 받을 경우 특수 경고 보기",	
-	SetIconOnLightBombTarget		= "타오르는 빛 대상에게 공격대 아이콘 표시",
-	SetIconOnGravityBombTarget		= "중력 폭탄 대상에게 공격대 아이콘 표시",
+	specWarnConsumption				= "공허의 지대로부터 데미지를 받을 경우 특수 경고 보기",
+	SetIconOnLightBombTarget		= "타오르는 빛 대상에게 전술 목표 아이콘 설정하기",
+	SetIconOnGravityBombTarget		= "중력 폭탄 대상에게 전술 목표 아이콘 설정하기",
 }
 
 -------------------
@@ -151,8 +151,8 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarningSupercharge				= "전기 충전 시전 경고 보기",
 	AlwaysWarnOnOverload			= "과부하 일 때 지속적인 경고 알리기(타겟일 경우만)",
-	SetIconOnOverwhelmingPower		= "압도적인 힘 대상 아이콘 설정",
-	SetIconOnStaticDisruption		= "전자기 붕괴 대상 타겟 아이콘 설정하기(하드 모드)"	
+	SetIconOnOverwhelmingPower		= "압도적인 힘 대상 전술 목표 아이콘 설정하기",
+	SetIconOnStaticDisruption		= "전자기 붕괴 대상 전술 목표 아이콘 설정하기"
 }
 
 L:SetMiscLocalization{
@@ -183,7 +183,7 @@ L:SetWarningLocalization{
 	PreWarningBigBang		= "대 폭발 10초 전!",
 	WarningCosmicSmash 		= "우주의 강타 - 폭발 4초 전",
 	SpecWarnCosmicSmash 	= "우주의 강타",
-	WarnPhase2Soon			= "곧 2 페이즈",
+	WarnPhase2Soon			= "곧 2 단계",
 	warnStarLow				= "붕괴의 별 체력 낮음",
 	FirstPullNotice			= "첫번째 풀링 감지,  자동 타이머 수정"	
 }
@@ -198,7 +198,7 @@ L:SetOptionLocalization{
 	WarningCosmicSmash 			= "우주의 강타 알리기",
 	SpecWarnCosmicSmash 		= "우주의 강타 특수 경고 보기",
 	TimerCombatStart			= "전투 시작 타이머 보기",
-	WarnPhase2Soon				= "2 페이즈 사전 경고 보기(23% 이하)",
+	WarnPhase2Soon				= "2 단계 사전 경고 보기(23% 이하)",
 	warnStarLow					= "붕괴의 별 체력이 낮을 경우 특수 경고 보기(25% 이하)"
 }
 
@@ -240,9 +240,9 @@ L:SetOptionLocalization{
 	timerLeftArm			= "왼쪽 팔 재생성 타이머 보기",
 	timerRightArm			= "오른쪽 팔 재생성 타이머 보기",	
 	WarnGrip				= "바위 손아귀 대상 알리기",
-	SetIconOnGripTarget		= "바위 손아귀 대상 아이콘 설정",
+	SetIconOnGripTarget		= "바위 손아귀 대상 전술 목표 아이콘 설정하기",
 	achievementDisarmed		= "무장해제 타이머 보기",
-	SetIconOnEyebeamTarget	= "안광 집중 대상 공격대 아이콘 설정(달)"
+	SetIconOnEyebeamTarget	= "안광 집중 대상 전술 목표 아이콘 설정하기"
 }
 
 L:SetMiscLocalization{
@@ -310,7 +310,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarningFlashFreeze		= "순간 빙결 경고 보기",
 	YellOnStormCloud		= "폭풍 구름을 얻을 경우 외치기",
-	SetIconOnStormCloud		= "폭풍 구름 대상 아이콘 설정 하기",
+	SetIconOnStormCloud		= "폭풍 구름 대상 전술 목표 아이콘 설정하기",
 	specWarnBitingCold		= "매서운 추위의 영향을 받을 경우 특수 경고 보기"	
 }
 
@@ -432,24 +432,24 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerHardmode			= "하드 모드 - 자폭장치 가동",
-	TimeToPhase2			= "2 페이즈",
-	TimeToPhase3			= "3 페이즈",
-	TimeToPhase4			= "4 페이즈"
+	TimeToPhase2			= "2 단계",
+	TimeToPhase3			= "3 단계",
+	TimeToPhase4			= "4 단계"
 }
 
 L:SetOptionLocalization{
 	DarkGlare 				= "레이저 탄막 특수 경고 알리기",
-	TimeToPhase2			= "페이즈 2 시작 알리기",
-	TimeToPhase3			= "페이즈 3 시작 알리기",
-	TimeToPhase4			= "페이즈 4 시작 알리기",
+	TimeToPhase2			= "2 단계 시작 알리기",
+	TimeToPhase3			= "3 단계 시작 알리기",
+	TimeToPhase4			= "4 단계 시작 알리기",
 	MagneticCore			= "자기 증폭기 획득자 알리기",
-	HealthFramePhase4		= "페이즈 4 의 체력 프레임 보기",
-	AutoChangeLootToFFA		= "3 페이즈에서 루팅 옵션 자동 변경하기",	
+	HealthFramePhase4		= "4 단계의 체력 프레임 보기",
+	AutoChangeLootToFFA		= "3 단계에서 루팅 옵션 자동 변경하기",	
 	WarnBombSpawn			= "폭탄 로봇 생성 알리기",
 	TimerHardmode			= "하드 모드를 위한 타이머 보기",
-	ShockBlastWarningInP1	= "1 페이즈 충격파의 특수 경고 보기(근접 딜러)",
-	ShockBlastWarningInP4	= "4 페이즈 충격파의 특수 경고 보기(근접 딜러)",
-	RangeFrame				= "1 페이즈에서 거리 프레임 보기(6 미터)"
+	ShockBlastWarningInP1	= "1 단계 충격파의 특수 경고 보기(근접 딜러)",
+	ShockBlastWarningInP4	= "4 단계 충격파의 특수 경고 보기(근접 딜러)",
+	RangeFrame				= "1 단계에서 거리 프레임 보기(6 미터)"
 }
 
 L:SetMiscLocalization{
@@ -489,8 +489,8 @@ L:SetWarningLocalization{
 
 L:SetOptionLocalization{
 	WarningShadowCrash				= "어둠의 붕괴 대상 알리기",
-	SetIconOnShadowCrash			= "어둠 붕괴 대상 공격대 아이콘 설정하기(해골)",
-	SetIconOnLifeLeach				= "얼굴 없는 자의 징표 대상 공격대 아이콘 설정하기(엑스)",
+	SetIconOnShadowCrash			= "어둠 붕괴 대상 전술 목표 아이콘 설정하기(해골)",
+	SetIconOnLifeLeach				= "얼굴 없는 자의 징표 대상 전술 목표 아이콘 설정하기(엑스)",
 	SpecialWarningSurgeDarkness		= "어둠 쇄도 특수 경고 보기",
 	SpecialWarningShadowCrash		= "어둠 붕괴 특수 경고 보기(공대원 중 베작스 대상/주시 일 경우)",
 	SpecialWarningShadowCrashNear	= "주변에 어둠 붕괴일 때 특수 경고 보기",	
@@ -556,21 +556,21 @@ L:SetOptionLocalization{
 	SpecWarnBrainLink				= "두뇌의 고리 특수 경고 보기",
 	WarningSanity					= "이성이 낮은 경우 경고 보기",
 	SpecWarnSanity					= "이성이 매우 낮은 경우 특수 경고 보기",
-	SpecWarnGuardianLow				= "수호자의 생명력이 낮을 때 특수 경고 보기(1페이즈 / 딜러)",
+	SpecWarnGuardianLow				= "수호자의 생명력이 낮을 때 특수 경고 보기(1단계 / 딜러)",
 	NextPortal						= "다음 내부 차원문 알리기",	
 	WarnBrainPortalSoon				= "내부 차원문 알리기",
 	specWarnBrainPortalSoon			= "내부 차원문 특수 경고 알리기",	
 	SpecWarnMadnessOutNow			= "광기 유발이 끝나기 전 특수 경고 알리기",
 	WarningSqueeze					= "압착의 촉수의 대상이 됏을 경우 외치기",
-	SetIconOnFearTarget				= "병든 정신 타겟 아이콘 설정하기",
-	SetIconOnFervorTarget			= "사라의 열정 타겟 아이콘 설정하기",
-	SetIconOnMCTarget				= "정신 지배에 걸린 플레이어 타겟 아이콘 설정하기",	
+	SetIconOnFearTarget				= "병든 정신 대상 전술 목표 아이콘 설정하기",
+	SetIconOnFervorTarget			= "사라의 열정 대상 전술 목표 아이콘 설정하기",
+	SetIconOnMCTarget				= "정신 지배 대상 전술 목표 아이콘 설정하기",	
 	ShowSaraHealth					= "사라 체력 보기(공대원 중 사라 대상/주시 일 경우)",
 	SpecWarnFervor					= "사라의 열정 특수 경고 보기",
-	SpecWarnFervorCast				= "당신에게 사라의 열정을 시전 할 때 특수 경고 보기(사라 대상/주시 일 경우)",	
+	SpecWarnFervorCast				= "당신에게 사라의 열정을 시전 할 때 특수 경고 보기(사라 대상/주시 일 경우)",
 	WarnEmpowerSoon					= "어둠의 봉화 경고 보기",
 	SpecWarnMaladyNear				= "병든 정신이 걸린 플레이어가 근처에 있을 경우 특수 경고 알리기(병든 정신 종료 후)",
 	SpecWarnDeafeningRoar			= "귀청이 터질듯한 포효 시전을 할 경우 특수 경고 보기 (침묵 그리고 레전드리를 위하여!!)",
-	SetIconOnBrainLinkTarget		= "두뇌 연결 대상 공격대 아이콘 설정",
-	MaladyArrow						= "$spell:63881 걸린 공대원이 주변에 있을 경우 화살표 보기"	
+	SetIconOnBrainLinkTarget		= "두뇌 연결 대상 전술 목표 아이콘 설정하기",
+	MaladyArrow						= "$spell:63881 걸린 공격대원이 주변에 있을 경우 화살표 보기"
 }

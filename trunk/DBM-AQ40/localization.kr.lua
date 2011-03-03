@@ -23,9 +23,9 @@ L:SetGeneralLocalization{
 	name = "벌레 무리"
 }
 L:SetMiscLocalization{
-	Yauj = "공주 야우즈",
-	Vem = "벰",
-	Kri = "군주 크리"
+	Yauj	= "공주 야우즈",
+	Vem		= "벰",
+	Kri		= "군주 크리"
 }
 
 -------------
@@ -70,7 +70,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Phase4 	= "분해되기 시작합니다!",
 	Phase5 	= "부서질 것 같습니다!",
-	Phase6 	= "Explodes."
+	Phase6 	= "폭발"
 }
 -------------
 -- Huhuran --
@@ -108,7 +108,7 @@ L:SetGeneralLocalization{
 	name = "크툰"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle		= "눈달린 촉수",
+	WarnEyeTentacle			= "눈달린 촉수",
 	WarnClawTentacle		= "발톱 촉수",
 	WarnGiantEyeTentacle	=  "거대한 눈달린 촉수",
 	WarnGiantClawTentacle	= "거대한 발톱 촉수",
@@ -118,11 +118,11 @@ L:SetTimerLocalization{
 	TimerEyeTentacle		= "눈달린 촉수",
 	TimerGiantEyeTentacle	= "거대한 눈달린 촉수",
 	TimerClawTentacle		= "발톱 촉수",
-	TimerGiantClawTentacle = "거대한 발톱 촉수",
+	TimerGiantClawTentacle	= "거대한 발톱 촉수",
 	TimerWeakened			= "약화"
 }
 L:SetOptionLocalization{
-	WarnEyeTentacle		= "눈달린 촉수 알림",
+	WarnEyeTentacle			= "눈달린 촉수 알림",
 	WarnClawTentacle		= "발톱 촉수 알림",
 	WarnGiantEyeTentacle	=  "거대한 눈달린 촉수 알림",
 	WarnGiantClawTentacle	= "거대한 발톱 촉수 알림",
@@ -132,7 +132,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "발톱 촉수 타이머 보기",
 	TimerGiantClawTentacle = "거대한 발톱 촉수 타이머 보기",
 	TimerWeakened			= "약화 타이머 보기",
-	RangeFrame	= "거리 프레임 표시"
+	RangeFrame				= "거리 프레임 표시"
 }
 L:SetMiscLocalization{
 	Weakened 	= "약해집니다!",
