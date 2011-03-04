@@ -1,546 +1,352 @@
-local Kael = DBM:NewBossMod("KaelThas", DBM_KAEL_NAME, DBM_KAEL_DESCRIPTION, DBM_TEMPEST_KEEP, DBM_EYE_TAB, 4);
+﻿local mod	= DBM:NewMod("KaelThas", "DBM-TheEye")
+local L		= mod:GetLocalizedStrings()
 
-Kael.Version	= "1.3";
-Kael.Author		= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(19622)
+mod:SetZone()
 
-local lastConflag 		= 0;
-local MCTargets			= {};
-local MCIcons			= {
-	[1]	= false,
-	[2] = false,
-	[3] = false,
-	[4] = false,
-	[5] = false,
-	[6] = false,
-	[7] = false,
-	[8] = false
-};
-local weaponFrame		= false;
-local phase2			= false;
-local phase5			= false;
-local weaponHealth		= {
-	[1] = 100,
-	[2] = 100,
-	[3] = 100,
-	[4] = 100,
-	[5] = 100,
-	[6] = 100,
-	[7] = 100
-};
-local addFrame		= false;
-local addHealth		= {
-	[1] = 100,
-	[2] = 100,
-	[3] = 100,
-	[4] = 100,
-};
-local lastEgg		= 0;
-local gravityLapse	= false;
-local phase = 1
+mod:RegisterCombat("yell", L.YellPhase1)
+mod:SetMinCombatTime(60)
+mod:SetWipeTime(40)
+mod:SetUsedIcons(6, 7, 8)
 
-Kael:RegisterEvents(
-	"CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_MONSTER_YELL",
+mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_MISSED",
 	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_SUCCESS"
-);
+	"SPELL_CAST_SUCCESS",
+	"SPELL_DAMAGE",
+	"SWING_DAMAGE",
+	"RANGE_DAMAGE",
+	"CHAT_MSG_MONSTER_EMOTE",
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_DIED"
+)
 
-Kael:AddOption("WarnPhase", true, DBM_KAEL_OPTION_PHASE);
-Kael:AddOption("ThalaIcon", true, DBM_KAEL_OPTION_ICON_P1);
-Kael:AddOption("ThalaWhisper", true, DBM_KAEL_OPTION_WHISPER_P1);
-Kael:AddOption("RangeCheck", true, DBM_KAEL_OPTION_RANGECHECK);
-Kael:AddOption("WarnConflag", true, DBM_KAEL_OPTION_CONFLAG);
-Kael:AddOption("WarnConflag2", false, DBM_KAEL_OPTION_CONFLAG2);
-Kael:AddOption("TimerConflag2", false, DBM_KAEL_OPTION_CONFLAGTIMER2);
-Kael:AddOption("WarnFear", true, DBM_KAEL_OPTION_FEAR);
-Kael:AddOption("WarnFearSoon", true, DBM_KAEL_OPTION_FEARSOON);
-Kael:AddOption("WarnToy", true, DBM_KAEL_OPTION_TOY);
---Kael:AddOption("ShowFrame", true, DBM_KAEL_OPTION_FRAME);
---Kael:AddOption("ShowAddFrame", true, DBM_KAEL_OPTION_ADDFRAME);
-Kael:AddOption("WarnPyro", false, DBM_KAEL_OPTION_PYRO);
-Kael:AddOption("WarnBarrier", true, DBM_KAEL_OPTION_BARRIER);
-Kael:AddOption("WarnBarrier2", false, DBM_KAEL_OPTION_BARRIER2);
-Kael:AddOption("WarnPhoenix", true, DBM_KAEL_OPTION_PHOENIX);
-Kael:AddOption("WarnMC", true, DBM_KAEL_OPTION_WARNMC);
-Kael:AddOption("IconMC", true, DBM_KAEL_OPTION_ICONMC);
-Kael:AddOption("WarnGravity", true, DBM_KAEL_OPTION_GRAVITY);
+local warnGaze			= mod:NewAnnounce("WarnGaze", 4, 39414)
+local warnFear			= mod:NewCastAnnounce(44863, 3)
+local warnConflag		= mod:NewTargetAnnounce(37018, 3)
+local warnToy			= mod:NewTargetAnnounce(37027, 3)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnMobDead		= mod:NewAnnounce("WarnMobDead", 3, nil, false)
+local warnPhase3		= mod:NewPhaseAnnounce(3)
+local warnPhase4		= mod:NewPhaseAnnounce(4)
+local warnMC			= mod:NewTargetAnnounce(36797, 3)
+local warnPhoenix		= mod:NewSpellAnnounce(36723, 3)
+local warnEgg			= mod:NewAnnounce("WarnEgg", 4, 36723)
+local warnPyro			= mod:NewCastAnnounce(36819, 4)
+local warnPhase5		= mod:NewPhaseAnnounce(5)
+local warnGravity		= mod:NewSpellAnnounce(35966, 3)
 
-Kael:AddBarOption("Thaladred")
-Kael:AddBarOption("Lord Sanguinar")
-Kael:AddBarOption("Capernian")
-Kael:AddBarOption("Telonicus")
-Kael:AddBarOption("Gaze Cooldown")
-Kael:AddBarOption("Next Fear")
-Kael:AddBarOption("Fear")
-Kael:AddBarOption("Conflagration: (.*)")
-Kael:AddBarOption("Remote Toy: (.*)")
-Kael:AddBarOption("Phase 3")
-Kael:AddBarOption("Phase 4")
-Kael:AddBarOption("Next Shock Barrier")
-Kael:AddBarOption("Shock Barrier")
-Kael:AddBarOption("Phoenix")
-Kael:AddBarOption("Rebirth")
-Kael:AddBarOption("Pyroblast")
-Kael:AddBarOption("Gravity Lapse")
-Kael:AddBarOption("Next Gravity Lapse")
+local specWarnGaze		= mod:NewSpecialWarning("SpecWarnGaze")
+local specWarnToy		= mod:NewSpecialWarningYou(37027, mod:IsTank())
+local specWarnEgg		= mod:NewSpecialWarning("SpecWarnEgg")
+local specWarnShield	= mod:NewSpecialWarningSpell(36815)
+local specWarnPyro		= mod:NewSpecialWarningInterrupt(36819)
+local specWarnVapor		= mod:NewSpecialWarningStack(35859, nil, 2)
 
-Kael:SetCreatureID(19622)
---9/30 15:02:29.788  UNIT_DIED,0x0000000000000000,nil,0x80000000,0xF130004CA6000270,"Kael'thas Sunstrider",0x10a48
-Kael:RegisterCombat("yell", DBM_KAEL_YELL_PHASE1)
-Kael:SetMinCombatTime(60)
+local timerPhase		= mod:NewTimer(105, "TimerPhase", 28131)
+local timerPhase1mob	= mod:NewTimer(30, "TimerPhase1mob", 28131)
+local timerNextGaze		= mod:NewTimer(8.5, "TimerNextGaze", 39414)
+local timerFear			= mod:NewCastTimer(1.5, 39427)
+local timerFearCD		= mod:NewCDTimer(31, 39427)
+local timerToy			= mod:NewTargetTimer(60, 37027)
+local timerPhoenixCD	= mod:NewCDTimer(45, 36723)
+local timerRebirth		= mod:NewTimer(15, "TimerRebirth", 36723)
+local timerShieldCD		= mod:NewCDTimer(60, 36815)
+local timerPyro			= mod:NewCastTimer(4, 36819)
+local timerGravityCD	= mod:NewCDTimer(92, 35941)
+local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
-function Kael:OnCombatStart(delay)
-	phase = 1
-	if self.Options.WarnPhase then
-		self:Announce(DBM_KAEL_WARN_PHASE1, 1);
+mod:RemoveOption("HealthFrame")
+mod:AddBoolOption("RangeFrame", true)
+mod:AddBoolOption("MCIcon", true)
+mod:AddBoolOption("GazeIcon", true)
+mod:AddBoolOption("GazeWhisper", true, "announce")
+
+local lastEgg = 0
+local mcIcon = 8
+local warnConflagTargets = {}
+local warnMCTargets = {}
+local shieldDown = false
+local phase5 = false
+
+local showShieldHealthBar, hideShieldHealthBar
+do
+	local frame = CreateFrame("Frame") -- using a separate frame avoids the overhead of the DBM event handlers which are not meant to be used with frequently occuring events like all damage events...
+	local shieldedMob
+	local absorbRemaining = 0
+	local maxAbsorb = 0
+	local function getShieldHP()
+		return math.max(1, math.floor(absorbRemaining / maxAbsorb * 100))
 	end
-	self:StartStatusBarTimer(32 - delay, "Thaladred", "Interface\\Icons\\Spell_Nature_WispSplode");
-	MCTargets = {};
-	MCIcons = {
-		[1]	= false,
-		[2] = false,
-		[3] = false,
-		[4] = false,
-		[5] = false,
-		[6] = false,
-		[7] = false,
-		[8] = false
-	};
-	phase2 = false;
-	phase5 = false;
-	weaponHealth = {
-		[1] = 100,
-		[2] = 100,
-		[3] = 100,
-		[4] = 100,
-		[5] = 100,
-		[6] = 100,
-		[7] = 100
-	};
-	addHealth = {
-		[1] = 100,
-		[2] = 100,
-		[3] = 100,
-		[4] = 100,
-	};
-end
-
-function Kael:OnCombatEnd()
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Hide();
-	end
-	if weaponFrame then
-		weaponFrame:Hide();
-	end
-	if addFrame then
-		addFrame:Hide();
-	end
-	phase = 1
-end
-
-function Kael:OnEvent(event, arg1)
-	if event == "CHAT_MSG_MONSTER_EMOTE" and arg1 then
-		local _, _, target = arg1:find(DBM_KAEL_EMOTE_THALADRED_TARGET);
-		if target then
-			self:SendSync("ThalaTarget"..target);
-		end
-	elseif event == "CHAT_MSG_MONSTER_YELL" then
-		if arg1 == DBM_KAEL_YELL_PHASE2 then
-			self:SendSync("Phase2");
-		elseif arg1 == DBM_KAEL_YELL_PHASE3 then
-			self:SendSync("Phase3");
-		elseif arg1 == DBM_KAEL_YELL_PHASE4 then
-			self:SendSync("Phase4");
-		elseif arg1 == DBM_KAEL_YELL_PHASE5 then
-			self:SendSync("Phase5");
-		elseif arg1 == DBM_KAEL_YELL_CAPERNIAN_DOWN then
-			if self.Options.RangeCheck then
-				DBM_Gui_DistanceFrame_Hide();
+	frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+	frame:SetScript("OnEvent", function(self, event, timestamp, subEvent, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, ...)
+		if shieldedMob == destGUID then
+			local absorbed
+			if subEvent == "SWING_MISSED" then 
+				absorbed = select( 2, ... ) 
+			elseif subEvent == "RANGE_MISSED" or subEvent == "SPELL_MISSED" or subEvent == "SPELL_PERIODIC_MISSED" then 
+				absorbed = select( 5, ... )
 			end
-		elseif arg1 == DBM_KAEL_YELL_PHASE1_SANGUINAR then
-			self:Announce(DBM_KAEL_WARN_INC:format(DBM_KAEL_SANGUINAR), 1);
-			self:StartStatusBarTimer(12.5, "Lord Sanguinar", "Interface\\Icons\\Spell_Nature_WispSplode");
-		elseif arg1 == DBM_KAEL_YELL_PHASE1_CAPERNIAN then
-			self:Announce(DBM_KAEL_WARN_INC:format(DBM_KAEL_CAPERNIAN), 1);
-			self:StartStatusBarTimer(7, "Capernian", "Interface\\Icons\\Spell_Nature_WispSplode");
-			self:EndStatusBarTimer("Next Fear");
-			self:UnScheduleSelf("FearSoon");
-			if self.Options.RangeCheck then
-				DBM_Gui_DistanceFrame_Show();
-			end
-		elseif arg1 == DBM_KAEL_YELL_PHASE1_TELONICUS then
-			self:Announce(DBM_KAEL_WARN_INC:format(DBM_KAEL_TELONICUS), 1);
-			self:StartStatusBarTimer(8.4, "Telonicus", "Interface\\Icons\\Spell_Nature_WispSplode");
-			if self.Options.RangeCheck then
-				DBM_Gui_DistanceFrame_Hide();
-			end
-		elseif arg1 == DBM_KAEL_YELL_GRAVITY_LAPSE or arg1 == DBM_KAEL_YELL_GRAVITY_LAPSE2 then
-			self:SendSync("GravityLapse");
-		end
-	elseif event == "SPELL_CAST_START" and arg1 then
-		if arg1.spellId == 39427 then -- ?
-			self:SendSync("CastFear")
-		elseif arg1.spellId == 36819 then
-			self:SendSync("Pyroblast")
-		end
-	elseif event == "SPELL_MISSED" then
-		if arg1.spellId == 39427 then -- ?
-			self:SendSync("Fear")
-		end
-	elseif event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 39427 then -- ?
-			self:SendSync("Fear");
-		elseif arg1.spellId == 37018 then -- ?
-			self:SendSync("Conflag"..tostring(arg1.destName))
-		elseif arg1.spellId == 36797 then
-			self:SendSync("MC"..tostring(arg1.destName))
-		elseif arg1.spellId == 37027 then
-			self:SendSync("Toy"..tostring(arg1.destName))
-		elseif arg1.spellId == 36815 then
-			self:SendSync("Barrier");
-		end
-	elseif event == "SPELL_AURA_REMOVED" then
-		if arg1.spellId == 36815 then
-			self:SendSync("BarrierDown")
-		elseif arg1.spellId == 36797 then
-			self:SendSync("BrokeMC"..tostring(arg1.destName))
-		end
-	elseif event == "SPELL_CAST_SUCCESS" then
-		if arg1.spellId == 36723 then
-			self:SendSync("Phoenix")
-		end
-	elseif event == "FearSoon" then
-		if self.Options.WarnFearSoon then
-			self:Announce(DBM_KAEL_WARN_FEAR_SOON, 2);
-		end
-	elseif event == "WarnPhase3" then
-		if self.Options.WarnPhase then
-			self:Announce(DBM_KAEL_WARN_PHASE3, 1);
-		end
-	elseif event == "Phase3" then
-		self:StartStatusBarTimer(173, "Phase 4", "Interface\\Icons\\Spell_Shadow_BloodBoil");
-		if self.Options.RangeCheck then
-			DBM_Gui_DistanceFrame_Show();
-		end
-	elseif event == "BarrierWarn" then
-		if self.Options.WarnBarrier and (not phase5 or self.Options.WarnBarrier2) then
-			self:Announce(DBM_KAEL_WARN_BARRIER_SOON, 2);
-		end
-	elseif event == "AnnounceMCTargets" then
-		if self.Options.WarnMC then
-			local targetString = "";
-			for i, v in ipairs(MCTargets) do
-				targetString = targetString..">"..v.."<, ";
-			end
-			if targetString ~= "" then
-				self:Announce(DBM_KAEL_WARN_MC_TARGETS:format(targetString:sub(0, -3)), 1);
+			if absorbed then
+				absorbRemaining = absorbRemaining - absorbed
 			end
 		end
-		MCTargets = {};
-	elseif event == "ClearIcon" and arg1 then
-		MCIcons[arg1] = false;
-	elseif event == "GravityLapseEnd" then
-		gravityLapse = false;
-		self:ScheduleSelf(55, "GravityWarn");
-		self:StartStatusBarTimer(60, "Next Gravity Lapse", "Interface\\Icons\\Spell_Magic_FeatherFall");
-	elseif event == "GravityWarn" and self.Options.WarnGravity then
-		self:Announce(DBM_KAEL_GRAVITY_SOON, 2);
-	elseif event == "GravityEndWarn" and self.Options.WarnGravity then
-		self:Announce(DBM_KAEL_GRAVITY_END_SOON, 3);
-	end
-end
-
-function Kael:OnSync(msg)
-	if msg:sub(0, 11) == "ThalaTarget" then
-		msg = msg:sub(12);
-		if msg then
-			if msg == UnitName("player") then
-				self:AddSpecialWarning(DBM_KAEL_SPECWARN_THALADRED_TARGET);
-			end
-			self:Announce(DBM_KAEL_WARN_THALADRED_TARGET:format(msg), 2);
-			if self.Options.ThalaIcon then
-				self:SetIcon(msg, 15);
-			end
-			if self.Options.ThalaWhisper and self.Options.Announce and DBM.Rank >= 1 then
-				self:SendHiddenWhisper(DBM_KAEL_WHISPER_THALADRED_TARGET, msg);
-			end
-			self:StartStatusBarTimer(8.5, "Gaze Cooldown", "Interface\\Icons\\Spell_Fire_BurningSpeed");
-		end
-	elseif msg:sub(0, 7) == "Conflag" and (GetTime() - lastConflag) > 5 then -- spam protection....
-		msg = msg:sub(8);
-		if msg then
-			lastConflag = GetTime();
-			if (self.Options.WarnConflag and not phase2) or (self.Options.WarnConflag2 and self.Options.WarnConflag and phase2) then
-				self:Announce(DBM_KAEL_WARN_CONFLAGRATION:format(msg), 1);
-			end
-			if phase2 and self.Options.TimerConflag2 then
-				self:StartStatusBarTimer(9.5, "Conflagration: "..msg, "Interface\\Icons\\Spell_Fire_Incinerate", true);
-			elseif not phase2 then
-				self:StartStatusBarTimer(9.5, "Conflagration: "..msg, "Interface\\Icons\\Spell_Fire_Incinerate");
-			end
-		end
-	elseif msg:sub(0, 3) == "Toy" and not phase2 then
-		msg = msg:sub(4);
-		if msg then
-			if self.Options.WarnToy then				
-				self:Announce(DBM_KAEL_WARN_REMOTETOY:format(msg), 1);
-			end
-			self:StartStatusBarTimer(60, "Remote Toy: "..msg, "Interface\\Icons\\INV_Misc_Urn_01");
-		end
-	elseif msg == "Phase2" then
-		phase = 2
-		phase2 = true;
-		if self.Options.WarnPhase then
-			self:Announce(DBM_KAEL_WARN_PHASE2, 1);
-		end
-		self:StartStatusBarTimer(105, "Phase 3", "Interface\\Icons\\Spell_Shadow_AnimateDead");
-		self:ScheduleSelf(105, "WarnPhase3");
-		if self.Options.ShowFrame and DBMGui and DBMGui.CreateInfoFrame then
-			if weaponFrame then
-				weaponHealth = {
-					[1] = 100,
-					[2] = 100,
-					[3] = 100,
-					[4] = 100,
-					[5] = 100,
-					[6] = 100,
-					[7] = 100
-				};
-				self:UpdateHealth();
-				weaponFrame:Show();
-			else
-				weaponFrame = DBMGui:CreateInfoFrame(DBM_KAEL_INFOFRAME_TITLE);
-				if (not weaponFrame) then 
---					self:AddMsg("Error while creating frame: Not supported in DBMv4");
-					return;
-				end
-				for i = 1, 7 do
-					weaponFrame["Bar"..i] = weaponFrame:CreateStatusBar(0, 100, 100, nil, DBM_KAEL_WEAPONS_NAMES[i], "100%");
-				end
-			end
-		end
-	elseif msg == "Phase3" then
-		phase = 3
-		self:ScheduleSelf(10, "Phase3");
-		if self.Options.ShowAddFrame and DBMGui and DBMGui.CreateInfoFrame then
-			if addFrame then
-				addHealth = {
-					[1] = 100,
-					[2] = 100,
-					[3] = 100,
-					[4] = 100,
-				};
-				self:UpdateHealth();
-				addFrame:Show();
-			else
-				addFrame = DBMGui:CreateInfoFrame(DBM_KAEL_INFOFRAME_ADDS_TITLE);
-				if (not addFrame) then 
-					return;
-				end
-				for i = 1, 4 do
-					addFrame["Bar"..i] = addFrame:CreateStatusBar(0, 100, 100, nil, DBM_KAEL_ADVISORS_NAMES[i], "100%");
-				end
-			end
-		end
-	elseif msg == "Phase4" then
-		phase = 4
-		phase5 = false;
-		if self.Options.WarnPhase then
-			self:Announce(DBM_KAEL_WARN_PHASE4, 1);
-		end
-		self:EndStatusBarTimer("Phase 4");
-		self:ScheduleSelf(55, "BarrierWarn");
-		self:StartStatusBarTimer(60, "Next Shock Barrier", "Interface\\Icons\\Spell_Nature_LightningShield");
-		self:StartStatusBarTimer(50, "Phoenix", "Interface\\Icons\\Spell_FireResistanceTotem_01");
-	elseif msg == "Phase5" then
-		phase = 5
-		phase5 = true;
-		if self.Options.WarnPhase then
-			self:Announce(DBM_KAEL_WARN_PHASE5, 1);
-		end
-		self:EndStatusBarTimer("Next Shock Barrier");
-		self:UnScheduleSelf("BarrierWarn");
-		gravityLapse = false;
-		self:ScheduleSelf(53, "GravityWarn");
-		self:StartStatusBarTimer(58, "Next Gravity Lapse", "Interface\\Icons\\Spell_Magic_FeatherFall");
-		
-	elseif msg == "CastFear" then
-		if self.Options.WarnFear then
-			self:Announce(DBM_KAEL_WARN_FEAR, 2);
-		end
-		self:UnScheduleSelf("FearSoon");
-		self:StartStatusBarTimer(31, "Next Fear", "Interface\\Icons\\Spell_Shadow_PsychicScream");
-		self:ScheduleSelf(28, "FearSoon");
-		self:StartStatusBarTimer(1.5, "Fear", "Interface\\Icons\\Spell_Shadow_PsychicScream");
-	elseif msg == "Fear" then
-		if not self:GetStatusBarTimerTimeLeft("Next Fear") then
-			self:StartStatusBarTimer(29.5, "Next Fear", "Interface\\Icons\\Spell_Shadow_PsychicScream");
-		end
-		if not self:GetSelfScheduleTimeLeft("FearSoon") then
-			self:ScheduleSelf(26.5, "FearSoon");
-		end
-	elseif msg == "Pyroblast" then
-		if self.Options.WarnPyro then
-			self:Announce(DBM_KAEL_WARN_PYRO, 2);
-		end
-		self:StartStatusBarTimer(4, "Pyroblast", "Interface\\Icons\\Spell_Fire_Fireball02");
-	elseif msg == "Barrier" then
-		if self.Options.WarnBarrier and (not phase5 or self.Options.WarnBarrier2) then
-			self:Announce(DBM_KAEL_WARN_BARRIER_NOW, 3);
-		end
-		if not phase5 then
-			self:ScheduleSelf(55, "BarrierWarn");
-			self:StartStatusBarTimer(60, "Next Shock Barrier", "Interface\\Icons\\Spell_Nature_LightningShield");
-		end
-		self:StartStatusBarTimer(10, "Shock Barrier", "Interface\\Icons\\Spell_Nature_LightningShield");
-	elseif msg == "BarrierDown" then
-		if self.Options.WarnBarrier and (not phase5 or self.Options.WarnBarrier2) then
-			self:Announce(DBM_KAEL_WARN_BARRIER_DOWN, 3);
-		end
-	elseif msg == "Phoenix" then
-		if self.Options.WarnPhoenix then
-			self:Announce(DBM_KAEL_WARN_PHOENIX, 2);
-		end
-	elseif msg:sub(0, 2) == "MC" then
-		msg = msg:sub(3);
-		if msg then
-			table.insert(MCTargets, msg);
-			if #MCTargets >= 3 then
-				self:UnScheduleSelf("AnnounceMCTargets");
-				self:OnEvent("AnnounceMCTargets");
-			end
-			self:UnScheduleSelf("AnnounceMCTargets");
-			self:ScheduleSelf(1, "AnnounceMCTargets");
-			
-			local iconID = 0;
-			for i = 8, 1, -1 do
-				if not MCIcons[i] then
-					iconID = i;
-					MCIcons[i] = msg;
-					break;
-				end
-			end
-			if self.Options.IconMC and iconID ~= 0 and self.Options.Announce and DBM.Rank >= 1 then
-				self:SetIcon(msg, 25, iconID);
-				self:ScheduleSelf(25, "ClearIcon", iconID);
-			end
-
-		end
-	elseif msg:sub(0, 7) == "BrokeMC" then
-		msg = msg:sub(8);
-		if msg then
-			for i, v in pairs(MCIcons) do
-				if v == msg then
-					self:OnEvent("ClearIcon", i);
-					break;
-				end
-			end
-		end
-	elseif msg == "Egg" and not gravityLapse then
-		self:Announce(DBM_KAEL_WARN_REBIRTH, 3);
-		self:StartStatusBarTimer(15, "Rebirth", "Interface\\Icons\\INV_Relics_TotemofRebirth");
-	elseif msg == "GravityLapse" then
-		gravityLapse = true;
-		if self.Options.WarnGravity then
-			self:Announce(DBM_KAEL_WARN_GRAVITY_LAPSE, 3);
-		end
-		self:StartStatusBarTimer(32.5, "Gravity Lapse", "Interface\\Icons\\Spell_Magic_FeatherFall");
-		self:ScheduleSelf(32.5, "GravityLapseEnd");
-		self:ScheduleSelf(27.5, "GravityEndWarn");
-	end
-end
-
-function Kael:GetBossHP()
-	if phase <= 3 then
-		return DBM_GENERIC_PHASE_MSG:format(phase)
-	end
-end
-
-function Kael:UpdateHealth()
-	if weaponFrame then
-		for i = 1, 7 do
-			weaponFrame["Bar"..i]:SetValue(weaponHealth[i]);
-			
-			if weaponHealth[i] > 50 then
-				weaponFrame["Bar"..i]:GetObject():SetStatusBarColor(0, 1, 0);
-			elseif weaponHealth[i] > 20 then
-				weaponFrame["Bar"..i]:GetObject():SetStatusBarColor(1, 0.6, 0);
-			else
-				weaponFrame["Bar"..i]:GetObject():SetStatusBarColor(1, 0, 0);
-			end
-			
-			if weaponHealth[i] > 0 then
-				getglobal(weaponFrame["Bar"..i]:GetObject():GetName().."RightText"):SetText(weaponHealth[i].."%");
-			else
-				getglobal(weaponFrame["Bar"..i]:GetObject():GetName().."RightText"):SetText(DBM_DEAD:lower());
-			end
-		end
+	end)
+	
+	function showShieldHealthBar(self, mob, shieldName, absorb)
+		shieldedMob = mob
+		absorbRemaining = absorb
+		maxAbsorb = absorb
+		DBM.BossHealth:RemoveBoss(getShieldHP)
+		DBM.BossHealth:AddBoss(getShieldHP, shieldName)
+		self:Schedule(10, hideShieldHealthBar)
 	end
 	
-	if addFrame then
-		for i = 1, 4 do
-			addFrame["Bar"..i]:SetValue(addHealth[i]);
-			
-			if addHealth[i] > 50 then
-				addFrame["Bar"..i]:GetObject():SetStatusBarColor(0, 1, 0);
-			elseif addHealth[i] > 20 then
-				addFrame["Bar"..i]:GetObject():SetStatusBarColor(1, 0.6, 0);
-			else
-				addFrame["Bar"..i]:GetObject():SetStatusBarColor(1, 0, 0);
-			end
-			
-			if addHealth[i] > 0 then
-				getglobal(addFrame["Bar"..i]:GetObject():GetName().."RightText"):SetText(addHealth[i].."%");
-			else
-				getglobal(addFrame["Bar"..i]:GetObject():GetName().."RightText"):SetText(DBM_DEAD:lower());
-			end
+	function hideShieldHealthBar()
+		DBM.BossHealth:RemoveBoss(getShieldHP)
+	end
+end
+
+local function eggSpawned()--Is there a better way then this? This is ugly
+	if GetTime() - lastEgg >= 20 then 
+		warnEgg:Show()
+		specWarnEgg:Show()
+		timerRebirth:Show()
+		DBM.BossHealth:AddBoss(21364, L.Egg)
+		mod:Schedule(15, function()
+			DBM.BossHealth:RemoveBoss(21364)
+		end)
+		lastEgg = GetTime()
+	end
+end
+
+local function showConflag()
+	warnConflag:Show(table.concat(warnConflagTargets, "<, >"))
+	table.wipe(warnConflagTargets)
+end
+
+local function showMC()
+	warnMC:Show(table.concat(warnMCTargets, "<, >"))
+	table.wipe(warnMCTargets)
+	mcIcon = 8
+end
+
+function mod:OnCombatStart(delay)
+	table.wipe(warnConflagTargets)
+	table.wipe(warnMCTargets)
+	lastEgg = 0
+	mcIcon = 8
+	shieldDown = false
+	phase5 = false
+	timerPhase1mob:Start(32, L.Thaladred)
+	DBM.BossHealth:Show(L.name)
+	DBM.BossHealth:AddBoss(20064, L.Thaladred)
+end
+
+function mod:OnCombatEnd()
+	DBM.BossHealth:Clear()
+	DBM.RangeCheck:Hide()
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(37018) then
+		warnConflagTargets[#warnConflagTargets + 1] = args.destName
+		self:Unschedule(showConflag)
+		self:Schedule(0.3, showConflag)
+	elseif args:IsSpellID(36797) then
+		warnMCTargets[#warnMCTargets + 1] = args.destName
+		self:Unschedule(showMC)
+		if IsRaidLeader() and self.Options.MCIcon then
+			self:SetIcon(args.destName, mcIcon, 25)
+			mcIcon = mcIcon - 1
+		end
+		if #warnMCTargets >= 3 then
+			showMC()
+		else
+			self:Schedule(0.3, showMC)
+		end
+	elseif args:IsSpellID(37027) then
+		warnToy:Show(args.destName)
+		timerToy:Start(args.destName)
+		if args:IsPlayer() then
+			specWarnToy:Show()
+		end
+	elseif args:IsSpellID(36815) and not phase5 then
+		shieldDown = false
+		showShieldHealthBar(self, args.destGUID, args.spellName, 80000)
+		specWarnShield:Show()
+		timerShieldCD:Start()
+	elseif args:IsSpellID(35859) and args:IsPlayer() then
+		if (args.amount or 1) >= 2 then
+			specWarnVapor:Show(args.amount)
 		end
 	end
 end
 
-Kael.UpdateInterval = 0.2;
-function Kael:OnUpdate(elapsed)
-	if phase2 then
-		local egg = false;
-		for i = 1, GetNumRaidMembers() do
-			if UnitName("raid"..i.."target") then
-				if DBM_KAEL_WEAPONS[UnitName("raid"..i.."target")] then
-					weaponHealth[DBM_KAEL_WEAPONS[UnitName("raid"..i.."target")]] = UnitHealth("raid"..i.."target");
-				elseif DBM_KAEL_ADVISORS[UnitName("raid"..i.."target")] then
-					addHealth[DBM_KAEL_ADVISORS[UnitName("raid"..i.."target")]] = UnitHealth("raid"..i.."target");
-				elseif UnitName("raid"..i.."target") == DBM_KAEL_EGG then
-					egg = UnitHealth("raid"..i.."target");
-				end
-			end
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(36815) and not phase5 then
+		shieldDown = true
+		specWarnPyro:Show()
+		hideShieldHealthBar()
+	elseif args:IsSpellID(36797) then
+		if IsRaidLeader() and self.Options.MCIcon then
+			self:SetIcon(args.destName, 0)
 		end
-		self:UpdateHealth();
+	elseif args:IsSpellID(37027) then
+		timerToy:Cancel(args.destName)
+	end
+end
 
-		local weaponsDown = true;
-		for i = 1, 7 do
-			if weaponHealth[i] > 0 then
-				weaponsDown = false;
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(44863) then
+		warnFear:Show()
+		timerFear:Start()
+		timerFearCD:Start()
+	elseif args:IsSpellID(36819) then
+		warnPyro:Show()
+		timerPyro:Show()
+	elseif args:IsSpellID(35941) then
+		warnGravity:Show()
+		timerGravity:Start()
+		timerGravityCD:Start()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(36723) then
+		warnPhoenix:Show()
+		timerPhoenixCD:Start()
+	elseif args:GetDestCreatureID() == 21364 then
+		eggSpawned()
+	end
+end
+
+function mod:SPELL_DAMAGE(args)
+	if args:GetDestCreatureID() == 21364 then
+		eggSpawned()
+	end
+end
+
+function mod:SWING_DAMAGE(args)
+	if args:GetDestCreatureID() == 21364 then
+		eggSpawned()
+	end
+end
+
+function mod:RANGE_DAMAGE(args)
+	if args:GetDestCreatureID() == 21364 then
+		eggSpawned()
+	end
+end
+
+function mod:UNIT_DIED(args)
+	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if cid == 20064 then
+			timerNextGaze:Cancel()
+			DBM.BossHealth:RemoveBoss(20064)
+		elseif cid == 20060 then
+			timerFearCD:Cancel()
+			DBM.BossHealth:RemoveBoss(20060)
+		elseif cid == 20062 then
+			if self.Options.RangeFrame then
+				DBM.RangeCheck:Hide()
 			end
+			DBM.BossHealth:RemoveBoss(20062)
+		elseif cid == 20063 then
+			DBM.BossHealth:RemoveBoss(20063)
+		elseif cid == 21268 then
+			warnMobDead:Show(L.Bow)
+			DBM.BossHealth:RemoveBoss(21268)
+		elseif cid == 21269 then
+			warnMobDead:Show(L.Axe)
+			DBM.BossHealth:RemoveBoss(21269)
+		elseif cid == 21270 then
+			warnMobDead:Show(L.Mace)
+			DBM.BossHealth:RemoveBoss(21270)
+		elseif cid == 21271 then
+			warnMobDead:Show(L.Dagger)
+			DBM.BossHealth:RemoveBoss(21271)
+		elseif cid == 21272 then
+			warnMobDead:Show(L.Sword)
+			DBM.BossHealth:RemoveBoss(21272)
+		elseif cid == 21273 then
+			warnMobDead:Show(L.Shield)
+			DBM.BossHealth:RemoveBoss(21273)
+		elseif cid == 21274 then
+			warnMobDead:Show(L.Staff)
+			DBM.BossHealth:RemoveBoss(21274)
+		elseif cid == 21364 then
+			timerRebrith:Cancel()
+			DBM.BossHealth:RemoveBoss(21364)
 		end
-		if weaponsDown and weaponFrame then
-			weaponFrame:Hide();
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
+	if msg == L.EmoteGaze or msg:find(L.EmoteGaze) then
+		warnGaze:Show(target)
+		timerNextGaze:Start()
+		if target == UnitName("player") then
+			specWarnGaze:Show()
 		end
-		
-		local addsDown = true;
-		for i = 1, 4 do
-			if addHealth and addHealth[i] > 0 then
-				addsDown = false;
-			end
+		if self.Options.GazeIcon then
+			self:SetIcon(target, 8, 15)
 		end
-		if addsDown and addFrame then
-			addFrame:Hide();
+		if IsRaidLeader() and self.Options.GazeWhisper then
+			self:SendWhisper(L.GazeWhisper, target)
 		end
-		
-		if egg and egg > 95 and (GetTime() - lastEgg) > 7.5 then
-			lastEgg = GetTime();
-			self:SendSync("Egg");
-		end	
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.YellSang or msg:find(L.YellSang) then
+		timerPhase1mob:Start(12.5, L.Sanguinar)
+		DBM.BossHealth:AddBoss(20060, L.Sanguinar)
+	elseif msg == L.YellCaper or msg:find(L.YellCaper) then
+		timerPhase1mob:Start(7, L.Capernian)
+		DBM.BossHealth:AddBoss(20062, L.Capernian)
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Show()
+		end
+	elseif msg == L.YellTelo or msg:find(L.YellTelo) then
+		timerPhase1mob:Start(8.4, L.Telonicus)
+		DBM.BossHealth:AddBoss(20063, L.Telonicus)
+	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
+		timerPhase:Start(105)
+		warnPhase2:Show()
+		warnPhase3:Schedule(105)
+		DBM.BossHealth:AddBoss(21268, L.Bow)
+		DBM.BossHealth:AddBoss(21269, L.Axe)
+		DBM.BossHealth:AddBoss(21270, L.Mace)
+		DBM.BossHealth:AddBoss(21271, L.Dagger)
+		DBM.BossHealth:AddBoss(21272, L.Sword)
+		DBM.BossHealth:AddBoss(21273, L.Shield)
+		DBM.BossHealth:AddBoss(21274, L.Staff)
+	elseif msg == L.YellPhase3 or msg:find(L.YellPhase3) then
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Show()
+		end
+		self:Schedule(10, function()
+			DBM.BossHealth:AddBoss(20064, L.Thaladred)
+			DBM.BossHealth:AddBoss(20060, L.Sanguinar)
+			DBM.BossHealth:AddBoss(20062, L.Capernian)
+			DBM.BossHealth:AddBoss(20063, L.Telonicus)
+			timerPhase:Start(173)
+		end)
+	elseif msg == L.YellPhase4 or msg:find(L.YellPhase4) then
+		DBM.BossHealth:AddBoss(19622, L.name)
+		warnPhase4:Show()
+		timerPhase:Cancel()
+		timerPhoenixCD:Start(50)
+		timerShieldCD:Start(60)
+	elseif msg == L.YellPhase5 or msg:find(L.YellPhase5) then
+		phase5 = true
+		timerPhase:Start(48)
+		warnPhase5:Schedule(48)
+		timerGravity:Start(60)
 	end
 end
