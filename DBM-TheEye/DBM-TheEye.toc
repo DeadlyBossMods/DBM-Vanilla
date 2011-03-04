@@ -2,42 +2,34 @@
 ## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0The Eye|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Castillo de la Tempestad|r
-## Author: Tandanu
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0폭풍우 요새|r
 ## LoadOnDemand: 1
-## RequiredDeps: DBM-Core, DBM-BurningCrusade
+## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMTheEye_SavedVars, DBMTheEye_SavedStats
-## X-DBM-BC-AddOn: 1
-## X-DBM-Tab-ID: EyeTab
-## X-DBM-Tab-BCTab: 1
-## X-DBM-Tab-Sort: 303
-## X-DBM-Name: The Eye
-## X-DBM-Name-ruRU: Крепость Бурь
-## X-DBM-Name-zhCN: 风暴要塞
-## X-DBM-Name-zhTW: 風暴要塞
-## X-DBM-Name-esES: El Castillo de la Tempestad
-## X-DBM-Tab-Text: The Eye
-## X-DBM-Tab-Text-ruRU: Крепость Бурь
-## X-DBM-Tab-Text-zhCN: 风暴要塞
-## X-DBM-Tab-Text-zhTW: 風暴要塞
-## X-DBM-Tab-Text-esES: El Castillo de la Tempestad
-## X-DBM-Tab-Title: The Eye Boss Mods
-## X-DBM-Tab-Title-ruRU: Крепость Бурь
-## X-DBM-Tab-Title-zhCN: 风暴要塞
-## X-DBM-Tab-Title-zhTW: 風暴要塞
-## X-DBM-Tab-Title-esES: El Castillo de la Tempestad
-## X-DBM-Tab-LoadZone: Tempest Keep
-## X-DBM-Tab-LoadZone-ruRU: Крепость Бурь
-## X-DBM-Tab-LoadZone-deDE: Festung der Stürme
-## X-DBM-Tab-LoadZone-zhCN: 风暴要塞
-## X-DBM-Tab-LoadZone-zhTW: 風暴要塞
-## X-DBM-Tab-LoadZone-esES: El Castillo de la Tempestad
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Name: The Eye
+## X-DBM-Mod-Name-ruRU: Крепость Бурь
+## X-DBM-Mod-Name-zhCN: 风暴要塞
+## X-DBM-Mod-Name-zhTW: 風暴要塞
+## X-DBM-Mod-Name-esES: El Castillo de la Tempestad
+## X-DBM-Mod-Name-koKR: 폭풍우 요새
+## X-DBM-Mod-Sort: 303
+## X-DBM-Mod-LoadZone: Tempest Keep
+## X-DBM-Mod-LoadZone-ruRU: Крепость Бурь
+## X-DBM-Mod-LoadZone-deDE: Festung der Stürme
+## X-DBM-Mod-LoadZone-zhCN: 风暴要塞
+## X-DBM-Mod-LoadZone-zhTW: 風暴要塞
+## X-DBM-Mod-LoadZone-esES: El Castillo de la Tempestad
+## X-DBM-Mod-LoadZone-koKR: 폭풍우 요새
 localization.en.lua
 localization.de.lua
 localization.cn.lua
 localization.ru.lua
 localization.tw.lua
 localization.es.lua
+localization.kr.lua
+Alar.lua
 VoidReaver.lua
 Solarian.lua
-Alar.lua
 KaelThas.lua
