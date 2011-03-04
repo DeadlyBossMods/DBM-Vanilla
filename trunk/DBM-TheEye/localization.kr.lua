@@ -124,7 +124,7 @@ L:SetOptionLocalization{
 	RangeFrame		= "거리 프레임 보기",
 	GazeWhisper		= "탈라드레드 추적 대상에게 귓속말 보내기",
 	MCIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(36797),
-	GazeIcon		= "탈라드레드 추적 대상에게 공격대 징표 설정",
+	GazeIcon		= "탈라드레드 추적 대상에게 전술 목표 아이콘 설정",
 }
 
 L:SetMiscLocalization{

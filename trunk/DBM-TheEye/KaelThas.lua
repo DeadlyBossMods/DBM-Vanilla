@@ -7,12 +7,13 @@ mod:SetZone()
 
 mod:RegisterCombat("yell", L.YellPhase1)
 mod:SetMinCombatTime(60)
-mod:SetWipeTime(40)
+mod:SetWipeTime(50)
 mod:SetUsedIcons(6, 7, 8)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_MISSED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
@@ -186,6 +187,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(36815) and not phase5 then
 		shieldDown = true
@@ -280,7 +283,7 @@ function mod:UNIT_DIED(args)
 			warnMobDead:Show(L.Staff)
 			DBM.BossHealth:RemoveBoss(21274)
 		elseif cid == 21364 then
-			timerRebrith:Cancel()
+			timerRebirth:Cancel()
 			DBM.BossHealth:RemoveBoss(21364)
 		end
 	end
@@ -345,8 +348,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerShieldCD:Start(60)
 	elseif msg == L.YellPhase5 or msg:find(L.YellPhase5) then
 		phase5 = true
-		timerPhase:Start(48)
-		warnPhase5:Schedule(48)
+		timerPhoenixCD:Cancel()
+		timerShieldCD:Cancel()
+		timerPhase:Start(47)
+		warnPhase5:Schedule(47)
 		timerGravity:Start(60)
 	end
 end
