@@ -63,7 +63,7 @@ mod:RemoveOption("HealthFrame")
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", true)
-mod:AddBoolOption("GazeWhisper", true, "announce")
+mod:AddBoolOption("GazeWhisper", false, "announce")
 
 local lastEgg = 0
 local mcIcon = 8

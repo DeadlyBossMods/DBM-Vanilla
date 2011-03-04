@@ -29,7 +29,7 @@ local timerPriest		= mod:NewTimer(22, "TimerPriest", 39414)
 local berserkTimer		= mod:NewBerserkTimer(600)
 
 mod:AddBoolOption("WrathIcon", true)
-mod:AddBoolOption("WrathWhisper", true, "announce")
+mod:AddBoolOption("WrathWhisper", false, "announce")
 
 
 function mod:OnCombatStart(delay)
