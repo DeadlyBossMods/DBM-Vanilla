@@ -206,11 +206,13 @@ function mod:SPELL_AURA_REMOVED(args)
 		if UnitCastingInfo("target") and self:GetUnitCreatureId("target") == 34496 then
 			specWarnKickNow:Show()
 		end
+		self:Unschedule(hideShieldHealthBar)
 		hideShieldHealthBar()
 	elseif args:IsSpellID(65858, 67259, 67260, 67261) then		-- Shield of Lights
 		if UnitCastingInfo("target") and self:GetUnitCreatureId("target") == 34497 then
 			specWarnKickNow:Show()
 		end
+		self:Unschedule(hideShieldHealthBar)
 		hideShieldHealthBar()
 	elseif args:IsSpellID(65950, 67296, 67297, 67298) then	-- Touch of Light
 		timerLightTouch:Stop(args.destName)
