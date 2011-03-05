@@ -14,9 +14,11 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
+	NextPlatform	= "다음 플랫폼"
 }
 
 L:SetOptionLocalization{
+	NextPlatform	= "알라르 플랫폼 이동 타이머 보기"
 }
 
 L:SetMiscLocalization{
