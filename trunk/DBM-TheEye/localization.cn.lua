@@ -15,9 +15,11 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
+	NextPlatform	= "下一个位置"
 }
 
 L:SetOptionLocalization{
+	NextPlatform	= "Show timer for when Al'ar changes platforms"
 }
 
 L:SetMiscLocalization{
