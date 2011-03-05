@@ -20,6 +20,7 @@ mod:RegisterEvents(
 	"SPELL_DAMAGE",
 	"SWING_DAMAGE",
 	"RANGE_DAMAGE",
+	"UNIT_TARGET",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
@@ -215,6 +216,7 @@ function mod:SPELL_CAST_START(args)
 		warnGravity:Show()
 		timerGravity:Start()
 		timerGravityCD:Start()
+		timerPhoenixCD:Start(70)--May need tuning or better placement.
 	end
 end
 
@@ -241,6 +243,12 @@ end
 
 function mod:RANGE_DAMAGE(args)
 	if args:GetDestCreatureID() == 21364 then
+		eggSpawned()
+	end
+end
+
+function mod:UNIT_TARGET()
+	if self:GetUnitCreatureId("target") == 21364 then
 		eggSpawned()
 	end
 end
