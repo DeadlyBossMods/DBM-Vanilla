@@ -56,7 +56,7 @@ function mod:SPELL_SUMMON(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellSpirit or msg:find(L.YellBear) then
+	if msg == L.YellSpirit or msg:find(L.YellSpirit) then
 		warnSpirit:Show()
 	elseif msg == L.YellNormal or msg:find(L.YellNormal) then
 		warnNormal:Show()
