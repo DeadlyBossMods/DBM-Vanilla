@@ -4,6 +4,7 @@
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0하이잘 정상|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
+## X-DBM-Mod-Has-Heroic-Mode: 0
 ## SavedVariablesPerCharacter: DBMHyjal_SavedVars, DBMHyjal_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: BC
