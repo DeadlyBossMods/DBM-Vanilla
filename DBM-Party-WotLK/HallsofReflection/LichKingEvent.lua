@@ -15,6 +15,9 @@ mod:AddBoolOption("ShowWaves", true, "announce")
 
 local timerEscape	= mod:NewAchievementTimer(360, 4526, "achievementEscape")
 
+mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
+
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(69708) then			--Lich King has broken out of his iceblock, this starts actual event
 		if mod:IsDifficulty("heroic5") then
