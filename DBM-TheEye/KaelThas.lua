@@ -6,7 +6,6 @@ mod:SetCreatureID(19622)
 mod:SetZone()
 
 mod:RegisterCombat("yell", L.YellPhase1)
-mod:SetWipeTime(50)
 mod:SetUsedIcons(6, 7, 8)
 
 mod:RegisterEvents(
