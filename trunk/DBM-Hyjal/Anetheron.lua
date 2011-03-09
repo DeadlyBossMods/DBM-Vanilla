@@ -32,14 +32,13 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(31299) then
-		warnDnd:Show()
-		timerDnd:Start()
-		timerDndCD:Schedule(15)
+		self:ScheduleMethod(0.15, "InfernoTarget")
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(31306) then
-		self:ScheduleMethod(0.5, "InfernoTarget")
+		warnSwarm:Show()
+		timerSwarm:Start()
 	end
 end

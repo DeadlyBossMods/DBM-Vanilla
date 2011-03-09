@@ -16,7 +16,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	IceboltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
+	IceBoltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
 }
 
 L:SetMiscLocalization{
