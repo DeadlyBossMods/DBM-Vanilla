@@ -17,7 +17,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	IceboltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
+	IceBoltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
 }
 
 L:SetMiscLocalization{
@@ -119,7 +119,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("HyjalWaveTimers")
 
 L:SetGeneralLocalization{
-	name 		= "하이잘 일반몹"
+	name 		= "웨이브 타이머"
 }
 
 L:SetWarningLocalization{
@@ -141,7 +141,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	HyjalZoneName	= "하이잘 정상",
 	Thrall			= "스랄",
-	Jaina			= "여군주 제이나 프라우드무어",
+	Jaina			= "제이나 프라우드무어",
 	RageWinterchill	= "격노한 윈터칠",
 	Anetheron		= "아네테론",
 	Kazrogal		= "카즈로갈",

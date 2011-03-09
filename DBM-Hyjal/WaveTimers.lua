@@ -11,7 +11,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnWave			= mod:NewAnnounce("WarnWaveSoon")
+local warnWaveSoon		= mod:NewAnnounce("WarnWaveSoon")
 local warnWave			= mod:NewAnnounce("WarnWave")
 local warnCannibalize	= mod:NewSpellAnnounce(31538)
 
@@ -22,7 +22,7 @@ mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
 
 local lastWave = 0
-local boss = 0
+local boss = 1
 local bossNames = {
 	[1] = L.RageWinterchill,
 	[2] = L.Anetheron,
@@ -49,29 +49,27 @@ function mod:QUEST_PROGRESS()
 end
 
 function mod:UPDATE_WORLD_STATES()
-	local text = select(2, GetWorldStateUIInfo(0))
+	local text = select(3, GetWorldStateUIInfo(3))
 	if not text then return end
 	local _,_,currentWave = text:find(L.WaveCheck)
 	if not currentWave then
 		currentWave = 0
 	end
-	self:SendSync("wave", currentWave)
+	self:WaveFunction(currentWave)
 end
 
 function mod:OnSync(msg, arg)
 	if msg == "boss" then
 		boss = arg
-	elseif msg == "wave" then
-		waveFunction(arg)
-	elseif msg == "reset" then
-		lastWave = 0
 	end
 end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 17852 or 17772 then
-		self:SendSync("reset")
+	if cid == 17852 or cid == 17772 then
+		lastWave = 0
+		timerWave:Cancel()
+		warnWaveSoon:Cancel()
 	elseif cid == 17767 then
 		self:SendSync("boss", 2)
 	elseif cid == 17808 then
@@ -88,7 +86,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 
-function mod:waveFunction(currentWave)
+function mod:WaveFunction(currentWave)
 	local timer = 0
 	currentWave = tonumber(currentWave)
 	lastWave = tonumber(lastWave)
@@ -187,6 +185,7 @@ function mod:waveFunction(currentWave)
 				end
 			end
 		end
+		warnWaveSoon:Cancel()
 		timerWave:Start(timer)
 		warnWaveSoon:Schedule(timer-10)
 		lastWave = currentWave
