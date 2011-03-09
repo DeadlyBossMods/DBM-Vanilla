@@ -215,7 +215,7 @@ function mod:SPELL_CAST_START(args)
 		warnGravity:Show()
 		timerGravity:Start()
 		timerGravityCD:Start()
-		timerPhoenixCD:Start(70)--May need tuning or better placement.
+--		timerPhoenixCD:Start(70)--May need tuning or better placement.
 	end
 end
 
