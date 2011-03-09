@@ -72,6 +72,8 @@ function mod:SPELL_HEAL(args)
 		warnPhase2:Show()
 		berserkTimer:Start()
 		timerMeteor:Start(40)--This seems to vary slightly depending on where in room he shoots it.
+		self:UnscheduleMethod("Platform")
+		timerNextPlatform:Cancel()
 	end
 end
 
