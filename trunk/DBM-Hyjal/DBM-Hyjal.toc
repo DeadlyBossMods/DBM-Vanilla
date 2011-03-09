@@ -1,40 +1,33 @@
-﻿## Interface: 40000
+## Interface: 40000
 ## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Mount Hyjal|r
-## Author: Tandanu
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0하이잘 정상|r
 ## LoadOnDemand: 1
-## RequiredDeps: DBM-Core, DBM-BurningCrusade
+## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMHyjal_SavedVars, DBMHyjal_SavedStats
-## X-DBM-BC-AddOn: 1
-## X-DBM-Tab-ID: HyjalTab
-## X-DBM-Tab-BCTab: 1
-## X-DBM-Tab-Sort: 302
-## X-DBM-Name: Mount Hyjal
-## X-DBM-Name-ruRU: Гора Хиждал
-## X-DBM-Name-zhCN: 海加尔峰
-## X-DBM-Name-zhTW: 海加爾山
-## X-DBM-Name-esES: Monte Hyjal
-## X-DBM-Tab-Text: Hyjal
-## X-DBM-Tab-Text-ruRU: Хиджал
-## X-DBM-Tab-Text-zhCN: 海加尔峰
-## X-DBM-Tab-Text-zhTW: 海加爾山
-## X-DBM-Tab-Title: Mount Hyjal Boss Mods
-## X-DBM-Tab-Title-ruRU: Гора Хиджал Boss Mods
-## X-DBM-Tab-Title-zhCN: 海加尔峰
-## X-DBM-Tab-Title-zhTW: 海加爾山
-## X-DBM-Tab-Title-esES: Boss Mod del Monte Hyjal
-## X-DBM-Tab-LoadZone: Hyjal Summit
-## X-DBM-Tab-LoadZone-ruRU: Вершина Хиджала
-## X-DBM-Tab-LoadZone-deDE: Hyjalgipfel
-## X-DBM-Tab-LoadZone-zhCN: 海加尔峰
-## X-DBM-Tab-LoadZone-zhTW: 海加爾山
-## X-DBM-Tab-LoadZone-esES: La Cima Hyjal
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Name: Mount Hyjal
+## X-DBM-Mod-Name-ruRU: Гора Хиждал
+## X-DBM-Mod-Name-zhCN: 海加尔峰
+## X-DBM-Mod-Name-zhTW: 海加爾山
+## X-DBM-Mod-Name-esES: Monte Hyjal
+## X-DBM-Mod-Name-koKR: 하이잘 정상
+## X-DBM-Mod-Sort: 302
+## X-DBM-Mod-LoadZone: Hyjal Summit
+## X-DBM-Mod-LoadZone-ruRU: Вершина Хиджала
+## X-DBM-Mod-LoadZone-deDE: Hyjalgipfel
+## X-DBM-Mod-LoadZone-zhCN: 海加尔峰
+## X-DBM-Mod-LoadZone-zhTW: 海加爾山
+## X-DBM-Mod-LoadZone-esES: La Cima Hyjal
+## X-DBM-Mod-LoadZone-koKR: 하이잘 정상
 localization.en.lua
 localization.de.lua
 localization.cn.lua
 localization.tw.lua
 localization.ru.lua
 localization.es.lua
+localization.kr.lua
 RageWinterchill.lua
 Anetheron.lua
 Kazrogal.lua

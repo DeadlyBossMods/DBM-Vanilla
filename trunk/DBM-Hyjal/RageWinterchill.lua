@@ -1,70 +1,66 @@
-local Rage = DBM:NewBossMod("Rage", DBM_RAGE_NAME, DBM_RAGE_DESCRIPTION, DBM_MOUNT_HYJAL, DBM_HYJAL_TAB, 1);
+﻿local mod	= DBM:NewMod("Rage", "DBM-Hyjal")
+local L		= mod:GetLocalizedStrings()
 
-Rage.Version	= "1.0";
-Rage.Author		= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(17767)
+mod:SetZone()
+mod:SetUsedIcons(8)
 
-Rage:SetCreatureID(17767)
-Rage:RegisterCombat("yell", DBM_RAGE_YELL_PULL)
-Rage:SetMinCombatTime(60)
+mod:RegisterCombat("combat")
 
-Rage:AddOption("WarnIce", true, DBM_RAGE_OPTION_ICEBOLT);
-Rage:AddOption("IceIcon", false, DBM_RAGE_OPTION_ICON);
-Rage:AddOption("WarnDnD", true, DBM_RAGE_OPTION_DND);
-Rage:AddOption("WarnDnDSoon", true, DBM_RAGE_OPTION_DND_SOON);
-
-Rage:AddBarOption("Death & Decay")
-Rage:AddBarOption("Next Death & Decay")
-
-Rage:RegisterEvents(
+mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"UNIT_SPELLCAST_CHANNEL_START",
+	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START"
-);
+)
 
-function Rage:OnEvent(event, arg1)
-	if event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 31249 then
-			self:SendSync("Icebolt"..tostring(arg1.destName))
-		elseif arg1.spellId == 31258 and arg1.destName == UnitName("player") then
-			self:AddSpecialWarning(DBM_RAGE_SPECWARN_DND_YOU);
+local warnIceBolt		= mod:NewSpellAnnounce(31249, 3)
+local warnDnd			= mod:NewSpellAnnounce(31258, 3)
+
+local timerDnd			= mod:NewCastTimer(15, 31258)
+local timerDndCD		= mod:NewCDTimer(31, 31258)
+
+local specWarnIcebolt	= mod:NewSpecialWarningYou(31249)
+local specWarnDnd		= mod:NewSpecialWarningMove(31258)
+
+local berserkTimer		= mod:NewBerserkTimer(600)
+
+mod:AddBoolOption("IceboltIcon", true)
+
+local decaySpam = 0
+
+function mod:OnCombatStart(delay)
+	decaySpam = 0
+	berserkTimer:Start(-delay)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(31249) then
+		warnIcebolt:Show(args.destName)
+		if args:IsPlayer() then
+			specWarnIcebolt:Show()
 		end
-	elseif event == "UNIT_SPELLCAST_CHANNEL_START" and type(arg1) == "string" and UnitName(arg1) == DBM_RAGE_NAME then
-		if UnitChannelInfo(arg1) == DBM_RAGE_SPELL_DEATH_DECAY then
-			self:SendSync("DnD");
+		if self.Options.IceboltIcon then
+			self:SetIcon(args.destName, 8)
 		end
-	elseif event == "SPELL_CAST_START" then
-		if arg1.spellId == 31258 then
-			self:SendSync("CastDnD");
-		end
-	elseif event == "DnDEnd" then
-		if self.Options.WarnDnD then
-			self:Announce(DBM_RAGE_WARN_DND_END, 1);
-		end
-		self:StartStatusBarTimer(21, "Next Death & Decay", "Interface\\Icons\\Spell_Shadow_DeathAndDecay");
-		self:ScheduleSelf(20, "WarnDnDSoon");
-	elseif event == "WarnDnDSoon" then
-		if self.Options.WarnDnDSoon then
-			self:Announce(DBM_RAGE_WARN_DND_SOON, 1);
+	elseif args:IsSpellID(31258) and args:IsPlayer() and GetTime() - decaySpam >= 3 then
+		specWarnDnD:Show()
+		decaySpam = GetTime()
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(31249) then
+		if self.Options.IceboltIcon then
+			self:SetIcon(args.destName, 0)
 		end
 	end
 end
 
-function Rage:OnSync(msg)
-	if msg:sub(0, 7) == "Icebolt" and self.InCombat then
-		msg = msg:sub(8);
-		if self.Options.WarnIce then
-			self:Announce(DBM_RAGE_WARN_ICEBOLT:format(msg), 2);
-		end
-		if self.Options.IceIcon then
-			self:SetIcon(msg, 4);
-		end
-	elseif msg == "DnD" then
-		self:StartStatusBarTimer(15, "Death & Decay", "Interface\\Icons\\Spell_Shadow_DeathAndDecay");
-		self:ScheduleSelf(15, "DnDEnd");
-		self:SendSync("CastDnD");
-	elseif msg == "CastDnD" then
-		if self.Options.WarnDnD then
-			self:Announce(DBM_RAGE_WARN_DND, 3);
-		end
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(31258) then
+		warnDnd:Show()
+		timerDnd:Start()
+		timerDndCD:Schedule(15)
 	end
 end

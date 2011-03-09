@@ -1,7 +1,7 @@
-﻿local mod	= DBM:NewMod("HyjalWaveTimers", "DBM-Hyjal", 1)
+﻿local mod	= DBM:NewMod("HyjalWaveTimers", "DBM-Hyjal")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 1 $"):sub(12, -3))
+mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:RegisterEvents(
 	"UPDATE_WORLD_STATES",
