@@ -1,54 +1,64 @@
-local Azgalor = DBM:NewBossMod("Azgalor", DBM_AZGALOR_NAME, DBM_AZGALOR_DESCRIPTION, DBM_MOUNT_HYJAL, DBM_HYJAL_TAB, 4);
+﻿local mod	= DBM:NewMod("Azgalor", "DBM-Hyjal")
+local L		= mod:GetLocalizedStrings()
 
-Azgalor.Version	= "1.0";
-Azgalor.Author	= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(17842)
+mod:SetZone()
+mod:SetUsedIcons(8)
 
-Azgalor:SetCreatureID(17842)
-Azgalor:RegisterCombat("yell", DBM_AZGALOR_YELL_PULL)
-Azgalor:SetMinCombatTime(130)
+mod:RegisterCombat("combat")
 
-Azgalor:AddOption("WarnSilence", true, DBM_AZGALOR_OPTION_SILENCE);
-Azgalor:AddOption("DoomIcon", true, DBM_AZGALOR_OPTION_ICON);
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED",
+	"SPELL_CAST_SUCCESS"
+)
 
-Azgalor:AddBarOption("Doom: (.*)")
-Azgalor:AddBarOption("Silence")
+local warnSilence		= mod:NewSpellAnnounce(31344, 3)
+local warnDoom			= mod:NewTargetAnnounce(31347, 3)
 
-Azgalor:RegisterEvents(
-	"SPELL_AURA_APPLIED"
-);
+local timerDoom			= mod:NewTargetTimer(20, 31347)
 
-function Azgalor:OnEvent(event, arg1)
-	if event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 31347 then
-			local target = tostring(arg1.destName)
-			if target == UnitName("player") then
-				self:AddSpecialWarning(DBM_AZGALOR_SPECWARN_DOOM_YOU);
-			end
-			self:SendSync("Doom"..target);
-		elseif arg1.spellId == 31344 then
-			self:SendSync("Silence");
+local specWarnFire		= mod:NewSpecialWarningMove(31340)
+local specWarnDoom		= mod:NewSpecialWarningYou(31347)
+
+local berserkTimer		= mod:NewBerserkTimer(600)
+
+mod:AddBoolOption("DoomIcon", true)
+
+local fireSpam = 0
+
+function mod:OnCombatStart(delay)
+	fireSpam = 0
+	berserkTimer:Start(-delay)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(31340) and args:IsPlayer() and GetTime() - fireSpam >= 3 then
+		specWarnFire:Show()
+		fireSpam = GetTime()
+	elseif args:IsSpellID(31347) then
+		warnDoom:Show(args.destName)
+		timerDoom:Start(args.destName)
+		if args:IsPlayer() then
+			specWarnDoom:Show()
 		end
-	elseif event == "SilenceWarn" then
-		if self.Options.WarnSilence then
-			self:Announce(DBM_AZGALOR_WARN_SILENCESOON, 1);
+		if self.Options.DoomIcon then
+			self:SetIcon(args.destName, 8)
 		end
 	end
 end
 
-function Azgalor:OnSync(msg)
-	if msg:sub(0, 4) == "Doom" then
-		msg = msg:sub(5);
-		self:Announce(DBM_AZGALOR_WARN_DOOM:format(msg), 4);
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(31347) then
 		if self.Options.DoomIcon then
-			self:SetIcon(msg, 20);
+			self:SetIcon(args.destName, 0)
 		end
-		self:StartStatusBarTimer(20, "Doom: "..msg, "Interface\\Icons\\Spell_Shadow_AuraOfDarkness");
-	elseif msg == "Silence" then
-		if self.Options.WarnSilence then
-			self:Announce(DBM_AZGALOR_WARN_SILENCE, 2);
-		end
-		self:StartStatusBarTimer(19, "Silence", "Interface\\Icons\\Spell_Holy_Silence");
-		self:UnScheduleSelf("SilenceWarn")
-		self:ScheduleSelf(16, "SilenceWarn")
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(31344) then
+		warnSilence:Show()
 	end
 end

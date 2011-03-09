@@ -1,33 +1,36 @@
-local Kazrogal = DBM:NewBossMod("Kazrogal", DBM_KAZROGAL_NAME, DBM_KAZROGAL_DESCRIPTION, DBM_MOUNT_HYJAL, DBM_HYJAL_TAB, 3);
+﻿local mod	= DBM:NewMod("Kazrogal", "DBM-Hyjal")
+local L		= mod:GetLocalizedStrings()
 
-Kazrogal.Version	= "1.0";
-Kazrogal.Author		= "Tandanu";
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(17888)
+mod:SetZone()
 
-local counter = 0;
+mod:RegisterCombat("combat")
 
-Kazrogal:SetCreatureID(17888)
-Kazrogal:RegisterCombat("yell", DBM_KAZROGAL_YELL_PULL)
-Kazrogal:SetMinCombatTime(80)
+mod:RegisterEvents(
+	"SPELL_CAST_START"
+)
 
-Kazrogal:RegisterEvents(
-	"SPELL_AURA_APPLIED"
-);
+local warnMark			= mod:NewAnnounce("WarnMark", 3 , 31447)
 
-function Kazrogal:OnCombatStart()
-	counter = 0;
+local timerMark			= mod:NewCDTimer(45, 31447)
+
+local count = 0
+local time = 45
+
+function mod:OnCombatStart(delay)
+	time = 45
+	count = 0 
+	timerMark:Start(time-delay)
 end
 
-function Kazrogal:OnEvent(event, args)
-	if event == "SPELL_AURA_APPLIED" then
-		if args.spellId == 31447 then
-			self:SendSync("Debuff")
-		end	
-	end
-end
-
-function Kazrogal:OnSync(msg)
-	if msg == "Debuff" then
-		counter = counter + 1;
-		self:Announce(DBM_KAZROGAL_WARN_MARK:format(counter), 2); -- timer?
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(31447) then
+		count = count + 1
+		if time > 10 then
+			time = time - 5
+		end
+		warnMark:Show(count)
+		timerMark:Start(time)
 	end
 end
