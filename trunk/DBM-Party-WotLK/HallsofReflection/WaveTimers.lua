@@ -18,6 +18,7 @@ mod:AddBoolOption("ShowAllWaveWarnings", true, "announce")
 mod:AddBoolOption("ShowAllWaveTimers", false, "timer")
 
 mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local lastWave = 0
 local FalricDead = false
