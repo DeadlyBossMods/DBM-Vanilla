@@ -28,6 +28,7 @@ local soundDarkReckoning = mod:NewSound(69483)
 mod:AddBoolOption("SetIconOnDarkReckoning", true)
 mod:AddBoolOption("SetIconOnDeathPlague", true)
 mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local DeathPlagueTargets = {}
 local DeathPlagueIcons = 8
