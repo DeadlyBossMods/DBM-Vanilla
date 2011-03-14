@@ -20,6 +20,7 @@ local timerConflag		= mod:NewTargetTimer(10, 71785)
 local timerBanish		= mod:NewTargetTimer(6, 71298)
 
 mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(71785) then

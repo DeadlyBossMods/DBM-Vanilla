@@ -19,6 +19,7 @@ local timerChainsofShadow	= mod:NewTargetTimer(10, 70645)
 
 mod:AddBoolOption("BloodMirrorIcon", false)
 mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local BloodMirrorTargets = {}
 local BloodMirrorIcons = 2

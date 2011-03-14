@@ -27,6 +27,7 @@ local timerDecimate		= mod:NewNextTimer(33, 71123)
 local timerBlightBomb	= mod:NewCastTimer(5, 71088)
 
 mod:RemoveOption("HealthFrame")
+mod:RemoveOption("SpeedKillTimer")
 
 local spamZombies = 0
 
