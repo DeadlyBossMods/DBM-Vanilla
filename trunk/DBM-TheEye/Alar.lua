@@ -27,7 +27,7 @@ local specWarnFire		= mod:NewSpecialWarningMove(35383)
 local timerQuill		= mod:NewCastTimer(10, 34229)
 local timerMeteor		= mod:NewCDTimer(52, 35181)
 local timerArmor		= mod:NewTargetTimer(60, 35410)
-local timerNextPlatform	= mod:NewTimer(35, "NextPlatform")--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
+local timerNextPlatform	= mod:NewTimer(34.5, "NextPlatform", 40192)--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
@@ -36,7 +36,7 @@ local meteorTime = 0
 
 function mod:Platform()--An attempt to avoid ugly target scanning, but i get feeling this won't be accurate enough.
 	timerNextPlatform:Start()
-	self:ScheduleMethod(35, "Platform")
+	self:ScheduleMethod(34.5, "Platform")
 end
 
 function mod:OnCombatStart(delay)
@@ -44,7 +44,7 @@ function mod:OnCombatStart(delay)
 	meteorTime = 0
 	warnPhase1:Show()
 	timerNextPlatform:Start(-delay)
-	self:ScheduleMethod(35-delay, "Platform")
+	self:ScheduleMethod(34.5-delay, "Platform")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
