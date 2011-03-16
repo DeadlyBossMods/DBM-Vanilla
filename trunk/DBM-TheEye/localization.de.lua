@@ -131,7 +131,7 @@ L:SetOptionLocalization{--Translate
 }
 
 L:SetMiscLocalization{
-	YellPhase1	= "Energie. Kraft. Mein Volk ist süchtig danach... Eine Abhängigkeit, die entstand, nachdem der Sonnenbrunnen zerstört wurde. Willkommen in der Zukunft. Ein Jammer, dass Ihr zu spät seid, um sie zu verhindern. Niemand kann mich jetzt noch aufhalten! Selama ashal'anore!",
+	YellPull1	= "Energie. Kraft. Mein Volk ist süchtig danach... Eine Abhängigkeit, die entstand, nachdem der Sonnenbrunnen zerstört wurde. Willkommen in der Zukunft. Ein Jammer, dass Ihr zu spät seid, um sie zu verhindern. Niemand kann mich jetzt noch aufhalten! Selama ashal'anore!",
 	YellPhase2	= "Wie Ihr seht, habe ich viele Waffen in meinem Arsenal...",
 	YellPhase3	= "Vielleicht habe ich Euch unterschätzt. Es wäre unfair, Euch gegen meine vier Berater gleichzeitig kämpfen zu lassen, aber... mein Volk wurde auch nie fair behandelt. Ich vergelte nur Gleiches mit Gleichem.",
 	YellPhase4	= "Ach, manchmal muss man die Sache selbst in die Hand nehmen. Balamore shanal!",
