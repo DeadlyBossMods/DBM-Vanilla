@@ -90,6 +90,9 @@ function mod:WaveFunction(currentWave)
 	local timer = 0
 	currentWave = tonumber(currentWave)
 	lastWave = tonumber(lastWave)
+	if currentWave < lastWave then
+		lastWave = 0
+	end
 	if currentWave > lastWave then
 		if not self.Options.DetailedWave then
 			warnWave:Show(L.WarnWave_0:format(currentWave))
