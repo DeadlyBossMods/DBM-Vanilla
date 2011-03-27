@@ -206,7 +206,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnFrenzySoon	= "Frenzy soon"
+	WarnFrenzySoon	= "Frenzy soon",
+	warnMark 		= "Mark of the Fallen Champion (%d) on >%s<"
 }
 
 L:SetTimerLocalization{
@@ -214,9 +215,10 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
+	warnMark				= "Announce $spell:72444 targets",
 	TimerCombatStart		= "Show time for start of combat",
 	WarnFrenzySoon			= "Show pre-warning for Frenzy (at ~33%)",
-	BoilingBloodIcons	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
+	BoilingBloodIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
 	RangeFrame				= "Show range frame (12 yards)",
 	RunePowerFrame			= "Show Boss Health + $spell:72371 bar",
 	BeastIcons				= "Set icons on Blood Beasts"

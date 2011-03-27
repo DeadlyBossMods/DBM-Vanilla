@@ -21,7 +21,7 @@ local warnAddsSoon			= mod:NewPreWarnAnnounce(72173, 10, 3)
 local warnAdds				= mod:NewSpellAnnounce(72173, 4)
 local warnFrenzy			= mod:NewSpellAnnounce(72737, 2, nil, mod:IsTank() or mod:IsHealer())
 local warnBloodNova			= mod:NewSpellAnnounce(73058, 2)
-local warnMark				= mod:NewTargetAnnounce(72444, 4)
+local warnMark 				= mod:NewAnnounce("warnMark", 4, 72444)
 local warnBoilingBlood		= mod:NewTargetAnnounce(72441, 2, nil, mod:IsHealer())
 local warnRuneofBlood		= mod:NewTargetAnnounce(72410, 3, nil, mod:IsTank() or mod:IsHealer())
 
@@ -46,6 +46,7 @@ local warned_preFrenzy = false
 local boilingBloodTargets = {}
 local boilingBloodIcon 	= 8
 local spamBloodBeast = 0
+local Mark = 0
 
 local function warnBoilingBloodTargets()
 	warnBoilingBlood:Show(table.concat(boilingBloodTargets, "<, >"))
@@ -72,6 +73,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(boilingBloodTargets)
 	warned_preFrenzy = false
 	boilingBloodIcon = 8
+	Mark = 0
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(12)
 	end
@@ -168,7 +170,8 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(72293) then		-- Mark of the Fallen Champion
-		warnMark:Show(args.destName)
+		Mark = Mark + 1
+		warnMark:Show(Mark, args.destName)
 		specwarnMark:Show(args.destName)
 	elseif args:IsSpellID(72385, 72441, 72442, 72443) then	-- Boiling Blood
 		boilingBloodTargets[#boilingBloodTargets + 1] = args.destName
