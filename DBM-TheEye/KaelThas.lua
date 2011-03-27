@@ -5,7 +5,7 @@ mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(19622)
 mod:SetZone()
 
-mod:RegisterCombat("yell", L.YellPull1)
+mod:RegisterCombat("yell", L.YellPull1, L.YellPull2)
 mod:SetUsedIcons(6, 7, 8)
 
 mod:RegisterEvents(

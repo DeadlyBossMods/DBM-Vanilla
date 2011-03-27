@@ -171,6 +171,7 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(67051, 67050, 67049, 66237) then			-- Incinerate Flesh
 		timerFlesh:Stop()
+		self:Unschedule(clearIncinerateTarget)
 		clearIncinerateTarget(self, args.destName)
 	end
 end
