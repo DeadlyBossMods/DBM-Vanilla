@@ -208,7 +208,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnFrenzySoon			= "곧 광기"
+	WarnFrenzySoon			= "곧 광기",
+	warnMark 				= "타락한 용사의 징표 (%d) : >%s<"
 }
 
 L:SetTimerLocalization{
@@ -216,6 +217,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
+	warnMark				= "$spell:72444 대상 알리기",
 	TimerCombatStart		= "전투 시작 타이머 보기",
 	WarnFrenzySoon			= "광기 사전 경고 보기 (33% 이하)",
 	BoilingBloodIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
