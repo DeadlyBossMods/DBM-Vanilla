@@ -68,11 +68,16 @@ local warned_P2 = false
 local warnedfailed = false
 local phase = 0
 local unchainedIcons = 7
+local playerUnchained = false
+local playerBeaconed = false
 local activeBeacons	= false
 local lastfail
 
 local function ClearBeaconTargets()
 	table.wipe(beaconIconTargets)
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 do
@@ -90,17 +95,32 @@ do
 				self:SetIcon(UnitName(v), beaconIcons)
 				beaconIcons = beaconIcons - 1
 			end
-			self:Schedule(5, ClearBeaconTargets)
+			self:Schedule(8, ClearBeaconTargets)
 		end
 	end
 end
 
 local function warnBeaconTargets()
+	if self.Options.RangeFrame then
+		if not playerBeaconed then
+			DBM.RangeCheck:Show(10, GetRaidTargetIndex)
+		else
+			DBM.RangeCheck:Show(10)
+		end
+	end
 	warnFrostBeacon:Show(table.concat(beaconTargets, "<, >"))
 	table.wipe(beaconTargets)
+	playerBeaconed = false
 end
 
 local function warnUnchainedTargets()
+	if self.Options.RangeFrame then
+		if not playerUnchained then
+			DBM.RangeCheck:Show(20, GetRaidTargetIndex)
+		else
+			DBM.RangeCheck:Show(20)
+		end
+	end
 	warnUnchainedMagic:Show(table.concat(unchainedTargets, "<, >"))
 	if phase >= 2 then
 		timerUnchainedMagic:Start(80)
@@ -109,6 +129,7 @@ local function warnUnchainedTargets()
 	end
 	table.wipe(unchainedTargets)
 	unchainedIcons = 7
+	playerUnchained = false
 end
 
 function mod:OnCombatStart(delay)
@@ -121,16 +142,11 @@ function mod:OnCombatStart(delay)
 	table.wipe(beaconIconTargets)
 	table.wipe(unchainedTargets)
 	unchainedIcons = 7
+	playerUnchained = false
+	playerBeaconed = false
 	phase = 1
 	activeBeacons = false
 	lastfail = GetTime()
-	if self.Options.RangeFrame then
-		if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
-			DBM.RangeCheck:Show(20, GetRaidTargetIndex)
-		else
-			DBM.RangeCheck:Show(10, GetRaidTargetIndex)
-		end
-	end
 end
 
 function mod:OnCombatEnd()
@@ -150,6 +166,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(70126) then
 		beaconTargets[#beaconTargets + 1] = args.destName
 		if args:IsPlayer() then
+			playerBeaconed = true
 			specWarnFrostBeacon:Show()
 			soundFrostBeacon:Play("Sound\\Creature\\Illidan\\BLACK_Illidan_04.wav")
 		end
@@ -182,6 +199,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(69762) then
 		unchainedTargets[#unchainedTargets + 1] = args.destName
 		if args:IsPlayer() then
+			playerUnchained = true
 			specWarnUnchainedMagic:Show()
 		end
 		if self.Options.SetIconOnUnchainedMagic then
