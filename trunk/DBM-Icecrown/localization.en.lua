@@ -478,7 +478,7 @@ L:SetOptionLocalization{
 	SetIconOnUnchainedMagic	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69762),
 	ClearIconsOnAirphase	= "Clear all icons before air phase",
 	AchievementCheck		= "Announce 'All You Can Eat' achievement warnings to raid\n(requires promoted status)",
-	RangeFrame				= "Show raid icon based range frame (10 normal, 20 heroic)"
+	RangeFrame				= "Show dynamic range frame (10/20) based on last used boss ability and player debuffs"
 }
 
 L:SetMiscLocalization{
