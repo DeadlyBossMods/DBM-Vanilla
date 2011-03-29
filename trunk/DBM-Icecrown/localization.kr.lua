@@ -484,7 +484,7 @@ L:SetOptionLocalization{
 	SetIconOnUnchainedMagic		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69762),
 	ClearIconsOnAirphase		= "공중 단계 전 모든 전술 목표 아이콘 제거",
 	AchievementCheck			= "'신비한 아픔' 업적 경고를 공격대 대화로 알리기\n(공격대장 권한 필요)",
-	RangeFrame					= "거리 창 보기(일반 10m, 영웅 20m) (해당 플레이어만 보임)"
+	RangeFrame					= "보스가 사용한 능력 및 플레이어 디버프에 따른 거리 창 보기(10/20m)"
 
 }
 
