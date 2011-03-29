@@ -132,7 +132,7 @@ end
 function mod:CHAT_MSG_LOOT(msg)
 	-- DBM:AddMsg(msg) --> Meridium receives loot: [Magnetic Core]
 	local player, itemID = msg:match(L.LootMsg)
-	if player and itemID and tonumber(itemID) == 46029 then
+	if player and itemID and tonumber(itemID) == 46029 and self:IsInCombat() then
 		lootannounce:Show(player)
 	end
 end
