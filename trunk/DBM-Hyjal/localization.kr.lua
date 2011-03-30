@@ -119,7 +119,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("HyjalWaveTimers")
 
 L:SetGeneralLocalization{
-	name 		= "웨이브 타이머"
+	name 		= "하이잘 웨이브"
 }
 
 L:SetWarningLocalization{

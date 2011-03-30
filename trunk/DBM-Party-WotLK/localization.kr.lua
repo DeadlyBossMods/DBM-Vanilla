@@ -1120,25 +1120,25 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("PortalTimers")
 
 L:SetGeneralLocalization({
-	name = "포탈 타이머"
+	name = "보랏빛 요새 차원문"
 })
 
 L:SetWarningLocalization({
-	WarningPortalSoon		= "곧 새로운 포탈이 열립니다.",
-	WarningPortalNow		= "포탈 #%d",
+	WarningPortalSoon		= "곧 새로운 차원문",
+	WarningPortalNow		= "차원문 #%d",
 	WarningBossNow			= "곧 보스 등장"
 })
 
 L:SetTimerLocalization({
-	TimerPortalIn			= "포탈 #%d" , 
+	TimerPortalIn			= "차원문 #%d" , 
 })
 
 L:SetOptionLocalization({
-	WarningPortalNow		= optionWarning:format("새로운 포탈"),
-	WarningPortalSoon		= optionPreWarning:format("새로운 포탈"),
+	WarningPortalNow		= optionWarning:format("새로운 차원문"),
+	WarningPortalSoon		= optionPreWarning:format("새로운 차원문"),
 	WarningBossNow			= optionWarning:format("보스 등장"),
-	TimerPortalIn			= "다음 포탈 타이머 보기(보스 이후)",
-	ShowAllPortalTimers		= "모든 포탈 타이머 보기"
+	TimerPortalIn			= "다음 차원문 타이머 보기(보스 이후)",
+	ShowAllPortalTimers		= "모든 차원문 타이머 보기"
 })
 
 L:SetMiscLocalization({
@@ -1379,7 +1379,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("HoRWaveTimer")
 
 L:SetGeneralLocalization({
-	name = "웨이브 타이머"
+	name = "투영의 전당 웨이브"
 })
 
 L:SetWarningLocalization({

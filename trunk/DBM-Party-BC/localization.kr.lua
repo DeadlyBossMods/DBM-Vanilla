@@ -771,11 +771,11 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    WarnWavePortalSoon	= "다음 포탈 사전 경고 보기",
-    WarnWavePortal		= "포탈 열림 경고 보기",
+    WarnWavePortalSoon	= "다음 차원문 사전 경고 보기",
+    WarnWavePortal		= "차원문 열림 경고 보기",
     WarnBossPortal		= "보스 등장 경고 보기",
-	TimerNextPortal		= "다음 포탈 타이머 보기 (보스 이후)",
-	ShowAllPortalTimers	= "모든 포탈 타이머 보기 (부정확)"
+	TimerNextPortal		= "다음 차원문 타이머 보기 (보스 이후)",
+	ShowAllPortalTimers	= "모든 차원문 타이머 보기 (부정확)"
 })
 
 L:SetMiscLocalization({
