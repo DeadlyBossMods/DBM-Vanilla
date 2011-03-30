@@ -23,8 +23,8 @@ localization.tw.lua
 localization.cn.lua
 localization.ru.lua
 localization.kr.lua
-Maulgar.lua
-Gruul.lua
-Magtheridon.lua
+Gruuls\Maulgar.lua
+Gruuls\Gruul.lua
+Magtheridon\Magtheridon.lua
 Kazzak.lua
 Doomwalker.lua
