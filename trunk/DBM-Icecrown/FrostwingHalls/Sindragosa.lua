@@ -1,4 +1,4 @@
-﻿local mod	= DBM:NewMod("Sindragosa", "DBM-Icecrown", 4)
+﻿local mod	= DBM:NewMod("Sindragosa", "ODBM-Icecrown", 4)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 4685 $"):sub(12, -3))
@@ -75,7 +75,7 @@ local lastfail
 
 local function ClearBeaconTargets()
 	table.wipe(beaconIconTargets)
-	if self.Options.RangeFrame then
+	if mod.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
 	end
 end
@@ -101,7 +101,7 @@ do
 end
 
 local function warnBeaconTargets()
-	if self.Options.RangeFrame then
+	if mod.Options.RangeFrame then
 		if not playerBeaconed then
 			DBM.RangeCheck:Show(10, GetRaidTargetIndex)
 		else
@@ -114,7 +114,7 @@ local function warnBeaconTargets()
 end
 
 local function warnUnchainedTargets()
-	if self.Options.RangeFrame then
+	if mod.Options.RangeFrame then
 		if not playerUnchained then
 			DBM.RangeCheck:Show(20, GetRaidTargetIndex)
 		else
