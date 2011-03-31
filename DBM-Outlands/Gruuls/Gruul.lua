@@ -65,7 +65,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnSilenceSoon:Schedule(10)
 			timerSilenceCD:Start(15)
 		end
-	elseif args:IsSpellID(36240) then--Cave In
+	elseif args:IsSpellID(36240) and args:IsPlayer() then--Cave In
 		specWarnCaveIn:Show()
 	end
 end
