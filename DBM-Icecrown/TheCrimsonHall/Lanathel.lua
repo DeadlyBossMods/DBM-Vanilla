@@ -171,7 +171,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(71726, 71727, 71728, 71729) and args:GetSrcCreatureID() == 37955 then	-- Vampric Bite (first bite only, hers)
+	if (args:IsSpellID(71726, 71727, 71728, 71729) or args:IsSpellID(70946, 71475, 71476, 71477)) and args:GetSrcCreatureID() == 37955 then	-- Vampric Bite (first bite only, hers)
 		warnVampricBite:Show(args.destName)
 	end
 end
