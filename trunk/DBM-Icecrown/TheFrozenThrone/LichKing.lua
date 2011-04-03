@@ -503,7 +503,7 @@ end
 
 function mod:CHAT_MSG_RAID_BOSS_WHISPER(msg)--We get this whisper for all plagues, ones cast by lich king and ones from dispel jumps.
 	if msg:find(L.PlagueWhisper) and self:IsInCombat() then--We do a combat check with lich king since rotface uses the same whisper message and we only want this to work on lich king.
-		if GetTime() - lastPlagueCast > 1 then--We don't want to send sync if it came from a spell cast though, so we ignore whisper unless it was at least 1 second after a cast.
+		if GetTime() - lastPlagueCast > 1.5 then--We don't want to send sync if it came from a spell cast though, so we ignore whisper unless it was at least 1 second after a cast.
 			specWarnNecroticPlague:Show()
 			self:SendSync("PlagueOn", UnitName("player"))
 		end
@@ -532,7 +532,7 @@ function mod:OnSync(msg, target)
 			specWarnPRIGrabbed:Show(target)
 		end
 	elseif msg == "PlagueOn" and self:IsInCombat() then
-		if GetTime() - lastPlagueCast > 1 then --We also do same 1 second check here
+		if GetTime() - lastPlagueCast > 1.5 then --We also do same 1.5 second check here
 			warnNecroticPlagueJump:Show(target)
 			timerNecroticPlagueCleanse:Start()
 			if self.Options.NecroticPlagueIcon then
