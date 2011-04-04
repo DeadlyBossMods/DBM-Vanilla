@@ -82,7 +82,7 @@ do
 		return math.max(1, math.floor(absorbRemaining / maxAbsorb * 100))
 	end
 	frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-	frame:SetScript("OnEvent", function(self, event, timestamp, subEvent, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, ...)
+	local function handler(self, event, timestamp, subEvent, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, ...)
 		if shieldedMob == destGUID then
 			local absorbed
 			if subEvent == "SWING_MISSED" then 
@@ -94,7 +94,15 @@ do
 				absorbRemaining = absorbRemaining - absorbed
 			end
 		end
-	end)
+	end
+	-- TODO: this is the same workaround as in the DBM-Core handler for the same event, so this should be changed as soon as 4.1 is live
+	if tonumber((select(2, GetBuildInfo()))) >= 13682 then
+		frame:SetScript("OnEvent", function(timestamp, event, hideCaster, ...)
+			return handler(self, timestamp, event, ...)
+		end)
+	else
+		frame:SetScript("OnEvent", handler)
+	end
 	
 	function showShieldHealthBar(self, mob, shieldName, absorb)
 		shieldedMob = mob
@@ -208,6 +216,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(36815) and not phase5 then
 		shieldDown = true
 		specWarnPyro:Show()
+		self:Unschedule(hideShieldHealthBar)
 		hideShieldHealthBar()
 	elseif args:IsSpellID(36797) then
 		if IsRaidLeader() and self.Options.MCIcon then
