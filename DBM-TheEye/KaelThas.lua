@@ -129,11 +129,19 @@ local function showConflag()
 end
 
 local function fixSound1()
-	SetCVar("Sound_EnableSFX", 0)
+	if GetCVarBool("Sound_EnableHardware") then--If hardware sound on then
+		SetCVar("Sound_EnableHardware", 0)--turn it off
+	else
+		SetCVar("Sound_EnableHardware", 1)--else, turn it on.
+	end
 end
 
 local function fixSound2()
-	SetCVar("Sound_EnableSFX", 1)
+	if GetCVarBool("Sound_EnableHardware") then--Do the reverse of above
+		SetCVar("Sound_EnableHardware", 1)
+	else
+		SetCVar("Sound_EnableHardware", 0)
+	end
 end
 
 local function showMC()
