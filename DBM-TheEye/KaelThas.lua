@@ -146,9 +146,9 @@ end
 
 local function fixSound2()
 	if GetCVarBool("Sound_EnableHardware") then--Do the reverse of above
-		SetCVar("Sound_EnableHardware", 1)
-	else
 		SetCVar("Sound_EnableHardware", 0)
+	else
+		SetCVar("Sound_EnableHardware", 1)
 	end
 end
 
@@ -386,7 +386,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerGravity:Start(60)
 		if IsMacClient() and GetCVarBool("Sound_EnableSFX") then--Mac client has an annoying bug on this fight where the rumbling sound gets stuck indefinitely until sound channel it's stuck in gets reset.
 			self:Schedule(40, fixSound1)--May tweak timing or even method it's done in future.
-			self:Schedule(41, fixSound2)
+			self:Schedule(46, fixSound2)
 		end
 	end
 end
