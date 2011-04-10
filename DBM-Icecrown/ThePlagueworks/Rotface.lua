@@ -32,7 +32,7 @@ local specWarnStickyOoze		= mod:NewSpecialWarningMove(69774)
 local specWarnOozeExplosion		= mod:NewSpecialWarningRun(69839)
 local specWarnSlimeSpray		= mod:NewSpecialWarningSpell(69508, false)--For people that need a bigger warning to move
 local specWarnRadiatingOoze		= mod:NewSpecialWarningSpell(69760, not mod:IsTank())
-local specWarnLittleOoze		= mod:NewSpecialWarning("SpecWarnLittleOoze")
+local specWarnLittleOoze		= mod:NewSpecialWarning("SpecWarnLittleOoze", false)
 local specWarnVileGas			= mod:NewSpecialWarningYou(72272)
 
 local timerStickyOoze			= mod:NewNextTimer(16, 69774, nil, mod:IsTank())
@@ -169,7 +169,9 @@ function mod:SPELL_DAMAGE(args)
 end
 
 function mod:SWING_DAMAGE(args)
-	if args:GetDestCreatureID() == 36899 and args:IsSrcTypePlayer() and self:IsInCombat() then
+	if args:IsPlayer() and args:GetSrcCreatureID() == 36897 then --Little ooze hitting you
+		specWarnLittleOoze:Show()
+	elseif args:GetDestCreatureID() == 36899 and args:IsSrcTypePlayer() and self:IsInCombat() then
 		if args.sourceName ~= UnitName("player") then
 			if self.Options.TankArrow then
 				DBM.Arrow:ShowRunTo(args.sourceName, 0, 0)
