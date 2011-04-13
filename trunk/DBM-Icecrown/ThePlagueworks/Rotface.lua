@@ -61,7 +61,7 @@ function mod:OnCombatStart(delay)
 	self:ScheduleMethod(25-delay, "WallSlime")
 	InfectionIcon = 8
 	spamOoze = 0
-	if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+	if mod:IsDifficulty("heroic10", "heroic25") then
 		timerVileGasCD:Start(22-delay)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(8)

@@ -345,6 +345,7 @@ function mod:UNIT_DIED(args)
 		if DreadscaleDead then
 			DBM.BossHealth:RemoveBoss(35144)
 			DBM.BossHealth:RemoveBoss(34799)
+			timerNextBoss:Cancel()
 		end
 	elseif cid == 34799 then
 		DreadscaleDead = true
@@ -359,6 +360,7 @@ function mod:UNIT_DIED(args)
 		if AcidmawDead then
 			DBM.BossHealth:RemoveBoss(35144)
 			DBM.BossHealth:RemoveBoss(34799)
+			timerNextBoss:Cancel()
 		end
 	end
 end

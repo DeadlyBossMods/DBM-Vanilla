@@ -60,10 +60,10 @@ function mod:OnCombatStart(delay)
 		DBM.BossHealth:AddBoss(37813, L.name)
 		self:ScheduleMethod(0.5, "CreateBossRPFrame")
 	end
-	if mod:IsDifficulty("normal10") or mod:IsDifficulty("normal25") then
-		enrageTimer:Start(-delay)
-	else
+	if mod:IsDifficulty("heroic10", "heroic25") then
 		enrageTimer:Start(360-delay)
+	else
+		enrageTimer:Start(-delay)
 	end
 	timerCallBloodBeast:Start(-delay)
 	warnAddsSoon:Schedule(30-delay)
@@ -181,7 +181,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			boilingBloodIcon = boilingBloodIcon - 1
 		end
 		self:Unschedule(warnBoilingBloodTargets)
-		if (mod:IsDifficulty("normal10") or mod:IsDifficulty("heroic10")) or ((mod:IsDifficulty("normal25") or mod:IsDifficulty("heroic25")) and #boilingBloodTargets >= 3) then	-- Boiling Blood
+		if mod:IsDifficulty("normal10", "heroic10") or (mod:IsDifficulty("normal25", "heroic25") and #boilingBloodTargets >= 3) then	-- Boiling Blood
 			warnBoilingBloodTargets()
 		else
 			self:Schedule(0.3, warnBoilingBloodTargets)

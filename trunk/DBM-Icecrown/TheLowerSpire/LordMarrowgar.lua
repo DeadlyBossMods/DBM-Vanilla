@@ -54,7 +54,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnWhirlwind:Show()
 		timerWhirlwindCD:Start()
 		preWarnWhirlwind:Schedule(85)
-		if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+		if mod:IsDifficulty("heroic10", "heroic25") then
 			timerWhirlwind:Show(30)						-- Approx 30seconds on heroic
 		else
 			timerWhirlwind:Show()						-- Approx 20seconds on normal.
@@ -65,44 +65,44 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(69065) then			-- Impaled
+	if args:IsSpellID(69065) then						-- Impaled
 		if self.Options.SetIconOnImpale then
 			self:SetIcon(args.destName, 0)
 		end
 	elseif args:IsSpellID(69076) then
-		if mod:IsDifficulty("normal10") or mod:IsDifficulty("normal25") then
-			timerBoneSpike:Start(15)			-- He will do Bone Spike Graveyard 15 seconds after whirlwind ends on normal
+		if mod:IsDifficulty("normal10", "normal25") then
+			timerBoneSpike:Start(15)					-- He will do Bone Spike Graveyard 15 seconds after whirlwind ends on normal
 		end
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(69057, 70826, 72088, 72089) then				-- Bone Spike Graveyard
+	if args:IsSpellID(69057, 70826, 72088, 72089) then	-- Bone Spike Graveyard
 		warnBoneSpike:Show()
 		timerBoneSpike:Start()
 	end
 end
 
 function mod:SPELL_PERIODIC_DAMAGE(args)
-	if args:IsSpellID(69146, 70823, 70824, 70825) and args:IsPlayer() and GetTime() - lastColdflame > 2 then		-- Coldflame, MOVE!
+	if args:IsSpellID(69146, 70823, 70824, 70825) and args:IsPlayer() and GetTime() - lastColdflame > 2 then
 		specWarnColdflame:Show()
 		lastColdflame = GetTime()
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(69062, 72669, 72670) then						-- Impale
+	if args:IsSpellID(69062, 72669, 72670) then			-- Impale
 		impaleTargets[#impaleTargets + 1] = args.sourceName
 		timerBoned:Start()
 		if self.Options.SetIconOnImpale then
-			if 	impaleIcon < 1 then	--Icons are gonna be crazy on this fight if people don't control jumps, we will use ALL of them and only reset icons if we run out of them
+			if 	impaleIcon < 1 then						-- Use a lot of icons in case bone spikes don't get killed and we need 6 instead of 3, or even all 8.
 				impaleIcon = 8
 			end
 			self:SetIcon(args.sourceName, impaleIcon)
 			impaleIcon = impaleIcon - 1
 		end
 		self:Unschedule(showImpaleWarning)
-		if mod:IsDifficulty("normal10") or (mod:IsDifficulty("normal25") and #impaleTargets >= 3) then
+		if mod:IsDifficulty("normal10", "heroic10") or (mod:IsDifficulty("normal25", "heroic25") and #impaleTargets >= 3) then
 			showImpaleWarning()
 		else
 			self:Schedule(0.3, showImpaleWarning)

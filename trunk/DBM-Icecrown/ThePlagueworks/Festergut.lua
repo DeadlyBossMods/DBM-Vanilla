@@ -102,7 +102,7 @@ function mod:OnCombatStart(delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(8)
 	end
-	if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+	if mod:IsDifficulty("heroic10", "heroic25") then
 		timerGooCD:Start(13-delay)
 	end
 end
@@ -145,9 +145,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(69279) then	-- Gas Spore
 		gasSporeTargets[#gasSporeTargets + 1] = args.destName
 		gasSporeCast = gasSporeCast + 1
-		if (gasSporeCast < 9 and (mod:IsDifficulty("normal25") or mod:IsDifficulty("heroic25"))) or (gasSporeCast < 6 and (mod:IsDifficulty("normal10") or mod:IsDifficulty("heroic10"))) then
+		if (gasSporeCast < 9 and mod:IsDifficulty("normal25", "heroic25")) or (gasSporeCast < 6 and mod:IsDifficulty("normal10", "heroic10")) then
 			timerGasSporeCD:Start()
-		elseif (gasSporeCast >= 9 and (mod:IsDifficulty("normal25") or mod:IsDifficulty("heroic25"))) or (gasSporeCast >= 6 and (mod:IsDifficulty("normal10") or mod:IsDifficulty("heroic10"))) then
+		elseif (gasSporeCast >= 9 and mod:IsDifficulty("normal25", "heroic25")) or (gasSporeCast >= 6 and mod:IsDifficulty("normal10", "heroic10")) then
 			timerGasSporeCD:Start(50)--Basically, the third time spores are placed on raid, it'll be an extra 10 seconds before he applies first set of spores again.
 			gasSporeCast = 0
 		end
@@ -157,7 +157,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnGasSpore then
 			table.insert(gasSporeIconTargets, DBM:GetRaidUnitId(args.destName))
 			self:UnscheduleMethod("SetSporeIcons")
-			if ((mod:IsDifficulty("normal25") or mod:IsDifficulty("heroic25")) and #gasSporeIconTargets >= 3) or ((mod:IsDifficulty("normal10") or mod:IsDifficulty("heroic10")) and #gasSporeIconTargets >= 2) then
+			if (mod:IsDifficulty("normal25", "heroic25") and #gasSporeIconTargets >= 3) or (mod:IsDifficulty("normal10", "heroic10") and #gasSporeIconTargets >= 2) then
 				self:SetSporeIcons()--Sort and fire as early as possible once we have all targets.
 			else
 				if mod:LatencyCheck() then--Icon sorting is still sensitive and should not be done by laggy members that don't have all targets.

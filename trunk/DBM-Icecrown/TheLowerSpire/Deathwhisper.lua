@@ -158,7 +158,7 @@ do
 				dominateMindIcon = dominateMindIcon - 1
 			end
 			self:Unschedule(showDominateMindWarning)
-			if mod:IsDifficulty("heroic10") or mod:IsDifficulty("normal25") or (mod:IsDifficulty("heroic25") and #dominateMindTargets >= 3) then
+			if mod:IsDifficulty("heroic10", "normal25") or (mod:IsDifficulty("heroic25") and #dominateMindTargets >= 3) then
 				showDominateMindWarning()
 			else
 				self:Schedule(0.9, showDominateMindWarning)
@@ -178,9 +178,9 @@ do
 		elseif args:IsSpellID(71204) then
 			warnTouchInsignificance:Show(args.spellName, args.destName, args.amount or 1)
 			timerTouchInsignificance:Start(args.destName)
-			if args:IsPlayer() and (args.amount or 1) >= 3 and (mod:IsDifficulty("normal10") or mod:IsDifficulty("normal25")) then
+			if args:IsPlayer() and (args.amount or 1) >= 3 and mod:IsDifficulty("normal10", "normal25") then
 				specWarnTouchInsignificance:Show(args.amount)
-			elseif args:IsPlayer() and (args.amount or 1) >= 5 and (mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25")) then
+			elseif args:IsPlayer() and (args.amount or 1) >= 5 and mod:IsDifficulty("heroic10", "heroic25") then
 				specWarnTouchInsignificance:Show(args.amount)
 			end
 		end
@@ -191,7 +191,7 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(70842) then
 		warnPhase2:Show()
-		if mod:IsDifficulty("normal10") or mod:IsDifficulty("normal25") then
+		if mod:IsDifficulty("normal10", "normal25") then
 			timerAdds:Cancel()
 			warnAddsSoon:Cancel()
 			self:UnscheduleMethod("addsTimer")

@@ -87,7 +87,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if (mod:IsDifficulty("normal25") or mod:IsDifficulty("heroic25")) then
+	if mod:IsDifficulty("normal25", "heroic25") then
 		if not warnedSplit1 and self:GetUnitCreatureId(uId) == 39751 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
 			warnedSplit1 = true
 			warningSplitSoon:Show()
