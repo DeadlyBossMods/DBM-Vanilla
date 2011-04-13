@@ -87,7 +87,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)--We use spell cast success for debuff timers in case it gets resisted by a player we still get CD timer for next one
 	if args:IsSpellID(74792) then
-		if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+		if mod:IsDifficulty("heroic10", "heroic25") then
 			timerShadowConsumptionCD:Start(20)
 		else
 			timerShadowConsumptionCD:Start()
@@ -96,7 +96,7 @@ function mod:SPELL_CAST_SUCCESS(args)--We use spell cast success for debuff time
 			self:SendSync("ShadowCD")
 		end
 	elseif args:IsSpellID(74562) then
-		if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+		if mod:IsDifficulty("heroic10", "heroic25") then
 			timerFieryConsumptionCD:Start(20)
 		else
 			timerFieryConsumptionCD:Start()
@@ -250,7 +250,7 @@ function mod:OnSync(msg, target)
 		end
 	elseif msg == "ShadowCD" then
 		if self.Options.AnnounceAlternatePhase then
-			if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+			if mod:IsDifficulty("heroic10", "heroic25") then
 				timerShadowConsumptionCD:Start(20)
 			else
 				timerShadowConsumptionCD:Start()
@@ -258,7 +258,7 @@ function mod:OnSync(msg, target)
 		end
 	elseif msg == "FieryCD" then
 		if self.Options.AnnounceAlternatePhase then
-			if mod:IsDifficulty("heroic10") or mod:IsDifficulty("heroic25") then
+			if mod:IsDifficulty("heroic10", "heroic25") then
 				timerFieryConsumptionCD:Start(20)
 			else
 				timerFieryConsumptionCD:Start()
