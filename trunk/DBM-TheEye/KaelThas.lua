@@ -384,7 +384,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerPhase:Start(47)
 		warnPhase5:Schedule(47)
 		timerGravity:Start(60)
-		if IsMacClient() and GetCVarBool("Sound_EnableSFX") then--Mac client has an annoying bug on this fight where the rumbling sound gets stuck indefinitely until sound channel it's stuck in gets reset.
+		if IsMacClient() then--Mac client has an annoying bug on this fight where the rumbling sound gets stuck indefinitely until sound channel it's stuck in gets reset.
 			self:Schedule(40, fixSound1)--May tweak timing or even method it's done in future.
 			self:Schedule(46, fixSound2)
 		end
