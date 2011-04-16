@@ -13,10 +13,10 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local WarnCrystalHandler 	= mod:NewAnnounce("WarnCrystalHandler")
+local WarnCrystalHandler 	= mod:NewAnnounce("WarnCrystalHandler", 59910)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 
-local timerCrystalHandler 	= mod:NewTimer(20, "timerCrystalHandler")
+local timerCrystalHandler 	= mod:NewTimer(20, "timerCrystalHandler", 59910)
 
 local CrystalHandlers = 4
 
