@@ -22,7 +22,7 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnGrowth	= "Show warning for $spell:36300"
+	WarnGrowth	= "Mostrar aviso para $spell:36300"
 }
 
 
@@ -41,13 +41,13 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerP2	= "Show timer for start of phase 2"
+	timerP2	= "Mostrar tiempo para el inicio de Fase 2"
 }
 
 L:SetMiscLocalization{
-	DBM_MAG_EMOTE_PULL		= "¡Las cuerdas de Magtheridon empiezan a aflojarse!",
+	DBM_MAG_EMOTE_PULL		= "¡Las cuerdas de %s empiezan a aflojarse!",
 	DBM_MAG_YELL_PHASE2		= "¡He... sido... liberado!",
-	DBM_MAG_YELL_PHASE3		= "I will not be taken so easily! Let the walls of this prison tremble... and fall!"
+	DBM_MAG_YELL_PHASE3		= "¡No me dejaré encerrar tan fácilmente! ¡Que tiemblen las paredes de esta prisión... y se derrumben!"
 }
 
 -- Doom Lord Kazzak
