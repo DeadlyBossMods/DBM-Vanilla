@@ -12,7 +12,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	--¡Aullahielo mira a PC y emite un bramido!
+	--¡%s mira a (%S+) y emite un bramido!
 	Charge			= "¡Aullahielo mira a (%S+) y emite un bramido!",
 	CombatStart		= "Desde las cavernas más oscuras y profundas de Las Cumbres Tormentosas: ¡Gormok el Empalador! ¡A luchar, héroes!",
 	Phase2			= "Preparaos, héroes, para los temibles gemelos: ¡Fauceácida y Aterraescama! ¡A la arena!",
