@@ -214,7 +214,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnFrenzySoon	= "Frenesí pronto"
+	WarnFrenzySoon	= "Frenesí pronto",
+	warnMark 		= "Marca del campeón caído (%d) en >%s<"
 }
 
 L:SetTimerLocalization{
@@ -222,6 +223,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
+	warnMark				= "Anunciar los objetivos de $spell:72444",
 	TimerCombatStart		= "Mostrar tiempo para inicio del combate",
 	WarnFrenzySoon	= "Mostrar preaviso para el Frenesí (at ~33%)",
 	BoilingBloodIcons	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
@@ -491,8 +493,8 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	YellAirphase	= "¡Aquí termina vuestra incursión! ¡Nadie sobrevivirá!",
-	YellAirphaseDem		= "Rikk zilthuras rikk zila Aman adare tiriosh ",--translate
 	YellPhase2		= "¡Ahora sentid el poder sin fin de mi maestro y desesperad!",
+	YellAirphaseDem		= "Rikk zilthuras rikk zila Aman adare tiriosh ",--translate
 	YellPhase2Dem		= "Zar kiel xi romathIs zilthuras revos ruk toralar ",--translate
 	BeaconIconSet	= "Señal de Escarcha, icono {rt%d} en %s",
 	AchievementWarning	= "Aviso: %s tiene 5 marcas de Sacudida mística",
