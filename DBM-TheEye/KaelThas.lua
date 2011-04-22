@@ -136,22 +136,6 @@ local function showConflag()
 	table.wipe(warnConflagTargets)
 end
 
-local function fixSound1()
-	if GetCVarBool("Sound_EnableHardware") then--If hardware sound on then
-		SetCVar("Sound_EnableHardware", 0)--turn it off
-	else
-		SetCVar("Sound_EnableHardware", 1)--else, turn it on.
-	end
-end
-
-local function fixSound2()
-	if GetCVarBool("Sound_EnableHardware") then--Do the reverse of above
-		SetCVar("Sound_EnableHardware", 0)
-	else
-		SetCVar("Sound_EnableHardware", 1)
-	end
-end
-
 local function showMC()
 	warnMC:Show(table.concat(warnMCTargets, "<, >"))
 	table.wipe(warnMCTargets)
@@ -384,9 +368,5 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerPhase:Start(47)
 		warnPhase5:Schedule(47)
 		timerGravity:Start(60)
-		if IsMacClient() then--Mac client has an annoying bug on this fight where the rumbling sound gets stuck indefinitely until sound channel it's stuck in gets reset.
-			self:Schedule(40, fixSound1)--May tweak timing or even method it's done in future.
-			self:Schedule(46, fixSound2)
-		end
 	end
 end
