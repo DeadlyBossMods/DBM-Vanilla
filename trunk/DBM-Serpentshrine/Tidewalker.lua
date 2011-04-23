@@ -1,7 +1,7 @@
 ﻿local mod	= DBM:NewMod("Tidewalker", "DBM-Serpentshrine")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 5014 $"):sub(12, -3))
+mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(21213)
 mod:SetZone()
 mod:SetUsedIcons(5, 6, 7, 8)
