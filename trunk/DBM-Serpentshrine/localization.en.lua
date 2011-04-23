@@ -1,155 +1,196 @@
-DBM_SERPENT_TAB	= "SCTab"
-if GetLocale() == "enGB" or GetLocale() == "enUS" then
-	DBM_COILFANG	= "Serpentshrine Cavern";
-end
+local L
 
--- Hydross the Unstable
-DBM_HYDROSS_NAME			= "Hydross the Unstable";
-DBM_HYDROSS_DESCRIPTION		= "Announces marks, phases and Water Tomb.";
-DBM_HYDROSS_OPTION_1		= "Show range check frame";
-DBM_HYDROSS_OPTION_2		= "Announce marks";
-DBM_HYDROSS_OPTION_3		= "Show 5 second warnings for all marks";
-DBM_HYDROSS_OPTION_4		= "Announce phases";
-DBM_HYDROSS_OPTION_5		= "Announce Water Tomb";
-DBM_HYDROSS_OPTION_NATURE	= "Mark of Corruption"
-DBM_HYDROSS_OPTION_FROST	= "Mark of Hydross"
+---------------------------
+--  Hydross the Unstable --
+---------------------------
+L = DBM:GetModLocalization("Hydross")
 
-DBM_HYDROSS_YELL_PULL		= "I cannot allow you to interfere!";
-DBM_HYDROSS_YELL_NATURE		= "Aaghh, the poison...";
-DBM_HYDROSS_YELL_FROST		= "Better, much better.";
+L:SetGeneralLocalization{
+	name = "Hydross the Unstable"
+}
 
-DBM_HYDROSS_FROST_MARK_NOW	= "*** Frost Mark #%s ***";
-DBM_HYDROSS_NATURE_MARK_NOW	= "*** Nature Mark #%s ***";
-DBM_HYDROSS_FROST_SOON		= "*** Frost Mark #%s in 5 sec ***";
-DBM_HYDROSS_NATURE_SOON		= "*** Nature Mark #%s in 5 sec ***";
+L:SetWarningLocalization{
+	WarnMark 		= "%s : %s",
+	WarnPhase		= "%s Phase",
+	SpecWarnMark	= "%s : %s",
+}
 
-DBM_HYDROSS_FROST_PHASE		= "*** Frost Phase ***";
-DBM_HYDROSS_NATURE_PHASE	= "*** Nature Phase ***";
+L:SetTimerLocalization{
+	TimerMark	= "Next %s : %s"
+}
 
-DBM_HYDROSS_TOMB_WARN		= "*** >%s< is afflicted by Water Tomb ***";
+L:SetOptionLocalization{
+	WarnMark		= "Show warning for Marks",
+	WarnPhase		= "Show warning for next phase",
+	SpecWarnMark	= "Show warning when Marks debuff damage over 100%",
+	TimerMark		= "Show timer for next Marks",
+	RangeFrame		= "Show range frame (10 yards)"
+}
 
--- Morogrim Tidewalker
-DBM_TIDEWALKER_NAME					= "Morogrim Tidewalker";
-DBM_TIDEWALKER_DESCRIPTION			= "Announces Watery Grave and Murlocs.";
-DBM_TIDEWALKER_OPTION_1				= "Announce Murlocs";
-DBM_TIDEWALKER_OPTION_2				= "Announce Watery Grave";
+L:SetMiscLocalization{
+	Frost	= "Frost",
+	Nature	= "Nature"
+}
 
-DBM_TIDEWALKER_YELL_PULL			= "Flood of the deep, take you!";
-DBM_TIDEWALKER_EMOTE_MURLOCS		= "The violent earthquake has alerted nearby Murlocs!";
-DBM_TIDEWALKER_EMOTE_GLOBES			= "%s summons watery globules!";
-DBM_TIDEWALKER_EMOTE_GRAVE			= "%s sends his enemies to their watery graves!";
-DBM_TIDEWALKER_DEBUFF_GRAVE			= "([^%s]+) (%w+) afflicted by Watery Grave.";
+-----------------------
+--  The Lurker Below --
+-----------------------
+L = DBM:GetModLocalization("LurkerBelow")
 
-DBM_TIDEWALKER_WARN_MURLOCS			= "*** Murlocs ***";
-DBM_TIDEWALKER_WARN_MURLOCS_SOON	= "*** Murlocs soon ***";
-DBM_TIDEWALKER_WARN_GRAVE			= "*** Watery Grave on %s ***";
-DBM_TIDEWALKER_WARN_GLOBES			= "*** Watery Globules ***";
+L:SetGeneralLocalization{
+	name = "The Lurker Below"
+}
 
--- Fathom-Lord Karathress
-DBM_FATHOMLORD_NAME					= "Fathom-Lord Karathress";
-DBM_FATHOMLORD_DESCRIPTION			= "Announces Spitfire Totems and Healing Wave.";
+L:SetWarningLocalization{
+	WarnSubmerge		= "Submerged",
+	WarnSubmergeSoon	= "Submerge in 10 sec",
+	WarnEmerge			= "Emerged",
+	WarnEmergeSoon		= "Emerge in 10 sec"
+}
 
-DBM_FATHOMLORD_YELL_PULL			= "Guards, attention! We have visitors....";
-DBM_FATHOMLORD_OPTION_TOTEM_1		= "Announce Fathom-Guard Tidalvess' Spitfire Totem";
-DBM_FATHOMLORD_OPTION_TOTEM_2		= "Announce Fathom-Lord Karathress' Spitfire Totem";
-DBM_FATHOMLORD_OPTION_HEAL			= "Announce Healing Wave";
+L:SetTimerLocalization{
+	TimerSubmerge		= "Sumberge",
+	TimerEmerge			= "Emerge"
+}
 
-DBM_FATHOMLORD_TIDALVESS_TOTEM		= "Fathom-Guard Tidalvess casts Spitfire Totem.";
-DBM_FATHOMLORD_KARATHRESS_TOTEM		= "Fathom-Lord Karathress casts Spitfire Totem.";
-DBM_FATHOMLORD_CAST_HEAL			= "Fathom-Guard Caribdis begins to cast Healing Wave.";
+L:SetOptionLocalization{
+	WarnSubmerge		= "Show warning when submerge",
+	WarnSubmergeSoon	= "Show pre-warning for submerge",
+	WarnEmerge			= "Show warning when emerge",
+	WarnEmergeSoon		= "Show pre-warning for emerge",
+	TimerSubmerge		= "Show time for submerge",
+	TimerEmerge			= "Show time for emerge"
+}
 
-DBM_FATHOMLORD_SFTOTEM1_WARN		= "*** Spitfire Totem @ Tidalvess ***";
-DBM_FATHOMLORD_SFTOTEM2_WARN		= "*** Spitfire Totem @ Karathress ***";
-DBM_FATHOMLORD_HEAL_WARN			= "*** Healing Wave ***";
+L:SetMiscLocalization{
+	Spout	= "%s takes a deep breath!"
+}
 
--- The Lurker Below
-DBM_LURKER_NAME						= "The Lurker Below";
-DBM_LURKER_DESCRIPTION				= "Announces Submerge, Emerge, Spout and Whirl. The \"Whirl soon\" warning is unreliable because it uses this ability every 18-28 seconds.";
-DBM_LURKER_OPTION_WHIRL				= "Announce Whirl";
-DBM_LURKER_OPTION_WHIRLSOON			= "Show \"Whirl soon\" warning";
-DBM_LURKER_OPTION_SPOUT				= "Announce Spout";
+--------------------------
+--  Leotheras the Blind --
+--------------------------
+L = DBM:GetModLocalization("Leotheras")
 
-DBM_LURKER_EMOTE_SPOUT				= "%s takes a deep breath!";
-DBM_LURKER_CAST_SPOUT				= "The Lurker Below%s*'s Spout";
-DBM_LURKER_CAST_WHIRL				= "The Lurker Below%s*'s Whirl";
-DBM_LURKER_CAST_GEYSER				= "The Lurker Below%s*'s Geyser hits ([^%s]+) for";
+L:SetGeneralLocalization{
+	name = "Leotheras the Blind"
+}
 
-DBM_LURKER_WARN_SPOUT_SOON			= "*** Spout soon ***";
-DBM_LURKER_WARN_SPOUT				= "*** Spout ***";
-DBM_LURKER_WARN_SUBMERGE			= "*** Submerged ***";
-DBM_LURKER_WARN_EMERGE				= "*** Emerged ***";
+L:SetWarningLocalization{
+	WarnPhase		= "%s Phase",
+	WarnPhaseSoon	= "%s Phase in 5 sec"
+}
 
-DBM_LURKER_WARN_WHIRL				= "*** Whirl ***";
-DBM_LURKER_WARN_WHIRL_SOON			= "*** Whirl soon ***";
+L:SetTimerLocalization{
+	TimerPhase	= "Next %s Phase"
+}
 
-DBM_LURKER_WARN_SUBMERGE_SOON		= "*** Submerge in %s sec ***";
+L:SetOptionLocalization{
+	WarnPhase		= "Show warning for next phase",
+	WarnPhaseSoon	= "Show pre-warning for next phase",
+	TimerPhase		= "Show time for next phase",
+	DemonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37676)
+}
 
--- Leotheras the Blind
-DBM_LEO_NAME						= "Leotheras the Blind";
-DBM_LEO_DESCRIPTION					= "Announces Whirlwind, Insidious Whisper and his phases.";
-DBM_LEO_OPTION_WHIRL				= "Announce Whirlwind";
-DBM_LEO_OPTION_DEMON				= "Announce Inner Demons";
-DBM_LEO_OPTION_DEMONWARN			= "Announce Inner Demons targets";
+L:SetMiscLocalization{
+	Human		= "Human",
+	Demon		= "Demon",
+	YellDemon	= "Be gone, trifling elf%.%s*I am in control now!",
+	YellPhase2	= "No... no! What have you done? I am the master! Do you hear me? I am... aaggh! Can't... contain him."
+}
 
-DBM_LEO_YELL_PULL					= "Finally, my banishment ends!";
-DBM_LEO_YELL_DEMON					= "Be gone, trifling elf%.%s*I am in control now!"; -- stupid spaces...there are 2 spaces at the moment :[
-DBM_LEO_YELL_SHADOW					= "No... no! What have you done? I am the master! Do you hear me? I am... aaggh! Can't... contain him.";
-DBM_LEO_YELL_WHISPER				= "We all have our demons";
+-----------------------------
+--  Fathom-Lord Karathress --
+-----------------------------
+L = DBM:GetModLocalization("Fathomlord")
 
-DBM_LEO_WARN_ENRAGE					= "*** Enrage in %s %s ***";
-DBM_LEO_WARN_WHIRL					= "*** Whirlwind ***";
-DBM_LEO_WARN_WHIRL_SOON				= "*** Whirlwind in 5 sec ***";
-DBM_LEO_WARN_WHIRL_SOON_2			= "*** Whirlwind soon ***";
-DBM_LEO_WARN_WHIRL_FADED			= "*** Whirlwind faded ***";
-DBM_LEO_WARN_SHADOW					= "*** Shadow of Leotheras spawned ***";
-DBM_LEO_WARN_DEMON_PHASE			= "*** Demon Phase ***";
-DBM_LEO_WARN_NORMAL_PHASE			= "*** Normal Phase ***";
-DBM_LEO_WARN_DEMON_PHASE_SOON		= "*** Demon Phase in 5 sec ***";
-DBM_LEO_WARN_NORMAL_PHASE_SOON		= "*** Normal Phase in 5 sec ***";
-DBM_LEO_SPECWARN_INNER_DEMON		= "Inner Demon";
-DBM_LEO_WHISPER_INNER_DEMON			= "Kill your inner demon!"
-DBM_LEO_WARN_DEMONS_INC				= "*** Inner Demons incoming ***";
-DBM_LEO_WARN_DEMONS_NOW				= "*** Inner Demons ***";
-DBM_LEO_WARN_DEMON_TARGETS			= "*** Inner Demons on: %s ***";
+L:SetGeneralLocalization{
+	name = "Fathom-Lord Karathress"
+}
 
--- Lady Vashj
-DBM_VASHJ_NAME						= "Lady Vashj";
-DBM_VASHJ_DESCRIPTION				= "Announce Static Charge, spawns, phases, Tainted Cores, Magic Barriers and Enrage."
+L:SetWarningLocalization{
+}
 
-DBM_VASHJ_OPTION_RANGECHECK			= "Show distance frame";
-DBM_VASHJ_OPTION_CHARGE				= "Announce Static Charge";
-DBM_VASHJ_OPTION_CHARGEICON			= "Set icons on static charge targets";
-DBM_VASHJ_OPTION_SPAWNS				= "Announce spawns in phase 2";
-DBM_VASHJ_OPTION_COREWARN			= "Announce who loots the Tainted Cores";
-DBM_VASHJ_OPTION_COREICON			= "Set icon on players with a Tainted Core";
-DBM_VASHJ_OPTION_CORESPECWARN		= "Show special warning if you receive a Tainted Core";
+L:SetTimerLocalization{
+}
 
+L:SetOptionLocalization{
+}
 
-DBM_VASHJ_YELL_PULL1				= "I spit on you, surface filth! ";
-DBM_VASHJ_YELL_PULL2				= "Victory to Lord Illidan! ";
-DBM_VASHJ_YELL_PULL3 				= "Death to the outsiders! Victory to Lord Illidan! ";
-DBM_VASHJ_YELL_PULL4				= "I did not wish to low myself by engaging your kind, but you leave me little coice... ";
-DBM_VASHJ_YELL_PHASE2				= "The time is now! Leave none standing!";
-DBM_VASHJ_ELEMENT_DIES				= "Tainted Elemental";
-DBM_VASHJ_YELL_PHASE3				= "You may want to take cover.";
-DBM_VASHJ_LOOT						= "([^%s]+).*Hitem:(%d+)";
+L:SetMiscLocalization{
+	YellPull	= "Guards, attention! We have visitors....",
+	Caribdis	= "Fathom-Guard Caribdis",
+	Tidalvess	= "Fathom-Guard Tidalvess",
+	Sharkkis	= "Fathom-Guard Sharkkis"
+}
 
-DBM_VASHJ_WARN_CHARGE				= "*** Static Charge on >%s< ***";
-DBM_VASHJ_SPECWARN_CHARGE			= "Static Charge on you!";
+--------------------------
+--  Morogrim Tidewalker --
+--------------------------
+L = DBM:GetModLocalization("Tidewalker")
 
-DBM_VASHJ_WARN_PHASE2				= "*** Phase 2 ***";
-DBM_VASHJ_WARN_ELE_SOON				= "*** Tainted Elemental in 5 sec ***";
-DBM_VASHJ_WARN_ELE_NOW				= "*** Tainted Elemental spawned ***";
-DBM_VASHJ_WARN_STRIDER_SOON			= "*** Strider in 5 sec ***";
-DBM_VASHJ_WARN_STRIDER_NOW			= "*** Strider spawned ***";
-DBM_VASHJ_WARN_NAGA_SOON			= "*** Naga in 5 sec ***";
-DBM_VASHJ_WARN_NAGA_NOW				= "*** Naga spawned ***";
-DBM_VASHJ_WARN_SHIELD_FADED			= "*** Shield %d/4 down ***";
-DBM_VASHJ_WARN_CORE_LOOT			= "*** >%s< has the Tainted Core ***";
-DBM_VASHJ_SPECWARN_CORE				= "You have the Tainted Core!";
+L:SetGeneralLocalization{
+	name = "Morogrim Tidewalker"
+}
 
-DBM_VASHJ_WARN_PHASE3				= "*** Shield 4/4 down - Phase 3 ***";
-DBM_VASHJ_WARN_ENRAGE				= "*** Enrage in %s %s ***";
+L:SetWarningLocalization{
+	WarnMurlocs		= "Murlocs",
+	SpecWarnMurlocs	= "Murlocs Coming!",
+}
 
+L:SetTimerLocalization{
+	TimerMurlocs	= "Murlocs"
+}
 
+L:SetOptionLocalization{
+	WarnMurlocs		= "Show warning when Murlocs spawning",
+	SpecWarnMurlocs	= "Show special warning when Murlocs spawning",
+	TimerMurlocs	= "Show timer for Murlocs spawning",
+	GraveIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38049)
+}
 
+L:SetMiscLocalization{
+}
+
+-----------------
+--  Lady Vashj --
+-----------------
+L = DBM:GetModLocalization("Vashj")
+
+L:SetGeneralLocalization{
+	name = "Lady Vashj"
+}
+
+L:SetWarningLocalization{
+	WarnElemental		= "Tainted Elemental Soon (%s)",
+	WarnStrider			= "Strider Soon (%s)",
+	WarnNaga			= "Naga Soon (%s)",
+	WarnShield			= "Shield %d/4 down",
+	WarnLoot			= "Tainted Core on >%s<",
+	SpecWarnElemental	= "Tainted Elemental Soon!",
+	SpecWarnCore		= "Tainted Core on YOU!"
+}
+
+L:SetTimerLocalization{
+	TimerElemental		= "Next Elemental (%d)",
+	TimerStrider		= "Next Strider (%d)",
+	TimerNaga			= "Next Naga (%d)"
+}
+
+L:SetOptionLocalization{
+	WarnElemental		= "Show pre-warning for next Tainted Elemental",
+	WarnStrider			= "Show pre-warning for next Strider",
+	WarnNaga			= "Show pre-warning for next Naga",
+	WarnShield			= "Show warning for Phase 2 shield down",
+	WarnLoot			= "Show warning for Tainted Core loot",
+	TimerElemental		= "Show time for next Tainted Elemental",
+	TimerStrider		= "Show time for next Strider",
+	TimerNaga			= "Show time for next Strider",
+	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",
+	SpecWarnCore		= "Show special warning if you receive a Tainted Core",
+	RangeFrame			= "Show range frame (10 yards)",
+	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
+	LootIcon			= "Set icon on players with a Tainted Core"
+}
+
+L:SetMiscLocalization{
+}

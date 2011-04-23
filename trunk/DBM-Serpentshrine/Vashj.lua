@@ -1,242 +1,163 @@
-﻿local Vashj = DBM:NewBossMod("Vashj", DBM_VASHJ_NAME, DBM_VASHJ_DESCRIPTION, DBM_COILFANG, DBM_SERPENT_TAB, 6);
+﻿local mod	= DBM:NewMod("Vashj", "DBM-Serpentshrine")
+local L		= mod:GetLocalizedStrings()
 
-Vashj.Version			= "1.1";
-Vashj.Author			= "Tandanu";
-Vashj.MinRevision		= 760;
+mod:SetRevision(("$Revision: 5014 $"):sub(12, -3))
+mod:SetCreatureID(21212)
+mod:SetZone()
+mod:SetUsedIcons(8)
 
-local shieldsDown = 0;
-local phase = 1;
+mod:RegisterCombat("combat")
 
-local usedIcons = {
-	[1]	= false,
-	[2] = false,
-	[3] = false,
-	[4] = false,
-	[5] = false,
-	[6] = false,
-	[7] = false,
-	[8] = false
-}
-
-Vashj:SetCreatureID(21212)
-Vashj:RegisterCombat("combat")
-
-Vashj:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_CAST_SUCCESS",
+mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"UNIT_DIED",
 	"SPELL_AURA_REMOVED",
-	"CHAT_MSG_LOOT"
-);
+	"SPELL_CAST_SUCCESS",
+	"UNIT_DIED"
+)
 
-Vashj:AddOption("RangeCheck", true, DBM_VASHJ_OPTION_RANGECHECK);
-Vashj:AddOption("WarnCharge", true, DBM_VASHJ_OPTION_CHARGE);
-Vashj:AddOption("IconCharge", false, DBM_VASHJ_OPTION_CHARGEICON);
-Vashj:AddOption("WarnSpawns", true, DBM_VASHJ_OPTION_SPAWNS);
-Vashj:AddOption("WarnLoot", true, DBM_VASHJ_OPTION_COREWARN);
-Vashj:AddOption("IconLoot", true, DBM_VASHJ_OPTION_COREICON);
-Vashj:AddOption("SpecWarnLoot", true, DBM_VASHJ_OPTION_CORESPECWARN);
+local warnCharge		= mod:NewTargetAnnounce(38280, 4)
+local warnEntangle		= mod:NewSpellAnnounce(38316, 3)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnElemental		= mod:NewAnnounce("WarnElemental", 4, 31687)
+local warnStrider		= mod:NewAnnounce("WarnStrider", 3, 475)
+local warnNaga			= mod:NewAnnounce("WarnNaga", 3, 2120)
+local warnShield		= mod:NewAnnounce("WarnShield", 3)
+local warnLoot			= mod:NewAnnounce("WarnLoot", 4, 38132)
+local warnPhase3		= mod:NewPhaseAnnounce(3)
 
-Vashj:AddBarOption("Static Charge: (.*)")
-Vashj:AddBarOption("Strider")
-Vashj:AddBarOption("Tainted Elemental")
-Vashj:AddBarOption("Naga")
+local specWarnCharge	= mod:NewSpecialWarningYou(38280)
+local specWarnElemental	= mod:NewSpecialWarning("SpecWarnElemental")
+local specWarnToxic		= mod:NewSpecialWarningMove(38575)
+local specWarnCore		= mod:NewSpecialWarning("SpecWarnCore")
 
+local timerCharge		= mod:NewTargetTimer(20, 38280)
+local timerElemental	= mod:NewTimer(53, "TimerElemental", 39088)
+local timerStrider		= mod:NewTimer(63, "TimerStrider", 475)
+local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120)
 
-function Vashj:OnCombatStart()
-	usedIcons = {
-		[1]	= false,
-		[2] = false,
-		[3] = false,
-		[4] = false,
-		[5] = false,
-		[6] = false,
-		[7] = false,
-		[8] = false
-	};
-	shieldsDown = 0;
-	phase = 1;
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Show();
+mod:AddBoolOption("RangeFrame", true)
+mod:AddBoolOption("ChargeIcon", true)
+mod:AddBoolOption("LootIcon", true)
+
+local shieldLeft = 4
+local toxicSpam = 0
+local p2Spam = 0
+local nagaCount = 1
+local striderCount = 1
+local elementalCount = 1
+
+function mod:StriderSpawn()
+	striderCount = striderCount + 1
+	timerStrider:Start(nil, tostring(striderCount))
+	warnStrider:Schedule(57, tostring(striderCount))
+	self:ScheduleMethod(63, "StriderSpawn")
+end
+
+function mod:NagaSpawn()
+	nagaCount = nagaCount + 1
+	timerNaga:Start(nil, tostring(nagaCount))
+	warnNaga:Schedule(42.5, tostring(nagaCount))
+	self:ScheduleMethod(47.5, "NagaSpawn")
+end
+
+function mod:OnCombatStart(delay)
+	shieldLeft = 4
+	toxicSpam = 0
+	p2Spam = 0
+	nagaCount = 1
+	striderCount = 1
+	elementalCount = 1
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Show()
 	end
 end
 
-function Vashj:OnCombatEnd()
-	usedIcons = {
-		[1]	= false,
-		[2] = false,
-		[3] = false,
-		[4] = false,
-		[5] = false,
-		[6] = false,
-		[7] = false,
-		[8] = false
-	};
-	shieldsDown = 0;
-	phase = 1;
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Hide();
+function mod:OnCombatEnd()
+	DBM.RangeCheck:Hide()
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(38280) then
+		warnCharge:Show(args.destName)
+		timerCharge:Start(args.destName)
+		if args:IsPlayer() then
+			specWarnCharge:Show()
+		end
+		if self.Options.ChargeIcon then
+			self:SetIcon(args.destName, 8, 20)
+		end
+	elseif args:IsSpellID(38132) then
+		warnLoot:Show(args.destName)
+		if self.Options.LootIcon then
+			self:SetIcon(args.destName, 8)
+		end
+		if args:IsPlayer() then
+			specWarnCore:Show()
+		end
+	elseif args:IsSpellID(38112) and GetTime() - p2Spam >= 5 then
+		p2Spam = GetTime()
+		nagaCount = 1
+		striderCount = 1
+		elementalCount = 1
+		shieldLeft = 4
+		warnPhase2:Show()
+		timerNaga:Start(nil, tostring(nagaCount))
+		warnNaga:Schedule(42.5, tostring(elementalCount))
+		self:ScheduleMethod(47.5, "NagaSpawn")
+		timerElemental:Start(nil, tostring(elementalCount))
+		warnElemental:Schedule(48, tostring(elementalCount))
+		specWarnElemental:Schedule(48)
+		timerStrider:Start(nil, tostring(striderCount))
+		warnStrider:Schedule(57, tostring(striderCount))
+		self:ScheduleMethod(63, "StriderSpawn")
+	elseif args:IsSpellID(38575) and args:IsPlayer() and GetTime() - toxicSpam >= 2 then
+		specWarnToxic:Show()
+		toxicSpam = GetTime()
 	end
 end
 
-function Vashj:OnEvent(event, arg1)
-	if event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 38132 then
-			self:SendSync("Loot"..tostring(arg1.destName))
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(38280) then
+		timerCharge:Cancel(args.destName)
+		if self.Options.ChargeIcon then
+			self:SetIcon(args.destName, 0)
 		end
-	elseif event == "SPELL_CAST_SUCCESS" then
-		if arg1.spellId == 38280 then
-			self:SendSync("Charge"..tostring(arg1.destName))
+	elseif args:IsSpellID(38132) then
+		if self.Options.LootIcon then
+			self:SetIcon(args.destName, 0)
 		end
-	elseif event == "ClearIcon" and arg1 then
-		usedIcons[arg1] = false;
-	
-	elseif event == "CHAT_MSG_MONSTER_YELL" and arg1 then
-		if string.find(arg1, DBM_VASHJ_YELL_PHASE2) then
-			phase = 2;
-			self:Announce(DBM_VASHJ_WARN_PHASE2, 1);
-			
-			self:StartStatusBarTimer(62, "Strider", "Interface\\Icons\\INV_Misc_Fish_13");
-			self:StartStatusBarTimer(53, "Tainted Elemental", "Interface\\Icons\\Spell_Nature_ElementalShields");
-			self:StartStatusBarTimer(47.5, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
-			
-			self:ScheduleSelf(47.5, "Spawn", "Naga");
-			self:ScheduleSelf(53, "Spawn", "Elemental");
-			self:ScheduleSelf(62, "Spawn", "Strider");
-			self:ScheduleSelf(42.5, "SpawnSoonWarn", "Naga");
-			self:ScheduleSelf(48, "SpawnSoonWarn", "Elemental");
-			self:ScheduleSelf(57, "SpawnSoonWarn", "Strider");
-		elseif string.find(arg1, DBM_VASHJ_YELL_PHASE3) then
-			self:SendSync("Phase3");
-		end
-		
-	elseif event == "SpawnSoonWarn" and arg1 and self.Options.WarnSpawns then		
-		if arg1 == "Elemental" then
-			self:Announce(DBM_VASHJ_WARN_ELE_SOON, 1);
-		elseif arg1 == "Strider" then
-			self:Announce(DBM_VASHJ_WARN_STRIDER_SOON, 1);
-		elseif arg1 == "Naga" then
-			self:Announce(DBM_VASHJ_WARN_NAGA_SOON, 1);
-		end
-		
-	elseif event == "Spawn" and arg1 and phase == 2 then
-		-- break loop after wipes
-		local wipeCounter = 0;
-		for i = 1, GetNumRaidMembers() do
-			if UnitName("raid"..i.."target") == DBM_VASHJ_NAME and not UnitAffectingCombat("raid"..i.."target") then
-				return;
-			end
-			if UnitIsDeadOrGhost("raid"..i) then
-				wipeCounter = wipeCounter + 1;
-			end
-		end
-		if wipeCounter >= 20 then
-			return;
-		end
-		
-		if arg1 == "Elemental" then
-			if self.Options.WarnSpawns then
-				self:Announce(DBM_VASHJ_WARN_ELE_NOW, 3);
-			end
-		elseif arg1 == "Strider" then
-			if self.Options.WarnSpawns then
-				self:Announce(DBM_VASHJ_WARN_STRIDER_NOW, 2);
-			end
-			self:ScheduleSelf(63, "Spawn", "Strider");
-			self:ScheduleSelf(57, "SpawnSoonWarn", "Strider");
-			self:StartStatusBarTimer(62, "Strider", "Interface\\Icons\\INV_Misc_Fish_13");
-		elseif arg1 == "Naga" then
-			if self.Options.WarnSpawns then
-				self:Announce(DBM_VASHJ_WARN_NAGA_NOW, 2);
-			end
-			self:ScheduleSelf(47.5, "Spawn", "Naga");
-			self:ScheduleSelf(42.5, "SpawnSoonWarn", "Naga");
-			self:StartStatusBarTimer(47.5, "Naga", "Interface\\Icons\\INV_Misc_MonsterHead_02");
-		end
-	
-	elseif event == "UNIT_DIED" then
-		if arg1.destName == DBM_VASHJ_ELEMENT_DIES then
-			self:SendSync("ElementDies");
-		end
-
-	elseif event == "SPELL_AURA_REMOVED" then
-		if arg1.spellId == 38112 then
-			self:SendSync("ShieldDown");
-		end
-		
-	elseif event == "CHAT_MSG_LOOT" and arg1 then
-		local _, _, player, itemID = string.find(arg1, DBM_VASHJ_LOOT);
-		if player and itemID and tonumber(itemID) == 31088 then
-			if player == DBM_YOU then
-				player = UnitName("player");
-			end
-			self:SendSync("Loot"..player);
+	elseif args:IsSpellID(38112) then
+		shieldLeft = shieldLeft - 1
+		warnShield:Show(shieldLeft)
+		if shieldLeft == 0 then
+			warnPhase3:Show()
+			timerNaga:Cancel()
+			warnNaga:Cancel()
+			self:UnscheduleMethod("NagaSpawn")
+			timerElemental:Cancel()
+			warnElemental:Cancel()
+			specWarnElemental:Cancel()
+			timerStrider:Cancel()
+			warnStrider:Cancel()
+			self:ScheduleMethod("StriderSpawn")
 		end
 	end
 end
 
-function Vashj:OnSync(msg)
-	if string.sub(msg, 0, 6) == "Charge" then
-		local target = string.sub(msg, 7);		
-		
-		self:StartStatusBarTimer(20.5, "Static Charge: "..target, "Interface\\Icons\\Spell_Nature_LightningOverload");
-		if target == UnitName("player") then
-			self:AddSpecialWarning(DBM_VASHJ_SPECWARN_CHARGE);
-		end
-		if self.Options.WarnCharge then
-			self:Announce(string.format(DBM_VASHJ_WARN_CHARGE, target), 1);
-			self:SendHiddenWhisper(DBM_VASHJ_SPECWARN_CHARGE, target)
-		end
-		
-		local iconID = 0;
-		for i = 8, 1, -1 do
-			if not usedIcons[i] then
-				iconID = i;
-				usedIcons[i] = target;
-				break;
-			end
-		end
-		if self.Options.IconCharge and iconID ~= 0 and self.Options.Announce and DBM.Rank >= 1 then
-			self:SetIcon(target, 20, iconID);
-			self:ScheduleSelf(20, "ClearIcon", iconID);
-		end
-		
-	elseif msg == "ElementDies" then
-		self:StartStatusBarTimer(53, "Tainted Elemental", "Interface\\Icons\\Spell_Nature_ElementalShields");
-		self:ScheduleSelf(53, "Spawn", "Elemental");
-		self:ScheduleSelf(48, "SpawnSoonWarn", "Elemental");
-	
-	elseif msg == "ShieldDown" then
-		shieldsDown = shieldsDown + 1;
-		if shieldsDown < 4 then
-			self:Announce(string.format(DBM_VASHJ_WARN_SHIELD_FADED, shieldsDown), 3);
-		elseif shieldsDown == 4 then
-			self:SendSync("Phase3");
-		end
-	elseif msg == "Phase3" then
-		phase = 3;
-		self:UnScheduleSelf("Spawn", "Elemental");
-		self:UnScheduleSelf("Spawn", "Strider");
-		self:UnScheduleSelf("Spawn", "Naga");
-		self:UnScheduleSelf("SpawnSoonWarn", "Elemental");
-		self:UnScheduleSelf("SpawnSoonWarn", "Strider");
-		self:UnScheduleSelf("SpawnSoonWarn", "Naga");
-		self:EndStatusBarTimer("Elemental");
-		self:EndStatusBarTimer("Strider");
-		self:EndStatusBarTimer("Naga");
-		self:Announce(DBM_VASHJ_WARN_PHASE3, 3);		
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(38316) then
+		warnEntangle:Show()
+	end
+end
 
-	elseif string.sub(msg, 0, 4) == "Loot" then
-		local target = string.sub(msg, 5);
-		if self.Options.WarnLoot then
-			self:Announce(string.format(DBM_VASHJ_WARN_CORE_LOOT, target), 1);
-		end
-		if self.Options.IconLoot and self.Options.Announce and DBM.Rank >= 1 then
-			self:SetIcon(target, 30);
-		end
-		if target == UnitName("player") and self.Options.SpecWarnLoot then
-			self:AddSpecialWarning(DBM_VASHJ_SPECWARN_CORE);
+function mod:UNIT_DIED(args)
+	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if cid == 22009 then
+			elementalCount = elementalCount + 1
+			timerElemental:Start(nil, tostring(elementalCount))
+			warnElemental:Schedule(48, tostring(elementalCount))
+			specWarnElemental:Schedule(48)
 		end
 	end
 end

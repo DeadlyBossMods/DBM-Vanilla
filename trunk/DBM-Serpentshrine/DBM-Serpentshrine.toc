@@ -1,39 +1,35 @@
 ﻿## Interface: 40000
 ## X-Min-Interface: 30200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Serpentshrine Cavern|r
-## Author: Tandanu
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0불뱀 제단|r
 ## LoadOnDemand: 1
-## RequiredDeps: DBM-Core, DBM-BurningCrusade
+## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMSerpentshrine_SavedVars, DBMSerpentshrine_SavedStats
-## X-DBM-BC-AddOn: 1
-## X-DBM-Tab-ID: SCTab
-## X-DBM-Tab-BCTab: 1
-## X-DBM-Tab-Sort: 304
-## X-DBM-Name: Serpentshrine Cavern
-## X-DBM-Name-zhCN: 毒蛇神殿
-## X-DBM-Name-zhTW: 毒蛇神殿
-## X-DBM-Name-ruRU: Змеиное святилище
-## X-DBM-Tab-Text: Serpentshrine
-## X-DBM-Tab-Text-zhCN: 毒蛇神殿
-## X-DBM-Tab-Text-zhTW: 毒蛇神殿
-## X-DBM-Tab-Text-ruRU: Змеиное святилище
-## X-DBM-Tab-Title: Serpentshrine Cavern Boss Mods
-## X-DBM-Tab-Title-zhCN: 毒蛇神殿
-## X-DBM-Tab-Title-zhTW: 毒蛇神殿
-## X-DBM-Tab-Title-ruRU: Змеиное святилище Boss Mods
-## X-DBM-Tab-LoadZone: Serpentshrine Cavern
-## X-DBM-Tab-LoadZone-deDE: Höhle des Schlangenschreins
-## X-DBM-Tab-LoadZone-zhCN: 毒蛇神殿
-## X-DBM-Tab-LoadZone-zhTW: 毒蛇神殿洞穴
-## X-DBM-Tab-LoadZone-ruRU: Змеиное святилище
+## X-DBM-Mod: 1
+## X-DBM-Mod-Category: BC
+## X-DBM-Mod-Name: Serpentshrine Cavern
+## X-DBM-Mod-Name-zhCN: 毒蛇神殿
+## X-DBM-Mod-Name-zhTW: 毒蛇神殿
+## X-DBM-Mod-Name-ruRU: Змеиное святилище
+## X-DBM-Mod-Name-koKR: 불뱀 제단
+## X-DBM-Mod-Sort: 304
+--## X-DBM-Mod-LoadZoneID: 780
+## X-DBM-Mod-LoadZone: Serpentshrine Cavern
+## X-DBM-Mod-LoadZone-deDE: Höhle des Schlangenschreins
+## X-DBM-Mod-LoadZone-zhCN: 毒蛇神殿
+## X-DBM-Mod-LoadZone-zhTW: 毒蛇神殿洞穴
+## X-DBM-Mod-LoadZone-ruRU: Змеиное святилище
+## X-DBM-Mod-LoadZone-koKR: 불뱀 제단
 localization.en.lua
-localization.de.lua
 localization.cn.lua
-localization.tw.lua
+localization.de.lua
+localization.kr.lua
 localization.ru.lua
+localization.tw.lua
+MapSizes.lua
 Hydross.lua
-Fathomlord.lua
-Tidewalker.lua
 TheLurkerBelow.lua
 Leotheras.lua
+Fathomlord.lua
+Tidewalker.lua
 Vashj.lua

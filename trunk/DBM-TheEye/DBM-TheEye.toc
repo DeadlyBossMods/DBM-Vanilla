@@ -24,6 +24,7 @@
 ## X-DBM-Mod-LoadZone-zhTW: 風暴要塞
 ## X-DBM-Mod-LoadZone-esES: El Castillo de la Tempestad
 ## X-DBM-Mod-LoadZone-koKR: 폭풍우 요새
+MapSizes.lua
 localization.en.lua
 localization.de.lua
 localization.cn.lua
