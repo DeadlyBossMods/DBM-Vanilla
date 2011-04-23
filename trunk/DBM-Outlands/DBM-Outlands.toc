@@ -12,7 +12,7 @@
 ## X-DBM-Mod-Name-esES: Terrallende
 ## X-DBM-Mod-Name-koKR: 아웃랜드
 ## X-DBM-Mod-Sort: 307
---## X-DBM-Mod-LoadZoneID: 465,473
+--## X-DBM-Mod-LoadZoneID: 776,779
 ## X-DBM-Mod-LoadZone: Gruul's Lair,Magtheridon's Lair
 ## X-DBM-Mod-LoadZone-esES: Guarida de Gruul,Guarida de Magtheridon
 ## X-DBM-Tab-LoadZone-koKR: 그룰의 둥지,마그테리돈의 둥지

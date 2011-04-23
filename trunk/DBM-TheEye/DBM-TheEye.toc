@@ -16,6 +16,7 @@
 ## X-DBM-Mod-Name-esES: El Castillo de la Tempestad
 ## X-DBM-Mod-Name-koKR: 폭풍우 요새
 ## X-DBM-Mod-Sort: 303
+--## X-DBM-Mod-LoadZoneID: 782
 ## X-DBM-Mod-LoadZone: Tempest Keep
 ## X-DBM-Mod-LoadZone-ruRU: Крепость Бурь
 ## X-DBM-Mod-LoadZone-deDE: Festung der Stürme
