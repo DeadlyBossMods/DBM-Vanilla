@@ -1,3 +1,3 @@
---[[DBM:RegisterMapSize("HellfireRamparts",
-	1, 1355.47009278, 903.647033691
-)--]]
+DBM:RegisterMapSize("HellfireRamparts",
+	1, 694.56005859375, 463.0400390625
+)
