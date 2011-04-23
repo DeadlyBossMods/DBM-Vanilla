@@ -188,7 +188,7 @@ L:SetOptionLocalization{
 	TimerNaga			= "Show time for next Strider",--Translate
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",--Translate
 	SpecWarnCore		= "顯示特別警告當你擁有受污染的核心",
-	RangeFrame			= "顯示距離框"",
+	RangeFrame			= "顯示距離框",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
 	LootIcon			= "標記擁有受污染的核心的人"
 }
