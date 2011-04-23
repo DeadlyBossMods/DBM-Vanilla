@@ -21,7 +21,7 @@
 ## X-DBM-Mod-Name-esES: Mazmorras TBC
 ## X-DBM-Mod-Name-koKR: 5인 던전 (불타는 성전)
 ## X-DBM-Mod-Sort: 325
---## X-DBM-Mod-LoadZoneID: 
+--## X-DBM-Mod-LoadZoneID: 710,722,723,724,725,726,727,728,729,730,731,732,733,734,797,798
 ## X-DBM-Mod-LoadZone: Hellfire Ramparts,The Blood Furnace,The Shattered Halls,The Slave Pens,The Underbog,The Steamvault,Auchenai Crypts,Mana-Tombs,Sethekk Halls,Shadow Labyrinth,Old Hillsbrad Foothills,The Black Morass,The Mechanar,The Botanica,The Arcatraz,Magisters' Terrace
 ## X-DBM-Mod-LoadZone-deDE: Höllenfeuerbollwerk,Der Blutkessel,Die zerschmetterten Hallen,Die Sklavenunterkünfte,Tiefensumpf,Die Dampfkammer,Auchenaikrypta,Managruft,Sethekkhallen,Schattenlabyrinth,Vorgebirge des Alten Hügellands,Der schwarze Morast,Die Mechanar,Die Botanika,Die Arkatraz,Terrasse der Magister
 ## X-DBM-Mod-LoadZone-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров
@@ -32,7 +32,7 @@ localization.de.lua
 localization.kr.lua
 localization.ru.lua
 localization.es.lua
---Hellfire_Ramp\MapSizes.lua
+Hellfire_Ramp\MapSizes.lua
 Hellfire_Ramp\Gargolmar.lua
 Hellfire_Ramp\Omor.lua
 Hellfire_Ramp\Vazruden.lua
@@ -101,7 +101,7 @@ TK_Arcatraz\Zereketh.lua
 TK_Arcatraz\Dalliah.lua
 TK_Arcatraz\Soccothrates.lua
 TK_Arcatraz\Skyriss.lua
---MagistersTerrace\MapSizes.lua
+MagistersTerrace\MapSizes.lua
 MagistersTerrace\Selin.lua
 MagistersTerrace\Vexallus.lua
 MagistersTerrace\Delrissa.lua

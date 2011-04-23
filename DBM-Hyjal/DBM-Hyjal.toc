@@ -15,6 +15,7 @@
 ## X-DBM-Mod-Name-esES: Monte Hyjal
 ## X-DBM-Mod-Name-koKR: 하이잘 정상
 ## X-DBM-Mod-Sort: 302
+--## X-DBM-Mod-LoadZoneID: 775
 ## X-DBM-Mod-LoadZone: Hyjal Summit
 ## X-DBM-Mod-LoadZone-ruRU: Вершина Хиджала
 ## X-DBM-Mod-LoadZone-deDE: Hyjalgipfel
