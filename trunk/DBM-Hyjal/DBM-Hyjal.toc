@@ -1,5 +1,5 @@
-## Interface: 40000
-## X-Min-Interface: 30200
+## Interface: 40100
+## X-Min-Interface: 40100
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Mount Hyjal|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0하이잘 정상|r
 ## LoadOnDemand: 1
@@ -15,14 +15,7 @@
 ## X-DBM-Mod-Name-esES: Monte Hyjal
 ## X-DBM-Mod-Name-koKR: 하이잘 정상
 ## X-DBM-Mod-Sort: 302
---## X-DBM-Mod-LoadZoneID: 775
-## X-DBM-Mod-LoadZone: Hyjal Summit
-## X-DBM-Mod-LoadZone-ruRU: Вершина Хиджала
-## X-DBM-Mod-LoadZone-deDE: Hyjalgipfel
-## X-DBM-Mod-LoadZone-zhCN: 海加尔峰
-## X-DBM-Mod-LoadZone-zhTW: 海加爾山
-## X-DBM-Mod-LoadZone-esES: La Cima Hyjal
-## X-DBM-Mod-LoadZone-koKR: 하이잘 정상
+## X-DBM-Mod-LoadZoneID: 775
 localization.en.lua
 localization.de.lua
 localization.cn.lua
