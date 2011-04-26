@@ -1,5 +1,5 @@
-﻿## Interface: 40000
-## X-Min-Interface: 30200
+﻿## Interface: 40100
+## X-Min-Interface: 40100
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Serpentshrine Cavern|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0불뱀 제단|r
 ## LoadOnDemand: 1
@@ -13,13 +13,7 @@
 ## X-DBM-Mod-Name-ruRU: Змеиное святилище
 ## X-DBM-Mod-Name-koKR: 불뱀 제단
 ## X-DBM-Mod-Sort: 304
---## X-DBM-Mod-LoadZoneID: 780
-## X-DBM-Mod-LoadZone: Serpentshrine Cavern
-## X-DBM-Mod-LoadZone-deDE: Höhle des Schlangenschreins
-## X-DBM-Mod-LoadZone-zhCN: 毒蛇神殿
-## X-DBM-Mod-LoadZone-zhTW: 毒蛇神殿洞穴
-## X-DBM-Mod-LoadZone-ruRU: Змеиное святилище
-## X-DBM-Mod-LoadZone-koKR: 불뱀 제단
+## X-DBM-Mod-LoadZoneID: 780
 localization.en.lua
 localization.cn.lua
 localization.de.lua
