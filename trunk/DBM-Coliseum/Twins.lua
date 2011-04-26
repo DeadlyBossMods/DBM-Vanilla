@@ -141,7 +141,7 @@ do
 				absorbRemaining = absorbRemaining - absorbed
 			end
 		end
-	end
+	end)
 	
 	function showShieldHealthBar(self, mob, shieldName, absorb)
 		shieldedMob = mob
