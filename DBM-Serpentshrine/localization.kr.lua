@@ -190,7 +190,7 @@ L:SetOptionLocalization{
 	SpecWarnCore		= "오염된 핵을 획득할 경우 특수 경고 보기",
 	RangeFrame			= "거리 프레임 보기",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "오염된 핵 획득 대상에게 공격대 징표 설정"
+	LootIcon			= "오염된 핵 획득 대상에게 전술 목표 아이콘 설정"
 }
 
 L:SetMiscLocalization{
