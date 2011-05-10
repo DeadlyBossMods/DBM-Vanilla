@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
+mod:SetModelID(10115)
 mod:SetMinSyncRevision(168)
 mod:RegisterCombat("yell", L.YellPull)
 mod:SetWipeTime(45)--guesswork
