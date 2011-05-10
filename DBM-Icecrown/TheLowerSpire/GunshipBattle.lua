@@ -7,11 +7,13 @@ if UnitFactionGroup("player") == "Alliance" then
 	mod:RegisterCombat("yell", L.PullAlliance)
 	mod:RegisterKill("yell", L.KillAlliance)
 	mod:SetCreatureID(37215)	-- Orgrim's Hammer
+	mod:SetModelID(30416)		-- High Overlord Saurfang
 	AddsIcon = 23334
 else
 	mod:RegisterCombat("yell", L.PullHorde)
 	mod:RegisterKill("yell", L.KillHorde)
 	mod:SetCreatureID(37540)	-- The Skybreaker
+	mod:SetModelID(30508)		-- Muradin Bronzebeard
 	AddsIcon = 23336
 end
 mod:SetMinCombatTime(50)
