@@ -3,7 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15727)
-mod:SetModelID(15787)
+--mod:SetModelID(15787)--Does not scale correctly.
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
