@@ -2,7 +2,8 @@
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 4685 $"):sub(12, -3))
-mod:SetCreatureID(34564)  
+mod:SetCreatureID(34564)
+mod:SetModelID(29268) 
 
 mod:RegisterCombat("yell", L.YellPull)
 
