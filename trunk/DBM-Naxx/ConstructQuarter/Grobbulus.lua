@@ -6,8 +6,7 @@ mod:SetCreatureID(15931)
 mod:SetUsedIcons(5, 6, 7, 8)
 
 mod:RegisterCombat("combat")
-
-mod:EnableModel()
+mod:SetModelID(16035)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",

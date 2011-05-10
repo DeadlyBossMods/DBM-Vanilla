@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(11583)
+mod:SetModelID(11380)
 mod:RegisterCombat("yell", L.YellPull)
 mod:SetWipeTime(25)--guesswork
 
