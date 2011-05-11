@@ -2,7 +2,8 @@ local mod	= DBM:NewMod("LowerSpireTrash", "DBM-Icecrown", 1)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 4408 $"):sub(12, -3))
-mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
+mod:SetModelID(30459)
+mod:SetUsedIcons(8)
 
 
 mod:RegisterEvents(
@@ -13,25 +14,25 @@ mod:RegisterEvents(
 
 local warnDisruptingShout		= mod:NewSpellAnnounce(71022, 2)
 local warnDarkReckoning			= mod:NewTargetAnnounce(69483, 3)
-local warnDeathPlague			= mod:NewTargetAnnounce(72865, 4)
+--local warnDeathPlague			= mod:NewTargetAnnounce(72865, 4)
 
 local specWarnDisruptingShout	= mod:NewSpecialWarningCast(71022)
 local specWarnDarkReckoning		= mod:NewSpecialWarningMove(69483)
-local specWarnDeathPlague		= mod:NewSpecialWarningYou(72865)
+--local specWarnDeathPlague		= mod:NewSpecialWarningYou(72865)
 local specWarnTrap				= mod:NewSpecialWarning("SpecWarnTrap")
 
 local timerDisruptingShout		= mod:NewCastTimer(3, 71022)
 local timerDarkReckoning		= mod:NewTargetTimer(8, 69483)
-local timerDeathPlague			= mod:NewTargetTimer(15, 72865)
+--local timerDeathPlague			= mod:NewTargetTimer(15, 72865)
 
 local soundDarkReckoning = mod:NewSound(69483)
 mod:AddBoolOption("SetIconOnDarkReckoning", true)
-mod:AddBoolOption("SetIconOnDeathPlague", true)
+--mod:AddBoolOption("SetIconOnDeathPlague", true)
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
 
-local DeathPlagueTargets = {}
-local DeathPlagueIcons = 8
+--local DeathPlagueTargets = {}
+--local DeathPlagueIcons = 8
 
 local function warnPlagueTargetsTargets()
 	warnDeathPlague:Show(table.concat(DeathPlagueTargets, "<, >"))
@@ -50,7 +51,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnDarkReckoning then
 			self:SetIcon(args.destName, 8, 8)
 		end
-	elseif args:IsSpellID(72865) then
+--[[	elseif args:IsSpellID(72865) then
 		DeathPlagueTargets[#DeathPlagueTargets + 1] = args.destName
 		timerDeathPlague:Start(args.destName)
 		if args:IsPlayer() then
@@ -61,7 +62,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			DeathPlagueIcons = DeathPlagueIcons - 1
 		end
 		self:Unschedule(warnPlagueTargetsTargets)
-		self:Schedule(0.3, warnPlagueTargetsTargets)
+		self:Schedule(0.3, warnPlagueTargetsTargets)--]]
 	end
 end
 
