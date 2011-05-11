@@ -5,8 +5,10 @@ mod:SetRevision(("$Revision: 2509 $"):sub(12, -3))
 
 if UnitFactionGroup("player") == "Alliance" then
 	mod:SetCreatureID(26798)
+	mod:SetModelID(24352)
 else
 	mod:SetCreatureID(26796)
+	mod:SetModelID(24366)
 end
 
 mod:RegisterCombat("combat")
