@@ -1,5 +1,6 @@
 local mod = DBM:NewMod("LichKingEvent", "DBM-Party-WotLK", 16)
 local L = mod:GetLocalizedStrings()
+mod:SetModelID(30721)
 
 mod:SetRevision(("$Revision: 2153 $"):sub(12, -3))
 mod:RegisterEvents(
