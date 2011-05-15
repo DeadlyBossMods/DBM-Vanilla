@@ -1,204 +1,168 @@
-local Souls = DBM:NewBossMod("Souls", DBM_SOULS_NAME, DBM_SOULS_DESCRIPTION, DBM_BLACK_TEMPLE, DBM_BT_TAB, 6)
+local mod	= DBM:NewMod("Souls", "DBM-BlackTemple")
+local L		= mod:GetLocalizedStrings()
 
-Souls.Version	= "1.0"
-Souls.Author	= "Tandanu"
-Souls.MinVersionToSync = 3.00
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(23420)
+mod:SetModelID(21483)
+mod:SetZone()
+mod:SetUsedIcons(4, 5, 6, 7, 8)
 
+mod:RegisterCombat("yell", L.Pull)
 
-Souls:SetCreatureID(23418)
-Souls:RegisterCombat("yell", DBM_SOULS_YELL_PULL, 23420)
-
-
-Souls:RegisterEvents(
+mod:RegisterEvents(
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE"
 )
 
-local drainTargets = {}
-local spiteTargets = {}
-local lastFixate
-local lastSpite = 0
-local phase = 1
+local warnFixate		= mod:NewTargetAnnounce(41294, 3)
+local warnDrain			= mod:NewSpellAnnounce(41303, 3)
+local warnEnrage		= mod:NewAnnounce("WarnEnrage", 4, 41292)
+local warnEnrageSoon	= mod:NewAnnounce("WarnEnrageSoon", 3, 41292)
+local warnEnrageEnd		= mod:NewAnnounce("WarnEnrageEnd", 3, 41292)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnMana			= mod:NewAnnounce("WarnMana", 4, 41350)
+local warnDeaden		= mod:NewTargetAnnounce(41410, 3)
+local warnShockCast		= mod:NewSpellAnnounce(41426, 3, false)
+local warnShield		= mod:NewSpellAnnounce(41431, 3)
+local warnPhase3		= mod:NewPhaseAnnounce(3)
+local warnSoul			= mod:NewSpellAnnounce(41545, 3)
+local warnSpite			= mod:NewSpellAnnounce(41376, 3)
 
-Souls:AddOption("WarnDrain", true, DBM_SOULS_OPTION_DRAIN)
-Souls:AddOption("WarnDrainCast", false, DBM_SOULS_OPTION_DRAIN_CAST)
-Souls:AddOption("WarnFixate", false, DBM_SOULS_OPTION_FIXATE)
-Souls:AddOption("WarnScream", false, DBM_SOULS_OPTION_SCREAM)
-Souls:AddOption("WarnSpite", true, DBM_SOULS_OPTION_SPITE)
-Souls:AddOption("SpecWarnSpite", true, DBM_SOULS_OPTION_SPECWARN_SPITE)
-Souls:AddOption("SpiteWhisper", false, DBM_SOULS_OPTION_WHISPER_SPITE)
+local specWarnShock		= mod:NewSpecialWarningInterrupt(41426, false)
+local specWarnShield	= mod:NewSpecialWarningDispel(41431)
+local specWarnSpite		= mod:NewSpecialWarningYou(41376)
 
-Souls:AddBarOption("Enrage")
-Souls:AddBarOption("Next Enrage")
-Souls:AddBarOption("Fixate: (.*)")
-Souls:AddBarOption("Mana Drain")
-Souls:AddBarOption("Rune Shield")
-Souls:AddBarOption("Deaden")
-Souls:AddBarOption("Soul Scream")
+local timerEnrage		= mod:NewTimer(15, "TimerEnrage", 40683)
+local timerNextEnrage	= mod:NewTimer(32, "TimerNextEnrage", 40683)
+local timerDeaden		= mod:NewTargetTimer(10, 41410)
+local timerNextDeaden	= mod:NewCDTimer(31, 41410)
+local timerMana			= mod:NewTimer(160, "TimerMana", 41350)
+local timerNextShield	= mod:NewCDTimer(15, 41431)
+local timerNextSoul		= mod:NewCDTimer(10, 41545)
 
-function Souls:OnCombatStart(delay)
-	drainTargets = {}
-	spiteTargets = {}
-	lastFixate = nil
-	self:StartStatusBarTimer(47 - delay, "Next Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy")
-	self:ScheduleSelf(42 - delay, "EnrageWarn")
-	phase = 1
+mod:AddBoolOption("DrainIcon", true)
+mod:AddBoolOption("SpiteIcon", true)
+mod:AddBoolOption("SpiteWhisper", false, "announce")
+
+local warnDrainTargets = {}
+local warnSpiteTargets = {}
+local lastFixate = false
+local drainIcon = 8
+local spiteIcon = 8
+local soulSpam = 0
+
+local function showDrain()
+	warnDrain:Show(table.concat(warnDrainTargets, "<, >"))
+	table.wipe(warnDrainTargets)
+	drainIcon = 8
 end
 
+local function showSpite()
+	warnSpite:Show(table.concat(warnSpiteTargets, "<, >"))
+	table.wipe(warnSpiteTargets)
+	spiteIcon = 8
+end
 
-function Souls:OnEvent(event, arg1)
-	if event == "CHAT_MSG_RAID_BOSS_EMOTE" then
-		if arg1 == DBM_SOULS_EMOTE_ENRAGE and self.InCombat then
-			self:Announce(DBM_SOULS_WARN_ENRAGE, 3)
-			self:StartStatusBarTimer(15, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy")
-			self:ScheduleSelf(15, "NextEnrage")
-		end
-	elseif event == "NextEnrage" then
-		self:Announce(DBM_SOULS_WARN_ENRAGE_OVER, 2)
-		self:StartStatusBarTimer(32, "Next Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy")
-		self:ScheduleSelf(27, "EnrageWarn")
-	elseif event == "EnrageWarn" then
-		self:Announce(DBM_SOULS_WARN_ENRAGE_SOON, 2)
-	
-	elseif event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 41431 and bit.band(arg1.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) == 0 then
-			self:SendSync("Runeshield")
-		elseif arg1.spellId == 41376 then
-			self:SendSync("Spite"..tostring(arg1.destName))
-		elseif arg1.spellId == 41303 then
-			self:SendSync("SoulDrain"..tostring(arg1.destName))
-		elseif arg1.spellId == 41294 then
-			self:SendSync("Fixate"..tostring(arg1.destName))
-		end
-	elseif event == "RuneShieldWarn" then
-		self:Announce(DBM_SOULS_WARN_RUNESHIELD_SOON, 2)
+function mod:OnCombatStart(delay)
+	lastFixate = false
+	soulSpam = 0
+	table.wipe(warnSpiteTargets)
+	timerNextEnrage:Start(47-delay)
+	warnEnrageSoon:Schedule(42-delay)
+	DBM.BossHealth:AddBoss(23418, L.Suffering)
+end
 
-	elseif event == "SPELL_CAST_START" then
-		if arg1.spellId == 41410 then
-			self:SendSync("Deaden")
-		elseif arg1.spellId == 41303 then
-			self:SendSync("DrainCast")
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(41431) and not args:IsDestTypePlayer() then
+		warnShield:Show()
+		timerNextShield:Start()
+		specWarnShield:Show(args.destName)
+	elseif args:IsSpellID(41376) then
+		warnSpiteTargets[#warnSpiteTargets + 1] = args.destName
+		self:Unschedule(showSpite)
+		if self.Options.SpiteIcon then
+			self:SetIcon(args.destName, spiteIcon)
+			spiteIcon = spiteIcon - 1
 		end
-	
-	elseif event == "SPELL_DAMAGE" then
-		if arg1.spellId == 41545 then
-			self:SendSync("SoulScream")
+		if args:IsPlayer() then
+			specWarnSpite:Show()
 		end
-	
-	elseif event == "DeadenWarn" then
-		self:Announce(DBM_SOULS_WARN_DEADEN_SOON, 1)
-	
-	elseif event == "CHAT_MSG_MONSTER_YELL" and arg1 then
-		if arg1 == DBM_SOULS_YELL_DESIRE or arg1:find(DBM_SOULS_YELL_DESIRE_DEMONIC) then
-			phase = 2
-			self:Announce(DBM_SOULS_WARN_DESIRE_INC, 1)
-			self:StartStatusBarTimer(160, "Mana Drain", "Interface\\Icons\\Spell_Shadow_SiphonMana")
-			self:ScheduleSelf(140, "ManaDrainWarn")
-			
-			self:StartStatusBarTimer(13.5, "Rune Shield", "Interface\\Icons\\Spell_Arcane_Blast")
-			self:ScheduleSelf(10.5, "RuneShieldWarn")
-			self:StartStatusBarTimer(28, "Deaden", "Interface\\Icons\\Spell_Shadow_SoulLeech_1")
-			self:ScheduleSelf(23, "DeadenWarn")
-		elseif arg1 == DBM_SOULS_YELL_ANGER_INC then
-			phase = 3
-			self:Announce(DBM_SOULS_WARN_ANGER_INC, 1)
+		if IsRaidLeader() and self.Options.SpiteWhisper then
+			self:SendWhisper(L.SpiteWhisper, args.destName)
 		end
-	elseif event == "ManaDrainWarn" then
-		self:Announce(DBM_SOULS_WARN_MANADRAIN, 1)
+		self:Schedule(0.3, showSpite)
+	elseif args:IsSpellID(41303) then
+		warnDrainTargets[#warnDrainTargets + 1] = args.destName
+		self:Unschedule(showDrain)
+		if self.Options.DrainIcon then
+			self:SetIcon(args.destName, drainIcon)
+			drainIcon = drainIcon - 1
+		end
+		self:Schedule(1, showDrain)
+	elseif args:IsSpellID(41294) then
+		if lastFixate ~= args.destName then
+			warnFixate:Show(args.destName)
+			lastFixate = args.destName
+		end
+	elseif args:IsSpellID(41410) then
+		warnDeaden:Show(args.destName)
+		timerDeaden:Start(args.destName)
+	end
+end
 
-	elseif event == "WarnDrain" then
-		local msg = ""
-		for i, v in ipairs(drainTargets) do
-			msg = msg..">"..v.."<"..", "
-		end
-		msg = msg:sub(0, -3)
-		drainTargets = {}
-		self:Announce(DBM_SOULS_WARN_SOULDRAIN:format(msg), 1)
-	elseif event == "WarnSpite" then
-		if (GetTime() - lastSpite) > 12 then
-			lastSpite = GetTime()
-			local msg = ""
-			for i, v in ipairs(spiteTargets) do
-				msg = msg..">"..v.."<"..", "
-				if v == UnitName("player") then
-					if self.Options.SpecWarnSpite then
-						self:AddSpecialWarning(DBM_SOULS_SPECWARN_SPITE)
-					end
-				end
-				if self.Options.SpiteWhisper and self.Options.Announce and DBM.Rank >= 1 then
-					self:SendHiddenWhisper(DBM_SOULS_WHISPER_SPITE, v)
-				end
-			end
-			msg = msg:sub(0, -3)
-			spiteTargets = {}
-			self:Announce(DBM_SOULS_WARN_SPITE:format(msg), 2)
-		else
-			spiteTargets = {}
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(41410) then
+		timerNextDeaden:Start()
+	elseif args:IsSpellID(41426) then
+		warnShockCast:Show()
+		if self:GetUnitCreatureId("target") == 23419 or self:GetUnitCreatureId("focus") == 23419 then
+			specWarnShock:Show()
 		end
 	end
 end
 
-function Souls:GetBossHP()
-	if phase == 1 then
-		return DBM_SOULS_BOSS_SUFFERING..": "..DBM.GetHPByName(DBM_SOULS_BOSS_SUFFERING)
-	elseif phase == 2 then
-		return DBM_SOULS_BOSS_DESIRE..": "..DBM.GetHPByName(DBM_SOULS_BOSS_DESIRE)
-	elseif phase == 3 then
-		return DBM_SOULS_BOSS_KILL_NAME..": "..DBM.GetHPByName(DBM_SOULS_BOSS_KILL_NAME)
+function mod:SPELL_DAMAGE(args)
+	if args:IsSpellID(41545) and GetTime() - soulSpam >= 3 then
+		warnSoul:Show()
+		timerNextSoul:Start()
+		soulSpam = GetTime()
 	end
 end
 
-function Souls:OnSync(msg)
-	if msg == "Runeshield" then
-		self:Announce(DBM_SOULS_WARN_RUNESHIELD, 3)
-		self:StartStatusBarTimer(15.4, "Rune Shield", "Interface\\Icons\\Spell_Arcane_Blast") -- the timer between 2 runeshields is always about 15.5 seconds in my combatlog...this could be due to delay/lag/whatever, but this timer seems to be quite accurate
-		self:ScheduleSelf(12.4, "RuneShieldWarn")
-	elseif msg == "Deaden" then
-		self:Announce(DBM_SOULS_WARN_DEADEN, 2)
-		self:StartStatusBarTimer(31.5, "Deaden", "Interface\\Icons\\Spell_Shadow_SoulLeech_1")
-		self:ScheduleSelf(26.5, "DeadenWarn")
-	elseif msg:sub(0, 5) == "Spite" and self.Options.WarnSpite then
-		msg = msg:sub(6)
-		table.insert(spiteTargets, msg)
-		self:UnScheduleSelf("WarnSpite")
-		if #spiteTargets == 3 then
-			self:OnEvent("WarnSpite")
-		else
-			self:ScheduleSelf(1.3, "WarnSpite")
-		end
-	elseif msg:sub(0, 9) == "SoulDrain" and self.Options.WarnDrain then
-		msg = msg:sub(10)
-		table.insert(drainTargets, msg)
-		self:UnScheduleSelf("WarnDrain")
-		if #drainTargets == 5 then
-			self:OnEvent("WarnDrain")
-		else
-			self:ScheduleSelf(1.5, "WarnDrain")
-		end
-	elseif msg == "DrainCast" then
-		if self.Options.WarnDrainCast then
-			self:Announce(DBM_SOULS_WARN_SOULDRAIN_CAST, 1)
-		end
-	elseif msg:sub(0, 6) == "Fixate" and self.InCombat then
-		msg = msg:sub(7)
-		if lastFixate then
-			self:EndStatusBarTimer(lastFixate)
-		end
-		self:StartStatusBarTimer(5.5, "Fixate: "..msg, "Interface\\Icons\\Spell_Shadow_SpectralSight")
-		lastFixate = "Fixate: "..msg
-		if msg == UnitName("player") then
-			self:AddSpecialWarning(DBM_SOULS_SPECWARN_FIXATE)
-		end
-		if self.Options.WarnFixate then
-			self:Announce(DBM_SOULS_WARN_FIXATE:format(msg), 2)
-		end
-	elseif msg == "SoulScream" then
-		self:StartStatusBarTimer(10, "Soul Scream", "Interface\\Icons\\Spell_Shadow_SoulLeech")
-		if self.Options.WarnScream then
-			self:Announce(DBM_SOULS_WARN_SCREAM, 1)
-		end
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+	if msg == L.Enrage or msg:find(L.Enrage) then
+		warnEnrage:Show()
+		timerEnrage:Start()
+		timerNextEnrage:Schedule(15)
+		warnEnrageEnd:Schedule(15)
+		warnEnrageSoon:Schedule(42)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Phase2 or msg:find(L.Phase2) or msg == L.Phase2d or msg:find(L.Phase2d) then
+		timerNextEnrage:Cancel()
+		warnEnrageEnd:Cancel()
+		warnEnrageSoon:Cancel()
+		warnPhase2:Show()
+		warnMana:Schedule(130)
+		timerMana:Start()
+		timerNextShield:Start(13)
+		timerNextDeaden:Start(28)
+		DBM.BossHealth:AddBoss(23419, L.Desire)
+	elseif msg == L.Phase3 or msg:find(L.Phase3) then
+		warnMana:Cancel()
+		timerMana:Cancel()
+		timerNextShield:Cancel()
+		timerNextDeaden:Cancel()
+		warnPhase3:Show()
+		timerNextSoul:Start()
+		DBM.BossHealth:AddBoss(23450, L.Anger)
 	end
 end
