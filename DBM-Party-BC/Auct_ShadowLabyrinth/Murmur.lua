@@ -2,9 +2,9 @@ local mod = DBM:NewMod("Murmur", "DBM-Party-BC", 10)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(18708)--
-mod:SetModelID(18839)
---closeup mod:SetUsedIcons(8)
+mod:SetCreatureID(18708)
+--mod:SetModelID(18839)--Does not scale, looks even worse then sindragosa.
+mod:SetUsedIcons(8)
 
 mod:RegisterCombat("combat")
 

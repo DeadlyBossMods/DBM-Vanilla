@@ -3,7 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(19218)
-mod:SetModelID(18816)
+mod:SetModelID(18816)--Bad angle, but not terrible enough to disable i guess
 
 mod:RegisterCombat("combat")
 
