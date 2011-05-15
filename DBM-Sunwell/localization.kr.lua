@@ -1,0 +1,219 @@
+﻿if GetLocale() ~= "koKR" then return end
+local L
+
+---------------
+--  Kalecgos --
+---------------
+L = DBM:GetModLocalization("Kal")
+
+L:SetGeneralLocalization{
+	name = "칼렉고스"
+}
+
+L:SetWarningLocalization{
+	WarnPortal			= "정신 세계 #%d : >%s< (%d 파티)",
+	SpecWarnWildMagic	= "마법 폭주 - %s!"
+}
+
+L:SetTimerLocalization{
+	TimerNextPortal		= "다음 차원문 (%d)"
+}
+
+L:SetOptionLocalization{
+	WarnPortal			= "$spell:46021 대상 알리기",
+	SpecWarnWildMagic	= "마법 폭주의 영향을 받을 경우 특수 경고 보기",
+	TimerNextPortal		= "다음 차원문 생성 타이머 보기",
+	RangeFrame			= "거리 프레임 보기",
+	ShowFrame			= "내부 공격대원을 보여주는 정보 프레임 보기" ,
+	FrameClassColor		= "정보 프레임에서 직업 색상 사용하기",
+	FrameUpwards		= "정보 프레임 바를 위쪽으로 확장하기",
+	FrameLocked			= "정보 프레임 고정하기 (이동불가로 설정하기)"
+}
+
+L:SetMiscLocalization{
+	Demon				= "타락의 사스로바르",
+	Heal				= "치유량 100% 증가",
+	Haste				= "시전속도 100% 증가",
+	Hit					= "물리 적중률 50% 감소",
+	Crit				= "치명타 대미지 100% 증가",
+	Aggro				= "위협수준 생성 100% 증가",
+	Mana				= "마나 소모량 50% 감소",
+	FrameTitle			= "정신 세계",
+	FrameLock			= "프레임 잠금",
+	FrameClassColor		= "직업 색상 사용",
+	FrameOrientation	= "위로 확장",
+	FrameHide			= "프레임 숨김",
+	FrameClose			= "메뉴 닫기",
+}
+
+----------------
+--  Brutallus --
+----------------
+L = DBM:GetModLocalization("Brutallus")
+
+L:SetGeneralLocalization{
+	name = "브루탈루스"
+}
+
+L:SetWarningLocalization{
+}
+
+L:SetTimerLocalization{
+}
+
+L:SetOptionLocalization{
+	BurnIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(46394),
+	BurnWhisper		= "$spell:46394 대상에게 귓속말 보내기",
+}
+
+L:SetMiscLocalization{
+	BurnWhisper		= "당신에게 불사르기!",
+}
+
+--------------
+--  Felmyst --
+--------------
+L = DBM:GetModLocalization("Felmyst")
+
+L:SetGeneralLocalization{
+	name = "지옥안개"
+}
+
+L:SetWarningLocalization{
+	WarnPhase		= "%s 단계",
+	WarnPhaseSoon	= "10초 후 %s 단계",
+	WarnBreath		= "깊은 숨결 (%d)"
+}
+
+L:SetTimerLocalization{
+	TimerPhase		= "다음 %s 단계",
+}	TimerBreath		= "깊은 숨결 쿨다운"
+
+L:SetOptionLocalization{
+	WarnPhase		= "단계 전환 경고 보기",
+	WarnPhaseSoon	= "단계 전환 사전 경고 보기(prewarn)",
+	WarnBreath		= "깊은 숨결 경고 보기",
+	TimerPhase		= "다음 단계 타이머 보기",
+	TimerBreath		= "깊은 숨결 쿨다운 타이머 보기",
+	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
+	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
+	YellOnEncaps	= "$spell:45665 외치기"
+}
+
+L:SetMiscLocalization{
+	Air				= "비행",
+	Ground			= "지상",
+	YellEncaps		= "나에게 가두기! 주변에서 피하세요!!",
+	AirPhase		= "나는 어느 때보다도 강하다!",
+	Breath			= "숨을 깊게 들이마십니다."
+}
+
+-----------------------
+--  The Eredar Twins --
+-----------------------
+L = DBM:GetModLocalization("Twins")
+
+L:SetGeneralLocalization{
+	name = "에레다르 쌍둥이"
+}
+
+L:SetWarningLocalization{
+}
+
+L:SetTimerLocalization{
+}
+
+L:SetOptionLocalization{
+	NovaIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45329),
+	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
+	RangeFrame		= "거리 프레임 보기",
+	NovaWhisper		= "$spell:45329 대상에게 귓속말 보내기",
+	ConflagWhisper	= "$spell:45333 대상에게 귓속말 보내기",
+}
+
+L:SetMiscLocalization{
+	NovaWhisper		= "당신에게 암흑 회오리!",
+	ConflagWhisper	= "당신에게 거대한 불길!",
+	Nova			= "방향을 돌려 거대한 불길을",
+	Conflag			= "방향을 돌려 암흑 회오리를"
+}
+
+------------
+--  M'uru --
+------------
+L = DBM:GetModLocalization("Muru")
+
+L:SetGeneralLocalization{
+	name = "므우루"
+}
+
+L:SetWarningLocalization{
+	WarnHuman		= "타락한 엘프 소환 (%d)",
+	WarnHumanSoon	= "5초 후 타락한 엘프 소환 (%d)",
+	WarnVoid		= "공허의 파수병 소환 (%d)",
+	WarnVoidSoon	= "5초 후 공허의 파수병 소환 (%d)",
+	WarnFiend		= "어둠 마귀 소환"
+}
+
+L:SetTimerLocalization{
+	TimerHuman		= "다음 타락한 엘프 (%s)",
+	TimerVoid		= "다음 공허의 파수병 (%s)",
+	TimerPhase		= "엔트로피우스 등장"
+}
+
+L:SetOptionLocalization{
+	WarnHuman		= "타락한 엘프 소환 경고 보기",
+	WarnHumanSoon	= "타락한 엘프 소환 사전 경고 보기(prewarn)",
+	WarnVoid		= "공허의 파수병 소환 경고 보기",
+	WarnVoidSoon	= "공허의 파수병 소환 사전 경고 보기(prewarn)",
+	WarnFiend		= "2 단계에서 어둠 마귀 소환 경고 보기",
+	TimerHuman		= "다음 타락한 엘프 소환 타이머 보기",
+	TimerVoid		= "다음 공허의 파수병 소환 타이머 보기",
+	TimerPhase		= "2 단계 전환 타이머 보기"
+}
+
+L:SetMiscLocalization{
+	Entropius		= "엔트로피우스"
+}
+
+----------------
+--  Kil'jeden --
+----------------
+L = DBM:GetModLocalization("Kil")
+
+L:SetGeneralLocalization{
+	name = "킬제덴"
+}
+
+L:SetWarningLocalization{
+	WarnDarkOrb		= "보호의 구슬 생성",
+	WarnBlueOrb		= "푸른용의 수정구 활성화",
+	SpecWarnDarkOrb	= "보호의 구슬 구슬 생성됨!",
+	SpecWarnBlueOrb	= "푸른용의 수정구 활성화됨!"
+}
+
+L:SetTimerLocalization{
+	TimerBlueOrb	= "수정구 활성화"
+}
+
+L:SetOptionLocalization{
+	WarnDarkOrb		= "보호의 구슬 생성 경고 보기",
+	WarnBlueOrb		= "푸른용의 수정구 활성화 경고 보기",
+	SpecWarnDarkOrb	= "보호의 구슬 생성 특수 경고 보기",
+	SpecWarnBlueOrb	= "푸른용의 수정구 활성화 특수 경고 보기",
+	TimerBlueOrb	= "푸른용의 수정구 활성화 타이머 보기",
+	RangeFrame		= "거리 프레임 보기",
+	BloomIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45641),
+	YellOnBloom		= "$spell:45641 외치기",
+	BloomWhisper	= "$spell:45641 대상에게 귓속말 보내기"
+}
+
+L:SetMiscLocalization{
+	YellBloom		= "나에게 화염 불꽃!",
+	BloomWhisper	= "당신에게 화염 불꽃!",
+	OrbYell1		= "수정구에 힘을 쏟겠습니다! 준비하세요!",
+	OrbYell2		= "다른 수정구에 힘을 불어넣었습니다! 어서요!",
+	OrbYell3		= "다른 수정구가 준비됐습니다! 서두르세요!",
+	OrbYell4		= "모든 힘을 수정구에 실었습니다! 이제 그대들의 몫입니다!"
+
+}
