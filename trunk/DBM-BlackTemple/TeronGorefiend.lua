@@ -1,45 +1,73 @@
-local Gorefiend = DBM:NewBossMod("TeronGorefiend", DBM_GOREFIEND_NAME, DBM_GOREFIEND_DESCRIPTION, DBM_BLACK_TEMPLE, DBM_BT_TAB, 4)
+local mod	= DBM:NewMod("TeronGorefiend", "DBM-BlackTemple")
+local L		= mod:GetLocalizedStrings()
 
-Gorefiend.Version		= "1.0"
-Gorefiend.Author		= "Tandanu"
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(22871)
+mod:SetModelID(21254)
+mod:SetZone()
+mod:SetUsedIcons(4, 5, 6, 7, 8)
 
-Gorefiend:SetCreatureID(22871)
-Gorefiend:RegisterCombat("yell", DBM_GOREFIEND_YELL_PULL)
+mod:RegisterCombat("combat")
 
-Gorefiend:RegisterEvents(
-	"SPELL_AURA_APPLIED"
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED_DOSE",
+	"SPELL_CAST_SUCCESS"
 )
 
-Gorefiend:AddOption("WarnIncinerate", false, DBM_GOREFIEND_OPTION_INCINERATE)
+local warnCrushed			= mod:NewTargetAnnounce(40243, 3)
+local warnIncinerate		= mod:NewSpellAnnounce(40239, 3)
+local warnDeath				= mod:NewTargetAnnounce(40251, 3)
 
-Gorefiend:AddBarOption("Vengeful Spirit: (.*)")
-Gorefiend:AddBarOption("Shadow of Death: (.*)")
+local specWarnDeath			= mod:NewSpecialWarningYou(40251)
 
-function Gorefiend:OnEvent(event, arg1)
-	if event == "SPELL_AURA_APPLIED" then
-		if arg1.spellId == 40251 then
-			if arg1.destName == UnitName("player") then
-				self:AddSpecialWarning(DBM_GOREFIEND_SPECWARN_SOD)
-			end
-			self:SendSync("SoD"..tostring(arg1.destName))
-		elseif arg1.spellId == 40239 then
-			self:SendSync("Inc"..tostring(arg1.destName))
+local timerCrushed			= mod:NewBuffActiveTimer(15, 40243)
+local timerDeath			= mod:NewTargetTimer(55, 40251)
+local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325)
+
+mod:AddBoolOption("CrushIcon", true)
+
+local warnCrushedTargets = {}
+local crushIcon = 8
+
+local function showCrushedTargets()
+	warnCrushed:Show(table.concat(warnCrushedTargets, "<, >"))
+	table.wipe(warnCrushedTargets)
+	crushIcon = 8
+end
+
+function mod:OnCombatStart(delay)
+	table.wipe(warnCrushedTargets)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(40243) then
+		warnCrushedTargets[#warnCrushedTargets + 1] = args.destName
+		timerCrushed:Start()
+		self:Unschedule(showCrushedTargets)
+		if self.Options.CrushIcon then
+			self:SetIcon(args.destName, crushIcon, 15)
+			crushIcon = crushIcon - 1
 		end
-	elseif event == "Ghost" and arg1 then
-		self:StartStatusBarTimer(60, "Vengeful Spirit: "..tostring(arg1), "Interface\\Icons\\Spell_Shadow_DemonicTactics")
+		if #warnCrushedTargets >= 5 then
+			showCrushedTargets()
+		else
+			self:Schedule(0.3, showCrushedTargets)
+		end
+	elseif args:IsSpellID(40251) then
+		warnDeath:Show(args.destName)
+		timerDeath:Start(args.destName)
+		timerVengefulSpirit:Schedule(55, args.destName)
+		if args:IsPlayer() then
+			specWarnDeath:Show()
+		end
 	end
 end
 
-function Gorefiend:OnSync(msg)
-	if msg:sub(0, 3) == "SoD" then
-		msg = msg:sub(4)
-		self:Announce(DBM_GOREFIEND_WARN_SOD:format(msg), 3)
-		self:StartStatusBarTimer(55, "Shadow of Death: "..msg, "Interface\\Icons\\Spell_Arcane_PrismaticCloak")
-		self:ScheduleSelf(55, "Ghost", msg)
-	elseif msg:sub(0, 3) == "Inc" then
-		msg = msg:sub(4)
-		if self.Options.WarnIncinerate then
-			self:Announce(DBM_GOREFIEND_WARN_INCINERATE:format(msg), 2)
-		end
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(40239) then
+		warnIncinerate:Show(args.destName)
 	end
 end
+
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

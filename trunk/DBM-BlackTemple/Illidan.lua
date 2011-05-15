@@ -1,315 +1,229 @@
-local Illidan = DBM:NewBossMod("Illidan", DBM_ILLIDAN_NAME, DBM_ILLIDAN_DESCRIPTION, DBM_BLACK_TEMPLE, DBM_BT_TAB, 9)
+local mod	= DBM:NewMod("Illidan", "DBM-BlackTemple")
+local L		= mod:GetLocalizedStrings()
 
-Illidan.Version		= "1.1"
-Illidan.Author		= "Tandanu"
-Illidan.MinRevision = 764
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(22917)
+mod:SetModelID(21135)
+mod:SetUsedIcons(8)
+mod:SetZone()
 
-Illidan:SetCreatureID(22917)
-Illidan:RegisterCombat("yell", DBM_ILLIDAN_YELL_PULL)
-Illidan:SetMinCombatTime(20)
+mod:RegisterCombat("combat")
 
-local flameTargets = {}
-local flamesDown = 0
-local flameBursts = 0
-local demonTargets = {}
-local phase2
-local warnedDemons
-local phase4
-
-Illidan:RegisterEvents(
+mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_DIED",
 	"SPELL_DAMAGE",
-	"UNIT_SPELLCAST_START"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_HEALTH",
+	"UNIT_DIED"
 )
 
-Illidan:AddOption("RangeCheck", true, DBM_ILLIDAN_OPTION_RANGECHECK)
-Illidan:AddOption("WarnPhases", true, DBM_ILLIDAN_OPTION_PHASES)
---Illidan:AddOption("WarnShearCast", false, DBM_ILLIDAN_OPTION_SHEARCAST)
---Illidan:AddOption("WarnShear", true, DBM_ILLIDAN_OPTION_SHEAR)
-Illidan:AddOption("WarnShadowfiend", true, DBM_ILLIDAN_OPTION_SHADOWFIEND)
-Illidan:AddOption("IconShadowfiend", true, DBM_ILLIDAN_OPTION_ICONFIEND)
-Illidan:AddOption("WarnBarrage", true, DBM_ILLIDAN_OPTION_BARRAGE)
-Illidan:AddOption("WarnBarrageSoon", true, DBM_ILLIDAN_OPTION_BARRAGE_SOON)
-Illidan:AddOption("WarnEyeBeam", true, DBM_ILLIDAN_OPTION_EYEBEAM)
---Illidan:AddOption("WarnEyeBeamSoon", false, DBM_ILLIDAN_OPTION_EYEBEAMSOON) -- inaccurate!
-Illidan:AddOption("WarnFlames", true, DBM_ILLIDAN_OPTION_FLAMES)
-Illidan:AddOption("WarnDemonForm", true, DBM_ILLIDAN_OPTION_DEMONFORM)
-Illidan:AddOption("WarnFlameBursts", true, DBM_ILLIDAN_OPTION_FLAMEBURST)
-Illidan:AddOption("WarnShadowDemons", true, DBM_ILLIDAN_OPTION_SHADOWDEMONS)
+local warnParasite			= mod:NewTargetAnnounce(41917, 3)
+local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnPhase2Soon		= mod:NewAnnounce("WarnPhase2Soon", 3)
+local warnEyebeam			= mod:NewSpellAnnounce(40018, 3)
+local warnBarrage			= mod:NewTargetAnnounce(40585, 3)
+local warnPhase3			= mod:NewPhaseAnnounce(3)
+local warnFlame				= mod:NewTargetAnnounce(40932, 3)
+local warnFlameBurst		= mod:NewSpellAnnounce(41131, 3)
+local warnShadowDemon		= mod:NewTargetAnnounce(41117, 3)
+local warnPhase4			= mod:NewPhaseAnnounce(4)
+local warnPhase4Soon		= mod:NewAnnounce("WarnPhase4Soon", 3)
+local warnEnrage			= mod:NewSpellAnnounce(40683, 3)
+local warnCaged				= mod:NewSpellAnnounce(40695, 3)
+local warnDemon				= mod:NewAnnounce("WarnDemon", 3 , 2457)
+local warnDemonSoon			= mod:NewAnnounce("WarnDemonSoon", 3 , 2457)
+local warnHuman				= mod:NewAnnounce("WarnHuman", 3 , 2457)
+local warnHumanSoon			= mod:NewAnnounce("WarnHumanSoon", 3 , 2457)
 
-Illidan:AddBarOption("Enrage")
-Illidan:AddBarOption("Illidan Stormrage")
---Illidan:AddBarOption("Shear: (.*)")
-Illidan:AddBarOption("Shadowfiend: (.*)")
-Illidan:AddBarOption("Next Dark Barrage")
-Illidan:AddBarOption("Dark Barrage: (.*)")
-Illidan:AddBarOption("Flames: (.*)", false)
-Illidan:AddBarOption("Demon Phase")
-Illidan:AddBarOption("Normal Phase")
-Illidan:AddBarOption("Shadow Demons")
-Illidan:AddBarOption("Next Flame Burst")
+local specWarnParasite		= mod:NewSpecialWarningYou(41917)
+local specWarnBarrage		= mod:NewSpecialWarningYou(40585)
+local specWarnFlame			= mod:NewSpecialWarningYou(40932)
 
-function Illidan:OnCombatStart(delay)
-	flameTargets = {}
-	demonTargets = {}
+local timerCombatStart		= mod:NewTimer(36, "TimerCombatStart", 2457)
+local timerParasite			= mod:NewTargetTimer(10, 41917)
+local timerBarrage			= mod:NewTargetTimer(10, 40585)
+local timerNextBarrage		= mod:NewCDTimer(44, 40585)
+local timerFlame			= mod:NewTargetTimer(60, 40932)
+local timerNextFlameBurst	= mod:NewCDTimer(20, 41131)
+local timerShadowDemon		= mod:NewCDTimer(34, 41117)
+local timerNextHuman		= mod:NewTimer(74, "TimerNextHuman", 2457)
+local timerNextDemon		= mod:NewTimer(60, "TimerNextDemon", 2457)
+local timerEnrage			= mod:NewBuffActiveTimer(10, 40683)
+local timerNextEnrage		= mod:NewCDTimer(40, 40683)
+local timerCaged			= mod:NewBuffActiveTimer(15, 40695)
+local timerPhase4			= mod:NewTimer(30, "TimerPhase4", 2457)
+
+local berserkTimer			= mod:NewBerserkTimer(1500)
+
+mod:AddBoolOption("RangeFrame")
+mod:AddBoolOption("ParasiteIcon")
+mod:AddBoolOption("ParasiteWhisper", false, "announce")
+
+local flameTargets = {}
+local shadowDemonTargets = {}
+local flamesDown = 0
+local flameBursts = 0
+local fbSpam = 0
+local warned_preP2 = false
+local warned_preP4 = false
+local phase4 = false
+
+
+local function humanForms()
+	warnHuman:Show()
+	timerNextFlameBurst:Cancel()
+	warnDemonSoon:Schedule(50)
+	timerNextDemon:Start()
+	if phase4 then
+		timerEnrage:Start()
+	end
+end
+
+local function showFlameTargets()
+	warnFlame:Show(table.concat(flameTargets, "<, >"))
+	table.wipe(flameTargets)
+end
+
+local function showDemonTargets()
+	warnShadowDemon:Show(table.concat(shadowDemonTargets, "<, >"))
+	table.wipe(shadowDemonTargets)
+end
+
+function mod:OnCombatStart(delay)
+	table.wipe(flameTargets)
+	table.wipe(shadowDemonTargets)
 	flamesDown = 0
 	flameBursts = 0
-	phase2 = nil
-	phase4 = nil
-	delay = (delay or 0) - 7 - 33 -- 7 = time until combat starts and 33 because the timer will stop while illidan is switching from phase 1->2, 2->3 and 3->4; according to my combatlogs this should be quite accurate
-	self:StartStatusBarTimer(1500 - delay, "Enrage", "Interface\\Icons\\Spell_Shadow_UnholyFrenzy");	
-	self:ScheduleAnnounce(900 - delay, DBM_GENERIC_ENRAGE_WARN:format(10, DBM_MIN), 1)
-	self:ScheduleAnnounce(1200 - delay, DBM_GENERIC_ENRAGE_WARN:format(5, DBM_MIN), 1)
-	self:ScheduleAnnounce(1320 - delay, DBM_GENERIC_ENRAGE_WARN:format(3, DBM_MIN), 1)
-	self:ScheduleAnnounce(1440 - delay, DBM_GENERIC_ENRAGE_WARN:format(1, DBM_MIN), 2)
-	self:ScheduleAnnounce(1470 - delay, DBM_GENERIC_ENRAGE_WARN:format(30, DBM_SEC), 3)
-	self:ScheduleAnnounce(1490 - delay, DBM_GENERIC_ENRAGE_WARN:format(10, DBM_SEC), 4)
+	fbSpam = 0
+	warned_preP2 = false
+	warned_preP4 = false
+	phase4 = false
+	berserkTimer:Start(-delay)
 end
 
-function Illidan:OnCombatEnd()
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Hide()
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
 	end
-	phase2 = nil
-	phase4 = nil
-end
+end 
 
-function Illidan:OnEvent(event, args)
-	if event == "CHAT_MSG_MONSTER_YELL" then
-		if args == DBM_ILLIDAN_YELL_EYEBEAM then
-			self:SendSync("EyeBeam")
-		elseif args == DBM_ILLIDAN_YELL_DEMONFORM then
-			self:SendSync("DemonForm")
-		elseif args == DBM_ILLIDAN_YELL_PHASE4 then
-			self:SendSync("Phase4")
-		elseif args == DBM_ILLIDAN_YELL_START then
-			self:StartStatusBarTimer(36.6, "Illidan Stormrage", "Interface\\Icons\\INV_Weapon_ShortBlade_07")
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(41917) or args:IsSpellID(41914) then
+		warnParasite:Show(args.destName)
+		timerParasite:Start(args.destName)
+		if args:IsPlayer() then
+			specWarnParasite:Show()
 		end
-	elseif event == "SPELL_AURA_APPLIED" then
-		if args.spellId == 40647 then
-			self:SendSync("Prison")
---		elseif args.spellId == 41032 then
---			self:SendSync("Shear"..tostring(args.destName))
-		elseif args.spellId == 41917 or args.spellId == 41914 then
-			self:SendSync("Shadowfiend"..tostring(args.destName))
-		elseif args.spellId == 40585 then
-			self:SendSync("DarkBarrage"..tostring(args.destName))
-		elseif args.spellId == 40932 then
-			self:SendSync("Flames"..tostring(args.destName))
-		elseif args.spellId == 41083 then
-			self:SendSync("ShadowDems"..tostring(args.destName))
-		elseif args.spellId == 40683 then -- ??
-			self:SendSync("P4Enrage")
-		elseif args.spellId == 40695 then
-			self:SendSync("Caged")
+		if self.Options.ParasiteIcon then
+			self:SetIcon(args.destName, 8)
 		end
-	elseif event == "SPELL_CAST_SUCCESS" then
-		if args.spellId == 39855 then
-			self:SendSync("Phase2")
+		if IsRaidLeader() and self.Options.ParasiteWhisper then
+			self:SendWhisper(L.ParasiteWhisper, args.destName)
 		end
-	elseif event == "WarnAF" then
-		local msg = ""
-		for i, v in ipairs(flameTargets) do
-			msg = msg..">"..v.."<, "
+	elseif args:IsSpellID(40585) then
+		warnBarrage:Show(args.destName)
+		timerBarrage:Start(args.destName)
+		timerNextBarrage:Start()
+		if args:IsPlayer() then
+			specWarnBarrage:Show()
 		end
-		msg = msg:sub(0, -3)
-		flameTargets = {}
-		if self.Options.WarnFlames then
-			self:Announce(DBM_ILLIDAN_WARN_FLAMES:format(msg), 3)
+	elseif args:IsSpellID(40932) then
+		flameTargets[#flameTargets + 1] = args.destName
+		if args:IsPlayer() then
+			specWarnFlame:Show()
 		end
-	elseif event == "WarnSD" and not warnedDemons then
-		local msg = ""
-		for i, v in ipairs(demonTargets) do
-			msg = msg..">"..v.."<, "
+		timerFlame:Start(args.destName)
+		self:Unschedule(showFlameTargets)
+		self:Schedule(0.3, showFlameTargets)
+	elseif args:IsSpellID(41083) then
+		shadowDemonTargets[#shadowDemonTargets + 1] = args.destName
+		self:Unschedule(showDemonTargets)
+		if #shadowDemonTargets >= 4 then
+			showDemonTargets()
+		else
+			self:Schedule(1, showDemonTarget)
 		end
-		msg = msg:sub(0, -3)
-		demonTargets = {}
-		if self.Options.WarnShadowDemons then
-			self:Announce(DBM_ILLIDAN_WARN_SHADOWDEMSON:format(msg), 4)
-		end
-		warnedDemons = true
-	elseif event == "UNIT_DIED" then
-		if args.destName == DBM_ILLIDAN_MOB_FLAME then
-			self:SendSync("FlameDown")
-		end
-	elseif event == "SPELL_DAMAGE" then
-		if args.spellId == 41131 then
-			self:SendSync("Flameburst")
-		end
---	elseif event == "SPELL_CAST_START" then
---		if args.spellId == 41032 then
---			self:SendSync("CastShear")
---		end
+	elseif args:IsSpellID(40683) then
+		warnEnrage:Show()
+		timerEnrage:Start()
+	elseif args:IsSpellID(40695) then
+		warnCaged:Show()
+		timerCaged:Start()
 	end
 end
 
-function Illidan:GetBossHP()
-	if phase2 then
-		return DBM_ILLIDAN_STATUSMSG_PHASE2
-	end
-end
-
-function Illidan:OnSync(msg)
-	if msg:sub(0, 5) == "Shear" then
---		msg = msg:sub(6)
---		if self.Options.WarnShear then
---			self:Announce(DBM_ILLIDAN_WARN_SHEAR:format(msg), 1)
---		end
---		self:StartStatusBarTimer(7, "Shear: "..msg, "Interface\\Icons\\Spell_Shadow_FocusedPower")
-	elseif msg == "CastShear" then
---		if self.Options.WarnShearCast then
---			self:Announce(DBM_ILLIDAN_WARN_CASTSHEAR, 1)
---		end
-	elseif msg:sub(0, 11) == "Shadowfiend" then
-		msg = msg:sub(12)
-		if msg == UnitName("player") then
-			self:AddSpecialWarning(DBM_ILLIDAN_SELFWARN_SHADOWFIEND)
-		end
-		if self.Options.WarnShadowfiend then
-			self:Announce(DBM_ILLIDAN_WARN_SHADOWFIEND:format(msg), 2)
-		end
-		if self.Options.IconShadowfiend then
-			self:SetIcon(msg, 10)
-		end
-		self:StartStatusBarTimer(10, "Shadowfiend: "..msg, "Interface\\Icons\\Spell_Shadow_Shadowfiend")
-	elseif msg:sub(0, 11) == "DarkBarrage" then
-		msg = msg:sub(12)
-		if self.Options.WarnBarrage then
-			self:Announce(DBM_ILLIDAN_WARN_BARRAGE:format(msg), 2)
-		end
-		if self.Options.WarnBarrageSoon then
-			self:ScheduleAnnounce(42, DBM_ILLIDAN_WARN_BARRAGE_SOON, 1)
-		end
-		self:EndStatusBarTimer("Next Dark Barrage") -- synced timers may only overwrite timers that are about to expire - the barrage timer seems to be quite inaccurate...so send a end timer command before.
-		self:StartStatusBarTimer(44, "Next Dark Barrage", "Interface\\Icons\\Spell_Shadow_PainSpike")
-		self:StartStatusBarTimer(10, "Dark Barrage: "..msg, "Interface\\Icons\\Spell_Shadow_PainSpike")
-	elseif msg == "EyeBeam" then
-		if self.Options.WarnEyeBeam then
-			self:Announce(DBM_ILLIDAN_WARN_EYEBEAM, 3)
-		end
---		if self.Options.WarnEyeBeamSoon then -- inaccurate!
---			self:ScheduleAnnounce(32, DBM_ILLIDAN_WARN_EYEBEAM_SOON, 2)
---		end
---		self:StartStatusBarTimer(35, "Next Eye Blast", "Interface\\Icons\\Spell_Shadow_SiphonMana")
-	elseif msg:sub(0, 6) == "Flames" then
-		msg = msg:sub(7)
-		self:StartStatusBarTimer(60, "Flames: "..msg, "Interface\\Icons\\Spell_Fire_BlueImmolation")
-		if msg == UnitName("player") then
-			self:AddSpecialWarning(DBM_ILLIDAN_SELFWARN_SHADOW)
-		end
-		table.insert(flameTargets, msg)
-		self:UnScheduleEvent("WarnAF")
-		self:ScheduleEvent(1, "WarnAF")
-	elseif msg == "Phase2" then
-		if self.Options.WarnPhases then
-			self:Announce(DBM_ILLIDAN_WARN_PHASE2, 4)
-		end
-		if self.Options.WarnBarrageSoon then
-			self:ScheduleAnnounce(76, DBM_ILLIDAN_WARN_BARRAGE_SOON, 1)
-		end
-		self:StartStatusBarTimer(81, "Next Dark Barrage", "Interface\\Icons\\Spell_Shadow_PainSpike")
-		phase2 = true
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(39855) then
 		flamesDown = 0
-	elseif msg == "Phase3" then
-		if self.Options.WarnPhases then
-			self:Announce(DBM_ILLIDAN_WARN_PHASE3, 4)
+		warnPhase2:Show()
+		timerNextBarrage:Start(81)
+	end
+end
+
+function mod:SPELL_DAMAGE(args)
+	if args:IsSpellID(41131) and GetTime() - fbSpam >= 4 then
+		warnFlameBurst:Show()
+		flameBursts = flameBursts + 1
+		fbSpam = GetTime()
+		if flameBursts < 3 then
+			timerNextFlameBurst:Start()
 		end
-		if self.Options.RangeCheck then
-			DBM_Gui_DistanceFrame_Show()
-		end
-		phase2 = nil
-		self:StartStatusBarTimer(76, "Demon Phase", "Interface\\Icons\\Spell_Shadow_Metamorphosis")
-		if self.Options.WarnDemonForm then
-			self:ScheduleAnnounce(66, DBM_ILLIDAN_WARN_DEMONPHASE_SOON, 3)
-		end
-		self:EndStatusBarTimer("Next Dark Barrage")
-		self:UnScheduleAnnounce(DBM_ILLIDAN_WARN_BARRAGE_SOON, 1)
-	elseif msg == "Phase4" then
-		if self.Options.WarnPhases then
-			self:Announce(DBM_ILLIDAN_WARN_PHASE4, 4)
-		end
-		self:EndStatusBarTimer("Demon Phase")
-		self:EndStatusBarTimer("Normal Phase")
-		self:UnScheduleAnnounce(DBM_ILLIDAN_WARN_DEMONPHASE_SOON)
-		self:UnScheduleAnnounce(DBM_ILLIDAN_WARN_NORMALPHASE_SOON)
-		self:StartStatusBarTimer(92, "Demon Phase", "Interface\\Icons\\Spell_Shadow_Metamorphosis")
-		if self.Options.WarnDemonForm then
-			self:ScheduleAnnounce(82, DBM_ILLIDAN_WARN_DEMONPHASE_SOON, 3)
-		end
-		
-		self:StartStatusBarTimer(71.5, "Enrage2", "Interface\\Icons\\Ability_Warrior_EndlessRage")
-		self:ScheduleAnnounce(66.5, DBM_ILLIDAN_WARN_P4ENRAGE_SOON, 3)
-		
-		phase4 = true
-	elseif msg == "DemonForm" then
-		flameBursts = 0
-		if self.Options.WarnDemonForm then
-			self:Announce(DBM_ILLIDAN_WARN_PHASE_DEMON, 4)
-		end
-		self:StartStatusBarTimer(74, "Normal Phase", "Interface\\Icons\\INV_Weapon_ShortBlade_07")
-		self:StartStatusBarTimer(34, "Shadow Demons", "Interface\\Icons\\Spell_Shadow_SoulLeech_3")
-		self:StartStatusBarTimer(20, "Next Flame Burst", "Interface\\Icons\\Spell_Fire_BlueRainOfFire")
-		if self.Options.WarnDemonForm then
-			self:ScheduleAnnounce(64, DBM_ILLIDAN_WARN_NORMALPHASE_SOON, 2)
-		end
-		if self.Options.WarnShadowDemons then
-			self:ScheduleAnnounce(29, DBM_ILLIDAN_WARN_SHADOWDEMSSOON, 2)
-		end
-		if self.Options.WarnFlameBursts then
-			self:ScheduleAnnounce(15, DBM_ILLIDAN_WARN_FLAMEBURST_SOON, 1)
-		end
-		self:ScheduleMethod(74, "SendSync", "NormalForm")
-		warnedDemons = nil
-	elseif msg == "NormalForm" then
-		if self.Options.WarnDemonForm then
-			self:Announce(DBM_ILLIDAN_WARN_PHASE_NORMAL, 4)
-		end
-		self:StartStatusBarTimer(60, "Demon Phase", "Interface\\Icons\\Spell_Shadow_Metamorphosis")
-		if self.Options.WarnDemonForm then
-			self:ScheduleAnnounce(50, DBM_ILLIDAN_WARN_DEMONPHASE_SOON, 3)
-		end
-		if phase4 then
-			self:StartStatusBarTimer(40, "Enrage2", "Interface\\Icons\\Ability_Warrior_EndlessRage")
-			self:ScheduleAnnounce(35, DBM_ILLIDAN_WARN_P4ENRAGE_SOON, 3)
-		end
-	elseif msg == "FlameDown" then
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 22997 then
 		flamesDown = flamesDown + 1
 		if flamesDown >= 2 then
-			self:SendSync("Phase3")
-		end
-	elseif msg == "Flameburst" then
-		flameBursts = flameBursts + 1
-		if flameBursts < 3 then
-			self:StartStatusBarTimer(19.5, "Next Flame Burst", "Interface\\Icons\\Spell_Fire_BlueRainOfFire")
-			if self.Options.WarnFlameBursts then
-				self:ScheduleAnnounce(14.5, DBM_ILLIDAN_WARN_FLAMEBURST_SOON, 1)
+			if self.Options.RangeFrame then
+				DBM.RangeCheck:Show()
 			end
+			timerNextBarrage:Cancel()
+			warnPhase3:Show()
+			warnDemonSoon:Schedule(66)
+			timerNextDemon:Start(76)
 		end
-		if self.Options.WarnFlameBursts then
-			self:Announce(DBM_ILLIDAN_WARN_FLAMEBURST:format(flameBursts), 3)
-		end
-	elseif msg:sub(0, 10) == "ShadowDems" then
-		msg = msg:sub(11)
-		if msg == UnitName("player") then
-			self:AddSpecialWarning(DBM_ILLIDAN_SELFWARN_DEMONS)
-		end
-		table.insert(demonTargets, msg)
-		self:UnScheduleEvent("WarnSD")
-		if #demonTargets == 4 then
-			self:OnEvent("WarnSD")
-		else
-			self:ScheduleEvent(1, "WarnSD")
-		end
-	elseif msg == "Prison" then
-		self:Announce(DBM_ILLIDAN_WARN_PRISON)
-		self:StartStatusBarTimer(30, "Shadow Prison", "Interface\\Icons\\Spell_Shadow_SealOfKings")
-	elseif msg == "P4Enrage" then
-		self:Announce(DBM_ILLIDAN_WARN_P4ENRAGE_NOW, 4)
-	elseif msg == "Caged" then
-		self:Announce(DBM_ILLIDAN_WARN_CAGED, 1)
-		self:StartStatusBarTimer(15, "Caged", 40695)
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Pull or msg:find(L.Pull) then
+		timerCombatStart:Start()
+	elseif msg == L.Eyebeam or msg:find(L.Eyebeam) then
+		warnEyebeam:Show()
+	elseif msg == L.Demon or msg:find(L.Demon) then
+		flameBursts = 0
+		warnDemon:Show()
+		timerNextHuman:Start()
+		timerNextFlameBurst:Start()
+		timerShadowDemon:Start()
+		warnHumanSoon:Schedule(64)
+		self:Schedule(74, humanForms)
+	elseif msg == L.Phase4 or msg:find(L.Phase4) then
+		phase4 = true
+		timerPhase4:Show()
+		warnHumanSoon:Cancel()
+		warnDemonSoon:Cancel()
+		timerParasite:Cancel()
+		timerFlame:Cancel()
+		timerNextFlameBurst:Cancel()
+		timerShadowDemon:Cancel()
+		timerNextHuman:Cancel()
+		timerNextDemon:Cancel()
+		warnPhase4:Schedule(30)
+		warnDemonSoon:Schedule(82)
+		timerNextDemon:Start(92)
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	if not warned_preP2 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
+		warned_preP2 = true
+		warnPhase2Soon:Show()
+	elseif warned_preP4 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 then
+		warned_preP4 = true
+		warnPhase4Soon:Show()
 	end
 end

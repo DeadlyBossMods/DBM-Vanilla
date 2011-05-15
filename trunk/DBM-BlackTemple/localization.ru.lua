@@ -1,270 +1,292 @@
-﻿-- ------------------------------------------------------ --
---             Deadly Boss Mods - BT Module               --
---             русская локализация вер .005               --
---              by Necros ariett@mail.ru                  --
--- Спасибо моей гильдии Хранители http://www.keepers.ru   --
---              за терпение меня в рейде                  --
--- а также всем камрадам с форума http://forum.ixbt.com/  --
---          за ценные советы и моральную поддержку        --
---                                                        --
---                                                        --
--- Все замечания по переводу и локализации этого и других --
---   модулей ДБМ присылайте на email ariett@mail.ru       --
--- ------------------------------------------------------ --
+if GetLocale() ~= "ruRU" then return end
+local L
 
+-----------------
+--  Najentus  --
+-----------------
+L = DBM:GetModLocalization("Najentus")
 
+L:SetGeneralLocalization{
+	name = "Верховный Полководец Надж'ентус"
+}
 
+L:SetWarningLocalization{
+}
 
+L:SetTimerLocalization{
+}
 
+L:SetOptionLocalization{
+	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837),
+	RangeFrame	= "Show range frame (10)"--Translate
+}
 
-if GetLocale() == "ruRU" then
+L:SetMiscLocalization{
+}
 
-DBM_BT_TAB			= "TempleTab"
-DBM_BLACK_TEMPLE	= "Черный храм";
+----------------
+-- Supremus --
+----------------
+L = DBM:GetModLocalization("Supremus")
 
+L:SetGeneralLocalization{
+	name = "Супремус"
+}
 
--- High Warlord Naj'entus
-DBM_NAJENTUS_NAME					= "Верховный Полководец Надж'ентус";
-DBM_NAJENTUS_DESCRIPTION			= "Анонс спеллов Пронзающий Шип и Щит Прилива.";
+L:SetWarningLocalization{
+	WarnPhase		= "%s Phase",--Translate
+	WarnPhaseSoon	= "%s Phase in 10",--Translate
+	WarnKite		= "Gaze on >%s<"--Translate
+}
 
-DBM_NAJENTUS_OPTION_ICON			= "Вешать метку на цель Пронзающего Шипа";
-DBM_NAJENTUS_OPTION_RANGECHECK		= "Показать рамку дистанции";
-DBM_NAJENTUS_OPTION_FRAME			= "Показать игроков с менее, чем 8500 хп";
+L:SetTimerLocalization{
+	TimerPhase		= "Next %s phase"--Translate
+}
 
-DBM_NAJENTUS_YELL_PULL				= "Вы умрете во имя леди Вайш!";
+L:SetOptionLocalization{
+	WarnPhase		= "Show warning for next phase",--Translate
+	WarnPhaseSoon	= "Show pre-warning for next phase",--Translate
+	WarnKite		= "Announce Kite targets",--Translate
+	TimerPhase		= "Show time for next phase",--Translate
+	KiteIcon		= "Set icon on Kite target",--Translate
+	KiteWhisper		= "Send whisper to Kite target (requires Raid Leader)"--Translate
+}
 
-DBM_NAJENTUS_WARN_SPINE				= "*** Пронзающий шип в >%s< ***";
-DBM_NAJENTUS_WARN_ENRAGE			= "*** Озверение через %s %s ***";
-DBM_NAJENTUS_WARN_SHIELD			= "*** Щит Прилива ***";
-DBM_NAJENTUS_WARN_SHIELD_SOON		= "*** Щит Прилива скоро ***";
+L:SetMiscLocalization{
+	PhaseKite		= "в гневе ударяет по земле!",
+	PhaseTank		= "Земля начинает раскалываться!",
+	ChangeTarget	= "атакует новую цель!",
+	KiteWhisper		= "Беги, Форест, беги!",
+	Kite			= "Kite",--Translate
+	Tank			= "Tank"--Translate
+}
 
-DBM_NAJENTUS_FRAME_TITLE			= "Надж'ентус"
-DBM_NAJENTUS_FRAME_TEXT				= "Игроки с менее чем 8500 хп:"
-DBM_NAJENTUS_SPELL_PWS				= "Слово силы: Щит"
-DBM_NAJENTUS_SPELL_FW				= "Защита от магии льда"
-DBM_NAJENTUS_SPELL_FB				= "Оскверненный цветок"
+-------------------------
+--  Shape of Akama  --
+-------------------------
+L = DBM:GetModLocalization("Akama")
 
+L:SetGeneralLocalization{
+	name = "Тень Акамы"
+}
 
--- Supremus
-DBM_SUPREMUS_NAME					= "Супремус";
-DBM_SUPREMUS_DESCRIPTION			= "Объявлять фазы и цели";
-DBM_SUPREMUS_OPTION_TARGETWARN		= "Объявлять цель Супермуса в фазе 2";
-DBM_SUPREMUS_OPTION_TARGETICON		= "Вешать метку на цель Супремуса";
-DBM_SUPREMUS_OPTION_TARGETWHISPER	= "Шепнуть цели Супремуса";
+L:SetWarningLocalization{
+}
 
-DBM_SUPREMUS_EMOTE_PHASE1			= "в гневе ударяет по земле!";
-DBM_SUPREMUS_EMOTE_PHASE2			= "Земля начинает раскалываться!";
-DBM_SUPREMUS_EMOTE_NEWTARGET		= "атакует новую цель!";
+L:SetTimerLocalization{
+}
 
-DBM_SUPREMUS_WARN_KITE_TARGET		= "Цель: >%s< Беги, Форест, беги!";
-DBM_SUPREMUS_WARN_PHASE_1_SOON		= "*** Зерг-фаза через 10 сек ***";
-DBM_SUPREMUS_WARN_PHASE_2_SOON		= "*** Фаза убегания через 10 сек ***";
-DBM_SUPREMUS_WARN_PHASE_1			= "*** Зерг-фаза ****";
-DBM_SUPREMUS_WARN_PHASE_2			= "*** Фаза убегания ***";
-DBM_SUPREMUS_SPECWARN_FIRE			= "Расплавленное Пламя";
-DBM_SUPREMUS_SPECWARN_VOLCANO		= "Вулкан";
-DBM_SUPREMUS_WHISPER_RUN_AWAY		= "Беги, Форест, беги!";
+L:SetOptionLocalization{
+}
 
--- Shade of Akama
-DBM_AKAMA_NAME						= "Тень Акамы";
-DBM_AKAMA_DESCRIPTION				= nil;
+L:SetMiscLocalization{
+}
 
-DBM_AKAMA_MOB_AKAMA					= "Акама";
-DBM_AKAMA_MOB_DEFENDER				= "Пеплоуст-защитник";
-DBM_AKAMA_MOB_CHANNELER				= "Пеплоуст-чаротворец";
-DBM_AKAMA_MOB_SORCERER				= "Пеплоуст-колдун";
-DBM_AKAMA_MOB_DIES					= "%s умирает.";
+-------------------------
+--  Teron Gorefiend  --
+-------------------------
+L = DBM:GetModLocalization("TeronGorefiend")
 
-DBM_AKAMA_WARN_CHANNELER_DOWN		= "**** %s/6 чаротворцев убито ****";
-DBM_AKAMA_WARN_SORCERER_DOWN		= "**** %s колдунов убито ****";
+L:SetGeneralLocalization{
+	name = "Терон Кровожад"
+}
 
--- Teron Gorefiend
-DBM_GOREFIEND_NAME					= "Терон Кровожад";
-DBM_GOREFIEND_DESCRIPTION			= "Объявлять Тень смерти и Испепеление.";
+L:SetWarningLocalization{
+}
 
-DBM_GOREFIEND_OPTION_INCINERATE		= "Объявлять Испепеление";
+L:SetTimerLocalization{
+	TimerVengefulSpirit		= "Ghost : %s"--Translate
+}
 
-DBM_GOREFIEND_YELL_PULL				= "Мне отмщение!";
+L:SetOptionLocalization{
+	TimerVengefulSpirit		= "Show timer for Ghost durations",--Translate
+	CrushIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(40243)
+}
 
-DBM_GOREFIEND_WARN_SOD				= "*** Тень смерти: >%s< ***";
-DBM_GOREFIEND_WARN_INCINERATE		= "*** Испепеление: >%s< ***";
+L:SetMiscLocalization{
+}
 
-DBM_GOREFIEND_SPECWARN_SOD			= "Тень смерти";
+----------------------------
+--  Gurtogg Bloodboil  --
+----------------------------
+L = DBM:GetModLocalization("Bloodboil")
 
--- Bloodboil
-DBM_BLOODBOIL_NAME					= "Гуртогг Кипящая Кровь";
-DBM_BLOODBOIL_DESCRIPTION			= "Объявлять Кипящую Кровь и Ярость Скверны.";
-DBM_BLOODBOIL_OPTION_SMASH			= "Объявлять Удар по дуге";
+L:SetGeneralLocalization{
+	name = "Гуртогг Кипящая Кровь"
+}
 
-DBM_BLOODBOIL_YELL_PULL				= "Орда тебя… сокрушит.";
+L:SetWarningLocalization{
+	WarnRageEnd		= "Fel Rage End",--Translate
+}
 
-DBM_BLOODBOIL_WARN_BLOODBOIL		= "*** Кипящая Кровь #%s ***";
-DBM_BLOODBOIL_WARN_ENRAGE			= "*** Озверение через %s %s ***";
-DBM_BLOODBOIL_WARN_FELRAGE_SOON		= "*** Ярость Скверны скоро ***";
-DBM_BLOODBOIL_WARN_NORMAL_SOON		= "*** Обычная фаза через 5 сек ***";
-DBM_BLOODBOIL_WARN_FELRAGE			= "*** Ярость Скверны на >%s< ***";
-DBM_BLOODBOIL_WARN_NORMALPHASE		= "*** Обычная фаза ***";
-DBM_BLOODBOIL_WARN_SMASH			= "*** Удар По Дуге ***";
-DBM_BLOODBOIL_WARN_SMASH_SOON		= "*** Удар По Дуге скоро ***";
+L:SetTimerLocalization{
+	TimerRageEnd	= "Fel Rage End"--Translate
+}
 
--- Essence (Reliquary) of Souls
-DBM_SOULS_NAME						= "Воплощение Душ"
-DBM_SOULS_DESCRIPTION				= "Объявляет Озверение, Fixate, Истощение Души, Рунный Щит, Deaden и Злобу."
-DBM_SOULS_OPTION_DRAIN				= "Объявлять Истощение Души"
-DBM_SOULS_OPTION_DRAIN_CAST			= "Объявлять каст Истощения Души (удобно для Массового Рассеивания)"
-DBM_SOULS_OPTION_FIXATE				= "Объявлять Fixate"
-DBM_SOULS_OPTION_SPITE				= "Объявлять Злобу"
-DBM_SOULS_OPTION_SCREAM				= "Объявлять Крик Души"
-DBM_SOULS_OPTION_SPECWARN_SPITE		= "Показывать спецпредупреждение, когда Вы поражены Злобой"
-DBM_SOULS_OPTION_WHISPER_SPITE		= "Шептать целям Злобы"
+L:SetOptionLocalization{
+	WarnRageEnd		= "Show warning for $spell:40604 ends",--Translate
+	TimerRageEnd	= "Show timer for $spell:40604 ends"--Translate
+}
 
-DBM_SOULS_BOSS_SUFFERING			= "Воплощение страдания"
-DBM_SOULS_BOSS_DESIRE				= "Воплощение желания"
-DBM_SOULS_BOSS_KILL_NAME			= "Воплощение гнева"
-DBM_SOULS_YELL_PULL					= "Лишь боль и страдания ждут тебя!" -- Essence of Suffering
-DBM_SOULS_EMOTE_ENRAGE				= "%s впадает в ярость!"
-DBM_SOULS_YELL_DESIRE				= "Можешь взять все, что желаешь… но не даром."
-DBM_SOULS_YELL_DESIRE_DEMONIC		= "Shi shi rikk rukadare shi tichar kar x gular"
-DBM_SOULS_DEBUFF_SPITE				= "([^%s]+) (%w+) поражен Злобой%."
-DBM_SOULS_DEBUFF_SOULDRAIN			= "([^%s]+) (%w+) поражен Истощением Души%."
-DBM_SOULS_DEBUFF_FIXATE				= "([^%s]+) (%w+) afflicted by Fixate%."
-DBM_SOULS_YELL_ANGER_INC			= "Берегись, я жив!"
+L:SetMiscLocalization{
+}
 
-DBM_SOULS_WARN_ENRAGE_SOON			= "*** Озверение скоро ***"
-DBM_SOULS_WARN_ENRAGE				= "*** Озверение ***"
-DBM_SOULS_WARN_ENRAGE_OVER			= "*** Озверение закончилось ***"
-DBM_SOULS_WARN_RUNESHIELD			= "*** Рунный Щит ***"
-DBM_SOULS_WARN_RUNESHIELD_SOON		= "*** Рунный Щит через 3 сек ***"
-DBM_SOULS_WARN_DEADEN				= "*** Deaden ****"
-DBM_SOULS_WARN_DEADEN_SOON			= "*** Deaden in 5 sec ***"
-DBM_SOULS_WARN_DESIRE_INC			= "*** Воплощение желания - Ноль маны через ~3 минуты ***"
-DBM_SOULS_WARN_MANADRAIN			= "*** Ноль маны через 20 сек ***"
-DBM_SOULS_WARN_SPITE				= "*** Злоба на %s ***"
-DBM_SOULS_WARN_SOULDRAIN			= "*** Истощение Души на %s ***"
-DBM_SOULS_WARN_SOULDRAIN_CAST		= "*** Истощение Души кастуется! ***"
-DBM_SOULS_WARN_FIXATE				= "*** Fixate: >%s< ***"
-DBM_SOULS_SPECWARN_FIXATE			= "Fixate!"
-DBM_SOULS_WARN_SCREAM				= "*** Крик Души ***"
-DBM_SOULS_SPECWARN_SPITE			= "Злоба"
-DBM_SOULS_WARN_ANGER_INC			= "*** Воплощение гнева ***";
-DBM_SOULS_WHISPER_SPITE				= "Злоба на Вас!"
+--------------------------
+--  Essence Of Souls  --
+--------------------------
+L = DBM:GetModLocalization("Souls")
 
--- Mother Shahraz
-DBM_SHAHRAZ_NAME					= "Матушка Шахраз"
-DBM_SHAHRAZ_DESCRIPTION				= "Обявляет Смертельное Притяжение, вешает метки и шепчет. Объявляет и показывает таймеры Лучей."
-DBM_SHAHRAZ_OPTION_BEAM				= "Объявлять Лучи"
-DBM_SHAHRAZ_OPTION_BEAM_SOON		= "Показывать предупреждение \"Луч скоро\" "
+L:SetGeneralLocalization{
+	name = "Воплощение Душ"
+}
 
-DBM_SHAHRAZ_YELL_PULL				= "Итак… дела или удовольствие?"
+L:SetWarningLocalization{
+	WarnEnrage		= "Озверение",
+	WarnEnrageSoon	= "Озверение скоро",
+	WarnEnrageEnd	= "Озверение закончилось",
+	WarnMana		= "Ноль маны через 30 сек"
+}
 
-DBM_SHAHRAZ_WARN_ENRAGE				= "*** Озверение через %s %s ***"
-DBM_SHAHRAZ_WARN_FA					= "*** Смертельное Притяжение на %s ***"
-DBM_SHAHRAZ_SPECWARN_FA				= "Смертельное Притяжение"
-DBM_SHAHRAZ_WHISPER_FA				= "Смертельное Притяжение на Вас!"
-DBM_SHAHRAZ_WARN_BEAM_VILE			= "*** Ужасный Луч ***"
-DBM_SHAHRAZ_WARN_BEAM_SINISTER		= "*** Зловещий Луч ***"
-DBM_SHAHRAZ_WARN_BEAM_SINFUL		= "*** Греховный Луч ***"
-DBM_SHAHRAZ_WARN_BEAM_WICKED		= "*** Злобный Луч ***"
-DBM_SHAHRAZ_WARN_BEAM_SOON			= "*** Луч через 3 сек ***"
+L:SetTimerLocalization{
+	TimerEnrage		= "Озверение",
+	TimerNextEnrage	= "Next Озверение",--Translate
+	TimerMana		= "Mana 0"--Translate
+}
 
--- Illidari Council
-DBM_COUNCIL_NAME					= "Совет Иллидари"
-DBM_COUNCIL_DESCRIPTION				= "Объявляет Исцеляющий Круг, Смертельный Яд, Божественный Гнев, Исчезновение и Щиты."
-DBM_COUNCIL_OPTION_COH				= "Объявлять Исцеляющий круг"
-DBM_COUNCIL_OPTION_DP				= "Объявлять Смертельный Яд"
-DBM_COUNCIL_OPTION_DW				= "Объявлять Божественный Гнев"
-DBM_COUNCIL_OPTION_VANISH			= "Объявлять Исчезновение"
-DBM_COUNCIL_OPTION_VANISHFADED		= "Предупреждать о завершении Исчезновения"
-DBM_COUNCIL_OPTION_VANISHFADESOON	= "Предупреждать за 5 секунд до завершения Исчезновения"
-DBM_COUNCIL_OPTION_SN				= "Объявлять Отражающий Щит"
-DBM_COUNCIL_OPTION_SS				= "Объявлять Щит Защиты от магии"
-DBM_COUNCIL_OPTION_SM				= "Объявлять Щит Защиты от физатак"
-DBM_COUNCIL_OPTION_DEVAURA			= "Объявлять Ауру Благочестия"
-DBM_COUNCIL_OPTION_RESAURA			= "Объявлять Ауру Защиты от Магии"
+L:SetOptionLocalization{
+	WarnEnrage		= "Show warning for Enrage",--Translate
+	WarnEnrageSoon	= "Show pre-warning for Enrage",--Translate
+	WarnEnrageEnd	= "Show warning when Enrage ends",--Translate
+	WarnMana		= "Show warning from zero mana in Phase 2",--Translate
+	TimerEnrage		= "Show timer for Enrage",--Translate
+	TimerNextEnrage	= "Show timer for next Enrage",--Translate
+	TimerMana		= "Show timer for zero mana in Phase 2",--Translate
+	SpiteWhisper	= "Send whisper to $spell:41376 targets (requires Raid Leader)",--Translate
+	DrainIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41303),
+	SpiteIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41376)
+}
 
-DBM_COUNCIL_MOB_GATHIOS				= "Гатиос Изувер"
-DBM_COUNCIL_MOB_MALANDE				= "Леди Маланда"
-DBM_COUNCIL_MOB_ZEREVOR				= "Верховный пустомант Зеревор"
-DBM_COUNCIL_MOB_VERAS				= "Верас Глубокий Мрак"
+L:SetMiscLocalization{
+	Pull			= "Лишь боль и страдания ждут тебя!",
+	Enrage			= "%s впадает в ярость!",
+	Phase2			= "Можешь взять все, что желаешь… но не даром.",
+	Phase2d			= "Shi shi rikk rukadare shi tichar kar x gular",
+	Phase3			= "Берегись, я жив!",
+	SpiteWhisper	= "Злоба на Вас!",
+	Suffering		= "Essence of Suffering",--Translate
+	Desire			= "Essence of Desire",--Translate
+	Anger			= "Essence of Anger"--Translate
+}
 
-DBM_COUNCIL_MOB_GATHIOS_EN			= "Gathios the Shatterer"
-DBM_COUNCIL_MOB_MALANDE_EN			= "Lady Malande"
-DBM_COUNCIL_MOB_ZEREVOR_EN			= "High Nethermancer Zerevor"
-DBM_COUNCIL_MOB_VERAS_EN			= "Veras Darkshadow"
+-----------------------
+--  Mother Shahraz --
+-----------------------
+L = DBM:GetModLocalization("Shahraz")
 
-DBM_COUNCIL_YELL_PULL1				= "Общий – такой грубый язык… Вандаль!"
-DBM_COUNCIL_YELL_PULL2				= "Желаешь проверить меня?"
-DBM_COUNCIL_YELL_PULL3				= "У меня есть дела поважнее…"
-DBM_COUNCIL_YELL_PULL4				= "Убегай или умри!"
+L:SetGeneralLocalization{
+	name = "Матушка Шахраз"
+}
 
-DBM_COUNCIL_WARN_CAST_COH			= "Исцеляющий Круг"
-DBM_COUNCIL_WARN_POISON				= "Смертельный Яд на >%s<"
-DBM_COUNCIL_WARN_SHIELD_NORMAL		= "Отражающий Щит"
-DBM_COUNCIL_WARN_SHIELD_SPELL		= "Защита от МАГИИ на %s"
-DBM_COUNCIL_WARN_SHIELD_MELEE		= "Защита от ФИЗАТАК на %s"
-DBM_COUNCIL_WARN_VANISH				= "Исчезновение"
-DBM_COUNCIL_WARN_VANISH_FADED		= "Исчезновение закончилось"
-DBM_COUNCIL_WARN_WRATH				= "Божественный Гнев на >%s<"
-DBM_COUNCIL_WARN_AURA_DEV			= "Аура +20% брони"
-DBM_COUNCIL_WARN_AURA_RES			= "Аура +250 защиты от магии"
-DBM_COUNCIL_WARN_VANISHFADE_SOON	= "Исчезновение заканчивается через 5 сек"
+L:SetWarningLocalization{
+}
 
--- Illidan Stormrage
-DBM_ILLIDAN_NAME					= "Иллидан Ярость Бури"
-DBM_ILLIDAN_DESCRIPTION				= "Объявление: Фазы, Срез, Паразиты, Барьер, Выжигающий взгляд, Пламенная боль, Теневые Демоны, Flame Burst и Озверение."
-DBM_ILLIDAN_OPTION_RANGECHECK		= "Показывать рамку дистанции в фазе 3"
-DBM_ILLIDAN_OPTION_PHASES			= "Объявлять фазы"
-DBM_ILLIDAN_OPTION_SHEARCAST		= "Объявлять каст Среза"
-DBM_ILLIDAN_OPTION_SHEAR			= "Объявлять Срез"
-DBM_ILLIDAN_OPTION_SHADOWFIEND		= "Объявлять Тенедемонов"
-DBM_ILLIDAN_OPTION_ICONFIEND		= "Вешать метку на цель Тенедемона"
-DBM_ILLIDAN_OPTION_BARRAGE			= "Объявлять Темное Заграждение"
-DBM_ILLIDAN_OPTION_BARRAGE_SOON		= "Показывать предупреждение \"Темное Заграждение скоро\" "
-DBM_ILLIDAN_OPTION_EYEBEAM			= "Объявлять Выжигающий Взгляд"
-DBM_ILLIDAN_OPTION_FLAMES			= "Объявлять Пламенная Боль"
-DBM_ILLIDAN_OPTION_DEMONFORM		= "Объявлять фазы Демона/Обычную"
-DBM_ILLIDAN_OPTION_FLAMEBURST		= "Объявлять Выброс Пламени"
-DBM_ILLIDAN_OPTION_SHADOWDEMONS		= "Объявлять Теневых Демонов"
-DBM_ILLIDAN_OPTION_EYEBEAMSOON		= "Показывать предупреждение \"Выжигающий Взгляд скоро\" "
+L:SetTimerLocalization{
+}
 
-DBM_ILLIDAN_YELL_PULL				= "Время пришло! Момент настал!"
-DBM_ILLIDAN_YELL_EYEBEAM			= "Посмотри в глаза Предателя!"
-DBM_ILLIDAN_YELL_DEMONFORM			= "Узрите мощь демона!"
-DBM_ILLIDAN_YELL_PHASE4				= "Это все, смертные? Это и есть вся ваша ярость?"
-DBM_ILLIDAN_MOB_FLAME				= "Пламя Аззинота"
-DBM_ILLIDAN_SPELL_SHADOWDEMONS		= "Вызов теневых демонов"
-DBM_ILLIDAN_SPELL_SHEAR				= "Срез"
-DBM_ILLIDAN_YELL_START				= "Акама! Твое двуличие меня не удивляет. Мне давным-давно стоило уничтожить тебя и твоих уродливых собратьев."
+L:SetOptionLocalization{
+	FAIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41001),
+	FAWhisper	= "Send whisper to $spell:41001 targets (requires Raid Leader)"--Translate
+}
 
-DBM_ILLIDAN_WARN_SHEAR				= "Срез на >%s<"
-DBM_ILLIDAN_WARN_SHADOWFIEND		= "Тенедемон на >%s<"
-DBM_ILLIDAN_WARN_BARRAGE			= "Темное Заграждение на >%s<"
-DBM_ILLIDAN_WARN_BARRAGE_SOON		= "Темное Заграждение скоро"
-DBM_ILLIDAN_WARN_EYEBEAM			= "Выжигающий взгляд"
-DBM_ILLIDAN_WARN_FLAMES				= "Пламенная Боль на %s"
-DBM_ILLIDAN_WARN_PHASE2				= "Фаза 2"
-DBM_ILLIDAN_WARN_PHASE3				= "Фаза 3"
-DBM_ILLIDAN_WARN_PHASE4				= "Фаза 4"
-DBM_ILLIDAN_WARN_PHASE_DEMON		= "Фаза Демона"
-DBM_ILLIDAN_WARN_FLAMEBURST			= "Выброс Пламени #%s"
-DBM_ILLIDAN_WARN_FLAMEBURST_SOON	= "Выброс Пламени скоро"
-DBM_ILLIDAN_WARN_SHADOWDEMSSOON		= "Теневые Демоны скоро"
-DBM_ILLIDAN_WARN_SHADOWDEMS			= "Теневые Демоны"
-DBM_ILLIDAN_WARN_NORMALPHASE_SOON	= "Обычная фаза через 10 сек"
-DBM_ILLIDAN_WARN_CASTSHEAR			= "Срез кастуется"
-DBM_ILLIDAN_WARN_EYEBEAM_SOON		= "Выжигающий взгляд скоро"
-DBM_ILLIDAN_WARN_PHASE_NORMAL		= "Обычная фаза"
-DBM_ILLIDAN_WARN_DEMONPHASE_SOON	= "Фаза Демона через 10 сек"
-DBM_ILLIDAN_WARN_SHADOWDEMSON		= "Теневые Демоны на %s"
-DBM_ILLIDAN_STATUSMSG_PHASE2		= "Фаза 2"
-DBM_ILLIDAN_WARN_PRISON				= "Темница Тьмы"
-DBM_ILLIDAN_WARN_P4ENRAGE_SOON		= "Озверение через 5 sec"
-DBM_ILLIDAN_WARN_P4ENRAGE_NOW		= "Озверение"
-DBM_ILLIDAN_WARN_CAGED				= "Заточение"
+L:SetMiscLocalization{
+	FAWhisper	= "Смертельное Притяжение на Вас!"
+}
 
-DBM_ILLIDAN_SELFWARN_SHADOWFIEND	= "Паразитрующий Тенедемон"
-DBM_ILLIDAN_SELFWARN_SHADOW			= "Пламенная боль"
-DBM_ILLIDAN_SELFWARN_DEMONS			= "Теневой Демон"
+----------------------
+--  Illidari Council  --
+----------------------
+L = DBM:GetModLocalization("Council")
 
-DBM_SBT["Enrage2"]					= "Озверение" -- you cannot have two timers with the same id, so the 2nd enrage bar needs a "localization"
-end
+L:SetGeneralLocalization{
+	name = "Совет Иллидари"
+}
+
+L:SetWarningLocalization{
+	WarnFadeSoon	= "Vanish fades in 5 sec",--Translate
+	WarnFaded		= "Vanish faded",--Translate
+	WarnDevAura		= "Devotion Aura for 30 sec",--Translate
+	WarnResAura		= "Resistance Aura for 30 sec",--Translate
+	Immune			= "Malande - %s immune for 15 sec"--Translate
+}
+
+L:SetTimerLocalization{
+}
+
+L:SetOptionLocalization{
+	WarnFadeSoon	= "Show warning 5 seconds before $spell:41476 fades",--Translate
+	WarnFaded		= "Show warning when $spell:41476 fades",--Translate
+	WarnDevAura		= "Show warning for $spell:41452",--Translate
+	WarnResAura		= "Show warning for $spell:41453",--Translate
+	Immune			= "Show warning when Manalde becomes spell or melee immune",--Translate
+	PoisonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41485),--Translate
+	PoisonWhisper	= "Send whisper to $spell:41485 targets (requires Raid Leader)"--Translate
+}
+
+L:SetMiscLocalization{
+	Gathios			= "Гатиос Изувер",
+	Malande			= "Леди Маланда",
+	Zerevor			= "Верховный пустомант Зеревор",
+	Veras			= "Верас Глубокий Мрак",
+	Melee			= "Melee",--Translate
+	Spell			= "Spell",--Translate
+	PoisonWhisper	= "Deadly Poison on you!"--Translate
+}
+
+-------------------------
+--  Illidan Stormrage --
+-------------------------
+L = DBM:GetModLocalization("Illidan")
+
+L:SetGeneralLocalization{
+	name = "Иллидан Ярость Бури"
+}
+
+L:SetWarningLocalization{
+	WarnPhase2Soon	= "Фаза 2 скоро",
+	WarnPhase4Soon	= "Фаза 4 скоро",
+	WarnHuman		= "Обычная Фаза",
+	WarnHumanSoon	= "Обычная Фаза скоро",
+	WarnDemon		= "Демона Фаза",
+	WarnDemonSoon	= "Демона Фаза скоро"
+}
+
+L:SetTimerLocalization{
+	TimerCombatStart	= "Combat starts",--Translate
+	TimerNextHuman		= "Next Обычная Фаза",--Translate
+	TimerNextDemon		= "Next Демона Фаза",--Translate
+	TimerPhase4			= "Фаза transition"--Translate
+}
+
+L:SetOptionLocalization{
+	WarnPhase2Soon	= "Show pre-warning for Phase 2 transition (at ~75%)",--Translate
+	WarnPhase4Soon	= "Show pre-warning for Phase 4 transition (at ~35%)",--Translate
+	WarnHuman		= "Show warning for Human Phase",--Translate
+	WarnHumanSoon	= "Show pre-warning for Human Phase",--Translate
+	WarnDemon		= "Show warning for Demon Phase",--Translate
+	WarnDemonSoon	= "Show pre-warning for Demon Phase",--Translate
+	TimerCombatStart= "Show time for start of combat",--Translate
+	TimerNextHuman	= "Show time for Next Human Phase",--Translate
+	TimerNextDemon	= "Show time for Demon Human Phase",--Translate
+	TimerPhase4		= "Show time for Phase 4 transition",--Translate
+	ParasiteIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41917),
+	ParasiteWhisper	= "Send whisper to $spell:41917 targets (requires Raid Leader)",--Translate
+	RangeFrame		= "Show range frame (10 yards) in Phase 3 and 4"--Translate
+}
+
+L:SetMiscLocalization{
+	Pull			= "Акама! Твое двуличие меня не удивляет. Мне давным-давно стоило уничтожить тебя и твоих уродливых собратьев.",
+	Eyebeam			= "Посмотри в глаза Предателя!",
+	Demon			= "Узрите мощь демона!",
+	Phase4			= "Это все, смертные? Это и есть вся ваша ярость?",
+	ParasiteWhisper	= "Shadowfiends on you!"--Translate
+}
