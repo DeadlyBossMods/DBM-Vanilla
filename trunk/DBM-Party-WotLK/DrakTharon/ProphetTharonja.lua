@@ -3,7 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision: 3369 $"):sub(12, -3))
 mod:SetCreatureID(26632)
-mod:SetModelID(27072)
+mod:SetModelID(27072)--Does not scale, but at least it's on face. Leaving on for now.
 mod:SetZone()
 
 mod:RegisterCombat("combat")
