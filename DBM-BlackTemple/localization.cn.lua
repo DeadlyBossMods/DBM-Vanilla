@@ -172,7 +172,7 @@ L:SetMiscLocalization{
 	Phase2			= "你可以获得任何你想要的东西……只要付得起代价。",
 	Phase2d			= "Shi shi rikk rukadare shi tichar kar x gular",
 	Phase3			= "当心吧，我复活了！",
-	SpiteWhisper	= "敌意于你!",=
+	SpiteWhisper	= "敌意于你!",
 	Suffering		= "Essence of Suffering",--Translate
 	Desire			= "Essence of Desire",--Translate
 	Anger			= "Essence of Anger"--Translate
