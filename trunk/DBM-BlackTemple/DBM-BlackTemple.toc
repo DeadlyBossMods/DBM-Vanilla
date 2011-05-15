@@ -22,7 +22,13 @@
 ## X-DBM-Mod-LoadZone-esES: Templo Oscuro
 ## X-DBM-Mod-LoadZone-koKR: 검은 사원
 localization.en.lua
+localization.cn.lua
+localization.de.lua
+localization.es.lua
 localization.kr.lua
+localization.ru.lua
+localization.tw.lua
+MapSizes.lua
 Najentus.lua
 Supremus.lua
 ShadeOfAkama.lua

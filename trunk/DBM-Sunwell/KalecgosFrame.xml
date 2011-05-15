@@ -13,7 +13,7 @@
 		</Anchors>
 		<Layers>
 			<Layer level="BACKGROUND">
-				<FontString name="$parentTitle" inherits="GameFontNormalSmall" text="DBM_KAL_FRAME_TITLE">
+				<FontString name="$parentTitle" inherits="GameFontNormalSmall" text=" ">
 					<Anchors>
 						<Anchor point="BOTTOM" relativePoint="BOTTOM"/>
 					</Anchors>
@@ -22,20 +22,20 @@
 		</Layers>
 		<Scripts>
 			<OnMouseDown>
-				if button == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
+				if button == "LeftButton" and not DBM:GetModByName("Kal").Options.FrameLocked then
 					self:StartMoving()
 				end
 			</OnMouseDown>
 			<OnMouseUp>
 				self:StopMovingOrSizing()
-				DBM:GetMod("Kal"):SaveFramePosition()
+				DBM:GetModByName("Kal"):SaveFramePosition()
 				if button == "RightButton" then
-					UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetMod("Kal").InitializeMenu, "MENU")
+					UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetModByName("Kal").InitializeMenu, "MENU")
 					ToggleDropDownMenu(1, nil, DBMKalMenu, "DBMKalMenu", 30, 50)
 				end
 			</OnMouseUp>
 			<OnShow>
-				DBM:GetMod("Kal"):CreateFrame()
+				DBM:GetModByName("Kal"):CreateFrame()
 			</OnShow>
 		</Scripts>
 	</Frame>
@@ -54,12 +54,12 @@
 	
 	<Frame name="DBMKalFrameTemplate" enableMouse="true" virtual="true" frameStrata="MEDIUM" topLevel="true">
 		<Size>
-			<AbsDimension x="200" y="20"/>
+			<AbsDimension x="130" y="20"/>
 		</Size>
 		<Frames>
 			<StatusBar name="$parentBar">
 				<Size>
-					<AbsDimension x="190" y="12"/>
+					<AbsDimension x="120" y="12"/>
 				</Size>
 				<Anchors>
 					<Anchor point="CENTER" relativePoint="CENTER">
@@ -110,7 +110,7 @@
 				<Frames>
 					<Button name="$parentBorder">
 						<Size>
-							<AbsDimension x="198" y="32"/>
+							<AbsDimension x="128" y="32"/>
 						</Size>
 						<Anchors>
 							<Anchor point="LEFT">
@@ -122,7 +122,7 @@
 						<NormalTexture name="$parentTextureNormal" file="Interface\PaperDollInfoFrame\UI-Character-Skills-BarBorder"/>
 						<Scripts>
 							<OnMouseDown>
-								if button == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
+								if button == "LeftButton" and not DBM:GetModByName("Kal").Options.FrameLocked then
 									self.moving = true
 									DBMKalFrameDrag:StartMoving()
 								end
@@ -130,15 +130,15 @@
 							<OnMouseUp>
 								self.moving = false
 								DBMKalFrameDrag:StopMovingOrSizing()
-								DBM:GetMod("Kal"):SaveFramePosition()
+								DBM:GetModByName("Kal"):SaveFramePosition()
 								if button == "RightButton" then
-									UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetMod("Kal").InitializeMenu, "MENU")
+									UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetModByName("Kal").InitializeMenu, "MENU")
 									ToggleDropDownMenu(1, nil, DBMKalMenu, "DBMKalMenu", 30, 50)
 								end
 							</OnMouseUp>
 							<OnHide>
 								if self.moving then
-									DBM:GetMod("Kal"):SaveFramePosition()
+									DBM:GetModByName("Kal"):SaveFramePosition()
 									DBMKalFrameDrag:StopMovingOrSizing()
 									self.moving = false
 								end
@@ -160,7 +160,7 @@
 		</Frames>
 		<Scripts>
 			<OnMouseDown>
-				if button == "LeftButton" and not DBM:GetMod("Kal").Options.FrameLocked then
+				if button == "LeftButton" and not DBM:GetModByName("Kal").Options.FrameLocked then
 					self.moving = true
 					DBMKalFrameDrag:StartMoving()
 				end
@@ -169,7 +169,7 @@
 				self.moving = false
 				DBMKalFrameDrag:StopMovingOrSizing()
 				if button == "RightButton" then
-					UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetMod("Kal").InitializeMenu, "MENU")
+					UIDropDownMenu_Initialize(DBMKalMenu, DBM:GetModByName("Kal").InitializeMenu, "MENU")
 					ToggleDropDownMenu(1, nil, DBMKalMenu, "DBMKalMenu", 30, 50)
 				end
 			</OnMouseUp>

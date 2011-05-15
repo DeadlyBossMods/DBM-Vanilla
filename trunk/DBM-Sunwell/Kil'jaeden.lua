@@ -1,212 +1,197 @@
-local Kil = DBM:NewBossMod("Kil", DBM_KIL_NAME, DBM_KIL_DESCRIPTION, DBM_SUNWELL, DBM_SW_TAB, 6)
+﻿local mod	= DBM:NewMod("Kil", "DBM-Sunwell")
+local L		= mod:GetLocalizedStrings()
 
-Kil.Version	= "0.92"
-Kil.Author	= "Tandanu"
-Kil.MinRevision = 1043
+mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetCreatureID(25315)
+mod:SetModelID(23200)
+mod:SetZone()
+mod:SetUsedIcons(4, 5, 6, 7, 8)
 
-Kil:SetCreatureID(25315)
-Kil:RegisterCombat("yell", DBM_KIL_YELL_PULL)
+mod:RegisterCombat("combat")
 
-Kil:AddOption("RangeCheck", true, DBM_KIL_OPTION_RANGE)
-Kil:AddOption("WarnShield", true, DBM_KIL_OPTION_SHIELD)
-Kil:AddOption("WarnOrb", true, DBM_KIL_OPTION_ORB)
-Kil:AddOption("FireTargetWarn", true, DBM_KIL_OPTION_FIRETARGET)
-Kil:AddOption("FireSay", true, DBM_KIL_OPTION_FIRESAY)
-Kil:AddOption("FireWhisper", true, DBM_KIL_OPTION_FIREWHISP)
-Kil:AddOption("FireIcon", true, DBM_KIL_OPTION_FIREICON)
-Kil:AddOption("WarnReflections", false, DBM_KIL_OPTION_WARNREFL)
-Kil:AddOption("WarnDarts", true, DBM_KIL_OPTION_DARTS)
-Kil:AddOption("WarnDragonOrb", true, DBM_KIL_OPTION_DRAGONORB)
-
-Kil:RegisterEvents(
-	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_MONSTER_YELL",
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
-	"SPELL_AURA_APPLIED"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_HEALTH"
 )
 
-local orbGUIDs = {}
+local warnBloom			= mod:NewTargetAnnounce(45641, 3)
+local warnDarkOrb		= mod:NewAnnounce("WarnDarkOrb", 3, 45109)
+local warnDart			= mod:NewSpellAnnounce(45740, 3)
+local warnBomb			= mod:NewCastAnnounce(46605, 4)
+local warnBombSoon		= mod:NewPreWarnAnnounce(46605, 5, 3)
+local warnShield		= mod:NewSpellAnnounce(45848, 3)
+local warnBlueOrb		= mod:NewAnnounce("WarnBlueOrb", 3, 45109)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnPhase3		= mod:NewPhaseAnnounce(3)
+local warnPhase4		= mod:NewPhaseAnnounce(4)
+
+local specWarnBloom		= mod:NewSpecialWarningYou(45641)
+local specWarnBomb		= mod:NewSpecialWarningSpell(46605)
+local specWarnDarkOrb	= mod:NewSpecialWarning("SpecWarnDarkOrb", false)
+local specWarnBlueOrb	= mod:NewSpecialWarning("SpecWarnBlueOrb", false)
+
+local timerBloomCD		= mod:NewCDTimer(20, 45641)
+local timerDartCD		= mod:NewCDTimer(20, 45740)
+local timerBombCD		= mod:NewCDTimer(45, 46605)
+local timerSpike		= mod:NewCastTimer(28, 46680)
+local timerBlueOrb		= mod:NewTimer(37, "TimerBlueOrb", 45109)
+
+local berserkTimer		= mod:NewBerserkTimer(600)
+
+mod:AddBoolOption("RangeFrame", true)
+mod:AddBoolOption("BloomIcon", true)
+mod:AddBoolOption("YellOnBloom", true, "announce")
+mod:AddBoolOption("BloomWhisper", false, "announce")
+
+local warnBloomTargets = {}
+local bloomIcon = 8
 local lastOrb = 0
-local fire = {}
-local phase = 2
+local phase = 1
+local p2_check = false
+local p3_check = false
+local p4_check = false
 
-function Kil:OnCombatStart()
-	orbGUIDs = {}
+local function showBloomTargets()
+	warnBloom:Show(table.concat(warnBloomTargets, "<, >"))
+	table.wipe(warnBloomTargets)
+	bloomIcon = 8
+	timerBloomCD:Start()
+end
+
+function mod:OnCombatStart(delay)
+	table.wipe(warnBloomTargets)
+	warnBloomTargets = {}
+	bloomIcon = 8
 	lastOrb = 0
-	fire = {}
-	phase = 2
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Show()
-	end
-	self:Announce(DBM_KIL_WARN_PHASE1, 3)
-end
-
-function Kil:OnCombatEnd()
-	if self.Options.RangeCheck then
-		DBM_Gui_DistanceFrame_Hide()
+	phase = 1
+	p2_check = false
+	p3_check = false
+	p4_check = false
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Show()
 	end
 end
 
-function Kil:OnEvent(event, args)
-	if event == "CHAT_MSG_MONSTER_YELL" then
-		if args == DBM_KIL_YELL_PHASE2_1 or args == DBM_KIL_YELL_PHASE2_2 then
-			self:SendSync("Phase")
+function mod:OnCombatEnd()
+	DBM.RangeCheck:Hide()
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(45641) then
+		warnBloomTargets[#warnBloomTargets + 1] = args.destName
+		self:Unschedule(showBloomTargets)
+		if self.Options.BloomIcon then
+			self:SetIcon(args.destName, bloomIcon)
+			bloomIcon = bloomIcon - 1
 		end
-	elseif event == "SPELL_DAMAGE" or event == "SPELL_MISSED" then
-		if args.spellId == 45680 then
-			if not orbGUIDs[args.sourceGUID] then
-				orbGUIDs[args.sourceGUID] = true
-				self:SendSync("Orb")
+		if args:IsPlayer() then
+			specWarnBloom:Show()
+			if self.Options.YellOnBloom then
+				SendChatMessage(L.YellBloom, "SAY")
 			end
 		end
-	elseif event == "SPELL_CAST_SUCCESS" then
-		if args.spellId == 45848 then
-			self:SendSync("StartShield")
-		elseif args.spellId == 45892 then
-			self:SendSync("Reflections")
+		if IsRaidLeader() and self.Options.BloomWhisper then
+			self:SendWhisper(L.BloomWhisper, args.destName)
 		end
-	elseif event == "SPELL_AURA_APPLIED" then
---		if args.spellId == 45848 and bit.band(args.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 and shieldCasted then
---			self:SendSync("Shield"..tostring(args.destName))
-		if args.spellId == 45641 then
-			self:SendSync("Fire"..tostring(args.destName))
-		end
-	elseif event == "SPELL_CAST_START" then
-		if args.spellId == 46605 then
-			self:SendSync("Darkness")
---		elseif args.spellId == 45641 then
---			self:SendSync("BloomInc")
-		elseif args.spellId == 45737 then
-			self:SendSync("Darts")
+		if #warnBloomTargets >= 5 then
+			showBloomTargets()
+		else
+			self:Schedule(0.3, showBloomTargets)
 		end
 	end
 end
 
-local function announceFire(self)
-	if self.Options.FireIcon then
-		local icon = 8
-		for i, v in ipairs(fire) do
-			self:SetIcon(v, 20, icon)
-			icon = icon - 1
+function mod:SPELL_CAST_START(args)
+	if args:IsSpellID(46605) then
+		warnBomb:Show()
+		specWarnBomb:Show()
+		if phase == 4 then
+			timerBombCD:Start(25)
+			warnBombSoon:Schedule(20)
+		else
+			timerBombCD:Start()
+			warnBombSoon:Schedule(40)
 		end
+	elseif args:IsSpellID(45737) then
+		warnDart:Show()
+		timerDartCD:Start()
+	elseif args:IsSpellID(46680) then
+		timerSpike:Start()
 	end
-	if self.Options.FireTargetWarn then
-		self:Announce(DBM_KIL_WARN_FIRE_ON:format(table.concat(fire, "<, >"), 2))
-		fire = {}
-	end
-	self:StartStatusBarTimer(20, "Fire Bloom CD", 45641)
 end
 
-function Kil:OnSync(msg)
-	if msg == "StartShield" then
-		if self.Options.WarnShield then
-			self:Announce(DBM_KIL_WARN_SHIELD, 1)
-		end
---		shieldCasted = true
---	elseif msg:sub(0, 6) == "Shield" then
---		msg = msg:sub(7)
---		shieldCasted = false
---		if self.Options.WarnShield then
---			self:Announce(DBM_KIL_WARN_SHIELD:format(msg), 2)
---		end
-	elseif msg == "Phase" then
-		phase = phase + 1
-		if phase == 3 then
-			self:Announce(DBM_KIL_WARN_PHASE2, 3)
-			self:StartStatusBarTimer(77, "Next Darkness", 46605)
-			self:ScheduleAnnounce(72, DBM_KIL_WARN_DARKNESS_SOON, 3)
-			self:StartStatusBarTimer(59, "Flame Darts", 45740)
-			if self.Options.WarnDarts then
-				self:ScheduleAnnounce(54, DBM_KIL_WARN_DARTS_SOON, 1)
-			end
-			self:StartStatusBarTimer(37, "Dragon Orb", 45109)
-			if self.Options.WarnDragonOrb then
-				self:ScheduleAnnounce(32, DBM_KIL_WARN_DRAGORB_SOON, 2)
-				self:ScheduleAnnounce(37, DBM_KIL_WARN_DRAGORB_NOW, 3)
-			end
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(45848) then
+		warnShield:Show()
+	elseif args:IsSpellID(45892) then
+		if phase == 2 then
+			warnPhase2:Show()
+			warnBombSoon:Schedule(72)
+			timerBlueOrb:Start()
+			timerDartCD:Start(59)
+			timerBombCD:Start(77)
+		elseif phase == 3 then
+			warnPhase3:Show()
+			warnBombSoon:Cancel()
+			timerBlueOrb:Cancel()
+			timerDartCD:Cancel()
+			timerBombCD:Cancel()
+			warnBombSoon:Schedule(72)
+			timerBlueOrb:Start()
+			timerDartCD:Start(59)
+			timerBombCD:Start(77)
 		elseif phase == 4 then
-			self:Announce(DBM_KIL_WARN_PHASE3, 3)
-			self:EndStatusBarTimer("Next Darkness")
-			self:UnScheduleAnnounce(DBM_KIL_WARN_DARKNESS_SOON, 3)
-			self:StartStatusBarTimer(77, "Next Darkness", 46605)
-			self:ScheduleAnnounce(72, DBM_KIL_WARN_DARKNESS_SOON, 3)
-			self:StartStatusBarTimer(37, "Dragon Orb", 45109)
-			if self.Options.WarnDragonOrb then
-				self:ScheduleAnnounce(32, DBM_KIL_WARN_DRAGORB_SOON, 2)
-				self:ScheduleAnnounce(37, DBM_KIL_WARN_DRAGORB_NOW, 3)
-			end
-		elseif phase == 5 then
-			self:Announce(DBM_KIL_WARN_PHASE4, 3)
-			self:EndStatusBarTimer("Next Darkness")
-			self:UnScheduleAnnounce(DBM_KIL_WARN_DARKNESS_SOON, 3)
-			self:StartStatusBarTimer(58, "Next Darkness", 46605)
-			self:ScheduleAnnounce(53, DBM_KIL_WARN_DARKNESS_SOON, 3)
+			warnPhase4:Show()
+			warnBombSoon:Cancel()
+			timerBlueOrb:Cancel()
+			timerDartCD:Cancel()
+			timerBombCD:Cancel()
+			warnBombSoon:Schedule(53)
+			timerBlueOrb:Start(45)
+			timerDartCD:Start(49)
+			timerBombCD:Start(58)
 		end
-	elseif msg == "Darkness" then
-		self:Announce(DBM_KIL_WARN_DARKNESS, 4)
-		if phase == 5 then
-			self:StartStatusBarTimer(25, "Next Darkness", 46605)
-			self:ScheduleAnnounce(20, DBM_KIL_WARN_DARKNESS_SOON, 3)
-		else
-			self:StartStatusBarTimer(45, "Next Darkness", 46605)
-			self:ScheduleAnnounce(40, DBM_KIL_WARN_DARKNESS_SOON, 3)
-		end
-		self:StartStatusBarTimer(8.5, "Darkness", 46605)
-		self:ScheduleAnnounce(8.5, DBM_KIL_WARN_DARKNESS_NOW, 4)
-	elseif msg == "Orb" then
-		if (GetTime() - lastOrb) > 10 then
-			lastOrb = GetTime()
-			if self.Options.WarnOrb then
-				if phase >= 3 then
-					self:Announce(DBM_KIL_WARN_ORBS, 1)
-				else
-					self:Announce(DBM_KIL_WARN_ORB, 1)
-				end
-			end
-		end
---	elseif msg == "BloomInc" then
---		if self.Options.FireWarn then
---			self:Announce(DBM_KIL_WARN_FIRE, 1)
---		end
-	elseif msg:sub(0, 4) == "Fire" then
---		self:AddMsg(msg)
-		msg = msg:sub(5)
-		table.insert(fire, msg)
-		local class
-		for i = 1, GetNumRaidMembers() do
-			if UnitName("raid"..i) == msg then
-				class = select(2, UnitClass("raid"..i))
-				break
-			end
-		end
-		if #fire == 5 then
-			announceFire(self)
-			DBM.UnSchedule(announceFire, self)
-		else
-			DBM.UnSchedule(announceFire, self)
-			DBM.Schedule(1, announceFire, self)
-		end
-		if UnitName("player") == msg then
-			if self.Options.FireSay then
-				SendChatMessage(DBM_KIL_WARN_FIRE_SAY, "SAY")
-			end
-		end
-		if self.Options.FireWhisper then
-			self:SendHiddenWhisper(DBM_KIL_WARN_FIRE_WHISPER, msg)
-		end
-	elseif msg == "Reflections" then
-		if self.Options.WarnReflections then
-			self:Announce(DBM_KIL_WARN_REFLECTIONS, 3)
-		end
-		
-	elseif msg == "Darts" then
-		self:StartStatusBarTimer(20, "Flame Darts", 45740)
-		if self.Options.WarnDarts then
-			self:Announce(DBM_KIL_WARN_DARTS, 3)			
-			self:ScheduleAnnounce(15, DBM_KIL_WARN_DARTS_SOON, 1)
-		end			
 	end
 end
 
+function mod:SPELL_DAMAGE(args)
+	if args:IsSpellID(45680) and GetTime() - lastOrb > 10 then
+		warnDarkOrb:Show()
+		specWarnDarkOrb:Show()
+		lastOrb = GetTime()
+	end
+end
+
+function mod:SPELL_MISSED(args)
+	if args:IsSpellID(45680) and GetTime() - lastOrb > 10 then
+		warnDarkOrb:Show()
+		specWarnDarkOrb:Show()
+		lastOrb = GetTime()
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.OrbYell1 or msg:find(L.OrbYell1) or msg == L.OrbYell2 or msg:find(L.OrbYell2) or msg == L.OrbYell3 or msg:find(L.OrbYell3) or msg == L.OrbYell4 or msg:find(L.OrbYell4) then
+		warnBlueOrb:Show()
+		specWarnBlueOrb:Show()
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	local cid = self:GetUnitCreatureId(uId)
+	if cid == 25315 and not p2_check and UnitHealth(uId)/UnitHealthMax(uId) <= 0.86 then
+		phase = 2
+		p2_check = true
+	elseif cid == 25315 and not p3_check and UnitHealth(uId)/UnitHealthMax(uId) <= 0.56 then
+		phase = 3
+		p4_check = true
+	elseif cid == 25315 and not p4_check and UnitHealth(uId)/UnitHealthMax(uId) <= 0.26 then
+		phase = 4
+		p4_check = true
+	end
+end
