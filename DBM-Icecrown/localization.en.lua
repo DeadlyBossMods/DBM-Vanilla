@@ -326,8 +326,7 @@ L:SetOptionLocalization{
 	YellOnUnbound				= "Yell on $spell:72856",
 	GooArrow					= "Show DBM arrow when $spell:72295 is near you",
 	SpecWarnUnboundPlague		= "Show special warning for $spell:72856 transfer",
-	SpecWarnNextPlageSelf		= "Show special warning when you are the next $spell:72856 target",
-	BypassLatencyCheck			= "Don't use latency based sync check for $spell:72295\n(only use this if you're having problems otherwise)"
+	SpecWarnNextPlageSelf		= "Show special warning when you are the next $spell:72856 target"
 }
 
 L:SetMiscLocalization{

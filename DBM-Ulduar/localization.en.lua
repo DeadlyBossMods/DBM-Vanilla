@@ -316,7 +316,6 @@ L:SetMiscLocalization{
 	Snaplasher         = "Snaplasher",
 	StormLasher        = "Storm Lasher",
 	YellKill           = "His hold on me dissipates. I can see clearly once more. Thank you, heroes.",
-	TrashRespawnTimer  = "Freya trash respawn"
 }
 
 L:SetWarningLocalization{
@@ -342,14 +341,12 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	TrashRespawnTimer	= "Freya trash respawn"
 }
 
 L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	TrashRespawnTimer		= "Show timer for trash respawn"
 }
 
 ---------------
@@ -430,8 +427,7 @@ L:SetOptionLocalization{
 	YellOnLifeLeech					= "Yell on $spell:63276",
 	YellOnShadowCrash				= "Yell on $spell:62660",
 	hardmodeSpawn					= "Show timer for Saronite Animus spawn (hard mode)",
-	CrashArrow						= "Show DBM arrow when $spell:62660 is near you",
-	BypassLatencyCheck				= "Don't use latency based sync check for $spell:62660\n(only use this if you're having problems otherwise)"
+	CrashArrow						= "Show DBM arrow when $spell:62660 is near you"
 }
 
 L:SetMiscLocalization{

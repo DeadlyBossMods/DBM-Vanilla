@@ -22,8 +22,6 @@ local specWarnGroundTremor	= mod:NewSpecialWarningCast(62932, true)
 
 local soundFistofStone			= mod:NewSound(62344, nil, false)
 
-mod:AddBoolOption("TrashRespawnTimer", true, "timer")
-
 --
 -- Trash: 33430 Guardian Lasher (flower)
 -- 33355 (nymph)
@@ -51,14 +49,5 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(62310, 62928) then 			-- Impale
 		warnImpale:Show(args.destName)
 		timerImpale:Start(args.destName)
-	end
-end
-
-function mod:UNIT_DIED(args)
-	if self.Options.TrashRespawnTimer and not DBM.Bars:GetBar(L.TrashRespawnTimer) then
-		local cid = self:GetCIDFromGUID(args.destGUID)
-		if cid == 33430 or cid == 33355 or cid == 33354 then		-- guardian lasher / nymph / tree
-			DBM.Bars:CreateBar(7200, L.TrashRespawnTimer)
-		end
 	end
 end

@@ -110,7 +110,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnRuneofDeath:Show()
 		timerRuneofDeath:Start()
 	elseif args:IsSpellID(64321, 61974) then	-- Rune of Power
-		self:ScheduleMethod(0.1, "RuneTarget")
+		self:ScheduleMethod(0.2, "RuneTarget")
 		timerRuneofPower:Start()
 	elseif args:IsSpellID(61869, 63481) then	-- Overload
 		timerOverload:Start()

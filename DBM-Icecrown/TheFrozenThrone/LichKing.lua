@@ -123,7 +123,7 @@ function mod:RestoreWipeTime()
 	mod:SetWipeTime(5)--Restore it after frostmourn room.
 end
 
-function mod:OldDefileTarget()
+function mod:DefileTarget()
 	local targetname = self:GetBossTarget(36597)
 	if not targetname then return end
 		warnDefileCast:Show(targetname)
@@ -155,7 +155,7 @@ function mod:OldDefileTarget()
 	end
 end
 
-function mod:OldTankTrap()
+function mod:TankTrap()
 	warnTrapCast:Show(LKTank)
 	if self.Options.TrapIcon then
 		self:SetIcon(LKTank, 8, 10)
@@ -183,12 +183,12 @@ function mod:OldTankTrap()
 	end
 end
 
-function mod:OldTrapTarget()
+function mod:TrapTarget()
 	local targetname = self:GetBossTarget(36597)
 	if not targetname then return end
 	if targetname ~= LKTank then--If scan doesn't return tank abort other scans and do other warnings.
-		self:UnscheduleMethod("OldTrapTarget")
-		self:UnscheduleMethod("OldTankTrap")--Also unschedule tanktrap since we got a scan that returned a non tank.
+		self:UnscheduleMethod("TrapTarget")
+		self:UnscheduleMethod("TankTrap")--Also unschedule tanktrap since we got a scan that returned a non tank.
 		warnTrapCast:Show(targetname)
 		if self.Options.TrapIcon then
 			self:SetIcon(targetname, 8, 10)
@@ -215,8 +215,8 @@ function mod:OldTrapTarget()
 			end
 		end
 	else
-		self:UnscheduleMethod("OldTankTrap")
-		self:ScheduleMethod(1, "OldTankTrap") --If scan returns tank schedule warnings for tank after all other scans have completed. If none of those scans return another player this will be allowed to fire.
+		self:UnscheduleMethod("TankTrap")
+		self:ScheduleMethod(1, "TankTrap") --If scan returns tank schedule warnings for tank after all other scans have completed. If none of those scans return another player this will be allowed to fire.
 	end
 end
 
@@ -254,22 +254,22 @@ function mod:SPELL_CAST_START(args)
 		specWarnInfest:Show()
 		timerInfestCD:Start()
 	elseif args:IsSpellID(72762) then -- Defile
-			self:ScheduleMethod(0.1, "OldDefileTarget")
+			self:ScheduleMethod(0.1, "DefileTarget")
 		warnDefileSoon:Cancel()
 		warnDefileSoon:Schedule(27)
 		timerDefileCD:Start()
 	elseif args:IsSpellID(73539) then -- Shadow Trap (Heroic)
 		timerTrapCD:Start()
-			self:ScheduleMethod(0.01, "OldTrapTarget")
-			self:ScheduleMethod(0.02, "OldTrapTarget")
-			self:ScheduleMethod(0.03, "OldTrapTarget")
-			self:ScheduleMethod(0.04, "OldTrapTarget")
-			self:ScheduleMethod(0.05, "OldTrapTarget")
-			self:ScheduleMethod(0.06, "OldTrapTarget")
-			self:ScheduleMethod(0.07, "OldTrapTarget")
-			self:ScheduleMethod(0.08, "OldTrapTarget")
-			self:ScheduleMethod(0.09, "OldTrapTarget")
-			self:ScheduleMethod(0.1, "OldTrapTarget")
+			self:ScheduleMethod(0.01, "TrapTarget")
+			self:ScheduleMethod(0.02, "TrapTarget")
+			self:ScheduleMethod(0.03, "TrapTarget")
+			self:ScheduleMethod(0.04, "TrapTarget")
+			self:ScheduleMethod(0.05, "TrapTarget")
+			self:ScheduleMethod(0.06, "TrapTarget")
+			self:ScheduleMethod(0.07, "TrapTarget")
+			self:ScheduleMethod(0.08, "TrapTarget")
+			self:ScheduleMethod(0.09, "TrapTarget")
+			self:ScheduleMethod(0.1, "TrapTarget")
 	elseif args:IsSpellID(73650) then -- Restore Soul (Heroic)
 		warnRestoreSoul:Show()
 		timerRestoreSoul:Start()
