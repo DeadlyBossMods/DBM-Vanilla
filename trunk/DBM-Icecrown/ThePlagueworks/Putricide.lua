@@ -71,7 +71,6 @@ mod:AddBoolOption("UnboundPlagueIcon")					-- icon on the player with active buf
 mod:AddBoolOption("GooArrow")
 mod:AddBoolOption("YellOnMalleableGoo", true, "announce")
 mod:AddBoolOption("YellOnUnbound", true, "announce")
-mod:AddBoolOption("BypassLatencyCheck", false)--Use old scan method without syncing or latency check (less reliable but not dependant on other DBM users in raid)
 
 local warned_preP2 = false
 local warned_preP3 = false
@@ -95,14 +94,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:MalleableGooTarget()
-	local targetname = self:GetBossTarget(36678)
-	if not targetname then return end
-	if mod:LatencyCheck() then--Only send sync if you have low latency.
-		self:SendSync("GooOn", targetname)
-	end
-end
-
-function mod:OldMalleableGooTarget()
 	local targetname = self:GetBossTarget(36678)
 	if not targetname then return end
 		if self.Options.MalleableGooIcon then
@@ -219,11 +210,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timerMalleableGooCD:Start()
 		end
-		if self.Options.BypassLatencyCheck then
-			self:ScheduleMethod(0.1, "OldMalleableGooTarget")
-		else
-			self:ScheduleMethod(0.1, "MalleableGooTarget")
-		end
+		self:ScheduleMethod(0.2, "MalleableGooTarget")
 	end
 end
 
@@ -330,38 +317,5 @@ function mod:UNIT_HEALTH(uId)
 	elseif phase == 2 and not warned_preP3 and self:GetUnitCreatureId(uId) == 36678 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.38 then
 		warned_preP3 = true
 		warnPhase3Soon:Show()	
-	end
-end
-
-function mod:OnSync(msg, target)
-	if msg == "GooOn" then
-		if not self.Options.BypassLatencyCheck and GetTime() - lastGoo > 2 then
-			lastGoo = GetTime()
-			if self.Options.MalleableGooIcon then
-				self:SetIcon(target, 6, 10)
-			end
-			if target == UnitName("player") then
-				specWarnMalleableGoo:Show()
-				if self.Options.YellOnMalleableGoo then
-					SendChatMessage(L.YellMalleable, "SAY")
-				end
-			elseif target then
-				local uId = DBM:GetRaidUnitId(target)
-				if uId then
-					local inRange = CheckInteractDistance(uId, 2)
-					local x, y = GetPlayerMapPosition(uId)
-					if x == 0 and y == 0 then
-						SetMapToCurrentZone()
-						x, y = GetPlayerMapPosition(uId)
-					end
-					if inRange then
-						specWarnMalleableGooNear:Show()
-						if self.Options.GooArrow then
-							DBM.Arrow:ShowRunAway(x, y, 10, 5)
-						end
-					end
-				end
-			end
-		end
 	end
 end

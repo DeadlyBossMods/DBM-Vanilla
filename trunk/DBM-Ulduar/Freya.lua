@@ -58,11 +58,6 @@ end
 
 function mod:OnCombatEnd(wipe)
 	DBM.BossHealth:Hide()
-	if not wipe then
-		if DBM.Bars:GetBar(L.TrashRespawnTimer) then
-			DBM.Bars:CancelBar(L.TrashRespawnTimer) 
-		end	
-	end
 end
 
 local function showRootWarning()

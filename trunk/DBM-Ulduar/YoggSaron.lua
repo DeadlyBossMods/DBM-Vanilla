@@ -111,7 +111,7 @@ function mod:SPELL_CAST_START(args)
 		timerCastDeafeningRoar:Start()
 		specWarnDeafeningRoar:Show()
 	elseif args:IsSpellID(63138) then		--Sara's Fervor
-		self:ScheduleMethod(0.1, "FervorTarget")
+		self:ScheduleMethod(0.2, "FervorTarget")
 		warnFervorCast:Show()
 	end
 end

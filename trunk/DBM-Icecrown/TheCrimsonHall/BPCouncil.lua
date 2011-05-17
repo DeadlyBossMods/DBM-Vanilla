@@ -89,14 +89,6 @@ end
 function mod:ShockVortexTarget()
 	local targetname = self:GetBossTarget(37970)
 	if not targetname then return end
-	if mod:LatencyCheck() then--Only send sync Shock Vortex target if you have low latency.
-		self:SendSync("ShockVortex", targetname)
-	end
-end
-
-function mod:OldShockVortexTarget()
-	local targetname = self:GetBossTarget(37970)
-	if not targetname then return end
 		warnShockVortex:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnVortex:Show()
@@ -140,11 +132,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(72037) then		-- Shock Vortex
 		timerShockVortex:Start()
-		if self.Options.BypassLatencyCheck then
-			self:ScheduleMethod(0.1, "OldShockVortexTarget")
-		else
-			self:ScheduleMethod(0.1, "ShockVortexTarget")
-		end
+		self:ScheduleMethod(0.2, "ShockVortexTarget")
 	elseif args:IsSpellID(72039, 73037, 73038, 73039) then	-- Empowered Shock Vortex(73037, 73038, 73039 drycoded from wowhead)
 		warnEmpoweredShockVortex:Show()
 		specWarnEmpoweredShockV:Show()
@@ -233,37 +221,13 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
 	end
 end
 
-function mod:OnSync(msg, target)
+function mod:OnSync(msg)
 	if msg == "KineticBomb" then
 		warnKineticBomb:Show()
 		if mod:IsDifficulty("normal10") or mod:IsDifficulty("heroic10") then
 			timerKineticBombCD:Start(27)
 		else
 			timerKineticBombCD:Start()
-		end
-	elseif msg == "ShockVortex" then
-		if not self.Options.BypassLatencyCheck and GetTime() - lastVortex > 2 then
-			lastVortex = GetTime()
-			warnShockVortex:Show(target)
-			if target == UnitName("player") then
-				specWarnVortex:Show()
-			elseif targetname then
-				local uId = DBM:GetRaidUnitId(target)
-				if uId then
-					local inRange = CheckInteractDistance(uId, 2)
-					local x, y = GetPlayerMapPosition(uId)
-					if x == 0 and y == 0 then
-						SetMapToCurrentZone()
-						x, y = GetPlayerMapPosition(uId)
-					end
-					if inRange then
-						specWarnVortexNear:Show()
-						if self.Options.VortexArrow then
-							DBM.Arrow:ShowRunAway(x, y, 10, 5)
-						end
-					end
-				end
-			end
 		end
 	end
 end
