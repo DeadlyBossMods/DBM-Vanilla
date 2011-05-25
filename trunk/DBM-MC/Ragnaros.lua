@@ -39,6 +39,7 @@ local function emerged()
 	timerEmerge:Cancel()
 	warnEmerge:Show()
 	timerSubmerge:Start()
+--	timerWrathRag:Start()--need to find out what it is first.
 	warnSubmergeSoon:Schedule(170)
 	addDied = 0
 end
@@ -62,6 +63,7 @@ function mod:OnSync(msg)
 	if msg == "Submerge" then
 		self:Unschedule(emerged)
 		warnEmergeSoon:Cancel()
+		timerWrathRag:Cancel()
 		warnSubmerge:Show()
 		timerEmerge:Start()
 		warnEmergeSoon:Schedule(80)
