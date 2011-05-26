@@ -16,8 +16,8 @@ local warnRiderDown		= mod:NewAnnounce("WarningRiderDown", 4)
 local warnKnightDown	= mod:NewAnnounce("WarningKnightDown", 2)
 local warnPhase2		= mod:NewPhaseAnnounce(2, 4)
 
-local timerPhase2		= mod:NewTimer(270, "TimerPhase2", 27082) 
-local timerWave			= mod:NewTimer(20, "TimerWave", 27082)
+local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "Interface\\Icons\\Spell_Nature_WispSplode") 
+local timerWave			= mod:NewTimer(20, "TimerWave", 69516)
 
 local wavesNormal = {
 	{2, L.Trainee, next = 20},
