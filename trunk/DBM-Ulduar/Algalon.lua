@@ -49,6 +49,8 @@ local timerCastCosmicSmash		= mod:NewCastTimer(4.5, 62311)
 local timerPhasePunch			= mod:NewBuffActiveTimer(45, 64412)
 local timerNextPhasePunch		= mod:NewNextTimer(16, 64412)
 
+local sentLowHP = {}
+local warnedLowHP = {}
 local warned_preP2 = false
 local warned_star = false
 
@@ -61,6 +63,8 @@ function mod:OnCombatStart(delay)
 	timerCDCosmicSmash:Start(33-delay)
 	timerNextCollapsingStar:Start(23-delay)
 	timerCombatStart:Start(-delay)
+	table.wipe(sentLowHP)
+	table.wipe(warnedLowHP)
 end
 
 function mod:SPELL_CAST_START(args)
@@ -121,11 +125,20 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not warned_preP2 and self:GetUnitCreatureId(uId) == 32871 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 then
+	local cid = self:GetUnitCreatureId(uId)
+	local guid = UnitGUID(uId)
+	if cid == 32871 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 and not warned_preP2 then
 		warned_preP2 = true
 		warnPhase2Soon:Show()
-	elseif not warned_star and self:GetUnitCreatureId(uId) == 32955 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
-		warned_star = true
+	elseif cid == 32955 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and not sentLowHP[guid] then
+		sentLowHP[guid] = true
+		self:SendSync("lowhealth", guid)
+	end
+end
+
+function mod:OnSync(msg, guid)
+	if msg == "lowhealth" and guid and not warnedLowHP[guid] then
+		warnedLowHP[guid] = true
 		specwarnStarLow:Show()
 	end
 end
