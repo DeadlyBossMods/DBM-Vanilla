@@ -48,7 +48,7 @@ L:SetOptionLocalization{
 	WarnPhaseSoon	= "단계 전환 사전 경고 보기(prewarn)",
 	WarnKite		= "추적 대상 알리기",
 	TimerPhase		= "단계 전환 타이머 보기",
-	KiteIcon		= "추적 대상에게 공격대 징표 설정",
+	KiteIcon		= "추적 대상에게 전술 목표 아이콘 설정",
 	KiteWhisper		= "추적 대상에게 귓속말 보내기"
 }
 
@@ -168,7 +168,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Pull			= "너희를 기다리는 건 고통과 슬픔뿐이야!",
-	Enrage			= "욕망의 정수",
+	Enrage			= "%s|1이;가; 분노에 휩싸입니다!",
 	Phase2			= "선택은 자유지만... 대가는 치러야 하는 법.",
 	Phase2d			= "[악마어] Kanrethad Zennshinagas Zilthuras Teamanare Revola Asj",
 	Phase3			= "각오해라. 내가 살아났다!",

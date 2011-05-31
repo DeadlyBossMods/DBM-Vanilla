@@ -12,7 +12,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_REMOVED",
+	"UNIT_AURA"
 )
 
 local warnAura1		= mod:NewSpellAnnounce(40880, 3) -- shadow

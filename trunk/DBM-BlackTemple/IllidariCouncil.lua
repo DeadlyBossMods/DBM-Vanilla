@@ -15,7 +15,15 @@ mod:RegisterEvents(
 	"SPELL_INTERRUPT",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_REMOVED",
+	"UNIT_DIED"
+)
+
+mod:SetBossHealthInfo(
+	22949, L.Gathios,
+	22950, L.Zerevor,
+	22951, L.Malande,
+	22952, L.Veras
 )
 
 local warnPoison		= mod:NewTargetAnnounce(41485, 3)
@@ -45,6 +53,7 @@ local timerNextCoH		= mod:NewCDTimer(14, 41455)
 
 local berserkTimer		= mod:NewBerserkTimer(900)
 
+mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("PoisonIcon", true)
 mod:AddBoolOption("PoisonWhisper", false, "announce")
 
@@ -121,5 +130,11 @@ function mod:SPELL_INTERRUPT(args)
 	if args:IsSpellID(41455) then
 		timerCoH:Cancel()
 		timerNextCoH:Start()
+	end
+end
+
+function mod:UNIT_DIED(args)
+	if self:GetCIDFromGUID(args.destGUID) == 23426 and self:IsInCombat() then
+		DBM:EndCombat(self)
 	end
 end

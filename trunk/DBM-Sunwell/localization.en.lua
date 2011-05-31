@@ -134,7 +134,9 @@ L:SetMiscLocalization{
 	NovaWhisper		= "Shadow Nova on you!",
 	ConflagWhisper	= "Conflagration on you!",
 	Nova			= "directs Shadow Nova at (.+)%.",
-	Conflag			= "directs Conflagration at (.+)%."
+	Conflag			= "directs Conflagration at (.+)%.",
+	Sacrolash		= "Lady Sacrolash",
+	Alythess		= "Grand Warlock Alythess"
 }
 
 ------------

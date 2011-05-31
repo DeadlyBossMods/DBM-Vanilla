@@ -17,6 +17,11 @@ mod:RegisterEvents(
 	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
 
+mod:SetBossHealthInfo(
+	25165, L.Sacrolash,
+	25166, L.Alythess
+)
+
 local warnPyro				= mod:NewSpellAnnounce(45230, 3)
 local warnBlade				= mod:NewSpellAnnounce(45248, 3)
 local warnBlow				= mod:NewTargetAnnounce(45256, 3)
@@ -40,6 +45,7 @@ local berserkTimer			= mod:NewBerserkTimer(360)
 
 local soundConflag			= mod:NewSound(45333)
 
+mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("NovaIcon", true)
 mod:AddBoolOption("ConflagIcon", true)

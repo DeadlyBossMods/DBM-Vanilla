@@ -384,10 +384,10 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnSimulKill			= "첫번째 소환수 죽음 알리기",
 	WarnRoots 				= "무쇠뿌리 대상 알리기",	
-	SpecWarnFury 			= "당신이 자연의 격노일 경우 특수 경고 보기",
+	SpecWarnFury 			= "자연의 격노의 영향을 받을 경우 특수 경고 보기",
 	WarningTremor  	 		= "지진 시전 특수 경고 보기 (하드 모드)",
 	TimerSimulKill			= "소환수 부활 타이머 보기",	
-	UnstableEnergy			= "당신이 불안정한 힘에게 영향을 받을 때 특수 경고 보기"	
+	UnstableEnergy			= "불안정한 힘의 영향을 받을 경우 특수 경고 보기"	
 }
 
 ----------------------
@@ -405,13 +405,11 @@ L:SetWarningLocalization{
 }
 
 L:SetMiscLocalization{
-	TrashRespawnTimer 		= "프레이야 지역 리젠타임"
 }
 
 L:SetOptionLocalization{
 	SpecWarnFistOfStone		= "돌덩이 주먹 특수 경고 보기",
-	SpecWarnGroundTremor	= "지진 특수 경고 보기",
-	TrashRespawnTimer		= "프레이야 지역 리젠 타이머 보기"
+	SpecWarnGroundTremor	= "지진 특수 경고 보기"
 }
 
 ---------------
@@ -501,8 +499,7 @@ L:SetOptionLocalization{
 	YellOnShadowCrash				= "어둠 붕괴일 때 외치기",
 	WarningLeechLife				= "생명력 흡수 시전 경고 보기",		
 	hardmodeSpawn					= "사로나이드 원혼 생성 타이머 보기(하드모드)",
-	CrashArrow						= "$spell:62660의 방향을 DBM Arrow로 표시하기(당신 주변일 경우)",
-	BypassLatencyCheck				= "$spell:62660의 동기화를 사용하지 않거나 네트워크 체크를 하지 않습니다.\n(만약 DBM 사용에 문제가 생기면 사용하세요.)",	
+	CrashArrow						= "$spell:62660의 방향을 DBM Arrow로 표시하기(당신 주변일 경우)"
 }
 
 L:SetMiscLocalization{
