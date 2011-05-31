@@ -329,8 +329,7 @@ L:SetOptionLocalization{
 	YellOnUnbound				= "$spell:72856 외치기",	
 	GooArrow					= "당신 주변의 $spell:72295를 DBM 화살표로 표시",	
 	SpecWarnUnboundPlague		= "$spell:72856 전달자 특수 경고 보기",
-	SpecWarnNextPlageSelf		= "당신이 다음 $spell:72856 대상이 될 때 특수 경고 보기",
-	BypassLatencyCheck			= "$spell:72295의 동기화를 사용하지 않거나 네트워크 체크를 하지 않습니다.\n(만약 DBM 사용에 문제가 생기면 사용하세요.)"	
+	SpecWarnNextPlageSelf		= "당신이 다음 $spell:72856 대상이 될 때 특수 경고 보기"
 }
 
 L:SetMiscLocalization{

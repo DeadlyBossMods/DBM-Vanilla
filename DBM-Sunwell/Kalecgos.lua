@@ -31,7 +31,7 @@ local timerCurse		= mod:NewTargetTimer(30, 45032)
 local timerPorted		= mod:NewBuffActiveTimer(60, 46021)
 local timerExhausted	= mod:NewBuffActiveTimer(60, 44867)
 
-mod:RemoveOption("HealthFrame")
+mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ShowFrame", true)
 mod:AddBoolOption("FrameLocked", false)

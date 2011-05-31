@@ -60,7 +60,7 @@ local timerPyro			= mod:NewCastTimer(4, 36819)
 local timerGravityCD	= mod:NewCDTimer(92, 35941)
 local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
-mod:RemoveOption("HealthFrame")
+mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", true)

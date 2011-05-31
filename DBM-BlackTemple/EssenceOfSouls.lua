@@ -136,7 +136,7 @@ function mod:SPELL_DAMAGE(args)
 end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	if msg == L.Enrage or msg:find(L.Enrage) then
+	if (msg == L.Enrage or msg:find(L.Enrage)) and self:IsInCombat() then
 		warnEnrage:Show()
 		timerEnrage:Start()
 		timerNextEnrage:Schedule(15)
