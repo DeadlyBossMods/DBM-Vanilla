@@ -7,7 +7,7 @@ mod:SetModelID(20023)
 mod:SetZone()
 
 mod:RegisterCombat("yell", L.YellPull1, L.YellPull2)
-mod:SetUsedIcons(6, 7, 8)
+mod:SetUsedIcons(1, 6, 7, 8)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
@@ -60,7 +60,7 @@ local timerPyro			= mod:NewCastTimer(4, 36819)
 local timerGravityCD	= mod:NewCDTimer(92, 35941)
 local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
-mod:AddBoolOption("HealthFrame", true)
+mod:AddBoolOption("HealthFrame", false)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", true)
@@ -305,7 +305,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 			specWarnGaze:Show()
 		end
 		if self.Options.GazeIcon then
-			self:SetIcon(target, 8, 15)
+			self:SetIcon(target, 1, 15)
 		end
 		if IsRaidLeader() and self.Options.GazeWhisper then
 			self:SendWhisper(L.GazeWhisper, target)

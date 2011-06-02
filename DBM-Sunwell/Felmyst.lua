@@ -108,7 +108,7 @@ function mod:SPELL_SUMMON(args)
 			specWarnVapor:Show()
 		end
 		if self.Options.VaporIcon then
-			self:SetIcon(sourceName, 8, 10)
+			self:SetIcon(args.sourceName, 8, 10)
 		end
 		self:ScheduleMethod(7.5, "Encapsulate")
 	end
@@ -139,7 +139,7 @@ end
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg == L.Breath or msg:find(L.Breath) then
 		breathCounter = breathCounter + 1
-		WarnBreath:Show(breathConuter)
+		WarnBreath:Show(breathCounter)
 		if breathCounter < 3 then
 			timerBreath:Start()
 		end

@@ -45,7 +45,7 @@ local berserkTimer			= mod:NewBerserkTimer(360)
 
 local soundConflag			= mod:NewSound(45333)
 
-mod:AddBoolOption("HealthFrame", true)
+mod:AddBoolOption("HealthFrame", false)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("NovaIcon", true)
 mod:AddBoolOption("ConflagIcon", true)
