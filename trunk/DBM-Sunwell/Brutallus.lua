@@ -47,7 +47,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnBurn:Show(args.destName)
 		timerBurn:Start(args.destName)
 		local firstBurn = false
-		if (GetTime() - burnTime) >= 19 then
+		if GetTime() - burnTime >= 19 then
 			burnTime = GetTime()
 			firstBurn = true
 		end
@@ -59,7 +59,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if lastBurn == 1 then
 				lastBurn = 8
 			else
-				lastBurn = lastBrun - 1
+				lastBurn = lastBurn - 1
 			end
 		end
 		if IsRaidLeader() and self.Options.BurnWhisper then

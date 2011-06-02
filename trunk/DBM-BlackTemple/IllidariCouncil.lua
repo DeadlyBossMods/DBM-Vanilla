@@ -53,7 +53,7 @@ local timerNextCoH		= mod:NewCDTimer(14, 41455)
 
 local berserkTimer		= mod:NewBerserkTimer(900)
 
-mod:AddBoolOption("HealthFrame", true)
+mod:AddBoolOption("HealthFrame", false)
 mod:AddBoolOption("PoisonIcon", true)
 mod:AddBoolOption("PoisonWhisper", false, "announce")
 
