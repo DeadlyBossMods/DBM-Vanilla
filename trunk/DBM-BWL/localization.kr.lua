@@ -1,4 +1,4 @@
-if GetLocale() ~= "koKR" then return end
+﻿if GetLocale() ~= "koKR" then return end
 local L
 
 -----------------
@@ -101,7 +101,7 @@ L:SetOptionLocalization{
 ----------------
 --  Nefarian  --
 ----------------
-L = DBM:GetModLocalization("Nefarian")
+L = DBM:GetModLocalization("Nefarian-Classic")
 
 L:SetGeneralLocalization{
 	name = "네파리안(오리지널)"
