@@ -100,10 +100,10 @@ L:SetMiscLocalization{
 ----------------
 --  Ragnaros  --
 ----------------
-L = DBM:GetModLocalization("Ragnaros")
+L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "Рагнарос"
+	name = "Рагнарос (Classic)"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Погружение",

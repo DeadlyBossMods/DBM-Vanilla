@@ -1,4 +1,4 @@
-if GetLocale() ~= "koKR" then return end
+﻿if GetLocale() ~= "koKR" then return end
 local L
 
 ----------------
@@ -99,10 +99,10 @@ L:SetMiscLocalization{
 ----------------
 --  Ragnaros  --
 ----------------
-L = DBM:GetModLocalization("Ragnaros")
+L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "라그나로스"
+	name = "라그나로스 (Classic)"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
