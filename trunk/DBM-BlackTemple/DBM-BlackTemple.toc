@@ -1,5 +1,5 @@
-## Interface: 40100
-## X-Min-Interface: 40100
+## Interface: 40200
+## X-Min-Interface: 40200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Black Temple|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0검은 사원|r
 ## LoadOnDemand: 1
@@ -16,13 +16,6 @@
 ## X-DBM-Mod-Name-koKR: 검은 사원
 ## X-DBM-Mod-Sort: 301
 ## X-DBM-Mod-LoadZoneID: 796
-## X-DBM-Mod-LoadZone: Black Temple
-## X-DBM-Mod-LoadZone-deDE: Der Schwarze Tempel
-## X-DBM-Mod-LoadZone-zhCN: 黑暗神殿
-## X-DBM-Mod-LoadZone-zhTW: 黑暗神廟
-## X-DBM-Mod-LoadZone-ruRU: Черный храм
-## X-DBM-Mod-LoadZone-esES: Templo Oscuro
-## X-DBM-Mod-LoadZone-koKR: 검은 사원
 localization.en.lua
 localization.cn.lua
 localization.de.lua

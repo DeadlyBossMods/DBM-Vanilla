@@ -109,7 +109,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellDemon or msg:find(L.YellDemon) then
 		warnPhase:Show(L.Demon)
-		timerWhirl:Canncel()
+		timerWhirl:Cancel()
 		timerWhirlCD:Cancel()
 		timerDemonCD:Start()
 		timerPhase:Start(L.Human)
@@ -118,7 +118,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
 		phase2 = true
 		timerPhase:Cancel()
-		timerWhirl:Canncel()
+		timerWhirl:Cancel()
 		timerWhirlCD:Cancel()
 		timerDemonCD:Cancel()
 		warnPhase2:Show()
