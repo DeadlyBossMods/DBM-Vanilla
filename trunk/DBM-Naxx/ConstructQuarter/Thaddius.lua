@@ -11,7 +11,7 @@ mod:EnableModel()
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"RAID_BOSS_EMOTE",
 	"UNIT_AURA"
 )
 
@@ -104,7 +104,7 @@ function mod:UNIT_AURA(elapsed)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Emote or msg == L.Emote2 then
 		down = down + 1
 		if down >= 2 then

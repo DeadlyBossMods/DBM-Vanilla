@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_REFRESH",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"RAID_BOSS_EMOTE"
 )
 
 mod:SetUsedIcons(3, 4, 5, 6, 7, 8)
@@ -204,7 +204,7 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg and msg:find(L.Burrow) then
 		Burrowed = true
 		timerAdds:Cancel()

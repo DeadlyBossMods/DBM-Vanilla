@@ -130,7 +130,7 @@ do
 		return math.max(1, math.floor(absorbRemaining / maxAbsorb * 100))
 	end
 	frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-	frame:SetScript("OnEvent", function(self, event, timestamp, subEvent, hideCaster, sourceGUID, sourceName, sourceFlags, destGUID, destName, destFlags, ...)
+	frame:SetScript("OnEvent", function(self, event, timestamp, subEvent, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, ...)
 		if shieldedMob == destGUID then
 			local absorbed
 			if subEvent == "SWING_MISSED" then 

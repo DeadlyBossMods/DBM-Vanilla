@@ -12,8 +12,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
 	"SPELL_DAMAGE",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
-	"CHAT_MSG_MONSTER_EMOTE"
+	"RAID_BOSS_EMOTE"
 )
 
 local warnShadowFissure	    = mod:NewSpellAnnounce(59127)
@@ -73,7 +72,7 @@ function mod:SPELL_CAST_SUCCESS(args)
     end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, mob)
+function mod:RAID_BOSS_EMOTE(msg, mob)
 	if not self:IsInCombat() then return end
 	if msg == L.Wall or msg:find(L.Wall) then
 		self:SendSync("FireWall")
@@ -87,8 +86,6 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, mob)
 		end
 	end
 end
-
-mod.CHAT_MSG_MONSTER_EMOTE = mod.CHAT_MSG_RAID_BOSS_EMOTE
 
 function mod:CheckDrakes(delay)
 	if self.Options.HealthFrame then

@@ -17,7 +17,7 @@ mod:RegisterEvents(
 	"SPELL_DAMAGE",
 	"UNIT_HEALTH",
 	"CHAT_MSG_MONSTER_YELL",
-	"CHAT_MSG_RAID_BOSS_WHISPER",
+	"RAID_BOSS_WHISPER",
 	"SWING_DAMAGE",
 	"SWING_MISSED"
 )
@@ -502,7 +502,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_WHISPER(msg)--We get this whisper for all plagues, ones cast by lich king and ones from dispel jumps.
+function mod:RAID_BOSS_WHISPER(msg)--We get this whisper for all plagues, ones cast by lich king and ones from dispel jumps.
 	if msg:find(L.PlagueWhisper) and self:IsInCombat() then--We do a combat check with lich king since rotface uses the same whisper message and we only want this to work on lich king.
 		if GetTime() - lastPlagueCast > 1.5 then--We don't want to send sync if it came from a spell cast though, so we ignore whisper unless it was at least 1 second after a cast.
 			specWarnNecroticPlague:Show()

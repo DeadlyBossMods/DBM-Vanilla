@@ -13,7 +13,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
 	"SPELL_SUMMON",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"SWING_DAMAGE",
 	"SWING_MISSED"
@@ -136,7 +136,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Breath or msg:find(L.Breath) then
 		breathCounter = breathCounter + 1
 		WarnBreath:Show(breathCounter)

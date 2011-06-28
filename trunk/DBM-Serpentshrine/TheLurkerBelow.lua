@@ -11,7 +11,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"RAID_BOSS_EMOTE"
 )
 
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3)
@@ -75,7 +75,7 @@ function mod:SPELL_MISSED(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Spout or msg:find(L.Spout) then
 		warnSpout:Show()
 		specWarnSpout:Show()

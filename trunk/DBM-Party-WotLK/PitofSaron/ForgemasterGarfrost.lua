@@ -11,7 +11,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
-	"CHAT_MSG_RAID_BOSS_WHISPER"
+	"RAID_BOSS_WHISPER"
 )
 
 local warnForgeWeapon			= mod:NewSpellAnnounce(70335, 2)
@@ -64,14 +64,7 @@ function mod:SPELL_CREATE(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_WHISPER(msg)
-	local target = msg and msg:match(L.SaroniteRockThrow)
-	if target then
-		self:SendSync("SaroniteRock", target)
-	end
-end
-
-function mod:CHAT_MSG_RAID_BOSS_WHISPER(msg) 
+function mod:RAID_BOSS_WHISPER(msg) 
 	if msg == L.SaroniteRockThrow or msg:match(L.SaroniteRockThrow) then 
 		self:SendSync("SaroniteRock", UnitName("player"))
 	end 

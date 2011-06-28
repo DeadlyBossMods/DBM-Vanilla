@@ -19,7 +19,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_SUMMON",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"RAID_BOSS_EMOTE",
 	"UNIT_TARGET",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
@@ -196,7 +196,7 @@ function mod:SPELL_SUMMON(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
+function mod:RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:match(L.EmpoweredFlames) then
 		warnEmpoweredFlames:Show(target)
 		if target == UnitName("player") then

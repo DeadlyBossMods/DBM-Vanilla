@@ -11,7 +11,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"RAID_BOSS_EMOTE"
 )
 
 local warnPhase			= mod:NewAnnounce("WarnPhase", 4, 42052)
@@ -74,7 +74,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.PhaseKite or msg:find(L.PhaseKite) then
 		phase2 = true
 		warnPhase:Show(L.Kite)
