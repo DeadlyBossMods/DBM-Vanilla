@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE",
 	"CHAT_MSG_MONSTER_YELL",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"RAID_BOSS_EMOTE"
 )
 
 local warnTurretsReadySoon			= mod:NewAnnounce("warnTurretsReadySoon", 1, 48642)
@@ -56,7 +56,7 @@ function mod:SPELL_DAMAGE(args)
 end
 
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(emote)
+function mod:RAID_BOSS_EMOTE(emote)
 	if emote == L.EmotePhase2 or emote:find(L.EmotePhase2) then
 		-- phase2
 		timerTurret1:Stop()

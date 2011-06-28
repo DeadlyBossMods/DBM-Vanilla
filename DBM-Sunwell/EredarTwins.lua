@@ -14,7 +14,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"RAID_BOSS_EMOTE"
 )
 
 mod:SetBossHealthInfo(
@@ -96,7 +96,7 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
+function mod:RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg == L.Nova or msg:find(L.Nova) then
 		warnNova:Show(target)
 		timerNova:Start()

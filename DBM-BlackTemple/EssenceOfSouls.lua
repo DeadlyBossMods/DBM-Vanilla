@@ -10,7 +10,7 @@ mod:SetUsedIcons(4, 5, 6, 7, 8)
 mod:RegisterCombat("yell", L.Pull)
 
 mod:RegisterEvents(
-	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
@@ -135,7 +135,7 @@ function mod:SPELL_DAMAGE(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if (msg == L.Enrage or msg:find(L.Enrage)) and self:IsInCombat() then
 		warnEnrage:Show()
 		timerEnrage:Start()

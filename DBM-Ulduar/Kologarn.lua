@@ -13,7 +13,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_DAMAGE",
-	"CHAT_MSG_RAID_BOSS_WHISPER",
+	"RAID_BOSS_WHISPER",
 	"UNIT_DIED"
 )
 
@@ -72,7 +72,7 @@ function mod:SPELL_DAMAGE(args)
 	end
 end
 
-function mod:CHAT_MSG_RAID_BOSS_WHISPER(msg)
+function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find(L.FocusedEyebeam) then
 		self:SendSync("EyeBeamOn", UnitName("player"))
 	end

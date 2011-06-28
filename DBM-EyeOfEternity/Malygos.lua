@@ -8,7 +8,7 @@ mod:SetModelID(26752)
 mod:RegisterCombat("yell", L.YellPull)
 
 mod:RegisterEvents(
-	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"RAID_BOSS_EMOTE",
 	"SPELL_CAST_SUCCESS",
 	"CHAT_MSG_MONSTER_YELL",
 	"SPELL_AURA_APPLIED"
@@ -45,7 +45,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(guids)
 end
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.EmoteSpark or msg:find(L.EmoteSpark) then
 		self:SendSync("Spark")
 	elseif msg == L.EmoteBreath or msg:find(L.EmoteBreath) then

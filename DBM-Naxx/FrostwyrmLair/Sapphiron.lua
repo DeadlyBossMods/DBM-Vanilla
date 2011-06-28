@@ -10,8 +10,7 @@ mod:EnableModel()
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"RAID_BOSS_EMOTE",
 	"SPELL_CAST_SUCCESS"
 )
 
@@ -58,13 +57,11 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.EmoteBreath or msg:find(L.EmoteBreath) then
 		self:SendSync("DeepBreath")
 	end
 end
-
-mod.CHAT_MSG_RAID_BOSS_EMOTE = mod.CHAT_MSG_MONSTER_EMOTE -- used to be a normal emote
 
 function mod:OnSync(event)
 	if event == "DeepBreath" then
