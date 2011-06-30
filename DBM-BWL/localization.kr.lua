@@ -104,7 +104,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("Nefarian-Classic")
 
 L:SetGeneralLocalization{
-	name = "네파리안(오리지널)"
+	name = "네파리안 (오리지널)"
 }
 L:SetWarningLocalization{
 	WarnClassCallSoon	= "곧 직업 지목",

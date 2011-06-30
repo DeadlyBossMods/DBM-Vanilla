@@ -102,10 +102,10 @@ L:SetOptionLocalization{
 ----------------
 --  Nefarian  --
 ----------------
-L = DBM:GetModLocalization("Nefarian")
+L = DBM:GetModLocalization("Nefarian-Classic")
 
 L:SetGeneralLocalization{
-	name = "Nefarian-Classic"
+	name = "Nefarian"
 }
 L:SetWarningLocalization{
 	WarnClassCallSoon	= "Klassenruf bald",

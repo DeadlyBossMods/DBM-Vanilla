@@ -102,7 +102,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "라그나로스 (Classic)"
+	name = "라그나로스 (오리지널)"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",

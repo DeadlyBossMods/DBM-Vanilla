@@ -1,4 +1,4 @@
-﻿local mod	= DBM:NewMod("Algalon", "DBM-Ulduar")
+local mod	= DBM:NewMod("Algalon", "DBM-Ulduar")
 local L		= mod:GetLocalizedStrings()
 
 --[[
