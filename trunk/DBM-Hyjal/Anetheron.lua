@@ -1,4 +1,4 @@
-﻿local mod	= DBM:NewMod("Anetheron", "DBM-Hyjal")
+local mod	= DBM:NewMod("Anetheron", "DBM-Hyjal")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
