@@ -1,5 +1,4 @@
 if GetLocale() ~= "deDE" then return end
-
 local L
 
 ------------------------
@@ -55,14 +54,14 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnMark = "Mal #%d"
+	WarnMark = "Mal von Kaz'rogal (%d)"
 }
 
 L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnMark = "Show warning for $spell:31447"--Translate
+	WarnMark = "Zeige Warnung für $spell:31447"
 }
 
 L:SetMiscLocalization{
@@ -106,12 +105,12 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	YellOnBurst	= "Chat-Nachricht verschicken, wenn man Ziel von Windböe ist",
+	YellOnBurst	= "Schreie bei $spell:32014 auf dir",
 	BurstIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32014)
 }
 
 L:SetMiscLocalization{
-	YellBurst	= "Windböe kommt!"
+	YellBurst	= "Windbö auf MIR!"
 }
 
 ----------------
@@ -120,20 +119,20 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("HyjalWaveTimers")
 
 L:SetGeneralLocalization{
-	name 		= "Wave Features"--Translate
+	name 		= "Wellen (HdZ 3)"
 }
 L:SetWarningLocalization{
 	WarnWave	= "%s",
-	WarnWaveSoon= "Nächste Welle kommt bald"
+	WarnWaveSoon= "Nächste Welle bald"
 }
 L:SetTimerLocalization{
-	TimerWave	= "Next wave"--Translate
+	TimerWave	= "Nächste Welle"
 }
 L:SetOptionLocalization{
-	WarnWave		= "Warn when a new wave is incoming",--Translate
-	WarnWaveSoon	= "Warn when a new wave is incoming soon",--Translate
-	DetailedWave	= "Detailed warning when a new wave is incoming (which mobs)",--Translate
-	TimerWave		= "Show a timer for next wave"--Translate
+	WarnWave		= "Warne, wenn eine neue Welle kommt",
+	WarnWaveSoon	= "Warne, wenn bald eine neue Welle kommt",
+	DetailedWave	= "Detaillierte Warnung, wenn eine neue Welle kommt (welche Mobs)",
+	TimerWave		= "Zeige Zeit bis nächste Welle"
 }
 L:SetMiscLocalization{
 	HyjalZoneName	= "Hyjalgipfel",
@@ -158,7 +157,7 @@ L:SetMiscLocalization{
 	Abomination		= "Monstrositäten",
 	Necromancer		= "Nekromanten",
 	Banshee			= "Banshees",
-	Fiend			= "Gruftscheusale",
+	Fiend			= "Gruftbestien",
 	Gargoyle		= "Gargoyles",
 	Wyrm			= "Frostwyrm",
 	Stalker			= "Teufelspirscher",

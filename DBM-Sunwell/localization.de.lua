@@ -20,30 +20,30 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPortal			= "Show warning for $spell:46021 target",--Translate
-	SpecWarnWildMagic	= "Show special warning for Wild Magic",--Translate
-	TimerNextPortal		= "Show timer for portals",--Translate
-	RangeFrame			= "Show range frame (10 yards)",--Translate
-	ShowFrame			= "Show Spectral Realm frame" ,--Translate
-	FrameClassColor		= "Use class colors in Spectral Realm frame",--Translate
-	FrameUpwards		= "Expand Spectral Realm frame upwards",--Translate
-	FrameLocked			= "Set Spectral Realm frame not movable"--Translate
+	WarnPortal			= "Zeige Warnung für Ziel von $spell:46021",
+	SpecWarnWildMagic	= "Zeige Spezialwarnung für Wilde Magie",
+	TimerNextPortal		= "Zeige Timer für Portale",
+	RangeFrame			= "Zeige Abstandsfenster (10m)",
+	ShowFrame			= "Zeige Spektralreichfenster",
+	FrameClassColor		= "Benutze Klassenfarben in Spektralreichfenster",
+	FrameUpwards		= "Erweitere Spektralreichfenster nach oben",
+	FrameLocked			= "Setze Spektralreichfenster auf gesperrt (nicht verschiebbar)"
 }
 
 L:SetMiscLocalization{
 	Demon				= "Sathrovarr der Verderber",
-	Heal				= "+100% Heilung",
-	Haste				= "+100% Castzeit",
-	Hit					= "-50% Hit-Chance",
-	Crit				= "+100% Crit-Schaden",
-	Aggro				= "+100% Bedrohung",
-	Mana				= "-50% Zauberkosten",
+	Heal				= "Heilung +100%",
+	Haste				= "Zauberzeit +100%",
+	Hit					= "Trefferchance Nah-/Fernkampf -50%",
+	Crit				= "Kritischer Schaden +100%",
+	Aggro				= "BEDROHUNG +100%",
+	Mana				= "Zauber-/Fähigkeitskosten -50%",
 	FrameTitle			= "Spektralreich",
-	FrameLock			= "Frame sperren",
-	FrameClassColor		= "Klassenfarben verwenden",
-	FrameOrientation	= "Nach oben aufbauen",
-	FrameHide			= "Frame verstecken",
-	FrameClose			= "Close"--Translate
+	FrameLock			= "Sperre Fenster",
+	FrameClassColor		= "Benutze Klassenfarben",
+	FrameOrientation	= "Erweitere nach oben",
+	FrameHide			= "Verberge Fenster",
+	FrameClose			= "Schließen"
 }
 
 ----------------
@@ -63,7 +63,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	BurnIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(46394),
-	BurnWhisper		= "Send whisper to $spell:46394 targets (requires Raid Leader)"--Translate
+	BurnWhisper		= "Ziele von $spell:46394 anflüstern (benötigt Schlachtzugleitung)"
 }
 
 L:SetMiscLocalization{
@@ -80,31 +80,31 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s Phase",--Translate
-	WarnPhaseSoon	= "%s Phase in 10 sec",--Translate
-	WarnBreath		= "Tiefer Atem (%d)"
+	WarnPhase		= "%sphase",
+	WarnPhaseSoon	= "%sphase in 10 Sek",
+	WarnBreath		= "Nebel der Verderbnis (%d)"
 }
 
 L:SetTimerLocalization{
-	TimerPhase		= "Next %s Phase",
-}	TimerBreath		= "Tiefer Atem"
+	TimerPhase		= "Nächste %sphase",
+}	TimerBreath		= "Nebel der Verderbnis CD"
 
 L:SetOptionLocalization{
-	WarnPhase		= "Show warning for next phase",--Translate
-	WarnPhaseSoon	= "Show pre-warning for next phase",--Translate
-	WarnBreath		= "Show warning for Deep Breath",--Translate
-	TimerPhase		= "Show time for next phase",--Translate
-	TimerBreath		= "Show timer for Deep Breath cooldown",--Translate
+	WarnPhase		= "Zeige Warnung für nächste Phase",
+	WarnPhaseSoon	= "Zeige Vorwarnung für nächste Phase",
+	WarnBreath		= "Zeige Warnung für Nebel der Verderbnis",
+	TimerPhase		= "Zeige Zeit bis nächste Phase",
+	TimerBreath		= "Abklingzeit von Nebel der Verderbnis anzeigen",
 	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
 	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
-	YellOnEncaps	= "Yell on $spell:45665"
+	YellOnEncaps	= "Schreie bei $spell:45665 auf dir"
 }
 
 L:SetMiscLocalization{
-	Air				= "Air",--Translate
-	Ground			= "Ground",--Translate
-	YellEncaps		= "Encapsulate on me! Run away!",--Change to generic so we don't have to translate?
-	AirPhase		= "I am stronger than ever before!",--Translate
+	Air				= "Luft",
+	Ground			= "Boden",
+	YellEncaps		= "Einschließen auf mir! Rennt weg!",
+	AirPhase		= "Ich bin stärker als je zuvor!",
 	Breath			= "%s holt tief Luft."
 }
 
@@ -114,7 +114,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Twins")
 
 L:SetGeneralLocalization{
-	name = "Eredar Zwillinge"
+	name = "Eredarzwillinge"
 }
 
 L:SetWarningLocalization{
@@ -126,16 +126,18 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	NovaIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45329),
 	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
-	RangeFrame		= "Show range frame (10 yards)",--Translate
-	NovaWhisper		= "Send whisper to $spell:45329 target (requires Raid Leader)",--Translate
-	ConflagWhisper	= "Send whisper to $spell:45333 target (requires Raid Leader)",--Translate
+	RangeFrame		= "Zeige Abstandsfenster (10m)",
+	NovaWhisper		= "Ziel von $spell:45329 anflüstern (benötigt Schlachtzugleitung)",
+	ConflagWhisper	= "Ziel von $spell:45333 anflüstern (benötigt Schlachtzugleitung)",
 }
 
 L:SetMiscLocalization{
 	NovaWhisper		= "Schattennova auf dir!",
 	ConflagWhisper	= "Großbrand auf dir!",
-	Nova			= "Sacrolash zielt mit Schattennova auf (.+)%.",--Verify
-	Conflag			= "Alythess zielt mit Großbrand auf (.+)%."--Verify
+	Nova			= "Sacrolash zielt mit Schattennova auf (.+)%.",
+	Conflag			= "Alythess zielt mit Großbrand auf (.+)%.",
+	Sacrolash		= "Lady Sacrolash",
+	Alythess		= "Großhexenmeisterin Alythess"
 }
 
 ------------
@@ -150,26 +152,26 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnHuman		= "Humanoide (%d)",
 	WarnHumanSoon	= "Humanoide in 5 Sek (%d)",
-	WarnVoid		= "Leerenwandler (%d)",
-	WarnVoidSoon	= "Leerenwandler in 5 Sek (%d)",
-	WarnFiend		= "Finsteres Scheusal"
+	WarnVoid		= "Leerenschildwache (%d)",
+	WarnVoidSoon	= "Leerenschildwache in 5 Sek (%d)",
+	WarnFiend		= "Finstere Scheusale erschienen"
 }
 
 L:SetTimerLocalization{
-	TimerHuman		= "Humanoide (%s)",
-	TimerVoid		= "Leerenwandler (%s)",
+	TimerHuman		= "Nächste Humanoide (%s)",
+	TimerVoid		= "Nächste Leerenschildwache (%s)",
 	TimerPhase		= "Entropius"
 }
 
 L:SetOptionLocalization{
-	WarnHuman		= "Show warning for Humanoids",--Translate
-	WarnHumanSoon	= "Show pre-warning for Humanoids",--Translate
-	WarnVoid		= "Show warning for Void Sentinels",--Translate
-	WarnVoidSoon	= "Show pre-warning for Void Sentinels",--Translate
-	WarnFiend		= "Show warning for Fiends in phase 2",--Translate
-	TimerHuman		= "Show timer for Humanoids",--Translate
-	TimerVoid		= "Show timer for Void Sentinels",--Translate
-	TimerPhase		= "Show time for Phase 2 transition"--Translate
+	WarnHuman		= "Zeige Warnung für Humanoide",
+	WarnHumanSoon	= "Zeige Vorwarnung für Humanoide",
+	WarnVoid		= "Zeige Warnung für Leerenschildwache",
+	WarnVoidSoon	= "Zeige Vorwarnung für Leerenschildwache",
+	WarnFiend		= "Zeige Warnung für Finstere Scheusale in Phase 2",
+	TimerHuman		= "Zeige Zeit bis Humanoide erscheinen",
+	TimerVoid		= "Zeige Zeit bis Leerenschildwache erscheint",
+	TimerPhase		= "Dauer des Übergangs in Phase 2 anzeigen"
 }
 
 L:SetMiscLocalization{
@@ -186,34 +188,34 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnDarkOrb		= "Dark Orbs Spawned",--Translate
-	WarnBlueOrb		= "Dragon Orb activated",--Translate
-	SpecWarnDarkOrb	= "Dark Orbs Spawned!",--Translate
-	SpecWarnBlueOrb	= "Dragon Orbs Activated!"--Translate
+	WarnDarkOrb		= "Schildkugeln erschienen",
+	WarnBlueOrb		= "Drachenkugel bereit",
+	SpecWarnDarkOrb	= "Schildkugeln erschienen!",
+	SpecWarnBlueOrb	= "Drachenkugel bereit!"
 }
 
 L:SetTimerLocalization{
-	TimerBlueOrb	= "Dragon Orbs activate"--Translate
+	TimerBlueOrb	= "Drachenkugelaktivierung"
 }
 
 L:SetOptionLocalization{
-	WarnDarkOrb		= "Show warning for Dark Orbs",--Translate
-	WarnBlueOrb		= "Show warning for Dragon Orbs",--Translate
-	SpecWarnDarkOrb	= "Show special warning for Dark Orbs",--Translate
-	SpecWarnBlueOrb	= "Show special warning for Dragon Orbs",--Translate
-	TimerBlueOrb	= "Show timer form Dragon Orbs activate",--Translate
-	RangeFrame		= "Show range frame (10 yards)",--Translate
+	WarnDarkOrb		= "Zeige Warnung für Schildkugeln",
+	WarnBlueOrb		= "Zeige Warnung für Drachenkugeln",
+	SpecWarnDarkOrb	= "Zeige Spezialwarnung für Schildkugeln",
+	SpecWarnBlueOrb	= "Zeige Spezialwarnung für Drachenkugeln",
+	TimerBlueOrb	= "Zeige Zeit bis Drachenkugeln bereit sind",
+	RangeFrame		= "Zeige Abstandsfenster (10m)",
 	BloomIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45641),
-	YellOnBloom		= "Yell on $spell:45641",--Translate
-	BloomWhisper	= "Send whisper to $spell:45641 target (requires Raid Leader)"--Translate
+	YellOnBloom		= "Schreie bei $spell:45641 auf dir",
+	BloomWhisper	= "Ziele von $spell:45641 anflüstern (benötigt Schlachtzugleitung)"
 }
 
 L:SetMiscLocalization{
-	YellBloom		= "Fire Bloom on me!",--Translate
-	BloomWhisper	= "Fire Bloom on you!",--Translate
-	OrbYell1		= "I will channel my powers into the orbs! Be ready!",--Translate
-	OrbYell2		= "I have empowered another orb! Use it quickly!",--Translate
-	OrbYell3		= "Another orb is ready! Make haste!",--Translate
-	OrbYell4		= "I have channeled all I can! The power is in your hands!"--Translate
+	YellBloom		= "Feuerblüte auf mir!",
+	BloomWhisper	= "Feuerblüte auf dir!",
+	OrbYell1		= "Ich werde die Kugeln mit meiner Macht erfüllen! Seid bereit!", --needs to be verified (video-captured translation)
+	OrbYell2		= "Eine weitere Kugel ist von meiner Macht erfüllt! Benutzt sie, schnell!",
+	OrbYell3		= "Eine weitere Kugel ist bereit! Sputet Euch!", --needs to be verified (video-captured translation)
+	OrbYell4		= "Ich habe getan, was ich konnte! Die Macht liegt in Euren Händen!"
 
 }

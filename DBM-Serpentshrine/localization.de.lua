@@ -12,20 +12,20 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnMark 		= "%s : %s",
-	WarnPhase		= "%s Phase",--Translate
+	WarnPhase		= "%sphase",
 	SpecWarnMark	= "%s : %s",
 }
 
 L:SetTimerLocalization{
-	TimerMark	= "Next %s : %s"--Translate
+	TimerMark	= "Nächstes %s : %s"
 }
 
 L:SetOptionLocalization{
-	WarnMark		= "Mark ansagen",
-	WarnPhase		= "Phasen ansagen",
-	SpecWarnMark	= "Show warning when Marks debuff damage over 100%",--Translate
-	TimerMark		= "Show timer for next Marks",--Translate
-	RangeFrame		= "Range Check Frame anzeigen"
+	WarnMark		= "Zeige Warnung für Male",
+	WarnPhase		= "Zeige Warnung für nächste Phase",
+	SpecWarnMark	= "Zeige Spezialwarnung, wenn Schaden durch Male Debuff um 100% oder mehr erhöht ist",
+	TimerMark		= "Zeige Zeit bis nächste Male",
+	RangeFrame		= "Zeige Abstandsfenster (10m)"
 }
 
 L:SetMiscLocalization{
@@ -43,24 +43,24 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnSubmerge		= "Untergetaucht",
-	WarnSubmergeSoon	= "Untertauchen in 10 sec",--Verify
-	WarnEmerge			= "Aufgetaucht",
-	WarnEmergeSoon		= "Aufgetauchen in 10 sec"--Verify
+	WarnSubmerge		= "Abtauchen",
+	WarnSubmergeSoon	= "Abtauchen in 10 Sek",
+	WarnEmerge			= "Auftauchen",
+	WarnEmergeSoon		= "Auftauchen in 10 Sek"
 }
 
 L:SetTimerLocalization{
-	TimerSubmerge		= "Untertauchen",
-	TimerEmerge			= "Aufgetauchen"--Verify
+	TimerSubmerge		= "Abtauchen",
+	TimerEmerge			= "Auftauchen"
 }
 
 L:SetOptionLocalization{
-	WarnSubmerge		= "Show warning when submerge",--Translate
-	WarnSubmergeSoon	= "Show pre-warning for submerge",--Translate
-	WarnEmerge			= "Show warning when emerge",--Translate
-	WarnEmergeSoon		= "Show pre-warning for emerge",--Translate
-	TimerSubmerge		= "Show time for submerge",--Translate
-	TimerEmerge			= "Show time for emerge"--Translate
+	WarnSubmerge		= "Zeige Warnung für Abtauchen",
+	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
+	WarnEmerge			= "Zeige Warnung für Auftauchen",
+	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
+	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
+	TimerEmerge			= "Zeige Zeit bis Auftauchen"
 }
 
 L:SetMiscLocalization{
@@ -73,30 +73,30 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Leotheras")
 
 L:SetGeneralLocalization{
-	name = "盲眼者莱欧瑟拉斯"
+	name = "Leotheras der Blinde"
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s Phase",--Translate
-	WarnPhaseSoon	= "%s Phase in 5 sec"--Translate
+	WarnPhase		= "%s Phase",
+	WarnPhaseSoon	= "%s Phase in 5 Sek"
 }
 
 L:SetTimerLocalization{
-	TimerPhase	= "Next %s Phase"--Translate
+	TimerPhase	= "Nächste %s Phase"
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "Show warning for next phase",--Translate
-	WarnPhaseSoon	= "Show pre-warning for next phase",--Translate
-	TimerPhase		= "Show time for next phase",--Translate
+	WarnPhase		= "Zeige Warnung für nächste Phase",
+	WarnPhaseSoon	= "Zeige Vorwarnung für nächste Phase",
+	TimerPhase		= "Zeige Zeit bis nächste Phase",
 	DemonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37676)
 }
 
 L:SetMiscLocalization{
-	Human		= "Human",--Translate
-	Demon		= "Demon",--Translate
+	Human		= "Humanoide",
+	Demon		= "Dämonen",
 	YellDemon	= "Hinfort, unbedeutender Elf%.%s*Ich habe jetzt die Kontrolle!",
-	YellPhase2	= "Nein... nein! Was habt Ihr getan? Ich bin der Meister! Hört Ihr? Ich! Ich bin... aaaaah! Ich kann ihn... nicht aufhalten..."
+	YellPhase2	= "Nein... nein! Was habt Ihr getan? Ich bin der Meister! Hört Ihr? Ich! Ich... aaaaah! Ich kann ihn... nicht aufhalten..."
 }
 
 -----------------------------
@@ -119,9 +119,9 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	YellPull	= "Achtung, Wachen! Wir haben Besuch...",
-	Caribdis	= "Fathom-Guard Caribdis",--Translate
-	Tidalvess	= "Fathom-Guard Tidalvess",--Translate
-	Sharkkis	= "Fathom-Guard Sharkkis"--Translate
+	Caribdis	= "Tiefenwächterin Caribdis",
+	Tidalvess	= "Tiefenwächter Flutvess",
+	Sharkkis	= "Tiefenwächter Haikis"
 }
 
 --------------------------
@@ -135,7 +135,7 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnMurlocs		= "Murlocs",
-	SpecWarnMurlocs	= "Murlocs!",
+	SpecWarnMurlocs	= "Murlocs kommen!",
 }
 
 L:SetTimerLocalization{
@@ -143,9 +143,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnMurlocs		= "Murlocs ansagen",
-	SpecWarnMurlocs	= "Show special warning when Murlocs spawning",--Translate
-	TimerMurlocs	= "Show timer for Murlocs spawning",--Translate
+	WarnMurlocs		= "Zeige Warnung, wenn Murlocs erscheinen",
+	SpecWarnMurlocs	= "Zeige Spezialwarnung, wenn Murlocs erscheinen",
+	TimerMurlocs	= "Zeige Zeit bis Murlocs erscheinen",
 	GraveIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38049)
 }
 
@@ -162,35 +162,35 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnElemental		= "Besudelter Elementar in 5 Sek (%s)",
-	WarnStrider			= "Schreiter in 5 Sek (%s)",
-	WarnNaga			= "Naga in 5 Sek (%s)",
-	WarnShield			= "Schild %d/4 down",
+	WarnElemental		= "Besudelter Elementar bald (%s)",
+	WarnStrider			= "Schreiter bald (%s)",
+	WarnNaga			= "Naga bald (%s)",
+	WarnShield			= "Schildgenerator %d/4 zerstört",
 	WarnLoot			= ">%s< hat den Besudelten Kern",
-	SpecWarnElemental	= "Besudelter Elementar in 5 Sek!",
-	SpecWarnCore		= "Du hast den Besudelten Kern!"
+	SpecWarnElemental	= "Besudelter Elementar bald!",
+	SpecWarnCore		= "DU hast den Besudelten Kern!"
 }
 
 L:SetTimerLocalization{
-	TimerElemental		= "Besudelter Elementar (%d)",--Verify
-	TimerStrider		= "Schreiter (%d)",--Verify
-	TimerNaga			= "Next Naga (%d)"--Translate
+	TimerElemental		= "Nächster Elementar (%d)",
+	TimerStrider		= "Nächster Schreiter (%d)",
+	TimerNaga			= "Nächster Naga (%d)"
 }
 
 L:SetOptionLocalization{
-	WarnElemental		= "Show pre-warning for next Tainted Elemental",--Translate
-	WarnStrider			= "Show pre-warning for next Strider",--Translate
-	WarnNaga			= "Show pre-warning for next Naga",--Translate
-	WarnShield			= "Show warning for Phase 2 shield down",--Translate
-	WarnLoot			= "Besudelte Kerne ansagen",
-	TimerElemental		= "Show time for next Tainted Elemental",--Translate
-	TimerStrider		= "Show time for next Strider",--Translate
-	TimerNaga			= "Show time for next Strider",--Translate
-	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",--Translate
-	SpecWarnCore		= "Special Warning anzeigen, wenn du einen Besudelten Kern hast",
-	RangeFrame			= "Distanz Frame anzeigen",
+	WarnElemental		= "Zeige Vorwarnung für nächsten Besudelter Elementar",
+	WarnStrider			= "Zeige Vorwarnung für nächsten Schreiter",
+	WarnNaga			= "Zeige Vorwarnung für nächsten Naga",
+	WarnShield			= "Zeige Warnung für zerstörte Schildgeneratoren in Phase 2",
+	WarnLoot			= "Spieler mit Besudelten Kern ansagen",
+	TimerElemental		= "Zeige Zeit bis nächster Besudelter Elementar",
+	TimerStrider		= "Zeige Zeit bis nächster Schreiter",
+	TimerNaga			= "Zeige Zeit bis nächster Naga",
+	SpecWarnElemental	= "Zeige Spezialwarnung, wenn Besudelter Elementar kommt",
+	SpecWarnCore		= "Zeige Spezialwarnung, wenn du einen Besudelten Kern bekommst",
+	RangeFrame			= "Zeige Abstandsfenster (10m)",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "Icon auf Spieler mit Besudelten Kernen setzen"
+	LootIcon			= "Setze Zeichen auf Spieler mit einem Besudelten Kern"
 }
 
 L:SetMiscLocalization{

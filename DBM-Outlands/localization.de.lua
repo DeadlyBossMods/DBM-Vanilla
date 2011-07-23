@@ -1,12 +1,11 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 --Maulgar
 L = DBM:GetModLocalization("Maulgar")
 
 L:SetGeneralLocalization{
-	name = "Hochkönig Raufgar"
+	name = "Hochkönig Maulgar"
 }
 
 
@@ -22,7 +21,8 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnGrowth	= "Show warning for $spell:36300"
+	WarnGrowth	= "Zeige Warnung für $spell:36300",
+	RangeFrame = "Zeige Abstandsfenster (15m)"
 }
 
 
@@ -41,13 +41,13 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerP2	= "Show timer for start of phase 2"
+	timerP2	= "Zeige Zeit bis Phase 2 beginnt"
 }
 
 L:SetMiscLocalization{
 	DBM_MAG_EMOTE_PULL		= "Die Fesseln von %s werden schwächer!",
 	DBM_MAG_YELL_PHASE2		= "Ich... bin... frei!",
-	DBM_MAG_YELL_PHASE3		= "I will not be taken so easily! Let the walls of this prison tremble... and fall!"
+	DBM_MAG_YELL_PHASE3		= "Ich lasse mich nicht so leicht bezwingen! Lasst die Mauern dieses Kerkers erzittern... und einstürzen!"
 }
 
 -- Doom Lord Kazzak
@@ -65,14 +65,14 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	DBM_KAZZAK_EMOTE_ENRAGE		= "%s wird wütend!" --guessed translation / currently unused (r335)
 }
 
 -- Doomwalker
 L = DBM:GetModLocalization("Doomwalker")
 
 L:SetGeneralLocalization{
-	name = "Doomwalker"
+	name = "Verdammniswandler"
 }
 
 L:SetWarningLocalization{
@@ -82,8 +82,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
+	RangeFrame = "Zeige Abstandsfenster (10m)"
 }
 
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	DBM_DOOMW_EMOTE_ENRAGE	= "%s wird wütend!" --guessed translation / currently unused (r335)
 }
