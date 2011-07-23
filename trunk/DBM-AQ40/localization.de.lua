@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 ------------
@@ -21,7 +20,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "Käferfamilie"
+	name = "Adel der Silithiden"
 }
 L:SetMiscLocalization{
 	Yauj = "Prinzessin Yauj",
@@ -50,7 +49,7 @@ L:SetWarningLocalization{
 	WarnWound	= "%s auf >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnWound = DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unknown")
+	WarnWound = DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unbekannt")
 }
 --------------
 -- Viscidus --
@@ -71,7 +70,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Phase4 	= "geht die Puste aus!",
 	Phase5 	= "ist kurz davor, zu zerspringen.",
-	Phase6 	= "Explodes."	-- needs translation
+	Phase6 	= "Explodes." --translate
 }
 -------------
 -- Huhuran --
@@ -85,7 +84,7 @@ L:SetWarningLocalization{
 	WarnAcid	= "%s auf >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnAcid	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(26180, GetSpellInfo(26180) or "unknown")
+	WarnAcid	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(26180, GetSpellInfo(26180) or "unbekannt")
 	}
 ---------------
 -- Twin Emps --
@@ -108,8 +107,35 @@ L = DBM:GetModLocalization("CThun")
 L:SetGeneralLocalization{
 	name = "C'Thun"
 }
+L:SetWarningLocalization{
+	WarnEyeTentacle			= "Augententakel erscheinen",
+	WarnClawTentacle		= "Klauententakel erscheinen", -- not implemented: unused (r335)
+	WarnGiantEyeTentacle	= "Riesiges Augententakel erscheint", -- not implemented: unused (r335)
+	WarnGiantClawTentacle	= "Riesiges Klauententakel erscheint", -- not implemented: unused (r335)
+	WarnWeakened			= "Rüstung geschwächt für 45 Sekunden!"
+}
+L:SetTimerLocalization{
+	TimerEyeTentacle		= "Augententakel",
+	TimerClawTentacle		= "Klauententakel",
+	TimerGiantEyeTentacle	= "Riesiges Augententakel", -- not implemented: missing spell id (r335)
+	TimerGiantClawTentacle	= "Riesiges Klauententakel", -- not implemented: missing spell id (r335)
+	TimerWeakened			= "Rüstung geschwächt"
+}
 L:SetOptionLocalization{
-	RangeFrame	= "Zeige Abstandsfenster"
+	WarnEyeTentacle			= "Zeige Warnung, wenn Augententakel erscheinen",
+	WarnClawTentacle		= "NICHT IMPLEMENTIERT! Zeige Warnung, wenn Klauententakel erscheinen", -- not implemented: unused (r335)
+	WarnGiantEyeTentacle	= "NICHT IMPLEMENTIERT! Zeige Warnung, wenn Riesiges Augententakel erscheint", -- not implemented: unused (r335)
+	WarnGiantClawTentacle	= "NICHT IMPLEMENTIERT! Zeige Warnung, wenn Riesiges Klauententakel erscheint", -- not implemented: unused (r335)
+	WarnWeakened			= "Zeige Warnung, wenn die Rüstung von C'Thun geschwächt ist",
+	TimerEyeTentacle		= "Zeige Zeit bis Augententakel erscheinen",
+	TimerClawTentacle		= "Zeige Zeit bis Klauententakel erscheinen",
+	TimerGiantEyeTentacle	= "NICHT IMPLEMENTIERT! Zeige Zeit bis Riesiges Augententakel erscheint", -- not implemented: missing spell id (r335)
+	TimerGiantClawTentacle	= "NICHT IMPLEMENTIERT! Zeige Zeit bis Riesiges Klauententakel erscheint", -- not implemented: missing spell id (r335)
+	TimerWeakened			= "Dauer der geschwächten Rüstung von C'Thun anzeigen",
+	RangeFrame	= "Zeige Abstandsfenster (10m)"
+}
+L:SetMiscLocalization{
+	Weakened 	= "C'Thun ist geschwächt!",
 }
 ----------------
 -- Ouro --
@@ -132,8 +158,8 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnSubmerge		= "Zeige Warnung für Abtauchen",
 	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
-	TimerSubmerge		= "Zeige Timer für Abtauchen",
+	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
 	WarnEmerge			= "Zeige Warnung für Auftauchen",
 	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
-	TimerEmerge			= "Zeige Timer für Auftauchen"
+	TimerEmerge			= "Zeige Zeit bis Auftauchen"
 }

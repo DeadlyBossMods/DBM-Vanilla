@@ -2,7 +2,7 @@
 ## X-Min-Interface: 40200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Crusaders' Coliseum|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0십자군의 시험장|r
-## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Kolosseum der Kreuzfahrer|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Prüfung des Kreuzfahrers|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Колизей Авангарда|r
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0十字軍試煉|r
 ## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0十字军的试炼|r
@@ -15,7 +15,7 @@
 ## X-DBM-Mod-Category: WotLK
 ## X-DBM-Mod-Name: Crusader's Coliseum
 ## X-DBM-Mod-Name-koKR: 십자군의 시험장
-## X-DBM-Mod-Name-deDE: Kolosseum der Kreuzfahrer
+## X-DBM-Mod-Name-deDE: Prüfung des Kreuzfahrers
 ## X-DBM-Mod-Name-frFR: L'Appel de la Croisade
 ## X-DBM-Mod-Name-ruRU: Колизей Авангарда
 ## X-DBM-Mod-Name-zhTW: 十字軍試煉

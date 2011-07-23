@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 -----------------
@@ -11,10 +10,10 @@ L:SetGeneralLocalization{
 	name = "Feuerkralle der Ungezähmte"
 }
 L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds spawnen"
+	TimerAddsSpawn	= "Adds erscheinen"
 }
 L:SetOptionLocalization{
-	TimerAddsSpawn	= "Zeige Timer für Spawn der ersten Adds"
+	TimerAddsSpawn	= "Zeige Zeit bis die ersten Adds erscheinen"
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "Kugel der Herrschaft verliert Energie und schaltet sich ab!",
@@ -30,11 +29,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerCombatStart	= "Kampf beginnt"
+	TimerCombatStart	= "Kampfbeginn"
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "Zeige Zeit bis zum Beginn des Kampfes"
+	TimerCombatStart	= "Zeige Zeit bis Kampfbeginn"
 }
 
 L:SetMiscLocalization{
@@ -90,12 +89,14 @@ L:SetWarningLocalization{
 	WarnPhase2Soon	= "Phase 2 bald"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s Cooldown"
+	TimerBreath		= "%s",
+	TimerBreathCD	= "%s CD"
 }
 L:SetOptionLocalization{
 	WarnBreathSoon	= "Zeige Vorwarnung für die Atem des Chromaggus",
-	WarnBreath		= "Zeige Warnung wenn Chromaggus einen seiner Atem wirkt",
-	TimerBreathCD	= "Zeige Atem Cooldown",
+	WarnBreath		= "Zeige Warnung, wenn Chromaggus einen seiner Atem wirkt",
+	TimerBreath		= "Wirkzeit der Atem anzeigen",
+	TimerBreathCD	= "Abklingzeit der Atem anzeigen",
 	WarnPhase2Soon	= "Verkünde baldigen Beginn von Phase 2"
 }
 
@@ -117,8 +118,8 @@ L:SetTimerLocalization{
 	TimerClassCall		= "%s Ruf"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Zeige Timer für Dauer der Klassenrufe",
-	WarnClassCallSoon	= "Vorwarnung für Klassenrufe",
+	TimerClassCall		= "Dauer der Klassenrufe anzeigen",
+	WarnClassCallSoon	= "Zeige Vorwarnung für Klassenrufe",
 	WarnClassCall		= "Verkünde Klassenrufe",
 	WarnPhaseSoon		= "Verkünde baldigen Phasenwechsel",
 	WarnPhase			= "Verkünde Phasenwechsel"
@@ -127,13 +128,13 @@ L:SetMiscLocalization{
 	YellPull	= "Lasst die Spiele beginnen!",
 	YellP2		= "Sehr gut, meine Diener. Der Mut der Sterblichen scheint zu schwinden! Nun lasst uns sehen, wie sie sich gegen den wahren Herrscher des Schwarzfels behaupten werden!",
 	YellP3		= "Unmöglich! Erhebt Euch, meine Diener! Kämpft erneut für Euren Meister!",
-	YellShaman	= "Schamane, zeigt mir was eure Totems können!", -- unverified translation (current translation source: rpguides)
+	YellShaman	= "Schamane, zeigt mir was eure Totems können!",
 	YellPaladin	= "Paladine... ich habe gehört, dass Ihr viele Leben habt. Zeigt es mir.",
 	YellDruid	= "Druiden und ihre lächerliche Gestaltwandlung. Zeigt mal was Ihr könnt!",
 	YellPriest	= "Priester! Wenn Ihr weiterhin so heilt, können wir es auch gerne etwas interessanter gestalten!",
 	YellWarrior	= "Krieger, Ich bin mir sicher, dass ihr kräftiger als das zuschlagen könnt!",
 	YellRogue	= "Schurken? Kommt aus den Schatten und zeigt Euch!",
-	YellWarlock	= "Hexenmeister, ihr solltet nicht mit Magie spielen, die ihr nicht versteht. Seht ihr was ich meine?", -- unverified translation (current translation source: rpguides)
+	YellWarlock	= "Hexenmeister, ihr solltet nicht mit Magie spielen, die ihr nicht versteht. Seht ihr was ich meine?", --needs to be verified (current translation source: rpguides)
 	YellHunter	= "Jäger und ihre lästigen Knallbüchsen!",
 	YellMage	= "Auch Magier? Ihr solltet vorsichtiger sein, wenn Ihr mit Magie spielt...",
 	YellDK		= "Todesritter... kommt hierher!"

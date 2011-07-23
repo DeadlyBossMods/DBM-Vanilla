@@ -1,5 +1,4 @@
 if GetLocale() ~= "deDE" then return end
-
 local L
 
 --------------
@@ -12,25 +11,25 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "Welpen kommen bald",
+	WarnWhelpsSoon		= "Welpen erscheinen bald",
 	WarnPhase2Soon		= "Phase 2 bald",
 	WarnPhase3Soon		= "Phase 3 bald"
 }
 
 L:SetTimerLocalization{
-	TimerWhelps	= "Welpenspawn"
+	TimerWhelps	= "Welpen erscheinen"
 }
 
 L:SetOptionLocalization{
-	TimerWhelps				= "Zeige Timer für Welpenspawn",
-	WarnWhelpsSoon			= "Zeige Vorwarnung für Welpenspawn",
-	SoundWTF				= "Spiele witzige Sounds eines legendären Classic-Raids",
+	TimerWhelps				= "Zeige Zeit bis Welpen erscheinen",
+	WarnWhelpsSoon			= "Zeige Vorwarnung für Erscheinen der Welpen",
+	SoundWTF				= "Spiele witzige Sounds eines legendären Classic-Onyxia-Schlachtzuges",
 	WarnPhase2Soon			= "Zeige Vorwarnung für Phase 2 (bei ~67%)",
 	WarnPhase3Soon			= "Zeige Vorwarnung für Phase 3 (bei ~41%)"
 }
 
 L:SetMiscLocalization{
-   YellP2 = "Diese sinnlose Anstrengung langweilt mich. Ich werde Euch alle von oben verbrennen!",
-   YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!"
+	YellP2 = "Diese sinnlose Anstrengung langweilt mich. Ich werde Euch alle von oben verbrennen!",
+	YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!"
 }
 

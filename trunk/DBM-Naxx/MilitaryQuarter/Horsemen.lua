@@ -13,10 +13,10 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE"
 )
 
-local warnMarkSoon			= mod:NewAnnounce("WarningMarkSoon", 1, 28835, false)
-local warnMarkNow			= mod:NewAnnounce("WarningMarkNow", 2, 28835)
+-- local warnMarkSoon			= mod:NewAnnounce("WarningMarkSoon", 1, 28835, false)
+-- local warnMarkNow			= mod:NewAnnounce("WarningMarkNow", 2, 28835)
 
-local specWarnMarkOnPlayer	= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer", nil, false, true)
+local specWarnMarkOnPlayer	= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer", nil, nil, true)
 
 mod:AddBoolOption("HealthFrame", true)
 
@@ -31,6 +31,7 @@ local markCounter = 0
 
 function mod:OnCombatStart(delay)
 	markCounter = 0
+--	warnMarkSoon:Schedule(12, markCounter + 1)
 end
 
 local markSpam = 0
@@ -38,6 +39,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(28832, 28833, 28834, 28835) and (GetTime() - markSpam) > 5 then
 		markSpam = GetTime()
 		markCounter = markCounter + 1
+--		warnMarkNow:Show(markCounter)
+--		warnMarkSoon:Schedule(5, markCounter + 1)
 	end
 end
 

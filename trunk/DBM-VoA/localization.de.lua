@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 ----------------------------------
@@ -12,20 +11,20 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningGrab	= "Archavon greift nach >%s<"
+	WarningGrab	= "Archavon durchbohrt >%s<"
 })
 
 L:SetTimerLocalization({
-	ArchavonEnrage	= "Archavon-Berserker"
+	ArchavonEnrage	= "Berserker (Archavon)"
 })
 
 L:SetMiscLocalization({
-	TankSwitch	= "%%s stürzt sich auf (%S+)!"	-- to be checked
+	TankSwitch	= "%%s stürzt sich auf (%S+)!"
 })
 
 L:SetOptionLocalization({
-	WarningGrab		= "Verkünde Griffziele",
-	ArchavonEnrage	= "Zeige Timer für $spell:26662"
+	WarningGrab		= "Verkünde Ziele von $spell:58666",
+	ArchavonEnrage	= "Zeige Zeit bis $spell:26662"
 })
 
 --------------------------------
@@ -41,14 +40,14 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerMobOvercharge	= "Überladungsexplosion",
-	EmalonEnrage		= "Emalon-Berserker"
+	timerMobOvercharge	= "Überladener Schlag",
+	EmalonEnrage		= "Berserker (Emalon)"
 }
 
 L:SetOptionLocalization{
-	timerMobOvercharge	= "Zeige Timer für Überladen (stapelnder Debuff)",
-	EmalonEnrage		= "Zeige Timer für $spell:26662",
-	RangeFrame			= "Zeige Abstandsfenster (10 m)"
+	timerMobOvercharge	= "Zeige Zeit bis $spell:64219 (erfolgt bei 10 Stapeln von $spell:64217)",
+	EmalonEnrage		= "Zeige Zeit bis $spell:26662",
+	RangeFrame			= "Zeige Abstandsfenster (10m)"
 }
 
 ---------------------------------
@@ -65,16 +64,16 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	KoralonEnrage	= "Koralon-Berserker"
+	KoralonEnrage	= "Berserker (Koralon)"
 }
 
 L:SetOptionLocalization{
 	BurningFury			= "Zeige Warnung für $spell:66721",
-	KoralonEnrage		= "Zeige Timer für $spell:26662"
+	KoralonEnrage		= "Zeige Zeit bis $spell:26662"
 }
 
 L:SetMiscLocalization{
-	Meteor	= "%s wirkt Meteorfäuste!"
+	Meteor	= "%s wirkt 'Meteorfäuste'!"
 }
 
 -------------------------------
@@ -91,7 +90,7 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	ToravonEnrage	= "Toravon-Berserker"
+	ToravonEnrage	= "Berserker (Toravon)"
 }
 
 L:SetOptionLocalization{
@@ -99,5 +98,5 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	ToravonEnrage	= "Zeige Timer für Berserker"
+	ToravonEnrage	= "Zeige Zeit bis $spell:26662"
 }

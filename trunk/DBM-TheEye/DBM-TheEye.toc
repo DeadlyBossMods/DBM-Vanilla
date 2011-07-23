@@ -3,6 +3,7 @@
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0The Eye|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Castillo de la Tempestad|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0폭풍우 요새|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Festung der Stürme|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMTheEye_SavedVars, DBMTheEye_SavedStats
@@ -15,6 +16,7 @@
 ## X-DBM-Mod-Name-zhTW: 風暴要塞
 ## X-DBM-Mod-Name-esES: El Castillo de la Tempestad
 ## X-DBM-Mod-Name-koKR: 폭풍우 요새
+## X-DBM-Mod-Name-deDE: Festung der Stürme
 ## X-DBM-Mod-Sort: 303
 ## X-DBM-Mod-LoadZoneID: 782
 MapSizes.lua

@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 ---------------
@@ -14,7 +13,7 @@ L:SetWarningLocalization{
 	WarnWound	= "%s auf >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unknown"),	
+	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unbekannt"),	
 }
 ------------
 -- Rajaxx --
@@ -66,8 +65,8 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Verkünde Ziele von Verfolgung",
-	SpecWarnPursue	= "Zeige Spezialwarnung wenn du verfolgt wirst",
-	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unknown"),	
+	SpecWarnPursue	= "Zeige Spezialwarnung, wenn du verfolgt wirst",
+	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unbekannt"),	
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "%s behält %s im Blickfeld!"
@@ -98,5 +97,5 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnVulnerable	= "Verkünde Schwächen",
-	TimerVulnerable	= "Zeige Timer für Schwächen"
+	TimerVulnerable	= "Dauer der Schwächen anzeigen"
 }

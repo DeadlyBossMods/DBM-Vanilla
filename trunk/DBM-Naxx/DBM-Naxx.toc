@@ -14,7 +14,7 @@
 ## X-DBM-Mod-Category: WotLK
 ## X-DBM-Mod-Has-Heroic-Mode: 0
 ## X-DBM-Mod-SubCategories: Arachnid Quarter,Construct Quarter,Plague Quarter,Military Quarter,Frostwyrm Lair
-## X-DBM-Mod-SubCategories-deDE: Arachnidenviertel,Konstruktviertel,Seuchenviertel,Militärviertel,Frostwyrmhöhle
+## X-DBM-Mod-SubCategories-deDE: Das Arachnidenviertel,Das Konstruktviertel,Das Seuchenviertel,Das Militärviertel,Frostwyrmhort
 ## X-DBM-Mod-SubCategories-ruRU: Паучий квартал,Квартал Мерзости,Чумной квартал,Военный квартал,Логово ледяного змея
 ## X-DBM-Mod-SubCategories-zhTW: 蜘蛛區,傀儡區,瘟疫區,軍事區,冰霜巨龍巢穴
 ## X-DBM-Mod-SubCategories-zhCN: 蜘蛛区,构造区,瘟疫区,军事区,冰霜巨龙的巢穴
@@ -23,6 +23,7 @@
 ## X-DBM-Mod-SubCategories-esES: El Arrabal Arácnido,El Arrabal de los Ensamblajes,El Arrabal de la Plaga,El Arrabal Militar,Guarida Helada
 ## X-DBM-Mod-SubCategories-esMX: El Arrabal Arácnido,El Arrabal de los Ensamblajes,El Arrabal de la Plaga,El Arrabal Militar,Guarida Helada
 ## X-DBM-Mod-Name: Naxxramas
+## X-DBM-Mod-Name-deDE: Naxxramas
 ## X-DBM-Mod-Name-ruRU: Наксрамас
 ## X-DBM-Mod-Name-zhTW: 納克薩瑪斯
 ## X-DBM-Mod-Name-zhCN: 纳克萨玛斯

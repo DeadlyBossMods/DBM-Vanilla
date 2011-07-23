@@ -18,7 +18,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837),
-	RangeFrame	= "Show range frame (10)"--Translate
+	RangeFrame	= "Zeige Abstandsfenster (10m)"
 }
 
 L:SetMiscLocalization{
@@ -34,31 +34,31 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s Phase",--Translate
-	WarnPhaseSoon	= "%s Phase in 10",--Translate
-	WarnKite		= "Gaze on >%s<"--Translate
+	WarnPhase		= "%sphase",
+	WarnPhaseSoon	= "%sphase in 10 Sek",
+	WarnKite		= "Blick auf >%s<"
 }
 
 L:SetTimerLocalization{
-	TimerPhase		= "Next %s phase"--Translate
+	TimerPhase		= "Nächste %sphase"
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "Show warning for next phase",--Translate
-	WarnPhaseSoon	= "Show pre-warning for next phase",--Translate
-	WarnKite		= "Announce Kite targets",--Translate
-	TimerPhase		= "Show time for next phase",--Translate
-	KiteIcon		= "Set icon on Kite target",--Translate
-	KiteWhisper		= "Send whisper to Kite target (requires Raid Leader)"--Translate
+	WarnPhase		= "Zeige Warnung für nächste Phase",
+	WarnPhaseSoon	= "Zeige Vorwarnung für nächste Phase",
+	WarnKite		= "Verkünde verfolgte Ziele",
+	TimerPhase		= "Zeige Zeit bis nächste Phase",
+	KiteIcon		= "Setze Zeichen auf das verfolgte Ziel",
+	KiteWhisper		= "Verfolgtes Ziel anflüstern (benötigt Schlachtzugleitung)"
 }
 
 L:SetMiscLocalization{
 	PhaseKite		= "schlägt wütend auf den Boden!",
 	PhaseTank		= "Der Boden beginnt aufzubrechen!",
-	ChangeTarget	= "ein neues Ziel!",
-	KiteWhisper		= "Lauf weg!",
-	Kite			= "Kite",--Translate
-	Tank			= "Tank"--Translate
+	ChangeTarget	= "wählt ein neues Ziel!",
+	KiteWhisper		= "Du wirst verfolgt - Lauf weg!",
+	Kite			= "Kite",
+	Tank			= "Tank"
 }
 
 -------------------------
@@ -95,11 +95,11 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerVengefulSpirit		= "Ghost : %s"--Translate
+	TimerVengefulSpirit		= "Geist : %s"
 }
 
 L:SetOptionLocalization{
-	TimerVengefulSpirit		= "Show timer for Ghost durations",--Translate
+	TimerVengefulSpirit		= "Dauer der Rachsüchtigen Geister anzeigen",
 	CrushIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(40243)
 }
 
@@ -116,16 +116,16 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnRageEnd		= "Fel Rage End",--Translate
+	WarnRageEnd		= "Teufelswut Ende",
 }
 
 L:SetTimerLocalization{
-	TimerRageEnd	= "Fel Rage End"--Translate
+	TimerRageEnd	= "Teufelswut Ende"
 }
 
 L:SetOptionLocalization{
-	WarnRageEnd		= "Show warning for $spell:40604 ends",--Translate
-	TimerRageEnd	= "Show timer for $spell:40604 ends"--Translate
+	WarnRageEnd		= "Zeige Warnung, wenn $spell:40604 endet",
+	TimerRageEnd	= "Dauer von $spell:40604 anzeigen"
 }
 
 L:SetMiscLocalization{
@@ -137,45 +137,45 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Souls")
 
 L:SetGeneralLocalization{
-	name = "Reliquiar der Verirrten"
+	name = "Reliquiar der Seelen"
 }
 
 L:SetWarningLocalization{
-	WarnEnrage		= "Enrage",
-	WarnEnrageSoon	= "Enrage bald",
-	WarnEnrageEnd	= "Enrage vorbei",
+	WarnEnrage		= "Raserei",
+	WarnEnrageSoon	= "Raserei bald",
+	WarnEnrageEnd	= "Raserei vorbei - Nächste in 32 Sek",
 	WarnMana		= "Null Mana in 30 Sek"
 }
 
 L:SetTimerLocalization{
-	TimerEnrage		= "Enrage",
-	TimerNextEnrage	= "Nächster Enrage",--Translate
-	TimerMana		= "Manasauger"
+	TimerEnrage		= "Raserei",
+	TimerNextEnrage	= "Nächste Raserei",
+	TimerMana		= "Null Mana"
 }
 
 L:SetOptionLocalization{
-	WarnEnrage		= "Show warning for Enrage",--Translate
-	WarnEnrageSoon	= "Show pre-warning for Enrage",--Translate
-	WarnEnrageEnd	= "Show warning when Enrage ends",--Translate
-	WarnMana		= "Show warning from zero mana in Phase 2",--Translate
-	TimerEnrage		= "Show timer for Enrage",--Translate
-	TimerNextEnrage	= "Show timer for next Enrage",--Translate
-	TimerMana		= "Show timer for zero mana in Phase 2",--Translate
-	SpiteWhisper	= "Send whisper to $spell:41376 targets (requires Raid Leader)",--Translate
+	WarnEnrage		= "Zeige Warnung für Raserei",
+	WarnEnrageSoon	= "Zeige Vorwarnung für Raserei",
+	WarnEnrageEnd	= "Zeige Warnung, wenn Raserei endet",
+	WarnMana		= "Zeige Warnung für 0 Mana in Phase 2",
+	TimerEnrage		= "Dauer von Raserei anzeigen",
+	TimerNextEnrage	= "Zeige Zeit bis nächste Raserei",
+	TimerMana		= "Zeige Zeit bis 0 Mana in Phase 2",
+	SpiteWhisper	= "Ziele von $spell:41376 anflüstern (benötigt Schlachtzugleitung)",
 	DrainIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41303),
 	SpiteIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41376)
 }
 
 L:SetMiscLocalization{
 	Pull			= "Auf Euch warten nur Schmerz und Leid!",
-	Enrage			= "%s wird wütend!",
+	Enrage			= "%s gerät in Raserei!",
 	Phase2			= "Ihr könnt alles haben, was Ihr wollt... doch es hat einen Preis.",
 	Phase2d			= "Shi shi rikk rukadare shi tichar kar x gular",
 	Phase3			= "Seid auf der Hut, ich lebe!",
 	SpiteWhisper	= "Bosheit auf dir!",
-	Suffering		= "Essence of Suffering",--Translate
-	Desire			= "Essence of Desire",--Translate
-	Anger			= "Essence of Anger"--Translate
+	Suffering		= "Essenz des Leidens",
+	Desire			= "Essenz der Begierde",
+	Anger			= "Essenz des Zorns"
 }
 
 -----------------------
@@ -195,7 +195,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	FAIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41001),
-	FAWhisper	= "Send whisper to $spell:41001 targets (requires Raid Leader)"--Translate
+	FAWhisper	= "Ziele von $spell:41001 anflüstern (benötigt Schlachtzugleitung)"
 }
 
 L:SetMiscLocalization{
@@ -208,28 +208,28 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Council")
 
 L:SetGeneralLocalization{
-	name = "Rat der Illidari"
+	name = "Der Rat der Illidari"
 }
 
 L:SetWarningLocalization{
-	WarnFadeSoon	= "Vanish fades in 5 sec",--Translate
-	WarnFaded		= "Vanish faded",--Translate
-	WarnDevAura		= "Devotion Aura for 30 sec",--Translate
-	WarnResAura		= "Resistance Aura for 30 sec",--Translate
-	Immune			= "Malande - %s immune for 15 sec"--Translate
+	WarnFadeSoon	= "Veras ist in 5 Sek wieder da",
+	WarnFaded		= "Veras ist wieder da",
+	WarnDevAura		= "Hingabeaura für 30 Sek",
+	WarnResAura		= "Widerstandsaura für 30 Sek",
+	Immune			= "Malande - %s für 15 Sek"
 }
 
 L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnFadeSoon	= "Show warning 5 seconds before $spell:41476 fades",--Translate
-	WarnFaded		= "Show warning when $spell:41476 fades",--Translate
-	WarnDevAura		= "Show warning for $spell:41452",--Translate
-	WarnResAura		= "Show warning for $spell:41453",--Translate
-	Immune			= "Show warning when Manalde becomes spell or melee immune",--Translate
-	PoisonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41485),--Translate
-	PoisonWhisper	= "Send whisper to $spell:41485 targets (requires Raid Leader)"--Translate
+	WarnFadeSoon	= "Zeige Warnung 5 Sekunden bevor $spell:41476 des Schurken endet",
+	WarnFaded		= "Zeige Warnung, wenn $spell:41476 des Schurken endet",
+	WarnDevAura		= "Zeige Warnung für $spell:41452",
+	WarnResAura		= "Zeige Warnung für $spell:41453",
+	Immune			= "Zeige Spezialwarnung, wenn Malande gegen magische oder körperliche Angriffe immun wird",
+	PoisonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41485),
+	PoisonWhisper	= "Ziele von $spell:41485 anflüstern (benötigt Schlachtzugleitung)"
 }
 
 L:SetMiscLocalization{
@@ -237,9 +237,9 @@ L:SetMiscLocalization{
 	Malande			= "Lady Malande",
 	Zerevor			= "Hochnethermant Zerevor",
 	Veras			= "Veras Schwarzschatten",
-	Melee			= "Melee",--Translate
-	Spell			= "Spell",--Translate
-	PoisonWhisper	= "Deadly Poison on you!"--Translate
+	Melee			= "Körperliche Immunität",
+	Spell			= "Magieimmunität",
+	PoisonWhisper	= "Tödliches Gift auf dir!"
 }
 
 -------------------------
@@ -254,33 +254,33 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnPhase2Soon	= "Phase 2 bald",
 	WarnPhase4Soon	= "Phase 4 bald",
-	WarnHuman		= "Normale Phase",
-	WarnHumanSoon	= "Normale Phase bald",
-	WarnDemon		= "Dämonen Phase",
-	WarnDemonSoon	= "Dämonen Phase bald"
+	WarnHuman		= "Normalform",
+	WarnHumanSoon	= "Normalform bald",
+	WarnDemon		= "Dämonenform",
+	WarnDemonSoon	= "Dämonenform bald"
 }
 
 L:SetTimerLocalization{
-	TimerCombatStart	= "Combat starts",--Translate
-	TimerNextHuman		= "Normale Phase",
-	TimerNextDemon		= "Dämonen Phase",
-	TimerPhase4			= "Phase transition"--Translate
+	TimerCombatStart	= "Kampfbeginn",
+	TimerNextHuman		= "Normalform",
+	TimerNextDemon		= "Dämonenform",
+	TimerPhase4			= "Phasenübergang"
 }
 
 L:SetOptionLocalization{
-	WarnPhase2Soon	= "Show pre-warning for Phase 2 transition (at ~75%)",--Translate
-	WarnPhase4Soon	= "Show pre-warning for Phase 4 transition (at ~35%)",--Translate
-	WarnHuman		= "Show warning for Human Phase",--Translate
-	WarnHumanSoon	= "Show pre-warning for Human Phase",--Translate
-	WarnDemon		= "Show warning for Demon Phase",--Translate
-	WarnDemonSoon	= "Show pre-warning for Demon Phase",--Translate
-	TimerCombatStart= "Show time for start of combat",--Translate
-	TimerNextHuman	= "Show time for Next Human Phase",--Translate
-	TimerNextDemon	= "Show time for Demon Human Phase",--Translate
-	TimerPhase4		= "Show time for Phase 4 transition",--Translate
+	WarnPhase2Soon	= "Zeige Vorwarnung für Übergang in Phase 2 (bei ~75%)",
+	WarnPhase4Soon	= "Zeige Vorwarnung für Übergang in Phase 4 (bei ~35%)",
+	WarnHuman		= "Zeige Warnung für Normalform",
+	WarnHumanSoon	= "Zeige Vorwarnung für Normalform",
+	WarnDemon		= "Zeige Warnung für Dämonenform",
+	WarnDemonSoon	= "Zeige Vorwarnung für Dämonenform",
+	TimerCombatStart= "Zeige Zeit bis Kampfbeginn",
+	TimerNextHuman	= "Zeige Zeit bis nächste Normalform",
+	TimerNextDemon	= "Zeige Zeit bis nächste Dämonenform",
+	TimerPhase4		= "Dauer des Übergangs in Phase 4 anzeigen",
 	ParasiteIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41917),
-	ParasiteWhisper	= "Send whisper to $spell:41917 targets (requires Raid Leader)",--Translate
-	RangeFrame		= "Show range frame (10 yards) in Phase 3 and 4"--Translate
+	ParasiteWhisper	= "Ziele von $spell:41917 anflüstern (benötigt Schlachtzugleitung)",
+	RangeFrame		= "Zeige Abstandsfenster (10m) in Phase 3 und 4"
 }
 
 L:SetMiscLocalization{
@@ -288,5 +288,5 @@ L:SetMiscLocalization{
 	Eyebeam			= "Blickt in die Augen des Verräters!",
 	Demon			= "Erzittert vor der Macht des Dämonen!",
 	Phase4			= "War's das schon, Sterbliche? Ist das alles, was Ihr zu bieten habt?",
-	ParasiteWhisper	= "Shadowfiends on you!"--Translate
+	ParasiteWhisper	= "Schädlicher Schattengeist auf dir!"
 }

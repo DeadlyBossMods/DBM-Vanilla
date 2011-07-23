@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 ----------------
@@ -112,20 +111,20 @@ L:SetWarningLocalization{
 	WarnEmergeSoon		= "Auftauchen bald"
 }
 L:SetTimerLocalization{
-	TimerCombatStart	= "Kampf beginnt",
+	TimerCombatStart	= "Kampfbeginn",
 	TimerSubmerge		= "Abtauchen",
 	TimerEmerge			= "Auftauchen"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "Zeige Zeit bis zum Beginn des Kampfes",
+	TimerCombatStart	= "Zeige Zeit bis Kampfbeginn",
 	WarnSubmerge		= "Zeige Warnung für Abtauchen",
 	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
-	TimerSubmerge		= "Zeige Timer für Abtauchen",
+	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
 	WarnEmerge			= "Zeige Warnung für Auftauchen",
 	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
-	TimerEmerge			= "Zeige Timer für Auftauchen"
+	TimerEmerge			= "Zeige Zeit bis Auftauchen"
 }
 L:SetMiscLocalization{
-	Submerge	= "Kommt herbei, meine Diener! Verteidigt euren Herren!", -- needs translation / unverified translation (current translation source: GTDB)
+	Submerge	= "KOMMT HERBEI, MEINE DIENER! VERTEIDIGT EUREN HERRN!",
 	Pull		= "Unverschämte Welpen! Ihr seid sehenden Auges dem Tod in die Arme gelaufen! Seht her, der Meister regt sich!"
 }

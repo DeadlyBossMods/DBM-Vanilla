@@ -2,6 +2,7 @@
 ## X-Min-Interface: 40200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Black Temple|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0검은 사원|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Der Schwarze Tempel|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMBlackTemple_SavedVars, DBMBlackTemple_SavedStats
@@ -14,6 +15,7 @@
 ## X-DBM-Mod-Name-ruRU: Черный храм
 ## X-DBM-Mod-Name-esES: Templo Oscuro
 ## X-DBM-Mod-Name-koKR: 검은 사원
+## X-DBM-Mod-Name-deDE: Der Schwarze Tempel
 ## X-DBM-Mod-Sort: 301
 ## X-DBM-Mod-LoadZoneID: 796
 localization.en.lua

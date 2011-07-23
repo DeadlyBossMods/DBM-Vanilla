@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 -------------------------
@@ -327,7 +326,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Thespia")
 
 L:SetGeneralLocalization({
-	name = "Wasserbeschwörerin Thespia"
+	name = "Hydromantin Thespia"
 })
 
 L:SetWarningLocalization({
@@ -380,7 +379,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnChannel	= "Zeige Warnung wenn Kalithresh kanalisiert"
+	WarnChannel	= "Zeige Warnung, wenn Kalithresh kanalisiert"
 })
 
 -----------------------
@@ -680,7 +679,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("EpochHunter")
 
 L:SetGeneralLocalization({
-	name = " Epochenjäger"
+	name = "Epochenjäger"
 })
 
 L:SetWarningLocalization({
@@ -758,7 +757,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("PT")
 
 L:SetGeneralLocalization({
-	name = "Portaltimer (HdZ)"
+	name = "Portaltimer (HdZ 2)"
 })
 
 L:SetWarningLocalization({
@@ -888,7 +887,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("Sarannis")
 
 L:SetGeneralLocalization({
-	name = "Kommandant Sarannis"
+	name = "Kommandantin Sarannis"
 })
 
 L:SetWarningLocalization({
@@ -1146,7 +1145,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "Zeige Spezialwarnung für Pyroschlag (zum unterbrechen)"
+	specwarnPyroblast	= "Zeige Spezialwarnung für $spell:36819 (zum Unterbrechen)"
 })
 
 L:SetMiscLocalization({

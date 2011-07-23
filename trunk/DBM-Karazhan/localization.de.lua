@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "deDE" then return end
-
 local L
 
 --Attumen
@@ -17,7 +16,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_ATH_YELL_1		= "Komm Mittnacht, lass' uns dieses Gesindel auseinander treiben!",
---	KillAttumen			= "Always knew... someday I would become... the hunted."
+	KillAttumen			= "Ich habe es immer gewusst... eines Tages würde ich... der Gejagte sein."
 }
 
 
@@ -33,11 +32,11 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_MOROES_VANISH_FADED	= "Show vanish fade warning"
+	DBM_MOROES_VANISH_FADED	= "Zeige Warnung für Ende von Verschwinden"
 }
 
 L:SetMiscLocalization{
-	DBM_MOROES_YELL_START	= "Hm, unangekündigte Besucher. Es müssen Vorbereitungen getroffen werden"
+	DBM_MOROES_YELL_START	= "Hm, unangekündigte Besucher. Es müssen Vorbereitungen getroffen werden..."
 }
 
 
@@ -52,7 +51,7 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "Show range frame (10)"
+	RangeFrame			= "Zeige Abstandsfenster (10m)"
 }
 
 L:SetMiscLocalization{
@@ -63,16 +62,25 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("RomuloAndJulianne")
 
 L:SetGeneralLocalization{
-	name = "Romulo and Julianne"
-}
+	name = "Romulo und Julianne"
+ }
 
 L:SetWarningLocalization{
+	warningPosion	= "%s auf >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
+}
+
+L:SetTimerLocalization{
+	TimerCombatStart	= "Kampfbeginn"
 }
 
 L:SetOptionLocalization{
+	TimerCombatStart	= "Zeige Zeit bis Kampfbeginn",
+	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830, GetSpellInfo(30830) or "unbekannt")
 }
 
 L:SetMiscLocalization{
+	Event				= "Heute Abend werden wir Zeuge einer verbotenen Liebe!",
+	RJ_Pull				= "Welch' Teufel bist du, dass du so mich folterst?",
 	DBM_RJ_PHASE2_YELL	= "Komm, milde, liebevolle Nacht! Komm, gibt mir meinen Romulo zurück!",
 	Romulo				= "Romulo",
 	Julianne			= "Julianne"
@@ -94,7 +102,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_BBW_YELL_1			= "The better to own you with!" --translate
+	DBM_BBW_YELL_1			= "Damit ich dich besser fressen kann!"
 }
 
 
@@ -112,7 +120,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "Show range frame (10)"
+	RangeFrame			= "Zeige Abstandsfenster (10m)"
 }
 
 L:SetMiscLocalization{
@@ -140,7 +148,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	DBM_TI_YELL_PULL		= "Ah, Ihr kommt genau richtig. Die Rituale fangen gleich an!",
 	Kilrek					= "Kil'rek",
-	DChains					= "Demon Chains"
+	DChains					= "Dämonenketten"
 }
 
 
@@ -152,14 +160,18 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "Nicht bewegen!"
+	DBM_ARAN_DO_NOT_MOVE	= "Flammenkranz - Nicht bewegen!"
 }
 
 L:SetTimerLocalization{
+	timerSpecial			= "Spezialfähigkeiten CD"
 }
 
 L:SetOptionLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "Show special warning for $spell:30004"
+	timerSpecial			= "Abklingzeit der Spezialfähigkeiten anzeigen",
+	DBM_ARAN_DO_NOT_MOVE	= "Zeige Spezialwarnung für $spell:30004",
+	ElementalIcons			= "Setze Zeichen auf Wasserelementare",
+	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 
 L:SetMiscLocalization{
@@ -174,24 +186,24 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Portal Phase in 5",
-	DBM_NS_WARN_BANISH_SOON	= "Banish Phase in 5",
-	warningPortal			= "Portal Phase",
-	warningBanish			= "Banish Phase"
+	DBM_NS_WARN_PORTAL_SOON	= "Portalphase in 5 Sek",
+	DBM_NS_WARN_BANISH_SOON	= "Verbannungsphase in 5 Sek",
+	warningPortal			= "Portalphase",
+	warningBanish			= "Verbannungsphase"
 }
 
 L:SetTimerLocalization{
-	timerPortalPhase	= "Portal Phase",
-	timerBanishPhase	= "Banish Phase"
+	timerPortalPhase	= "Portalphase",
+	timerBanishPhase	= "Verbannungsphase"
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Show pre-warning for Portal phase",
-	DBM_NS_WARN_BANISH_SOON	= "Show pre-warning for Banish phase",
-	warningPortal			= "Show warning for Portal phase",
-	warningBanish			= "Show warning for Banish phase",
-	timerPortalPhase		= "Show timer for Portal Phase duration",
-	timerBanishPhase		= "Show timer for Banish Phase duration"
+	DBM_NS_WARN_PORTAL_SOON	= "Zeige Vorwarnung für Portalphase",
+	DBM_NS_WARN_BANISH_SOON	= "Zeige Vorwarnung für Verbannungsphase",
+	warningPortal			= "Zeige Warnung für Portalphase",
+	warningBanish			= "Zeige Warnung für Verbannungsphase",
+	timerPortalPhase		= "Dauer der Portalphase anzeigen",
+	timerBanishPhase		= "Dauer der Verbannungsphase anzeigen"
 }
 
 L:SetMiscLocalization{
@@ -221,7 +233,7 @@ L:SetMiscLocalization{
 	DBM_PRINCE_YELL_P2		= "Dummköpfe! Zeit ist das Feuer, in dem Ihr brennen werdet!",
 	DBM_PRINCE_YELL_P3		= "Wie könnt Ihr hoffen, einer so überwältigenden Macht gewachsen zu sein?",
 	DBM_PRINCE_YELL_INF1	= "Alle Realitäten, alle Dimensionen stehen mir offen!",
-	DBM_PRINCE_YELL_INF2	= "Ihr steht nicht nur vor Malchezzar allein, sondern vor den Legionen, die ich befehlige!"
+	DBM_PRINCE_YELL_INF2	= "Ihr steht nicht nur vor Malchezaar allein, sondern vor den Legionen, die ich befehlige!"
 }
 
 
@@ -233,21 +245,21 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NB_DOWN_WARN 		= "Ground Phase in 15 sec",
-	DBM_NB_DOWN_WARN2 		= "Ground Phase in 5 sec",
-	DBM_NB_AIR_WARN			= "Luft Phase"
+	DBM_NB_DOWN_WARN 		= "Bodenphase in 15 Sek",
+	DBM_NB_DOWN_WARN2 		= "Bodenphase in 5 Sek",
+	DBM_NB_AIR_WARN			= "Luftphase"
 }
 
 L:SetTimerLocalization{
-	timerNightbane			= "Schrecken der Nacht",
-	timerAirPhase			= "Luft Phase"
+	timerNightbane			= "Schrecken der Nacht kommt",
+	timerAirPhase			= "Luftphase"
 }
 
 L:SetOptionLocalization{
-	DBM_NB_AIR_WARN			= "Show warning for Luft Phase",
-	PrewarnGroundPhase		= "Show pre-warnings for Ground Phase",
-	timerNightbane			= "Show timer for Nightbane summon",
-	timerAirPhase			= "Show timer for Air Phase duration"
+	DBM_NB_AIR_WARN			= "Zeige Warnung für Luftphase",
+	PrewarnGroundPhase		= "Zeige Vorwarnungen für Bodenphase",
+	timerNightbane			= "Beschwörungzeit für Schrecken der Nacht anzeigen",
+	timerAirPhase			= "Dauer der Luftphase anzeigen"
 }
 
 L:SetMiscLocalization{
@@ -273,9 +285,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	AnnounceBosses			= "Show warnings for boss spawns",
-	ShowBossTimers			= "Show timers for boss spawns",
-	DBM_OZ_OPTION_1			= "Reichweiten Check in Phase 2 anzeigen"
+	AnnounceBosses			= "Zeige Warnungen für Erscheinen der Bosse",
+	ShowBossTimers			= "Zeige Zeit bis die Bosse erscheinen",
+	DBM_OZ_OPTION_1			= "Zeige Abstandsfenster in Phase 2"
 }
 
 L:SetMiscLocalization{
@@ -283,10 +295,10 @@ L:SetMiscLocalization{
 	DBM_OZ_WARN_ROAR		= "Brüller",
 	DBM_OZ_WARN_STRAWMAN	= "Strohmann",
 	DBM_OZ_WARN_TINHEAD		= "Blechkopf",
-	DBM_OZ_WARN_CRONE		= "The Crone",
-	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, wir müssen einfach einen Weg nach Hause finden! Der alte Zauberer ist unsere einzige Hoffnung! Strohmann, Brüller, Blechkopf, wollt ihr - wartet… Donnerwetter, schaut! Wir haben Besucher!",
+	DBM_OZ_WARN_CRONE		= "Die böse Hexe",
+	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, wir müssen einfach einen Weg nach Hause finden! Der alte Zauberer ist unsere einzige Hoffnung! Strohmann, Brüller, Blechkopf, wollt ihr - wartet... Donnerwetter, schaut! Wir haben Besucher!",
 	DBM_OZ_YELL_ROAR		= "Ich habe keine Angst vor Euch! Wollt Ihr kämpfen? Hä, wollt Ihr? Kommt schon! Ich schaffe Euch mit beiden Pfoten hinter dem Rücken!",
-	DBM_OZ_YELL_STRAWMAN	= "Was soll ich nur mit Euch machen? Mit fällt einfach nichts ein.",
+	DBM_OZ_YELL_STRAWMAN	= " Was soll ich nur mit Euch machen? Mit fällt einfach nichts ein.",
 	DBM_OZ_YELL_TINHEAD		= "Ich könnte wirklich ein Herz brauchen. Kann ich Eures haben?",
 	DBM_OZ_YELL_CRONE		= "Wehe Euch allen, meine Hübschen!"
 }
@@ -296,17 +308,17 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Shadikith")
 
 L:SetGeneralLocalization{
-	name = "Shadikith the Glider"
+	name = "Shadikith der Gleiter"
 }
 
 L = DBM:GetModLocalization("Hyakiss")
 
 L:SetGeneralLocalization{
-	name = "Hyakiss the Lurker"
+	name = "Hyakiss der Lauerer"
 }
 
 L = DBM:GetModLocalization("Rokad")
 
 L:SetGeneralLocalization{
-	name = "Rokad the Ravager"
+	name = "Rokad der Verheerer"
 }

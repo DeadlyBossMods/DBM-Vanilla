@@ -50,6 +50,7 @@ mod:AddBoolOption("TankArrow")
 
 local RFVileGasTargets	= {}
 local spamOoze = 0
+local InfectionIcon = 8
 
 local function warnRFVileGasTargets()
 	warnVileGas:Show(table.concat(RFVileGasTargets, "<, >"))

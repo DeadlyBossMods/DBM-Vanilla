@@ -2,6 +2,7 @@
 ## X-Min-Interface: 40200
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Sunwell|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0태양샘 고원|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Der Sonnenbrunnen|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMSunwell_SavedVars, DBMSunwell_SavedStats
@@ -14,6 +15,7 @@
 ## X-DBM-Mod-Name-zhTW: 太陽之井高地
 ## X-DBM-Mod-Name-esES: Meseta de La Fuente del Sol
 ## X-DBM-Mod-Name-koKR: 태양샘 고원
+## X-DBM-Mod-Name-deDE: Der Sonnenbrunnen
 ## X-DBM-Mod-Sort: 300
 ## X-DBM-Mod-LoadZoneID: 789
 localization.en.lua
