@@ -21,8 +21,7 @@ local warnPhase3			= mod:NewPhaseAnnounce(3)
 local warnPhase2Soon		= mod:NewAnnounce("WarnPhase2Soon", 1, "Interface\\Icons\\Spell_Nature_WispSplode")
 local warnPhase3Soon		= mod:NewAnnounce("WarnPhase3Soon", 1, "Interface\\Icons\\Spell_Nature_WispSplode")
 
---local preWarnDeepBreath     = mod:NewSoonAnnounce(17086, 2)--Experimental, if it is off please let me know.
-local specWarnBreath		= mod:NewSpecialWarningRun(17086)
+local specWarnBreath		= mod:NewSpecialWarningSpell(17086, nil, nil, nil, true)
 local specWarnBlastNova		= mod:NewSpecialWarningRun(68958, mod:IsMelee())
 
 local timerNextFlameBreath	= mod:NewCDTimer(20, 68970)--Breath she does on ground in frontal cone.
@@ -39,6 +38,7 @@ local sndFunny				= mod:NewSound(nil, "SoundWTF", false)
 local warned_preP2 = false
 local warned_preP3 = false
 local phase = 0
+
 function mod:OnCombatStart(delay)
 	phase = 1
     warned_preP2 = false
@@ -64,7 +64,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellP2 or msg:find(L.YellP2) then
 		phase = 2
 		warnPhase2:Show()
---		preWarnDeepBreath:Schedule(72)	-- Pre-Warn Deep Breath
 		timerNextDeepBreath:Start(77)
 		timerAchieveWhelps:Start()
 		timerNextFlameBreath:Cancel()
@@ -78,7 +77,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerWhelps:Stop()
 		timerNextDeepBreath:Stop()
 		warnWhelpsSoon:Cancel()
---		preWarnDeepBreath:Cancel()
 		sndFunny:Schedule(20, "Interface\\AddOns\\DBM-Onyxia\\sounds\\now-hit-it-very-hard-and-fast.ogg")
    		sndFunny:Schedule(35, "Interface\\AddOns\\DBM-Onyxia\\sounds\\i-dont-see-enough-dots.ogg")
 		sndFunny:Schedule(50, "Interface\\AddOns\\DBM-Onyxia\\sounds\\hit-it-like-you-mean-it.ogg")
@@ -95,7 +93,6 @@ function mod:SPELL_CAST_START(args)
 		soundDeepBreath:Play()
 		timerBreath:Start()
 		timerNextDeepBreath:Start()
---		preWarnDeepBreath:Schedule(35)              -- Pre-Warn Deep Breath
 	elseif args:IsSpellID(18435, 68970) then        -- Flame Breath (Ground phases)
 		timerNextFlameBreath:Start()
 	end

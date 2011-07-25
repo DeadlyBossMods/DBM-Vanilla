@@ -17,7 +17,7 @@ local timerFear     = mod:NewNextTimer(25, 33547)
 local enrageTimer	= mod:NewBerserkTimer(180)
 
 function mod:OnCombatStart(delay)
-	if mod:IsDifficulty("heroic5") then
+	if self:IsDifficulty("heroic5") then
         enrageTimer:Start(-delay)
     end
 end

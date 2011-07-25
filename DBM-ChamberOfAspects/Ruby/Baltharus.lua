@@ -26,7 +26,7 @@ local timerWhirlwind		= mod:NewBuffActiveTimer(4, 75125, nil, mod:IsTank() or mo
 local timerRepellingWave	= mod:NewBuffActiveTimer(4, 74509)--1 second cast + 3 second stun
 local timerBrand			= mod:NewBuffActiveTimer(10, 74505)
 
-mod:AddBoolOption("SetIconOnBrand", true)
+mod:AddBoolOption("SetIconOnBrand", false)
 mod:AddBoolOption("RangeFrame")
 
 local warnedSplit1	= false
@@ -69,7 +69,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(75125) then
 		warnWhirlwind:Show()
 		timerWhirlwind:Show()
-	elseif args:IsSpellID(74505) then
+	elseif args:IsSpellID(74505) and self:IsInCombat() then--Only do this when boss is actually engaged, otherwise it doesn't really matter and just spams.
 		brandTargets[#brandTargets + 1] = args.destName
 		if args:IsPlayer() then
 			specWarnBrand:Show()
@@ -88,7 +88,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if mod:IsDifficulty("normal25", "heroic25") then
+	if self:IsDifficulty("normal25", "heroic25") then
 		if not warnedSplit1 and self:GetUnitCreatureId(uId) == 39751 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
 			warnedSplit1 = true
 			warningSplitSoon:Show()

@@ -65,7 +65,7 @@ function mod:OnCombatStart(delay)
 	enrageTimer:Start(-delay)
 	timerFreezingSlash:Start(-delay)
 	table.wipe(PColdTargets)
-	if mod:IsDifficulty("heroic10", "heroic25") then
+	if self:IsDifficulty("heroic10", "heroic25") then
 		timerShadowStrike:Start()
 		preWarnShadowStrike:Schedule(25.5-delay)
 		self:ScheduleMethod(30.5-delay, "ShadowStrike")
@@ -134,10 +134,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconsOnPCold then
 			table.insert(PColdTargets, DBM:GetRaidUnitId(args.destName))
 			self:UnscheduleMethod("SetPcoldIcons")
-			if (mod:IsDifficulty("normal25", "heroic25") and #PColdTargets >= 5) or (mod:IsDifficulty("normal10", "heroic10") and #PColdTargets >= 2) then
+			if (self:IsDifficulty("normal25", "heroic25") and #PColdTargets >= 5) or (self:IsDifficulty("normal10", "heroic10") and #PColdTargets >= 2) then
 				self:SetPcoldIcons()--Sort and fire as early as possible once we have all targets.
 			else
-				if mod:LatencyCheck() then
+				if self:LatencyCheck() then
 					self:ScheduleMethod(0.3, "SetPcoldIcons")
 				end
 			end
@@ -160,10 +160,10 @@ function mod:SPELL_AURA_REFRESH(args)
 		if self.Options.SetIconsOnPCold then
 			table.insert(PColdTargets, DBM:GetRaidUnitId(args.destName))
 			self:UnscheduleMethod("SetPcoldIcons")
-			if (mod:IsDifficulty("normal25", "heroic25") and #PColdTargets >= 5) or (mod:IsDifficulty("normal10", "heroic10") and #PColdTargets >= 2) then
+			if (self:IsDifficulty("normal25", "heroic25") and #PColdTargets >= 5) or (self:IsDifficulty("normal10", "heroic10") and #PColdTargets >= 2) then
 				self:SetPcoldIcons()--Sort and fire as early as possible once we have all targets.
 			else
-				if mod:LatencyCheck() then
+				if self:LatencyCheck() then
 					self:ScheduleMethod(0.3, "SetPcoldIcons")
 				end
 			end
@@ -192,7 +192,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnSubmergeSoon:Cancel()
 		timerEmerge:Stop()
 		timerSubmerge:Stop()
-		if mod:IsDifficulty("normal10", "normal25") then
+		if self:IsDifficulty("normal10", "normal25") then
 			timerAdds:Cancel() 
 			warnAdds:Cancel() 
 			self:UnscheduleMethod("Adds")
@@ -222,7 +222,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 		warnSubmergeSoon:Schedule(65)
 		specWarnSubmergeSoon:Schedule(65)
 		timerSubmerge:Start()
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerShadowStrike:Stop()
 			preWarnShadowStrike:Cancel()
 			self:UnscheduleMethod("ShadowStrike")

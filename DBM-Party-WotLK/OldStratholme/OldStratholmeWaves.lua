@@ -58,7 +58,7 @@ local function getWaveString(wave)
 end
 
 function mod:UPDATE_WORLD_STATES(args)
-	if mod:IsDifficulty("heroic5") then 
+	if self:IsDifficulty("heroic5") then 
 		waves = wavesHeroic 
 	else 
 		waves = wavesNormal 
@@ -82,7 +82,7 @@ end
 
 function mod:UNIT_DIED(args)
 	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
-		local z = mod:GetCIDFromGUID(args.destGUID)
+		local z = self:GetCIDFromGUID(args.destGUID)
 		if z == 26529 then
 			timerWaveIn:Start()
 		end

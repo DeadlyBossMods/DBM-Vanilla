@@ -4,7 +4,7 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(12259)--, 11661
 mod:SetModelID(13030)
-mod:RegisterCombat("combat", 12259)
+mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
@@ -25,9 +25,9 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:warnFistTargets()
-		warnFist:Show(table.concat(FistTargets, "<, >"))
-		timerFist:Start()
-		table.wipe(FistTargets)
+	warnFist:Show(table.concat(FistTargets, "<, >"))
+	timerFist:Start()
+	table.wipe(FistTargets)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

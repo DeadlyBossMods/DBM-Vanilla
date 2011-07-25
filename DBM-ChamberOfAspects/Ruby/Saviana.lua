@@ -27,8 +27,8 @@ local timerConflagCD		= mod:NewNextTimer(50, 74452)
 local timerBreath			= mod:NewCDTimer(25, 74404, nil, mod:IsTank() or mod:IsHealer())
 local timerEnrage			= mod:NewBuffActiveTimer(10, 78722)
 
-mod:AddBoolOption("RangeFrame")
-mod:AddBoolOption("BeaconIcon")
+mod:AddBoolOption("RangeFrame", true)
+mod:AddBoolOption("BeaconIcon", true)
 
 local beaconTargets = {}
 local beaconIcon 	= 8

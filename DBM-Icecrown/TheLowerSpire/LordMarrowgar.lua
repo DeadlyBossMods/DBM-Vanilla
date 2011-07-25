@@ -55,7 +55,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnWhirlwind:Show()
 		timerWhirlwindCD:Start()
 		preWarnWhirlwind:Schedule(85)
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerWhirlwind:Show(30)						-- Approx 30seconds on heroic
 		else
 			timerWhirlwind:Show()						-- Approx 20seconds on normal.
@@ -71,7 +71,7 @@ function mod:SPELL_AURA_REMOVED(args)
 			self:SetIcon(args.destName, 0)
 		end
 	elseif args:IsSpellID(69076) then
-		if mod:IsDifficulty("normal10", "normal25") then
+		if self:IsDifficulty("normal10", "normal25") then
 			timerBoneSpike:Start(15)					-- He will do Bone Spike Graveyard 15 seconds after whirlwind ends on normal
 		end
 	end
@@ -103,7 +103,7 @@ function mod:SPELL_SUMMON(args)
 			impaleIcon = impaleIcon - 1
 		end
 		self:Unschedule(showImpaleWarning)
-		if mod:IsDifficulty("normal10", "heroic10") or (mod:IsDifficulty("normal25", "heroic25") and #impaleTargets >= 3) then
+		if self:IsDifficulty("normal10", "heroic10") or (self:IsDifficulty("normal25", "heroic25") and #impaleTargets >= 3) then
 			showImpaleWarning()
 		else
 			self:Schedule(0.3, showImpaleWarning)

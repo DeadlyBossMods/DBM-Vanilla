@@ -2,10 +2,11 @@ local mod	= DBM:NewMod("Attumen", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(15550, 16151)
+mod:SetCreatureID(16151)--Midnight
 mod:SetModelID(16416)
-mod:RegisterCombat("combat", 15550)
-mod:RegisterKill("yell", L.KillAttumen)
+mod:RegisterCombat("combat")
+mod:RegisterKill("yell", L.KillAttumen)--Short term solution to below.
+--mod:RegisterKill("kill", 15550)--Huntsman, method disabled until it's working.
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",

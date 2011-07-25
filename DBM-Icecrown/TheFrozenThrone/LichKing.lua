@@ -17,9 +17,7 @@ mod:RegisterEvents(
 	"SPELL_DAMAGE",
 	"UNIT_HEALTH",
 	"CHAT_MSG_MONSTER_YELL",
-	"RAID_BOSS_WHISPER",
-	"SWING_DAMAGE",
-	"SWING_MISSED"
+	"RAID_BOSS_WHISPER"
 )
 
 local isPAL = select(2, UnitClass("player")) == "PALADIN"
@@ -61,7 +59,7 @@ local specWarnHarvestSoul	= mod:NewSpecialWarningYou(74325) --Phase 3+ Ability
 local specWarnInfest		= mod:NewSpecialWarningSpell(73779, false) --Phase 1+ Ability
 local specwarnSoulreaper	= mod:NewSpecialWarningTarget(73797, mod:IsTank()) --phase 2+
 local specWarnTrap			= mod:NewSpecialWarningYou(73539) --Heroic Ability
-local specWarnTrapNear		= mod:NewSpecialWarning("SpecWarnTrapNear") --Heroic Ability
+local specWarnTrapNear		= mod:NewSpecialWarningClose(73539) --Heroic Ability
 local specWarnHarvestSouls	= mod:NewSpecialWarningSpell(74297) --Heroic Ability
 local specWarnValkyrLow		= mod:NewSpecialWarning("SpecWarnValkyrLow")
 
@@ -106,21 +104,21 @@ local phase	= 0
 local lastPlagueCast
 local warned_preP2 = false
 local warned_preP3 = false
+local trapScansDone = 0
 local warnedValkyrGUIDs = {}
-local LKTank
 
 function mod:OnCombatStart(delay)
 	phase = 0
 	lastPlagueCast = GetTime()
 	warned_preP2 = false
 	warned_preP3 = false
-	LKTank = nil
+	trapScansDone = 0
 	self:NextPhase()
 	table.wipe(warnedValkyrGUIDs)
 end
 
 function mod:RestoreWipeTime()
-	mod:SetWipeTime(5)--Restore it after frostmourn room.
+	self:SetWipeTime(5)--Restore it after frostmourn room.
 end
 
 function mod:DefileTarget()
@@ -155,50 +153,17 @@ function mod:DefileTarget()
 	end
 end
 
-function mod:TankTrap()
-	warnTrapCast:Show(LKTank)
+function mod:TrapTarget(targetname)
+	warnTrapCast:Show(targetname)
 	if self.Options.TrapIcon then
-		self:SetIcon(LKTank, 8, 10)
+		self:SetIcon(targetname, 8, 10)
 	end
-	if LKTank == UnitName("player") then
+	if targetname == UnitName("player") then
 		specWarnTrap:Show()
 		if self.Options.YellOnTrap then
 			SendChatMessage(L.YellTrap, "SAY")
 		end
-	end
-	local uId = DBM:GetRaidUnitId(LKTank)
-	if uId ~= "none" then
-		local inRange = CheckInteractDistance(uId, 2)
-		local x, y = GetPlayerMapPosition(uId)
-		if x == 0 and y == 0 then
-			SetMapToCurrentZone()
-			x, y = GetPlayerMapPosition(uId)
-		end
-		if inRange then
-			specWarnTrapNear:Show()
-			if self.Options.TrapArrow then
-				DBM.Arrow:ShowRunAway(x, y, 10, 5)
-			end
-		end
-	end
-end
-
-function mod:TrapTarget()
-	local targetname = self:GetBossTarget(36597)
-	if not targetname then return end
-	if targetname ~= LKTank then--If scan doesn't return tank abort other scans and do other warnings.
-		self:UnscheduleMethod("TrapTarget")
-		self:UnscheduleMethod("TankTrap")--Also unschedule tanktrap since we got a scan that returned a non tank.
-		warnTrapCast:Show(targetname)
-		if self.Options.TrapIcon then
-			self:SetIcon(targetname, 8, 10)
-		end
-		if targetname == UnitName("player") then
-			specWarnTrap:Show()
-			if self.Options.YellOnTrap then
-				SendChatMessage(L.YellTrap, "SAY")
-			end
-		end
+	else
 		local uId = DBM:GetRaidUnitId(targetname)
 		if uId then
 			local inRange = CheckInteractDistance(uId, 2)
@@ -208,15 +173,33 @@ function mod:TrapTarget()
 				x, y = GetPlayerMapPosition(uId)
 			end
 			if inRange then
-				specWarnTrapNear:Show()
+				specWarnTrapNear:Show(targetname)
 				if self.Options.TrapArrow then
 					DBM.Arrow:ShowRunAway(x, y, 10, 5)
 				end
 			end
 		end
-	else
-		self:UnscheduleMethod("TankTrap")
-		self:ScheduleMethod(1, "TankTrap") --If scan returns tank schedule warnings for tank after all other scans have completed. If none of those scans return another player this will be allowed to fire.
+	end
+end
+
+function mod:TrapHandler(isTank)
+	trapScansDone = trapScansDone + 1
+	if UnitExists("boss1target") then--Better way to check if target exists and prevent nil errors at same time, without stopping scans from starting still. so even if target is nil, we stil do more checks instead of just blowing off a trap warning.
+		local targetname = UnitName("boss1target")
+		if UnitDetailedThreatSituation("boss1target", "boss1") and not isTank then--He's targeting his highest threat target.
+			if trapScansDone < 12 then--Make sure no infinite loop.
+				self:ScheduleMethod(0.01, "TrapHandler")--Check multiple times to be sure it's not on something other then tank.
+			else
+				self:ScheduleMethod(0.01, "TrapHandler", true)--It's still on tank after all checks, force true "isTank" and activate else rule and warn trap is on tank.
+			end
+		else--He's not targeting highest threat target (or "isTank" was set to true after 12 scans) so this has to be right target.
+			self:UnscheduleMethod("TrapHandler")--Unschedule all checks just to be sure none are running, we are done.
+			self:TrapTarget(targetname)--Send target to warning event handler.
+		end
+	else--target was nil, lets schedule a rescan here too.
+		if trapScansDone < 12 then--Make sure not to infinite loop here as well.
+			self:ScheduleMethod(0.01, "TrapHandler")
+		end
 	end
 end
 
@@ -254,27 +237,19 @@ function mod:SPELL_CAST_START(args)
 		specWarnInfest:Show()
 		timerInfestCD:Start()
 	elseif args:IsSpellID(72762) then -- Defile
-			self:ScheduleMethod(0.1, "DefileTarget")
+		self:ScheduleMethod(0.1, "DefileTarget")
 		warnDefileSoon:Cancel()
 		warnDefileSoon:Schedule(27)
 		timerDefileCD:Start()
 	elseif args:IsSpellID(73539) then -- Shadow Trap (Heroic)
+		trapScansDone = 0
 		timerTrapCD:Start()
-			self:ScheduleMethod(0.01, "TrapTarget")
-			self:ScheduleMethod(0.02, "TrapTarget")
-			self:ScheduleMethod(0.03, "TrapTarget")
-			self:ScheduleMethod(0.04, "TrapTarget")
-			self:ScheduleMethod(0.05, "TrapTarget")
-			self:ScheduleMethod(0.06, "TrapTarget")
-			self:ScheduleMethod(0.07, "TrapTarget")
-			self:ScheduleMethod(0.08, "TrapTarget")
-			self:ScheduleMethod(0.09, "TrapTarget")
-			self:ScheduleMethod(0.1, "TrapTarget")
+		self:ScheduleMethod(0.01, "TrapHandler")
 	elseif args:IsSpellID(73650) then -- Restore Soul (Heroic)
 		warnRestoreSoul:Show()
 		timerRestoreSoul:Start()
 	elseif args:IsSpellID(72350) then -- Fury of Frostmourne
-		mod:SetWipeTime(190)--Change min wipe time mid battle to force dbm to keep module loaded for this long out of combat roleplay
+		self:SetWipeTime(190)--Change min wipe time mid battle to force dbm to keep module loaded for this long out of combat roleplay
 		timerRoleplay:Start()
 		timerVileSpirit:Cancel()
 		timerSoulreaperCD:Cancel()
@@ -334,7 +309,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerSoulreaperCD:Cancel()
 		timerDefileCD:Cancel()
 		warnDefileSoon:Cancel()
-		mod:SetWipeTime(50)--We set a 45 sec min wipe time to keep mod from ending combat if you die while rest of raid is in frostmourn
+		self:SetWipeTime(50)--We set a 45 sec min wipe time to keep mod from ending combat if you die while rest of raid is in frostmourn
 		self:ScheduleMethod(50, "RestoreWipeTime")
 	end
 end
@@ -457,7 +432,7 @@ do
 end
 
 function mod:UNIT_HEALTH(uId)
-	if mod:IsDifficulty("heroic10", "heroic25") and uId == "target" and self:GetUnitCreatureId(uId) == 36609 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 and not warnedValkyrGUIDs[UnitGUID(uId)] then
+	if self:IsDifficulty("heroic10", "heroic25") and uId == "target" and self:GetUnitCreatureId(uId) == 36609 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 and not warnedValkyrGUIDs[UnitGUID(uId)] then
 		warnedValkyrGUIDs[UnitGUID(uId)] = true
 		specWarnValkyrLow:Show()
 	end
@@ -478,7 +453,7 @@ function mod:NextPhase()
 		timerShamblingHorror:Start(20)
 		timerDrudgeGhouls:Start(10)
 		timerNecroticPlagueCD:Start(27)
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerTrapCD:Start()
 		end
 	elseif phase == 2 then
@@ -508,18 +483,6 @@ function mod:RAID_BOSS_WHISPER(msg)--We get this whisper for all plagues, ones c
 			specWarnNecroticPlague:Show()
 			self:SendSync("PlagueOn", UnitName("player"))
 		end
-	end
-end
-
-function mod:SWING_DAMAGE(args)
-	if args:GetSrcCreatureID() == 36597 then--Lich king Tank
-		LKTank = args.destName
-	end
-end
-
-function mod:SWING_MISSED(args)
-	if args:GetSrcCreatureID() == 36597 then--Lich king Tank
-		LKTank = args.destName
 	end
 end
 

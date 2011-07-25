@@ -78,7 +78,7 @@ local function getWaveString(wave)
 end
 
 function mod:OnCombatStart(delay)
-	if mod:IsDifficulty("normal25") then
+	if self:IsDifficulty("normal25") then
 		waves = wavesHeroic
 	else
 		waves = wavesNormal

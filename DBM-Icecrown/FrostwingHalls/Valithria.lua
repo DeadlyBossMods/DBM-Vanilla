@@ -83,7 +83,7 @@ function mod:StartAbomTimer()
 end
 
 function mod:OnCombatStart(delay)
-	if mod:IsDifficulty("heroic10", "heroic25") then
+	if self:IsDifficulty("heroic10", "heroic25") then
 		berserkTimer:Start(-delay)
 	end
 	timerNextPortal:Start()
@@ -198,7 +198,7 @@ function mod:UNIT_TARGET()
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if (msg == L.YellPortals or msg:find(L.YellPortals)) and mod:LatencyCheck() then
+	if (msg == L.YellPortals or msg:find(L.YellPortals)) and self:LatencyCheck() then
 		self:SendSync("NightmarePortal")
 	end
 end

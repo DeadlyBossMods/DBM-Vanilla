@@ -2,11 +2,12 @@ local mod	= DBM:NewMod("Muru", "DBM-Sunwell")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(25840)
+mod:SetCreatureID(25741)--25741--Muru
 mod:SetModelID(23404)
 mod:SetZone()
 
-mod:RegisterCombat("combat", 25741)
+mod:RegisterCombat("combat")
+mod:RegisterKill("kill", 25840)--Entropius. Probably not working yet. but this is proper way to do it once tandanu fixes bug.
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",

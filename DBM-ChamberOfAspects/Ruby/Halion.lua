@@ -88,21 +88,21 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)--We use spell cast success for debuff timers in case it gets resisted by a player we still get CD timer for next one
 	if args:IsSpellID(74792) then
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerShadowConsumptionCD:Start(20)
 		else
 			timerShadowConsumptionCD:Start()
 		end
-		if mod:LatencyCheck() then
+		if self:LatencyCheck() then
 			self:SendSync("ShadowCD")
 		end
 	elseif args:IsSpellID(74562) then
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerFieryConsumptionCD:Start(20)
 		else
 			timerFieryConsumptionCD:Start()
 		end
-		if mod:LatencyCheck() then
+		if self:LatencyCheck() then
 			self:SendSync("FieryCD")
 		end
 	end
@@ -110,7 +110,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)--We don't use spell cast success for actual debuff on >player< warnings since it has a chance to be resisted.
 	if args:IsSpellID(74792) then
-		if mod:LatencyCheck() then
+		if self:LatencyCheck() then
 			self:SendSync("ShadowTarget", args.destName)
 		end
 		if args:IsPlayer() then
@@ -130,7 +130,7 @@ function mod:SPELL_AURA_APPLIED(args)--We don't use spell cast success for actua
 			self:SetIcon(args.destName, 7)
 		end
 	elseif args:IsSpellID(74562) then
-		if mod:LatencyCheck() then
+		if self:LatencyCheck() then
 			self:SendSync("FieryTarget", args.destName)
 		end
 		if args:IsPlayer() then
@@ -198,7 +198,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			timerMeteorCast:Start()--7 seconds from boss yell the meteor impacts.
 			timerMeteorCD:Start()
 		end
-		if mod:LatencyCheck() then
+		if self:LatencyCheck() then
 			self:SendSync("Meteor")
 		end
 	end
@@ -214,7 +214,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 			timerTwilightCutter:Schedule(5)--Delay it since it happens 5 seconds after the emote
 			timerTwilightCutterCD:Schedule(15)
 		end
-		if mod:LatencyCheck() then
+		if self:LatencyCheck() then
 			self:SendSync("TwilightCutter")
 		end
 	end
@@ -251,7 +251,7 @@ function mod:OnSync(msg, target)
 		end
 	elseif msg == "ShadowCD" then
 		if self.Options.AnnounceAlternatePhase then
-			if mod:IsDifficulty("heroic10", "heroic25") then
+			if self:IsDifficulty("heroic10", "heroic25") then
 				timerShadowConsumptionCD:Start(20)
 			else
 				timerShadowConsumptionCD:Start()
@@ -259,7 +259,7 @@ function mod:OnSync(msg, target)
 		end
 	elseif msg == "FieryCD" then
 		if self.Options.AnnounceAlternatePhase then
-			if mod:IsDifficulty("heroic10", "heroic25") then
+			if self:IsDifficulty("heroic10", "heroic25") then
 				timerFieryConsumptionCD:Start(20)
 			else
 				timerFieryConsumptionCD:Start()

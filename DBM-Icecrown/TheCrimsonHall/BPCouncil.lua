@@ -216,7 +216,7 @@ function mod:UNIT_TARGET()
 end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
-	if spellName == GetSpellInfo(72080) and mod:LatencyCheck() then
+	if spellName == GetSpellInfo(72080) and self:LatencyCheck() then
 		self:SendSync("KineticBomb")
 	end
 end
@@ -224,7 +224,7 @@ end
 function mod:OnSync(msg)
 	if msg == "KineticBomb" then
 		warnKineticBomb:Show()
-		if mod:IsDifficulty("normal10") or mod:IsDifficulty("heroic10") then
+		if self:IsDifficulty("normal10") or self:IsDifficulty("heroic10") then
 			timerKineticBombCD:Start(27)
 		else
 			timerKineticBombCD:Start()

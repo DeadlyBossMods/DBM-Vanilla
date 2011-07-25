@@ -29,7 +29,7 @@ function mod:UNIT_HEALTH(uId)
 	if not warnedSplit1 and self:GetUnitCreatureId(uId) == 26731 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.58 then
 		warnedSplit1 = true
 		warningSplitSoon:Show()
-	elseif not warnedSplit2 and mod:IsDifficulty("heroic5") and self:GetUnitCreatureId(uId) == 26731 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.19 then
+	elseif not warnedSplit2 and self:IsDifficulty("heroic5") and self:GetUnitCreatureId(uId) == 26731 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.19 then
 		warnedSplit2 = true
 		warningSplitSoon:Show()
 	end

@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local WarnChannel   = mod:NewAnnounce("WarnChannel")
+local WarnChannel   = mod:NewAnnounce("WarnChannel", 2, 31543)
 local WarnReflect   = mod:NewSpellAnnounce(31534)
 local timerReflect  = mod:NewBuffActiveTimer(8, 31534)
 

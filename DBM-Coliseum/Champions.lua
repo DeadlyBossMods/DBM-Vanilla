@@ -109,14 +109,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnHandofProt:Show(args.destName)
 	elseif args:IsSpellID(66178, 68759, 68760, 68761) then	-- Rogue Shadowstep
 		warnShadowstep:Show()
-        if mod:IsDifficulty("heroic25") then                -- 3 out of 4 difficulties have 30 second cooldown, but on 25 heroic, it's 20sec
+        if self:IsDifficulty("heroic25") then                -- 3 out of 4 difficulties have 30 second cooldown, but on 25 heroic, it's 20sec
 			timerShadowstepCD:Start(20)
 		else
 			timerShadowstepCD:Start()
 		end
 	elseif args:IsSpellID(66017, 68753, 68754, 68755) and args:IsDestTypePlayer() then	-- DeathKnight DeathGrip
 		warnDeathgrip:Show(args.destName)
-		if mod:IsDifficulty("heroic25") then                -- 3 out of 4 difficulties have 35 second cooldown, but on 25 heroic, it's 20sec
+		if self:IsDifficulty("heroic25") then                -- 3 out of 4 difficulties have 35 second cooldown, but on 25 heroic, it's 20sec
 			timerDeathgripCD:Start(20)
 		else
 			timerDeathgripCD:Start()

@@ -70,15 +70,15 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(44987) and args:IsPlayer() and mod:IsHealer() then
+	if args:IsSpellID(44987) and args:IsPlayer() and self:IsHealer() then
 		specWarnWildMagic:Show(L.Heal)
 	elseif args:IsSpellID(45001) and args:IsPlayer() then
 		specWarnWildMagic:Show(L.Haste)
-	elseif args:IsSpellID(45002) and args:IsPlayer() and mod:IsMelee() then
+	elseif args:IsSpellID(45002) and args:IsPlayer() and self:IsMelee() then
 		specWarnWildMagic:Show(L.Hit)
-	elseif args:IsSpellID(45004) and args:IsPlayer() and not mod:IsHealer() then
+	elseif args:IsSpellID(45004) and args:IsPlayer() and not self:IsHealer() then
 		specWarnWildMagic:Show(L.Crit)
-	elseif args:IsSpellID(45006) and args:IsPlayer() and not mod:IsHealer() then
+	elseif args:IsSpellID(45006) and args:IsPlayer() and not self:IsHealer() then
 		specWarnWildMagic:Show(L.Aggro)
 	elseif args:IsSpellID(45010) and args:IsPlayer() then
 		specWarnWildMagic:Show(L.Mana)

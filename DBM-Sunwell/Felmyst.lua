@@ -14,9 +14,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_SUMMON",
 	"RAID_BOSS_EMOTE",
-	"CHAT_MSG_MONSTER_YELL",
-	"SWING_DAMAGE",
-	"SWING_MISSED"
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local warnGas				= mod:NewSpellAnnounce(45855, 3)
@@ -44,7 +42,6 @@ mod:AddBoolOption("EncapsIcon", true)
 mod:AddBoolOption("VaporIcon", true)
 
 local breathCounter = 0
-local mainTank
 
 function mod:Groundphase()
 	breathCounter = 0
@@ -58,8 +55,8 @@ end
 function mod:Encapsulate()
 	self:ScheduleMethod(0.5, "Encapsulate")
 	local targetname = self:GetBossTarget(25038)
-	if not targetname then return end
-	if targetname ~= mainTank then
+	--Not 100% sure this 4.x api will work in a BC zone but it's a LOT better way to do it then old way, so if it works great, if not i'll revert it.
+	if UnitExists("boss1target") and not UnitDetailedThreatSituation("boss1target", "boss1") then--Boss has a target and it's not highest threat(tank)
 		warnEncaps:Show(targetname)
 		timerEncaps:Start(targetname)
 		if targetname == UnitName("player") then
@@ -85,7 +82,6 @@ end
 
 function mod:OnCombatStart(delay)
 	breathCounter = 0
-	mainTank = ""
 	self:ScheduleMethod(10, "Encapsulate")
 	warnPhaseSoon:Schedule(50, L.Air)
 	timerGasCD:Start(17-delay)
@@ -143,18 +139,5 @@ function mod:RAID_BOSS_EMOTE(msg)
 		if breathCounter < 3 then
 			timerBreath:Start()
 		end
-	end
-end
-
-
-function mod:SWING_DAMAGE(args)
-	if args:GetSrcCreatureID() == 25038 then
-		mainTank = args.destName
-	end
-end
-
-function mod:SWING_MISSED(args)
-	if args:GetSrcCreatureID() == 25038 then
-		mainTank = args.destName
 	end
 end

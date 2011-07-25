@@ -61,7 +61,7 @@ function mod:OnCombatStart(delay)
 	warnedAdds = false
 	MCIcon = 1
 	specwarnP2Soon:Schedule(215-delay)
-	if mod:IsDifficulty("normal25") then
+	if self:IsDifficulty("normal25") then
 		timerMCCD:Schedule(225-delay)
 	end
 	timerPhase2:Start()

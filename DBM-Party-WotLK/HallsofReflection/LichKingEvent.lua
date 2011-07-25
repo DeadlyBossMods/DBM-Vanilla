@@ -21,7 +21,7 @@ mod:RemoveOption("SpeedKillTimer")
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(69708) then			--Lich King has broken out of his iceblock, this starts actual event
-		if mod:IsDifficulty("heroic5") then
+		if self:IsDifficulty("heroic5") then
 			timerEscape:Start()
 		end
 	end
