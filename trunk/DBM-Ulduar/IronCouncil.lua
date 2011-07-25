@@ -6,7 +6,8 @@ mod:SetCreatureID(32927)
 mod:SetModelID(28344)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 
-mod:RegisterCombat("combat", 32867, 32927, 32857)
+mod:RegisterCombat("combat")
+mod:RegisterKill("kill", 32867, 32927, 32857)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
