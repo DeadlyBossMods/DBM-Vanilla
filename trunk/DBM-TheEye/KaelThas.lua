@@ -60,7 +60,7 @@ local timerPyro			= mod:NewCastTimer(4, 36819)
 local timerGravityCD	= mod:NewCDTimer(92, 35941)
 local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
-mod:AddBoolOption("HealthFrame", false)
+mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", true)
@@ -143,7 +143,9 @@ function mod:OnCombatStart(delay)
 	shieldDown = false
 	phase5 = false
 	timerPhase1mob:Start(32, L.Thaladred)
-	DBM.BossHealth:Show(L.name)
+	if self.Options.HealthFrame then
+		DBM.BossHealth:Show(L.name)
+	end
 	DBM.BossHealth:AddBoss(20064, L.Thaladred)
 end
 
