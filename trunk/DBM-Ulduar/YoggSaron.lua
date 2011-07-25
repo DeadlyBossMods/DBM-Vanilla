@@ -140,7 +140,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnBrainLink:Show()
 		end
-		mod:ScheduleMethod(0.2, "warnBrainLink")
+		self:ScheduleMethod(0.2, "warnBrainLink")
 	elseif args:IsSpellID(63830, 63881) then   -- Malady of the Mind (Death Coil) 
 		if self.Options.SetIconOnFearTarget then
 			self:SetIcon(args.destName, 8, 30) 

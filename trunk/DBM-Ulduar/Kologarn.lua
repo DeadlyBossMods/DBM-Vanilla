@@ -49,14 +49,14 @@ function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 32934 then 		-- right arm
 		timerRespawnRightArm:Start()
 		timerNextGrip:Cancel()
-		if mod:IsDifficulty("normal10") then
+		if self:IsDifficulty("normal10") then
 			timerTimeForDisarmed:Start(12)
 		else
 			timerTimeForDisarmed:Start()
 		end
 	elseif self:GetCIDFromGUID(args.destGUID) == 32933 then		-- left arm
 		timerRespawnLeftArm:Start()
-		if mod:IsDifficulty("heroic10") then
+		if self:IsDifficulty("heroic10") then
 			timerTimeForDisarmed:Start(12)
 		else
 			timerTimeForDisarmed:Start()
@@ -114,7 +114,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpellID(64002, 63355) then	-- Crunch Armor
         warnCrunchArmor:Show(args.destName)
-		if mod:IsDifficulty("heroic10") then
+		if self:IsDifficulty("heroic10") then
             timerCrunch10:Start(args.destName)  -- We track duration timer only in 10-man since it's only 6sec and tanks don't switch.
 		end
     end

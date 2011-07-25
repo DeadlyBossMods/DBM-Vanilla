@@ -181,7 +181,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnToxin:Show()
 		end
-		mod:ScheduleMethod(0.2, "warnToxin")
+		self:ScheduleMethod(0.2, "warnToxin")
 	elseif args:IsSpellID(66869) then		-- Burning Bile
 		self:UnscheduleMethod("warnBile")
 		bileTargets[#bileTargets + 1] = args.destName
@@ -192,7 +192,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetIcon(args.destName, burnIcon, 15)
 			burnIcon = burnIcon - 1
 		end
-		mod:ScheduleMethod(0.2, "warnBile")
+		self:ScheduleMethod(0.2, "warnBile")
 	elseif args:IsSpellID(66758) then
 		timerStaggeredDaze:Start()
 	elseif args:IsSpellID(66636) then						-- Rising Anger

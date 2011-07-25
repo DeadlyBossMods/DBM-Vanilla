@@ -52,7 +52,7 @@ do
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.SindragosaEvent and mod:LatencyCheck() then
+	if msg == L.SindragosaEvent and self:LatencyCheck() then
 		self:SendSync("GauntletStart")
 	end
 end

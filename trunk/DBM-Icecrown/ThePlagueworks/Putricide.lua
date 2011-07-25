@@ -88,7 +88,7 @@ function mod:OnCombatStart(delay)
 	warned_preP3 = false
 	phase = 1
 	lastGoo = 0
-	if mod:IsDifficulty("heroic10", "heroic25") then
+	if self:IsDifficulty("heroic10", "heroic25") then
 		timerUnboundPlagueCD:Start(10-delay)
 	end
 end
@@ -148,15 +148,15 @@ function mod:SPELL_CAST_START(args)
 		timerChokingGasBombCD:Cancel()
 		timerUnboundPlagueCD:Cancel()
 	elseif args:IsSpellID(72851, 72852) then		--Create Concoction (Heroic phase change end)
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			self:ScheduleMethod(40, "NextPhase")	--May need slight tweaking +- a second or two
 			timerPotions:Start()
 		end
 	elseif args:IsSpellID(73121, 73122) then		--Guzzle Potions (Heroic phase change end)
-		if mod:IsDifficulty("heroic10") then
+		if self:IsDifficulty("heroic10") then
 			self:ScheduleMethod(40, "NextPhase")	--May need slight tweaking +- a second or two
 			timerPotions:Start()
-		elseif mod:IsDifficulty("heroic25") then
+		elseif self:IsDifficulty("heroic25") then
 			self:ScheduleMethod(30, "NextPhase")
 			timerPotions:Start(20)
 		end
@@ -172,7 +172,7 @@ function mod:NextPhase()
 		timerMalleableGooCD:Start(5)
 		timerChokingGasBombCD:Start(15)
 		warnChokingGasBombSoon:Schedule(10)
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerUnboundPlagueCD:Start(50)
 		end
 	elseif phase == 3 then
@@ -180,7 +180,7 @@ function mod:NextPhase()
 		timerMalleableGooCD:Start(9)
 		timerChokingGasBombCD:Start(12)
 		warnChokingGasBombSoon:Schedule(7)
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerUnboundPlagueCD:Start(50)
 		end
 	end
@@ -205,7 +205,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpellID(72615, 72295, 74280, 74281) then
 		warnMalleableGoo:Show()
 		specWarnMalleableGooCast:Show()
-		if mod:IsDifficulty("heroic10", "heroic25") then
+		if self:IsDifficulty("heroic10", "heroic25") then
 			timerMalleableGooCD:Start(20)
 		else
 			timerMalleableGooCD:Start()

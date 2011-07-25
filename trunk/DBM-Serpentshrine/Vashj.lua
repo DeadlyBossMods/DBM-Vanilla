@@ -5,7 +5,7 @@ mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(21212)
 mod:SetModelID(20748)
 mod:SetZone()
-mod:SetUsedIcons(8)
+mod:SetUsedIcons(1)
 
 mod:RegisterCombat("combat")
 
@@ -85,12 +85,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnCharge:Show()
 		end
 		if self.Options.ChargeIcon then
-			self:SetIcon(args.destName, 8, 20)
+			self:SetIcon(args.destName, 1, 20)
 		end
 	elseif args:IsSpellID(38132) then
 		warnLoot:Show(args.destName)
 		if self.Options.LootIcon then
-			self:SetIcon(args.destName, 8)
+			self:SetIcon(args.destName, 1)
 		end
 		if args:IsPlayer() then
 			specWarnCore:Show()

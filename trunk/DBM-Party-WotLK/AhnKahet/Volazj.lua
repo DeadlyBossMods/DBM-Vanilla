@@ -17,7 +17,7 @@ local timerInsanity		= mod:NewCastTimer(5, 57496)--Not currently working, no CLE
 local timerAchieve		= mod:NewAchievementTimer(120, 1862, "TimerSpeedKill") 
 
 function mod:OnCombatStart(delay)
-	if mod:IsDifficulty("heroic5") then
+	if self:IsDifficulty("heroic5") then
 		timerAchieve:Start(-delay)
 	end
 end

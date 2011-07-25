@@ -174,10 +174,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if phase == 1 and self.Options.SetIconOnFrostBeacon then
 			table.insert(beaconIconTargets, DBM:GetRaidUnitId(args.destName))
 			self:UnscheduleMethod("SetBeaconIcons")
-			if (mod:IsDifficulty("normal25") and #beaconIconTargets >= 5) or (mod:IsDifficulty("heroic25") and #beaconIconTargets >= 6) or (mod:IsDifficulty("normal10", "heroic10") and #beaconIconTargets >= 2) then
+			if (self:IsDifficulty("normal25") and #beaconIconTargets >= 5) or (self:IsDifficulty("heroic25") and #beaconIconTargets >= 6) or (self:IsDifficulty("normal10", "heroic10") and #beaconIconTargets >= 2) then
 				self:SetBeaconIcons()--Sort and fire as early as possible once we have all targets.
 			else
-				if mod:LatencyCheck() then--Icon sorting is still sensitive and should not be done by laggy members that don't have all targets.
+				if self:LatencyCheck() then--Icon sorting is still sensitive and should not be done by laggy members that don't have all targets.
 					self:ScheduleMethod(0.3, "SetBeaconIcons")
 				end
 			end
@@ -192,7 +192,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		self:Unschedule(warnBeaconTargets)
-		if phase == 2 or (mod:IsDifficulty("normal25") and #beaconTargets >= 5) or (mod:IsDifficulty("heroic25") and #beaconTargets >= 6) or (mod:IsDifficulty("normal10", "heroic10") and #beaconIconTargets >= 2) then
+		if phase == 2 or (self:IsDifficulty("normal25") and #beaconTargets >= 5) or (self:IsDifficulty("heroic25") and #beaconTargets >= 6) or (self:IsDifficulty("normal10", "heroic10") and #beaconIconTargets >= 2) then
 			warnBeaconTargets()
 		else
 			self:Schedule(0.3, warnBeaconTargets)

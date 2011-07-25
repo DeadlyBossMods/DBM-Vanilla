@@ -17,10 +17,12 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837),
-	RangeFrame	= "Show range frame (10)"
+	RangeFrame	= "Show range frame (10)",
+	InfoFrame	= "Show info frame for health (<8.8k hp)"
 }
 
 L:SetMiscLocalization{
+	HealthInfo	= "Health Info"
 }
 
 ----------------
