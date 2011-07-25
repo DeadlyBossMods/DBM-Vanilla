@@ -28,10 +28,9 @@ local specWarnTotem		= mod:NewSpecialWarningSpell(38236)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:RemoveOption("HealthFrame")
+mod:AddBoolOption("HealthFrame", true)
 
 function mod:OnCombatStart(delay)
-	DBM.BossHealth:Show(L.name)
 	berserkTimer:Start(-delay)
 end
 

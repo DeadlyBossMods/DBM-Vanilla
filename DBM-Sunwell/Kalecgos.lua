@@ -52,7 +52,7 @@ local buffetSpam = 0
 function mod:OnCombatStart(delay)
 	portCount = 1
 	buffetSpam = 0
-	DBM.BossHealth:Show(L.name)
+	DBM.BossHealth:Clear()
 	DBM.BossHealth:AddBoss(24850, L.name)
 	DBM.BossHealth:AddBoss(24892, L.Demon)
 	if self.Options.ShowFrame then
