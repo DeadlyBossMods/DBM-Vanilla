@@ -14,7 +14,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
-	"RAID_BOSS_EMOTE",
+	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"SPELL_PERIODIC_DAMAGE"
 )
 
@@ -74,7 +74,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:RAID_BOSS_EMOTE(msg, _, _, _, target)
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg == L.HoarfrostTarget or msg:find(L.HoarfrostTarget) then
 		if not target then return end
 		warnHoarfrost:Show(target)
