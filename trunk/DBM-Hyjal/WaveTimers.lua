@@ -49,7 +49,7 @@ function mod:QUEST_PROGRESS()
 end
 
 function mod:UPDATE_WORLD_STATES()
-	local text = select(3, GetWorldStateUIInfo(3))
+	local text = select(4, GetWorldStateUIInfo(3))
 	if not text then return end
 	local _,_,currentWave = text:find(L.WaveCheck)
 	if not currentWave then
