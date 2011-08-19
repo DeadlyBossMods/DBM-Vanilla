@@ -24,7 +24,7 @@ local lastWave = 0
 local FalricDead = false
 
 function mod:UPDATE_WORLD_STATES(args)
-	local text = select(3, GetWorldStateUIInfo(1))
+	local text = select(4, GetWorldStateUIInfo(1))
 	if not text then return end
 	local _, _, wave = string.find(text, L.WaveCheck)
 	if not wave then

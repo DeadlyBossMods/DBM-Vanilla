@@ -63,7 +63,7 @@ function mod:UPDATE_WORLD_STATES(args)
 	else 
 		waves = wavesNormal 
 	end
-	local text = select(3, GetWorldStateUIInfo(2))
+	local text = select(4, GetWorldStateUIInfo(2))
 	if not text then return end
 	local _, _, wave = string.find(text, L.WaveCheck)
 	if not wave then
