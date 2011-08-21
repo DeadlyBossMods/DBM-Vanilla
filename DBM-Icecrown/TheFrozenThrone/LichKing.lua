@@ -138,11 +138,11 @@ function mod:DefileTarget()
 		local uId = DBM:GetRaidUnitId(targetname)
 		if uId then
 			local inRange = CheckInteractDistance(uId, 2)
-			local x, y = GetPlayerMapPosition(uId)
+--[[			local x, y = GetPlayerMapPosition(uId)
 			if x == 0 and y == 0 then
 				SetMapToCurrentZone()
 				x, y = GetPlayerMapPosition(uId)
-			end
+			end--]]
 			if inRange then
 				specWarnDefileNear:Show()
 --				if self.Options.DefileArrow then
@@ -185,7 +185,7 @@ end
 function mod:TrapHandler(isTank)
 	trapScansDone = trapScansDone + 1
 	if UnitExists("boss1target") then--Better way to check if target exists and prevent nil errors at same time, without stopping scans from starting still. so even if target is nil, we stil do more checks instead of just blowing off a trap warning.
-		local targetname = UnitName("boss1target")
+		local targetname = self:GetBossTarget(36597)
 		if UnitDetailedThreatSituation("boss1target", "boss1") and not isTank then--He's targeting his highest threat target.
 			if trapScansDone < 12 then--Make sure no infinite loop.
 				self:ScheduleMethod(0.01, "TrapHandler")--Check multiple times to be sure it's not on something other then tank.
