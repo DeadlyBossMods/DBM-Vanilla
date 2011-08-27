@@ -52,32 +52,48 @@ function mod:Groundphase()
 	warnPhaseSoon:Schedule(50, L.Air)
 end
 
+local function isTank(unit)
+	-- 1. check blizzard tanks first
+	-- 2. check blizzard roles second
+	-- 3. check boss1's highest threat target
+	-- 4. anyone with 180k+ health
+	if GetPartyAssignment("MAINTANK", unit, 1) then
+		return true
+	end
+	if UnitGroupRolesAssigned(unit) == "TANK" then
+		return true
+	end
+	if UnitExists("boss1target") and UnitDetailedThreatSituation(unit, "boss1") then
+		return true
+	end
+	if UnitHealthMax(unit) >= 180000 then return true end--Will need tuning or removal for new expansions or maybe even new tiers.
+	return false
+end
+
 function mod:Encapsulate()
 	self:ScheduleMethod(0.5, "Encapsulate")
 	local targetname = self:GetBossTarget(25038)
-	--Not 100% sure this 4.x api will work in a BC zone but it's a LOT better way to do it then old way, so if it works great, if not i'll revert it.
-	if UnitExists("boss1target") and not UnitDetailedThreatSituation("boss1target", "boss1") then--Boss has a target and it's not highest threat(tank)
-		warnEncaps:Show(targetname)
-		timerEncaps:Start(targetname)
-		if targetname == UnitName("player") then
-			specWarnEncaps:Show()
-			if self.Options.YellOnEncaps then
-				SendChatMessage(L.YellEncaps, "SAY")
-			end
+	local uId = DBM:GetRaidUnitId(targetname)
+	if not targetname or isTank(uId) then return end--Boss has a target and it's not highest threat(tank)
+	warnEncaps:Show(targetname)
+	timerEncaps:Start(targetname)
+	if targetname == UnitName("player") then
+		specWarnEncaps:Show()
+		if self.Options.YellOnEncaps then
+			SendChatMessage(L.YellEncaps, "SAY")
 		end
-		if self.Options.EncapsIcon then
-			self:SetIcon(targetname, 8, 6)
-		end
-		local uId = DBM:GetRaidUnitId(targetname)
-		if uId then
-			local inRange = CheckInteractDistance(uId, 2)
-			if inRange then
-				specWarnEncapsNear:Show()
-			end
-		end
-		self:UnscheduleMethod("Encapsulate")
-		self:ScheduleMethod(7.5, "Encapsulate")
 	end
+	if self.Options.EncapsIcon then
+		self:SetIcon(targetname, 8, 6)
+	end
+	if uId then
+		local inRange = CheckInteractDistance(uId, 2)
+		if inRange then
+			specWarnEncapsNear:Show()
+		end
+	end
+	self:UnscheduleMethod("Encapsulate")
+	self:ScheduleMethod(7.5, "Encapsulate")
 end
 
 function mod:OnCombatStart(delay)
