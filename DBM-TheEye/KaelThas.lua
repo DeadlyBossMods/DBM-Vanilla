@@ -162,7 +162,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(36797) then
 		warnMCTargets[#warnMCTargets + 1] = args.destName
 		self:Unschedule(showMC)
-		if IsRaidLeader() and self.Options.MCIcon then
+		if self.Options.MCIcon then
 			self:SetIcon(args.destName, mcIcon, 25)
 			mcIcon = mcIcon - 1
 		end

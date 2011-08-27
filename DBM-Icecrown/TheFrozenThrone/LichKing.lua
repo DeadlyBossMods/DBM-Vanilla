@@ -182,23 +182,42 @@ function mod:TrapTarget(targetname)
 	end
 end
 
-function mod:TrapHandler(isTank)
+local function isTank(unit)
+	-- 1. check blizzard tanks first
+	-- 2. check blizzard roles second
+	-- 3. check boss1's highest threat target
+	-- 4. anyone with 180k+ health
+	if GetPartyAssignment("MAINTANK", unit, 1) then
+		return true
+	end
+	if UnitGroupRolesAssigned(unit) == "TANK" then
+		return true
+	end
+	if UnitExists("boss1target") and UnitDetailedThreatSituation(unit, "boss1") then
+		return true
+	end
+	if UnitHealthMax(unit) >= 180000 then return true end--Will need tuning or removal for new expansions or maybe even new tiers.
+	return false
+end
+
+function mod:TrapHandler(warnTank)
 	trapScansDone = trapScansDone + 1
-	if UnitExists("boss1target") then--Better way to check if target exists and prevent nil errors at same time, without stopping scans from starting still. so even if target is nil, we stil do more checks instead of just blowing off a trap warning.
-		local targetname = self:GetBossTarget(36597)
-		if UnitDetailedThreatSituation("boss1target", "boss1") and not isTank then--He's targeting his highest threat target.
+	local targetname = self:GetBossTarget(36597)
+	local uId = DBM:GetRaidUnitId(targetname)
+	if targetname then--Better way to check if target exists and prevent nil errors at same time, without stopping scans from starting still. so even if target is nil, we stil do more checks instead of just blowing off a trap warning.
+		if isTank(uId) and not warnTank then--He's targeting his highest threat target.
 			if trapScansDone < 12 then--Make sure no infinite loop.
-				self:ScheduleMethod(0.01, "TrapHandler")--Check multiple times to be sure it's not on something other then tank.
+				self:ScheduleMethod(0.025, "TrapHandler")--Check multiple times to be sure it's not on something other then tank.
 			else
-				self:ScheduleMethod(0.01, "TrapHandler", true)--It's still on tank after all checks, force true "isTank" and activate else rule and warn trap is on tank.
+				self:TrapHandler(true)--It's still on tank after all checks, force true "warnTank" and activate else rule and warn trap is on tank.
 			end
-		else--He's not targeting highest threat target (or "isTank" was set to true after 12 scans) so this has to be right target.
+		else--He's not targeting highest threat target (or "warnTank" was set to true after 12 scans) so this has to be right target.
 			self:UnscheduleMethod("TrapHandler")--Unschedule all checks just to be sure none are running, we are done.
 			self:TrapTarget(targetname)--Send target to warning event handler.
 		end
 	else--target was nil, lets schedule a rescan here too.
 		if trapScansDone < 12 then--Make sure not to infinite loop here as well.
-			self:ScheduleMethod(0.01, "TrapHandler")
+			self:ScheduleMethod(0.025, "TrapHandler")
 		end
 	end
 end
@@ -244,7 +263,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(73539) then -- Shadow Trap (Heroic)
 		trapScansDone = 0
 		timerTrapCD:Start()
-		self:ScheduleMethod(0.01, "TrapHandler")
+		self:TrapHandler()
 	elseif args:IsSpellID(73650) then -- Restore Soul (Heroic)
 		warnRestoreSoul:Show()
 		timerRestoreSoul:Start()

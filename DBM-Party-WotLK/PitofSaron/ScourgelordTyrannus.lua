@@ -67,7 +67,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(69172) then							-- Overlord's Brand
 		warnOverlordsBrand:Show(args.destName)
-		timerOverlordsBrand:Show(args.destName)
+		timerOverlordsBrand:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnOverlordsBrand:Show()
 		end
