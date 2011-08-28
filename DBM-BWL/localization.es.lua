@@ -16,7 +16,7 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Mostrar tiempo para que salgan los primeros adds"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "Orb of Domination loses power and shuts off!",--translate
+	Phase2Emote	= "Orbe de dominación pierde potencia y se apaga.",
 	YellPull = "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 -------------------
@@ -127,7 +127,7 @@ L:SetMiscLocalization{
 	YellP3		= "¡Imposible! ¡Erguíos, mis esbirros! ¡Servid a vuestro maestro una vez más!",
 	YellShaman	= "¡Chamanes, mostradme lo que pueden hacer vuestros tótems!",
 	YellPaladin	= "Paladines... He oído que tenéis muchas vidas. Demostrádmelo.",
-	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",--translate
+	YellDruid	= "Los druidas y vuestro estúpido poder de cambiar de forma. ¡Veámoslo en acción!",
 	YellPriest	= "¡Sacerdotes! Si vais a seguir curando de esa forma, ¡podíamos hacerlo más interesante!",
 	YellWarrior	= "¡Vamos guerreros, sé que podéis golpear más fuerte que eso! ¡Veámoslo!",
 	YellRogue	= "Rogues? Stop hiding and face me!",--translate
