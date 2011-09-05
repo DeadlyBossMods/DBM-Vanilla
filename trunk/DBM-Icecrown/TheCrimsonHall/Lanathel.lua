@@ -14,7 +14,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_PERIODIC_DAMAGE",
-	"RAID_BOSS_EMOTE"
+	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
 
 local warnPactDarkfallen			= mod:NewTargetAnnounce(71340, 4)
@@ -189,7 +189,7 @@ do
 	end
 end
 
-function mod:RAID_BOSS_EMOTE(msg, _, _, _, target)
+function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:match(L.SwarmingShadows) then
 		warnSwarmingShadows:Show(target)
 		timerNextSwarmingShadows:Start()
