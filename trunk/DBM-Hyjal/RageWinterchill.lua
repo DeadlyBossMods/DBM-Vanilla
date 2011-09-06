@@ -22,7 +22,7 @@ local timerDnd			= mod:NewCastTimer(15, 31258)
 local timerDndCD		= mod:NewCDTimer(46, 31258)
 
 local specWarnIceBolt	= mod:NewSpecialWarningYou(31249)
-local specWarnDnd		= mod:NewSpecialWarningMove(31258)
+local specWarnDnD		= mod:NewSpecialWarningMove(31258)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
