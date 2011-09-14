@@ -30,7 +30,9 @@ local warnPhase2			= mod:NewPhaseAnnounce(2, 3)
 local warnSimulKill			= mod:NewAnnounce("WarnSimulKill", 1)
 local warnFury				= mod:NewTargetAnnounce(63571, 2)
 local warnRoots				= mod:NewTargetAnnounce(62438, 2)
+local warnLifebinder		= mod:NewTargetAnnounce(62869, 3)--Actual spell is hidden from CLEU so we use a diff trigger.
 
+local specWarnLifebinder	= mod:NewSpecialWarningSpell(62869, false)
 local specWarnFury			= mod:NewSpecialWarningYou(63571)
 local specWarnTremor		= mod:NewSpecialWarningCast(62859)	-- Hard mode
 local specWarnBeam			= mod:NewSpecialWarningMove(62865)	-- Hard mode
@@ -40,6 +42,7 @@ local timerAlliesOfNature	= mod:NewNextTimer(60, 62678)
 local timerSimulKill		= mod:NewTimer(12, "TimerSimulKill")
 local timerFury				= mod:NewTargetTimer(10, 63571)
 local timerTremorCD 		= mod:NewCDTimer(28, 62859)
+local timerLifebinderCD 	= mod:NewCDTimer(40, 62869)
 
 local soundFury				= mod:NewSound(63571)
 
@@ -75,6 +78,10 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(62678) then -- Summon Allies of Nature
 		timerAlliesOfNature:Start()
+	elseif args:IsSpellID(62619) and self:GetUnitCreatureId(args.sourceName) == 33228 then -- Pheromones spell, cast by newly spawned Eonar's Gift second they spawn to allow melee to dps them while protector is up.
+		warnLifebinder:Show()
+		specWarnLifebinder:Show()
+		timerLifebinderCD:Start()
 	elseif args:IsSpellID(63571, 62589) then -- Nature's Fury
 		altIcon = not altIcon	--Alternates between Skull and X
 		self:SetIcon(args.destName, altIcon and 7 or 8, 10)
