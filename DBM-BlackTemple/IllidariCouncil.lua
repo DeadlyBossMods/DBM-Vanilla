@@ -102,7 +102,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(41479) then
-		self:warnFaded()
+		warnFaded:Show()
 	elseif args:IsSpellID(41485) then
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 0)
