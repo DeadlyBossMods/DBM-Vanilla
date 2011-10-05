@@ -24,8 +24,8 @@ L:SetOptionLocalization{
 	TimerWhelps				= "Zeige Zeit bis Welpen erscheinen",
 	WarnWhelpsSoon			= "Zeige Vorwarnung für Erscheinen der Welpen",
 	SoundWTF				= "Spiele witzige Sounds eines legendären Classic-Onyxia-Schlachtzuges",
-	WarnPhase2Soon			= "Zeige Vorwarnung für Phase 2 (bei ~67%)",
-	WarnPhase3Soon			= "Zeige Vorwarnung für Phase 3 (bei ~41%)"
+	WarnPhase2Soon			= "Zeige Vorwarnung für Phase 2 (bei ~70%)",
+	WarnPhase3Soon			= "Zeige Vorwarnung für Phase 3 (bei ~45%)"
 }
 
 L:SetMiscLocalization{
