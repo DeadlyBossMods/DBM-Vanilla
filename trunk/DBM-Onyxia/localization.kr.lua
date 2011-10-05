@@ -25,8 +25,8 @@ L:SetOptionLocalization{
 	TimerWhelps				= "새끼용 등장 타이머 보기",
 	WarnWhelpsSoon			= "새끼용 등장의 사전 경고 보기",
 	SoundWTF				= "독특한 레이드를 즐기기위한 웃긴 소리 재생.(가급적 안하시길 권장)",
-	WarnPhase2Soon			= "2 단계 사전 경고 보기(67% 이하가 될 경우)",	
-	WarnPhase3Soon			= "3 단계 사전 경고 보기(41% 이하가 될 경우)"	
+	WarnPhase2Soon			= "2 단계 사전 경고 보기(70% 이하가 될 경우)",	
+	WarnPhase3Soon			= "3 단계 사전 경고 보기(45% 이하가 될 경우)"	
 }
 
 L:SetMiscLocalization{ 

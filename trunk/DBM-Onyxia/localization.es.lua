@@ -25,8 +25,8 @@ L:SetOptionLocalization{
 	TimerWhelps		= "Mostrar tiempo para las crias",
 	WarnWhelpsSoon	= "Mostrar pre-aviso para las crias",
 	SoundWTF				= "Reproducir sonidos divertidos de una banda legendaria de Onyxia classico",
-	WarnPhase2Soon			= "Mostrar pre-aviso para Fase 2 (al ~67%)",
-	WarnPhase3Soon			= "Mostrar pre-aviso para Fase 3 (al ~41%)"
+	WarnPhase2Soon			= "Mostrar pre-aviso para Fase 2 (al ~70%)",
+	WarnPhase3Soon			= "Mostrar pre-aviso para Fase 3 (al ~45%)"
 }
 
 L:SetMiscLocalization{
