@@ -18,7 +18,8 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837),
-	RangeFrame	= "거리 프레임 보기",
+	RangeFrame	= "거리 프레임 보기(10 m)",
+	InfoFrame	= "체력 정보 프레임 보기(8800 미만)"
 }
 
 L:SetMiscLocalization{
