@@ -14,7 +14,7 @@
 ## X-DBM-Mod-Name-koKR: 아웃랜드
 ## X-DBM-Mod-Name-deDE: Scherbenwelt
 ## X-DBM-Mod-Sort: 307
-## X-DBM-Mod-LoadZone: Nitram
+## X-DBM-Mod-LoadZoneID: 776,779
 localization.en.lua
 localization.de.lua
 localization.es.lua
