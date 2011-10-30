@@ -100,7 +100,7 @@ function barMethods:Update(elapsed)
 	if self.data.timer <= 0 then
 		Kal:RemoveEntry(self.data.name)
 	else
-		cooldown:SetText(DBM.SecondsToTime(self.data.timer))
+		cooldown:SetText(floor(self.data.timer))
 		bar:SetValue(self.data.timer)
 		spark:ClearAllPoints()
 		spark:SetPoint("CENTER", bar, "LEFT", ((bar:GetValue() / 60) * bar:GetWidth()), 0)

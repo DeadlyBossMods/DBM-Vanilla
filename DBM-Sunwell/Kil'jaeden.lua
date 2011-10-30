@@ -189,7 +189,7 @@ function mod:UNIT_HEALTH(uId)
 		p2_check = true
 	elseif cid == 25315 and not p3_check and UnitHealth(uId)/UnitHealthMax(uId) <= 0.56 then
 		phase = 3
-		p4_check = true
+		p3_check = true
 	elseif cid == 25315 and not p4_check and UnitHealth(uId)/UnitHealthMax(uId) <= 0.26 then
 		phase = 4
 		p4_check = true
