@@ -69,11 +69,13 @@ local enrageTimer				= mod:NewBerserkTimer(900)
 
 local disruptTargets = {}
 local disruptIcon = 7
+local bosskilled = 0
 
 function mod:OnCombatStart(delay)
 	enrageTimer:Start(-delay)
 	table.wipe(disruptTargets)
 	disruptIcon = 7
+	bosskilled = 0
 end
 
 function mod:RuneTarget()
@@ -165,11 +167,17 @@ function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 32867 then		--Steelbreaker
 		timerFusionPunchCast:Cancel()
+		bosskilled = bosskilled + 1
 	elseif cid == 32927 then	--Runemaster
 		timerRuneofDeath:Cancel()
 		timerRuneofPower:Cancel()
+		bosskilled = bosskilled + 1
 	elseif cid == 32857 then	--Stormcaller
 		timerOverload:Cancel()
 		timerLightningWhirl:Cancel()
+		bosskilled = bosskilled + 1
+	end
+	if bosskilled == 3 then
+		DBM:EndCombat(self)
 	end
 end

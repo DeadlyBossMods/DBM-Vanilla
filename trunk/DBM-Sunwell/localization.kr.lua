@@ -134,8 +134,8 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	NovaWhisper		= "당신에게 암흑 회오리!",
 	ConflagWhisper	= "당신에게 거대한 불길!",
-	Nova			= "방향을 돌려 거대한 불길을",
-	Conflag			= "방향을 돌려 암흑 회오리를",
+	Nova			= "방향을 돌려 암흑 회오리를",
+	Conflag			= "방향을 돌려 거대한 불길을",
 	Sacrolash		= "여군주 사크로래쉬",
 	Alythess		= "대흑마법사 알리테스"
 }

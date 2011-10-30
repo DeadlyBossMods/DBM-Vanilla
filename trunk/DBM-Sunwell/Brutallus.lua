@@ -12,6 +12,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_MISSED",
 	"SPELL_AURA_REMOVED"
 )
 
@@ -68,9 +69,22 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnBurn:Show()
 		end
-	elseif args:IsSpellID(45150) then
+	elseif args:IsSpellID(45185) then
 		warnStomp:Show(args.destName)
 		timerStompCD:Start()
+	end
+end
+
+function mod:SPELL_AURA_MISSED(args)
+	if args:IsSpellID(46394) then
+		warnBurn:Show("MISSED")
+		if GetTime() - burnTime >= 19 then
+			burnTime = GetTime()
+			firstBurn = true
+		end
+		if firstBurn then
+			timerBurnCD:Start()
+		end
 	end
 end
 
@@ -83,7 +97,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(44799) then
+	if args:IsSpellID(45150) then
 		warnMeteor:Show()
 		timerMeteorCD:Start()
 	end
