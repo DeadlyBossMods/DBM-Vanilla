@@ -4,10 +4,11 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(24882)
 mod:SetModelID(22711)
+mod:SetMinSyncRevision(357)--Block bad pulls from old versions
 mod:SetZone()
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 
-mod:RegisterCombat("combat")
+mod:RegisterCombat("yell", L.Pull)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",

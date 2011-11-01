@@ -67,6 +67,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	Pull			= "啊，又来了一群小绵羊！",
 	BurnWhisper		= "你正在燃烧！"
 }
 
