@@ -22,7 +22,8 @@ mod:RegisterEvents(
 	"UNIT_TARGET",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnGaze			= mod:NewAnnounce("WarnGaze", 4, 39414)
@@ -35,6 +36,7 @@ local warnPhase3		= mod:NewPhaseAnnounce(3)
 local warnPhase4		= mod:NewPhaseAnnounce(4)
 local warnMC			= mod:NewTargetAnnounce(36797, 3)
 local warnPhoenix		= mod:NewSpellAnnounce(36723, 3)
+local warnFlamestrike	= mod:NewSpellAnnounce(36735, 3)
 local warnEgg			= mod:NewAnnounce("WarnEgg", 4, 36723)
 local warnPyro			= mod:NewCastAnnounce(36819, 4)
 local warnPhase5		= mod:NewPhaseAnnounce(5)
@@ -363,5 +365,17 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerPhase:Start(47)
 		warnPhase5:Schedule(47)
 		timerGravity:Start(60)
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
+	if spellName == GetSpellInfo(36735) and self:LatencyCheck() then
+		self:SendSync("Flamestrike")
+	end
+end
+
+function mod:OnSync(event, arg)
+	if event == "Flamestrike" then
+		warnFlamestrike:Show()
 	end
 end

@@ -22,16 +22,15 @@ function mod:OnCombatStart(delay)
 	end
 end
 
---[[function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(57496) then
+function mod:UNIT_SPELLCAST_START(uId, spellName)
+   if spellName == GetSpellInfo(57496) then -- Insanity
+   		self:SendSync("Insanity")
+   end
+end
+
+function mod:OnSync(event, arg)
+	if event == "Insanity" then
 		warningInsanity:Show()
 		timerInsanity:Start()
 	end
-end]]--
-
-function mod:UNIT_SPELLCAST_START(uId, spellName)
-   if spellName == GetSpellInfo(57496) then -- Insanity
-		warningInsanity:Show()
-		timerInsanity:Start()
-   end
 end
