@@ -67,6 +67,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	Pull			= "Ah, mehr Lämmer zum Schlachten!",
 	BurnWhisper		= "Brand auf dir!"
 }
 
