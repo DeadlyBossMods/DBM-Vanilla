@@ -28,8 +28,8 @@ local warnBlow				= mod:NewTargetAnnounce(45256, 3)
 local warnConflag			= mod:NewTargetAnnounce(45333, 3)
 local warnNova				= mod:NewTargetAnnounce(45329, 3)
 
-local specWarnNova			= mod:NewSpecialWarningYou(45333)
-local specWarnConflag		= mod:NewSpecialWarningYou(45329)
+local specWarnNova			= mod:NewSpecialWarningYou(45329)
+local specWarnConflag		= mod:NewSpecialWarningYou(45333)
 local specWarnPyro			= mod:NewSpecialWarningDispel(45230)
 local specWarnDarkTouch		= mod:NewSpecialWarningStack(45347, nil, 8)
 local specWarnFlameTouch	= mod:NewSpecialWarningStack(45348, false, 5)
@@ -68,7 +68,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(45230) and not args:IsDestTypePlayer() then
 		warnPyro:Show()
-		specWarnPyro(args.destName)
+		specWarnPyro:Show(args.destName)
 	elseif args:IsSpellID(45347) and args:IsPlayer() then
 		if (args.amount or 1) >= 8 then
 			specWarnDarkTouch:Show(args.amount)
