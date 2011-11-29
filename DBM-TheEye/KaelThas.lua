@@ -184,10 +184,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		showShieldHealthBar(self, args.destGUID, args.spellName, 80000)
 		specWarnShield:Show()
 		timerShieldCD:Start()
-	elseif args:IsSpellID(35859) and args:IsPlayer() then
-		if (args.amount or 1) >= 2 then
-			specWarnVapor:Show(args.amount)
-		end
+	elseif args:IsSpellID(35859) and args:IsPlayer() and self:IsInCombat() and (args.amount or 1) >= 2 then
+		specWarnVapor:Show(args.amount)
 	end
 end
 
