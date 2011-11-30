@@ -19,7 +19,7 @@ mod:RegisterEvents(
 )
 
 local warnFixate		= mod:NewTargetAnnounce(41294, 3)
-local warnDrain			= mod:NewSpellAnnounce(41303, 3)
+local warnDrain			= mod:NewTargetAnnounce(41303, 3)
 local warnEnrage		= mod:NewAnnounce("WarnEnrage", 4, 41292)
 local warnEnrageSoon	= mod:NewAnnounce("WarnEnrageSoon", 3, 41292)
 local warnEnrageEnd		= mod:NewAnnounce("WarnEnrageEnd", 3, 41292)
@@ -73,6 +73,8 @@ function mod:OnCombatStart(delay)
 	table.wipe(warnSpiteTargets)
 	timerNextEnrage:Start(47-delay)
 	warnEnrageSoon:Schedule(42-delay)
+	DBM.BossHealth:Clear()
+	DBM.BossHealth:Show(L.name)
 	DBM.BossHealth:AddBoss(23418, L.Suffering)
 end
 

@@ -30,7 +30,7 @@ local specWarnEncapsNear	= mod:NewSpecialWarningClose(45665)
 local specWarnVapor			= mod:NewSpecialWarningYou(45392)
 
 local timerGas				= mod:NewCastTimer(1, 45855)
-local timerGasCD			= mod:NewCDTimer(24, 45855)
+local timerGasCD			= mod:NewCDTimer(19, 45855)
 local timerEncaps			= mod:NewTargetTimer(6, 45665)
 local timerBreath			= mod:NewTimer(19, "TimerBreath", 37986)
 local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550)
@@ -89,7 +89,7 @@ function mod:Encapsulate()
 	if uId then
 		local inRange = CheckInteractDistance(uId, 2)
 		if inRange then
-			specWarnEncapsNear:Show()
+			specWarnEncapsNear:Show(targetname)
 		end
 	end
 	self:UnscheduleMethod("Encapsulate")
@@ -122,7 +122,6 @@ function mod:SPELL_SUMMON(args)
 		if self.Options.VaporIcon then
 			self:SetIcon(args.sourceName, 8, 10)
 		end
-		self:ScheduleMethod(7.5, "Encapsulate")
 	end
 end
 
@@ -151,7 +150,7 @@ end
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Breath or msg:find(L.Breath) then
 		breathCounter = breathCounter + 1
-		WarnBreath:Show(breathCounter)
+		warnBreath:Show(breathCounter)
 		if breathCounter < 3 then
 			timerBreath:Start()
 		end

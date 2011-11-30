@@ -94,7 +94,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(41451) and args.destName == L.Malande then -- 주문 수호
 		warnSpellImmune:Show(args.destName)
 		timerSpellImmune:Start(args.destName)
-		specWarnSpellImmune:Show(L.Spell)
+		specWarnImmune:Show(L.Spell)
 	end
 end
 

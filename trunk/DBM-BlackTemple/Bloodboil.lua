@@ -58,7 +58,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if #warnBloodTargets >= 6 then
 			showBlood()
 		else
-			self:Schedule(0.3, showBlood)
+			self:Schedule(0.8, showBlood)
 		end
 		if args:IsPlayer() then
 			specWarnBlood:Show()
