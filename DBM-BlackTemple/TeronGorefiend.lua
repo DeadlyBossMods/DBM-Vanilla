@@ -16,7 +16,7 @@ mod:RegisterEvents(
 )
 
 local warnCrushed			= mod:NewTargetAnnounce(40243, 3)
-local warnIncinerate		= mod:NewSpellAnnounce(40239, 3)
+local warnIncinerate		= mod:NewTargetAnnounce(40239, 3)
 local warnDeath				= mod:NewTargetAnnounce(40251, 3)
 
 local specWarnDeath			= mod:NewSpecialWarningYou(40251)

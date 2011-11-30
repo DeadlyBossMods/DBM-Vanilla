@@ -67,6 +67,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	Pull			= "하, 새끼 양이 잔뜩 몰려오는구나!",
 	BurnWhisper		= "당신에게 불사르기!",
 }
 
