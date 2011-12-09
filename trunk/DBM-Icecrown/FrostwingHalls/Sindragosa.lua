@@ -101,10 +101,17 @@ do
 	end
 end
 
+local beaconDebuffFilter
+do
+	beaconDebuffFilter = function(uId)
+		return UnitDebuff(uId, (GetSpellInfo(70126)))
+	end
+end
+
 local function warnBeaconTargets()
 	if mod.Options.RangeFrame then
 		if not playerBeaconed then
-			DBM.RangeCheck:Show(10, GetRaidTargetIndex)
+			DBM.RangeCheck:Show(10, beaconDebuffFilter)
 		else
 			DBM.RangeCheck:Show(10)
 		end
@@ -114,10 +121,17 @@ local function warnBeaconTargets()
 	playerBeaconed = false
 end
 
+local unchainedDebuffFilter
+do
+	unchainedDebuffFilter = function(uId)
+		return UnitDebuff(uId, (GetSpellInfo(69762)))
+	end
+end
+
 local function warnUnchainedTargets()
 	if mod.Options.RangeFrame then
 		if not playerUnchained then
-			DBM.RangeCheck:Show(20, GetRaidTargetIndex)
+			DBM.RangeCheck:Show(20, unchainedDebuffFilter)
 		else
 			DBM.RangeCheck:Show(20)
 		end
