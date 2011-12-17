@@ -12,21 +12,17 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpark		= "Aparece Chispazo",
 	WarningBreathSoon	= "Respira hondo pronto",
 	WarningBreath		= "Respira Hondo!"
 })
 
 L:SetTimerLocalization({
-	TimerSpark		= "Chispazo en",
 	TimerBreath		= "Respira Hondo"
 })
 
 L:SetOptionLocalization({
-	WarningSpark		= "Mostrar aviso de Chizpaso",
 	WarningBreathSoon	= "Mostrar aviso antes de Respira Hondo",
 	WarningBreath		= "Mostrar aviso de Respira Hondo",
-	TimerSpark			= "Mostrar tiempo para Chispazo",
 	TimerBreath			= "Mostrar tiempo para Respira Hondo"
 })
 

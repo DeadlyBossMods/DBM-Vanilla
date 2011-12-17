@@ -10,21 +10,17 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpark		= "Power Spark",
 	WarningBreathSoon	= "Deep Breath soon",
 	WarningBreath		= "Deep Breath"
 })
 
 L:SetTimerLocalization({
-	TimerSpark	= "Next Power Spark",
 	TimerBreath	= "Next Deep Breath"
 })
 
 L:SetOptionLocalization({
-	WarningSpark		= "Show warning for Power Spark",
 	WarningBreathSoon	= "Show pre-warning for Deep Breath",
 	WarningBreath		= "Show warning for Deep Breath",
-	TimerSpark			= "Show timer for next Power Spark",
 	TimerBreath			= "Show timer for next Deep Breath"
 })
 

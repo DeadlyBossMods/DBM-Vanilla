@@ -12,21 +12,17 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpark		= "마력의 불꽃",
 	WarningBreathSoon	= "곧 깊은 숨결",
 	WarningBreath		= "깊은 숨결!"
 })
 
 L:SetTimerLocalization({
-	TimerSpark		= "다음 마력의 불꽃",
 	TimerBreath		= "다음 깊은 숨결",
 })
 
 L:SetOptionLocalization({
-	WarningSpark		= "마력의 불꽃 경고 보기",
 	WarningBreathSoon	= "깊은 숨결 사전 경고 보기",
 	WarningBreath		= "깊은 숨결 경고 보기",
-	TimerSpark			= "마력의 불꽃 타이머 보기",
 	TimerBreath			= "깊은 숨결 타이머 보기"
 })
 

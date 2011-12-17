@@ -11,21 +11,17 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpark		= "Energiefunke",
 	WarningBreathSoon	= "Tiefer Atem bald",
 	WarningBreath		= "Tiefer Atem"
 })
 
 L:SetTimerLocalization({
-	TimerSpark	= "Nächster Energiefunke",
 	TimerBreath	= "Nächster Tiefer Atem"
 })
 
 L:SetOptionLocalization({
-	WarningSpark		= "Zeige Warnung für Energiefunke",
 	WarningBreathSoon	= "Zeige Vorwarnung für Tiefen Atem",
 	WarningBreath		= "Zeige Warnung für Tiefen Atem",
-	TimerSpark			= "Zeige Zeit bis nächster Energiefunke",
 	TimerBreath			= "Zeige Zeit bis nächster Tiefer Atem"
 })
 
