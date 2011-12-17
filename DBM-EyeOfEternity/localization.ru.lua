@@ -12,22 +12,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpark		= "Искра мощи",
 	WarningBreathSoon	= "Скоро Дыхание чар",
 	WarningBreath		= "Дыхание чар"
 })
 
 L:SetTimerLocalization({
-	TimerSpark	= "Искра мощи",
 	TimerBreath	= "Дыхание чар"
 })
 
 L:SetOptionLocalization({
-	WarningSpark		= "Предупреждение для Искры мощи",
 	WarningBreathSoon	= "Предупреждать заранее о Дыхании чар",
 	WarningBreath		= "Предупреждение для Дыхания чар",
-	TimerSpark			= "Отсчет времени до следующей Искры мощи",
-	TimerBreath			= "Отсчет времени до следующего Дыхания чар",
+	TimerBreath			= "Отсчет времени до следующего Дыхания чар"
 })
 
 L:SetMiscLocalization({

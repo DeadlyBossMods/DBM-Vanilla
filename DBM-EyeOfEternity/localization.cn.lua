@@ -16,21 +16,17 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpark		= "能量火花 出现了",
 	WarningBreathSoon	= "奥术吐息 即将到来",
 	WarningBreath		= "奥术吐息"
 })
 
 L:SetTimerLocalization({
-	TimerSpark		= "下一次 能量火花",
 	TimerBreath		= "下一次 奥术吐息"
 })
 
 L:SetOptionLocalization({
-	WarningSpark		= "为能量火花显示警报",
 	WarningBreathSoon	= "为奥术吐息显示预先警报",
 	WarningBreath		= "为奥术吐息显示警报",
-	TimerSpark		= "为下一次 能量火花显示计时条",
 	TimerBreath		= "为下一次 奥术吐息显示计时条"
 })
 
