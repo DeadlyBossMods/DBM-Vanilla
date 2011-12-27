@@ -11,25 +11,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningBreathSoon	= "Tiefer Atem bald",
-	WarningBreath		= "Tiefer Atem"
 })
 
 L:SetTimerLocalization({
-	TimerBreath	= "Nächster Tiefer Atem"
 })
 
 L:SetOptionLocalization({
-	WarningBreathSoon	= "Zeige Vorwarnung für Tiefen Atem",
-	WarningBreath		= "Zeige Warnung für Tiefen Atem",
-	TimerBreath			= "Zeige Zeit bis nächster Tiefer Atem"
 })
 
 L:SetMiscLocalization({
 	YellPull	= "Meine Geduld ist am Ende. Ich werde mich eurer entledigen!",
 	EmoteSpark	= "Ein Energiefunke bildet sich aus einem nahegelegenen Graben!",
 	YellPhase2	= "Ich hatte gehofft, eure Leben schnell zu beenden, doch ihr zeigt euch... hartnäckiger als erwartet.",
-	EmoteBreath	= "%s holt tief Luft.",
 	YellBreath	= "Solange ich atme, werdet ihr nicht obsiegen!",
 	YellPhase3	= "Eure Wohltäter sind eingetroffen, doch sie kommen zu spät! Die hier gespeicherten Energien reichen aus, die Welt zehnmal zu zerstören. Was, denkt ihr, werden sie mit euch machen?"
 })
