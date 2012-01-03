@@ -52,7 +52,6 @@ local function announceTargets(self)
 end
 
 function mod:OnCombatStart(delay)
-	timerArcaneBreathCD:Start(20-delay)
 	timerVortexCD:Start(48-delay)--Will verify with more logs next week.
 	enrageTimer:Start(-delay)
 	timerAchieve:Start(-delay)
@@ -88,7 +87,6 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(56105) then
-		timerArcaneBreathCD:Start(23)
 		timerVortexCD:Start()
 		warnVortexSoon:Schedule(54)
 		warnVortex:Show()
@@ -134,7 +132,6 @@ function mod:OnSync(event, arg)
 		warnSpark:Show()
 		timerSpark:Start()
 	elseif event == "Phase2" then
-		timerArcaneBreathCD:Cancel()
 		timerSpark:Cancel()
 		timerVortexCD:Cancel()
 		warnVortexSoon:Cancel()
