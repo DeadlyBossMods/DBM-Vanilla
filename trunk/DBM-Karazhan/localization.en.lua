@@ -278,9 +278,18 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Roar",
+	DBM_OZ_WARN_STRAWMAN	= "Strawman",
+	DBM_OZ_WARN_TINHEAD		= "Tinhead",
+	DBM_OZ_WARN_CRONE		= "The Crone"
 }
 
 L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Roar",
+	DBM_OZ_WARN_STRAWMAN	= "Strawman",
+	DBM_OZ_WARN_TINHEAD		= "Tinhead"
 }
 
 L:SetOptionLocalization{
@@ -290,11 +299,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_OZ_WARN_TITO		= "Tito",
-	DBM_OZ_WARN_ROAR		= "Roar",
-	DBM_OZ_WARN_STRAWMAN	= "Strawman",
-	DBM_OZ_WARN_TINHEAD		= "Tinhead",
-	DBM_OZ_WARN_CRONE		= "The Crone",
 	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, we simply must find a way home! The old wizard could be our only hope! Strawman, Roar, Tinhead, will you - wait... oh golly, look we have visitors!",
 	DBM_OZ_YELL_ROAR		= "I'm not afraid a' you! Do you wanna' fight? Huh, do ya'? C'mon! I'll fight ya' with both paws behind my back!",
 	DBM_OZ_YELL_STRAWMAN	= "Now what should I do with you? I simply can't make up my mind.",
