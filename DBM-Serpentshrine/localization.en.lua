@@ -184,7 +184,7 @@ L:SetOptionLocalization{
 	WarnLoot			= "Show warning for Tainted Core loot",
 	TimerElemental		= "Show time for next Tainted Elemental",
 	TimerStrider		= "Show time for next Strider",
-	TimerNaga			= "Show time for next Strider",
+	TimerNaga			= "Show time for next Naga",
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",
 	SpecWarnCore		= "Show special warning if you receive a Tainted Core",
 	RangeFrame			= "Show range frame (10 yards)",
@@ -193,4 +193,5 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	DBM_VASHJ_YELL_PHASE2	= "The time is now! Leave none standing!"
 }

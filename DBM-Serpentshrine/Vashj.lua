@@ -13,7 +13,8 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local warnCharge		= mod:NewTargetAnnounce(38280, 4)
@@ -95,22 +96,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnCore:Show()
 		end
-	elseif args:IsSpellID(38112) and GetTime() - p2Spam >= 5 then
-		p2Spam = GetTime()
-		nagaCount = 1
-		striderCount = 1
-		elementalCount = 1
-		shieldLeft = 4
-		warnPhase2:Show()
-		timerNaga:Start(nil, tostring(nagaCount))
-		warnNaga:Schedule(42.5, tostring(elementalCount))
-		self:ScheduleMethod(47.5, "NagaSpawn")
-		timerElemental:Start(nil, tostring(elementalCount))
-		warnElemental:Schedule(48, tostring(elementalCount))
-		specWarnElemental:Schedule(48)
-		timerStrider:Start(nil, tostring(striderCount))
-		warnStrider:Schedule(57, tostring(striderCount))
-		self:ScheduleMethod(63, "StriderSpawn")
 	elseif args:IsSpellID(38575) and args:IsPlayer() and GetTime() - toxicSpam >= 2 then
 		specWarnToxic:Show()
 		toxicSpam = GetTime()
@@ -160,5 +145,24 @@ function mod:UNIT_DIED(args)
 			warnElemental:Schedule(48, tostring(elementalCount))
 			specWarnElemental:Schedule(48)
 		end
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.DBM_VASHJ_YELL_PHASE2 or msg:find(L.DBM_VASHJ_YELL_PHASE2) then
+		nagaCount = 1
+		striderCount = 1
+		elementalCount = 1
+		shieldLeft = 4
+		warnPhase2:Show()
+		timerNaga:Start(nil, tostring(nagaCount))
+		warnNaga:Schedule(42.5, tostring(elementalCount))
+		self:ScheduleMethod(47.5, "NagaSpawn")
+		timerElemental:Start(nil, tostring(elementalCount))
+		warnElemental:Schedule(48, tostring(elementalCount))
+		specWarnElemental:Schedule(48)
+		timerStrider:Start(nil, tostring(striderCount))
+		warnStrider:Schedule(57, tostring(striderCount))
+		self:ScheduleMethod(63, "StriderSpawn")
 	end
 end

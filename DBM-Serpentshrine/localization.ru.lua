@@ -194,4 +194,5 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	DBM_VASHJ_YELL_PHASE2				= "Время пришло! Не оставляйте никого в живых!"
 }
