@@ -55,7 +55,7 @@ function mod:OnCombatStart(delay)
 	DBM.BossHealth:AddBoss(24850, L.name)
 	DBM.BossHealth:AddBoss(24892, L.Demon)
 	if self.Options.ShowFrame then
-		mod:CreateFrame()
+		self:CreateFrame()
 	end
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show()
@@ -63,7 +63,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	mod:DestroyFrame()
+	self:DestroyFrame()
 	DBM.BossHealth:Clear()
 	DBM.RangeCheck:Hide()
 end
@@ -89,7 +89,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(45029) then
 		warnCorrupt:Show(args.destName)
 	elseif args:IsSpellID(46021) then
-		mod:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
+		self:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
 		if args:IsPlayer() then
 			timerPorted:Start()
 			timerExhausted:Schedule(60)
@@ -122,6 +122,9 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:UNIT_DIED(args)
+	if self:GetCIDFromGUID(args.destGUID) == 24892 then
+		DBM:EndCombat(self)
+	end
 	if bit.band(args.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 then
 		local grp
 		for i = 1, GetNumRaidMembers() do
@@ -131,6 +134,6 @@ function mod:UNIT_DIED(args)
 				break
 			end
 		end
-		mod:RemoveEntry(("%s (%d)"):format(args.destName, grp or 0))
+		self:RemoveEntry(("%s (%d)"):format(args.destName, grp or 0))
 	end
 end

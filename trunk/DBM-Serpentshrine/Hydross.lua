@@ -10,8 +10,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_MONSTER_YELL"
+	"SPELL_CAST_SUCCESS"
 )
 
 local warnMark		= mod:NewAnnounce("WarnMark", 3, 38215)

@@ -194,4 +194,5 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	DBM_VASHJ_YELL_PHASE2	= "机会来了！一个活口都不要留下！"
 }
