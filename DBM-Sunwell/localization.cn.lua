@@ -210,6 +210,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	YellPull		= "这个消耗品已经没用了，不管她了！现在我已经做到了连萨格拉斯都没有做到的事情！我要彻底毁灭这个世界，真正成",
 	YellBloom		= "我中了火焰之花！",
 	BloomWhisper	= "火焰之花！",
 	OrbYell1		= "I will channel my powers into the orbs! Be ready!",--Translate
