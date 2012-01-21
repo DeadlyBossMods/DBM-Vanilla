@@ -211,6 +211,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	YellPull		= "The expendable have perished. So be it! Now I shall succeed where Sargeras could not! I will bleed this wretched world and secure my place as the true master of the Burning Legion! The end has come! Let the unravelling of this world commence!",
 	YellBloom		= "Fire Bloom on me!",
 	BloomWhisper	= "Fire Bloom on you!",
 	OrbYell1		= "I will channel my powers into the orbs! Be ready!",

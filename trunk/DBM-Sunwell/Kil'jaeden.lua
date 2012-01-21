@@ -7,10 +7,11 @@ mod:SetModelID(23200)
 mod:SetZone()
 mod:SetUsedIcons(4, 5, 6, 7, 8)
 
-mod:RegisterCombat("combat")
+mod:RegisterCombat("yell", L.YellPull)
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
@@ -102,6 +103,14 @@ function mod:SPELL_AURA_APPLIED(args)
 			showBloomTargets()
 		else
 			self:Schedule(0.3, showBloomTargets)
+		end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpellID(45641) then
+		if self.Options.BloomIcon then
+			self:SetIcon(args.destName, 0)
 		end
 	end
 end

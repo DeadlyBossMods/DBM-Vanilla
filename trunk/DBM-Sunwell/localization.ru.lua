@@ -210,6 +210,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	YellPull		= "Жалкие твари уничтожены. Да будет так! Я сделаю то, что не удалось Саргерасу. Я выпущу кровь из этого мерзкого мира и стану истинным повелителем Пылающего Легиона! Конец близок! Да свершится падение этого мира!",
 	YellBloom		= "Fire Bloom on me!",--Translate
 	BloomWhisper	= "Fire Bloom on you!",--Translate
 	OrbYell1		= "I will channel my powers into the orbs! Be ready!",--Translate

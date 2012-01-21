@@ -210,6 +210,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	YellPull		= "該犧牲的都已經結束了，就任他們去吧!現在我將完成薩格拉斯都辦不到的事!我要搾乾這個悲慘的世界，並確保我",
 	YellBloom		= "Fire Bloom on me!",--Translate
 	BloomWhisper	= "Fire Bloom on you!",--Translate
 	OrbYell1		= "I will channel my powers into the orbs! Be ready!",--Translate

@@ -212,6 +212,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	YellPull		= "Die Entbehrlichen sind dahin - so sei es! Jetzt werde ich dort erfolgreich sein, wo Sargeras versagt hat! Ich werde diese jämmerliche Welt ausbluten lassen und meinen Platz als wahrer Meister der Brennenden Legion einnehmen! Das Ende ist gekommen! Lasst uns diese Welt dem Erdboden gleichmachen",
 	YellBloom		= "Feuerblüte auf mir!",
 	BloomWhisper	= "Feuerblüte auf dir!",
 	OrbYell1		= "Ich werde die Kugeln mit meiner Macht erfüllen! Seid bereit!", --needs to be verified (video-captured translation)
