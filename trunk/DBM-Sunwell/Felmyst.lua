@@ -20,7 +20,7 @@ mod:RegisterEvents(
 local warnGas				= mod:NewSpellAnnounce(45855, 3)
 local warnEncaps			= mod:NewTargetAnnounce(45665, 4)
 local warnVapor				= mod:NewTargetAnnounce(45392, 3)
-local warnBreath			= mod:NewAnnounce("WarnBreath", 3, 19879)
+local warnBreath			= mod:NewCountAnnounce(45717, 4)
 local warnPhase				= mod:NewAnnounce("WarnPhase", 1, 31550)
 local warnPhaseSoon			= mod:NewAnnounce("WarnPhaseSoon", 1, 31550)
 
@@ -28,11 +28,12 @@ local specWarnGas			= mod:NewSpecialWarningSpell(45855, mod:IsHealer())
 local specWarnEncaps		= mod:NewSpecialWarningYou(45665)
 local specWarnEncapsNear	= mod:NewSpecialWarningClose(45665)
 local specWarnVapor			= mod:NewSpecialWarningYou(45392)
+local specWarnBreath		= mod:NewSpecialWarningSpell(45717, nil, nil, nil, true)
 
 local timerGas				= mod:NewCastTimer(1, 45855)
 local timerGasCD			= mod:NewCDTimer(19, 45855)
 local timerEncaps			= mod:NewTargetTimer(6, 45665)
-local timerBreath			= mod:NewTimer(19, "TimerBreath", 37986)
+local timerBreath			= mod:NewCDTimer(19, 45717)
 local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550)
 
 local berserkTimer			= mod:NewBerserkTimer(600)
@@ -151,6 +152,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Breath or msg:find(L.Breath) then
 		breathCounter = breathCounter + 1
 		warnBreath:Show(breathCounter)
+		specWarnBreath:Show()
 		if breathCounter < 3 then
 			timerBreath:Start()
 		end
