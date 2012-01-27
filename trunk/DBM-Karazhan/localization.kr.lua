@@ -279,9 +279,18 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "티토",
+	DBM_OZ_WARN_ROAR		= "어흥이",
+	DBM_OZ_WARN_STRAWMAN	= "허수아비",
+	DBM_OZ_WARN_TINHEAD		= "양철나무꾼",
+	DBM_OZ_WARN_CRONE		= "마녀"
 }
 
 L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "티토",
+	DBM_OZ_WARN_ROAR		= "어흥이",
+	DBM_OZ_WARN_STRAWMAN	= "허수아비",
+	DBM_OZ_WARN_TINHEAD		= "양철나무꾼"
 }
 
 L:SetOptionLocalization{
@@ -291,11 +300,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_OZ_WARN_TITO		= "티토",
-	DBM_OZ_WARN_ROAR		= "어흥이",
-	DBM_OZ_WARN_STRAWMAN	= "허수아비",
-	DBM_OZ_WARN_TINHEAD		= "양철나무꾼",
-	DBM_OZ_WARN_CRONE		= "마녀",
 	DBM_OZ_YELL_DOROTHEE	= "티토야, 우린 집으로 갈 방법을 찾아야 해! 늙은 마법사가 우릴 도와줄 수 있을 거야! 허수아비, 사자, 양철통아... 우리? 오... 맙소사, 손님들이 온 것 같아!",
 	DBM_OZ_YELL_ROAR		= "하나도 안 무섭다고! 덤벼! 앞발 두 개를 몽땅 꺼내서 할퀴어주마!",
 	DBM_OZ_YELL_STRAWMAN	= "너희를 어떻게 해주면 좋을까? 아무 생각도 나지 않아!",

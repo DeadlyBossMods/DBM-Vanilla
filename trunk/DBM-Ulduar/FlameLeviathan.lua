@@ -63,6 +63,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			soundPursued:Play()
 		end
 	elseif args:IsSpellID(62297) then		-- Hodir's Fury (Person is frozen)
+		local player = guids[args.destGUID]
 		warnHodirsFury:Show(player)
 	end
 

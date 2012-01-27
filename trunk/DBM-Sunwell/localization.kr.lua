@@ -82,8 +82,7 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnPhase		= "%s 단계",
-	WarnPhaseSoon	= "10초 후 %s 단계",
-	WarnBreath		= "깊은 숨결 (%d)"
+	WarnPhaseSoon	= "10초 후 %s 단계"
 }
 
 L:SetTimerLocalization{
@@ -93,9 +92,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnPhase		= "단계 전환 경고 보기",
 	WarnPhaseSoon	= "단계 전환 사전 경고 보기(prewarn)",
-	WarnBreath		= "깊은 숨결 경고 보기",
 	TimerPhase		= "다음 단계 타이머 보기",
-	TimerBreath		= "깊은 숨결 쿨다운 타이머 보기",
 	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
 	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
 	YellOnEncaps	= "$spell:45665 외치기"
@@ -212,6 +209,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
+	YellPull		= "녀석들은 소모품일 뿐이다. 자, 봐라! 살게라스가 해내지 못한 일을 내가 해낼 것이다! 이 보잘것없는 세상을 갈가리 찢어발기고 불타는 군단의 진정한 주인으로 우뚝 서리라! 종말이 다가왔다! 어디 한번 세계를 구해 봐라!",
 	YellBloom		= "나에게 화염 불꽃!",
 	BloomWhisper	= "당신에게 화염 불꽃!",
 	OrbYell1		= "수정구에 힘을 쏟겠습니다! 준비하세요!",
