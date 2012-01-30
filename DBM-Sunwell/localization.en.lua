@@ -86,6 +86,7 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerPhase		= "Next %s Phase"
+}
 
 L:SetOptionLocalization{
 	WarnPhase		= "Show warning for next phase",
