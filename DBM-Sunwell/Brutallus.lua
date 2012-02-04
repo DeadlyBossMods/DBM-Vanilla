@@ -14,7 +14,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"SPELL_MISSED",
+	"SPELL_MISSED"
 )
 
 local warnMeteor		= mod:NewSpellAnnounce(45150, 3)

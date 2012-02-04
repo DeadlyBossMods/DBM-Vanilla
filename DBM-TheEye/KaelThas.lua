@@ -59,7 +59,7 @@ local timerPhoenixCD	= mod:NewCDTimer(45, 36723)
 local timerRebirth		= mod:NewTimer(15, "TimerRebirth", 36723)
 local timerShieldCD		= mod:NewCDTimer(60, 36815)
 local timerPyro			= mod:NewCastTimer(4, 36819)
-local timerGravityCD	= mod:NewCDTimer(92, 35941)
+local timerGravityCD	= mod:NewNextTimer(92, 35941)
 local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
 mod:AddBoolOption("HealthFrame", true)
@@ -352,7 +352,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerShieldCD:Cancel()
 		timerPhase:Start(47)
 		warnPhase5:Schedule(47)
-		timerGravity:Start(60)
+		timerGravityCD:Start(60)
 	end
 end
 

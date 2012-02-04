@@ -27,7 +27,6 @@ local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local specWarnBronze	= mod:NewSpecialWarningYou(23170)
 
-local timerBreath		= mod:NewTimer(2, "TimerBreath")
 local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD")
 local timerEnrage		= mod:NewBuffActiveTimer(8, 23128)
 
@@ -40,8 +39,8 @@ local lastbronze = 0
 
 function mod:OnCombatStart(delay)
 	warnBreathSoon:Schedule(25-delay)
-	timerBreathCD:Start(30-delay, "Breath 1")
-	timerBreathCD:Start(-delay, "Breath 2")
+	timerBreathCD:Start(30-delay, L.Breath1)
+	timerBreathCD:Start(-delay, L.Breath2)
 	prewarn_P2 = false
 	lastred = 0
 	lastgreen = 0
@@ -55,7 +54,7 @@ function mod:SPELL_CAST_START(args)
 		warnBreathSoon:Cancel()
 		warnBreathSoon:Schedule(25)
 		warnBreath:Show(args.spellName)
-		timerBreath:Start(args.spellName)
+		timerBreathCD:Start(args.spellName)
 	end
 end
 

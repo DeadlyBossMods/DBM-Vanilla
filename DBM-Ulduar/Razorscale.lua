@@ -53,7 +53,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if (spellId == 64733 or spellId == 64704) and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3then
+	if (spellId == 64733 or spellId == 64704) and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3 then
 		specWarnDevouringFlame:Show()
 		antiSpam = GetTime()
 	end
