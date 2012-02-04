@@ -145,8 +145,7 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon			= "為3秒後可以治療顯示預先警告",
-	WarningHealNow			= "為現在治療顯示警告",
-	SporeDamageAlert		= "在團隊中提示誰殺死了孢子並發送密語給兇手\n(需要團隊隊長或助理權限)"
+	WarningHealNow			= "為現在治療顯示警告"
 })
 
 -----------------
@@ -159,13 +158,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHateful 			= "公佈憎恨打擊的目標到團隊頻道\n(需要團隊隊長或助理權限)"
 })
 
 L:SetMiscLocalization({
 	yell1 				= "縫補者要跟你玩!",
-	yell2 				= "科爾蘇加德讓縫補者成為戰爭的化身!",
-	HatefulStrike 			= "憎恨打擊 --> %s [%s]"
+	yell2 				= "科爾蘇加德讓縫補者成為戰爭的化身!"
 })
 
 -----------------

@@ -26,8 +26,8 @@ function mod:OnCombatStart(delay)
 end
 
 local decimateSpam = 0
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(28375) and (GetTime() - decimateSpam) > 20 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 28375 and GetTime() - decimateSpam > 20 then
 		decimateSpam = GetTime()
 		warnDecimateNow:Show()
 		timerDecimate:Start()
