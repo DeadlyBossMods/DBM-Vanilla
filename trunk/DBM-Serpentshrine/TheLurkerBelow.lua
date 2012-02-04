@@ -59,21 +59,14 @@ function mod:OnCombatStart(delay)
 	self:ScheduleMethod(90, "CheckDive")
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(37363) and GetTime() - whirlSpam >= 10 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 37363 and GetTime() - whirlSpam >= 10 then
 		warnWhirl:Show()
 		timerWhirlCD:Start()
 		whirlSpam = GetTime()
 	end
 end
-
-function mod:SPELL_MISSED(args)
-	if args:IsSpellID(37363) and GetTime() - whirlSpam >= 10 then
-		warnWhirl:Show()
-		timerWhirlCD:Start()
-		whirlSpam = GetTime()
-	end
-end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Spout or msg:find(L.Spout) then

@@ -9,6 +9,12 @@ mod:SetUsedIcons(8)
 
 mod:RegisterCombat("combat")
 
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
+	"SPELL_CAST_START",
+	"UNIT_HEALTH"
+)
+
 local warningDisperseSoon	= mod:NewSoonAnnounce(52770, 2)
 local warningDisperse		= mod:NewSpellAnnounce(52770, 3)
 local warningOverload		= mod:NewTargetAnnounce(52658, 2)
@@ -17,12 +23,6 @@ local timerOverload			= mod:NewTargetTimer(10, 52658)
 mod:AddBoolOption("SetIconOnOverloadTarget", true)
 
 local warnedDisperse		= false
-
-mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_START",
-	"UNIT_HEALTH"
-)
 
 function mod:OnCombatStart()
 	warnedDisperse = false

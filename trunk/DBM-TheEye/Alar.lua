@@ -68,8 +68,8 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:SPELL_HEAL(args)
-	if args:IsSpellID(34342) then
+function mod:SPELL_HEAL(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 34342 then
 		warnPhase2:Show()
 		berserkTimer:Start()
 		timerMeteor:Start(40)--This seems to vary slightly depending on where in room he shoots it.
@@ -78,18 +78,11 @@ function mod:SPELL_HEAL(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(35181) and GetTime() - meteorTime > 30 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 35181 or spellId == 45680) and GetTime() - meteorTime > 30 then
 		warnMeteor:Show()
 		timerMeteor:Start()
 		meteorTime = GetTime()
 	end
 end
-
-function mod:SPELL_MISSED(args)
-	if args:IsSpellID(45680) and GetTime() - meteorTime > 30 then
-		warnMeteor:Show()
-		timerMeteor:Start()
-		meteorTime = GetTime()
-	end
-end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE

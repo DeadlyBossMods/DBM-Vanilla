@@ -8,19 +8,19 @@ mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-local warningVacuum		= mod:NewSpellAnnounce(58694, 1)
-local warningBlizzard	= mod:NewSpellAnnounce(58693, 3)
-local warningMana		= mod:NewTargetAnnounce(59374, 2)
-local timerVacuumCD		= mod:NewCDTimer(35, 58694)
-local timerMana			= mod:NewTargetTimer(8, 59374)
-local timerCombat		= mod:NewTimer(16, "TimerCombatStart", 2457)
-
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"CHAT_MSG_MONSTER_YELL"
 )
+
+local warningVacuum		= mod:NewSpellAnnounce(58694, 1)
+local warningBlizzard	= mod:NewSpellAnnounce(58693, 3)
+local warningMana		= mod:NewTargetAnnounce(59374, 2)
+local timerVacuumCD		= mod:NewCDTimer(35, 58694)
+local timerMana			= mod:NewTargetTimer(8, 59374)
+local timerCombat		= mod:NewTimer(16, "TimerCombatStart", 2457)
 
 function mod:OnCombatStart(delay)
 	timerVacuumCD:Start(30 - delay, GetSpellInfo(58694))
