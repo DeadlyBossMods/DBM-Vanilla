@@ -1,13 +1,6 @@
 local mod	= DBM:NewMod("Algalon", "DBM-Ulduar")
 local L		= mod:GetLocalizedStrings()
 
---[[
---
---  Thanks to  Apathy @ Vek'nilash  who provided us with Informations and Combatlog about Algalon
---
---]]
-
-
 mod:SetRevision(("$Revision: 4681 $"):sub(12, -3))
 mod:SetCreatureID(32871)
 mod:SetModelID(28641)
@@ -31,21 +24,21 @@ local warnPhase2Soon			= mod:NewAnnounce("WarnPhase2Soon", 2)
 local warnFirstPull				= mod:NewAnnounce("FirstPullNotice", 2, nil, nil, false)
 local announcePreBigBang		= mod:NewPreWarnAnnounce(64584, 10, 3)
 local announceBlackHole			= mod:NewSpellAnnounce(65108, 2)
-local announceCosmicSmash		= mod:NewAnnounce("WarningCosmicSmash", 3, 62311)
+local announceCosmicSmash		= mod:NewSpellAnnounce(64596, 4)
 local announcePhasePunch		= mod:NewAnnounce("WarningPhasePunch", 4, 65108, mod:IsHealer() or mod:IsTank())
 
 local specwarnStarLow			= mod:NewSpecialWarning("warnStarLow", mod:IsHealer() or mod:IsTank())
 local specWarnPhasePunch		= mod:NewSpecialWarningStack(64412, nil, 4)
 local specWarnBigBang			= mod:NewSpecialWarningSpell(64584)
-local specWarnCosmicSmash		= mod:NewSpecialWarningSpell(64598)
+local specWarnCosmicSmash		= mod:NewSpecialWarningSpell(64596)
 
 local timerCombatStart		    = mod:NewTimer(7, "TimerCombatStart", 2457)
 local enrageTimer				= mod:NewBerserkTimer(360)
 local timerNextBigBang			= mod:NewNextTimer(90.5, 64584)
 local timerBigBangCast			= mod:NewCastTimer(8, 64584)
-local timerNextCollapsingStar	= mod:NewTimer(15, "NextCollapsingStar")
-local timerCDCosmicSmash		= mod:NewTimer(25, "PossibleNextCosmicSmash")
-local timerCastCosmicSmash		= mod:NewCastTimer(4.5, 62311)
+local timerNextCollapsingStar	= mod:NewTimer(15, "NextCollapsingStar", 50288)
+local timerCDCosmicSmash		= mod:NewCDTimer(25, 64596)
+local timerCastCosmicSmash		= mod:NewCastTimer(4.5, 64596)
 local timerPhasePunch			= mod:NewBuffActiveTimer(45, 64412)
 local timerNextPhasePunch		= mod:NewNextTimer(16, 64412)
 

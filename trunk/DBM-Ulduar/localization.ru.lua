@@ -154,13 +154,11 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "Вспыхивающая звезда",
-	PossibleNextCosmicSmash	= "Кара небесная",
 	TimerCombatStart		= "Битва начнется через"
 }
 
 L:SetWarningLocalization{
 	WarningPhasePunch		= "Фазовый удар на |3-5(>%s<) - cтак %d",
-	WarningCosmicSmash 		= "Кара небесная - взрыв через 4 секунды",
 	WarnPhase2Soon			= "Скоро фаза 2",
 	warnStarLow				= "У Вспыхивающей звезды мало здоровья"
 }
@@ -168,8 +166,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	WarningPhasePunch		= "Объявлять цели заклинания Фазовый удар",
 	NextCollapsingStar		= "Отсчет времени до появления Вспыхивающей звезды",
-	WarningCosmicSmash 		= "Предупреждение для Кары небесной",
-	PossibleNextCosmicSmash	= "Отсчет времени до следующей Кары небесной",
 	TimerCombatStart		= "Отсчет времени до начала боя",
 	WarnPhase2Soon			= "Предупреждать заранее о фазе 2 (на ~23%)",
 	warnStarLow				= "Спец-предупреждение, когда у Вспыхивающей звезды мало здоровья (на ~25%)"

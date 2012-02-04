@@ -103,17 +103,17 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 local spam = 0
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(62017) then -- Lightning Shock
-		if bit.band(args.destFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) ~= 0
-		and bit.band(args.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 62017 then -- Lightning Shock
+		if bit.band(destFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) ~= 0
+		and bit.band(destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0
 		and GetTime() - spam > 5 then
 			spam = GetTime()
 			specWarnOrb:Show()
 		end
-	elseif self.Options.AnnounceFails and args:IsSpellID(62466) and DBM:GetRaidRank() >= 1 and DBM:GetRaidUnitId(args.destName) ~= "none" and args.destName then
-		lastcharge[args.destName] = (lastcharge[args.destName] or 0) + 1
-		SendChatMessage(L.ChargeOn:format(args.destName), "RAID")
+	elseif self.Options.AnnounceFails and spellId == 62466 and DBM:GetRaidRank() >= 1 and DBM:GetRaidUnitId(destName) ~= "none" and destName then
+		lastcharge[destName] = (lastcharge[destName] or 0) + 1
+		SendChatMessage(L.ChargeOn:format(destName), "RAID")
 	end
 end
 

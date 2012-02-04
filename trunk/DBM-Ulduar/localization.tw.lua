@@ -151,12 +151,10 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "下一次 崩陷之星",
-	PossibleNextCosmicSmash		= "下一次 宇宙潰擊",
 	TimerCombatStart		= "戰鬥開始"
 }
 L:SetWarningLocalization{
 	WarningPhasePunch		= "相位拳擊: >%s< - 第%d層",
-	WarningCosmicSmash 		= "宇宙潰擊 - 約4秒後爆炸",
 	WarnPhase2Soon			= "第2階段 即將到來",
 	warnStarLow			= "崩陷之星血量低",
 	FirstPullNotice			= "檢測為第一次戰鬥，自動校正定時器。"
@@ -165,8 +163,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	WarningPhasePunch		= "提示相位拳擊的目標",
 	NextCollapsingStar		= "為下一次 崩陷之星顯示計時器",
-	WarningCosmicSmash 		= "為宇宙潰擊顯示警告",
-	PossibleNextCosmicSmash		= "為下一次 宇宙潰擊顯示計時器",
 	TimerCombatStart		= "為戰鬥開始顯示計時器",
 	WarnPhase2Soon			= "為第2階段顯示預先警告 (大約23%)",
 	warnStarLow			= "當崩陷之星血量低 (大約25%)時顯示特別警告"

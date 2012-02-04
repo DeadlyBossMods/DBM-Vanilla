@@ -93,8 +93,8 @@ end
 
 do 
 	local lastConsumption = 0
-	function mod:SPELL_DAMAGE(args)
-		if args:IsSpellID(64208, 64206) and args:IsPlayer() and time() - lastConsumption > 2 then		-- Hard mode void zone
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 64208 or spellId == 64206) and destGUID == UnitGUID("player") and time() - lastConsumption > 2 then
 			specWarnConsumption:Show()
 			lastConsumption = time()
 		end

@@ -179,7 +179,6 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "Prochain choc cosmique",
-	PossibleNextCosmicSmash	= "Prochain Choc cosmique possible",
 	TimerCombatStart		= "Le combat débute dans"
 }
 
@@ -187,9 +186,7 @@ L:SetWarningLocalization{
 	WarningPhasePunch		= "Coup de poing phasique sur >%s<",
 	WarningBlackHole		= "Trou noir",
 	SpecWarnBigBang			= "Big Bang",
-	PreWarningBigBang		= "Big Bang dans ~10 sec",
-	WarningCosmicSmash 		= "Choc cosmique - Explosion dans 4 sec",
-	SpecWarnCosmicSmash 	= "Choc cosmique"
+	PreWarningBigBang		= "Big Bang dans ~10 sec"
 }
 
 L:SetOptionLocalization{
@@ -199,9 +196,6 @@ L:SetOptionLocalization{
 	WarningPhasePunch		= "Annoncer la cible du Coup de poing phasique",
 	WarningBlackHole		= "Annoncer les trous noirs",
 	NextCollapsingStar		= "Montre un timer pour le prochain choque cosmique",
-	WarningCosmicSmash 		= "Annonce le Choc cosmique",
-	SpecWarnCosmicSmash 	= "Montre une alerte spéciale pour le Choc cosmique",
-	PossibleNextCosmicSmash	= "Montre le timer pour un possible Choc cosmique",
 	TimerCombatStart		= "Montre le timer avant le début du combat"
 }
 

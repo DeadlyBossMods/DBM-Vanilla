@@ -84,8 +84,8 @@ end
 
 do 
 	local lastbitingcold = 0
-	function mod:SPELL_DAMAGE(args)
-		if args:IsSpellID(62038, 62188) and args:IsPlayer() and time() - lastbitingcold > 4 then		-- Biting Cold
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 62038 or spellId == 62188) and destGUID == UnitGUID("player") and time() - lastbitingcold > 4 then
 			specWarnBitingCold:Show()
 			lastbitingcold = time()
 		end

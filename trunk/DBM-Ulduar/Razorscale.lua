@@ -49,12 +49,11 @@ function mod:OnCombatStart(delay)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(64733, 64704) and args:IsPlayer() then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 64733 or spellId == 64704) and destGUID == UnitGUID("player") then
 		specWarnDevouringFlame:Show()
 	end
 end
-
 
 function mod:RAID_BOSS_EMOTE(emote)
 	if emote == L.EmotePhase2 or emote:find(L.EmotePhase2) then

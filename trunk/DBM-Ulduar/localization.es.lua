@@ -152,13 +152,11 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "Siguiente Estrella en colapso",
-	PossibleNextCosmicSmash	= "Posible siguiente Machaque cósmico",
 	TimerCombatStart		= "Empieza el combate"
 }
 
 L:SetWarningLocalization{
 	WarningPhasePunch		= "Cambiar de fase en >%s< - Stack %d",
-	WarningCosmicSmash 		= "Machaque cósmico - Explosion en 4 segundos",
 	WarnPhase2Soon			= "Fase 2 pronto",
 	warnStarLow				= "Estrella en colapso a punto de morir",
 	FirstPullNotice			= "Primer pull detectado, corrigiendo tiempos."
@@ -167,8 +165,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	WarningPhasePunch		= "Anunciar objetivos de Cambiar de fase",
 	NextCollapsingStar		= "Mostrar tiempo para siguiente Estrella en colapso",
-	WarningCosmicSmash 		= "Mostrar aviso para Machaque cósmico",
-	PossibleNextCosmicSmash	= "Mostrar tiempo para posible siguiente Machaque cósmico",
 	TimerCombatStart		= "Mostrar tiempo para el inicio del combate",
 	WarnPhase2Soon			= "Mostrar pre-aviso para Fase 2 (al ~23%)",
 	warnStarLow				= "Mostrar aviso especial cuando una Estrella en colapso esté a punto de morir (al ~25%)"

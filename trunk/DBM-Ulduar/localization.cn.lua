@@ -164,13 +164,11 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "下一次 坍缩星",
-	PossibleNextCosmicSmash		= "下一次 宇宙重击",
 	TimerCombatStart		= "战斗开始"
 }
 
 L:SetWarningLocalization{
 	WarningPhasePunch		= "相位冲压 -> >%s< - 第%d层",
-	WarningCosmicSmash 		= "宇宙重击 - 约4秒后爆炸",
 	WarnPhase2Soon			= "第2阶段 即将到来",
 	warnStarLow			= "坍缩星血量低"
 }
@@ -179,8 +177,6 @@ L:SetOptionLocalization{
 	SoundWOP = "为重要技能播放额外的警报语音",
 	WarningPhasePunch		= "提示相位冲压的目标",
 	NextCollapsingStar		= "为下一次坍缩星显示计时条",
-	WarningCosmicSmash 		= "为宇宙重击显示警报",
-	PossibleNextCosmicSmash		= "为下一次宇宙重击显示计时条",
 	TimerCombatStart		= "为战斗开始显示计时条",
 	WarnPhase2Soon			= "为第2阶段显示提前警报 (大约23%)",
 	warnStarLow			= "当坍缩星血量低(大约25%)时显示特别警报"

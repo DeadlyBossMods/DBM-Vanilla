@@ -148,13 +148,11 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "Nächste Kollabierende Sterne",
-	PossibleNextCosmicSmash	= "Nächster möglicher Kosmischer Schlag",
 	TimerCombatStart		= "Kampfbeginn"
 }
 
 L:SetWarningLocalization{
 	WarningPhasePunch		= "Phasenschlag auf >%s< - %d Stapel",
-	WarningCosmicSmash 		= "Kosmischer Schlag - Explosion in 4 Sekunden",
 	WarnPhase2Soon			= "Phase 2 bald",
 	warnStarLow				= "Kollabierender Stern stirbt bald",
 	FirstPullNotice			= "Erster Pull, automatische Timerkorrekturen durchgeführt."
@@ -163,8 +161,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	WarningPhasePunch		= "Verkünde Ziele von $spell:64412",
 	NextCollapsingStar		= "Zeige Zeit bis nächste Kollabierende Sterne erscheinen",
-	WarningCosmicSmash 		= "Zeige Warnung für Kosmischer Schlag",
-	PossibleNextCosmicSmash	= "Zeige Zeit bis nächster möglicher Kosmischer Schlag",
 	TimerCombatStart		= "Zeige Zeit bis Kampfbeginn",
 	WarnPhase2Soon			= "Zeige Vorwarnung für Phase 2 (bei ~23%)",
 	warnStarLow				= "Zeige Spezialwarnung, wenn ein Kollabierender Stern bald stirbt (bei ~25%)"
