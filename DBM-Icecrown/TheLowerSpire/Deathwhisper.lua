@@ -239,8 +239,8 @@ function mod:SPELL_SUMMON(args)
 	end
 end
 
-function mod:SWING_DAMAGE(args)
-	if args:IsPlayer() and args:GetSrcCreatureID() == 38222 then
+function mod:SWING_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags)
+	if self:GetCIDFromGUID(sourceGUID) == 38222 and destGUID == UnitGUID("player") then
 		specWarnVengefulShade:Show()
 	end
 end

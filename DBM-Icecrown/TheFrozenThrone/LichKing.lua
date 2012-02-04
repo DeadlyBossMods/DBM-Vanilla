@@ -15,6 +15,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_SUMMON",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"UNIT_HEALTH",
 	"CHAT_MSG_MONSTER_YELL",
 	"RAID_BOSS_WHISPER"
@@ -442,12 +443,13 @@ end
 
 do 
 	local lastWinter = 0
-	function mod:SPELL_DAMAGE(args)
-		if args:IsSpellID(68983, 73791, 73792, 73793) and args:IsPlayer() and time() - lastWinter > 2 then		-- Remorseless Winter
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 68983 or spellId == 73791 or spellId == 73792 or spellId == 73793) and destGUID == UnitGUID("player") and GetTime() - lastWinter > 2 then		-- Remorseless Winter
 			specWarnWinter:Show()
-			lastWinter = time()
+			lastWinter = GetTime()
 		end
 	end
+	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
 
 function mod:UNIT_HEALTH(uId)

@@ -14,7 +14,9 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_REMOVED",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"SWING_DAMAGE",
+	"SWING_MISSED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
@@ -51,6 +53,7 @@ mod:AddBoolOption("TankArrow")
 local RFVileGasTargets	= {}
 local spamOoze = 0
 local InfectionIcon = 8
+local antiSpam = 0
 
 local function warnRFVileGasTargets()
 	warnVileGas:Show(table.concat(RFVileGasTargets, "<, >"))
@@ -63,6 +66,7 @@ function mod:OnCombatStart(delay)
 	self:ScheduleMethod(25-delay, "WallSlime")
 	InfectionIcon = 8
 	spamOoze = 0
+	antiSpam = 0
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerVileGasCD:Start(22-delay)
 		if self.Options.RangeFrame then
@@ -158,29 +162,33 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(69761, 71212, 73026, 73027) and args:IsPlayer() then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 69761 or spellId == 71212 or spellId == 73026 or spellId == 73027) and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3 then
 		specWarnRadiatingOoze:Show()
-	elseif args:GetDestCreatureID() == 36899 and args:IsSrcTypePlayer() and not args:IsSpellID(50288) and self:IsInCombat() then--Any spell damage except for starfall
-		if args.sourceName ~= UnitName("player") then
+		antiSpam = GetTime()
+	elseif spellId ~= 50288 and self:GetCIDFromGUID(destGUID) == 36899 and bit.band(sourceFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 and self:IsInCombat() then--Any spell damage except for starfall
+		if sourceGUID ~= UnitGUID("player") then
 			if self.Options.TankArrow then
-				DBM.Arrow:ShowRunTo(args.sourceName, 0, 0)
+				DBM.Arrow:ShowRunTo(sourceName, 0, 0)
 			end
 		end
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
-function mod:SWING_DAMAGE(args)
-	if args:IsPlayer() and args:GetSrcCreatureID() == 36897 then --Little ooze hitting you
+function mod:SWING_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags)
+	if self:GetCIDFromGUID(sourceGUID) == 36897 and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3 then --Little ooze hitting you
 		specWarnLittleOoze:Show()
-	elseif args:GetDestCreatureID() == 36899 and args:IsSrcTypePlayer() and self:IsInCombat() then
-		if args.sourceName ~= UnitName("player") then
+		antiSpam = GetTime()
+	elseif self:GetCIDFromGUID(destGUID) == 36899 and bit.band(sourceFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 and self:IsInCombat() then
+		if sourceGUID ~= UnitGUID("player") then
 			if self.Options.TankArrow then
-				DBM.Arrow:ShowRunTo(args.sourceName, 0, 0)
+				DBM.Arrow:ShowRunTo(sourceName, 0, 0)
 			end
 		end
 	end
 end
+mod.SWING_MISSED = mod.SWING_DAMAGE
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if (msg == L.YellSlimePipes1 or msg:find(L.YellSlimePipes1)) or (msg == L.YellSlimePipes2 or msg:find(L.YellSlimePipes2)) then
