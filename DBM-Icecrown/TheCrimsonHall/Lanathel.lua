@@ -174,7 +174,7 @@ end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
 	if (spellId == 71726 or spellId == 71727 or spellId == 71728 or spellId == 71729 or spellId == 70946 or spellId == 71475 or spellId == 71476 or spellId == 71477) and self:GetCIDFromGUID(sourceGUID) == 37955 then	-- Vampric Bite (first bite only, hers)
-		warnVampricBite:Show(args.destName)
+		warnVampricBite:Show(destName)
 	end
 end
 

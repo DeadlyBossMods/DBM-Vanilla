@@ -146,8 +146,8 @@ end
 
 do 
 	local lastBlizzard = 0
-	function mod:SPELL_PERIODIC_DAMAGE(args)
-		if args:IsSpellID(29951) and args:IsPlayer() and GetTime() - lastBlizzard > 2 then
+	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if spellId == 29951 and destGUID == UnitGUID("player") and GetTime() - lastBlizzard > 2 then
 			specWarnBlizzard:Show()
 			lastBlizzard = GetTime()
 		end
