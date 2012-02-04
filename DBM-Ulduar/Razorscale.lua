@@ -11,6 +11,7 @@ mod:RegisterCombat("yell", L.YellAir)
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"CHAT_MSG_MONSTER_YELL",
 	"RAID_BOSS_EMOTE"
 )
@@ -30,10 +31,12 @@ local timerTurret4					= mod:NewTimer(113, "timerTurret4", 48642)
 local timerGrounded                 = mod:NewTimer(45, "timerGrounded")
 
 local combattime = 0
+local antiSpam = 0
 
 function mod:OnCombatStart(delay)
 	enrageTimer:Start(-delay)
 	combattime = GetTime()
+	antiSpam = 0
 	if self:IsDifficulty("normal10") then
 		warnTurretsReadySoon:Schedule(53-delay)
 		warnTurretsReady:Schedule(73-delay)
@@ -50,10 +53,12 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if (spellId == 64733 or spellId == 64704) and destGUID == UnitGUID("player") then
+	if (spellId == 64733 or spellId == 64704) and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3then
 		specWarnDevouringFlame:Show()
+		antiSpam = GetTime()
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:RAID_BOSS_EMOTE(emote)
 	if emote == L.EmotePhase2 or emote:find(L.EmotePhase2) then

@@ -63,15 +63,7 @@ do
 			end
 		end
 	end
-end
-
-function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if spellId == 67886 then
-		if self.Options.AchievementCheck and not warnedfailed then
-			SendChatMessage(L.AchievementFailed:format(destName), "PARTY")
-			warnedfailed = true
-		end
-	end
+	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
 
 function mod:SPELL_AURA_APPLIED(args)

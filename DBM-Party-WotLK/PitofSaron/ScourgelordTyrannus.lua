@@ -15,7 +15,8 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
-	"SPELL_PERIODIC_DAMAGE"
+	"SPELL_PERIODIC_DAMAGE",
+	"SPELL_PERIODIC_MISSED"
 )
 
 local warnUnholyPower			= mod:NewSpellAnnounce(69629, 3)
@@ -62,6 +63,7 @@ do
 			lasticyblast = time()
 		end
 	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
 
 function mod:SPELL_AURA_APPLIED(args)
