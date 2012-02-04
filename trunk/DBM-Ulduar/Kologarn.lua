@@ -46,6 +46,12 @@ mod:AddBoolOption("SetIconOnGripTarget", true)
 mod:AddBoolOption("SetIconOnEyebeamTarget", true)
 mod:AddBoolOption("YellOnBeam", true, "announce")
 
+local antiSpam = 0
+
+function mod:OnCombatStart(delay)
+	antiSpam = 0
+end
+
 function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 32934 then 		-- right arm
 		timerRespawnRightArm:Start()
@@ -68,8 +74,9 @@ end
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
 	if (spellId == 63783 or spellId == 63982) and timerNextShockwave:GetTime() == 0 then
 		timerNextShockwave:Start()
-	elseif (spellId == 63346 or spellId == 63976) and destGUID == UnitGUID("player") then
+	elseif (spellId == 63346 or spellId == 63976) and destGUID == UnitGUID("player") and GetTime() - antiSpam > 2 then
 		specWarnEyebeam:Show()
+		antiSpam = GetTime()
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE

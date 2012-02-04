@@ -186,9 +186,9 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnDarkOrb		= "보호의 구슬 생성",
+	WarnDarkOrb		= "보호의 구슬 공격 중",
 	WarnBlueOrb		= "푸른용의 수정구 활성화",
-	SpecWarnDarkOrb	= "보호의 구슬 구슬 생성됨!",
+	SpecWarnDarkOrb	= "보호의 구슬 공격 중!",
 	SpecWarnBlueOrb	= "푸른용의 수정구 활성화됨!"
 }
 
@@ -197,9 +197,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnDarkOrb		= "보호의 구슬 생성 경고 보기",
+	WarnDarkOrb		= "보호의 구슬이 공격 중 일때 경고 보기",
 	WarnBlueOrb		= "푸른용의 수정구 활성화 경고 보기",
-	SpecWarnDarkOrb	= "보호의 구슬 생성 특수 경고 보기",
+	SpecWarnDarkOrb	= "보호의 구슬이 공격 중 일때 특수 경고 보기",
 	SpecWarnBlueOrb	= "푸른용의 수정구 활성화 특수 경고 보기",
 	TimerBlueOrb	= "푸른용의 수정구 활성화 타이머 보기",
 	RangeFrame		= "거리 프레임 보기",

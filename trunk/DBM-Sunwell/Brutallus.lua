@@ -13,8 +13,8 @@ mod:RegisterCombat("yell", L.Pull)
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_MISSED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_REMOVED",
+	"SPELL_MISSED",
 )
 
 local warnMeteor		= mod:NewSpellAnnounce(45150, 3)
@@ -76,19 +76,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:SPELL_AURA_MISSED(args)
-	if args:IsSpellID(46394) then
-		warnBurn:Show("MISSED")
-		if GetTime() - burnTime >= 19 then
-			burnTime = GetTime()
-			firstBurn = true
-		end
-		if firstBurn then
-			timerBurnCD:Start()
-		end
-	end
-end
-
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(46394) then
 		if self.Options.BurnIcon then
@@ -101,5 +88,18 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(45150) then
 		warnMeteor:Show()
 		timerMeteorCD:Start()
+	end
+end
+
+function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 46394 then
+		warnBurn:Show("MISSED")
+		if GetTime() - burnTime >= 19 then
+			burnTime = GetTime()
+			firstBurn = true
+		end
+		if firstBurn then
+			timerBurnCD:Start()
+		end
 	end
 end

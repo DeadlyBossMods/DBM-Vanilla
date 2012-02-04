@@ -36,8 +36,8 @@ function mod:CheckDive()
 	self:ScheduleMethod(0.5, "CheckDive")
 	for i = 1, GetNumRaidMembers() do
 		if UnitName("raid"..i.."target") == L.name then
-			foundIt = true;
-			break;
+			foundIt = true
+			break
 		end
 	end
 	if not foundIt then

@@ -12,7 +12,8 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"SPELL_DAMAGE"
+	"SPELL_DAMAGE",
+	"SPELL_MISSED"
 )
 
 local warnLightBomb					= mod:NewTargetAnnounce(65121, 3)
@@ -100,3 +101,4 @@ do
 		end
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
