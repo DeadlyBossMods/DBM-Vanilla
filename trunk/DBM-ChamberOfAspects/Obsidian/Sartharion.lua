@@ -166,9 +166,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if self.Options.AnnounceFails and self.Options.Announce and args:IsSpellID(59128) and DBM:GetRaidRank() >= 1 and DBM:GetRaidUnitId(args.destName) ~= "none" and args.destName then
-		lastvoids[args.destName] = (lastvoids[args.destName] or 0) + 1
-		SendChatMessage(L.VoidZoneOn:format(args.destName), "RAID")
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if self.Options.AnnounceFails and self.Options.Announce and spellId = 59128 and DBM:GetRaidRank() >= 1 and DBM:GetRaidUnitId(destName) ~= "none" and destName then
+		lastvoids[destName] = (lastvoids[destName] or 0) + 1
+		SendChatMessage(L.VoidZoneOn:format(destName), "RAID")
 	end	
 end
