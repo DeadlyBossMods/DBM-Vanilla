@@ -136,15 +136,13 @@ L:SetTimerLocalization{
 L:SetWarningLocalization{
 	WarnReanimating					= "이교도 부활",			-- Reanimating an adherent or fanatic
 	WarnTouchInsignificance			= "%s : >%s< (%d)",		-- Touch of Insignificance on >args.destName< (args.amount)
-	WarnAddsSoon					= "곧 새로운 이교도 추가",
-	SpecWarnVengefulShade			= "복수의 망령 공격 - 피하세요!"--creatureid 38222
+	WarnAddsSoon					= "곧 새로운 이교도 추가"
 }
 
 L:SetOptionLocalization{
 	WarnAddsSoon					= "이교도 추가 사전 경고 보기",
 	WarnReanimating					= "이교도를 부활을 시작 할 경우 경고 보기",								-- Reanimated Adherent/Fanatic spawning
 	TimerAdds						= "새로운 이교도 추가 타이머 보기",
-	SpecWarnVengefulShade			= "복수의 망령으로부터 공격을 받을 경우 특수 경고 보기",--creatureid 38222	
 	ShieldHealthFrame				= "$spell:70842의 방어막 바와 보스 체력바를 함께 보기",	
 	WarnTouchInsignificance			= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(71204, GetSpellInfo(71204) or "알 수 없음"),	-- Warning isnt default (it has a count number), option is default tho (no need for translation this way)
 	SetIconOnDominateMind			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71289),

@@ -136,14 +136,12 @@ L:SetWarningLocalization{
 	WarnReanimating				= "Add-Wiederbelebung",			-- Reanimating an adherent or fanatic
 	WarnTouchInsignificance		= "%s auf >%s< (%d)",		-- Touch of Insignificance on >args.destName< (args.amount)
 	WarnAddsSoon				= "Neue Adds bald",
-	SpecWarnVengefulShade		= "Rachsüchtiger Schatten greift dich an - Lauf weg!"--creatureid 38222
 }
 
 L:SetOptionLocalization{
 	WarnAddsSoon				= "Zeige Vorwarnung für erscheinende Adds",
 	WarnReanimating				= "Zeige Warnung, wenn ein Add wiederbelebt wird",	-- Reanimated Adherent/Fanatic spawning
 	TimerAdds					= "Zeige Zeit bis neue Adds erscheinen",
-	SpecWarnVengefulShade		= "Zeige Spezialwarnung, wenn du von Rachsüchtigen Schatten angegriffen wirst",--creatureid 38222
 	ShieldHealthFrame			= "Zeige Lebensanzeige mit einem Balken für $spell:70842",
 	WarnTouchInsignificance		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(71204, GetSpellInfo(71204) or "unbekannt"),	
 	SetIconOnDominateMind		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71289),
