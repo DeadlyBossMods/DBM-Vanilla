@@ -11,6 +11,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"SPELL_AURA_APPLIED",
 	"UNIT_DIED"
 )
@@ -64,20 +65,20 @@ local warnHellfire			= mod:NewSpellAnnounce(68147, 4)
 local preWarnBladestorm 	= mod:NewSoonAnnounce(65947, 3)
 local warnBladestorm		= mod:NewSpellAnnounce(65947, 4)
 local warnHeroism			= mod:NewSpellAnnounce(65983, 3)
-local warnBloodlust			= mod:NewSpellAnnounce(65980, 3)
-local warnHandofFreedom		= mod:NewTargetAnnounce(68758, 2)
+local warnBloodlust		= mod:NewSpellAnnounce(65980, 3)
+local warnHandofFreedom	= mod:NewTargetAnnounce(68758, 2)
 local warnHandofProt		= mod:NewTargetAnnounce(66009, 3)
 local warnDivineShield		= mod:NewSpellAnnounce(66010, 3)
 local warnIceBlock			= mod:NewSpellAnnounce(65802, 3)
 local warnShadowstep		= mod:NewSpellAnnounce(66178, 2)
-local warnDeathgrip			= mod:NewTargetAnnounce(66017, 2)
+local warnDeathgrip		= mod:NewTargetAnnounce(66017, 2)
 local warnCyclone			= mod:NewTargetAnnounce(65859, 1, nil, false)
-local warnSheep				= mod:NewTargetAnnounce(65801, 1, nil, false)
+local warnSheep			= mod:NewTargetAnnounce(65801, 1, nil, false)
 
 local timerBladestorm		= mod:NewBuffActiveTimer(8, 65947)
-local timerShadowstepCD		= mod:NewCDTimer(30, 66178)
+local timerShadowstepCD	= mod:NewCDTimer(30, 66178)
 local timerDeathgripCD		= mod:NewCDTimer(35, 66017)
-local timerBladestormCD		= mod:NewCDTimer(90, 65947)
+local timerBladestormCD	= mod:NewCDTimer(90, 65947)
 
 local specWarnHellfire		= mod:NewSpecialWarningMove(68147)
 local specWarnHandofProt	= mod:NewSpecialWarningDispel(66009, isDispeller)
@@ -86,7 +87,10 @@ local specWarnIceBlock		= mod:NewSpecialWarningDispel(65802, isDispeller)
 
 local soundBladestorm		= mod:NewSound(65947, nil, mod:IsMelee())
 
+local antiSpam = 0
+
 function mod:OnCombatStart(delay)
+	antiSpam = 0
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -138,11 +142,13 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsPlayer() and args:IsSpellID(65817, 68142, 68143, 68144) then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 65817 or spellId == 68142 or spellId == 68143 or spellId == 68144) and destGUID == UnitGUID("player") and GetTime() - antiSpam >= 3 then
 		specWarnHellfire:Show()
+		antiSpam = GetTime()
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)

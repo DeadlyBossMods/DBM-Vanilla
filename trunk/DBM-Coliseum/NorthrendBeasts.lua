@@ -15,6 +15,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
@@ -29,6 +30,7 @@ local warnToxin				= mod:NewTargetAnnounce(66823, 3)
 local warnBile				= mod:NewTargetAnnounce(66869, 3)
 local WarningSnobold		= mod:NewAnnounce("WarningSnobold", 4)
 local warnEnrageWorm		= mod:NewSpellAnnounce(68335, 3)
+local warnCharge			= mod:NewTargetAnnounce(52311, 4)
 
 local specWarnImpale3		= mod:NewSpecialWarning("SpecialWarningImpale3")
 local specWarnAnger3		= mod:NewSpecialWarning("SpecialWarningAnger3", mod:IsTank() or mod:IsHealer())
@@ -76,6 +78,7 @@ local phases				= {}
 local DreadscaleActive		= true  	-- Is dreadscale moving?
 local DreadscaleDead	= false
 local AcidmawDead	= false
+local antiSpam = 0
 
 local function updateHealthFrame(phase)
 	if phases[phase] then
@@ -101,6 +104,7 @@ function mod:OnCombatStart(delay)
 	DreadscaleActive = true
 	DreadscaleDead = false
 	AcidmawDead = false
+	antiSpam = 0
 	specWarnSilence:Schedule(37-delay)
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerNextBoss:Start(175 - delay)
@@ -255,16 +259,20 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsPlayer() and (args:IsSpellID(66320, 67472, 67473, 67475) or args:IsSpellID(66317)) then	-- Fire Bomb (66317 is impact damage, not avoidable but leaving in because it still means earliest possible warning to move. Other 4 are tick damage from standing in it)
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 66317 or spellId == 66320 or spellId == 67472 or spellId == 67473 or spellId == 67475) and destGUID == UnitGUID("player") and GetTime() - antiSpam >= 3 then	-- Fire Bomb (66317 is impact damage, not avoidable but leaving in because it still means earliest possible warning to move. Other 4 are tick damage from standing in it)
 		specWarnFireBomb:Show()
-	elseif args:IsPlayer() and args:IsSpellID(66881, 67638, 67639, 67640) then							-- Slime Pool
+		antiSpam = GetTime()
+	elseif (spellId == 66881 or spellId == 67638 or spellId == 67639 or spellId == 67640) and destGUID == UnitGUID("player") and GetTime() - antiSpam >= 3 then							-- Slime Pool
 		specWarnSlimePool:Show()
+		antiSpam = GetTime()
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 	if msg:match(L.Charge) or msg:find(L.Charge) then
+		warnCharge:Show(target)
 		timerNextCrash:Start()
 		if self.Options.ClearIconsOnIceHowl then
 			self:ClearIcons()
