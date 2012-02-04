@@ -14,6 +14,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_PERIODIC_DAMAGE",
+	"SPELL_PERIODIC_MISSED",
 	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
 
@@ -171,22 +172,21 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if (args:IsSpellID(71726, 71727, 71728, 71729) or args:IsSpellID(70946, 71475, 71476, 71477)) and args:GetSrcCreatureID() == 37955 then	-- Vampric Bite (first bite only, hers)
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 71726 or spellId == 71727 or spellId == 71728 or spellId == 71729 or spellId == 70946 or spellId == 71475 or spellId == 71476 or spellId == 71477) and self:GetCIDFromGUID(sourceGUID) == 37955 then	-- Vampric Bite (first bite only, hers)
 		warnVampricBite:Show(args.destName)
 	end
 end
 
 do
 	local lastswarm = 0
-	function mod:SPELL_PERIODIC_DAMAGE(args)
-		if args:IsPlayer() and args:IsSpellID(71277, 72638, 72639, 72640) then		--Swarn of Shadows (spell damage, you're standing in it.)
-			if GetTime() - 3 > lastswarm then
-				specWarnSwarmingShadows:Show()
-				lastswarm = GetTime()
-			end
+	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 71277 or spellId == 72638 or spellId == 72639 or spellId == 72640) and destGUID == UnitGUID("player") and GetTime() - 3 > lastswarm then		--Swarn of Shadows (spell damage, you're standing in it.)
+			specWarnSwarmingShadows:Show()
+			lastswarm = GetTime()
 		end
 	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)

@@ -8,6 +8,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
@@ -43,12 +44,13 @@ end
 
 do 
 	local lastBlade = 0
-	function mod:SPELL_DAMAGE(args)
-		if args:IsSpellID(70305) and args:IsPlayer() and time() - lastBlade > 2 then
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if spellId == 70305 and destGUID == UnitGUID("player") and GetTime() - lastBlade > 2 then
 			specWarnBlade:Show()
-			lastBlade = time()
+			lastBlade = GetTime()
 		end
 	end
+	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)

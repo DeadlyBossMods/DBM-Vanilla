@@ -176,19 +176,13 @@ end
 
 do 
 	local lastVoid = 0
-	function mod:SPELL_DAMAGE(args)
-		if args:IsSpellID(71086, 71743, 72029, 72030) and args:IsPlayer() and time() - lastVoid > 2 then		-- Mana Void
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 71806 or spellId == 71743 or spellId == 72029 or spellId == 72030) and destGUID == UnitGUID("player") and GetTime() - lastVoid > 2 then		-- Mana Void
 			specWarnManaVoid:Show()
-			lastVoid = time()
+			lastVoid = GetTime()
 		end
 	end
-
-	function mod:SPELL_MISSED(args)
-		if args:IsSpellID(71086, 71743, 72029, 72030) and args:IsPlayer() and time() - lastVoid > 2 then		-- Mana Void
-			specWarnManaVoid:Show()
-			lastVoid = time()
-		end
-	end
+	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
 
 function mod:UNIT_TARGET()
