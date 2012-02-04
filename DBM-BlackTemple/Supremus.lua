@@ -14,8 +14,8 @@ mod:RegisterEvents(
 	"RAID_BOSS_EMOTE"
 )
 
-local warnPhase		= mod:NewAnnounce("WarnPhase", 4, 42052)
-local warnPhaseSoon	= mod:NewAnnounce("WarnPhaseSoon", 3, 42052)
+local warnPhase			= mod:NewAnnounce("WarnPhase", 4, 42052)
+local warnPhaseSoon		= mod:NewAnnounce("WarnPhaseSoon", 3, 42052)
 local warnKite			= mod:NewAnnounce("WarnKite", 3, 42052)
 
 local specWarnMolten	= mod:NewSpecialWarningMove(40265)

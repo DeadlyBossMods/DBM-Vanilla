@@ -17,9 +17,9 @@ mod:RegisterEvents(
 
 local warnCrushed			= mod:NewTargetAnnounce(40243, 3)
 local warnIncinerate		= mod:NewTargetAnnounce(40239, 3)
-local warnDeath			= mod:NewTargetAnnounce(40251, 3)
+local warnDeath				= mod:NewTargetAnnounce(40251, 3)
 
-local specWarnDeath		= mod:NewSpecialWarningYou(40251)
+local specWarnDeath			= mod:NewSpecialWarningYou(40251)
 
 local timerCrushed			= mod:NewBuffActiveTimer(15, 40243)
 local timerDeath			= mod:NewTargetTimer(55, 40251)
