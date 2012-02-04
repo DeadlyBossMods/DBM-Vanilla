@@ -12,7 +12,8 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_SUMMON",
-	"SPELL_PERIODIC_DAMAGE"
+	"SPELL_PERIODIC_DAMAGE",
+	"SPELL_PERIODIC_MISSED"
 )
 
 local warningFlameCast		= mod:NewCastAnnounce(30004, 4)
@@ -152,4 +153,5 @@ do
 			lastBlizzard = GetTime()
 		end
 	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
