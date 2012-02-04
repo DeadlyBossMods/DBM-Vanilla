@@ -37,8 +37,8 @@ local timerLightningWhirl		= mod:NewCastTimer(5, 63483)
 local specwarnLightningTendrils	= mod:NewSpecialWarningRun(63486)
 local timerLightningTendrils	= mod:NewBuffActiveTimer(27, 63486)
 local specwarnOverload			= mod:NewSpecialWarningRun(63481) 
-local soundTendrils			= mod:NewSound(63486)
-local soundOverload			= mod:NewSound(63481)
+local soundTendrils				= mod:NewSound(63486)
+local soundOverload				= mod:NewSound(63481)
 mod:AddBoolOption("AlwaysWarnOnOverload", false, "announce")
 
 -- Steelbreaker

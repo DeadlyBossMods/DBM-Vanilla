@@ -20,7 +20,7 @@ local timerImpale			= mod:NewTargetTimer(5, 62928)
 local specWarnFistofStone	= mod:NewSpecialWarningSpell(62344, mod:IsTank())
 local specWarnGroundTremor	= mod:NewSpecialWarningCast(62932, true)
 
-local soundFistofStone			= mod:NewSound(62344, nil, false)
+local soundFistofStone		= mod:NewSound(62344, nil, false)
 
 --
 -- Trash: 33430 Guardian Lasher (flower)

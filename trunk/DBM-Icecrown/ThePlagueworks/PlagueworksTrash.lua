@@ -13,19 +13,19 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local warnZombies		= mod:NewSpellAnnounce(71159, 2)
-local warnMortalWound	= mod:NewAnnounce("WarnMortalWound", 2, 71127, false)
-local warnDecimateSoon	= mod:NewSoonAnnounce(71123, 3)
+local warnZombies			= mod:NewSpellAnnounce(71159, 2)
+local warnMortalWound		= mod:NewAnnounce("WarnMortalWound", 2, 71127, false)
+local warnDecimateSoon		= mod:NewSoonAnnounce(71123, 3)
 
 local specWarnDecimate		= mod:NewSpecialWarningSpell(71123)
 local specWarnMortalWound	= mod:NewSpecialWarningStack(71127, nil, 5)
 local specWarnTrap			= mod:NewSpecialWarning("SpecWarnTrap")
 local specWarnBlightBomb	= mod:NewSpecialWarningSpell(71088)
 
-local timerZombies		= mod:NewNextTimer(20, 71159)
-local timerMortalWound	= mod:NewTargetTimer(15, 71127)
-local timerDecimate		= mod:NewNextTimer(33, 71123)
-local timerBlightBomb	= mod:NewCastTimer(5, 71088)
+local timerZombies			= mod:NewNextTimer(20, 71159)
+local timerMortalWound		= mod:NewTargetTimer(15, 71127)
+local timerDecimate			= mod:NewNextTimer(33, 71123)
+local timerBlightBomb		= mod:NewCastTimer(5, 71088)
 
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")

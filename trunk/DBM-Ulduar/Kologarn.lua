@@ -39,7 +39,7 @@ local timerRespawnLeftArm		= mod:NewTimer(48, "timerLeftArm")
 local timerRespawnRightArm		= mod:NewTimer(48, "timerRightArm")
 local timerTimeForDisarmed		= mod:NewTimer(10, "achievementDisarmed")	-- 10 HC / 12 nonHC
 
-local soundEyebeam			= mod:NewSound(63346)
+local soundEyebeam				= mod:NewSound(63346)
 
 mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("SetIconOnGripTarget", true)

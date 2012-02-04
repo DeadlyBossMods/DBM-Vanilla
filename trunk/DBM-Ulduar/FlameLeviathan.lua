@@ -25,7 +25,7 @@ local timerSystemOverload	= mod:NewBuffActiveTimer(20, 62475)
 local timerFlameVents		= mod:NewCastTimer(10, 62396)
 local timerPursued			= mod:NewTargetTimer(30, 62374)
 
-local soundPursued = mod:NewSound(62374)
+local soundPursued			= mod:NewSound(62374)
 
 local guids = {}
 local function buildGuidTable()

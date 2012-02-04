@@ -19,23 +19,23 @@ mod:RegisterEvents(
 	"UNIT_TARGET"
 )
 
-local warnCorrosion		= mod:NewAnnounce("WarnCorrosion", 2, 70751, false)
-local warnGutSpray		= mod:NewTargetAnnounce(71283, 3, nil, mod:IsTank() or mod:IsHealer())
-local warnManaVoid		= mod:NewSpellAnnounce(71741, 2, nil, mod:IsManaUser())
-local warnSupression	= mod:NewSpellAnnounce(70588, 3)
-local warnPortalSoon	= mod:NewSoonAnnounce(72483, 2, nil)
-local warnPortal		= mod:NewSpellAnnounce(72483, 3, nil)
-local warnPortalOpen	= mod:NewAnnounce("WarnPortalOpen", 4, 72483)
+local warnCorrosion			= mod:NewAnnounce("WarnCorrosion", 2, 70751, false)
+local warnGutSpray			= mod:NewTargetAnnounce(71283, 3, nil, mod:IsTank() or mod:IsHealer())
+local warnManaVoid			= mod:NewSpellAnnounce(71741, 2, nil, mod:IsManaUser())
+local warnSupression		= mod:NewSpellAnnounce(70588, 3)
+local warnPortalSoon		= mod:NewSoonAnnounce(72483, 2, nil)
+local warnPortal			= mod:NewSpellAnnounce(72483, 3, nil)
+local warnPortalOpen		= mod:NewAnnounce("WarnPortalOpen", 4, 72483)
 
-local specWarnLayWaste	= mod:NewSpecialWarningSpell(71730)
-local specWarnManaVoid	= mod:NewSpecialWarningMove(71741)
+local specWarnLayWaste		= mod:NewSpecialWarningSpell(71730)
+local specWarnManaVoid		= mod:NewSpecialWarningMove(71741)
 
-local timerLayWaste		= mod:NewBuffActiveTimer(12, 69325)
-local timerNextPortal	= mod:NewCDTimer(46.5, 72483, nil)
-local timerPortalsOpen	= mod:NewTimer(10, "TimerPortalsOpen", 72483)
-local timerHealerBuff	= mod:NewBuffActiveTimer(40, 70873)
-local timerGutSpray		= mod:NewTargetTimer(12, 71283, nil, mod:IsTank() or mod:IsHealer())
-local timerCorrosion	= mod:NewTargetTimer(6, 70751, nil, false)
+local timerLayWaste			= mod:NewBuffActiveTimer(12, 69325)
+local timerNextPortal		= mod:NewCDTimer(46.5, 72483, nil)
+local timerPortalsOpen		= mod:NewTimer(10, "TimerPortalsOpen", 72483)
+local timerHealerBuff		= mod:NewBuffActiveTimer(40, 70873)
+local timerGutSpray			= mod:NewTargetTimer(12, 71283, nil, mod:IsTank() or mod:IsHealer())
+local timerCorrosion		= mod:NewTargetTimer(6, 70751, nil, false)
 local timerBlazingSkeleton	= mod:NewTimer(50, "TimerBlazingSkeleton", 17204)
 local timerAbom				= mod:NewTimer(50, "TimerAbom", 43392)--Experimental
 

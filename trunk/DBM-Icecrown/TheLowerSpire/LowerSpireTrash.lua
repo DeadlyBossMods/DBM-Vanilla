@@ -22,7 +22,7 @@ local specWarnTrap				= mod:NewSpecialWarning("SpecWarnTrap")
 local timerDisruptingShout		= mod:NewCastTimer(3, 71022)
 local timerDarkReckoning		= mod:NewTargetTimer(8, 69483)
 
-local soundDarkReckoning = mod:NewSound(69483)
+local soundDarkReckoning		= mod:NewSound(69483)
 mod:AddBoolOption("SetIconOnDarkReckoning", true)
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")

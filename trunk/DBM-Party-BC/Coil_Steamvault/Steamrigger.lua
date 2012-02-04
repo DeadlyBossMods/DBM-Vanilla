@@ -12,9 +12,9 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local WarnSummon    = mod:NewAnnounce("WarnSummon")
-local WarnNet        = mod:NewTargetAnnounce(35107)
-local timerNet      = mod:NewTargetTimer(6, 35107)
+local WarnSummon	= mod:NewAnnounce("WarnSummon")
+local WarnNet		= mod:NewTargetAnnounce(35107)
+local timerNet		= mod:NewTargetTimer(6, 35107)
 
 local enrageTimer	= mod:NewBerserkTimer(300)
 
