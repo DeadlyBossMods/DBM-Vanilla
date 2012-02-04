@@ -139,8 +139,7 @@ L:SetTimerLocalization{
 L:SetWarningLocalization{
 	WarnReanimating					= "Resurreccion de Add",			-- Reanimating an adherent or fanatic
 	WarnTouchInsignificance			= "%s en >%s< (%d)",		-- Touch of Insignificance on >args.destName< (args.amount)
-	WarnAddsSoon					= "Nuevos adds pronto",
-	SpecWarnVengefulShade		= "¡Sombra vengativa te ataca! ¡Corre!"--creatureid 38222
+	WarnAddsSoon					= "Nuevos adds pronto"
 }
 
 
@@ -149,7 +148,6 @@ L:SetOptionLocalization{
 	WarnAddsSoon					= "Mostrar un pre-aviso cuando vengan nuevos adds ",
 	WarnReanimating					= "Mostrar un aviso cuando un add sea resucitado",											-- Reanimated Adherent/Fanatic spawning
 	TimerAdds						= "Mostrar tiempo para nuevos adds",
-	SpecWarnVengefulShade			= "Mostrar aviso especial cuando te ataque una Sombra vengativa",--creatureid 38222
 	ShieldHealthFrame				= "Mostrar barra de vida del boss con una barra de vida para $spell:70842",
 	WarnTouchInsignificance			= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(71204, GetSpellInfo(71204) or "unknown"),		-- Warning isnt default (it has a count number), option is default tho (no need for translation this way)
 	SetIconOnDominateMind			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71289),

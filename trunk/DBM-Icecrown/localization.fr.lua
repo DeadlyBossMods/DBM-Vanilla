@@ -110,8 +110,7 @@ L:SetTimerLocalization{
 L:SetWarningLocalization{
 	WarnReanimating					= "Les adds revivent",
 	WarnTouchInsignificance			= "%s sur >%s< (%s)",
-	WarnAddsSoon					= "Nouveaux adds bientôt",
-	SpecWarnVengefulShade			= "Ombre vengeresse vous attaque - COUREZ"
+	WarnAddsSoon					= "Nouveaux adds bientôt"
 }
 
 L:SetOptionLocalization{
@@ -119,7 +118,6 @@ L:SetOptionLocalization{
 	WarnTouchInsignificance			= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(71204, GetSpellInfo(71204) or "unknown"),
 	WarnReanimating					= "Montre une alerte quand les adds vont revenir a la vie",
 	TimerAdds						= "Montre le timer pour les nouveaux adds",
-	SpecWarnVengefulShade			= "Montre une alerte spéciale quand vous êtes attaquer par une Ombre vengeresse",
 	ShieldHealthFrame				= "Montre la vie du boss avec une barre de vie pour la $spell:70842",
 	SetIconOnDominateMind			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71289),
 	SetIconOnDeformedFanatic		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70900),

@@ -136,15 +136,13 @@ L:SetTimerLocalization{
 L:SetWarningLocalization{
 	WarnReanimating			= "小怪再活化",
 	WarnTouchInsignificance		= "%s: >%s< (%s)",
-	WarnAddsSoon			= "新的小怪 即將到來",
-	SpecWarnVengefulShade		= "你被復仇的暗影盯上了 - 快跑開"
+	WarnAddsSoon			= "新的小怪 即將到來"
 }
 
 L:SetOptionLocalization{
 	WarnAddsSoon			= "為新的小怪出現顯示預先警告",
 	WarnReanimating			= "當小怪再活化時顯示警告",
 	TimerAdds			= "為新的小怪顯示計時器",
-	SpecWarnVengefulShade		= "當你被復仇的暗影盯上時顯示特別警告",
 	ShieldHealthFrame		= "為$spell:70842顯示首領血量框架",
 	WarnTouchInsignificance		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(71204, GetSpellInfo(71204) or "unknown"),	
 	SetIconOnDominateMind		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71289),
