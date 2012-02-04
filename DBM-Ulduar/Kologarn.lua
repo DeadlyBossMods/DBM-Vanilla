@@ -13,6 +13,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"RAID_BOSS_WHISPER",
 	"UNIT_DIED"
 )
@@ -64,13 +65,14 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(63783, 63982) and args:IsPlayer() then	-- Shockwave
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 63783 or spellId == 63982) and timerNextShockwave:GetTime() == 0 then
 		timerNextShockwave:Start()
-	elseif args:IsSpellID(63346, 63976) and args:IsPlayer() then
+	elseif (spellId == 63346 or spellId == 63976) and destGUID == UnitGUID("player") then
 		specWarnEyebeam:Show()
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find(L.FocusedEyebeam) then

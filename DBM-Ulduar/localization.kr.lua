@@ -172,7 +172,6 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "다음 붕괴의 별",
-	PossibleNextCosmicSmash	= "다음 우주의 강타",
 	TimerCombatStart		= "전투 시작"
 }
 
@@ -181,8 +180,6 @@ L:SetWarningLocalization{
 	WarningBlackHole		= "블랙홀 폭발",
 	SpecWarnBigBang			= "대 폭발!",
 	PreWarningBigBang		= "대 폭발 10초 전!",
-	WarningCosmicSmash 		= "우주의 강타 - 폭발 4초 전",
-	SpecWarnCosmicSmash 	= "우주의 강타",
 	WarnPhase2Soon			= "곧 2 단계",
 	warnStarLow				= "붕괴의 별 체력 낮음",
 	FirstPullNotice			= "첫번째 풀링 감지,  자동 타이머 수정"	
@@ -194,9 +191,6 @@ L:SetOptionLocalization{
 	WarningPhasePunch			= "위상의 주먹 대상 알리기",
 	WarningBlackHole			= "블랙 홀 알리기",
 	NextCollapsingStar			= "다음 붕괴의 별 시전 타이머 보기",
-	PossibleNextCosmicSmash		= "다음 우주의 강타 시전 타이머 보기",	
-	WarningCosmicSmash 			= "우주의 강타 알리기",
-	SpecWarnCosmicSmash 		= "우주의 강타 특수 경고 보기",
 	TimerCombatStart			= "전투 시작 타이머 보기",
 	WarnPhase2Soon				= "2 단계 사전 경고 보기(23% 이하)",
 	warnStarLow					= "붕괴의 별 체력이 낮을 경우 특수 경고 보기(25% 이하)"

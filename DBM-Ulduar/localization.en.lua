@@ -147,13 +147,11 @@ L:SetGeneralLocalization{
 
 L:SetTimerLocalization{
 	NextCollapsingStar		= "Next Collapsing Star",
-	PossibleNextCosmicSmash	= "Next possible Cosmic Smash",
 	TimerCombatStart		= "Combat starts"
 }
 
 L:SetWarningLocalization{
 	WarningPhasePunch		= "Phase Punch on >%s< - Stack %d",
-	WarningCosmicSmash 		= "Cosmic Smash - Explosion in 4 seconds",
 	WarnPhase2Soon			= "Phase 2 soon",
 	warnStarLow				= "Collapsing Star is low",
 	FirstPullNotice			= "First pull detected, auto correcting timers."
@@ -162,8 +160,6 @@ L:SetWarningLocalization{
 L:SetOptionLocalization{
 	WarningPhasePunch		= "Announce Phase Punch targets",
 	NextCollapsingStar		= "Show timer for next Collapsing Star",
-	WarningCosmicSmash 		= "Show warning for Cosmic Smash",
-	PossibleNextCosmicSmash	= "Show timer for next possible Cosmic Smash",
 	TimerCombatStart		= "Show timer for start of combat",
 	WarnPhase2Soon			= "Show pre-warning for Phase 2 (at ~23%)",
 	warnStarLow				= "Show special warning when Collapsing Star is low (at ~25%)"
