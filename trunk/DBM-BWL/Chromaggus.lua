@@ -27,7 +27,7 @@ local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local specWarnBronze	= mod:NewSpecialWarningYou(23170)
 
-local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD")
+local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316)
 local timerEnrage		= mod:NewBuffActiveTimer(8, 23128)
 
 local prewarn_P2
