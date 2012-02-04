@@ -96,6 +96,10 @@ L:SetOptionLocalization{
 	TimerBreathCD	= "Show Breath CD",
 	WarnPhase2Soon	= "Announce when phase 2 is about to start"
 }
+L:SetMiscLocalization{
+	Breath1	= "First Breath",
+	Breath2	= "Second Breath"
+}
 
 ----------------
 --  Nefarian  --

@@ -84,18 +84,22 @@ L:SetGeneralLocalization{
 	name = "크로마구스"
 }
 L:SetWarningLocalization{
-	WarnBreathSoon	= "곧 브레스",
+	WarnBreathSoon	= "곧 숨결",
 	WarnBreath		= "%s",
 	WarnPhase2Soon	= "곧 2 단계"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s 쿨다운"
+	TimerBreathCD	= "다음 %s"
 }
 L:SetOptionLocalization{
-	WarnBreathSoon	= "브레스의 사전 경고 보기",
-	WarnBreath		= "브레스를 시전할 때 알림",
-	TimerBreathCD	= "브레스 쿨다운 타이머 보기",
-	WarnPhase2Soon	= "2 단계 사전 경고 보기"
+	WarnBreathSoon	= "숨결 사전 알림 보기",
+	WarnBreath		= "숨결 시전시 알림 보기",
+	TimerBreathCD	= "다음 숨결 바 표시",
+	WarnPhase2Soon	= "2 단계 사전 알림 보기"
+}
+L:SetMiscLocalization{
+	Breath1	= "브레스 (1)",
+	Breath2	= "브레스 (2)"
 }
 
 ----------------
