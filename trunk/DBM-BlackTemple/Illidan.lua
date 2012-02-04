@@ -13,6 +13,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_HEALTH",
 	"UNIT_DIED"
@@ -161,8 +162,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(41131) and GetTime() - fbSpam >= 4 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 41131 and GetTime() - fbSpam >= 4 then
 		warnFlameBurst:Show()
 		flameBursts = flameBursts + 1
 		fbSpam = GetTime()
@@ -171,6 +172,7 @@ function mod:SPELL_DAMAGE(args)
 		end
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)

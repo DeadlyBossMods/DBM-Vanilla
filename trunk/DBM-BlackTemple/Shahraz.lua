@@ -12,26 +12,22 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
-	"SPELL_AURA_REMOVED",
-	"UNIT_AURA"
+	"SPELL_AURA_REMOVED"
+--	"UNIT_AURA"
 )
 
-local warnAura1		= mod:NewSpellAnnounce(40880, 3) -- shadow
-local warnAura2		= mod:NewSpellAnnounce(40882, 3) -- fire
-local warnAura3		= mod:NewSpellAnnounce(40883, 3) -- nature
-local warnAura4		= mod:NewSpellAnnounce(40891, 3) -- arcane
-local warnAura5		= mod:NewSpellAnnounce(40896, 3) -- frost
-local warnAura6		= mod:NewSpellAnnounce(40897, 3) -- holy
 local warnFA		= mod:NewTargetAnnounce(41001, 4)
 
 local specWarnFA	= mod:NewSpecialWarningYou(41001)
 
+--[[
 local timerAura1	= mod:NewBuffActiveTimer(15, 40880) -- shadow
 local timerAura2	= mod:NewBuffActiveTimer(15, 40882) -- fire
 local timerAura3	= mod:NewBuffActiveTimer(15, 40883) -- nature
 local timerAura4	= mod:NewBuffActiveTimer(15, 40891) -- arcane
 local timerAura5	= mod:NewBuffActiveTimer(15, 40896) -- frost
 local timerAura6	= mod:NewBuffActiveTimer(15, 40897) -- holy
+]]
 
 mod:AddBoolOption("FAIcons", true)
 mod:AddBoolOption("FAWhisper", false, "announce")
@@ -89,6 +85,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
+--[[
 function mod:UNIT_AURA(uId)
 	if uId == "player" then
 		if UnitDebuff("player", aura[1]) then
@@ -112,3 +109,4 @@ function mod:UNIT_AURA(uId)
 		end
 	end
 end
+]]

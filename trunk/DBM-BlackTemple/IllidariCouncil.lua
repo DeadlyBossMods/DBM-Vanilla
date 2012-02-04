@@ -62,7 +62,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(41485) then -- 맹독
+	if args:IsSpellID(41485) then
 		warnPoison:Show(args.destName)
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 8)
@@ -70,28 +70,28 @@ function mod:SPELL_AURA_APPLIED(args)
 		if IsRaidLeader() and self.Options.PoisonWhisper then
 			self:SendWhisper(L.PoisonWhisper, args.destName)
 		end
-	elseif args:IsSpellID(41481) and args:IsPlayer() then -- 불기둥
+	elseif args:IsSpellID(41481) and args:IsPlayer() then
 		 specWarnFlame:Show()
-	elseif args:IsSpellID(41482) and args:IsPlayer() then -- 눈보라
+	elseif args:IsSpellID(41482) and args:IsPlayer() then
 		 specWarnBlizzard:Show()
-	elseif args:IsSpellID(41476) then -- 소멸
+	elseif args:IsSpellID(41476) then
 		warnVanish:Show(args.destName)
 		timerVanish:Start(args.destName)
 		warnFadeSoon:Schedule(26)
-	elseif args:IsSpellID(41475) then -- 반보
+	elseif args:IsSpellID(41475) then
 		warnShield:Show(args.destName)
 		timerShield:Start(args.destName)
-	elseif args:IsSpellID(41452) and args.destName == L.Gathios then -- 기원
+	elseif args:IsSpellID(41452) and args.destName == L.Gathios then
 		warnDevAura:Show()
 		timerDevAura:Start()
-	elseif args:IsSpellID(41453) and args.destName == L.Gathios then -- 마력 저항
+	elseif args:IsSpellID(41453) and args.destName == L.Gathios then
 		warnResAura:Show()
 		timerResAura:Start()
-	elseif args:IsSpellID(41450) and args.destName == L.Malande then -- 보축
+	elseif args:IsSpellID(41450) and args.destName == L.Malande then
 		warnMeleeImmune:Show(args.destName)
 		timerMeleeImmune:Start(args.destName)
 		specWarnImmune:Show(L.Melee)
-	elseif args:IsSpellID(41451) and args.destName == L.Malande then -- 주문 수호
+	elseif args:IsSpellID(41451) and args.destName == L.Malande then
 		warnSpellImmune:Show(args.destName)
 		timerSpellImmune:Start(args.destName)
 		specWarnImmune:Show(L.Spell)
@@ -127,7 +127,7 @@ function mod:SPELL_HEAL(args)
 end
 
 function mod:SPELL_INTERRUPT(args)
-	if args:IsSpellID(41455) then
+	if type(args.extraSpellId) == "number" and args.extraSpellId == 41455 then
 		timerCoH:Cancel()
 		timerNextCoH:Start()
 	end
