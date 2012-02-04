@@ -144,8 +144,7 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Mostrar pre-aviso para \"Curar en 3 segudos\" ",
-	WarningHealNow		= "Mostrar aviso para \"Curar Ahora\" ",
-	SporeDamageAlert	= "Enviar susurros y avisar a la banda de los jugadores que estén dañando esporas\n (necesita 'anunciar' activado y lider/ayudante)"
+	WarningHealNow		= "Mostrar aviso para \"Curar Ahora\" "
 })
 
 -----------------
@@ -158,13 +157,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHateful = "Avisar por chat de banda los Golpes de Odio (necesitas ser ayudante o lider para eso)"
 })
 
 L:SetMiscLocalization({
 	yell1 = "¡Remendejo quiere jugar!",
-	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!",
-	HatefulStrike = "Golpe de Odio --> %s [%s]"
+	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!"
 })
 
 

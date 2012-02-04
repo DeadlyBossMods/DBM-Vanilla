@@ -153,13 +153,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHateful 	= "Annoncer les Frappes Haineuses au raid\n(vous devez être promote ou le raid leader pour le faire)"
 })
 
 L:SetMiscLocalization({
 	yell1 		     	= "R'cousu veut jouer !",
-	yell2 		     	= "R'cousu avatar de guerre pour Kel'Thuzad !",
-	HatefulStrike 	= "Frappe Haineuse --> %s [%s]"
+	yell2 		     	= "R'cousu avatar de guerre pour Kel'Thuzad !"
 })
 
 -----------------

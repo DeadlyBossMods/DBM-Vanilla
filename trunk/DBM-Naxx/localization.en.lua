@@ -138,8 +138,7 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Show pre-warning for 3-second healing window",
-	WarningHealNow		= "Show warning for 3-second healing window",
-	SporeDamageAlert	= "Send whisper to and announce to raid players who damage spores\n(requires announce to be enabled and leader/promoted status)"
+	WarningHealNow		= "Show warning for 3-second healing window"
 })
 
 -----------------
@@ -152,13 +151,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHateful	= "Post Hateful Strike targets to raid chat\n(requires announce to be enabled and leader/promoted status)"
 })
 
 L:SetMiscLocalization({
 	yell1			= "Patchwerk want to play!",
-	yell2			= "Kel'thuzad make Patchwerk his avatar of war!",
-	HatefulStrike	= "Hateful Strike --> %s [%s]"
+	yell2			= "Kel'thuzad make Patchwerk his avatar of war!"
 })
 
 -----------------

@@ -139,8 +139,7 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Zeige Vorwarnung für 3-Sekunden-Heilfenster",
-	WarningHealNow		= "Zeige Warnung für 3-Sekunden-Heilfenster",
-	SporeDamageAlert	= "Spieler die Sporen beschädigen anflüstern und an Schlachtzug verkünden\n(benötigt aktivierte Mitteilungen und Leiter-/Assistentenstatus)"
+	WarningHealNow		= "Zeige Warnung für 3-Sekunden-Heilfenster"
 })
 
 -----------------
@@ -153,13 +152,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHateful	= "Verkünde Hasserfüllte Stöße im Schlachtzugchat\n(benötigt aktivierte Mitteilungen und Leiter-/Assistentenstatus)"
 })
 
 L:SetMiscLocalization({
 	yell1			= "Flickwerk spielen möchte!",
-	yell2			= "Kel’Thuzad macht Flickwerk zu seinem Abgesandten des Kriegs!",
-	HatefulStrike	= "Hasserfüllter Stoß --> %s [%s]"
+	yell2			= "Kel’Thuzad macht Flickwerk zu seinem Abgesandten des Kriegs!"
 })
 
 -----------------
