@@ -10,6 +10,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_PERIODIC_DAMAGE",
+	"SPELL_PERIODIC_MISSED",
 	"RAID_BOSS_EMOTE"
 )
 
@@ -49,12 +50,13 @@ end
 
 do 
 	local lastVoid = 0
-	function mod:SPELL_PERIODIC_DAMAGE(args)
-		if args:IsSpellID(30533) and args:IsPlayer() and GetTime() - lastVoid > 2 then
+	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if spellId == 30533 and destGUID == UnitGUID("player") and GetTime() - lastVoid > 2 then
 			specWarnVoid:Show()
 			lastVoid = GetTime()
 		end
 	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
 
 function mod:RAID_BOSS_EMOTE(msg)
