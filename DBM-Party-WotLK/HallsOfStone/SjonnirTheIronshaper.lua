@@ -8,15 +8,15 @@ mod:SetZone()
 
 mod:RegisterCombat("combat")
 
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED"
+)
+
 local warningCharge		= mod:NewTargetAnnounce(50834, 2)
 local warningRing		= mod:NewSpellAnnounce(50840, 3)
 local timerCharge		= mod:NewTargetTimer(10, 50834)
 local timerChargeCD		= mod:NewCDTimer(25, 50834)
 local timerRingCD		= mod:NewCDTimer(25, 50840)
-
-mod:RegisterEvents(
-	"SPELL_AURA_APPLIED"
-)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(59848, 50840, 59861, 51849) then

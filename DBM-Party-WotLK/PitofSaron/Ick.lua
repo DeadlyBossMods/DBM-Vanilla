@@ -53,8 +53,8 @@ end
 
 do 
 	local lasttoxic = 0
-	function mod:SPELL_PERIODIC_DAMAGE(args)
-		if args:IsSpellID(69024, 70436) and args:IsPlayer() and time() - lasttoxic > 2 then
+	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 69024 or spellId == 70436) and destGUID == UnitGUID("player") and time() - lasttoxic > 2 then
 			specWarnToxic:Show()
 			lasttoxic = time()
 		end

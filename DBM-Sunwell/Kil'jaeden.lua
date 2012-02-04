@@ -168,21 +168,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(45680) and GetTime() - lastOrb > 10 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 45680 and GetTime() - lastOrb > 10 then
 		warnDarkOrb:Show()
 		specWarnDarkOrb:Show()
 		lastOrb = GetTime()
 	end
 end
-
-function mod:SPELL_MISSED(args)
-	if args:IsSpellID(45680) and GetTime() - lastOrb > 10 then
-		warnDarkOrb:Show()
-		specWarnDarkOrb:Show()
-		lastOrb = GetTime()
-	end
-end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.OrbYell1 or msg:find(L.OrbYell1) or msg == L.OrbYell2 or msg:find(L.OrbYell2) or msg == L.OrbYell3 or msg:find(L.OrbYell3) or msg == L.OrbYell4 or msg:find(L.OrbYell4) then

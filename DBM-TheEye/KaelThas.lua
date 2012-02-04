@@ -231,23 +231,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:GetDestCreatureID() == 21364 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID)
+	if self:GetCIDFromGUID(destGUID) == 21364 then
 		eggSpawned()
 	end
 end
-
-function mod:SWING_DAMAGE(args)
-	if args:GetDestCreatureID() == 21364 then
-		eggSpawned()
-	end
-end
-
-function mod:RANGE_DAMAGE(args)
-	if args:GetDestCreatureID() == 21364 then
-		eggSpawned()
-	end
-end
+mod.SWING_DAMAGE = mod.SPELL_DAMAGE
+mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
 
 function mod:UNIT_TARGET()
 	if self:GetUnitCreatureId("target") == 21364 then

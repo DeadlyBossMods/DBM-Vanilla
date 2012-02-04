@@ -8,12 +8,12 @@ mod:SetZone()
 
 mod:RegisterCombat("combat")
 
-local warningShatter	= mod:NewSpellAnnounce(50810, 3)
-local timerShatterCD	= mod:NewCDTimer(25, 50810)
-
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
 )
+
+local warningShatter	= mod:NewSpellAnnounce(50810, 3)
+local timerShatterCD	= mod:NewCDTimer(25, 50810)
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(50833) then

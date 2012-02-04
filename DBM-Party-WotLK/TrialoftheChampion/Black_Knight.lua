@@ -52,30 +52,30 @@ end
 
 do 
 	local lastdesecration = 0
-	function mod:SPELL_DAMAGE(args)
-		if args:IsSpellID(67781, 67876) and args:IsPlayer() and GetTime() - lastdesecration > 3 then		-- Desecration
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 67781 or spellId == 67876) and destGUID == UnitGUID("player") and GetTime() - lastdesecration > 3 then
 			specWarnDesecration:Show()
 			lastdesecration = GetTime()
-		elseif args:IsSpellID(67886) then
+		elseif spellId == 67886 then
 			if self.Options.AchievementCheck and not warnedfailed then
-				SendChatMessage(L.AchievementFailed:format(args.destName), "PARTY")
+				SendChatMessage(L.AchievementFailed:format(destName), "PARTY")
 				warnedfailed = true
 			end
 		end
 	end
 end
 
-function mod:SPELL_MISSED(args)
-	if args:IsSpellID(67886) then
+function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 67886 then
 		if self.Options.AchievementCheck and not warnedfailed then
-			SendChatMessage(L.AchievementFailed:format(args.destName), "PARTY")
+			SendChatMessage(L.AchievementFailed:format(destName), "PARTY")
 			warnedfailed = true
 		end
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(67823, 67882) and args:IsDestTypePlayer() then-- Marked For Death
+	if args:IsSpellID(67823, 67882) and args:IsDestTypePlayer() then
 		if self.Options.SetIconOnMarkedTarget then
 			self:SetIcon(args.destName, 8, 10)
 		end

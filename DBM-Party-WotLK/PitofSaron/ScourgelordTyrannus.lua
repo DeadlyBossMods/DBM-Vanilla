@@ -56,8 +56,8 @@ end
 
 do 
 	local lasticyblast = 0
-	function mod:SPELL_PERIODIC_DAMAGE(args)
-		if args:IsSpellID(69238, 69628) and args:IsPlayer() and time() - lasticyblast > 3 then		-- Icy Blast, MOVE!
+	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+		if (spellId == 69238 or spellId == 69628) and destGUID == UnitGUID("player") and time() - lasticyblast > 3 then		-- Icy Blast, MOVE!
 			specWarnIcyBlast:Show()
 			lasticyblast = time()
 		end
