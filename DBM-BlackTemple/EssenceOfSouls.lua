@@ -15,7 +15,8 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_CAST_START",
-	"SPELL_DAMAGE"
+	"SPELL_DAMAGE",
+	"SPELL_MISSED"
 )
 
 local warnFixate		= mod:NewTargetAnnounce(41294, 3)
@@ -129,13 +130,14 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(args)
-	if args:IsSpellID(41545) and GetTime() - soulSpam >= 3 then
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 41545 and GetTime() - soulSpam >= 3 then
 		warnSoul:Show()
 		timerNextSoul:Start()
 		soulSpam = GetTime()
 	end
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if (msg == L.Enrage or msg:find(L.Enrage)) and self:IsInCombat() then
