@@ -89,15 +89,17 @@ L:SetWarningLocalization{
 	WarnPhase2Soon	= "Phase 2 bald"
 }
 L:SetTimerLocalization{
-	TimerBreath		= "%s",
 	TimerBreathCD	= "%s CD"
 }
 L:SetOptionLocalization{
 	WarnBreathSoon	= "Zeige Vorwarnung für die Atem des Chromaggus",
 	WarnBreath		= "Zeige Warnung, wenn Chromaggus einen seiner Atem wirkt",
-	TimerBreath		= "Wirkzeit der Atem anzeigen",
 	TimerBreathCD	= "Abklingzeit der Atem anzeigen",
 	WarnPhase2Soon	= "Verkünde baldigen Beginn von Phase 2"
+}
+L:SetMiscLocalization{
+	Breath1	= "Erster Atem",
+	Breath2	= "Zweiter Atem"
 }
 
 ----------------
