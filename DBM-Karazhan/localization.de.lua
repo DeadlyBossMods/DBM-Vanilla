@@ -279,9 +279,18 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Brüller",
+	DBM_OZ_WARN_STRAWMAN	= "Strohmann",
+	DBM_OZ_WARN_TINHEAD		= "Blechkopf",
+	DBM_OZ_WARN_CRONE		= "Die böse Hexe"
 }
 
 L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Brüller",
+	DBM_OZ_WARN_STRAWMAN	= "Strohmann",
+	DBM_OZ_WARN_TINHEAD		= "Blechkopf"
 }
 
 L:SetOptionLocalization{
@@ -291,11 +300,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_OZ_WARN_TITO		= "Tito",
-	DBM_OZ_WARN_ROAR		= "Brüller",
-	DBM_OZ_WARN_STRAWMAN	= "Strohmann",
-	DBM_OZ_WARN_TINHEAD		= "Blechkopf",
-	DBM_OZ_WARN_CRONE		= "Die böse Hexe",
 	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, wir müssen einfach einen Weg nach Hause finden! Der alte Zauberer ist unsere einzige Hoffnung! Strohmann, Brüller, Blechkopf, wollt ihr - wartet... Donnerwetter, schaut! Wir haben Besucher!",
 	DBM_OZ_YELL_ROAR		= "Ich habe keine Angst vor Euch! Wollt Ihr kämpfen? Hä, wollt Ihr? Kommt schon! Ich schaffe Euch mit beiden Pfoten hinter dem Rücken!",
 	DBM_OZ_YELL_STRAWMAN	= " Was soll ich nur mit Euch machen? Mit fällt einfach nichts ein.",

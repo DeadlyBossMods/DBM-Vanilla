@@ -135,7 +135,7 @@ L:SetTimerLocalization{
 L:SetWarningLocalization{
 	WarnReanimating				= "Add-Wiederbelebung",			-- Reanimating an adherent or fanatic
 	WarnTouchInsignificance		= "%s auf >%s< (%d)",		-- Touch of Insignificance on >args.destName< (args.amount)
-	WarnAddsSoon				= "Neue Adds bald",
+	WarnAddsSoon				= "Neue Adds bald"
 }
 
 L:SetOptionLocalization{

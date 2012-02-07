@@ -82,20 +82,17 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnPhase		= "%sphase",
-	WarnPhaseSoon	= "%sphase in 10 Sek",
-	WarnBreath		= "Nebel der Verderbnis (%d)"
+	WarnPhaseSoon	= "%sphase in 10 Sek"
 }
 
 L:SetTimerLocalization{
-	TimerPhase		= "Nächste %sphase",
-}	TimerBreath		= "Nebel der Verderbnis CD"
+	TimerPhase		= "Nächste %sphase"
+}
 
 L:SetOptionLocalization{
 	WarnPhase		= "Zeige Warnung für nächste Phase",
 	WarnPhaseSoon	= "Zeige Vorwarnung für nächste Phase",
-	WarnBreath		= "Zeige Warnung für Nebel der Verderbnis",
 	TimerPhase		= "Zeige Zeit bis nächste Phase",
-	TimerBreath		= "Abklingzeit von Nebel der Verderbnis anzeigen",
 	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
 	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
 	YellOnEncaps	= "Schreie bei $spell:45665 auf dir"
@@ -212,7 +209,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	YellPull		= "Die Entbehrlichen sind dahin - so sei es! Jetzt werde ich dort erfolgreich sein, wo Sargeras versagt hat! Ich werde diese jämmerliche Welt ausbluten lassen und meinen Platz als wahrer Meister der Brennenden Legion einnehmen! Das Ende ist gekommen! Lasst uns diese Welt dem Erdboden gleichmachen",
+	YellPull		= "Die Entbehrlichen sind dahin - so sei es! Jetzt werde ich dort erfolgreich sein, wo Sargeras versagt hat! Ich werde diese jämmerliche Welt ausbluten lassen und meinen Platz als wahrer Meister der Brennenden Legion einnehmen! Das Ende ist gekommen! Lasst uns diese Welt dem Erdboden gleichmachen!",
 	YellBloom		= "Feuerblüte auf mir!",
 	BloomWhisper	= "Feuerblüte auf dir!",
 	OrbYell1		= "Ich werde die Kugeln mit meiner Macht erfüllen! Seid bereit!", --needs to be verified (video-captured translation)

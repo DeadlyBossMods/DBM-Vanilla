@@ -18,10 +18,12 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837),
-	RangeFrame	= "Zeige Abstandsfenster (10m)"
+	RangeFrame	= "Zeige Abstandsfenster (10m)",
+	InfoFrame	= "Zeige Infofenster für Gesundheit (<8800 Lebenspunkte)"
 }
 
 L:SetMiscLocalization{
+	HealthInfo	= "Gesundheitsinfo"
 }
 
 ----------------
