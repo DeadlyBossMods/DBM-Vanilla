@@ -35,7 +35,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "Гарр"
+	name = "Гарр (Classic)"
 }
 
 --------------
