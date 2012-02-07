@@ -24,7 +24,7 @@
 ## X-DBM-Mod-SubCategories-esMX: Ahn'Kahlet,Azjol-Nerub,CoT: La Matanza de Stratholme,Fortaleza de Drak'Tharon,Gundrak,Cámaras de Relámpagos,Camaras de Piedra,El Nexo,El Oculus,Fortaleza de Utgarde,Pinaculo de Utgarde,Bastion Violeta,Prueba del Campeón,La Forja de Almas,Foso de Saron,Cámaras de Reflexión
 ## X-DBM-Mod-Name: Party-WotLK
 ## X-DBM-Mod-Name-frFR: Groupe-WotLK
-## X-DBM-Mod-Name-deDE: Gruppe-WotLK
+## X-DBM-Mod-Name-deDE: Gruppe (WotLK)
 ## X-DBM-Mod-Name-ruRU: Групповые подземелья-WotLK
 ## X-DBM-Mod-Name-zhTW: 隊伍首領-巫妖王之怒
 ## X-DBM-Mod-Name-zhCN: 队伍首领-WotLK
