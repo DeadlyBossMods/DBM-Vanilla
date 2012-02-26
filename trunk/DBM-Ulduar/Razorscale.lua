@@ -93,7 +93,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, mob)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(64021) then	-- deep breath
+	if args:IsSpellID(63317, 64021) then	-- deep breath
 		timerDeepBreathCast:Start()
 		timerDeepBreathCooldown:Start()
 	end
