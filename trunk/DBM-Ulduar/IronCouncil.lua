@@ -70,18 +70,33 @@ local enrageTimer				= mod:NewBerserkTimer(900)
 local disruptTargets = {}
 local disruptIcon = 7
 local bosskilled = 0
+local scansDone = 0
 
 function mod:OnCombatStart(delay)
 	enrageTimer:Start(-delay)
 	table.wipe(disruptTargets)
 	disruptIcon = 7
 	bosskilled = 0
+	scansDone = 0
 end
 
 function mod:RuneTarget()
-	local targetname = self:GetBossTarget(32927)
-	if not targetname then return end
-		warnRuneofPower:Show(targetname)
+	scansDone = scansDone + 1
+	local targetname, uId = self:GetBossTarget(32927)
+--	print(targetname, uId)
+	if targetname and uId then
+		if UnitIsFriend("player", uId) then--He's targeting a friendly unit, he doesn't cast this on players, so it's wrong target.
+			if scansDone < 15 then--Make sure no infinite loop.
+				self:ScheduleMethod(0.1, "RuneTarget")--Check multiple times to find a target that isn't a player.
+			end
+		else--He's not targeting a player, it's definitely breeze target.
+			warnRuneofPower:Show(targetname)
+		end
+	else--target was nil, lets schedule a rescan here too.
+		if scansDone < 15 then--Make sure not to infinite loop here as well.
+			self:ScheduleMethod(0.1, "RuneTarget")
+		end
+	end
 end
 
 local function warnStaticDisruptionTargets()
@@ -100,9 +115,9 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(61903, 63493) then	-- Fusion Punch
 		warnFusionPunch:Show()
 		timerFusionPunchCast:Start()
-	elseif args:IsSpellID(62274, 63489) then		-- Shield of Runes
+	elseif args:IsSpellID(62274, 63489) then	-- Shield of Runes
 		warnShieldofRunes:Show()
-	elseif args:IsSpellID(62273) then				-- Rune of Summoning
+	elseif args:IsSpellID(62273) then			-- Rune of Summoning
 		warnRuneofSummoning:Show()
 	end
 end
@@ -112,7 +127,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnRuneofDeath:Show()
 		timerRuneofDeath:Start()
 	elseif args:IsSpellID(64321, 61974) then	-- Rune of Power
-		self:ScheduleMethod(0.2, "RuneTarget")
+		scansDone = 0
+		self:RuneTarget()
 		timerRuneofPower:Start()
 	elseif args:IsSpellID(61869, 63481) then	-- Overload
 		timerOverload:Start()
