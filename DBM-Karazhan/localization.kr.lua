@@ -263,7 +263,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_NB_EMOTE_PULL		= "멀리에서 고대의 존재가 깨어나고 있다...",
+	DBM_NB_EMOTE_PULL		= "멀리에서 고대의 존재가 깨어납니다...",
 	DBM_NB_YELL_PULL		= "정말 멍청하군! 고통 없이 빨리 끝내주마!",
 	DBM_NB_YELL_AIR			= "이 더러운 기생충들, 내가 하늘에서 너희의 씨를 말리리라!",
 	DBM_NB_YELL_GROUND		= "그만! 내 친히 내려가서 너희를 짓이겨주마!",

@@ -18,14 +18,14 @@ local warningBone			= mod:NewSpellAnnounce(37098, 3)
 local warningFearSoon		= mod:NewSoonAnnounce(36922, 2)
 local warningFear			= mod:NewSpellAnnounce(36922, 3)
 local warningAsh			= mod:NewTargetAnnounce(30130, 2, nil, false)
-local WarnAir				= mod:NewAnnounce("DBM_NB_AIR_WARN", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local WarnAir				= mod:NewAnnounce("DBM_NB_AIR_WARN", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local WarnNBDown1			= mod:NewAnnounce("DBM_NB_DOWN_WARN", 2, nil, nil, false)
 local WarnNBDown2			= mod:NewAnnounce("DBM_NB_DOWN_WARN2", 3, nil, nil, false)
 
 local specWarnCharred		= mod:NewSpecialWarningMove(30129)
 
 local timerNightbane		= mod:NewTimer(34, "timerNightbane", "Interface\\Icons\\Ability_Mount_Undeadhorse")
-local timerAirPhase			= mod:NewTimer(57, "timerAirPhase", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local timerAirPhase			= mod:NewTimer(57, "timerAirPhase", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local timerFearCD			= mod:NewNextTimer(31.5, 36922)
 local timerFear				= mod:NewCastTimer(1.5, 36922)
 
