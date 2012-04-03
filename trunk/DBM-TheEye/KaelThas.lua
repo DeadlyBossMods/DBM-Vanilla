@@ -194,7 +194,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(36815) and not phase5 then
 		shieldDown = true
-		specWarnPyro:Show()
+		specWarnPyro:Show(args.sourceName)
 		self:Unschedule(hideShieldHealthBar)
 		hideShieldHealthBar()
 	elseif args:IsSpellID(36797) then

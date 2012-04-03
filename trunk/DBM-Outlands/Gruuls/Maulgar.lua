@@ -46,13 +46,13 @@ function mod:SPELL_CAST_START(args)
 		warningPoH:Show()
 		timerPoH:Start()
 		if self:GetUnitCreatureId("target") == 18836 or self:GetUnitCreatureId("focus") == 18836 then
-			specWarnPoH:Show()
+			specWarnPoH:Show(args.sourceName)
 		end
 	elseif args:IsSpellID(33144) then--Heal
 		warningHeal:Show()
 		timerHeal:Start()
 		if self:GetUnitCreatureId("target") == 18836 or self:GetUnitCreatureId("focus") == 18836 then
-			specWarnHeal:Show()
+			specWarnHeal:Show(args.sourceName)
 		end
 	end
 end

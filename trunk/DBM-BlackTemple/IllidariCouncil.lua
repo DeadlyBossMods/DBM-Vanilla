@@ -115,7 +115,7 @@ function mod:SPELL_CAST_START(args)
 		warnCoHCast:Show()
 		timerCoH:Start()
 		if self:GetUnitCreatureId("target") == 22951 or self:GetUnitCreatureId("focus") == 22951 then
-			specWarnCoH:Show()
+			specWarnCoH:Show(args.sourceName)
 		end
 	end
 end

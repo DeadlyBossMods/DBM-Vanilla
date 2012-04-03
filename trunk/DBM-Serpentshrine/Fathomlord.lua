@@ -42,7 +42,7 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(38330) then
 		warnHeal:Show()
 		if self:GetUnitCreatureId("target") == 21964 then
-			specWarnHeal:Show()
+			specWarnHeal:Show(args.sourceName)
 		end
 	end
 end

@@ -125,7 +125,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpellID(41426) then
 		warnShockCast:Show()
 		if self:GetUnitCreatureId("target") == 23419 or self:GetUnitCreatureId("focus") == 23419 then
-			specWarnShock:Show()
+			specWarnShock:Show(args.sourceName)
 		end
 	end
 end

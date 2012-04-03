@@ -35,7 +35,7 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(30528) then
 		warningHeal:Show()
 		if args.sourceGUID == UnitGUID("target") then
-			specWarnHeal:Show()
+			specWarnHeal:Show(args.sourceName)
 			timerHeal:Start()
 		end
 	elseif args:IsSpellID(30616) then
