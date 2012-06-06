@@ -23,9 +23,6 @@ local timerFearCD		= mod:NewNextTimer(24, 30752)
 
 mod:AddBoolOption("RRHIcon")
 
-local lastFear = 0
-
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(30753) then
 		warningRRH:Show(args.destName)
@@ -39,11 +36,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.RRHIcon then
 			self:SetIcon(targetname, 8, 20)
 		end
-	elseif args:IsSpellID(30752) and GetTime() - lastFear > 2 then
+	elseif args:IsSpellID(30752) and self:AntiSpam() then
 		warningFear:Show()
 		warningFearSoon:Cancel()
 		warningFearSoon:Schedule(19)
 		timerFearCD:Start()
-		lastFear = GetTime()
 	end
 end

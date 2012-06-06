@@ -20,14 +20,13 @@ local warningCurse			= mod:NewSpellAnnounce(43127, 3)
 local timerCurseCD			= mod:NewNextTimer(31, 43127)
 
 local Phase	= 1
-local lastCurse = 0
 
 function mod:OnCombatStart(delay)
 	Phase = 1
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(43127, 29833) and GetTime() - lastCurse > 5 then
+	if args:IsSpellID(43127, 29833) and self:AntiSpam(5) then
 		warningCurse:Show()
 		timerCurseCD:Show()
 		warningCurseSoon:Cancel()
@@ -38,7 +37,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerCurseCD:Start()
 			warningCurseSoon:Schedule(26)
 		end
-		lastCurse = GetTime()
 	end
 end
 

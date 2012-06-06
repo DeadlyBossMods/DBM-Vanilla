@@ -28,8 +28,6 @@ local berserkTimer		= mod:NewBerserkTimer(900)
 mod:AddBoolOption("KiteIcon", true)
 mod:AddBoolOption("KiteWhisper", false, "announce")
 
-local volcanoSpam = 0
-local moltenSpam = 0
 local phase2 = false
 local lastTarget = false
 
@@ -53,7 +51,6 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	timerPhase:Start(-delay, L.Kite)
 	warnPhaseSoon:Schedule(50, L.Kite)
-	volcanoSpam = 0
 	phase2 = false
 	lastTarget = false
 end
@@ -65,12 +62,10 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(40265) and args:IsPlayer() and GetTime() - moltenSpam >= 4 then
+	if args:IsSpellID(40265) and args:IsPlayer() and self:AntiSpam(4, 1) then
 		specWarnMolten:Show()
-		moltenSpam = GetTime()
-	elseif args:IsSpellID(42052) and args:IsPlayer() and GetTime() - volcanoSpam >= 4 then
+	elseif args:IsSpellID(42052) and args:IsPlayer() and self:AntiSpam(4, 2) then
 		specWarnVolcano:Show()
-		volcanoSpam = GetTime()
 	end
 end
 

@@ -30,8 +30,6 @@ local timerBlightBomb		= mod:NewCastTimer(5, 71088)
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
 
-local spamZombies = 0
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(71127) then
 		warnMortalWound:Show(args.spellName, args.destName, args.amount or 1)
@@ -45,10 +43,9 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(71159) and GetTime() - spamZombies > 5 then
+	if args:IsSpellID(71159) and self:AntiSpam(5) then
 		warnZombies:Show()
 		timerZombies:Start()
-		spamZombies = GetTime()
 	end
 end
 

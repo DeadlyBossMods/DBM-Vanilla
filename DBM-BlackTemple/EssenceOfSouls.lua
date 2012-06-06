@@ -54,7 +54,6 @@ local warnSpiteTargets = {}
 local lastFixate = false
 local drainIcon = 8
 local spiteIcon = 8
-local soulSpam = 0
 
 local function showDrain()
 	warnDrain:Show(table.concat(warnDrainTargets, "<, >"))
@@ -70,7 +69,6 @@ end
 
 function mod:OnCombatStart(delay)
 	lastFixate = false
-	soulSpam = 0
 	table.wipe(warnSpiteTargets)
 	timerNextEnrage:Start(47-delay)
 	warnEnrageSoon:Schedule(42-delay)
@@ -131,10 +129,9 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if spellId == 41545 and GetTime() - soulSpam >= 3 then
+	if spellId == 41545 and self:AntiSpam(3) then
 		warnSoul:Show()
 		timerNextSoul:Start()
-		soulSpam = GetTime()
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE

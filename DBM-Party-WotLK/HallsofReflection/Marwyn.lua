@@ -21,17 +21,14 @@ local timerCorruptedFleshCD		= mod:NewCDTimer(20, 72436)
 
 local specWarnWellCorruption	= mod:NewSpecialWarningMove(72362)
 
-local spam = 0
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(72362) and args:IsPlayer() then
 		specWarnWellCorruption:Show()
 	elseif args:IsSpellID(72436, 72363) then
-		if GetTime() - spam > 5 then
+		if self:AntiSpam(5) then
 			warnCorruptedFlesh:Show()
 			timerCorruptedFlesh:Start()
 			timerCorruptedFleshCD:Start()
-			spam = GetTime()
 		end
 	end
 end

@@ -40,13 +40,11 @@ mod:AddBoolOption("SetIconOnShadowCrash", true)
 mod:AddBoolOption("SetIconOnLifeLeach", true)
 mod:AddBoolOption("CrashArrow")
 
-local lastCrash
 
 function mod:OnCombatStart(delay)
 	timerEnrage:Start(-delay)
 	timerHardmode:Start(-delay)
 	timerNextSurgeofDarkness:Start(-delay)
-	lastCrash = GetTime()
 end
 
 function mod:SPELL_CAST_START(args)

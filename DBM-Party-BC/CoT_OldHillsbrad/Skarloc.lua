@@ -39,13 +39,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-do 
-	local lastConsecration = 0
-	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if spellId == 38385 and destGUID == UnitGUID("player") and time() - lastConsecration > 2 then
-			specWarnConsecration:Show()
-			lastConsecration = time()
-		end
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if spellId == 38385 and destGUID == UnitGUID("player") and self:AntiSpam() then
+		specWarnConsecration:Show()
 	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE

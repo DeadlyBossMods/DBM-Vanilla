@@ -24,7 +24,7 @@ local canPurge = select(2, UnitClass("player")) == "MAGE"
 
 local warnAddsSoon					= mod:NewAnnounce("WarnAddsSoon", 2)
 local warnDominateMind				= mod:NewTargetAnnounce(71289, 3)
-local warnDeathDecay				= mod:NewSpellAnnounce(72108, 2)
+--local warnDeathDecay				= mod:NewSpellAnnounce(72108, 2)
 local warnSummonSpirit				= mod:NewSpellAnnounce(71426, 2)
 local warnReanimating				= mod:NewAnnounce("WarnReanimating", 3)
 local warnDarkTransformation		= mod:NewSpellAnnounce(70900, 4)
@@ -57,8 +57,6 @@ mod:AddBoolOption("SetIconOnEmpoweredAdherent", false)
 mod:AddBoolOption("ShieldHealthFrame", true)
 mod:RemoveOption("HealthFrame")
 
-
-local lastDD = 0
 local dominateMindTargets = {}
 local dominateMindIcon = 6
 local deformedFanatic
@@ -167,10 +165,9 @@ do
 			if args:IsPlayer() then
 				specWarnDeathDecay:Show()
 			end
-			if (GetTime() - lastDD > 5) then
+--[[			if self:AntiSpam(5, 2) then--This is a terrible way to do it, one day i need to fix this to trigger off casts not people SIS.
 				warnDeathDecay:Show()
-				lastDD = GetTime()
-			end
+			end--]]
 		elseif args:IsSpellID(71237) and args:IsPlayer() then
 			specWarnCurseTorpor:Show()
 		elseif args:IsSpellID(70674) and not args:IsDestTypePlayer() and (UnitName("target") == L.Fanatic1 or UnitName("target") == L.Fanatic2 or UnitName("target") == L.Fanatic3) then
@@ -228,14 +225,10 @@ function mod:SPELL_INTERRUPT(args)
 	end
 end
 
-local lastSpirit = 0
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(71426) then -- Summon Vengeful Shade
-		if time() - lastSpirit > 5 then
-			warnSummonSpirit:Show()
-			timerSummonSpiritCD:Start()
-			lastSpirit = time()
-		end
+	if args:IsSpellID(71426) and self:AntiSpam(5, 1) then -- Summon Vengeful Shade
+		warnSummonSpirit:Show()
+		timerSummonSpiritCD:Start()
 	end
 end
 

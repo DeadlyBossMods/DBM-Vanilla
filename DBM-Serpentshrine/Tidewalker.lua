@@ -31,7 +31,6 @@ mod:AddBoolOption("GraveIcon", true)
 
 local warnGraveTargets = {}
 local graveIcon = 8
-local bubbleSpam = 0
 
 local function showGraveTargets()
 	warnGrave:Show(table.concat(warnGraveTargets, "<, >"))
@@ -41,7 +40,6 @@ end
 
 function mod:OnCombatStart(delay)
 	graveIcon = 8
-	bubbleSpam = 0
 	table.wipe(warnGraveTargets)
 	timerGraveCD:Start(20-delay)
 	timerMurlocs:Start(41-delay)
@@ -78,9 +76,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(37854) and GetTime() - bubbleSpam >= 30 then
+	if args:IsSpellID(37854) and self:AntiSpam(30) then
 		warnBubble:Show()
 		timerBubble:Start()
-		bubbleSpam = GetTime()
 	end
 end

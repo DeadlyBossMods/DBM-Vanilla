@@ -74,8 +74,6 @@ mod:AddBoolOption("YellOnUnbound", true, "announce")
 
 local warned_preP2 = false
 local warned_preP3 = false
-local spamPuddle = 0
-local spamGas = 0
 local phase = 0
 local lastGoo = 0
 
@@ -187,14 +185,13 @@ function mod:NextPhase()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(70341) and GetTime() - spamPuddle > 5 then
+	if args:IsSpellID(70341) and self:AntiSpam(5, 1) then
 		warnSlimePuddle:Show()
 		if phase == 3 then
 			timerSlimePuddleCD:Start(20)--In phase 3 it's faster
 		else
 			timerSlimePuddleCD:Start()
 		end
-		spamPuddle = GetTime()
 	elseif args:IsSpellID(71255) then
 		warnChokingGasBomb:Show()
 		specWarnChokingGasBomb:Show()
@@ -299,9 +296,8 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.UnboundPlagueIcon then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif args:IsSpellID(71615) and GetTime() - spamGas > 5 then 	-- Tear Gas Removal
+	elseif args:IsSpellID(71615) and self:AntiSpam(5, 2) then 	-- Tear Gas Removal
 		self:NextPhase()
-		spamGas = GetTime()
 	elseif args:IsSpellID(70539, 72457, 72875, 72876) then
 		timerRegurgitatedOoze:Cancel(args.destName)
 	elseif args:IsSpellID(70542) then

@@ -24,12 +24,7 @@ local timerQuake			= mod:NewBuffActiveTimer(8, 32686)
 
 mod:AddBoolOption("RangeFrame", true)
 
-local lastQuake = 0
-local lastCharge = 0
-
 function mod:OnCombatStart(delay)
-	lastQuake = 0
-	lastCharge = 0
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(10)
 	end
@@ -42,29 +37,20 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(32637) and GetTime() - lastCharge > 10 then
+	if args:IsSpellID(32637) and self:AntiSpam(10, 1) then
 		warnCharge:Show()
 		timerChargeCD:Show()
 		warningChargeeSoon:Cancel()
 		warningChargeSoon:Schedule(36)
-		lastCharge = GetTime()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(32686) and GetTime() - lastQuake > 30 then
+	if args:IsSpellID(32686) and self:AntiSpam(30, 2) then
 		warnQuake:Show()
 		timerQuake:Start()
 		timerQuakeCD:Show()
 		warningQuakeSoon:Cancel()
 		warningQuakeSoon:Schedule(47)
-		lastQuake = GetTime()
 	end
 end
-
---[[
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.DBM_DOOMW_EMOTE_ENRAGE then
---Would prefer to use spell aura for this instead of locals that aren't needed, disabled function
-	end
-end--]]

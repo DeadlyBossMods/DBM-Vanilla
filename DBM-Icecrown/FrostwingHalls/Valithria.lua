@@ -44,7 +44,6 @@ local berserkTimer		= mod:NewBerserkTimer(420)
 mod:AddBoolOption("SetIconOnBlazingSkeleton", true)
 
 local GutSprayTargets = {}
-local spamSupression = 0
 local BlazingSkeletonTimer = 60
 local AbomSpawn = 0
 local AbomTimer = 60
@@ -139,8 +138,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(71741) then--Mana Void
 		warnManaVoid:Show()
-	elseif args:IsSpellID(70588) and GetTime() - spamSupression > 5 then--Supression
-		spamSupression = GetTime()
+	elseif args:IsSpellID(70588) and self:AntiSpam(5, 1) then--Supression
 		warnSupression:Show(args.destName)
 	end
 end
@@ -174,16 +172,12 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-do 
-	local lastVoid = 0
-	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if (spellId == 71806 or spellId == 71743 or spellId == 72029 or spellId == 72030) and destGUID == UnitGUID("player") and GetTime() - lastVoid > 2 then		-- Mana Void
-			specWarnManaVoid:Show()
-			lastVoid = GetTime()
-		end
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 71806 or spellId == 71743 or spellId == 72029 or spellId == 72030) and destGUID == UnitGUID("player") and self:AntiSpam(2, 2) then		-- Mana Void
+		specWarnManaVoid:Show()
 	end
-	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:UNIT_TARGET()
 	if blazingSkeleton then

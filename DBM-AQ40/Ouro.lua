@@ -29,9 +29,9 @@ local timerSweepCD		= mod:NewCDTimer(21, 26103)
 local timerBlast		= mod:NewCastTimer(2, 26102)
 local timerBlastCD		= mod:NewCDTimer(23, 26102)
 
-local summonSpam
-local prewarn_enrage
-local enraged
+local prewarn_enrage = false
+local enraged = false
+
 function mod:OnCombatStart(delay)
 	timerSubmerge:Start(-delay)
 	warnSubmergeSoon:Schedule(170)
@@ -70,8 +70,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(26058) and GetTime() - summonSpam >= 3 and not enraged then
-		summonSpam = GetTime()
+	if args:IsSpellID(26058) and self:AntiSpam(3) and not enraged then
 		warnSubmergeSoon:Cancel()
 		warnSubmerge:Show()
 		timerEmerge:Start()

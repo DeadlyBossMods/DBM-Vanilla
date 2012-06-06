@@ -20,12 +20,6 @@ local timerFear					= mod:NewBuffActiveTimer(4, 72452)
 local timerImpendingDespair		= mod:NewTargetTimer(6, 72426)
 local timerQuiveringStrike		= mod:NewTargetTimer(5, 72453)
 
-local lastfear = 0
-
-function mod:OnCombatStart(delay)
-	lastfear = 0
-end
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(72422, 72453) then
 		timerQuiveringStrike:Start(args.destName)
@@ -33,10 +27,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(72426) then
 		timerImpendingDespair:Start(args.destName)
 		warnImpendingDespair:Show(args.destName)
-	elseif args:IsSpellID(72452, 72435) and GetTime() - lastfear > 2 then
+	elseif args:IsSpellID(72452, 72435) and self:AntiSpam() then
 		warnFear:Show()
 		timerFear:Start()
-		lastfear = GetTime()
 	end
 end
 

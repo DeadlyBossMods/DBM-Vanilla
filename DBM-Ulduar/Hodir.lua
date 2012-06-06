@@ -82,12 +82,8 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-do 
-	local lastbitingcold = 0
-	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if (spellId == 62038 or spellId == 62188) and destGUID == UnitGUID("player") and time() - lastbitingcold > 4 then
-			specWarnBitingCold:Show()
-			lastbitingcold = time()
-		end
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if (spellId == 62038 or spellId == 62188) and destGUID == UnitGUID("player") and self:AntiSpam(4) then
+		specWarnBitingCold:Show()
 	end
 end

@@ -188,7 +188,6 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(63027) then				-- mines
 		timerProximityMines:Start()
-
 	elseif args:IsSpellID(63414) then			-- Spinning UP (before Dark Glare)
 		is_spinningUp = true
 		timerSpinUp:Start()
@@ -196,7 +195,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerNextDarkGlare:Schedule(19)			-- 4 (cast spinup) + 15 sec (cast dark glare)
 		DBM:Schedule(0.15, show_warning_for_spinup)	-- wait 0.15 and then announce it, otherwise it will sometimes fail
 		lastSpinUp = GetTime()
-	
 	elseif args:IsSpellID(65192) then
 		timerNextFlameSuppressant:Start()
 	end

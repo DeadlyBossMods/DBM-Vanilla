@@ -32,8 +32,6 @@ local timerNextPlatform	= mod:NewTimer(34.5, "NextPlatform", 40192)--This has no
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local fireSpam = 0
-local meteorTime = 0
 
 function mod:Platform()--An attempt to avoid ugly target scanning, but i get feeling this won't be accurate enough.
 	timerNextPlatform:Start()
@@ -41,8 +39,6 @@ function mod:Platform()--An attempt to avoid ugly target scanning, but i get fee
 end
 
 function mod:OnCombatStart(delay)
-	fireSpam = 0
-	meteorTime = 0
 	warnPhase1:Show()
 	timerNextPlatform:Start(-delay)
 	self:ScheduleMethod(34.5-delay, "Platform")
@@ -53,9 +49,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnQuill:Show()
 		specWarnQuill:Show()
 		timerQuill:Start()
-	elseif args:IsSpellID(35383) and args:IsPlayer() and GetTime() - fireSpam >= 2 then
+	elseif args:IsSpellID(35383) and args:IsPlayer() and self:AntiSpam(3, 1) then
 		specWarnFire:Show()
-		fireSpam = GetTime()
 	elseif args:IsSpellID(35410) then
 		warnArmor:Show(args.destName)
 		timerArmor:Start(args.destName)
@@ -79,10 +74,9 @@ function mod:SPELL_HEAL(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, de
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if (spellId == 35181 or spellId == 45680) and GetTime() - meteorTime > 30 then
+	if (spellId == 35181 or spellId == 45680) and self:AntiSpam(30, 2) then
 		warnMeteor:Show()
 		timerMeteor:Start()
-		meteorTime = GetTime()
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE

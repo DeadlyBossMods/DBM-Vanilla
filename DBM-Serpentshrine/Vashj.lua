@@ -42,8 +42,6 @@ mod:AddBoolOption("ChargeIcon", true)
 mod:AddBoolOption("LootIcon", true)
 
 local shieldLeft = 4
-local toxicSpam = 0
-local p2Spam = 0
 local nagaCount = 1
 local striderCount = 1
 local elementalCount = 1
@@ -64,8 +62,6 @@ end
 
 function mod:OnCombatStart(delay)
 	shieldLeft = 4
-	toxicSpam = 0
-	p2Spam = 0
 	nagaCount = 1
 	striderCount = 1
 	elementalCount = 1
@@ -96,9 +92,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnCore:Show()
 		end
-	elseif args:IsSpellID(38575) and args:IsPlayer() and GetTime() - toxicSpam >= 2 then
+	elseif args:IsSpellID(38575) and args:IsPlayer() and self:AntiSpam() then
 		specWarnToxic:Show()
-		toxicSpam = GetTime()
 	end
 end
 

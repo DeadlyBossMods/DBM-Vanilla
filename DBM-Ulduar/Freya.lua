@@ -51,7 +51,6 @@ mod:AddBoolOption("HealthFrame", true)
 local adds		= {}
 local rootedPlayers 	= {}
 local altIcon 		= true
-local killTime		= 0
 local iconId		= 6
 
 function mod:OnCombatStart(delay)
@@ -139,8 +138,7 @@ function mod:UNIT_DIED(args)
 		if self.Options.HealthFrame then
 			DBM.BossHealth:RemoveBoss(cid)
 		end
-		if (GetTime() - killTime) > 20 then
-			killTime = GetTime()
+		if self:AntiSpam(20) then
 			timerSimulKill:Start()
 			warnSimulKill:Show()
 		end

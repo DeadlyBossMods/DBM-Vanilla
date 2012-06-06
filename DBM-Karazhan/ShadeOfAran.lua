@@ -145,13 +145,9 @@ do
 	end, 1)
 end
 
-do 
-	local lastBlizzard = 0
-	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if spellId == 29951 and destGUID == UnitGUID("player") and GetTime() - lastBlizzard > 2 then
-			specWarnBlizzard:Show()
-			lastBlizzard = GetTime()
-		end
+function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 29951 and destGUID == UnitGUID("player") and self:AntiSpam() then
+		specWarnBlizzard:Show()
 	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
