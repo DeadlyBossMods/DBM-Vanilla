@@ -30,8 +30,6 @@ local timerSacrificeCD	= mod:NewNextTimer(43, 30115)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("HealthFrame", true)
-
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 end

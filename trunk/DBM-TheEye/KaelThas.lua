@@ -68,7 +68,6 @@ mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", true)
 mod:AddBoolOption("GazeWhisper", false, "announce")
 
-local lastEgg = 0
 local mcIcon = 8
 local warnConflagTargets = {}
 local warnMCTargets = {}
@@ -114,7 +113,7 @@ do
 end
 
 local function eggSpawned()--Is there a better way then this? This is ugly
-	if GetTime() - lastEgg >= 20 then 
+	if self:AntiSpam(20) then 
 		warnEgg:Show()
 		specWarnEgg:Show()
 		timerRebirth:Show()
@@ -122,7 +121,6 @@ local function eggSpawned()--Is there a better way then this? This is ugly
 		mod:Schedule(15, function()
 			DBM.BossHealth:RemoveBoss(21364)
 		end)
-		lastEgg = GetTime()
 	end
 end
 
@@ -140,7 +138,6 @@ end
 function mod:OnCombatStart(delay)
 	table.wipe(warnConflagTargets)
 	table.wipe(warnMCTargets)
-	lastEgg = 0
 	mcIcon = 8
 	shieldDown = false
 	phase5 = false

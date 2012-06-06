@@ -30,23 +30,13 @@ local specWarnBronze	= mod:NewSpecialWarningYou(23170)
 local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316)
 local timerEnrage		= mod:NewBuffActiveTimer(8, 23128)
 
-local prewarn_P2
-local lastred = 0
-local lastgreen = 0
-local lastblue = 0
-local lastblack = 0
-local lastbronze = 0
+local prewarn_P2 = false
 
 function mod:OnCombatStart(delay)
 	warnBreathSoon:Schedule(25-delay)
 	timerBreathCD:Start(30-delay, L.Breath1)
 	timerBreathCD:Start(-delay, L.Breath2)
 	prewarn_P2 = false
-	lastred = 0
-	lastgreen = 0
-	lastblue = 0
-	lastblack = 0
-	lastbronze = 0
 end
 
 function mod:SPELL_CAST_START(args)
@@ -59,25 +49,20 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(23155) and GetTime() - lastred > 3 then
+	if args:IsSpellID(23155) and self:AntiSpam(3, 1) then
 		warnRed:Show()
-		lastred = GetTime()
-	elseif args:IsSpellID(23169) and GetTime() - lastgreen > 3 then
+	elseif args:IsSpellID(23169) and self:AntiSpam(3, 2) then
 		warnGreen:Show()
-		lastgreen = GetTime()
-	elseif args:IsSpellID(23153) and GetTime() - lastblue > 3 then
+	elseif args:IsSpellID(23153) and self:AntiSpam(3, 3) then
 		warnBlue:Show()
-		lastblue = GetTime()
-	elseif args:IsSpellID(23154) and GetTime() - lastblack > 3 then
+	elseif args:IsSpellID(23154) and self:AntiSpam(3, 4) then
 		warnBlack:Show()
-		lastblack = GetTime()
 	elseif args:IsSpellID(23170) then
 		if args:IsPlayer() then
 			specWarnBronze:Show()
 		end
-		if GetTime() - lastbronze > 3 then
+		if self:AntiSpam(3, 5) then
 			warnBronze:Show()
-			lastbronze = GetTime()
 		end
 	elseif args:IsSpellID(23128) then
 		warnEnrage:Show()

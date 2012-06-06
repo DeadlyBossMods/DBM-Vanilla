@@ -13,10 +13,8 @@ mod:RegisterEvents(
 
 local warnSummon   = mod:NewAnnounce("SummonElementals", 3, 33539)
 
-local spam = 0
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(33537, 33538, 33539, 33540) and GetTime() - spam > 3 then
+	if args:IsSpellID(33537, 33538, 33539, 33540) and self:AntiSpam() then
 		warnSummon:Show()
-		spam = GetTime()
 	end
 end

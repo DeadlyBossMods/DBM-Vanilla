@@ -55,16 +55,12 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-do 
-	local lasticyblast = 0
-	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if (spellId == 69238 or spellId == 69628) and destGUID == UnitGUID("player") and time() - lasticyblast > 3 then		-- Icy Blast, MOVE!
-			specWarnIcyBlast:Show()
-			lasticyblast = time()
-		end
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if (spellId == 69238 or spellId == 69628) and destGUID == UnitGUID("player") and self:AntiSpam() then		-- Icy Blast, MOVE!
+		specWarnIcyBlast:Show()
 	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(69172) then							-- Overlord's Brand

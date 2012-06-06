@@ -33,38 +33,31 @@ mod:AddBoolOption("SetIconOnMarkedTarget", true)
 mod:AddBoolOption("AchievementCheck", false, "announce")
 
 local warnedfailed = false
-local lastexplode = 0
 
 function mod:OnCombatStart(delay)
 	warnedfailed = false
-	lastexplode = 0
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(67729, 67886) and GetTime() - lastexplode > 2 then
+	if args:IsSpellID(67729, 67886) and self:AntiSpam(2, 2) then
 		warnExplode:Show()
 		specWarnExplode:Show()
 		soundExplode:Play()
 		timerExplode:Start()
-		lastexplode = GetTime()
 	end
 end
 
-do 
-	local lastdesecration = 0
-	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if (spellId == 67781 or spellId == 67876) and destGUID == UnitGUID("player") and GetTime() - lastdesecration > 3 then
-			specWarnDesecration:Show()
-			lastdesecration = GetTime()
-		elseif spellId == 67886 then
-			if self.Options.AchievementCheck and not warnedfailed then
-				SendChatMessage(L.AchievementFailed:format(destName), "PARTY")
-				warnedfailed = true
-			end
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
+	if (spellId == 67781 or spellId == 67876) and destGUID == UnitGUID("player") and self:AntiSpam(3, 1) then
+		specWarnDesecration:Show()
+	elseif spellId == 67886 then
+		if self.Options.AchievementCheck and not warnedfailed then
+			SendChatMessage(L.AchievementFailed:format(destName), "PARTY")
+			warnedfailed = true
 		end
 	end
-	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(67823, 67882) and args:IsDestTypePlayer() then
@@ -73,11 +66,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		warnMarked:Show(args.destName)
 		timerMarked:Show(args.destName)
-	elseif args:IsSpellID(67751) and GetTime() - lastexplode > 2 then	-- Ghoul Explode (BK exlodes Army of the dead. Phase 3)
+	elseif args:IsSpellID(67751) and self:AntiSpam(2, 2) then	-- Ghoul Explode (BK exlodes Army of the dead. Phase 3)
 		warnGhoulExplode:Show(args.destName)
 		specWarnExplode:Show()
 		soundExplode:Play()
-		lastexplode = GetTime()
 	end
 end
 

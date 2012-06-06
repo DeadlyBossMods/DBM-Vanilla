@@ -72,7 +72,6 @@ local unchainedIcons = 7
 local playerUnchained = false
 local playerBeaconed = false
 local activeBeacons	= false
-local lastfail
 
 local function ClearBeaconTargets()
 	table.wipe(beaconIconTargets)
@@ -161,7 +160,6 @@ function mod:OnCombatStart(delay)
 	playerBeaconed = false
 	phase = 1
 	activeBeacons = false
-	lastfail = GetTime()
 end
 
 function mod:OnCombatEnd()
@@ -256,8 +254,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		if args:IsDestTypePlayer() then
-			if self.Options.AchievementCheck and DBM:GetRaidRank() > 0 and not warnedfailed and GetTime() - lastfail > 3 then
-				lastfail = GetTime()
+			if self.Options.AchievementCheck and DBM:GetRaidRank() > 0 and not warnedfailed and self:AntiSpam(3) then
 				if (args.amount or 1) == 5 then
 					SendChatMessage(L.AchievementWarning:format(args.destName), "RAID")
 				elseif (args.amount or 1) > 5 then

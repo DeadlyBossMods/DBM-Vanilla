@@ -33,12 +33,10 @@ local berserkTimer		= mod:NewBerserkTimer(360)
 mod:AddBoolOption("BurnIcon", true)
 mod:AddBoolOption("BurnWhisper", true, "announce")
 
-local lastBurn = 8
-local burnTime = 0
+local burnIcon = 8
 
 function mod:OnCombatStart(delay)
-	lastBurn = 8
-	burnTime = 0
+	burnIcon = 8
 	timerBurnCD:Start(-delay)
 	timerStompCD:Start(-delay)
 	berserkTimer:Start(-delay)
@@ -49,19 +47,18 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnBurn:Show(args.destName)
 		timerBurn:Start(args.destName)
 		local firstBurn = false
-		if GetTime() - burnTime >= 19 then
-			burnTime = GetTime()
+		if self:AntiSpam(19) then
 			firstBurn = true
 		end
 		if firstBurn then
 			timerBurnCD:Start()
 		end
 		if self.Options.BurnIcon then
-			self:SetIcon(args.destName, lastBurn)
-			if lastBurn == 1 then
-				lastBurn = 8
+			self:SetIcon(args.destName, burnIcon)
+			if burnIcon == 1 then
+				burnIcon = 8
 			else
-				lastBurn = lastBurn - 1
+				burnIcon = burnIcon - 1
 			end
 		end
 		if IsRaidLeader() and self.Options.BurnWhisper then
@@ -94,8 +91,7 @@ end
 function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
 	if spellId == 46394 then
 		warnBurn:Show("MISSED")
-		if GetTime() - burnTime >= 19 then
-			burnTime = GetTime()
+		if self:AntiSpam(19) then
 			firstBurn = true
 		end
 		if firstBurn then

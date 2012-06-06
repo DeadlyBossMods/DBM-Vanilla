@@ -27,17 +27,13 @@ local berserkTimer		= mod:NewBerserkTimer(600)
 
 mod:AddBoolOption("DoomIcon", true)
 
-local fireSpam = 0
-
 function mod:OnCombatStart(delay)
-	fireSpam = 0
 	berserkTimer:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(31340) and args:IsPlayer() and GetTime() - fireSpam >= 3 then
+	if args:IsSpellID(31340) and args:IsPlayer() and self:AntiSpam() then
 		specWarnFire:Show()
-		fireSpam = GetTime()
 	elseif args:IsSpellID(31347) then
 		warnDoom:Show(args.destName)
 		timerDoom:Start(args.destName)

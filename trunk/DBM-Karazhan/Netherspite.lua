@@ -48,16 +48,12 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-do 
-	local lastVoid = 0
-	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if spellId == 30533 and destGUID == UnitGUID("player") and GetTime() - lastVoid > 2 then
-			specWarnVoid:Show()
-			lastVoid = GetTime()
-		end
+function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if spellId == 30533 and destGUID == UnitGUID("player") and self:AntiSpam() then
+		specWarnVoid:Show()
 	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.DBM_NS_EMOTE_PHASE_2 then

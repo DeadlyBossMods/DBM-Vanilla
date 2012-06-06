@@ -29,7 +29,6 @@ local berserkTimer	= mod:NewBerserkTimer(600)
 mod:AddBoolOption("RangeFrame", true)
 
 local warnTombTargets = {}
-local phaseSpam = 0
 local markOfH = GetSpellInfo(38215)
 local markOfC = GetSpellInfo(38219)
 local damage = {
@@ -50,7 +49,6 @@ end
 
 function mod:OnCombatStart(delay)
 	table.wipe(warnTombTargets)
-	phaseSpam = 0
 	timerMark:Start(16-delay, markOfH, "10%")
 	berserkTimer:Start(-delay)
 	if self.Options.RangeFrame then
@@ -85,9 +83,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnMark:Show(args.spellName, damage[args.spellId] or "10%")
 		timerMark:Cancel()
 		timerMark:Show(args.spellName, damageNext[args.spellId] or "10%")
-	elseif args:IsSpellID(25035) and GetTime() - phaseSpam >= 1 then
+	elseif args:IsSpellID(25035) and self:AntiSpam(2) then
 		timerMark:Cancel()
-		phaseSpam = GetTime()
 		if args:GetSrcCreatureID() == 22035 then
 			warnPhase:Show(L.Frost)
 			timerMark:Start(16, markOfH, "10%")

@@ -20,7 +20,6 @@ local warnEnrageNow			= mod:NewSpellAnnounce(28131, 4)
 local timerEmbrace			= mod:NewBuffActiveTimer(30, 28732)
 local timerEnrage			= mod:NewCDTimer(60, 28131)
 
-local embraceSpam = 0
 local enraged = false
 
 function mod:OnCombatStart(delay)
@@ -30,9 +29,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(28732, 54097)				-- Widow's Embrace
-	and (GetTime() - embraceSpam) > 5 then  -- This spell is casted twice in Naxx 25 (bug?)
-		embraceSpam = GetTime()
+	if args:IsSpellID(28732, 54097)	and self:AntiSpam(5) then  -- This spell is casted twice in Naxx 25 (bug?)
 		warnEmbraceExpire:Cancel()
 		warnEmbraceExpired:Cancel()
 		warnEnrageSoon:Cancel()
@@ -52,7 +49,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(28798, 54100) then			-- Frenzy
 		warnEnrageNow:Show()
-		enraged = GetTime()
+		enraged = true
 	end
 end
 

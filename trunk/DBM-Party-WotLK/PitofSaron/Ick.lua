@@ -52,16 +52,12 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-do 
-	local lasttoxic = 0
-	function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if (spellId == 69024 or spellId == 70436) and destGUID == UnitGUID("player") and time() - lasttoxic > 2 then
-			specWarnToxic:Show()
-			lasttoxic = time()
-		end
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if (spellId == 69024 or spellId == 70436) and destGUID == UnitGUID("player") and self:AntiSpam() then
+		specWarnToxic:Show()
 	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.Barrage then

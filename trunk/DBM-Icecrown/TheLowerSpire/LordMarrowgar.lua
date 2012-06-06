@@ -36,7 +36,6 @@ mod:AddBoolOption("SetIconOnImpale", true)
 
 local impaleTargets = {}
 local impaleIcon	= 8
-local lastColdflame = 0
 
 local function showImpaleWarning()
 	warnImpale:Show(table.concat(impaleTargets, "<, >"))
@@ -86,9 +85,8 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if (spellId == 69146 or spellId == 70823 or spellId == 70824 or spellId == 70825) and destGUID == UnitGUID("player") and GetTime() - lastColdflame > 2 then
+	if (spellId == 69146 or spellId == 70823 or spellId == 70824 or spellId == 70825) and destGUID == UnitGUID("player") and self:AntiSpam() then
 		specWarnColdflame:Show()
-		lastColdflame = GetTime()
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE

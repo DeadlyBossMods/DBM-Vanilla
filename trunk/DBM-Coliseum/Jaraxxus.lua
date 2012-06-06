@@ -79,20 +79,14 @@ function mod:OnCombatEnd()
 	DBM.BossHealth:Clear()
 end
 
-do
-	local lastflame = 0
-	local lastinferno = 0
-	function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-		if (spellId == 66877 or spellId == 67070 or spellId == 67071 or spellId == 67072) and destGUID == UnitGUID("player") and GetTime() - 3 > lastflame then		-- Legion Flame
-			specWarnFlame:Show()
-			lastflame = GetTime()
-		elseif (spellId == 66496 or spellId == 68716 or spellId == 68717 or spellId == 68718) and destGUID == UnitGUID("player") and GetTime() - 3 > lastinferno then	-- Fel Inferno
-			specWarnFelInferno:Show()
-			lastinferno = GetTime()
-		end
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+	if (spellId == 66877 or spellId == 67070 or spellId == 67071 or spellId == 67072) and destGUID == UnitGUID("player") and self:AntiSpam(3, 1) then		-- Legion Flame
+		specWarnFlame:Show()
+	elseif (spellId == 66496 or spellId == 68716 or spellId == 68717 or spellId == 68718) and destGUID == UnitGUID("player") and self:AntiSpam(3, 2) then	-- Fel Inferno
+		specWarnFelInferno:Show()
 	end
-	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 local setIncinerateTarget, clearIncinerateTarget
 do

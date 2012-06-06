@@ -102,13 +102,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-local spam = 0
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
 	if spellId == 62017 then -- Lightning Shock
 		if bit.band(destFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) ~= 0
 		and bit.band(destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0
-		and GetTime() - spam > 5 then
-			spam = GetTime()
+		and self:AntiSpam(5) then
 			specWarnOrb:Show()
 		end
 	elseif self.Options.AnnounceFails and spellId == 62466 and DBM:GetRaidRank() >= 1 and DBM:GetRaidUnitId(destName) ~= "none" and destName then

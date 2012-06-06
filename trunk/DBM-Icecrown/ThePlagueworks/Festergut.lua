@@ -48,9 +48,7 @@ local gasSporeTargets	= {}
 local gasSporeIconTargets	= {}
 local vileGasTargets	= {}
 local gasSporeCast 	= 0
-local lastGoo = 0
 local warnedfailed = false
-local lastfail
 
 local function ClearSporeTargets()
 	table.wipe(gasSporeIconTargets)
@@ -99,7 +97,6 @@ function mod:OnCombatStart(delay)
 	gasSporeCast = 0
 	lastGoo = 0
 	warnedfailed = false
-	lastfail = GetTime()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(8)
 	end
@@ -129,7 +126,7 @@ end
 
 function mod:OnSync(event, arg)
 	if event == "Goo" then
-		if time() - lastGoo > 5 then
+		if self:AntiSpam(5, 2) then
 			warnGoo:Show()
 			specWarnGoo:Show()
 			if self:IsDifficulty("heroic25") then
@@ -137,7 +134,6 @@ function mod:OnSync(event, arg)
 			else
 				timerGooCD:Start(30)--30 seconds in between goos on 10 man heroic
 			end
-			lastGoo = time()
 		end
 	end
 end
@@ -197,8 +193,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self:Schedule(0.8, warnVileGasTargets)
 	elseif args:IsSpellID(69291, 72101, 72102, 72103) then	--Inoculated
 		if args:IsDestTypePlayer() then
-			if self.Options.AchievementCheck and DBM:GetRaidRank() > 0 and not warnedfailed and GetTime() - lastfail > 3 then
-				lastfail = GetTime()
+			if self.Options.AchievementCheck and DBM:GetRaidRank() > 0 and not warnedfailed and self:AntiSpam(3, 1) then
 				if (args.amount or 1) == 3 then
 					warnedfailed = true
 					SendChatMessage(L.AchievementFailed:format(args.destName, (args.amount or 1)), "RAID_WARNING")

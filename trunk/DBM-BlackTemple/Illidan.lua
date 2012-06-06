@@ -65,7 +65,6 @@ local flameTargets = {}
 local shadowDemonTargets = {}
 local flamesDown = 0
 local flameBursts = 0
-local fbSpam = 0
 local warned_preP2 = false
 local warned_preP4 = false
 local phase4 = false
@@ -96,7 +95,6 @@ function mod:OnCombatStart(delay)
 	table.wipe(shadowDemonTargets)
 	flamesDown = 0
 	flameBursts = 0
-	fbSpam = 0
 	warned_preP2 = false
 	warned_preP4 = false
 	phase4 = false
@@ -163,10 +161,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if spellId == 41131 and GetTime() - fbSpam >= 4 then
+	if spellId == 41131 and self:AntiSpam(4) then
 		warnFlameBurst:Show()
 		flameBursts = flameBursts + 1
-		fbSpam = GetTime()
 		if flameBursts < 3 then
 			timerNextFlameBurst:Start()
 		end

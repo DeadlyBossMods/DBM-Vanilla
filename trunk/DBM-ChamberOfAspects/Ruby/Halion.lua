@@ -60,7 +60,6 @@ mod:AddBoolOption("SetIconOnConsumption", true)
 local warned_preP2 = false
 local warned_preP3 = false
 local phasethree = false
-local lastflame = 0
 local phases = {}
 
 function mod:OnCombatStart(delay)--These may still need retuning too, log i had didn't have pull time though.
@@ -68,7 +67,6 @@ function mod:OnCombatStart(delay)--These may still need retuning too, log i had 
 	warned_preP2 = false
 	warned_preP3 = false
 	phasethree = false
-	lastflame = 0
 	berserkTimer:Start(-delay)
 	timerMeteorCD:Start(20-delay)
 	timerFieryConsumptionCD:Start(15-delay)
@@ -166,9 +164,8 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if (spellId == 75947 or spellId == 75948 or spellId == 75949 or spellId == 75950 or spellId == 75951 or spellId == 75952) and destGUID == UnitGUID("player") and GetTime() - lastflame > 2 then
+	if (spellId == 75947 or spellId == 75948 or spellId == 75949 or spellId == 75950 or spellId == 75951 or spellId == 75952) and destGUID == UnitGUID("player") and self:AntiSpam() then
 		specWarnMeteorStrike:Show()
-		lastflame = GetTime()
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE

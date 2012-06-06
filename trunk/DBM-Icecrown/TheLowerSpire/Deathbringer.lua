@@ -46,7 +46,6 @@ mod:RemoveOption("HealthFrame")
 local warned_preFrenzy = false
 local boilingBloodTargets = {}
 local boilingBloodIcon 	= 8
-local spamBloodBeast = 0
 local Mark = 0
 
 local function warnBoilingBloodTargets()
@@ -138,11 +137,10 @@ do
 	local lastBeast = 0
 	function mod:SPELL_SUMMON(args)
 		if args:IsSpellID(72172, 72173) or args:IsSpellID(72356, 72357, 72358) then -- Summon Blood Beasts
-			if time() - lastBeast > 5 then
+			if self:AntiSpam(5) then
 				warnAdds:Show()
 				warnAddsSoon:Schedule(30)
 				timerCallBloodBeast:Start()
-				lastBeast = time()
 				if self.Options.BeastIcons then
 					resetBeastIconState()
 				end

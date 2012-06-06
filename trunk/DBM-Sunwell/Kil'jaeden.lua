@@ -51,7 +51,6 @@ mod:AddBoolOption("BloomWhisper", false, "announce")
 
 local warnBloomTargets = {}
 local bloomIcon = 8
-local lastOrb = 0
 local phase = 1
 local p2_check = false
 local p3_check = false
@@ -68,7 +67,6 @@ function mod:OnCombatStart(delay)
 	table.wipe(warnBloomTargets)
 	warnBloomTargets = {}
 	bloomIcon = 8
-	lastOrb = 0
 	phase = 1
 	p2_check = false
 	p3_check = false
@@ -169,10 +167,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if spellId == 45680 and GetTime() - lastOrb > 10 then
+	if spellId == 45680 and self:AntiSpam(10) then
 		warnDarkOrb:Show()
 		specWarnDarkOrb:Show()
-		lastOrb = GetTime()
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE

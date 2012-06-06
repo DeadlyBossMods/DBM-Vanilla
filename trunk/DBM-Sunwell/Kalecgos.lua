@@ -44,13 +44,9 @@ mod.Options.FrameX = 150
 mod.Options.FrameY = -50
 
 local portCount = 1
-local buffetSpam = 0
-local lastPortal = 0
 
 function mod:OnCombatStart(delay)
 	portCount = 1
-	buffetSpam = 0
-	lastPortal = 0
 	DBM.BossHealth:Clear()
 	DBM.BossHealth:AddBoss(24850, L.name)
 	DBM.BossHealth:AddBoss(24892, L.Demon)
@@ -82,10 +78,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnWildMagic:Show(L.Aggro)
 	elseif args:IsSpellID(45010) and args:IsPlayer() then
 		specWarnWildMagic:Show(L.Mana)
-	elseif args:IsSpellID(45018) and GetTime() - buffetSpam >= 2 then
+	elseif args:IsSpellID(45018) and self:AntiSpam(2, 1) then
 		warnBuffet:Show()
 		timerBuffetCD:Start()
-		buffetSpam = GetTime()
 	elseif args:IsSpellID(45029) then
 		warnCorrupt:Show(args.destName)
 	elseif args:IsSpellID(46021) then
@@ -94,8 +89,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			timerPorted:Start()
 			timerExhausted:Schedule(60)
 		end
-		if GetTime() - lastPortal >= 20 then
-			lastPortal = GetTime()
+		if self:AntiSpam(20, 2) then
 			local grp, class
 			for i = 1, GetNumRaidMembers() do
 				local name, _, subgroup, _, _, fileName = GetRaidRosterInfo(i)

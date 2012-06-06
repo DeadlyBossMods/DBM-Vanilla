@@ -60,7 +60,6 @@ mod:AddBoolOption("VortexArrow")
 
 local activePrince
 local glitteringSparksTargets	= {}
-local lastVortex
 
 local function warnGlitteringSparksTargets()
 	warnGliteringSparks:Show(table.concat(glitteringSparksTargets, "<, >"))
@@ -74,7 +73,6 @@ function mod:OnCombatStart(delay)
 	timerTargetSwitch:Start(-delay)
 	activePrince = nil
 	table.wipe(glitteringSparksTargets)
-	lastVortex = GetTime()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(12)
 	end

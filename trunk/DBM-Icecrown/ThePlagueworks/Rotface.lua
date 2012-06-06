@@ -53,7 +53,6 @@ mod:AddBoolOption("TankArrow")
 local RFVileGasTargets	= {}
 local spamOoze = 0
 local InfectionIcon = 8
-local antiSpam = 0
 
 local function warnRFVileGasTargets()
 	warnVileGas:Show(table.concat(RFVileGasTargets, "<, >"))
@@ -66,7 +65,6 @@ function mod:OnCombatStart(delay)
 	self:ScheduleMethod(25-delay, "WallSlime")
 	InfectionIcon = 8
 	spamOoze = 0
-	antiSpam = 0
 	if self:IsDifficulty("heroic10", "heroic25") then
 		timerVileGasCD:Start(22-delay)
 		if self.Options.RangeFrame then
@@ -163,9 +161,8 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if (spellId == 69761 or spellId == 71212 or spellId == 73026 or spellId == 73027) and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3 then
+	if (spellId == 69761 or spellId == 71212 or spellId == 73026 or spellId == 73027) and destGUID == UnitGUID("player") and self:AntiSpam(3, 1) then
 		specWarnRadiatingOoze:Show()
-		antiSpam = GetTime()
 	elseif spellId ~= 50288 and self:GetCIDFromGUID(destGUID) == 36899 and bit.band(sourceFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 and self:IsInCombat() then--Any spell damage except for starfall
 		if sourceGUID ~= UnitGUID("player") then
 			if self.Options.TankArrow then
@@ -177,9 +174,8 @@ end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:SWING_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags)
-	if self:GetCIDFromGUID(sourceGUID) == 36897 and destGUID == UnitGUID("player") and GetTime() - antiSpam > 3 then --Little ooze hitting you
+	if self:GetCIDFromGUID(sourceGUID) == 36897 and destGUID == UnitGUID("player") and self:AntiSpam(3, 2) then --Little ooze hitting you
 		specWarnLittleOoze:Show()
-		antiSpam = GetTime()
 	elseif self:GetCIDFromGUID(destGUID) == 36899 and bit.band(sourceFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 and self:IsInCombat() then
 		if sourceGUID ~= UnitGUID("player") then
 			if self.Options.TankArrow then
