@@ -1102,7 +1102,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Discharge		= "억제할 수... 없다."
+	Discharge		= "억제할 수... 없다..."
 })
 
 --------------------------
@@ -1125,7 +1125,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	DelrissaPull	= "저들을 밟아줘라.",
-	DelrissaEnd		= "뭔가... 잘못됐어."
+	DelrissaEnd		= "뭔가... 잘못됐어..."
 })
 
 ------------------------------------
@@ -1138,7 +1138,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "불덩이 작렬 - 차단"
+	specwarnPyroblast	= "불덩이 작렬 - 차단!"
 })
 
 L:SetTimerLocalization({
