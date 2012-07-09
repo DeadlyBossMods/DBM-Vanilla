@@ -5,7 +5,7 @@ mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)
 mod:SetModelID(22596)
-mod:RegisterCombat("combat")
+mod:RegisterCombat("yell", L.DelrissaPull)
 mod:RegisterKill("yell", L.DelrissaEnd)
 
 mod:RegisterEvents(
