@@ -16,13 +16,15 @@ mod:RegisterEvents(
 )
 
 local warnPhase2        = mod:NewPhaseAnnounce(2)
-local WarnPhoenix       = mod:NewSpellAnnounce(44194)
-local WarnShockBarrior  = mod:NewSpellAnnounce(46165)
-local warnPyroblast		= mod:NewCastAnnounce(36819)
+local WarnPhoenix       = mod:NewSpellAnnounce(44194, 3)
+local WarnShockBarrior  = mod:NewSpellAnnounce(46165, 3)
+local warnPyroblast		= mod:NewCastAnnounce(36819, 4)
+
+local specwarnPyroblast = mod:NewSpecialWarningInterrupt(36819)
+
 local timerPyroblast	= mod:NewCastTimer(4, 36819)
 local timerShockBarrior = mod:NewNextTimer(60, 46165)--Best guess based on limited CL data
 local timerPhoenix      = mod:NewCDTimer(45, 44194)--Best guess based on limited CL data
-local specwarnPyroblast = mod:NewSpecialWarning("specwarnPyroblast")
 
 function mod:OnCombatStart(delay)
 	if self:IsDifficulty("heroic5") then
@@ -53,7 +55,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(46165) then
-        specwarnPyroblast:Show()
+        specwarnPyroblast:Show(args.destName)
 	end
 end
 

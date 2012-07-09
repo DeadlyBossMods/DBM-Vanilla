@@ -1137,14 +1137,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "Pyroblast - Interrupt now"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "Show special warning for Pyroblast (to interrupt)"
 })
 
 L:SetMiscLocalization({

@@ -1138,14 +1138,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "¡Piroexplosión! ¡Interrumpe!"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "Mostrar aviso especial para Piroexplosión (para interrumpir)"
 })
 
 L:SetMiscLocalization({

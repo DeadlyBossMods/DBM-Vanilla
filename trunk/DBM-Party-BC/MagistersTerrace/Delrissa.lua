@@ -3,10 +3,12 @@ local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
-mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)
+mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)--24560 is main boss.
 mod:SetModelID(22596)
+--"combat" only fails if you were already in combat before pulling her (ie, you out level the zone and just chain pulled her with trash).
 mod:RegisterCombat("yell", L.DelrissaPull)
 mod:RegisterKill("yell", L.DelrissaEnd)
+--Pretty sure she dies, so probably can just register kill using UNIT_DIED 24560
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
@@ -14,13 +16,13 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnFlashHeal		= mod:NewSpellAnnounce(17843)
-local warnLHW           = mod:NewSpellAnnounce(46181)
+local warnFlashHeal		= mod:NewSpellAnnounce(17843, 3)
+local warnLHW           = mod:NewSpellAnnounce(46181, 3)
 local warnWindFury		= mod:NewSpellAnnounce(27621, 2, nil, false)
-local warnBlizzard		= mod:NewSpellAnnounce(46195)
-local warnRenew         = mod:NewSpellAnnounce(46192)
-local warnSoC           = mod:NewTargetAnnounce(44141)
-local warnPolymorph     = mod:NewTargetAnnounce(13323)
+local warnBlizzard		= mod:NewSpellAnnounce(46195, 2)
+local warnRenew         = mod:NewSpellAnnounce(46192, 3)
+local warnSoC           = mod:NewTargetAnnounce(44141, 2)
+local warnPolymorph     = mod:NewTargetAnnounce(13323, 4)
 local warnPWShield      = mod:NewTargetAnnounce(44175, 2, nil, false)
 
 function mod:SPELL_CAST_START(args)

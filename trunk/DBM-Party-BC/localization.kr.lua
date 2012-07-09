@@ -1138,14 +1138,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "불덩이 작렬 - 차단!"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "불덩이 작렬 시전에 대한 특수 경고 보기"
 })
 
 L:SetMiscLocalization({
