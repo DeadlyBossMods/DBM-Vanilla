@@ -1138,14 +1138,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnPyroblast	= "Pyroschlag - Jetzt unterbrechen"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	specwarnPyroblast	= "Zeige Spezialwarnung für $spell:36819 (zum Unterbrechen)"
 })
 
 L:SetMiscLocalization({
