@@ -222,13 +222,12 @@ function mod:UNIT_HEALTH(uId)
 end
 
 function mod:OnSync(msg)
-	if msg == "Phase3" and phase == 2 then
-		warnP3:Show()
-		phase = 3
+	if msg == "Phase3" then
 		brainportal:Cancel()
-        timerEmpower:Start()
-        warnEmpowerSoon:Schedule(40)	
 		warnBrainPortalSoon:Cancel()
+        timerEmpower:Start()
+		warnP3:Show()
+        warnEmpowerSoon:Schedule(40)	
 		timerNextDeafeningRoar:Start(30)
 		warnDeafeningRoarSoon:Schedule(25)
 	end
