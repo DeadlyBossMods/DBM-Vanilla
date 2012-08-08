@@ -75,7 +75,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:ShadowCrashTarget()
-	local targetname = self:GetBossTarget()
+	local targetname = self:GetBossTarget(33271)
 	if not targetname then return end
 	if self.Options.SetIconOnShadowCrash then
 		self:SetIcon(targetname, 8, 10)

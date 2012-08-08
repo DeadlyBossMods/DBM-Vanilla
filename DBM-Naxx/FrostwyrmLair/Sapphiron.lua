@@ -88,7 +88,7 @@ mod:RegisterOnUpdateHandler(function(self, elapsed)
 		for i = 1, DBM:GetGroupMembers() do
 			local uId = "raid"..i.."target"
 			if self:GetUnitCreatureId(uId) == 15989 and UnitAffectingCombat(uId) then
-				target = UnitName(uId.."target")
+				target = DBM:GetUnitFullName(uId.."target")
 				foundBoss = true
 				break
 			end

@@ -1,10 +1,11 @@
 local mod	= DBM:NewMod("ForgemasterGarfrost", "DBM-Party-WotLK", 15)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 4498 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 4499 $"):sub(12, -3))
 mod:SetCreatureID(36494)
 mod:SetModelID(30843)
 mod:SetUsedIcons(8)
+mod:SetMinSyncRevision(4499)
 
 mod:RegisterCombat("combat")
 
@@ -26,8 +27,17 @@ mod:AddBoolOption("SetIconOnSaroniteRockTarget", true)
 mod:AddBoolOption("AchievementCheck", false, "announce")
 
 local warnedfailed = false
+local guids = {}
+local function buildGuidTable()
+	table.wipe(guids)
+	guids[UnitGUID("player")] = DBM:GetUnitFullName("player")
+	for i = 1, DBM:GetGroupMembers() do
+		guids[UnitGUID("party"..i) or "none"] = DBM:GetUnitFullName("party"..i)
+	end
+end
 
 function mod:OnCombatStart(delay)
+	buildGuidTable()
 	warnedfailed = false
 end
 
@@ -64,16 +74,16 @@ end
 
 function mod:RAID_BOSS_WHISPER(msg) 
 	if msg == L.SaroniteRockThrow or msg:match(L.SaroniteRockThrow) then 
-		self:SendSync("SaroniteRock", UnitName("player"))
+		specWarnSaroniteRock:Show()
+		self:SendSync("SaroniteRock", UnitGUID("player"))
 	end 
 end 
 
-function mod:OnSync(msg, target)
+function mod:OnSync(msg, guid)
 	if msg == "SaroniteRock" then
+		local target = guids[guid]
 		warnSaroniteRock:Show(target)
-		if target == UnitName("player") then
-			specWarnSaroniteRock:Show()
-		elseif target then
+		if target then
 			local uId = DBM:GetRaidUnitId(target)
 			if uId then
 				local inRange = CheckInteractDistance(uId, 2)
