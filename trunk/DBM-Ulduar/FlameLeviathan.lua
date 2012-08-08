@@ -1,11 +1,12 @@
 local mod	= DBM:NewMod("FlameLeviathan", "DBM-Ulduar")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 4181 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 4182 $"):sub(12, -3))
 
 mod:SetCreatureID(33113)
 mod:SetModelID(28875)
 mod:RegisterCombat("yell", L.YellPull)
+mod:SetMinSyncRevision(4182)
 
 mod:RegisterEvents(
 	"SPELL_AURA_REMOVED",
@@ -31,7 +32,7 @@ local guids = {}
 local function buildGuidTable()
 	table.wipe(guids)
 	for i = 1, DBM:GetGroupMembers() do
-		guids[UnitGUID("raid"..i.."pet") or ""] = UnitName("raid"..i)
+		guids[UnitGUID("raid"..i.."pet") or "none"] = GetRaidRosterInfo(i)
 	end
 end
 

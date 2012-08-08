@@ -82,7 +82,7 @@ end
 
 do
 	local function sort_by_group(v1, v2)
-		return DBM:GetRaidSubgroup(UnitName(v1)) < DBM:GetRaidSubgroup(UnitName(v2))
+		return DBM:GetRaidSubgroup(DBM:GetUnitFullName(v1)) < DBM:GetRaidSubgroup(DBM:GetUnitFullName(v2))
 	end
 	function mod:SetBeaconIcons()
 		if DBM:GetRaidRank() > 0 then
@@ -90,9 +90,9 @@ do
 			local beaconIcons = 8
 			for i, v in ipairs(beaconIconTargets) do
 				if self.Options.AnnounceFrostBeaconIcons and IsRaidLeader() then
-					SendChatMessage(L.BeaconIconSet:format(beaconIcons, UnitName(v)), "RAID")
+					SendChatMessage(L.BeaconIconSet:format(beaconIcons, DBM:GetUnitFullName(v)), "RAID")
 				end
-				self:SetIcon(UnitName(v), beaconIcons)
+				self:SetIcon(v, beaconIcons)
 				beaconIcons = beaconIcons - 1
 			end
 			self:Schedule(8, ClearBeaconTargets)

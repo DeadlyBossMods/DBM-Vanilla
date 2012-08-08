@@ -56,7 +56,7 @@ end
 
 do
 	local function sort_by_group(v1, v2)
-		return DBM:GetRaidSubgroup(UnitName(v1)) < DBM:GetRaidSubgroup(UnitName(v2))
+		return DBM:GetRaidSubgroup(DBM:GetUnitFullName(v1)) < DBM:GetRaidSubgroup(DBM:GetUnitFullName(v2))
 	end
 	function mod:SetSporeIcons()
 		if DBM:GetRaidRank() > 0 then
@@ -64,9 +64,9 @@ do
 			local gasSporeIcon = 8
 			for i, v in ipairs(gasSporeIconTargets) do
 				if self.Options.AnnounceSporeIcons and IsRaidLeader() then
-					SendChatMessage(L.SporeSet:format(gasSporeIcon, UnitName(v)), "RAID")
+					SendChatMessage(L.SporeSet:format(gasSporeIcon, DBM:GetUnitFullName(v)), "RAID")
 				end
-				self:SetIcon(UnitName(v), gasSporeIcon, 12)
+				self:SetIcon(v, gasSporeIcon, 12)
 				gasSporeIcon = gasSporeIcon - 1
 			end
 			self:Schedule(5, ClearSporeTargets)

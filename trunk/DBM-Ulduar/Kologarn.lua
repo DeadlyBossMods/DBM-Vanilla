@@ -1,10 +1,11 @@
 local mod	= DBM:NewMod("Kologarn", "DBM-Ulduar")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 4622 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 4623 $"):sub(12, -3))
 mod:SetCreatureID(32930)--, 32933, 32934
 mod:SetModelID(28638)
 mod:SetUsedIcons(5, 6, 7, 8)
+mod:SetMinSyncRevision(4623)
 
 mod:RegisterCombat("combat")
 
@@ -47,7 +48,16 @@ mod:AddBoolOption("SetIconOnEyebeamTarget", true)
 mod:AddBoolOption("YellOnBeam", true, "announce")
 
 
+local guids = {}
+local function buildGuidTable()
+	table.wipe(guids)
+	for i = 1, DBM:GetGroupMembers() do
+		guids[UnitGUID("raid"..i) or "none"] = GetRaidRosterInfo(i)
+	end
+end
+
 function mod:OnCombatStart(delay)
+	buildGuidTable()
 end
 
 function mod:UNIT_DIED(args)
@@ -80,21 +90,20 @@ mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find(L.FocusedEyebeam) then
-		self:SendSync("EyeBeamOn", UnitName("player"))
+		specWarnEyebeam:Show()
+		soundEyebeam:Play()
+		if self.Options.YellOnBeam then
+			SendChatMessage(L.YellBeam, "SAY")
+		end
+		self:SendSync("EyeBeamOn", UnitGUID("player"))
 	end
 end
 
-function mod:OnSync(msg, target)
+function mod:OnSync(msg, guid)
 	if msg == "EyeBeamOn" then
+		local target = guids[guid]
 		warnFocusedEyebeam:Show(target)
 		timerNextEyebeam:Start()
-		if target == UnitName("player") then
-			specWarnEyebeam:Show()
-			soundEyebeam:Play()
-			if self.Options.YellOnBeam then
-				SendChatMessage(L.YellBeam, "SAY")
-			end
-		end 
 		if self.Options.SetIconOnEyebeamTarget then
 			self:SetIcon(target, 5, 8) 
 		end

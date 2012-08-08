@@ -1,11 +1,11 @@
 local mod	= DBM:NewMod("LichKing", "DBM-Icecrown", 5)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision: 4693 $"):sub(12, -3))
+mod:SetRevision(("$Revision: 4694 $"):sub(12, -3))
 mod:SetCreatureID(36597)
 mod:SetModelID(30721)
 mod:RegisterCombat("combat")
-mod:SetMinSyncRevision(3913)
+mod:SetMinSyncRevision(4694)
 mod:SetUsedIcons(2, 3, 4, 5, 6, 7, 8)
 
 mod:RegisterEvents(
@@ -107,8 +107,16 @@ local warned_preP2 = false
 local warned_preP3 = false
 local trapScansDone = 0
 local warnedValkyrGUIDs = {}
+local guids = {}
+local function buildGuidTable()
+	table.wipe(guids)
+	for i = 1, DBM:GetGroupMembers() do
+		guids[UnitGUID("raid"..i) or "none"] = GetRaidRosterInfo(i)
+	end
+end
 
 function mod:OnCombatStart(delay)
+	buildGuidTable()
 	phase = 0
 	lastPlagueCast = GetTime()
 	warned_preP2 = false
@@ -378,24 +386,24 @@ do
 		if (time() - lastValk) < 10 then    -- scan for like 10secs
 			for i=0, DBM:GetGroupMembers() do        -- for every raid member check ..
 				if UnitInVehicle("raid"..i) and not valkyrTargets[i] then      -- if person #i is in a vehicle and not already announced 
-					valkyrWarning:Show(UnitName("raid"..i))  -- UnitName("raid"..i) returns the name of the person who got valkyred
+					valkyrWarning:Show(GetRaidRosterInfo(i))  -- GetRaidRosterInfo(i) returns the name of the person who got valkyred
 					valkyrTargets[i] = true          -- this person has been announced
-					if UnitName("raid"..i) == UnitName("player") then
+					if GetRaidRosterInfo(i) == UnitName("player") then
 						specWarnYouAreValkd:Show()
 						if mod:IsHealer() then--Is player that's grabbed a healer
 							if isPAL then
-								mod:SendSync("PALGrabbed", UnitName("player"))--They are a holy paladin
+								mod:SendSync("PALGrabbed", UnitGUID("player"))--They are a holy paladin
 							elseif isPRI then
-								mod:SendSync("PRIGrabbed", UnitName("player"))--They are a disc/holy priest
+								mod:SendSync("PRIGrabbed", UnitGUID("player"))--They are a disc/holy priest
 							end
 						end
 					end
 					if mod.Options.AnnounceValkGrabs and DBM:GetRaidRank() > 0 then
 						if mod.Options.ValkyrIcon then
-							SendChatMessage(L.ValkGrabbedIcon:format(grabIcon, UnitName("raid"..i)), "RAID")
+							SendChatMessage(L.ValkGrabbedIcon:format(grabIcon, GetRaidRosterInfo(i)), "RAID")
 							grabIcon = grabIcon + 1
 						else
-							SendChatMessage(L.ValkGrabbed:format(UnitName("raid"..i)), "RAID")
+							SendChatMessage(L.ValkGrabbed:format(GetRaidRosterInfo(i)), "RAID")
 						end
 					end
 				end
@@ -498,21 +506,24 @@ function mod:RAID_BOSS_WHISPER(msg)--We get this whisper for all plagues, ones c
 	if msg:find(L.PlagueWhisper) and self:IsInCombat() then--We do a combat check with lich king since rotface uses the same whisper message and we only want this to work on lich king.
 		if GetTime() - lastPlagueCast > 1.5 then--We don't want to send sync if it came from a spell cast though, so we ignore whisper unless it was at least 1 second after a cast.
 			specWarnNecroticPlague:Show()
-			self:SendSync("PlagueOn", UnitName("player"))
+			self:SendSync("PlagueOn", UnitGUID("player"))
 		end
 	end
 end
 
-function mod:OnSync(msg, target)
+function mod:OnSync(msg, guid)
 	if msg == "PALGrabbed" then--Does this function fail to alert second healer if 2 different paladins are grabbed within < 2.5 seconds?
+		local target = guids[guid]
 		if self.Options.specWarnHealerGrabbed then
 			specWarnPALGrabbed:Show(target)
 		end
 	elseif msg == "PRIGrabbed" then--Does this function fail to alert second healer if 2 different priests are grabbed within < 2.5 seconds?
+		local target = guids[guid]
 		if self.Options.specWarnHealerGrabbed then
 			specWarnPRIGrabbed:Show(target)
 		end
 	elseif msg == "PlagueOn" and self:IsInCombat() then
+		local target = guids[guid]
 		if GetTime() - lastPlagueCast > 1.5 then --We also do same 1.5 second check here
 			warnNecroticPlagueJump:Show(target)
 			timerNecroticPlagueCleanse:Start()
