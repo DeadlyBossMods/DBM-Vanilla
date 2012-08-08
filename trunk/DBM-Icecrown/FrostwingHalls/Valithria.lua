@@ -114,7 +114,7 @@ end
 
 function mod:TrySetTarget()
 	if DBM:GetRaidRank() >= 1 then
-		for i = 1, GetNumRaidMembers() do
+		for i = 1, DBM:GetGroupMembers() do
 			if UnitGUID("raid"..i.."target") == blazingSkeleton then
 				blazingSkeleton = nil
 				SetRaidTarget("raid"..i.."target", 8)

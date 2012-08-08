@@ -376,7 +376,7 @@ do
 	
 	local function scanValkyrTargets()
 		if (time() - lastValk) < 10 then    -- scan for like 10secs
-			for i=0, GetNumRaidMembers() do        -- for every raid member check ..
+			for i=0, DBM:GetGroupMembers() do        -- for every raid member check ..
 				if UnitInVehicle("raid"..i) and not valkyrTargets[i] then      -- if person #i is in a vehicle and not already announced 
 					valkyrWarning:Show(UnitName("raid"..i))  -- UnitName("raid"..i) returns the name of the person who got valkyred
 					valkyrTargets[i] = true          -- this person has been announced
@@ -428,7 +428,7 @@ do
 	
 	mod:RegisterOnUpdateHandler(function(self)
 		if self.Options.ValkyrIcon and (DBM:GetRaidRank() > 0 and not (iconsSet == 3 and self:IsDifficulty("normal25", "heroic25") or iconsSet == 1 and self:IsDifficulty("normal10", "heroic10"))) then
-			for i = 1, GetNumRaidMembers() do
+			for i = 1, DBM:GetGroupMembers() do
 				local uId = "raid"..i.."target"
 				local guid = UnitGUID(uId)
 				if valkIcons[guid] then

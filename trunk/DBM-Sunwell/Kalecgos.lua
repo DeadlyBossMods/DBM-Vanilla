@@ -91,7 +91,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if self:AntiSpam(20, 2) then
 			local grp, class
-			for i = 1, GetNumRaidMembers() do
+			for i = 1, DBM:GetGroupMembers() do
 				local name, _, subgroup, _, _, fileName = GetRaidRosterInfo(i)
 				if name == args.destName then
 					grp = subgroup
@@ -121,7 +121,7 @@ function mod:UNIT_DIED(args)
 	end
 	if bit.band(args.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 then
 		local grp
-		for i = 1, GetNumRaidMembers() do
+		for i = 1, DBM:GetGroupMembers() do
 			local name, _, subgroup = GetRaidRosterInfo(i)
 			if name == args.destName then
 				grp = subgroup
