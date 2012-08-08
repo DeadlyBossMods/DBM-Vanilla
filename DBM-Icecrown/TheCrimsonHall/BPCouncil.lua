@@ -115,7 +115,7 @@ end
 
 function mod:TrySetTarget()
 	if DBM:GetRaidRank() >= 1 and self.Options.ActivePrinceIcon then
-		for i = 1, GetNumRaidMembers() do
+		for i = 1, DBM:GetGroupMembers() do
 			if UnitGUID("raid"..i.."target") == activePrince then
 				activePrince = nil
 				SetRaidTarget("raid"..i.."target", 8)

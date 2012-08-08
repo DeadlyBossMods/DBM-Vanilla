@@ -93,7 +93,7 @@ do	-- add the additional Shield Bar
 			last = math.floor(UnitMana("focus")/UnitManaMax("focus") * 100)
 			return last
 		end
-		for i = 0, GetNumRaidMembers(), 1 do
+		for i = 0, DBM:GetGroupMembers(), 1 do
 			local unitId = ((i == 0) and "target") or "raid"..i.."target"
 			local guid = UnitGUID(unitId)
 			if mod:GetCIDFromGUID(guid) == 36855 then
@@ -124,7 +124,7 @@ end
 
 function mod:TrySetTarget()
 	if DBM:GetRaidRank() >= 1 then
-		for i = 1, GetNumRaidMembers() do
+		for i = 1, DBM:GetGroupMembers() do
 			if UnitGUID("raid"..i.."target") == deformedFanatic then
 				deformedFanatic = nil
 				SetRaidTarget("raid"..i.."target", 8)

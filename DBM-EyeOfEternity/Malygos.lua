@@ -41,7 +41,7 @@ local guids = {}
 local surgeTargets = {}
 
 local function buildGuidTable()
-	for i = 1, GetNumRaidMembers() do
+	for i = 1, DBM:GetGroupMembers() do
 		guids[UnitGUID("raid"..i.."pet") or ""] = UnitName("raid"..i)
 	end
 end

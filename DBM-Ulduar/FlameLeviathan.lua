@@ -30,7 +30,7 @@ local soundPursued			= mod:NewSound(62374)
 local guids = {}
 local function buildGuidTable()
 	table.wipe(guids)
-	for i = 1, GetNumRaidMembers() do
+	for i = 1, DBM:GetGroupMembers() do
 		guids[UnitGUID("raid"..i.."pet") or ""] = UnitName("raid"..i)
 	end
 end

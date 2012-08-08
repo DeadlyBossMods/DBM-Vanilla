@@ -94,7 +94,7 @@ do	-- add the additional Rune Power Bar
 			last = math.floor(UnitPower("focus")/UnitPowerMax("focus") * 100)
 			return last
 		end
-		for i = 0, GetNumRaidMembers(), 1 do
+		for i = 0, DBM:GetGroupMembers(), 1 do
 			local unitId = ((i == 0) and "target") or "raid"..i.."target"
 			local guid = UnitGUID(unitId)
 			if mod:GetCIDFromGUID(guid) == 37813 then
@@ -154,7 +154,7 @@ do
 	
 	mod:RegisterOnUpdateHandler(function(self)
 		if self.Options.BeastIcons and (DBM:GetRaidRank() > 0 and not (iconsSet == 5 and self:IsDifficulty("normal25", "heroic25") or iconsSet == 2 and self:IsDifficulty("normal10", "heroic10"))) then
-			for i = 1, GetNumRaidMembers() do
+			for i = 1, DBM:GetGroupMembers() do
 				local uId = "raid"..i.."target"
 				local guid = UnitGUID(uId)
 				if beastIcon[guid] then

@@ -32,7 +32,7 @@ local timerWhirlCD		= mod:NewCDTimer(17, 37363)
 function mod:CheckDive()
 	local foundIt
 	self:ScheduleMethod(0.5, "CheckDive")
-	for i = 1, GetNumRaidMembers() do
+	for i = 1, DBM:GetGroupMembers() do
 		if UnitName("raid"..i.."target") == L.name then
 			foundIt = true
 			break
