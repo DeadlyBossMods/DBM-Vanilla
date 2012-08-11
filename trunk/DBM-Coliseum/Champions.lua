@@ -61,12 +61,12 @@ local isDispeller = select(2, UnitClass("player")) == "WARRIOR"
 				or select(2, UnitClass("player")) == "PRIEST"
 				or select(2, UnitClass("player")) == "SHAMAN"
 
-local warnHellfire			= mod:NewSpellAnnounce(68147, 4)
+local warnHellfire			= mod:NewSpellAnnounce(65816, 4)
 local preWarnBladestorm 	= mod:NewSoonAnnounce(65947, 3)
 local warnBladestorm		= mod:NewSpellAnnounce(65947, 4)
 local warnHeroism			= mod:NewSpellAnnounce(65983, 3)
 local warnBloodlust			= mod:NewSpellAnnounce(65980, 3)
-local warnHandofFreedom		= mod:NewTargetAnnounce(68758, 2)
+local warnHandofFreedom		= mod:NewTargetAnnounce(66115, 2)
 local warnHandofProt		= mod:NewTargetAnnounce(66009, 3)
 local warnDivineShield		= mod:NewSpellAnnounce(66010, 3)
 local warnIceBlock			= mod:NewSpellAnnounce(65802, 3)
@@ -80,7 +80,7 @@ local timerShadowstepCD		= mod:NewCDTimer(30, 66178)
 local timerDeathgripCD		= mod:NewCDTimer(35, 66017)
 local timerBladestormCD		= mod:NewCDTimer(90, 65947)
 
-local specWarnHellfire		= mod:NewSpecialWarningMove(68147)
+local specWarnHellfire		= mod:NewSpecialWarningMove(65816)
 local specWarnHandofProt	= mod:NewSpecialWarningDispel(66009, isDispeller)
 local specWarnDivineShield	= mod:NewSpecialWarningDispel(66010, isDispeller) 
 local specWarnIceBlock		= mod:NewSpecialWarningDispel(65802, isDispeller)

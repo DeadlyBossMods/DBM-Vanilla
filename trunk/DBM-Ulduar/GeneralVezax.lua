@@ -34,8 +34,8 @@ local timerSaroniteVapors		= mod:NewNextTimer(30, 63322)
 local timerLifeLeech			= mod:NewTargetTimer(10, 63276)
 local timerHardmode				= mod:NewTimer(189, "hardmodeSpawn")
 
-mod:AddBoolOption("YellOnLifeLeech", true, "announce")
-mod:AddBoolOption("YellOnShadowCrash", true, "announce")
+local yellLifeLeech				= mod:NewYell(63276)
+local yellShadowCrash			= mod:NewYell(62660)
 mod:AddBoolOption("SetIconOnShadowCrash", true)
 mod:AddBoolOption("SetIconOnLifeLeach", true)
 mod:AddBoolOption("CrashArrow")
@@ -83,9 +83,7 @@ function mod:ShadowCrashTarget()
 	warnShadowCrash:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnShadowCrash:Show(targetname)
-		if self.Options.YellOnShadowCrash then
-			SendChatMessage(L.YellCrash, "SAY")
-		end
+		yellShadowCrash:Yell()
 	elseif targetname then
 		local uId = DBM:GetRaidUnitId(targetname)
 		if uId then
@@ -117,9 +115,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerLifeLeech:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnLifeLeechYou:Show()
-			if self.Options.YellOnLifeLeech then
-				SendChatMessage(L.YellLeech, "SAY")
-			end
+			yellLifeLeech:Yell()
 		else
 			local uId = DBM:GetRaidUnitId(args.destName)
 			if uId then

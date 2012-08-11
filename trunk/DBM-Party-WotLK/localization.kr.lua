@@ -620,7 +620,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningPhase	= optionWarning:format("# 단계"),
+	WarningPhase	= optionWarning:format("단계 전환"),
 	timerEvent		= "이벤트 타이머 보기"
 })
 
@@ -1169,11 +1169,13 @@ L:SetTimerLocalization{
 L:SetOptionLocalization({
 	TimerCombatStart		= "전투 시작 타이머 보기",
 	warnExplode				= "구울 폭발을 시전할 경우 경고 알리기",
+	AchievementCheck		= "'이건 약과야' 업적 실패를 파티에 알림",
 	SetIconOnMarkedTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(67823)
 })
 
 L:SetMiscLocalization({
 	Pull					= "잘했네. 오늘 자네의 가치를 잘 보여주었...",
+	AchievementFailed		= ">> 업적 실패 : 구울 폭발에 피해 입음 (%s) <<",
 	YellCombatEnd			= "축하하네, 용사들이여. 예정된 시험이든 뜻밖의 시험이든, 그대들은 모두 이겨냈군."	-- can also be "No! I must not fail... again ..."
 })
 
@@ -1283,12 +1285,12 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	warnSaroniteRock			= "$spell:70851 대상 알리기",
-	specWarnSaroniteRock		= "$spell:70851의 대상이 될 경우 특수 경고 보기",
-	specWarnSaroniteRockNear	= "당신 주변에 $spell:70851 대상이 있을 경우 특수 경고 보기",	
-	specWarnPermafrost			= "$spell:70336 중첩이 많을 경우 특수 경고 보기(11 중첩)",
+	warnSaroniteRock			= "$spell:68789 대상 알리기",
+	specWarnSaroniteRock		= "$spell:68789의 대상이 될 경우 특수 경고 보기",
+	specWarnSaroniteRockNear	= "당신 주변에 $spell:68789 대상이 있을 경우 특수 경고 보기",	
+	specWarnPermafrost			= "$spell:68786 중첩이 많을 경우 특수 경고 보기(11 중첩)",
 	AchievementCheck			= "'11번은 제발!' 업적관련 경보를 파티 채팅으로 알리기",	
-	SetIconOnSaroniteRockTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70851)
+	SetIconOnSaroniteRockTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(68789)
 })
 
 L:SetMiscLocalization({

@@ -27,7 +27,7 @@ local warnChilledtotheBone		= mod:NewAnnounce("WarnChilledtotheBone", 2, 70106, 
 local warnMysticBuffet			= mod:NewAnnounce("WarnMysticBuffet", 2, 70128, false)
 local warnFrostBeacon			= mod:NewTargetAnnounce(70126, 4)
 local warnBlisteringCold		= mod:NewSpellAnnounce(70123, 3)
-local warnFrostBreath			= mod:NewSpellAnnounce(71056, 2, nil, mod:IsTank() or mod:IsHealer())
+local warnFrostBreath			= mod:NewSpellAnnounce(69649, 2, nil, mod:IsTank() or mod:IsHealer())
 local warnUnchainedMagic		= mod:NewTargetAnnounce(69762, 2, nil, not mod:IsMelee())
 
 local specWarnUnchainedMagic	= mod:NewSpecialWarningYou(69762)
@@ -39,7 +39,7 @@ local specWarnBlisteringCold	= mod:NewSpecialWarningRun(70123)
 
 local timerNextAirphase			= mod:NewTimer(110, "TimerNextAirphase", 43810)
 local timerNextGroundphase		= mod:NewTimer(45, "TimerNextGroundphase", 43810)
-local timerNextFrostBreath		= mod:NewNextTimer(22, 71056, nil, mod:IsTank() or mod:IsHealer())
+local timerNextFrostBreath		= mod:NewNextTimer(22, 69649, nil, mod:IsTank() or mod:IsHealer())
 local timerNextBlisteringCold	= mod:NewCDTimer(67, 70123)
 local timerNextBeacon			= mod:NewNextTimer(16, 70126)
 local timerBlisteringCold		= mod:NewCastTimer(6, 70123)

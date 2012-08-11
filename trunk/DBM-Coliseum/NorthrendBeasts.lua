@@ -21,11 +21,11 @@ mod:RegisterEvents(
 	"UNIT_DIED"
 )
 
-local warnImpaleOn			= mod:NewTargetAnnounce(67478, 2, nil, mod:IsTank() or mod:IsHealer())
+local warnImpaleOn			= mod:NewTargetAnnounce(66331, 2, nil, mod:IsTank() or mod:IsHealer())
 local warnFireBomb			= mod:NewSpellAnnounce(66317, 3, nil, false)
-local warnBreath			= mod:NewSpellAnnounce(67650, 2)
-local warnRage				= mod:NewSpellAnnounce(67657, 3)
-local warnSlimePool			= mod:NewSpellAnnounce(67643, 2, nil, mod:IsMelee())
+local warnBreath			= mod:NewSpellAnnounce(66689, 2)
+local warnRage				= mod:NewSpellAnnounce(66759, 3)
+local warnSlimePool			= mod:NewSpellAnnounce(66883, 2, nil, mod:IsMelee())
 local warnToxin				= mod:NewTargetAnnounce(66823, 3)
 local warnBile				= mod:NewTargetAnnounce(66869, 3)
 local WarningSnobold		= mod:NewAnnounce("WarningSnobold", 4)
@@ -35,8 +35,8 @@ local warnCharge			= mod:NewTargetAnnounce(52311, 4)
 local specWarnImpale3		= mod:NewSpecialWarning("SpecialWarningImpale3")
 local specWarnAnger3		= mod:NewSpecialWarning("SpecialWarningAnger3", mod:IsTank() or mod:IsHealer())
 local specWarnFireBomb		= mod:NewSpecialWarningMove(66317)
-local specWarnSlimePool		= mod:NewSpecialWarningMove(67640)
-local specWarnToxin			= mod:NewSpecialWarningMove(67620)
+local specWarnSlimePool		= mod:NewSpecialWarningMove(66883)
+local specWarnToxin			= mod:NewSpecialWarningMove(66823)
 local specWarnBile			= mod:NewSpecialWarningYou(66869)
 local specWarnSilence		= mod:NewSpecialWarning("SpecialWarningSilence")
 local specWarnCharge		= mod:NewSpecialWarning("SpecialWarningCharge")
@@ -49,12 +49,12 @@ local timerNextBoss			= mod:NewTimer(190, "TimerNextBoss", 2457)
 local timerSubmerge			= mod:NewTimer(45, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp") 
 local timerEmerge			= mod:NewTimer(10, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 
-local timerBreath			= mod:NewCastTimer(5, 67650)
+local timerBreath			= mod:NewCastTimer(5, 66689)
 local timerNextStomp		= mod:NewNextTimer(20, 66330)
-local timerNextImpale		= mod:NewNextTimer(10, 67477, nil, mod:IsTank() or mod:IsHealer())
+local timerNextImpale		= mod:NewNextTimer(10, 66331, nil, mod:IsTank() or mod:IsHealer())
 local timerRisingAnger      = mod:NewNextTimer(20.5, 66636)
 local timerStaggeredDaze	= mod:NewBuffActiveTimer(15, 66758)
-local timerNextCrash		= mod:NewCDTimer(55, 67662)
+local timerNextCrash		= mod:NewCDTimer(55, 66683)
 local timerSweepCD			= mod:NewCDTimer(17, 66794, nil, mod:IsMelee())
 local timerSlimePoolCD		= mod:NewCDTimer(12, 66883, nil, mod:IsMelee())
 local timerAcidicSpewCD		= mod:NewCDTimer(21, 66819)
@@ -171,10 +171,10 @@ function mod:WormsSubmerge()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(67477, 66331, 67478, 67479) then		-- Impale
+	if args:IsSpellID(66331, 67477, 67478, 67479) then		-- Impale
 		timerNextImpale:Start()
 		warnImpaleOn:Show(args.destName)
-	elseif args:IsSpellID(67657, 66759, 67658, 67659) then	-- Frothing Rage
+	elseif args:IsSpellID(66759, 67657, 67658, 67659) then	-- Frothing Rage
 		warnRage:Show()
 		specWarnTranq:Show()
 	elseif args:IsSpellID(66823, 67618, 67619, 67620) then	-- Paralytic Toxin
@@ -206,7 +206,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_APPLIED_DOSE(args)
-	if args:IsSpellID(67477, 66331, 67478, 67479) then		-- Impale
+	if args:IsSpellID(66331, 67477, 67478, 67479) then		-- Impale
 		timerNextImpale:Start()
 		warnImpaleOn:Show(args.destName)
 		if (args.amount >= 3 and not self:IsDifficulty("heroic10", "heroic25") ) or ( args.amount >= 2 and self:IsDifficulty("heroic10", "heroic25") ) then 
@@ -247,7 +247,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(67641, 66883, 67642, 67643) then			-- Slime Pool Cloud Spawn
+	if args:IsSpellID(66883, 67641, 67642, 67643) then			-- Slime Pool Cloud Spawn
 		warnSlimePool:Show()
 		timerSlimePoolCD:Show()
 	elseif args:IsSpellID(66824, 67612, 67613, 67614) then		-- Paralytic Bite

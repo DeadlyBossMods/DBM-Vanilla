@@ -33,7 +33,7 @@ local timerTenebron         = mod:NewTimer(30, "TimerTenebron", 61248)
 local timerShadron          = mod:NewTimer(80, "TimerShadron", 58105)
 local timerVesperon         = mod:NewTimer(120, "TimerVesperon", 61251)
 
-local soundFlameWall		= mod:NewSound(76223)
+local soundFlameWall		= mod:NewSound(43113)
 
 local lastvoids = {}
 local lastfire = {}

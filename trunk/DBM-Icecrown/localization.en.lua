@@ -213,10 +213,10 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	warnMark				= "Announce $spell:72444 targets",
+	warnMark				= "Announce $spell:72293 targets",
 	TimerCombatStart		= "Show time for start of combat",
 	WarnFrenzySoon			= "Show pre-warning for Frenzy (at ~33%)",
-	BoilingBloodIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72441),
+	BoilingBloodIcons		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72385),
 	RangeFrame				= "Show range frame (12 yards)",
 	RunePowerFrame			= "Show Boss Health + $spell:72371 bar",
 	BeastIcons				= "Set icons on Blood Beasts"
@@ -243,9 +243,9 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	InhaledBlight		= "Show warning for $spell:71912",
+	InhaledBlight		= "Show warning for $spell:69166",
 	RangeFrame			= "Show range frame (8 yards)",
-	WarnGastricBloat	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72551, GetSpellInfo(72551) or "unknown"),	
+	WarnGastricBloat	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72219, GetSpellInfo(72219) or "unknown"),	
 	SetIconOnGasSpore	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69279),
 	AnnounceSporeIcons	= "Announce icons for $spell:69279 targets to raid chat\n(requires raid leader)",
 	AchievementCheck	= "Announce 'Flu Shot Shortage' achievement failure to raid\n(requires promoted status)"
@@ -281,7 +281,7 @@ L:SetOptionLocalization{
 	SpecWarnLittleOoze			= "Show special warning when you are attacked by Little Ooze",--creatureid 36897
 	RangeFrame					= "Show range frame (8 yards)",
 	WarnUnstableOoze			= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(69558, GetSpellInfo(69558) or "unknown"),
-	InfectionIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71224),
+	InfectionIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69674),
 	TankArrow					= "Show DBM arrow for Big Ooze kiter"
 }
 
@@ -317,14 +317,14 @@ L:SetOptionLocalization{
 	WarnMutatedPlague			= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(72451, GetSpellInfo(72451) or "unknown"),
 	OozeAdhesiveIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70447),
 	GaseousBloatIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70672),
-	UnboundPlagueIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72856),
+	UnboundPlagueIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70911),
 	MalleableGooIcon			= "Set icon on first $spell:72295 target",
-	NextUnboundPlagueTargetIcon	= "Set icon on next $spell:72856 target",
+	NextUnboundPlagueTargetIcon	= "Set icon on next $spell:70911 target",
 	YellOnMalleableGoo			= "Yell on $spell:72295",
-	YellOnUnbound				= "Yell on $spell:72856",
+	YellOnUnbound				= "Yell on $spell:70911",
 	GooArrow					= "Show DBM arrow when $spell:72295 is near you",
-	SpecWarnUnboundPlague		= "Show special warning for $spell:72856 transfer",
-	SpecWarnNextPlageSelf		= "Show special warning when you are the next $spell:72856 target"
+	SpecWarnUnboundPlague		= "Show special warning for $spell:70911 transfer",
+	SpecWarnNextPlageSelf		= "Show special warning when you are the next $spell:70911 target"
 }
 
 L:SetMiscLocalization{
@@ -393,7 +393,7 @@ L:SetOptionLocalization{
 	SwarmingShadowsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(71266),
 	BloodMirrorIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70838),
 	RangeFrame				= "Show range frame (8 yards)",
-	YellOnFrenzy			= "Yell on $spell:71474"
+	YellOnFrenzy			= "Yell on $spell:70877"
 }
 
 L:SetMiscLocalization{
@@ -522,7 +522,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	TimerCombatStart		= "Show timer for start of combat",
 	TimerRoleplay			= "Show timer for roleplay event",
-	WarnNecroticPlagueJump	= "Announce $spell:73912 jump targets",
+	WarnNecroticPlagueJump	= "Announce $spell:70337 jump targets",
 	TimerNecroticPlagueCleanse	= "Show timer to cleanse Necrotic Plague before\nthe first tick",
 	PhaseTransition			= "Show time for phase transitions",
 	WarnPhase2Soon			= "Show pre-warning for Phase 2 transition (at ~73%)",
@@ -536,17 +536,17 @@ L:SetOptionLocalization{
 	YellOnDefile			= "Yell on $spell:72762",
 	YellOnTrap				= "Yell on $spell:73539",
 	DefileIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(72762),
-	NecroticPlagueIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(73912),
+	NecroticPlagueIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(70337),
 	RagingSpiritIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(69200),
 	TrapIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(73539),
-	HarvestSoulIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(74327),
+	HarvestSoulIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(68980),
 	ValkyrIcon				= "Set icons on Valkyrs",
 	DefileArrow				= "Show DBM arrow when $spell:72762 is near you",
 	TrapArrow				= "Show DBM arrow when $spell:73539 is near you",
 	LKBugWorkaround			= "Don't use latency based sync check for defile/shadow trap\n(Default on until a bug in sync check is worked out)",
 	AnnounceValkGrabs		= "Announce Val'kyr Shadowguard grab targets to raid chat\n(requires announce to be enabled and promoted status)",
 	SpecWarnValkyrLow		= "Show special warning when Valkyr is below 55% HP",
-	AnnouncePlagueStack		= "Announce $spell:73912 stacks to raid (10 stacks, every 5 after 10)\n(requires promoted status)"
+	AnnouncePlagueStack		= "Announce $spell:70337 stacks to raid (10 stacks, every 5 after 10)\n(requires promoted status)"
 }
 
 L:SetMiscLocalization{

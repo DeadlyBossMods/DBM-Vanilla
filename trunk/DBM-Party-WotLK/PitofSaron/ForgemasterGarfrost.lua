@@ -15,9 +15,9 @@ mod:RegisterEvents(
 	"RAID_BOSS_WHISPER"
 )
 
-local warnForgeWeapon			= mod:NewSpellAnnounce(70335, 2)
-local warnDeepFreeze			= mod:NewTargetAnnounce(70384, 2)
-local warnSaroniteRock			= mod:NewAnnounce("warnSaroniteRock", 3, 70851)
+local warnForgeWeapon			= mod:NewSpellAnnounce(68785, 2)
+local warnDeepFreeze			= mod:NewTargetAnnounce(70381, 2)
+local warnSaroniteRock			= mod:NewAnnounce("warnSaroniteRock", 3, 68789)
 local specWarnSaroniteRock		= mod:NewSpecialWarning("specWarnSaroniteRock")
 local specWarnSaroniteRockNear	= mod:NewSpecialWarning("specWarnSaroniteRockNear")
 local specWarnPermafrost		= mod:NewSpecialWarning("specWarnPermafrost")

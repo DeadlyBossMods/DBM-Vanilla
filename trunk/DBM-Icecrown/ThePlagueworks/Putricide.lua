@@ -31,7 +31,7 @@ local warnChokingGasBombSoon		= mod:NewPreWarnAnnounce(71255, 5, 3, nil, mod:IsM
 local warnChokingGasBomb			= mod:NewSpellAnnounce(71255, 3, nil, mod:IsMelee())		-- Phase 2 ability
 local warnPhase3Soon				= mod:NewAnnounce("WarnPhase3Soon", 2)
 local warnMutatedPlague				= mod:NewAnnounce("WarnMutatedPlague", 2, 72451, mod:IsTank() or mod:IsHealer()) -- Phase 3 ability
-local warnUnboundPlague				= mod:NewTargetAnnounce(72856, 3)			-- Heroic Ability
+local warnUnboundPlague				= mod:NewTargetAnnounce(70911, 3)			-- Heroic Ability
 
 local specWarnVolatileOozeAdhesive	= mod:NewSpecialWarningYou(70447)
 local specWarnGaseousBloat			= mod:NewSpecialWarningYou(70672)
@@ -43,7 +43,7 @@ local specWarnChokingGasBomb		= mod:NewSpecialWarningSpell(71255, mod:IsTank())
 local specWarnMalleableGooCast		= mod:NewSpecialWarningSpell(72295, false)
 local specWarnOozeVariable			= mod:NewSpecialWarningYou(70352)		-- Heroic Ability
 local specWarnGasVariable			= mod:NewSpecialWarningYou(70353)		-- Heroic Ability
-local specWarnUnboundPlague			= mod:NewSpecialWarningYou(72856)		-- Heroic Ability
+local specWarnUnboundPlague			= mod:NewSpecialWarningYou(70911)		-- Heroic Ability
 
 local timerGaseousBloat				= mod:NewTargetTimer(20, 70672)			-- Duration of debuff
 local timerSlimePuddleCD			= mod:NewCDTimer(35, 70341)				-- Approx
@@ -53,8 +53,8 @@ local timerMalleableGooCD			= mod:NewCDTimer(25, 72295)
 local timerTearGas					= mod:NewBuffActiveTimer(16, 71615)
 local timerPotions					= mod:NewBuffActiveTimer(30, 73122)
 local timerMutatedPlagueCD			= mod:NewCDTimer(10, 72451)				-- 10 to 11
-local timerUnboundPlagueCD			= mod:NewNextTimer(60, 72856)
-local timerUnboundPlague			= mod:NewBuffActiveTimer(12, 72856)		-- Heroic Ability: we can't keep the debuff 60 seconds, so we have to switch at 12-15 seconds. Otherwise the debuff does to much damage!
+local timerUnboundPlagueCD			= mod:NewNextTimer(60, 70911)
+local timerUnboundPlague			= mod:NewBuffActiveTimer(12, 70911)		-- Heroic Ability: we can't keep the debuff 60 seconds, so we have to switch at 12-15 seconds. Otherwise the debuff does to much damage!
 
 -- buffs from "Drink Me"
 local timerMutatedSlash				= mod:NewTargetTimer(20, 70542)
@@ -62,7 +62,7 @@ local timerRegurgitatedOoze			= mod:NewTargetTimer(20, 70539)
 
 local berserkTimer					= mod:NewBerserkTimer(600)
 
-local soundGaseousBloat 			= mod:NewSound(72455)
+local soundGaseousBloat 			= mod:NewSound(70672)
 
 mod:AddBoolOption("OozeAdhesiveIcon")
 mod:AddBoolOption("GaseousBloatIcon")
