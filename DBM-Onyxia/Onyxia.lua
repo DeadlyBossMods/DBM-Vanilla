@@ -21,18 +21,18 @@ local warnPhase3			= mod:NewPhaseAnnounce(3)
 local warnPhase2Soon		= mod:NewAnnounce("WarnPhase2Soon", 1, "Interface\\Icons\\Spell_Nature_WispSplode")
 local warnPhase3Soon		= mod:NewAnnounce("WarnPhase3Soon", 1, "Interface\\Icons\\Spell_Nature_WispSplode")
 
-local specWarnBreath		= mod:NewSpecialWarningSpell(17086, nil, nil, nil, true)
+local specWarnBreath		= mod:NewSpecialWarningSpell(18584, nil, nil, nil, true)
 local specWarnBlastNova		= mod:NewSpecialWarningRun(68958, mod:IsMelee())
 
-local timerNextFlameBreath	= mod:NewCDTimer(20, 68970)--Breath she does on ground in frontal cone.
-local timerNextDeepBreath	= mod:NewCDTimer(35, 17086)--Range from 35-60seconds in between based on where she moves to.
-local timerBreath			= mod:NewCastTimer(8, 17086)
+local timerNextFlameBreath	= mod:NewCDTimer(20, 18435)--Breath she does on ground in frontal cone.
+local timerNextDeepBreath	= mod:NewCDTimer(35, 18584)--Range from 35-60seconds in between based on where she moves to.
+local timerBreath			= mod:NewCastTimer(8, 18584)
 local timerWhelps			= mod:NewTimer(105, "TimerWhelps", 10697)
 local timerAchieve			= mod:NewAchievementTimer(300, 4405, "TimerSpeedKill") 
 local timerAchieveWhelps	= mod:NewAchievementTimer(10, 4406, "TimerWhelps") 
 
 local soundBlastNova		= mod:NewSound(68958, nil, mod:IsMelee())
-local soundDeepBreath 		= mod:NewSound(17086)
+local soundDeepBreath 		= mod:NewSound(18584)
 local sndFunny				= mod:NewSound(nil, "SoundWTF", false)
 
 local warned_preP2 = false

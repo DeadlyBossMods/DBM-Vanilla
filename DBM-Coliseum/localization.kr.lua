@@ -35,10 +35,10 @@ L:SetOptionLocalization{
 	SetIconOnBileTarget			= "타오르는 담즙 대상 전술 목표 아이콘 설정",
 	ClearIconsOnIceHowl			= "얼음울음의 사나운 돌진 이후 모든 전술 목표 아이콘 없앰",
 	PingCharge					= "얼음울음에게 사나운 돌진의 대상이 될 경우 미니맵에 핑 표시하기",
-	TimerNextBoss				= "다음 보스 등장 타이머 보기",
-	TimerCombatStart			= "전투 시작 타이머 보기",
-	TimerEmerge					= "출현 타이머 보기",
-	TimerSubmerge				= "숨기 타이머 보기",
+	TimerNextBoss				= "다음 보스 등장 바 표시",
+	TimerCombatStart			= "전투 시작 바 표시",
+	TimerEmerge					= "출현 바 표시",
+	TimerSubmerge				= "숨기 바 표시",
 	RangeFrame                  = "2 페이즈에서 거리 프레임 보기",
 	IcehowlArrow				= "얼음울음이 당신 주변으로 돌진할 경우 DBM 화살표 보기"
 }
@@ -88,7 +88,7 @@ L:SetMiscLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart			= "전투 시작 타이머 보기",
+	TimerCombatStart			= "전투 시작 바 표시",
 	WarnNetherPower				= "자락서스가 황천의 힘을 얻었을 경우 경고 하기 (해제를 위한 경고)",
 	SpecWarnFelFireball			= "지옥 화염구의 특수 경고 보기(차단 관련)",	
 	SpecWarnTouch				= "당신이 자락서스의 손길에 걸렸을 경우 특수 경고 알리기",
@@ -177,7 +177,7 @@ L:SetWarningLocalization{
 	SpecWarnSpecial				= "속성(빛/어둠) 변경!",
 	SpecWarnSwitchTarget		= "대상 전환!",
 	SpecWarnKickNow				= "지금 차단!",
-	WarningTouchDebuff			= "디버프 : >%s<",
+	WarningTouchDebuff			= "손길 : >%s<",
 	WarningPoweroftheTwins		= "쌍둥이의 힘 - 오버힐!!  >%s<",
 	SpecWarnPoweroftheTwins		= "쌍둥이의 힘!"
 }
@@ -189,15 +189,15 @@ L:SetMiscLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerSpecialSpell			= "다음 속성의 소용돌이의 타이머 보기",
+	TimerSpecialSpell			= "다음 속성의 소용돌이의 바 표시",
 	WarnSpecialSpellSoon		= "다음 속성의 소용돌이 사전 경고 보기",
 	SpecWarnSpecial				= "속성(색) 변경을 해야할 때 특수 경고 보기",
 	SpecWarnSwitchTarget		= "다른 보스에게 시전해야 할 경우 특수 경고 보기",
 	SpecWarnKickNow				= "당신이 차단을 해야할 경우 특수 경고 보기",
-	SpecialWarnOnDebuff			= "디버프일 경우 특수 경고 보기 (디버프를 바꿀 경우)",
-	SetIconOnDebuffTarget		= "손길 디버프 대상에게 전술 목표 아이콘 설정하기(영웅 모드)",
-	WarningTouchDebuff			= "빛/어둠의 손길 디버프 대상 알리기",
-	WarningPoweroftheTwins		= "쌍둥이의 힘의 현재 대상 알리기",
+	SpecialWarnOnDebuff			= "잘못된 약화효과일 경우 특수 경고 보기 (약화효과 변경)",
+	SetIconOnDebuffTarget		= "손길 약화효과 대상에게 전술 목표 아이콘 설정하기(영웅 난이도)",
+	WarningTouchDebuff			= "빛/어둠의 손길 대상 알림 표시",
+	WarningPoweroftheTwins		= "쌍둥이의 힘 대상 알림 표시",
 	SpecWarnPoweroftheTwins		= "쌍둥이의 힘의 특수 경고 보기(탱커일 경우)"
 }
 
@@ -245,13 +245,13 @@ L:SetOptionLocalization{
 	specWarnSubmergeSoon		= "숨기 10초전 특수 경고 보기",	
 	SpecWarnPursue				= "당신을 추격하기 시작할 때 특수 경고 알리기",
 	warnAdds					= "새로운 네루비안 땅무지가 추가 될 때 경고 보기",
-	timerAdds					= "새로운 네루비안 땅무지 추가 타이머 보기",
-	TimerEmerge					= "출현 타이머 보기",
-	TimerSubmerge				= "숨기 타이머 보기",
+	timerAdds					= "새로운 네루비안 땅무지 추가 바 표시",
+	TimerEmerge					= "출현 바 표시",
+	TimerSubmerge				= "숨기 바 표시",
 	PlaySoundOnPursue			= "당신을 추격하기 시작할 때 특수 소리 재생",
 	PursueIcon					= "추격 대상자 전술 목표 아이콘 설정하기",
-	SetIconsOnPCold				= "$spell:68510 대상자 전술 목표 아이콘 설정하기",
+	SetIconsOnPCold				= "$spell:66013 대상자 전술 목표 아이콘 설정하기",
 	SpecWarnShadowStrike		= "$spell:66134 특수 경고 보기(차단 관련)",
-	AnnouncePColdIcons			= "$spell:68510의 전술 목표 아이콘 설정을 공격대 대화로 알리기(공격대장 권한 필요)",
-	AnnouncePColdIconsRemoved	= "$spell:68510의 전술 목표 아이콘이 언제 사라지는지 알리기 \n(위의 옵션을 포함해야 함)"
+	AnnouncePColdIcons			= "$spell:66013의 전술 목표 아이콘 설정을 공격대 대화로 알리기(공격대장 권한 필요)",
+	AnnouncePColdIconsRemoved	= "$spell:66013의 전술 목표 아이콘이 언제 사라지는지 알리기 \n(위의 옵션을 포함해야 함)"
 }

@@ -527,7 +527,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	warnBirds	= "곧 안주의 혈족",
-	warnStoned	= "%s returned to stone"
+	warnStoned	= "돌로 돌아옴 : %s"
 })
 
 L:SetTimerLocalization({
@@ -535,7 +535,7 @@ L:SetTimerLocalization({
 
 L:SetOptionLocalization({
 	warnBirds	= "안주의 혈족 사전 경고 보기",
-	warnStoned	= "Show warning for spirits returning to stone"
+	warnStoned	= "영혼이 돌로 되돌아 올때 알림 표시"
 })
 
 L:SetMiscLocalization({

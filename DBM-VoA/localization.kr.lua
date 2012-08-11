@@ -100,7 +100,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	Frostbite		= "$spell:72098의 경고 보기",
+	Frostbite		= "$spell:72004의 경고 보기",
 }
 
 L:SetMiscLocalization{

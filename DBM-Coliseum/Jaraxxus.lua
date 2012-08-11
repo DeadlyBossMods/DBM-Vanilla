@@ -28,31 +28,31 @@ local isMagicDispeller = select(2, UnitClass("player")) == "PALADIN"
 	    		 or select(2, UnitClass("player")) == "PRIEST"
 
 local warnFelFireball			= mod:NewCastAnnounce(66532, 2)
-local warnPortalSoon			= mod:NewSoonAnnounce(67900, 3)
-local warnVolcanoSoon			= mod:NewSoonAnnounce(67901, 3)
-local warnFlame					= mod:NewTargetAnnounce(68123, 4)
+local warnPortalSoon			= mod:NewSoonAnnounce(66269, 3)
+local warnVolcanoSoon			= mod:NewSoonAnnounce(66258, 3)
+local warnFlame					= mod:NewTargetAnnounce(66197, 4)
 local warnFlesh					= mod:NewTargetAnnounce(66237, 4, nil, mod:IsHealer())
 local warnNetherPower			= mod:NewAnnounce("WarnNetherPower", 4, 67009)
 
-local specWarnFlame				= mod:NewSpecialWarningRun(67072)
+local specWarnFlame				= mod:NewSpecialWarningRun(66877)
 local specWarnFlesh				= mod:NewSpecialWarningYou(66237)
-local specWarnKiss				= mod:NewSpecialWarningYou(67907, false)
+local specWarnKiss				= mod:NewSpecialWarningYou(66334, false)
 local specWarnNetherPower		= mod:NewSpecialWarning("SpecWarnNetherPower", isDispeller)
-local specWarnFelInferno		= mod:NewSpecialWarningMove(68718)
+local specWarnFelInferno		= mod:NewSpecialWarningMove(66496)
 local SpecWarnFelFireball		= mod:NewSpecialWarning("SpecWarnFelFireball", false)
-local SpecWarnFelFireballDispel	= mod:NewSpecialWarningDispel(66965, isMagicDispeller)
+local SpecWarnFelFireballDispel	= mod:NewSpecialWarningDispel(66532, isMagicDispeller)
 
 local timerCombatStart			= mod:NewTimer(84, "TimerCombatStart", 2457)--rollplay for first pull
 local enrageTimer				= mod:NewBerserkTimer(600)
-local timerFlame 				= mod:NewTargetTimer(8, 68123)--There are 8 debuff Ids. Since we detect first to warn, use an 8sec timer to cover duration of trigger spell and damage debuff.
-local timerFlameCD				= mod:NewCDTimer(30, 68125)
+local timerFlame 				= mod:NewTargetTimer(8, 66197)--There are 8 debuff Ids. Since we detect first to warn, use an 8sec timer to cover duration of trigger spell and damage debuff.
+local timerFlameCD				= mod:NewCDTimer(30, 66197)
 local timerNetherPowerCD		= mod:NewCDTimer(42, 67009)
-local timerFlesh				= mod:NewTargetTimer(12, 67049)
-local timerFleshCD				= mod:NewCDTimer(23, 67051) 
-local timerPortalCD				= mod:NewCDTimer(120, 67900)
-local timerVolcanoCD			= mod:NewCDTimer(120, 67901)
+local timerFlesh				= mod:NewTargetTimer(12, 66237)
+local timerFleshCD				= mod:NewCDTimer(23, 66237) 
+local timerPortalCD				= mod:NewCDTimer(120, 66269)
+local timerVolcanoCD			= mod:NewCDTimer(120, 66258)
 
-local soundLegionFlame			= mod:NewSound(68123)
+local soundLegionFlame			= mod:NewSound(66197)
 
 mod:AddBoolOption("LegionFlameWhisper", false, "announce")
 mod:AddBoolOption("LegionFlameIcon", true)

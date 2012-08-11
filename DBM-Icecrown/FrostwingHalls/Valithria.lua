@@ -20,21 +20,21 @@ mod:RegisterEvents(
 )
 
 local warnCorrosion			= mod:NewAnnounce("WarnCorrosion", 2, 70751, false)
-local warnGutSpray			= mod:NewTargetAnnounce(71283, 3, nil, mod:IsTank() or mod:IsHealer())
-local warnManaVoid			= mod:NewSpellAnnounce(71741, 2, nil, mod:IsManaUser())
+local warnGutSpray			= mod:NewTargetAnnounce(70633, 3, nil, mod:IsTank() or mod:IsHealer())
+local warnManaVoid			= mod:NewSpellAnnounce(71179, 2, nil, mod:IsManaUser())
 local warnSupression		= mod:NewSpellAnnounce(70588, 3)
 local warnPortalSoon		= mod:NewSoonAnnounce(72483, 2, nil)
 local warnPortal			= mod:NewSpellAnnounce(72483, 3, nil)
 local warnPortalOpen		= mod:NewAnnounce("WarnPortalOpen", 4, 72483)
 
-local specWarnLayWaste		= mod:NewSpecialWarningSpell(71730)
-local specWarnManaVoid		= mod:NewSpecialWarningMove(71741)
+local specWarnLayWaste		= mod:NewSpecialWarningSpell(69325)
+local specWarnManaVoid		= mod:NewSpecialWarningMove(71179)
 
 local timerLayWaste			= mod:NewBuffActiveTimer(12, 69325)
 local timerNextPortal		= mod:NewCDTimer(46.5, 72483, nil)
 local timerPortalsOpen		= mod:NewTimer(10, "TimerPortalsOpen", 72483)
 local timerHealerBuff		= mod:NewBuffActiveTimer(40, 70873)
-local timerGutSpray			= mod:NewTargetTimer(12, 71283, nil, mod:IsTank() or mod:IsHealer())
+local timerGutSpray			= mod:NewTargetTimer(12, 70633, nil, mod:IsTank() or mod:IsHealer())
 local timerCorrosion		= mod:NewTargetTimer(6, 70751, nil, false)
 local timerBlazingSkeleton	= mod:NewTimer(50, "TimerBlazingSkeleton", 17204)
 local timerAbom				= mod:NewTimer(50, "TimerAbom", 43392)--Experimental
@@ -136,7 +136,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(71741) then--Mana Void
+	if args:IsSpellID(71179, 71741) then--Mana Void
 		warnManaVoid:Show()
 	elseif args:IsSpellID(70588) and self:AntiSpam(5, 1) then--Supression
 		warnSupression:Show(args.destName)

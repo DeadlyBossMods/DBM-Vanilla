@@ -29,10 +29,10 @@ local timerFrozenBlows		= mod:NewBuffActiveTimer(20, 63512)
 local timerFlashFrCD		= mod:NewCDTimer(50, 61968)
 local timerAchieve			= mod:NewAchievementTimer(179, 3182, "TimerSpeedKill")
 
+local yellStormCloud		= mod:NewYell(65133)
 local soundFlashFreeze		= mod:NewSound(61968)
 
 mod:AddBoolOption("SetIconOnStormCloud")
-mod:AddBoolOption("YellOnStormCloud", true, "announce")
 
 local stormCloudIcon
 
@@ -59,9 +59,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnStormCloud:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnStormCloud:Show()
-			if self.Options.YellOnStormCloud then
-				SendChatMessage(L.YellCloud, "SAY")
-			end
+			yellStormCloud:Yell()
 		end
 		if self.Options.SetIconOnStormCloud then
 			self:SetIcon(args.destName, stormCloudIcon)

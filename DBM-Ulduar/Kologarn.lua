@@ -31,6 +31,7 @@ local warnCrunchArmor			= mod:NewTargetAnnounce(64002, 2)
 
 local specWarnCrunchArmor2		= mod:NewSpecialWarningStack(64002, false, 2)
 local specWarnEyebeam			= mod:NewSpecialWarningYou(63346)
+local yellBeam					= mod:NewYell(63346)
 
 local timerCrunch10             = mod:NewTargetTimer(6, 63355)
 local timerNextShockwave		= mod:NewCDTimer(18, 63982)
@@ -45,7 +46,6 @@ local soundEyebeam				= mod:NewSound(63346)
 mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("SetIconOnGripTarget", true)
 mod:AddBoolOption("SetIconOnEyebeamTarget", true)
-mod:AddBoolOption("YellOnBeam", true, "announce")
 
 
 local guids = {}
@@ -92,9 +92,7 @@ function mod:RAID_BOSS_WHISPER(msg)
 	if msg:find(L.FocusedEyebeam) then
 		specWarnEyebeam:Show()
 		soundEyebeam:Play()
-		if self.Options.YellOnBeam then
-			SendChatMessage(L.YellBeam, "SAY")
-		end
+		yellBeam:Yell()
 		self:SendSync("EyeBeamOn", UnitGUID("player"))
 	end
 end

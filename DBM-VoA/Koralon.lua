@@ -13,17 +13,17 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE"
 )
 
-local warnBreath			= mod:NewSpellAnnounce(67328, 3)
-local timerBreath			= mod:NewBuffActiveTimer(4.5, 67328)
-local timerBreathCD			= mod:NewCDTimer(45, 67328)--Seems to variate, but 45sec cooldown looks like a good testing number to start.
+local warnBreath			= mod:NewSpellAnnounce(66665, 3)
+local timerBreath			= mod:NewBuffActiveTimer(4.5, 66665)
+local timerBreathCD			= mod:NewCDTimer(45, 66665)--Seems to variate, but 45sec cooldown looks like a good testing number to start.
 
-local warnMeteor			= mod:NewSpellAnnounce(67333, 3)
-local warnMeteorSoon		= mod:NewPreWarnAnnounce(68161, 5, 2)
-local timerNextMeteor		= mod:NewNextTimer(47, 68161)
+local warnMeteor			= mod:NewSpellAnnounce(66725, 3)
+local warnMeteorSoon		= mod:NewPreWarnAnnounce(66725, 5, 2)
+local timerNextMeteor		= mod:NewNextTimer(47, 66725)
 local WarnBurningFury		= mod:NewAnnounce("BurningFury", 2, 66721)
 local timerNextBurningFury	= mod:NewNextTimer(20, 66721)
 
-local specWarnCinder		= mod:NewSpecialWarningMove(67332)
+local specWarnCinder		= mod:NewSpecialWarningMove(66684)
 
 local timerKoralonEnrage	= mod:NewTimer(300, "KoralonEnrage", 26662)
 
@@ -36,7 +36,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(67328, 66665) then
+	if args:IsSpellID(66665, 67328) then
 		warnBreath:Show()
 		timerBreath:Start()
 		timerBreathCD:Start()

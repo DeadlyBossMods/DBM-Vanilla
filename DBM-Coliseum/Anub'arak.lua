@@ -32,13 +32,13 @@ local warnPhase3			= mod:NewPhaseAnnounce(3)
 local specWarnPursue		= mod:NewSpecialWarning("SpecWarnPursue")
 local specWarnSubmergeSoon	= mod:NewSpecialWarning("specWarnSubmergeSoon", mod:IsTank())
 local specWarnShadowStrike	= mod:NewSpecialWarning("SpecWarnShadowStrike", mod:IsTank())
-local specWarnPCold			= mod:NewSpecialWarningYou(68510, false)
+local specWarnPCold			= mod:NewSpecialWarningYou(66013, false)
 
 local timerAdds				= mod:NewTimer(45, "timerAdds", 45419)
 local timerSubmerge			= mod:NewTimer(75, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local timerEmerge			= mod:NewTimer(65, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local timerFreezingSlash	= mod:NewCDTimer(20, 66012, nil, mod:IsHealer() or mod:IsTank())
-local timerPCold			= mod:NewBuffActiveTimer(15, 68509)
+local timerPCold			= mod:NewBuffActiveTimer(15, 66013)
 local timerShadowStrike		= mod:NewNextTimer(30.5, 66134)
 local timerHoP				= mod:NewBuffActiveTimer(10, 1022, nil, false)--So we will track bops to make this easier.
 

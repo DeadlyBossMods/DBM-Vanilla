@@ -197,8 +197,7 @@ L:SetOptionLocalization{
 	timerRightArm			= "Show timer for Right Arm respawn",
 	achievementDisarmed		= "Show timer for Disarm achievement",
 	SetIconOnGripTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(64292),
-	SetIconOnEyebeamTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346),
-	YellOnBeam				= "Yell on $spell:63346"
+	SetIconOnEyebeamTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63346)
 }
 
 L:SetMiscLocalization{
@@ -207,8 +206,7 @@ L:SetMiscLocalization{
 	Health_Body				= "Kologarn Body",
 	Health_Right_Arm		= "Right Arm",
 	Health_Left_Arm			= "Left Arm",
-	FocusedEyebeam			= "his eyes on you",
-	YellBeam				= "Focused Eyebeam on me!"
+	FocusedEyebeam			= "his eyes on you"
 }
 
 ---------------
@@ -258,13 +256,11 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	YellOnStormCloud		= "Yell on $spell:65133",
-	SetIconOnStormCloud		= "Set icons on $spell:65133 targets"
+	SetIconOnStormCloud		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(65133)
 }
 
 L:SetMiscLocalization{
-	YellKill	= "I... I am released from his grasp... at last.",
-	YellCloud	= "Storm Cloud on me!"
+	YellKill	= "I... I am released from his grasp... at last."
 }
 
 --------------
@@ -420,16 +416,12 @@ L:SetOptionLocalization{
 	SpecialWarningShadowCrash		= "Show special warning for $spell:62660\n(must be targeted or focused by at least one raid member)",
 	SpecialWarningShadowCrashNear	= "Show special warning for $spell:62660 near you",
 	SpecialWarningLLNear			= "Show special warning for $spell:63276 near you",
-	YellOnLifeLeech					= "Yell on $spell:63276",
-	YellOnShadowCrash				= "Yell on $spell:62660",
 	hardmodeSpawn					= "Show timer for Saronite Animus spawn (hard mode)",
 	CrashArrow						= "Show DBM arrow when $spell:62660 is near you"
 }
 
 L:SetMiscLocalization{
-	EmoteSaroniteVapors	= "A cloud of saronite vapors coalesces nearby!",
-	YellLeech			= "Mark of the Faceless on me!",
-	YellCrash			= "Shadow Crash on me!"
+	EmoteSaroniteVapors	= "A cloud of saronite vapors coalesces nearby!"
 }
 
 ------------------
@@ -474,15 +466,15 @@ L:SetOptionLocalization{
 	SpecWarnGuardianLow				= "Show special warning when Guardian (Phase 1) is low (for DDs)",
 	WarnBrainPortalSoon				= "Show pre-warning for Brain Portal",
 	SpecWarnMadnessOutNow			= "Show special warning shortly before $spell:64059 ends",
-	SetIconOnFearTarget				= "Set icons on $spell:63881 targets",
+	SetIconOnFearTarget				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63881),
 	SpecWarnFervorCast				= "Show special warning when $spell:63138 is being cast on you (must be targeted or focused by at least one raid member)",
 	specWarnBrainPortalSoon			= "Show special warning for next Brain Portal",
 	WarningSqueeze					= "Yell on Squeeze",
 	NextPortal						= "Show timer for next Brain Portal",
-	SetIconOnFervorTarget			= "Set icons on $spell:63138 targets",
+	SetIconOnFervorTarget			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63138),
 	ShowSaraHealth					= "Show health frame for Sara in Phase 1 (must be targeted or focused by at least one raid member)",
 	SpecWarnMaladyNear				= "Show special warning for $spell:63881 near you",
-	SetIconOnBrainLinkTarget		= "Set icons on $spell:63802 targets",
+	SetIconOnBrainLinkTarget		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(63802),
 	MaladyArrow						= "Show DBM arrow when $spell:63881 is near you"
 }
 

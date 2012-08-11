@@ -21,7 +21,7 @@ local preWarnWhirlwind   	= mod:NewSoonAnnounce(69076, 3)
 local warnBoneSpike			= mod:NewCastAnnounce(69057, 2)
 local warnImpale			= mod:NewAnnounce("WarnImpale", 4, 72669)
 
-local specWarnColdflame		= mod:NewSpecialWarningMove(70825)
+local specWarnColdflame		= mod:NewSpecialWarningMove(69146)
 local specWarnWhirlwind		= mod:NewSpecialWarningRun(69076)
 
 local timerBoneSpike		= mod:NewCDTimer(18, 69057)
