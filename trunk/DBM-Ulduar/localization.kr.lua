@@ -281,7 +281,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerHardmode			= "영웅 난이도 진입까지 남은 시간 바 표시",
+	TimerHardmode			= "영웅 난이도 진입까지 남은시간 바 표시",
 	RangeFrame				= "거리 프레임 보기",
 	AnnounceFails			= "$spell:62017 주문에 적중된 플레이어를 공격대 대화로 알림\n(승급 권한 필요)" 
 }
