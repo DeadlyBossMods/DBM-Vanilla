@@ -198,6 +198,6 @@ function mod:WaveFunction(currentWave)
 		end
 		timerWave:Cancel()
 		warnWaveSoon:Cancel()
-		lastWave = curentWave
+		lastWave = currentWave
 	end
 end

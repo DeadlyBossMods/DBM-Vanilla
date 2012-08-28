@@ -32,7 +32,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warningCurse:Show(args.destName)
 		timerCurse:Start(args.destName)
 	elseif args:IsSpellID(52709) then
-		wagningSteal:Show(args.destName)
+		warningSteal:Show(args.destName)
 	end
 end
 

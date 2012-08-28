@@ -410,7 +410,7 @@ do
 			end
 			mod:Schedule(0.5, scanValkyrTargets)  -- check for more targets in a few
 		else
-			wipe(valkyrTargets)       -- no more valkyrs this round, so lets clear the table
+			table.wipe(valkyrTargets)       -- no more valkyrs this round, so lets clear the table
 			grabIcon = 2
 		end
 	end  

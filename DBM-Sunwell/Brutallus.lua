@@ -46,11 +46,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(46394) then
 		warnBurn:Show(args.destName)
 		timerBurn:Start(args.destName)
-		local firstBurn = false
 		if self:AntiSpam(19) then
-			firstBurn = true
-		end
-		if firstBurn then
 			timerBurnCD:Start()
 		end
 		if self.Options.BurnIcon then
@@ -92,9 +88,6 @@ function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, 
 	if spellId == 46394 then
 		warnBurn:Show("MISSED")
 		if self:AntiSpam(19) then
-			firstBurn = true
-		end
-		if firstBurn then
 			timerBurnCD:Start()
 		end
 	end

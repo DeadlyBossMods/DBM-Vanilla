@@ -40,7 +40,7 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(32637) and self:AntiSpam(10, 1) then
 		warnCharge:Show()
 		timerChargeCD:Show()
-		warningChargeeSoon:Cancel()
+		warningChargeSoon:Cancel()
 		warningChargeSoon:Schedule(36)
 	end
 end

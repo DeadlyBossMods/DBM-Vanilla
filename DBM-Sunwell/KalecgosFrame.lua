@@ -62,7 +62,7 @@ local function createBarFrame(name)
 		frame = CreateFrame("Frame", "DBMKalFrame"..fCounter, DBMKalFrameDrag, "DBMKalFrameTemplate")
 		fCounter = fCounter + 1
 	end
-	getglobal(frame:GetName().."BarName"):SetText(name)
+	_G[frame:GetName().."BarName"]:SetText(name)
 	return frame
 end
 
@@ -93,14 +93,14 @@ local function createBar(name)
 end
 
 function barMethods:Update(elapsed)
-	local bar = getglobal(self.data.frame:GetName().."Bar")
-	local cooldown = getglobal(self.data.frame:GetName().."BarCooldown")
-	local spark = getglobal(self.data.frame:GetName().."BarSpark")
+	local bar = _G[self.data.frame:GetName().."Bar"]
+	local cooldown = _G[self.data.frame:GetName().."BarCooldown"]
+	local spark = _G[self.data.frame:GetName().."BarSpark"]
 	self.data.timer = self.data.timer - elapsed
 	if self.data.timer <= 0 then
 		Kal:RemoveEntry(self.data.name)
 	else
-		cooldown:SetText(floor(self.data.timer))
+		cooldown:SetText(math.floor(self.data.timer))
 		bar:SetValue(self.data.timer)
 		spark:ClearAllPoints()
 		spark:SetPoint("CENTER", bar, "LEFT", ((bar:GetValue() / 60) * bar:GetWidth()), 0)
@@ -138,11 +138,11 @@ function barMethods:GetFrame()
 end
 
 function barMethods:GetBar()
-	return getglobal(self.data.frame:GetName().."Bar")
+	return _G[self.data.frame:GetName().."Bar"]
 end
 
 function barMethods:GetSpark()
-	return getglobal(self.data.frame:GetName().."BarSpark")
+	return _G[self.data.frame:GetName().."BarSpark"]
 end
 
 function Kal:CreateFrame()

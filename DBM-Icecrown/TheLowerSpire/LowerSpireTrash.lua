@@ -27,11 +27,6 @@ mod:AddBoolOption("SetIconOnDarkReckoning", true)
 mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
 
-local function warnPlagueTargetsTargets()
-	warnDeathPlague:Show(table.concat(DeathPlagueTargets, "<, >"))
-	table.wipe(DeathPlagueTargets)
-	DeathPlagueIcons = 8
-end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(69483) then

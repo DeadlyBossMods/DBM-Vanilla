@@ -34,7 +34,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnRRH:Show()
 		end
 		if self.Options.RRHIcon then
-			self:SetIcon(targetname, 8, 20)
+			self:SetIcon(args.destName, 8, 20)
 		end
 	elseif args:IsSpellID(30752) and self:AntiSpam() then
 		warningFear:Show()

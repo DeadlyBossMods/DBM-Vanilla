@@ -93,9 +93,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(gasSporeTargets)
 	table.wipe(vileGasTargets)
 	table.wipe(gasSporeIconTargets)
-	gasSporeIcon = 8
 	gasSporeCast = 0
-	lastGoo = 0
 	warnedfailed = false
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(8)

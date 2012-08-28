@@ -87,7 +87,8 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerPhase		= "다음 %s 단계",
-}	TimerBreath		= "깊은 숨결 쿨다운"
+	TimerBreath		= "깊은 숨결 쿨다운"
+}
 
 L:SetOptionLocalization{
 	WarnPhase		= "단계 전환 경고 보기",
