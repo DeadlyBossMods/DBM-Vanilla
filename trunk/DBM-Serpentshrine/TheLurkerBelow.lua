@@ -49,7 +49,6 @@ function mod:CheckDive()
 end
 
 function mod:OnCombatStart(delay)
-	submerged = false
 	timerWhirlCD:Start(17-delay)
 	timerSpoutCD:Start(37-delay)
 	warnSubmergeSoon:Schedule(80)

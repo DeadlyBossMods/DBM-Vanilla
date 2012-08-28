@@ -135,7 +135,7 @@ do
 			for i = 1, DBM:GetGroupMembers() do
 				local uId = "raid"..i.."target"
 				local guid = UnitGUID(uId)
-				if beastIcon[guid] then
+				if elementalIcon[guid] then
 					SetRaidTarget(uId, elementalIcon[guid])
 					iconsSet = iconsSet + 1
 					elementalIcon[guid] = nil

@@ -112,7 +112,7 @@ do
 	end
 end
 
-local function eggSpawned()--Is there a better way then this? This is ugly
+function mod:EggSpawned() --Is there a better way then this? This is ugly
 	if self:AntiSpam(20) then 
 		warnEgg:Show()
 		specWarnEgg:Show()
@@ -224,13 +224,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnPhoenix:Show()
 		timerPhoenixCD:Start()
 	elseif args:GetDestCreatureID() == 21364 then
-		eggSpawned()
+		self:EggSpawned()
 	end
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID)
 	if self:GetCIDFromGUID(destGUID) == 21364 then
-		eggSpawned()
+		self:EggSpawned()
 	end
 end
 mod.SWING_DAMAGE = mod.SPELL_DAMAGE
@@ -238,7 +238,7 @@ mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
 
 function mod:UNIT_TARGET()
 	if self:GetUnitCreatureId("target") == 21364 then
-		eggSpawned()
+		self:EggSpawned()
 	end
 end
 

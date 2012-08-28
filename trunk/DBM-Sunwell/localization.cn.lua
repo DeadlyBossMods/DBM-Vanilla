@@ -88,7 +88,8 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerPhase		= "%s阶段",
-}	TimerBreath		= "深呼吸"
+	TimerBreath		= "深呼吸"
+}
 
 L:SetOptionLocalization{
 	WarnPhase		= "Show warning for next phase",--Translate

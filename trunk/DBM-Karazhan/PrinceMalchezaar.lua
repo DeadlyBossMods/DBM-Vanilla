@@ -54,7 +54,7 @@ end
 
 function mod:Infernals()
 	warningInfernal:Show()
-	if Phase == 3 then
+	if phase == 3 then
 		timerNextInfernal:Start(22.5)
 	else		
 		timerNextInfernal:Start()
@@ -85,7 +85,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 			timerNextInfernal:Start(18.5)
 			firstInfernal = true
 		end
-		if Phase == 3 then
+		if phase == 3 then
 			timerNextInfernal:Update(3.5, 22.5)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.
 		else		
 			timerNextInfernal:Update(26.5, 45)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.

@@ -88,7 +88,8 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerPhase		= "Next %s Phase",
-}	TimerBreath		= "Глубокий Вздох"
+	TimerBreath		= "Глубокий Вздох"
+}
 
 L:SetOptionLocalization{
 	WarnPhase		= "Show warning for next phase",--Translate

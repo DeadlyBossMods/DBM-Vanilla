@@ -141,7 +141,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if #shadowDemonTargets >= 4 then
 			showDemonTargets()
 		else
-			self:Schedule(1, showDemonTarget)
+			self:Schedule(1, showDemonTargets)
 		end
 	elseif args:IsSpellID(40683) then
 		warnEnrage:Show()

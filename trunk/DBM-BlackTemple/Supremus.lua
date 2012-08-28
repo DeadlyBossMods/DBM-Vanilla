@@ -36,7 +36,7 @@ function mod:ScanTarget()
 	if target then
 		if lastTarget ~= target then
 			warnKite:Show(target)
-			lastTarget = Target
+			lastTarget = target
 			if self.Options.KiteIcon then
 				self:SetIcon(target, 8)
 			end

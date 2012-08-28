@@ -84,7 +84,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(45029) then
 		warnCorrupt:Show(args.destName)
 	elseif args:IsSpellID(46021) then
-		self:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
 		if args:IsPlayer() then
 			timerPorted:Start()
 			timerExhausted:Schedule(60)
@@ -99,6 +98,7 @@ function mod:SPELL_AURA_APPLIED(args)
 					break
 				end
 			end
+			self:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
 			warnPortal:Show(portCount, args.destName, grp or 0)
 			portCount = portCount + 1
 			timerNextPortal:Start(portCount)
