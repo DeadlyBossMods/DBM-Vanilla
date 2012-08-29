@@ -104,7 +104,7 @@ do
 		maxAbsorb = absorb
 		DBM.BossHealth:RemoveBoss(getShieldHP)
 		DBM.BossHealth:AddBoss(getShieldHP, shieldName)
-		self:Schedule(10, hideShieldHealthBar)
+		mod:Schedule(10, hideShieldHealthBar)
 	end
 	
 	function hideShieldHealthBar()
