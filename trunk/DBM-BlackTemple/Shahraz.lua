@@ -66,7 +66,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetIcon(args.destName, FAIcon)
 			FAIcon = FAIcon - 1
 		end
-		if IsRaidLeader() and self.Options.FAWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.FAWhisper then
 			self:SendWhisper(L.FAWhisper, args.destName)
 		end
 		if #warnFATargets >= 3 then

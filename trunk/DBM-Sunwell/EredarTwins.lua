@@ -114,7 +114,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		if self.Options.NovaIcon then
 			self:SetIcon(target, 7, 5)
 		end
-		if IsRaidLeader() and self.Options.NovaWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.NovaWhisper then
 			self:SendWhisper(L.NovaWhisper, target)
 		end
 	elseif msg == L.Conflag or msg:find(L.Conflag) then
@@ -128,7 +128,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		if self.Options.ConflagIcon then
 			self:SetIcon(target, 8, 5)
 		end
-		if IsRaidLeader() and self.Options.ConflagWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.ConflagWhisper then
 			self:SendWhisper(L.ConflagWhisper, target)
 		end
 	end

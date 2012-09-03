@@ -195,7 +195,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		self:Unschedule(hideShieldHealthBar)
 		hideShieldHealthBar()
 	elseif args:IsSpellID(36797) then
-		if IsRaidLeader() and self.Options.MCIcon then
+		if self.Options.MCIcon then
 			self:SetIcon(args.destName, 0)
 		end
 	elseif args:IsSpellID(37027) then

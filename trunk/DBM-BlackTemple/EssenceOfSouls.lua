@@ -92,7 +92,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnSpite:Show()
 		end
-		if IsRaidLeader() and self.Options.SpiteWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.SpiteWhisper then
 			self:SendWhisper(L.SpiteWhisper, args.destName)
 		end
 		self:Schedule(0.3, showSpite)

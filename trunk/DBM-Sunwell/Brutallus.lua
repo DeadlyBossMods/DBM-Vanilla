@@ -57,7 +57,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				burnIcon = burnIcon - 1
 			end
 		end
-		if IsRaidLeader() and self.Options.BurnWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.BurnWhisper then
 			self:SendWhisper(L.BurnWhisper, args.destName)
 		end
 		if args:IsPlayer() then
