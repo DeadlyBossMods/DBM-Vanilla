@@ -117,7 +117,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.ParasiteIcon then
 			self:SetIcon(args.destName, 8)
 		end
-		if IsRaidLeader() and self.Options.ParasiteWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.ParasiteWhisper then
 			self:SendWhisper(L.ParasiteWhisper, args.destName)
 		end
 	elseif args:IsSpellID(40585) then

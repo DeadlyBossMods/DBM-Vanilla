@@ -40,7 +40,7 @@ function mod:ScanTarget()
 			if self.Options.KiteIcon then
 				self:SetIcon(target, 8)
 			end
-			if IsRaidLeader() and self.Options.KiteWhisper then
+			if DBM:GetRaidRank() > 0 and self.Options.KiteWhisper then
 				self:SendWhisper(L.KiteWhisper, target)
 			end
 		end

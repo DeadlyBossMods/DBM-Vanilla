@@ -94,7 +94,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				SendChatMessage(L.YellBloom, "SAY")
 			end
 		end
-		if IsRaidLeader() and self.Options.BloomWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.BloomWhisper then
 			self:SendWhisper(L.BloomWhisper, args.destName)
 		end
 		if #warnBloomTargets >= 5 then

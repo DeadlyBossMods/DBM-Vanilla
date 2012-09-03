@@ -67,7 +67,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 8)
 		end
-		if IsRaidLeader() and self.Options.PoisonWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.PoisonWhisper then
 			self:SendWhisper(L.PoisonWhisper, args.destName)
 		end
 	elseif args:IsSpellID(41481) and args:IsPlayer() then
