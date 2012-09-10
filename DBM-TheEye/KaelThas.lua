@@ -118,7 +118,7 @@ function mod:EggSpawned() --Is there a better way then this? This is ugly
 		specWarnEgg:Show()
 		timerRebirth:Show()
 		DBM.BossHealth:AddBoss(21364, L.Egg)
-		mod:Schedule(15, function()
+		self:Schedule(15, function()
 			DBM.BossHealth:RemoveBoss(21364)
 		end)
 	end
