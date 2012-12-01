@@ -14,7 +14,7 @@ mod:RegisterEvents(
 local warnFreeze		= mod:NewAnnounce("WarnFreeze", 2)
 local warnShatter		= mod:NewAnnounce("WarnShatter", 2)
 
-local timerFrozen		= mod:NewBuffActiveTimer(15, 25937)
+local timerFrozen		= mod:NewBuffActiveTimer(30, 25937)
 
 function mod:OnCombatStart(delay)
 end
