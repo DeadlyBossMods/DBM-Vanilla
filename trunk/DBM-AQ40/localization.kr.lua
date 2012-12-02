@@ -57,7 +57,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("Viscidus")
 
 L:SetGeneralLocalization{
-	name = "비시디우스"
+	name = "비시두스"
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "빙결 : %d/3",
