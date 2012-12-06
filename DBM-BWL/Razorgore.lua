@@ -11,8 +11,6 @@ mod:SetWipeTime(45)--guesswork
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"RAID_BOSS_EMOTE",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_DIED"
 )
@@ -44,14 +42,12 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 --For some reason this no longer works
-function mod:RAID_BOSS_EMOTE(msg)
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.Phase2Emote or msg:find(L.Phase2Emote) then
 		warnPhase2:Show()
 		phase2 = true
 	end
 end
-mod.RAID_BOSS_EMOTE = mod.CHAT_MSG_MONSTER_EMOTE -- Not sure which is used yet so for time being support both.
-mod.RAID_BOSS_EMOTE = mod.CHAT_MSG_RAID_BOSS_EMOTE -- Not sure which is used yet so for time being support both.
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
