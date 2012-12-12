@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Vaelastrasz")
 
 L:SetGeneralLocalization{
-	name = "Vaelastrasz the Corrupt"
+	name				= "Vaelastrasz the Corrupt"
 }
 
 L:SetTimerLocalization{
@@ -44,7 +44,11 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Broodlord")
 
 L:SetGeneralLocalization{
-	name = "Broodlord Lashlayer"
+	name	= "Broodlord Lashlayer"
+}
+
+L:SetMiscLocalization{
+	Pull	= "None of your kind should be here!  You've doomed only yourselves!"
 }
 
 ---------------

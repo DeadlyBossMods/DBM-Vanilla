@@ -32,11 +32,11 @@ end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg:find(L.Phase4) then
-		self:SendSync("Phase", 4)
+		self:SendSync("Phase", 2)
 	elseif msg:find(L.Phase5) then
-		self:SendSync("Phase", 5)
+		self:SendSync("Phase", 1)
 	elseif msg:find(L.Phase6) then
-		self:SendSync("Phase", 6)
+		self:SendSync("Phase", 0)
 	end
 end
 
