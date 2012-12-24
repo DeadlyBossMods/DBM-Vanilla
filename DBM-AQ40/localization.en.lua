@@ -67,6 +67,9 @@ L:SetOptionLocalization{
 	WarnShatter	= "Announce Shatter status",
 }
 L:SetMiscLocalization{
+	Slow	= "begins to slow",
+	Freezing= "is freezing up",
+	Frozen	= "is Frozen Solid",
 	Phase4 	= "begins to crack",
 	Phase5 	= "looks ready to shatter",
 	Phase6 	= "Explodes."
