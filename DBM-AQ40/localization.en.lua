@@ -69,7 +69,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Slow	= "begins to slow",
 	Freezing= "is freezing up",
-	Frozen	= "is Frozen Solid",
+	Frozen	= "is frozen solid",
 	Phase4 	= "begins to crack",
 	Phase5 	= "looks ready to shatter",
 	Phase6 	= "Explodes."
