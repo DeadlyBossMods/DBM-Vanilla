@@ -68,6 +68,9 @@ L:SetOptionLocalization{
 	WarnShatter	= "분해 상태 알림",
 }
 L:SetMiscLocalization{
+	Slow	= "느려지기 시작했습니다!",
+	Freezing= "얼어붙고 있습니다!",
+	Frozen	= "단단하게 얼었습니다!",
 	Phase4 	= "분해되기 시작합니다!",
 	Phase5 	= "부서질 것 같습니다!",
 	Phase6 	= "폭발"
