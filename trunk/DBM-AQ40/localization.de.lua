@@ -68,9 +68,12 @@ L:SetOptionLocalization{
 	WarnShatter	= "Verkünde Zerspringen Status",
 }
 L:SetMiscLocalization{
-	Phase4 	= "geht die Puste aus!",
-	Phase5 	= "ist kurz davor, zu zerspringen.",
-	Phase6 	= "Explodes." --translate
+	Slow	= "wird langsamer",
+	Freezing= "friert ein",
+	Frozen	= "ist tiefgefroren",
+	Phase4 	= "geht die Puste aus",
+	Phase5 	= "ist kurz davor, zu zerspringen",
+	Phase6 	= "Explodes." --translate (trigger)
 }
 -------------
 -- Huhuran --
