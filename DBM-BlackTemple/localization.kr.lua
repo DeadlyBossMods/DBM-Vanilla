@@ -18,8 +18,8 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837),
-	RangeFrame	= "거리 프레임 보기(10 m)",
-	InfoFrame	= "체력 정보 프레임 보기(8800 미만)"
+	RangeFrame	= "거리 창 보기(10m)",
+	InfoFrame	= "체력 정보 창 보기(8800 미만)"
 }
 
 L:SetMiscLocalization{
@@ -45,10 +45,10 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "단계 전환 경고 보기",
-	WarnPhaseSoon	= "단계 전환 사전 경고 보기(prewarn)",
-	WarnKite		= "추적 대상 알리기",
-	TimerPhase		= "단계 전환 타이머 보기",
+	WarnPhase		= "단계 전환 알림 보기",
+	WarnPhaseSoon	= "단계 전환 사전 알림 보기",
+	WarnKite		= "추적 대상 알림 보기",
+	TimerPhase		= "다음 단계 전환 바 표시",
 	KiteIcon		= "추적 대상에게 전술 목표 아이콘 설정",
 	KiteWhisper		= "추적 대상에게 귓속말 보내기"
 }
@@ -100,7 +100,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerVengefulSpirit		= "복수심에 불타는 영혼 유지 타이머 보기",
+	TimerVengefulSpirit		= "복수심에 불타는 영혼 유지시간 바 표시",
 	CrushIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(40243),
 }
 
@@ -125,8 +125,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnRageEnd		= "$spell:40604 종료 경고 보기",
-	TimerRageEnd	= "$spell:40604 종료 타이머 보기"
+	WarnRageEnd		= "$spell:40604 종료 알림 보기",
+	TimerRageEnd	= "$spell:40604 종료시간 바 표시"
 }
 
 L:SetMiscLocalization{
@@ -149,19 +149,19 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerEnrage		= "격노",
+	TimerEnrage		= "격노 종료",
 	TimerNextEnrage	= "다음 격노",
 	TimerMana		= "마나 0",
 }
 
 L:SetOptionLocalization{
-	WarnEnrage		= "격노 경고 보기",
-	WarnEnrageSoon	= "격노 사전 경고 보기(soon)",
-	WarnEnrageEnd	= "격노 종료 경고 보기",
-	WarnMana		= "2 단계 에서 마나 0 이 되기 30초 전에 경고 보기",
-	TimerEnrage		= "격노 유지 타이머 보기",
-	TimerNextEnrage	= "다음 격노 타이머 보기",
-	TimerMana		= "마나 0이 되기 전까지 남은 타이머 보기",
+	WarnEnrage		= "격노 알림 보기",
+	WarnEnrageSoon	= "격노 사전 알림 보기",
+	WarnEnrageEnd	= "격노 종료 알림 보기",
+	WarnMana		= "2 단계 에서 마나 0 이 되기 30초 전에 알림 보기",
+	TimerEnrage		= "격노 유지시간 바 표시",
+	TimerNextEnrage	= "다음 격노 바 표시",
+	TimerMana		= "마나 0이 되기 전까지 남은시간 바 표시",
 	SpiteWhisper	= "$spell:41376 대상에게 귓속말 보내기",
 	DrainIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41303),
 	SpiteIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41376),
@@ -224,10 +224,10 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnFadeSoon	= "$spell:41476이 사라지기 전 사전 경고 보기(prewarn)",
-	WarnFaded		= "$spell:41476이 사라질 때 경고 보기",
-	WarnDevAura		= "$spell:41452 경고 보기",
-	WarnResAura		= "$spell:41453 경고 보기",
+	WarnFadeSoon	= "$spell:41476이 사라지기 전 사전 알림 보기",
+	WarnFaded		= "$spell:41476이 사라질 때 알림 보기",
+	WarnDevAura		= "$spell:41452 알림 보기",
+	WarnResAura		= "$spell:41453 알림 보기",
 	Immune			= "말란데가 물리 또는 주문 면역 효과를 얻었을 때 특수 경고 보기",
 	PoisonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41485),
 	PoisonWhisper	= "$spell:41485 대상에게 귓속말 보내기",
@@ -269,19 +269,19 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPhase2Soon	= "2 단계 사전 경고 보기(75% 이하)",
-	WarnPhase4Soon	= "4 단계 사전 경고 보기(35% 이하)",
-	WarnHuman		= "인간 형상 경고 보기",
-	WarnHumanSoon	= "인간 형상 사전 경고 보기(prewarn)",
-	WarnDemon		= "악마 형상 경고 보기",
-	WarnDemonSoon	= "악마 형상 사전 경고 보기(prewarn)",
-	TimerCombatStart= "전투 시작 타이머 보기",
-	TimerNextHuman	= "다음 인간 형상 타이머 보기",
-	TimerNextDemon	= "다음 악마 형상 타이머 보기",
-	TimerPhase4		= "4 단계에서 전환 타이머 보기",
+	WarnPhase2Soon	= "2 단계 사전 알림 보기(75% 이하)",
+	WarnPhase4Soon	= "4 단계 사전 알림 보기(35% 이하)",
+	WarnHuman		= "인간 형상 알림 보기",
+	WarnHumanSoon	= "인간 형상 사전 알림 보기",
+	WarnDemon		= "악마 형상 알림 보기",
+	WarnDemonSoon	= "악마 형상 사전 알림 보기",
+	TimerCombatStart= "전투 시작 바 표시",
+	TimerNextHuman	= "다음 인간 형상 바 표시",
+	TimerNextDemon	= "다음 악마 형상 바 표시",
+	TimerPhase4		= "4 단계 전환시간 바 표시",
 	ParasiteIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41917),
 	ParasiteWhisper	= "$spell:41917 대상에게 귓속말 보내기",
-	RangeFrame		= "거리 프레임이 필요하게 될 때 거리 프레임 보기"
+	RangeFrame		= "거리 창이 필요하게 될 때 거리 창 보기"
 }
 
 L:SetMiscLocalization{

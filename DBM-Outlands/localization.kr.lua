@@ -22,8 +22,8 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame	= "거리 프레임 보기",
-	WarnGrowth	= "$spell:36300 경고 보기"
+	RangeFrame	= "거리 창 보기",
+	WarnGrowth	= "$spell:36300 알림 보기"
 }
 
 
@@ -42,11 +42,11 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerP2	= "2 단계 시작 타이머 보기"
+	timerP2	= "2 단계 시작 바 표시"
 }
 
 L:SetMiscLocalization{
-	DBM_MAG_EMOTE_PULL		= "%s의 속박이 약해지기 시작합니다!",
+	DBM_MAG_EMOTE_PULL		= "%s의 속박이 약해지기 시작합니다!",--확인필요
 	DBM_MAG_YELL_PHASE2		= "내가... 풀려났도다!",
 	DBM_MAG_YELL_PHASE3		= "그렇게 쉽게"
 }
@@ -66,7 +66,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s|1이;가; 분노에 휩싸입니다!"--Probalby won't be used, at least not long. Once spellid replaces it
+	DBM_KAZZAK_EMOTE_ENRAGE		= "%s|1이;가; 분노에 휩싸입니다!"--확인필요
 }
 
 -- Doomwalker
@@ -83,9 +83,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "거리 프레임 보기"
+	RangeFrame			= "거리 창 보기"
 }
 
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s|1이;가; 분노에 휩싸입니다!"--Probalby won't be used, at least not long. Once spellid replaces it
+	DBM_DOOMW_EMOTE_ENRAGE	= "%s|1이;가; 분노에 휩싸입니다!"--확인필요
 }

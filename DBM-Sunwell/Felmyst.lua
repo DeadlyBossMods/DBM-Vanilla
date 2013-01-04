@@ -49,15 +49,11 @@ function mod:Groundphase()
 	warnPhase:Show(L.Ground)
 	timerGasCD:Start(17)
 	timerPhase:Start(60, L.Air)
-	self:ScheduleMethod(10, "Encapsulate")
+	--self:ScheduleMethod(10, "Encapsulate")
 	warnPhaseSoon:Schedule(50, L.Air)
 end
 
 local function isTank(unit)
-	-- 1. check blizzard tanks first
-	-- 2. check blizzard roles second
-	-- 3. check boss1's highest threat target
-	-- 4. anyone with 180k+ health
 	if GetPartyAssignment("MAINTANK", unit, 1) then
 		return true
 	end
@@ -67,11 +63,10 @@ local function isTank(unit)
 	if UnitExists("boss1target") and UnitDetailedThreatSituation(unit, "boss1") then
 		return true
 	end
-	if UnitHealthMax(unit) >= 180000 then return true end--Will need tuning or removal for new expansions or maybe even new tiers.
 	return false
 end
 
-function mod:Encapsulate()
+--[[function mod:Encapsulate()
 	self:ScheduleMethod(0.5, "Encapsulate")
 	local targetname = self:GetBossTarget(25038)
 	local uId = DBM:GetRaidUnitId(targetname)
@@ -95,11 +90,11 @@ function mod:Encapsulate()
 	end
 	self:UnscheduleMethod("Encapsulate")
 	self:ScheduleMethod(7.5, "Encapsulate")
-end
+end]]
 
 function mod:OnCombatStart(delay)
 	breathCounter = 0
-	self:ScheduleMethod(10, "Encapsulate")
+	--self:ScheduleMethod(10, "Encapsulate")
 	warnPhaseSoon:Schedule(50, L.Air)
 	timerGasCD:Start(17-delay)
 	timerPhase:Start(-delay, L.Air)
@@ -109,8 +104,8 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(45665) then
-		self:UnscheduleMethod("Encapsulate")
-		self:ScheduleMethod(7.5, "Encapsulate")
+		--self:UnscheduleMethod("Encapsulate")
+		--self:ScheduleMethod(7.5, "Encapsulate")
 	end
 end
 
@@ -143,7 +138,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerBreath:Start(44)
 		warnPhaseSoon:Schedule(89, L.Ground)
 		timerPhase:Start(99, L.Ground)
-		self:UnscheduleMethod("Encapsulate")
+		--self:UnscheduleMethod("Encapsulate")
 		self:ScheduleMethod(99, "Groundphase")
 	end
 end

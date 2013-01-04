@@ -35,9 +35,9 @@ end
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:CHAT_MSG_MONSTE_EMOTE(msg)
-	if not msg then return end
-	local _, target = msg.find(L.PursueEmote)
+function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
+	if not msg.find(L.PursueEmote) then return end
+	if not target then return end
 	if target then
 		warnPursue:Show(target)
 		if target == UnitName("player") then

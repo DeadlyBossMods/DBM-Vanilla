@@ -348,14 +348,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnSummon	= "잠시 후 스팀리거 정비사 소환!"
+	WarnSummon	= "스팀리거 정비사 등장"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnSummon	= "스팀리거 정비사 소환 경고 보기"
+	WarnSummon	= "스팀리거 정비사 등장 알림 보기"
 })
 
 L:SetMiscLocalization({
@@ -372,14 +372,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnChannel	= "장군의 분노!"
+	WarnChannel	= "장군의 분노"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnChannel	= "장군의 분노 시전 경고 보기"
+	WarnChannel	= "장군의 분노 알림 보기"
 })
 
 -----------------------
@@ -506,14 +506,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	SummonElementals	= "정령 소환!"
+	SummonElementals	= "정령 소환"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	SummonElementals	= "정령 소환 경고 보기"
+	SummonElementals	= "정령 소환 알림 보기"
 })
 
 ------------
@@ -534,12 +534,12 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnBirds	= "안주의 혈족 사전 경고 보기",
-	warnStoned	= "영혼이 돌로 되돌아 올때 알림 표시"
+	warnBirds	= "안주의 혈족 사전 알림 보기",
+	warnStoned	= "영혼이 돌로 되돌아 올때 알림 보기"
 })
 
 L:SetMiscLocalization({
-    BirdStone	= "%s returns to stone."
+    BirdStone	= "돌로"
 })
 
 ------------------------
@@ -737,18 +737,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-    warnFrenzy		= "광란!"
+    warnFrenzy		= "광란"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    warnFrenzy		= "광란 경고 보기"
+    warnFrenzy		= "광란 알림 보기"
 })
 
 L:SetMiscLocalization({
-    AeonusFrenzy	= "%s|1이;가; 광란의 상태에 빠집니다!"
+    AeonusFrenzy	= "%s|1이;가; 광란의 상태에 빠집니다!"--확인필요
 })
 
 ---------------------
@@ -761,9 +761,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-    WarnWavePortalSoon	= "다음 차원문",
+    WarnWavePortalSoon	= "곧 다음 차원문",
     WarnWavePortal		= "차원문 %d",
-    WarnBossPortal		= "보스 차원문"
+    WarnBossPortal		= "우두머리 등장"
 })
 
 L:SetTimerLocalization({
@@ -771,16 +771,16 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-    WarnWavePortalSoon	= "다음 차원문 사전 경고 보기",
-    WarnWavePortal		= "차원문 열림 경고 보기",
-    WarnBossPortal		= "보스 등장 경고 보기",
-	TimerNextPortal		= "다음 차원문 타이머 보기 (보스 이후)",
-	ShowAllPortalTimers	= "모든 차원문 타이머 보기 (부정확)"
+    WarnWavePortalSoon	= "다음 차원문 사전 알림 보기",
+    WarnWavePortal		= "차원문 알림 보기",
+    WarnBossPortal		= "우두머리 등장 알림 보기",
+	TimerNextPortal		= "우두머리 처치 이후 다음 차원문 바 표시",
+	ShowAllPortalTimers	= "모든 차원문 바 표시(부정확할 수 있음)"
 })
 
 L:SetMiscLocalization({
 	PortalCheck			= "시간의 균열 열림: (%d+)/18",
-	Shielddown			= "No! Damn this feeble, mortal coil!"
+	Shielddown			= "No! Damn this feeble, mortal coil!"--확인필요
 })
 
 --------------------
@@ -822,7 +822,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	JackHammer				= "%s|1이;가; 자신의 망치를 위협적으로 치켜듭니다..."
+	JackHammer				= "%s|1이;가; 자신의 망치를 위협적으로 치켜듭니다..."--확인필요
 })
 
 ------------------------------
@@ -909,14 +909,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnTranq		= "평온 - 쫄 처리!"
+	WarnTranq		= "평온"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnTranq		= "평온 경고 보기"
+	WarnTranq		= "평온 알림 보기"
 })
 
 -----------------------------
@@ -1039,16 +1039,16 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnSplit		= "분리!",
-	warnSplitSoon	= "곧 분리!"
+	warnSplit		= "분리",
+	warnSplitSoon	= "곧 분리"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnSplit		= "분리 경고 보기",
-	warnSplitSoon	= "분리 사전 경고 보기"
+	warnSplit		= "분리 알림 보기",
+	warnSplitSoon	= "분리 사전 알림 보기"
 })
 
 L:SetMiscLocalization({
@@ -1067,18 +1067,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnChanneling		= "분노의 마나!"
+	warnChanneling		= "분노의 마나"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnChanneling		= "분노의 마나 경고 보기"
+	warnChanneling		= "분노의 마나 알림 보기"
 })
 
 L:SetMiscLocalization({
-	ChannelCrystal		= "%s|1이;가; 근처의 지옥 수정에서 힘을 끌어냅니다..."
+	ChannelCrystal		= "%s|1이;가; 근처의 지옥 수정에서 힘을 끌어냅니다..."--확인필요
 })
 
 ----------------
@@ -1091,14 +1091,14 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarnEnergy		= "순수한 마력덩어리 방출!"
+	WarnEnergy		= "순수한 마력덩어리 방출"
 })
 
 L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnEnergy		= "순수한 마력덩어리 방출 경고 보기"
+	WarnEnergy		= "순수한 마력덩어리 방출 알림 보기"
 })
 
 L:SetMiscLocalization({
@@ -1149,6 +1149,3 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	KaelP2				= "세상을... 거꾸로... 뒤집어주마."
 })
-
-
-

@@ -73,29 +73,31 @@ function mod:UNIT_HEALTH(uId)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellDK then
+	if msg == L.YellDK or msg:find(L.YellDK) then
 		self:SendSync("ClassCall", "DK")
-	elseif msg == L.YellDruid then
+	elseif msg == L.YellDruid or msg:find(L.YellDruid) then
 		self:SendSync("ClassCall", "Druid")
-	elseif msg == L.YellHunter then
+	elseif msg == L.YellHunter or msg:find(L.YellHunter) then
 		self:SendSync("ClassCall", "Hunter")
-	elseif msg == L.YellMage then
+	elseif msg == L.YellMage or msg:find(L.YellMage) then
 		self:SendSync("ClassCall", "Mage")
-	elseif msg == L.YellPaladin then
+	elseif msg == L.YellPaladin or msg:find(L.YellPaladin) then
 		self:SendSync("ClassCall", "Paladin")
-	elseif msg == L.YellPriest then
+	elseif msg == L.YellPriest or msg:find(L.YellPriest) then
 		self:SendSync("ClassCall", "Priest")
-	elseif msg == L.YellRogue then
+	elseif msg == L.YellRogue or msg:find(L.YellRogue) then
 		self:SendSync("ClassCall", "Rogue")
-	elseif msg == L.YellShaman then
+	elseif msg == L.YellShaman or msg:find(L.YellShaman) then
 		self:SendSync("ClassCall", "Shaman")
-	elseif msg == L.YellWarlock then
+	elseif msg == L.YellWarlock or msg:find(L.YellWarlock) then
 		self:SendSync("ClassCall", "Warlock")
-	elseif msg == L.YellWarrior then
+	elseif msg == L.YellWarrior or msg:find(L.YellWarrior) then
 		self:SendSync("ClassCall", "Warrior")
-	elseif msg == L.YellPhase2 then
+	elseif msg == L.YellMonk or msg:find(L.YellMonk) then
+		self:SendSync("ClassCall", "Monk")
+	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
 		self:SendSync("Phase", 2)
-	elseif msg == L.YellPhase3 then
+	elseif msg == L.YellPhase3 or msg:find(L.YellPhase3) then
 		self:SendSync("Phase", 3)
 	end
 end

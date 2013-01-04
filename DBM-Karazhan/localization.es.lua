@@ -76,7 +76,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	TimerCombatStart	= "Mostrar tiempo para inicio del combate",
-	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830, GetSpellInfo(30830) or "unknown")
+	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830)
 }
 
 L:SetMiscLocalization{

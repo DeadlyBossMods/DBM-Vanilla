@@ -13,7 +13,7 @@ L:SetWarningLocalization{
 	WarnWound	= "%s : >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unknown"),	
+	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646)
 }
 ------------
 -- Rajaxx --
@@ -25,20 +25,20 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnWave	= "웨이브 %s",
-	WarnBoss	= "보스 등장"
+	WarnBoss	= "라작스 등장"
 }
 L:SetOptionLocalization{
 	WarnWave	= "다음 웨이브 알림"
 }
 L:SetMiscLocalization{
-	NpcPull		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",
-	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?",
-	Wave3		= "응보의 날이 다가왔다! 암흑이 적들의 마음을 지배하게 되리라!",
-	Wave4		= "‘더는’ 돌벽과 성문 뒤에서 기다릴 수 없다! 복수의 기회를 놓칠 수 없다. 우리가 분노를 터뜨리는 날 용족은 두려움에 떨리라.",
-	Wave5		= "적에게 공포와 죽음의 향연을!",
-	Wave6		= "스테그헬름은 흐느끼며 목숨을 구걸하리라. 그 아들놈이 그랬던 것처럼! 천 년의 한을 풀리라! 오늘에서야!",
-	Wave7		= "판드랄! 때가 왔다! 에메랄드의 꿈속에 숨어서 기도나 올려라!",
-	Wave8		= "건방진...  내 친히 너희를 처치해주마!"
+	NpcPull		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",--확인필요
+	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?",--확인필요
+	Wave3		= "응보의 날이 다가왔다! 암흑이 적들의 마음을 지배하게 되리라!",--확인필요
+	Wave4		= "‘더는’ 돌벽과 성문 뒤에서 기다릴 수 없다! 복수의 기회를 놓칠 수 없다. 우리가 분노를 터뜨리는 날 용족은 두려움에 떨리라.",--확인필요
+	Wave5		= "적에게 공포와 죽음의 향연을!",--확인필요
+	Wave6		= "스테그헬름은 흐느끼며 목숨을 구걸하리라. 그 아들놈이 그랬던 것처럼! 천 년의 한을 풀리라! 오늘에서야!",--확인필요
+	Wave7		= "판드랄! 때가 왔다! 에메랄드의 꿈속에 숨어서 기도나 올려라!",--확인필요
+	Wave8		= "건방진...  내 친히 너희를 처치해주마!"--확인필요
 }
 
 ----------
@@ -64,12 +64,12 @@ L:SetWarningLocalization{
 	WarnDismember	= "%s : >%s< (%s)",
 }
 L:SetOptionLocalization{
-	WarnPursue		= "추적 대상 알림",
-	SpecWarnPursue	= "당신을 추적할 때 특수 경고 알림",
-	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96, GetSpellInfo(96) or "unknown"),	
+	WarnPursue		= "추적 대상 알림 보기",
+	SpecWarnPursue	= "당신을 추적할 때 특수 경고 표시",
+	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "시선을"
+	PursueEmote 	= "시선을"--확인필요
 }
 
 -------------
@@ -96,6 +96,6 @@ L:SetTimerLocalization{
 	TimerVulnerable	= "%s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable	= "약화 경고 보기",
-	TimerVulnerable	= "약화 타이머 보기"
+	WarnVulnerable	= "약화 알림 보기",
+	TimerVulnerable	= "약화 바 표시"
 }

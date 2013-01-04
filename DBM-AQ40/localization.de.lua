@@ -49,7 +49,7 @@ L:SetWarningLocalization{
 	WarnWound	= "%s auf >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnWound = DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646, GetSpellInfo(25646) or "unbekannt")
+	WarnWound = DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646)
 }
 --------------
 -- Viscidus --
@@ -87,8 +87,8 @@ L:SetWarningLocalization{
 	WarnAcid	= "%s auf >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnAcid	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(26180, GetSpellInfo(26180) or "unbekannt")
-	}
+	WarnAcid	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(26180)
+}
 ---------------
 -- Twin Emps --
 ---------------
