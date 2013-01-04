@@ -32,7 +32,7 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_MOROES_VANISH_FADED	= "소멸 후 등장 경고 보기"
+	DBM_MOROES_VANISH_FADED	= "등장 알림 보기"
 }
 
 L:SetMiscLocalization{
@@ -51,7 +51,7 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "거리 프레임 보기 (10 미터)"
+	RangeFrame			= "거리 창 보기(10m)"
 }
 
 L:SetMiscLocalization{
@@ -66,7 +66,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	warningPosion	= "%s : >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
+	warningPosion	= "%s : >%s< (%d)",
 }
 
 L:SetTimerLocalization{
@@ -74,8 +74,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 타이머 보기",
-	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830, GetSpellInfo(30830) or "unknown")
+	TimerCombatStart	= "전투 시작 바 표시",
+	warningPosion		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830)
 }
 
 L:SetMiscLocalization{
@@ -120,7 +120,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "거리 프레임 보기 (10 미터)"
+	RangeFrame			= "거리 창 보기(10m)"
 }
 
 L:SetMiscLocalization{
@@ -168,9 +168,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerSpecial			= "신비한 폭발 예상 타이머 보기",
-	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 시전 시 특수 경고 보기",
-	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정하기",
+	timerSpecial			= "다음 신비한 폭발 바 표시",
+	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 시전시 특수 경고 보기",
+	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정",
 	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 
@@ -193,17 +193,17 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerPortalPhase	= "차원문 단계",
-	timerBanishPhase	= "소멸 단계"
+	timerPortalPhase	= "차원문 단계 종료",
+	timerBanishPhase	= "소멸 단계 종료"
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "차원문 단계 진입 전 사전 경고 보기",
-	DBM_NS_WARN_BANISH_SOON	= "소멸 단계 진입 전 사전 경고 보기",
-	warningPortal			= "차원문 단계 시작 경고 보기",
-	warningBanish			= "소멸 단계 시작 경고 보기",
-	timerPortalPhase		= "차원문 단계 지속 타이머 보기",
-	timerBanishPhase		= "소멸 단계 지속 타이머 보기"
+	DBM_NS_WARN_PORTAL_SOON	= "차원문 단계 사전 알림 보기",
+	DBM_NS_WARN_BANISH_SOON	= "소멸 단계 사전 알림 보기",
+	warningPortal			= "차원문 단계 알림 보기",
+	warningBanish			= "소멸 단계 알림 보기",
+	timerPortalPhase		= "차원문 단계 유지시간 바 표시",
+	timerBanishPhase		= "소멸 단계 유지시간 바 표시"
 }
 
 L:SetMiscLocalization{
@@ -252,14 +252,14 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	timerNightbane			= "전투 시작",
-	timerAirPhase			= "공중 단계"
+	timerAirPhase			= "공중 단계 종료"
 }
 
 L:SetOptionLocalization{
-	DBM_NB_AIR_WARN			= "공중 단계 시작 경고 보기",
-	PrewarnGroundPhase		= "착지 전 사전 경고 보기",
-	timerNightbane			= "전투 시작 타이머 보기",
-	timerAirPhase			= "공중 단계 지속 타이머 보기"
+	DBM_NB_AIR_WARN			= "공중 단계 알림 보기",
+	PrewarnGroundPhase		= "착지 사전 알림 보기",
+	timerNightbane			= "전투 시작 바 표시",
+	timerAirPhase			= "공중 단계 유지시간 바 표시"
 }
 
 L:SetMiscLocalization{
@@ -294,9 +294,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	AnnounceBosses			= "보스 소환 경고 보기",
-	ShowBossTimers			= "보스 소환 타이머 보기",
-	DBM_OZ_OPTION_1			= "2 단계에 거리 프레임 표시"
+	AnnounceBosses			= "우두머리 등장 알림 보기",
+	ShowBossTimers			= "우두머리 등장 바 표시",
+	DBM_OZ_OPTION_1			= "2 단계에서 거리 창 보기"
 }
 
 L:SetMiscLocalization{

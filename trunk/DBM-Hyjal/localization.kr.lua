@@ -105,7 +105,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	YellOnBurst	= "$spell:32014 외치기",
+	YellOnBurst	= "$spell:32014 주문의 영향을 받은 경우 대화로 알리기",
 	BurstIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32014)
 }
 
@@ -119,23 +119,23 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("HyjalWaveTimers")
 
 L:SetGeneralLocalization{
-	name 		= "하이잘 웨이브"
+	name 		= "하이잘 일반구간"
 }
 
 L:SetWarningLocalization{
 	WarnWave	= "%s",
-	WarnWaveSoon= "곧 새로운 웨이브"
+	WarnWaveSoon= "곧 다음 공격"
 }
 
 L:SetTimerLocalization{
-	TimerWave	= "다음 웨이브"
+	TimerWave	= "다음 공격"
 }
 
 L:SetOptionLocalization{
-	WarnWave		= "새로운 웨이브 시작시 경고",
-	WarnWaveSoon	= "새로운 웨이브 시작전 사전 경고",
-	DetailedWave	= "웨이브 상세 경고 (몹 종류 표시)",
-	TimerWave		= "다음 웨이브 타이머 보기"
+	WarnWave		= "다음 공격 알림 보기",
+	WarnWaveSoon	= "다음 공격 사전 알림 보기",
+	DetailedWave	= "다음 공격 알림시 몬스터 조합까지 자세히 보기",
+	TimerWave		= "다음 공격 바 표시"
 }
 
 L:SetMiscLocalization{
@@ -147,12 +147,12 @@ L:SetMiscLocalization{
 	Kazrogal		= "카즈로갈",
 	Azgalor			= "아즈갈로",
 	WaveCheck		= "현재 공격 = (%d+)/8",
-	WarnWave_0		= "웨이브 %s/8",
-	WarnWave_1		= "웨이브 %s/8 - %s %s",
-	WarnWave_2		= "웨이브 %s/8 - %s %s, %s %s",
-	WarnWave_3		= "웨이브 %s/8 - %s %s, %s %s, %s %s",
-	WarnWave_4		= "웨이브 %s/8 - %s %s, %s %s, %s %s, %s %s",
-	WarnWave_5		= "웨이브 %s/8 - %s %s, %s %s, %s %s, %s %s, %s %s",
+	WarnWave_0		= "공격 %s/8",
+	WarnWave_1		= "공격 %s/8 - %s %s",
+	WarnWave_2		= "공격 %s/8 - %s %s, %s %s",
+	WarnWave_3		= "공격 %s/8 - %s %s, %s %s, %s %s",
+	WarnWave_4		= "공격 %s/8 - %s %s, %s %s, %s %s, %s %s",
+	WarnWave_5		= "공격 %s/8 - %s %s, %s %s, %s %s, %s %s, %s %s",
 	RageGossip		= "제 동료와 저는 프라우드무어님, 당신과 함께 하겠습니다.",
 	AnetheronGossip	= "아키몬드가 어떤 군대를 보내던 우리는 준비가 되어 있습니다, 프라우드무어 님.",
 	KazrogalGossip	= "당신과 함께 하겠습니다, 대족장님.",

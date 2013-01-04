@@ -30,27 +30,26 @@ local timerSpout		= mod:NewCastTimer(22, 37433)
 local timerWhirlCD		= mod:NewCDTimer(17, 37363)
 
 function mod:CheckDive()
-	local foundIt
 	self:ScheduleMethod(0.5, "CheckDive")
 	for i = 1, DBM:GetGroupMembers() do
 		if UnitName("raid"..i.."target") == L.name then
-			foundIt = true
-			break
+			return
 		end
 	end
-	if not foundIt then
-		warnSubmerge:Show()
-		timerEmerge:Show()
-		timerSpoutCD:Start(63)
-		warnEmerge:Schedule(60)
-		self:UnscheduleMethod("CheckDive")
-		self:ScheduleMethod(150, "CheckDive")
-	end
+	warnSubmerge:Show()
+	timerEmerge:Start()
+	warnEmergeSoon:Schedule(50)
+	warnEmerge:Schedule(60)
+	timerSubmerge:Schedule(60)
+	timerSpoutCD:Schedule(60, 3)
+	self:UnscheduleMethod("CheckDive")
+	self:ScheduleMethod(150, "CheckDive")
 end
 
 function mod:OnCombatStart(delay)
 	timerWhirlCD:Start(17-delay)
 	timerSpoutCD:Start(37-delay)
+	timerSubmerge:Start(-delay)
 	warnSubmergeSoon:Schedule(80)
 	self:ScheduleMethod(90, "CheckDive")
 end

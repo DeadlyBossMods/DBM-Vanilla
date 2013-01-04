@@ -20,14 +20,14 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPortal			= "$spell:46021 대상 알리기",
-	SpecWarnWildMagic	= "마법 폭주의 영향을 받을 경우 특수 경고 보기",
-	TimerNextPortal		= "다음 차원문 생성 타이머 보기",
-	RangeFrame			= "거리 프레임 보기",
-	ShowFrame			= "내부 공격대원을 보여주는 정보 프레임 보기" ,
-	FrameClassColor		= "정보 프레임에서 직업 색상 사용하기",
-	FrameUpwards		= "정보 프레임 바를 위쪽으로 확장하기",
-	FrameLocked			= "정보 프레임 고정하기 (이동불가로 설정하기)"
+	WarnPortal			= "$spell:46021 대상 알림 보기",
+	SpecWarnWildMagic	= "마법 폭주 주문의 영향을 받은 경우 특수 경고 보기",
+	TimerNextPortal		= "다음 차원문 바 표시",
+	RangeFrame			= "거리 창 보기",
+	ShowFrame			= "내부 공격대원을 보여주는 정보 창 보기" ,
+	FrameClassColor		= "정보 창 직업 색상 사용하기",
+	FrameUpwards		= "정보 창 바를 위쪽으로 확장하기",
+	FrameLocked			= "정보 창 고정하기(이동불가로 설정)"
 }
 
 L:SetMiscLocalization{
@@ -87,16 +87,16 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerPhase		= "다음 %s 단계",
-	TimerBreath		= "깊은 숨결 쿨다운"
+	TimerBreath		= "깊은 숨결 가능"
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "단계 전환 경고 보기",
-	WarnPhaseSoon	= "단계 전환 사전 경고 보기(prewarn)",
-	TimerPhase		= "다음 단계 타이머 보기",
+	WarnPhase		= "단계 전환 알림 보기",
+	WarnPhaseSoon	= "단계 전환 사전 알림 보기",
+	TimerPhase		= "다음 단계 바 표시",
 	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
 	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
-	YellOnEncaps	= "$spell:45665 외치기"
+	YellOnEncaps	= "$spell:45665 주문의 영향을 받은 경우 대화로 알리기"
 }
 
 L:SetMiscLocalization{
@@ -125,7 +125,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	NovaIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45329),
 	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
-	RangeFrame		= "거리 프레임 보기",
+	RangeFrame		= "거리 창 보기",
 	NovaWhisper		= "$spell:45329 대상에게 귓속말 보내기",
 	ConflagWhisper	= "$spell:45333 대상에게 귓속말 보내기",
 }
@@ -149,28 +149,28 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnHuman		= "타락한 엘프 소환 (%d)",
-	WarnHumanSoon	= "5초 후 타락한 엘프 소환 (%d)",
-	WarnVoid		= "공허의 파수병 소환 (%d)",
-	WarnVoidSoon	= "5초 후 공허의 파수병 소환 (%d)",
-	WarnFiend		= "어둠 마귀 소환"
+	WarnHuman		= "타락한 엘프 (%d)",
+	WarnHumanSoon	= "5초 후 타락한 엘프 (%d)",
+	WarnVoid		= "공허의 파수병 (%d)",
+	WarnVoidSoon	= "5초 후 공허의 파수병 (%d)",
+	WarnFiend		= "어둠 마귀"
 }
 
 L:SetTimerLocalization{
 	TimerHuman		= "다음 타락한 엘프 (%s)",
 	TimerVoid		= "다음 공허의 파수병 (%s)",
-	TimerPhase		= "엔트로피우스 등장"
+	TimerPhase		= "엔트로피우스"
 }
 
 L:SetOptionLocalization{
-	WarnHuman		= "타락한 엘프 소환 경고 보기",
-	WarnHumanSoon	= "타락한 엘프 소환 사전 경고 보기(prewarn)",
-	WarnVoid		= "공허의 파수병 소환 경고 보기",
-	WarnVoidSoon	= "공허의 파수병 소환 사전 경고 보기(prewarn)",
-	WarnFiend		= "2 단계에서 어둠 마귀 소환 경고 보기",
-	TimerHuman		= "다음 타락한 엘프 소환 타이머 보기",
-	TimerVoid		= "다음 공허의 파수병 소환 타이머 보기",
-	TimerPhase		= "2 단계 전환 타이머 보기"
+	WarnHuman		= "타락한 엘프 알림 보기",
+	WarnHumanSoon	= "타락한 엘프 사전 알림 보기",
+	WarnVoid		= "공허의 파수병 알림 보기",
+	WarnVoidSoon	= "공허의 파수병 사전 알림 보기",
+	WarnFiend		= "어둠 마귀 알림 보기",
+	TimerHuman		= "다음 타락한 엘프 바 표시",
+	TimerVoid		= "다음 공허의 파수병 바 표시",
+	TimerPhase		= "2 단계 전환 바 표시"
 }
 
 L:SetMiscLocalization{
@@ -188,7 +188,7 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnDarkOrb		= "보호의 구슬 공격 중",
-	WarnBlueOrb		= "푸른용의 수정구 활성화",
+	WarnBlueOrb		= "푸른용의 수정구",
 	SpecWarnDarkOrb	= "보호의 구슬 공격 중!",
 	SpecWarnBlueOrb	= "푸른용의 수정구 활성화됨!"
 }
@@ -198,14 +198,14 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnDarkOrb		= "보호의 구슬이 공격 중 일때 경고 보기",
-	WarnBlueOrb		= "푸른용의 수정구 활성화 경고 보기",
+	WarnDarkOrb		= "보호의 구슬이 공격 중 일때 알림 보기",
+	WarnBlueOrb		= "푸른용의 수정구 알림 보기",
 	SpecWarnDarkOrb	= "보호의 구슬이 공격 중 일때 특수 경고 보기",
 	SpecWarnBlueOrb	= "푸른용의 수정구 활성화 특수 경고 보기",
-	TimerBlueOrb	= "푸른용의 수정구 활성화 타이머 보기",
-	RangeFrame		= "거리 프레임 보기",
+	TimerBlueOrb	= "푸른용의 수정구 활성화 바 표시",
+	RangeFrame		= "거리 창 보기",
 	BloomIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45641),
-	YellOnBloom		= "$spell:45641 외치기",
+	YellOnBloom		= "$spell:45641 주문의 영향을 받은 경우 대화로 알리기",
 	BloomWhisper	= "$spell:45641 대상에게 귓속말 보내기"
 }
 
@@ -217,5 +217,4 @@ L:SetMiscLocalization{
 	OrbYell2		= "다른 수정구에 힘을 불어넣었습니다! 어서요!",
 	OrbYell3		= "다른 수정구가 준비됐습니다! 서두르세요!",
 	OrbYell4		= "모든 힘을 수정구에 실었습니다! 이제 그대들의 몫입니다!"
-
 }

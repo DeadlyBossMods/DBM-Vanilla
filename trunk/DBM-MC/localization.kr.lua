@@ -34,7 +34,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "가르 (오리지널)"
+	name = "가르(오리지널)"
 }
 
 --------------
@@ -80,7 +80,7 @@ L:SetWarningLocalization{
 	WarnP2Soon	= "곧 2 단계"
 }
 L:SetOptionLocalization{
-	WarnP2Soon 	= "2 단계 사전 경고 보기"
+	WarnP2Soon 	= "2 단계 사전 알림 보기"
 }
 
 -----------------
@@ -93,7 +93,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Kill	= "Impossible! Stay your attack, mortals... I submit! I submit!"
+	Kill	= "Impossible! Stay your attack, mortals... I submit! I submit!"--확인필요
 }
 
 ----------------
@@ -102,7 +102,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "라그나로스 (오리지널)"
+	name = "라그나로스(오리지널)"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
@@ -112,19 +112,19 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerCombatStart	= "전투 시작",
-	TimerSubmerge		= "잠수",
-	TimerEmerge			= "등장"
+	TimerSubmerge		= "다음 잠수",
+	TimerEmerge			= "다음 등장"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 타이머 보기",
-	WarnSubmerge		= "잠수 경고 보기",
-	WarnSubmergeSoon	= "잠수 사전 경고 보기",
-	TimerSubmerge		= "잠수 타이머 보기",
-	WarnEmerge			= "등장 경고 보기",
-	WarnEmergeSoon		= "등장 사전 경고 보기",
-	TimerEmerge			= "등장 타이머 보기"
+	TimerCombatStart	= "전투 시작 바 표시",
+	WarnSubmerge		= "잠수 알림 보기",
+	WarnSubmergeSoon	= "잠수 사전 알림 보기",
+	TimerSubmerge		= "다음 잠수 바 표시",
+	WarnEmerge			= "등장 알림 보기",
+	WarnEmergeSoon		= "등장 사전 알림 보기",
+	TimerEmerge			= "다음 등장 바 표시"
 }
 L:SetMiscLocalization{
 	Submerge	= "나의 종들아",
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"
+	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!"--확인필요
 }

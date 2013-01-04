@@ -21,11 +21,11 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnMark		= "징표 경고 보기",
-	WarnPhase		= "단계 변환 경고 보기",
+	WarnMark		= "징표 알림 보기",
+	WarnPhase		= "단계 변환 알림 보기",
 	SpecWarnMark	= "징표 피해가 100%를 넘을 경우 특수 경고 보기",
-	TimerMark		= "다음 징표 타이머 보기",
-	RangeFrame		= "거리 프레임 보기"
+	TimerMark		= "다음 징표 바 표시",
+	RangeFrame		= "거리 창 보기"
 }
 
 L:SetMiscLocalization{
@@ -50,17 +50,17 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerSubmerge		= "잠수",
-	TimerEmerge			= "재등장"
+	TimerSubmerge		= "다음 잠수",
+	TimerEmerge			= "다음 재등장"
 }
 
 L:SetOptionLocalization{
-	WarnSubmerge		= "잠수 경고 보기",
-	WarnSubmergeSoon	= "잠수 사전 경고 보기(soon)",
-	WarnEmerge			= "재등장 경고 보기",
-	WarnEmergeSoon		= "재등장 사전 경고 보기(soon)",
-	TimerSubmerge		= "잠수 타이머 보기",
-	TimerEmerge			= "재등장 타이머 보기"
+	WarnSubmerge		= "잠수 알림 보기",
+	WarnSubmergeSoon	= "잠수 사전 알림 보기",
+	WarnEmerge			= "재등장 알림 보기",
+	WarnEmergeSoon		= "재등장 사전 알림 보기",
+	TimerSubmerge		= "다음 잠수 바 표시",
+	TimerEmerge			= "다음 재등장 바 표시"
 }
 
 L:SetMiscLocalization{
@@ -86,9 +86,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "단계 변환 경고 보기",
-	WarnPhaseSoon	= "단계 변환 사전 경고 보기(prewarn)",
-	TimerPhase		= "단계 변환 타이머 보기",
+	WarnPhase		= "단계 변환 알림 보기",
+	WarnPhaseSoon	= "단계 변환 사전 알림 보기",
+	TimerPhase		= "다음 단계 변환 바 표시",
 	DemonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37676)
 }
 
@@ -139,13 +139,13 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerMurlocs	= "멀록 소환"
+	TimerMurlocs	= "다음 멀록 소환"
 }
 
 L:SetOptionLocalization{
-	WarnMurlocs		= "멀록 소환 경고 보기",
+	WarnMurlocs		= "멀록 소환 알림 보기",
 	SpecWarnMurlocs	= "멀록 소환 특수 경고 보기",
-	TimerMurlocs	= "멀록 소환 타이머 보기",
+	TimerMurlocs	= "다음 멀록 소환 바 표시",
 	GraveIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38049)
 }
 
@@ -165,7 +165,7 @@ L:SetWarningLocalization{
 	WarnElemental		= "곧 오염된 정령 등장 (%s)",
 	WarnStrider			= "곧 포자손 등장 (%s)",
 	WarnNaga			= "곧 나가 등장 (%s)",
-	WarnShield			= "보호막 %d/4 손실",
+	WarnShield			= "보호막 %d/4 남음",
 	WarnLoot			= "오염된 핵: >%s<",
 	SpecWarnElemental	= "곧 오염된 정령 등장!",
 	SpecWarnCore		= "당신에게 오염된 핵 - 패스하세요!"
@@ -178,17 +178,17 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnElemental		= "오염된 정령 등장 경고 보기(soon)",
-	WarnStrider			= "포자손 등장 경고 보기(soon)",
-	WarnNaga			= "나가 등장 경고 보기(soon)",
-	WarnShield			= "2 단계 마법 보호막 사라짐 경고 보기",
-	WarnLoot			= "오염된 핵 획득 대상 경고 보기",
-	TimerElemental		= "다음 오염된 정령 등장 타이머 보기",
-	TimerStrider		= "다음 포자손 등장 타이머 보기",
-	TimerNaga			= "다음 나가 등장 타이머 보기",
+	WarnElemental		= "오염된 정령 등장 사전 알림 보기",
+	WarnStrider			= "포자손 등장 사전 알림 보기",
+	WarnNaga			= "나가 등장 사전 알림 보기",
+	WarnShield			= "보호막 사라짐 알림 보기",
+	WarnLoot			= "오염된 핵 획득 대상 알림 보기",
+	TimerElemental		= "다음 오염된 정령 바 표시",
+	TimerStrider		= "다음 포자손 바 표시",
+	TimerNaga			= "다음 나가 바 표시",
 	SpecWarnElemental	= "오염된 정령 등장 특수 경고 보기",
 	SpecWarnCore		= "오염된 핵을 획득할 경우 특수 경고 보기",
-	RangeFrame			= "거리 프레임 보기",
+	RangeFrame			= "거리 창 보기",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
 	LootIcon			= "오염된 핵 획득 대상에게 전술 목표 아이콘 설정"
 }

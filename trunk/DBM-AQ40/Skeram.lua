@@ -26,7 +26,7 @@ local split1
 local split2
 local split3
 local MCTargets = {}
-local MCIcon 	= 8
+local MCIcon = 8
 
 function mod:OnCombatStart(delay)
 	split1 = false
