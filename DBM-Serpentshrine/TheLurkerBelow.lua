@@ -31,8 +31,8 @@ local timerWhirlCD		= mod:NewCDTimer(17, 37363)
 
 function mod:CheckDive()
 	self:ScheduleMethod(0.5, "CheckDive")
-	for i = 1, DBM:GetGroupMembers() do
-		if UnitName("raid"..i.."target") == L.name then
+	for uId in DBM:GetGroupMembers() do
+		if UnitName(uId .. "target") == L.name then
 			return
 		end
 	end
