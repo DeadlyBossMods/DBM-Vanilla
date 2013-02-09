@@ -192,7 +192,7 @@ function Kal:UpdateColors()
 			if self.Options.FrameClassColor then
 				local _, _, name = entry.data.name:find("(.+) %(%d%)")
 				local class
-				for i = 1, DBM:GetGroupMembers() do
+				for i = 1, DBM:GetNumGroupMembers() do
 					local name2, _, _, _, _, fileName = GetRaidRosterInfo(i)
 					if name2 == name then
 						class = fileName

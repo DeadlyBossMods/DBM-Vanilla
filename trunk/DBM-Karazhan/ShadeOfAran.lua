@@ -132,8 +132,8 @@ do
 	
 	mod:RegisterOnUpdateHandler(function(self)
 		if self.Options.ElementalIcons and (DBM:GetRaidRank() > 0 and not iconsSet == 4) then
-			for i = 1, DBM:GetGroupMembers() do
-				local uId = "raid"..i.."target"
+			for uId in DBM:GetGroupMembers() do
+				uId = uId .. "target"
 				local guid = UnitGUID(uId)
 				if elementalIcon[guid] then
 					SetRaidTarget(uId, elementalIcon[guid])
