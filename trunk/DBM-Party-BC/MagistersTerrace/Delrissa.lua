@@ -28,7 +28,7 @@ local warnPWShield      = mod:NewTargetAnnounce(44175, 2, nil, false)
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(17843) and self:IsInCombat() then                                -- Delrissa's Flash Heal
 		warnFlashHeal:Show()
-	elseif args:IsSpellID(46181, 44256) then                                           -- Apoko's LHW
+	elseif args:IsSpellID(44256, 46181) then                                           -- Apoko's LHW
 		warnLHW:Show()
 	end
 end
