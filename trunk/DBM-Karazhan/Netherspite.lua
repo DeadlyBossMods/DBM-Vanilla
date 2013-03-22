@@ -36,7 +36,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(38523) then
+	if args.spellId == 38523 then
 		warningBreathCast:Show()
 		timerBreathCast:Start()
 	end

@@ -45,7 +45,7 @@ local function emerged()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(20566) then
+	if args.spellId == 20566 then
 		warnWrathRag:Show()
 		timerWrathRag:Start()
 	end

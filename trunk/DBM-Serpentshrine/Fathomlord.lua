@@ -39,7 +39,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(38330) then
+	if args.spellId == 38330 then
 		warnHeal:Show()
 		if self:GetUnitCreatureId("target") == 21964 then
 			specWarnHeal:Show(args.sourceName)
@@ -48,7 +48,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(38236) then
+	if args.spellId == 38236 then
 		warnTotem:Show(args.sourceName)
 	end
 end

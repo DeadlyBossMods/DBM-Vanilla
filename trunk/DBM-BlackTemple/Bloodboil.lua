@@ -52,7 +52,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(42005) then
+	if args.spellId == 42005 then
 		warnBloodTargets[#warnBloodTargets + 1] = args.destName
 		self:Unschedule(showBlood)
 		if #warnBloodTargets >= 6 then
@@ -63,7 +63,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnBlood:Show()
 		end
-	elseif args:IsSpellID(40604) then
+	elseif args.spellId == 40604 then
 		warnRage:Show(args.destName)
 		timerBlood:Cancel()
 		timerRageEnd:Start()

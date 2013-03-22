@@ -17,13 +17,13 @@ local WarnReflect   = mod:NewSpellAnnounce(31534)
 local timerReflect  = mod:NewBuffActiveTimer(8, 31534)
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(31543) then
+	if args.spellId == 31543 then
 		WarnChannel:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(31534) then
+	if args.spellId == 31534 then
 		WarnReflect:Show(args.destName)
 		timerReflect:Start(args.destName)
 	end

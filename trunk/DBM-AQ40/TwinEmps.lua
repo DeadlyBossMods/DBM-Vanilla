@@ -34,7 +34,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(26607) and self:IsInCombat() then
+	if args.spellId == 26607 and self:IsInCombat() then
 		warnBlizzard:Show()
 	end
 end
@@ -44,10 +44,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnTeleport:Show()
 		warnTeleportSoon:Schedule(30)
 		timerTeleport:Start()
-	elseif args:IsSpellID(802) then
+	elseif args.spellId == 802 then
 		warnMutateBug:Show()
 		timerMutateBug:Start()
-	elseif args:IsSpellID(804) then
+	elseif args.spellId == 804 then
 		warnExplodeBug:Show()
 		timerExplodeBug:Show()
 		timerExplodeBugNext:Start()

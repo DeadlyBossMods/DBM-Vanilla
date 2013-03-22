@@ -22,14 +22,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(34716) then
+	if args.spellId == 34716 then
 		warnStomp:Show()
 		timerStomp:Start()
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(34727) then
+	if args.spellId == 34727 then
 		warnTreants:Show()
 		timerTreants:Start()
 	end

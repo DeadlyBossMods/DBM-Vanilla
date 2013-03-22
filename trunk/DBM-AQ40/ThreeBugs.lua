@@ -26,14 +26,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(26580) and self:AntiSpam() then
+	if args.spellId == 26580 and self:AntiSpam() then
 		warnFear:Show()
 		timerFear:Start()
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(25807) then
+	if args.spellId == 25807 then
 		warnHeal:Show()
 		timerHeal:Start()
 	end

@@ -20,25 +20,25 @@ local timerWinds   = mod:NewTargetTimer(6, 31718)
 local timerBurst   = mod:NewTargetTimer(10, 31481)
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(25033) then
+	if args.spellId == 25033 then
 		warningCloud:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(31718) then
+	if args.spellId == 31718 then
 		warningWinds:Show(args.destName)
 		timerWinds:Start(args.destName)
-	elseif args:IsSpellID(31481) then
+	elseif args.spellId == 31481 then
 		warningBurst:Show(args.destName)
 		timerBurst:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(31718) then
+	if args.spellId == 31718 then
 		timerWinds:Cancel(args.destName)
-	elseif args:IsSpellID(31481) then
+	elseif args.spellId == 31481 then
 		timerBurst:Cancel(args.destName)
 	end
 end

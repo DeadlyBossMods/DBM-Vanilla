@@ -29,14 +29,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(23023) and args:IsDestTypePlayer() then
+	if args.spellId == 23023 and args:IsDestTypePlayer() then
 		warnConflagration:Show(args.destName)
 		timerConflagration:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(23023) then
+	if args.spellId == 23023 then
 		timerConflagration:Start(args.destName)
 	end
 end

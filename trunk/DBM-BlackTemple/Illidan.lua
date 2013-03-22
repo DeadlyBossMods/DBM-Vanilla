@@ -108,7 +108,7 @@ function mod:OnCombatEnd()
 end 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(41917) or args:IsSpellID(41914) then
+	if args.spellId == 41917 or args.spellId == 41914 then
 		warnParasite:Show(args.destName)
 		timerParasite:Start(args.destName)
 		if args:IsPlayer() then
@@ -120,14 +120,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		if DBM:GetRaidRank() > 0 and self.Options.ParasiteWhisper then
 			self:SendWhisper(L.ParasiteWhisper, args.destName)
 		end
-	elseif args:IsSpellID(40585) then
+	elseif args.spellId == 40585 then
 		warnBarrage:Show(args.destName)
 		timerBarrage:Start(args.destName)
 		timerNextBarrage:Start()
 		if args:IsPlayer() then
 			specWarnBarrage:Show()
 		end
-	elseif args:IsSpellID(40932) then
+	elseif args.spellId == 40932 then
 		flameTargets[#flameTargets + 1] = args.destName
 		if args:IsPlayer() then
 			specWarnFlame:Show()
@@ -135,7 +135,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerFlame:Start(args.destName)
 		self:Unschedule(showFlameTargets)
 		self:Schedule(0.3, showFlameTargets)
-	elseif args:IsSpellID(41083) then
+	elseif args.spellId == 41083 then
 		shadowDemonTargets[#shadowDemonTargets + 1] = args.destName
 		self:Unschedule(showDemonTargets)
 		if #shadowDemonTargets >= 4 then
@@ -143,17 +143,17 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			self:Schedule(1, showDemonTargets)
 		end
-	elseif args:IsSpellID(40683) then
+	elseif args.spellId == 40683 then
 		warnEnrage:Show()
 		timerEnrage:Start()
-	elseif args:IsSpellID(40695) then
+	elseif args.spellId == 40695 then
 		warnCaged:Show()
 		timerCaged:Start()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(39855) and self:AntiSpam(4, 1) then
+	if args.spellId == 39855 and self:AntiSpam(4, 1) then
 		flamesDown = 0
 		warnPhase2:Show()
 		timerNextBarrage:Start(81)

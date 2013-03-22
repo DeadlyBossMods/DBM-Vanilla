@@ -23,7 +23,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(25646) then
+	if args.spellId == 25646 then
 		warnWound:Show(args.spellName, args.destName, args.amount or 1)
 		timerWound:Show(args.destName)
 		if (args.amount or 1) >= 5 then

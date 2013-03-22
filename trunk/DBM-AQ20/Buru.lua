@@ -24,7 +24,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(96) then
+	if args.spellId == 96 then
 		if (args.amount or 1) >= 5 and args:IsPlayer() then
 			specWarnDismember:Show(args.amount)
 		end

@@ -31,7 +31,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(34172) then
+	if args.spellId == 34172 then
 		warnOrb:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnOrb:Show()
@@ -39,10 +39,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 				SendChatMessage(L.YellOrb, "SAY")
 			end
 		end
-	elseif args:IsSpellID(34162) then
+	elseif args.spellId == 34162 then
 		warnPounding:Show()
 		timerPounding:Start()
-	elseif args:IsSpellID(25778) then
+	elseif args.spellId == 25778 then
 		warnKnockBack:Show()
 		timerKnockBack:Start()
 	end

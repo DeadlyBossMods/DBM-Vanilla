@@ -38,7 +38,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(30403) then
+	if args.spellId == 30403 then
 		warnArcaneInfusion:Show()
 		timerNextEvo:Cancel()
 	end

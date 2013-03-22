@@ -81,7 +81,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(45641) then
+	if args.spellId == 45641 then
 		warnBloomTargets[#warnBloomTargets + 1] = args.destName
 		self:Unschedule(showBloomTargets)
 		if self.Options.BloomIcon then
@@ -106,7 +106,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(45641) then
+	if args.spellId == 45641 then
 		if self.Options.BloomIcon then
 			self:SetIcon(args.destName, 0)
 		end
@@ -114,7 +114,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(46605) then
+	if args.spellId == 46605 then
 		warnBomb:Show()
 		specWarnBomb:Show()
 		if phase == 4 then
@@ -124,18 +124,18 @@ function mod:SPELL_CAST_START(args)
 			timerBombCD:Start()
 			warnBombSoon:Schedule(40)
 		end
-	elseif args:IsSpellID(45737) then
+	elseif args.spellId == 45737 then
 		warnDart:Show()
 		timerDartCD:Start()
-	elseif args:IsSpellID(46680) then
+	elseif args.spellId == 46680 then
 		timerSpike:Start()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(45848) then
+	if args.spellId == 45848 then
 		warnShield:Show()
-	elseif args:IsSpellID(45892) then
+	elseif args.spellId == 45892 then
 		if phase == 2 then
 			warnPhase2:Show()
 			warnBombSoon:Schedule(72)

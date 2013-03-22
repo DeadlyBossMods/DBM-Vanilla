@@ -79,11 +79,11 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(41431) and not args:IsDestTypePlayer() then
+	if args.spellId == 41431 and not args:IsDestTypePlayer() then
 		warnShield:Show()
 		timerNextShield:Start()
 		specWarnShield:Show(args.destName)
-	elseif args:IsSpellID(41376) then
+	elseif args.spellId == 41376 then
 		warnSpiteTargets[#warnSpiteTargets + 1] = args.destName
 		self:Unschedule(showSpite)
 		if self.Options.SpiteIcon then
@@ -97,7 +97,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SendWhisper(L.SpiteWhisper, args.destName)
 		end
 		self:Schedule(0.3, showSpite)
-	elseif args:IsSpellID(41303) then
+	elseif args.spellId == 41303 then
 		warnDrainTargets[#warnDrainTargets + 1] = args.destName
 		self:Unschedule(showDrain)
 		if self.Options.DrainIcon then
@@ -105,12 +105,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			drainIcon = drainIcon - 1
 		end
 		self:Schedule(1, showDrain)
-	elseif args:IsSpellID(41294) then
+	elseif args.spellId == 41294 then
 		if lastFixate ~= args.destName then
 			warnFixate:Show(args.destName)
 			lastFixate = args.destName
 		end
-	elseif args:IsSpellID(41410) then
+	elseif args.spellId == 41410 then
 		warnDeaden:Show(args.destName)
 		timerDeaden:Start(args.destName)
 	end
@@ -119,9 +119,9 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(41410) then
+	if args.spellId == 41410 then
 		timerNextDeaden:Start()
-	elseif args:IsSpellID(41426) then
+	elseif args.spellId == 41426 then
 		warnShockCast:Show()
 		timerNextShock:Start()
 		if self:GetUnitCreatureId("target") == 23419 or self:GetUnitCreatureId("focus") == 23419 then

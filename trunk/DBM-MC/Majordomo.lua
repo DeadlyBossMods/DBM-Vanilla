@@ -25,14 +25,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(20619) then
+	if args.spellId == 20619 then
 		warnMagicReflect:Show()
 		specWarnMagicReflect:Show()
 		timerMagicReflect:Start()
-	elseif args:IsSpellID(21075) then
+	elseif args.spellId == 21075 then
 		warnDamageShield:Show()
 		timerDamageShield:Start()
-	elseif args:IsSpellID(20534) then
+	elseif args.spellId == 20534 then
 		warnTeleport:Show(args.destName)
 	end
 end

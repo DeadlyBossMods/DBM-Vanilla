@@ -32,9 +32,9 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(31340) and args:IsPlayer() and self:AntiSpam() then
+	if args.spellId == 31340 and args:IsPlayer() and self:AntiSpam() then
 		specWarnFire:Show()
-	elseif args:IsSpellID(31347) then
+	elseif args.spellId == 31347 then
 		warnDoom:Show(args.destName)
 		timerDoom:Start(args.destName)
 		if args:IsPlayer() then
@@ -47,7 +47,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(31347) then
+	if args.spellId == 31347 then
 		if self.Options.DoomIcon then
 			self:SetIcon(args.destName, 0)
 		end
@@ -55,7 +55,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(31344) then
+	if args.spellId == 31344 then
 		warnSilence:Show()
 	end
 end

@@ -59,17 +59,17 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(30004) then
+	if args.spellId == 30004 then
 		warningFlameCast:Show()
 		timerFlameCast:Start()
 		timerSpecial:Start()
-	elseif args:IsSpellID(29973) then
+	elseif args.spellId == 29973 then
 		warningArcaneCast:Show()
 		timerArcaneExplosion:Start()
 		specWarnArcane:Show()
 		soundArcane:Play()
 		timerSpecial:Start()
-	elseif args:IsSpellID(29969) then
+	elseif args.spellId == 29969 then
 		warningBlizzard:Show()
 		timerBlizzadCast:Show()
 		timerBlizzad:Schedule(3.7)--may need tweaking
@@ -78,10 +78,10 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(29991) then
+	if args.spellId == 29991 then
 		warningChains:Show(args.destName)
 		timerChains:Start(args.destName)
-	elseif args:IsSpellID(29946) then
+	elseif args.spellId == 29946 then
 		WreathTargets[#WreathTargets + 1] = args.destName
 		timerFlame:Start()
 		if args:IsPlayer() then
@@ -97,7 +97,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(29991) then
+	if args.spellId == 29991 then
 		timerChains:Cancel(args.destName)
 	end
 end

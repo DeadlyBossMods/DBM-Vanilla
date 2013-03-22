@@ -37,7 +37,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(29511) then
+	if args.spellId == 29511 then
 		warningRepentanceSoon:Cancel()
 		warningRepentance:Show()
 		timerRepentance:Start()
@@ -47,14 +47,14 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(29522) then
+	if args.spellId == 29522 then
 		warningHolyFire:Show(args.destName)
 		timerHolyFire:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(29522) then
+	if args.spellId == 29522 then
 		timerHolyFire:Cancel(args.destName)
 	end
 end

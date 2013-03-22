@@ -67,14 +67,14 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(45230) and not args:IsDestTypePlayer() then
+	if args.spellId == 45230 and not args:IsDestTypePlayer() then
 		warnPyro:Show()
 		specWarnPyro:Show(args.destName)
-	elseif args:IsSpellID(45347) and args:IsPlayer() then
+	elseif args.spellId == 45347 and args:IsPlayer() then
 		if (args.amount or 1) >= 8 then
 			specWarnDarkTouch:Show(args.amount)
 		end
-	elseif args:IsSpellID(45348) and args:IsPlayer() then
+	elseif args.spellId == 45348 and args:IsPlayer() then
 		if (args.amount or 1) >= 5 then
 			specWarnFlameTouch:Show(args.amount)
 		end
@@ -97,7 +97,7 @@ function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, 
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(45248) then
+	if args.spellId == 45248 then
 		warnBlade:Show()
 		timerBladeCD:Start()
 	end

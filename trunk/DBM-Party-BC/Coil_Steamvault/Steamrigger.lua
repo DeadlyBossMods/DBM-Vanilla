@@ -25,7 +25,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(35107) then
+	if args.spellId == 35107 then
 		WarnNet:Show(args.destName)
 		timerNet:Start(args.destName)
 	end

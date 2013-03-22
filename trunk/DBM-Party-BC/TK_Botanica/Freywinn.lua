@@ -14,7 +14,7 @@ mod:RegisterEvents(
 local WarnTranq   = mod:NewAnnounce("WarnTranq", 3, 34550)
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(34557) then      --Summon Frayer Protector
+	if args.spellId == 34557 then      --Summon Frayer Protector
 		WarnTranq:Show()
 	end
 end

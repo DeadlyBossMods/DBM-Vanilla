@@ -62,13 +62,13 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(37730) then
+	if args.spellId == 37730 then
 		warnTidal:Show()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(37764) then
+	if args.spellId == 37764 then
 		warnMurlocs:Show()
 		specWarnMurlocs:Show()
 		timerMurlocs:Start()
@@ -76,7 +76,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(37854) and self:AntiSpam(30) then
+	if args.spellId == 37854 and self:AntiSpam(30) then
 		warnBubble:Show()
 		timerBubble:Start()
 	end

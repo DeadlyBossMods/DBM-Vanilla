@@ -21,7 +21,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(20553) then
+	if args.spellId == 20553 then
 		warnTrust:Show()
 	end
 end

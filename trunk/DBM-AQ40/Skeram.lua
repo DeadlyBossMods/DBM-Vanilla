@@ -44,7 +44,7 @@ local function warnMCTargets()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(785) then
+	if args.spellId == 785 then
 		MCTargets[#MCTargets + 1] = args.destName
 		self:Unschedule(warnMCTargets)
 		if #MCTargets >= 3 then
@@ -66,7 +66,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(747) then
+	if args.spellId == 747 then
 		warnSummon:Show()
 	end
 end

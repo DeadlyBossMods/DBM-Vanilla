@@ -66,7 +66,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(31014) then
+	if args.spellId == 31014 then
 		if self.Options.AnnounceBosses then
 			WarnTido:Schedule(1)
 		end

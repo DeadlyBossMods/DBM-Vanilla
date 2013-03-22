@@ -14,7 +14,7 @@ mod:RegisterEvents(
 local WarnCorruptedNova   = mod:NewSpellAnnounce(31991)
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(31991) then
+	if args.spellId == 31991 then
 		WarnCorruptedNova:Show()
 	end
 end
