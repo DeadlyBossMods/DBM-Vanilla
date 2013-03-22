@@ -56,7 +56,7 @@ function mod:NextPhase()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(30878) then
+	if args.spellId == 30878 then
 		warningHeal:Show()
 		timerHeal:Start()
 	end
@@ -65,10 +65,10 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(30822, 30830) then
 		warningPosion:Show(args.spellName, args.destName, args.amount or 1)
-	elseif args:IsSpellID(30841) then
+	elseif args.spellId == 30841 then
 		warningDaring:Show(args.destName)
 		timerDaring:Start(args.destName)
-	elseif args:IsSpellID(30887) then
+	elseif args.spellId == 30887 then
 		warningDevotion:Show(args.destName)
 		timerDevotion:Start(args.destName)
 	end
@@ -77,9 +77,9 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(30841) then
+	if args.spellId == 30841 then
 		timerDaring:Cancel(args.destName)
-	elseif args:IsSpellID(30887) then
+	elseif args.spellId == 30887 then
 		timerDevotion:Cancel(args.destName)
 	end
 end

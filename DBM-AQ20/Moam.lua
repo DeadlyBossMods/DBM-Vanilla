@@ -23,14 +23,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(25685) then
+	if args.spellId == 25685 then
 		timerStoneformDur:Start()
 		warnStoneform:Show()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(25685) then
+	if args.spellId == 25685 then
 		timerStoneform:Start()
 		warnStoneformSoon:Schedule(80)
 	end

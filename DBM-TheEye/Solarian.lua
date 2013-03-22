@@ -40,7 +40,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(42783) then
+	if args.spellId == 42783 then
 		warnWrath:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnWrath:Show()

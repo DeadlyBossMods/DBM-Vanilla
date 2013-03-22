@@ -37,7 +37,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(32637) and self:AntiSpam(10, 1) then
+	if args.spellId == 32637 and self:AntiSpam(10, 1) then
 		warnCharge:Show()
 		timerChargeCD:Show()
 		warningChargeSoon:Cancel()
@@ -46,7 +46,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(32686) and self:AntiSpam(30, 2) then
+	if args.spellId == 32686 and self:AntiSpam(30, 2) then
 		warnQuake:Show()
 		timerQuake:Start()
 		timerQuakeCD:Show()

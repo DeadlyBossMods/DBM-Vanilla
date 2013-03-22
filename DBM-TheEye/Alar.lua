@@ -45,20 +45,20 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(34229) then
+	if args.spellId == 34229 then
 		warnQuill:Show()
 		specWarnQuill:Show()
 		timerQuill:Start()
-	elseif args:IsSpellID(35383) and args:IsPlayer() and self:AntiSpam(3, 1) then
+	elseif args.spellId == 35383 and args:IsPlayer() and self:AntiSpam(3, 1) then
 		specWarnFire:Show()
-	elseif args:IsSpellID(35410) then
+	elseif args.spellId == 35410 then
 		warnArmor:Show(args.destName)
 		timerArmor:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(35410) then
+	if args.spellId == 35410 then
 		timerArmor:Cancel(args.destName)
 	end
 end

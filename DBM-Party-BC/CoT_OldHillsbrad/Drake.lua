@@ -16,14 +16,14 @@ local warnShot      = mod:NewTargetAnnounce(33792)
 local timerShot     = mod:NewTargetTimer(6, 33792)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(33792) then
+	if args.spellId == 33792 then
 		warnShot:Show(args.destName)
 		timerShot:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(33792) then
+	if args.spellId == 33792 then
 		timerShot:Cancel(args.destName)
 	end
 end

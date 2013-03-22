@@ -62,9 +62,9 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(40265) and args:IsPlayer() and self:AntiSpam(4, 1) then
+	if args.spellId == 40265 and args:IsPlayer() and self:AntiSpam(4, 1) then
 		specWarnMolten:Show()
-	elseif args:IsSpellID(42052) and args:IsPlayer() and self:AntiSpam(4, 2) then
+	elseif args.spellId == 42052 and args:IsPlayer() and self:AntiSpam(4, 2) then
 		specWarnVolcano:Show()
 	end
 end

@@ -41,7 +41,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(40243) then
+	if args.spellId == 40243 then
 		warnCrushedTargets[#warnCrushedTargets + 1] = args.destName
 		timerCrushed:Start()
 		self:Unschedule(showCrushedTargets)
@@ -54,7 +54,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			self:Schedule(0.3, showCrushedTargets)
 		end
-	elseif args:IsSpellID(40251) then
+	elseif args.spellId == 40251 then
 		warnDeath:Show(args.destName)
 		timerDeath:Start(args.destName)
 		timerVengefulSpirit:Schedule(55, args.destName)
@@ -65,7 +65,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(40239) then
+	if args.spellId == 40239 then
 		warnIncinerate:Show(args.destName)
 	end
 end

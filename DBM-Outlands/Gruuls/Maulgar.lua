@@ -42,13 +42,13 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(33152) then--Prayer of Healing
+	if args.spellId == 33152 then--Prayer of Healing
 		warningPoH:Show()
 		timerPoH:Start()
 		if self:GetUnitCreatureId("target") == 18836 or self:GetUnitCreatureId("focus") == 18836 then
 			specWarnPoH:Show(args.sourceName)
 		end
-	elseif args:IsSpellID(33144) then--Heal
+	elseif args.spellId == 33144 then--Heal
 		warningHeal:Show()
 		timerHeal:Start()
 		if self:GetUnitCreatureId("target") == 18836 or self:GetUnitCreatureId("focus") == 18836 then
@@ -58,22 +58,22 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(33238) then
+	if args.spellId == 33238 then
 		warningWhirlwind:Show()
 		specWarnWhirlwind:Show()
 		timerWhirlwind:Start()
 		timerWhirlwindCD:Start()
 		warningWhirlwindSoon:Cancel()
 		warningWhirlwindSoon:Schedule(51)
-	elseif args:IsSpellID(33054) and not args:IsDestTypePlayer() then
+	elseif args.spellId == 33054 and not args:IsDestTypePlayer() then
 		warningShield:Show(args.destName)
-	elseif args:IsSpellID(33147) and not args:IsDestTypePlayer() then
+	elseif args.spellId == 33147 and not args:IsDestTypePlayer() then
 		warningPWS:Show(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(33131) then
+	if args.spellId == 33131 then
 		warningFelHunter:Show()
 		timerFelhunter:Start()
 	end

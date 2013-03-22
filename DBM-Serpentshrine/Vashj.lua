@@ -75,7 +75,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(38280) then
+	if args.spellId == 38280 then
 		warnCharge:Show(args.destName)
 		timerCharge:Start(args.destName)
 		if args:IsPlayer() then
@@ -84,7 +84,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.ChargeIcon then
 			self:SetIcon(args.destName, 1, 20)
 		end
-	elseif args:IsSpellID(38132) then
+	elseif args.spellId == 38132 then
 		warnLoot:Show(args.destName)
 		if self.Options.LootIcon then
 			self:SetIcon(args.destName, 1)
@@ -92,22 +92,22 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnCore:Show()
 		end
-	elseif args:IsSpellID(38575) and args:IsPlayer() and self:AntiSpam() then
+	elseif args.spellId == 38575 and args:IsPlayer() and self:AntiSpam() then
 		specWarnToxic:Show()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(38280) then
+	if args.spellId == 38280 then
 		timerCharge:Cancel(args.destName)
 		if self.Options.ChargeIcon then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif args:IsSpellID(38132) then
+	elseif args.spellId == 38132 then
 		if self.Options.LootIcon then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif args:IsSpellID(38112) then
+	elseif args.spellId == 38112 then
 		shieldLeft = shieldLeft - 1
 		warnShield:Show(shieldLeft)
 		if shieldLeft == 0 then
@@ -126,7 +126,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(38316) then
+	if args.spellId == 38316 then
 		warnEntangle:Show()
 	end
 end

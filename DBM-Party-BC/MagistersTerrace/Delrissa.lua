@@ -26,7 +26,7 @@ local warnPolymorph     = mod:NewTargetAnnounce(13323, 4)
 local warnPWShield      = mod:NewTargetAnnounce(44175, 2, nil, false)
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(17843) and self:IsInCombat() then                                -- Delrissa's Flash Heal
+	if args.spellId == 17843 and self:IsInCombat() then                                -- Delrissa's Flash Heal
 		warnFlashHeal:Show()
 	elseif args:IsSpellID(44256, 46181) then                                           -- Apoko's LHW
 		warnLHW:Show()
@@ -34,7 +34,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(27621) and self:IsInCombat() then                                -- Apoko's Windfury Totem
+	if args.spellId == 27621 and self:IsInCombat() then                                -- Apoko's Windfury Totem
 		warnWindFury:Show()
 	elseif args:IsSpellID(44178, 46195) then                                           -- Yazzai's Blizzard
 		warnBlizzard:Show()
@@ -44,9 +44,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(13323) and self:IsInCombat() then                                -- Yazzai's Polymorph
+	if args.spellId == 13323 and self:IsInCombat() then                                -- Yazzai's Polymorph
 		warnPolymorph:Show(args.destName)
-	elseif args:IsSpellID(44141) then                                                  -- Ellrys SoC
+	elseif args.spellId == 44141 then                                                  -- Ellrys SoC
 		warnSoC:Show(args.destName)
 	elseif args:IsSpellID(44175, 44291, 46193) and not args:IsDestTypePlayer() then    -- Delrissa's PWShield
 		warnPWShield:Show(args.destName)

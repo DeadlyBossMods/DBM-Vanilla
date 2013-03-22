@@ -72,7 +72,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(37640) then
+	if args.spellId == 37640 then
 		warnWhirl:Show()
 		specWarnWhirl:Show()
 		timerWhirl:Start()
@@ -84,7 +84,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			timerWhirlCD:Start()
 		end
-	elseif args:IsSpellID(37676) then
+	elseif args.spellId == 37676 then
 		warnDemonTargets[#warnDemonTargets + 1] = args.destName
 		self:Unschedule(showDemonTargets)
 		if self.Options.DemonIcon then
@@ -99,7 +99,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			self:Schedule(0.7, showDemonTargets)
 		end
-	elseif args:IsSpellID(37749) then
+	elseif args.spellId == 37749 then
 		warnMCTargets[#warnMCTargets + 1] = args.destName
 		self:Unschedule(showMCTargets)
 		self:Schedule(0.3, showMCTargets)

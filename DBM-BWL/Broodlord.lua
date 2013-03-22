@@ -26,15 +26,15 @@ end
 --these 2 of these warnings will never work.
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(23331) then
+	if args.spellId == 23331 then
 		warnBlastWave:Show()
-	elseif args:IsSpellID(18670) and self:IsInCombat() then
+	elseif args.spellId == 18670 and self:IsInCombat() then
 		warnKnockAway:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(24573) and self:IsInCombat() then
+	if args.spellId == 24573 and self:IsInCombat() then
 		warnMortal:Show(args.destName)
 		timerMortal:Start(args.destName)
 	end

@@ -103,14 +103,14 @@ end
 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(45665) then
+	if args.spellId == 45665 then
 		--self:UnscheduleMethod("Encapsulate")
 		--self:ScheduleMethod(7.5, "Encapsulate")
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(45392) then
+	if args.spellId == 45392 then
 		warnVapor:Show(args.sourceName)
 		if args.sourceName == UnitName("player") then
 			specWarnVapor:Show()
@@ -122,7 +122,7 @@ function mod:SPELL_SUMMON(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(45855) then
+	if args.spellId == 45855 then
 		warnGas:Show()
 		specWarnGas:Show()
 		timerGas:Start()

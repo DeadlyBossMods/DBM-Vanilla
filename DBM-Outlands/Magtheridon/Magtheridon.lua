@@ -32,13 +32,13 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(30528) then
+	if args.spellId == 30528 then
 		warningHeal:Show()
 		if args.sourceGUID == UnitGUID("target") then
 			specWarnHeal:Show(args.sourceName)
 			timerHeal:Start()
 		end
-	elseif args:IsSpellID(30616) then
+	elseif args.spellId == 30616 then
 		warningBlastNova:Show()
 		warningBlastNovaSoon:Cancel()
 		warningBlastNovaSoon:Schedule(48)
@@ -47,7 +47,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(30511) then
+	if args.spellId == 30511 then
 		warningInfernal:Show()
 	end
 end

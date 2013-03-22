@@ -37,32 +37,32 @@ function mod:warnHandofRagTargets()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(19779) then
+	if args.spellId == 19779 then
 		warnInspire:Show(args.destName)
 		timerInspire:Start(args.destName)
-	elseif args:IsSpellID(19780) and args:IsDestTypePlayer() then
+	elseif args.spellId == 19780 and args:IsDestTypePlayer() then
 		self:UnscheduleMethod("warnHandofRagTargets")
 		HandofRagTargets[#HandofRagTargets + 1] = args.destName
 		self:ScheduleMethod(0.3, "warnHandofRagTargets")
-	elseif args:IsSpellID(19776) then
+	elseif args.spellId == 19776 then
 		warnShadowPain:Show(args.destName)
 		timerShadowPain:Start(args.destName)
-	elseif args:IsSpellID(20294) then
+	elseif args.spellId == 20294 then
 		warnImmolate:Show(args.destName)
 		timerImmolate:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(23952) and self:IsInCombat() then
+	if args.spellId == 23952 and self:IsInCombat() then
 		timerShadowPain:Cancel(args.destName)
-	elseif args:IsSpellID(20294) and self:IsInCombat() then
+	elseif args.spellId == 20294 and self:IsInCombat() then
 		timerImmolate:Cancel(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(19775) then
+	if args.spellId == 19775 then
 		warnHeal:Show()
 		timerHeal:Start()
 	end

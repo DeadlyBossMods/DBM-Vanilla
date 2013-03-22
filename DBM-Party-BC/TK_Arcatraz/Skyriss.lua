@@ -32,7 +32,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39019, 37162) then
 		warnMindControl:Show(args.destName)
 		timerMindControl:Start(args.destName)
-	elseif args:IsSpellID(39017) then
+	elseif args.spellId == 39017 then
 		warnMindRend:Show(args.destName)
 		timerMindRend:Start(args.destName)
 	end

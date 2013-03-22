@@ -25,14 +25,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(23461) then
+	if args.spellId == 23461 then
 		warnBreath:Show()
 		timerBreath:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(18173) then
+	if args.spellId == 18173 then
 		warnAdrenaline:Show(args.destName)
 		timerAdrenaline:Start(args.destName)
 		if args:IsPlayer() then

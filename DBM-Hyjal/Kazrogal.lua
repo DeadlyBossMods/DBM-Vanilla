@@ -26,7 +26,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(31447) then
+	if args.spellId == 31447 then
 		count = count + 1
 		if time > 10 then
 			time = time - 5

@@ -33,28 +33,28 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(36819) then
+	if args.spellId == 36819 then
 		warnPyroblast:Show()
         timerPyroblast:Start()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(44194) then
+	if args.spellId == 44194 then
 		WarnPhoenix:Show()
 		timerPhoenix:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(46165) then
+	if args.spellId == 46165 then
 		WarnShockBarrior:Show(args.destName)
         timerShockBarrior:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(46165) then
+	if args.spellId == 46165 then
         specwarnPyroblast:Show(args.destName)
 	end
 end

@@ -63,11 +63,11 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(38235) then
+	if args.spellId == 38235 then
 		warnTombTargets[#warnTombTargets + 1] = args.destName
 		self:Unschedule(showTombTargets)
 		self:Schedule(0.3, showTombTargets)
-	elseif args:IsSpellID(38246) then
+	elseif args.spellId == 38246 then
 		warnSludge:Show(args.destName)
 		timerSludge:Start(args.destName)
 	end
@@ -83,7 +83,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnMark:Show(args.spellName, damage[args.spellId] or "10%")
 		timerMark:Cancel()
 		timerMark:Show(args.spellName, damageNext[args.spellId] or "10%")
-	elseif args:IsSpellID(25035) and self:AntiSpam(2) then
+	elseif args.spellId == 25035 and self:AntiSpam(2) then
 		timerMark:Cancel()
 		if args:GetSrcCreatureID() == 22035 then
 			warnPhase:Show(L.Frost)

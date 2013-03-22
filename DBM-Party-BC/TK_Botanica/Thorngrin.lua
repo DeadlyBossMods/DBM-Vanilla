@@ -15,7 +15,7 @@ local warnSacrifice       = mod:NewTargetAnnounce(34661)
 local timerSacrifice      = mod:NewTargetTimer(8, 34661)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(34661) then
+	if args.spellId == 34661 then
 		warnSacrifice:Show(args.destName)
 		timerSacrifice:Start(args.destName)
 	end

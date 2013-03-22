@@ -23,20 +23,20 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(19451) then
+	if args.spellId == 19451 then
 		warnEnrage:Show()
 		timerEnrage:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(19451) then
+	if args.spellId == 19451 then
 		timerEnrage:Cancel()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(19408) then
+	if args.spellId == 19408 then
 		warnPanic:Show()
 		timerPanic:Start()
 		timerPanicCD:Start()

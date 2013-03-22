@@ -38,7 +38,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(36922) then
+	if args.spellId == 36922 then
 		warningFearSoon:Cancel()
 		warningFear:Show()
 		timerFear:Start()
@@ -48,15 +48,15 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(37098) then
+	if args.spellId == 37098 then
 		warningBone:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(30129) and args:IsPlayer() then
+	if args.spellId == 30129 and args:IsPlayer() then
 		specWarnCharred:Show()
-	elseif args:IsSpellID(30130) then
+	elseif args.spellId == 30130 then
 		warningAsh:Show(args.destName)
 	end
 end

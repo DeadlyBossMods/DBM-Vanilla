@@ -23,14 +23,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(25725) then
+	if args.spellId == 25725 then
 		warnParalyze:Show(args.destName)
 		timerParalyze:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(25725) then
+	if args.spellId == 25725 then
 		timerParalyze:Cancel()
 	end
 end

@@ -30,7 +30,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(20475) then
+	if args.spellId == 20475 then
 		timerBomb:Start(args.destName)
 		warnBomb:Show(args.destName)
 		if self.Options.SetIconOnBombTarget then
@@ -43,13 +43,13 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(19695) then
+	if args.spellId == 19695 then
 		warnInferno:Show()
 		timerInferno:Start()
-	elseif args:IsSpellID(19659) then
+	elseif args.spellId == 19659 then
 		warnIgnite:Show()
 		timerIgnite:Start()
-	elseif args:IsSpellID(20478) then
+	elseif args.spellId == 20478 then
 		warnArmageddon:Show()
 		timerArmageddon:Start()
 	end

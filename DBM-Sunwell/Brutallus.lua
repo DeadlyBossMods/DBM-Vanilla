@@ -43,7 +43,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(46394) then
+	if args.spellId == 46394 then
 		warnBurn:Show(args.destName)
 		timerBurn:Start(args.destName)
 		if self:AntiSpam(19) then
@@ -63,14 +63,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnBurn:Show()
 		end
-	elseif args:IsSpellID(45185) then
+	elseif args.spellId == 45185 then
 		warnStomp:Show(args.destName)
 		timerStompCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(46394) then
+	if args.spellId == 46394 then
 		if self.Options.BurnIcon then
 			self:SetIcon(args.destName, 0)
 		end
@@ -78,7 +78,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(45150) then
+	if args.spellId == 45150 then
 		warnMeteor:Show()
 		timerMeteorCD:Start()
 	end

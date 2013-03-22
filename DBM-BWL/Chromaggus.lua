@@ -40,7 +40,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(23309, 23313, 23189, 23316) or args:IsSpellID(23312) then
+	if args:IsSpellID(23309, 23313, 23189, 23316) or args.spellId == 23312 then
 		warnBreathSoon:Cancel()
 		warnBreathSoon:Schedule(25)
 		warnBreath:Show(args.spellName)
@@ -49,25 +49,25 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(23155) and self:AntiSpam(3, 1) then
+	if args.spellId == 23155 and self:AntiSpam(3, 1) then
 		warnRed:Show()
-	elseif args:IsSpellID(23169) and self:AntiSpam(3, 2) then
+	elseif args.spellId == 23169 and self:AntiSpam(3, 2) then
 		warnGreen:Show()
-	elseif args:IsSpellID(23153) and self:AntiSpam(3, 3) then
+	elseif args.spellId == 23153 and self:AntiSpam(3, 3) then
 		warnBlue:Show()
-	elseif args:IsSpellID(23154) and self:AntiSpam(3, 4) then
+	elseif args.spellId == 23154 and self:AntiSpam(3, 4) then
 		warnBlack:Show()
-	elseif args:IsSpellID(23170) then
+	elseif args.spellId == 23170 then
 		if args:IsPlayer() then
 			specWarnBronze:Show()
 		end
 		if self:AntiSpam(3, 5) then
 			warnBronze:Show()
 		end
-	elseif args:IsSpellID(23128) then
+	elseif args.spellId == 23128 then
 		warnEnrage:Show()
 		timerEnrage:Start()
-	elseif args:IsSpellID(23537) then
+	elseif args.spellId == 23537 then
 		warnPhase2:Show()
 	end
 end
@@ -76,7 +76,7 @@ end
 --mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(23128) then
+	if args.spellId == 23128 then
 		timerEnrage:Cancel()
 	end
 end

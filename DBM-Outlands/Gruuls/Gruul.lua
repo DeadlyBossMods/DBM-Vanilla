@@ -42,31 +42,31 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(33525) then--Ground Slam
+	if args.spellId == 33525 then--Ground Slam
 		warnGroundSlam:Show()
 		timerShatterCD:Start()
 		timerGroundSlamCD:Start()
-	elseif args:IsSpellID(33654) then--Shatter
+	elseif args.spellId == 33654 then--Shatter
 		warnShatter:Show()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(36297) then--Reverberation (Silence)
+	if args.spellId == 36297 then--Reverberation (Silence)
 		warnSilence:Show()
 		timerSilenceCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(36300) then--Growth
+	if args.spellId == 36300 then--Growth
 		warnGrowth:Show(args.spellName, args.amount or 1)
 		timerGrowthCD:Start()
 		if (args.amount or 1) == 3 then--First silence is 15 seconds after 3rd growth.
 --			warnSilenceSoon:Schedule(10)
 			timerSilenceCD:Start(15)
 		end
-	elseif args:IsSpellID(36240) and args:IsPlayer() then--Cave In
+	elseif args.spellId == 36240 and args:IsPlayer() then--Cave In
 		specWarnCaveIn:Show()
 	end
 end

@@ -62,7 +62,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(41485) then
+	if args.spellId == 41485 then
 		warnPoison:Show(args.destName)
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 8)
@@ -70,28 +70,28 @@ function mod:SPELL_AURA_APPLIED(args)
 		if DBM:GetRaidRank() > 0 and self.Options.PoisonWhisper then
 			self:SendWhisper(L.PoisonWhisper, args.destName)
 		end
-	elseif args:IsSpellID(41481) and args:IsPlayer() then
+	elseif args.spellId == 41481 and args:IsPlayer() then
 		 specWarnFlame:Show()
-	elseif args:IsSpellID(41482) and args:IsPlayer() then
+	elseif args.spellId == 41482 and args:IsPlayer() then
 		 specWarnBlizzard:Show()
-	elseif args:IsSpellID(41476) then
+	elseif args.spellId == 41476 then
 		warnVanish:Show(args.destName)
 		timerVanish:Start(args.destName)
 		warnFadeSoon:Schedule(26)
-	elseif args:IsSpellID(41475) then
+	elseif args.spellId == 41475 then
 		warnShield:Show(args.destName)
 		timerShield:Start(args.destName)
-	elseif args:IsSpellID(41452) and args.destName == L.Gathios then
+	elseif args.spellId == 41452 and args.destName == L.Gathios then
 		warnDevAura:Show()
 		timerDevAura:Start()
-	elseif args:IsSpellID(41453) and args.destName == L.Gathios then
+	elseif args.spellId == 41453 and args.destName == L.Gathios then
 		warnResAura:Show()
 		timerResAura:Start()
-	elseif args:IsSpellID(41450) and args.destName == L.Malande then
+	elseif args.spellId == 41450 and args.destName == L.Malande then
 		warnMeleeImmune:Show(args.destName)
 		timerMeleeImmune:Start(args.destName)
 		specWarnImmune:Show(L.Melee)
-	elseif args:IsSpellID(41451) and args.destName == L.Malande then
+	elseif args.spellId == 41451 and args.destName == L.Malande then
 		warnSpellImmune:Show(args.destName)
 		timerSpellImmune:Start(args.destName)
 		specWarnImmune:Show(L.Spell)
@@ -101,9 +101,9 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(41479) then
+	if args.spellId == 41479 then
 		warnFaded:Show()
-	elseif args:IsSpellID(41485) then
+	elseif args.spellId == 41485 then
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 0)
 		end
@@ -111,7 +111,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(41455) then
+	if args.spellId == 41455 then
 		warnCoHCast:Show()
 		timerCoH:Start()
 		if self:GetUnitCreatureId("target") == 22951 or self:GetUnitCreatureId("focus") == 22951 then

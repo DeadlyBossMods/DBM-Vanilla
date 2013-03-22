@@ -80,7 +80,7 @@ function mod:UNIT_DIED(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(31538) then
+	if args.spellId == 31538 then
 		warnCannibalize:Show()
 	end
 end

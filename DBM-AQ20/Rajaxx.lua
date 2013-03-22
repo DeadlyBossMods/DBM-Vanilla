@@ -23,7 +23,7 @@ local timerOrder	= mod:NewTargetTimer(10, 25471)
 local timerCloud	= mod:NewBuffActiveTimer(15, 26550)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(25471) then
+	if args.spellId == 25471 then
 		warnOrder:Show(args.destName)
 		timerOrder:Start(args.destName)
 		if args:IsPlayer() then
@@ -33,7 +33,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(26550) then
+	if args.spellId == 26550 then
 		warnCloud:Show()
 		timerCloud:Start()
 	end

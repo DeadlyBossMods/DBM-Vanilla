@@ -50,16 +50,16 @@ end
 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(31972) then
+	if args.spellId == 31972 then
 		warnGrip:Show(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(31970) then
+	if args.spellId == 31970 then
 		warnFear:Show()
 		timerFearCD:Start()
-	elseif args:IsSpellID(32014) then
+	elseif args.spellId == 32014 then
 		self:ScheduleMethod(0.2, "BurstTarget")
 	end
 end

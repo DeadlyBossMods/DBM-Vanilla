@@ -46,7 +46,7 @@ function mod:Submerge()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(26615) then
+	if args.spellId == 26615 then
 		enraged = true
 		warnEnrage:Show()
 		warnSubmergeSoon:Cancel()
@@ -55,7 +55,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(26102) then
+	if args.spellId == 26102 then
 		timerBlastCD:Start()
 		timerBlast:Start()
 		warnBlastSoon:Schedule(18)
@@ -63,14 +63,14 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(26103) then
+	if args.spellId == 26103 then
 		timerSweepCD:Start()
 		warnSweepSoon:Schedule(16)
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(26058) and self:AntiSpam(3) and not enraged then
+	if args.spellId == 26058 and self:AntiSpam(3) and not enraged then
 		warnSubmergeSoon:Cancel()
 		warnSubmerge:Show()
 		timerEmerge:Start()

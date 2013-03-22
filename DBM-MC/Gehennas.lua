@@ -31,16 +31,16 @@ function mod:warnFistTargets()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(19716) then
+	if args.spellId == 19716 then
 		timerCurse:Start()
 		warnCurse:Show()
---	elseif args:IsSpellID(19717) and self:IsInCombat() then
+--	elseif args.spellId == 19717 and self:IsInCombat() then
 --		warnRainFire:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(20277) and args:IsDestTypePlayer() then
+	if args.spellId == 20277 and args:IsDestTypePlayer() then
 		self:UnscheduleMethod("warnFistTargets")
 		FistTargets[#FistTargets + 1] = args.destName
 		self:ScheduleMethod(0.3, "warnFistTargets")

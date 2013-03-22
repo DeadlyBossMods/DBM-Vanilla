@@ -42,11 +42,11 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(39872) then
+	if args.spellId == 39872 then
 		warnShield:Show()
 		warnShieldSoon:Schedule(48)
 		timerShield:Start()
-	elseif args:IsSpellID(39837) then
+	elseif args.spellId == 39837 then
 		warnSpine:Show(args.destName)
 		if self.Options.SpineIcon then
 			self:SetIcon(args.destName, 8)
@@ -58,7 +58,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(39837) then
+	if args.spellId == 39837 then
 		if self.Options.SpineIcon then
 			self:SetIcon(args.destName, 0)
 		end

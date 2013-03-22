@@ -34,7 +34,7 @@ end
 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(32960) then
+	if args.spellId == 32960 then
 		warningMark:Show(args.destName)
 		timerMark:Start(args.destName)
 		if args:IsPlayer() then
@@ -43,11 +43,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnMark then
 			self:SetIcon(args.destName, 8)
 		end
-	elseif args:IsSpellID(32964) then
+	elseif args.spellId == 32964 then
 		warningFrenzy:Show()
 		timerFrenzy:Show()
 		timerFrenzyCD:Start()
-	elseif args:IsSpellID(21063) then
+	elseif args.spellId == 21063 then
 		warningTwisted:Show(args.destName)
 		specWarnTwisted:Show(args.destName)
 --		timerTwistedCD:Start()
@@ -55,7 +55,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(32960) then
+	if args.spellId == 32960 then
 		timerMark:Cancel(args.destName)
 		if self.Options.SetIconOnMark then
 			self:SetIcon(args.destName, 0)
