@@ -8,7 +8,7 @@
 ## SavedVariablesPerCharacter: DBMOutlands_SavedVars, DBMOutlands_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: BC
-## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: Outlands
 ## X-DBM-Mod-Name-esES: Terrallende
 ## X-DBM-Mod-Name-koKR: 아웃랜드

@@ -10,7 +10,7 @@
 ## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: Classic
-## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: Molten Core
 ## X-DBM-Mod-Name-esES: Núcleo de Magma
 ## X-DBM-Mod-Name-ruRU: Огненные Недра

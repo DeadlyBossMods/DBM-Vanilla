@@ -10,7 +10,7 @@
 ## SavedVariablesPerCharacter: DBMAQ20_SavedVars, DBMAQ20_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: Classic
-## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: The Ruins of Ahn'Qiraj
 ## X-DBM-Mod-Name-deDE: Ruinen von Ahn'Qiraj
 ## X-DBM-Mod-Name-esES: Ruinas de Ahn'Qiraj

@@ -10,7 +10,7 @@
 ## SavedVariablesPerCharacter: DBMAQ40_SavedVars, DBMAQ40_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: Classic
-## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: The Temple of Ahn'Qiraj
 ## X-DBM-Mod-Name-deDE: Tempel von Ahn'Qiraj
 ## X-DBM-Mod-Name-esES: Templo de Ahn'Qiraj
