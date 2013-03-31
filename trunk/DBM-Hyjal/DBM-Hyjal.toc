@@ -5,7 +5,7 @@
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Die Schlacht um den Hyjal|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
-## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Has-Single-Format: 1
 ## SavedVariablesPerCharacter: DBMHyjal_SavedVars, DBMHyjal_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: BC

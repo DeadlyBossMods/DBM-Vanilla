@@ -117,7 +117,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.ParasiteIcon then
 			self:SetIcon(args.destName, 8)
 		end
-		if DBM:GetRaidRank() > 0 and self.Options.ParasiteWhisper then
+		if DBM:GetRaidRank() > 1 and self.Options.ParasiteWhisper then
 			self:SendWhisper(L.ParasiteWhisper, args.destName)
 		end
 	elseif args.spellId == 40585 then
@@ -160,7 +160,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 41131 and self:AntiSpam(4, 2) then
 		warnFlameBurst:Show()
 		flameBursts = flameBursts + 1

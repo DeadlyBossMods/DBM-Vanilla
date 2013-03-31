@@ -10,7 +10,7 @@
 ## SavedVariablesPerCharacter: DBMBWL_SavedVars, DBMBWL_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Category: Classic
-## X-DBM-Mod-Has-Heroic-Mode: 0
+## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: Blackwing Lair
 ## X-DBM-Mod-Name-deDE: Pechschwingenhort
 ## X-DBM-Mod-Name-esES: Guarida de Alanegra
