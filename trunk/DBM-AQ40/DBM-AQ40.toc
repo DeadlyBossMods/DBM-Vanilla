@@ -9,6 +9,7 @@
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMAQ40_SavedVars, DBMAQ40_SavedStats
 ## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: The Temple of Ahn'Qiraj

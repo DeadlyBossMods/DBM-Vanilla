@@ -7,6 +7,7 @@
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMSerpentshrine_SavedVars, DBMSerpentshrine_SavedStats
 ## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: Serpentshrine Cavern

@@ -9,6 +9,7 @@
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMAQ20_SavedVars, DBMAQ20_SavedStats
 ## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: The Ruins of Ahn'Qiraj

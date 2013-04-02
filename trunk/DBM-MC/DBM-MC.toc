@@ -9,6 +9,7 @@
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
 ## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Name: Molten Core
