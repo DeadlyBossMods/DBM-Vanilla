@@ -33,7 +33,7 @@ local timerBurnCD		= mod:NewCDTimer(20, 46394)
 local berserkTimer		= mod:NewBerserkTimer(360)
 
 mod:AddBoolOption("BurnIcon", true)
-mod:AddBoolOption("BurnWhisper", true, "announce")
+mod:AddBoolOption("BurnWhisper", false, "announce")
 
 local burnIcon = 8
 
@@ -59,7 +59,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				burnIcon = burnIcon - 1
 			end
 		end
-		if DBM:GetRaidRank() > 0 and self.Options.BurnWhisper then
+		if DBM:GetRaidRank() > 0 and self.Options.BurnWhisper and args.destName ~= UnitName("player") then
 			self:SendWhisper(L.BurnWhisper, args.destName)
 		end
 		if args:IsPlayer() then
