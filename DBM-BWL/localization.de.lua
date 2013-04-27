@@ -140,8 +140,9 @@ L:SetMiscLocalization{
 	YellPriest	= "Priester! Wenn Ihr weiterhin so heilt, können wir es auch gerne etwas interessanter gestalten!",
 	YellWarrior	= "Krieger, Ich bin mir sicher, dass ihr kräftiger als das zuschlagen könnt!",
 	YellRogue	= "Schurken? Kommt aus den Schatten und zeigt Euch!",
-	YellWarlock	= "Hexenmeister, ihr solltet nicht mit Magie spielen, die ihr nicht versteht. Seht ihr was ich meine?", --needs to be verified (current translation source: rpguides)
+	YellWarlock	= "Hexenmeister, Ihr solltet nicht mit Magie spielen, die Ihr nicht versteht. Seht Ihr was ich meine?",--needs to be verified (wowhead-captured translation)
 	YellHunter	= "Jäger und ihre lästigen Knallbüchsen!",
 	YellMage	= "Auch Magier? Ihr solltet vorsichtiger sein, wenn Ihr mit Magie spielt...",
-	YellDK		= "Todesritter... kommt hierher!"
+	YellDK		= "Todesritter... kommt hierher!",
+	YellMonk	= "Mönche, macht Euch dieses Herumrollen denn nicht schwindlig?"--needs to be verified (wowhead-captured translation)
 }

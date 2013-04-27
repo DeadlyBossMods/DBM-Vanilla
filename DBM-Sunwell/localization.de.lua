@@ -212,9 +212,9 @@ L:SetMiscLocalization{
 	YellPull		= "Die Entbehrlichen sind dahin - so sei es! Jetzt werde ich dort erfolgreich sein, wo Sargeras versagt hat! Ich werde diese jämmerliche Welt ausbluten lassen und meinen Platz als wahrer Meister der Brennenden Legion einnehmen! Das Ende ist gekommen! Lasst uns diese Welt dem Erdboden gleichmachen!",
 	YellBloom		= "Feuerblüte auf mir!",
 	BloomWhisper	= "Feuerblüte auf dir!",
-	OrbYell1		= "Ich werde die Kugeln mit meiner Macht erfüllen! Seid bereit!", --needs to be verified (video-captured translation)
+	OrbYell1		= "Ich werde die Kugeln mit meiner Macht erfüllen! Seid bereit!",--needs to be verified (wowhead-captured translation)
 	OrbYell2		= "Eine weitere Kugel ist von meiner Macht erfüllt! Benutzt sie, schnell!",
-	OrbYell3		= "Eine weitere Kugel ist bereit! Sputet Euch!", --needs to be verified (video-captured translation)
+	OrbYell3		= "Eine weitere Kugel ist bereit! Sputet Euch!",--needs to be verified (wowhead-captured translation)
 	OrbYell4		= "Ich habe getan, was ich konnte! Die Macht liegt in Euren Händen!"
 
 }
