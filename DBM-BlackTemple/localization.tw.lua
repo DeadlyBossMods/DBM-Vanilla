@@ -169,9 +169,6 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Pull			= "等待你們的只有痛苦與折磨﹗",
 	Enrage			= "%s暴怒了起來!",
-	Phase2			= "你可以得到任何你想要的東西……只要付得起代價。",
-	Phase2d			= "[惡魔語]  Revola Soranaman ZennshinagasZar",
-	Phase3			= "當心吧，我復活了﹗",
 	SpiteWhisper	= "惡意在你身上!",
 	Suffering		= "Essence of Suffering",--Translate
 	Desire			= "Essence of Desire",--Translate

@@ -11,12 +11,13 @@ mod:RegisterCombat("yell", L.Pull)
 
 mod:RegisterEvents(
 	"RAID_BOSS_EMOTE",
-	"CHAT_MSG_MONSTER_YELL",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
-	"SPELL_MISSED"
+	"SPELL_MISSED",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnFixate		= mod:NewTargetAnnounce(41294, 3)
@@ -130,8 +131,23 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
-	if spellId == 41545 and self:AntiSpam(3) then
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 41350 then --Aura of Desire
+		warnPhase2:Show()
+		warnMana:Schedule(130)
+		timerMana:Start()
+		timerNextShield:Start(13)
+		timerNextDeaden:Start(28)
+		DBM.BossHealth:AddBoss(23419, L.Desire)
+	elseif args.spellId == 41337 then --Aura of Anger
+		warnPhase3:Show()
+		timerNextSoul:Start()
+		DBM.BossHealth:AddBoss(23450, L.Anger)
+	end
+end
+
+function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
+	if spellId == 41545 and self:AntiSpam(3, 1) then
 		warnSoul:Show()
 		timerNextSoul:Start()
 	end
@@ -148,25 +164,22 @@ function mod:RAID_BOSS_EMOTE(msg)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Phase2 or msg:find(L.Phase2) or msg == L.Phase2d or msg:find(L.Phase2d) then
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 28819 and self:AntiSpam(2, 2) then--Submerge Visual
+		self:SendSync("PhaseEnd")
+	end
+end
+
+function mod:OnSync(msg)
+	if msg == "PhaseEnd" then
 		timerNextEnrage:Cancel()
 		warnEnrageEnd:Cancel()
 		warnEnrageSoon:Cancel()
-		warnPhase2:Show()
-		warnMana:Schedule(130)
-		timerMana:Start()
-		timerNextShield:Start(13)
-		timerNextDeaden:Start(28)
-		DBM.BossHealth:AddBoss(23419, L.Desire)
-	elseif msg == L.Phase3 or msg:find(L.Phase3) then
 		warnMana:Cancel()
 		timerMana:Cancel()
 		timerNextShield:Cancel()
 		timerNextDeaden:Cancel()
 		timerNextShock:Cancel()
-		warnPhase3:Show()
-		timerNextSoul:Start()
-		DBM.BossHealth:AddBoss(23450, L.Anger)
+		DBM.BossHealth:Clear()
 	end
 end

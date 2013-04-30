@@ -169,9 +169,6 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Pull			= "Лишь боль и страдания ждут тебя!",
 	Enrage			= "%s впадает в ярость!",
-	Phase2			= "Можешь взять все, что желаешь… но не даром.",
-	Phase2d			= "Shi shi rikk rukadare shi tichar kar x gular",
-	Phase3			= "Берегись, я жив!",
 	SpiteWhisper	= "Злоба на Вас!",
 	Suffering		= "Essence of Suffering",--Translate
 	Desire			= "Essence of Desire",--Translate
