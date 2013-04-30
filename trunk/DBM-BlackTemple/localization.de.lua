@@ -171,9 +171,6 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Pull			= "Auf Euch warten nur Schmerz und Leid!",
 	Enrage			= "%s gerät in Raserei!",
-	Phase2			= "Ihr könnt alles haben, was Ihr wollt... doch es hat einen Preis.",
-	Phase2d			= "Shi shi rikk rukadare shi tichar kar x gular",
-	Phase3			= "Seid auf der Hut, ich lebe!",
 	SpiteWhisper	= "Bosheit auf dir!",
 	Suffering		= "Essenz des Leidens",
 	Desire			= "Essenz der Begierde",

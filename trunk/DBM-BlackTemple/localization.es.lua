@@ -169,9 +169,6 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Pull			= "¡Solo os esperan dolor y sufrimiento!",
 	Enrage			= "¡Esencia de Inquina rebosa furia!",
-	Phase2			= "Puedes tener todo lo que desees... pagando su precio.",
-	Phase2d			= "Shi shi rikk rukadare shi tichar kar x gular",
-	Phase3			= "¡Cuidado: estoy vivo!",
 	SpiteWhisper	= "¡Maldad en ti!",
 	Suffering		= "Essence of Suffering",--Translate
 	Desire			= "Essence of Desire",--Translate

@@ -170,9 +170,6 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Pull			= "너희를 기다리는 건 고통과 슬픔뿐이야!",
 	Enrage			= "%s|1이;가; 분노에 휩싸입니다!",
-	Phase2			= "선택은 자유지만... 대가는 치러야 하는 법.",
-	Phase2d			= "[악마어] Kanrethad Zennshinagas Zilthuras Teamanare Revola Asj",
-	Phase3			= "각오해라. 내가 살아났다!",
 	SpiteWhisper	= "당신에게 원한!",
 	Suffering		= "고뇌의 정수",
 	Desire			= "욕망의 정수",
