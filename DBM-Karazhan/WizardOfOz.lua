@@ -6,6 +6,7 @@ mod:SetCreatureID(18168)
 mod:SetModelID(17550)
 mod:RegisterCombat("yell", L.DBM_OZ_YELL_DOROTHEE)
 mod:SetMinCombatTime(25)
+mod:SetWipeTime(40)
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
