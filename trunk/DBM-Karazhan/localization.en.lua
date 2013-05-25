@@ -210,6 +210,24 @@ L:SetMiscLocalization{
 	DBM_NS_EMOTE_PHASE_1	= "%s cries out in withdrawal, opening gates to the nether."
 }
 
+--Chess
+L = DBM:GetModLocalization("Chess")
+
+L:SetGeneralLocalization{
+	name = "Chess Event"
+}
+
+L:SetTimerLocalization{
+	timerNextCheat	= "Next cheat"
+}
+
+L:SetOptionLocalization{
+	timerNextCheat	= "Show timer for next cheat"
+}
+
+L:SetMiscLocalization{
+	EchoCheats	= "Echo of Medivh cheats!"
+}
 
 --Prince Malchezaar
 L = DBM:GetModLocalization("Prince")
