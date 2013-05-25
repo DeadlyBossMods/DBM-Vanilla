@@ -21,8 +21,6 @@ local timerHeroism			= mod:NewBuffActiveTimer(10, 37471)
 local timerRecentlyInGame	= mod:NewBuffFadesTimer(10, 30529)
 local timerNextCheat		= mod:NewTimer(108, "timerCheat", 39342)
 
-local berserkTimer		= mod:NewBerserkTimer(720)
-
 local firstCheat = false
 
 function mod:OnCombatStart(delay)
