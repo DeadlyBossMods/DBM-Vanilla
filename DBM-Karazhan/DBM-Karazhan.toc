@@ -35,6 +35,7 @@ Curator.lua
 TerestianIllhoof.lua
 ShadeOfAran.lua
 Netherspite.lua
+Chess.lua
 PrinceMalchezaar.lua
 Nightbane.lua
 NamedBeasts.lua
