@@ -19,11 +19,11 @@ mod:RegisterEvents(
 	"SPELL_DAMAGE",
 	"SWING_DAMAGE",
 	"RANGE_DAMAGE",
-	"UNIT_TARGET",
+	"UNIT_TARGET UNFILTERED",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"UNIT_SPELLCAST_SUCCEEDED target focus mouseover"
 )
 
 local warnGaze			= mod:NewAnnounce("WarnGaze", 4, 39414)
@@ -236,7 +236,7 @@ end
 mod.SWING_DAMAGE = mod.SPELL_DAMAGE
 mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
 
-function mod:UNIT_TARGET()
+function mod:UNIT_TARGET_UNFILTERED()
 	if self:GetUnitCreatureId("target") == 21364 then
 		self:EggSpawned()
 	end
