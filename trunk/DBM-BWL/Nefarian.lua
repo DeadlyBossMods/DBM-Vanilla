@@ -11,7 +11,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"UNIT_HEALTH",
+	"UNIT_HEALTH target focus mouseover",
 	"CHAT_MSG_MONSTER_YELL"
 )
 

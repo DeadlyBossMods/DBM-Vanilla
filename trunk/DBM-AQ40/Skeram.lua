@@ -10,7 +10,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_SUMMON",
-	"UNIT_HEALTH"
+	"UNIT_HEALTH target focus mouseover"
 )
 
 local warnMindControl	= mod:NewTargetAnnounce(785, 3)
