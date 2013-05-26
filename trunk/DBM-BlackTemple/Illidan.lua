@@ -16,7 +16,7 @@ mod:RegisterEvents(
 	"SPELL_MISSED",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_HEALTH target focus mouseover",
-	"UNIT_DIED target focus mouseover"
+	"UNIT_DIED"
 )
 
 local warnParasite			= mod:NewTargetAnnounce(41917, 3)
