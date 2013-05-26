@@ -28,20 +28,20 @@ local specWarnFire		= mod:NewSpecialWarningMove(35383)
 local timerQuill		= mod:NewCastTimer(10, 34229)
 local timerMeteor		= mod:NewCDTimer(52, 35181)
 local timerArmor		= mod:NewTargetTimer(60, 35410)
-local timerNextPlatform	= mod:NewTimer(34.5, "NextPlatform", 40192)--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
+--local timerNextPlatform	= mod:NewTimer(34.5, "NextPlatform", 40192)--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-
+--[[
 function mod:Platform()--An attempt to avoid ugly target scanning, but i get feeling this won't be accurate enough.
 	timerNextPlatform:Start()
 	self:ScheduleMethod(34.5, "Platform")
-end
+end--]]
 
 function mod:OnCombatStart(delay)
 	warnPhase1:Show()
-	timerNextPlatform:Start(-delay)
-	self:ScheduleMethod(34.5-delay, "Platform")
+--	timerNextPlatform:Start(-delay)
+--	self:ScheduleMethod(34.5-delay, "Platform")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -68,8 +68,8 @@ function mod:SPELL_HEAL(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, de
 		warnPhase2:Show()
 		berserkTimer:Start()
 		timerMeteor:Start(40)--This seems to vary slightly depending on where in room he shoots it.
-		self:UnscheduleMethod("Platform")
-		timerNextPlatform:Cancel()
+--		self:UnscheduleMethod("Platform")
+--		timerNextPlatform:Cancel()
 	end
 end
 
