@@ -218,11 +218,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	timerNextCheat	= "Next cheat"
+	timerCheat	= "Next cheat"
 }
 
 L:SetOptionLocalization{
-	timerNextCheat	= "Show timer for next cheat"
+	timerCheat	= "Show timer for cheat cooldown"
 }
 
 L:SetMiscLocalization{
