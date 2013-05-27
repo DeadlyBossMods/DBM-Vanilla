@@ -167,8 +167,7 @@ L:SetWarningLocalization{
 	WarnNaga			= "盘牙精英 - 5秒后出现 (%s)",
 	WarnShield			= "护盾 - %d/4被击碎",
 	WarnLoot			= ">%s<获得了污染之核",
-	SpecWarnElemental	= "被污染的元素 - 5秒后出现!",
-	SpecWarnCore		= "你获得了污染之核！"
+	SpecWarnElemental	= "被污染的元素 - 5秒后出现!"
 }
 
 L:SetTimerLocalization{
@@ -187,12 +186,12 @@ L:SetOptionLocalization{
 	TimerStrider		= "Show time for next Strider",--Translate
 	TimerNaga			= "Show time for next Strider",--Translate
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",--Translate
-	SpecWarnCore		= "当你拾取污染之核时显示特殊警报",
 	RangeFrame			= "显示距离框体",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "对拾取了污染之核的队友添加标注"
+	AutoChangeLootToFFA	= "第3阶段自动转换拾取方式为自由拾取"
 }
 
 L:SetMiscLocalization{
-	DBM_VASHJ_YELL_PHASE2	= "机会来了！一个活口都不要留下！"
+	DBM_VASHJ_YELL_PHASE2	= "机会来了！一个活口都不要留下！",
+	LootMsg				= "(.+)获得了物品：.*Hitem:(%d+)"
 }

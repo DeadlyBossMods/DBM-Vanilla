@@ -167,7 +167,6 @@ L:SetWarningLocalization{
 	WarnShield			= "Shield %d/4 down",
 	WarnLoot			= "Tainted Core on >%s<",
 	SpecWarnElemental	= "Tainted Elemental Soon!",
-	SpecWarnCore		= "Tainted Core on YOU!"
 }
 
 L:SetTimerLocalization{
@@ -186,12 +185,12 @@ L:SetOptionLocalization{
 	TimerStrider		= "Show time for next Strider",
 	TimerNaga			= "Show time for next Naga",
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",
-	SpecWarnCore		= "Show special warning if you receive a Tainted Core",
 	RangeFrame			= "Show range frame (10 yards)",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "Set icon on players with a Tainted Core"
+	AutoChangeLootToFFA	= "Switch loot mode to Free for All in Phase 2"
 }
 
 L:SetMiscLocalization{
-	DBM_VASHJ_YELL_PHASE2	= "The time is now! Leave none standing!"
+	DBM_VASHJ_YELL_PHASE2	= "The time is now! Leave none standing!",
+	LootMsg					= "([^%s]+).*Hitem:(%d+)"
 }

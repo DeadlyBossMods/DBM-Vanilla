@@ -14,7 +14,8 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
 	"UNIT_DIED",
-	"CHAT_MSG_MONSTER_YELL"
+	"CHAT_MSG_MONSTER_YELL",
+	"CHAT_MSG_LOOT"
 )
 
 local warnCharge		= mod:NewTargetAnnounce(38280, 4)
@@ -30,7 +31,6 @@ local warnPhase3		= mod:NewPhaseAnnounce(3)
 local specWarnCharge	= mod:NewSpecialWarningYou(38280)
 local specWarnElemental	= mod:NewSpecialWarning("SpecWarnElemental")
 local specWarnToxic		= mod:NewSpecialWarningMove(38575)
-local specWarnCore		= mod:NewSpecialWarning("SpecWarnCore")
 
 local timerCharge		= mod:NewTargetTimer(20, 38280)
 local timerElemental	= mod:NewTimer(53, "TimerElemental", 39088)
@@ -39,7 +39,7 @@ local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120)
 
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ChargeIcon", true)
-mod:AddBoolOption("LootIcon", true)
+mod:AddBoolOption("AutoChangeLootToFFA", true)
 
 local shieldLeft = 4
 local nagaCount = 1
@@ -68,10 +68,20 @@ function mod:OnCombatStart(delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show()
 	end
+	if IsInGroup() and DBM:GetRaidRank() == 2 then
+		lootmethod, _, masterlooterRaidID = GetLootMethod()
+	end
 end
 
 function mod:OnCombatEnd()
 	DBM.RangeCheck:Hide()
+	if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
+		if masterlooterRaidID then
+			SetLootMethod(lootmethod, "raid"..masterlooterRaidID)
+		else
+			SetLootMethod(lootmethod)
+		end
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -83,14 +93,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if self.Options.ChargeIcon then
 			self:SetIcon(args.destName, 1, 20)
-		end
-	elseif args.spellId == 38132 then
-		warnLoot:Show(args.destName)
-		if self.Options.LootIcon then
-			self:SetIcon(args.destName, 1)
-		end
-		if args:IsPlayer() then
-			specWarnCore:Show()
 		end
 	elseif args.spellId == 38575 and args:IsPlayer() and self:AntiSpam() then
 		specWarnToxic:Show()
@@ -121,6 +123,13 @@ function mod:SPELL_AURA_REMOVED(args)
 			timerStrider:Cancel()
 			warnStrider:Cancel()
 			self:ScheduleMethod("StriderSpawn")
+			if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
+				if masterlooterRaidID then
+					SetLootMethod(lootmethod, "raid"..masterlooterRaidID)
+				else
+					SetLootMethod(lootmethod)
+				end
+			end
 		end
 	end
 end
@@ -159,5 +168,17 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerStrider:Start(nil, tostring(striderCount))
 		warnStrider:Schedule(57, tostring(striderCount))
 		self:ScheduleMethod(63, "StriderSpawn")
+		if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
+			SetLootMethod("freeforall")
+		end
 	end
 end
+
+function mod:CHAT_MSG_LOOT(msg)
+	-- DBM:AddMsg(msg) --> Meridium receives loot: [Magnetic Core]
+	local player, itemID = msg:match(L.LootMsg)
+	if player and itemID and tonumber(itemID) == 31088 and self:IsInCombat() then
+		warnLoot:Show(args.destName)
+	end
+end
+
