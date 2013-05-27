@@ -167,8 +167,7 @@ L:SetWarningLocalization{
 	WarnNaga			= "Нага через 5 секунд (%s)",
 	WarnShield			= "Магический барьер - деактивировано %d/4",
 	WarnLoot			= ">%s< получил порченую магму",
-	SpecWarnElemental	= "Нечистый элементаль через 5 секунд!",
-	SpecWarnCore		= "У тебя порченая магма!"
+	SpecWarnElemental	= "Нечистый элементаль через 5 секунд!"
 }
 
 L:SetTimerLocalization{
@@ -187,12 +186,12 @@ L:SetOptionLocalization{
 	TimerStrider		= "Show time for next Strider",--Translate
 	TimerNaga			= "Show time for next Strider",--Translate
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",--Translate
-	SpecWarnCore		= "Показать спец-предупреждение если Порченая магма у тебя",
 	RangeFrame			= "Distanz Frame anzeigen",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "Установить метку на цел у кого Порченая магма"
+	AutoChangeLootToFFA		= "Смена режима добычи на Каждый за себя в фазе 2"
 }
 
 L:SetMiscLocalization{
-	DBM_VASHJ_YELL_PHASE2				= "Время пришло! Не оставляйте никого в живых!"
+	DBM_VASHJ_YELL_PHASE2				= "Время пришло! Не оставляйте никого в живых!",
+	LootMsg			= "([^%s]+).*Hitem:(%d+)"
 }

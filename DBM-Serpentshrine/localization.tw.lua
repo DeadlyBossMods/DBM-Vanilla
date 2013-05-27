@@ -167,8 +167,7 @@ L:SetWarningLocalization{
 	WarnNaga			= "5秒後 盤牙精英! (%s)",
 	WarnShield			= "魔法屏障 %d/4 消失!",
 	WarnLoot			= ">%s< 擁有受污染的核心!",
-	SpecWarnElemental	= "5秒後 污染的元素!!",
-	SpecWarnCore		= "你擁有受污染的核心!"
+	SpecWarnElemental	= "5秒後 污染的元素!!"
 }
 
 L:SetTimerLocalization{
@@ -187,12 +186,12 @@ L:SetOptionLocalization{
 	TimerStrider		= "Show time for next Strider",--Translate
 	TimerNaga			= "Show time for next Strider",--Translate
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",--Translate
-	SpecWarnCore		= "顯示特別警告當你擁有受污染的核心",
 	RangeFrame			= "顯示距離框",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "標記擁有受污染的核心的人"
+	AutoChangeLootToFFA		= "第3階段自動轉換拾取方式為自由拾取"
 }
 
 L:SetMiscLocalization{
-	DBM_VASHJ_YELL_PHASE2				= "機會來了!一個活口都不要留下!"
+	DBM_VASHJ_YELL_PHASE2				= "機會來了!一個活口都不要留下!",
+	LootMsg				= "(.+)拾取了物品:.*Hitem:(%d+)"
 }

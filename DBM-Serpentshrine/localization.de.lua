@@ -167,8 +167,7 @@ L:SetWarningLocalization{
 	WarnNaga			= "Naga bald (%s)",
 	WarnShield			= "Schildgenerator %d/4 zerstört",
 	WarnLoot			= ">%s< hat den Besudelten Kern",
-	SpecWarnElemental	= "Besudelter Elementar bald!",
-	SpecWarnCore		= "DU hast den Besudelten Kern!"
+	SpecWarnElemental	= "Besudelter Elementar bald!"
 }
 
 L:SetTimerLocalization{
@@ -187,12 +186,12 @@ L:SetOptionLocalization{
 	TimerStrider		= "Zeige Zeit bis nächster Schreiter",
 	TimerNaga			= "Zeige Zeit bis nächster Naga",
 	SpecWarnElemental	= "Zeige Spezialwarnung, wenn Besudelter Elementar kommt",
-	SpecWarnCore		= "Zeige Spezialwarnung, wenn du einen Besudelten Kern bekommst",
 	RangeFrame			= "Zeige Abstandsfenster (10m)",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "Setze Zeichen auf Spieler mit einem Besudelten Kern"
+	AutoChangeLootToFFA	= "Plündermodus in Phase 2 automatisch auf 'Jeder gegen jeden' einstellen"
 }
 
 L:SetMiscLocalization{
-	DBM_VASHJ_YELL_PHASE2				= "Die Zeit ist gekommen! Lasst keinen am Leben!"
+	DBM_VASHJ_YELL_PHASE2	= "Die Zeit ist gekommen! Lasst keinen am Leben!",
+	LootMsg					= "([^%s]+).*Hitem:(%d+)"
 }

@@ -99,6 +99,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
+--Target scanning is more accurate for finding phase 2 well before the heal, HOWEVER, fails if soloing alar and you aren't targeting him.
 function mod:SPELL_HEAL(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 34342 then
 		phase2 = GetTime()

@@ -167,8 +167,7 @@ L:SetWarningLocalization{
 	WarnNaga			= "곧 나가 등장 (%s)",
 	WarnShield			= "보호막 %d/4 남음",
 	WarnLoot			= "오염된 핵: >%s<",
-	SpecWarnElemental	= "곧 오염된 정령 등장!",
-	SpecWarnCore		= "당신에게 오염된 핵 - 패스하세요!"
+	SpecWarnElemental	= "곧 오염된 정령 등장!"
 }
 
 L:SetTimerLocalization{
@@ -187,12 +186,12 @@ L:SetOptionLocalization{
 	TimerStrider		= "다음 포자손 바 표시",
 	TimerNaga			= "다음 나가 바 표시",
 	SpecWarnElemental	= "오염된 정령 등장 특수 경고 보기",
-	SpecWarnCore		= "오염된 핵을 획득할 경우 특수 경고 보기",
 	RangeFrame			= "거리 창 보기",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	LootIcon			= "오염된 핵 획득 대상에게 전술 목표 아이콘 설정"
+	AutoChangeLootToFFA	= "2 단계에서 전리품 획득 설정 자동으로 변경"
 }
 
 L:SetMiscLocalization{
-	DBM_VASHJ_YELL_PHASE2	= "때가 왔다! 한 놈도 살려두지 마라!"
+	DBM_VASHJ_YELL_PHASE2	= "때가 왔다! 한 놈도 살려두지 마라!",
+	LootMsg					= "([^%s]+).*Hitem:(%d+)"
 }
