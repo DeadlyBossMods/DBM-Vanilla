@@ -167,13 +167,14 @@ L:SetWarningLocalization{
 	WarnNaga			= "Naga bald (%s)",
 	WarnShield			= "Schildgenerator %d/4 zerstört",
 	WarnLoot			= ">%s< hat den Besudelten Kern",
-	SpecWarnElemental	= "Besudelter Elementar bald!"
+	SpecWarnElemental	= "Besudelter Elementar - Ziel wechseln!"
 }
 
 L:SetTimerLocalization{
-	TimerElemental		= "Nächster Elementar (%d)",
-	TimerStrider		= "Nächster Schreiter (%d)",
-	TimerNaga			= "Nächster Naga (%d)"
+	TimerElementalActive	= "Elementar aktiv",
+	TimerElemental			= "Elementar CD (%d)",
+	TimerStrider			= "Nächster Schreiter (%d)",
+	TimerNaga				= "Nächster Naga (%d)"
 }
 
 L:SetOptionLocalization{
@@ -182,7 +183,8 @@ L:SetOptionLocalization{
 	WarnNaga			= "Zeige Vorwarnung für nächsten Naga",
 	WarnShield			= "Zeige Warnung für zerstörte Schildgeneratoren in Phase 2",
 	WarnLoot			= "Spieler mit Besudelten Kern ansagen",
-	TimerElemental		= "Zeige Zeit bis nächster Besudelter Elementar",
+	TimerElementalActive	= "Zeige Zeit bis Besudelter Elementar verschwindet",
+	TimerElemental		= "Abklingzeit von Besudelter Elementar anzeigen",
 	TimerStrider		= "Zeige Zeit bis nächster Schreiter",
 	TimerNaga			= "Zeige Zeit bis nächster Naga",
 	SpecWarnElemental	= "Zeige Spezialwarnung, wenn Besudelter Elementar kommt",
