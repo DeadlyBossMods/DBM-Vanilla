@@ -14,11 +14,11 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	NextPlatform	= "단상 이동 가능"
+	NextPlatform	= "단상 머무름"
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "단상 이동 대기시간 바 표시"
+	NextPlatform	= "단상 머무름 바 표시(더 빨리 떠날수 는 있으나 더 늦게 떠나진 않습니다.)"
 }
 
 L:SetMiscLocalization{

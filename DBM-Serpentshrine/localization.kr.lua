@@ -162,33 +162,35 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnElemental		= "곧 오염된 정령 등장 (%s)",
-	WarnStrider			= "곧 포자손 등장 (%s)",
-	WarnNaga			= "곧 나가 등장 (%s)",
-	WarnShield			= "보호막 %d/4 남음",
-	WarnLoot			= "오염된 핵: >%s<",
-	SpecWarnElemental	= "곧 오염된 정령 등장!"
+	WarnElemental			= "곧 오염된 정령 등장 (%s)",
+	WarnStrider				= "곧 포자손 등장 (%s)",
+	WarnNaga				= "곧 나가 등장 (%s)",
+	WarnShield				= "보호막 %d/4 남음",
+	WarnLoot				= "오염된 핵: >%s<",
+	SpecWarnElemental		= "오염된 정령 - 대상 전환!"
 }
 
 L:SetTimerLocalization{
-	TimerElemental		= "다음 오염된 정령 (%d)",
-	TimerStrider		= "다음 포자손 (%d)",
-	TimerNaga			= "다음 나가 (%d)"
+	TimerElementalActive	= "오염된 정령 활성화",
+	TimerElemental			= "오염된 정령 가능 (%d)",
+	TimerStrider			= "다음 포자손 (%d)",
+	TimerNaga				= "다음 나가 (%d)"
 }
 
 L:SetOptionLocalization{
-	WarnElemental		= "오염된 정령 등장 사전 알림 보기",
-	WarnStrider			= "포자손 등장 사전 알림 보기",
-	WarnNaga			= "나가 등장 사전 알림 보기",
-	WarnShield			= "보호막 사라짐 알림 보기",
-	WarnLoot			= "오염된 핵 획득 대상 알림 보기",
-	TimerElemental		= "다음 오염된 정령 바 표시",
-	TimerStrider		= "다음 포자손 바 표시",
-	TimerNaga			= "다음 나가 바 표시",
-	SpecWarnElemental	= "오염된 정령 등장 특수 경고 보기",
-	RangeFrame			= "거리 창 보기",
-	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
-	AutoChangeLootToFFA	= "2 단계에서 전리품 획득 설정 자동으로 변경"
+	WarnElemental			= "오염된 정령 등장 사전 알림 보기",
+	WarnStrider				= "포자손 등장 사전 알림 보기",
+	WarnNaga				= "나가 등장 사전 알림 보기",
+	WarnShield				= "보호막 사라짐 알림 보기",
+	WarnLoot				= "오염된 핵 획득 대상 알림 보기",
+	TimerElementalActive	= "오염된 정령 활성화 시간 바 표시",
+	TimerElemental			= "오염된 정령 대기시간 바 표시",
+	TimerStrider			= "다음 포자손 바 표시",
+	TimerNaga				= "다음 나가 바 표시",
+	SpecWarnElemental		= "오염된 정령 등장 특수 경고 보기",
+	RangeFrame				= "거리 창 보기",
+	ChargeIcon				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
+	AutoChangeLootToFFA		= "2 단계에서 전리품 획득 설정 자동으로 변경"
 }
 
 L:SetMiscLocalization{
