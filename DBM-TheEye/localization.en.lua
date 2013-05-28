@@ -13,11 +13,11 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	NextPlatform	= "Next Platform"
+	NextPlatform	= "Max Platform length"
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "Show timer for when Al'ar changes platforms"
+	NextPlatform	= "Show timer for when how long Al'ar may stay at platform (May leave sooner but almost never any later)"
 }
 
 L:SetMiscLocalization{
