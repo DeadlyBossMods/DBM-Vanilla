@@ -211,6 +211,24 @@ L:SetMiscLocalization{
 	DBM_NS_EMOTE_PHASE_1	= "%s|1이;가; 물러나며 고함을 지르더니 황천의 문을 엽니다."
 }
 
+--Chess
+L = DBM:GetModLocalization("Chess")
+
+L:SetGeneralLocalization{
+	name = "체스 이벤트"
+}
+
+L:SetTimerLocalization{
+	timerCheat	= "다음 속임수"
+}
+
+L:SetOptionLocalization{
+	timerCheat	= "다음 속임수 바 표시"
+}
+
+L:SetMiscLocalization{
+	EchoCheats	= "메디브의 메아리!"
+}
 
 --Prince Malchezaar
 L = DBM:GetModLocalization("Prince")
