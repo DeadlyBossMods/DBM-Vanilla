@@ -21,7 +21,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPortal			= "Zeige Warnung für Ziel von $spell:46021",
-	SpecWarnWildMagic	= "Zeige Spezialwarnung für Wilde Magie",
+	SpecWarnWildMagic	= "Spezialwarnung für Wilde Magie",
 	TimerNextPortal		= "Zeige Timer für Portale",
 	RangeFrame			= "Zeige Abstandsfenster (10m)",
 	ShowFrame			= "Zeige Spektralreichfenster",
@@ -199,8 +199,8 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnDarkOrb		= "Zeige Warnung für Schildkugeln",
 	WarnBlueOrb		= "Zeige Warnung für Drachenkugeln",
-	SpecWarnDarkOrb	= "Zeige Spezialwarnung für Schildkugeln",
-	SpecWarnBlueOrb	= "Zeige Spezialwarnung für Drachenkugeln",
+	SpecWarnDarkOrb	= "Spezialwarnung für Schildkugeln",
+	SpecWarnBlueOrb	= "Spezialwarnung für Drachenkugeln",
 	TimerBlueOrb	= "Zeige Zeit bis Drachenkugeln bereit sind",
 	RangeFrame		= "Zeige Abstandsfenster (10m)",
 	BloomIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45641),

@@ -23,7 +23,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnMark		= "Zeige Warnung für Male",
 	WarnPhase		= "Zeige Warnung für nächste Phase",
-	SpecWarnMark	= "Zeige Spezialwarnung, wenn Schaden durch Male Debuff um 100% oder mehr erhöht ist",
+	SpecWarnMark	= "Spezialwarnung, wenn Schaden durch Male Debuff um 100% oder mehr erhöht ist",
 	TimerMark		= "Zeige Zeit bis nächste Male",
 	RangeFrame		= "Zeige Abstandsfenster (10m)"
 }
@@ -144,7 +144,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnMurlocs		= "Zeige Warnung, wenn Murlocs erscheinen",
-	SpecWarnMurlocs	= "Zeige Spezialwarnung, wenn Murlocs erscheinen",
+	SpecWarnMurlocs	= "Spezialwarnung, wenn Murlocs erscheinen",
 	TimerMurlocs	= "Zeige Zeit bis Murlocs erscheinen",
 	GraveIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38049)
 }
@@ -187,7 +187,7 @@ L:SetOptionLocalization{
 	TimerElemental		= "Abklingzeit von Besudelter Elementar anzeigen",
 	TimerStrider		= "Zeige Zeit bis nächster Schreiter",
 	TimerNaga			= "Zeige Zeit bis nächster Naga",
-	SpecWarnElemental	= "Zeige Spezialwarnung, wenn Besudelter Elementar kommt",
+	SpecWarnElemental	= "Spezialwarnung, wenn Besudelter Elementar kommt",
 	RangeFrame			= "Zeige Abstandsfenster (10m)",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
 	AutoChangeLootToFFA	= "Plündermodus in Phase 2 automatisch auf 'Jeder gegen jeden' einstellen"

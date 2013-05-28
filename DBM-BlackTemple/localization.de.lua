@@ -226,7 +226,7 @@ L:SetOptionLocalization{
 	WarnFaded		= "Zeige Warnung, wenn $spell:41476 des Schurken endet",
 	WarnDevAura		= "Zeige Warnung für $spell:41452",
 	WarnResAura		= "Zeige Warnung für $spell:41453",
-	Immune			= "Zeige Spezialwarnung, wenn Malande gegen magische oder körperliche Angriffe immun wird",
+	Immune			= "Spezialwarnung, wenn Malande gegen magische oder körperliche Angriffe immun wird",
 	PoisonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41485),
 	PoisonWhisper	= "Ziele von $spell:41485 anflüstern (benötigt Schlachtzugleitung)"
 }
