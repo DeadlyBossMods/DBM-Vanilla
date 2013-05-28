@@ -65,7 +65,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Verkünde Ziele von Verfolgung",
-	SpecWarnPursue	= "Zeige Spezialwarnung, wenn du verfolgt wirst",
+	SpecWarnPursue	= "Spezialwarnung, wenn du verfolgt wirst",
 	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
