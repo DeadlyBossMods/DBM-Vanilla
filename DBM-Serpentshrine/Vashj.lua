@@ -45,6 +45,7 @@ local shieldLeft = 4
 local nagaCount = 1
 local striderCount = 1
 local elementalCount = 1
+local lootmethod, masterlooterRaidID
 
 function mod:StriderSpawn()
 	striderCount = striderCount + 1
