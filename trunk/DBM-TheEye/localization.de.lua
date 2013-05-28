@@ -14,11 +14,11 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	NextPlatform	= "Nächste Plattform"
+	NextPlatform	= "Max. Plattformdauer"
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "Zeige Zeit bis Al'ar die Plattform wechselt"
+	NextPlatform	= "Zeige Zeit bis Al'ar spätestens die Plattform wechselt\n(wechselt möglicherweise früher, aber fast nie später)"
 }
 
 L:SetMiscLocalization{

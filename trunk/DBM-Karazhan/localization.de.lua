@@ -63,7 +63,7 @@ L = DBM:GetModLocalization("RomuloAndJulianne")
 
 L:SetGeneralLocalization{
 	name = "Romulo und Julianne"
- }
+}
 
 L:SetWarningLocalization{
 	warningPosion	= "%s auf >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
@@ -211,6 +211,24 @@ L:SetMiscLocalization{
 	DBM_NS_EMOTE_PHASE_1	= "%s schreit auf und öffnet Tore zum Nether."
 }
 
+--Chess
+L = DBM:GetModLocalization("Chess")
+
+L:SetGeneralLocalization{
+	name = "Schachspiel"
+}
+
+L:SetTimerLocalization{
+	timerCheat	= "Nächstes Schummeln"
+}
+
+L:SetOptionLocalization{
+	timerCheat	= "Zeige Zeit bis nächstes Schummeln"
+}
+
+L:SetMiscLocalization{
+	EchoCheats	= "Medivhs Echo schummelt!"
+}
 
 --Prince Malchezaar
 L = DBM:GetModLocalization("Prince")
