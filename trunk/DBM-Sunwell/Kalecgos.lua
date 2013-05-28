@@ -90,13 +90,19 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		if self:AntiSpam(20, 2) then
 			local grp, class
-			for i = 1, DBM:GetNumGroupMembers() do
-				local name, _, subgroup, _, _, fileName = GetRaidRosterInfo(i)
-				if name == args.destName then
-					grp = subgroup
-					class = fileName
-					break
+			if IsInGroup() then
+				for i = 1, DBM:GetNumGroupMembers() do
+					local name, _, subgroup, _, _, fileName = GetRaidRosterInfo(i)
+					if name == args.destName then
+						grp = subgroup
+						class = fileName
+						break
+					end
 				end
+			else
+				-- solo raid
+				grp = 0
+				class = select(2, UnitClass("player"))
 			end
 			self:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
 			warnPortal:Show(portCount, args.destName, grp or 0)
@@ -121,12 +127,16 @@ function mod:UNIT_DIED(args)
 	end
 	if bit.band(args.destFlags, COMBATLOG_OBJECT_TYPE_PLAYER) ~= 0 then
 		local grp
-		for i = 1, DBM:GetNumGroupMembers() do
-			local name, _, subgroup = GetRaidRosterInfo(i)
-			if name == args.destName then
-				grp = subgroup
-				break
+		if IsInGroup() then
+			for i = 1, DBM:GetNumGroupMembers() do
+				local name, _, subgroup = GetRaidRosterInfo(i)
+				if name == args.destName then
+					grp = subgroup
+					break
+				end
 			end
+		else
+			grp = 0
 		end
 		self:RemoveEntry(("%s (%d)"):format(args.destName, grp or 0))
 	end
