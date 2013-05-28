@@ -166,13 +166,14 @@ L:SetWarningLocalization{
 	WarnNaga			= "Naga Soon (%s)",
 	WarnShield			= "Shield %d/4 down",
 	WarnLoot			= "Tainted Core on >%s<",
-	SpecWarnElemental	= "Tainted Elemental Soon!",
+	SpecWarnElemental	= "Tainted Elemental - Switch!"
 }
 
 L:SetTimerLocalization{
-	TimerElemental		= "Next Elemental (%d)",
-	TimerStrider		= "Next Strider (%d)",
-	TimerNaga			= "Next Naga (%d)"
+	TimerElementalActive	= "Elemental Active",
+	TimerElemental			= "Elemental CD (%d)",
+	TimerStrider			= "Next Strider (%d)",
+	TimerNaga				= "Next Naga (%d)"
 }
 
 L:SetOptionLocalization{
@@ -181,9 +182,10 @@ L:SetOptionLocalization{
 	WarnNaga			= "Show pre-warning for next Naga",
 	WarnShield			= "Show warning for Phase 2 shield down",
 	WarnLoot			= "Show warning for Tainted Core loot",
-	TimerElemental		= "Show time for next Tainted Elemental",
-	TimerStrider		= "Show time for next Strider",
-	TimerNaga			= "Show time for next Naga",
+	TimerElementalActive	= "Show timer for how long Tainted Elemental is active",
+	TimerElemental		= "Show timer for Tainted Elemental cooldown",
+	TimerStrider		= "Show timer for next Strider",
+	TimerNaga			= "Show timer for next Naga",
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",
 	RangeFrame			= "Show range frame (10 yards)",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
