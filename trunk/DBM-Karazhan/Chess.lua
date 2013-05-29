@@ -19,6 +19,7 @@ mod:RegisterEvents(
 )
 
 local timerHeroism			= mod:NewBuffActiveTimer(10, 37471)
+local timerBloodlust		= mod:NewBuffActiveTimer(10, 37472)
 local timerRecentlyInGame	= mod:NewBuffFadesTimer(10, 30529)
 local timerNextCheat		= mod:NewTimer(108, "timerCheat", 39342)
 
@@ -46,6 +47,8 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 37471 then
 		timerHeroism:Start()
+	elseif args.spellId == 37472 then
+		timerBloodlust:Start()
 	end
 end
 
