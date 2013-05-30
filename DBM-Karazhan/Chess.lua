@@ -24,9 +24,11 @@ local timerRecentlyInGame	= mod:NewBuffFadesTimer(10, 30529)
 local timerNextCheat		= mod:NewTimer(108, "timerCheat", 39342)
 
 local firstCheat = false
+local secondCheat = false
 
 function mod:OnCombatStart(delay)
---	firstCheat = false
+	firstCheat = false
+	secondCheat = false
 	timerNextCheat:Start(111)
 end
 
@@ -55,13 +57,23 @@ end
 --Cheat detection can be detected with unit event but only if medivh is focus or target. otherwise we have to use emote. Since almost no one would do this, we just use emote method
 --"<120.0 00:59:30> [UNIT_SPELLCAST_SUCCEEDED] Echo of Medivh [[focus:Karazhan - Chess, Medivh CHEAT: Fury of Medivh, Target Alliance::0:39344]]", -- [367]
 --"<120.0 00:59:30> [CHAT_MSG_RAID_BOSS_EMOTE] CHAT_MSG_RAID_BOSS_EMOTE#Echo of Medivh cheats!#Echo of Medivh###Omegall##0#0##0#3458#nil#0#false#false", -- [368]
+--Second cheat seems to sometimes come after 120 instead of 108
+--We always start the 108 timer, but schedule a check for 110 that if second cheat hasn't come yet, we know it's a 120 one and to update timer
+local function cheatDelayed()
+	timerNextCheat:Start(10)
+end
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg == L.EchoCheats then
---[[		if not firstCheat then
+		if not firstCheat then
 			firstCheat = true
-			timerNextCheat:Start(120)
-		else--]]
-			timerNextCheat:Start()
---		end
+			timerNextCheat:Start()--Start 108 timer since it's about 50/50 for this one
+			self:Schedule(110, cheatDelayed)--But if not cheated by 110, start a 10 second timer for when the cheat will happen, at 120.
+		else
+			if not secondCheat then
+				self:Unschedule(cheatDelayed)
+				secondCheat = true
+			end
+			timerNextCheat:Start()--All other cheats should be every 108 like clockwork. Only the second is random. Ie, 111, 120, 108 repeating, OR 111, 108 repeating.
+		end
 	end
 end
