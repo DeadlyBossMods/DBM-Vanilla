@@ -139,7 +139,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 38316 and not elementals[args.sourceGUID] then
+	if args.spellId == 38253 and not elementals[args.sourceGUID] then
 		specWarnElemental:Show()
 		timerElemental:Start()
 		elementals[args.sourceGUID] = true
@@ -147,7 +147,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 38253 then
+	if args.spellId == 38316 then
 		warnEntangle:Show()
 	end
 end
