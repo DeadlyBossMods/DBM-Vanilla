@@ -1,9 +1,10 @@
 local mod	= DBM:NewMod("Chess", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
+local playerFactoin = UnitFactionGroup("player")
 mod:SetRevision(("$Revision$"):sub(12, -3))
 --UNIT_DIED firing for king assumed
-if UnitFactionGroup("player") == "Alliance" then
+if playerFactoin == "Alliance" then
 	mod:SetCreatureID(21752)--Warchief Blackhand
 else
 	mod:SetCreatureID(21684)--King Llane
@@ -15,7 +16,8 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_RAID_BOSS_EMOTE"
+	"CHAT_MSG_RAID_BOSS_EMOTE",
+	"UNIT_DIED"
 )
 
 local timerHeroism			= mod:NewBuffActiveTimer(10, 37471)
@@ -35,8 +37,13 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 39331 and not self:IsInCombat() then
 		DBM:StartCombat(self, 0)
-	elseif args.spellId == 30529 and args:IsPlayer() then
-		timerRecentlyInGame:Start()
+	elseif args.spellId == 30529 then
+		if not self:IsInCombat() then--Because game in session may not go away on wipe, we need to detect a repull off first hop into a chess peice
+			DBM:StartCombat(self, 0)
+		end
+		if args:IsPlayer() then
+			timerRecentlyInGame:Start()
+		end
 	end
 end
 
@@ -75,5 +82,14 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 			end
 			timerNextCheat:Start()--All other cheats should be every 108 like clockwork. Only the second is random. Ie, 111, 120, 108 repeating, OR 111, 108 repeating.
 		end
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if playerFactoin == "Alliance" and (cid == 21684) then
+		DBM:EndCombat(self, true)
+	elseif playerFactoin == "Horde" and (cid == 21752) then
+		DBM:EndCombat(self, true)
 	end
 end
