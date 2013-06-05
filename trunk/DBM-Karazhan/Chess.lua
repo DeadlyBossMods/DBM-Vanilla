@@ -37,13 +37,10 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 39331 and not self:IsInCombat() then
 		DBM:StartCombat(self, 0)
-	elseif args.spellId == 30529 then
-		if not self:IsInCombat() then--Because game in session may not go away on wipe, we need to detect a repull off first hop into a chess peice
-			DBM:StartCombat(self, 0)
-		end
-		if args:IsPlayer() then
-			timerRecentlyInGame:Start()
-		end
+	elseif args.spellId == 30529 and args:IsPlayer() then
+		timerRecentlyInGame:Start()
+	elseif args.spellId == 30019 and not self:IsInCombat() then--Because game in session may not go away on wipe, we need to detect a repull off first hop into a chess peice
+		DBM:StartCombat(self, 0)
 	end
 end
 
