@@ -11,18 +11,12 @@ L:SetGeneralLocalization{
 	name = "奥"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	NextPlatform	= "下一个位置"
 }
 
 L:SetOptionLocalization{
 	NextPlatform	= "Show timer for when Al'ar changes platforms"
-}
-
-L:SetMiscLocalization{
 }
 
 ------------------
@@ -32,20 +26,6 @@ L = DBM:GetModLocalization("VoidReaver")
 
 L:SetGeneralLocalization{
 	name = "空灵机甲"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnOrb	= "当奥术宝珠对你施放时喊话"
-}
-
-L:SetMiscLocalization{
-	YellOrb	= "奥术宝珠于我！远离我！"
 }
 
 --------------------------------
@@ -79,7 +59,6 @@ L:SetOptionLocalization{
 	TimerSplit		= "Show timer for Split",
 	TimerAgent		= "Show timer for Agents spawn",
 	TimerPriest		= "Show timer for Priests and Solarian spawn",
-	WrathIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(42783),
 	WrathWhisper	= "向受到星术师之怒效果的目标发送密语"
 }
 
@@ -126,7 +105,6 @@ L:SetOptionLocalization{
 	TimerRebirth	= "Show timer for Phoenix Egg rebirth remaining",--Translate
 	RangeFrame		= "显示距离框体",
 	GazeWhisper		= "对萨拉德雷的目标发送密语",
-	MCIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(36797),
 	GazeIcon		= "对萨拉德雷的目标添加标注"
 }
 
