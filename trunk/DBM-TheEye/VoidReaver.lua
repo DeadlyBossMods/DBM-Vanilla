@@ -17,13 +17,12 @@ local warnKnockBack		= mod:NewSpellAnnounce(25778, 3)
 local warnPounding		= mod:NewSpellAnnounce(34162, 3)
 
 local specWarnOrb		= mod:NewSpecialWarningMove(34172)
+local yellOrb			= mod:NewYell(34172)
 
 local timerKnockBack	= mod:NewCDTimer(20, 25778)
 local timerPounding		= mod:NewCDTimer(13, 34162)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
-
-mod:AddBoolOption("YellOnOrb", true, "announce")
 
 function mod:OnCombatStart(delay)
 	timerPounding:Start()
@@ -35,9 +34,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnOrb:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnOrb:Show()
-			if self.Options.YellOnOrb then
-				SendChatMessage(L.YellOrb, "SAY")
-			end
+			yellOrb:Yell()
 		end
 	elseif args.spellId == 34162 then
 		warnPounding:Show()

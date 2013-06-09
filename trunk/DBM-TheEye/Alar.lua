@@ -62,7 +62,7 @@ mod:RegisterOnUpdateHandler(function(self)
 		local foundIt
 		local target
 		for uId in DBM:GetGroupMembers() do
-			if self:GetCIDFromGUID(UnitGUID(uId.."target")) == 19514 then
+			if self:GetUnitCreatureId(uId.."target") == 19514 then
 				foundIt = true
 				target = UnitName(uId.."targettarget")
 				if not target and UnitCastingInfo(uId.."target") == buffetName then

@@ -28,7 +28,7 @@ local timerDaring		= mod:NewTargetTimer(8, 30841)
 local timerDevotion		= mod:NewTargetTimer(10, 30887)
 local timerCombatStart	= mod:NewTimer(55, "TimerCombatStart", 2457)
 
-mod:AddBoolOption("HealthFrame", true)
+mod:AddBoolOption("HealthFrame", false)
 
 local phase	= 0
 local JulianneDied = 0

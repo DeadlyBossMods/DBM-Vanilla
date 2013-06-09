@@ -7,7 +7,8 @@ mod:SetModelID(17053)
 mod:RegisterCombat("yell", L.DBM_BBW_YELL_1)
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED"
+	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED"
 )
 
 local warningFearSoon	= mod:NewSoonAnnounce(30752, 2)
@@ -43,3 +44,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerFearCD:Start()
 	end
 end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args.spellId == 30753 and self.Options.RRHIcon then
+		self:SetIcon(args.destName, 0)
+	end
+end
+

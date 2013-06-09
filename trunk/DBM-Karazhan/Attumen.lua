@@ -2,15 +2,14 @@ local mod	= DBM:NewMod("Attumen", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(16151)--Midnight
+mod:SetCreatureID(16151, 15550)
 mod:SetModelID(16416)
 mod:RegisterCombat("combat")
-mod:RegisterKill("yell", L.KillAttumen)--Short term solution to below.
---mod:RegisterKill("kill", 15550)--Huntsman, method disabled until it's working.
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"CHAT_MSG_MONSTER_YELL"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_DIED"
 )
 
 local warnPhase2			= mod:NewPhaseAnnounce(2)
@@ -46,5 +45,12 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		warnPhase2:Show()
 		warningCurseSoon:Cancel()
 		timerCurseCD:Start(25)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 15550 then
+		DBM:EndCombat(self)
 	end
 end
