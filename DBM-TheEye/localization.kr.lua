@@ -10,18 +10,12 @@ L:SetGeneralLocalization{
 	name = "알라르"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	NextPlatform	= "단상 머무름"
 }
 
 L:SetOptionLocalization{
 	NextPlatform	= "단상 머무름 바 표시(더 빨리 떠날수 는 있으나 더 늦게 떠나진 않습니다.)"
-}
-
-L:SetMiscLocalization{
 }
 
 ------------------
@@ -31,20 +25,6 @@ L = DBM:GetModLocalization("VoidReaver")
 
 L:SetGeneralLocalization{
 	name = "공허의 절단기"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnOrb	= "$spell:34172 주문의 영향을 받은 경우 대화로 알리기"
-}
-
-L:SetMiscLocalization{
-	YellOrb	= "나에게 비전 보주!"
 }
 
 --------------------------------
@@ -78,7 +58,6 @@ L:SetOptionLocalization{
 	TimerSplit		= "다음 분리 바 표시",
 	TimerAgent		= "다음 요원 바 표시",
 	TimerPriest		= "다음 사제/솔라리안 바 표시",
-	WrathIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(42783),
 	WrathWhisper	= "$spell:42783 대상에게 귓속말 보내기",
 }
 
@@ -125,7 +104,6 @@ L:SetOptionLocalization{
 	TimerRebirth	= "불사조 알이 환생까지 남은시간 바 표시",
 	RangeFrame		= "거리 창 보기",
 	GazeWhisper		= "탈라드레드 추적 대상에게 귓속말 보내기",
-	MCIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(36797),
 	GazeIcon		= "탈라드레드 추적 대상에게 전술 목표 아이콘 설정",
 }
 

@@ -11,18 +11,12 @@ L:SetGeneralLocalization{
 	name = "Al'ar"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	NextPlatform	= "Next Platform"
 }
 
 L:SetOptionLocalization{
 	NextPlatform	= "Show timer for when Al'ar changes platforms"
-}
-
-L:SetMiscLocalization{
 }
 
 ------------------
@@ -32,20 +26,6 @@ L = DBM:GetModLocalization("VoidReaver")
 
 L:SetGeneralLocalization{
 	name = "Atracador del vacío"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnOrb	= "Enviar un mensaje cuando te vaya a tirar Orbe Arcano"
-}
-
-L:SetMiscLocalization{
-	YellOrb	= "¡Orbe Arcano viene hacia mí! ¡Apártate!"
 }
 
 --------------------------------
@@ -79,7 +59,6 @@ L:SetOptionLocalization{--Translate
 	TimerSplit		= "Show timer for Split",
 	TimerAgent		= "Show timer for Agents spawn",
 	TimerPriest		= "Show timer for Priests and Solarian spawn",
-	WrathIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(42783),
 	WrathWhisper	= "Enviar susurro a los objetivos de Cólera"
 }
 
@@ -126,12 +105,10 @@ L:SetOptionLocalization{--Translate
 	TimerRebirth	= "Show timer for Phoenix Egg rebirth remaining",
 	RangeFrame		= "Mostrar distancia",
 	GazeWhisper		= "Enviar susurro al objetivo de Thaladred",
-	MCIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(36797),
 	GazeIcon		= "Poner icono en el objetivo de Thaladred"
 }
 
 L:SetMiscLocalization{
-	--YellPull1	= "Energía. Poder. Mi gente es adicta a ellos... una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos... al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal'anore!",
 	YellPull1 	= "Energía. Poder. Mi gente es adicta a ellos... una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos... al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal’anore!",
 	YellPull2	= "Energía. Poder. Mi gente es adicta a ellos... una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal'anore!",
 	YellPhase2	= "Como veis, dispongo de un amplio arsenal...",

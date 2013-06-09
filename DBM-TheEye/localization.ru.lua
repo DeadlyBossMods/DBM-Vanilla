@@ -11,18 +11,12 @@ L:SetGeneralLocalization{
 	name = "Ал'ар"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	NextPlatform	= "Следующая платформа"
 }
 
 L:SetOptionLocalization{
 	NextPlatform	= "Show timer for when Al'ar changes platforms"
-}
-
-L:SetMiscLocalization{
 }
 
 ------------------
@@ -32,20 +26,6 @@ L = DBM:GetModLocalization("VoidReaver")
 
 L:SetGeneralLocalization{
 	name = "Страж Бездны"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnOrb	= "Отправить сообщение в чат, если бросается Чародейский шар на вас"
-}
-
-L:SetMiscLocalization{
-	YellOrb	= "Чародейский шар приближается! Бегите от меня!"
 }
 
 --------------------------------
@@ -79,7 +59,6 @@ L:SetOptionLocalization{--Translate
 	TimerSplit		= "Show timer for Split",
 	TimerAgent		= "Show timer for Agents spawn",
 	TimerPriest		= "Show timer for Priests and Solarian spawn",
-	WrathIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(42783),
 	WrathWhisper	= "Сообщить шепотом цели, если Гнев на нем"
 }
 
@@ -126,7 +105,6 @@ L:SetOptionLocalization{--Translate
 	TimerRebirth	= "Show timer for Phoenix Egg rebirth remaining",
 	RangeFrame		= "Контрольное окно придельной дистанции",
 	GazeWhisper		= "Сообщить шепотом цели, если Таладред на нем",
-	MCIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(36797),
 	GazeIcon		= "Установить метку на цель Таладред"
 }
 

@@ -10,18 +10,12 @@ L:SetGeneralLocalization{
 	name = "Al'ar"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	NextPlatform	= "Max. Plattformdauer"
 }
 
 L:SetOptionLocalization{
 	NextPlatform	= "Zeige Zeit bis Al'ar spätestens die Plattform wechselt\n(wechselt möglicherweise früher, aber fast nie später)"
-}
-
-L:SetMiscLocalization{
 }
 
 ------------------
@@ -31,20 +25,6 @@ L = DBM:GetModLocalization("VoidReaver")
 
 L:SetGeneralLocalization{
 	name = "Leerhäscher"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnOrb	= "Schreie, wenn $spell:34172 auf dich gewirkt wird"
-}
-
-L:SetMiscLocalization{
-	YellOrb	= "Arkane Kugel kommt auf MICH!"
 }
 
 --------------------------------
@@ -78,7 +58,6 @@ L:SetOptionLocalization{
 	TimerSplit		= "Zeige Zeit bis Verschwinden",
 	TimerAgent		= "Zeige Zeit bis Agenten erscheinen",
 	TimerPriest		= "Zeige Zeit bis Priester und Solarian erscheinen",
-	WrathIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(42783),
 	WrathWhisper	= "Ziele von $spell:42783 anflüstern (benötigt Schlachtzugleitung)"
 }
 
@@ -125,7 +104,6 @@ L:SetOptionLocalization{
 	TimerRebirth	= "Zeige Zeit bis Phönix aus Phönixei schlüpft",
 	RangeFrame		= "Zeige Abstandsfenster (10m)",
 	GazeWhisper		= "Thaladreds Blickziel anflüstern (benötigt Schlachtzugleitung)",
-	MCIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(36797),
 	GazeIcon		= "Zeichen auf Thaladreds Ziel setzen"
 }
 
