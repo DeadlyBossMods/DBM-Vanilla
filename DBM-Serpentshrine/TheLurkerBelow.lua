@@ -21,7 +21,7 @@ local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", 3)
 local warnSpout			= mod:NewSpellAnnounce(37433, 4)
 local warnWhirl			= mod:NewSpellAnnounce(37363, 3)
 
-local specWarnSpout		= mod:NewSpecialWarningSpell(37433)
+local specWarnSpout		= mod:NewSpecialWarningSpell(37433, nil, nil, nil, 2)
 
 local timerSubmerge		= mod:NewTimer(90, "TimerSubmerge", 39091)
 local timerEmerge		= mod:NewTimer(60, "TimerEmerge", 39088)
@@ -32,7 +32,7 @@ local timerWhirlCD		= mod:NewCDTimer(17, 37363)
 function mod:CheckDive()
 	self:ScheduleMethod(0.5, "CheckDive")
 	for uId in DBM:GetGroupMembers() do
-		if UnitName(uId .. "target") == L.name then
+		if self:GetUnitCreatureId(uId.."target") == 21217 then
 			return
 		end
 	end
@@ -54,7 +54,7 @@ function mod:OnCombatStart(delay)
 	self:ScheduleMethod(90, "CheckDive")
 end
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 37363 and self:AntiSpam(10) then
 		warnWhirl:Show()
 		timerWhirlCD:Start()

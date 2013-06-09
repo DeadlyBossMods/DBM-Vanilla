@@ -99,6 +99,8 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 29991 then
 		timerChains:Cancel(args.destName)
+	elseif args.spellId == 29946 and self.Options.WreathIcon then
+		self:SetIcon(args.destName, 0)
 	end
 end
 
@@ -145,7 +147,7 @@ do
 	end, 1)
 end
 
-function mod:SPELL_PERIODIC_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 29951 and destGUID == UnitGUID("player") and self:AntiSpam() then
 		specWarnBlizzard:Show()
 	end

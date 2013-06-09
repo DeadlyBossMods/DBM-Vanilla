@@ -28,7 +28,7 @@ local specWarnTotem		= mod:NewSpecialWarningSpell(38236)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("HealthFrame", true)
+mod:AddBoolOption("HealthFrame", false)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)

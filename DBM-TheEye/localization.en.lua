@@ -9,18 +9,12 @@ L:SetGeneralLocalization{
 	name = "Al'ar"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	NextPlatform	= "Max Platform length"
 }
 
 L:SetOptionLocalization{
 	NextPlatform	= "Show timer for when how long Al'ar may stay at platform (May leave sooner but almost never any later)"
-}
-
-L:SetMiscLocalization{
 }
 
 ------------------
@@ -30,20 +24,6 @@ L = DBM:GetModLocalization("VoidReaver")
 
 L:SetGeneralLocalization{
 	name = "Void Reaver"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnOrb	= "Yell on $spell:34172"
-}
-
-L:SetMiscLocalization{
-	YellOrb	= "Arcane Orb on ME!"
 }
 
 --------------------------------
