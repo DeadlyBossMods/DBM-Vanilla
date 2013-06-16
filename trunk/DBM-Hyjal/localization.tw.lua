@@ -11,19 +11,6 @@ L:SetGeneralLocalization{
 	name = "瑞齊·凜冬"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	IceBoltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
-}
-
-L:SetMiscLocalization{
-}
-
 -----------------
 --  Anetheron  --
 -----------------
@@ -31,18 +18,6 @@ L = DBM:GetModLocalization("Anetheron")
 
 L:SetGeneralLocalization{
 	name = "安納塞隆"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
-L:SetMiscLocalization{
 }
 
 ----------------
@@ -54,20 +29,6 @@ L:SetGeneralLocalization{
 	name = "卡茲洛加"
 }
 
-L:SetWarningLocalization{
-	WarnMark = "卡茲洛加的印記 #%d"
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	WarnMark = "Show warning for $spell:31447"--Translate
-}
-
-L:SetMiscLocalization{
-}
-
 ---------------
 --  Azgalor  --
 ---------------
@@ -77,19 +38,6 @@ L:SetGeneralLocalization{
 	name = "亞茲加洛"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	DoomIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31347)
-}
-
-L:SetMiscLocalization{
-}
-
 ------------------
 --  Archimonde  --
 ------------------
@@ -97,21 +45,6 @@ L = DBM:GetModLocalization("Archimonde")
 
 L:SetGeneralLocalization{
 	name = "阿克蒙德"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnBurst	= "當空氣炸裂施放在你身上時大叫",
-	BurstIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32014)
-}
-
-L:SetMiscLocalization{
-	YellBurst	= "空氣炸裂要來了!你們快跑!"
 }
 
 ----------------

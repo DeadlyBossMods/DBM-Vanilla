@@ -24,7 +24,6 @@ localization.de.lua
 localization.es.lua
 localization.ru.lua
 localization.kr.lua
-MapSizes.lua
 Skeram.lua
 ThreeBugs.lua
 Sartura.lua

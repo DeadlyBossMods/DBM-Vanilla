@@ -76,12 +76,6 @@ L = DBM:GetModLocalization("Golemagg")
 L:SetGeneralLocalization{
 	name = "Golemagg der Verbrenner"
 }
-L:SetWarningLocalization{
-	WarnP2Soon	= "Phase 2 bald"
-}
-L:SetOptionLocalization{
-	WarnP2Soon 	= "Warnung bei baldigem Beginn von Phase 2"
-}
 
 -----------------
 --  Majordomo  --

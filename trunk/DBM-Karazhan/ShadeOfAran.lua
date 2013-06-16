@@ -11,9 +11,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"SPELL_SUMMON",
-	"SPELL_PERIODIC_DAMAGE",
-	"SPELL_PERIODIC_MISSED"
+	"SPELL_SUMMON"
 )
 
 local warningFlameCast		= mod:NewCastAnnounce(30004, 4)
@@ -56,6 +54,16 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	flameWreathIcon = 8
 	table.wipe(WreathTargets)
+	if not self:IsTrivial(85) then
+		self:RegisterShortTermEvents(
+			"SPELL_PERIODIC_DAMAGE",
+			"SPELL_PERIODIC_MISSED"
+		)
+	end
+end
+
+function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 end
 
 function mod:SPELL_CAST_START(args)

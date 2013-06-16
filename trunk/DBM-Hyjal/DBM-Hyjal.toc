@@ -26,7 +26,6 @@ localization.tw.lua
 localization.ru.lua
 localization.es.lua
 localization.kr.lua
-MapSizes.lua
 RageWinterchill.lua
 Anetheron.lua
 Kazrogal.lua

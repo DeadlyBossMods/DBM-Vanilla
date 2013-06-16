@@ -19,9 +19,6 @@ local timerPanicCD	= mod:NewCDTimer(30, 19408)
 local timerPanic	= mod:NewBuffActiveTimer(8, 19408)
 local timerEnrage	= mod:NewBuffActiveTimer(8, 19451)
 
-function mod:OnCombatStart(delay)
-end
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19451 then
 		warnEnrage:Show()

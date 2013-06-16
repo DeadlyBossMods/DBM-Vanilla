@@ -24,7 +24,6 @@ localization.es.lua
 localization.ru.lua
 localization.de.lua
 localization.kr.lua
-MapSizes.lua
 Lucifron.lua
 Magmadar.lua
 Gehennas.lua

@@ -11,7 +11,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE"
 )
 
-local warnWound		= mod:NewAnnounce("WarnWound", 3)
+local warnWound		= mod:NewStackAnnounce(25646, 3)
 local warnSandTrap	= mod:NewTargetAnnounce(25656, 4)
 
 local specWarnWound	= mod:NewSpecialWarningStack(25646, nil, 5)
@@ -19,20 +19,17 @@ local specWarnWound	= mod:NewSpecialWarningStack(25646, nil, 5)
 local timerWound	= mod:NewTargetTimer(15, 25646)
 local timerSandTrap	= mod:NewTargetTimer(20, 25656)
 
-function mod:OnCombatStart(delay)
-end
-
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 25646 then
-		if (args.amount or 1) >= 5 and args:IsPlayer() then
-			specWarnWound:Show(args.amount)
-		end
-		warnWound:Show(args.spellName, args.destName, args.amount or 1)
+	if args.spellId == 25646 and not self:IsTrivial(80) then
+		local amount = args.amount or 1
+		warnWound:Show(args.spellName, args.destName, amount)
 		timerWound:Start(args.destName)
+		if amount >= 5 and args:IsPlayer() then
+			specWarnWound:Show(amount)
+		end
 	elseif args.spellId == 25656 then
 		warnSandTrap:Show(args.destName)
 		timerSandTrap:Start(args.destName)
 	end
 end
-
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

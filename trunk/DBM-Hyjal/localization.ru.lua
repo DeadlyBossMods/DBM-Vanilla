@@ -11,19 +11,6 @@ L:SetGeneralLocalization{
 	name = "Лютый Хлад"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	IceBoltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
-}
-
-L:SetMiscLocalization{
-}
-
 -----------------
 --  Anetheron  --
 -----------------
@@ -31,18 +18,6 @@ L = DBM:GetModLocalization("Anetheron")
 
 L:SetGeneralLocalization{
 	name = "Анетерон"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
-L:SetMiscLocalization{
 }
 
 ----------------
@@ -54,20 +29,6 @@ L:SetGeneralLocalization{
 	name = "Каз'рогал"
 }
 
-L:SetWarningLocalization{
-	WarnMark = "%d метка"
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	WarnMark = "Show warning for $spell:31447"--Translate
-}
-
-L:SetMiscLocalization{
-}
-
 ---------------
 --  Azgalor  --
 ---------------
@@ -77,19 +38,6 @@ L:SetGeneralLocalization{
 	name = "Азгалор"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	DoomIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31347)
-}
-
-L:SetMiscLocalization{
-}
-
 ------------------
 --  Archimonde  --
 ------------------
@@ -97,21 +45,6 @@ L = DBM:GetModLocalization("Archimonde")
 
 L:SetGeneralLocalization{
 	name = "Архимонд"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnBurst	= "Сообщить в чат, при наложении заклинания Воздушный натиск на вас",
-	BurstIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32014)
-}
-
-L:SetMiscLocalization{
-	YellBurst	= "Воздушный натиск на подходе!"
 }
 
 ----------------

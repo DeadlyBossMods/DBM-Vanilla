@@ -12,8 +12,8 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warnFreeze		= mod:NewAnnounce("WarnFreeze", 2)
-local warnShatter		= mod:NewAnnounce("WarnShatter", 2)
+local warnFreeze		= mod:NewAnnounce("WarnFreeze", 2, 33395)
+local warnShatter		= mod:NewAnnounce("WarnShatter", 2, 12982)
 
 local timerFrozen		= mod:NewBuffActiveTimer(30, 25937)
 

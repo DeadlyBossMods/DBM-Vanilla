@@ -21,9 +21,6 @@ local timerCurseCD		= mod:NewNextTimer(20, 19713)
 local timerGrounding	= mod:NewBuffActiveTimer(30, 19714, nil, false)
 local timerBlinkCD		= mod:NewNextTimer(30, 21655)
 
-function mod:OnCombatStart(delay)
-end
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19714 and self:IsInCombat() and not args:IsDestTypePlayer() then
 		warnGrounding:Show()

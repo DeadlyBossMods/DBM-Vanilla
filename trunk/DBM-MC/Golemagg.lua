@@ -12,7 +12,7 @@ mod:RegisterEvents(
 )
 
 local warnTrust		= mod:NewSpellAnnounce(20553)
-local warnP2Soon	= mod:NewAnnounce("WarnP2Soon")
+local warnP2Soon	= mod:NewPrePhaseAnnounce(2)
 local warnP2		= mod:NewPhaseAnnounce(2)
 
 local prewarn_p2

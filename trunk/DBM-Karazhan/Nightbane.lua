@@ -54,7 +54,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 30129 and args:IsPlayer() then
+	if args.spellId == 30129 and args:IsPlayer() and not self:IsTrivial(85) then
 		specWarnCharred:Show()
 	elseif args.spellId == 30130 then
 		warningAsh:Show(args.destName)

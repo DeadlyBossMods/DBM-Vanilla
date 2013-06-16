@@ -9,8 +9,6 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
-	"SPELL_PERIODIC_DAMAGE",
-	"SPELL_PERIODIC_MISSED",
 	"RAID_BOSS_EMOTE"
 )
 
@@ -33,6 +31,16 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	timerPortalPhase:Start(62-delay)
 	warningBanishSoon:Schedule(57-delay)
+	if not self:IsTrivial(85) then
+		self:RegisterShortTermEvents(
+			"SPELL_PERIODIC_DAMAGE",
+			"SPELL_PERIODIC_MISSED"
+		)
+	end
+end
+
+function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 end
 
 function mod:SPELL_CAST_START(args)

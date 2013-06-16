@@ -48,7 +48,7 @@ function mod:SPELL_CAST_START(args)
 	if args.spellId == 30852 then
 		warningNovaCast:Show()
 		timerNovaCast:Start()
-		specWarnNova:Show()
+		specWarnNova:Show()--Trivial damage, but because of enfeeble, don't want to do a blind level check here
 	end
 end
 

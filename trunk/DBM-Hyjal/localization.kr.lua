@@ -10,19 +10,6 @@ L:SetGeneralLocalization{
 	name = "격노한 윈터칠"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	IceBoltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
-}
-
-L:SetMiscLocalization{
-}
-
 -----------------
 --  Anetheron  --
 -----------------
@@ -30,18 +17,6 @@ L = DBM:GetModLocalization("Anetheron")
 
 L:SetGeneralLocalization{
 	name = "아네테론"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
-L:SetMiscLocalization{
 }
 
 ----------------
@@ -53,20 +28,6 @@ L:SetGeneralLocalization{
 	name = "카즈로갈"
 }
 
-L:SetWarningLocalization{
-	WarnMark = "카즈로갈의 징표 (%d)"
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	WarnMark = "$spell:31447 경고 보기"
-}
-
-L:SetMiscLocalization{
-}
-
 ---------------
 --  Azgalor  --
 ---------------
@@ -76,19 +37,6 @@ L:SetGeneralLocalization{
 	name = "아즈갈로"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	DoomIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31347)
-}
-
-L:SetMiscLocalization{
-}
-
 ------------------
 --  Archimonde  --
 ------------------
@@ -96,21 +44,6 @@ L = DBM:GetModLocalization("Archimonde")
 
 L:SetGeneralLocalization{
 	name = "아키몬드"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnBurst	= "$spell:32014 주문의 영향을 받은 경우 대화로 알리기",
-	BurstIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32014)
-}
-
-L:SetMiscLocalization{
-	YellBurst	= "나에게 대기 파열!"
 }
 
 ----------------

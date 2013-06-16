@@ -14,7 +14,7 @@ mod:RegisterEvents(
 )
 
 local warnSting			= mod:NewTargetAnnounce(26180, 2)
-local warnAcid			= mod:NewAnnounce("WarnAcid", 3)
+local warnAcid			= mod:NewStackAnnounce(26050, 3)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 
 local timerSting		= mod:NewBuffActiveTimer(12, 26180)
@@ -42,20 +42,22 @@ function mod:SPELL_AURA_APPLIED(args)
 		StingTargets[#StingTargets + 1] = args.destName
 		self:Unschedule(warnStingTargets)
 		self:Schedule(0.3, warnStingTargets)
-	elseif args.spellId == 26050 then
-		warnAcid:Show(args.spellName, args.destName, args.amount or 1)
+	elseif args.spellId == 26050 not self:IsTrivial(80) then
+		local amount = args.amount or 1
+		warnAcid:Show(args.spellName, args.destName, amount)
 		timerAcid:Start(args.destName)
-		if args:IsPlayer() and (args.amount or 1) >= 10 then
-			specWarnAcid:Show()
+		if args:IsPlayer() and amount >= 10 then
+			specWarnAcid:Show(amount)
 		end
 	end
 end
-
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 26180 then
 		timerSting:Cancel()
+	elseif args.spellId == 26050 then
+		timerAcid:Cancel(args.destName)
 	end
 end
 

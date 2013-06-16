@@ -77,12 +77,6 @@ L = DBM:GetModLocalization("Golemagg")
 L:SetGeneralLocalization{
 	name = "Големагг Испепелитель"
 }
-L:SetWarningLocalization{
-	WarnP2Soon	= "Скоро 2-ая фаза"
-}
-L:SetOptionLocalization{
-	WarnP2Soon 	= "Предупреждать о скором начале второй фазы"
-}
 
 -----------------
 --  Majordomo  --
