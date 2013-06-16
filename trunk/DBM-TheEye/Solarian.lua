@@ -10,9 +10,11 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
+	"SPELL_CAST_START",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
+local warnDomination	= mod:NewCastAnnounce(37135, 4)--Trash, but most poeple pull this boss with the trash
 local warnWrath			= mod:NewTargetAnnounce(42783, 3)
 local warnSplit			= mod:NewAnnounce("WarnSplit", 4, 39414)
 local warnSplitSoon		= mod:NewAnnounce("WarnSplitSoon", 3, 39414)
@@ -20,6 +22,7 @@ local warnAgent			= mod:NewAnnounce("WarnAgent", 3, 39414)
 local warnPriest		= mod:NewAnnounce("WarnPriest", 3, 39414)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 
+local specWarnDomination= mod:NewSpecialWarningInterrupt(37135)
 local specWarnWrath		= mod:NewSpecialWarningYou(42783)
 
 local timerWrath		= mod:NewTargetTimer(6, 42783)
@@ -51,6 +54,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		if DBM:GetRaidRank() > 1 and self.Options.WrathWhisper then
 			self:SendWhisper(L.WrathWhisper, args.destName)
 		end
+	end
+end
+
+function mod:SPELL_CAST_START(args)
+	if args.spellId == 37135 then
+		warnDomination:Show()
+		specWarnDomination:Show(args.sourceName)
 	end
 end
 

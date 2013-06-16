@@ -218,7 +218,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	timerCheat	= "Next cheat"
+	timerCheat	= "Cheat CD"
 }
 
 L:SetOptionLocalization{
