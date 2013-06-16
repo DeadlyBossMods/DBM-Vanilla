@@ -23,10 +23,8 @@ localization.tw.lua
 localization.cn.lua
 localization.ru.lua
 localization.kr.lua
-Gruuls\MapSizes.lua
-Gruuls\Maulgar.lua
-Gruuls\Gruul.lua
-Magtheridon\MapSizes.lua
-Magtheridon\Magtheridon.lua
+Maulgar.lua
+Gruul.lua
+Magtheridon.lua
 Kazzak.lua
 Doomwalker.lua

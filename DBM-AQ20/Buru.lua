@@ -7,13 +7,11 @@ mod:SetModelID(15654)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_APPLIED_DOSE",
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local WarnDismember		= mod:NewAnnounce("WarnDismember", 3)
-local warnPursue		= mod:NewAnnounce("WarnPursue", 3)
+local WarnDismember		= mod:NewStackAnnounce(96, 3)
+local warnPursue		= mod:NewAnnounce("WarnPursue", 3, 62374)
 
 local specWarnDismember	= mod:NewSpecialWarningStack(96, nil, 5)
 local specWarnPursue	= mod:NewSpecialWarning("SpecWarnPursue")
@@ -21,22 +19,33 @@ local specWarnPursue	= mod:NewSpecialWarning("SpecWarnPursue")
 local timerDismember	= mod:NewTargetTimer(10, 96)
 
 function mod:OnCombatStart(delay)
+	if not self:IsTrivial(80) then
+		self:RegisterShortTermEvents(
+			"SPELL_AURA_APPLIED",
+			"SPELL_AURA_APPLIED_DOSE"
+		)
+	end
+end
+
+function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 96 then
-		if (args.amount or 1) >= 5 and args:IsPlayer() then
-			specWarnDismember:Show(args.amount)
-		end
-		WarnDismember:Show(args.spellName, args.destName, args.amount or 1)
+		local amount = args.amount or 1
+		WarnDismember:Show(args.spellName, args.destName, amount)
 		timerDismember:Start(args.destName)
+		if amount >= 5 and args:IsPlayer() then
+			specWarnDismember:Show(amount)
+		end
 	end
 end
-
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 	if not msg.find(L.PursueEmote) then return end
+	local target = DBM:GetFullNameByShortName(target)
 	if not target then return end
 	if target then
 		warnPursue:Show(target)

@@ -1,3 +1,0 @@
-DBM:RegisterMapSize("CoTMountHyjal",
-	1, 2499.99975585938, 1666.66650390625
-)

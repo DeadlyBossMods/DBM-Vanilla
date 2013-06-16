@@ -76,12 +76,6 @@ L = DBM:GetModLocalization("Golemagg")
 L:SetGeneralLocalization{
 	name = "초열의 골레마그"
 }
-L:SetWarningLocalization{
-	WarnP2Soon	= "곧 2 단계"
-}
-L:SetOptionLocalization{
-	WarnP2Soon 	= "2 단계 사전 알림 보기"
-}
 
 -----------------
 --  Majordomo  --

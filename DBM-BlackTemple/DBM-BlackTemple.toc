@@ -26,7 +26,6 @@ localization.es.lua
 localization.kr.lua
 localization.ru.lua
 localization.tw.lua
-MapSizes.lua
 Najentus.lua
 Supremus.lua
 ShadeOfAkama.lua

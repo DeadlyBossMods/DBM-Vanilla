@@ -22,11 +22,11 @@ local timerFearCD		= mod:NewCDTimer(41, 31970)
 
 local specWarnGrip		= mod:NewSpecialWarningYou(31972)
 local specWarnBurst		= mod:NewSpecialWarningYou(32014)
+local yellBurst			= mod:NewYell(32014)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
 mod:AddBoolOption("BurstIcon", true)
-mod:AddBoolOption("YellOnBurst", true, "announce")
 
 function mod:BurstTarget()
 	local targetname = self:GetBossTarget(17968)
@@ -34,9 +34,7 @@ function mod:BurstTarget()
 	warnBurst:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnBurst:Show()
-		if self.Options.YellOnBurst then
-			SendChatMessage(L.YellBurst, "SAY")
-		end
+		yellBurst:Yell()
 		if self.Options.BurstIcon then
 			self:SetIcon(targetname, 8, 5)
 		end

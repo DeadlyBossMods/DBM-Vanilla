@@ -21,9 +21,6 @@ local specWarnMagicReflect		= mod:NewSpecialWarningSpell(20619, not mod:IsMelee(
 local timerMagicReflect	= mod:NewBuffActiveTimer(10, 20619)
 local timerDamageShield	= mod:NewBuffActiveTimer(10, 21075)
 
-function mod:OnCombatStart(delay)
-end
-
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 20619 then
 		warnMagicReflect:Show()

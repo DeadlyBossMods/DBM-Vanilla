@@ -44,12 +44,7 @@ L = DBM:GetModLocalization("Fankriss")
 L:SetGeneralLocalization{
 	name = "Fankriss the Unyielding"
 }
-L:SetWarningLocalization{
-	WarnWound	= "%s on >%s< (%s)"
-}
-L:SetOptionLocalization{
-	WarnWound = DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646)
-}
+
 --------------
 -- Viscidus --
 --------------
@@ -81,12 +76,6 @@ L = DBM:GetModLocalization("Huhuran")
 
 L:SetGeneralLocalization{
 	name = "Princess Huhuran"
-}
-L:SetWarningLocalization{
-	WarnAcid	= "%s on >%s< (%s)"
-}
-L:SetOptionLocalization{
-	WarnAcid	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(26180)
 }
 ---------------
 -- Twin Emps --

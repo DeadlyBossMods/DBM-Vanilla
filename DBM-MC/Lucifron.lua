@@ -20,9 +20,6 @@ local timerDoomCD	= mod:NewNextTimer(20, 19702)
 local timerDoom		= mod:NewCastTimer(10, 19702)
 local timerMC		= mod:NewTargetTimer(5, 20604)
 
-function mod:OnCombatStart(delay)
-end
-
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 19702 then
 		warnDoom:Show()

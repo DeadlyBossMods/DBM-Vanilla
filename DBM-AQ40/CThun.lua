@@ -7,25 +7,25 @@ mod:SetCreatureID(15727)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_SUMMON",
+--	"SPELL_SUMMON",
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
 local warnEyeTentacle		= mod:NewAnnounce("WarnEyeTentacle", 2)
-local warnClawTentacle		= mod:NewAnnounce("WarnClawTentacle", 2)
-local warnGiantEyeTentacle	= mod:NewAnnounce("WarnGiantEyeTentacle", 3)
-local warnGiantClawTentacle	= mod:NewAnnounce("WarnGiantClawTentacle", 3)
-local warnDarkGlare			= mod:NewSpellAnnounce(26029, 4)
-local warnDarkGlareSoon		= mod:NewSoonAnnounce(26029, 2)
+--local warnClawTentacle		= mod:NewAnnounce("WarnClawTentacle", 2)
+--local warnGiantEyeTentacle	= mod:NewAnnounce("WarnGiantEyeTentacle", 3)
+--local warnGiantClawTentacle	= mod:NewAnnounce("WarnGiantClawTentacle", 3)
+--local warnDarkGlare			= mod:NewSpellAnnounce(26029, 4)
+--local warnDarkGlareSoon		= mod:NewSoonAnnounce(26029, 2)
 local warnWeakened			= mod:NewAnnounce("WarnWeakened", 4)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 
 local timerDarkGlareCD		= mod:NewCDTimer(50, 26029)
-local timerDarkGlare		= mod:NewBuffActiveTimer(10, 26029)
+--local timerDarkGlare		= mod:NewBuffActiveTimer(10, 26029)
 local timerEyeTentacle		= mod:NewTimer(45, "TimerEyeTentacle")
-local timerGiantEyeTentacle	= mod:NewTimer(60, "TimerGiantEyeTentacle")
+--local timerGiantEyeTentacle	= mod:NewTimer(60, "TimerGiantEyeTentacle")
 local timerClawTentacle		= mod:NewTimer(11, "TimerClawTentacle")
-local timerGiantClawTentacle = mod:NewTimer(60, "TimerGiantClawTentacle")
+--local timerGiantClawTentacle = mod:NewTimer(60, "TimerGiantClawTentacle")
 local timerWeakened			= mod:NewTimer(45, "TimerWeakened")
 
 mod:AddBoolOption("RangeFrame", true)
@@ -51,6 +51,8 @@ function mod:eyeTentacle()
 	self:ScheduleMethod(timer, "eyeTentacle")
 end
 
+--What the hell are these IDs? these aren't valid at all
+--[[
 function mod:SPEL_SUMMON(args)
 	if args.spellId == 99999 then	-- add summon Giant Eye ID
 		timerGiantClawTentacle:Start(30)
@@ -59,7 +61,7 @@ function mod:SPEL_SUMMON(args)
 		timerGiantEyeTentacle:Start(30)
 		timerGiantClawTentacle:Start(60)
 	end
-end
+end--]]
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg:find(L.Weakened) then

@@ -20,7 +20,6 @@
 ## X-DBM-Mod-Name-deDE: Festung der Stürme
 ## X-DBM-Mod-Sort: 303
 ## X-DBM-Mod-LoadZoneID: 782
-MapSizes.lua
 localization.en.lua
 localization.de.lua
 localization.cn.lua

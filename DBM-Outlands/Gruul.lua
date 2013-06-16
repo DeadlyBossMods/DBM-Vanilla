@@ -13,7 +13,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE"
 )
 
-local warnGrowth		= mod:NewAnnounce("WarnGrowth", 2, 36300)
+local warnGrowth		= mod:NewStackAnnounce(36300, 2, 36300)
 local warnGroundSlam	= mod:NewSpellAnnounce(33525, 3)
 local warnShatter		= mod:NewSpellAnnounce(30403, 4)
 local warnSilence		= mod:NewSpellAnnounce(36297, 4)
@@ -60,15 +60,15 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 36300 then--Growth
-		warnGrowth:Show(args.spellName, args.amount or 1)
+		local amount = args.amount or 1
+		warnGrowth:Show(args.spellName, amount)
 		timerGrowthCD:Start()
-		if (args.amount or 1) == 3 then--First silence is 15 seconds after 3rd growth.
+		if amount == 3 then--First silence is 15 seconds after 3rd growth.
 --			warnSilenceSoon:Schedule(10)
 			timerSilenceCD:Start(15)
 		end
-	elseif args.spellId == 36240 and args:IsPlayer() then--Cave In
+	elseif args.spellId == 36240 and args:IsPlayer() and not self:IsTrivial(85) then--Cave In
 		specWarnCaveIn:Show()
 	end
 end
-
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

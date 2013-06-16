@@ -10,19 +10,6 @@ L:SetGeneralLocalization{
 	name = "Furor Winterfrost"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	IceBoltIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31249)
-}
-
-L:SetMiscLocalization{
-}
-
 -----------------
 --  Anetheron  --
 -----------------
@@ -30,18 +17,6 @@ L = DBM:GetModLocalization("Anetheron")
 
 L:SetGeneralLocalization{
 	name = "Anetheron"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
-L:SetMiscLocalization{
 }
 
 ----------------
@@ -53,20 +28,6 @@ L:SetGeneralLocalization{
 	name = "Kaz'rogal"
 }
 
-L:SetWarningLocalization{
-	WarnMark = "Mal von Kaz'rogal (%d)"
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	WarnMark = "Zeige Warnung für $spell:31447"
-}
-
-L:SetMiscLocalization{
-}
-
 ---------------
 --  Azgalor  --
 ---------------
@@ -76,19 +37,6 @@ L:SetGeneralLocalization{
 	name = "Azgalor"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	DoomIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(31347)
-}
-
-L:SetMiscLocalization{
-}
-
 ------------------
 --  Archimonde  --
 ------------------
@@ -96,21 +44,6 @@ L = DBM:GetModLocalization("Archimonde")
 
 L:SetGeneralLocalization{
 	name = "Archimonde"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	YellOnBurst	= "Schreie bei $spell:32014 auf dir",
-	BurstIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32014)
-}
-
-L:SetMiscLocalization{
-	YellBurst	= "Windbö auf MIR!"
 }
 
 ----------------

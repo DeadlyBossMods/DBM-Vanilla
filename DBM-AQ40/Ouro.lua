@@ -14,17 +14,17 @@ mod:RegisterEvents(
 	"UNIT_HEALTH target focus mouseover"
 )
 
-local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3)
-local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", 2)
-local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3)
-local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", 2)
+local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
+local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnSweepSoon		= mod:NewSoonAnnounce(26103, 2)
 local warnBlastSoon		= mod:NewSoonAnnounce(26102, 2)
 local warnEnrage		= mod:NewSpellAnnounce(26615, 3)
 local warnEnrageSoon	= mod:NewSoonAnnounce(26615, 2)
 
-local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge")
-local timerEmerge		= mod:NewTimer(30, "TimerEmerge")
+local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local timerEmerge		= mod:NewTimer(30, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local timerSweepCD		= mod:NewCDTimer(21, 26103)
 local timerBlast		= mod:NewCastTimer(2, 26102)
 local timerBlastCD		= mod:NewCDTimer(23, 26102)

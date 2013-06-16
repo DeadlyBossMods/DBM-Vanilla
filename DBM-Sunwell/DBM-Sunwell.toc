@@ -25,7 +25,6 @@ localization.de.lua
 localization.kr.lua
 localization.ru.lua
 localization.tw.lua
-MapSizes.lua
 Kalecgos.lua
 KalecgosFrame.lua
 KalecgosFrame.xml
