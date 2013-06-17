@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("Attumen", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(16151, 15550)
+mod:SetCreatureID(16151, 16152)--15550
 mod:SetModelID(16416)
 mod:RegisterCombat("combat")
 
@@ -50,7 +50,7 @@ end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 15550 then
+	if cid == 16152 then
 		DBM:EndCombat(self)
 	end
 end
