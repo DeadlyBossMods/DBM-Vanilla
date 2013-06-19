@@ -12,13 +12,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: The Temple of Ahn'Qiraj
-## X-DBM-Mod-Name-deDE: Tempel von Ahn'Qiraj
-## X-DBM-Mod-Name-esES: Templo de Ahn'Qiraj
-## X-DBM-Mod-Name-ruRU: Храм Ан'Киража
-## X-DBM-Mod-Name-koKR: 안퀴라즈 사원
+## X-DBM-Mod-MapID: 531
 ## X-DBM-Mod-Sort: 402
-## X-DBM-Mod-LoadZoneID: 766
 localization.en.lua
 localization.de.lua
 localization.es.lua

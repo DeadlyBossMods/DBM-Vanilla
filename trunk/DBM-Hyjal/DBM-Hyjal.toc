@@ -10,15 +10,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: Mount Hyjal
-## X-DBM-Mod-Name-ruRU: Гора Хиждал
-## X-DBM-Mod-Name-zhCN: 海加尔峰
-## X-DBM-Mod-Name-zhTW: 海加爾山
-## X-DBM-Mod-Name-esES: Monte Hyjal
-## X-DBM-Mod-Name-koKR: 하이잘 정상
-## X-DBM-Mod-Name-deDE: Die Schlacht um den Hyjal
+## X-DBM-Mod-MapID: 534
 ## X-DBM-Mod-Sort: 302
-## X-DBM-Mod-LoadZoneID: 775
 localization.en.lua
 localization.de.lua
 localization.cn.lua
