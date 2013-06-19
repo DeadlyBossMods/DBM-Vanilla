@@ -5,7 +5,7 @@ mod:SetRevision(("$Revision: 164 $"):sub(12, -3))
 mod:SetCreatureID(18728)
 mod:SetModelID(17887)
 mod:SetUsedIcons(7, 8)
-mod:SetZone(465)--Hellfire
+mod:SetZone()
 
 mod:RegisterCombat("combat")
 

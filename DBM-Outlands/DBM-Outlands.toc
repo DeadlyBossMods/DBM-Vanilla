@@ -10,12 +10,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: Outlands
-## X-DBM-Mod-Name-esES: Terrallende
-## X-DBM-Mod-Name-koKR: 아웃랜드
-## X-DBM-Mod-Name-deDE: Scherbenwelt
 ## X-DBM-Mod-Sort: 307
-## X-DBM-Mod-MapID: 565,544
+## X-DBM-Mod-MapID: 530,565,544
 localization.en.lua
 localization.de.lua
 localization.es.lua
