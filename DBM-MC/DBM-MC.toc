@@ -12,13 +12,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: Molten Core
-## X-DBM-Mod-Name-esES: Núcleo de Magma
-## X-DBM-Mod-Name-ruRU: Огненные Недра
-## X-DBM-Mod-Name-deDE: Geschmolzener Kern
-## X-DBM-Mod-Name-koKR: 화산 심장부
+## X-DBM-Mod-MapID: 409
 ## X-DBM-Mod-Sort: 400
-## X-DBM-Mod-LoadZoneID: 696
 localization.en.lua
 localization.es.lua
 localization.ru.lua

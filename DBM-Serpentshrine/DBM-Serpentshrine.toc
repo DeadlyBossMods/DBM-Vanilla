@@ -10,14 +10,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: Serpentshrine Cavern
-## X-DBM-Mod-Name-zhCN: 毒蛇神殿
-## X-DBM-Mod-Name-zhTW: 毒蛇神殿
-## X-DBM-Mod-Name-ruRU: Змеиное святилище
-## X-DBM-Mod-Name-koKR: 불뱀 제단
-## X-DBM-Mod-Name-deDE: Höhle des Schlangenschreins
+## X-DBM-Mod-MapID: 548
 ## X-DBM-Mod-Sort: 304
-## X-DBM-Mod-LoadZoneID: 780
 localization.en.lua
 localization.cn.lua
 localization.de.lua

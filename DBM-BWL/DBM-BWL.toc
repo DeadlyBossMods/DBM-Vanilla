@@ -12,13 +12,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: Blackwing Lair
-## X-DBM-Mod-Name-deDE: Pechschwingenhort
-## X-DBM-Mod-Name-esES: Guarida de Alanegra
-## X-DBM-Mod-Name-ruRU: Логово Крыла Тьмы
-## X-DBM-Mod-Name-koKR: 검은날개 둥지
+## X-DBM-Mod-MapID: 469
 ## X-DBM-Mod-Sort: 401
-## X-DBM-Mod-LoadZoneID: 755
 localization.en.lua
 localization.de.lua
 localization.es.lua

@@ -12,13 +12,8 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: The Ruins of Ahn'Qiraj
-## X-DBM-Mod-Name-deDE: Ruinen von Ahn'Qiraj
-## X-DBM-Mod-Name-esES: Ruinas de Ahn'Qiraj
-## X-DBM-Mod-Name-ruRU: Руины Ан'Киража
-## X-DBM-Mod-Name-koKR: 안퀴라즈 폐허
+## X-DBM-Mod-MapID: 509
 ## X-DBM-Mod-Sort: 404
-## X-DBM-Mod-LoadZoneID: 717
 localization.en.lua
 localization.de.lua
 localization.es.lua
