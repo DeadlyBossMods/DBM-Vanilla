@@ -80,9 +80,9 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnGaze		= "Gaze on >%s<",
 	WarnMobDead		= "%s down",
-	WarnEgg			= "Pheonix Egg spawned",
+	WarnEgg			= "Phoenix Egg spawned",
 	SpecWarnGaze	= "Gaze on YOU - Run away!",
-	SpecWarnEgg		= "Pheonix Egg spawned - Change Target!"
+	SpecWarnEgg		= "Phoenix Egg spawned - Change Target!"
 }
 
 L:SetTimerLocalization{
