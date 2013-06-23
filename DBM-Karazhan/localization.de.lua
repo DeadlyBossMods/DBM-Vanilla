@@ -219,11 +219,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	timerCheat	= "Nächstes Schummeln"
+	timerCheat	= "Schummeln CD"
 }
 
 L:SetOptionLocalization{
-	timerCheat	= "Zeige Zeit bis nächstes Schummeln"
+	timerCheat	= "Abklingzeit von Schummeln anzeigen"
 }
 
 L:SetMiscLocalization{
