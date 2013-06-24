@@ -219,11 +219,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	timerCheat	= "다음 속임수"
+	timerCheat	= "속임수 가능"
 }
 
 L:SetOptionLocalization{
-	timerCheat	= "다음 속임수 바 표시"
+	timerCheat	= "속임수 대기시간 바 표시"
 }
 
 L:SetMiscLocalization{
