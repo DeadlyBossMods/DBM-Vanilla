@@ -74,9 +74,11 @@ function mod:OnCombatStart(delay)
 	table.wipe(warnSpiteTargets)
 	timerNextEnrage:Start(47-delay)
 	warnEnrageSoon:Schedule(42-delay)
-	DBM.BossHealth:Clear()
-	DBM.BossHealth:Show(L.name)
-	DBM.BossHealth:AddBoss(23418, L.Suffering)
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:Show(L.name)
+		DBM.BossHealth:AddBoss(23418, L.Suffering)
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -138,11 +140,15 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerMana:Start()
 		timerNextShield:Start(13)
 		timerNextDeaden:Start(28)
-		DBM.BossHealth:AddBoss(23419, L.Desire)
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:AddBoss(23419, L.Desire)
+		end
 	elseif args.spellId == 41337 then --Aura of Anger
 		warnPhase3:Show()
 		timerNextSoul:Start()
-		DBM.BossHealth:AddBoss(23450, L.Anger)
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:AddBoss(23450, L.Anger)
+		end
 	end
 end
 
