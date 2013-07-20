@@ -44,7 +44,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
-	if not msg.find(L.PursueEmote) then return end
+	if not msg:find(L.PursueEmote) then return end
 	local target = DBM:GetFullNameByShortName(target)
 	if not target then return end
 	if target then

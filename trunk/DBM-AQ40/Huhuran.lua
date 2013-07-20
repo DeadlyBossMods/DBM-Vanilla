@@ -42,7 +42,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		StingTargets[#StingTargets + 1] = args.destName
 		self:Unschedule(warnStingTargets)
 		self:Schedule(0.3, warnStingTargets)
-	elseif args.spellId == 26050 not self:IsTrivial(80) then
+	elseif args.spellId == 26050 and not self:IsTrivial(80) then
 		local amount = args.amount or 1
 		warnAcid:Show(args.spellName, args.destName, amount)
 		timerAcid:Start(args.destName)
