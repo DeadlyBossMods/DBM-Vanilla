@@ -15,14 +15,18 @@ mod:RegisterEvents(
 	"SPELL_PERIODIC_MISSED"
 )
 
-local warnHeal                  = mod:NewSpellAnnounce(29427)
-local warnHammer                = mod:NewTargetAnnounce(13005)
-local timerHammer               = mod:NewTargetTimer(6, 13005)
+local warnHeal                  = mod:NewCastAnnounce(29427, 4)
+local warnHammer                = mod:NewTargetAnnounce(13005, 2)
+
+local specWarnHeal			     = mod:NewSpecialWarningInterrupt(29427)
 local specWarnConsecration      = mod:NewSpecialWarningMove(38385)
+
+local timerHammer               = mod:NewTargetTimer(6, 13005)
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 29427 and self:IsInCombat() then
 		warnHeal:Show()
+		specWarnHeal:Show(args.sourceName)
 	end
 end
 

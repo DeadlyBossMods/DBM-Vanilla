@@ -11,10 +11,13 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local WarnEnergy		= mod:NewAnnounce("WarnEnergy", 3, 44335)
+local WarnEnergy		= mod:NewSpellAnnounce("ej5085", 3, 44335)
+
+local specWarnEnergy	= mod:NewSpecialWarningSwitch("ej5085", false)
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Discharge then
         WarnEnergy:Show()
+        specWarnEnergy:Show()
 	end
 end

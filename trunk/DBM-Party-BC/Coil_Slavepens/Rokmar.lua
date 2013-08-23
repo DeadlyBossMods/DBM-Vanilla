@@ -11,12 +11,15 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local WarnFrenzy  = mod:NewSpellAnnounce(34970)
-local WarnWound   = mod:NewTargetAnnounce(38801)
+local WarnFrenzy	= mod:NewSpellAnnounce(34970)
+local WarnWound		= mod:NewTargetAnnounce(38801)
+
+local specWarnWound	= mod:NewSpecialWarningTarget(38801, mod:IsHealer())
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(31956, 38801) then
 		WarnWound:Show(args.destName)
+		specWarnWound:Show(args.destName)
 	elseif args.spellId == 34970 and self:IsInCombat() then
 		WarnFrenzy:Show(args.destName)
 	end

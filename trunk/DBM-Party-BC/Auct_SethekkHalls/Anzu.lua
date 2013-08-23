@@ -11,15 +11,18 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
-	"UNIT_HEALTH target focus mouseover" ,
+	"UNIT_HEALTH target focus" ,
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warnBirds             = mod:NewAnnounce("warnBirds", 2, 32038)
+local warnBirds             = mod:NewSpellAnnounce("ej5253", 2, 32038)
 local warnStoned            = mod:NewAnnounce("warnStoned", 1, 32810, false)
 local warnScreech           = mod:NewSpellAnnounce(40184, 3)
 local warnCyclone           = mod:NewTargetAnnounce(40321, 2)
 local warnSpellBomb         = mod:NewTargetAnnounce(40303, 2)
+
+local specWarnScreech		= mod:NewSpecialWarningSpell(40184, nil, nil, nil, 2)
+
 local timerScreech          = mod:NewCastTimer(5, 40184)
 local timerScreechDebuff    = mod:NewBuffActiveTimer(6, 40184)
 local timerCyclone          = mod:NewTargetTimer(6, 40321)
@@ -38,6 +41,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 40184 then
 		warnScreech:Show()
+		specWarnScreech:Show()
 		timerScreech:Start()
 		timerScreechCD:Start()
 	end
@@ -71,8 +75,8 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg, target)
+function mod:CHAT_MSG_MONSTER_EMOTE(msg, npc)
 	if msg == L.BirdStone or msg:find(L.BirdStone) then		-- Spirits returning to stone.
-		warnStoned:Show(target)
+		warnStoned:Show(npc)
 	end
 end
