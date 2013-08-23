@@ -11,7 +11,7 @@ mod:RegisterEvents(
 	"SPELL_SUMMON"
 )
 
-local warnSummon   = mod:NewAnnounce("SummonElementals", 4, 33539)
+local warnSummon   = mod:NewSpellAnnounce("ej5235", 3)
 
 function mod:SPELL_SUMMON(args)
 	if args:IsSpellID(33537, 33538, 33539, 33540) and self:AntiSpam() then

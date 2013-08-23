@@ -12,6 +12,7 @@ mod:RegisterEvents(
 )
 
 local warnChaos         = mod:NewSpellAnnounce(33676)
+
 local timerChaos        = mod:NewBuffActiveTimer(15, 33676)
 local timerNextChaos    = mod:NewNextTimer(70, 33676)
 

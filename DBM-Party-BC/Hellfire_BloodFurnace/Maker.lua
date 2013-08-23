@@ -11,7 +11,8 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnMindControl      = mod:NewTargetAnnounce(30923)
+local warnMindControl      = mod:NewTargetAnnounce(30923, 4)
+
 local timerMindControl     = mod:NewTargetTimer(10, 30923)
 
 function mod:SPELL_AURA_APPLIED(args)

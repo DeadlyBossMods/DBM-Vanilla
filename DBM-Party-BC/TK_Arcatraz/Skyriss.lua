@@ -13,8 +13,8 @@ mod:RegisterEvents(
 	"UNIT_HEALTH target focus mouseover"
 )
 
-local warnSplitSoon     = mod:NewAnnounce("warnSplitSoon")
-local warnSplit         = mod:NewAnnounce("warnSplit")
+local warnSplitSoon     = mod:NewSoonAnnounce("ej5335", 2)
+local warnSplit         = mod:NewSpellAnnounce("ej5335", 3)
 local warnMindControl   = mod:NewTargetAnnounce(39019)
 local timerMindControl  = mod:NewTargetTimer(6, 39019)
 local warnMindRend      = mod:NewTargetAnnounce(39017)

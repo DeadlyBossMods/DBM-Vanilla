@@ -12,13 +12,9 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED"
 )
 
-local isDispeller = select(2, UnitClass("player")) == "MAGE"
-				 or select(2, UnitClass("player")) == "PRIEST"
-				 or select(2, UnitClass("player")) == "SHAMAN"
-
 local warnShadowpower       = mod:NewSpellAnnounce(35322)
 local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
-local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, isDispeller)
+local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, mod:IsMagicDispeller())
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() and self:IsInCombat() then     --Shadow Power

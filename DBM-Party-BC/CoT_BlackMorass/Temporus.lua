@@ -13,15 +13,13 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED"
 )
 
-local isDispeller = select(2, UnitClass("player")) == "MAGE"
-				 or select(2, UnitClass("player")) == "PRIEST"
-				 or select(2, UnitClass("player")) == "SHAMAN"
-
 local warnSpellReflect  = mod:NewSpellAnnounce(38592)
 local warnHasten		= mod:NewSpellAnnounce(31458)
+
+local specWarnHasten	= mod:NewSpecialWarningDispel(31458, mod:IsMagicDispeller())
+
 local timerSpellReflect	= mod:NewBuffActiveTimer(6, 38592)
 local timerHasten		= mod:NewBuffActiveTimer(10, 31458)
-local specWarnHasten	= mod:NewSpecialWarningDispel(31458, isDispeller)
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 38592 then

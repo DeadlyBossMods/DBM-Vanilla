@@ -11,15 +11,6 @@ L:SetGeneralLocalization({
 	name = "Watchkeeper Gargolmar"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 --------------------------
 --  Omor the Unscarred  --
 --------------------------
@@ -29,14 +20,9 @@ L:SetGeneralLocalization({
 	name = "Omor the Unscarred"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
 L:SetOptionLocalization({
-	SetIconOnBaneTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37566)
+	SetIconOnBaneTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37566),
+	RangeFrame			= DBM_CORE_AUTO_RANGE_OPTION_TEXT:format(15, 37566)
 })
 
 ------------------------
@@ -46,15 +32,6 @@ L = DBM:GetModLocalization("Vazruden")
 
 L:SetGeneralLocalization({
 	name = "Nazan & Vazruden"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 -------------------------
@@ -68,15 +45,6 @@ L:SetGeneralLocalization({
 	name = "The Maker"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ---------------
 --  Broggok  --
 ---------------
@@ -86,15 +54,6 @@ L:SetGeneralLocalization({
 	name = "Broggok"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ----------------------------
 --  Keli'dan the Breaker  --
 ----------------------------
@@ -102,15 +61,6 @@ L = DBM:GetModLocalization("Keli'dan")
 
 L:SetGeneralLocalization({
 	name = "Keli'dan the Breaker"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ---------------------------
@@ -124,15 +74,6 @@ L:SetGeneralLocalization({
 	name = "Grand Warlock Nethekurse"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 --------------------------
 --  Blood Guard Porung  --
 --------------------------
@@ -140,15 +81,6 @@ L = DBM:GetModLocalization("Porung")
 
 L:SetGeneralLocalization({
 	name = "Blood Guard Porung"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 --------------------------
@@ -160,15 +92,6 @@ L:SetGeneralLocalization({
 	name = "Warbringer O'mrogg"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ----------------------------------
 --  Warchief Kargath Bladefist  --
 ----------------------------------
@@ -176,15 +99,6 @@ L = DBM:GetModLocalization("Kargath")
 
 L:SetGeneralLocalization({
 	name = "Warchief Kargath Bladefist"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ------------------
@@ -198,15 +112,6 @@ L:SetGeneralLocalization({
 	name = "Mennu the Betrayer"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ---------------------------
 --  Rokmar the Crackler  --
 ---------------------------
@@ -216,15 +121,6 @@ L:SetGeneralLocalization({
 	name = "Rokmar the Crackler"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ------------------
 --  Quagmirran  --
 ------------------
@@ -232,15 +128,6 @@ L = DBM:GetModLocalization("Quagmirran")
 
 L:SetGeneralLocalization({
 	name = "Quagmirran"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 --------------------
@@ -254,15 +141,6 @@ L:SetGeneralLocalization({
 	name = "Hungarfen"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ---------------
 --  Ghaz'an  --
 ---------------
@@ -270,15 +148,6 @@ L = DBM:GetModLocalization("Ghazan")
 
 L:SetGeneralLocalization({
 	name = "Ghaz'an"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 --------------------------
@@ -290,15 +159,6 @@ L:SetGeneralLocalization({
 	name = "Swamplord Musel'ek"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -------------------------
 --  The Black Stalker  --
 -------------------------
@@ -306,15 +166,6 @@ L = DBM:GetModLocalization("Stalker")
 
 L:SetGeneralLocalization({
 	name = "The Black Stalker"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ----------------------
@@ -328,15 +179,6 @@ L:SetGeneralLocalization({
 	name = "Hydromancer Thespia"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------------------------
 --  Mekgineer Steamrigger  --
 -----------------------------
@@ -348,9 +190,6 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarnSummon	= "Steamrigger Mechanics incomming"
-})
-
-L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
@@ -370,17 +209,6 @@ L:SetGeneralLocalization({
 	name = "Warlord Kalithresh"
 })
 
-L:SetWarningLocalization({
-	WarnChannel	= "Channeling"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-	WarnChannel	= "Show warning when channeling"
-})
-
 -----------------------
 --  Auchenai Crypts  --
 --------------------------------
@@ -392,15 +220,6 @@ L:SetGeneralLocalization({
 	name = "Shirrak the Dead Watcher"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------------------
 --  Exarch Maladaar  --
 -----------------------
@@ -408,15 +227,6 @@ L = DBM:GetModLocalization("Maladaar")
 
 L:SetGeneralLocalization({
 	name = "Exarch Maladaar"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ------------------
@@ -430,15 +240,6 @@ L:SetGeneralLocalization({
 	name = "Pandemonius"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ---------------
 --  Tavarok  --
 ---------------
@@ -446,15 +247,6 @@ L = DBM:GetModLocalization("Tavarok")
 
 L:SetGeneralLocalization({
 	name = "Tavarok"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ----------------------------
@@ -466,15 +258,6 @@ L:SetGeneralLocalization({
 	name = "Nexus-Prince Shaffar"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------
 --  Yor  --
 -----------
@@ -482,15 +265,6 @@ L = DBM:GetModLocalization("Yor")
 
 L:SetGeneralLocalization({
 	name = "Yor"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ---------------------
@@ -504,17 +278,6 @@ L:SetGeneralLocalization({
 	name = "Darkweaver Syth"
 })
 
-L:SetWarningLocalization({
-	SummonElementals	= "Elementals spawned"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-	SummonElementals	= "Show warning for Elemental spawns"
-})
-
 ------------
 --  Anzu  --
 ------------
@@ -525,15 +288,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnBirds	= "Brood of Anzu soon",
 	warnStoned	= "%s returned to stone"
 })
 
-L:SetTimerLocalization({
-})
-
 L:SetOptionLocalization({
-	warnBirds	= "Show pre-warning for Brood of Anzu",
 	warnStoned	= "Show warning for spirits returning to stone"
 })
 
@@ -550,15 +308,6 @@ L:SetGeneralLocalization({
 	name = "Talon King Ikiss"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ------------------------
 --  Shadow Labyrinth  --
 --------------------------
@@ -570,15 +319,6 @@ L:SetGeneralLocalization({
 	name = "Ambassador Hellmaw"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ------------------------------
 --  Blackheart the Inciter  --
 ------------------------------
@@ -586,15 +326,6 @@ L = DBM:GetModLocalization("Inciter")
 
 L:SetGeneralLocalization({
 	name = "Blackheart the Inciter"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 --------------------------
@@ -606,15 +337,6 @@ L:SetGeneralLocalization({
 	name = "Grandmaster Vorpil"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 --------------
 --  Murmur  --
 --------------
@@ -622,12 +344,6 @@ L = DBM:GetModLocalization("Murmur")
 
 L:SetGeneralLocalization({
 	name = "Murmur"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
@@ -645,15 +361,6 @@ L:SetGeneralLocalization({
 	name = "Lieutenant Drake"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------------------
 --  Captain Skarloc  --
 -----------------------
@@ -663,15 +370,6 @@ L:SetGeneralLocalization({
 	name = "Captain Skarloc"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 --------------------
 --  Epoch Hunter  --
 --------------------
@@ -679,15 +377,6 @@ L = DBM:GetModLocalization("EpochHunter")
 
 L:SetGeneralLocalization({
 	name = "Epoch Hunter"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ------------------------
@@ -701,14 +390,6 @@ L:SetGeneralLocalization({
 	name = "Chrono Lord Deja"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
 ----------------
 --  Temporus  --
 ----------------
@@ -718,14 +399,6 @@ L:SetGeneralLocalization({
 	name = "Temporus"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
 --------------
 --  Aeonus  --
 --------------
@@ -733,17 +406,6 @@ L = DBM:GetModLocalization("Aeonus")
 
 L:SetGeneralLocalization({
 	name = "Aeonus"
-})
-
-L:SetWarningLocalization({
-    warnFrenzy	= "Frenzy"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-    warnFrenzy	= "Show warning for Frenzy"
 })
 
 L:SetMiscLocalization({
@@ -793,15 +455,6 @@ L:SetGeneralLocalization({
 	name = "Gatewatcher Gyro-Kill"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------------------------
 --  Gatewatcher Iron-Hand  --
 -----------------------------
@@ -809,15 +462,6 @@ L = DBM:GetModLocalization("Ironhand")
 
 L:SetGeneralLocalization({
 	name = "Gatewatcher Iron-Hand"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
@@ -833,15 +477,6 @@ L:SetGeneralLocalization({
 	name = "Mechano-Lord Capacitus"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ------------------------------
 --  Nethermancer Sepethrea  --
 ------------------------------
@@ -851,15 +486,6 @@ L:SetGeneralLocalization({
 	name = "Nethermancer Sepethrea"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 --------------------------------
 --  Pathaleon the Calculator  --
 --------------------------------
@@ -867,15 +493,6 @@ L = DBM:GetModLocalization("Pathaleon")
 
 L:SetGeneralLocalization({
 	name = "Pathaleon the Calculator"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 --------------------
@@ -889,15 +506,6 @@ L:SetGeneralLocalization({
 	name = "Commander Sarannis"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ------------------------------
 --  High Botanist Freywinn  --
 ------------------------------
@@ -905,17 +513,6 @@ L = DBM:GetModLocalization("Freywinn")
 
 L:SetGeneralLocalization({
 	name = "High Botanist Freywinn"
-})
-
-L:SetWarningLocalization({
-	WarnTranq	= "Tranquility - Kill Frayer Protectors"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-	WarnTranq	= "Show warning for Tranquility"
 })
 
 -----------------------------
@@ -927,15 +524,6 @@ L:SetGeneralLocalization({
 	name = "Thorngrin the Tender"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------
 --  Laj  --
 -----------
@@ -945,15 +533,6 @@ L:SetGeneralLocalization({
 	name = "Laj"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 ---------------------
 --  Warp Splinter  --
 ---------------------
@@ -961,15 +540,6 @@ L = DBM:GetModLocalization("WarpSplinter")
 
 L:SetGeneralLocalization({
 	name = "Warp Splinter"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 --------------------
@@ -983,15 +553,6 @@ L:SetGeneralLocalization({
 	name = "Zereketh the Unbound"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -----------------------------
 --  Dalliah the Doomsayer  --
 -----------------------------
@@ -999,15 +560,6 @@ L = DBM:GetModLocalization("Dalliah")
 
 L:SetGeneralLocalization({
 	name = "Dalliah the Doomsayer"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 ---------------------------------
@@ -1019,15 +571,6 @@ L:SetGeneralLocalization({
 	name = "Wrath-Scryer Soccothrates"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 -------------------------
 --  Harbinger Skyriss  --
 -------------------------
@@ -1035,19 +578,6 @@ L = DBM:GetModLocalization("Skyriss")
 
 L:SetGeneralLocalization({
 	name = "Harbinger Skyriss"
-})
-
-L:SetWarningLocalization({
-	warnSplit		= "Split",
-	warnSplitSoon	= "Split soon"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-	warnSplit		= "Show warning for Split",
-	warnSplitSoon	= "Show pre-warning for Split"
 })
 
 L:SetMiscLocalization({
@@ -1065,17 +595,6 @@ L:SetGeneralLocalization({
 	name = "Selin Fireheart"
 })
 
-L:SetWarningLocalization({
-	warnChanneling	= "Fel Crystal channeling"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-	warnChanneling	= "Show warning for Fel Crystal channeling"
-})
-
 L:SetMiscLocalization({
 	ChannelCrystal	= "%s begins to channel from the nearby Fel Crystal..."
 })
@@ -1089,17 +608,6 @@ L:SetGeneralLocalization({
 	name = "Vexallus"
 })
 
-L:SetWarningLocalization({
-	WarnEnergy	= "Pure Energy"
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-	WarnEnergy	= "Show warning for Pure Energy"
-})
-
 L:SetMiscLocalization({
 	Discharge	= "Un...con...tainable."
 })
@@ -1111,15 +619,6 @@ L = DBM:GetModLocalization("Delrissa")
 
 L:SetGeneralLocalization({
 	name = "Priestess Delrissa"
-})
-
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
@@ -1136,18 +635,6 @@ L:SetGeneralLocalization({
 	name = "Kael'thas Sunstrider (Party)"
 })
 
-L:SetWarningLocalization({
-})
-
-L:SetTimerLocalization({
-})
-
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	KaelP2	= "I'll turn your world... upside... down."
 })
-
-
-

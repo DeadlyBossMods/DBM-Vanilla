@@ -10,14 +10,18 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START"
 )
 
-local warnBoom          = mod:NewCastAnnounce(33923)
-local warnTouch         = mod:NewTargetAnnounce(33711)
+local warnBoom          = mod:NewCastAnnounce(33923, 4)
+local warnTouch         = mod:NewTargetAnnounce(33711, 3)
+
+local specWarnBoom		= mod:NewSpecialWarningSpell(33923, nil, nil, nil, 2)
+local specWarnTouch		= mod:NewSpecialWarningMove(33711)
+
 local timerBoomCast     = mod:NewCastTimer(5, 33923)
 local timerTouch        = mod:NewTargetTimer(14, 33711)
-local specWarnTouch		= mod:NewSpecialWarningMove(33711)
 
 local soundBoom = mod:NewSound(33923)
 mod:AddBoolOption("SetIconOnTouchTarget", true)
@@ -25,6 +29,7 @@ mod:AddBoolOption("SetIconOnTouchTarget", true)
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 33923 or args.spellId == 38796 then
 		warnBoom:Show()
+		specWarnBoom:Show()
 		timerBoomCast:Start()
 		soundBoom:Play()
 	end
@@ -40,5 +45,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
             specWarnTouch:Show()
         end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args.spellId == 33711 and self.Options.SetIconOnTouchTarget then
+		self:SetIcon(args.destName, 0)
 	end
 end

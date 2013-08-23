@@ -13,6 +13,7 @@ mod:RegisterEvents(
 )
 
 local WarnPrison   = mod:NewTargetAnnounce(32361)
+
 local timerPrison   = mod:NewTargetTimer(5, 32361)
 
 function mod:SPELL_AURA_APPLIED(args)

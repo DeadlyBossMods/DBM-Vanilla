@@ -12,6 +12,7 @@ mod:RegisterEvents(
 )
 
 local warnShell     = mod:NewSpellAnnounce(32358, 3)
+
 local timerShell    = mod:NewBuffActiveTimer(7, 32358)
 
 function mod:SPELL_CAST_START(args)
