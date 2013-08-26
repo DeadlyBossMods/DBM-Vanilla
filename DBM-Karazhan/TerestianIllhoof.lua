@@ -35,7 +35,9 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 30115 then
-		DBM.BossHealth:AddBoss(17248, L.DChains)
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:AddBoss(17248, L.DChains)
+		end
 		warningSacrifice:Show(args.destName)
 		timerSacrifice:Start(args.destName)
 		timerSacrificeCD:Start()
@@ -61,15 +63,17 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 30066 then
 		warningImpSoon:Cancel()
 		warningImp:Show()
-		DBM.BossHealth:AddBoss(17229, L.Kilrek)
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:AddBoss(17229, L.Kilrek)
+		end
 	end
 end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 17229 then--Kil'rek
+	if cid == 17229 and DBM.BossHealth:IsShown() then--Kil'rek
 		DBM.BossHealth:RemoveBoss(cid)
-	elseif cid == 17248 then--Demon Chains
+	elseif cid == 17248 and DBM.BossHealth:IsShown() then--Demon Chains
 		DBM.BossHealth:RemoveBoss(cid)
 	end
 end

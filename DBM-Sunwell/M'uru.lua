@@ -37,8 +37,11 @@ local humanCount = 1
 local voidCount = 1
 
 local function phase2()
-	DBM.BossHealth:Clear()
-	DBM.BossHealth:AddBoss(25840, L.Entropius)
+	warnPhase2:Show()
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:AddBoss(25840, L.Entropius)
+	end
 end
 
 function mod:HumanSpawn()
@@ -70,8 +73,6 @@ function mod:OnCombatStart(delay)
 	self:ScheduleMethod(15, "HumanSpawn")
 	self:ScheduleMethod(36.5, "VoidSpawn")
 	berserkTimer:Start(-delay)
-	DBM.BossHealth:Clear()
-	DBM.BossHealth:AddBoss(25741, L.name)
 end
 
 function mod:OnCombatEnd()
@@ -94,7 +95,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnHumanSoon:Cancel()
 		warnVoidSoon:Cancel()
 		warnDarknessSoon:Cancel()
-		warnPhase2:Show()
 		timerPhase:Start()
 		timerBlackHoleCD:Start(27)
 		self:UnscheduleMethod("HumanSpawn")

@@ -142,15 +142,17 @@ function mod:OnCombatStart(delay)
 	shieldDown = false
 	phase5 = false
 	timerPhase1mob:Start(32, L.Thaladred)
-	if self.Options.HealthFrame then
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:Clear()
 		DBM.BossHealth:Show(L.name)
+		DBM.BossHealth:AddBoss(20064, L.Thaladred)
 	end
-	DBM.BossHealth:AddBoss(20064, L.Thaladred)
 end
 
 function mod:OnCombatEnd()
-	DBM.BossHealth:Clear()
-	DBM.RangeCheck:Hide()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
