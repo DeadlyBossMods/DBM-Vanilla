@@ -12,6 +12,7 @@
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-Sort: 307
 ## X-DBM-Mod-MapID: 530,565,544
+## X-DBM-Mod-LoadCID: 17711,18728
 localization.en.lua
 localization.de.lua
 localization.es.lua
