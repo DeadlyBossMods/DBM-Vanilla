@@ -120,5 +120,5 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Submerge	= "나의 종들아",
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!"--확인필요
+	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"--확인필요
 }
