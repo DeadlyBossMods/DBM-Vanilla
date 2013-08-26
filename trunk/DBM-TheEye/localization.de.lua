@@ -15,7 +15,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "Zeige Zeit bis Al'ar spätestens die Plattform wechselt\n(wechselt möglicherweise früher, aber fast nie später)"
+	NextPlatform	= "Zeige Zeit bis Al'ar spätestens die Plattform wechselt<br/>(wechselt möglicherweise früher, aber fast nie später)"
 }
 
 ------------------

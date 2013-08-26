@@ -17,7 +17,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "Orb of Domination loses power and shuts off!",--확인필요
-	YellPull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!"--확인필요
+	YellPull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--확인필요
 }
 -------------------
 --  Vaelastrasz  --
