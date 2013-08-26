@@ -47,20 +47,21 @@ local portCount = 1
 
 function mod:OnCombatStart(delay)
 	portCount = 1
-	DBM.BossHealth:Clear()
-	DBM.BossHealth:AddBoss(24850, L.name)
-	DBM.BossHealth:AddBoss(24892, L.Demon)
 	if self.Options.ShowFrame then
 		self:CreateFrame()
 	end
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show()
 	end
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:AddBoss(24850, L.name)
+		DBM.BossHealth:AddBoss(24892, L.Demon)
+	end
 end
 
 function mod:OnCombatEnd()
 	self:DestroyFrame()
-	DBM.BossHealth:Clear()
 	DBM.RangeCheck:Hide()
 end
 

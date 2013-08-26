@@ -186,6 +186,8 @@ function mod:OnSync(msg)
 		timerNextShield:Cancel()
 		timerNextDeaden:Cancel()
 		timerNextShock:Cancel()
-		DBM.BossHealth:Clear()
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:Clear()
+		end
 	end
 end
