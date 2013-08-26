@@ -52,7 +52,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("HyjalWaveTimers")
 
 L:SetGeneralLocalization{
-	name 		= "하이잘 일반구간"
+	name 		= "하이잘: 일반구간"
 }
 
 L:SetWarningLocalization{
