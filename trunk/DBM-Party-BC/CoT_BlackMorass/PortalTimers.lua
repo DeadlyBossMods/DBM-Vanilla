@@ -9,8 +9,6 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-mod:RemoveOption("HealthFrame")
-
 -- Portals
 local warnWavePortalSoon	= mod:NewAnnounce("WarnWavePortalSoon", 2, 57687)
 local warnWavePortal		= mod:NewAnnounce("WarnWavePortal", 3, 57687)
