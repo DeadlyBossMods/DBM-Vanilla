@@ -27,7 +27,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("Vazruden")
 
 L:SetGeneralLocalization({
-	name = "나잔 & 바즈루덴"
+	name = "나잔과 바즈루덴"
 })
 
 -------------------------
