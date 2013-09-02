@@ -1,9 +1,8 @@
-local mod	= DBM:NewMod("Pandemonius", "DBM-Party-BC", 8)
+local mod	= DBM:NewMod(534, "DBM-Party-BC", 8, 250)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(18341)
-mod:SetModelID(19338)
 
 mod:RegisterCombat("combat")
 

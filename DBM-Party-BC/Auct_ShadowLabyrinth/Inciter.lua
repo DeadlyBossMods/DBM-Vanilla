@@ -1,10 +1,9 @@
-local mod = DBM:NewMod("Inciter", "DBM-Party-BC", 10)
+local mod = DBM:NewMod(545, "DBM-Party-BC", 10, 253)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(18667)
-mod:SetModelID(18058)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(

@@ -5,20 +5,12 @@ local L
 -----------------------------
 --  Watchkeeper Gargolmar  --
 -----------------------------
-L = DBM:GetModLocalization("Gargolmar")
-
-L:SetGeneralLocalization({
-	name = "Watchkeeper Gargolmar"
-})
+L = DBM:GetModLocalization(527)
 
 --------------------------
 --  Omor the Unscarred  --
 --------------------------
-L = DBM:GetModLocalization("Omor")
-
-L:SetGeneralLocalization({
-	name = "Omor the Unscarred"
-})
+L = DBM:GetModLocalization(528)
 
 L:SetOptionLocalization({
 	SetIconOnBaneTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37566),
@@ -28,173 +20,97 @@ L:SetOptionLocalization({
 ------------------------
 --  Nazan & Vazruden  --
 ------------------------
-L = DBM:GetModLocalization("Vazruden")
-
-L:SetGeneralLocalization({
-	name = "Nazan & Vazruden"
-})
+L = DBM:GetModLocalization(529)
 
 -------------------------
 --  The Blood Furnace  --
 -------------------------
 --  The Maker  --
 -----------------
-L = DBM:GetModLocalization("Maker")
-
-L:SetGeneralLocalization({
-	name = "The Maker"
-})
+L = DBM:GetModLocalization(555)
 
 ---------------
 --  Broggok  --
 ---------------
-L = DBM:GetModLocalization("Broggok")
-
-L:SetGeneralLocalization({
-	name = "Broggok"
-})
+L = DBM:GetModLocalization(556)
 
 ----------------------------
 --  Keli'dan the Breaker  --
 ----------------------------
-L = DBM:GetModLocalization("Keli'dan")
-
-L:SetGeneralLocalization({
-	name = "Keli'dan the Breaker"
-})
+L = DBM:GetModLocalization(557)
 
 ---------------------------
 --  The Shattered Halls  --
 --------------------------------
 --  Grand Warlock Nethekurse  --
 --------------------------------
-L = DBM:GetModLocalization("Nethekurse")
-
-L:SetGeneralLocalization({
-	name = "Grand Warlock Nethekurse"
-})
+L = DBM:GetModLocalization(566)
 
 --------------------------
 --  Blood Guard Porung  --
 --------------------------
-L = DBM:GetModLocalization("Porung")
-
-L:SetGeneralLocalization({
-	name = "Blood Guard Porung"
-})
+L = DBM:GetModLocalization(728)
 
 --------------------------
 --  Warbringer O'mrogg  --
 --------------------------
-L = DBM:GetModLocalization("O'mrogg")
-
-L:SetGeneralLocalization({
-	name = "Warbringer O'mrogg"
-})
+L = DBM:GetModLocalization(568)
 
 ----------------------------------
 --  Warchief Kargath Bladefist  --
 ----------------------------------
-L = DBM:GetModLocalization("Kargath")
-
-L:SetGeneralLocalization({
-	name = "Warchief Kargath Bladefist"
-})
+L = DBM:GetModLocalization(569)
 
 ------------------
 --  Slave Pens  --
 --------------------------
 --  Mennu the Betrayer  --
 --------------------------
-L = DBM:GetModLocalization("Mennu")
-
-L:SetGeneralLocalization({
-	name = "Mennu the Betrayer"
-})
+L = DBM:GetModLocalization(570)
 
 ---------------------------
 --  Rokmar the Crackler  --
 ---------------------------
-L = DBM:GetModLocalization("Rokmar")
-
-L:SetGeneralLocalization({
-	name = "Rokmar the Crackler"
-})
+L = DBM:GetModLocalization(571)
 
 ------------------
 --  Quagmirran  --
 ------------------
-L = DBM:GetModLocalization("Quagmirran")
-
-L:SetGeneralLocalization({
-	name = "Quagmirran"
-})
+L = DBM:GetModLocalization(572)
 
 --------------------
 --  The Underbog  --
 --------------------
 --  Hungarfen  --
 -----------------
-L = DBM:GetModLocalization("Hungarfen")
-
-L:SetGeneralLocalization({
-	name = "Hungarfen"
-})
+L = DBM:GetModLocalization(576)
 
 ---------------
 --  Ghaz'an  --
 ---------------
-L = DBM:GetModLocalization("Ghazan")
-
-L:SetGeneralLocalization({
-	name = "Ghaz'an"
-})
+L = DBM:GetModLocalization(577)
 
 --------------------------
 --  Swamplord Musel'ek  --
 --------------------------
-L = DBM:GetModLocalization("Muselek")
-
-L:SetGeneralLocalization({
-	name = "Swamplord Musel'ek"
-})
+L = DBM:GetModLocalization(578
 
 -------------------------
 --  The Black Stalker  --
 -------------------------
-L = DBM:GetModLocalization("Stalker")
-
-L:SetGeneralLocalization({
-	name = "The Black Stalker"
-})
+L = DBM:GetModLocalization(579)
 
 ----------------------
 --  The Steamvault  --
 ---------------------------
 --  Hydromancer Thespia  --
 ---------------------------
-L = DBM:GetModLocalization("Thespia")
-
-L:SetGeneralLocalization({
-	name = "Hydromancer Thespia"
-})
+L = DBM:GetModLocalization(573)
 
 -----------------------------
 --  Mekgineer Steamrigger  --
 -----------------------------
-L = DBM:GetModLocalization("Steamrigger")
-
-L:SetGeneralLocalization({
-	name = "Mekgineer Steamrigger"
-})
-
-L:SetWarningLocalization({
-	WarnSummon	= "Steamrigger Mechanics incomming"
-})
-
-L:SetOptionLocalization({
-	WarnSummon	= "Show warning for Steamrigger Mechanics"
-})
+L = DBM:GetModLocalization(574)
 
 L:SetMiscLocalization({
 	Mechs	= "Tune 'em up good boys!"
@@ -203,89 +119,53 @@ L:SetMiscLocalization({
 --------------------------
 --  Warlord Kalithresh  --
 --------------------------
-L = DBM:GetModLocalization("Kalithresh")
-
-L:SetGeneralLocalization({
-	name = "Warlord Kalithresh"
-})
+L = DBM:GetModLocalization(575)
 
 -----------------------
 --  Auchenai Crypts  --
 --------------------------------
 --  Shirrak the Dead Watcher  --
 --------------------------------
-L = DBM:GetModLocalization("Shirrak")
-
-L:SetGeneralLocalization({
-	name = "Shirrak the Dead Watcher"
-})
+L = DBM:GetModLocalization(523)
 
 -----------------------
 --  Exarch Maladaar  --
 -----------------------
-L = DBM:GetModLocalization("Maladaar")
-
-L:SetGeneralLocalization({
-	name = "Exarch Maladaar"
-})
+L = DBM:GetModLocalization(524)
 
 ------------------
 --  Mana-Tombs  --
 -------------------
 --  Pandemonius  --
 -------------------
-L = DBM:GetModLocalization("Pandemonius")
-
-L:SetGeneralLocalization({
-	name = "Pandemonius"
-})
+L = DBM:GetModLocalization(534)
 
 ---------------
 --  Tavarok  --
 ---------------
-L = DBM:GetModLocalization("Tavarok")
-
-L:SetGeneralLocalization({
-	name = "Tavarok"
-})
+L = DBM:GetModLocalization(535)
 
 ----------------------------
 --  Nexus-Prince Shaffar  --
 ----------------------------
-L = DBM:GetModLocalization("Shaffar")
-
-L:SetGeneralLocalization({
-	name = "Nexus-Prince Shaffar"
-})
+L = DBM:GetModLocalization(537)
 
 -----------
 --  Yor  --
 -----------
-L = DBM:GetModLocalization("Yor")
-
-L:SetGeneralLocalization({
-	name = "Yor"
-})
+L = DBM:GetModLocalization(536)
 
 ---------------------
 --  Sethekk Halls  --
 -----------------------
 --  Darkweaver Syth  --
 -----------------------
-L = DBM:GetModLocalization("Syth")
-
-L:SetGeneralLocalization({
-	name = "Darkweaver Syth"
-})
+L = DBM:GetModLocalization(541)
 
 ------------
 --  Anzu  --
 ------------
-L = DBM:GetModLocalization("Anzu")
-
-L:SetGeneralLocalization({
-	name = "Anzu"
-})
+L = DBM:GetModLocalization(542)
 
 L:SetWarningLocalization({
 	warnStoned	= "%s returned to stone"
@@ -302,49 +182,29 @@ L:SetMiscLocalization({
 ------------------------
 --  Talon King Ikiss  --
 ------------------------
-L = DBM:GetModLocalization("Ikiss")
-
-L:SetGeneralLocalization({
-	name = "Talon King Ikiss"
-})
+L = DBM:GetModLocalization(543)
 
 ------------------------
 --  Shadow Labyrinth  --
 --------------------------
 --  Ambassador Hellmaw  --
 --------------------------
-L = DBM:GetModLocalization("Hellmaw")
-
-L:SetGeneralLocalization({
-	name = "Ambassador Hellmaw"
-})
+L = DBM:GetModLocalization(544)
 
 ------------------------------
 --  Blackheart the Inciter  --
 ------------------------------
-L = DBM:GetModLocalization("Inciter")
-
-L:SetGeneralLocalization({
-	name = "Blackheart the Inciter"
-})
+L = DBM:GetModLocalization(545)
 
 --------------------------
 --  Grandmaster Vorpil  --
 --------------------------
-L = DBM:GetModLocalization("Vorpil")
-
-L:SetGeneralLocalization({
-	name = "Grandmaster Vorpil"
-})
+L = DBM:GetModLocalization(546)
 
 --------------
 --  Murmur  --
 --------------
-L = DBM:GetModLocalization("Murmur")
-
-L:SetGeneralLocalization({
-	name = "Murmur"
-})
+L = DBM:GetModLocalization(547)
 
 L:SetOptionLocalization({
 	SetIconOnTouchTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(33711)
@@ -355,58 +215,34 @@ L:SetOptionLocalization({
 -------------------------------
 --  Lieutenant Drake  --
 ------------------------
-L = DBM:GetModLocalization("Drake")
-
-L:SetGeneralLocalization({
-	name = "Lieutenant Drake"
-})
+L = DBM:GetModLocalization(538)
 
 -----------------------
 --  Captain Skarloc  --
 -----------------------
-L = DBM:GetModLocalization("Skarloc")
-
-L:SetGeneralLocalization({
-	name = "Captain Skarloc"
-})
+L = DBM:GetModLocalization(539)
 
 --------------------
 --  Epoch Hunter  --
 --------------------
-L = DBM:GetModLocalization("EpochHunter")
-
-L:SetGeneralLocalization({
-	name = "Epoch Hunter"
-})
+L = DBM:GetModLocalization(540)
 
 ------------------------
 --  The Black Morass  --
 ------------------------
 --  Chrono Lord Deja  --
 ------------------------
-L = DBM:GetModLocalization("Deja")
-
-L:SetGeneralLocalization({
-	name = "Chrono Lord Deja"
-})
+L = DBM:GetModLocalization(552)
 
 ----------------
 --  Temporus  --
 ----------------
-L = DBM:GetModLocalization("Temporus")
-
-L:SetGeneralLocalization({
-	name = "Temporus"
-})
+L = DBM:GetModLocalization(553)
 
 --------------
 --  Aeonus  --
 --------------
-L = DBM:GetModLocalization("Aeonus")
-
-L:SetGeneralLocalization({
-	name = "Aeonus"
-})
+L = DBM:GetModLocalization(554)
 
 L:SetMiscLocalization({
     AeonusFrenzy	= "%s goes into a frenzy!"
@@ -449,7 +285,7 @@ L:SetMiscLocalization({
 -----------------------------
 --  Gatewatcher Gyro-Kill  --
 -----------------------------
-L = DBM:GetModLocalization("Gyrokill")
+L = DBM:GetModLocalization("Gyrokill")--Not in EJ
 
 L:SetGeneralLocalization({
 	name = "Gatewatcher Gyro-Kill"
@@ -458,7 +294,7 @@ L:SetGeneralLocalization({
 -----------------------------
 --  Gatewatcher Iron-Hand  --
 -----------------------------
-L = DBM:GetModLocalization("Ironhand")
+L = DBM:GetModLocalization("Ironhand")--Not in EJ
 
 L:SetGeneralLocalization({
 	name = "Gatewatcher Iron-Hand"
@@ -471,114 +307,66 @@ L:SetMiscLocalization({
 ------------------------------
 --  Mechano-Lord Capacitus  --
 ------------------------------
-L = DBM:GetModLocalization("Capacitus")
-
-L:SetGeneralLocalization({
-	name = "Mechano-Lord Capacitus"
-})
+L = DBM:GetModLocalization(563)
 
 ------------------------------
 --  Nethermancer Sepethrea  --
 ------------------------------
-L = DBM:GetModLocalization("Sepethrea")
-
-L:SetGeneralLocalization({
-	name = "Nethermancer Sepethrea"
-})
+L = DBM:GetModLocalization(564)
 
 --------------------------------
 --  Pathaleon the Calculator  --
 --------------------------------
-L = DBM:GetModLocalization("Pathaleon")
-
-L:SetGeneralLocalization({
-	name = "Pathaleon the Calculator"
-})
+L = DBM:GetModLocalization(565)
 
 --------------------
 --  The Botanica  --
 --------------------------
 --  Commander Sarannis  --
 --------------------------
-L = DBM:GetModLocalization("Sarannis")
-
-L:SetGeneralLocalization({
-	name = "Commander Sarannis"
-})
+L = DBM:GetModLocalization(558)
 
 ------------------------------
 --  High Botanist Freywinn  --
 ------------------------------
-L = DBM:GetModLocalization("Freywinn")
-
-L:SetGeneralLocalization({
-	name = "High Botanist Freywinn"
-})
+L = DBM:GetModLocalization(559)
 
 -----------------------------
 --  Thorngrin the Tender  --
 -----------------------------
-L = DBM:GetModLocalization("Thorngrin")
-
-L:SetGeneralLocalization({
-	name = "Thorngrin the Tender"
-})
+L = DBM:GetModLocalization(560)
 
 -----------
 --  Laj  --
 -----------
-L = DBM:GetModLocalization("Laj")
-
-L:SetGeneralLocalization({
-	name = "Laj"
-})
+L = DBM:GetModLocalization(561)
 
 ---------------------
 --  Warp Splinter  --
 ---------------------
-L = DBM:GetModLocalization("WarpSplinter")
-
-L:SetGeneralLocalization({
-	name = "Warp Splinter"
-})
+L = DBM:GetModLocalization(562)
 
 --------------------
 --  The Arcatraz  --
 ----------------------------
 --  Zereketh the Unbound  --
 ----------------------------
-L = DBM:GetModLocalization("Zereketh")
-
-L:SetGeneralLocalization({
-	name = "Zereketh the Unbound"
-})
+L = DBM:GetModLocalization(548)
 
 -----------------------------
 --  Dalliah the Doomsayer  --
 -----------------------------
-L = DBM:GetModLocalization("Dalliah")
-
-L:SetGeneralLocalization({
-	name = "Dalliah the Doomsayer"
-})
+L = DBM:GetModLocalization(549)
 
 ---------------------------------
 --  Wrath-Scryer Soccothrates  --
 ---------------------------------
-L = DBM:GetModLocalization("Soccothrates")
-
-L:SetGeneralLocalization({
-	name = "Wrath-Scryer Soccothrates"
-})
+L = DBM:GetModLocalization(550)
 
 -------------------------
 --  Harbinger Skyriss  --
 -------------------------
-L = DBM:GetModLocalization("Skyriss")
-
-L:SetGeneralLocalization({
-	name = "Harbinger Skyriss"
-})
+L = DBM:GetModLocalization(551)
 
 L:SetMiscLocalization({
 	Split	= "We span the universe, as countless as the stars!"
@@ -589,11 +377,7 @@ L:SetMiscLocalization({
 --------------------------
 --  Selin Fireheart  --
 -----------------------
-L = DBM:GetModLocalization("Selin")
-
-L:SetGeneralLocalization({
-	name = "Selin Fireheart"
-})
+L = DBM:GetModLocalization(530)
 
 L:SetMiscLocalization({
 	ChannelCrystal	= "%s begins to channel from the nearby Fel Crystal..."
@@ -602,11 +386,7 @@ L:SetMiscLocalization({
 ----------------
 --  Vexallus  --
 ----------------
-L = DBM:GetModLocalization("Vexallus")
-
-L:SetGeneralLocalization({
-	name = "Vexallus"
-})
+L = DBM:GetModLocalization(531)
 
 L:SetMiscLocalization({
 	Discharge	= "Un...con...tainable."
@@ -615,14 +395,10 @@ L:SetMiscLocalization({
 --------------------------
 --  Priestess Delrissa  --
 --------------------------
-L = DBM:GetModLocalization("Delrissa")
-
-L:SetGeneralLocalization({
-	name = "Priestess Delrissa"
-})
+L = DBM:GetModLocalization(532)
 
 L:SetMiscLocalization({
-	DelrissaPull	= "Annihilate them.",
+--	DelrissaPull	= "Annihilate them.",
 	DelrissaEnd		= "Not what I had... planned."
 })
 
@@ -632,7 +408,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Kael")
 
 L:SetGeneralLocalization({
-	name = "Kael'thas Sunstrider (Party)"
+	name = "Kael'thas Sunstrider (Party)"--Must remain localized to avoid conflict with temptest keep
 })
 
 L:SetMiscLocalization({
