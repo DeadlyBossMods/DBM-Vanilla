@@ -1,12 +1,11 @@
-local mod = DBM:NewMod("Delrissa", "DBM-Party-BC", 16)
+local mod = DBM:NewMod(532, "DBM-Party-BC", 16, 249)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)--24560 is main boss.
-mod:SetModelID(22596)
 --"combat" only fails if you were already in combat before pulling her (ie, you out level the zone and just chain pulled her with trash).
-mod:RegisterCombat("yell", L.DelrissaPull)
+mod:RegisterCombat("combat")--UNIT_HEALTH combat should work now
 mod:RegisterKill("yell", L.DelrissaEnd)
 --Pretty sure she dies, so probably can just register kill using UNIT_DIED 24560
 

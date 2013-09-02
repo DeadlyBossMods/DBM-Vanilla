@@ -1,9 +1,8 @@
-local mod	= DBM:NewMod("Hungarfen", "DBM-Party-BC", 5)
+local mod	= DBM:NewMod(576, "DBM-Party-BC", 5, 262)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17770)
-mod:SetModelID(17228)
 
 mod:RegisterCombat("combat")
 

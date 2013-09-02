@@ -1,9 +1,8 @@
-local mod	= DBM:NewMod("Kalithresh", "DBM-Party-BC", 6)
+local mod	= DBM:NewMod(575, "DBM-Party-BC", 6, 261)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17798)
-mod:SetModelID(20235)
 
 mod:RegisterCombat("combat")
 

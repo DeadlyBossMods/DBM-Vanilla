@@ -1,9 +1,8 @@
-local mod	= DBM:NewMod("Steamrigger", "DBM-Party-BC", 6)
+local mod	= DBM:NewMod(574, "DBM-Party-BC", 6, 261)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17796)
---mod:SetModelID(18638)--Does not work
 
 mod:RegisterCombat("combat")
 
@@ -12,8 +11,11 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local WarnSummon	= mod:NewAnnounce("WarnSummon")
-local WarnNet		= mod:NewTargetAnnounce(35107)
+local WarnSummon	= mod:NewSpellAnnounce("ej5999", 3)
+
+local specWarnSummon= mod:NewSpecialWarningSwitch("ej5999", not mod:IsHealer())
+
+local WarnNet		= mod:NewTargetAnnounce(35107, 2)
 local timerNet		= mod:NewTargetTimer(6, 35107)
 
 local enrageTimer	= mod:NewBerserkTimer(300)
@@ -34,5 +36,6 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Mechs then		-- Adds
 		WarnSummon:Show()
+		specWarnSummon:Show()
 	end
 end
