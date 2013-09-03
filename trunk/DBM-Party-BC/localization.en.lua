@@ -93,7 +93,7 @@ L = DBM:GetModLocalization(577)
 --------------------------
 --  Swamplord Musel'ek  --
 --------------------------
-L = DBM:GetModLocalization(578
+L = DBM:GetModLocalization(578)
 
 -------------------------
 --  The Black Stalker  --
