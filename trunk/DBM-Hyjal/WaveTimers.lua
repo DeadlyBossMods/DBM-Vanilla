@@ -11,11 +11,11 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED"
 )
 
-local warnWaveSoon		= mod:NewAnnounce("WarnWaveSoon")
-local warnWave			= mod:NewAnnounce("WarnWave")
-local warnCannibalize	= mod:NewSpellAnnounce(31538)
+local warnWaveSoon		= mod:NewAnnounce("WarnWaveSoon", 2)
+local warnWave			= mod:NewAnnounce("WarnWave", 3)
+local warnCannibalize	= mod:NewSpellAnnounce(31538, 2)
 
-local timerWave	= mod:NewTimer(125, "TimerWave")
+local timerWave			= mod:NewTimer(125, "TimerWave")
 
 mod:AddBoolOption("DetailedWave")
 mod:RemoveOption("HealthFrame")

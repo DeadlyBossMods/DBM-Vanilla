@@ -13,6 +13,14 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
+function mod:OnCombatStart(delay)
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:Show(L.name)
+		DBM.BossHealth:AddBoss(22841, L.name)
+	end
+end
+
 function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 22841 then
 		DBM:EndCombat(self)
