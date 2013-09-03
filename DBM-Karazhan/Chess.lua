@@ -9,6 +9,7 @@ if playerFactoin == "Alliance" then
 else
 	mod:SetCreatureID(21684)--King Llane
 end
+mod:SetModelID(18720)
 mod:RegisterCombat("combat")--Actually not how we register combat, bogus because SetWipeTime needs it
 mod:SetWipeTime(600)
 
