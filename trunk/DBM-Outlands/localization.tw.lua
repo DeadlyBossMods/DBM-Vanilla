@@ -22,7 +22,7 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnGrowth	= "Show warning for $spell:36300"
+	WarnGrowth	= "為$spell:36300顯示警告"
 }
 
 
@@ -33,15 +33,12 @@ L:SetGeneralLocalization{
 	name = "瑪瑟里頓"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
-	timerP2	= "Phase 2"
+	timerP2	= "第2階段"
 }
 
 L:SetOptionLocalization{
-	timerP2	= "Show timer for start of phase 2"
+	timerP2	= "為第2階段開始顯示計時器"
 }
 
 L:SetMiscLocalization{
@@ -57,15 +54,8 @@ L:SetGeneralLocalization{
 	name = "毀滅領主卡札克"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	SetIconOnMark		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32960)
-}
-
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	DBM_KAZZAK_EMOTE_ENRAGE		= "%s becomes enraged!"
 }
 
 -- Doomwalker
@@ -75,15 +65,6 @@ L:SetGeneralLocalization{
 	name = "厄運行者"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"
 }

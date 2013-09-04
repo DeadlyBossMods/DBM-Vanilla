@@ -11,12 +11,12 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPortal			= "第 %s 個傳送門: >%s< (第%d隊)",
-	SpecWarnWildMagic	= "野性魔法: %s"
+	WarnPortal			= "第%s個傳送門:>%s<(第%d隊)",
+	SpecWarnWildMagic	= "野性魔法:%s"
 }
 
 L:SetTimerLocalization{
-	TimerNextPortal		= "傳送門 (%d)"
+	TimerNextPortal		= "傳送門(%d)"
 }
 
 L:SetOptionLocalization{
@@ -43,7 +43,7 @@ L:SetMiscLocalization{
 	FrameClassColor		= "使用職業顏色",
 	FrameOrientation	= "向上延伸",
 	FrameHide			= "隱藏框架",
-	FrameClose			= "Close"--Translate
+	FrameClose			= "關閉"--Translate
 }
 
 ----------------
@@ -55,15 +55,8 @@ L:SetGeneralLocalization{
 	name = "布魯托魯斯"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
-	BurnIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(46394),
-	BurnWhisper		= "Send whisper to $spell:46394 targets (requires Raid Leader)"--Translate
+	BurnWhisper		= "傳送密語給中了$spell:46394的目標(需要團隊隊長)"
 }
 
 L:SetMiscLocalization{
@@ -81,31 +74,25 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s Phase",--Translate
-	WarnPhaseSoon	= "%s Phase in 10 sec",--Translate
-	WarnBreath		= "第%d個深呼吸"
+	WarnPhase		= "%s階段",--Translate
+	WarnPhaseSoon	= "10秒後%s階段",--Translate
 }
 
 L:SetTimerLocalization{
-	TimerPhase		= "Next %s Phase",
-	TimerBreath		= "下一次深呼吸"
+	TimerPhase		= "下一次%s階段",
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "Show warning for next phase",--Translate
-	WarnPhaseSoon	= "Show pre-warning for next phase",--Translate
-	WarnBreath		= "Show warning for Deep Breath",--Translate
-	TimerPhase		= "Show time for next phase",--Translate
-	TimerBreath		= "Show timer for Deep Breath cooldown",--Translate
-	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
-	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
-	YellOnEncaps	= "Yell on $spell:45665"
+	WarnPhase		= "為下個階段顯示警告",
+	WarnPhaseSoon	= "為下個階段顯示預先警告",
+	TimerPhase		= "為下個階段顯示計時器",
+	YellOnEncaps	= "當你中了$spell:45665大喊"
 }
 
 L:SetMiscLocalization{
-	Air				= "Air",--Translate
-	Ground			= "Ground",--Translate
-	YellEncaps		= "Encapsulate on me! Run away!",--Change to generic so we don't have to translate?
+	Air				= "空中",
+	Ground			= "地面",
+	YellEncaps		= "我中了壓縮!遠離我!",
 	AirPhase		= "I am stronger than ever before!",--Translate
 	Breath			= "%s深深地吸了一口氣"
 }
@@ -119,25 +106,19 @@ L:SetGeneralLocalization{
 	name = "埃雷達爾雙子"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
-	NovaIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45329),
-	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
-	RangeFrame		= "Show range frame (10 yards)",--Translate
-	NovaWhisper		= "Send whisper to $spell:45329 target (requires Raid Leader)",--Translate
-	ConflagWhisper	= "Send whisper to $spell:45333 target (requires Raid Leader)",--Translate
+	RangeFrame		= "顯示距離框架(10碼)",
+	NovaWhisper		= "傳送密語給中了$spell:45329的目標(需要團隊隊長)",
+	ConflagWhisper	= "傳送密語給中了$spell:45333的目標(需要團隊隊長)"
 }
 
 L:SetMiscLocalization{
 	NovaWhisper		= "你中了暗影新星!",
 	ConflagWhisper	= "你中了燃燒!",
-	Nova			= "莎珂蕾希對(.+)施放暗影新星",--Verify
-	Conflag			= "艾黎瑟絲對(.+)施放燃燒"--Verify
+	Nova			= "莎珂蕾希對(.+)施放暗影新星",
+	Conflag			= "艾黎瑟絲對(.+)施放燃燒"
+	Sacrolash		= "莎珂蕾希女士",
+	Alythess		= "大術士艾黎瑟絲"
 }
 
 ------------
@@ -150,16 +131,16 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnHuman		= "人型生物 (%d)",
-	WarnHumanSoon	= "5秒後 人型生物 (%d)",
-	WarnVoid		= "虛無哨兵 (%d)",
-	WarnVoidSoon	= "5秒後 虛無哨兵 (%d)",
-	WarnFiend		= "黑暗惡魔 出現了"
+	WarnHuman		= "人型生物(%d)",
+	WarnHumanSoon	= "5秒後人型生物(%d)",
+	WarnVoid		= "虛無哨兵(%d)",
+	WarnVoidSoon	= "5秒後虛無哨兵(%d)",
+	WarnFiend		= "黑暗惡魔出現了"
 }
 
 L:SetTimerLocalization{
-	TimerHuman		= "人型生物 (%s)",--Translate
-	TimerVoid		= "虛無哨兵 (%s)",
+	TimerHuman		= "人型(%s)",
+	TimerVoid		= "虛無哨兵(%s)",
 	TimerPhase		= "安卓普斯"
 }
 
@@ -204,10 +185,9 @@ L:SetOptionLocalization{
 	SpecWarnDarkOrb	= "Show special warning for Dark Orbs",--Translate
 	SpecWarnBlueOrb	= "Show special warning for Dragon Orbs",--Translate
 	TimerBlueOrb	= "Show timer form Dragon Orbs activate",--Translate
-	RangeFrame		= "Show range frame (10 yards)",--Translate
-	BloomIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45641),
-	YellOnBloom		= "Yell on $spell:45641",--Translate
-	BloomWhisper	= "Send whisper to $spell:45641 target (requires Raid Leader)"--Translate
+	RangeFrame		= "顯示距離框架(10碼)",
+	YellOnBloom		= "你中了$spell:45641時大喊",
+	BloomWhisper	= "傳送密語給中了$spell:45641的目標(需要團隊隊長)"
 }
 
 L:SetMiscLocalization{

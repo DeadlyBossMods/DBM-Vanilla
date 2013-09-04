@@ -5,6 +5,7 @@
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Групповые подземелья-BC|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Mazmorras TBC|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf05인던전-불타는 성전|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf05隊伍首領-燃燒的遠征|r
 ## Author: Arta/MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -17,11 +18,13 @@
 ## X-DBM-Mod-SubCategories-ruRU: Бастионы Адского Пламени,Кузня Крови,Разрушенные залы,Узилище,Нижетопь,Паровое подземелье,Аукенайские гробницы,Гробницы Маны,Сетеккские залы,Темный лабиринт,Старые предгорья Хилсбрада,Черные топи,Механар,Ботаника,Аркатрац,Терраса Магистров
 ## X-DBM-Mod-SubCategories-esES: Murallas del Fuego Infernal,El Horno de Sangre,Las Salas Arrasadas,Recinto de los Esclavos,La Sotiénaga,La Cámara de Vapor,Criptas Auchenai,Tumbas de Maná,Salas Sethekk,Laberinto de las Sombras,Antiguas Laderas de Trabalomas,La Ciénaga Negra,El Mechanar,El Invernáculo,El Arcatraz,Bancal del Magister
 ## X-DBM-Mod-SubCategories-koKR: 지옥불 성루,피의 용광로,으스러진 손의 전당,강제 노역소,지하수렁,증기 저장고,아키나이 납골당,마나 무덤,세데크 전당,어둠의 미궁,옛 언덕마루 구릉지,검은늪,메카나르,신록의 정원,알카트라즈,마법학자의 정원
+## X-DBM-Mod-SubCategories-zhTW: 地獄火壁壘,血熔爐,破碎大廳,奴隸監獄,深幽泥沼,蒸汽洞窟,奧奇奈地穴,法力墓地,塞司克大廳,暗影迷宮,逃離敦霍爾德,開啟黑暗之門,麥克納爾,波塔尼卡,亞克崔茲,博學者殿堂
 ## X-DBM-Mod-Name: Party-BC
 ## X-DBM-Mod-Name-deDE: Gruppe (BC)
 ## X-DBM-Mod-Name-ruRU: Групповые подземелья-BC
 ## X-DBM-Mod-Name-esES: Mazmorras TBC
 ## X-DBM-Mod-Name-koKR: 5인 던전 (불타는 성전)
+## X-DBM-Mod-Name-zhTW: 隊伍首領(燃燒的遠征)
 ## X-DBM-Mod-Sort: 325
 ## X-DBM-Mod-MapID: 540,558,556,555,542,546,545,547,553,554,552,557,269,560,543,585
 localization.en.lua
@@ -29,6 +32,7 @@ localization.de.lua
 localization.kr.lua
 localization.ru.lua
 localization.es.lua
+localization.tw.lua
 Hellfire_Ramp\Gargolmar.lua
 Hellfire_Ramp\Omor.lua
 Hellfire_Ramp\Vazruden.lua
