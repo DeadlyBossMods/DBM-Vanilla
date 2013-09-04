@@ -63,7 +63,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "為戰鬥開始顯示計時器",
+	TimerCombatStart	= "為戰鬥開始顯示計時器"
 }
 
 L:SetMiscLocalization{

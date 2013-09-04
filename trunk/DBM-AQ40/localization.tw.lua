@@ -56,7 +56,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "提示冰凍狀態",
-	WarnShatter	= "提示打碎狀態",
+	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
 	Slow	= "begins to slow",

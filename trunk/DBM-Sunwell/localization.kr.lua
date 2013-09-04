@@ -21,13 +21,13 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPortal			= "$spell:46021 대상 알림 보기",
-	SpecWarnWildMagic	= "마법 폭주 주문의 영향을 받은 경우 특수 경고 보기",
-	TimerNextPortal		= "다음 차원문 바 표시",
+	SpecWarnWildMagic	= "마법 폭주 대상이 된 경우 특수 경고 보기",
+	TimerNextPortal		= "다음 차원문 바 보기",
 	RangeFrame			= "거리 창 보기",
-	ShowFrame			= "내부 공격대원을 보여주는 정보 창 보기" ,
-	FrameClassColor		= "정보 창 직업 색상 사용하기",
-	FrameUpwards		= "정보 창 바를 위쪽으로 확장하기",
-	FrameLocked			= "정보 창 고정하기(이동불가로 설정)"
+	ShowFrame			= "내부 세계에 있는 공격대원을 별도 창으로 보기" ,
+	FrameClassColor		= "내부 세계 창 직업 색상 사용하기",
+	FrameUpwards		= "내부 세계 창 바를 위쪽으로 확장하기",
+	FrameLocked			= "내부 세계 창 고정하기(이동불가로 설정)"
 }
 
 L:SetMiscLocalization{
@@ -43,7 +43,7 @@ L:SetMiscLocalization{
 	FrameClassColor		= "직업 색상 사용",
 	FrameOrientation	= "위로 확장",
 	FrameHide			= "프레임 숨김",
-	FrameClose			= "메뉴 닫기",
+	FrameClose			= "메뉴 닫기"
 }
 
 ----------------
@@ -55,20 +55,13 @@ L:SetGeneralLocalization{
 	name = "브루탈루스"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
-	BurnIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(46394),
-	BurnWhisper		= "$spell:46394 대상에게 귓속말 보내기",
+	BurnWhisper		= "$spell:46394 대상에게 귓속말 보내기"
 }
 
 L:SetMiscLocalization{
 	Pull			= "하, 새끼 양이 잔뜩 몰려오는구나!",
-	BurnWhisper		= "당신에게 불사르기!",
+	BurnWhisper		= "당신에게 불사르기!"
 }
 
 --------------
@@ -92,11 +85,9 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPhase		= "단계 전환 알림 보기",
-	WarnPhaseSoon	= "단계 전환 사전 알림 보기",
-	TimerPhase		= "다음 단계 바 표시",
-	VaporIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45392),
-	EncapsIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45665),
-	YellOnEncaps	= "$spell:45665 주문의 영향을 받은 경우 대화로 알리기"
+	WarnPhaseSoon	= "단계 전환 이전에 알림 보기",
+	TimerPhase		= "다음 단계 바 보기",
+	YellOnEncaps	= "$spell:45665 대상이 된 경우 대화로 알리기"
 }
 
 L:SetMiscLocalization{
@@ -116,18 +107,10 @@ L:SetGeneralLocalization{
 	name = "에레다르 쌍둥이"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
-	NovaIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45329),
-	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
 	RangeFrame		= "거리 창 보기",
 	NovaWhisper		= "$spell:45329 대상에게 귓속말 보내기",
-	ConflagWhisper	= "$spell:45333 대상에게 귓속말 보내기",
+	ConflagWhisper	= "$spell:45333 대상에게 귓속말 보내기"
 }
 
 L:SetMiscLocalization{
@@ -164,13 +147,13 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnHuman		= "타락한 엘프 알림 보기",
-	WarnHumanSoon	= "타락한 엘프 사전 알림 보기",
+	WarnHumanSoon	= "타락한 엘프 이전에 알림 보기",
 	WarnVoid		= "공허의 파수병 알림 보기",
-	WarnVoidSoon	= "공허의 파수병 사전 알림 보기",
+	WarnVoidSoon	= "공허의 파수병 이전에 알림 보기",
 	WarnFiend		= "어둠 마귀 알림 보기",
-	TimerHuman		= "다음 타락한 엘프 바 표시",
-	TimerVoid		= "다음 공허의 파수병 바 표시",
-	TimerPhase		= "2 단계 전환 바 표시"
+	TimerHuman		= "다음 타락한 엘프 바 보기",
+	TimerVoid		= "다음 공허의 파수병 바 보기",
+	TimerPhase		= "2 단계 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -202,10 +185,9 @@ L:SetOptionLocalization{
 	WarnBlueOrb		= "푸른용의 수정구 알림 보기",
 	SpecWarnDarkOrb	= "보호의 구슬이 공격 중 일때 특수 경고 보기",
 	SpecWarnBlueOrb	= "푸른용의 수정구 활성화 특수 경고 보기",
-	TimerBlueOrb	= "푸른용의 수정구 활성화 바 표시",
+	TimerBlueOrb	= "푸른용의 수정구 활성화 바 보기",
 	RangeFrame		= "거리 창 보기",
-	BloomIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45641),
-	YellOnBloom		= "$spell:45641 주문의 영향을 받은 경우 대화로 알리기",
+	YellOnBloom		= "$spell:45641 대상이 된 경우 대화로 알리기",
 	BloomWhisper	= "$spell:45641 대상에게 귓속말 보내기"
 }
 

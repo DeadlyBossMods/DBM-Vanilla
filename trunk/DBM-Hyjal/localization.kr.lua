@@ -66,9 +66,9 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnWave		= "다음 공격 알림 보기",
-	WarnWaveSoon	= "다음 공격 사전 알림 보기",
-	DetailedWave	= "다음 공격 알림시 몬스터 조합까지 자세히 보기",
-	TimerWave		= "다음 공격 바 표시"
+	WarnWaveSoon	= "다음 공격 이전에 알림 보기",
+	DetailedWave	= "다음 공격 알림시 적 조합까지 자세히 보기",
+	TimerWave		= "다음 공격 바 보기"
 }
 
 L:SetMiscLocalization{

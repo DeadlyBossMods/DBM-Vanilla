@@ -126,7 +126,7 @@ L:SetOptionLocalization{
 	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
 	RangeFrame		= "Zeige Abstandsfenster (10m)",
 	NovaWhisper		= "Ziel von $spell:45329 anflüstern (benötigt Schlachtzugleitung)",
-	ConflagWhisper	= "Ziel von $spell:45333 anflüstern (benötigt Schlachtzugleitung)",
+	ConflagWhisper	= "Ziel von $spell:45333 anflüstern (benötigt Schlachtzugleitung)"
 }
 
 L:SetMiscLocalization{

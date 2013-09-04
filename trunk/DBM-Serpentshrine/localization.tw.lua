@@ -13,7 +13,7 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnMark 		= "%s:%s",
 	WarnPhase		= "%s階段",
-	SpecWarnMark	= "%s:%s",
+	SpecWarnMark	= "%s:%s"
 }
 
 L:SetTimerLocalization{
@@ -125,7 +125,7 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnMurlocs		= "魚人出現",
-	SpecWarnMurlocs	= "魚人出現!",
+	SpecWarnMurlocs	= "魚人出現!"
 }
 
 L:SetTimerLocalization{

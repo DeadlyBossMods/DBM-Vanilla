@@ -256,15 +256,15 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerNextPortal		= "차원문 #%d",
+	TimerNextPortal		= "차원문 #%d"
 })
 
 L:SetOptionLocalization({
-    WarnWavePortalSoon	= "다음 차원문 사전 알림 보기",
+    WarnWavePortalSoon	= "다음 차원문 이전에 알림 보기",
     WarnWavePortal		= "차원문 알림 보기",
     WarnBossPortal		= "우두머리 등장 알림 보기",
-	TimerNextPortal		= "우두머리 처치 이후 다음 차원문 바 표시",
-	ShowAllPortalTimers	= "모든 차원문 바 표시(부정확할 수 있음)"
+	TimerNextPortal		= "우두머리 처치 이후 다음 차원문 바 보기",
+	ShowAllPortalTimers	= "모든 차원문 바 보기(부정확함)"
 })
 
 L:SetMiscLocalization({

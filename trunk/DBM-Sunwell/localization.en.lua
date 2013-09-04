@@ -42,7 +42,7 @@ L:SetMiscLocalization{
 	FrameClassColor		= "Use Class Colors",
 	FrameOrientation	= "Expand upwards",
 	FrameHide			= "Hide Frame",
-	FrameClose			= "Close",
+	FrameClose			= "Close"
 }
 
 ----------------
@@ -62,12 +62,12 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	BurnIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(46394),
-	BurnWhisper		= "Send whisper to $spell:46394 targets (requires Raid Leader)",
+	BurnWhisper		= "Send whisper to $spell:46394 targets (requires Raid Leader)"
 }
 
 L:SetMiscLocalization{
 	Pull			= "Ah, more lambs to the slaughter!",
-	BurnWhisper		= "Burn on you!",
+	BurnWhisper		= "Burn on you!"
 }
 
 --------------
@@ -125,7 +125,7 @@ L:SetOptionLocalization{
 	ConflagIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(45333),
 	RangeFrame		= "Show range frame (10 yards)",
 	NovaWhisper		= "Send whisper to $spell:45329 target (requires Raid Leader)",
-	ConflagWhisper	= "Send whisper to $spell:45333 target (requires Raid Leader)",
+	ConflagWhisper	= "Send whisper to $spell:45333 target (requires Raid Leader)"
 }
 
 L:SetMiscLocalization{

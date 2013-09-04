@@ -59,7 +59,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Verkünde Einfrieren Status",
-	WarnShatter	= "Verkünde Zerspringen Status",
+	WarnShatter	= "Verkünde Zerspringen Status"
 }
 L:SetMiscLocalization{
 	Slow	= "wird langsamer",
@@ -126,7 +126,7 @@ L:SetOptionLocalization{
 	RangeFrame	= "Zeige Abstandsfenster (10m)"
 }
 L:SetMiscLocalization{
-	Weakened 	= "C'Thun ist geschwächt!",
+	Weakened 	= "C'Thun ist geschwächt!"
 }
 ----------------
 -- Ouro --

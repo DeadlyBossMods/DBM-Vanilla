@@ -10,10 +10,6 @@ L:SetGeneralLocalization{
 	name = "예언자 스케람"
 }
 
-L:SetOptionLocalization{
-	SetIconOnMC		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(785)
-}
-
 ----------------
 -- Three Bugs --
 ----------------
@@ -58,8 +54,8 @@ L:SetWarningLocalization{
 	WarnShatter	= "분해 : %d/3"
 }
 L:SetOptionLocalization{
-	WarnFreeze	= "빙결 상태 알림 보기",
-	WarnShatter	= "분해 상태 알림 보기",
+	WarnFreeze	= "빙결 알림 보기",
+	WarnShatter	= "분해 알림 보기"
 }
 L:SetMiscLocalization{
 	Slow	= "느려지기 시작했습니다!",
@@ -118,11 +114,11 @@ L:SetOptionLocalization{
 	WarnGiantEyeTentacle	= "거대한 눈달린 촉수 알림 보기",
 	WarnGiantClawTentacle	= "거대한 발톱 촉수 알림 보기",
 	WarnWeakened			= "약화 알림 보기",
-	TimerEyeTentacle		= "다음 눈달린 촉수 바 표시",
-	TimerGiantEyeTentacle	= "다음 거대한 눈달린 촉수 바 표시",
-	TimerClawTentacle		= "다음 발톱 촉수 바 표시",
-	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수 바 표시",
-	TimerWeakened			= "약화 유지시간 바 표시",
+	TimerEyeTentacle		= "다음 눈달린 촉수 바 보기",
+	TimerGiantEyeTentacle	= "다음 거대한 눈달린 촉수 바 보기",
+	TimerClawTentacle		= "다음 발톱 촉수 바 보기",
+	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수 바 보기",
+	TimerWeakened			= "약화 유지시간 바 보기",
 	RangeFrame				= "거리 창 보기"
 }
 L:SetMiscLocalization{
@@ -148,9 +144,9 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
-	WarnSubmergeSoon	= "잠수 사전 알림 보기",
-	TimerSubmerge		= "다음 잠수 바 표시",
+	WarnSubmergeSoon	= "잠수 이전에 알림 보기",
+	TimerSubmerge		= "다음 잠수 바 보기",
 	WarnEmerge			= "등장 알림 보기",
-	WarnEmergeSoon		= "등장 사전 알림 보기",
-	TimerEmerge			= "다음 등장 바 표시"
+	WarnEmergeSoon		= "등장 이전에 알림 보기",
+	TimerEmerge			= "다음 등장 바 보기"
 }
