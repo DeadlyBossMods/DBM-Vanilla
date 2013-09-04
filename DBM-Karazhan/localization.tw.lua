@@ -9,12 +9,6 @@ L:SetGeneralLocalization{
 	name = "獵人阿圖曼"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
 	DBM_ATH_YELL_1		= "來吧午夜，讓我們驅散這群小規模的烏合之眾!",
 	KillAttumen			= "Always knew... someday I would become... the hunted."
@@ -29,11 +23,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_MOROES_VANISH_FADED	= "摩洛失去消失"
+	DBM_MOROES_VANISH_FADED	= "消失退去"
 }
 
 L:SetOptionLocalization{
-	DBM_MOROES_VANISH_FADED	= "Show vanish fade warning"
+	DBM_MOROES_VANISH_FADED	= "為消失退去顯示警告"
 }
 
 L:SetMiscLocalization{
@@ -48,14 +42,8 @@ L:SetGeneralLocalization{
 	name = "貞潔聖女"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetOptionLocalization{
-	RangeFrame			= "Show range frame (10)"
-}
-
-L:SetMiscLocalization{
+	RangeFrame			= "顯示距離框架(10碼)"
 }
 
 
@@ -67,12 +55,20 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
+	warningPosion	= "%s on >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
+}
+
+L:SetTimerLocalization{
+	TimerCombatStart	= "戰鬥開始"
 }
 
 L:SetOptionLocalization{
+	TimerCombatStart	= "為戰鬥開始顯示計時器",
 }
 
 L:SetMiscLocalization{
+	Event				= "Tonight... we explore a tale of forbidden love!",
+	RJ_Pull				= "What devil art thou, that dost torment me thus?",
 	DBM_RJ_PHASE2_YELL	= "來吧，溫和的夜晚；把我的羅慕歐還給我!",
 	Romulo				= "羅慕歐",
 	Julianne			= "茱麗葉"
@@ -84,13 +80,6 @@ L = DBM:GetModLocalization("BigBadWolf")
 
 L:SetGeneralLocalization{
 	name = "大野狼"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	RRHIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(30753)
 }
 
 L:SetMiscLocalization{
@@ -105,14 +94,8 @@ L:SetGeneralLocalization{
 	name = "館長"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
-	RangeFrame			= "Show range frame (10)"
+	RangeFrame			= "顯示距離框架(10碼)"
 }
 
 L:SetMiscLocalization{
@@ -126,15 +109,6 @@ L = DBM:GetModLocalization("TerestianIllhoof")
 
 L:SetGeneralLocalization{
 	name = "泰瑞斯提安·疫蹄"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
@@ -155,15 +129,10 @@ L:SetWarningLocalization{
 	DBM_ARAN_DO_NOT_MOVE	= "烈焰火圈，不要動！"
 }
 
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "Show special warning for $spell:30004"
+	DBM_ARAN_DO_NOT_MOVE	= "為$spell:30004顯示特別警告"
 }
 
-L:SetMiscLocalization{
-}
 
 
 --Netherspite
@@ -205,15 +174,6 @@ L = DBM:GetModLocalization("Prince")
 
 L:SetGeneralLocalization{
 	name = "莫克札王子"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
@@ -264,12 +224,6 @@ L = DBM:GetModLocalization("Oz")
 
 L:SetGeneralLocalization{
 	name = "綠野仙蹤"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
