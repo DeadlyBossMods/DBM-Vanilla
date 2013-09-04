@@ -34,15 +34,12 @@ L:SetGeneralLocalization{
 	name = "마그테리돈"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetTimerLocalization{
 	timerP2	= "2 단계"
 }
 
 L:SetOptionLocalization{
-	timerP2	= "2 단계 시작 바 표시"
+	timerP2	= "2 단계 시작 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -58,13 +55,6 @@ L:SetGeneralLocalization{
 	name = "파멸의 군주 카자크"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	SetIconOnMark		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32960)
-}
-
 L:SetMiscLocalization{
 	DBM_KAZZAK_EMOTE_ENRAGE		= "%s|1이;가; 분노에 휩싸입니다!"--확인필요
 }
@@ -74,12 +64,6 @@ L = DBM:GetModLocalization("Doomwalker")
 
 L:SetGeneralLocalization{
 	name = "파멸의 절단기"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{

@@ -117,7 +117,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnRageEnd		= "Fel Rage End",
+	WarnRageEnd		= "Fel Rage End"
 }
 
 L:SetTimerLocalization{

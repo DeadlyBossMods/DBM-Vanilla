@@ -59,7 +59,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Anunciar el estado de Congelación",
-	WarnShatter	= "Anunciar el estado de rotura",
+	WarnShatter	= "Anunciar el estado de rotura"
 }
 L:SetMiscLocalization{
 	Phase4 	= "empieza a agrietarse",

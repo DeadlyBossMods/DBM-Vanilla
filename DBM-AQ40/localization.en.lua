@@ -59,7 +59,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Announce Freeze status",
-	WarnShatter	= "Announce Shatter status",
+	WarnShatter	= "Announce Shatter status"
 }
 L:SetMiscLocalization{
 	Slow	= "begins to slow",

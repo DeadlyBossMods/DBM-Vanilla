@@ -33,7 +33,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "Garr (Classic)"
+	name = "Garr"
 }
 
 --------------
@@ -95,7 +95,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "Ragnaros (Classic)"
+	name = "Ragnaros"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submerge",

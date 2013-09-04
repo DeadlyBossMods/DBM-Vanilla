@@ -79,7 +79,7 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerPhase		= "下一次%s階段",
+	TimerPhase		= "下一次%s階段"
 }
 
 L:SetOptionLocalization{
@@ -116,7 +116,7 @@ L:SetMiscLocalization{
 	NovaWhisper		= "你中了暗影新星!",
 	ConflagWhisper	= "你中了燃燒!",
 	Nova			= "莎珂蕾希對(.+)施放暗影新星",
-	Conflag			= "艾黎瑟絲對(.+)施放燃燒"
+	Conflag			= "艾黎瑟絲對(.+)施放燃燒",
 	Sacrolash		= "莎珂蕾希女士",
 	Alythess		= "大術士艾黎瑟絲"
 }

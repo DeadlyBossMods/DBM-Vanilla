@@ -15,7 +15,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "단상 머무름 바 표시(더 빨리 떠날수 는 있으나 더 늦게 떠나진 않습니다.)"
+	NextPlatform	= "단상 머무름 바 보기(더 빨리 떠날수는 있으나 더 늦게 떠나진 않습니다.)"
 }
 
 ------------------
@@ -52,20 +52,20 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnSplit		= "분리 알림 보기",
-	WarnSplitSoon	= "분리 사전 알림 보기",
+	WarnSplitSoon	= "분리 이전에 알림 보기",
 	WarnAgent		= "요원 등장 알림 보기",
 	WarnPriest		= "사제/솔라리안 등장 알림 보기",
-	TimerSplit		= "다음 분리 바 표시",
-	TimerAgent		= "다음 요원 바 표시",
-	TimerPriest		= "다음 사제/솔라리안 바 표시",
-	WrathWhisper	= "$spell:42783 대상에게 귓속말 보내기",
+	TimerSplit		= "다음 분리 바 보기",
+	TimerAgent		= "다음 요원 바 보기",
+	TimerPriest		= "다음 사제/솔라리안 바 보기",
+	WrathWhisper	= "$spell:42783 대상에게 귓속말 보내기"
 }
 
 L:SetMiscLocalization{
 	WrathWhisper	= "당신에게 분노!",
 	YellSplit1		= "그 오만한 콧대를 꺾어주마!",
 	YellSplit2		= "한 줌의 희망마저 짓밟아주마!",
-	YellPhase2		= "나는 공허의",
+	YellPhase2		= "나는 공허의"
 }
 
 ---------------------------
@@ -88,7 +88,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerPhase		= "다음 단계",
 	TimerPhase1mob	= "%s",
-	TimerNextGaze	= "추적 대상 전환",
+	TimerNextGaze	= "추적 대상 변경",
 	TimerRebirth	= "불사조 환생 가능"
 }
 
@@ -96,15 +96,15 @@ L:SetOptionLocalization{
 	WarnGaze		= "탈라드레드 추적 대상 알림 보기",
 	WarnMobDead		= "무기 처치 알림 보기",
 	WarnEgg			= "불사조 알 생성 알림 보기",
-	SpecWarnGaze	= "탈라드레드 추적 대상이 될 경우 특수 경고 보기",
+	SpecWarnGaze	= "탈라드레드 추적 대상이 된 경우 특수 경고 보기",
 	SpecWarnEgg		= "불사조 알 생성 특수 경고 보기",
-	TimerPhase		= "단계 전환 바 표시",
-	TimerPhase1mob	= "1단계 조언가 등장 바 표시",
-	TimerNextGaze	= "탈라드레드 추적 대상 전환 바 표시",
-	TimerRebirth	= "불사조 알이 환생까지 남은시간 바 표시",
+	TimerPhase		= "다음 단계 바 보기",
+	TimerPhase1mob	= "1단계 조언가 등장 바 보기",
+	TimerNextGaze	= "탈라드레드 추적 대상 변경 바 보기",
+	TimerRebirth	= "불사조 알 환생 가능 바 보기",
 	RangeFrame		= "거리 창 보기",
 	GazeWhisper		= "탈라드레드 추적 대상에게 귓속말 보내기",
-	GazeIcon		= "탈라드레드 추적 대상에게 전술 목표 아이콘 설정",
+	GazeIcon		= "탈라드레드 추적 대상에게 전술 목표 아이콘 설정"
 }
 
 L:SetMiscLocalization{

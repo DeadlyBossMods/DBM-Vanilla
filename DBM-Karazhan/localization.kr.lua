@@ -8,12 +8,6 @@ L:SetGeneralLocalization{
 	name = "사냥꾼 어튜멘"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
 	DBM_ATH_YELL_1		= "이랴! 이 오합지졸을 데리고 실컷 놀아보자!",
 	KillAttumen			= "아아! 언젠간 나도... 당할 날이 올 줄... 알았다..."
@@ -47,14 +41,8 @@ L:SetGeneralLocalization{
 	name = "고결의 여신"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetOptionLocalization{
 	RangeFrame			= "거리 창 보기(10m)"
-}
-
-L:SetMiscLocalization{
 }
 
 
@@ -66,7 +54,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	warningPosion	= "%s : >%s< (%d)",
+	warningPosion	= "%s : >%s< (%d)"
 }
 
 L:SetTimerLocalization{
@@ -74,8 +62,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 바 표시",
-	warningPosion		= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830)
+	TimerCombatStart	= "전투 시작 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -94,13 +81,6 @@ L:SetGeneralLocalization{
 	name = "커다란 나쁜 늑대"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	RRHIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(30753)
-}
-
 L:SetMiscLocalization{
 	DBM_BBW_YELL_1			= "잡아 먹기 좋으라고 그런거지!"
 }
@@ -111,12 +91,6 @@ L = DBM:GetModLocalization("Curator")
 
 L:SetGeneralLocalization{
 	name = "전시 관리인"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
@@ -134,15 +108,6 @@ L = DBM:GetModLocalization("TerestianIllhoof")
 
 L:SetGeneralLocalization{
 	name = "테레스티안 일후프"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
@@ -168,13 +133,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerSpecial			= "다음 신비한 폭발 바 표시",
-	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 시전시 특수 경고 보기",
-	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정",
-	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
-}
-
-L:SetMiscLocalization{
+	timerSpecial			= "다음 신비한 폭발 바 보기",
+	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 특수 경고 보기",
+	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정"
 }
 
 
@@ -198,12 +159,12 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "차원문 단계 사전 알림 보기",
-	DBM_NS_WARN_BANISH_SOON	= "소멸 단계 사전 알림 보기",
+	DBM_NS_WARN_PORTAL_SOON	= "차원문 단계 이전에 알림 보기",
+	DBM_NS_WARN_BANISH_SOON	= "소멸 단계 이전에 알림 보기",
 	warningPortal			= "차원문 단계 알림 보기",
 	warningBanish			= "소멸 단계 알림 보기",
-	timerPortalPhase		= "차원문 단계 유지시간 바 표시",
-	timerBanishPhase		= "소멸 단계 유지시간 바 표시"
+	timerPortalPhase		= "차원문 단계 유지시간 바 보기",
+	timerBanishPhase		= "소멸 단계 유지시간 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -223,7 +184,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerCheat	= "속임수 대기시간 바 표시"
+	timerCheat	= "속임수 대기시간 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -235,15 +196,6 @@ L = DBM:GetModLocalization("Prince")
 
 L:SetGeneralLocalization{
 	name = "공작 말체자르"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
@@ -275,9 +227,9 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	DBM_NB_AIR_WARN			= "공중 단계 알림 보기",
-	PrewarnGroundPhase		= "착지 사전 알림 보기",
-	timerNightbane			= "전투 시작 바 표시",
-	timerAirPhase			= "공중 단계 유지시간 바 표시"
+	PrewarnGroundPhase		= "착지 이전에 알림 보기",
+	timerNightbane			= "전투 시작 바 보기",
+	timerAirPhase			= "공중 단계 유지시간 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -313,7 +265,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	AnnounceBosses			= "우두머리 등장 알림 보기",
-	ShowBossTimers			= "우두머리 등장 바 표시",
+	ShowBossTimers			= "우두머리 등장 바 보기",
 	DBM_OZ_OPTION_1			= "2 단계에서 거리 창 보기"
 }
 

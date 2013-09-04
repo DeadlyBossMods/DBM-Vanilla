@@ -118,7 +118,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnRageEnd		= "Teufelswut Ende",
+	WarnRageEnd		= "Teufelswut Ende"
 }
 
 L:SetTimerLocalization{

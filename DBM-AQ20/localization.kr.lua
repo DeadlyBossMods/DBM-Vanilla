@@ -12,9 +12,6 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnWound	= "%s : >%s< (%s)"
 }
-L:SetOptionLocalization{
-	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646)
-}
 ------------
 -- Rajaxx --
 ------------
@@ -24,11 +21,11 @@ L:SetGeneralLocalization{
 	name 		= "장군 라작스"
 }
 L:SetWarningLocalization{
-	WarnWave	= "웨이브 %s",
+	WarnWave	= "공격 #%s",
 	WarnBoss	= "라작스 등장"
 }
 L:SetOptionLocalization{
-	WarnWave	= "다음 웨이브 알림"
+	WarnWave	= "다음 공격 알림"
 }
 L:SetMiscLocalization{
 	NpcPull		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",--확인필요
@@ -61,12 +58,11 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnPursue		= "추적 : >%s<",
 	SpecWarnPursue	= "당신을 추적!",
-	WarnDismember	= "%s : >%s< (%s)",
+	WarnDismember	= "%s : >%s< (%s)"
 }
 L:SetOptionLocalization{
 	WarnPursue		= "추적 대상 알림 보기",
-	SpecWarnPursue	= "당신을 추적할 때 특수 경고 표시",
-	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96)
+	SpecWarnPursue	= "추적 대상이 된 경우 특수 경고 보기"
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "시선을"--확인필요
@@ -97,5 +93,5 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnVulnerable	= "약화 알림 보기",
-	TimerVulnerable	= "약화 바 표시"
+	TimerVulnerable	= "약화 바 보기"
 }

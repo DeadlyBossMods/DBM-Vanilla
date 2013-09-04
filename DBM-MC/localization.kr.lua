@@ -34,7 +34,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "가르(오리지널)"
+	name = "가르"
 }
 
 --------------
@@ -44,10 +44,6 @@ L = DBM:GetModLocalization("Geddon")
 
 L:SetGeneralLocalization{
 	name = "남작 게돈"
-}
-
-L:SetOptionLocalization{
-	SetIconOnBombTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(20475)
 }
 
 ----------------
@@ -96,7 +92,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "라그나로스(오리지널)"
+	name = "라그나로스"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
@@ -110,13 +106,13 @@ L:SetTimerLocalization{
 	TimerEmerge			= "다음 등장"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 바 표시",
+	TimerCombatStart	= "전투 시작 바 보기",
 	WarnSubmerge		= "잠수 알림 보기",
-	WarnSubmergeSoon	= "잠수 사전 알림 보기",
-	TimerSubmerge		= "다음 잠수 바 표시",
+	WarnSubmergeSoon	= "잠수 이전에 알림 보기",
+	TimerSubmerge		= "다음 잠수 바 보기",
 	WarnEmerge			= "등장 알림 보기",
-	WarnEmergeSoon		= "등장 사전 알림 보기",
-	TimerEmerge			= "다음 등장 바 표시"
+	WarnEmergeSoon		= "등장 이전에 알림 보기",
+	TimerEmerge			= "다음 등장 바 보기"
 }
 L:SetMiscLocalization{
 	Submerge	= "나의 종들아",

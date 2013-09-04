@@ -88,7 +88,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnRageEnd		= "惡魔之怒結束",
+	WarnRageEnd		= "惡魔之怒結束"
 }
 
 L:SetTimerLocalization{
