@@ -98,8 +98,26 @@ L = DBM:GetModLocalization("CThun")
 L:SetGeneralLocalization{
 	name = "C'Thun"
 }
+L:SetWarningLocalization{
+	WarnEyeTentacle			= "Eye Tentacle",
+	WarnWeakened			= "C'Thun Weaken",
+	SpecWarnWeakened		= "C'Thun Weaken!"
+}
+L:SetTimerLocalization{
+	TimerEyeTentacle		= "Next Eye Tentacle",
+	TimerWeakened			= "Weaken ends"
+}
 L:SetOptionLocalization{
-	RangeFrame	= "Show range frame"
+	WarnEyeTentacle			= "Show warning for Eye Tentacle",
+	WarnWeakened			= "Show warning when boss weaken",
+	SpecWarnWeakened		= "Show special warning when boss weaken",
+	TimerEyeTentacle		= "Show timer for next Eye Tentacle",
+	TimerWeakened			= "Show timer for boss weaken duration",
+	RangeFrame				= "Show range frame (10)"
+}
+L:SetMiscLocalization{
+	Eye			= "Eye of C'Thun",
+	Weakened 	= "weaken"
 }
 ----------------
 -- Ouro --

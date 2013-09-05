@@ -83,7 +83,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Kill	= "Impossible! Stay your attack, mortals... I submit! I submit!"--확인필요
+	Kill	= "이럴 수가! 그만! 제발 그만! 내가 졌다! 내가 졌어!"
 }
 
 ----------------
@@ -115,6 +115,6 @@ L:SetOptionLocalization{
 	TimerEmerge			= "다음 등장 바 보기"
 }
 L:SetMiscLocalization{
-	Submerge	= "나의 종들아",
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"--확인필요
+	Submerge	= "나의 종들아! 어서 나와 주인을 돕거라!",
+	Pull		= "건방진 젖먹이! 죽고 싶어 안달이구나! 자, 보아라. 주인님께서 일어나신다!"
 }

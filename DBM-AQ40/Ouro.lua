@@ -9,70 +9,64 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
 	"SPELL_SUMMON",
 	"UNIT_HEALTH target focus mouseover"
 )
 
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
-local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+--local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local warnSweepSoon		= mod:NewSoonAnnounce(26103, 2)
-local warnBlastSoon		= mod:NewSoonAnnounce(26102, 2)
+local warnSweep			= mod:NewSpellAnnounce(26103, 2)
+local warnBlast			= mod:NewSpellAnnounce(26102, 4)
 local warnEnrage		= mod:NewSpellAnnounce(26615, 3)
 local warnEnrageSoon	= mod:NewSoonAnnounce(26615, 2)
 
-local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2)
+
+--local timerSubmerge		= mod:NewTimer(30, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local timerEmerge		= mod:NewTimer(30, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local timerSweepCD		= mod:NewCDTimer(21, 26103)
+local timerSweepCD		= mod:NewNextTimer(20.5, 26103)
 local timerBlast		= mod:NewCastTimer(2, 26102)
-local timerBlastCD		= mod:NewCDTimer(23, 26102)
+local timerBlastCD		= mod:NewNextTimer(23, 26102)
 
 local prewarn_enrage = false
 local enraged = false
 
 function mod:OnCombatStart(delay)
-	timerSubmerge:Start(-delay)
-	warnSubmergeSoon:Schedule(170)
 	prewarn_enrage = false
 	enraged = false
 end
 
 function mod:Submerge()
 	warnEmerge:Show()
-	warnSubmergeSoon:Schedule(170)
-	timerSubmerge:Start()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 26615 then
 		enraged = true
 		warnEnrage:Show()
-		warnSubmergeSoon:Cancel()
-		timerSubmerge:Cancel()
 	end
 end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 26102 then
-		timerBlastCD:Start()
+		warnBlast:Show()
+		specWarnBlast:Show()
 		timerBlast:Start()
-		warnBlastSoon:Schedule(18)
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26103 then
+		timerBlastCD:Start()
+	elseif args.spellId == 26103 then
+		warnSweep:Show()
 		timerSweepCD:Start()
-		warnSweepSoon:Schedule(16)
 	end
 end
 
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 26058 and self:AntiSpam(3) and not enraged then
-		warnSubmergeSoon:Cancel()
+		timerBlastCD:Cancel()
+		timerSweepCD:Cancel()
 		warnSubmerge:Show()
+		warnEmergeSoon:Schedule(25)
 		timerEmerge:Start()
 		self:ScheduleMethod(30, "Submerge")
 	end

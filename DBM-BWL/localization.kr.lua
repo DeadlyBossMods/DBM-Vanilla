@@ -10,14 +10,14 @@ L:SetGeneralLocalization{
 	name = "폭군 서슬송곳니"
 }
 L:SetTimerLocalization{
-	TimerAddsSpawn	= "추가 병력 소환"
+	TimerAddsSpawn	= "추가 병력 등장"
 }
 L:SetOptionLocalization{
-	TimerAddsSpawn	= "첫번째 추가 병력 소환 바 보기"
+	TimerAddsSpawn	= "첫번째 추가 병력 등장 바 보기"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "Orb of Domination loses power and shuts off!",--확인필요
-	YellPull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--확인필요
+	Phase2Emote	= "지배의 수정구가 힘을 잃고 작동을 멈춥니다!",
+	YellPull 	= "침입자들이 들어왔다! 어떤 희생이 있더라도 알을 반드시 수호하라!"
 }
 -------------------
 --  Vaelastrasz  --
@@ -37,7 +37,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Event				= "Too late, friends! Nefarius' corruption has taken hold...I cannot...control myself."--확인필요
+	Event	= "너무 늦었어! 네파리우스의 타락이 뿌리를 내려... 난... 나 자신을 통제할 수가 없어."
 }
 -----------------
 --  Broodlord  --
@@ -49,7 +49,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull	= "None of your kind should be here!  You've doomed only yourselves!"--확인필요
+	Pull	= "너희 같은 놈들이 올 곳은 아닌데... 죽음을 자초했구나!"
 }
 
 ---------------
@@ -131,9 +131,9 @@ L:SetOptionLocalization{
 	WarnPhase			= "단계 전환 알림 보기"
 }
 L:SetMiscLocalization{
-	YellPull		= "흐흐흐흐... 게임을 시작하자!",--확인필요
-	YellP2			= "잘했다! 적들의 사기가 떨어지고 있다! 검은바위 첨탑의 군주에게 도전한 대가를 치르게 해주자!",--확인필요
-	YellP3			= "말도 안 돼! 일어나라! 다시 한 번 너희 주인을 섬겨라!",--확인필요
+	YellPull		= "흐흐흐흐... 게임을 시작하자!",
+	YellP2			= "잘했다! 적들의 사기가 떨어지고 있다! 검은바위 첨탑의 군주에게 도전한 대가를 치르게 해주자!",
+	YellP3			= "말도 안 돼! 일어나라! 다시 한 번 너희 주인을 섬겨라!",
 	YellShaman		= "주술사",
 	YellPaladin		= "성기사",
 	YellDruid		= "드루이드",

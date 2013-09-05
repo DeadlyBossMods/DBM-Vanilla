@@ -95,34 +95,37 @@ L:SetGeneralLocalization{
 	name = "크툰"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle			= "눈달린 촉수",
-	WarnClawTentacle		= "발톱 촉수",
-	WarnGiantEyeTentacle	= "거대한 눈달린 촉수",
-	WarnGiantClawTentacle	= "거대한 발톱 촉수",
-	WarnWeakened			= "45초간 약화!"
+	WarnEyeTentacle			= "눈 달린 촉수",
+--	WarnClawTentacle		= "발톱 촉수",
+--	WarnGiantEyeTentacle	= "거대한 눈달린 촉수",
+--	WarnGiantClawTentacle	= "거대한 발톱 촉수",
+	WarnWeakened			= "크툰 약화",
+	SpecWarnWeakened		= "크툰 약화 - 지금 공격!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "다음 눈달린 촉수",
-	TimerGiantEyeTentacle	= "다음 거대한 눈달린 촉수",
-	TimerClawTentacle		= "다음 발톱 촉수",
-	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수",
-	TimerWeakened			= "약화 종료"
+	TimerEyeTentacle		= "다음 눈 달린 촉수",
+--	TimerGiantEyeTentacle	= "다음 거대한 눈 달린 촉수",
+--	TimerClawTentacle		= "다음 발톱 촉수",
+--	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수",
+	TimerWeakened			= "크툰 약화 종료"
 }
 L:SetOptionLocalization{
-	WarnEyeTentacle			= "눈달린 촉수 알림 보기",
-	WarnClawTentacle		= "발톱 촉수 알림 보기",
-	WarnGiantEyeTentacle	= "거대한 눈달린 촉수 알림 보기",
-	WarnGiantClawTentacle	= "거대한 발톱 촉수 알림 보기",
-	WarnWeakened			= "약화 알림 보기",
-	TimerEyeTentacle		= "다음 눈달린 촉수 바 보기",
-	TimerGiantEyeTentacle	= "다음 거대한 눈달린 촉수 바 보기",
-	TimerClawTentacle		= "다음 발톱 촉수 바 보기",
-	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수 바 보기",
-	TimerWeakened			= "약화 유지시간 바 보기",
-	RangeFrame				= "거리 창 보기"
+	WarnEyeTentacle			= "눈 달린 촉수 알림 보기",
+--	WarnClawTentacle		= "발톱 촉수 알림 보기",
+--	WarnGiantEyeTentacle	= "거대한 눈 달린 촉수 알림 보기",
+--	WarnGiantClawTentacle	= "거대한 발톱 촉수 알림 보기",
+	WarnWeakened			= "크툰 약화 알림 보기",
+	SpecWarnWeakened		= "크툰 약화 특수 경고 보기",
+	TimerEyeTentacle		= "다음 눈 달린 촉수 바 보기",
+--	TimerGiantEyeTentacle	= "다음 거대한 눈 달린 촉수 바 보기",
+--	TimerClawTentacle		= "다음 발톱 촉수 바 보기",
+--	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수 바 보기",
+	TimerWeakened			= "크툰 약화 유지시간 바 보기",
+	RangeFrame				= "거리 창 보기(10m)"
 }
 L:SetMiscLocalization{
-	Weakened 	= "약해집니다!",--확인필요
+	Eye			= "크툰의 눈",
+	Weakened 	= "약해집니다!"
 }
 ----------------
 -- Ouro --

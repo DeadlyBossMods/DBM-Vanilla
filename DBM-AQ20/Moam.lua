@@ -8,7 +8,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_SUCCESS"
+	"SPELL_AURA_REMOVED"
 )
 
 local warnStoneformSoon	= mod:NewSoonAnnounce(25685, 2)
@@ -18,20 +18,21 @@ local timerStoneform	= mod:NewNextTimer(90, 25685)
 local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685)
 
 function mod:OnCombatStart(delay)
-	timerStoneform:Start(-delay)
 	warnStoneformSoon:Schedule(80)
+	timerStoneform:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 25685 then
-		timerStoneformDur:Start()
 		warnStoneform:Show()
+		timerStoneformDur:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25685 then
-		timerStoneform:Start()
+		timerStoneformDur:Cancel()
 		warnStoneformSoon:Schedule(80)
+		timerStoneform:Start()
 	end
 end
