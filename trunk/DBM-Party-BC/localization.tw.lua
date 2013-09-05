@@ -1,4 +1,4 @@
-if GetLocale() ~= "zhTW" then return end
+﻿if GetLocale() ~= "zhTW" then return end
 local L
 
 -------------------------
@@ -280,7 +280,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Gyrokill")--Not in EJ
 
 L:SetGeneralLocalization({
-	name = "Gatewatcher Gyro-Kill"
+	name = "看守者蓋洛奇歐"
 })
 
 -----------------------------
@@ -289,11 +289,11 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("Ironhand")--Not in EJ
 
 L:SetGeneralLocalization({
-	name = "Gatewatcher Iron-Hand"
+	name = "看守者鐵手"
 })
 
 L:SetMiscLocalization({
-	JackHammer	= "%s raises his hammer menacingly..."
+	JackHammer	= "%s威嚇地舉起他的錘子..."
 })
 
 ------------------------------
@@ -361,7 +361,7 @@ L = DBM:GetModLocalization(550)
 L = DBM:GetModLocalization(551)
 
 L:SetMiscLocalization({
-	Split	= "We span the universe, as countless as the stars!"
+	Split	= "我們跨越宇宙之間，被我們摧毀的世界像星星一樣數不盡!"
 })
 
 --------------------------
@@ -372,7 +372,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization(530)
 
 L:SetMiscLocalization({
-	ChannelCrystal	= "%s begins to channel from the nearby Fel Crystal..."
+	ChannelCrystal	= "%s開始從附近的惡魔水晶進行導引，快摧毀它!"
 })
 
 ----------------
@@ -381,7 +381,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization(531)
 
 L:SetMiscLocalization({
-	Discharge	= "Un...con...tainable."
+	Discharge	= "無...法...控制。"
 })
 
 --------------------------
@@ -391,7 +391,7 @@ L = DBM:GetModLocalization(532)
 
 L:SetMiscLocalization({
 --	DelrissaPull	= "Annihilate them.",
-	DelrissaEnd		= "Not what I had... planned."
+	DelrissaEnd		= "跟我計畫的...不一樣。"
 })
 
 ------------------------------------
@@ -400,9 +400,9 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Kael")
 
 L:SetGeneralLocalization({
-	name = "�ͺ��Ĵ��P�v���(����)"
+	name = "凱爾薩斯·逐日者(隊伍)"
 })
 
 L:SetMiscLocalization({
-	KaelP2	= "I'll turn your world... upside... down."
+	KaelP2	= "我要讓你們的世界徹底顛覆。"
 })

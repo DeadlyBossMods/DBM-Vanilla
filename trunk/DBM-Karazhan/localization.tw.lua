@@ -10,8 +10,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_ATH_YELL_1		= "來吧午夜，讓我們驅散這群小規模的烏合之眾!",
-	KillAttumen			= "Always knew... someday I would become... the hunted."
+	DBM_ATH_YELL_1		= "來吧午夜，讓我們驅散這一群小規模的烏合之眾!",
+	KillAttumen			= "我一直都知道...總有一天我會變成...被獵殺的人。"
 }
 
 
@@ -31,7 +31,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_MOROES_YELL_START	= "嗯，突然上門的訪客。一定要好好準備"
+	DBM_MOROES_YELL_START	= "嗯，突然上門的訪客。一定要做好準備..."
 }
 
 
@@ -43,7 +43,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "顯示距離框架(10碼)"
+	RangeFrame	= "顯示距離框架(10碼)"
 }
 
 
@@ -55,7 +55,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	warningPosion	= "%s on >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
+	warningPosion	= ">%2$s<中了%1$s(%d)",
 }
 
 L:SetTimerLocalization{
@@ -68,7 +68,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Event				= "Tonight... we explore a tale of forbidden love!",
-	RJ_Pull				= "What devil art thou, that dost torment me thus?",
+	RJ_Pull				= "你是什麼樣的惡魔，讓我這樣的痛苦?",
 	DBM_RJ_PHASE2_YELL	= "來吧，溫和的夜晚；把我的羅慕歐還給我!",
 	Romulo				= "羅慕歐",
 	Julianne			= "茱麗葉"
@@ -83,7 +83,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_BBW_YELL_1			= "我想把你吃掉!"
+	DBM_BBW_YELL_1	= "我想把你吃掉!"
 }
 
 
@@ -95,12 +95,12 @@ L:SetGeneralLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "顯示距離框架(10碼)"
+	RangeFrame	= "顯示距離框架(10碼)"
 }
 
 L:SetMiscLocalization{
-	DBM_CURA_YELL_PULL		= "展示廳是賓客專屬的。",
-	DBM_CURA_YELL_OOM		= "無法處理你的要求。"
+	DBM_CURA_YELL_PULL	= "展示廳是賓客專屬的。",
+	DBM_CURA_YELL_OOM	= "無法處理你的要求。"
 }
 
 
@@ -112,9 +112,9 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_TI_YELL_PULL		= "啊，你來的正好。儀式正要開始!",
-	Kilrek					= "Kil'rek",
-	DChains					= "Demon Chains"
+	DBM_TI_YELL_PULL	= "啊，你來的正好。儀式正要開始!",
+	Kilrek	= "基瑞克",
+	DChains	= "惡魔鍊"
 }
 
 
@@ -155,12 +155,12 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Show pre-warning for Portal phase",
-	DBM_NS_WARN_BANISH_SOON	= "Show pre-warning for Banish phase",
-	warningPortal			= "Show warning for Portal phase",
-	warningBanish			= "Show warning for Banish phase",
-	timerPortalPhase		= "Show timer for Portal Phase duration",
-	timerBanishPhase		= "Show timer for Banish Phase duration"
+	DBM_NS_WARN_PORTAL_SOON	= "為光線門階段顯示預先警告",
+	DBM_NS_WARN_BANISH_SOON	= "為放逐階段顯示預先警告",
+	warningPortal			= "為光線門階段顯示警告",
+	warningBanish			= "為放逐階段顯示警告",
+	timerPortalPhase		= "為光線門階段持續時間顯示計時器",
+	timerBanishPhase		= "為放逐門階段持續時間顯示計時器"
 }
 
 L:SetMiscLocalization{
@@ -168,6 +168,24 @@ L:SetMiscLocalization{
 	DBM_NS_EMOTE_PHASE_1 	= "%s大聲呼喊撤退，打開通往虛空的門。"
 }
 
+--Chess
+L = DBM:GetModLocalization("Chess")
+
+L:SetGeneralLocalization{
+	name = "西洋棋事件"
+}
+
+L:SetTimerLocalization{
+	timerCheat	= "作弊冷卻"
+}
+
+L:SetOptionLocalization{
+	timerCheat	= "為作弊冷卻使用計時器"
+}
+
+L:SetMiscLocalization{
+	EchoCheats	= "麥迪文的回音作弊!"
+}
 
 --Prince Malchezaar
 L = DBM:GetModLocalization("Prince")
@@ -199,19 +217,19 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerNightbane			= "夜禍",
+	timerNightbane			= "夜禍落地",
 	timerAirPhase			= "空中階段"
 }
 
 L:SetOptionLocalization{
-	DBM_NB_AIR_WARN			= "Show warning for Air Phase",
-	PrewarnGroundPhase		= "Show pre-warnings for Ground Phase",
-	timerNightbane			= "Show timer for Nightbane summon",
-	timerAirPhase			= "Show timer for Air Phase duration"
+	DBM_NB_AIR_WARN			= "為空中階段顯示警告",
+	PrewarnGroundPhase		= "為地面階段顯示預先警告",
+	timerNightbane			= "為夜禍招喚顯示計時器",
+	timerAirPhase			= "為空中階段持續時間顯示計時器"
 }
 
 L:SetMiscLocalization{
-	DBM_NB_EMOTE_PULL 		= "一個古老的生物在遠處甦醒過來……",
+	DBM_NB_EMOTE_PULL 		= "一個古老的生物在遠處甦醒過來...",
 	DBM_NB_YELL_PULL 		= "真是蠢蛋!我會快點結束你的痛苦!",
 	DBM_NB_YELL_AIR 		= "悲慘的害蟲。我將讓你消失在空氣中!",
 	DBM_NB_YELL_GROUND 		= "夠了!我要親自挑戰你!",
@@ -227,8 +245,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetOptionLocalization{
-	AnnounceBosses			= "Show warnings for boss spawns",
-	ShowBossTimers			= "Show timers for boss spawns",
+	AnnounceBosses			= "為新的首領出現顯示警告",
+	ShowBossTimers			= "為新的首領出現顯示計時器",
 	DBM_OZ_OPTION_1			= "在第二階段顯示距離框"
 }
 
@@ -238,10 +256,10 @@ L:SetMiscLocalization{
 	DBM_OZ_WARN_STRAWMAN	= "稻草人",
 	DBM_OZ_WARN_TINHEAD		= "機器人",
 	DBM_OZ_WARN_CRONE		= "老巫婆",
-	DBM_OZ_YELL_DOROTHEE	= "喔多多，我們一定要找到回家的路!那個老巫師是我們唯一的希望!稻草人，獅子，機器人，你會 - 等等哦……天呀，快看，我們有訪客!",
+	DBM_OZ_YELL_DOROTHEE	= "喔多多，我們一定要找到回家的路!那個老巫師是我們唯一的希望!稻草人、獅子、機器人，你會 - 等等哦...天呀，快看，我們有訪客!",
 	DBM_OZ_YELL_ROAR		= "我不是害怕你!你想要戰鬥嗎?啊，你是嗎?來! 我將把兩支爪子放在背後跟你戰鬥!",
 	DBM_OZ_YELL_STRAWMAN	= "現在我該與你做什麼?我完全不能決定。",
-	DBM_OZ_YELL_TINHEAD		= "我真得能使用心。嗯，我能有你的心嗎?",
+	DBM_OZ_YELL_TINHEAD		= "我真的能使用心。嘿，我能有你的心嗎?",
 	DBM_OZ_YELL_CRONE		= "為你們每一個人感到不幸，我的小美人們!"
 }
 

@@ -64,9 +64,9 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	WrathWhisper	= "你中了星術師之怒!快跑離人群!!",
-	YellSplit1		= "I will crush your delusions of grandeur!",--Translate
-	YellSplit2		= "You are hopelessly outmatched!",--Translate
-	YellPhase2		= "I become"--Translate
+	YellSplit1		= "我會粉碎你那偉大的夢想",
+	YellSplit2		= "我的實力遠勝於你!",
+	YellPhase2		= "夠了!現在我要呼喚宇宙中失衡的能量。"
 }
 
 ---------------------------
@@ -109,9 +109,9 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	YellPull1	= "能量。力量。我的人民陷入其中不能自拔……自從太陽之井被摧毀之後就顯得更加明顯。歡迎來到未來。真遺憾，你們無法阻止什麼。沒有人可以阻止我了﹗(薩拉斯語)為了人民的正義!",
-	YellPhase2	= "你們看，我的個人收藏中有許多武器……",
-	YellPhase3	= "也許我低估了你。要你一次對付四位諫言者也許對你來說是不太公平，但是……我的人民從未得到公平的對待。我只是以牙還牙而已。",
+	YellPull1	= "能量。力量。我的人民陷入其中不能自拔...自從太陽之井被摧毀之後就顯得更加明顯。歡迎來到未來。真遺憾，你們無法阻止什麼。沒有人可以阻止我了﹗(薩拉斯語)為了人民的正義!",
+	YellPhase2	= "你們看，我的個人收藏中有許多武器...",
+	YellPhase3	= "也許我低估了你。要你一次對付四位諫言者也許對你來說是不太公平，但是...我的人民從未得到公平的對待。我只是以牙還牙而已。",
 	YellPhase4	= "唉，有些時候，有些事情，必須得親自解決才行。(薩拉斯語)受死吧!",
 	YellPhase5	= "我的心血是不會被你們輕易浪費的!我精心謀劃的未來是不會被你們輕易破壞的!感受我真正的力量吧!",
 	YellSang	= "你已經努力的打敗了我的幾位最忠誠的諫言者…但是沒有人可以抵抗血錘的力量。等著看桑古納爾的力量吧!",
