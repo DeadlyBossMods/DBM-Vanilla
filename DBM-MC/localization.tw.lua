@@ -34,7 +34,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "加爾(經典)"
+	name = "加爾"
 }
 
 --------------
@@ -83,7 +83,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Kill	= "Impossible! Stay your attack, mortals... I submit! I submit!"
+	Kill	= "不...不可能!等一下...我投降!我投降!"
 }
 
 ----------------
@@ -92,7 +92,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "拉格納羅斯(經典)"
+	name = "拉格納羅斯"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "隱沒",
@@ -116,5 +116,5 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Submerge	= "出現吧，我的奴僕! 保衛你們的主人!",
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"
+	Pull		= "你這個莽撞的傢伙!你簡直是自尋死路!看吧，你驚動了主人!"
 }

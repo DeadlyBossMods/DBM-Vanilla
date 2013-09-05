@@ -64,7 +64,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Spout	= "%s深深的吸了一口氣!"
+	Spout	= "%s深深地吸了一口氣!"
 }
 
 --------------------------
@@ -95,7 +95,7 @@ L:SetMiscLocalization{
 	Human		= "人形",
 	Demon		= "惡魔",
 	YellDemon	= "消失吧，微不足道的精靈。現在開始由我掌管!",
-	YellPhase2	= "不…不!你做了什麼?我是主人!你沒聽見我在說話嗎?我…..啊!無法…控制它。"
+	YellPhase2	= "不...不!你做了什麼?我是主人!你沒聽見我在說話嗎?我....啊!無法...控制它。"
 }
 
 -----------------------------
@@ -108,10 +108,10 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	YellPull	= "Guards, attention! We have visitors....",--Translate
-	Caribdis	= "Fathom-Guard Caribdis",--Translate
-	Tidalvess	= "Fathom-Guard Tidalvess",--Translate
-	Sharkkis	= "Fathom-Guard Sharkkis"--Translate
+	YellPull	= "守衛，注意!我們有訪客了...",
+	Caribdis	= "深淵守衛卡利迪斯",
+	Tidalvess	= "提達費斯",
+	Sharkkis	= "深淵守衛沙卡奇斯"
 }
 
 --------------------------
@@ -148,9 +148,9 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnElemental		= "污染的元素即將出現!(%s)",
-	WarnStrider			= "盤牙旅行者即將出現!(%s)",
-	WarnNaga			= "盤牙精英即將出現!(%s)",
+	WarnElemental		= "污染的元素即將出現! (%s)",
+	WarnStrider			= "盤牙旅行者即將出現! (%s)",
+	WarnNaga			= "盤牙精英即將出現! (%s)",
 	WarnShield			= "魔法屏障%d/4消失!",
 	WarnLoot			= ">%s<擁有受污染的核心!",
 	SpecWarnElemental	= "污染的元素 - 快換目標!"
@@ -158,9 +158,9 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerElementalActive	= "污染的元素出現",
-	TimerElemental			= "污染的元素(%d)",
-	TimerStrider			= "盤牙旅行者(%d)",
-	TimerNaga				= "盤牙精英(%d)"
+	TimerElemental			= "污染的元素 (%d)",
+	TimerStrider			= "盤牙旅行者 (%d)",
+	TimerNaga				= "盤牙精英 (%d)"
 }
 
 L:SetOptionLocalization{
