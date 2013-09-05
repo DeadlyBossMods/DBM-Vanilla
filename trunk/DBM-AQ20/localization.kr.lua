@@ -9,9 +9,6 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "쿠린낙스"
 }
-L:SetWarningLocalization{
-	WarnWound	= "%s : >%s< (%s)"
-}
 ------------
 -- Rajaxx --
 ------------
@@ -21,21 +18,19 @@ L:SetGeneralLocalization{
 	name 		= "장군 라작스"
 }
 L:SetWarningLocalization{
-	WarnWave	= "공격 #%s",
-	WarnBoss	= "라작스 등장"
+	WarnWave	= "공격 #%s"
 }
 L:SetOptionLocalization{
 	WarnWave	= "다음 공격 알림"
 }
 L:SetMiscLocalization{
-	NpcPull		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",--확인필요
-	Wave1		= "Remember, Rajaxx, when I said I'd kill you last?",--확인필요
-	Wave3		= "응보의 날이 다가왔다! 암흑이 적들의 마음을 지배하게 되리라!",--확인필요
-	Wave4		= "‘더는’ 돌벽과 성문 뒤에서 기다릴 수 없다! 복수의 기회를 놓칠 수 없다. 우리가 분노를 터뜨리는 날 용족은 두려움에 떨리라.",--확인필요
-	Wave5		= "적에게 공포와 죽음의 향연을!",--확인필요
-	Wave6		= "스테그헬름은 흐느끼며 목숨을 구걸하리라. 그 아들놈이 그랬던 것처럼! 천 년의 한을 풀리라! 오늘에서야!",--확인필요
-	Wave7		= "판드랄! 때가 왔다! 에메랄드의 꿈속에 숨어서 기도나 올려라!",--확인필요
-	Wave8		= "건방진...  내 친히 너희를 처치해주마!"--확인필요
+	Wave12		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",
+	Wave3		= "응보의 날이 다가왔다! 암흑이 적들의 마음을 지배하리라!",
+	Wave4		= "더는 돌벽과 성문 뒤에서 기다릴 수 없다! 복수의 기회를 놓칠 수 없다. 우리가 분노를 터뜨리는 날 용족은 두려움에 떨리라.",
+	Wave5		= "적에게 공포와 죽음의 향연을!",
+	Wave6		= "스태그헬름은 흐느끼며 목숨을 구걸하리라. 그 아들놈이 그랬던 것처럼! 천 년의 한을 풀리라! 오늘에서야!",
+	Wave7		= "판드랄! 때가 왔다! 에메랄드의 꿈속에 숨어서 기도나 올려라!",
+	Wave8		= "건방진... 내 친히 너희를 처치해주마!"
 }
 
 ----------
@@ -65,7 +60,7 @@ L:SetOptionLocalization{
 	SpecWarnPursue	= "추적 대상이 된 경우 특수 경고 보기"
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "시선을"--확인필요
+	PursueEmote 	= "노려봅니다!"
 }
 
 -------------

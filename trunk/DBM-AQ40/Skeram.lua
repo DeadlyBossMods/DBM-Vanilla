@@ -60,7 +60,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(20449, 4801, 8195) then
+	if args:IsSpellID(20449, 4801, 8195) and self:AntiSpam() then
 		warnTeleport:Show()
 	end
 end

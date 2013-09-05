@@ -7,11 +7,12 @@ mod:SetModelID(15583)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS",
 	"UNIT_HEALTH target focus mouseover"
 )
 
 local warnEnrageSoon	= mod:NewSoonAnnounce(8269, 2)
+local warnEnrage		= mod:NewSpellAnnounce(8269, 4)
 local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
 
 local timerWhirlwind	= mod:NewBuffActiveTimer(15, 26083)
@@ -21,10 +22,12 @@ function mod:OnCombatStart(delay)
 	prewarn_enrage = false
 end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(26083, 26082) then
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpellID(26083, 26082) and self:AntiSpam() then
 		timerWhirlwind:Start()
 		warnWhirlwind:Show()
+	elseif args.spellId == 8269 then
+		warnEnrage:Show()
 	end
 end
 

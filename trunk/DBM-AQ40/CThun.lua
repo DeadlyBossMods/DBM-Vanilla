@@ -2,29 +2,32 @@ local mod	= DBM:NewMod("CThun", "DBM-AQ40", 1)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(15727)
+mod:SetCreatureID(15589, 15727)
 --mod:SetModelID(15787)--Does not scale correctly.
 mod:RegisterCombat("combat")
+mod:SetWipeTime(25)
 
 mod:RegisterEvents(
---	"SPELL_SUMMON",
-	"CHAT_MSG_MONSTER_EMOTE"
+	"CHAT_MSG_MONSTER_EMOTE",
+	"UNIT_DIED"
 )
 
+local warnDarkGlare			= mod:NewSpellAnnounce(26029, 4)
 local warnEyeTentacle		= mod:NewAnnounce("WarnEyeTentacle", 2)
 --local warnClawTentacle		= mod:NewAnnounce("WarnClawTentacle", 2)
 --local warnGiantEyeTentacle	= mod:NewAnnounce("WarnGiantEyeTentacle", 3)
 --local warnGiantClawTentacle	= mod:NewAnnounce("WarnGiantClawTentacle", 3)
---local warnDarkGlare			= mod:NewSpellAnnounce(26029, 4)
---local warnDarkGlareSoon		= mod:NewSoonAnnounce(26029, 2)
-local warnWeakened			= mod:NewAnnounce("WarnWeakened", 4)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnWeakened			= mod:NewAnnounce("WarnWeakened", 4)
 
-local timerDarkGlareCD		= mod:NewCDTimer(50, 26029)
---local timerDarkGlare		= mod:NewBuffActiveTimer(10, 26029)
+local specWarnDarkGlare		= mod:NewSpecialWarningSpell(26029, nil, nil, nil, 3)
+local specWarnWeakened		= mod:NewSpecialWarning("SpecWarnWeakened", nil, nil, nil, 2)
+
+local timerDarkGlareCD		= mod:NewNextTimer(86, 26029)
+local timerDarkGlare		= mod:NewBuffActiveTimer(39, 26029)
 local timerEyeTentacle		= mod:NewTimer(45, "TimerEyeTentacle")
 --local timerGiantEyeTentacle	= mod:NewTimer(60, "TimerGiantEyeTentacle")
-local timerClawTentacle		= mod:NewTimer(11, "TimerClawTentacle")
+--local timerClawTentacle		= mod:NewTimer(11, "TimerClawTentacle")
 --local timerGiantClawTentacle = mod:NewTimer(60, "TimerGiantClawTentacle")
 local timerWeakened			= mod:NewTimer(45, "TimerWeakened")
 
@@ -34,38 +37,58 @@ local phase2
 
 function mod:OnCombatStart(delay)
 	phase2 = false
-	timerEyeTentacle:Start(-delay)
-	timerClawTentacle:Start(-delay)
-	timerDarkGlareCD:Start(-delay)
-	self:ScheduleMethod(45, "eyeTentacle")
+	--timerClawTentacle:Start(-delay)
+	timerEyeTentacle:Start(45-delay)
+	timerDarkGlareCD:Start(48-delay)
+	self:ScheduleMethod(45-delay, "EyeTentacle")
+	self:ScheduleMethod(48-delay, "DarkGlare")
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(10)
 	end
-end
-
-function mod:eyeTentacle()
-	local timer = 45
-	if phase2 then timer = 30 end
-	warnEyeTentacle:Show()
-	timerEyeTentacle:Start(timer)
-	self:ScheduleMethod(timer, "eyeTentacle")
-end
-
---What the hell are these IDs? these aren't valid at all
---[[
-function mod:SPEL_SUMMON(args)
-	if args.spellId == 99999 then	-- add summon Giant Eye ID
-		timerGiantClawTentacle:Start(30)
-		timerGiantEyeTentacle:Start(60)
-	elseif args.spellId == 99998 then	-- add summon Giant Claw ID
-		timerGiantEyeTentacle:Start(30)
-		timerGiantClawTentacle:Start(60)
+	if DBM.BossHealth:IsShown() then
+		DBM.BossHealth:Clear()
+		DBM.BossHealth:AddBoss(15589, L.Eye)
 	end
-end--]]
+end
+
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
+end
+
+function mod:EyeTentacle()
+	warnEyeTentacle:Show()
+	timerEyeTentacle:Start()
+	self:ScheduleMethod(45, "EyeTentacle")
+end
+
+function mod:DarkGlare()
+	warnDarkGlare:Show()
+	specWarnDarkGlare:Show()
+	timerDarkGlare:Start()
+	timerDarkGlareCD:Start()
+	self:ScheduleMethod(86, "DarkGlare")
+end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg:find(L.Weakened) then
-		timerWeakened:Start()
 		warnWeakened:Show()
+		specWarnWeakened:Show()
+		timerWeakened:Start()
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 15589 then
+		phase2 = true
+		warnPhase2:Show()
+		self:UnscheduleMethod("EyeTentacle")
+		self:UnscheduleMethod("DarkGlare")
+		if DBM.BossHealth:IsShown() then
+			DBM.BossHealth:Clear()
+			DBM.BossHealth:AddBoss(15727, L.name)
+		end
 	end
 end

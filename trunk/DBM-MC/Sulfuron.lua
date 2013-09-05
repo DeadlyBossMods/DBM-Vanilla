@@ -12,15 +12,15 @@ mod:RegisterEvents(
 	"SPELL_CAST_START"
 )
 
-local warnInspire		= mod:NewTargetAnnounce(19779)
-local warnHandRagnaros	= mod:NewTargetAnnounce(19780)
-local warnShadowPain	= mod:NewTargetAnnounce(19776)
-local warnHeal			= mod:NewCastAnnounce(19775)--this may be spammy now that spellid is fixed
-local warnImmolate		= mod:NewTargetAnnounce(20294)
+local warnInspire		= mod:NewTargetAnnounce(19779, 3)
+local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2)
+local warnShadowPain	= mod:NewTargetAnnounce(19776, 2)
+local warnHeal			= mod:NewCastAnnounce(19775, 1, nil, nil, false)--this may be spammy now that spellid is fixed
+local warnImmolate		= mod:NewTargetAnnounce(20294, 3)
 
 local timerInspire		= mod:NewBuffActiveTimer(10, 19779)
 local timerShadowPain	= mod:NewTargetTimer(18, 19776)
-local timerHeal			= mod:NewCastTimer(2, 19775)--this may be spammy now that spellid is fixed
+local timerHeal			= mod:NewCastTimer(2, 19775, nil, false)--this may be spammy now that spellid is fixed
 local timerImmolate		= mod:NewTargetTimer(21, 20294)
 local timerHandRagnaros	= mod:NewBuffActiveTimer(2, 19780)
 

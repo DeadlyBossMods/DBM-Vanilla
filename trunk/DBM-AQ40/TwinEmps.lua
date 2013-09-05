@@ -10,46 +10,41 @@ mod:SetBossHealthInfo(
 	15275, L.Veknil
 )
 mod:RegisterEvents(
-	"SPELL_CAST_START",
+	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS"
 )
 
-local warnTeleportSoon	= mod:NewSoonAnnounce(800, 2)
-local warnTeleport		= mod:NewSpellAnnounce(800, 3)
-local warnBlizzard		= mod:NewSpellAnnounce(26607, 2)
-local warnExplodeBug	= mod:NewSpellAnnounce(804, 2)
-local warnMutateBug		= mod:NewSpellAnnounce(802, 2)
+local warnTeleportSoon		= mod:NewSoonAnnounce(800, 2)
+local warnTeleport			= mod:NewSpellAnnounce(800, 3)
+local warnExplodeBug		= mod:NewSpellAnnounce(804, 2, nil, false)
+local warnMutateBug			= mod:NewSpellAnnounce(802, 2, nil, false)
 
 local timerTeleport			= mod:NewNextTimer(30, 800)
-local timerExplodeBug		= mod:NewCastTimer(3, 804)
-local timerExplodeBugNext	= mod:NewNextTimer(8, 804, nil, false)
-local timerMutateBug		= mod:NewNextTimer(11, 802, nil, false)
+local timerExplodeBugCD		= mod:NewCDTimer(8, 804, nil, false)
+local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false)
 
 local berserkTimer	=	mod:NewBerserkTimer(900)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start()
-	warnTeleportSoon:Schedule(30-delay)
+	warnTeleportSoon:Schedule(27-delay)
 	timerTeleport:Start(-delay)
 end
 
-function mod:SPELL_CAST_START(args)
-	if args.spellId == 26607 and self:IsInCombat() then
-		warnBlizzard:Show()
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpellID(799, 800) and self:AntiSpam() then
+		warnTeleport:Show()
+		warnTeleportSoon:Schedule(27)
+		timerTeleport:Start()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(800, 799) then
-		warnTeleport:Show()
-		warnTeleportSoon:Schedule(30)
-		timerTeleport:Start()
-	elseif args.spellId == 802 then
+	if args.spellId == 802 then
 		warnMutateBug:Show()
-		timerMutateBug:Start()
+		timerMutateBugCD:Start()
 	elseif args.spellId == 804 then
 		warnExplodeBug:Show()
-		timerExplodeBug:Show()
-		timerExplodeBugNext:Start()
+		timerExplodeBugCD:Start()
 	end
 end
