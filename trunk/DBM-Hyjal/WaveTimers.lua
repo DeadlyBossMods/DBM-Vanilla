@@ -4,15 +4,14 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:RegisterEvents(
-	"UPDATE_WORLD_STATES",
 	"GOSSIP_SHOW",
 	"QUEST_PROGRESS",
+	"UPDATE_WORLD_STATES",
 	"UNIT_DIED",
 	"SPELL_AURA_APPLIED"
 )
 
-local warnWaveSoon		= mod:NewAnnounce("WarnWaveSoon", 2)
-local warnWave			= mod:NewAnnounce("WarnWave", 3)
+local warnWave			= mod:NewAnnounce("WarnWave", 1)
 local warnCannibalize	= mod:NewSpellAnnounce(31538, 2)
 
 local timerWave			= mod:NewTimer(125, "TimerWave")
@@ -22,31 +21,36 @@ mod:RemoveOption("HealthFrame")
 mod:RemoveOption("SpeedKillTimer")
 
 local lastWave = 0
-local boss = 1
+local boss = 0
 local bossNames = {
+	[0] = L.GeneralBoss,
 	[1] = L.RageWinterchill,
 	[2] = L.Anetheron,
 	[3] = L.Kazrogal,
 	[4] = L.Azgalor
 }
 
-mod.GOSSIP_SHOW = mod.QUEST_PROGRESS
-function mod:QUEST_PROGRESS()
+function mod:GOSSIP_SHOW()
 	if not GetRealZoneText() == L.HyjalZoneName then return end
 	local target = UnitName("target")
 	if target == L.Thrall or target == L.Jaina then
 		local selection = GetGossipOptions()
 		if selection == L.RageGossip then
+			boss = 1
 			self:SendSync("boss", 1)
 		elseif selection == L.AnetheronGossip then
+			boss = 2
 			self:SendSync("boss", 2)
 		elseif selection == L.KazrogalGossip then
+			boss = 3
 			self:SendSync("boss", 3)
 		elseif selection == L.AzgalorGossip then
+			boss = 4
 			self:SendSync("boss", 4)
 		end
 	end
 end
+mod.QUEST_PROGRESS = mod.GOSSIP_SHOW
 
 function mod:UPDATE_WORLD_STATES()
 	local text = select(4, GetWorldStateUIInfo(3))
@@ -60,7 +64,7 @@ end
 
 function mod:OnSync(msg, arg)
 	if msg == "boss" then
-		boss = arg
+		boss = tonumber(arg)
 	end
 end
 
@@ -69,7 +73,6 @@ function mod:UNIT_DIED(args)
 	if cid == 17852 or cid == 17772 then
 		lastWave = 0
 		timerWave:Cancel()
-		warnWaveSoon:Cancel()
 	elseif cid == 17767 then
 		self:SendSync("boss", 2)
 	elseif cid == 17808 then
@@ -85,19 +88,15 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-
 function mod:WaveFunction(currentWave)
 	local timer = 0
 	currentWave = tonumber(currentWave)
 	lastWave = tonumber(lastWave)
-	if currentWave < lastWave then
-		lastWave = 0
-	end
 	if currentWave > lastWave then
-		if not self.Options.DetailedWave then
+		if boss == 0 then--unconfirmed
+			timer = 125
 			warnWave:Show(L.WarnWave_0:format(currentWave))
-		end
-		if boss == 1 or boss == 2 then
+		elseif boss == 1 or boss == 2 then
 			timer = 125
 			if currentWave == 8 then
 				timer = 140
@@ -138,17 +137,20 @@ function mod:WaveFunction(currentWave)
 				elseif currentWave == 8 then
 					warnWave:Show(L.WarnWave_5:format(currentWave, 3, L.Ghoul, 3, L.Fiend, 4, L.Abomination, 2, L.Necromancer, 2, L.Banshee))
 				end
+			else
+				warnWave:Show(L.WarnWave_0:format(currentWave))
 			end
+			self:SendSync("boss", boss)
 		elseif boss == 3 or boss == 4 then
 			timer = 135
 			if currentWave == 2 or currentWave == 4 then
 				timer = 165
 			elseif currentWave == 3 then
-				timer = 160;
+				timer = 160
 			elseif currentWave == 7 then
-				timer = 195;
+				timer = 195
 			elseif currentWave == 8 then
-				timer = 225;
+				timer = 225
 			end
 			if self.Options.DetailedWave and boss == 3 then
 				if currentWave == 1 then
@@ -186,18 +188,18 @@ function mod:WaveFunction(currentWave)
 				elseif currentWave == 8 then
 					warnWave:Show(L.WarnWave_5:format(currentWave, 4, L.Abomination, 4, L.Fiend, 2, L.Necromancer, 4, L.Stalker, 2, L.Banshee))
 				end
+			else
+				warnWave:Show(L.WarnWave_0:format(currentWave))
 			end
+			self:SendSync("boss", boss)
 		end
-		warnWaveSoon:Cancel()
 		timerWave:Start(timer)
-		warnWaveSoon:Schedule(timer-10)
 		lastWave = currentWave
 	elseif lastWave > currentWave then
 		if lastWave == 8 then
 			warnWave:Show(bossNames[boss])
 		end
 		timerWave:Cancel()
-		warnWaveSoon:Cancel()
 		lastWave = currentWave
 	end
 end

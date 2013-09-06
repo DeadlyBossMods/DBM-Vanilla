@@ -9,12 +9,15 @@ mod:SetZone()
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_CAST_START"
+	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS"
 )
 
-local warnMark			= mod:NewCountAnnounce(31447, 3)
+local warnMark		= mod:NewCountAnnounce(31447, 3)
+local warnStomp		= mod:NewSpellAnnounce(31480, 2)
 
-local timerMark			= mod:NewCDTimer(45, 31447)
+local timerMark		= mod:NewBuffFadesTimer(6.2, 31447)
+local timerMarkCD	= mod:NewNextCountTimer(45, 31447)
 
 local count = 0
 local time = 45
@@ -32,6 +35,13 @@ function mod:SPELL_CAST_START(args)
 			time = time - 5
 		end
 		warnMark:Show(count)
-		timerMark:Start(time)
+		timerMark:Start()
+		timerMarkCD:Start(nil, time)
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 31447 then
+		warnStomp:Show()
 	end
 end

@@ -11,7 +11,6 @@ L:SetGeneralLocalization{
 }
 
 L:SetOptionLocalization{
-	RangeFrame	= "거리 창 보기(10m)",
 	InfoFrame	= "체력이 낮은 대상을 정보 창으로 보기(8800 미만)"
 }
 
