@@ -10,10 +10,10 @@ mod:RegisterEvents(
 	"SPELL_SUMMON"
 )
 
-local warnWound		= mod:NewStackAnnounce(25646, 3)
-local warnWorm		= mod:NewSpellAnnounce(25831, 3)
+local warnWound			= mod:NewStackAnnounce(25646, 3)
+local warnWorm			= mod:NewSpellAnnounce(25831, 3)
 
-local timerWound	= mod:NewTargetTimer(20, 25646)
+local timerWound		= mod:NewTargetTimer(20, 25646)
 
 local specWarnWound		= mod:NewSpecialWarningStack(25646, nil, 5)
 

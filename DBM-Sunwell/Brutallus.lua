@@ -15,6 +15,7 @@ mod.disableHealthCombat = true
 mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_MISSED"
 )
@@ -23,6 +24,7 @@ local warnMeteor		= mod:NewSpellAnnounce(45150, 3)
 local warnBurn			= mod:NewTargetAnnounce(46394, 3)
 local warnStomp			= mod:NewTargetAnnounce(45185, 3)
 
+local specWarnMeteor	= mod:NewSpecialWarningStack(45150, nil, 4)
 local specWarnBurn		= mod:NewSpecialWarningYou(46394)
 
 local timerMeteorCD		= mod:NewCDTimer(12, 45150)
@@ -33,9 +35,16 @@ local timerBurnCD		= mod:NewCDTimer(20, 46394)
 local berserkTimer		= mod:NewBerserkTimer(360)
 
 mod:AddBoolOption("BurnIcon", true)
-mod:AddBoolOption("BurnWhisper", false, "announce")
+mod:AddBoolOption("RangeFrame", true)
 
 local burnIcon = 8
+
+local DebuffFilter
+do
+	DebuffFilter = function(uId)
+		return UnitDebuff(uId, GetSpellInfo(46394))
+	end
+end
 
 function mod:OnCombatStart(delay)
 	burnIcon = 8
@@ -44,11 +53,17 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 end
 
+function mod:OnCombatEnd()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 46394 then
 		warnBurn:Show(args.destName)
 		timerBurn:Start(args.destName)
-		if self:AntiSpam(19) then
+		if self:AntiSpam(19, 1) then
 			timerBurnCD:Start()
 		end
 		if self.Options.BurnIcon then
@@ -59,17 +74,27 @@ function mod:SPELL_AURA_APPLIED(args)
 				burnIcon = burnIcon - 1
 			end
 		end
-		if DBM:GetRaidRank() > 0 and self.Options.BurnWhisper and args.destName ~= UnitName("player") then
-			self:SendWhisper(L.BurnWhisper, args.destName)
-		end
 		if args:IsPlayer() then
 			specWarnBurn:Show()
+		end
+		if self.Options.RangeFrame then
+			if UnitDebuff("player", GetSpellInfo(46394)) then--You have debuff, show everyone
+				DBM.RangeCheck:Show(4, nil)
+			else--You do not have debuff, only show players who do
+				DBM.RangeCheck:Show(4, DebuffFilter)
+			end
 		end
 	elseif args.spellId == 45185 then
 		warnStomp:Show(args.destName)
 		timerStompCD:Start()
+	elseif args.spellId == 45150 and args:IsPlayer() then
+		local amount = args.amount or 1
+		if amount >= 4 then
+			specWarnMeteor:Show(amount)
+		end
 	end
 end
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 46394 then
@@ -86,10 +111,10 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_MISSED(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 46394 then
 		warnBurn:Show("MISSED")
-		if self:AntiSpam(19) then
+		if self:AntiSpam(19, 1) then
 			timerBurnCD:Start()
 		end
 	end
