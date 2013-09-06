@@ -27,14 +27,6 @@ L:SetGeneralLocalization{
 	name				= "Vaelastrasz the Corrupt"
 }
 
-L:SetTimerLocalization{
-	TimerCombatStart	= "Combat starts"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "Show time for start of combat"
-}
-
 L:SetMiscLocalization{
 	Event				= "Too late, friends! Nefarius' corruption has taken hold...I cannot...control myself."
 }

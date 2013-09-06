@@ -34,7 +34,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 96 then
 		local amount = args.amount or 1
-		WarnDismember:Show(args.spellName, args.destName, amount)
+		WarnDismember:Show(args.destName, amount)
 		timerDismember:Start(args.destName)
 		if amount >= 5 and args:IsPlayer() then
 			specWarnDismember:Show(amount)

@@ -11,6 +11,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
+	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
@@ -20,28 +21,26 @@ mod:RegisterEvents(
 )
 
 local warnParasite			= mod:NewTargetAnnounce(41917, 3)
+local warnDrawSoul			= mod:NewSpellAnnounce(40904, 3)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
-local warnPhase2Soon		= mod:NewAnnounce("WarnPhase2Soon", 3)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2, 3)
 local warnEyebeam			= mod:NewSpellAnnounce(40018, 3)
 local warnBarrage			= mod:NewTargetAnnounce(40585, 3)
 local warnPhase3			= mod:NewPhaseAnnounce(3)
+local warnDemon				= mod:NewAnnounce("WarnDemon", 3 , 2457)
+local warnHuman				= mod:NewAnnounce("WarnHuman", 3 , 2457)
 local warnFlame				= mod:NewTargetAnnounce(40932, 3)
 local warnFlameBurst		= mod:NewSpellAnnounce(41131, 3)
 local warnShadowDemon		= mod:NewTargetAnnounce(41117, 3)
 local warnPhase4			= mod:NewPhaseAnnounce(4)
-local warnPhase4Soon		= mod:NewAnnounce("WarnPhase4Soon", 3)
+local warnPhase4Soon		= mod:NewPrePhaseAnnounce(4, 3)
 local warnEnrage			= mod:NewSpellAnnounce(40683, 3)
 local warnCaged				= mod:NewSpellAnnounce(40695, 3)
-local warnDemon				= mod:NewAnnounce("WarnDemon", 3 , 2457)
-local warnDemonSoon			= mod:NewAnnounce("WarnDemonSoon", 3 , 2457)
-local warnHuman				= mod:NewAnnounce("WarnHuman", 3 , 2457)
-local warnHumanSoon			= mod:NewAnnounce("WarnHumanSoon", 3 , 2457)
 
 local specWarnParasite		= mod:NewSpecialWarningYou(41917)
 local specWarnBarrage		= mod:NewSpecialWarningYou(40585)
 local specWarnFlame			= mod:NewSpecialWarningYou(40932)
 
-local timerCombatStart		= mod:NewTimer(36, "TimerCombatStart", 2457)
 local timerParasite			= mod:NewTargetTimer(10, 41917)
 local timerBarrage			= mod:NewTargetTimer(10, 40585)
 local timerNextBarrage		= mod:NewCDTimer(44, 40585)
@@ -55,11 +54,11 @@ local timerNextEnrage		= mod:NewCDTimer(40, 40683)
 local timerCaged			= mod:NewBuffActiveTimer(15, 40695)
 local timerPhase4			= mod:NewTimer(30, "TimerPhase4", 2457)
 
+local timerCombatStart		= mod:NewCombatTimer(36)
 local berserkTimer			= mod:NewBerserkTimer(1500)
 
 mod:AddBoolOption("RangeFrame")
 mod:AddBoolOption("ParasiteIcon")
-mod:AddBoolOption("ParasiteWhisper", false, "announce")
 
 local flameTargets = {}
 local shadowDemonTargets = {}
@@ -73,7 +72,6 @@ local phase4 = false
 local function humanForms()
 	warnHuman:Show()
 	timerNextFlameBurst:Cancel()
-	warnDemonSoon:Schedule(50)
 	timerNextDemon:Start()
 	if phase4 then
 		timerEnrage:Start()
@@ -117,9 +115,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.ParasiteIcon then
 			self:SetIcon(args.destName, 8)
 		end
-		if DBM:GetRaidRank() > 1 and self.Options.ParasiteWhisper then
-			self:SendWhisper(L.ParasiteWhisper, args.destName)
-		end
 	elseif args.spellId == 40585 then
 		warnBarrage:Show(args.destName)
 		timerBarrage:Start(args.destName)
@@ -129,7 +124,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args.spellId == 40932 then
 		flameTargets[#flameTargets + 1] = args.destName
-		if args:IsPlayer() then
+		if args:IsPlayer() and not self:IsTrivial(85) then
 			specWarnFlame:Show()
 		end
 		timerFlame:Start(args.destName)
@@ -149,6 +144,12 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args.spellId == 40695 then
 		warnCaged:Show()
 		timerCaged:Start()
+	end
+end
+
+function mod:SPELL_CAST_START(args)
+	if args.spellId == 40904 then
+		warnDrawSoul:Show()
 	end
 end
 
@@ -181,7 +182,6 @@ function mod:UNIT_DIED(args)
 			end
 			timerNextBarrage:Cancel()
 			warnPhase3:Show()
-			warnDemonSoon:Schedule(66)
 			timerNextDemon:Start(76)
 		end
 	end
@@ -198,21 +198,18 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerNextHuman:Start()
 		timerNextFlameBurst:Start()
 		timerShadowDemon:Start()
-		warnHumanSoon:Schedule(64)
 		self:Schedule(74, humanForms)
 	elseif msg == L.Phase4 or msg:find(L.Phase4) then
 		phase4 = true
-		timerPhase4:Show()
-		warnHumanSoon:Cancel()
-		warnDemonSoon:Cancel()
+		self:Unschedule(humanForms)
 		timerParasite:Cancel()
 		timerFlame:Cancel()
 		timerNextFlameBurst:Cancel()
 		timerShadowDemon:Cancel()
 		timerNextHuman:Cancel()
 		timerNextDemon:Cancel()
+		timerPhase4:Show()
 		warnPhase4:Schedule(30)
-		warnDemonSoon:Schedule(82)
 		timerNextDemon:Start(92)
 	end
 end
@@ -221,7 +218,7 @@ function mod:UNIT_HEALTH(uId)
 	if not warned_preP2 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
 		warned_preP2 = true
 		warnPhase2Soon:Show()
-	elseif warned_preP4 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 then
+	elseif not warned_preP4 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 then
 		warned_preP4 = true
 		warnPhase4Soon:Show()
 	end

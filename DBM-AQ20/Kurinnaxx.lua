@@ -22,7 +22,7 @@ local timerSandTrap	= mod:NewTargetTimer(20, 25656)
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 25646 and not self:IsTrivial(80) then
 		local amount = args.amount or 1
-		warnWound:Show(args.spellName, args.destName, amount)
+		warnWound:Show(args.destName, amount)
 		timerWound:Start(args.destName)
 		if amount >= 5 and args:IsPlayer() then
 			specWarnWound:Show(amount)

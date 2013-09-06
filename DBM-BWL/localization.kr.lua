@@ -28,14 +28,6 @@ L:SetGeneralLocalization{
 	name = "타락한 밸라스트라즈"
 }
 
-L:SetTimerLocalization{
-	TimerCombatStart	= "전투 시작"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 바 보기"
-}
-
 L:SetMiscLocalization{
 	Event	= "너무 늦었어! 네파리우스의 타락이 뿌리를 내려... 난... 나 자신을 통제할 수가 없어."
 }
