@@ -46,12 +46,9 @@ local berserkTimer			= mod:NewBerserkTimer(360)
 
 local soundConflag			= mod:NewSound(45333)
 
-mod:AddBoolOption("HealthFrame", false)
 mod:AddBoolOption("RangeFrame", true)
-mod:AddBoolOption("NovaIcon", true)
 mod:AddBoolOption("ConflagIcon", true)
-mod:AddBoolOption("NovaWhisper", true, "announce")
-mod:AddBoolOption("ConflagWhisper", false, "announce")
+mod:AddBoolOption("NovaIcon", true)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
@@ -83,14 +80,14 @@ end
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 45256 then
 		warnBlow:Show(destName)
 		timerBlowCD:Start()
 	end
 end
 
-function mod:SPELL_MISSED(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_MISSED(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 45256 then
 		timerBlowCD:Start()
 	end
@@ -115,9 +112,6 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		if self.Options.NovaIcon then
 			self:SetIcon(target, 7, 5)
 		end
-		if DBM:GetRaidRank() > 0 and self.Options.NovaWhisper then
-			self:SendWhisper(L.NovaWhisper, target)
-		end
 	elseif msg == L.Conflag or msg:find(L.Conflag) then
 		local target = DBM:GetFullNameByShortName(target)
 		warnConflag:Show(target)
@@ -129,9 +123,6 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		end
 		if self.Options.ConflagIcon then
 			self:SetIcon(target, 8, 5)
-		end
-		if DBM:GetRaidRank() > 0 and self.Options.ConflagWhisper then
-			self:SendWhisper(L.ConflagWhisper, target)
 		end
 	end
 end

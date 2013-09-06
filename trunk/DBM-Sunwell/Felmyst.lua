@@ -14,31 +14,34 @@ mod:RegisterEvents(
 	"SPELL_CAST_START",
 	"SPELL_SUMMON",
 	"RAID_BOSS_EMOTE",
-	"CHAT_MSG_MONSTER_YELL"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnGas				= mod:NewSpellAnnounce(45855, 3)
+local warnCorrosion			= mod:NewTargetAnnounce(45866, 2)
 local warnEncaps			= mod:NewTargetAnnounce(45665, 4)
 local warnVapor				= mod:NewTargetAnnounce(45392, 3)
 local warnBreath			= mod:NewCountAnnounce(45717, 4)
 local warnPhase				= mod:NewAnnounce("WarnPhase", 1, 31550)
-local warnPhaseSoon			= mod:NewAnnounce("WarnPhaseSoon", 1, 31550)
 
 local specWarnGas			= mod:NewSpecialWarningSpell(45855, mod:IsHealer())
+local specWarnCorrosion		= mod:NewSpecialWarningTarget(45866, not mod:IsDps())
 local specWarnEncaps		= mod:NewSpecialWarningYou(45665)
+local yellEncaps			= mod:NewYell(45665)
 local specWarnEncapsNear	= mod:NewSpecialWarningClose(45665)
 local specWarnVapor			= mod:NewSpecialWarningYou(45392)
-local specWarnBreath		= mod:NewSpecialWarningSpell(45717, nil, nil, nil, true)
+local specWarnBreath		= mod:NewSpecialWarningSpell(45717, nil, nil, nil, 3)
 
 local timerGas				= mod:NewCastTimer(1, 45855)
 local timerGasCD			= mod:NewCDTimer(19, 45855)
-local timerEncaps			= mod:NewTargetTimer(6, 45665)
-local timerBreath			= mod:NewCDTimer(19, 45717)
+local timerCorrosion		= mod:NewTargetTimer(10, 45866)
+local timerEncaps			= mod:NewTargetTimer(7, 45665)
+local timerBreath			= mod:NewCDCountTimer(17, 45717)
 local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550)
 
 local berserkTimer			= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("YellOnEncaps", true, "announce")
 mod:AddBoolOption("EncapsIcon", true)
 mod:AddBoolOption("VaporIcon", true)
 
@@ -49,53 +52,33 @@ function mod:Groundphase()
 	warnPhase:Show(L.Ground)
 	timerGasCD:Start(17)
 	timerPhase:Start(60, L.Air)
-	--self:ScheduleMethod(10, "Encapsulate")
-	warnPhaseSoon:Schedule(50, L.Air)
 end
 
-local function isTank(unit)
-	if GetPartyAssignment("MAINTANK", unit, 1) then
-		return true
-	end
-	if UnitGroupRolesAssigned(unit) == "TANK" then
-		return true
-	end
-	if UnitExists("boss1target") and UnitDetailedThreatSituation(unit, "boss1") then
-		return true
-	end
-	return false
-end
-
---[[function mod:Encapsulate()
-	self:ScheduleMethod(0.5, "Encapsulate")
-	local targetname = self:GetBossTarget(25038)
-	local uId = DBM:GetRaidUnitId(targetname)
-	if not targetname or isTank(uId) then return end--Boss has a target and it's not highest threat(tank)
+function mod:EncapsulateTarget(targetname, uId)
+	if not targetname then return end
 	warnEncaps:Show(targetname)
 	timerEncaps:Start(targetname)
-	if targetname == UnitName("player") then
-		specWarnEncaps:Show()
-		if self.Options.YellOnEncaps then
-			SendChatMessage(L.YellEncaps, "SAY")
-		end
-	end
 	if self.Options.EncapsIcon then
 		self:SetIcon(targetname, 8, 6)
 	end
-	if uId then
-		local inRange = CheckInteractDistance(uId, 2)
-		if inRange then
+	if targetname == UnitName("player") then
+		specWarnEncaps:Show()
+		yellEncaps:Yell()
+	elseif uId then
+		local x, y = GetPlayerMapPosition(uId)
+		if x == 0 and y == 0 then
+			SetMapToCurrentZone()
+			x, y = GetPlayerMapPosition(uId)
+		end
+		local inRange = DBM.RangeCheck:GetDistance("player", x, y)
+		if inRange and inRange < 21 then
 			specWarnEncapsNear:Show(targetname)
 		end
 	end
-	self:UnscheduleMethod("Encapsulate")
-	self:ScheduleMethod(7.5, "Encapsulate")
-end]]
+end
 
 function mod:OnCombatStart(delay)
 	breathCounter = 0
-	--self:ScheduleMethod(10, "Encapsulate")
-	warnPhaseSoon:Schedule(50, L.Air)
 	timerGasCD:Start(17-delay)
 	timerPhase:Start(-delay, L.Air)
 	berserkTimer:Start(-delay)
@@ -103,9 +86,12 @@ end
 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 45665 then
-		--self:UnscheduleMethod("Encapsulate")
-		--self:ScheduleMethod(7.5, "Encapsulate")
+	if args.spellId == 45866 then
+		warnCorrosion:Show(args.destName)
+		timerCorrosion:Start(args.destName)
+		if not self:IsTrivial(85) then
+			specWarnCorrosion:Show(args.destName)
+		end
 	end
 end
 
@@ -124,9 +110,11 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 45855 then
 		warnGas:Show()
-		specWarnGas:Show()
 		timerGas:Start()
 		timerGasCD:Start()
+		if not self:IsTrivial(85) then
+			specWarnGas:Show()
+		end
 	end
 end
 
@@ -135,10 +123,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		breathCounter = 0
 		warnPhase:Show(L.Air)
 		timerGasCD:Cancel()
-		timerBreath:Start(44)
-		warnPhaseSoon:Schedule(89, L.Ground)
+		timerBreath:Start(42, 1)
 		timerPhase:Start(99, L.Ground)
-		--self:UnscheduleMethod("Encapsulate")
 		self:ScheduleMethod(99, "Groundphase")
 	end
 end
@@ -149,7 +135,13 @@ function mod:RAID_BOSS_EMOTE(msg)
 		warnBreath:Show(breathCounter)
 		specWarnBreath:Show()
 		if breathCounter < 3 then
-			timerBreath:Start()
+			timerBreath:Start(nil, breathCounter+1)
 		end
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 45661 and self:AntiSpam(2, 1) then
+		self:BossTargetScanner(25038, "EncapsulateTarget", 0.025, 20)
 	end
 end

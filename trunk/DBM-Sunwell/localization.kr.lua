@@ -15,19 +15,13 @@ L:SetWarningLocalization{
 	SpecWarnWildMagic	= "마법 폭주 - %s!"
 }
 
-L:SetTimerLocalization{
-	TimerNextPortal		= "다음 차원문 (%d)"
-}
-
 L:SetOptionLocalization{
 	WarnPortal			= "$spell:46021 대상 알림 보기",
 	SpecWarnWildMagic	= "마법 폭주 대상이 된 경우 특수 경고 보기",
-	TimerNextPortal		= "다음 차원문 바 보기",
-	RangeFrame			= "거리 창 보기",
-	ShowFrame			= "내부 세계에 있는 공격대원을 별도 창으로 보기" ,
-	FrameClassColor		= "내부 세계 창 직업 색상 사용하기",
-	FrameUpwards		= "내부 세계 창 바를 위쪽으로 확장하기",
-	FrameLocked			= "내부 세계 창 고정하기(이동불가로 설정)"
+	ShowFrame			= "정신 세계에 있는 공격대원을 별도 창으로 보기" ,
+	FrameClassColor		= "정신 세계 창 직업 색상 사용하기",
+	FrameUpwards		= "정신 세계 창 바를 위쪽으로 확장하기",
+	FrameLocked			= "정신 세계 창 고정하기(이동불가로 설정)"
 }
 
 L:SetMiscLocalization{
@@ -55,13 +49,8 @@ L:SetGeneralLocalization{
 	name = "브루탈루스"
 }
 
-L:SetOptionLocalization{
-	BurnWhisper		= "$spell:46394 대상에게 귓속말 보내기"
-}
-
 L:SetMiscLocalization{
-	Pull			= "하, 새끼 양이 잔뜩 몰려오는구나!",
-	BurnWhisper		= "당신에게 불사르기!"
+	Pull			= "하, 새끼 양이 잔뜩 몰려오는구나!"
 }
 
 --------------
@@ -74,26 +63,21 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s 단계",
-	WarnPhaseSoon	= "10초 후 %s 단계"
+	WarnPhase		= "%s 단계"
 }
 
 L:SetTimerLocalization{
-	TimerPhase		= "다음 %s 단계",
-	TimerBreath		= "깊은 숨결 가능"
+	TimerPhase		= "다음 %s 단계"
 }
 
 L:SetOptionLocalization{
 	WarnPhase		= "단계 전환 알림 보기",
-	WarnPhaseSoon	= "단계 전환 이전에 알림 보기",
-	TimerPhase		= "다음 단계 바 보기",
-	YellOnEncaps	= "$spell:45665 대상이 된 경우 대화로 알리기"
+	TimerPhase		= "다음 단계 바 보기"
 }
 
 L:SetMiscLocalization{
 	Air				= "비행",
 	Ground			= "지상",
-	YellEncaps		= "나에게 가두기! 주변에서 피하세요!!",
 	AirPhase		= "나는 어느 때보다도 강하다!",
 	Breath			= "숨을 깊게 들이마십니다."
 }
@@ -107,15 +91,7 @@ L:SetGeneralLocalization{
 	name = "에레다르 쌍둥이"
 }
 
-L:SetOptionLocalization{
-	RangeFrame		= "거리 창 보기",
-	NovaWhisper		= "$spell:45329 대상에게 귓속말 보내기",
-	ConflagWhisper	= "$spell:45333 대상에게 귓속말 보내기"
-}
-
 L:SetMiscLocalization{
-	NovaWhisper		= "당신에게 암흑 회오리!",
-	ConflagWhisper	= "당신에게 거대한 불길!",
 	Nova			= "방향을 돌려 암흑 회오리를",
 	Conflag			= "방향을 돌려 거대한 불길을",
 	Sacrolash		= "여군주 사크로래쉬",
@@ -133,9 +109,7 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnHuman		= "타락한 엘프 (%d)",
-	WarnHumanSoon	= "5초 후 타락한 엘프 (%d)",
 	WarnVoid		= "공허의 파수병 (%d)",
-	WarnVoidSoon	= "5초 후 공허의 파수병 (%d)",
 	WarnFiend		= "어둠 마귀"
 }
 
@@ -147,9 +121,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnHuman		= "타락한 엘프 알림 보기",
-	WarnHumanSoon	= "타락한 엘프 이전에 알림 보기",
 	WarnVoid		= "공허의 파수병 알림 보기",
-	WarnVoidSoon	= "공허의 파수병 이전에 알림 보기",
 	WarnFiend		= "어둠 마귀 알림 보기",
 	TimerHuman		= "다음 타락한 엘프 바 보기",
 	TimerVoid		= "다음 공허의 파수병 바 보기",
@@ -170,10 +142,10 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnDarkOrb		= "보호의 구슬 공격 중",
+	WarnDarkOrb		= "보호의 구슬 생성",
 	WarnBlueOrb		= "푸른용의 수정구",
-	SpecWarnDarkOrb	= "보호의 구슬 공격 중!",
-	SpecWarnBlueOrb	= "푸른용의 수정구 활성화됨!"
+	SpecWarnDarkOrb	= "보호의 구슬 생성!",
+	SpecWarnBlueOrb	= "푸른용의 수정구 활성화!"
 }
 
 L:SetTimerLocalization{
@@ -181,20 +153,15 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnDarkOrb		= "보호의 구슬이 공격 중 일때 알림 보기",
+	WarnDarkOrb		= "보호의 구슬 생성 알림 보기",
 	WarnBlueOrb		= "푸른용의 수정구 알림 보기",
-	SpecWarnDarkOrb	= "보호의 구슬이 공격 중 일때 특수 경고 보기",
+	SpecWarnDarkOrb	= "보호의 구슬 생성 특수 경고 보기",
 	SpecWarnBlueOrb	= "푸른용의 수정구 활성화 특수 경고 보기",
-	TimerBlueOrb	= "푸른용의 수정구 활성화 바 보기",
-	RangeFrame		= "거리 창 보기",
-	YellOnBloom		= "$spell:45641 대상이 된 경우 대화로 알리기",
-	BloomWhisper	= "$spell:45641 대상에게 귓속말 보내기"
+	TimerBlueOrb	= "푸른용의 수정구 활성화 바 보기"
 }
 
 L:SetMiscLocalization{
 	YellPull		= "녀석들은 소모품일 뿐이다. 자, 봐라! 살게라스가 해내지 못한 일을 내가 해낼 것이다! 이 보잘것없는 세상을 갈가리 찢어발기고 불타는 군단의 진정한 주인으로 우뚝 서리라! 종말이 다가왔다! 어디 한번 세계를 구해 봐라!",
-	YellBloom		= "나에게 화염 불꽃!",
-	BloomWhisper	= "당신에게 화염 불꽃!",
 	OrbYell1		= "수정구에 힘을 쏟겠습니다! 준비하세요!",
 	OrbYell2		= "다른 수정구에 힘을 불어넣었습니다! 어서요!",
 	OrbYell3		= "다른 수정구가 준비됐습니다! 서두르세요!",

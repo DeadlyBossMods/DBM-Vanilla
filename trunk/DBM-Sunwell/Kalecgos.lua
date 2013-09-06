@@ -10,6 +10,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_CAST_START",
+	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"UNIT_DIED"
@@ -20,9 +21,10 @@ local warnBuffet		= mod:NewSpellAnnounce(45018, 3)
 local warnBreath		= mod:NewSpellAnnounce(44799, 3, nil, false)
 local warnCorrupt		= mod:NewTargetAnnounce(45029, 3)
 
+local specWarnBuffet	= mod:NewSpecialWarningStack(45018, nil, 10)
 local specWarnWildMagic	= mod:NewSpecialWarning("SpecWarnWildMagic")
 
-local timerNextPortal	= mod:NewTimer(25, "TimerNextPortal", 46021)
+local timerNextPortal	= mod:NewNextCountTimer(25, 46021)
 local timerBreathCD		= mod:NewCDTimer(15, 44799, false)
 local timerBuffetCD		= mod:NewCDTimer(8, 45018)
 local timerPorted		= mod:NewBuffActiveTimer(60, 46021)
@@ -79,10 +81,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnWildMagic:Show(L.Aggro)
 	elseif args.spellId == 45010 and args:IsPlayer() then
 		specWarnWildMagic:Show(L.Mana)
-	elseif args.spellId == 45018 and self:AntiSpam(2, 1) then
-		warnBuffet:Show()
-		timerBuffetCD:Start()
-	elseif args.spellId == 45029 then
+	elseif args.spellId == 45029 and self:IsInCombat() then
 		warnCorrupt:Show(args.destName)
 	elseif args.spellId == 46021 then
 		if args:IsPlayer() then
@@ -108,17 +107,28 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
 			warnPortal:Show(portCount, args.destName, grp or 0)
 			portCount = portCount + 1
-			timerNextPortal:Start(portCount)
+			timerNextPortal:Start(nil, portCount)
+		end
+	elseif args.spellId == 45018 and args:IsPlayer() then
+		local amount = args.amount or 1
+		if amount >= 10 and amount % 2 == 0 then
+			specWarnBuffet:Show(amount)
 		end
 	end
 end
-
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 44799 then
 		warnBreath:Show()
 		timerBreathCD:Start()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 45018 then
+		warnBuffet:Show()
+		timerBuffetCD:Start()
 	end
 end
 
