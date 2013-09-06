@@ -96,9 +96,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnSubmergeSoon	= "곧 잠수",
-	WarnEmerge			= "등장",
-	WarnEmergeSoon		= "곧 등장"
+	WarnEmerge			= "등장"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "다음 잠수",
@@ -106,10 +104,8 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
-	WarnSubmergeSoon	= "잠수 이전에 알림 보기",
 	TimerSubmerge		= "다음 잠수 바 보기",
 	WarnEmerge			= "등장 알림 보기",
-	WarnEmergeSoon		= "등장 이전에 알림 보기",
 	TimerEmerge			= "다음 등장 바 보기"
 }
 L:SetMiscLocalization{

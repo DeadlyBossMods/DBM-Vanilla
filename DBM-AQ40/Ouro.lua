@@ -14,9 +14,7 @@ mod:RegisterEvents(
 )
 
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
---local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnSweep			= mod:NewSpellAnnounce(26103, 2)
 local warnBlast			= mod:NewSpellAnnounce(26102, 4)
 local warnEnrage		= mod:NewSpellAnnounce(26615, 3)
@@ -66,7 +64,6 @@ function mod:SPELL_SUMMON(args)
 		timerBlastCD:Cancel()
 		timerSweepCD:Cancel()
 		warnSubmerge:Show()
-		warnEmergeSoon:Schedule(25)
 		timerEmerge:Start()
 		self:ScheduleMethod(30, "Submerge")
 	end

@@ -16,9 +16,7 @@ mod:RegisterEvents(
 )
 
 local warnWrathRag		= mod:NewSpellAnnounce(20566)
-local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
-local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 
 local timerWrathRag		= mod:NewNextTimer(30, 20566)
@@ -31,7 +29,6 @@ local addDied = 0
 function mod:OnCombatStart(delay)
 	addDied = 0
 	timerSubmerge:Start(-delay)
-	warnSubmergeSoon:Schedule(170-delay)
 	timerWrathRag:Start(27-delay)
 end
 
@@ -40,7 +37,6 @@ local function emerged()
 	warnEmerge:Show()
 	timerSubmerge:Start()
 --	timerWrathRag:Start()--need to find out what it is first.
-	warnSubmergeSoon:Schedule(170)
 	addDied = 0
 end
 
@@ -62,11 +58,9 @@ end
 function mod:OnSync(msg)
 	if msg == "Submerge" then
 		self:Unschedule(emerged)
-		warnEmergeSoon:Cancel()
 		timerWrathRag:Cancel()
 		warnSubmerge:Show()
 		timerEmerge:Start()
-		warnEmergeSoon:Schedule(80)
 		self:Schedule(90, emerged)
 	end
 end

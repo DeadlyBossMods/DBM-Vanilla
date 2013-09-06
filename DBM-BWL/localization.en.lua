@@ -79,18 +79,14 @@ L:SetGeneralLocalization{
 	name = "Chromaggus"
 }
 L:SetWarningLocalization{
-	WarnBreathSoon	= "Breath soon",
-	WarnBreath		= "%s",
-	WarnPhase2Soon	= "Phase 2 soon"
+	WarnBreath		= "%s"
 }
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s CD"
 }
 L:SetOptionLocalization{
-	WarnBreathSoon	= "Show pre-warning for Chromaggus' Breaths",
 	WarnBreath		= "Show warning when Chromaggus casts one of his Breaths",
-	TimerBreathCD	= "Show Breath CD",
-	WarnPhase2Soon	= "Announce when phase 2 is about to start"
+	TimerBreathCD	= "Show Breath CD"
 }
 L:SetMiscLocalization{
 	Breath1	= "First Breath",
@@ -106,9 +102,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnClassCallSoon	= "Class call soon",
 	WarnClassCall		= "%s call",
-	WarnPhaseSoon		= "Phase %s soon",
 	WarnPhase			= "Phase %s"
 }
 L:SetTimerLocalization{
@@ -116,9 +110,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Show timer for class call duration",
-	WarnClassCallSoon	= "Pre-warn class calls",
 	WarnClassCall		= "Announce class calls",
-	WarnPhaseSoon		= "Announce when a new phase is about to start",
 	WarnPhase			= "Announce phase change"
 }
 L:SetMiscLocalization{
