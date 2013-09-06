@@ -60,23 +60,6 @@ function mod:RAID_BOSS_EMOTE(msg, source)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
-	if spellId == 28819 and self:AntiSpam(2, 1) then--Submerge Visual
-		submerged = true
-		guardianKill = 0
-		ambusherKill = 0
-		timerSubmerge:Cancel()
-		timerSpoutCD:Cancel()
-		timerWhirlCD:Cancel()
-		warnSubmerge:Show()
-		timerEmerge:Start()
-		self:Schedule(60, emerged)
-	elseif spellId == 37660 and self:AntiSpam(2, 2) then
-		warnWhirl:Show()
-		timerWhirlCD:Start()
-	end
-end
-
 function mod:UNIT_DIED(args)
 	local cId = self:GetCIDFromGUID(args.destGUID)
 	if cId == 21865 then
@@ -91,5 +74,30 @@ function mod:UNIT_DIED(args)
 			self:Unschedule(emerged)
 			self:Schedule(2, emerged)
 		end
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 28819 and self:AntiSpam(2, 1) then--Submerge Visual
+		self:SendSync("Submerge")
+	elseif spellId == 37660 and self:AntiSpam(2, 2) then
+		self:SendSync("Whirl")
+	end
+end
+
+function mod:OnSync(msg)
+	if msg == "Submerge" then
+		submerged = true
+		guardianKill = 0
+		ambusherKill = 0
+		timerSubmerge:Cancel()
+		timerSpoutCD:Cancel()
+		timerWhirlCD:Cancel()
+		warnSubmerge:Show()
+		timerEmerge:Start()
+		self:Schedule(60, emerged)
+	elseif msg == "Whirl" then
+		warnWhirl:Show()
+		timerWhirlCD:Start()
 	end
 end
