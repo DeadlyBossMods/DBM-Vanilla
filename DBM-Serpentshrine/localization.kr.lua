@@ -24,8 +24,7 @@ L:SetOptionLocalization{
 	WarnMark		= "징표 알림 보기",
 	WarnPhase		= "단계 전환 알림 보기",
 	SpecWarnMark	= "징표 피해가 100%를 넘을 경우 특수 경고 보기",
-	TimerMark		= "다음 징표 바 보기",
-	RangeFrame		= "거리 창 보기"
+	TimerMark		= "다음 징표 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -44,27 +43,19 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnSubmergeSoon	= "10초 후 잠수",
-	WarnEmerge			= "재등장",
-	WarnEmergeSoon		= "10초 후 재등장"
+	WarnEmerge			= "재등장"
 }
 
 L:SetTimerLocalization{
-	TimerSubmerge		= "다음 잠수",
-	TimerEmerge			= "다음 재등장"
+	TimerSubmerge		= "잠수",
+	TimerEmerge			= "재등장"
 }
 
 L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
-	WarnSubmergeSoon	= "잠수 이전에 알림 보기",
 	WarnEmerge			= "재등장 알림 보기",
-	WarnEmergeSoon		= "재등장 이전에 알림 보기",
 	TimerSubmerge		= "다음 잠수 바 보기",
 	TimerEmerge			= "다음 재등장 바 보기"
-}
-
-L:SetMiscLocalization{
-	Spout	= "%s|1이;가; 깊은 숨을 쉽니다!"
 }
 
 --------------------------
@@ -77,8 +68,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s 단계",
-	WarnPhaseSoon	= "5초 후 %s 단계"
+	WarnPhase		= "%s 단계"
 }
 
 L:SetTimerLocalization{
@@ -87,7 +77,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPhase		= "단계 전환 알림 보기",
-	WarnPhaseSoon	= "단계 전환 이전에 알림 보기",
 	TimerPhase		= "다음 단계 바 보기"
 }
 

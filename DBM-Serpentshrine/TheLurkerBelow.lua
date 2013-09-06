@@ -9,64 +9,87 @@ mod:SetZone()
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_DAMAGE",
-	"SPELL_MISSED",
-	"RAID_BOSS_EMOTE"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
-local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3)
-local warnSubmergeSoon	= mod:NewAnnounce("WarnSubmergeSoon", 3)
-local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3)
-local warnEmergeSoon	= mod:NewAnnounce("WarnEmergeSoon", 3)
+local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 1)
+local warnEmerge		= mod:NewAnnounce("WarnEmerge", 1)
 local warnSpout			= mod:NewSpellAnnounce(37433, 4)
-local warnWhirl			= mod:NewSpellAnnounce(37363, 3)
+local warnWhirl			= mod:NewSpellAnnounce(37363, 2)
 
 local specWarnSpout		= mod:NewSpecialWarningSpell(37433, nil, nil, nil, 2)
 
-local timerSubmerge		= mod:NewTimer(90, "TimerSubmerge", 39091)
+local timerSubmerge		= mod:NewTimer(105, "TimerSubmerge", 39091)
 local timerEmerge		= mod:NewTimer(60, "TimerEmerge", 39088)
 local timerSpoutCD		= mod:NewCDTimer(50, 37433)
-local timerSpout		= mod:NewCastTimer(22, 37433)
-local timerWhirlCD		= mod:NewCDTimer(17, 37363)
+local timerSpout		= mod:NewBuffActiveTimer(22, 37433)
+local timerWhirlCD		= mod:NewCDTimer(18, 37363)
 
-function mod:CheckDive()
-	self:ScheduleMethod(0.5, "CheckDive")
-	for uId in DBM:GetGroupMembers() do
-		if self:GetUnitCreatureId(uId.."target") == 21217 then
-			return
-		end
-	end
-	warnSubmerge:Show()
-	timerEmerge:Start()
-	warnEmergeSoon:Schedule(50)
-	warnEmerge:Schedule(60)
-	timerSubmerge:Schedule(60)
-	timerSpoutCD:Schedule(60, 3)
-	self:UnscheduleMethod("CheckDive")
-	self:ScheduleMethod(150, "CheckDive")
+local submerged = false
+local guardianKill = 0
+local ambusherKill = 0
+
+local function emerged()
+	submerged = false
+	timerEmerge:Cancel()
+	warnEmerge:Show()
+	timerSubmerge:Start()
 end
 
 function mod:OnCombatStart(delay)
-	timerWhirlCD:Start(17-delay)
+	self:RegisterShortTermEvents(
+		"RAID_BOSS_EMOTE",
+		"UNIT_DIED"
+	)
+	submerged = false
+	timerWhirlCD:Start(15-delay)
 	timerSpoutCD:Start(37-delay)
-	timerSubmerge:Start(-delay)
-	warnSubmergeSoon:Schedule(80)
-	self:ScheduleMethod(90, "CheckDive")
+	timerSubmerge:Start(90-delay)
 end
 
-function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
-	if spellId == 37363 and self:AntiSpam(10) then
-		warnWhirl:Show()
-		timerWhirlCD:Start()
-	end
+function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 end
-mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
-function mod:RAID_BOSS_EMOTE(msg)
-	if msg == L.Spout or msg:find(L.Spout) then
+function mod:RAID_BOSS_EMOTE(msg, source)
+	if (source or "") == L.name then
 		warnSpout:Show()
 		specWarnSpout:Show()
 		timerSpout:Start()
 		timerSpoutCD:Start()
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 28819 and self:AntiSpam(2, 1) then--Submerge Visual
+		submerged = true
+		guardianKill = 0
+		ambusherKill = 0
+		timerSubmerge:Cancel()
+		timerSpoutCD:Cancel()
+		timerWhirlCD:Cancel()
+		warnSubmerge:Show()
+		timerEmerge:Start()
+		self:Schedule(60, emerged)
+	elseif spellId == 37660 and self:AntiSpam(2, 2) then
+		warnWhirl:Show()
+		timerWhirlCD:Start()
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cId = self:GetCIDFromGUID(args.destGUID)
+	if cId == 21865 then
+		ambusherKill = ambusherKill + 1
+		if ambusherKill == 6 and guardianKill == 3 and submerged then
+			self:Unschedule(emerged)
+			self:Schedule(2, emerged)
+		end
+	elseif cId == 21873 then
+		guardianKill = guardianKill + 1
+		if ambusherKill == 6 and guardianKill == 3 and submerged then
+			self:Unschedule(emerged)
+			self:Schedule(2, emerged)
+		end
 	end
 end

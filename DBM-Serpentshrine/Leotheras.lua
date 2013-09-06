@@ -16,7 +16,6 @@ mod:RegisterEvents(
 
 local warnWhirl			= mod:NewSpellAnnounce(37640, 3)
 local warnPhase			= mod:NewAnnounce("WarnPhase", 3)
-local warnPhaseSoon		= mod:NewAnnounce("WarnPhaseSoon", 3)
 local warnDemon			= mod:NewTargetAnnounce(37676, 4)
 local warnMC			= mod:NewTargetAnnounce(37749, 4)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
@@ -42,7 +41,6 @@ local phase2 = false
 
 local function humanWarns()
 	warnPhase:Show(L.Human)
-	warnPhaseSoon:Schedule(55, L.Demon)
 	timerWhirlCD:Start(15)
 	timerPhase:Start(L.Demon)
 end
@@ -67,7 +65,6 @@ function mod:OnCombatStart(delay)
 	table.wipe(warnDemonTargets)
 	timerWhirlCD:Start(15)
 	timerPhase:Start(nil, L.Demon)
-	warnPhaseSoon:Schedule(55, L.Demon)
 	berserkTimer:Start(-delay)
 end
 
@@ -113,7 +110,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerWhirlCD:Cancel()
 		timerDemonCD:Start()
 		timerPhase:Start(L.Human)
-		warnPhaseSoon:Schedule(55, L.Human)
 		self:Schedule(60, humanWarns)
 	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
 		phase2 = true
