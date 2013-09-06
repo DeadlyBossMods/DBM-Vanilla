@@ -11,14 +11,12 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED"
 )
 
-local warnStoneformSoon	= mod:NewSoonAnnounce(25685, 2)
 local warnStoneform		= mod:NewSpellAnnounce(25685, 3)
 
 local timerStoneform	= mod:NewNextTimer(90, 25685)
 local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685)
 
 function mod:OnCombatStart(delay)
-	warnStoneformSoon:Schedule(80)
 	timerStoneform:Start(-delay)
 end
 
@@ -32,7 +30,6 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25685 then
 		timerStoneformDur:Cancel()
-		warnStoneformSoon:Schedule(80)
 		timerStoneform:Start()
 	end
 end

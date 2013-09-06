@@ -14,7 +14,6 @@ mod:RegisterEvents(
 	"UNIT_HEALTH target focus mouseover"
 )
 
-local warnBreathSoon	= mod:NewAnnounce("WarnBreathSoon", 1, 23316)
 local warnBreath		= mod:NewAnnounce("WarnBreath", 2, 23316)
 local warnRed			= mod:NewSpellAnnounce(23155, 2, nil, false)
 local warnGreen			= mod:NewSpellAnnounce(23169, 2, nil, false)
@@ -22,7 +21,7 @@ local warnBlue			= mod:NewSpellAnnounce(23153, 2, nil, false)
 local warnBlack			= mod:NewSpellAnnounce(23154, 2, nil, false)
 local warnBronze		= mod:NewSpellAnnounce(23170, 4)
 local warnEnrage		= mod:NewSpellAnnounce(23128)
-local warnPhase2Soon	= mod:NewAnnounce("WarnPhase2Soon", 1, "Interface\\Icons\\Spell_Nature_WispSplode")
+local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2, 1)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local specWarnBronze	= mod:NewSpecialWarningYou(23170)
@@ -33,7 +32,6 @@ local timerEnrage		= mod:NewBuffActiveTimer(8, 23128)
 local prewarn_P2 = false
 
 function mod:OnCombatStart(delay)
-	warnBreathSoon:Schedule(25-delay)
 	timerBreathCD:Start(30-delay, L.Breath1)
 	timerBreathCD:Start(-delay, L.Breath2)
 	prewarn_P2 = false
@@ -41,8 +39,6 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(23309, 23313, 23189, 23316) or args.spellId == 23312 then
-		warnBreathSoon:Cancel()
-		warnBreathSoon:Schedule(25)
 		warnBreath:Show(args.spellName)
 		timerBreathCD:Start(args.spellName)
 	end

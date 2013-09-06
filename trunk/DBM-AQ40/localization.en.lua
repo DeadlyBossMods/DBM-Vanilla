@@ -129,9 +129,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submerge",
-	WarnEmerge			= "Emerge",
-	WarnSubmergeSoon	= "Submerge soon",
-	WarnEmergeSoon		= "Emerge soon"
+	WarnEmerge			= "Emerge"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submerge",
@@ -139,9 +137,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "Show warning for submerge",
-	WarnSubmergeSoon	= "Show pre-warning for submerge",
 	TimerSubmerge		= "Show timer for submerge",
 	WarnEmerge			= "Show warning for emerge",
-	WarnEmergeSoon		= "Show pre-warning for emerge",
 	TimerEmerge			= "Show timer for emerge"
 }

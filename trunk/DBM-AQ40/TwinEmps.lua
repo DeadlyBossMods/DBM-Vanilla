@@ -14,7 +14,6 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
 )
 
-local warnTeleportSoon		= mod:NewSoonAnnounce(800, 2)
 local warnTeleport			= mod:NewSpellAnnounce(800, 3)
 local warnExplodeBug		= mod:NewSpellAnnounce(804, 2, nil, false)
 local warnMutateBug			= mod:NewSpellAnnounce(802, 2, nil, false)
@@ -27,14 +26,12 @@ local berserkTimer	=	mod:NewBerserkTimer(900)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start()
-	warnTeleportSoon:Schedule(27-delay)
 	timerTeleport:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(799, 800) and self:AntiSpam() then
 		warnTeleport:Show()
-		warnTeleportSoon:Schedule(27)
 		timerTeleport:Start()
 	end
 end
