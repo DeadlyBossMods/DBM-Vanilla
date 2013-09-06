@@ -26,36 +26,35 @@ mod:SetBossHealthInfo(
 	22952, L.Veras
 )
 
-local warnPoison		= mod:NewTargetAnnounce(41485, 3)
-local warnVanish		= mod:NewTargetAnnounce(41476, 3)
-local warnShield		= mod:NewTargetAnnounce(41475, 3)
-local warnMeleeImmune	= mod:NewTargetAnnounce(41450, 4)
-local warnSpellImmune	= mod:NewTargetAnnounce(41451, 4)
-local warnCoHCast		= mod:NewSpellAnnounce(41455, 4)
-local warnFadeSoon		= mod:NewAnnounce("WarnFadeSoon", 3, 41476)
-local warnFaded			= mod:NewAnnounce("WarnFaded", 3, 41476)
-local warnDevAura		= mod:NewAnnounce("WarnDevAura", 3, 41452)
-local warnResAura		= mod:NewAnnounce("WarnResAura", 3, 41453)
+local warnPoison			= mod:NewTargetAnnounce(41485, 3)
+local warnVanish			= mod:NewTargetAnnounce(41476, 3)
+local warnVanishEnd			= mod:NewEndAnnounce(41476, 3)
+local warnShield			= mod:NewTargetAnnounce(41475, 3)
+local warnMeleeImmune		= mod:NewTargetAnnounce(41450, 4)
+local warnSpellImmune		= mod:NewTargetAnnounce(41451, 4)
+local warnCoHCast			= mod:NewSpellAnnounce(41455, 4)
+local warnDevAura			= mod:NewSpellAnnounce(41452, 3)
+local warnResAura			= mod:NewSpellAnnounce(41453, 3)
 
-local specWarnFlame		= mod:NewSpecialWarningMove(41481)
-local specWarnBlizzard	= mod:NewSpecialWarningMove(41482)
-local specWarnCoH		= mod:NewSpecialWarningInterrupt(41455)
-local specWarnImmune	= mod:NewSpecialWarning("Immune")
+local specWarnFlame			= mod:NewSpecialWarningMove(41481)
+local specWarnBlizzard		= mod:NewSpecialWarningMove(41482)
+local specWarnConsecration	= mod:NewSpecialWarningMove(41541)
+local specWarnCoH			= mod:NewSpecialWarningInterrupt(41455)
+local specWarnImmune		= mod:NewSpecialWarning("Immune")
 
-local timerVanish		= mod:NewBuffActiveTimer(31, 41476)
-local timerShield		= mod:NewBuffActiveTimer(20, 41475)
-local timerMeleeImmune	= mod:NewBuffActiveTimer(15, 41450)
-local timerSpellImmune	= mod:NewBuffActiveTimer(15, 41451)
-local timerDevAura		= mod:NewBuffActiveTimer(30, 41452)
-local timerResAura		= mod:NewBuffActiveTimer(30, 41453)
-local timerCoH			= mod:NewCastTimer(2.5, 41455)
-local timerNextCoH		= mod:NewCDTimer(14, 41455)
+local timerVanish			= mod:NewBuffActiveTimer(31, 41476)
+local timerShield			= mod:NewBuffActiveTimer(20, 41475)
+local timerMeleeImmune		= mod:NewTargetTimer(15, 41450)
+local timerSpellImmune		= mod:NewTargetTimer(15, 41451)
+local timerDevAura			= mod:NewBuffActiveTimer(30, 41452)
+local timerResAura			= mod:NewBuffActiveTimer(30, 41453)
+local timerCoH				= mod:NewCastTimer(2.5, 41455)
+local timerNextCoH			= mod:NewCDTimer(14, 41455)
 
-local berserkTimer		= mod:NewBerserkTimer(900)
+local berserkTimer			= mod:NewBerserkTimer(900)
 
 mod:AddBoolOption("HealthFrame", false)
 mod:AddBoolOption("PoisonIcon", true)
-mod:AddBoolOption("PoisonWhisper", false, "announce")
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
@@ -67,31 +66,29 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 8)
 		end
-		if DBM:GetRaidRank() > 0 and self.Options.PoisonWhisper then
-			self:SendWhisper(L.PoisonWhisper, args.destName)
-		end
-	elseif args.spellId == 41481 and args:IsPlayer() then
+	elseif args.spellId == 41481 and args:IsPlayer() and self:AntiSpam(4, 1) and not self:IsTrivial(85) then
 		 specWarnFlame:Show()
-	elseif args.spellId == 41482 and args:IsPlayer() then
+	elseif args.spellId == 41482 and args:IsPlayer() and self:AntiSpam(4, 1) and not self:IsTrivial(85) then
 		 specWarnBlizzard:Show()
+	elseif args.spellId == 41541 and args:IsPlayer() and self:AntiSpam(4, 1) and not self:IsTrivial(85) then
+		 specWarnConsecration:Show()
 	elseif args.spellId == 41476 then
 		warnVanish:Show(args.destName)
 		timerVanish:Start(args.destName)
-		warnFadeSoon:Schedule(26)
 	elseif args.spellId == 41475 then
 		warnShield:Show(args.destName)
 		timerShield:Start(args.destName)
-	elseif args.spellId == 41452 and args.destName == L.Gathios then
+	elseif args.spellId == 41452 and self:GetCIDFromGUID(args.destGUID) == 22949 then
 		warnDevAura:Show()
 		timerDevAura:Start()
-	elseif args.spellId == 41453 and args.destName == L.Gathios then
+	elseif args.spellId == 41453 and self:GetCIDFromGUID(args.destGUID) == 22949 then
 		warnResAura:Show()
 		timerResAura:Start()
-	elseif args.spellId == 41450 and args.destName == L.Malande then
+	elseif args.spellId == 41450 and self:GetCIDFromGUID(args.destGUID) == 22951 then
 		warnMeleeImmune:Show(args.destName)
 		timerMeleeImmune:Start(args.destName)
 		specWarnImmune:Show(L.Melee)
-	elseif args.spellId == 41451 and args.destName == L.Malande then
+	elseif args.spellId == 41451 and self:GetCIDFromGUID(args.destGUID) == 22951 then
 		warnSpellImmune:Show(args.destName)
 		timerSpellImmune:Start(args.destName)
 		specWarnImmune:Show(L.Spell)
@@ -102,7 +99,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 41479 then
-		warnFaded:Show()
+		warnVanishEnd:Show()
 	elseif args.spellId == 41485 then
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 0)
@@ -120,7 +117,7 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_HEAL(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, spellId)
+function mod:SPELL_HEAL(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 41455 then
 		timerNextCoH:Start(19)
 	end

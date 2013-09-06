@@ -101,12 +101,10 @@ L:SetWarningLocalization{
 	WarnEmergeSoon		= "곧 등장"
 }
 L:SetTimerLocalization{
-	TimerCombatStart	= "전투 시작",
 	TimerSubmerge		= "다음 잠수",
 	TimerEmerge			= "다음 등장"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 바 보기",
 	WarnSubmerge		= "잠수 알림 보기",
 	WarnSubmergeSoon	= "잠수 이전에 알림 보기",
 	TimerSubmerge		= "다음 잠수 바 보기",
