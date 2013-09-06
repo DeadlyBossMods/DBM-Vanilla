@@ -67,14 +67,12 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnWave	= "%s",
-	WarnWaveSoon= "New wave soon"
 }
 L:SetTimerLocalization{
 	TimerWave	= "Next wave"
 }
 L:SetOptionLocalization{
 	WarnWave		= "Warn when a new wave is incoming",
-	WarnWaveSoon	= "Warn when a new wave is incoming soon",
 	DetailedWave	= "Detailed warning when a new wave is incoming (which mobs)",
 	TimerWave		= "Show a timer for next wave"
 }
@@ -82,10 +80,11 @@ L:SetMiscLocalization{
 	HyjalZoneName	= "Hyjal Summit",
 	Thrall			= "Thrall",
 	Jaina			= "Lady Jaina Proudmoore",
-	RageWinterchill	= "Rage Winterchill",
-	Anetheron		= "Anetheron",
-	Kazrogal		= "Kazrogal",
-	Azgalor			= "Azgalor",
+	GeneralBoss		= "Boss incoming",
+	RageWinterchill	= "Rage Winterchill incoming",
+	Anetheron		= "Anetheron incoming",
+	Kazrogal		= "Kazrogal incoming",
+	Azgalor			= "Azgalor incoming",
 	WaveCheck		= "Current Wave = (%d+) of 8",
 	WarnWave_0		= "Wave %s/8",
 	WarnWave_1		= "Wave %s/8 - %s %s",

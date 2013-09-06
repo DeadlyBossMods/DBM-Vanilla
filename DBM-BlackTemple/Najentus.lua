@@ -32,7 +32,7 @@ function mod:OnCombatStart(delay)
 	timerShield:Start(58-delay)
 	warnShieldSoon:Schedule(48-delay)
 	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show()
+		DBM.RangeCheck:Show(8)
 	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(L.HealthInfo)

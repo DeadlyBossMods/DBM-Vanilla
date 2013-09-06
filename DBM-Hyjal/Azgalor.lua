@@ -16,9 +16,11 @@ mod:RegisterEvents(
 )
 
 local warnSilence		= mod:NewSpellAnnounce(31344, 3)
-local warnDoom			= mod:NewTargetAnnounce(31347, 3)
+local warnDoom			= mod:NewTargetAnnounce(31347, 4)
 
 local timerDoom			= mod:NewTargetTimer(20, 31347)
+local timerSilence		= mod:NewBuffFadesTimer(5, 31344)
+local timerSilenceCD	= mod:NewCDTimer(18, 31344)
 
 local specWarnFire		= mod:NewSpecialWarningMove(31340)
 local specWarnDoom		= mod:NewSpecialWarningYou(31347)
@@ -57,5 +59,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 31344 then
 		warnSilence:Show()
+		timerSilence:Start()
+		timerSilenceCD:Start()
 	end
 end
