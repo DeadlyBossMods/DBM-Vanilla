@@ -8,6 +8,11 @@ mod:SetZone()
 
 mod:RegisterCombat("combat")
 
+mod:RegisterEventsInCombat(
+	"RAID_BOSS_EMOTE",
+	"UNIT_DIED"
+)
+
 mod:RegisterEvents(
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
@@ -37,18 +42,10 @@ local function emerged()
 end
 
 function mod:OnCombatStart(delay)
-	self:RegisterShortTermEvents(
-		"RAID_BOSS_EMOTE",
-		"UNIT_DIED"
-	)
 	submerged = false
 	timerWhirlCD:Start(15-delay)
 	timerSpoutCD:Start(37-delay)
 	timerSubmerge:Start(90-delay)
-end
-
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
 end
 
 function mod:RAID_BOSS_EMOTE(msg, source)

@@ -7,6 +7,11 @@ mod:SetModelID(21145)
 mod:SetZone()
 mod:SetUsedIcons(8)
 
+mod:RegisterEventsInCombat(
+	"SPELL_DAMAGE",
+	"SPELL_MISSED",
+	"RAID_BOSS_EMOTE"
+)
 mod:RegisterCombat("combat")
 
 local warnPhase			= mod:NewAnnounce("WarnPhase", 4, 42052)
@@ -38,11 +43,6 @@ function mod:ScanTarget()
 end
 
 function mod:OnCombatStart(delay)
-	self:RegisterShortTermEvents(
-		"SPELL_DAMAGE",
-		"SPELL_MISSED",
-		"RAID_BOSS_EMOTE"
-	)
 	berserkTimer:Start(-delay)
 	timerPhase:Start(-delay, L.Kite)
 	phase2 = false
@@ -50,7 +50,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
 	if lastTarget then
 		self:SetIcon(lastTarget, 0)
 	end

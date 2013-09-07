@@ -9,13 +9,17 @@ mod:SetUsedIcons(6, 7, 8)
 
 mod:RegisterCombat("combat")
 
+mod:RegisterEventsInCombat(
+	"RAID_BOSS_EMOTE"
+)
+
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
 	"UNIT_HEALTH target focus mouseover",
-	"UNIT_SPELLCAST_SUCCEEDED target focus mouseover"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnFA			= mod:NewTargetAnnounce(41001, 4)
@@ -50,17 +54,10 @@ local function showFATargets()
 end
 
 function mod:OnCombatStart(delay)
-	self:RegisterShortTermEvents(
-		"RAID_BOSS_EMOTE"
-	)
 	table.wipe(warnFATargets)
 	FAIcon = 8
 	prewarn_enrage = false
 	enrage = false
-end
-
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -99,7 +96,6 @@ end
 
 function mod:RAID_BOSS_EMOTE(msg, source)
 	if not enrage and (source or "") == L.name then
-		self:UnregisterShortTermEvents()
 		enrage = true
 		warnEnrage:Show()
 	end
@@ -114,6 +110,12 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName, _, _, spellId)
 	if aura[spellId] then
-		timerAura:Start(spellName)
+		self:SendSync("Aura", spellName)
+	end
+end
+
+function mod:OnSync(msg, name)
+	if msg == "Aura" and name then
+		timerAura:Start(name)
 	end
 end

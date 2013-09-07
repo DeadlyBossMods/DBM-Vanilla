@@ -9,13 +9,18 @@ mod:SetUsedIcons(4, 5, 6, 7, 8)
 
 mod:RegisterCombat("yell", L.Pull)
 
+mod:RegisterEventsInCombat(
+	"SPELL_DAMAGE",
+	"SPELL_MISSED"
+)
+
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
-	"UNIT_SPELLCAST_SUCCEEDED target focus mouseover"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnFixate		= mod:NewTargetAnnounce(41294, 3)
@@ -67,10 +72,6 @@ local function showSpite()
 end
 
 function mod:OnCombatStart(delay)
-	self:RegisterShortTermEvents(
-		"SPELL_DAMAGE",
-		"SPELL_MISSED"
-	)
 	lastFixate = false
 	table.wipe(warnSpiteTargets)
 	timerNextEnrage:Start(47-delay)
@@ -80,10 +81,6 @@ function mod:OnCombatStart(delay)
 		DBM.BossHealth:Show(L.name)
 		DBM.BossHealth:AddBoss(23418, L.Suffering)
 	end
-end
-
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
