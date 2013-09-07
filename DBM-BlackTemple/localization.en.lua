@@ -10,9 +10,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetOptionLocalization{
-	InfoFrame	= "Show info frame for health (<8.8k hp)",
-	RangeFrame	= DBM_CORE_AUTO_RANGE_OPTION_TEXT_SHORT:format(8),
-	SpineIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(39837)
+	InfoFrame	= "Show info frame for health (<8.8k hp)"
 }
 
 L:SetMiscLocalization{

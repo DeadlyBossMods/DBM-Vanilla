@@ -56,15 +56,13 @@ L:SetGeneralLocalization{
 	name 		= "小怪模組"
 }
 L:SetWarningLocalization{
-	WarnWave	= "%s",
-	WarnWaveSoon= "新一波小怪即將到來"
+	WarnWave	= "%s"
 }
 L:SetTimerLocalization{
 	TimerWave	= "下一波"
 }
 L:SetOptionLocalization{
 	WarnWave		= "當新一波進攻到來時顯示警告",
-	WarnWaveSoon	= "當新一波進攻即將到來時顯示警告",
 	DetailedWave	= "當新一波進攻到來時顯示詳細警告(何種怪)",
 	TimerWave		= "為下一波進攻顯示計時器"
 }
@@ -72,10 +70,11 @@ L:SetMiscLocalization{
 	HyjalZoneName	= "海加爾山",
 	Thrall			= "索爾",
 	Jaina			= "珍娜·普勞德摩爾女士",
-	RageWinterchill	= "瑞齊·凜冬",
-	Anetheron		= "安納塞隆",
-	Kazrogal		= "卡茲洛加",
-	Azgalor			= "亞茲加洛",
+	GeneralBoss		= "首領到來",
+	RageWinterchill	= "瑞齊·凜冬到來",
+	Anetheron		= "安納塞隆到來",
+	Kazrogal		= "卡茲洛加到來",
+	Azgalor			= "亞茲加洛到來",
 	WaveCheck		= "目前波數 = (%d+)/8",
 	WarnWave_0		= "第%s/8波",
 	WarnWave_1		= "第%s/8波 - %s %s",

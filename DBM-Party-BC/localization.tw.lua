@@ -109,7 +109,7 @@ L = DBM:GetModLocalization(573)
 L = DBM:GetModLocalization(574)
 
 L:SetMiscLocalization({
-	Mechs	= "Tune 'em up good boys!"
+	Mechs	= "好好的修理它們，孩子們!"
 })
 
 --------------------------
@@ -237,7 +237,7 @@ L = DBM:GetModLocalization(553)
 L = DBM:GetModLocalization(554)
 
 L:SetMiscLocalization({
-    AeonusFrenzy	= "%s goes into a frenzy!"
+    AeonusFrenzy	= "%s被激怒了!"
 })
 
 ---------------------
@@ -246,30 +246,30 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("PT")
 
 L:SetGeneralLocalization({
-	name = "Portal Timers (CoT)"
+	name = "時間間隙(時光洞穴)"
 })
 
 L:SetWarningLocalization({
-    WarnWavePortalSoon	= "New portal soon",
-    WarnWavePortal		= "Portal %d",
-    WarnBossPortal		= "Boss incoming"
+    WarnWavePortalSoon	= "新的時間裂隙即將到來",
+    WarnWavePortal		= "第%d個時間裂隙",
+    WarnBossPortal		= "首領到來"
 })
 
 L:SetTimerLocalization({
-	TimerNextPortal		= "Portal %d"
+	TimerNextPortal		= "第%d個時間裂隙"
 })
 
 L:SetOptionLocalization({
-    WarnWavePortalSoon	= "Show pre-warning for new portal",
-    WarnWavePortal		= "Show warning for new portal",
-    WarnBossPortal		= "Show warning for boss incoming",
-	TimerNextPortal		= "Show timer for next portal (after Boss)",
-	ShowAllPortalTimers	= "Show timers for all portals (inaccurate)"
+    WarnWavePortalSoon	= "為新的時間裂隙顯示預先警告",
+    WarnWavePortal		= "為新的時間裂隙顯示警告",
+    WarnBossPortal		= "為首領到來顯示警告",
+	TimerNextPortal		= "為下一次時間裂隙顯示計時器(擊敗首領後)",
+	ShowAllPortalTimers	= "為所有時間裂隙顯示計時器(不準確)"
 })
 
 L:SetMiscLocalization({
-	PortalCheck			= "Time Rifts Opened: (%d+)/18",
-	Shielddown			= "No! Damn this feeble, mortal coil!"
+	PortalCheck			= "時間裂隙開啟:(%d+)/18",
+	Shielddown			= "這個該死的軀體既虛弱又平凡!"
 })
 
 --------------------

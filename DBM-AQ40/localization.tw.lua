@@ -108,9 +108,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "鑽地",
-	WarnEmerge			= "現身",
-	WarnSubmergeSoon	= "即將鑽地",
-	WarnEmergeSoon		= "即將現身"
+	WarnEmerge			= "現身"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "鑽地",
@@ -118,9 +116,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "為鑽地顯示警告",
-	WarnSubmergeSoon	= "為鑽地顯示預先警告",
 	TimerSubmerge		= "為鑽地顯示計時器",
 	WarnEmerge			= "為現身顯示警告",
-	WarnEmergeSoon		= "為現身顯示預先警告",
 	TimerEmerge			= "為現身顯示計時器"
 }

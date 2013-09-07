@@ -96,22 +96,16 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "隱沒",
-	WarnSubmergeSoon	= "即將隱沒",
-	WarnEmerge			= "現身",
-	WarnEmergeSoon		= "即將現身"
+	WarnEmerge			= "現身"
 }
 L:SetTimerLocalization{
-	TimerCombatStart	= "戰鬥開始",
 	TimerSubmerge		= "隱沒",
 	TimerEmerge			= "現身"
 }
 L:SetOptionLocalization{
-	TimerCombatStart	= "為戰鬥開始顯示計時器",
 	WarnSubmerge		= "為隱沒顯示警告",
-	WarnSubmergeSoon	= "為隱沒顯示預先警告",
 	TimerSubmerge		= "為隱沒顯示計時器",
 	WarnEmerge			= "為現身顯示警告",
-	WarnEmergeSoon		= "為現身顯示預先警告",
 	TimerEmerge			= "為現身顯示計時器"
 }
 L:SetMiscLocalization{
