@@ -44,21 +44,17 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnSubmerge		= "潛入水中",
-	WarnSubmergeSoon	= "10秒後潛入水中",
-	WarnEmerge			= "浮現",
-	WarnEmergeSoon		= "10秒後浮現"
+	WarnEmerge			= "浮現"
 }
 
 L:SetTimerLocalization{
-	TimerSubmerge		= "潛水",
-	TimerEmerge			= "浮現"
+	TimerSubmerge		= "潛水冷卻",
+	TimerEmerge			= "浮現冷卻"
 }
 
 L:SetOptionLocalization{
 	WarnSubmerge		= "為潛入水中顯示警告",
-	WarnSubmergeSoon	= "為潛入水中顯示預先警告",
 	WarnEmerge			= "為浮現顯示警告",
-	WarnEmergeSoon		= "為浮現顯示預先警告",
 	TimerSubmerge		= "為潛入水中顯示計時器",
 	TimerEmerge			= "為浮現顯示計時器"
 }
@@ -77,8 +73,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s階段",
-	WarnPhaseSoon	= "5秒後%s階段"
+	WarnPhase		= "%s階段"
 }
 
 L:SetTimerLocalization{
@@ -87,7 +82,6 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPhase		= "為下個階段顯示警告",
-	WarnPhaseSoon	= "為下個階段顯示預先警告",
 	TimerPhase		= "為下個階段顯示計時器"
 }
 
