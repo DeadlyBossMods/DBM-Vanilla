@@ -74,8 +74,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "Zeige Zeit bis Kampfbeginn",
-	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830)
+	TimerCombatStart	= "Zeige Zeit bis Kampfbeginn"
 }
 
 L:SetMiscLocalization{
@@ -95,10 +94,6 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	RRHIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(30753)
 }
 
 L:SetMiscLocalization{
@@ -170,8 +165,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	timerSpecial			= "Abklingzeit der Spezialfähigkeiten anzeigen",
 	DBM_ARAN_DO_NOT_MOVE	= "Spezialwarnung für $spell:30004",
-	ElementalIcons			= "Setze Zeichen auf Wasserelementare",
-	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
+	ElementalIcons			= "Setze Zeichen auf Wasserelementare"
 }
 
 L:SetMiscLocalization{

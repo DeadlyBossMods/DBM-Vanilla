@@ -10,10 +10,6 @@ L:SetGeneralLocalization{
 	name = "Der Prophet Skeram"
 }
 
-L:SetOptionLocalization{
-	SetIconOnMC		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(785)
-}
-
 ----------------
 -- Three Bugs --
 ----------------
@@ -45,6 +41,7 @@ L = DBM:GetModLocalization("Fankriss")
 L:SetGeneralLocalization{
 	name = "Fankriss der Unnachgiebige"
 }
+
 --------------
 -- Viscidus --
 --------------
@@ -100,32 +97,23 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnEyeTentacle			= "Augententakel erscheinen",
-	WarnClawTentacle		= "Klauententakel erscheinen", -- not implemented: unused (r335)
-	WarnGiantEyeTentacle	= "Riesiges Augententakel erscheint", -- not implemented: unused (r335)
-	WarnGiantClawTentacle	= "Riesiges Klauententakel erscheint", -- not implemented: unused (r335)
-	WarnWeakened			= "Rüstung geschwächt für 45 Sekunden!"
+	WarnWeakened			= "C'Thun geschwächt",
+	SpecWarnWeakened		= "C'Thun geschwächt!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Augententakel",
-	TimerClawTentacle		= "Klauententakel",
-	TimerGiantEyeTentacle	= "Riesiges Augententakel", -- not implemented: missing spell id (r335)
-	TimerGiantClawTentacle	= "Riesiges Klauententakel", -- not implemented: missing spell id (r335)
-	TimerWeakened			= "Rüstung geschwächt"
+	TimerEyeTentacle		= "Nächstes Augententakel",
+	TimerWeakened			= "Schwäche endet"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Zeige Warnung, wenn Augententakel erscheinen",
-	WarnClawTentacle		= "NICHT IMPLEMENTIERT! Zeige Warnung, wenn Klauententakel erscheinen", -- not implemented: unused (r335)
-	WarnGiantEyeTentacle	= "NICHT IMPLEMENTIERT! Zeige Warnung, wenn Riesiges Augententakel erscheint", -- not implemented: unused (r335)
-	WarnGiantClawTentacle	= "NICHT IMPLEMENTIERT! Zeige Warnung, wenn Riesiges Klauententakel erscheint", -- not implemented: unused (r335)
-	WarnWeakened			= "Zeige Warnung, wenn die Rüstung von C'Thun geschwächt ist",
-	TimerEyeTentacle		= "Zeige Zeit bis Augententakel erscheinen",
-	TimerClawTentacle		= "Zeige Zeit bis Klauententakel erscheinen",
-	TimerGiantEyeTentacle	= "NICHT IMPLEMENTIERT! Zeige Zeit bis Riesiges Augententakel erscheint", -- not implemented: missing spell id (r335)
-	TimerGiantClawTentacle	= "NICHT IMPLEMENTIERT! Zeige Zeit bis Riesiges Klauententakel erscheint", -- not implemented: missing spell id (r335)
-	TimerWeakened			= "Dauer der geschwächten Rüstung von C'Thun anzeigen",
-	RangeFrame	= "Zeige Abstandsfenster (10m)"
+	WarnWeakened			= "Zeige Warnung, wenn C'Thun geschwächt ist",
+	SpecWarnWeakened		= "Spezialwarnung, wenn C'Thun geschwächt ist",
+	TimerEyeTentacle		= "Zeige Zeit bis die nächsten Augententakel erscheinen",
+	TimerWeakened			= "Dauer der Schwäche von C'Thun anzeigen",
+	RangeFrame				= "Zeige Abstandsfenster (10m)"
 }
 L:SetMiscLocalization{
+	Eye			= "Auge von C'Thun",--needs to be verified (guessed)
 	Weakened 	= "C'Thun ist geschwächt!"
 }
 ----------------
@@ -138,9 +126,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Abtauchen",
-	WarnEmerge			= "Auftauchen",
-	WarnSubmergeSoon	= "Abtauchen bald",
-	WarnEmergeSoon		= "Auftauchen bald"
+	WarnEmerge			= "Auftauchen"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Abtauchen",
@@ -148,9 +134,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "Zeige Warnung für Abtauchen",
-	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
 	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
 	WarnEmerge			= "Zeige Warnung für Auftauchen",
-	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
 	TimerEmerge			= "Zeige Zeit bis Auftauchen"
 }

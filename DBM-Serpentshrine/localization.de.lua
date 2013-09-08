@@ -24,8 +24,7 @@ L:SetOptionLocalization{
 	WarnMark		= "Zeige Warnung für Male",
 	WarnPhase		= "Zeige Warnung für nächste Phase",
 	SpecWarnMark	= "Spezialwarnung, wenn Schaden durch Male Debuff um 100% oder mehr erhöht ist",
-	TimerMark		= "Zeige Zeit bis nächste Male",
-	RangeFrame		= "Zeige Abstandsfenster (10m)"
+	TimerMark		= "Zeige Zeit bis nächste Male"
 }
 
 L:SetMiscLocalization{
@@ -44,27 +43,19 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnSubmerge		= "Abtauchen",
-	WarnSubmergeSoon	= "Abtauchen in 10 Sek",
-	WarnEmerge			= "Auftauchen",
-	WarnEmergeSoon		= "Auftauchen in 10 Sek"
+	WarnEmerge			= "Auftauchen"
 }
 
 L:SetTimerLocalization{
-	TimerSubmerge		= "Abtauchen",
-	TimerEmerge			= "Auftauchen"
+	TimerSubmerge		= "Abtauchen CD",
+	TimerEmerge			= "Auftauchen CD"
 }
 
 L:SetOptionLocalization{
 	WarnSubmerge		= "Zeige Warnung für Abtauchen",
-	WarnSubmergeSoon	= "Zeige Vorwarnung für Abtauchen",
 	WarnEmerge			= "Zeige Warnung für Auftauchen",
-	WarnEmergeSoon		= "Zeige Vorwarnung für Auftauchen",
-	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
-	TimerEmerge			= "Zeige Zeit bis Auftauchen"
-}
-
-L:SetMiscLocalization{
-	Spout	= "%s atmet tief ein!"
+	TimerSubmerge		= "Abklingzeit von Abtauchen anzeigen",
+	TimerEmerge			= "Abklingzeit von Auftauchen anzeigen"
 }
 
 --------------------------
@@ -77,8 +68,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s Phase",
-	WarnPhaseSoon	= "%s Phase in 5 Sek"
+	WarnPhase		= "%s Phase"
 }
 
 L:SetTimerLocalization{
@@ -87,9 +77,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPhase		= "Zeige Warnung für nächste Phase",
-	WarnPhaseSoon	= "Zeige Vorwarnung für nächste Phase",
-	TimerPhase		= "Zeige Zeit bis nächste Phase",
-	DemonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37676)
+	TimerPhase		= "Zeige Zeit bis nächste Phase"
 }
 
 L:SetMiscLocalization{
@@ -145,8 +133,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnMurlocs		= "Zeige Warnung, wenn Murlocs erscheinen",
 	SpecWarnMurlocs	= "Spezialwarnung, wenn Murlocs erscheinen",
-	TimerMurlocs	= "Zeige Zeit bis Murlocs erscheinen",
-	GraveIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38049)
+	TimerMurlocs	= "Zeige Zeit bis Murlocs erscheinen"
 }
 
 L:SetMiscLocalization{
@@ -189,7 +176,6 @@ L:SetOptionLocalization{
 	TimerNaga			= "Zeige Zeit bis nächster Naga",
 	SpecWarnElemental	= "Spezialwarnung, wenn Besudelter Elementar kommt",
 	RangeFrame			= "Zeige Abstandsfenster (10m)",
-	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
 	AutoChangeLootToFFA	= "Plündermodus in Phase 2 automatisch auf 'Jeder gegen jeden' einstellen"
 }
 
