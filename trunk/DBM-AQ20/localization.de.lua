@@ -9,12 +9,6 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "Kurinnaxx"
 }
-L:SetWarningLocalization{
-	WarnWound	= "%s auf >%s< (%s)"
-}
-L:SetOptionLocalization{
-	WarnWound	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(25646)
-}
 ------------
 -- Rajaxx --
 ------------
@@ -24,15 +18,13 @@ L:SetGeneralLocalization{
 	name 		= "General Rajaxx"
 }
 L:SetWarningLocalization{
-	WarnWave	= "Welle %s",
-	WarnBoss	= "Boss kommt"
+	WarnWave	= "Welle %s"
 }
 L:SetOptionLocalization{
 	WarnWave	= "Zeige Meldung für nächste Angriffswelle"
 }
 L:SetMiscLocalization{
-	NpcPull		= "Hier kommen sie. Bleibt am Leben, Welpen.",
-	Wave1		= "Erinnerst du dich, Rajaxx? Ich habe dir doch versprochen, dich zuletzt zu töten.",
+	Wave12		= "Hier kommen sie. Bleibt am Leben, Welpen.",
 	Wave3		= "Die Zeit der Vergeltung ist gekommen! Lasst uns die Herzen unserer Feinde mit Dunkelheit erfüllen!",
 	Wave4		= "Wir werden nicht länger hinter verbarrikadierten Toren und Mauern aus Stein ausharren! Die Rache wird unser sein! Selbst die Drachen werden im Angesicht unseres Zornes erzittern!",
 	Wave5		= "Wir kennen keine Furcht! Und wir werden unseren Feinden den Tod bringen!",
@@ -65,8 +57,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Verkünde Ziele von Verfolgung",
-	SpecWarnPursue	= "Spezialwarnung, wenn du verfolgt wirst",
-	WarnDismember	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(96)
+	SpecWarnPursue	= "Spezialwarnung, wenn du verfolgt wirst"
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "%s behält %s im Blickfeld!"

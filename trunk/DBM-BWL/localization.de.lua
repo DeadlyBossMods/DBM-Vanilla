@@ -28,14 +28,6 @@ L:SetGeneralLocalization{
 	name				= "Vaelastrasz der Verdorbene"
 }
 
-L:SetTimerLocalization{
-	TimerCombatStart	= "Kampfbeginn"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "Zeige Zeit bis Kampfbeginn"
-}
-
 L:SetMiscLocalization{
 	Event				= "Zu spät, Freunde! Nefarius üble Macht wirkt bereits... Ich habe mich nicht... nicht mehr unter Kontrolle.."
 }
@@ -88,18 +80,14 @@ L:SetGeneralLocalization{
 	name = "Chromaggus"
 }
 L:SetWarningLocalization{
-	WarnBreathSoon	= "Atem bald",
-	WarnBreath		= "%s",
-	WarnPhase2Soon	= "Phase 2 bald"
+	WarnBreath		= "%s"
 }
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s CD"
 }
 L:SetOptionLocalization{
-	WarnBreathSoon	= "Zeige Vorwarnung für die Atem des Chromaggus",
 	WarnBreath		= "Zeige Warnung, wenn Chromaggus einen seiner Atem wirkt",
-	TimerBreathCD	= "Abklingzeit der Atem anzeigen",
-	WarnPhase2Soon	= "Verkünde baldigen Beginn von Phase 2"
+	TimerBreathCD	= "Abklingzeit der Atem anzeigen"
 }
 L:SetMiscLocalization{
 	Breath1	= "Erster Atem",
@@ -115,9 +103,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnClassCallSoon	= "Klassenruf bald",
 	WarnClassCall		= "%s Ruf",
-	WarnPhaseSoon		= "Phase %s bald",
 	WarnPhase			= "Phase %s"
 }
 L:SetTimerLocalization{
@@ -125,9 +111,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Dauer der Klassenrufe anzeigen",
-	WarnClassCallSoon	= "Zeige Vorwarnung für Klassenrufe",
 	WarnClassCall		= "Verkünde Klassenrufe",
-	WarnPhaseSoon		= "Verkünde baldigen Phasenwechsel",
 	WarnPhase			= "Verkünde Phasenwechsel"
 }
 L:SetMiscLocalization{

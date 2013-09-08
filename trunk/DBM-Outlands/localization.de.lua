@@ -60,10 +60,6 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 }
 
-L:SetOptionLocalization{
-	SetIconOnMark		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(32960)
-}
-
 L:SetMiscLocalization{
 	DBM_KAZZAK_EMOTE_ENRAGE		= "%s wird wütend!" --guessed translation / currently unused (r335)
 }
