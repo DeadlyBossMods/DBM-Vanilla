@@ -184,5 +184,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_VASHJ_YELL_PHASE2	= "The time is now! Leave none standing!",
+	DBM_VASHJ_YELL_PHASE3	= "You may want to take cover.",
 	LootMsg					= "([^%s]+).*Hitem:(%d+)"
 }

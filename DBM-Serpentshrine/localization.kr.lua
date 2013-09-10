@@ -93,7 +93,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Fathomlord")
 
 L:SetGeneralLocalization{
-	name = "심연의 군주 카라드레스"
+	name = "심해군주 카라드레스"
 }
 
 L:SetMiscLocalization{
@@ -169,5 +169,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_VASHJ_YELL_PHASE2	= "때가 왔다! 한 놈도 살려두지 마라!",
+	DBM_VASHJ_YELL_PHASE3	= "숨을 곳이나 마련해 둬라!",
 	LootMsg					= "([^%s]+).*Hitem:(%d+)"
 }

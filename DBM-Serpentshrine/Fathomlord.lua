@@ -9,6 +9,7 @@ mod:SetZone()
 mod:RegisterCombat("yell", L.YellPull)
 
 mod:RegisterEvents(
+	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
 	"SPELL_SUMMON"
 )
@@ -20,8 +21,11 @@ mod:SetBossHealthInfo(
 	21966, L.Sharkkis
 )
 
-local warnHeal			= mod:NewSpellAnnounce(38330, 4)
+local warnHeal			= mod:NewSpellAnnounce(38330, 2)
 local warnTotem			= mod:NewTargetAnnounce(38236, 4)
+local warnCariPower		= mod:NewSpellAnnounce(38451, 3)
+local warnTidalPower	= mod:NewSpellAnnounce(38452, 3)
+local warnSharPower		= mod:NewSpellAnnounce(38455, 3)
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(38330, false)
 local specWarnTotem		= mod:NewSpecialWarningSpell(38236)
@@ -34,8 +38,14 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 end
 
-function mod:OnCombatEnd()
-	DBM.BossHealth:Clear()
+function mod:SPELL_AURA_APPLIED(args)
+	if args.spellId == 38451 then
+		warnCariPower:Show()
+	elseif args.spellId == 38452 then
+		warnTidalPower:Show()
+	elseif args.spellId == 38455 then
+		warnSharPower:Show()
+	end
 end
 
 function mod:SPELL_CAST_START(args)
