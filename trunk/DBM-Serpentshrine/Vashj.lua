@@ -79,7 +79,9 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	DBM.RangeCheck:Hide()
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 	if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
 		if masterlooterRaidID then
 			SetLootMethod(lootmethod, "raid"..masterlooterRaidID)
@@ -114,27 +116,9 @@ function mod:SPELL_AURA_REMOVED(args)
 		if self.Options.LootIcon then
 			self:SetIcon(args.destName, 0)
 		end
-	elseif args.spellId == 38112 then
+	--[[elseif args.spellId == 38112 then
 		shieldLeft = shieldLeft - 1
-		warnShield:Show(shieldLeft)
-		if shieldLeft == 0 then
-			warnPhase3:Show()
-			timerNaga:Cancel()
-			warnNaga:Cancel()
-			self:UnscheduleMethod("NagaSpawn")
-			timerElementalCD:Cancel()
-			warnElemental:Cancel()
-			timerStrider:Cancel()
-			warnStrider:Cancel()
-			self:ScheduleMethod("StriderSpawn")
-			if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
-				if masterlooterRaidID then
-					SetLootMethod(lootmethod, "raid"..masterlooterRaidID)
-				else
-					SetLootMethod(lootmethod)
-				end
-			end
-		end
+		warnShield:Show(shieldLeft)]]
 	end
 end
 
@@ -206,14 +190,37 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
 			SetLootMethod("freeforall")
 		end
+	elseif msg == L.DBM_VASHJ_YELL_PHASE3 or msg:find(L.DBM_VASHJ_YELL_PHASE3) then
+		warnPhase3:Show()
+		timerNaga:Cancel()
+		warnNaga:Cancel()
+		timerElementalCD:Cancel()
+		warnElemental:Cancel()
+		timerStrider:Cancel()
+		warnStrider:Cancel()
+		self:UnscheduleMethod("NagaSpawn")
+		self:UnscheduleMethod("StriderSpawn")
+		if IsInGroup() and self.Options.AutoChangeLootToFFA and DBM:GetRaidRank() == 2 then
+			if masterlooterRaidID then
+				SetLootMethod(lootmethod, "raid"..masterlooterRaidID)
+			else
+				SetLootMethod(lootmethod)
+			end
+		end
 	end
 end
 
 function mod:CHAT_MSG_LOOT(msg)
 	-- DBM:AddMsg(msg) --> Meridium receives loot: [Magnetic Core]
 	local player, itemID = msg:match(L.LootMsg)
+	player = DBM:GetFullNameByShortName(player)
 	if player and itemID and tonumber(itemID) == 31088 and self:IsInCombat() then
-		warnLoot:Show(player)
+		self:SendSync("LootMsg", player)
 	end
 end
 
+function mod:OnSync(event, args)
+	if event == "LootMsg" and args then
+		warnLoot:Show(args)
+	end
+end

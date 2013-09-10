@@ -21,7 +21,6 @@ local warnSludge	= mod:NewTargetAnnounce(38246)
 local specWarnMark	= mod:NewSpecialWarning("SpecWarnMark")
 
 local timerMark		= mod:NewTimer(15, "TimerMark", 28730)
-local timerTomb		= mod:NewBuffActiveTimer(5, 38235)
 local timerSludge	= mod:NewTargetTimer(24, 38246)
 
 local berserkTimer	= mod:NewBerserkTimer(600)
@@ -44,7 +43,6 @@ local damageNext = {
 local function showTombTargets()
 	warnTomb:Show(table.concat(warnTombTargets, "<, >"))
 	table.wipe(warnTombTargets)
-	timerTomb:Show()
 end
 
 function mod:OnCombatStart(delay)
