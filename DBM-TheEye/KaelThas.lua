@@ -290,7 +290,7 @@ end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 	if msg == L.EmoteGaze or msg:find(L.EmoteGaze) then
-		local target = DBM:GetFullNameByShortName(target)
+		local target = DBM:GetUnitFullName(target)
 		warnGaze:Show(target)
 		timerNextGaze:Start()
 		if target == UnitName("player") then
