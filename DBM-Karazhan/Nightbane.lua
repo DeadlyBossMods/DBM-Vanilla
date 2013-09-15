@@ -14,22 +14,17 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warningBone			= mod:NewSpellAnnounce(37098, 3)
-local warningFearSoon		= mod:NewSoonAnnounce(36922, 2)
-local warningFear			= mod:NewSpellAnnounce(36922, 3)
+local warningFear			= mod:NewSpellAnnounce(36922, 4)
 local warningAsh			= mod:NewTargetAnnounce(30130, 2, nil, false)
 local WarnAir				= mod:NewAnnounce("DBM_NB_AIR_WARN", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local WarnNBDown1			= mod:NewAnnounce("DBM_NB_DOWN_WARN", 2, nil, nil, false)
-local WarnNBDown2			= mod:NewAnnounce("DBM_NB_DOWN_WARN2", 3, nil, nil, false)
+local warningBone			= mod:NewSpellAnnounce(37098, 3)
 
 local specWarnCharred		= mod:NewSpecialWarningMove(30129)
 
-local timerNightbane		= mod:NewTimer(34, "timerNightbane", "Interface\\Icons\\Ability_Mount_Undeadhorse")
+local timerNightbane		= mod:NewCombatTimer(36)
+local timerFearCD			= mod:NewCDTimer(31.5, 36922)
 local timerAirPhase			= mod:NewTimer(57, "timerAirPhase", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local timerFearCD			= mod:NewNextTimer(31.5, 36922)
-local timerFear				= mod:NewCastTimer(1.5, 36922)
-
-mod:AddBoolOption("PrewarnGroundPhase", true, "announce")
+local timerBone				= mod:NewBuffActiveTimer(11, 37098)
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.DBM_NB_EMOTE_PULL then
@@ -39,22 +34,20 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 36922 then
-		warningFearSoon:Cancel()
 		warningFear:Show()
-		timerFear:Start()
 		timerFearCD:Start()
-		warningFearSoon:Schedule(29)
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 37098 then
 		warningBone:Show()
+		timerBone:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 30129 and args:IsPlayer() and not self:IsTrivial(85) then
+	if args.spellId == 30129 and args:IsPlayer() and not self:IsTrivial(85) and self:AntiSpam() then
 		specWarnCharred:Show()
 	elseif args.spellId == 30130 then
 		warningAsh:Show(args.destName)
@@ -65,13 +58,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_NB_YELL_AIR then
 		WarnAir:Show()
 		timerAirPhase:Start()
-		if self.Options.PrewarnGroundPhase then
-			WarnNBDown1:Cancel()
-			WarnNBDown2:Cancel()
-			WarnNBDown1:Schedule(42)
-			WarnNBDown2:Schedule(52)
-		end
---[[	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then
-		timerAirPhase:Update(43, 57)--this may not be needed--]]
+	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then--needed. because if you deal more 25% damage in air phase, air phase repeated and shroten. So need to update exact ground phase.
+		timerAirPhase:Update(43, 57)
 	end
 end

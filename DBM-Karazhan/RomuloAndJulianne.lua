@@ -21,12 +21,12 @@ local warnPhase3		= mod:NewPhaseAnnounce(3)
 local warningHeal		= mod:NewCastAnnounce(30878, 4)
 local warningDaring		= mod:NewTargetAnnounce(30841, 3)
 local warningDevotion	= mod:NewTargetAnnounce(30887, 3)
-local warningPosion		= mod:NewAnnounce("warningPosion", 2, 30830, mod:IsHealer() or mod:IsTank())
+local warningPosion		= mod:NewStackAnnounce(30830, 2, nil, mod:IsHealer() or mod:IsTank())
 
 local timerHeal			= mod:NewCastTimer(2.5, 30878)
 local timerDaring		= mod:NewTargetTimer(8, 30841)
 local timerDevotion		= mod:NewTargetTimer(10, 30887)
-local timerCombatStart	= mod:NewTimer(55, "TimerCombatStart", 2457)
+local timerCombatStart	= mod:NewCombatTimer(55)
 
 mod:AddBoolOption("HealthFrame", false)
 
@@ -65,7 +65,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(30822, 30830) then
-		warningPosion:Show(args.spellName, args.destName, args.amount or 1)
+		warningPosion:Show(args.destName, args.amount or 1)
 	elseif args.spellId == 30841 then
 		warningDaring:Show(args.destName)
 		timerDaring:Start(args.destName)

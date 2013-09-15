@@ -12,21 +12,21 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
+local warningNovaCast			= mod:NewCastAnnounce(30852, 3)
+local warningInfernal			= mod:NewSpellAnnounce(37277, 2)
+local warningEnfeeble			= mod:NewTargetAnnounce(30843, 4)
 local warnPhase2				= mod:NewPhaseAnnounce(2)
 local warnPhase3				= mod:NewPhaseAnnounce(3)
-local warningNovaCast			= mod:NewCastAnnounce(30852, 3)
-local warningInfernalSoon		= mod:NewSoonAnnounce(37277, 2)
-local warningInfernal			= mod:NewSpellAnnounce(37277, 3)
-local warningEnfeeble			= mod:NewTargetAnnounce(30843, 4)
 local warningAmpMagic			= mod:NewTargetAnnounce(39095, 3)
 local warningSWP				= mod:NewTargetAnnounce(30898, 2, nil, false)
 
 local specWarnEnfeeble			= mod:NewSpecialWarningYou(37277)
 local specWarnNova				= mod:NewSpecialWarningRun(30852, mod:IsMelee())
 
-local timerNovaCast				= mod:NewNextTimer(2, 30852)
-local timerNextInfernal			= mod:NewNextTimer(45, 37277)
-local timerEnfeeble				= mod:NewBuffActiveTimer(8, 30843)
+local timerNovaCD				= mod:NewNextTimer(30, 30852)
+local timerNextInfernal			= mod:NewCDTimer(45, 37277)
+local timerEnfeebleCD			= mod:NewNextTimer(30, 30843)
+local timerEnfeeble				= mod:NewBuffFadesTimer(9, 30843)
 
 local phase	= 0
 local enfeebleTargets = {}
@@ -34,6 +34,7 @@ local firstInfernal = false
 
 local function showEnfeebleWarning()
 	warningEnfeeble:Show(table.concat(enfeebleTargets, "<, >"))
+	timerEnfeebleCD:Start()
 	table.wipe(enfeebleTargets)
 end
 
@@ -47,8 +48,8 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 30852 then
 		warningNovaCast:Show()
-		timerNovaCast:Start()
 		specWarnNova:Show()--Trivial damage, but because of enfeeble, don't want to do a blind level check here
+		timerNovaCD:Start()
 	end
 end
 
@@ -56,7 +57,7 @@ function mod:Infernals()
 	warningInfernal:Show()
 	if phase == 3 then
 		timerNextInfernal:Start(22.5)
-	else		
+	else
 		timerNextInfernal:Start()
 	end
 end
@@ -68,8 +69,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		warningAmpMagic:Show(args.destName)
 	elseif args.spellId == 30843 then
 		enfeebleTargets[#enfeebleTargets + 1] = args.destName
-		timerEnfeeble:Start()
 		if args:IsPlayer() then
+			timerEnfeeble:Start()
 			specWarnEnfeeble:Show()
 		end
 		self:Unschedule(showEnfeebleWarning)
@@ -79,7 +80,6 @@ end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_PRINCE_YELL_INF1 or msg == L.DBM_PRINCE_YELL_INF2 then
-		warningInfernalSoon:Schedule(11.5)
 		self:ScheduleMethod(18.5, "Infernals")--Infernal actually spawns 18.5sec after yell.
 		if not firstInfernal then
 			timerNextInfernal:Start(18.5)
@@ -87,7 +87,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		end
 		if phase == 3 then
 			timerNextInfernal:Update(3.5, 22.5)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.
-		else		
+		else
 			timerNextInfernal:Update(26.5, 45)--we attempt to update bars to show 18.5sec left. this will more than likely error out, it's not tested.
 		end
 	elseif msg == L.DBM_PRINCE_YELL_P3 then

@@ -13,9 +13,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED"
 )
 
-local warningChargeSoon		= mod:NewSoonAnnounce(32637, 2)
 local warnCharge			= mod:NewSpellAnnounce(32637, 3)
-local warningQuakeSoon		= mod:NewSoonAnnounce(32686, 2)
 local warnQuake				= mod:NewSpellAnnounce(32686, 3)
 
 local timerChargeCD			= mod:NewCDTimer(42, 32637)
@@ -40,8 +38,6 @@ function mod:SPELL_CAST_START(args)
 	if args.spellId == 32637 and self:AntiSpam(10, 1) then
 		warnCharge:Show()
 		timerChargeCD:Show()
-		warningChargeSoon:Cancel()
-		warningChargeSoon:Schedule(36)
 	end
 end
 
@@ -50,7 +46,5 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnQuake:Show()
 		timerQuake:Start()
 		timerQuakeCD:Show()
-		warningQuakeSoon:Cancel()
-		warningQuakeSoon:Schedule(47)
 	end
 end

@@ -8,12 +8,12 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
-	"CHAT_MSG_MONSTER_YELL"
+	"SPELL_CAST_SUCCESS"
 )
 
-local warnEvoSoon		= mod:NewPreWarnAnnounce(30254, 10, 2)
-local warnEvo			= mod:NewSpellAnnounce(30254, 3)
-local warnArcaneInfusion= mod:NewSpellAnnounce(30403, 3)
+local warnAdd			= mod:NewAnnounce("warnAdd", 3)
+local warnEvo			= mod:NewSpellAnnounce(30254, 2)
+local warnArcaneInfusion= mod:NewSpellAnnounce(30403, 4)
 
 local timerEvo			= mod:NewBuffActiveTimer(20, 30254)
 local timerNextEvo		= mod:NewNextTimer(115, 30254)
@@ -22,10 +22,12 @@ local berserkTimer		= mod:NewBerserkTimer(720)
 
 mod:AddBoolOption("RangeFrame", true)
 
+local addGUIDS = {}
+
 function mod:OnCombatStart(delay)
+	table.wipe(addGUIDS)
 	berserkTimer:Start(-delay)
 	timerNextEvo:Start(109-delay)
-	warnEvoSoon:Schedule(99-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(10)
 	end
@@ -38,19 +40,19 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 30403 then
+	if args.spellId == 30254 then
+		warnEvo:Show()
+		timerEvo:Start()
+		timerNextEvo:Start()
+	elseif args.spellId == 30403 then
 		warnArcaneInfusion:Show()
 		timerNextEvo:Cancel()
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.DBM_CURA_YELL_OOM then
-		warnEvoSoon:Cancel()
-		warnEvo:Show()
-		timerNextEvo:Start()
-		timerEvo:Start()
-		warnEvoSoon:Schedule(95)
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 30235 and not addGUIDS[args.sourceGUID] then
+		addGUIDS[args.sourceGUID] = true
+		warnAdd:Show()
 	end
 end
-

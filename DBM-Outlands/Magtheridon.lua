@@ -15,7 +15,6 @@ mod:RegisterEvents(
 local warningHeal			= mod:NewSpellAnnounce(30528, 3)
 local warningInfernal		= mod:NewSpellAnnounce(30511, 2)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
-local warningBlastNovaSoon	= mod:NewSoonAnnounce(30616, 3)
 local warningBlastNova		= mod:NewSpellAnnounce(30616, 4)
 local warnPhase3			= mod:NewPhaseAnnounce(3)
 
@@ -40,8 +39,6 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif args.spellId == 30616 then
 		warningBlastNova:Show()
-		warningBlastNovaSoon:Cancel()
-		warningBlastNovaSoon:Schedule(48)
 		timerBlastNovaCD:Start()
 	end
 end
@@ -55,7 +52,6 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_MAG_YELL_PHASE2 or msg:find(L.DBM_MAG_YELL_PHASE2) then
 		warnPhase2:Show()
-		warningBlastNovaSoon:Schedule(48)
 		timerBlastNovaCD:Start()
 		timerPhase2:Cancel()
 	elseif msg == L.DBM_MAG_YELL_PHASE3 or msg:find(L.DBM_MAG_YELL_PHASE3) then

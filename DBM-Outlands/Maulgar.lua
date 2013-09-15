@@ -13,7 +13,6 @@ mod:RegisterEvents(
 )
 
 --Maulgar
-local warningWhirlwindSoon	= mod:NewSoonAnnounce(33238, 3)
 local warningWhirlwind		= mod:NewSpellAnnounce(33238, 4)
 --Olm
 local warningFelHunter		= mod:NewSpellAnnounce(33131, 3)
@@ -37,7 +36,6 @@ local timerHeal				= mod:NewCastTimer(2, 33144)
 local lastFear = 0
 
 function mod:OnCombatStart(delay)
-	warningWhirlwindSoon:Schedule(53)
 	timerWhirlwindCD:Start(58-delay)
 end
 
@@ -63,8 +61,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnWhirlwind:Show()
 		timerWhirlwind:Start()
 		timerWhirlwindCD:Start()
-		warningWhirlwindSoon:Cancel()
-		warningWhirlwindSoon:Schedule(51)
 	elseif args.spellId == 33054 and not args:IsDestTypePlayer() then
 		warningShield:Show(args.destName)
 	elseif args.spellId == 33147 and not args:IsDestTypePlayer() then

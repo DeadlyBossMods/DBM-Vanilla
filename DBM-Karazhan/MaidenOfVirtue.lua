@@ -12,19 +12,17 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED"
 )
 
-local warningRepentanceSoon	= mod:NewSoonAnnounce(29511, 2)
-local warningRepentance		= mod:NewSpellAnnounce(29511, 3)
-local warningHolyFire		= mod:NewTargetAnnounce(29522, 3)
+local warningRepentance		= mod:NewSpellAnnounce(29511, 4)
+local warningHolyFire		= mod:NewTargetAnnounce(29522, 2)
 
 local timerRepentance		= mod:NewBuffActiveTimer(12.6, 29511)
-local timerRepentanceCD		= mod:NewCDTimer(33, 29511)
+local timerRepentanceCD		= mod:NewCDTimer(45, 29511)
 local timerHolyFire			= mod:NewTargetTimer(12, 29522)
 
 mod:AddBoolOption("RangeFrame", true)
 
 function mod:OnCombatStart(delay)
-	timerRepentanceCD:Start(45-delay)
-	warningRepentanceSoon:Schedule(40-delay)
+	timerRepentanceCD:Start(35-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(10)
 	end
@@ -38,11 +36,9 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 29511 then
-		warningRepentanceSoon:Cancel()
 		warningRepentance:Show()
 		timerRepentance:Start()
 		timerRepentanceCD:Start()
-		warningRepentanceSoon:Schedule(28)
 	end
 end
 

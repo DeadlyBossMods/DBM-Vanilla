@@ -64,7 +64,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnGrowth:Show(args.spellName, amount)
 		timerGrowthCD:Start()
 		if amount == 3 then--First silence is 15 seconds after 3rd growth.
---			warnSilenceSoon:Schedule(10)
 			timerSilenceCD:Start(15)
 		end
 	elseif args.spellId == 36240 and args:IsPlayer() and not self:IsTrivial(85) then--Cave In

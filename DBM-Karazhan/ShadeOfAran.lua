@@ -15,11 +15,11 @@ mod:RegisterEvents(
 )
 
 local warningFlameCast		= mod:NewCastAnnounce(30004, 4)
+local warningFlameTargets	= mod:NewTargetAnnounce(29946, 4)
 local warningArcaneCast		= mod:NewCastAnnounce(29973, 4)
 local warningBlizzard		= mod:NewSpellAnnounce(29969, 3)
 local warningElementals		= mod:NewSpellAnnounce(37053, 3)
 local warningChains			= mod:NewTargetAnnounce(29991, 2)
-local warningFlameTargets	= mod:NewTargetAnnounce(29946, 4)
 
 local specWarnDontMove		= mod:NewSpecialWarning("DBM_ARAN_DO_NOT_MOVE")
 local specWarnArcane		= mod:NewSpecialWarningRun(29973)
@@ -28,9 +28,8 @@ local specWarnBlizzard		= mod:NewSpecialWarningMove(29951)
 local timerSpecial			= mod:NewTimer(30, "timerSpecial", "Interface\\Icons\\INV_Enchant_EssenceMagicLarge")
 local timerFlameCast		= mod:NewCastTimer(5, 30004)
 local timerArcaneExplosion	= mod:NewCastTimer(10, 29973)
-local timerBlizzadCast		= mod:NewCastTimer(3.7, 29969)
 local timerFlame			= mod:NewBuffActiveTimer(20.5, 29946)
-local timerBlizzad			= mod:NewBuffActiveTimer(40, 29951)
+local timerBlizzad			= mod:NewBuffActiveTimer(30, 29951)
 local timerElementals		= mod:NewBuffActiveTimer(90, 37053)
 local timerChains			= mod:NewTargetTimer(10, 29991)
 
@@ -79,8 +78,7 @@ function mod:SPELL_CAST_START(args)
 		timerSpecial:Start()
 	elseif args.spellId == 29969 then
 		warningBlizzard:Show()
-		timerBlizzadCast:Show()
-		timerBlizzad:Schedule(3.7)--may need tweaking
+		timerBlizzad:Start()
 		timerSpecial:Start()
 	end
 end
