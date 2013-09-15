@@ -15,16 +15,16 @@ mod:RegisterEvents(
 )
 
 local warnPhase1		= mod:NewPhaseAnnounce(1)
-local warnQuill			= mod:NewSpellAnnounce(34229, 3)
+local warnQuill			= mod:NewSpellAnnounce(34229, 4)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
-local warnArmor			= mod:NewTargetAnnounce(35410, 3)
+local warnArmor			= mod:NewTargetAnnounce(35410, 2)
 local warnMeteor		= mod:NewSpellAnnounce(35181, 3)
 
 local specWarnQuill		= mod:NewSpecialWarningSpell(34229)
 local specWarnFire		= mod:NewSpecialWarningMove(35383)
 
 local timerQuill		= mod:NewCastTimer(10, 34229)
-local timerMeteor		= mod:NewCDTimer(54, 35181)
+local timerMeteor		= mod:NewCDTimer(52, 35181)
 local timerArmor		= mod:NewTargetTimer(60, 35410)
 local timerNextPlatform	= mod:NewTimer(34, "NextPlatform", 40192)--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
 
@@ -112,7 +112,7 @@ function mod:SPELL_HEAL(_, _, _, _, _, _, _, _, spellId)
 		phase2 = GetTime()
 		warnPhase2:Show()
 		berserkTimer:Start()
-		timerMeteor:Start(40)--This seems to vary slightly depending on where in room he shoots it.
+		timerMeteor:Start(30)--This seems to vary slightly depending on where in room he shoots it.
 		timerNextPlatform:Cancel()
 	end
 end

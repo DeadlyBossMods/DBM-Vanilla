@@ -16,31 +16,28 @@ mod:RegisterEvents(
 	"SPELL_MISSED",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
-	"SPELL_DAMAGE",
-	"SWING_DAMAGE",
-	"RANGE_DAMAGE",
-	"UNIT_TARGET_UNFILTERED",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED",
-	"UNIT_SPELLCAST_SUCCEEDED target focus"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnGaze			= mod:NewAnnounce("WarnGaze", 4, 39414)
 local warnFear			= mod:NewCastAnnounce(44863, 3)
-local warnConflag		= mod:NewTargetAnnounce(37018, 3)
-local warnToy			= mod:NewTargetAnnounce(37027, 3)
+local warnConflag		= mod:NewTargetAnnounce(37018, 4)
+local warnToy			= mod:NewTargetAnnounce(37027, 2)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnMobDead		= mod:NewAnnounce("WarnMobDead", 3, nil, false)
 local warnPhase3		= mod:NewPhaseAnnounce(3)
 local warnPhase4		= mod:NewPhaseAnnounce(4)
-local warnMC			= mod:NewTargetAnnounce(36797, 3)
-local warnPhoenix		= mod:NewSpellAnnounce(36723, 3)
-local warnFlamestrike	= mod:NewSpellAnnounce(36735, 3)
+local warnDisruption	= mod:NewSpellAnnounce(36834, 3)
+local warnMC			= mod:NewTargetAnnounce(36797, 4)
+local warnPhoenix		= mod:NewSpellAnnounce(36723, 2)
+local warnFlamestrike	= mod:NewSpellAnnounce(36735, 4)
 local warnEgg			= mod:NewAnnounce("WarnEgg", 4, 36723)
 local warnPyro			= mod:NewCastAnnounce(36819, 4)
 local warnPhase5		= mod:NewPhaseAnnounce(5)
-local warnGravity		= mod:NewSpellAnnounce(35966, 3)
+local warnGravity		= mod:NewSpellAnnounce(35966, 4)
 
 local specWarnGaze		= mod:NewSpecialWarning("SpecWarnGaze")
 local specWarnToy		= mod:NewSpecialWarningYou(37027, mod:IsTank())
@@ -52,21 +49,18 @@ local specWarnVapor		= mod:NewSpecialWarningStack(35859, nil, 2)
 local timerPhase		= mod:NewTimer(105, "TimerPhase", 28131)
 local timerPhase1mob	= mod:NewTimer(30, "TimerPhase1mob", 28131)
 local timerNextGaze		= mod:NewTimer(8.5, "TimerNextGaze", 39414)
-local timerFear			= mod:NewCastTimer(1.5, 39427)
 local timerFearCD		= mod:NewCDTimer(31, 39427)
 local timerToy			= mod:NewTargetTimer(60, 37027)
 local timerPhoenixCD	= mod:NewCDTimer(45, 36723)
 local timerRebirth		= mod:NewTimer(15, "TimerRebirth", 36723)
 local timerShieldCD		= mod:NewCDTimer(60, 36815)
-local timerPyro			= mod:NewCastTimer(4, 36819)
 local timerGravityCD	= mod:NewNextTimer(92, 35941)
 local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
 mod:AddBoolOption("HealthFrame", true)
-mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", true)
-mod:AddBoolOption("GazeWhisper", false, "announce")
+mod:AddBoolOption("RangeFrame", true)
 
 local mcIcon = 8
 local warnConflagTargets = {}
@@ -109,18 +103,6 @@ do
 	
 	function hideShieldHealthBar()
 		DBM.BossHealth:RemoveBoss(getShieldHP)
-	end
-end
-
-function mod:EggSpawned() --Is there a better way then this? This is ugly
-	if self:AntiSpam(20) then 
-		warnEgg:Show()
-		specWarnEgg:Show()
-		timerRebirth:Show()
-		DBM.BossHealth:AddBoss(21364, L.Egg)
-		self:Schedule(15, function()
-			DBM.BossHealth:RemoveBoss(21364)
-		end)
 	end
 end
 
@@ -208,39 +190,34 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 44863 then
 		warnFear:Show()
-		timerFear:Start()
 		timerFearCD:Start()
 	elseif args.spellId == 36819 then
 		warnPyro:Show()
-		timerPyro:Show()
 	elseif args.spellId == 35941 then
 		warnGravity:Show()
 		timerGravity:Start()
 		timerGravityCD:Start()
---		timerPhoenixCD:Start(70)--May need tuning or better placement.
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 36723 then
 		warnPhoenix:Show()
-		timerPhoenixCD:Start()
-	elseif args:GetDestCreatureID() == 21364 then
-		self:EggSpawned()
-	end
-end
-
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID)
-	if self:GetCIDFromGUID(destGUID) == 21364 then
-		self:EggSpawned()
-	end
-end
-mod.SWING_DAMAGE = mod.SPELL_DAMAGE
-mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
-
-function mod:UNIT_TARGET_UNFILTERED()
-	if self:GetUnitCreatureId("target") == 21364 then
-		self:EggSpawned()
+		if phase5 then
+			timerPhoenixCD:Start(90)
+		else
+			timerPhoenixCD:Start()
+		end
+	elseif args.spellId == 36834 then
+		warnDisruption:Show()
+	elseif args.spellId == 34341 then
+		warnEgg:Show()
+		specWarnEgg:Show()
+		timerRebirth:Show()
+		DBM.BossHealth:AddBoss(21364, L.Egg)
+		self:Schedule(15, function()
+			DBM.BossHealth:RemoveBoss(21364)
+		end)
 	end
 end
 
@@ -299,9 +276,6 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 		if self.Options.GazeIcon then
 			self:SetIcon(target, 1, 15)
 		end
-		if DBM:GetRaidRank() > 1 and self.Options.GazeWhisper then
-			self:SendWhisper(L.GazeWhisper, target)
-		end
 	end
 end
 
@@ -350,14 +324,15 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		phase5 = true
 		timerPhoenixCD:Cancel()
 		timerShieldCD:Cancel()
-		timerPhase:Start(47)
-		warnPhase5:Schedule(47)
+		timerPhase:Start(45)
+		warnPhase5:Schedule(45)
 		timerGravityCD:Start(60)
+		timerPhoenixCD:Start(137)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, spellName)
-	if spellName == GetSpellInfo(36735) and self:LatencyCheck() then
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if spellId == 36735 then
 		self:SendSync("Flamestrike")
 	end
 end

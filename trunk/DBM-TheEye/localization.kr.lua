@@ -38,9 +38,8 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnSplit		= "분리",
-	WarnSplitSoon	= "곧 분리",
-	WarnAgent		= "요원 등장",
-	WarnPriest		= "사제/솔라리안 등장",
+	WarnAgent		= "요원",
+	WarnPriest		= "사제/솔라리안",
 
 }
 
@@ -52,17 +51,14 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnSplit		= "분리 알림 보기",
-	WarnSplitSoon	= "분리 이전에 알림 보기",
 	WarnAgent		= "요원 등장 알림 보기",
 	WarnPriest		= "사제/솔라리안 등장 알림 보기",
 	TimerSplit		= "다음 분리 바 보기",
 	TimerAgent		= "다음 요원 바 보기",
-	TimerPriest		= "다음 사제/솔라리안 바 보기",
-	WrathWhisper	= "$spell:42783 대상에게 귓속말 보내기"
+	TimerPriest		= "다음 사제/솔라리안 바 보기"
 }
 
 L:SetMiscLocalization{
-	WrathWhisper	= "당신에게 분노!",
 	YellSplit1		= "그 오만한 콧대를 꺾어주마!",
 	YellSplit2		= "한 줌의 희망마저 짓밟아주마!",
 	YellPhase2		= "나는 공허의"
@@ -102,8 +98,6 @@ L:SetOptionLocalization{
 	TimerPhase1mob	= "1단계 조언가 등장 바 보기",
 	TimerNextGaze	= "탈라드레드 추적 대상 변경 바 보기",
 	TimerRebirth	= "불사조 알 환생 가능 바 보기",
-	RangeFrame		= "거리 창 보기",
-	GazeWhisper		= "탈라드레드 추적 대상에게 귓속말 보내기",
 	GazeIcon		= "탈라드레드 추적 대상에게 전술 목표 아이콘 설정"
 }
 
@@ -117,7 +111,6 @@ L:SetMiscLocalization{
 	YellCaper	= "카퍼니안, 놈들이 여기 온 것을 후회하게 해 줘라.",
 	YellTelo	= "좋아, 그 정도 실력이면 수석기술자 텔로니쿠스를 상대해 볼만하겠어.",
 	EmoteGaze	= "노려봅니다!",
-	GazeWhisper	= "당신에게 추적!",
 	Thaladred	= "암흑의 인도자 탈라드레드",
 	Sanguinar	= "군주 생귀나르",
 	Capernian	= "대점성술사 카퍼니안",
