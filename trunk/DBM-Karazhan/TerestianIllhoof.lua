@@ -16,9 +16,7 @@ mod:RegisterEvents(
 )
 
 local warningWeakened	= mod:NewTargetAnnounce(30065, 2)
-local warningImpSoon	= mod:NewSoonAnnounce(30066, 2)
 local warningImp		= mod:NewSpellAnnounce(30066, 3)
-local warningSacSoon	= mod:NewSoonAnnounce(30115, 3)
 local warningSacrifice	= mod:NewTargetAnnounce(30115, 4)
 
 local specWarnSacrifice	= mod:NewSpecialWarningYou(30115)
@@ -41,15 +39,12 @@ function mod:SPELL_AURA_APPLIED(args)
 		warningSacrifice:Show(args.destName)
 		timerSacrifice:Start(args.destName)
 		timerSacrificeCD:Start()
-		warningSacSoon:Cancel()
-		warningSacSoon:Schedule(38)
 		if args:IsPlayer() then
 			specWarnSacrifice:Show()
 		end
 	elseif args.spellId == 30065 then
 		warningWeakened:Show(args.destName)
 		timerWeakened:Start()
-		warningImpSoon:Schedule(26)
 	end
 end
 
@@ -61,7 +56,6 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 30066 then
-		warningImpSoon:Cancel()
 		warningImp:Show()
 		if DBM.BossHealth:IsShown() then
 			DBM.BossHealth:AddBoss(17229, L.Kilrek)

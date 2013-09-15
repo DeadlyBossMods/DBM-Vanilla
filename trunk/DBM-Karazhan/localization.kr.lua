@@ -41,28 +41,12 @@ L:SetGeneralLocalization{
 	name = "고결의 여신"
 }
 
-L:SetOptionLocalization{
-	RangeFrame			= "거리 창 보기(10m)"
-}
-
 
 -- Romulo and Julianne
 L = DBM:GetModLocalization("RomuloAndJulianne")
 
 L:SetGeneralLocalization{
 	name = "로밀로와 줄리엔"
-}
-
-L:SetWarningLocalization{
-	warningPosion	= "%s : >%s< (%d)"
-}
-
-L:SetTimerLocalization{
-	TimerCombatStart	= "전투 시작"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "전투 시작 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -86,6 +70,42 @@ L:SetMiscLocalization{
 }
 
 
+-- Wizard of Oz
+L = DBM:GetModLocalization("Oz")
+
+L:SetGeneralLocalization{
+	name = "오즈의 마법사"
+}
+
+L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "티토",
+	DBM_OZ_WARN_ROAR		= "어흥이",
+	DBM_OZ_WARN_STRAWMAN	= "허수아비",
+	DBM_OZ_WARN_TINHEAD		= "양철나무꾼",
+	DBM_OZ_WARN_CRONE		= "마녀"
+}
+
+L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "티토",
+	DBM_OZ_WARN_ROAR		= "어흥이",
+	DBM_OZ_WARN_STRAWMAN	= "허수아비",
+	DBM_OZ_WARN_TINHEAD		= "양철나무꾼"
+}
+
+L:SetOptionLocalization{
+	AnnounceBosses			= "우두머리 등장 알림 보기",
+	ShowBossTimers			= "우두머리 등장 바 보기"
+}
+
+L:SetMiscLocalization{
+	DBM_OZ_YELL_DOROTHEE	= "티토야, 우린 집으로 갈 방법을 찾아야 해! 늙은 마법사가 우릴 도와줄 수 있을 거야! 허수아비, 사자, 양철통아... 우리? 오... 맙소사, 손님들이 온 것 같아!",
+	DBM_OZ_YELL_ROAR		= "하나도 안 무섭다고! 덤벼! 앞발 두 개를 몽땅 꺼내서 할퀴어주마!",
+	DBM_OZ_YELL_STRAWMAN	= "너희를 어떻게 해주면 좋을까? 아무 생각도 나지 않아!",
+	DBM_OZ_YELL_TINHEAD		= "나도 심장 갖고 싶어. 너희들 것 나한테 주면 안 될까?",
+	DBM_OZ_YELL_CRONE		= "곧 모두 다 끝장날 것이다!"
+}
+
+
 -- Curator
 L = DBM:GetModLocalization("Curator")
 
@@ -93,13 +113,20 @@ L:SetGeneralLocalization{
 	name = "전시 관리인"
 }
 
+L:SetWarningLocalization{
+	warnAdd		= "별의 섬광"
+}
+
+L:SetOptionLocalization{
+	warnAdd		= "별의 섬광 알림 보기"
+}
+
 L:SetOptionLocalization{
 	RangeFrame			= "거리 창 보기(10m)"
 }
 
 L:SetMiscLocalization{
-	DBM_CURA_YELL_PULL		= "박물관에는 초대받은 손님만 입장하실 수 있습니다.",
-	DBM_CURA_YELL_OOM		= "현재 요청하신 내용은 처리가 불가능합니다."
+	DBM_CURA_YELL_PULL		= "박물관에는 초대받은 손님만 입장하실 수 있습니다."
 }
 
 
@@ -129,15 +156,14 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerSpecial			= "다음 신비한 폭발"
+	timerSpecial			= "다음 신폭/고리/눈보라"
 }
 
 L:SetOptionLocalization{
-	timerSpecial			= "다음 신비한 폭발 바 보기",
+	timerSpecial			= "다음 $spell:30004 또는 $spell:29973 또는 $spell:29969 바 보기",
 	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 특수 경고 보기",
 	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정"
 }
-
 
 --Netherspite
 L = DBM:GetModLocalization("Netherspite")
@@ -147,8 +173,6 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "5초 후 차원문 단계",
-	DBM_NS_WARN_BANISH_SOON	= "5초 후 소멸 단계",
 	warningPortal			= "차원문 단계",
 	warningBanish			= "소멸 단계"
 }
@@ -159,8 +183,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "차원문 단계 이전에 알림 보기",
-	DBM_NS_WARN_BANISH_SOON	= "소멸 단계 이전에 알림 보기",
 	warningPortal			= "차원문 단계 알림 보기",
 	warningBanish			= "소멸 단계 알림 보기",
 	timerPortalPhase		= "차원문 단계 유지시간 바 보기",
@@ -215,20 +237,15 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NB_DOWN_WARN 		= "15초 후 착지",
-	DBM_NB_DOWN_WARN2 		= "5초 후 착지",
 	DBM_NB_AIR_WARN			= "공중 단계"
 }
 
 L:SetTimerLocalization{
-	timerNightbane			= "전투 시작",
 	timerAirPhase			= "공중 단계 종료"
 }
 
 L:SetOptionLocalization{
 	DBM_NB_AIR_WARN			= "공중 단계 알림 보기",
-	PrewarnGroundPhase		= "착지 이전에 알림 보기",
-	timerNightbane			= "전투 시작 바 보기",
 	timerAirPhase			= "공중 단계 유지시간 바 보기"
 }
 
@@ -238,43 +255,6 @@ L:SetMiscLocalization{
 	DBM_NB_YELL_AIR			= "이 더러운 기생충들, 내가 하늘에서 너희의 씨를 말리리라!",
 	DBM_NB_YELL_GROUND		= "그만! 내 친히 내려가서 너희를 짓이겨주마!",
 	DBM_NB_YELL_GROUND2		= "하루살이 같은 놈들! 나의 힘을 똑똑히 보여주겠다!"
-}
-
-
--- Wizard of Oz
-L = DBM:GetModLocalization("Oz")
-
-L:SetGeneralLocalization{
-	name = "오즈의 마법사"
-}
-
-L:SetWarningLocalization{
-	DBM_OZ_WARN_TITO		= "티토",
-	DBM_OZ_WARN_ROAR		= "어흥이",
-	DBM_OZ_WARN_STRAWMAN	= "허수아비",
-	DBM_OZ_WARN_TINHEAD		= "양철나무꾼",
-	DBM_OZ_WARN_CRONE		= "마녀"
-}
-
-L:SetTimerLocalization{
-	DBM_OZ_WARN_TITO		= "티토",
-	DBM_OZ_WARN_ROAR		= "어흥이",
-	DBM_OZ_WARN_STRAWMAN	= "허수아비",
-	DBM_OZ_WARN_TINHEAD		= "양철나무꾼"
-}
-
-L:SetOptionLocalization{
-	AnnounceBosses			= "우두머리 등장 알림 보기",
-	ShowBossTimers			= "우두머리 등장 바 보기",
-	DBM_OZ_OPTION_1			= "2 단계에서 거리 창 보기"
-}
-
-L:SetMiscLocalization{
-	DBM_OZ_YELL_DOROTHEE	= "티토야, 우린 집으로 갈 방법을 찾아야 해! 늙은 마법사가 우릴 도와줄 수 있을 거야! 허수아비, 사자, 양철통아... 우리? 오... 맙소사, 손님들이 온 것 같아!",
-	DBM_OZ_YELL_ROAR		= "하나도 안 무섭다고! 덤벼! 앞발 두 개를 몽땅 꺼내서 할퀴어주마!",
-	DBM_OZ_YELL_STRAWMAN	= "너희를 어떻게 해주면 좋을까? 아무 생각도 나지 않아!",
-	DBM_OZ_YELL_TINHEAD		= "나도 심장 갖고 싶어. 너희들 것 나한테 주면 안 될까?",
-	DBM_OZ_YELL_CRONE		= "곧 모두 다 끝장날 것이다!"
 }
 
 

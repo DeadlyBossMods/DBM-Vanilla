@@ -7,12 +7,6 @@ L:SetGeneralLocalization{
 	name = "Attumen the Huntsman"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
 	DBM_ATH_YELL_1		= "Come Midnight, let's disperse this petty rabble!",
 	KillAttumen			= "Always knew... someday I would become... the hunted."
@@ -46,35 +40,15 @@ L:SetGeneralLocalization{
 	name = "Maiden of Virtue"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetOptionLocalization{
-	RangeFrame			= "Show range frame (10)"
+	RangeFrame			= DBM_CORE_AUTO_RANGE_OPTION_TEXT:format(10, 29522)
 }
-
-L:SetMiscLocalization{
-}
-
 
 -- Romulo and Julianne
 L = DBM:GetModLocalization("RomuloAndJulianne")
 
 L:SetGeneralLocalization{
 	name = "Romulo and Julianne"
-}
-
-L:SetWarningLocalization{
-	warningPosion	= "%s on >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
-}
-
-L:SetTimerLocalization{
-	TimerCombatStart	= "Combat starts"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "Show time for start of combat",
-	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830)
 }
 
 L:SetMiscLocalization{
@@ -105,6 +79,43 @@ L:SetMiscLocalization{
 }
 
 
+-- Wizard of Oz
+L = DBM:GetModLocalization("Oz")
+
+L:SetGeneralLocalization{
+	name = "Wizard of Oz"
+}
+
+L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Roar",
+	DBM_OZ_WARN_STRAWMAN	= "Strawman",
+	DBM_OZ_WARN_TINHEAD		= "Tinhead",
+	DBM_OZ_WARN_CRONE		= "The Crone"
+}
+
+L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Roar",
+	DBM_OZ_WARN_STRAWMAN	= "Strawman",
+	DBM_OZ_WARN_TINHEAD		= "Tinhead"
+}
+
+L:SetOptionLocalization{
+	AnnounceBosses			= "Show warnings for boss spawns",
+	ShowBossTimers			= "Show timers for boss spawns",
+	DBM_OZ_OPTION_1			= DBM_CORE_AUTO_RANGE_OPTION_TEXT:format(10, 32337)
+}
+
+L:SetMiscLocalization{
+	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, we simply must find a way home! The old wizard could be our only hope! Strawman, Roar, Tinhead, will you - wait... oh golly, look we have visitors!",
+	DBM_OZ_YELL_ROAR		= "I'm not afraid a' you! Do you wanna' fight? Huh, do ya'? C'mon! I'll fight ya' with both paws behind my back!",
+	DBM_OZ_YELL_STRAWMAN	= "Now what should I do with you? I simply can't make up my mind.",
+	DBM_OZ_YELL_TINHEAD		= "I could really use a heart. Say, can I have yours?",
+	DBM_OZ_YELL_CRONE		= "Woe to each and every one of you, my pretties!"
+}
+
+
 -- Curator
 L = DBM:GetModLocalization("Curator")
 
@@ -113,9 +124,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
+	warnAdd		= "Add spawned"
 }
 
-L:SetTimerLocalization{
+L:SetOptionLocalization{
+	warnAdd		= "Show warning when add spawned"
 }
 
 L:SetOptionLocalization{
@@ -123,8 +136,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_CURA_YELL_PULL		= "The Menagerie is for guests only.",
-	DBM_CURA_YELL_OOM		= "Your request cannot be processed."
+	DBM_CURA_YELL_PULL		= "The Menagerie is for guests only."
 }
 
 
@@ -133,15 +145,6 @@ L = DBM:GetModLocalization("TerestianIllhoof")
 
 L:SetGeneralLocalization{
 	name = "Terestian Illhoof"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
@@ -173,10 +176,6 @@ L:SetOptionLocalization{
 	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 
-L:SetMiscLocalization{
-}
-
-
 --Netherspite
 L = DBM:GetModLocalization("Netherspite")
 
@@ -185,8 +184,6 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Portal Phase in 5",
-	DBM_NS_WARN_BANISH_SOON	= "Banish Phase in 5",
 	warningPortal			= "Portal Phase",
 	warningBanish			= "Banish Phase"
 }
@@ -197,8 +194,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Show pre-warning for Portal phase",
-	DBM_NS_WARN_BANISH_SOON	= "Show pre-warning for Banish phase",
 	warningPortal			= "Show warning for Portal phase",
 	warningBanish			= "Show warning for Banish phase",
 	timerPortalPhase		= "Show timer for Portal Phase duration",
@@ -236,15 +231,6 @@ L:SetGeneralLocalization{
 	name = "Prince Malchezaar"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
 	DBM_PRINCE_YELL_PULL	= "Madness has brought you here to me. I shall be your undoing!",
 	DBM_PRINCE_YELL_P2		= "Simple fools! Time is the fire in which you'll burn!",
@@ -262,20 +248,15 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NB_DOWN_WARN 		= "Ground Phase in 15 sec",
-	DBM_NB_DOWN_WARN2 		= "Ground Phase in 5 sec",
 	DBM_NB_AIR_WARN			= "Air Phase"
 }
 
 L:SetTimerLocalization{
-	timerNightbane			= "Nightbane incoming",
 	timerAirPhase			= "Air Phase"
 }
 
 L:SetOptionLocalization{
 	DBM_NB_AIR_WARN			= "Show warning for Air Phase",
-	PrewarnGroundPhase		= "Show pre-warnings for Ground Phase",
-	timerNightbane			= "Show timer for Nightbane summon",
 	timerAirPhase			= "Show timer for Air Phase duration"
 }
 
@@ -285,43 +266,6 @@ L:SetMiscLocalization{
 	DBM_NB_YELL_AIR			= "Miserable vermin. I shall exterminate you from the air!",
 	DBM_NB_YELL_GROUND		= "Enough! I shall land and crush you myself!",
 	DBM_NB_YELL_GROUND2		= "Insects! Let me show you my strength up close!"
-}
-
-
--- Wizard of Oz
-L = DBM:GetModLocalization("Oz")
-
-L:SetGeneralLocalization{
-	name = "Wizard of Oz"
-}
-
-L:SetWarningLocalization{
-	DBM_OZ_WARN_TITO		= "Tito",
-	DBM_OZ_WARN_ROAR		= "Roar",
-	DBM_OZ_WARN_STRAWMAN	= "Strawman",
-	DBM_OZ_WARN_TINHEAD		= "Tinhead",
-	DBM_OZ_WARN_CRONE		= "The Crone"
-}
-
-L:SetTimerLocalization{
-	DBM_OZ_WARN_TITO		= "Tito",
-	DBM_OZ_WARN_ROAR		= "Roar",
-	DBM_OZ_WARN_STRAWMAN	= "Strawman",
-	DBM_OZ_WARN_TINHEAD		= "Tinhead"
-}
-
-L:SetOptionLocalization{
-	AnnounceBosses			= "Show warnings for boss spawns",
-	ShowBossTimers			= "Show timers for boss spawns",
-	DBM_OZ_OPTION_1			= "Show range check frame in phase 2"
-}
-
-L:SetMiscLocalization{
-	DBM_OZ_YELL_DOROTHEE	= "Oh Tito, we simply must find a way home! The old wizard could be our only hope! Strawman, Roar, Tinhead, will you - wait... oh golly, look we have visitors!",
-	DBM_OZ_YELL_ROAR		= "I'm not afraid a' you! Do you wanna' fight? Huh, do ya'? C'mon! I'll fight ya' with both paws behind my back!",
-	DBM_OZ_YELL_STRAWMAN	= "Now what should I do with you? I simply can't make up my mind.",
-	DBM_OZ_YELL_TINHEAD		= "I could really use a heart. Say, can I have yours?",
-	DBM_OZ_YELL_CRONE		= "Woe to each and every one of you, my pretties!"
 }
 
 

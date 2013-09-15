@@ -11,9 +11,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED"
 )
 
-local warningFearSoon	= mod:NewSoonAnnounce(30752, 2)
 local warningFear		= mod:NewSpellAnnounce(30752, 3)
-local warningRRHSoon	= mod:NewSoonAnnounce(30753, 3)
 local warningRRH		= mod:NewTargetAnnounce(30753, 4)
 
 local specWarnRRH		= mod:NewSpecialWarningYou(30753)
@@ -28,10 +26,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 30753 then
 		warningRRH:Show(args.destName)
 		timerRRH:Start(args.destName)
-		warningRRHSoon:Cancel()
 		if self:IsInCombat() then--Because sometimes debuff goes out half sec after combat end
 			timerRRHCD:Start()
-			warningRRHSoon:Schedule(25)
 			if args:IsPlayer() then
 				specWarnRRH:Show()
 			end
@@ -41,8 +37,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args.spellId == 30752 and self:AntiSpam() then
 		warningFear:Show()
-		warningFearSoon:Cancel()
-		warningFearSoon:Schedule(19)
 		timerFearCD:Start()
 	end
 end
@@ -52,4 +46,3 @@ function mod:SPELL_AURA_REMOVED(args)
 		self:SetIcon(args.destName, 0)
 	end
 end
-
