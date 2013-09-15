@@ -12,8 +12,8 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS"
 )
 
-local warnOrb			= mod:NewTargetAnnounce(34172, 3)
-local warnKnockBack		= mod:NewSpellAnnounce(25778, 3)
+local warnOrb			= mod:NewTargetAnnounce(34172, 2)
+local warnKnockBack		= mod:NewSpellAnnounce(25778, 4)
 local warnPounding		= mod:NewSpellAnnounce(34162, 3)
 
 local specWarnOrb		= mod:NewSpecialWarningMove(34172)
