@@ -124,7 +124,8 @@ function mod:UNIT_DIED(args)
 	local cId = self:GetCIDFromGUID(args.destGUID)
 	if cId == 21806 then
 		binderKill = binderKill + 1
-		if binderKill == 3 then
+		if binderKill == 3 and not self:IsInCombat() then
+			DBM:StartCombat(self, 0)
 			demonIcon = 8
 			whirlCount = 0
 			phase2 = false
@@ -134,5 +135,7 @@ function mod:UNIT_DIED(args)
 			timerPhase:Start(nil, L.Demon)
 			berserkTimer:Start(-delay)
 		end
+	elseif cId == 21215 and self:IsInCombat() then
+		DBM:EndCombat(self)
 	end
 end
