@@ -35,8 +35,8 @@ local voidCount = 1
 
 local function phase2()
 	warnPhase2:Show()
-	self:UnscheduleMethod("HumanSpawn")
-	self:UnscheduleMethod("VoidSpawn")
+	mod:UnscheduleMethod("HumanSpawn")
+	mod:UnscheduleMethod("VoidSpawn")
 	timerBlackHoleCD:Start(17)
 	if DBM.BossHealth:IsShown() then
 		DBM.BossHealth:Clear()
