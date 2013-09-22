@@ -42,28 +42,12 @@ L:SetGeneralLocalization{
 	name = "貞潔聖女"
 }
 
-L:SetOptionLocalization{
-	RangeFrame	= "顯示距離框架(10碼)"
-}
-
 
 -- Romulo and Julianne
 L = DBM:GetModLocalization("RomuloAndJulianne")
 
 L:SetGeneralLocalization{
 	name = "羅慕歐與茱麗葉"
-}
-
-L:SetWarningLocalization{
-	warningPosion	= ">%2$s<中了%1$s(%d)",
-}
-
-L:SetTimerLocalization{
-	TimerCombatStart	= "戰鬥開始"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "為戰鬥開始顯示計時器"
 }
 
 L:SetMiscLocalization{
@@ -86,6 +70,41 @@ L:SetMiscLocalization{
 	DBM_BBW_YELL_1	= "我想把你吃掉!"
 }
 
+-- Wizard of Oz
+L = DBM:GetModLocalization("Oz")
+
+L:SetGeneralLocalization{
+	name = "綠野仙蹤"
+}
+
+L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "多多",
+	DBM_OZ_WARN_ROAR		= "獅子",
+	DBM_OZ_WARN_STRAWMAN	= "稻草人",
+	DBM_OZ_WARN_TINHEAD		= "機器人",
+	DBM_OZ_WARN_CRONE		= "老巫婆"
+}
+
+L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "多多",
+	DBM_OZ_WARN_ROAR		= "獅子",
+	DBM_OZ_WARN_STRAWMAN	= "稻草人",
+	DBM_OZ_WARN_TINHEAD		= "機器人"
+}
+
+L:SetOptionLocalization{
+	AnnounceBosses			= "為新的首領出現顯示警告",
+	ShowBossTimers			= "為新的首領出現顯示計時器"
+}
+
+L:SetMiscLocalization{
+	DBM_OZ_YELL_DOROTHEE	= "喔多多，我們一定要找到回家的路!那個老巫師是我們唯一的希望!稻草人、獅子、機器人，你會 - 等等哦...天呀，快看，我們有訪客!",
+	DBM_OZ_YELL_ROAR		= "我不是害怕你!你想要戰鬥嗎?啊，你是嗎?來! 我將把兩支爪子放在背後跟你戰鬥!",
+	DBM_OZ_YELL_STRAWMAN	= "現在我該與你做什麼?我完全不能決定。",
+	DBM_OZ_YELL_TINHEAD		= "我真的能使用心。嘿，我能有你的心嗎?",
+	DBM_OZ_YELL_CRONE		= "為你們每一個人感到不幸，我的小美人們!"
+}
+
 
 -- Curator
 L = DBM:GetModLocalization("Curator")
@@ -94,13 +113,20 @@ L:SetGeneralLocalization{
 	name = "館長"
 }
 
+L:SetWarningLocalization{
+	warnAdd		= "小怪重生"
+}
+
+L:SetOptionLocalization{
+	warnAdd		= "為小怪重生顯示警告"
+}
+
 L:SetOptionLocalization{
 	RangeFrame	= "顯示距離框架(10碼)"
 }
 
 L:SetMiscLocalization{
-	DBM_CURA_YELL_PULL	= "展示廳是賓客專屬的。",
-	DBM_CURA_YELL_OOM	= "無法處理你的要求。"
+	DBM_CURA_YELL_PULL	= "展示廳是賓客專屬的。"
 }
 
 
@@ -129,8 +155,14 @@ L:SetWarningLocalization{
 	DBM_ARAN_DO_NOT_MOVE	= "烈焰火圈，不要動！"
 }
 
+L:SetTimerLocalization{
+	timerSpecial			= "特別技能冷卻"
+}
+
 L:SetOptionLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "為$spell:30004顯示特別警告"
+	timerSpecial			= "為特別技能冷卻顯示計時器",
+	DBM_ARAN_DO_NOT_MOVE	= "為$spell:30004顯示特別警告",
+	ElementalIcons			= "設置團隊圖示在$spell:37053"
 }
 
 
@@ -143,8 +175,6 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "5秒後進入第一階段",
-	DBM_NS_WARN_BANISH_SOON	= "5秒後進入第二階段",
 	warningPortal			= "光線門階段",
 	warningBanish			= "放逐階段"
 }
@@ -155,8 +185,6 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "為光線門階段顯示預先警告",
-	DBM_NS_WARN_BANISH_SOON	= "為放逐階段顯示預先警告",
 	warningPortal			= "為光線門階段顯示警告",
 	warningBanish			= "為放逐階段顯示警告",
 	timerPortalPhase		= "為光線門階段持續時間顯示計時器",
@@ -211,20 +239,15 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NB_DOWN_WARN 		= "15秒後夜禍回到地面",
-	DBM_NB_DOWN_WARN2 		= "5秒後夜禍回到地面",
 	DBM_NB_AIR_WARN			= "空中階段"
 }
 
 L:SetTimerLocalization{
-	timerNightbane			= "夜禍落地",
 	timerAirPhase			= "空中階段"
 }
 
 L:SetOptionLocalization{
 	DBM_NB_AIR_WARN			= "為空中階段顯示警告",
-	PrewarnGroundPhase		= "為地面階段顯示預先警告",
-	timerNightbane			= "為夜禍招喚顯示計時器",
 	timerAirPhase			= "為空中階段持續時間顯示計時器"
 }
 
@@ -234,33 +257,6 @@ L:SetMiscLocalization{
 	DBM_NB_YELL_AIR 		= "悲慘的害蟲。我將讓你消失在空氣中!",
 	DBM_NB_YELL_GROUND 		= "夠了!我要親自挑戰你!",
 	DBM_NB_YELL_GROUND2 	= "昆蟲!給你們近距離嚐嚐我的厲害!"
-}
-
-
--- Wizard of Oz
-L = DBM:GetModLocalization("Oz")
-
-L:SetGeneralLocalization{
-	name = "綠野仙蹤"
-}
-
-L:SetOptionLocalization{
-	AnnounceBosses			= "為新的首領出現顯示警告",
-	ShowBossTimers			= "為新的首領出現顯示計時器",
-	DBM_OZ_OPTION_1			= "在第二階段顯示距離框"
-}
-
-L:SetMiscLocalization{
-	DBM_OZ_WARN_TITO		= "多多",
-	DBM_OZ_WARN_ROAR		= "獅子",
-	DBM_OZ_WARN_STRAWMAN	= "稻草人",
-	DBM_OZ_WARN_TINHEAD		= "機器人",
-	DBM_OZ_WARN_CRONE		= "老巫婆",
-	DBM_OZ_YELL_DOROTHEE	= "喔多多，我們一定要找到回家的路!那個老巫師是我們唯一的希望!稻草人、獅子、機器人，你會 - 等等哦...天呀，快看，我們有訪客!",
-	DBM_OZ_YELL_ROAR		= "我不是害怕你!你想要戰鬥嗎?啊，你是嗎?來! 我將把兩支爪子放在背後跟你戰鬥!",
-	DBM_OZ_YELL_STRAWMAN	= "現在我該與你做什麼?我完全不能決定。",
-	DBM_OZ_YELL_TINHEAD		= "我真的能使用心。嘿，我能有你的心嗎?",
-	DBM_OZ_YELL_CRONE		= "為你們每一個人感到不幸，我的小美人們!"
 }
 
 

@@ -58,12 +58,10 @@ L:SetOptionLocalization{
 	WarnPriest		= "為牧師和索拉瑞恩出現顯示警告",
 	TimerSplit		= "為分裂顯示計時器",
 	TimerAgent		= "為密探出現顯示計時器",
-	TimerPriest		= "為牧師和索拉瑞恩出現顯示計時器",
-	WrathWhisper	= "傳送密語給中了$spell:42783的目標(需要團隊隊長)"
+	TimerPriest		= "為牧師和索拉瑞恩出現顯示計時器"
 }
 
 L:SetMiscLocalization{
-	WrathWhisper	= "你中了星術師之怒!快跑離人群!!",
 	YellSplit1		= "我會粉碎你那偉大的夢想",
 	YellSplit2		= "我的實力遠勝於你!",
 	YellPhase2		= "夠了!現在我要呼喚宇宙中失衡的能量。"
@@ -103,8 +101,6 @@ L:SetOptionLocalization{
 	TimerPhase1mob	= "為第1階段小怪活動顯示計時器",
 	TimerNextGaze	= "為薩拉瑞德凝視目標改變顯示計時器",
 	TimerRebirth	= "為鳳凰蛋重生顯示計時器",
-	RangeFrame		= "顯示距離框",
-	GazeWhisper		= "發送密語給薩拉瑞德的目標",
 	GazeIcon		= "標記薩拉瑞德注視的目標"
 }
 
@@ -118,7 +114,6 @@ L:SetMiscLocalization{
 	YellCaper	= "卡普尼恩將保證你們不會在這裡停留太久。",
 	YellTelo	= "做得好，你已經證明你的實力足以挑戰我的工程大師泰隆尼卡斯。",
 	EmoteGaze	= "凝視著(.+)!",
-	GazeWhisper	= "薩拉瑞德正在注視你！快逃！",
 	Thaladred	= "扭曲預言家薩拉瑞德",
 	Sanguinar	= "桑古納爾領主",
 	Capernian	= "大星術師卡普尼恩",
