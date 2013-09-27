@@ -397,11 +397,7 @@ L:SetMiscLocalization({
 ------------------------------------
 --  Kael'thas Sunstrider (Party)  --
 ------------------------------------
-L = DBM:GetModLocalization("Kael")
-
-L:SetGeneralLocalization({
-	name = "凱爾薩斯·逐日者(隊伍)"
-})
+L = DBM:GetModLocalization(533)
 
 L:SetMiscLocalization({
 	KaelP2	= "我要讓你們的世界徹底顛覆。"
