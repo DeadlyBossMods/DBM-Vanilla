@@ -397,11 +397,7 @@ L:SetMiscLocalization({
 ------------------------------------
 --  Kael'thas Sunstrider (Party)  --
 ------------------------------------
-L = DBM:GetModLocalization("Kael")
-
-L:SetGeneralLocalization({
-	name = "캘타스 선스트라이더 (5인)"
-})
+L = DBM:GetModLocalization(533)
 
 L:SetMiscLocalization({
 	KaelP2				= "세상을... 거꾸로... 뒤집어주마."
