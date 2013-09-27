@@ -405,11 +405,7 @@ L:SetMiscLocalization({
 ------------------------------------
 --  Kael'thas Sunstrider (Party)  --
 ------------------------------------
-L = DBM:GetModLocalization("Kael")
-
-L:SetGeneralLocalization({
-	name = "Kael'thas Sunstrider (Party)"--Must remain localized to avoid conflict with temptest keep
-})
+L = DBM:GetModLocalization(533)
 
 L:SetMiscLocalization({
 	KaelP2	= "I'll turn your world... upside... down."
