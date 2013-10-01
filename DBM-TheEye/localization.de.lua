@@ -57,12 +57,10 @@ L:SetOptionLocalization{
 	WarnPriest		= "Zeige Warnung, wenn Priester und Solarian erscheinen",
 	TimerSplit		= "Zeige Zeit bis Verschwinden",
 	TimerAgent		= "Zeige Zeit bis Agenten erscheinen",
-	TimerPriest		= "Zeige Zeit bis Priester und Solarian erscheinen",
-	WrathWhisper	= "Ziele von $spell:42783 anflüstern (benötigt Schlachtzugleitung)"
+	TimerPriest		= "Zeige Zeit bis Priester und Solarian erscheinen"
 }
 
 L:SetMiscLocalization{
-	WrathWhisper	= "Zorn auf dir!",
 	YellSplit1		= "Ich werde Euch Euren Hochmut austreiben!",
 	YellSplit2		= "Ihr seid eindeutig in der Unterzahl!",
 	YellPhase2		= "I become" --translate
@@ -102,8 +100,6 @@ L:SetOptionLocalization{
 	TimerPhase1mob	= "Zeige Zeit bis Berater in Phase 1 aktiv werden",
 	TimerNextGaze	= "Zeige Zeit bis Thaladred ein neues Ziel anblickt",
 	TimerRebirth	= "Zeige Zeit bis Phönix aus Phönixei schlüpft",
-	RangeFrame		= "Zeige Abstandsfenster (10m)",
-	GazeWhisper		= "Thaladreds Blickziel anflüstern (benötigt Schlachtzugleitung)",
 	GazeIcon		= "Zeichen auf Thaladreds Ziel setzen"
 }
 
@@ -118,7 +114,6 @@ L:SetMiscLocalization{
 	YellCaper	= "Capernian wird dafür sorgen, dass Euer Aufenthalt hier nicht lange währt.",
 	YellTelo	= "Gut gemacht. Ihr habt Euch würdig erwiesen, gegen meinen Meisteringenieur Telonicus anzutreten.",
 	EmoteGaze	= "behält ([^%s]+) im Blickfeld!",
-	GazeWhisper	= "Thaladred blickt DICH an! Lauf weg!",
 	Thaladred	= "Thaladred der Verfinsterer",
 	Sanguinar	= "Lord Sanguinar",
 	Capernian	= "Großastromantin Capernian",
