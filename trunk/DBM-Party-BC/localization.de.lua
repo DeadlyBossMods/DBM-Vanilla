@@ -397,11 +397,7 @@ L:SetMiscLocalization({
 ------------------------------------
 --  Kael'thas Sunstrider (Party)  --
 ------------------------------------
-L = DBM:GetModLocalization("Kael")
-
-L:SetGeneralLocalization({
-	name = "Kael'thas Sonnenwanderer (Gruppe)"
-})
+L = DBM:GetModLocalization(533)
 
 L:SetMiscLocalization({
 	KaelP2	= "Ich werde Eure Welt... auf den Kopf stellen."
