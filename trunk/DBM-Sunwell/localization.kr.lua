@@ -19,9 +19,9 @@ L:SetOptionLocalization{
 	WarnPortal			= "$spell:46021 대상 알림 보기",
 	SpecWarnWildMagic	= "마법 폭주 대상이 된 경우 특수 경고 보기",
 	ShowFrame			= "정신 세계에 있는 공격대원을 별도 창으로 보기" ,
-	FrameClassColor		= "정신 세계 창 직업 색상 사용하기",
-	FrameUpwards		= "정신 세계 창 바를 위쪽으로 확장하기",
-	FrameLocked			= "정신 세계 창 고정하기(이동불가로 설정)"
+	FrameClassColor		= "정신 세계 창 직업 색상 사용",
+	FrameUpwards		= "정신 세계 창 바를 위쪽으로 확장",
+	FrameLocked			= "정신 세계 창 고정(이동불가로 설정)"
 }
 
 L:SetMiscLocalization{
