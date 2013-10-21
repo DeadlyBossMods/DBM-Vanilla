@@ -210,7 +210,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 	elseif args.spellId == 36834 then
 		warnDisruption:Show()
-	elseif args.spellId == 34341 then
+	elseif args.spellId == 34341 and self:IsInCombat() then
 		warnEgg:Show()
 		specWarnEgg:Show()
 		timerRebirth:Show()
