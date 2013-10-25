@@ -9,6 +9,7 @@ mod:SetUsedIcons(5, 6, 7, 8)
 
 mod:RegisterCombat("combat")
 
+--Not using RegisterEventsInCombat on purpose because it uses weird combat rules
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL",

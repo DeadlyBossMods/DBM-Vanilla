@@ -6,7 +6,7 @@ mod:SetCreatureID(16151, 16152)--15550
 mod:SetModelID(16416)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"

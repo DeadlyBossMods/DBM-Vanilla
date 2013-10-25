@@ -12,7 +12,7 @@ mod:RegisterCombat("yell", L.Pull)
 mod.disableHealthCombat = true
 
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",

@@ -10,16 +10,13 @@ mod:SetUsedIcons(4, 5, 6, 7, 8)
 mod:RegisterCombat("yell", L.Pull)
 
 mod:RegisterEventsInCombat(
-	"SPELL_DAMAGE",
-	"SPELL_MISSED"
-)
-
-mod:RegisterEvents(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
+	"SPELL_DAMAGE",
+	"SPELL_MISSED",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
 

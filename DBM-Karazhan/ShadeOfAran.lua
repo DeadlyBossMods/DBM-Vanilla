@@ -7,7 +7,7 @@ mod:SetModelID(16621)
 mod:RegisterCombat("combat")
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",

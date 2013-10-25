@@ -6,7 +6,7 @@ mod:SetCreatureID(17257)
 mod:SetModelID(18527)
 mod:RegisterCombat("emote", L.DBM_MAG_EMOTE_PULL)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"CHAT_MSG_MONSTER_YELL"

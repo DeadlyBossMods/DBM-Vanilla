@@ -6,7 +6,7 @@ mod:SetCreatureID(15690)
 mod:SetModelID(19274)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL"

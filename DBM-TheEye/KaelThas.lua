@@ -9,7 +9,7 @@ mod:SetZone()
 mod:RegisterCombat("yell", L.YellPull1, L.YellPull2)
 mod:SetUsedIcons(1, 6, 7, 8)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",

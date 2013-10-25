@@ -14,9 +14,12 @@ mod:RegisterCombat("combat")--Actually not how we register combat, bogus because
 mod:SetWipeTime(600)
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
+	"SPELL_AURA_APPLIED"
+)
+
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
+	"SPELL_AURA_REMOVED",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"UNIT_DIED"
 )
