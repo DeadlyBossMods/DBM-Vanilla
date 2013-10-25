@@ -6,7 +6,7 @@ mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17977)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_SUMMON"
 )

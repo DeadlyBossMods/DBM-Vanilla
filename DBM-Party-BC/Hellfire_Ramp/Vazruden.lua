@@ -6,9 +6,10 @@ mod:SetCreatureID(17537, 17536)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_REMOVED",
+	"UNIT_DIED"
 )
 
 local warnMark      = mod:NewTargetAnnounce(30689)
@@ -30,5 +31,11 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 30689 then
 		timerMark:Cancel(args.destName)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	if self:GetCIDFromGUID(args.destGUID) == 17537 then
+		DBM:EndCombat(self)
 	end
 end

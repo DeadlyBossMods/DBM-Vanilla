@@ -4,15 +4,14 @@ local L = mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(24560, 24557, 24558, 24554, 24561, 24559, 24555, 24553, 24556)--24560 is main boss.
---"combat" only fails if you were already in combat before pulling her (ie, you out level the zone and just chain pulled her with trash).
 mod:RegisterCombat("combat")--UNIT_HEALTH combat should work now
-mod:RegisterKill("yell", L.DelrissaEnd)
---Pretty sure she dies, so probably can just register kill using UNIT_DIED 24560
+mod:RegisterKill("yell", L.DelrissaEnd)--Leave as a backup since it's already localized but UNIT_DIED should catch it now for main bossID
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
-	"SPELL_AURA_APPLIED"
+	"SPELL_AURA_APPLIED",
+	"UNIT_DIED"
 )
 
 local warnFlashHeal		= mod:NewSpellAnnounce(17843, 3)
@@ -56,5 +55,11 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpellID(44175, 44291, 46193) and not args:IsDestTypePlayer() then    -- Delrissa's PWShield
 		warnPWShield:Show(args.destName)
 		specWarnPWS:Show(args.destName)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	if self:GetCIDFromGUID(args.destGUID) == 24560 then
+		DBM:EndCombat(self)
 	end
 end

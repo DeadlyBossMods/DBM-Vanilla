@@ -6,5 +6,5 @@ mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(19221)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 )
