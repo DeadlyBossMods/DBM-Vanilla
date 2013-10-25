@@ -8,11 +8,14 @@ mod:RegisterCombat("yell", L.RJ_Pull)
 mod:SetWipeTime(25)--guesswork
 
 mod:RegisterEvents(
+	"CHAT_MSG_MONSTER_YELL"
+)
+
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",
-	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
 )
 

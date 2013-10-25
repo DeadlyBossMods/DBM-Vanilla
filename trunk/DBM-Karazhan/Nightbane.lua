@@ -7,11 +7,14 @@ mod:SetModelID(18062)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
+	"CHAT_MSG_MONSTER_EMOTE"
+)
+
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_AURA_APPLIED",
-	"CHAT_MSG_MONSTER_YELL",
-	"CHAT_MSG_MONSTER_EMOTE"
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local warningFear			= mod:NewSpellAnnounce(36922, 4)

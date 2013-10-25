@@ -10,10 +10,7 @@ mod:SetUsedIcons(6, 7, 8)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"RAID_BOSS_EMOTE"
-)
-
-mod:RegisterEvents(
+	"RAID_BOSS_EMOTE",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED",

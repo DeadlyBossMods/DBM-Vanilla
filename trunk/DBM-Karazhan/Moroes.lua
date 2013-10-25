@@ -8,7 +8,7 @@ mod:SetModelID(16540)
 mod:RegisterCombat("combat")
 --mod:RegisterCombat("yell", L.DBM_MOROES_YELL_START)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",

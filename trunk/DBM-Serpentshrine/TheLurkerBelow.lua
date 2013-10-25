@@ -10,10 +10,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"RAID_BOSS_EMOTE",
-	"UNIT_DIED"
-)
-
-mod:RegisterEvents(
+	"UNIT_DIED",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
 

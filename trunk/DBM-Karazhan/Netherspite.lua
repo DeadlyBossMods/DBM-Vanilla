@@ -6,7 +6,7 @@ mod:SetCreatureID(15689)
 mod:SetModelID(15363)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"RAID_BOSS_EMOTE"

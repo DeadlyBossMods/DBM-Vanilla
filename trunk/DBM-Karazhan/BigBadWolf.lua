@@ -6,7 +6,7 @@ mod:SetCreatureID(17521)
 mod:SetModelID(17053)
 mod:RegisterCombat("yell", L.DBM_BBW_YELL_1)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED"
 )

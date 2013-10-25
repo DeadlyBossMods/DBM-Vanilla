@@ -6,7 +6,7 @@ mod:SetCreatureID(15691)
 mod:SetModelID(16958)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_SUCCESS"
 )

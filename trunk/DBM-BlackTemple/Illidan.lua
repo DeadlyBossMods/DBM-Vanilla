@@ -10,12 +10,15 @@ mod:SetZone()
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
+	"CHAT_MSG_MONSTER_YELL"
+)
+
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
-	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_HEALTH target focus mouseover",
 	"UNIT_DIED"
 )
