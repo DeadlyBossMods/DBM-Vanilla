@@ -6,7 +6,7 @@ mod:SetCreatureID(17881)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE",
 	"SPELL_CAST_SUCCESS"
 )

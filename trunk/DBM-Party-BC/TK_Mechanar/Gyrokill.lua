@@ -7,7 +7,7 @@ mod:SetModelID(18816)--Bad angle, but not terrible enough to disable i guess
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED"
 )

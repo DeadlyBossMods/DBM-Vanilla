@@ -6,7 +6,7 @@ mod:SetCreatureID(17941)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_SUMMON"
 )
 

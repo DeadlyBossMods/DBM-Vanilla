@@ -6,5 +6,5 @@ mod:SetCreatureID(16808)
 
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 )
