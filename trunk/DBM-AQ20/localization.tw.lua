@@ -9,9 +9,6 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "庫林納克斯"
 }
-L:SetWarningLocalization{
-	WarnWound	= ">%2$s<中了%1$s(%s)"
-}
 
 ------------
 -- Rajaxx --
@@ -23,14 +20,12 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnWave	= "進攻波數%s",
-	WarnBoss	= "首領到來"
 }
 L:SetOptionLocalization{
 	WarnWave	= "為下一次波進攻顯示提示"
 }
 L:SetMiscLocalization{
-	NpcPull		= "它們來了。盡量別被它們幹掉，新兵。",
-	Wave1		= "記得嗎，拉賈克斯，上次我說會殺了你?",
+	Wave12		= "它們來了。盡量別被它們幹掉，新兵。",
 	Wave3		= "我們懲罰的時刻就在眼前!讓黑暗支配敵人的內心吧!",
 	Wave4		= "我們不需在被禁堵的門與石牆後等待了!我們的復仇將不再被否認!巨龍將在我們的憤怒之前顫抖!",
 	Wave5		= "恐懼是給敵人的!恐懼與死亡!",

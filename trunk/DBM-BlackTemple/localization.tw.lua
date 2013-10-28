@@ -129,7 +129,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	timerAura	= "Show timer for Prismatic Aura"
+	timerAura	= "為稜石光環顯示計時器"
 }
 
 ----------------------
@@ -185,7 +185,7 @@ L:SetOptionLocalization{
 	TimerNextHuman	= "為下一次人形階段顯示計時器",
 	TimerNextDemon	= "為下一次惡魔階段顯示計時器",
 	TimerPhase4		= "為第4階段轉換顯示計時器",
-	RangeFrame		= "為第3第4階段顯示距離框架(10碼)"
+	RangeFrame		= "為第3和第4階段顯示距離框架(10碼)"
 }
 
 L:SetMiscLocalization{

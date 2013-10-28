@@ -1,4 +1,4 @@
-if GetLocale() ~= "zhTW" then return end
+﻿if GetLocale() ~= "zhTW" then return end
 local L
 
 ---------------------------
@@ -24,8 +24,7 @@ L:SetOptionLocalization{
 	WarnMark		= "提示印記",
 	WarnPhase		= "提示階段",
 	SpecWarnMark	= "為印記易傷超過100%時顯示警告",
-	TimerMark		= "為下一次印記顯示計時器",
-	RangeFrame		= "顯示距離框"
+	TimerMark		= "為下一次印記顯示計時器"
 }
 
 L:SetMiscLocalization{
@@ -57,10 +56,6 @@ L:SetOptionLocalization{
 	WarnEmerge			= "為浮現顯示警告",
 	TimerSubmerge		= "為潛入水中顯示計時器",
 	TimerEmerge			= "為浮現顯示計時器"
-}
-
-L:SetMiscLocalization{
-	Spout	= "%s深深地吸了一口氣!"
 }
 
 --------------------------
@@ -151,7 +146,7 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerElementalActive	= "污染的元素出現",
+	TimerElementalActive	= "污染的元素重生",
 	TimerElemental			= "污染的元素 (%d)",
 	TimerStrider			= "盤牙旅行者 (%d)",
 	TimerNaga				= "盤牙精英 (%d)"
@@ -174,6 +169,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_VASHJ_YELL_PHASE2	= "機會來了!一個活口都不要留下!",
-	DBM_VASHJ_YELL_PHASE3	= "You may want to take cover.",
+	DBM_VASHJ_YELL_PHASE3	= "你們最好找掩護。",
 	LootMsg					= "(.+)拾取了物品:.*Hitem:(%d+)"
 }

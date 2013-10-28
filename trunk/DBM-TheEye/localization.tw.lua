@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "zhTW" then return end
-
 local L
 
 -----------
@@ -12,11 +11,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	NextPlatform	= "下一個平台"
+	NextPlatform	= "最長平台停留時間"
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "為歐爾變換平台顯示計時器"
+	NextPlatform	= "為歐爾最長平台可能停留時間顯示計時器(可能會提早離開不過不會大於這個時間)"
 }
 
 ------------------
