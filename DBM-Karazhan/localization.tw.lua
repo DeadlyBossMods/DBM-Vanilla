@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "zhTW" then return end
-
 local L
 
 --Attumen
@@ -51,9 +50,9 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Event				= "Tonight... we explore a tale of forbidden love!",
+	Event				= "今晚...我們要探索一個禁忌之愛的故事。",
 	RJ_Pull				= "你是什麼樣的惡魔，讓我這樣的痛苦?",
-	DBM_RJ_PHASE2_YELL	= "來吧，溫和的夜晚；把我的羅慕歐還給我!",
+	DBM_RJ_PHASE2_YELL	= "來吧，溫和的夜晚;把我的羅慕歐還給我!",
 	Romulo				= "羅慕歐",
 	Julianne			= "茱麗葉"
 }
