@@ -73,8 +73,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			self:Schedule(1, showFATargets)
 		end
-	elseif args.spellId == 99999 then
-		warnEnrage:Show()
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

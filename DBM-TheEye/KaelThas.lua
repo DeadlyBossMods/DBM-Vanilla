@@ -68,44 +68,6 @@ local warnMCTargets = {}
 local shieldDown = false
 local phase5 = false
 
-local showShieldHealthBar, hideShieldHealthBar
-do
-	local frame = CreateFrame("Frame") -- using a separate frame avoids the overhead of the DBM event handlers which are not meant to be used with frequently occuring events like all damage events...
-	local shieldedMob
-	local absorbRemaining = 0
-	local maxAbsorb = 0
-	local function getShieldHP()
-		return math.max(1, math.floor(absorbRemaining / maxAbsorb * 100))
-	end
-	frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-	frame:SetScript("OnEvent", function(self, event, timestamp, subEvent, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, ...)
-		if shieldedMob == destGUID then
-			local absorbed
-			if subEvent == "SWING_MISSED" then 
-				absorbed = select( 3, ... ) 
-			elseif subEvent == "RANGE_MISSED" or subEvent == "SPELL_MISSED" or subEvent == "SPELL_PERIODIC_MISSED" then 
-				absorbed = select( 6, ... )
-			end
-			if absorbed then
-				absorbRemaining = absorbRemaining - absorbed
-			end
-		end
-	end)
-	
-	function showShieldHealthBar(self, mob, shieldName, absorb)
-		shieldedMob = mob
-		absorbRemaining = absorb
-		maxAbsorb = absorb
-		DBM.BossHealth:RemoveBoss(getShieldHP)
-		DBM.BossHealth:AddBoss(getShieldHP, shieldName)
-		mod:Schedule(10, hideShieldHealthBar)
-	end
-	
-	function hideShieldHealthBar()
-		DBM.BossHealth:RemoveBoss(getShieldHP)
-	end
-end
-
 local function showConflag()
 	warnConflag:Show(table.concat(warnConflagTargets, "<, >"))
 	table.wipe(warnConflagTargets)
@@ -162,7 +124,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args.spellId == 36815 and not phase5 then
 		shieldDown = false
-		showShieldHealthBar(self, args.destGUID, args.spellName, 80000)
+		self:ShowShieldHealthBar(args.destGUID, args.spellName, 80000)
+		self:ScheduleMethod(10, "RemoveShieldHealthBar", args.destGUID)
 		specWarnShield:Show()
 		timerShieldCD:Start()
 	elseif args.spellId == 35859 and args:IsPlayer() and self:IsInCombat() and (args.amount or 1) >= 2 then
@@ -176,8 +139,8 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 36815 and not phase5 then
 		shieldDown = true
 		specWarnPyro:Show(args.sourceName)
-		self:Unschedule(hideShieldHealthBar)
-		hideShieldHealthBar()
+		self:UnscheduleMethod("RemoveShieldHealthBar", args.destGUID)
+		self:RemoveShieldHealthBar(args.destGUID)
 	elseif args.spellId == 36797 then
 		if self.Options.MCIcon then
 			self:SetIcon(args.destName, 0)
