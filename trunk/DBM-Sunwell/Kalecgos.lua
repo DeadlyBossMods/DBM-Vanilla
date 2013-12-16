@@ -69,7 +69,7 @@ end
 
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 44987 and args:IsPlayer() and self:IsHealer() then
+	if args.spellId == 44978 and args:IsPlayer() and self:IsHealer() then
 		specWarnWildMagic:Show(L.Heal)
 	elseif args.spellId == 45001 and args:IsPlayer() then
 		specWarnWildMagic:Show(L.Haste)
