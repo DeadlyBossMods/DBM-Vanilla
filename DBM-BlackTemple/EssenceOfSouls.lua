@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS",
 	"SPELL_DAMAGE",
 	"SPELL_MISSED",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"UNIT_SPELLCAST_SUCCEEDED target focus"
 )
 
 local warnFixate		= mod:NewTargetAnnounce(41294, 3)

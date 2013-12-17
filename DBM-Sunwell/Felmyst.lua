@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON",
 	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"UNIT_SPELLCAST_SUCCEEDED target focus"
 )
 
 local warnGas				= mod:NewSpellAnnounce(45855, 3)
@@ -142,6 +142,12 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
 	if spellId == 45661 and self:AntiSpam(2, 1) then
+		self:SendSync("Encapsulate")
+	end
+end
+
+function mod:OnSync(event, arg)
+	if event == "Encapsulate" then
 		self:BossTargetScanner(25038, "EncapsulateTarget", 0.025, 20)
 	end
 end

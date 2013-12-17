@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED",
 	"SPELL_CAST_SUCCESS",
 	"UNIT_HEALTH target focus mouseover",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"UNIT_SPELLCAST_SUCCEEDED target focus"
 )
 
 local warnFA			= mod:NewTargetAnnounce(41001, 4)
