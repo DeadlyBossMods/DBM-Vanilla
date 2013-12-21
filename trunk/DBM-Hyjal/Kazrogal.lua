@@ -41,7 +41,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 31447 then
+	if args.spellId == 31480 then
 		warnStomp:Show()
 	end
 end
