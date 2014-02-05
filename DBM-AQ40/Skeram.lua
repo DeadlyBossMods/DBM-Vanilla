@@ -7,9 +7,10 @@ mod:SetModelID(15345)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_SUCCESS",
-	"SPELL_SUMMON",
+	"SPELL_AURA_APPLIED 785",
+	"SPELL_AURA_REMOVED 785",
+	"SPELL_CAST_SUCCESS 20449 4801 8195",
+	"SPELL_SUMMON 747",
 	"UNIT_HEALTH target focus mouseover"
 )
 
@@ -53,9 +54,15 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:Schedule(0.3, warnMCTargets)
 		end
 		if self.Options.SetIconOnMC then
-			self:SetIcon(args.destName, MCIcon, 20)
+			self:SetIcon(args.destName, MCIcon)
 			MCIcon = MCIcon - 1
 		end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if self.Options.SetIconOnMC and args.spellId == 785 then
+		self:SetIcon(args.destName, 0)
 	end
 end
 
