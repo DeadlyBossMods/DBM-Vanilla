@@ -51,7 +51,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if #MCTargets >= 3 then
 			warnMCTargets()
 		else
-			self:Schedule(0.3, warnMCTargets)
+			self:Schedule(0.5, warnMCTargets)
 		end
 		if self.Options.SetIconOnMC then
 			self:SetIcon(args.destName, MCIcon)
