@@ -28,7 +28,7 @@ local specWarnFA		= mod:NewSpecialWarningYou(41001)
 
 local timerAura			= mod:NewTimer(15, "timerAura", 22599)
 
-mod:AddBoolOption("FAIcons", true)
+mod:AddBoolOption("FAIcons", false)
 
 local warnFATargets = {}
 local FAIcon = 8

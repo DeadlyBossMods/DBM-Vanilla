@@ -47,8 +47,8 @@ local berserkTimer			= mod:NewBerserkTimer(360)
 local soundConflag			= mod:NewSound(45333)
 
 mod:AddBoolOption("RangeFrame", true)
-mod:AddBoolOption("ConflagIcon", true)
-mod:AddBoolOption("NovaIcon", true)
+mod:AddBoolOption("ConflagIcon", false)
+mod:AddBoolOption("NovaIcon", false)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)

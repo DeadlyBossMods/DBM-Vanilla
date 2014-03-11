@@ -59,7 +59,7 @@ local timerGravity		= mod:NewBuffActiveTimer(32, 35941)
 
 mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("MCIcon", true)
-mod:AddBoolOption("GazeIcon", true)
+mod:AddBoolOption("GazeIcon", false)
 mod:AddBoolOption("RangeFrame", true)
 
 local mcIcon = 8
