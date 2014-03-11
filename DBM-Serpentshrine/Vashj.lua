@@ -40,7 +40,7 @@ local timerStrider		= mod:NewTimer(63, "TimerStrider", 475)
 local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120)
 
 mod:AddBoolOption("RangeFrame", true)
-mod:AddBoolOption("ChargeIcon", true)
+mod:AddBoolOption("ChargeIcon", false)
 mod:AddBoolOption("AutoChangeLootToFFA", true)
 
 local shieldLeft = 4

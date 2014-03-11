@@ -18,9 +18,6 @@ local warnVulnerable	= mod:NewAnnounce("WarnVulnerable", 3, "Interface\\Icons\\I
 local timerCyclone		= mod:NewTargetTimer(10, 25189)
 local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable", "Interface\\Icons\\INV_Enchant_EssenceMagicLarge")
 
-function mod:OnCombatStart(delay)
-end
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 25176 then
 		warnSupreme:Show()

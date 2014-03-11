@@ -26,7 +26,7 @@ local specWarnDnD		= mod:NewSpecialWarningMove(31258)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("IceBoltIcon", true)
+mod:AddBoolOption("IceBoltIcon", false)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)

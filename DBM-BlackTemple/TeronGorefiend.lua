@@ -26,7 +26,7 @@ local timerCrushed			= mod:NewBuffActiveTimer(15, 40243)
 local timerDeath			= mod:NewTargetTimer(55, 40251)
 local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325)
 
-mod:AddBoolOption("CrushIcon", true)
+mod:AddBoolOption("CrushIcon", false)
 
 local warnCrushedTargets = {}
 local crushIcon = 8

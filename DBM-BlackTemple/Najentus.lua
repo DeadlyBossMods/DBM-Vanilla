@@ -23,7 +23,7 @@ local timerShield		= mod:NewCDTimer(58, 39872)
 
 local berserkTimer		= mod:NewBerserkTimer(480)
 
-mod:AddBoolOption("SpineIcon")
+mod:AddBoolOption("SpineIcon", true)
 mod:AddBoolOption("InfoFrame", false)
 mod:AddBoolOption("RangeFrame", true)
 
