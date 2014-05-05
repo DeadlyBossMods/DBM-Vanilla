@@ -21,6 +21,7 @@ localization.es.lua
 localization.ru.lua
 localization.kr.lua
 localization.tw.lua
+localization.cn.lua
 Skeram.lua
 ThreeBugs.lua
 Sartura.lua

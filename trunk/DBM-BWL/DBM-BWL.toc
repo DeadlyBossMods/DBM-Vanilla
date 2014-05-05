@@ -6,6 +6,7 @@
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Логово Крыла Тьмы|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0검은날개 둥지|r
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0黑翼之巢|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0黑翼之巢|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMBWL_SavedVars, DBMBWL_SavedStats
@@ -21,6 +22,7 @@ localization.es.lua
 localization.ru.lua
 localization.kr.lua
 localization.tw.lua
+localization.cn.lua
 Razorgore.lua
 Vaelastrasz.lua
 Broodlord.lua
