@@ -6,6 +6,7 @@
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Geschmolzener Kern|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0화산 심장부|r
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0熔火之心|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0熔火之心|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
@@ -21,6 +22,7 @@ localization.ru.lua
 localization.de.lua
 localization.kr.lua
 localization.tw.lua
+localization.cn.lua
 Lucifron.lua
 Magmadar.lua
 Gehennas.lua
