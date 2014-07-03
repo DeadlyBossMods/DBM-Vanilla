@@ -11,7 +11,7 @@
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-MapID: 532
-## X-DBM-Mod-Sort: 306
+## X-DBM-Mod-Sort: 506
 localization.en.lua
 localization.de.lua
 localization.fr.lua

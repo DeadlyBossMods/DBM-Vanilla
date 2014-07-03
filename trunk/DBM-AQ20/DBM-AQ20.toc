@@ -14,7 +14,7 @@
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-MapID: 509
-## X-DBM-Mod-Sort: 404
+## X-DBM-Mod-Sort: 604
 localization.en.lua
 localization.de.lua
 localization.es.lua
