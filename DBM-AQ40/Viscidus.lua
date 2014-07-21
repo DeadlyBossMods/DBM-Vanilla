@@ -47,7 +47,6 @@ function mod:RANGE_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, _, _, _, overk
 	local cid = self:GetCIDFromGUID(destGUID)
 	if cid == 15299 then
 		meleeHits = meleeHits + 1
-		print(meleeHits)
 		if meleeHits > 30 then
 			self:UnregisterShortTermEvents()
 		end
@@ -58,7 +57,6 @@ function mod:SWING_DAMAGE(_, _, _, _, destGUID, _, _, _, _, overkill)
 	local cid = self:GetCIDFromGUID(destGUID)
 	if cid == 15299 then
 		meleeHits = meleeHits + 1
-		print(meleeHits)
 		if meleeHits > 30 then
 			self:UnregisterShortTermEvents()
 		end

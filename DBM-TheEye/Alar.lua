@@ -68,7 +68,6 @@ mod:RegisterOnUpdateHandler(function(self)
 				if not target and UnitCastingInfo(uId.."target") == buffetName then
 					target = "Dummy"
 				end
-				--print(target, foundIt)
 				break
 			end
 		end
@@ -76,13 +75,11 @@ mod:RegisterOnUpdateHandler(function(self)
 		if foundIt and not target and not phase2 and self:AntiSpam(30, 1) then--Al'ar is no longer targeting anything, which means he spawned an add and is moving platforms
 			Add()
 			--Could also be quills though, which is why we can't really put in an actual add warning.
-			--print("Add")
 		elseif not target and type(phase2) == "number" and self:AntiSpam(30, 2) and (GetTime() - phase2) > 25 then--No target in phase 2 means meteor
 			warnMeteor:Show()
 			timerMeteor:Start()
 		elseif target and flying then--Al'ar has reached a platform and is once again targeting aggro player
 			Platform()
-			--print("Platform")
 		end
 	end
 end, 0.25)
