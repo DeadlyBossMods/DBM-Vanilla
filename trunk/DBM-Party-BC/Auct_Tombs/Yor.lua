@@ -8,3 +8,4 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 )
+mod.onlyHeroic = true

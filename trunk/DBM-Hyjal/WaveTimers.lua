@@ -10,6 +10,7 @@ mod:RegisterEvents(
 	"UNIT_DIED",
 	"SPELL_AURA_APPLIED"
 )
+mod.noStatistics = true
 
 local warnWave			= mod:NewAnnounce("WarnWave", 1)
 local warnCannibalize	= mod:NewSpellAnnounce(31538, 2)
