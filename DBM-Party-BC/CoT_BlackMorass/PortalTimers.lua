@@ -8,6 +8,7 @@ mod:RegisterEvents(
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL"
 )
+mod.noStatistics = true
 
 -- Portals
 local warnWavePortalSoon	= mod:NewAnnounce("WarnWavePortalSoon", 2, 57687)

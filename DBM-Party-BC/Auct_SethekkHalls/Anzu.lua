@@ -13,6 +13,7 @@ mod:RegisterEventsInCombat(
 	"UNIT_HEALTH target focus" ,
 	"CHAT_MSG_MONSTER_EMOTE"
 )
+mod.onlyHeroic = true
 
 local warnBirds             = mod:NewSpellAnnounce("ej5253", 2, 32038)
 local warnStoned            = mod:NewAnnounce("warnStoned", 1, 32810, false)
