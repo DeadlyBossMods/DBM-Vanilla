@@ -65,12 +65,7 @@ function mod:EncapsulateTarget(targetname, uId)
 		specWarnEncaps:Show()
 		yellEncaps:Yell()
 	elseif uId then
-		local x, y = GetPlayerMapPosition(uId)
-		if x == 0 and y == 0 then
-			SetMapToCurrentZone()
-			x, y = GetPlayerMapPosition(uId)
-		end
-		local inRange = DBM.RangeCheck:GetDistance("player", x, y)
+		local inRange = DBM.RangeCheck:GetDistance("player", uId)
 		if inRange and inRange < 21 then
 			specWarnEncapsNear:Show(targetname)
 		end
