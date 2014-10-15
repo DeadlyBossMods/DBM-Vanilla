@@ -20,7 +20,6 @@ localization.es.lua
 localization.tw.lua
 localization.cn.lua
 localization.ru.lua
-MapSizes.lua
 Attumen.lua
 Moroes.lua
 MaidenOfVirtue.lua
