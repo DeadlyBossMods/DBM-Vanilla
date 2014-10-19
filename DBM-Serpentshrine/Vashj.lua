@@ -162,13 +162,11 @@ end
 "<312.2 02:40:04> [CLEU] UNIT_DIED#true##nil#-2147483648#-2147483648#0xF13055F90000766B#Tainted Elemental#68168#0", -- [1542]
 --]]
 function mod:UNIT_DIED(args)
-	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
-		local cid = self:GetCIDFromGUID(args.destGUID)
-		if cid == 22009 then
-			elementalCount = elementalCount + 1
-			timerElementalCD:Start(nil, tostring(elementalCount))
-			warnElemental:Schedule(45, tostring(elementalCount))
-		end
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 22009 then
+		elementalCount = elementalCount + 1
+		timerElementalCD:Start(nil, tostring(elementalCount))
+		warnElemental:Schedule(45, tostring(elementalCount))
 	end
 end
 
