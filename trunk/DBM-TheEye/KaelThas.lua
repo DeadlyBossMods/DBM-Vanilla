@@ -185,46 +185,44 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:UNIT_DIED(args)
-	if bit.band(args.destGUID:sub(0, 5), 0x00F) == 3 then
-		local cid = self:GetCIDFromGUID(args.destGUID)
-		if cid == 20064 then
-			timerNextGaze:Cancel()
-			DBM.BossHealth:RemoveBoss(20064)
-		elseif cid == 20060 then
-			timerFearCD:Cancel()
-			DBM.BossHealth:RemoveBoss(20060)
-		elseif cid == 20062 then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-			DBM.BossHealth:RemoveBoss(20062)
-		elseif cid == 20063 then
-			DBM.BossHealth:RemoveBoss(20063)
-		elseif cid == 21268 then
-			warnMobDead:Show(L.Bow)
-			DBM.BossHealth:RemoveBoss(21268)
-		elseif cid == 21269 then
-			warnMobDead:Show(L.Axe)
-			DBM.BossHealth:RemoveBoss(21269)
-		elseif cid == 21270 then
-			warnMobDead:Show(L.Mace)
-			DBM.BossHealth:RemoveBoss(21270)
-		elseif cid == 21271 then
-			warnMobDead:Show(L.Dagger)
-			DBM.BossHealth:RemoveBoss(21271)
-		elseif cid == 21272 then
-			warnMobDead:Show(L.Sword)
-			DBM.BossHealth:RemoveBoss(21272)
-		elseif cid == 21273 then
-			warnMobDead:Show(L.Shield)
-			DBM.BossHealth:RemoveBoss(21273)
-		elseif cid == 21274 then
-			warnMobDead:Show(L.Staff)
-			DBM.BossHealth:RemoveBoss(21274)
-		elseif cid == 21364 then
-			timerRebirth:Cancel()
-			DBM.BossHealth:RemoveBoss(21364)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 20064 then
+		timerNextGaze:Cancel()
+		DBM.BossHealth:RemoveBoss(20064)
+	elseif cid == 20060 then
+		timerFearCD:Cancel()
+		DBM.BossHealth:RemoveBoss(20060)
+	elseif cid == 20062 then
+		if self.Options.RangeFrame then
+			DBM.RangeCheck:Hide()
 		end
+		DBM.BossHealth:RemoveBoss(20062)
+	elseif cid == 20063 then
+		DBM.BossHealth:RemoveBoss(20063)
+	elseif cid == 21268 then
+		warnMobDead:Show(L.Bow)
+		DBM.BossHealth:RemoveBoss(21268)
+	elseif cid == 21269 then
+		warnMobDead:Show(L.Axe)
+		DBM.BossHealth:RemoveBoss(21269)
+	elseif cid == 21270 then
+		warnMobDead:Show(L.Mace)
+		DBM.BossHealth:RemoveBoss(21270)
+	elseif cid == 21271 then
+		warnMobDead:Show(L.Dagger)
+		DBM.BossHealth:RemoveBoss(21271)
+	elseif cid == 21272 then
+		warnMobDead:Show(L.Sword)
+		DBM.BossHealth:RemoveBoss(21272)
+	elseif cid == 21273 then
+		warnMobDead:Show(L.Shield)
+		DBM.BossHealth:RemoveBoss(21273)
+	elseif cid == 21274 then
+		warnMobDead:Show(L.Staff)
+		DBM.BossHealth:RemoveBoss(21274)
+	elseif cid == 21364 then
+		timerRebirth:Cancel()
+		DBM.BossHealth:RemoveBoss(21364)
 	end
 end
 
