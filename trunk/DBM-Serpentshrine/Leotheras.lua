@@ -134,7 +134,7 @@ function mod:UNIT_DIED(args)
 			table.wipe(warnDemonTargets)
 			timerWhirlCD:Start(15)
 			timerPhase:Start(nil, L.Demon)
-			berserkTimer:Start(-delay)
+			berserkTimer:Start()
 		end
 	elseif cId == 21215 and self:IsInCombat() then
 		DBM:EndCombat(self)
