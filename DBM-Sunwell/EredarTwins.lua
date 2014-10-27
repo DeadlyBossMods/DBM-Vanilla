@@ -80,7 +80,7 @@ end
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
+function mod:SPELL_DAMAGE(_, _, _, _, _, destName, _, _, spellId)
 	if spellId == 45256 then
 		warnBlow:Show(destName)
 		timerBlowCD:Start()
