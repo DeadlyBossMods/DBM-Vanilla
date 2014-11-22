@@ -61,7 +61,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId == args.spellId
+	local spellId = args.spellId
 	if spellId == 19695 then
 		warnInferno:Show()
 		if self:IsDifficulty("event40") then
