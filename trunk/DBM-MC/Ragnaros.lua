@@ -8,10 +8,7 @@ mod:SetModelID(11121)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
+	"SPELL_CAST_SUCCESS 20566",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
 )
