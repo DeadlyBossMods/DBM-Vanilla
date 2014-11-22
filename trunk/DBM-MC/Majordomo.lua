@@ -9,8 +9,7 @@ mod:RegisterCombat("combat")
 mod:RegisterKill("yell", L.Kill)
 
 mod:RegisterEvents(
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS"
+	"SPELL_CAST_SUCCESS 20619 21075 20534"
 )
 
 local warnMagicReflect	= mod:NewSpellAnnounce(20619)
@@ -23,14 +22,15 @@ local timerMagicReflect	= mod:NewBuffActiveTimer(10, 20619)
 local timerDamageShield	= mod:NewBuffActiveTimer(10, 21075)
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 20619 then
+	local spellId = args.spellId
+	if spellId == 20619 then
 		warnMagicReflect:Show()
 		specWarnMagicReflect:Show()
 		timerMagicReflect:Start()
-	elseif args.spellId == 21075 then
+	elseif spellId == 21075 then
 		warnDamageShield:Show()
 		timerDamageShield:Start()
-	elseif args.spellId == 20534 then
+	elseif spellId == 20534 then
 		warnTeleport:Show(args.destName)
 	end
 end

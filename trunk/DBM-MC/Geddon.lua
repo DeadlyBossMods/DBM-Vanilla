@@ -9,33 +9,44 @@ mod:SetUsedIcons(8)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_SUCCESS"
+	"SPELL_AURA_APPLIED 20475",
+	"SPELL_AURA_REMOVED 20475",
+	"SPELL_CAST_SUCCESS 19695 19659 20478"
 )
 
-local warnInferno		= mod:NewSpellAnnounce(19695)
-local warnIgnite		= mod:NewSpellAnnounce(19659)
-local warnBomb			= mod:NewTargetAnnounce(20475)
-local warnArmageddon	= mod:NewSpellAnnounce(20478)
+local warnInferno		= mod:NewSpellAnnounce(19695, 3)
+local warnIgnite		= mod:NewSpellAnnounce(19659, 2)
+local warnBomb			= mod:NewTargetAnnounce(20475, 4)
+local warnArmageddon	= mod:NewSpellAnnounce(20478, 3)
 
-local timerInferno		= mod:NewCastTimer(8, 19695)
+local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3)
+local yellBomb			= mod:NewYell(20475)
+local specWarnInferno	= mod:NewSpecialWarningSpell(19695, nil, nil, nil, 2)
+
+local timerInferno		= mod:NewBuffActiveTimer(8, 19695)
+local timerBombCD		= mod:NewCDTimer(16, 20475)
 local timerBomb			= mod:NewTargetTimer(8, 20475)
 local timerArmageddon	= mod:NewCastTimer(8, 20478)
 
-local specWarnBomb		= mod:NewSpecialWarningYou(20475)
+mod:AddSetIconOption("SetIconOnBombTarget", 20475)
 
-mod:AddBoolOption("SetIconOnBombTarget", true)
+function mod:OnCombatStart(delay)
+	timerBombCD:Start(11-delay)
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 20475 then
-		timerBomb:Start(args.destName)
 		warnBomb:Show(args.destName)
+		timerBomb:Start(args.destName)
+		timerBombCD:Start()
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 8)
 		end
 		if args:IsPlayer() then
 			specWarnBomb:Show()
+			if self:IsDifficulty("event40") then
+				yellBomb:Yell()
+			end
 		end
 	end
 end
@@ -50,12 +61,16 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19695 then
+	local spellId == args.spellId
+	if spellId == 19695 then
 		warnInferno:Show()
+		if self:IsDifficulty("event40") then
+			specWarnInferno:Show()
+		end
 		timerInferno:Start()
-	elseif args.spellId == 19659 then
+	elseif spellId == 19659 then
 		warnIgnite:Show()
-	elseif args.spellId == 20478 then
+	elseif spellId == 20478 then
 		warnArmageddon:Show()
 		timerArmageddon:Start()
 	end
