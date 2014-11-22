@@ -8,13 +8,13 @@ mod:SetModelID(11986)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED"
+	"SPELL_CAST_SUCCESS 20553"
 )
 
-local warnTrust		= mod:NewSpellAnnounce(20553)
+local warnQuake		= mod:NewSpellAnnounce(20553)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 20553 then
-		warnTrust:Show()
+		warnQuake:Show()
 	end
 end

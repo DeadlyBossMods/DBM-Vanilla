@@ -45,10 +45,6 @@ L:SetGeneralLocalization{
 	name = "Baron Geddon"
 }
 
-L:SetOptionLocalization{
-	SetIconOnBombTarget	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(20475)
-}
-
 ----------------
 --  Shazzrah  --
 ----------------

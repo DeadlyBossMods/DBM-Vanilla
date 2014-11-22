@@ -8,57 +8,37 @@ mod:SetModelID(13030)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_START"
+	"SPELL_AURA_APPLIED 19779 19780 19776 20294",
+	"SPELL_CAST_START 19775"
 )
 
-local warnInspire		= mod:NewTargetAnnounce(19779, 3)
-local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2)
-local warnShadowPain	= mod:NewTargetAnnounce(19776, 2)
-local warnHeal			= mod:NewCastAnnounce(19775, 1, nil, nil, false)--this may be spammy now that spellid is fixed
-local warnImmolate		= mod:NewTargetAnnounce(20294, 3)
+local warnInspire		= mod:NewTargetAnnounce(19779, 2, nil, mod:IsTank() or mod:IsHealer())
+local warnHandRagnaros	= mod:NewTargetAnnounce("OptionVersion2", 19780, 2, nil, false)
+local warnShadowPain	= mod:NewTargetAnnounce("OptionVersion2", 19776, 2, nil, false)
+local warnHeal			= mod:NewCastAnnounce(19775, 3, nil, nil, false)--this may be spammy now that spellid is fixed
+local warnImmolate		= mod:NewTargetAnnounce("OptionVersion2", 20294, 2, nil, false)
 
-local timerInspire		= mod:NewBuffActiveTimer(10, 19779)
-local timerShadowPain	= mod:NewTargetTimer(18, 19776)
+local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775)
+
+local timerInspireCD	= mod:NewCDTimer(16, 19779, nil, mod:IsTank() or mod:IsHealer())--16-20
+local timerInspire		= mod:NewTargetTimer(10, 19779, nil, mod:IsTank() or mod:IsHealer())
 local timerHeal			= mod:NewCastTimer(2, 19775, nil, false)--this may be spammy now that spellid is fixed
-local timerImmolate		= mod:NewTargetTimer(21, 20294)
-local timerHandRagnaros	= mod:NewBuffActiveTimer(2, 19780)
-
-local HandofRagTargets = {}
 
 function mod:OnCombatStart(delay)
-	table.wipe(HandofRagTargets)
-end
-
-function mod:warnHandofRagTargets()
-	warnHandRagnaros:Show(table.concat(HandofRagTargets, "<, >"))
-	timerHandRagnaros:Start()
-	table.wipe(HandofRagTargets)
+	timerInspireCD:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19779 then
 		warnInspire:Show(args.destName)
 		timerInspire:Start(args.destName)
+		timerInspireCD:Start()
 	elseif args.spellId == 19780 and args:IsDestTypePlayer() then
-		self:UnscheduleMethod("warnHandofRagTargets")
-		HandofRagTargets[#HandofRagTargets + 1] = args.destName
-		self:ScheduleMethod(0.3, "warnHandofRagTargets")
+		warnHandRagnaros:CombinedShow(0.3, args.destName)
 	elseif args.spellId == 19776 then
-		warnShadowPain:Show(args.destName)
-		timerShadowPain:Start(args.destName)
+		warnShadowPain:CombinedShow(0.3, args.destName)
 	elseif args.spellId == 20294 then
-		warnImmolate:Show(args.destName)
-		timerImmolate:Start(args.destName)
-	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 23952 and self:IsInCombat() then
-		timerShadowPain:Cancel(args.destName)
-	elseif args.spellId == 20294 and self:IsInCombat() then
-		timerImmolate:Cancel(args.destName)
+		warnImmolate:CombinedShow(0.3, args.destName)
 	end
 end
 
@@ -66,5 +46,8 @@ function mod:SPELL_CAST_START(args)
 	if args.spellId == 19775 then
 		warnHeal:Show()
 		timerHeal:Start()
+		if args.sourceGUID == UnitGUID("target") or args.sourceGUID == UnitGUID("focus") then--Only show warning/timer for your own target.
+			specWarnHeal:Show(args.sourceName)
+		end
 	end
 end

@@ -8,25 +8,28 @@ mod:SetModelID(12110)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_APPLIED 15732",
+	"SPELL_CAST_SUCCESS 19492"
 )
 
-local warnImmolate	= mod:NewTargetAnnounce(15732)
-local timerImmolate	= mod:NewTargetTimer(21, 15732)
+local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
+local warnImmolate			= mod:NewTargetAnnounce("OptionVersion2", 15732, 2, nil, mod:IsHealer())
+
+local timerAntiMagicPulseCD	= mod:NewCDTimer(16, 19492)--16-20 variation
 
 function mod:OnCombatStart(delay)
+	timerAntiMagicPulseCD:Start(10-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 15732 and self:IsInCombat() then
-		warnImmolate:Show(args.destName)
-		timerImmolate:Start(args.destName)
+		warnImmolate:CombinedShow(1, args.destName)
 	end
 end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 15732 then
-		timerImmolate:Cancel(args.destName)
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 19492 then
+		warnAntiMagicPulse:Show()
+		timerAntiMagicPulseCD:Start()
 	end
 end
