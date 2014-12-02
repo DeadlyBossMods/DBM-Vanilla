@@ -84,7 +84,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Kill	= "Impossible! Stay your attack, mortals... I submit! I submit!"
+	Kill	= "Это невозможно! Остановитесь, смертные. Я вынужден сдаться."
 }
 
 ----------------
@@ -116,6 +116,6 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Показывать время до появления"
 }
 L:SetMiscLocalization{
-	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",
-	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"
+	Submerge	= "ПРИДИТЕ, МОИ СЛУГИ! ЗАЩИТИТЕ СВОЕГО ХОЗЯИНА!",
+	Pull		= "Нахальные щенки! Вы сами обрекли себя на смерть! Узрите же Повелителя в гневе!"
 }
