@@ -22,7 +22,7 @@ local warningElementals		= mod:NewSpellAnnounce(37053, 3)
 local warningChains			= mod:NewTargetAnnounce(29991, 2)
 
 local specWarnDontMove		= mod:NewSpecialWarning("DBM_ARAN_DO_NOT_MOVE")
-local specWarnArcane		= mod:NewSpecialWarningRun(29973)
+local specWarnArcane		= mod:NewSpecialWarningRun(29973, nil, nil, nil, 4)
 local specWarnBlizzard		= mod:NewSpecialWarningMove(29951)
 
 local timerSpecial			= mod:NewTimer(30, "timerSpecial", "Interface\\Icons\\INV_Enchant_EssenceMagicLarge")
@@ -34,8 +34,6 @@ local timerElementals		= mod:NewBuffActiveTimer(90, 37053)
 local timerChains			= mod:NewTargetTimer(10, 29991)
 
 local berserkTimer			= mod:NewBerserkTimer(900)
-
-local soundArcane			= mod:NewSound(29973)
 
 mod:AddBoolOption("WreathIcons", true)
 mod:AddBoolOption("ElementalIcons", true)
@@ -74,7 +72,6 @@ function mod:SPELL_CAST_START(args)
 		warningArcaneCast:Show()
 		timerArcaneExplosion:Start()
 		specWarnArcane:Show()
-		soundArcane:Play()
 		timerSpecial:Start()
 	elseif args.spellId == 29969 then
 		warningBlizzard:Show()
