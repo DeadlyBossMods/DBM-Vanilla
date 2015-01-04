@@ -44,8 +44,6 @@ local timerNova				= mod:NewCastTimer(3.5, 45329)
 
 local berserkTimer			= mod:NewBerserkTimer(360)
 
-local soundConflag			= mod:NewSound(45333)
-
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ConflagIcon", false)
 mod:AddBoolOption("NovaIcon", false)
@@ -119,7 +117,6 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		timerConflagCD:Start()
 		if target == UnitName("player") then
 			specWarnConflag:Show()
-			soundConflag:Play()
 		end
 		if self.Options.ConflagIcon then
 			self:SetIcon(target, 8, 5)

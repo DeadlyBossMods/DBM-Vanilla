@@ -15,13 +15,13 @@ mod:RegisterEventsInCombat(
 )
 
 local warnShadowpower       = mod:NewSpellAnnounce(35322)
-local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
-local timerJackhammer       = mod:NewBuffActiveTimer(8, 39194)
 local WarnJackHammer		= mod:NewSpellAnnounce(39194)
-local specWarnJackHammer	= mod:NewSpecialWarningRun(39194, mod:IsMelee())
+
+local specWarnJackHammer	= mod:NewSpecialWarningRun(39194, mod:IsMelee(), nil, nil, 4)
 local specWarnShadowpower   = mod:NewSpecialWarningDispel(35322, mod:IsMagicDispeller())
 
-local soundJackhammer = mod:NewSound(39194, mod:IsMelee())
+local timerShadowpower      = mod:NewBuffActiveTimer(15, 35322)
+local timerJackhammer       = mod:NewBuffActiveTimer(8, 39194)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(39193, 35322) and not args:IsDestTypePlayer() and self:IsInCombat() then     --Shadow Power
@@ -47,6 +47,5 @@ function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.JackHammer then
 		WarnJackHammer:Show()
 		specWarnJackHammer:Show()
-		soundJackhammer:Play()
 	end
 end
