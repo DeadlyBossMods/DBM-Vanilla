@@ -6,7 +6,8 @@
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0外域|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
-## SavedVariablesPerCharacter: DBMOutlands_SavedVars, DBMOutlands_SavedStats
+## SavedVariables: DBMOutlands_AllSavedVars
+## SavedVariablesPerCharacter: DBMOutlands_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
@@ -15,6 +16,7 @@
 ## X-DBM-Mod-Sort: 507
 ## X-DBM-Mod-MapID: 530,565,544
 ## X-DBM-Mod-LoadCID: 17711,18728
+## X-DBM-Mod-MinCoreRevision: 12473
 localization.en.lua
 localization.de.lua
 localization.es.lua

@@ -40,7 +40,7 @@ local warnPhase5		= mod:NewPhaseAnnounce(5)
 local warnGravity		= mod:NewSpellAnnounce(35966, 4)
 
 local specWarnGaze		= mod:NewSpecialWarning("SpecWarnGaze")
-local specWarnToy		= mod:NewSpecialWarningYou(37027, mod:IsTank())
+local specWarnToy		= mod:NewSpecialWarningYou(37027, "Tank")
 local specWarnEgg		= mod:NewSpecialWarning("SpecWarnEgg")
 local specWarnShield	= mod:NewSpecialWarningSpell(36815)
 local specWarnPyro		= mod:NewSpecialWarningInterrupt(36819)

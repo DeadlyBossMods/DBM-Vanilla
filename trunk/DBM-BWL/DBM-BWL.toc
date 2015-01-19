@@ -9,13 +9,15 @@
 ## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0黑翼之巢|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
-## SavedVariablesPerCharacter: DBMBWL_SavedVars, DBMBWL_SavedStats
+## SavedVariables: DBMBWL_AllSavedVars
+## SavedVariablesPerCharacter: DBMBWL_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-MapID: 469
 ## X-DBM-Mod-Sort: 601
+## X-DBM-Mod-MinCoreRevision: 12473
 localization.en.lua
 localization.de.lua
 localization.es.lua

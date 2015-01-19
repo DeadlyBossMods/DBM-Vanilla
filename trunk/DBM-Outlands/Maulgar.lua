@@ -23,7 +23,7 @@ local warningPWS			= mod:NewTargetAnnounce(33147, 3, nil, false)
 local warningPoH			= mod:NewCastAnnounce(33152, 4)
 local warningHeal			= mod:NewCastAnnounce(33144, 4)
 
-local specWarnWhirlwind		= mod:NewSpecialWarningSpell(33238, mod:IsMelee())
+local specWarnWhirlwind		= mod:NewSpecialWarningSpell(33238, "Melee")
 local specWarnPoH			= mod:NewSpecialWarningInterrupt(33152)
 local specWarnHeal			= mod:NewSpecialWarningInterrupt(33144)
 

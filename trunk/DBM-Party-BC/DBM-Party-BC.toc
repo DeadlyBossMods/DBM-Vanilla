@@ -10,7 +10,8 @@
 ## Author: Arta/MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
-## SavedVariablesPerCharacter: DBMPartyBC_SavedVars, DBMPartyBC_SavedStats
+## SavedVariables: DBMPartyBC_AllSavedVars
+## SavedVariablesPerCharacter: DBMPartyBC_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: PARTY
 ## X-DBM-Mod-Category: BC
@@ -30,6 +31,7 @@
 ## X-DBM-Mod-Name-zhCN: 队伍首领 (燃烧的远征)
 ## X-DBM-Mod-Sort: 525
 ## X-DBM-Mod-MapID: 540,558,556,555,542,546,545,547,553,554,552,557,269,560,543,585
+## X-DBM-Mod-MinCoreRevision: 12473
 localization.en.lua
 localization.de.lua
 localization.kr.lua

@@ -21,7 +21,7 @@ local warningAmpMagic			= mod:NewTargetAnnounce(39095, 3)
 local warningSWP				= mod:NewTargetAnnounce(30898, 2, nil, false)
 
 local specWarnEnfeeble			= mod:NewSpecialWarningYou(37277)
-local specWarnNova				= mod:NewSpecialWarningRun(30852, mod:IsMelee())
+local specWarnNova				= mod:NewSpecialWarningRun(30852, "Melee")
 
 local timerNovaCD				= mod:NewNextTimer(30, 30852)
 local timerNextInfernal			= mod:NewCDTimer(45, 37277)

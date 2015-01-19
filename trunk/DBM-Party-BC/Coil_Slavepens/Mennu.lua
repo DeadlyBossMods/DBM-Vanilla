@@ -12,7 +12,7 @@ mod:RegisterEventsInCombat(
 
 local WarnCorruptedNova   	= mod:NewSpellAnnounce(31991)
 
-local specWarnCorruptedNova	= mod:NewSpecialWarningSwitch(31991, mod:IsDps())
+local specWarnCorruptedNova	= mod:NewSpecialWarningSwitch(31991, "Dps")
 
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 31991 then

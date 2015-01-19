@@ -13,7 +13,7 @@ mod:RegisterEventsInCombat(
 local WarnFrenzy	= mod:NewSpellAnnounce(34970)
 local WarnWound		= mod:NewTargetAnnounce(38801)
 
-local specWarnWound	= mod:NewSpecialWarningTarget(38801, mod:IsHealer())
+local specWarnWound	= mod:NewSpecialWarningTarget(38801, "Healer")
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(31956, 38801) then

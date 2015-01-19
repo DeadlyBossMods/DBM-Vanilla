@@ -6,13 +6,15 @@
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0毒蛇神殿洞穴|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
-## SavedVariablesPerCharacter: DBMSerpentshrine_SavedVars, DBMSerpentshrine_SavedStats
+## SavedVariables: DBMSerpentshrine_AllSavedVars
+## SavedVariablesPerCharacter: DBMSerpentshrine_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-MapID: 548
 ## X-DBM-Mod-Sort: 504
+## X-DBM-Mod-MinCoreRevision: 12473
 localization.en.lua
 localization.cn.lua
 localization.de.lua
