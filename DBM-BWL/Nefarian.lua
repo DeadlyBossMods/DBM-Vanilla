@@ -23,7 +23,7 @@ local warnFear			= mod:NewCastAnnounce(22686, 2)
 local warnVeilShadow	= mod:NewTargetAnnounce(22687, 3)
 local warnMC			= mod:NewTargetAnnounce(22667, 4)
 
-local specwarnMC		= mod:NewSpecialWarningTarget(22667, mod:IsTank())
+local specwarnMC		= mod:NewSpecialWarningTarget(22667, "Tank")
 
 local timerClassCall	= mod:NewTimer(30, "TimerClassCall")
 local timerShadowFlame	= mod:NewCastTimer(2, 22539)

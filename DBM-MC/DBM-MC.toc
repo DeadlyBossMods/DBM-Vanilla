@@ -9,13 +9,15 @@
 ## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0熔火之心|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
-## SavedVariablesPerCharacter: DBMMC_SavedVars, DBMMC_SavedStats
+## SavedVariables: DBMMC_AllSavedVars
+## SavedVariablesPerCharacter: DBMMC_SavedStats
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-Has-Single-Format: 1
 ## X-DBM-Mod-MapID: 409
 ## X-DBM-Mod-Sort: 600
+## X-DBM-Mod-MinCoreRevision: 12473
 localization.en.lua
 localization.es.lua
 localization.ru.lua

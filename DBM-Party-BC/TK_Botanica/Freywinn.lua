@@ -12,7 +12,7 @@ mod:RegisterEventsInCombat(
 
 local WarnTranq		= mod:NewSpellAnnounce("ej5457", 3)
 
-local specWarnTranq	= mod:NewSpecialWarningSwitch("ej5458", mod:IsDps())
+local specWarnTranq	= mod:NewSpecialWarningSwitch("ej5458", "Dps")
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 34557 then      --Summon Frayer Protector

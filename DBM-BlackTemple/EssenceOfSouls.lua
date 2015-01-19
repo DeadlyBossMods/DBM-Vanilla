@@ -34,7 +34,7 @@ local warnPhase3		= mod:NewPhaseAnnounce(3)
 local warnSoul			= mod:NewSpellAnnounce(41545, 3)
 local warnSpite			= mod:NewSpellAnnounce(41376, 3)
 
-local specWarnShock		= mod:NewSpecialWarningInterrupt(41426, mod:IsMelee())
+local specWarnShock		= mod:NewSpecialWarningInterrupt(41426, "Melee")
 local specWarnShield	= mod:NewSpecialWarningDispel(41431)
 local specWarnSpite		= mod:NewSpecialWarningYou(41376)
 
