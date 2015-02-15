@@ -111,7 +111,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:Schedule(60, humanWarns)
 	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
 		phase2 = true
-		self:Unschedule(60, humanWarns)
+		self:Unschedule(humanWarns)
 		timerPhase:Cancel()
 		timerWhirl:Cancel()
 		timerWhirlCD:Cancel()
