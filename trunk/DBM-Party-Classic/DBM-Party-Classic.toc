@@ -1,0 +1,17 @@
+﻿## Interface: 60100
+## X-Min-Interface: 50001
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Party-Classic|r
+## Author: MysticalOS
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariables: DBMPartyClassic_AllSavedVars
+## SavedVariablesPerCharacter: DBMPartyClassic_SavedStats
+## X-DBM-Mod: 1
+## X-DBM-Mod-Type: PARTY
+## X-DBM-Mod-Category: Classic
+## X-DBM-Mod-SubCategories: Blackfathom Deeps,Blackrock Depths,Dire Maul,Gnomeregan,Lower Blackrock Spire,Maraudon,Ragefire Chasm,Razorfen Downs,Razorfen Kraul,The stockade,The Temple of Atal'Hakkar,Uldaman,Wailing Caverns,Zul'Farrak
+## X-DBM-Mod-Name: Party-Classic
+## X-DBM-Mod-Sort: 525
+## X-DBM-Mod-MapID: 
+localization.en.lua
+BlackfathomDeeps\GhamooRa.lua
