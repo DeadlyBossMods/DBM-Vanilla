@@ -7,16 +7,16 @@ mod:SetCreatureID(18341)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START"
+	"SPELL_CAST_START 32358 38759"
 )
 
-local warnShell     = mod:NewSpellAnnounce(32358, 3)
+local specWarnShell			= mod:NewSpecialWarningReflect(32358, "Melee")
 
-local timerShell    = mod:NewBuffActiveTimer(7, 32358)
+local timerShell			= mod:NewBuffActiveTimer(7, 32358)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(32358, 38759) then
-		warnShell:Show()
+		specWarnShell:Show()
 		timerShell:Start()
 	end
 end
