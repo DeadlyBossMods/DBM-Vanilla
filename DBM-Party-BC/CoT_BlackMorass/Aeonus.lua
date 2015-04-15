@@ -8,9 +8,10 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE",
-	"SPELL_CAST_SUCCESS"
+	"SPELL_CAST_SUCCESS 31422"
 )
 
+--TODO, actual CD timers
 local warnFrenzy		= mod:NewSpellAnnounce("ej5348", 3)
 local warnTimeStop		= mod:NewSpellAnnounce(31422, 3)
 
