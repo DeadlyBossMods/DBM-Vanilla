@@ -14,6 +14,7 @@ mod.noStatistics = true
 local warnWavePortalSoon	= mod:NewAnnounce("WarnWavePortalSoon", 2, 57687)
 local warnWavePortal		= mod:NewAnnounce("WarnWavePortal", 3, 57687)
 local warnBossPortal		= mod:NewAnnounce("WarnBossPortal", 4, 33341)
+
 local timerNextPortal		= mod:NewTimer(120, "TimerNextPortal", 57687)
 
 --mod:AddBoolOption("ShowAllPortalTimers", false, "timer")

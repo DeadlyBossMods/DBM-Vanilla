@@ -8,16 +8,17 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_AURA_APPLIED",
+	"SPELL_AURA_APPLIED 39019 37162 39017",
 	"UNIT_HEALTH target focus mouseover"
 )
 
 local warnSplitSoon     = mod:NewSoonAnnounce("ej5335", 2)
 local warnSplit         = mod:NewSpellAnnounce("ej5335", 3)
-local warnMindControl   = mod:NewTargetAnnounce(39019)
+local warnMindControl   = mod:NewTargetAnnounce(39019, 4)
+local warnMindRend      = mod:NewTargetAnnounce(39017, 2)
+
 local timerMindControl  = mod:NewTargetTimer(6, 39019)
-local warnMindRend      = mod:NewTargetAnnounce(39017)
-local timerMindRend     = mod:NewTargetTimer(6, 39017)
+local timerMindRend     = mod:NewTargetTimer("OptionVersion2", 6, 39017, nil, false)
 
 local warnedSplit1		= false
 local warnedSplit2		= false
