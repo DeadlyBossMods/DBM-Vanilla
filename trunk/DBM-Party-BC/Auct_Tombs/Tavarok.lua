@@ -7,13 +7,22 @@ mod:SetCreatureID(18343)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_CAST_START 33919",
+	"SPELL_AURA_APPLIED 32361",
+	"SPELL_AURA_REMOVED 32361"
 )
 
-local WarnPrison   = mod:NewTargetAnnounce(32361)
+local WarnPrison	= mod:NewTargetAnnounce(32361, 3)
 
-local timerPrison   = mod:NewTargetTimer(5, 32361)
+local specWarnQuake	= mod:NewSpecialWarningSpell(33919, nil, nil, nil, 2)
+
+local timerPrison	= mod:NewTargetTimer(5, 32361)
+
+function mod:SPELL_CAST_START(args)
+	if args.spellId == 33919 then
+		specWarnQuake:Show()
+	end
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 32361 then
