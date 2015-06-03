@@ -19,7 +19,6 @@ local timerWave			= mod:NewTimer(125, "TimerWave")
 
 mod:AddBoolOption("DetailedWave")
 mod:RemoveOption("HealthFrame")
-mod:RemoveOption("SpeedKillTimer")
 
 local lastWave = 0
 local boss = 0

@@ -19,7 +19,6 @@ local timerNextPortal		= mod:NewTimer(120, "TimerNextPortal", 57687)
 
 --mod:AddBoolOption("ShowAllPortalTimers", false, "timer")
 mod:RemoveOption("HealthFrame")
-mod:RemoveOption("SpeedKillTimer")
 
 local lastPortal = 0
 
