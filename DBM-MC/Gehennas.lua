@@ -20,7 +20,7 @@ local specWarnRoF	= mod:NewSpecialWarningMove(19717)
 
 local timerRoF		= mod:NewCDTimer(6, 19717, nil, false)
 local timerCurse	= mod:NewNextTimer(30, 19716)
-local timerFist		= mod:NewBuffActiveTimer("OptionVersion2", 4, 20277, nil, false)
+local timerFist		= mod:NewBuffActiveTimer(4, 20277, nil, false, 2)
 
 function mod:OnCombatStart(delay)
 	timerCurse:Start(6-delay)
