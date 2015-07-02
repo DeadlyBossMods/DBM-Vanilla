@@ -18,7 +18,7 @@ local warnMindControl   = mod:NewTargetAnnounce(39019, 4)
 local warnMindRend      = mod:NewTargetAnnounce(39017, 2)
 
 local timerMindControl  = mod:NewTargetTimer(6, 39019)
-local timerMindRend     = mod:NewTargetTimer("OptionVersion2", 6, 39017, nil, false)
+local timerMindRend     = mod:NewTargetTimer( 6, 39017, nil, false, 2)
 
 local warnedSplit1		= false
 local warnedSplit2		= false

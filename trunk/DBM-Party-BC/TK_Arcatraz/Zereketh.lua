@@ -19,7 +19,7 @@ local warnVoid      = mod:NewSpellAnnounce(36119, 3)
 local specwarnNova	= mod:NewSpecialWarningSpell(39005, nil, nil, nil, 2)
 local specwarnSoC	= mod:NewSpecialWarningDispel(39367, "Healer")
 
-local timerSoC      = mod:NewTargetTimer("OptionVersion2", 18, 39367, nil, "Healer")
+local timerSoC      = mod:NewTargetTimer(18, 39367, nil, "Healer", 2)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(36127, 39005) then
