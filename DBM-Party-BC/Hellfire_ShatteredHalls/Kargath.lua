@@ -17,9 +17,9 @@ local warnSharpShooterGuard		= mod:NewCountAnnounce("ej5934", 2, 186782)
 
 local specWarnBladeDance		= mod:NewSpecialWarningSpell(30739)
 
-local timerHeathenCD			= mod:NewNextTimer(21, "ej5927", nil, nil, nil, 186782)
-local timerReaverCD				= mod:NewNextTimer(21, "ej5930", nil, nil, nil, 186782)
-local timerSharpShooterCD		= mod:NewNextTimer(21, "ej5934", nil, nil, nil, 186782)
+local timerHeathenCD			= mod:NewNextTimer(21, "ej5927", nil, nil, nil, nil, 186782)
+local timerReaverCD				= mod:NewNextTimer(21, "ej5930", nil, nil, nil, nil, 186782)
+local timerSharpShooterCD		= mod:NewNextTimer(21, "ej5934", nil, nil, nil, nil, 186782)
 local timerBladeDanceCD			= mod:NewCDTimer(35, 30739)--Probalby a next timer, but need more data
 
 mod.vb.addSet = 0
