@@ -159,6 +159,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 39855 and self:AntiSpam(4, 1) then
 		flamesDown = 0
+		warned_preP2 = true
 		warnPhase2:Show()
 		timerNextBarrage:Start(81)
 	end
@@ -204,6 +205,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:Schedule(74, humanForms)
 	elseif msg == L.Phase4 or msg:find(L.Phase4) then
 		phase4 = true
+		warned_preP4 = true
 		self:Unschedule(humanForms)
 		timerParasite:Cancel()
 		timerFlame:Cancel()
@@ -218,10 +220,11 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not warned_preP2 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
+	local cid = self:GetUnitCreatureId(uId)
+	if not warned_preP2 and cid == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
 		warned_preP2 = true
 		warnPhase2Soon:Show()
-	elseif not warned_preP4 and self:GetUnitCreatureId(uId) == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 then
+	elseif not warned_preP4 and cid == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 then
 		warned_preP4 = true
 		warnPhase4Soon:Show()
 	end
