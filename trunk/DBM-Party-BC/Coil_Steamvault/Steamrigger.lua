@@ -11,11 +11,11 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
+local WarnNet		= mod:NewTargetAnnounce(35107, 2)
 local WarnSummon	= mod:NewSpellAnnounce("ej5999", 3)
 
 local specWarnSummon= mod:NewSpecialWarningSwitch("ej5999", "-Healer")
 
-local WarnNet		= mod:NewTargetAnnounce(35107, 2)
 local timerNet		= mod:NewTargetTimer(6, 35107)
 
 local enrageTimer	= mod:NewBerserkTimer(300)

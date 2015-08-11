@@ -12,6 +12,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnMC      = mod:NewTargetAnnounce(35280)
+
 local timerMC     = mod:NewTargetTimer(10, 35280)
 
 function mod:SPELL_AURA_APPLIED(args)

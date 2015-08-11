@@ -16,7 +16,7 @@ local warnArcaneExplosion		= mod:NewCastAnnounce(38197, 4)
 
 local specWarnArcaneExplosion	= mod:NewSpecialWarningSpell(38197, nil, nil, nil, 2)
 
-local timerArcaneExplosion		= mod:NewCastTimer(5, 38197)
+local timerArcaneExplosion		= mod:NewCastTimer(5, 38197, nil, nil, nil, 2)
 
 
 function mod:SPELL_CAST_START(args)
