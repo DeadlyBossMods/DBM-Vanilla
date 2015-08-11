@@ -17,8 +17,8 @@ mod:RegisterEventsInCombat(
 local warnHeal                  = mod:NewCastAnnounce(29427, 4)
 local warnHammer                = mod:NewTargetAnnounce(13005, 2)
 
-local specWarnHeal			     = mod:NewSpecialWarningInterrupt(29427)
-local specWarnConsecration      = mod:NewSpecialWarningMove(38385)
+local specWarnHeal				= mod:NewSpecialWarningInterrupt(29427)
+local specWarnConsecration		= mod:NewSpecialWarningMove(38385)
 
 local timerHammer               = mod:NewTargetTimer(6, 13005)
 

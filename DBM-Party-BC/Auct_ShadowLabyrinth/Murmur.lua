@@ -19,7 +19,7 @@ local warnTouch         = mod:NewTargetAnnounce(33711, 3)
 local specWarnBoom		= mod:NewSpecialWarningRun(33923, nil, nil, nil, 4)
 local specWarnTouch		= mod:NewSpecialWarningMoveAway(33711)
 
-local timerBoomCast     = mod:NewCastTimer(5, 33923)
+local timerBoomCast     = mod:NewCastTimer(5, 33923, nil, nil, nil, 2)
 local timerTouch        = mod:NewTargetTimer(14, 33711)
 
 mod:AddBoolOption("SetIconOnTouchTarget", true)

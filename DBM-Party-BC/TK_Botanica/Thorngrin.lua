@@ -12,6 +12,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnSacrifice       = mod:NewTargetAnnounce(34661)
+
 local timerSacrifice      = mod:NewTargetTimer(8, 34661)
 
 function mod:SPELL_AURA_APPLIED(args)

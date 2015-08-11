@@ -12,6 +12,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnAllergic       = mod:NewTargetAnnounce(34697)
+
 local timerAllergic      = mod:NewTargetTimer(18, 34697)
 
 function mod:SPELL_AURA_APPLIED(args)

@@ -12,6 +12,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 39009 36173"
 )
 
+--LOG THIS, needs whirlwind CD timer
 local warnGift			= mod:NewTargetAnnounce(39009, 3)
 
 local specwarnWhirlwind	= mod:NewSpecialWarningRun(36175, "Melee", nil, nil, 4)

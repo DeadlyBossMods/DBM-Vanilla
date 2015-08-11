@@ -14,6 +14,7 @@ mod:RegisterEventsInCombat(
 local warnPolarity          = mod:NewCastAnnounce(39096)
 local warnMagicShield       = mod:NewSpellAnnounce(35158)
 local warnDamageShield      = mod:NewSpellAnnounce(35159)
+
 local timerMagicShield      = mod:NewBuffActiveTimer(10, 35158)
 local timerDamageShield     = mod:NewBuffActiveTimer(10, 35159)
 

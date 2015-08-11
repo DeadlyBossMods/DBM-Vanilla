@@ -27,7 +27,7 @@ local timerScreech          = mod:NewCastTimer(5, 40184)
 local timerScreechDebuff    = mod:NewBuffActiveTimer(6, 40184)
 local timerCyclone          = mod:NewTargetTimer(6, 40321)
 local timerSpellBomb        = mod:NewTargetTimer(8, 40303)
-local timerScreechCD        = mod:NewCDTimer(30, 40184)--Best guess on screech CD. Might need tweaking.
+local timerScreechCD        = mod:NewCDTimer(30, 40184, nil, nil, nil, 2)--Best guess on screech CD. Might need tweaking.
 
 local warnedbirds1 = false
 local warnedbirds2 = false

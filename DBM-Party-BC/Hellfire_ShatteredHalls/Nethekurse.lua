@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 --If target scanning works on fissure, special warning and yell
 local warnShadowFissure		= mod:NewSpellAnnounce(30496, 3)
 
-local timerShadowFissureCD	= mod:NewNextTimer(8.5, 30496)--8.5-8.8
+local timerShadowFissureCD	= mod:NewNextTimer(8.5, 30496, nil, nil, nil, 3)--8.5-8.8
 
 function mod:OnCombatStart(delay)
 	timerShadowFissureCD:Start(8.3-delay)
