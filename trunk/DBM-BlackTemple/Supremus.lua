@@ -21,7 +21,7 @@ local warnKite			= mod:NewAnnounce("WarnKite", 3, 42052)
 local specWarnMolten	= mod:NewSpecialWarningMove(40265)
 local specWarnVolcano	= mod:NewSpecialWarningMove(42052)
 
-local timerPhase		= mod:NewTimer(60, "TimerPhase", 42052)
+local timerPhase		= mod:NewTimer(60, "TimerPhase", 42052, nil, nil, 6)
 
 local berserkTimer		= mod:NewBerserkTimer(900)
 

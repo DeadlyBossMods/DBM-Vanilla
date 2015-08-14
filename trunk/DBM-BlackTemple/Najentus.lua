@@ -19,7 +19,8 @@ local warnShieldSoon	= mod:NewPreWarnAnnounce(39872, 10, 3)
 local warnSpine			= mod:NewTargetAnnounce(39837, 3)
 
 local yellSpine			= mod:NewYell(39837)
-local timerShield		= mod:NewCDTimer(58, 39872)
+
+local timerShield		= mod:NewCDTimer(58, 39872, nil, nil, nil, 5)
 
 local berserkTimer		= mod:NewBerserkTimer(480)
 

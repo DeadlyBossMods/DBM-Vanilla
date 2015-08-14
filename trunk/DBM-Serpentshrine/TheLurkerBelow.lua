@@ -21,11 +21,11 @@ local warnWhirl			= mod:NewSpellAnnounce(37363, 2)
 
 local specWarnSpout		= mod:NewSpecialWarningSpell(37433, nil, nil, nil, 2)
 
-local timerSubmerge		= mod:NewTimer(105, "TimerSubmerge", 39091)
-local timerEmerge		= mod:NewTimer(60, "TimerEmerge", 39088)
-local timerSpoutCD		= mod:NewCDTimer(50, 37433)
+local timerSubmerge		= mod:NewTimer(105, "TimerSubmerge", 39091, nil, nil, 6)
+local timerEmerge		= mod:NewTimer(60, "TimerEmerge", 39088, nil, nil, 6)
+local timerSpoutCD		= mod:NewCDTimer(50, 37433, nil, nil, nil, 2)
 local timerSpout		= mod:NewBuffActiveTimer(22, 37433)
-local timerWhirlCD		= mod:NewCDTimer(18, 37363)
+local timerWhirlCD		= mod:NewCDTimer(18, 37363, nil, nil, nil, 2)
 
 local submerged = false
 local guardianKill = 0

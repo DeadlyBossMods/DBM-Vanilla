@@ -23,7 +23,7 @@ local warnSpellBomb         = mod:NewTargetAnnounce(40303, 2)
 
 local specWarnScreech		= mod:NewSpecialWarningSpell(40184, nil, nil, nil, 2)
 
-local timerScreech          = mod:NewCastTimer(5, 40184)
+local timerScreech          = mod:NewCastTimer(5, 40184, nil, nil, nil, 2)
 local timerScreechDebuff    = mod:NewBuffActiveTimer(6, 40184)
 local timerCyclone          = mod:NewTargetTimer(6, 40321)
 local timerSpellBomb        = mod:NewTargetTimer(8, 40303)

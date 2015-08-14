@@ -21,9 +21,9 @@ local warningSacrifice	= mod:NewTargetAnnounce(30115, 4)
 
 local specWarnSacrifice	= mod:NewSpecialWarningYou(30115)
 
-local timerWeakened		= mod:NewBuffActiveTimer(31, 30065)
+local timerWeakened		= mod:NewBuffActiveTimer(31, 30065, nil, nil, nil, 6)
 local timerSacrifice	= mod:NewTargetTimer(30, 30115)
-local timerSacrificeCD	= mod:NewNextTimer(43, 30115)
+local timerSacrificeCD	= mod:NewNextTimer(43, 30115, nil, nil, nil, 1)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 

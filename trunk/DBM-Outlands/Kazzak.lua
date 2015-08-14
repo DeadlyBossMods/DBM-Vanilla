@@ -22,7 +22,7 @@ local specWarnMark		= mod:NewSpecialWarningYou(32960)
 local specWarnTwisted	= mod:NewSpecialWarningDispel(21063, false)
 
 local timerFrenzy		= mod:NewBuffActiveTimer(10, 32964)
-local timerFrenzyCD		= mod:NewCDTimer(60, 32964)
+local timerFrenzyCD		= mod:NewCDTimer(60, 32964, nil, nil, nil, 3)
 --local timerTwistedCD	= mod:NewCDTimer(30, 21063)--Unknown, but would be nice to have
 local timerMark			= mod:NewTargetTimer(10, 32960)
 

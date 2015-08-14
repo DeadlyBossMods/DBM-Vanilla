@@ -24,9 +24,9 @@ local specWarnQuill		= mod:NewSpecialWarningSpell(34229)
 local specWarnFire		= mod:NewSpecialWarningMove(35383)
 
 local timerQuill		= mod:NewCastTimer(10, 34229)
-local timerMeteor		= mod:NewCDTimer(52, 35181)
-local timerArmor		= mod:NewTargetTimer(60, 35410)
-local timerNextPlatform	= mod:NewTimer(34, "NextPlatform", 40192)--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
+local timerMeteor		= mod:NewCDTimer(52, 35181, nil, nil, nil, 2)
+local timerArmor		= mod:NewTargetTimer(60, 35410, nil, "Tank", 2, 5)
+local timerNextPlatform	= mod:NewTimer(34, "NextPlatform", 40192, nil, nil, 6)--This has no spell trigger, the target scanning bosses target is still required if loop isn't accurate enough.
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
