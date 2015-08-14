@@ -25,11 +25,11 @@ local warnPhase2		= mod:NewPhaseAnnounce(2)
 local specWarnWhirl		= mod:NewSpecialWarningRun(37640)
 local specWarnDemon		= mod:NewSpecialWarningYou(37676)
 
-local timerWhirlCD		= mod:NewCDTimer(27, 37640)
+local timerWhirlCD		= mod:NewCDTimer(27, 37640, nil, nil, nil, 2)
 local timerWhirl		= mod:NewBuffActiveTimer(12, 37640)
-local timerPhase		= mod:NewTimer(60, "TimerPhase", 39088)
-local timerDemonCD		= mod:NewCDTimer(23, 37676)
-local timerDemon		= mod:NewBuffFadesTimer(30, 37676)
+local timerPhase		= mod:NewTimer(60, "TimerPhase", 39088, nil, nil, 6)
+local timerDemonCD		= mod:NewCDTimer(23, 37676, nil, nil, nil, 6)
+local timerDemon		= mod:NewBuffFadesTimer(30, 37676, nil, nil, nil, 6)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 

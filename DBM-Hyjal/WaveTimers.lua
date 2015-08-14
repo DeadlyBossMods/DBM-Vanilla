@@ -15,7 +15,7 @@ mod.noStatistics = true
 local warnWave			= mod:NewAnnounce("WarnWave", 1)
 local warnCannibalize	= mod:NewSpellAnnounce(31538, 2)
 
-local timerWave			= mod:NewTimer(125, "TimerWave")
+local timerWave			= mod:NewTimer(125, "TimerWave", nil, nil, nil, 1)
 
 mod:AddBoolOption("DetailedWave")
 mod:RemoveOption("HealthFrame")

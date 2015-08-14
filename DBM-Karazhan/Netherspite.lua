@@ -19,8 +19,8 @@ local warningVoid			= mod:NewSpellAnnounce(37063, 4)
 
 local specWarnVoid			= mod:NewSpecialWarningMove(30533)
 
-local timerPortalPhase		= mod:NewTimer(61.5, "timerPortalPhase", "Interface\\Icons\\Spell_Arcane_PortalIronForge")
-local timerBanishPhase		= mod:NewTimer(40, "timerBanishPhase", "Interface\\Icons\\Spell_Shadow_Cripple")
+local timerPortalPhase		= mod:NewTimer(61.5, "timerPortalPhase", "Interface\\Icons\\Spell_Arcane_PortalIronForge", nil, nil, 6)
+local timerBanishPhase		= mod:NewTimer(40, "timerBanishPhase", "Interface\\Icons\\Spell_Shadow_Cripple", nil, nil, 6)
 local timerBreathCast		= mod:NewCastTimer(2.5, 38523)
 
 local berserkTimer			= mod:NewBerserkTimer(540)

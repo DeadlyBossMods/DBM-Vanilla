@@ -17,7 +17,7 @@ local warningRRH		= mod:NewTargetAnnounce(30753, 4)
 local specWarnRRH		= mod:NewSpecialWarningYou(30753)
 
 local timerRRH			= mod:NewTargetTimer(20, 30753)
-local timerRRHCD		= mod:NewNextTimer(30, 30753)
+local timerRRHCD		= mod:NewNextTimer(30, 30753, nil, nil, nil, 3)
 local timerFearCD		= mod:NewNextTimer(24, 30752)
 
 mod:AddBoolOption("RRHIcon")

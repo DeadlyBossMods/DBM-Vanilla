@@ -37,8 +37,8 @@ local timerGas				= mod:NewCastTimer(1, 45855)
 local timerGasCD			= mod:NewCDTimer(19, 45855)
 local timerCorrosion		= mod:NewTargetTimer(10, 45866)
 local timerEncaps			= mod:NewTargetTimer(7, 45665)
-local timerBreath			= mod:NewCDCountTimer(17, 45717)
-local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550)
+local timerBreath			= mod:NewCDCountTimer(17, 45717, nil, nil, nil, 3)
+local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550, nil, nil, 6)
 
 local berserkTimer			= mod:NewBerserkTimer(600)
 

@@ -21,9 +21,9 @@ local warnSilence		= mod:NewSpellAnnounce(36297, 4)
 local specWarnCaveIn	= mod:NewSpecialWarningMove(36240)
 
 local timerGrowthCD		= mod:NewNextTimer(30, 36300)
-local timerGroundSlamCD	= mod:NewCDTimer(74, 36300)--74-80 second variation,and this is just from 2 pulls.
-local timerShatterCD	= mod:NewNextTimer(10, 33654)--10 seconds after ground slam
-local timerSilenceCD	= mod:NewCDTimer(32, 36300)--Also showing a HUGE variation of 32-48 seconds.
+local timerGroundSlamCD	= mod:NewCDTimer(74, 36300, nil, nil, nil, 2)--74-80 second variation,and this is just from 2 pulls.
+local timerShatterCD	= mod:NewNextTimer(10, 33654, nil, nil, nil, 2)--10 seconds after ground slam
+local timerSilenceCD	= mod:NewCDTimer(32, 36300, nil, nil, nil, 5)--Also showing a HUGE variation of 32-48 seconds.
 
 mod:AddBoolOption("RangeFrame", true)
 

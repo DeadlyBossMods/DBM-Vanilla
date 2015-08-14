@@ -26,8 +26,8 @@ local warnChain		= mod:NewSpellAnnounce(32337, 3)
 
 local timerFearCD	= mod:NewCDTimer(19, 31013)
 local timerRoar		= mod:NewTimer(13, "DBM_OZ_WARN_ROAR", "Interface\\Icons\\Ability_Druid_ChallangingRoar", nil, false)
-local timerStrawman	= mod:NewTimer(22, "DBM_OZ_WARN_STRAWMAN", "Interface\\Icons\\INV_Helmet_34", nil, false)
-local timerTinhead	= mod:NewTimer(30, "DBM_OZ_WARN_TINHEAD", "Interface\\Icons\\INV_Helmet_02", nil, false)
+local timerStrawman	= mod:NewTimer(22, "DBM_OZ_WARN_STRAWMAN", "Interface\\Icons\\INV_Helmet_34", nil, false, 1)
+local timerTinhead	= mod:NewTimer(30, "DBM_OZ_WARN_TINHEAD", "Interface\\Icons\\INV_Helmet_02", nil, false, 1)
 --local timerTito		= mod:NewTimer(47.5, "DBM_OZ_WARN_TITO", "Interface\\Icons\\Ability_Mount_WhiteDireWolf", nil, false)
 
 mod:AddBoolOption("AnnounceBosses", true, "announce")

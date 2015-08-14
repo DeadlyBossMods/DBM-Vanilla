@@ -22,7 +22,7 @@ local warnInferno		= mod:NewTargetAnnounce(31299, 4)
 
 local timerSwarm		= mod:NewBuffFadesTimer(20, 31306)
 local timerSleep		= mod:NewBuffFadesTimer(10, 31298)
-local timerSleepCD		= mod:NewCDTimer(19, 31298)
+local timerSleepCD		= mod:NewCDTimer(19, 31298, nil, nil, nil, 3)
 local timerInferno		= mod:NewCDTimer(51, 31299)
 
 local specWarnInferno	= mod:NewSpecialWarningYou(31299)

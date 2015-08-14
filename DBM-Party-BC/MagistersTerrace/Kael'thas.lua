@@ -22,7 +22,7 @@ local warnPyroblast		= mod:NewCastAnnounce(36819, 4)
 
 local specwarnPyroblast = mod:NewSpecialWarningInterrupt(36819)
 
-local timerPyroblast	= mod:NewCastTimer(4, 36819)
+local timerPyroblast	= mod:NewCastTimer(4, 36819, nil, nil, nil, 4)
 local timerShockBarrior = mod:NewNextTimer(60, 46165, nil, nil, nil, 4)--Best guess based on limited CL data
 local timerPhoenix      = mod:NewCDTimer(45, 44194, nil, nil, nil, 1)--Best guess based on limited CL data
 

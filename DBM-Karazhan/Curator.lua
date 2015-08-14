@@ -15,8 +15,8 @@ local warnAdd			= mod:NewAnnounce("warnAdd", 3)
 local warnEvo			= mod:NewSpellAnnounce(30254, 2)
 local warnArcaneInfusion= mod:NewSpellAnnounce(30403, 4)
 
-local timerEvo			= mod:NewBuffActiveTimer(20, 30254)
-local timerNextEvo		= mod:NewNextTimer(115, 30254)
+local timerEvo			= mod:NewBuffActiveTimer(20, 30254, nil, nil, nil, 6)
+local timerNextEvo		= mod:NewNextTimer(115, 30254, nil, nil, nil, 6)
 
 local berserkTimer		= mod:NewBerserkTimer(720)
 

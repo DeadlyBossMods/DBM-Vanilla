@@ -35,9 +35,9 @@ local specWarnToxic		= mod:NewSpecialWarningMove(38575)
 
 local timerCharge		= mod:NewTargetTimer(20, 38280)
 local timerElemental	= mod:NewTimer(22, "TimerElementalActive", 39088)--Blizz says they are active 20 seconds per patch notes, but my logs don't match those results. 22 second up time.
-local timerElementalCD	= mod:NewTimer(45, "TimerElemental", 39088)--46-57 variation. because of high variation the pre warning special warning not useful, fortunately we can detect spawns with precise timing.
-local timerStrider		= mod:NewTimer(63, "TimerStrider", 475)
-local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120)
+local timerElementalCD	= mod:NewTimer(45, "TimerElemental", 39088, nil, nil, 1)--46-57 variation. because of high variation the pre warning special warning not useful, fortunately we can detect spawns with precise timing.
+local timerStrider		= mod:NewTimer(63, "TimerStrider", 475, nil, nil, 1)
+local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120, nil, nil, 1)
 
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ChargeIcon", false)

@@ -24,7 +24,7 @@ local specWarnDeath			= mod:NewSpecialWarningYou(40251)
 
 local timerCrushed			= mod:NewBuffActiveTimer(15, 40243)
 local timerDeath			= mod:NewTargetTimer(55, 40251)
-local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325)
+local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325, nil, nil, 1)
 
 mod:AddBoolOption("CrushIcon", false)
 
