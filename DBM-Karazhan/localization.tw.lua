@@ -160,8 +160,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	timerSpecial			= "為特別技能冷卻顯示計時器",
-	DBM_ARAN_DO_NOT_MOVE	= "為$spell:30004顯示特別警告",
-	ElementalIcons			= "設置團隊圖示在$spell:37053"
+	DBM_ARAN_DO_NOT_MOVE	= "為$spell:30004顯示特別警告"
 }
 
 
