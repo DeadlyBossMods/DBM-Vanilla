@@ -161,8 +161,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	timerSpecial			= "Abklingzeit der Spezialfähigkeiten anzeigen",
-	DBM_ARAN_DO_NOT_MOVE	= "Spezialwarnung für $spell:30004",
-	ElementalIcons			= "Setze Zeichen auf Wasserelementare"
+	DBM_ARAN_DO_NOT_MOVE	= "Spezialwarnung für $spell:30004"
 }
 
 --Netherspite

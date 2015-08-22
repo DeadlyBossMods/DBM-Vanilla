@@ -36,7 +36,7 @@ local timerChains			= mod:NewTargetTimer(10, 29991)
 local berserkTimer			= mod:NewBerserkTimer(900)
 
 mod:AddBoolOption("WreathIcons", true)
-mod:AddBoolOption("ElementalIcons", true)
+mod:AddSetIconOption("ElementalIcons", 37053, true, true)
 
 local WreathTargets = {}
 local flameWreathIcon = 8
@@ -108,15 +108,6 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 do
-	local elementalIcon = {}
-	local currentIcon = 1
-	local iconsSet = 0
-	local function resetElementalIconState()
-		table.wipe(elementalIcon)
-		currentIcon = 1
-		iconsSet = 0
-	end
-	
 	local lastElemental = 0
 	function mod:SPELL_SUMMON(args)
 		if args:IsSpellID(29962, 37051, 37052, 37053) then -- Summon Water elementals
@@ -124,30 +115,12 @@ do
 				warningElementals:Show()
 				timerElementals:Show()
 				lastElemental = time()
-				if self.Options.ElementalIcons then
-					resetElementalIconState()
-				end
 			end
 			if self.Options.ElementalIcons then
-				elementalIcon[args.destGUID] = currentIcon
-				currentIcon = currentIcon + 1
+				self:ScanForMobs(args.destGUID, 1, 1, 4, 0.1, 20, "ElementalIcons")
 			end
 		end
 	end
-	
-	mod:RegisterOnUpdateHandler(function(self)
-		if self.Options.ElementalIcons and (DBM:GetRaidRank() > 0 and not iconsSet == 4) then
-			for uId in DBM:GetGroupMembers() do
-				uId = uId .. "target"
-				local guid = UnitGUID(uId)
-				if elementalIcon[guid] then
-					SetRaidTarget(uId, elementalIcon[guid])
-					iconsSet = iconsSet + 1
-					elementalIcon[guid] = nil
-				end
-			end
-		end
-	end, 1)
 end
 
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)

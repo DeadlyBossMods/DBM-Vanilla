@@ -171,7 +171,6 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	timerSpecial			= "Mostrar tiempo de cooldown de habilidad especial",
 	DBM_ARAN_DO_NOT_MOVE	= "Mostrar aviso especial para $spell:30004",
-	ElementalIcons			= "Poner iconos en $spell:37053",
 	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 

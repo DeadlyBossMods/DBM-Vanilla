@@ -55,34 +55,33 @@ function mod:OnCombatStart(delay)
 	phase2 = false
 	warnPhase1:Show()
 	timerNextPlatform:Start(35-delay)
-end
-
-mod:RegisterOnUpdateHandler(function(self)
-	if self:IsInCombat() then
-		local foundIt
-		local target
-		for uId in DBM:GetGroupMembers() do
-			if self:GetUnitCreatureId(uId.."target") == 19514 then
-				foundIt = true
-				target = UnitName(uId.."targettarget")
-				if not target and UnitCastingInfo(uId.."target") == buffetName then
-					target = "Dummy"
+	self:RegisterOnUpdateHandler(function(self)
+		if self:IsInCombat() then
+			local foundIt
+			local target
+			for uId in DBM:GetGroupMembers() do
+				if self:GetUnitCreatureId(uId.."target") == 19514 then
+					foundIt = true
+					target = UnitName(uId.."targettarget")
+					if not target and UnitCastingInfo(uId.."target") == buffetName then
+						target = "Dummy"
+					end
+					break
 				end
-				break
+			end
+
+			if foundIt and not target and not phase2 and self:AntiSpam(30, 1) then--Al'ar is no longer targeting anything, which means he spawned an add and is moving platforms
+				Add()
+				--Could also be quills though, which is why we can't really put in an actual add warning.
+			elseif not target and type(phase2) == "number" and self:AntiSpam(30, 2) and (GetTime() - phase2) > 25 then--No target in phase 2 means meteor
+				warnMeteor:Show()
+				timerMeteor:Start()
+			elseif target and flying then--Al'ar has reached a platform and is once again targeting aggro player
+				Platform()
 			end
 		end
-		
-		if foundIt and not target and not phase2 and self:AntiSpam(30, 1) then--Al'ar is no longer targeting anything, which means he spawned an add and is moving platforms
-			Add()
-			--Could also be quills though, which is why we can't really put in an actual add warning.
-		elseif not target and type(phase2) == "number" and self:AntiSpam(30, 2) and (GetTime() - phase2) > 25 then--No target in phase 2 means meteor
-			warnMeteor:Show()
-			timerMeteor:Start()
-		elseif target and flying then--Al'ar has reached a platform and is once again targeting aggro player
-			Platform()
-		end
-	end
-end, 0.25)
+	end, 0.25)
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 34229 then

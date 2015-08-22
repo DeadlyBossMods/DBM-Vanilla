@@ -161,8 +161,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	timerSpecial			= "다음 $spell:30004 또는 $spell:29973 또는 $spell:29969 바 보기",
-	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 특수 경고 보기",
-	ElementalIcons			= "$spell:37053 대상에게 전술 목표 아이콘 설정"
+	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 특수 경고 보기"
 }
 
 --Netherspite
