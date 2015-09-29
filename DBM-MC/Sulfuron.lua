@@ -13,10 +13,10 @@ mod:RegisterEvents(
 )
 
 local warnInspire		= mod:NewTargetAnnounce(19779, 2, nil, "Tank|Healer")
-local warnHandRagnaros	= mod:NewTargetAnnounce("OptionVersion2", 19780, 2, nil, false)
-local warnShadowPain	= mod:NewTargetAnnounce("OptionVersion2", 19776, 2, nil, false)
+local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
+local warnShadowPain	= mod:NewTargetAnnounce(19776, 2, nil, false, 2)
 local warnHeal			= mod:NewCastAnnounce(19775, 3, nil, nil, false)--this may be spammy now that spellid is fixed
-local warnImmolate		= mod:NewTargetAnnounce("OptionVersion2", 20294, 2, nil, false)
+local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775)
 

@@ -14,7 +14,7 @@ mod:RegisterEvents(
 
 local warnRainFire	= mod:NewSpellAnnounce(19717, 2, nil, false)
 local warnCurse		= mod:NewSpellAnnounce(19716, 3)
-local warnFist		= mod:NewTargetAnnounce("OptionVersion2", 20277, 2, nil, false)
+local warnFist		= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
 
 local specWarnRoF	= mod:NewSpecialWarningMove(19717)
 
