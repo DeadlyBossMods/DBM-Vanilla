@@ -13,7 +13,7 @@ mod:RegisterEvents(
 )
 
 local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
-local warnImmolate			= mod:NewTargetAnnounce("OptionVersion2", 15732, 2, nil, "Healer")
+local warnImmolate			= mod:NewTargetAnnounce(15732, 2, nil, "Healer", 2)
 
 local timerAntiMagicPulseCD	= mod:NewCDTimer(16, 19492)--16-20 variation
 
