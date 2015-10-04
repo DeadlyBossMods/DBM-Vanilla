@@ -11,12 +11,13 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 31467"
 )
 
-local specwarnArcaneDischarge	= mod:NewSpecialWarningRun(38539, nil, nil, nil, 4)
+local warnArcaneDischarge		= mod:NewSpellAnnounce(38539, 2)
+
 local specwarnTimeLapse			= mod:NewSpecialWarningDispel(31467, "Healer")
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(38539, 31472) then
-		specwarnArcaneDischarge:Show()
+		warnArcaneDischarge:Show()
 	end
 end
 
