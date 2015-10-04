@@ -15,7 +15,7 @@ local warnHeathenGuard			= mod:NewCountAnnounce("ej5927", 2, 186782)
 local warnReaverGuard			= mod:NewCountAnnounce("ej5930", 2, 186782)
 local warnSharpShooterGuard		= mod:NewCountAnnounce("ej5934", 2, 186782)
 
-local specWarnBladeDance		= mod:NewSpecialWarningSpell(30739)
+local specWarnBladeDance		= mod:NewSpecialWarningSpell(30739, nil, nil, nil, 2)
 
 local timerHeathenCD			= mod:NewNextTimer(21, "ej5927", nil, nil, nil, 1, 186782)
 local timerReaverCD				= mod:NewNextTimer(21, "ej5930", nil, nil, nil, 1, 186782)
@@ -45,8 +45,8 @@ end
 function mod:OnCombatStart(delay)
 	self.vb.addSet = 0
 	self.vb.addType = 0
-	timerHeathenCD:Start(29-delay)
-	self:Schedule(29, Adds, self)--When reaches stairs, not when enters/spawns way down hallway.
+	timerHeathenCD:Start(27.5-delay)
+	self:Schedule(27.5, Adds, self)--When reaches stairs, not when enters/spawns way down hallway.
 	timerBladeDanceCD:Start(72-delay)
 end
 
