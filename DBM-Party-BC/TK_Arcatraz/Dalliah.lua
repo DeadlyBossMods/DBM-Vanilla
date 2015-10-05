@@ -15,16 +15,21 @@ mod:RegisterEventsInCombat(
 --LOG THIS, needs whirlwind CD timer
 local warnGift			= mod:NewTargetAnnounce(39009, 3)
 
-local specwarnWhirlwind	= mod:NewSpecialWarningRun(36175, "Melee", nil, nil, 4)
-local specwarnHeal		= mod:NewSpecialWarningInterrupt(39013, "-Healer")
+local specwarnWhirlwind	= mod:NewSpecialWarningRun(36175, "Melee", nil, nil, 4, 2)
+local specwarnHeal		= mod:NewSpecialWarningInterrupt(39013, "-Healer", nil, nil, 1, 2)
 
 local timerGift			= mod:NewTargetTimer(10, 39009, nil, false, 2)
+
+local voiceHeal			= mod:NewVoice(39013, "-Healer")--kickcast
+local voiceWhirlwind	= mod:NewVoice(36175, "Melee")--Whirlwind
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(39013, 36144) then
 		specwarnHeal:Show()
+		voiceHeal:Play("kickcast")
 	elseif args:IsSpellID(36175, 36142) then
 		specwarnWhirlwind:Show()
+		voiceWhirlwind:Play("157943")--Probably get this sound file renamed to "whirlwind" in 7.0
 	end
 end
 

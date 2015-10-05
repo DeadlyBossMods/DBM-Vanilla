@@ -15,12 +15,14 @@ local warnHeathenGuard			= mod:NewCountAnnounce("ej5927", 2, 186782)
 local warnReaverGuard			= mod:NewCountAnnounce("ej5930", 2, 186782)
 local warnSharpShooterGuard		= mod:NewCountAnnounce("ej5934", 2, 186782)
 
-local specWarnBladeDance		= mod:NewSpecialWarningSpell(30739, nil, nil, nil, 2)
+local specWarnBladeDance		= mod:NewSpecialWarningSpell(30739, nil, nil, nil, 2, 2)
 
 local timerHeathenCD			= mod:NewNextTimer(21, "ej5927", nil, nil, nil, 1, 186782)
 local timerReaverCD				= mod:NewNextTimer(21, "ej5930", nil, nil, nil, 1, 186782)
 local timerSharpShooterCD		= mod:NewNextTimer(21, "ej5934", nil, nil, nil, 1, 186782)
 local timerBladeDanceCD			= mod:NewCDTimer(35, 30739, nil, nil, nil, 2)
+
+local voiceBladeDance			= mod:NewVoice(30739)--aesoon
 
 mod.vb.addSet = 0
 mod.vb.addType = 0
@@ -61,5 +63,6 @@ function mod:OnSync(event, arg)
 	if event == "BladeDance" then
 		specWarnBladeDance:Show()
 		timerBladeDanceCD:Start()
+		voiceBladeDance:Play("aesoon")
 	end
 end
