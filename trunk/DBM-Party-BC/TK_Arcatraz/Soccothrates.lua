@@ -15,9 +15,12 @@ local warnKnockaway			= mod:NewSpellAnnounce(36512, 2)
 
 local specwarnFelFireShock	= mod:NewSpecialWarningDispel(35759, "Healer")
 
+local voiceKnockaway		= mod:NewVoice(36512, "Melee")--carefly
+
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 36512 then
 		warnKnockaway:Show()
+		voiceKnockaway:Play("carefly")
 	end
 end
 
