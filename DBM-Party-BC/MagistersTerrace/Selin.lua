@@ -11,13 +11,10 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local warnChanneling		= mod:NewSpellAnnounce("ej5081", 4, 44314)
-
-local specWarnChannel		= mod:NewSpecialWarningSwitch("ej5081", false)
+local specWarnChannel		= mod:NewSpecialWarningSwitch("ej5081", "Dps", nil, 2)
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.ChannelCrystal then
-        warnChanneling:Show()
         specWarnChannel:Show()
 	end
 end
