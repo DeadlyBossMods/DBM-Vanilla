@@ -8,17 +8,16 @@ mod:SetModelID(22906)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
-	"CHAT_MSG_MONSTER_YELL",
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_CAST_START 36819",
+	"SPELL_CAST_SUCCESS 44194",
+	"SPELL_AURA_APPLIED 46165",
+	"SPELL_AURA_REMOVED 46165",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 local warnPhase2        = mod:NewPhaseAnnounce(2)
 local WarnPhoenix       = mod:NewSpellAnnounce(44194, 3)
 local WarnShockBarrior  = mod:NewSpellAnnounce(46165, 3)
-local warnPyroblast		= mod:NewCastAnnounce(36819, 4)
 
 local specwarnPyroblast = mod:NewSpecialWarningInterrupt(36819)
 
@@ -27,14 +26,13 @@ local timerShockBarrior = mod:NewNextTimer(60, 46165, nil, nil, nil, 4)--Best gu
 local timerPhoenix      = mod:NewCDTimer(45, 44194, nil, nil, nil, 1)--Best guess based on limited CL data
 
 function mod:OnCombatStart(delay)
-	if self:IsDifficulty("heroic5") then
+	if not self:IsDifficulty("normal5") then
         timerShockBarrior:Start(-delay)
     end
 end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 36819 then
-		warnPyroblast:Show()
         timerPyroblast:Start()
 	end
 end
