@@ -373,18 +373,10 @@ L:SetMiscLocalization({
 -----------------------
 L = DBM:GetModLocalization(530)
 
-L:SetMiscLocalization({
-	ChannelCrystal	= "%s begins to channel from the nearby Fel Crystal..."
-})
-
 ----------------
 --  Vexallus  --
 ----------------
 L = DBM:GetModLocalization(531)
-
-L:SetMiscLocalization({
-	Discharge	= "Un...con...tainable."
-})
 
 --------------------------
 --  Priestess Delrissa  --

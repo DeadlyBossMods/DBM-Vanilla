@@ -371,18 +371,10 @@ L:SetMiscLocalization({
 -----------------------
 L = DBM:GetModLocalization(530)
 
-L:SetMiscLocalization({
-	ChannelCrystal	= "%s fängt an, die Energie des nahen Teufelskristalls in sich aufzusaugen..."
-})
-
 ----------------
 --  Vexallus  --
 ----------------
 L = DBM:GetModLocalization(531)
-
-L:SetMiscLocalization({
-	Discharge	= "Un... kon... trollierbar."
-})
 
 --------------------------
 --  Priestess Delrissa  --
