@@ -371,10 +371,6 @@ L:SetMiscLocalization({
 -----------------------
 L = DBM:GetModLocalization(530)
 
-L:SetMiscLocalization({
-	ChannelCrystal	= "%s comienza a canalizar el cristal vil cercano..."
-})
-
 ----------------
 --  Vexallus  --
 ----------------

@@ -371,18 +371,10 @@ L:SetMiscLocalization({
 -----------------------
 L = DBM:GetModLocalization(530)
 
-L:SetMiscLocalization({
-	ChannelCrystal	= "%s开始从附近的恶魔水晶进行引导，快摧毁它!"
-})
-
 ----------------
 --  Vexallus  --
 ----------------
 L = DBM:GetModLocalization(531)
-
-L:SetMiscLocalization({
-	Discharge	= "无...法...控制。"
-})
 
 --------------------------
 --  Priestess Delrissa  --

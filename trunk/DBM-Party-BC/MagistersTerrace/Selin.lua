@@ -8,13 +8,20 @@ mod:SetCreatureID(24723)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"CHAT_MSG_MONSTER_EMOTE"
+	"SPELL_AURA_APPLIED 44320"
 )
 
-local specWarnChannel		= mod:NewSpecialWarningSwitch("ej5081", "Dps", nil, 2)
+local specWarnChannel		= mod:NewSpecialWarningSwitch("ej5081", "-Healer", nil, 3)
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.ChannelCrystal then
-        specWarnChannel:Show()
+local timerChannelCD		= mod:NewCDTimer(47, "ej5081", nil, nil, nil, 1, 44320)
+
+function mod:OnCombatStart(delay)
+	timerChannelCD:Start(15-delay)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args.spellId == 69029 then--Mana Rage, triggers right before CHAT_MSG_RAID_BOSS_EMOTE
+		specWarnChannel:Show()
+		timerChannelCD:Start()
 	end
 end

@@ -371,18 +371,10 @@ L:SetMiscLocalization({
 -----------------------
 L = DBM:GetModLocalization(530)
 
-L:SetMiscLocalization({
-	ChannelCrystal		= "%s|1이;가; 근처의 지옥 수정에서 힘을 끌어냅니다..."--확인필요
-})
-
 ----------------
 --  Vexallus  --
 ----------------
 L = DBM:GetModLocalization(531)
-
-L:SetMiscLocalization({
-	Discharge		= "억제할 수... 없다..."
-})
 
 --------------------------
 --  Priestess Delrissa  --
