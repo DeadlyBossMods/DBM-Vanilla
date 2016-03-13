@@ -7,10 +7,12 @@ mod:SetModelID(13992)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_CAST_START",
-	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL"
 )
+
+mod:RegisterEventsInCombat(
+	"SPELL_CAST_START",
+	"SPELL_AURA_APPLIED"
 
 local warnBreath			= mod:NewCastAnnounce(23461)
 local warnAdrenaline		= mod:NewTargetAnnounce(18173)
