@@ -7,9 +7,12 @@ mod:SetModelID(14308)
 mod:RegisterCombat("combat")--Leave this combat, so pull still works for non localized if user manages to leave combat before pull
 
 mod:RegisterEvents(
-	"SPELL_CAST_SUCCESS",
-	"SPELL_AURA_APPLIED",
 	"CHAT_MSG_MONSTER_YELL"
+)
+
+mod:RegisterEventsInCombat(
+	"SPELL_CAST_SUCCESS",
+	"SPELL_AURA_APPLIED"
 )
 
 local warnBlastWave	= mod:NewSpellAnnounce(23331)

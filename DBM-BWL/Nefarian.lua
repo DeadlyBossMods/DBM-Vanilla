@@ -7,7 +7,7 @@ mod:SetModelID(11380)
 mod:RegisterCombat("yell", L.YellPull)
 mod:SetWipeTime(25)--guesswork
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START",
 	"SPELL_AURA_APPLIED",
 	"SPELL_AURA_REMOVED",
