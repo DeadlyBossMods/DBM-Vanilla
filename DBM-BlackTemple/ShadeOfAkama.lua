@@ -9,19 +9,24 @@ mod:SetZone()
 mod:RegisterCombat("combat")
 mod:SetWipeTime(30)
 
+mod:RegisterEvents(
+	"SPELL_AURA_REMOVED 34189"
+)
+
 mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
 local warnPhase2	= mod:NewPhaseAnnounce(2)
 
-local phase2started = false
+mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
-	phase2started = false
+	self.vb.phase = 1
 	self:RegisterShortTermEvents(
 		"SWING_DAMAGE",
-		"SWING_MISSED"
+		"SWING_MISSED",
+		"UNIT_SPELLCAST_SUCCEEDED"
 	)
 	if DBM.BossHealth:IsShown() then
 		DBM.BossHealth:Clear()
@@ -34,14 +39,29 @@ function mod:OnCombatEnd()
 	self:UnregisterShortTermEvents()
 end
 
+function mod:SPELL_AURA_REMOVED(args)
+	local spellId = args.spellId
+	if spellId == 34189 and args:GetDestCreatureID() == 23191 then--Coming out of stealth (he's been activated)
+		DBM:StartCombat(self, 0)
+	end
+end
+
 function mod:SWING_DAMAGE(_, sourceName)
-	if sourceName == L.name and not phase2started then
+	if sourceName == L.name and self.vb.phase == 1 then
 		self:UnregisterShortTermEvents()
-		phase2started = true
+		self.vb.phase = 2
 		warnPhase2:Show()
 	end
 end
 mod.SWING_MISSED = mod.SWING_DAMAGE
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+	if (spellId == 40607 or spellId == 40955) and self.vb.phase == 1 then--Fixate/Summon Shade of Akama Trigger
+		self:UnregisterShortTermEvents()
+		self.vb.phase = 2
+		warnPhase2:Show()
+	end
+end
 
 function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 22841 then
