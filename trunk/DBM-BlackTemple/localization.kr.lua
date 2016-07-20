@@ -174,8 +174,7 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerNextHuman		= "다음 인간 형상",
-	TimerNextDemon		= "다음 악마 형상",
-	TimerPhase4			= "다음 단계"
+	TimerNextDemon		= "다음 악마 형상"
 }
 
 L:SetOptionLocalization{
@@ -183,7 +182,6 @@ L:SetOptionLocalization{
 	WarnDemon		= "악마 형상 알림 보기",
 	TimerNextHuman	= "다음 인간 형상 바 보기",
 	TimerNextDemon	= "다음 악마 형상 바 보기",
-	TimerPhase4		= "4 단계 전환 바 보기",
 	RangeFrame		= "3, 4 단계에서 거리 창 보기(10m)"
 }
 
