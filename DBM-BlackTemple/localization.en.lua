@@ -180,8 +180,7 @@ L:SetWarningLocalization{
 
 L:SetTimerLocalization{
 	TimerNextHuman		= "Next Human Phase",
-	TimerNextDemon		= "Next Demon Phase",
-	TimerPhase4			= "Phase transition"
+	TimerNextDemon		= "Next Demon Phase"
 }
 
 L:SetOptionLocalization{
@@ -189,7 +188,6 @@ L:SetOptionLocalization{
 	WarnDemon		= "Show warning for Demon Phase",
 	TimerNextHuman	= "Show time for Next Human Phase",
 	TimerNextDemon	= "Show time for Demon Human Phase",
-	TimerPhase4		= "Show time for Phase 4 transition",
 	RangeFrame		= "Show range frame (10 yards) in Phase 3 and 4",
 	ParasiteIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41917)
 }

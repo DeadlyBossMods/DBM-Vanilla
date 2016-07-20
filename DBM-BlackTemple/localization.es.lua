@@ -260,8 +260,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerCombatStart	= "Combat starts",--Translate
 	TimerNextHuman		= "Next Human Phase",--Translate
-	TimerNextDemon		= "Next Demon Phase",--Translate
-	TimerPhase4			= "Phase transition"--Translate
+	TimerNextDemon		= "Next Demon Phase"--Translate
 }
 
 L:SetOptionLocalization{
@@ -274,7 +273,6 @@ L:SetOptionLocalization{
 	TimerCombatStart= "Show time for start of combat",--Translate
 	TimerNextHuman	= "Show time for Next Human Phase",--Translate
 	TimerNextDemon	= "Show time for Demon Human Phase",--Translate
-	TimerPhase4		= "Show time for Phase 4 transition",--Translate
 	ParasiteIcon	= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(41917),
 	ParasiteWhisper	= "Send whisper to $spell:41917 targets (requires Raid Leader)",--Translate
 	RangeFrame		= "Show range frame (10 yards) in Phase 3 and 4"--Translate
