@@ -53,7 +53,7 @@ end
 mod.QUEST_PROGRESS = mod.GOSSIP_SHOW
 
 function mod:UPDATE_WORLD_STATES()
-	local text = select(4, GetWorldStateUIInfo(4))
+	local text = select(4, GetWorldStateUIInfo(3))
 	if not text then return end
 	local _,_,currentWave = text:find(L.WaveCheck)
 	if not currentWave then
