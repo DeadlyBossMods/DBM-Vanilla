@@ -167,7 +167,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "¡Solo os esperan dolor y sufrimiento!",
 	Enrage			= "¡Esencia de Inquina rebosa furia!",
 	SpiteWhisper	= "¡Maldad en ti!",
 	Suffering		= "Essence of Suffering",--Translate

@@ -167,7 +167,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "Лишь боль и страдания ждут тебя!",
 	Enrage			= "%s впадает в ярость!",
 	SpiteWhisper	= "Злоба на Вас!",
 	Suffering		= "Essence of Suffering",--Translate

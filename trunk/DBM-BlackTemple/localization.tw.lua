@@ -109,7 +109,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "等待你們的只有痛苦與折磨﹗",
 	Suffering		= "受難精華",
 	Desire			= "慾望精華",
 	Anger			= "憤怒精華"

@@ -113,7 +113,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "Pain and suffering are all that await you!",
 	Suffering		= "Essence of Suffering",
 	Desire			= "Essence of Desire",
 	Anger			= "Essence of Anger"

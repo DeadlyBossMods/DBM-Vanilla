@@ -109,8 +109,6 @@ L:SetOptionLocalization{--Translate
 }
 
 L:SetMiscLocalization{
-	YellPull1 	= "Energía. Poder. Mi gente es adicta a ellos... una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos... al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal’anore!",
-	YellPull2	= "Energía. Poder. Mi gente es adicta a ellos... una dependencia que se puso de manifiesto cuando La Fuente del Sol fue destruida. Bienvenidos al futuro. Es una pena que sea demasiado tarde para que os interpongáis. ¡Ya nadie me puede parar! ¡Selama ashal'anore!",
 	YellPhase2	= "Como veis, dispongo de un amplio arsenal...",
 	YellPhase3	= "Quizás os subestimé. Sería injusto que os enfrentarais a los cuatro consejeros al mismo tiempo, pero... nunca se le ha brindado un trato justo a mi gente. Así que os devuelvo el favor.",
 	YellPhase4	= "Desafortunadamente hay veces en las que tienes que hacer las cosas con tus propias manos. ¡Balamore shanal!",

@@ -167,7 +167,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "等待你们的只有痛苦与折磨！",
 	Enrage			= "%s变得愤怒了！",
 	SpiteWhisper	= "敌意于你!",
 	Suffering		= "Essence of Suffering",--Translate

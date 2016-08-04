@@ -3,13 +3,14 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(19516)
+mod:SetEncounterID(731)
 mod:SetModelID(18951)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS"
+	"SPELL_CAST_SUCCESS 34172 34162 25778"
 )
 
 local warnOrb			= mod:NewTargetAnnounce(34172, 2)

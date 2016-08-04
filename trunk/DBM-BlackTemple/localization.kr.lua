@@ -109,7 +109,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "너희를 기다리는 건 고통과 슬픔뿐이야!",
 	Suffering		= "고뇌의 정수",
 	Desire			= "욕망의 정수",
 	Anger			= "격노의 정수"

@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(22917)
+mod:SetEncounterID(609)
 mod:SetModelID(21135)
 mod:SetUsedIcons(8)
 mod:SetZone()
@@ -14,11 +15,11 @@ mod:RegisterEvents(
 )
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
-	"SPELL_DAMAGE",
-	"SPELL_MISSED",
+	"SPELL_AURA_APPLIED 41917 41914 40585 40932 41083 40683 40695",
+	"SPELL_CAST_START 40904",
+	"SPELL_CAST_SUCCESS 39855",
+	"SPELL_DAMAGE 41131",
+	"SPELL_MISSED 41131",
 	"UNIT_HEALTH target focus mouseover",
 	"UNIT_DIED"
 )
