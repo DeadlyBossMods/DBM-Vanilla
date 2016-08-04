@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17767)
+mod:SetEncounterID(618)
 mod:SetModelID(17444)
 mod:SetZone()
 mod:SetUsedIcons(8)
@@ -10,9 +11,9 @@ mod:SetUsedIcons(8)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
-	"SPELL_CAST_START"
+	"SPELL_AURA_APPLIED 31249 31258",
+	"SPELL_AURA_REMOVED 31249",
+	"SPELL_CAST_START 31258"
 )
 
 local warnIceBolt		= mod:NewSpellAnnounce(31249, 3)

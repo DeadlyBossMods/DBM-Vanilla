@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17521)
+--mod:SetEncounterID(655)--used by all 3 of them, so not usuable
 mod:SetModelID(17053)
 mod:RegisterCombat("yell", L.DBM_BBW_YELL_1)
 
