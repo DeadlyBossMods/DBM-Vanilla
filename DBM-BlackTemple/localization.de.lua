@@ -109,7 +109,6 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull			= "Auf Euch warten nur Schmerz und Leid!",
 	Suffering		= "Essenz des Leidens",
 	Desire			= "Essenz der Begierde",
 	Anger			= "Essenz des Zorns"

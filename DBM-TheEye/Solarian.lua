@@ -3,14 +3,15 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(18805)
+mod:SetEncounterID(732)
 mod:SetModelID(18239)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_START",
+	"SPELL_AURA_APPLIED 42783",
+	"SPELL_CAST_START 37135",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
