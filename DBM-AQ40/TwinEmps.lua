@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15276, 15275)
+mod:SetEncounterID(715)
 mod:SetModelID(15778)
 mod:RegisterCombat("combat")
 mod:SetBossHealthInfo(
@@ -10,8 +11,8 @@ mod:SetBossHealthInfo(
 	15275, L.Veknil
 )
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_SUCCESS"
+	"SPELL_AURA_APPLIED 799 800",
+	"SPELL_CAST_SUCCESS 802 804"
 )
 
 local warnTeleport			= mod:NewSpellAnnounce(800, 3)

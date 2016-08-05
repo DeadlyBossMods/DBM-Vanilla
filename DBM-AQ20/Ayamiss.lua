@@ -3,12 +3,13 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15369)
+mod:SetEncounterID(722)
 mod:SetModelID(15431)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED",
+	"SPELL_AURA_APPLIED 25725",
+	"SPELL_AURA_REMOVED 25725",
 	"UNIT_HEALTH target focus mouseover"
 )
 
@@ -31,7 +32,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25725 then
-		timerParalyze:Cancel()
+		timerParalyze:Stop()
 	end
 end
 

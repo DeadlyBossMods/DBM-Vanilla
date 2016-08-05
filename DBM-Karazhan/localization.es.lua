@@ -9,15 +9,8 @@ L:SetGeneralLocalization{
 	name = "Attumen el Montero"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
-	DBM_ATH_YELL_1		= "¡Ven, Medianoche, vamos a dispersar a estos pusilánimes!",
-	KillAttumen			= "Siempre lo supe... algún día sería yo la presa."
+	DBM_ATH_YELL_1		= "¡Ven, Medianoche, vamos a dispersar a estos pusilánimes!"
 }
 
 
@@ -36,11 +29,6 @@ L:SetOptionLocalization{
 	DBM_MOROES_VANISH_FADED	= "Mostrar aviso para final de Desvanecerse"
 }
 
-L:SetMiscLocalization{
-	DBM_MOROES_YELL_START	= "Mm, visita inesperada. Hay que hacer los preparativos..."
-}
-
-
 -- Maiden of Virtue
 L = DBM:GetModLocalization("Maiden")
 
@@ -48,14 +36,8 @@ L:SetGeneralLocalization{
 	name = "Doncella de la Virtud"
 }
 
-L:SetWarningLocalization{
-}
-
 L:SetOptionLocalization{
 	RangeFrame			= "Mostrar distancia (10 yardas)"
-}
-
-L:SetMiscLocalization{
 }
 
 
@@ -75,8 +57,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerCombatStart	= "Mostrar tiempo para inicio del combate",
-	warningPosion	= DBM_CORE_AUTO_ANNOUNCE_OPTIONS.spell:format(30830)
+	TimerCombatStart	= "Mostrar tiempo para inicio del combate"
 }
 
 L:SetMiscLocalization{
@@ -95,13 +76,6 @@ L:SetGeneralLocalization{
 	name = "El Lobo Feroz"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetOptionLocalization{
-	RRHIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(30753)
-}
-
 L:SetMiscLocalization{
 	DBM_BBW_YELL_1			= "The better to own you with!"--translate
 }
@@ -114,19 +88,8 @@ L:SetGeneralLocalization{
 	name = "Curator"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
 L:SetOptionLocalization{
 	RangeFrame			= "Mostrar distancia (10 yardas)"
-}
-
-L:SetMiscLocalization{
-	DBM_CURA_YELL_PULL		= "La Galeria es solo para los invitados.",--translate
-	DBM_CURA_YELL_OOM		= "No se puede procesar tu solicitud."--translate
 }
 
 
@@ -137,17 +100,7 @@ L:SetGeneralLocalization{
 	name = "Terestian Pezuña Enferma"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
-	DBM_TI_YELL_PULL		= "Ah, you're just in time. The rituals are about to begin!",--translate
 	Kilrek					= "Kil'rek",--translate
 	DChains					= "Demon Chains"--translate
 }
@@ -170,13 +123,8 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	timerSpecial			= "Mostrar tiempo de cooldown de habilidad especial",
-	DBM_ARAN_DO_NOT_MOVE	= "Mostrar aviso especial para $spell:30004",
-	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
+	DBM_ARAN_DO_NOT_MOVE	= "Mostrar aviso especial para $spell:30004"
 }
-
-L:SetMiscLocalization{
-}
-
 
 --Netherspite
 L = DBM:GetModLocalization("Netherspite")
@@ -219,17 +167,7 @@ L:SetGeneralLocalization{
 	name = "Príncipe Malchezaar"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-}
-
 L:SetMiscLocalization{
-	DBM_PRINCE_YELL_PULL	= "Madness has brought you here to me. I shall be your undoing!",--translate
 	DBM_PRINCE_YELL_P2		= "Simple fools! Time is the fire in which you'll burn!",--translate
 	DBM_PRINCE_YELL_P3		= "How can you hope to stand against such overwhelming power?",--translate
 	DBM_PRINCE_YELL_INF1	= "All realities, all dimensions are open to me!",--translate
@@ -264,7 +202,6 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	DBM_NB_EMOTE_PULL		= "An ancient being awakens in the distance...",--translate
-	DBM_NB_YELL_PULL		= "What fools! I shall bring a quick end to your suffering!",--translate
 	DBM_NB_YELL_AIR			= "Miserable vermin. I shall exterminate you from the air!",--translate
 	DBM_NB_YELL_GROUND		= "Enough! I shall land and crush you myself!",--translate
 	DBM_NB_YELL_GROUND2		= "Insects! Let me show you my strength up close!"--translate
@@ -276,12 +213,6 @@ L = DBM:GetModLocalization("Oz")
 
 L:SetGeneralLocalization{
 	name = "Mago de Oz"
-}
-
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
