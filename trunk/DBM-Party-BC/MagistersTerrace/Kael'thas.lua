@@ -3,7 +3,8 @@ local L = mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(24664)
-mod:SetModelID(22906)
+mod:SetEncounterID(1894)
+mod:SetModelID(22906)--Here for a reason?
 
 mod:RegisterCombat("combat")
 
@@ -58,8 +59,8 @@ function mod:SPELL_CAST_START(args)
     	timerGravityLapseCD:Schedule(35)--Show after current lapse has ended
     	if not phase2Started then
     		phase2Started = true
-			timerShockBarrior:Cancel()
-			timerPhoenix:Cancel()
+			timerShockBarrior:Stop()
+			timerPhoenix:Stop()
     	end
 	end
 end
@@ -87,7 +88,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.KaelP2 then
 		phase2Started = true
-		timerShockBarrior:Cancel()
-		timerPhoenix:Cancel()
+		timerShockBarrior:Stop()
+		timerPhoenix:Stop()
 	end
 end

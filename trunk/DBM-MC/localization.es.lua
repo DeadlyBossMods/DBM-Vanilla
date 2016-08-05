@@ -82,10 +82,6 @@ L:SetGeneralLocalization{
 	name = "Mayordomo Executus"
 }
 
-L:SetMiscLocalization{
-	Kill	= "¡Imposible! Deponed el ataque mortales... ¡Me rindo! ¡Me rindo!"
-}
-
 ----------------
 --  Ragnaros  --
 ----------------

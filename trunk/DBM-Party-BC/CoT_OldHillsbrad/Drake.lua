@@ -3,12 +3,13 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(17848)
+mod:SetEncounterID(1905)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_APPLIED 33792",
+	"SPELL_AURA_REMOVED 33792"
 )
 
 local warnShot      = mod:NewTargetAnnounce(33792)
@@ -24,6 +25,6 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 33792 then
-		timerShot:Cancel(args.destName)
+		timerShot:Stop(args.destName)
 	end
 end

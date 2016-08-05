@@ -4,6 +4,7 @@ local L = mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(20885)
+mod:SetEncounterID(1913)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
@@ -42,6 +43,6 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpellID(39009, 36173) then
-		timerGift:Cancel(args.destName)
+		timerGift:Stop(args.destName)
 	end
 end

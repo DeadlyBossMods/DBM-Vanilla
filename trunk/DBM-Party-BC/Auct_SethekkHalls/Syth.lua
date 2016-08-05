@@ -4,10 +4,12 @@ local L = mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(18472)
+mod:SetEncounterID(1903)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_SUMMON"
+	"SPELL_SUMMON 33537 33538 33539 33540"
 )
 
 local warnSummon   = mod:NewSpellAnnounce("ej5235", 3)
