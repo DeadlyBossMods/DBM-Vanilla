@@ -4,10 +4,11 @@ local L = mod:GetLocalizedStrings()
 mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(18667)
+mod:SetEncounterID(1909)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS"
+	"SPELL_CAST_SUCCESS 33676"
 )
 
 local warnChaos         = mod:NewSpellAnnounce(33676)
