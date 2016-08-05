@@ -3,12 +3,13 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15340)
+mod:SetEncounterID(720)
 mod:SetModelID(15392)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_REMOVED"
+	"SPELL_AURA_APPLIED 25685",
+	"SPELL_AURA_REMOVED 25685"
 )
 
 local warnStoneform		= mod:NewSpellAnnounce(25685, 3)

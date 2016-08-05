@@ -3,12 +3,13 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(15348)
+mod:SetEncounterID(718)
 mod:SetModelID(15742)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED",
-	"SPELL_AURA_APPLIED_DOSE"
+	"SPELL_AURA_APPLIED 25646",
+	"SPELL_AURA_APPLIED_DOSE 25646"
 )
 
 local warnWound		= mod:NewStackAnnounce(25646, 3)
