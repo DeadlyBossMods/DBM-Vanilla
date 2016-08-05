@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
 mod:SetCreatureID(13020)
+mod:SetEncounterID(611)
 mod:SetModelID(13992)
 mod:RegisterCombat("combat")
 
@@ -11,8 +12,8 @@ mod:RegisterEvents(
 )
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START",
-	"SPELL_AURA_APPLIED"
+	"SPELL_CAST_START 23461",
+	"SPELL_AURA_APPLIED 18173"
 )
 
 local warnBreath			= mod:NewCastAnnounce(23461)
