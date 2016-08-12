@@ -8,7 +8,7 @@ mod:DisableEEKillDetection()--So disable only EE
 mod:SetModelID(10115)
 mod:SetMinSyncRevision(168)
 mod:RegisterCombat("yell", L.YellPull)
-mod:SetWipeTime(45)--guesswork
+mod:SetWipeTime(180)--guesswork
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED",
