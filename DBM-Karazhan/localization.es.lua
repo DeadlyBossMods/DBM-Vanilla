@@ -1,5 +1,4 @@
 ﻿if GetLocale() ~= "esES" and GetLocale() ~= "esMX" then return end
-
 local L
 
 --Attumen
@@ -22,24 +21,24 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_MOROES_VANISH_FADED	= "Desvanecerse finalizado"
+	DBM_MOROES_VANISH_FADED	= "Esfumarse ha terminado"
 }
 
 L:SetOptionLocalization{
-	DBM_MOROES_VANISH_FADED	= "Mostrar aviso para final de Desvanecerse"
+	DBM_MOROES_VANISH_FADED	= "Mostrar aviso cuando termine Esfumarse"
 }
+
 
 -- Maiden of Virtue
 L = DBM:GetModLocalization("Maiden")
 
 L:SetGeneralLocalization{
-	name = "Doncella de la Virtud"
+	name = "Doncella de Virtud"
 }
 
 L:SetOptionLocalization{
-	RangeFrame			= "Mostrar distancia (10 yardas)"
+	RangeFrame			= DBM_CORE_AUTO_RANGE_OPTION_TEXT:format(10, 29522)
 }
-
 
 -- Romulo and Julianne
 L = DBM:GetModLocalization("RomuloAndJulianne")
@@ -48,22 +47,10 @@ L:SetGeneralLocalization{
 	name = "Romulo y Julianne"
 }
 
-L:SetWarningLocalization{
-	warningPosion	= "%s en >%s< (%d)",		-- Mortal Wound on >args.destName< (args.amount)
-}
-
-L:SetTimerLocalization{
-	TimerCombatStart	= "Empieza el combate"
-}
-
-L:SetOptionLocalization{
-	TimerCombatStart	= "Mostrar tiempo para inicio del combate"
-}
-
 L:SetMiscLocalization{
-	Event				= "Tonight... we explore a tale of forbidden love!",--translate
-	RJ_Pull				= "What devil art thou, that dost torment me thus?",--translate
-	DBM_RJ_PHASE2_YELL	= "Come, gentle night; and give me back my Romulo!",--translate
+	Event				= "¡Esta noche... vamos a explorar un relato de amor prohibido!",
+	RJ_Pull				= "¿Qué demonio sois que me atormentáis de questa manera?",
+	DBM_RJ_PHASE2_YELL	= "Adelante, gentil noche, ¡devuélveme a mi Romulo!",
 	Romulo				= "Romulo",
 	Julianne			= "Julianne"
 }
@@ -76,8 +63,52 @@ L:SetGeneralLocalization{
 	name = "El Lobo Feroz"
 }
 
+L:SetWarningLocalization{
+}
+
+L:SetOptionLocalization{
+	RRHIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(30753)
+}
+
 L:SetMiscLocalization{
-	DBM_BBW_YELL_1			= "The better to own you with!"--translate
+	DBM_BBW_YELL_1			= "¡Para poseerte mejor!"
+}
+
+
+-- Wizard of Oz
+L = DBM:GetModLocalization("Oz")
+
+L:SetGeneralLocalization{
+	name = "Mago de Oz"
+}
+
+L:SetWarningLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Rugido",
+	DBM_OZ_WARN_STRAWMAN	= "Espantapájaros",
+	DBM_OZ_WARN_TINHEAD		= "Cabezalata",
+	DBM_OZ_WARN_CRONE		= "La Vieja Bruja"
+}
+
+L:SetTimerLocalization{
+	DBM_OZ_WARN_TITO		= "Tito",
+	DBM_OZ_WARN_ROAR		= "Rugido",
+	DBM_OZ_WARN_STRAWMAN	= "Espantapájaros",
+	DBM_OZ_WARN_TINHEAD		= "Cabezalata"
+}
+
+L:SetOptionLocalization{
+	AnnounceBosses			= "Show warnings for boss spawns",
+	ShowBossTimers			= "Show timers for boss spawns",
+	DBM_OZ_OPTION_1			= DBM_CORE_AUTO_RANGE_OPTION_TEXT:format(10, 32337)
+}
+
+L:SetMiscLocalization{
+	DBM_OZ_YELL_DOROTHEE	= "¡Oh, Tito, solo tenemos que buscar la manera de volver a casa! ¡El viejo zahorí puede ser nuestra única esperanza! Espantapájaros, Rugido, Cabezalata, podeis- esperad... ¡Oh, caray, mirad tenemos visita!",--sic
+	DBM_OZ_YELL_ROAR		= "¡No os tengo miedo! ¿Queréis pelea? ¿Eh? ¡Vamos, con las garras a la espalda os reto!",
+	DBM_OZ_YELL_STRAWMAN	= "¿Ahora que tengo que hacer contigo? No me puedo decidir.",--sic
+	DBM_OZ_YELL_TINHEAD		= "¿Me vendría bien un corazón Digamos, ¿el tuyo?",--sic
+	DBM_OZ_YELL_CRONE		= "¡Pronto acabará todo!"--There seems to be two lines, but I only ever see this one in Spanish; the one in the English localization file is the other possible pull line.
 }
 
 
@@ -88,8 +119,16 @@ L:SetGeneralLocalization{
 	name = "Curator"
 }
 
+L:SetWarningLocalization{
+	warnAdd		= "Centellas astrales"
+}
+
 L:SetOptionLocalization{
-	RangeFrame			= "Mostrar distancia (10 yardas)"
+	warnAdd		= "Mostrar aviso cuando aparezcan las Centellas astrales"
+}
+
+L:SetOptionLocalization{
+	RangeFrame			= "Mostrar marco de distancia (10 m)"
 }
 
 
@@ -101,8 +140,8 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Kilrek					= "Kil'rek",--translate
-	DChains					= "Demon Chains"--translate
+	Kilrek					= "Kil'rek",
+	DChains					= "Cadenas demoníacas"
 }
 
 
@@ -114,51 +153,66 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_ARAN_DO_NOT_MOVE	= "¡No te muevas!"
+	DBM_ARAN_DO_NOT_MOVE	= "Corona de llamas - ¡no te muevas!"
 }
 
 L:SetTimerLocalization{
-	timerSpecial			= "CD de habilidad especial"
+	timerSpecial			= "Facultad especial TdR"
 }
 
 L:SetOptionLocalization{
-	timerSpecial			= "Mostrar tiempo de cooldown de habilidad especial",
-	DBM_ARAN_DO_NOT_MOVE	= "Mostrar aviso especial para $spell:30004"
+	timerSpecial			= "Mostrar temporizador para el tiempo de reutilización de las facultades especiales",
+	DBM_ARAN_DO_NOT_MOVE	= "Mostrar aviso especial para $spell:30004",
+	WreathIcons				= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(29946)
 }
 
 --Netherspite
 L = DBM:GetModLocalization("Netherspite")
 
 L:SetGeneralLocalization{
-	name = "Rencor abisal"
+	name = "Rencor Abisal"
 }
 
 L:SetWarningLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Fase de portal en 5 seg",
-	DBM_NS_WARN_BANISH_SOON	= "Fase Desterrar en 5 seg",
-	warningPortal			= "Fase de portal",
-	warningBanish			= "Fase de desterrar"
+	warningPortal			= "Fase de portales",
+	warningBanish			= "Fase de destierro"
 }
 
 L:SetTimerLocalization{
-	timerPortalPhase	= "Fase de portal",
-	timerBanishPhase	= "Fase de desterrar"
+	timerPortalPhase	= "Fase de portales",
+	timerBanishPhase	= "Fase de destierro"
 }
 
 L:SetOptionLocalization{
-	DBM_NS_WARN_PORTAL_SOON	= "Mostrar pre-aviso para Fase de portal",
-	DBM_NS_WARN_BANISH_SOON	= "Mostrar pre-aviso para Fase de desterrar",
-	warningPortal			= "Mostrar aviso para Fase de portal",
-	warningBanish			= "Mostrar aviso para Fase de desterrar",
-	timerPortalPhase		= "Mostrar tiempo de duración de Fase de portal",
-	timerBanishPhase		= "Mostrar tiempo de duración de Fase de desterrar"
+	warningPortal			= "Anunciar cambio a fase de portales",
+	warningBanish			= "Anunciar cambio a fase de destierro",
+	timerPortalPhase		= "Mostrar temporizador para la duración de la fase de portales",
+	timerBanishPhase		= "Mostrar temporizador para la duración de la fase de destierro"
 }
 
 L:SetMiscLocalization{
-	DBM_NS_EMOTE_PHASE_2	= "%s goes into a nether-fed rage!",--translate
-	DBM_NS_EMOTE_PHASE_1	= "%s cries out in withdrawal, opening gates to the nether."--translate
+	DBM_NS_EMOTE_PHASE_2	= "¡%s monta en cólera alimentada por el vacío!",
+	DBM_NS_EMOTE_PHASE_1	= "%s cries out in withdrawal, opening gates to the nether."
 }
 
+--Chess
+L = DBM:GetModLocalization("Chess")
+
+L:SetGeneralLocalization{
+	name = "Chess Event"
+}
+
+L:SetTimerLocalization{
+	timerCheat	= "Medivh hace trampas (TdR)"
+}
+
+L:SetOptionLocalization{
+	timerCheat	= "Mostrar temporizador para cuando el Eco de Medivh haga trampas"
+}
+
+L:SetMiscLocalization{
+	EchoCheats	= "¡Eco de Medivh hace trampas!"
+}
 
 --Prince Malchezaar
 L = DBM:GetModLocalization("Prince")
@@ -168,10 +222,10 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	DBM_PRINCE_YELL_P2		= "Simple fools! Time is the fire in which you'll burn!",--translate
-	DBM_PRINCE_YELL_P3		= "How can you hope to stand against such overwhelming power?",--translate
-	DBM_PRINCE_YELL_INF1	= "All realities, all dimensions are open to me!",--translate
-	DBM_PRINCE_YELL_INF2	= "You face not Malchezaar alone, but the legions I command!"--translate
+	DBM_PRINCE_YELL_P2		= "¡Estúpidos! El tiempo es el fuego en el que arderéis!",--sic
+	DBM_PRINCE_YELL_P3		= "¿Cómo podéis esperar rebelaros ante un poder tan aplastante?",
+	DBM_PRINCE_YELL_INF1	= "¡Todas las realidades, todas las dimensiones están abiertas a mí!",
+	DBM_PRINCE_YELL_INF2	= "¡No solo os enfrentáis a Malechezaar, sino a todas las legiones bajo mi mando!"
 }
 
 
@@ -183,55 +237,23 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_NB_DOWN_WARN 		= "Aterriza en 15 seg",
-	DBM_NB_DOWN_WARN2 		= "Aterriza en 5 seg",
-	DBM_NB_AIR_WARN			= "Fase aerea"
+	DBM_NB_AIR_WARN			= "Fase aérea"
 }
 
 L:SetTimerLocalization{
-	timerNightbane			= "Nocturno viene",
-	timerAirPhase			= "Fase aerea"
+	timerAirPhase			= "Fase aérea"
 }
 
 L:SetOptionLocalization{
-	DBM_NB_AIR_WARN			= "Mostrar aviso para fase aerea",
-	PrewarnGroundPhase		= "Mostrar pre-aviso para fase terrestre",
-	timerNightbane			= "Mostrar tiempo de invocación de Nocturno",
-	timerAirPhase			= "Mostrar tiempo de duración de fase aerea"
+	DBM_NB_AIR_WARN			= "Anunciar cambio a fase aérea",
+	timerAirPhase			= "Mostrar temporizador para la duración de la fase aérea"
 }
 
 L:SetMiscLocalization{
-	DBM_NB_EMOTE_PULL		= "An ancient being awakens in the distance...",--translate
-	DBM_NB_YELL_AIR			= "Miserable vermin. I shall exterminate you from the air!",--translate
-	DBM_NB_YELL_GROUND		= "Enough! I shall land and crush you myself!",--translate
-	DBM_NB_YELL_GROUND2		= "Insects! Let me show you my strength up close!"--translate
-}
-
-
--- Wizard of Oz
-L = DBM:GetModLocalization("Oz")
-
-L:SetGeneralLocalization{
-	name = "Mago de Oz"
-}
-
-L:SetOptionLocalization{
-	AnnounceBosses			= "Mostrar aviso cuando salgan los bosses",
-	ShowBossTimers			= "Mostrar tiempo para que salgan los bosses",
-	DBM_OZ_OPTION_1			= "Mostrar distancia en fase 2"
-}
-
-L:SetMiscLocalization{
-	DBM_OZ_WARN_TITO		= "Tito",
-	DBM_OZ_WARN_ROAR		= "Rugido",
-	DBM_OZ_WARN_STRAWMAN	= "Espantapájaros",
-	DBM_OZ_WARN_TINHEAD		= "Cabezalata",
-	DBM_OZ_WARN_CRONE		= "La Vieja Bruja",
-	DBM_OZ_YELL_DOROTHEE	= "¡Oh, Tito, solo tenemos que buscar la manera de volver a casa! ¡El viejo zahorí puede ser nuestra única esperanza! Espantapájaros, Rugido, Cabezalata, podeis -esperad... ¡Oh, caray, mirad tenemos visita!",
-	DBM_OZ_YELL_ROAR		= "¡No os tengo miedo! ¿Queréis pelea? ¿Eh? ¡Vamos, con las garras a la espalda os reto!",
-	DBM_OZ_YELL_STRAWMAN	= "¿Ahora que tengo que hacer contigo? No me puedo decidir.",
-	DBM_OZ_YELL_TINHEAD		= "¿Me vendría bien un corazón? Digamos, ¿el tuyo?",
-	DBM_OZ_YELL_CRONE		= "¡Pronto acabará todo!"
+	DBM_NB_EMOTE_PULL		= "Un ser antiguo se despierta en la distancia...",
+	DBM_NB_YELL_AIR			= "Miserable alimaña. ¡Te exterminaré desde el aire!",
+	DBM_NB_YELL_GROUND		= "¡Ya basta! Voy a aterrizar y a aplastarte yo mismo.",
+	DBM_NB_YELL_GROUND2		= "¡Insectos! ¡Os enseñaré mi fuerza de cerca!"
 }
 
 
@@ -245,7 +267,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Hyakiss")
 
 L:SetGeneralLocalization{
-	name = "Hyakiss el Rondador"
+	name = "Hyakiss el Acechador"
 }
 
 L = DBM:GetModLocalization("Rokad")
