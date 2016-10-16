@@ -23,5 +23,7 @@ local specWarnEnergy	= mod:NewSpecialWarningSwitch("ej5085", "-Healer", nil, 3)
 --]]
 --Should be good enough,no translation. He doesn't emote anything else
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
-	specWarnEnergy:Show()
+	if self:AntiSpam(4, 1) then
+		specWarnEnergy:Show()
+	end
 end
