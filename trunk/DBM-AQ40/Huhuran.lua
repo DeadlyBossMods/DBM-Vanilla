@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED_DOSE 26050",
 	"SPELL_AURA_REMOVED 26180 26053 26050",
 	"SPELL_CAST_SUCCESS 26053",
-	"UNIT_HEALTH target focus mouseover"
+	"UNIT_HEALTH boss1"
 )
 
 local warnSting			= mod:NewTargetAnnounce(26180, 2)

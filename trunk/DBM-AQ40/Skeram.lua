@@ -12,7 +12,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED 785",
 	"SPELL_CAST_SUCCESS 20449 4801 8195",
 	"SPELL_SUMMON 747",
-	"UNIT_HEALTH target focus mouseover"
+	"UNIT_HEALTH boss1"
 )
 
 local warnMindControl	= mod:NewTargetAnnounce(785, 3)
