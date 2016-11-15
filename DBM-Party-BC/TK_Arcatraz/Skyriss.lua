@@ -11,7 +11,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL",
 	"SPELL_AURA_APPLIED 39019 37162 39017",
 	"SPELL_AURA_REMOVED 39019 37162 39017",
-	"UNIT_HEALTH target focus mouseover"
+	"UNIT_HEALTH boss1"
 )
 
 local warnSplitSoon     = mod:NewSoonAnnounce("ej5335", 2)

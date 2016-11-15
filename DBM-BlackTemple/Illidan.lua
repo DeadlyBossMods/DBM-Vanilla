@@ -20,7 +20,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 39855",
 	"SPELL_DAMAGE 41131",
 	"SPELL_MISSED 41131",
-	"UNIT_HEALTH target focus mouseover",
+	"UNIT_HEALTH boss1",
 	"UNIT_DIED"
 )
 

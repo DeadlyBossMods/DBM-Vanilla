@@ -5,7 +5,7 @@ mod:SetRevision(("$Revision$"):sub(12, -3))
 
 mod:SetCreatureID(24560)--24560 is main boss.
 mod:SetEncounterID(1895)
-mod:RegisterCombat("combat")--UNIT_HEALTH combat should work now
+mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 17843 44256 46181",

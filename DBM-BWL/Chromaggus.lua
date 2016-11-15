@@ -12,7 +12,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537",
 --	"SPELL_AURA_REFRESH",
 	"SPELL_AURA_REMOVED 23128",
-	"UNIT_HEALTH target focus mouseover"
+	"UNIT_HEALTH boss1"
 )
 
 local warnBreath		= mod:NewAnnounce("WarnBreath", 2, 23316)

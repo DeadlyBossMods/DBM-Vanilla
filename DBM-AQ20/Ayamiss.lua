@@ -10,7 +10,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 25725",
 	"SPELL_AURA_REMOVED 25725",
-	"UNIT_HEALTH target focus mouseover"
+	"UNIT_HEALTH boss1"
 )
 
 local warnPhase2	= mod:NewPhaseAnnounce(2)

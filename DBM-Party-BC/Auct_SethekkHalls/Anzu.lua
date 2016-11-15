@@ -12,7 +12,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 40184",
 	"SPELL_AURA_APPLIED 40321 40184 40303",
 	"SPELL_AURA_REMOVED 40303",
-	"UNIT_HEALTH target focus" ,
+	"UNIT_HEALTH boss1" ,
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 mod.onlyHeroic = true

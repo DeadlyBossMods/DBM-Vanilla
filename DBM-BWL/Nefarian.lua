@@ -12,7 +12,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 22539 22686",
 	"SPELL_AURA_APPLIED 22687 22667",
 	"SPELL_AURA_REMOVED 22687",
-	"UNIT_HEALTH target focus mouseover",
+	"UNIT_HEALTH boss1",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
