@@ -8,7 +8,7 @@ mod:SetEncounterID(1938)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
 --186782 Some Random Orc Icon. Could not find red fel orc icon. Only green orcs or brown orcs. Brown closer to red than green is.

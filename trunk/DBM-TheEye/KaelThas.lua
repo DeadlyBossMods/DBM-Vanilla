@@ -19,7 +19,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED",
-	"UNIT_SPELLCAST_SUCCEEDED target focus"
+	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2 boss3 boss4 boss5"
 )
 
 local warnGaze			= mod:NewAnnounce("WarnGaze", 4, 39414)
