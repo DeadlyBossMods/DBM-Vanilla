@@ -27,7 +27,7 @@ function mod:OnCombatStart(delay)
 	self:RegisterShortTermEvents(
 		"SWING_DAMAGE",
 		"SWING_MISSED",
-		"UNIT_SPELLCAST_SUCCEEDED"
+		"UNIT_SPELLCAST_SUCCEEDED boss1 boss2"
 	)
 	if DBM.BossHealth:IsShown() then
 		DBM.BossHealth:Clear()

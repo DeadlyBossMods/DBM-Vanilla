@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON",
 	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_SPELLCAST_SUCCEEDED target focus"
+	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
 local warnGas				= mod:NewSpellAnnounce(45855, 3)
