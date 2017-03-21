@@ -18,13 +18,16 @@ mod:RegisterEventsInCombat(
 --TODO: Verify jumping actually prevents quake stun and add a warning to jump during cast.
 local WarnPrison	= mod:NewTargetAnnounce(32361, 3)
 
-local specWarnQuake	= mod:NewSpecialWarningSpell(33919, nil, nil, nil, 2)
+local specWarnQuake	= mod:NewSpecialWarningSpell(33919, nil, nil, nil, 2, 2)
 
 local timerPrison	= mod:NewTargetTimer(5, 32361)
+
+local voiceQuake	= mod:NewVoice(33919)--stunsoon
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 33919 then
 		specWarnQuake:Show()
+		voiceQuake:Play("stunsoon")
 	end
 end
 

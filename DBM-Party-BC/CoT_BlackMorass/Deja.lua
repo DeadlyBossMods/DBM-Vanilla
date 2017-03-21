@@ -14,7 +14,9 @@ mod:RegisterEventsInCombat(
 
 local warnArcaneDischarge		= mod:NewSpellAnnounce(38539, 2)
 
-local specwarnTimeLapse			= mod:NewSpecialWarningDispel(31467, "Healer")
+local specwarnTimeLapse			= mod:NewSpecialWarningDispel(31467, "Healer", nil, nil, 1, 2)
+
+local voiceTimeLaps				= mod:NewVoice(31467, "Healer")--dispelnow
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(38539, 31472) then
@@ -25,5 +27,6 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 31467 then
 		specwarnTimeLapse:Show(args.destName)
+		voiceTimeLaps:Play("dispelnow")
 	end
 end

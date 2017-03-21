@@ -13,8 +13,6 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, actual CD timers
-local warnHasten			= mod:NewSpellAnnounce(31458)
-
 local specWarnSpellReflect	= mod:NewSpecialWarningReflect(38592, "SpellCaster", nil, 2, 1, 2)
 local specWarnHasten		= mod:NewSpecialWarningDispel(31458, "MagicDispeller", nil, nil, 1, 2)
 
@@ -26,7 +24,6 @@ local voiceReflect			= mod:NewVoice(38592, "SpellCaster")--stopattack
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 31458 and not args:IsDestTypePlayer() then     --Hasten
-		warnHasten:Show(args.destName)
 		timerHasten:Start(args.destName)
 		specWarnHasten:Show(args.destName)
 		voiceHasten:Play("dispelboss")
