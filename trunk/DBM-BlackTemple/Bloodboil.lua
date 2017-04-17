@@ -33,10 +33,10 @@ local timerRageEnd		= mod:NewBuffActiveTimer(28, 40604)
 local berserkTimer		= mod:NewBerserkTimer(600)
 
 local warnBloodTargets = {}
-local rage = false
+mod.vb.rage = false
 
-local function nextRage()
-	rage = false
+local function nextRage(self)
+	self.vb.rage = false
 	warnRageEnd:Show()
 	timerRage:Start()
 	warnRageSoon:Schedule(47)
@@ -51,7 +51,7 @@ local function showBlood()
 end
 
 function mod:OnCombatStart(delay)
-	rage = false
+	self.vb.rage = false
 	berserkTimer:Start(-delay)
 	warnRageSoon:Schedule(47-delay)
 	timerBlood:Start(11.5-delay)
@@ -82,11 +82,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnStrike:Show(args.destName)
 		timerStrikeCD:Start()
 	elseif args.spellId == 40604 then
-		rage = true
+		self.vb.rage = true
 		warnRage:Show(args.destName)
 		timerBlood:Cancel()
 		timerRageEnd:Start()
-		self:Schedule(28, nextRage)
+		self:Schedule(28, nextRage, self)
 		if args:IsPlayer() then
 			specWarnRage:Show()
 		end

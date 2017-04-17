@@ -54,19 +54,19 @@ mod:AddBoolOption("SpiteIcon", false)
 local warnDrainTargets = {}
 local warnSpiteTargets = {}
 local lastFixate = false
-local drainIcon = 8
-local spiteIcon = 8
+mod.vb.drainIcon = 8
+mod.vb.spiteIcon = 8
 
-local function showDrain()
+local function showDrain(self)
 	warnDrain:Show(table.concat(warnDrainTargets, "<, >"))
 	table.wipe(warnDrainTargets)
-	drainIcon = 8
+	self.vb.drainIcon = 8
 end
 
-local function showSpite()
+local function showSpite(self)
 	warnSpite:Show(table.concat(warnSpiteTargets, "<, >"))
 	table.wipe(warnSpiteTargets)
-	spiteIcon = 8
+	self.vb.spiteIcon = 8
 end
 
 function mod:OnCombatStart(delay)
@@ -93,21 +93,21 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnSpiteTargets[#warnSpiteTargets + 1] = args.destName
 		self:Unschedule(showSpite)
 		if self.Options.SpiteIcon then
-			self:SetIcon(args.destName, spiteIcon)
-			spiteIcon = spiteIcon - 1
+			self:SetIcon(args.destName, self.vb.spiteIcon)
+			self.vb.spiteIcon = self.vb.spiteIcon - 1
 		end
 		if args:IsPlayer() then
 			specWarnSpite:Show()
 		end
-		self:Schedule(0.3, showSpite)
+		self:Schedule(0.3, showSpite, self)
 	elseif args.spellId == 41303 then
 		warnDrainTargets[#warnDrainTargets + 1] = args.destName
 		self:Unschedule(showDrain)
 		if self.Options.DrainIcon then
-			self:SetIcon(args.destName, drainIcon)
-			drainIcon = drainIcon - 1
+			self:SetIcon(args.destName, self.vb.drainIcon)
+			self.vb.drainIcon = self.vb.drainIcon - 1
 		end
-		self:Schedule(1, showDrain)
+		self:Schedule(1, showDrain, self)
 	elseif args.spellId == 41294 then
 		if lastFixate ~= args.destName then
 			warnFixate:Show(args.destName)
