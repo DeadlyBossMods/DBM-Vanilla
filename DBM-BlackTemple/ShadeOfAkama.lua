@@ -18,6 +18,8 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
+--TODO, add RP timer to the spell aura REMOVED event
+--TODO, add spawn wave timers for phase 1?
 local warnPhase2	= mod:NewPhaseAnnounce(2)
 
 mod.vb.phase = 1

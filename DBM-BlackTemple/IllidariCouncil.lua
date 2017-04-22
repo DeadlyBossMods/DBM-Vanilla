@@ -53,7 +53,7 @@ local timerNextCoH			= mod:NewCDTimer(14, 41455)
 local berserkTimer			= mod:NewBerserkTimer(900)
 
 mod:AddBoolOption("HealthFrame", false)
-mod:AddBoolOption("PoisonIcon", false)
+mod:AddSetIconOption("PoisonIcon", 41485)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
