@@ -36,7 +36,7 @@ function mod:OnCombatStart(delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(8)
 	end
-	if self.Options.InfoFrame then
+	if self.Options.InfoFrame and not self:IsTrivial(80) then
 		DBM.InfoFrame:SetHeader(L.HealthInfo)
 		DBM.InfoFrame:Show(5, "health", 8800)
 	end
