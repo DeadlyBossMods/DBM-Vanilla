@@ -48,7 +48,7 @@ local specWarnFlame			= mod:NewSpecialWarningYou(40932)
 local timerParasite			= mod:NewTargetTimer(10, 41917)
 local timerBarrage			= mod:NewTargetTimer(10, 40585)
 local timerNextBarrage		= mod:NewCDTimer(44, 40585)
-local timerFlame			= mod:NewTargetTimer(60, 40932)
+--local timerFlame			= mod:NewTargetTimer(60, 40932)
 local timerNextFlameBurst	= mod:NewCDTimer(20, 41131)
 local timerShadowDemon		= mod:NewCDTimer(34, 41117)
 local timerNextHuman		= mod:NewTimer(74, "TimerNextHuman", 97061, nil, nil, 6)
@@ -116,7 +116,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() and not self:IsTrivial(85) then
 			specWarnFlame:Show()
 		end
-		timerFlame:Start(args.destName)
+		--timerFlame:Start(args.destName)
 	elseif args.spellId == 41083 then
 		warnShadowDemon:CombinedShow(1, args.destName)
 	elseif args.spellId == 40683 then
@@ -188,7 +188,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self.vb.warned_preP4 = true
 		self:Unschedule(humanForms)
 		timerParasite:Cancel()
-		timerFlame:Cancel()
+		--timerFlame:Cancel()
 		timerNextFlameBurst:Cancel()
 		timerShadowDemon:Cancel()
 		timerNextHuman:Cancel()
