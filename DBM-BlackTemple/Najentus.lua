@@ -21,7 +21,7 @@ local warnSpine			= mod:NewTargetAnnounce(39837, 3)
 
 local yellSpine			= mod:NewYell(39837)
 
-local timerShield		= mod:NewCDTimer(58, 39872, nil, nil, nil, 5)
+local timerShield		= mod:NewCDTimer(56, 39872, nil, nil, nil, 5)
 
 local berserkTimer		= mod:NewBerserkTimer(480)
 
@@ -31,7 +31,7 @@ mod:AddBoolOption("RangeFrame", true)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
-	timerShield:Start(58-delay)
+	timerShield:Start(55.5-delay)
 	warnShieldSoon:Schedule(48-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(8)
