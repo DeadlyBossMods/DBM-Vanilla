@@ -20,7 +20,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 39855",
 	"SPELL_DAMAGE 41131",
 	"SPELL_MISSED 41131",
-	"UNIT_HEALTH boss1",
 	"UNIT_DIED"
 )
 
@@ -35,7 +34,7 @@ local warnDemon				= mod:NewAnnounce("WarnDemon", 3 , 40506)
 local warnHuman				= mod:NewAnnounce("WarnHuman", 3 , 97061)
 local warnFlame				= mod:NewTargetAnnounce(40932, 3)
 local warnFlameBurst		= mod:NewSpellAnnounce(41131, 3)
-local warnShadowDemon		= mod:NewTargetAnnounce(41117, 3)
+local warnShadowDemon		= mod:NewTargetAnnounce(41117, 3)--Change to special Warning
 local warnPhase4			= mod:NewPhaseAnnounce(4)
 local warnPhase4Soon		= mod:NewPrePhaseAnnounce(4, 3)
 local warnEnrage			= mod:NewSpellAnnounce(40683, 3)
@@ -45,12 +44,12 @@ local specWarnParasite		= mod:NewSpecialWarningYou(41917)
 local specWarnBarrage		= mod:NewSpecialWarningYou(40585)
 local specWarnFlame			= mod:NewSpecialWarningYou(40932)
 
-local timerParasite			= mod:NewTargetTimer(10, 41917)
+local timerParasite			= mod:NewTargetTimer(10, 41917, nil, nil, nil, 1)
 local timerBarrage			= mod:NewTargetTimer(10, 40585)
 local timerNextBarrage		= mod:NewCDTimer(44, 40585)
 --local timerFlame			= mod:NewTargetTimer(60, 40932)
 local timerNextFlameBurst	= mod:NewCDTimer(20, 41131)
-local timerShadowDemon		= mod:NewCDTimer(34, 41117)
+local timerShadowDemon		= mod:NewCDTimer(34, 41117, nil, nil, nil, 1)
 local timerNextHuman		= mod:NewTimer(74, "TimerNextHuman", 97061, nil, nil, 6)
 local timerNextDemon		= mod:NewTimer(60, "TimerNextDemon", 40506, nil, nil, 6)
 local timerEnrage			= mod:NewBuffActiveTimer(10, 40683)
@@ -86,9 +85,15 @@ function mod:OnCombatStart(delay)
 	self.vb.warned_preP2 = false
 	self.vb.warned_preP4 = false
 	berserkTimer:Start(-delay)
+	if not self:IsTrivial(85) then
+		self:RegisterShortTermEvents(
+			"UNIT_HEALTH_FREQUENT boss1"
+		)
+	end
 end
 
 function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
 	end
@@ -199,7 +204,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:UNIT_HEALTH(uId)
+function mod:UNIT_HEALTH_FREQUENT(uId)
 	local cid = self:GetUnitCreatureId(uId)
 	if not self.vb.warned_preP2 and cid == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
 		self.vb.warned_preP2 = true

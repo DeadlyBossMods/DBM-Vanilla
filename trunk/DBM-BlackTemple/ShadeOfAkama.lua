@@ -8,7 +8,7 @@ mod:SetModelID(21357)
 mod:SetZone()
 
 mod:RegisterCombat("combat")
-mod:SetWipeTime(30)
+mod:SetWipeTime(50)--Adds come about every 50 seconds, so require at least this long to wipe combat if they die instantly
 
 --mod:RegisterEvents(
 --	"SPELL_AURA_REMOVED 34189"
