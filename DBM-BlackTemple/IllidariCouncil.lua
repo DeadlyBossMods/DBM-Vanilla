@@ -12,7 +12,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 41455",
-	"SPELL_HEAL 41455",
+	"SPELL_CAST_SUCCESS 41455",
 	"SPELL_INTERRUPT",
 	"SPELL_AURA_APPLIED 41485 41481 41482 41541 41476 41475 41452 41453 41450 41451",
 	"SPELL_AURA_REMOVED 41479 41485"
@@ -113,15 +113,14 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
-function mod:SPELL_HEAL(_, _, _, _, _, _, _, _, spellId)
+function mod:SPELL_CAST_SUCCESS(args)
 	if spellId == 41455 then
-		timerNextCoH:Start(19)
+		timerNextCoH:Start(13.3)
 	end
 end
 
 function mod:SPELL_INTERRUPT(args)
 	if type(args.extraSpellId) == "number" and args.extraSpellId == 41455 then
 		timerCoH:Cancel()
-		timerNextCoH:Start()
 	end
 end

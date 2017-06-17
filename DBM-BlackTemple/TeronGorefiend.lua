@@ -16,8 +16,9 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 40239"
 )
 
+--Incinerate useful?
 local warnCrushed			= mod:NewTargetAnnounce(40243, 3)
-local warnIncinerate		= mod:NewTargetAnnounce(40239, 3)
+local warnIncinerate		= mod:NewSpellAnnounce(40239, 3)
 local warnDeath				= mod:NewTargetAnnounce(40251, 3)
 
 local specWarnDeath			= mod:NewSpecialWarningYou(40251)
@@ -77,6 +78,6 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 40239 then
-		warnIncinerate:Show(args.destName)
+		warnIncinerate:Show()
 	end
 end
