@@ -109,15 +109,15 @@ function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.PhaseKite or msg:find(L.PhaseKite) then
 		warnPhase:Show(L.Kite)
 		timerPhase:Start(L.Tank)
-		self:Unschedule(ScanTarget)
-		self:Schedule(4, ScanTarget, self)
+		--self:Unschedule(ScanTarget)
+		--self:Schedule(4, ScanTarget, self)
 		if self.vb.lastTarget ~= "None" then
 			self:SetIcon(self.vb.lastTarget, 0)
 		end
 	elseif msg == L.PhaseTank or msg:find(L.PhaseTank) then
 		warnPhase:Show(L.Tank)
 		timerPhase:Start(L.Kite)
-		self:Unschedule(ScanTarget)
+		--self:Unschedule(ScanTarget)
 		if self.vb.lastTarget ~= "None" then
 			self:SetIcon(self.vb.lastTarget, 0)
 		end
