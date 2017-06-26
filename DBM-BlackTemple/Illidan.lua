@@ -45,7 +45,7 @@ local warnCaged				= mod:NewSpellAnnounce(40695, 3)
 local specWarnParasite		= mod:NewSpecialWarningYou(41917, nil, nil, nil, 1, 2)
 local specWarnBarrage		= mod:NewSpecialWarningMoveAway(40585, nil, nil, nil, 1, 2)
 local specWarnShadowDemon	= mod:NewSpecialWarningSwitch(41117, "Dps", nil, nil, 3, 2)
---local specWarnGTFO		= mod:NewSpecialWarningGTFO(40018, nil, nil, nil, 1, 2)
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(40018, nil, nil, nil, 1, 2)
 
 local timerParasite			= mod:NewTargetTimer(10, 41917, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
 local timerBarrage			= mod:NewTargetTimer(10, 40585, nil, nil, nil, 3)
@@ -66,7 +66,7 @@ local berserkTimer			= mod:NewBerserkTimer(1500)
 local voiceParasite			= mod:NewVoice(41917)--targetyou
 local voiceBarrage			= mod:NewVoice(40585)--runout/keepmove
 local voiceShadowDemon		= mod:NewVoice(41117, "Dps")--killmob
---local voiceGTFO				= mod:NewVoice(40018, nil, DBM_CORE_AUTO_VOICE4_OPTION_TEXT)--killmob
+local voiceGTFO				= mod:NewVoice(40018, nil, DBM_CORE_AUTO_VOICE4_OPTION_TEXT)--runaway
 
 mod:AddRangeFrameOption(6, 40932)--Spell is 5 yards, but give it 6 or good measure since 5 yard check is probably least precise one since nerfs.
 mod:AddSetIconOption("ParasiteIcon", 41917)
@@ -95,8 +95,8 @@ function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	if not self:IsTrivial(85) then
 		self:RegisterShortTermEvents(
-			--"SPELL_DAMAGE 40841",
-			--"SPELL_MISSED 40841",
+			"SPELL_DAMAGE 40841",
+			"SPELL_MISSED 40841",
 			"UNIT_HEALTH_FREQUENT boss1"
 		)
 	end
@@ -196,7 +196,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
---[[
 function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 40841 and self:AntiSpam(4, 5) then--Flame Crash
 		specWarnGTFO:Show()
@@ -204,7 +203,6 @@ function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
---]]
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
