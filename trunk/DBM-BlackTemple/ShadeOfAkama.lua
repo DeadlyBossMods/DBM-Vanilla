@@ -22,10 +22,10 @@ local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnDefender		= mod:NewSpellAnnounce("ej15615", 2, 41180)
 local warnSorc			= mod:NewSpellAnnounce("ej15606", 2, 40520)
 
-local specWarnAdds		= mod:NewSpecialWarningAdds(216726, "-Healer", nil, nil, 1, 2)--NewSpecialWarningAddsCustom after next core update
+local specWarnAdds		= mod:NewSpecialWarningAddsCustom(216726, "-Healer", nil, nil, 1, 2)
 
 local timerCombatStart	= mod:NewCombatTimer(12)
-local timerAddsCD		= mod:NewAddsTimer(25, 216726)--NewAddsCustomTimer
+local timerAddsCD		= mod:NewAddsCustomTimer(25, 216726)--NewAddsCustomTimer
 local timerDefenderCD	= mod:NewNextTimer(25, "ej15615", nil, nil, nil, 1, 41180)
 local timerSorcCD		= mod:NewNextTimer(25, "ej15606", nil, nil, nil, 1, 40520)
 
@@ -36,24 +36,24 @@ mod.vb.AddsWestCount = 0
 
 local function addsWestLoop(self)
 	self.vb.AddsWestCount = self.vb.AddsWestCount + 1
-	specWarnAdds:Show(DBM_CORE_WEST or "West")
+	specWarnAdds:Show(DBM_CORE_WEST)
 	voiceAdds:Play("killmob")
 	voiceAdds:Schedule(1, "west")
 	if self.vb.AddsWestCount == 2 then--Special
 		self:Schedule(51, addsWestLoop, self)
-		timerAddsCD:Start(51, DBM_CORE_WEST or "West")
+		timerAddsCD:Start(51, DBM_CORE_WEST)
 	else
 		self:Schedule(47, addsWestLoop, self)
-		timerAddsCD:Start(47, DBM_CORE_WEST or "West")
+		timerAddsCD:Start(47, DBM_CORE_WEST)
 	end
 end
 
 local function addsEastLoop(self)
-	specWarnAdds:Show(DBM_CORE_EAST or "East")
+	specWarnAdds:Show(DBM_CORE_EAST)
 	voiceAdds:Play("killmob")
 	voiceAdds:Schedule(1, "east")
 	self:Schedule(51, addsEastLoop, self)
-	timerAddsCD:Start(51, DBM_CORE_EAST or "East")
+	timerAddsCD:Start(51, DBM_CORE_EAST)
 end
 
 local function sorcLoop(self)
