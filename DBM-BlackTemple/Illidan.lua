@@ -196,8 +196,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
-	if spellId == 40841 and self:AntiSpam(4, 5) then--Flame Crash
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if spellId == 40841 and destGUID == UnitGUID("player") and self:AntiSpam(4, 5) then--Flame Crash
 		specWarnGTFO:Show()
 		voiceGTFO:Play("runaway")
 	end
