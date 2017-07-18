@@ -58,13 +58,13 @@ end
 
 local function sorcLoop(self)
 	warnSorc:Show()
-	self:Schedule(25, addsEastLoop, self)
+	self:Schedule(25, sorcLoop, self)
 	timerSorcCD:Start(25)
 end
 
 local function defenderLoop(self)
 	warnDefender:Show()
-	self:Schedule(30, addsEastLoop, self)
+	self:Schedule(30, defenderLoop, self)
 	timerDefenderCD:Start(30)
 end
 
