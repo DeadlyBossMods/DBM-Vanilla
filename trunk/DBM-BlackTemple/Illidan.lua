@@ -25,6 +25,8 @@ mod:RegisterEventsInCombat(
 --Parasites in phase 1? if so range frame needs to be more phases
 --TODO, flame crash timer 26?
 --TODO, phase 4 log where I don't overkill boss too fast.
+--TODO, add shear warning (defensive) to prevent application all together, taunt swap if it does get applied
+--TODO, fire for elementals added to GTFO
 local warnParasite			= mod:NewTargetAnnounce(41917, 3)
 local warnDrawSoul			= mod:NewSpellAnnounce(40904, 3, nil, "Tank", 2)--Needed?
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2, 3)
@@ -45,7 +47,7 @@ local warnCaged				= mod:NewSpellAnnounce(40695, 3)
 local specWarnParasite		= mod:NewSpecialWarningYou(41917, nil, nil, nil, 1, 2)
 local specWarnBarrage		= mod:NewSpecialWarningMoveAway(40585, nil, nil, nil, 1, 2)
 local specWarnShadowDemon	= mod:NewSpecialWarningSwitch(41117, "Dps", nil, nil, 3, 2)
-local specWarnGTFO			= mod:NewSpecialWarningGTFO(40018, nil, nil, nil, 1, 2)
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(40841, nil, nil, nil, 1, 2)
 
 local timerParasite			= mod:NewTargetTimer(10, 41917, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
 local timerBarrage			= mod:NewTargetTimer(10, 40585, nil, nil, nil, 3)
@@ -66,7 +68,7 @@ local berserkTimer			= mod:NewBerserkTimer(1500)
 local voiceParasite			= mod:NewVoice(41917)--targetyou
 local voiceBarrage			= mod:NewVoice(40585)--runout/keepmove
 local voiceShadowDemon		= mod:NewVoice(41117, "Dps")--killmob
-local voiceGTFO				= mod:NewVoice(40018, nil, DBM_CORE_AUTO_VOICE4_OPTION_TEXT)--runaway
+local voiceGTFO				= mod:NewVoice(40841, nil, DBM_CORE_AUTO_VOICE4_OPTION_TEXT)--runaway
 
 mod:AddRangeFrameOption(6, 40932)--Spell is 5 yards, but give it 6 or good measure since 5 yard check is probably least precise one since nerfs.
 mod:AddSetIconOption("ParasiteIcon", 41917)
@@ -190,7 +192,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerShadowDemon:Cancel()
 		timerNextHuman:Cancel()
 		timerNextDemon:Cancel()
-		timerPhase4:Show()
+		timerPhase4:Start()
 		warnPhase4:Schedule(30)
 		timerNextDemon:Start(92)--Verify timer with this trigger, I keep overkilling boss :\
 	end
@@ -232,7 +234,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerNextFlameBurst:Start()
 		timerShadowDemon:Start()
 		self:Schedule(74, humanForms, self)
-	elseif msg == L.Phase4 or msg:find(L.Phase4) and self.vb.phase < 4 then
+	elseif (msg == L.Phase4 or msg:find(L.Phase4)) and self.vb.phase < 4 then
 		self.vb.phase = 4
 		self.vb.warned_preP4 = true
 		self:Unschedule(humanForms)
@@ -242,7 +244,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerShadowDemon:Cancel()
 		timerNextHuman:Cancel()
 		timerNextDemon:Cancel()
-		timerPhase4:Show()
+		timerPhase4:Start()
 		warnPhase4:Schedule(30)
 		timerNextDemon:Start(92)--Verify timer with this trigger, I keep overkilling boss :\
 	end
