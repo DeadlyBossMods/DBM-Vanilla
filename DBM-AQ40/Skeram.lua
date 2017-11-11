@@ -24,25 +24,21 @@ local timerMindControl	= mod:NewBuffActiveTimer(20, 785)
 
 mod:AddBoolOption("SetIconOnMC", true)
 
-local split1
-local split2
-local split3
 local MCTargets = {}
-local MCIcon = 8
+mod.vb.splitCount = 0
+mod.vb.MCIcon = 8
 
 function mod:OnCombatStart(delay)
-	split1 = false
-	split2 = false
-	split3 = false
+	self.vb.splitCount = 0
 	table.wipe(MCTargets)
-	MCIcon = 8
+	self.vb.MCIcon = 8
 end
 
-local function warnMCTargets()
+local function warnMCTargets(self)
 	warnMindControl:Show(table.concat(MCTargets, "<, >"))
 	timerMindControl:Start()
 	table.wipe(MCTargets)
-	MCIcon = 8
+	self.vb.MCIcon = 8
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -50,14 +46,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		MCTargets[#MCTargets + 1] = args.destName
 		self:Unschedule(warnMCTargets)
 		if #MCTargets >= 3 then
-			warnMCTargets()
+			warnMCTargets(self)
 		else
-			self:Schedule(0.5, warnMCTargets)
+			self:Schedule(0.5, warnMCTargets, self)
 		end
 		if self.Options.SetIconOnMC then
-			self:SetIcon(args.destName, MCIcon)
-			MCIcon = MCIcon - 1
+			self:SetIcon(args.destName, self.vb.MCIcon)
 		end
+		self.vb.MCIcon = self.vb.MCIcon - 1
 	end
 end
 
@@ -82,15 +78,15 @@ end
 function mod:UNIT_HEALTH(uId)
 	if self:GetUnitCreatureId(uId) == 15263 then
 		local percent = UnitHealth(uId) / UnitHealthMax(uId) * 100
-		if percent <= 81 and percent >= 77 and not split1 then
+		if percent <= 81 and percent >= 77 and self.vb.splitCount < 1 then
 			warnSummonSoon:Show()
-			split1 = true
-		elseif percent <= 56 and percent >= 52 and not split2 then
+			self.vb.splitCount = 1
+		elseif percent <= 56 and percent >= 52 and self.vb.splitCount < 2 then
 			warnSummonSoon:Show()
-			split2 = true
-		elseif percent <= 31 and percent >= 27 and not split3 then
+			self.vb.splitCount = 2
+		elseif percent <= 31 and percent >= 27 and self.vb.splitCount < 3 then
 			warnSummonSoon:Show()
-			split3 = true
+			self.vb.splitCount = 3
 		end
 	end
 end

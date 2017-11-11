@@ -23,7 +23,7 @@ local timerTeleport			= mod:NewNextTimer(30, 800)
 local timerExplodeBugCD		= mod:NewCDTimer(8, 804, nil, false)
 local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false)
 
-local berserkTimer	=	mod:NewBerserkTimer(900)
+local berserkTimer			= mod:NewBerserkTimer(900)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start()
