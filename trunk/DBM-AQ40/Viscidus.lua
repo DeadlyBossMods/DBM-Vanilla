@@ -18,14 +18,14 @@ local warnShatter		= mod:NewAnnounce("WarnShatter", 2, 12982)
 
 local timerFrozen		= mod:NewBuffActiveTimer(30, 25937)
 
-local meleeHits = 0
+--mod.vb.meleeHits = 0
 
 function mod:OnCombatStart(delay)
-	meleeHits = 0
+--	self.vb.meleeHits = 0
 end
 
 function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
+--	self:UnregisterShortTermEvents()
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
@@ -44,11 +44,12 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	end
 end
 
+--[[
 function mod:RANGE_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, _, _, _, overkill)
 	local cid = self:GetCIDFromGUID(destGUID)
 	if cid == 15299 then
-		meleeHits = meleeHits + 1
-		if meleeHits > 30 then
+		self.vb.meleeHits = self.vb.meleeHits + 1
+		if self.vb.meleeHits > 30 then
 			self:UnregisterShortTermEvents()
 		end
 	end
@@ -57,12 +58,13 @@ end
 function mod:SWING_DAMAGE(_, _, _, _, destGUID, _, _, _, _, overkill)
 	local cid = self:GetCIDFromGUID(destGUID)
 	if cid == 15299 then
-		meleeHits = meleeHits + 1
-		if meleeHits > 30 then
+		self.vb.meleeHits = self.vb.meleeHits + 1
+		if self.vb.meleeHits > 30 then
 			self:UnregisterShortTermEvents()
 		end
 	end
 end
+--]]
 
 function mod:OnSync(msg, arg)
 	if msg == "Phase" then
@@ -75,11 +77,11 @@ function mod:OnSync(msg, arg)
 	elseif msg == "Freezing" then
 		warnFreeze:Show(2)
 	elseif msg == "Frozen" then
-		self:RegisterShortTermEvents(
+		--[[self:RegisterShortTermEvents(
 			"SWING_DAMAGE",
 			"RANGE_DAMAGE"
 		)
-		meleeHits = 0
+		self.vb.meleeHits = 0--]]
 		warnFreeze:Show(3)
 		timerFrozen:Start()
 	end

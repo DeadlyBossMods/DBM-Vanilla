@@ -18,7 +18,6 @@ local warnEyeTentacle		= mod:NewAnnounce("WarnEyeTentacle", 2)
 --local warnGiantEyeTentacle	= mod:NewAnnounce("WarnGiantEyeTentacle", 3)
 --local warnGiantClawTentacle	= mod:NewAnnounce("WarnGiantClawTentacle", 3)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
-local warnWeakened			= mod:NewAnnounce("WarnWeakened", 4)
 
 local specWarnDarkGlare		= mod:NewSpecialWarningSpell(26029, nil, nil, nil, 3)
 local specWarnWeakened		= mod:NewSpecialWarning("SpecWarnWeakened", nil, nil, nil, 2)
@@ -33,10 +32,10 @@ local timerWeakened			= mod:NewTimer(45, "TimerWeakened")
 
 mod:AddBoolOption("RangeFrame", true)
 
-local phase2
+mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
-	phase2 = false
+	self.vb.phase = 1
 	--timerClawTentacle:Start(-delay)
 	timerEyeTentacle:Start(45-delay)
 	timerDarkGlareCD:Start(48-delay)
@@ -73,7 +72,6 @@ end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg:find(L.Weakened) then
-		warnWeakened:Show()
 		specWarnWeakened:Show()
 		timerWeakened:Start()
 	end
@@ -82,7 +80,7 @@ end
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 15589 then
-		phase2 = true
+		self.vb.phase = 2
 		warnPhase2:Show()
 		self:UnscheduleMethod("EyeTentacle")
 		self:UnscheduleMethod("DarkGlare")

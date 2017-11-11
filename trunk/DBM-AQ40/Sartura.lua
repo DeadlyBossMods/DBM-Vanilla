@@ -18,9 +18,10 @@ local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
 
 local timerWhirlwind	= mod:NewBuffActiveTimer(15, 26083)
 
-local prewarn_enrage
+mod.vb.prewarn_enrage
+
 function mod:OnCombatStart(delay)
-	prewarn_enrage = false
+	self.vb.prewarn_enrage = false
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -33,8 +34,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 and self:GetUnitCreatureId(uId) == 15516 and not prewarn_enrage then
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 and self:GetUnitCreatureId(uId) == 15516 and not self.vb.prewarn_enrage then
 		warnEnrageSoon:Show()
-		prewarn_enrage = true
+		self.vb.prewarn_enrage = true
 	end
 end
