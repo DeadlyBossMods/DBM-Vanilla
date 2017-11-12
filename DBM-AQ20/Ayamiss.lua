@@ -15,7 +15,8 @@ mod:RegisterEvents(
 
 local warnPhase2	= mod:NewPhaseAnnounce(2)
 local warnParalyze	= mod:NewTargetAnnounce(25725, 3)
-local timerParalyze	= mod:NewTargetTimer(10, 25725)
+
+local timerParalyze	= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)
 
 mod.vb.phase = 1
 

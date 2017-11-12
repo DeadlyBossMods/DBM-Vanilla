@@ -18,17 +18,23 @@ local warnOrder			= mod:NewTargetAnnounce(25471)
 local warnCloud			= mod:NewSpellAnnounce(26550)
 local warnThundercrash	= mod:NewSpellAnnounce(25599)
 
-local specWarnOrder		= mod:NewSpecialWarningYou(25471)
+local specWarnOrder		= mod:NewSpecialWarningYou(25471, nil, nil, nil, 1, 2)
+local yellOrder			= mod:NewYell(25471)
 
-local timerOrder		= mod:NewTargetTimer(10, 25471)
-local timerCloud		= mod:NewBuffActiveTimer(15, 26550)
+local timerOrder		= mod:NewTargetTimer(10, 25471, nil, nil, nil, 3)
+local timerCloud		= mod:NewBuffActiveTimer(15, 26550, nil, nil, nil, 3)--? Good color?
+
+local voiceOrder		= mod:NewVoice(25471)--targetyou
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 25471 then
-		warnOrder:Show(args.destName)
 		timerOrder:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnOrder:Show()
+			voiceOrder:Play("targetyou")
+			yellOrder:Yell()
+		else
+			warnOrder:Show(args.destName)
 		end
 	end
 end
@@ -60,8 +66,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)--some of these yells have line breaks th
 	end
 end
 
-function mod:OnSync(msg, arg)
+function mod:OnSync(msg, count)
 	if msg == "Wave" then
-		warnWave:Show(arg)
+		warnWave:Show(count)
 	end
 end
