@@ -18,7 +18,7 @@ local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
 
 local timerWhirlwind	= mod:NewBuffActiveTimer(15, 26083)
 
-mod.vb.prewarn_enrage
+mod.vb.prewarn_enrage = false
 
 function mod:OnCombatStart(delay)
 	self.vb.prewarn_enrage = false

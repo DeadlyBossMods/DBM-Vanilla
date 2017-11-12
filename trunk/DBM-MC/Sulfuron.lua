@@ -15,14 +15,16 @@ mod:RegisterEvents(
 local warnInspire		= mod:NewTargetAnnounce(19779, 2, nil, "Tank|Healer")
 local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
 local warnShadowPain	= mod:NewTargetAnnounce(19776, 2, nil, false, 2)
-local warnHeal			= mod:NewCastAnnounce(19775, 3, nil, nil, false)--this may be spammy now that spellid is fixed
+local warnHeal			= mod:NewCastAnnounce(19775, 3, nil, nil, false)
 local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
 
-local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775)
+local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2)
 
-local timerInspireCD	= mod:NewCDTimer(16, 19779, nil, "Tank|Healer")--16-20
-local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer")
-local timerHeal			= mod:NewCastTimer(2, 19775, nil, false)--this may be spammy now that spellid is fixed
+local timerInspireCD	= mod:NewCDTimer(16, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)--16-20
+local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
+local timerHeal			= mod:NewCastTimer(2, 19775, nil, nil, 2, 4, nil, DBM_CORE_INTERRUPT_ICON)
+
+local voiceHeal			= mod:NewVoice(19775, "HasInterrupt")--kickcast
 
 function mod:OnCombatStart(delay)
 	timerInspireCD:Start(-delay)
@@ -45,9 +47,10 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 19775 then
 		warnHeal:Show()
-		timerHeal:Start()
-		if args.sourceGUID == UnitGUID("target") or args.sourceGUID == UnitGUID("focus") then--Only show warning/timer for your own target.
+		if self:CheckInterruptFilter(args.sourceGUID) then--Only show warning/timer for your own target.
+			timerHeal:Start()
 			specWarnHeal:Show(args.sourceName)
+			voiceHeal:Play("kickcast")
 		end
 	end
 end

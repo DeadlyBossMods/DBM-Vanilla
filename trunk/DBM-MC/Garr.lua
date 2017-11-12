@@ -15,7 +15,7 @@ mod:RegisterEvents(
 local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnImmolate			= mod:NewTargetAnnounce(15732, 2, nil, "Healer", 2)
 
-local timerAntiMagicPulseCD	= mod:NewCDTimer(16, 19492)--16-20 variation
+local timerAntiMagicPulseCD	= mod:NewCDTimer(16, 19492, nil, nil, nil, 2)--16-20 variation
 
 function mod:OnCombatStart(delay)
 	timerAntiMagicPulseCD:Start(10-delay)
