@@ -11,13 +11,17 @@ mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
-local WarnDismember		= mod:NewStackAnnounce(96, 3)
-local warnPursue		= mod:NewAnnounce("WarnPursue", 3, 62374)
+--TODO, see if CLASSIC data set has a spellID for pursuit before it can use generic alerts and voice pack suppot
+local WarnDismember				= mod:NewStackAnnounce(96, 3, nil, "Tank")
+local warnPursue				= mod:NewAnnounce("WarnPursue", 3, 62374)
 
-local specWarnDismember	= mod:NewSpecialWarningStack(96, nil, 5)
-local specWarnPursue	= mod:NewSpecialWarning("SpecWarnPursue")
+local specWarnDismember			= mod:NewSpecialWarningStack(96, nil, 5, nil, nil, 1, 6)
+local specWarnDismemberTaunt	= mod:NewSpecialWarningTaunt(96, nil, nil, nil, 1, 2)
+local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 4)
 
-local timerDismember	= mod:NewTargetTimer(10, 96)
+local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
+
+local voiceDismember			= mod:NewVoice(25646)--stackhigh/Tauntboss
 
 function mod:OnCombatStart(delay)
 	if not self:IsTrivial(80) then
@@ -35,10 +39,19 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 96 then
 		local amount = args.amount or 1
-		WarnDismember:Show(args.destName, amount)
 		timerDismember:Start(args.destName)
-		if amount >= 5 and args:IsPlayer() then
-			specWarnDismember:Show(amount)
+		if amount >= 5 then
+			if args:IsPlayer() then
+				specWarnDismember:Show(amount)
+				voiceDismember:Play("stackhigh")
+			elseif not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
+				specWarnDismemberTaunt:Show(args.destName)
+				voiceDismember:Play("tauntboss")
+			else
+				WarnDismember:Show(args.destName, amount)
+			end
+		else
+			WarnDismember:Show(args.destName, amount)
 		end
 	end
 end
@@ -49,9 +62,10 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 	local target = DBM:GetUnitFullName(target)
 	if not target then return end
 	if target then
-		warnPursue:Show(target)
 		if target == UnitName("player") then
 			specWarnPursue:Show()
+		else
+			warnPursue:Show(target)
 		end
 	end
 end

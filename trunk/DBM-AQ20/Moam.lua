@@ -14,8 +14,8 @@ mod:RegisterEvents(
 
 local warnStoneform		= mod:NewSpellAnnounce(25685, 3)
 
-local timerStoneform	= mod:NewNextTimer(90, 25685)
-local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685)
+local timerStoneform	= mod:NewNextTimer(90, 25685, nil, nil, nil, 6)
+local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685, nil, nil, nil, 6)
 
 function mod:OnCombatStart(delay)
 	timerStoneform:Start(-delay)
