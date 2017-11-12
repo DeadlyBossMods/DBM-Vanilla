@@ -13,6 +13,7 @@ mod:RegisterEvents(
 	"UNIT_DIED"
 )
 
+--TODO, def needs some special warnings, add spawn stuff, etc
 local warnWrathRag		= mod:NewSpellAnnounce(20566, 3)
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", 2)
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", 2)
@@ -22,20 +23,20 @@ local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DB
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local timerCombatStart	= mod:NewCombatTimer(73)
 
-local addDied = 0
+mod.vb.addDied = 0
 
 function mod:OnCombatStart(delay)
-	addDied = 0
+	self.vb.addDied = 0
 	timerSubmerge:Start(-delay)
 	timerWrathRag:Start(27-delay)
 end
 
-local function emerged()
+local function emerged(self)
 	timerEmerge:Cancel()
 	warnEmerge:Show()
 	timerSubmerge:Start()
 --	timerWrathRag:Start()--need to find out what it is first.
-	addDied = 0
+	self.vb.addDied = 0
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -62,17 +63,17 @@ function mod:OnSync(msg)
 		timerWrathRag:Cancel()
 		warnSubmerge:Show()
 		timerEmerge:Start()
-		self:Schedule(90, emerged)
+		self:Schedule(90, emerged, self)
 	end
 end
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 12143 then--Son of Flame
-		addDied = addDied + 1
-		if addDied == 8 then--After all 8 die he emerges immediately
+		self.vb.addDied = self.vb.addDied + 1
+		if self.vb.addDied == 8 then--After all 8 die he emerges immediately
 			self:Unschedule(emerged)
-			emerged()
+			emerged(self)
 		end
 	end
 end
