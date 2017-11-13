@@ -17,31 +17,31 @@ mod:RegisterEventsInCombat(
 )
 
 local warnClassCall		= mod:NewAnnounce("WarnClassCall", 3)
-local warnPhase			= mod:NewAnnounce("WarnPhase", 3)
+local warnPhase			= mod:NewPhaseChangeAnnounce()
 local warnPhase3Soon	= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame	= mod:NewCastAnnounce(22539, 2)
 local warnFear			= mod:NewCastAnnounce(22686, 2)
-local warnVeilShadow	= mod:NewTargetAnnounce(22687, 3)
-local warnMC			= mod:NewTargetAnnounce(22667, 4)
 
-local specwarnMC		= mod:NewSpecialWarningTarget(22667, "Tank")
+local specwarnMC		= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2)
+local specwarnVeilShadow= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 
 local timerClassCall	= mod:NewTimer(30, "TimerClassCall")
-local timerShadowFlame	= mod:NewCastTimer(2, 22539)
-local timerFearNext		= mod:NewNextTimer(30, 22686)
-local timerVeilShadow	= mod:NewTargetTimer(6, 22687)
-local timerMC			= mod:NewTargetTimer(15, 22667)
+local timerFearNext		= mod:NewNextTimer(30, 22686, nil, nil, nil, 2)
+local timerVeilShadow	= mod:NewTargetTimer(6, 22687, nil, "RemoveCurse|Tank", 2, 3, nil, DBM_CORE_CURSE_ICON)
+local timerMC			= mod:NewTargetTimer(15, 22667, nil, nil, nil, 3)
 
-local prewarn_P3
+local voiceMC			= mod:NewVoice(22667)--findmc
+local voiceVeilShadow	= mod:NewVoice(22687)--dispelnow
+
+mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
-	prewarn_P3 = false
+	self.vb.phase = 1
 end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 22539 then
 		warnShadowFlame:Show()
-		timerShadowFlame:Start()
 	elseif args.spellId == 22686 then
 		warnFear:Show()
 		timerFearNext:Start()
@@ -50,25 +50,26 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 22687 then
-		warnVeilShadow:Show(args.destName)
+		specwarnVeilShadow:Show(args.destName)
+		voiceVeilShadow:Play("dispelnow")
 		timerVeilShadow:Start(args.destName)
 	elseif args.spellId == 22667 then
-		warnMC:Show(args.destName)
 		specwarnMC:Show(args.destName)
+		voiceMC:Play("findmc")
 		timerMC:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 22687 then
-		timerVeilShadow:Cancel(args.destName)
+		timerVeilShadow:Stop(args.destName)
 	end
 end
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and not prewarn_P3 then
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self.vb.phase < 2.5 then
 		warnPhase3Soon:Show()
-		prewarn_P3 = true
+		self.vb.phase = 2.5
 	end
 end
 
@@ -107,6 +108,12 @@ function mod:OnSync(msg, arg)
 		warnClassCall:Show(arg)
 		timerClassCall:Start(arg)
 	elseif msg == "Phase" then
-		warnPhase:Show(arg)
+		local phase = tonumber(arg) or 0
+		if phase == 2 then
+			self.vb.phase = 2
+		elseif phase == 3 then
+			self.vb.phase = 3
+		end
+		warnPhase:Show(DBM_CORE_AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
 end

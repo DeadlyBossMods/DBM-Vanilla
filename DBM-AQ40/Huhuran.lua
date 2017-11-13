@@ -16,26 +16,29 @@ mod:RegisterEvents(
 )
 
 local warnSting			= mod:NewTargetAnnounce(26180, 2)
-local warnAcid			= mod:NewStackAnnounce(26050, 3)
+local warnAcid			= mod:NewStackAnnounce(26050, 3, nil, "Tank", 2)
 local warnPoison		= mod:NewSpellAnnounce(26053, 3)
-local warnEnrage		= mod:NewSpellAnnounce(26051, 2)
+local warnEnrage		= mod:NewSpellAnnounce(26051, 2, nil, "Tank", 2)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 local warnBerserk		= mod:NewSpellAnnounce(26068, 2)
 
+local specWarnAcid		= mod:NewSpecialWarningStack(26050, nil, 10, nil, nil, 1, 6)
+local specWarnAcidTaunt	= mod:NewSpecialWarningTaunt(26050, nil, nil, nil, 1, 2)
+
 local timerSting		= mod:NewBuffFadesTimer(12, 26180)
-local timerStingCD		= mod:NewCDTimer(20, 26180)
+local timerStingCD		= mod:NewCDTimer(20, 26180, nil, nil, nil, 3, nil, DBM_CORE_POISON_ICON)
 local timerPoison		= mod:NewBuffFadesTimer(8, 26053)
-local timerEnrageCD		= mod:NewNextTimer(18, 26052)
-local timerEnrage		= mod:NewBuffActiveTimer(8, 26052)
-local timerAcid			= mod:NewTargetTimer(30, 26050)
+local timerEnrageCD		= mod:NewNextTimer(18, 26051, nil, "Tank|Healer", 5, 2, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
+local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|Healer", 5, 2, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
+local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
 
-local specWarnAcid		= mod:NewSpecialWarningStack(26050, nil, 10)
+local voiceAcid			= mod:NewVoice(26050)--stackhigh/Tauntboss
 
-local prewarn_berserk
+mod.vb.prewarn_berserk = false
 local StingTargets = {}
 
 function mod:OnCombatStart(delay)
-	prewarn_berserk = false
+	self.vb.prewarn_berserk = false
 	table.wipe(StingTargets)
 end
 
@@ -63,10 +66,19 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnBerserk:Show()
 	elseif args.spellId == 26050 and not self:IsTrivial(80) then
 		local amount = args.amount or 1
-		warnAcid:Show(args.spellName, args.destName, amount)
 		timerAcid:Start(args.destName)
-		if args:IsPlayer() and amount >= 10 then
-			specWarnAcid:Show(amount)
+		if amount >= 10 then
+			if args:IsPlayer() then
+				specWarnAcid:Show(amount)
+				voiceAcid:Play("stackhigh")
+			elseif not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
+				specWarnAcidTaunt:Show(args.destName)
+				voiceAcid:Play("tauntboss")
+			else
+				warnAcid:Show(args.destName, amount)
+			end
+		else
+			warnAcid:Show(args.destName, amount)
 		end
 	end
 end
@@ -74,11 +86,11 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 26180 and args:IsPlayer() then
-		timerSting:Cancel()
+		timerSting:Stop()
 	elseif args.spellId == 26053 and args:IsPlayer() then
-		timerPoison:Cancel()
+		timerPoison:Stop()
 	elseif args.spellId == 26050 then
-		timerAcid:Cancel(args.destName)
+		timerAcid:Stop(args.destName)
 	end
 end
 
@@ -89,8 +101,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 and self:GetUnitCreatureId(uId) == 15509 and not prewarn_berserk then
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 and self:GetUnitCreatureId(uId) == 15509 and not self.vb.prewarn_berserk then
 		warnBerserkSoon:Show()
-		prewarn_berserk = true
+		self.vb.prewarn_berserk = true
 	end
 end

@@ -15,12 +15,13 @@ mod:RegisterEvents(
 	"UNIT_HEALTH boss1"
 )
 
-local warnMindControl	= mod:NewTargetAnnounce(785, 3)
+--TODO, special warning optimizing?
+local warnMindControl	= mod:NewTargetAnnounce(785, 4)
 local warnTeleport		= mod:NewSpellAnnounce(20449, 3)
 local warnSummon		= mod:NewSpellAnnounce(747, 3)
 local warnSummonSoon	= mod:NewSoonAnnounce(747, 2)
 
-local timerMindControl	= mod:NewBuffActiveTimer(20, 785)
+local timerMindControl	= mod:NewBuffActiveTimer(20, 785, nil, nil, nil, 3)
 
 mod:AddBoolOption("SetIconOnMC", true)
 

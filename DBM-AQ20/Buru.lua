@@ -12,16 +12,16 @@ mod:RegisterEvents(
 )
 
 --TODO, see if CLASSIC data set has a spellID for pursuit before it can use generic alerts and voice pack suppot
-local WarnDismember				= mod:NewStackAnnounce(96, 3, nil, "Tank")
+local WarnDismember				= mod:NewStackAnnounce(96, 3, nil, "Tank", 2)
 local warnPursue				= mod:NewAnnounce("WarnPursue", 3, 62374)
 
 local specWarnDismember			= mod:NewSpecialWarningStack(96, nil, 5, nil, nil, 1, 6)
 local specWarnDismemberTaunt	= mod:NewSpecialWarningTaunt(96, nil, nil, nil, 1, 2)
 local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 4)
 
-local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)
+local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
 
-local voiceDismember			= mod:NewVoice(25646)--stackhigh/Tauntboss
+local voiceDismember			= mod:NewVoice(96)--stackhigh/Tauntboss
 
 function mod:OnCombatStart(delay)
 	if not self:IsTrivial(80) then
