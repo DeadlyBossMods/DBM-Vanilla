@@ -8,15 +8,20 @@ mod:SetModelID(15583)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_CAST_SUCCESS 26083 26082 8269",
+	"SPELL_CAST_SUCCESS 26083 8269",
 	"UNIT_HEALTH boss1"
 )
 
+--Add sundering cleave?
 local warnEnrageSoon	= mod:NewSoonAnnounce(8269, 2)
 local warnEnrage		= mod:NewSpellAnnounce(8269, 4)
 local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
 
-local timerWhirlwind	= mod:NewBuffActiveTimer(15, 26083)
+local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, "MeleeDps", nil, nil, 4, 2)
+
+local timerWhirlwind	= mod:NewBuffActiveTimer(15, 26083, nil, nil, nil, 2)
+
+local voiceWhirlwind	= mod:NewVoice(26083, "MeleeDps")--justrun
 
 mod.vb.prewarn_enrage = false
 
@@ -25,9 +30,14 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(26083, 26082) and self:AntiSpam() then
+	if args:IsSpellID(26083) and self:AntiSpam() then--26084
 		timerWhirlwind:Start()
-		warnWhirlwind:Show()
+		if self:CheckInterruptFilter(args.sourceGUID, true) and self.Options.SpecWarn26083run then
+			specWarnWhirlwind:Show()
+			voiceWhirlwind:Play("justrun")
+		else
+			warnWhirlwind:Show()
+		end
 	elseif args.spellId == 8269 then
 		warnEnrage:Show()
 	end

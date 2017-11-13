@@ -17,6 +17,7 @@ mod:SetBossHealthInfo(
 	15511, L.Kri
 )
 
+--Is heal interruptable? should it have interrupt warning/color/icons?
 local warnFear	= mod:NewSpellAnnounce(26580, 2)
 local warnHeal	= mod:NewCastAnnounce(25807, 3)
 
@@ -24,6 +25,7 @@ local timerFear	= mod:NewBuffActiveTimer(8, 26580)
 local timerHeal	= mod:NewCastTimer(2, 25807)
 
 function mod:OnCombatStart(delay)
+
 end
 
 function mod:SPELL_AURA_APPLIED(args)

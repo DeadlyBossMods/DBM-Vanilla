@@ -16,7 +16,7 @@ mod:RegisterEvents(
 local warnFreeze		= mod:NewAnnounce("WarnFreeze", 2, 33395)
 local warnShatter		= mod:NewAnnounce("WarnShatter", 2, 12982)
 
-local timerFrozen		= mod:NewBuffActiveTimer(30, 25937)
+local timerFrozen		= mod:NewBuffActiveTimer(30, 25937, nil, nil, nil, 6)
 
 --mod.vb.meleeHits = 0
 

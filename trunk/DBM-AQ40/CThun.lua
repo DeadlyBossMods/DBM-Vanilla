@@ -12,14 +12,13 @@ mod:RegisterEvents(
 	"UNIT_DIED"
 )
 
-local warnDarkGlare			= mod:NewSpellAnnounce(26029, 4)
 local warnEyeTentacle		= mod:NewAnnounce("WarnEyeTentacle", 2)
 --local warnClawTentacle		= mod:NewAnnounce("WarnClawTentacle", 2)
 --local warnGiantEyeTentacle	= mod:NewAnnounce("WarnGiantEyeTentacle", 3)
 --local warnGiantClawTentacle	= mod:NewAnnounce("WarnGiantClawTentacle", 3)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 
-local specWarnDarkGlare		= mod:NewSpecialWarningSpell(26029, nil, nil, nil, 3)
+local specWarnDarkGlare		= mod:NewSpecialWarningSpell(26029, nil, nil, nil, 3)--Dodge?
 local specWarnWeakened		= mod:NewSpecialWarning("SpecWarnWeakened", nil, nil, nil, 2)
 
 local timerDarkGlareCD		= mod:NewNextTimer(86, 26029)
@@ -63,7 +62,6 @@ function mod:EyeTentacle()
 end
 
 function mod:DarkGlare()
-	warnDarkGlare:Show()
 	specWarnDarkGlare:Show()
 	timerDarkGlare:Start()
 	timerDarkGlareCD:Start()

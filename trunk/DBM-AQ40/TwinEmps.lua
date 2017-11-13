@@ -15,13 +15,14 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS 802 804"
 )
 
+--Audio countdown for teleport? if precise enough
 local warnTeleport			= mod:NewSpellAnnounce(800, 3)
 local warnExplodeBug		= mod:NewSpellAnnounce(804, 2, nil, false)
 local warnMutateBug			= mod:NewSpellAnnounce(802, 2, nil, false)
 
-local timerTeleport			= mod:NewNextTimer(30, 800)
-local timerExplodeBugCD		= mod:NewCDTimer(8, 804, nil, false)
-local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false)
+local timerTeleport			= mod:NewNextTimer(30, 800, nil, nil, nil, 6)
+local timerExplodeBugCD		= mod:NewCDTimer(8, 804, nil, false, nil, 1)
+local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false, nil, 1)
 
 local berserkTimer			= mod:NewBerserkTimer(900)
 
