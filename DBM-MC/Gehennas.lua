@@ -19,7 +19,7 @@ local warnFist		= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
 local specWarnRoF	= mod:NewSpecialWarningMove(19717, nil, nil, nil, 1, 2)
 
 local timerRoF		= mod:NewCDTimer(6, 19717, nil, false, nil, 3)
-local timerCurse	= mod:NewNextTimer(30, 19716, nil, nil, nil, 3, nil, DBM_CORE_HEALER_ICON)
+local timerCurse	= mod:NewNextTimer(30, 19716, nil, nil, nil, 3, nil, DBM_CORE_HEALER_ICON..DBM_CORE_CURSE_ICON)
 local timerFist		= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 
 local voiceRoF		= mod:NewVoice(19717)--runaway
