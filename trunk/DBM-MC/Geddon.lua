@@ -24,10 +24,10 @@ local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 local specWarnInferno	= mod:NewSpecialWarningSpell(19695, nil, nil, nil, 2, 2)
 
-local timerInferno		= mod:NewBuffActiveTimer(8, 19695)
-local timerBombCD		= mod:NewCDTimer(16, 20475)
-local timerBomb			= mod:NewTargetTimer(8, 20475)
-local timerArmageddon	= mod:NewCastTimer(8, 20478)
+local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 2)
+local timerBombCD		= mod:NewCDTimer(16, 20475, nil, nil, nil, 3)
+local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
+local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2)
 
 local voiceBomb			= mod:NewVoice(20475)--runout
 local voiceInferno		= mod:NewVoice(19695)--aesoon
