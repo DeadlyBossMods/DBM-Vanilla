@@ -19,25 +19,29 @@ local warnGrip			= mod:NewTargetAnnounce(31972, 3)
 local warnBurst			= mod:NewTargetAnnounce(32014, 3)
 local warnFear			= mod:NewSpellAnnounce(31970, 3)
 
-local specWarnGrip		= mod:NewSpecialWarningYou(31972)
-local specWarnBurst		= mod:NewSpecialWarningYou(32014)
+local specWarnBurst		= mod:NewSpecialWarningYou(32014, nil, nil, nil, 3, 2)
 local yellBurst			= mod:NewYell(32014)
 
-local timerFearCD		= mod:NewCDTimer(41, 31970)
+local timerFearCD		= mod:NewCDTimer(41, 31970, nil, nil, nil, 2)
+--local timerGripCD		= mod:NewCDTimer(6, 31972, nil, "RemoveCurse", nil, 3, nil, DBM_CORE_CURSE_ICON)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
+
+local voiceBurst		= mod:NewVoice(32014)--targetyou
 
 mod:AddBoolOption("BurstIcon", true)
 
 function mod:BurstTarget(targetname, uId)
 	if not targetname then return end
-	warnBurst:Show(targetname)
 	if targetname == UnitName("player") then
 		specWarnBurst:Show()
+		voiceBurst:Play("targetyou")
 		yellBurst:Yell()
-		if self.Options.BurstIcon then
-			self:SetIcon(targetname, 8, 5)
-		end
+	else
+		warnBurst:Show(targetname)
+	end
+	if self.Options.BurstIcon then
+		self:SetIcon(targetname, 8, 5)
 	end
 end
 
