@@ -23,12 +23,14 @@ local warningAsh			= mod:NewTargetAnnounce(30130, 2, nil, false)
 local WarnAir				= mod:NewAnnounce("DBM_NB_AIR_WARN", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warningBone			= mod:NewSpellAnnounce(37098, 3)
 
-local specWarnCharred		= mod:NewSpecialWarningMove(30129)
+local specWarnCharred		= mod:NewSpecialWarningMove(30129, nil, nil, nil, 1, 2)
 
 local timerNightbane		= mod:NewCombatTimer(36)
-local timerFearCD			= mod:NewCDTimer(31.5, 36922)
+local timerFearCD			= mod:NewCDTimer(31.5, 36922, nil, nil, nil, 2)
 local timerAirPhase			= mod:NewTimer(57, "timerAirPhase", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerBone				= mod:NewBuffActiveTimer(11, 37098)
+local timerBone				= mod:NewBuffActiveTimer(11, 37098, nil, nil, nil, 1)
+
+local voiceCharred			= mod:NewVoice(30129)--runaway
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.DBM_NB_EMOTE_PULL then
@@ -53,6 +55,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 30129 and args:IsPlayer() and not self:IsTrivial(85) and self:AntiSpam() then
 		specWarnCharred:Show()
+		voiceCharred:Play("runaway")
 	elseif args.spellId == 30130 then
 		warningAsh:Show(args.destName)
 	end

@@ -105,7 +105,7 @@ L:SetWarningLocalization{
 	WarnClassCall		= "%s call"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s call"
+	TimerClassCall		= "%s call ends"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Show timer for class call duration",

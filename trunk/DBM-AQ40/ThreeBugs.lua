@@ -17,12 +17,16 @@ mod:SetBossHealthInfo(
 	15511, L.Kri
 )
 
---Is heal interruptable? should it have interrupt warning/color/icons?
-local warnFear	= mod:NewSpellAnnounce(26580, 2)
-local warnHeal	= mod:NewCastAnnounce(25807, 3)
+--TODO, cd timer for fear/heal?
+local warnFear			= mod:NewSpellAnnounce(26580, 2)
+local warnHeal			= mod:NewCastAnnounce(25807, 3)
 
-local timerFear	= mod:NewBuffActiveTimer(8, 26580)
-local timerHeal	= mod:NewCastTimer(2, 25807)
+local specWarnHeal		= mod:NewSpecialWarningInterrupt(25807, "HasInterrupt", nil, nil, 1, 2)
+
+local timerFear			= mod:NewBuffActiveTimer(8, 26580, nil, nil, nil, 3)
+local timerHeal			= mod:NewCastTimer(2, 25807, nil, nil, nil, 4, nil, DBM_CORE_INTERRUPT_ICON)
+
+local voiceHeal			= mod:NewVoice(25807, "HasInterrupt")--kickcast
 
 function mod:OnCombatStart(delay)
 
@@ -37,7 +41,12 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 25807 then
-		warnHeal:Show()
+		if self.Options.SpecWarn25807interrupt then
+			specWarnHeal:Show(args.sourceName)
+			voiceHeal:Play("kickcast")
+		else
+			warnHeal:Show()
+		end
 		timerHeal:Start()
 	end
 end

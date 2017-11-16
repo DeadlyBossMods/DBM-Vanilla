@@ -15,7 +15,6 @@ mod:RegisterEventsInCombat(
 	"UNIT_HEALTH boss1"
 )
 
---TODO, classic worth adding new voices for such as "use sand"?
 local warnBreath		= mod:NewAnnounce("WarnBreath", 2, 23316)
 local warnRed			= mod:NewSpellAnnounce(23155, 2, nil, false)
 local warnGreen			= mod:NewSpellAnnounce(23169, 2, nil, false)
@@ -27,8 +26,8 @@ local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local specWarnBronze	= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 
-local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316)
-local timerEnrage		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
+local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316, nil, nil, 3)
+local timerEnrage		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage", 2, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_ENRAGE_ICON)
 
 local voiceBronze		= mod:NewVoice(23170)--useitem
 
@@ -36,7 +35,7 @@ mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
 	timerBreathCD:Start(30-delay, L.Breath1)
-	timerBreathCD:Start(-delay, L.Breath2)
+	timerBreathCD:Start(-delay, L.Breath2)--60
 	self.vb.phase = 1
 end
 
