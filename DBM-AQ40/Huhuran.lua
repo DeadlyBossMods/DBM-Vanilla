@@ -25,11 +25,12 @@ local warnBerserk		= mod:NewSpellAnnounce(26068, 2)
 local specWarnAcid		= mod:NewSpecialWarningStack(26050, nil, 10, nil, nil, 1, 6)
 local specWarnAcidTaunt	= mod:NewSpecialWarningTaunt(26050, nil, nil, nil, 1, 2)
 
-local timerSting		= mod:NewBuffFadesTimer(12, 26180)
-local timerStingCD		= mod:NewCDTimer(20, 26180, nil, nil, nil, 3, nil, DBM_CORE_POISON_ICON)
+local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_CORE_POISON_ICON..DBM_CORE_DEADLY_ICON)
+local timerStingCD		= mod:NewCDTimer(25, 26180, nil, nil, nil, 3, nil, DBM_CORE_POISON_ICON..DBM_CORE_DEADLY_ICON)
+local timerPoisonCD		= mod:NewCDTimer(11, 26053, nil, nil, nil, 3)
 local timerPoison		= mod:NewBuffFadesTimer(8, 26053)
-local timerEnrageCD		= mod:NewNextTimer(18, 26051, nil, "Tank|Healer", 5, 2, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
-local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|Healer", 5, 2, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
+local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
+local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|Healer", 2, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
 
 local voiceAcid			= mod:NewVoice(26050)--stackhigh/Tauntboss
@@ -40,6 +41,9 @@ local StingTargets = {}
 function mod:OnCombatStart(delay)
 	self.vb.prewarn_berserk = false
 	table.wipe(StingTargets)
+	timerEnrageCD:Start(9.6-delay)
+	timerPoisonCD:Start(11-delay)
+	timerStingCD:Start(25-delay)
 end
 
 local function warnStingTargets()
@@ -52,7 +56,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 26180 then
 		StingTargets[#StingTargets + 1] = args.destName
 		self:Unschedule(warnStingTargets)
-		self:Schedule(0.3, warnStingTargets)
+		self:Schedule(1, warnStingTargets)
 		if args:IsPlayer() then
 			timerSting:Start()
 		end
