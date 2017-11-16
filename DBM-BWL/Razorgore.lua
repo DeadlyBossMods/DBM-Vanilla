@@ -20,8 +20,8 @@ mod:RegisterEventsInCombat(
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
 
-local timerConflagration	= mod:NewTargetTimer(10, 23023)
-local timerAddsSpawn		= mod:NewTimer(47, "TimerAddsSpawn", 19879)--Only for start of adds, not adds after the adds.
+local timerConflagration	= mod:NewTargetTimer(10, 23023, nil, nil, nil, 3)
+local timerAddsSpawn		= mod:NewTimer(47, "TimerAddsSpawn", 19879, nil, nil, 1)--Only for start of adds, not adds after the adds.
 
 mod.vb.phase = 1
 

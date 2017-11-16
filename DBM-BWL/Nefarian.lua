@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local warnClassCall		= mod:NewAnnounce("WarnClassCall", 3)
+local warnClassCall		= mod:NewAnnounce("WarnClassCall", 3, "Interface\\Icons\\Spell_Nature_WispSplode")
 local warnPhase			= mod:NewPhaseChangeAnnounce()
 local warnPhase3Soon	= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame	= mod:NewCastAnnounce(22539, 2)
@@ -25,13 +25,13 @@ local warnFear			= mod:NewCastAnnounce(22686, 2)
 local specwarnMC		= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2)
 local specwarnVeilShadow= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 
-local timerClassCall	= mod:NewTimer(30, "TimerClassCall")
-local timerFearNext		= mod:NewNextTimer(30, 22686, nil, nil, nil, 2)
+local timerClassCall	= mod:NewTimer(30, "TimerClassCall", "Interface\\Icons\\Spell_Nature_WispSplode", nil, nil, 5)
+local timerFearNext		= mod:NewCDTimer(30, 22686, nil, nil, nil, 2)
 local timerVeilShadow	= mod:NewTargetTimer(6, 22687, nil, "RemoveCurse|Tank", 2, 3, nil, DBM_CORE_CURSE_ICON)
 local timerMC			= mod:NewTargetTimer(15, 22667, nil, nil, nil, 3)
 
 local voiceMC			= mod:NewVoice(22667)--findmc
-local voiceVeilShadow	= mod:NewVoice(22687)--dispelnow
+local voiceVeilShadow	= mod:NewVoice(22687, "RemoveCurse", nil, 2)--dispelnow
 
 mod.vb.phase = 1
 
