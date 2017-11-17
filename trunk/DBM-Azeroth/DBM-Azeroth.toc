@@ -10,6 +10,7 @@
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-World-Boss: 1
 ## X-DBM-Mod-Has-Single-Format: 1
+## X-DBM-Mod-Name: Azeroth
 ## X-DBM-Mod-Sort: 607
 ## X-DBM-Mod-MapID: 0, 1
 ## X-DBM-Mod-LoadCID: 121820,121818,121911
