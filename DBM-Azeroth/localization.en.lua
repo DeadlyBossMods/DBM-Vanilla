@@ -8,7 +8,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Kazzak is supreme!"
+	Pull		= "For the Legion! For Kil'Jaeden!"
 })
 
 -- Azuregos
@@ -31,4 +31,15 @@ L:SetGeneralLocalization{
 
 L:SetMiscLocalization({
 	Pull		= "Peace is but a fleeting dream! Let the NIGHTMARE reign!"
+})
+
+-- Ysondre
+L = DBM:GetModLocalization("Ysondre")
+
+L:SetGeneralLocalization{
+	name = "Ysondre"
+}
+
+L:SetMiscLocalization({
+	Pull		= "The strands of LIFE have been severed! The Dreamers must be avenged!"
 })

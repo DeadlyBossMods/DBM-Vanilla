@@ -13,9 +13,10 @@
 ## X-DBM-Mod-Name: Azeroth
 ## X-DBM-Mod-Sort: 607
 ## X-DBM-Mod-MapID: 0, 1
-## X-DBM-Mod-LoadCID: 121820,121818,121911
+## X-DBM-Mod-LoadCID: 121820,121818,121911,121912
 ## X-DBM-Mod-MinCoreRevision: 12473
 localization.en.lua
 KazzakClassic.lua
 Azuregos.lua
 Taerar.lua
+Ysondre.lua

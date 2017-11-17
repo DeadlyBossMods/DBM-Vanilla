@@ -22,7 +22,7 @@ local warningShadowBoltVolley	= mod:NewSpellAnnounce(243712, 2)
 
 local specWarnMark				= mod:NewSpecialWarningMoveAway(243723, nil, nil, nil, 1, 2)
 
-local timerVoidBoltCD			= mod:NewCDTimer(41.3, 243713, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)--Iffy
+local timerVoidBoltCD			= mod:NewCDTimer(20.8, 243713, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)--Iffy
 local timerMarkCD				= mod:NewCDTimer(22.2, 243723, nil, nil, nil, 3, nil, DBM_CORE_MAGIC_ICON)
 local timerShadowBoltVolleyCD	= mod:NewCDTimer(11, 243712, nil, nil, nil, 2)
 
