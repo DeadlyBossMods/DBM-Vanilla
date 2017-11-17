@@ -74,7 +74,6 @@ function mod:SPELL_CAST_START(args)
 		timerFlameCast:Start()
 		timerSpecial:Start()
 	elseif args.spellId == 29973 then
-		warningArcaneCast:Show()
 		timerArcaneExplosion:Start()
 		specWarnArcane:Show()
 		voiceArcane:Play("runtoedge")

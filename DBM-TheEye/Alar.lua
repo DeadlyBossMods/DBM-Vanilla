@@ -69,7 +69,6 @@ function mod:OnCombatStart(delay)
 				if not target and UnitCastingInfo("boss1") == buffetName then
 					target = "Dummy"
 				end
-				break
 			else
 				for uId in DBM:GetGroupMembers() do
 					if self:GetUnitCreatureId(uId.."target") == 19514 then

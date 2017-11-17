@@ -43,7 +43,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(StingTargets)
 	timerEnrageCD:Start(9.6-delay)
 	timerPoisonCD:Start(11-delay)
-	timerStingCD:Start(25-delay)
+	timerStingCD:Start(24.4-delay)
 end
 
 local function warnStingTargets()
