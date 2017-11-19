@@ -1,30 +1,28 @@
-local mod	= DBM:NewMod("Ysondre", "DBM-Azeroth")
+local mod	= DBM:NewMod("Emeriss", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(121912)--121912 TW ID, 14887 classic ID
+mod:SetCreatureID(121913)--121913 TW ID, 14889 classic ID
 --mod:SetModelID(17887)
 mod:SetZone()
 
-mod:RegisterCombat("combat_yell", L.Pull)
+--mod:RegisterCombat("combat_yell", L.Pull)
+mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 243401",
 	"SPELL_CAST_SUCCESS 243399",
 	"SPELL_AURA_APPLIED 243401",
-	"SPELL_AURA_APPLIED_DOSE 243401",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"SPELL_AURA_APPLIED_DOSE 243401"
 )
 
 --TODO, maybe taunt special warnings for classic version when it matters more.
 local warnNoxiousBreath			= mod:NewStackAnnounce(243401, 2, nil, "Tank")
-local warningLightningWave		= mod:NewSpellAnnounce(243610, 3)
 
 local specWarnSleepingFog		= mod:NewSpecialWarningDodge(243399, nil, nil, nil, 2, 2)
 
 local timerNoxiousBreathCD		= mod:NewCDTimer(19.4, 243401, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)--Iffy
 local timerSleepingFogCD		= mod:NewCDTimer(16.0, 243399, nil, nil, nil, 3)
-local timerLightningWaveCD		= mod:NewCDTimer(13.4, 243610, nil, nil, nil, 3)
 
 local voiceSleepingFog			= mod:NewVoice(243399)--watchstep
 
@@ -32,15 +30,14 @@ local voiceSleepingFog			= mod:NewVoice(243399)--watchstep
 
 function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
-		timerNoxiousBreathCD:Start(11.9-delay)
-		timerSleepingFogCD:Start(18.4-delay)
-		timerLightningWaveCD:Start(53-delay)--Iffy
+		--timerNoxiousBreathCD:Start(11.9-delay)
+		--timerSleepingFogCD:Start(18.4-delay)
 	end
 end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 243401 then
-		timerNoxiousBreathCD:Start()
+		--timerNoxiousBreathCD:Start()
 	end
 end
 
@@ -48,7 +45,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 243399 then
 		specWarnSleepingFog:Show()
 		voiceSleepingFog:Play("watchstep")
-		timerSleepingFogCD:Start()
+		--timerSleepingFogCD:Start()
 	end
 end
 
@@ -62,10 +59,3 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
-
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
-	if spellId == 243672 and self:AntiSpam(5, 1) then--Lightning Wave
-		warningLightningWave:Show()
-		timerLightningWaveCD:Start()
-	end
-end
