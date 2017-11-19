@@ -32,9 +32,9 @@ local voiceMark					= mod:NewVoice(243723)--runout
 
 function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
+		timerVoidBoltCD:Start(8.3-delay)
 		timerShadowBoltVolleyCD:Start(11.5-delay)
-		timerMarkCD:Start(17.5-delay)
-		timerVoidBoltCD:Start(23-delay)
+		timerMarkCD:Start(14.1-delay)
 	end
 end
 

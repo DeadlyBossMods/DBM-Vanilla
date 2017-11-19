@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("Taerar", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
-mod:SetCreatureID(121911)--121911 TW ID, need classic ID
+mod:SetCreatureID(121911)--121911 TW ID, 14890 classic ID
 --mod:SetModelID(17887)
 mod:SetZone()
 
