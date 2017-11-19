@@ -7,7 +7,7 @@ mod:SetEncounterID(670)
 mod:SetModelID(11986)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 20553"
 )
 

@@ -7,7 +7,7 @@ mod:SetEncounterID(717)
 mod:RegisterCombat("combat")
 mod:SetWipeTime(25)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_DIED"
 )

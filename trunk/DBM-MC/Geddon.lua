@@ -8,7 +8,7 @@ mod:SetModelID(12129)
 mod:SetUsedIcons(8)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 20475",
 	"SPELL_AURA_REMOVED 20475",
 	"SPELL_CAST_SUCCESS 19695 19659 20478"
@@ -60,7 +60,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 20475 then
-		timerBomb:Cancel(args.destName)
+		timerBomb:Stop(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 0)
 		end

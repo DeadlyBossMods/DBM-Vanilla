@@ -7,7 +7,7 @@ mod:SetEncounterID(711)
 mod:SetModelID(15583)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 26083 8269",
 	"UNIT_HEALTH boss1"
 )
@@ -17,11 +17,11 @@ local warnEnrageSoon	= mod:NewSoonAnnounce(8269, 2)
 local warnEnrage		= mod:NewSpellAnnounce(8269, 4)
 local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
 
-local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, "MeleeDps", nil, nil, 4, 2)
+local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, nil, nil, 2, 4, 2)
 
 local timerWhirlwind	= mod:NewBuffActiveTimer(15, 26083, nil, nil, nil, 2)
 
-local voiceWhirlwind	= mod:NewVoice(26083, "MeleeDps")--justrun
+local voiceWhirlwind	= mod:NewVoice(26083, nil, nil, 2)--justrun
 
 mod.vb.prewarn_enrage = false
 

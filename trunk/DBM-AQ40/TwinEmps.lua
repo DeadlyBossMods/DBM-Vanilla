@@ -10,7 +10,7 @@ mod:SetBossHealthInfo(
 	15276, L.Veklor,
 	15275, L.Veknil
 )
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 799 800",
 	"SPELL_CAST_SUCCESS 802 804"
 )

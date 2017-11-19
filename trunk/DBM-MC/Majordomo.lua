@@ -8,7 +8,7 @@ mod:SetModelID(12029)
 mod:RegisterCombat("combat")
 --mod:RegisterKill("yell", L.Kill)
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 20619 21075 20534"
 )
 
