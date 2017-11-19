@@ -7,7 +7,7 @@ mod:SetEncounterID(712)
 mod:SetModelID(15743)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 518 25832 25831"
 )
 
@@ -58,7 +58,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25646 then
-		timerWound:Cancel(args.destName)
+		timerWound:Stop(args.destName)
 	end
 end
 

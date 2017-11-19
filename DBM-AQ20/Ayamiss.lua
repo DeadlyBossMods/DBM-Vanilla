@@ -7,7 +7,7 @@ mod:SetEncounterID(722)
 mod:SetModelID(15431)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 25725",
 	"SPELL_AURA_REMOVED 25725",
 	"UNIT_HEALTH boss1"
@@ -33,7 +33,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25725 then
-		timerParalyze:Stop()
+		timerParalyze:Stop(args.destName)
 	end
 end
 

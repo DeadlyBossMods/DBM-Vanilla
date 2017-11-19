@@ -7,8 +7,9 @@ mod:SetEncounterID(669)
 mod:SetModelID(13030)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 19779 19780 19776 20294",
+	"SPELL_AURA_REMOVED 19779",
 	"SPELL_CAST_START 19775"
 )
 
@@ -41,6 +42,12 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnShadowPain:CombinedShow(0.3, args.destName)
 	elseif args.spellId == 20294 then
 		warnImmolate:CombinedShow(0.3, args.destName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args.spellId == 19779 then
+		timerInspire:Stop(args.destName)
 	end
 end
 

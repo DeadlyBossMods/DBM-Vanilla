@@ -8,8 +8,10 @@ mod:SetModelID(11121)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
+	"CHAT_MSG_MONSTER_YELL"
+)
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 20566",
-	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
 )
 

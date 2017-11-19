@@ -11,7 +11,7 @@ mod:SetWipeTime(25)--guesswork
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 22539 22686",
 	"SPELL_AURA_APPLIED 22687 22667",
-	"SPELL_AURA_REMOVED 22687",
+	"SPELL_AURA_REMOVED 22687 22667",
 	"UNIT_HEALTH boss1",
 	"CHAT_MSG_MONSTER_YELL"
 )
@@ -63,6 +63,8 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 22687 then
 		timerVeilShadow:Stop(args.destName)
+	elseif args.spellId == 22667 then
+		timerMC:Stop(args.destName)
 	end
 end
 

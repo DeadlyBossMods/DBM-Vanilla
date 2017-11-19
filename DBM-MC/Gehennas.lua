@@ -7,7 +7,7 @@ mod:SetEncounterID(665)
 mod:SetModelID(13030)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 19716 19717",
 	"SPELL_AURA_APPLIED 20277"
 )

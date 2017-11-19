@@ -7,7 +7,7 @@ mod:SetEncounterID(720)
 mod:SetModelID(15392)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 25685",
 	"SPELL_AURA_REMOVED 25685"
 )
@@ -30,7 +30,7 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25685 then
-		timerStoneformDur:Cancel()
+		timerStoneformDur:Stop()
 		timerStoneform:Start()
 	end
 end

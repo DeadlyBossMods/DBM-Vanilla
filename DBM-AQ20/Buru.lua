@@ -7,7 +7,7 @@ mod:SetEncounterID(721)
 mod:SetModelID(15654)
 mod:RegisterCombat("combat")
 
-mod:RegisterEvents(
+mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
@@ -27,7 +27,8 @@ function mod:OnCombatStart(delay)
 	if not self:IsTrivial(80) then
 		self:RegisterShortTermEvents(
 			"SPELL_AURA_APPLIED 96",
-			"SPELL_AURA_APPLIED_DOSE 96"
+			"SPELL_AURA_APPLIED_DOSE 96",
+			"SPELL_AURA_REMOVED 96"
 		)
 	end
 end
@@ -56,6 +57,12 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args.spellId == 96 then
+		timerDismember:Stop(args.destName)
+	end	
+end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 	if not msg:find(L.PursueEmote) then return end
