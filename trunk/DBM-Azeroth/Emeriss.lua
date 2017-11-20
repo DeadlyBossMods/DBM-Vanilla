@@ -57,7 +57,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			local amount = args.amount or 1
 			warnNoxiousBreath:Show(args.destName, amount)
 		end
-	elseif spellId == 243451 then
+	elseif args.spellId == 243451 then
 		--9.7-20 second timer
 		if args:IsPlayer() then
 			specWarnMushroom:Show()
