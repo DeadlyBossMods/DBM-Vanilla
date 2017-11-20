@@ -24,17 +24,21 @@ local timerTeleport			= mod:NewNextTimer(30, 800, nil, nil, nil, 6)
 local timerExplodeBugCD		= mod:NewCDTimer(8, 804, nil, false, nil, 1)
 local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false, nil, 1)
 
+local countdownTeleport		= mod:NewCountdown(30, 800)
+
 local berserkTimer			= mod:NewBerserkTimer(900)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start()
 	timerTeleport:Start(-delay)
+	countdownTeleport:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(799, 800) and self:AntiSpam() then
 		warnTeleport:Show()
 		timerTeleport:Start()
+		countdownTeleport:Start()
 	end
 end
 
