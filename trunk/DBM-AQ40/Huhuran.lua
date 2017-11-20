@@ -29,7 +29,7 @@ local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_
 local timerStingCD		= mod:NewCDTimer(25, 26180, nil, nil, nil, 3, nil, DBM_CORE_POISON_ICON..DBM_CORE_DEADLY_ICON)
 local timerPoisonCD		= mod:NewCDTimer(11, 26053, nil, nil, nil, 3)
 local timerPoison		= mod:NewBuffFadesTimer(8, 26053)
-local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
+local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)--Off by default do to ridiculous variation
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|Healer", 2, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
 
@@ -52,6 +52,13 @@ local function warnStingTargets()
 	table.wipe(StingTargets)
 end
 
+function mod:SPELL_CAST_SUCCESS(args)
+	if args.spellId == 26053 then
+		warnPoison:Show()
+		timerPoisonCD:Start()
+	end
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 26180 then
 		StingTargets[#StingTargets + 1] = args.destName
@@ -68,6 +75,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerEnrageCD:Start()
 	elseif args.spellId == 26068 then
 		warnBerserk:Show()
+		timerStingCD:Stop()
+		timerEnrageCD:Stop()
+		timerPoisonCD:Stop()
 	elseif args.spellId == 26050 and not self:IsTrivial(80) then
 		local amount = args.amount or 1
 		timerAcid:Start(args.destName)
@@ -95,12 +105,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerPoison:Stop()
 	elseif args.spellId == 26050 then
 		timerAcid:Stop(args.destName)
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26053 then
-		warnPoison:Show()
 	end
 end
 
