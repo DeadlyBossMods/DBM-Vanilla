@@ -63,5 +63,5 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
---	Pull		= "The strands of LIFE have been severed! The Dreamers must be avenged!"
+	Pull		= "Hope is a DISEASE of the soul! This land shall wither and die!"
 })
