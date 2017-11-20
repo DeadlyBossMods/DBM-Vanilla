@@ -47,7 +47,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnTeleport:Show()
 		timerTeleport:Start()
 		countdownTeleport:Start()
-	elseif spellId == 26613 and not self:IsTrivial(80) then
+	elseif args.spellId == 26613 and not self:IsTrivial(80) then
 		if args:IsPlayer() then
 			specWarnStrike:Show()
 			voiceStrike:Play("defensive")
