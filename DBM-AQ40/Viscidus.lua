@@ -18,16 +18,6 @@ local warnShatter		= mod:NewAnnounce("WarnShatter", 2, 12982)
 
 local timerFrozen		= mod:NewBuffActiveTimer(30, 25937, nil, nil, nil, 6)
 
---mod.vb.meleeHits = 0
-
-function mod:OnCombatStart(delay)
---	self.vb.meleeHits = 0
-end
-
-function mod:OnCombatEnd()
-
-end
-
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg:find(L.Phase4) then
 		self:SendSync("Phase", 1)
@@ -46,8 +36,9 @@ end
 
 function mod:OnSync(msg, arg)
 	if msg == "Phase" then
-		warnShatter:Show(tonumber(arg))
-		if tonumber(arg) == 3 then
+		local count = tonumber(arg)
+		warnShatter:Show(count)
+		if count == 3 then
 			timerFrozen:Stop()
 		end
 	elseif msg == "Slow" then

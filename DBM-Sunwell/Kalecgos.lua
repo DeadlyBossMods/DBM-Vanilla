@@ -1,4 +1,5 @@
 local mod	= DBM:NewMod("Kal", "DBM-Sunwell")
+local Kal 	= DBM:GetModByName("Kal")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision(("$Revision$"):sub(12, -3))
@@ -30,15 +31,14 @@ local timerBuffetCD		= mod:NewCDTimer(8, 45018)
 local timerPorted		= mod:NewBuffActiveTimer(60, 46021)
 local timerExhausted	= mod:NewBuffActiveTimer(60, 44867)
 
-mod:AddBoolOption("HealthFrame", true)
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ShowFrame", true)
 mod:AddBoolOption("FrameLocked", false)
 mod:AddBoolOption("FrameClassColor", true, nil, function()
-	mod:UpdateColors()
+	Kal:UpdateColors()
 end)
 mod:AddBoolOption("FrameUpwards", false, nil, function()
-	mod:ChangeFrameOrientation()
+	Kal:ChangeFrameOrientation()
 end)
 
 mod.Options.FramePoint = "CENTER"
@@ -50,7 +50,7 @@ local portCount = 1
 function mod:OnCombatStart(delay)
 	portCount = 1
 	if self.Options.ShowFrame then
-		self:CreateFrame()
+		Kal:CreateFrame()
 	end
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show()
@@ -63,7 +63,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	self:DestroyFrame()
+	Kal:DestroyFrame()
 	DBM.RangeCheck:Hide()
 end
 
@@ -104,7 +104,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				grp = 0
 				class = select(2, UnitClass("player"))
 			end
-			self:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
+			Kal:AddEntry(("%s (%d)"):format(args.destName, grp or 0), class)
 			warnPortal:Show(portCount, args.destName, grp or 0)
 			portCount = portCount + 1
 			timerNextPortal:Start(nil, portCount)
@@ -149,6 +149,6 @@ function mod:UNIT_DIED(args)
 		else
 			grp = 0
 		end
-		self:RemoveEntry(("%s (%d)"):format(args.destName, grp or 0))
+		Kal:RemoveEntry(("%s (%d)"):format(args.destName, grp or 0))
 	end
 end
