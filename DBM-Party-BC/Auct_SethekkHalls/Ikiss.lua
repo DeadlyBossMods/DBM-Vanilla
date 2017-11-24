@@ -21,8 +21,6 @@ local timerArcaneExplosion		= mod:NewCastTimer(5, 38197, nil, nil, nil, 2)
 
 local voiceArcaneExplosion		= mod:NewVoice(38197)--findshelter
 
-
-
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(38197, 40425) then
 		specWarnArcaneExplosion:Show()

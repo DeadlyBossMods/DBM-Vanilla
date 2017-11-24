@@ -14,8 +14,9 @@ mod:RegisterEventsInCombat(
 
 local warnKnockaway			= mod:NewSpellAnnounce(36512, 2)
 
-local specwarnFelFireShock	= mod:NewSpecialWarningDispel(35759, "Healer")
+local specwarnFelFireShock	= mod:NewSpecialWarningDispel(35759, "Healer", nil, nil, 1, 2)
 
+local voiceFireShock		= mod:NewVoice(35759, "Healer")--dispelnow
 local voiceKnockaway		= mod:NewVoice(36512, "Melee")--carefly
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -28,5 +29,6 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 35759 then
 		specwarnFelFireShock:Show(args.destName)
+		voiceFireShock:Play("dispelnow")
 	end
 end

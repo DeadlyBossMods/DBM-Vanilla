@@ -12,12 +12,12 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 39096"
 )
 
-local warnPolarity          = mod:NewCastAnnounce(39096)
-local warnMagicShield       = mod:NewSpellAnnounce(35158)
-local warnDamageShield      = mod:NewSpellAnnounce(35159)
+local warnPolarity          = mod:NewCastAnnounce(39096, 4)
+local warnMagicShield       = mod:NewSpellAnnounce(35158, 3)
+local warnDamageShield      = mod:NewSpellAnnounce(35159, 3)
 
-local timerMagicShield      = mod:NewBuffActiveTimer(10, 35158)
-local timerDamageShield     = mod:NewBuffActiveTimer(10, 35159)
+local timerMagicShield      = mod:NewBuffActiveTimer(10, 35158, nil, nil, nil, 5)
+local timerDamageShield     = mod:NewBuffActiveTimer(10, 35159, nil, nil, nil, 5)
 
 local enrageTimer			= mod:NewBerserkTimer(180)
 

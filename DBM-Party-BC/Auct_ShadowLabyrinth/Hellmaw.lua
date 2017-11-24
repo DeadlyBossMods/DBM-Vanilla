@@ -13,7 +13,7 @@ mod:RegisterEventsInCombat(
 
 local warnFear      = mod:NewSpellAnnounce(33547)
 
-local timerFear     = mod:NewNextTimer(25, 33547)
+local timerFear     = mod:NewNextTimer(25, 33547, nil, nil, nil, 2)
 
 local enrageTimer	= mod:NewBerserkTimer(180)
 

@@ -13,7 +13,7 @@ mod:RegisterEventsInCombat(
 
 local specWarnShell			= mod:NewSpecialWarningReflect(32358, "SpellCaster", nil, 2, 1, 2)--Casters should stop attacking, melee, doesn't do enough damage to them for them to stop
 
-local timerShell			= mod:NewBuffActiveTimer(7, 32358)
+local timerShell			= mod:NewBuffActiveTimer(7, 32358, nil, nil, nil, 5)
 
 local voiceReflect			= mod:NewVoice(38592, "SpellCaster")--stopattack
 

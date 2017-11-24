@@ -12,9 +12,9 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 34661"
 )
 
-local warnSacrifice       = mod:NewTargetAnnounce(34661)
+local warnSacrifice       = mod:NewTargetAnnounce(34661, 2)
 
-local timerSacrifice      = mod:NewTargetTimer(8, 34661)
+local timerSacrifice      = mod:NewTargetTimer(8, 34661, nil, nil, nil, 3)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 34661 then

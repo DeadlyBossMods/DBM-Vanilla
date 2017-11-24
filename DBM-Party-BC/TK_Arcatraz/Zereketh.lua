@@ -20,7 +20,7 @@ local warnVoid      = mod:NewSpellAnnounce(36119, 3)
 local specwarnNova	= mod:NewSpecialWarningSpell(39005, nil, nil, nil, 2, 2)
 local specwarnSoC	= mod:NewSpecialWarningDispel(39367, "Healer", nil, nil, 1, 2)
 
-local timerSoC      = mod:NewTargetTimer(18, 39367, nil, "Healer", 2)
+local timerSoC      = mod:NewTargetTimer(18, 39367, nil, "Healer", 2, 3)
 
 local voiceNova		= mod:NewVoice(39005) --aesoon
 local voiceSoC		= mod:NewVoice(39367, "Healer")--dispelnow
