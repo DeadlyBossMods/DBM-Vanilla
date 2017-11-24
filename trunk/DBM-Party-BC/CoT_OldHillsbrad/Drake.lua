@@ -14,7 +14,7 @@ mod:RegisterEventsInCombat(
 
 local warnShot      = mod:NewTargetAnnounce(33792)
 
-local timerShot     = mod:NewTargetTimer(6, 33792)
+local timerShot     = mod:NewTargetTimer(6, 33792, nil, nil, nil, 3)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 33792 then

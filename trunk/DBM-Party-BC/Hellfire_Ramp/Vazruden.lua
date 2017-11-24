@@ -15,16 +15,22 @@ mod:RegisterEventsInCombat(
 
 local warnMark      = mod:NewTargetAnnounce(30689)
 
-local specwarnMark  = mod:NewSpecialWarningYou(30689)
+local specwarnMark  = mod:NewSpecialWarningYou(30689, nil, nil, nil, 1, 2)
+local yellMark		= mod:NewYell(30689)
 
-local timerMark     = mod:NewTargetTimer(6, 30689)
+local timerMark     = mod:NewTargetTimer(6, 30689, nil, nil, nil, 3)
+
+local voiceMark		= mod:NewVoice(30689)--targetyou
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 30689 then
-		warnMark:Show(args.destName)
 		timerMark:Start(args.destName)
 		if args:IsPlayer() then
             specwarnMark:Show()
+            voiceMark:Play("targetyou")
+            yellMark:Yell()
+        else
+        	warnMark:Show(args.destName)
         end
 	end
 end

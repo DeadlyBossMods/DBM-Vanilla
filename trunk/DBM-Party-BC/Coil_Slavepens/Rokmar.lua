@@ -13,11 +13,14 @@ mod:RegisterEventsInCombat(
 
 local WarnFrenzy	= mod:NewSpellAnnounce(34970)
 
-local specWarnWound	= mod:NewSpecialWarningTarget(38801, "Healer")
+local specWarnWound	= mod:NewSpecialWarningTarget(38801, "Healer", nil, nil, 1, 7)
+
+local voiceWound	= mod:NewVoice(38801, "Healer")--healfull
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpellID(31956, 38801) then
 		specWarnWound:Show(args.destName)
+		voiceWound:Play("healfull")
 	elseif args.spellId == 34970 then
 		WarnFrenzy:Show(args.destName)
 	end

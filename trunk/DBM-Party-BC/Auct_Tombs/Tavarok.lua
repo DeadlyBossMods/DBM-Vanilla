@@ -20,7 +20,7 @@ local WarnPrison	= mod:NewTargetAnnounce(32361, 3)
 
 local specWarnQuake	= mod:NewSpecialWarningSpell(33919, nil, nil, nil, 2, 2)
 
-local timerPrison	= mod:NewTargetTimer(5, 32361)
+local timerPrison	= mod:NewTargetTimer(5, 32361, nil, nil, nil, 3)
 
 local voiceQuake	= mod:NewVoice(33919)--stunsoon
 
