@@ -27,15 +27,13 @@ local timerFearCD		= mod:NewCDTimer(41, 31970, nil, nil, nil, 2)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local voiceBurst		= mod:NewVoice(32014)--targetyou
-
 mod:AddBoolOption("BurstIcon", true)
 
 function mod:BurstTarget(targetname, uId)
 	if not targetname then return end
 	if targetname == UnitName("player") then
 		specWarnBurst:Show()
-		voiceBurst:Play("targetyou")
+		specWarnBurst:Play("targetyou")
 		yellBurst:Yell()
 	else
 		warnBurst:Show(targetname)

@@ -22,12 +22,10 @@ local specWarnQuake	= mod:NewSpecialWarningSpell(33919, nil, nil, nil, 2, 2)
 
 local timerPrison	= mod:NewTargetTimer(5, 32361, nil, nil, nil, 3)
 
-local voiceQuake	= mod:NewVoice(33919)--stunsoon
-
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 33919 then
 		specWarnQuake:Show()
-		voiceQuake:Play("stunsoon")
+		specWarnQuake:Play("stunsoon")
 	end
 end
 

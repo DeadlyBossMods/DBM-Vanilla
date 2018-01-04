@@ -29,9 +29,6 @@ local timerSilenceCD	= mod:NewCDTimer(18, 31344, nil, nil, nil, 2, nil, DBM_CORE
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local voiceFire			= mod:NewVoice(31340)--runaway
-local voiceDoom			= mod:NewVoice(31347)--targetyou
-
 mod:AddBoolOption("DoomIcon", true)
 
 function mod:OnCombatStart(delay)
@@ -41,12 +38,12 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 31340 and args:IsPlayer() and self:AntiSpam() then
 		specWarnFire:Show()
-		voiceFire:Play("runaway")
+		specWarnFire:Play("runaway")
 	elseif args.spellId == 31347 then
 		timerDoom:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnDoom:Show()
-			voiceDoom:Play("targetyou")
+			specWarnDoom:Play("targetyou")
 			yellDoom:Countdown(20)
 		else
 			warnDoom:Show(args.destName)

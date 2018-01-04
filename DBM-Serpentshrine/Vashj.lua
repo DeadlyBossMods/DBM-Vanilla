@@ -41,9 +41,6 @@ local timerElementalCD	= mod:NewTimer(45, "TimerElemental", 39088, nil, nil, 1)-
 local timerStrider		= mod:NewTimer(63, "TimerStrider", 475, nil, nil, 1)
 local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120, nil, nil, 1)
 
-local voiceCharge		= mod:NewVoice(38280)--runout
-local voiceToxic		= mod:NewVoice(38575)--runaway
-
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ChargeIcon", false)
 --mod:AddBoolOption("AutoChangeLootToFFA", true)
@@ -103,7 +100,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerCharge:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnCharge:Show()
-			voiceCharge:Play("runout")
+			specWarnCharge:Play("runout")
 			yellCharge:Yell()
 		else
 			warnCharge:Show(args.destName)
@@ -113,6 +110,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args.spellId == 38575 and args:IsPlayer() and self:AntiSpam() then
 		specWarnToxic:Show()
+		specWarnToxic:Play("runaway")
 	end
 end
 

@@ -30,9 +30,6 @@ local timerFearNext		= mod:NewCDTimer(30, 22686, nil, nil, nil, 2)
 local timerVeilShadow	= mod:NewTargetTimer(6, 22687, nil, "RemoveCurse|Tank", 2, 3, nil, DBM_CORE_CURSE_ICON)
 local timerMC			= mod:NewTargetTimer(15, 22667, nil, nil, nil, 3)
 
-local voiceMC			= mod:NewVoice(22667)--findmc
-local voiceVeilShadow	= mod:NewVoice(22687, "RemoveCurse", nil, 2)--dispelnow
-
 mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
@@ -51,11 +48,11 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 22687 then
 		specwarnVeilShadow:Show(args.destName)
-		voiceVeilShadow:Play("dispelnow")
+		specwarnVeilShadow:Play("dispelnow")
 		timerVeilShadow:Start(args.destName)
 	elseif args.spellId == 22667 then
 		specwarnMC:Show(args.destName)
-		voiceMC:Play("findmc")
+		specwarnMC:Play("findmc")
 		timerMC:Start(args.destName)
 	end
 end

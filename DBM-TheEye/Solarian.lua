@@ -32,9 +32,6 @@ local timerPriest		= mod:NewTimer(20, "TimerPriest", 39414, nil, nil, 1)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local voiceDomination	= mod:NewVoice(37135, "HasInterrupt")--kickcast
-local voiceWrath		= mod:NewVoice(42783)--runout
-
 mod:AddBoolOption("WrathIcon", true)
 
 function mod:OnCombatStart(delay)
@@ -47,7 +44,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerWrath:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnWrath:Show()
-			voiceWrath:Play("runout")
+			specWarnWrath:Play("runout")
 			yellWrath:Yell()
 		else
 			warnWrath:Show(args.destName)
@@ -61,7 +58,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 37135 then
 		specWarnDomination:Show(args.sourceName)
-		voiceDomination:Play("kickcast")
+		specWarnDomination:Play("kickcast")
 	end
 end
 

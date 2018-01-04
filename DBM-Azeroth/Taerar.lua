@@ -25,8 +25,6 @@ local timerNoxiousBreathCD		= mod:NewCDTimer(19.4, 243401, nil, "Tank", nil, 5, 
 local timerSleepingFogCD		= mod:NewCDTimer(21.9, 243399, nil, nil, nil, 3)
 local timerBellowingRoarCD		= mod:NewCDTimer(7.2, 243661, nil, nil, nil, 2)
 
-local voiceSleepingFog			= mod:NewVoice(243399)--watchstep
-
 --mod:AddReadyCheckOption(48620, false)
 
 function mod:OnCombatStart(delay, yellTriggered)
@@ -49,7 +47,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 243399 then
 		specWarnSleepingFog:Show()
-		voiceSleepingFog:Play("watchstep")
+		specWarnSleepingFog:Play("watchstep")
 		timerSleepingFogCD:Start()
 	end
 end

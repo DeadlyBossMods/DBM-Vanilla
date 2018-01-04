@@ -24,9 +24,6 @@ local specWarnMushroom			= mod:NewSpecialWarningYou(243451, nil, nil, nil, 1, 2)
 local timerNoxiousBreathCD		= mod:NewCDTimer(18.3, 243401, nil, "Tank", nil, 5, nil, DBM_CORE_TANK_ICON)--Iffy
 local timerSleepingFogCD		= mod:NewCDTimer(15.8, 243399, nil, nil, nil, 3)
 
-local voiceSleepingFog			= mod:NewVoice(243399)--watchstep
-local voiceMushroom				= mod:NewVoice(243451)--targetyou
-
 --mod:AddReadyCheckOption(48620, false)
 
 function mod:OnCombatStart(delay, yellTriggered)
@@ -45,7 +42,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 243399 then
 		specWarnSleepingFog:Show()
-		voiceSleepingFog:Play("watchstep")
+		specWarnSleepingFog:Play("watchstep")
 		timerSleepingFogCD:Start()
 	end
 end
@@ -61,7 +58,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		--9.7-20 second timer
 		if args:IsPlayer() then
 			specWarnMushroom:Show()
-			voiceMushroom:Play("targetyou")
+			specWarnMushroom:Play("targetyou")
 		end
 	end
 end

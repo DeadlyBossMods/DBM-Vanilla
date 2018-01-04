@@ -30,8 +30,6 @@ local timerCyclone          = mod:NewTargetTimer(6, 40321, nil, nil, nil, 3)
 local timerSpellBomb        = mod:NewTargetTimer(8, 40303, nil, nil, nil, 3)
 local timerScreechCD        = mod:NewCDTimer(30, 40184, nil, nil, nil, 2)--Best guess on screech CD. Might need tweaking.
 
-local voiceScreech			= mod:NewVoice(40184)--aesoon
-
 mod.vb.warnedbirds1 = false
 mod.vb.warnedbirds2 = false
 
@@ -44,7 +42,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 40184 then
 		specWarnScreech:Show()
-		voiceScreech:Play("aesoon")
+		specWarnScreech:Play("aesoon")
 		timerScreech:Start()
 		timerScreechCD:Start()
 	end

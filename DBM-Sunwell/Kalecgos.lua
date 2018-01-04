@@ -32,8 +32,6 @@ local timerBuffetCD		= mod:NewCDTimer(8, 45018, nil, nil, nil, 2)
 local timerPorted		= mod:NewBuffActiveTimer(60, 46021, nil, nil, nil, 6)
 local timerExhausted	= mod:NewBuffActiveTimer(60, 44867, nil, nil, nil, 6)
 
-local voiceBuffet		= mod:NewVoice(45018)--stackhigh
-
 mod:AddBoolOption("RangeFrame", true)
 mod:AddBoolOption("ShowFrame", true)
 mod:AddBoolOption("FrameLocked", false)
@@ -115,7 +113,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local amount = args.amount or 1
 		if amount >= 10 and amount % 2 == 0 then
 			specWarnBuffet:Show(amount)
-			voiceBuffet:Play("stackhigh")
+			specWarnBuffet:Play("stackhigh")
 		end
 	end
 end

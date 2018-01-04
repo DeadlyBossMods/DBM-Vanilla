@@ -32,9 +32,6 @@ local timerPhoenix			= mod:NewCDTimer(45, 44194, nil, nil, nil, 1)--45-70?
 local timerGravityLapse		= mod:NewBuffActiveTimer(35, 44194, nil, nil, nil, 6)
 local timerGravityLapseCD	= mod:NewNextTimer(13.5, 44194, nil, nil, nil, 6)
 
-local voicePyroblast		= mod:NewVoice(36819, "HasInterrupt")--kickcast
-local voicePhoenix			= mod:NewVoice(44194, "-Healer")--killmob
-
 local interruptable = false
 local phase2Started = false
 
@@ -71,7 +68,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 44194 then
 		specwarnPhoenix:Show()
-		voicePhoenix:Play("killmob")
+		specwarnPhoenix:Play("killmob")
 		timerPhoenix:Start()
 	end
 end
@@ -86,7 +83,7 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 46165 and interruptable then
         specwarnPyroblast:Show(args.destName)
-        voicePyroblast:Play("kickcast")
+        specwarnPyroblast:Play("kickcast")
 	end
 end
 

@@ -25,8 +25,6 @@ local timerPounding		= mod:NewCDTimer(13, 34162, nil, nil, nil, 2)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local voiceOrb			= mod:NewVoice(34172)--watchorb
-
 function mod:OnCombatStart(delay)
 	timerPounding:Start()
 	berserkTimer:Start(-delay)
@@ -36,7 +34,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 34172 then
 		if args:IsPlayer() then
 			specWarnOrb:Show()
-			voiceOrb:Play("watchorb")
+			specWarnOrb:Play("watchorb")
 			yellOrb:Yell()
 		else
 			warnOrb:Show(args.destName)

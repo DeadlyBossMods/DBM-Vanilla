@@ -25,8 +25,6 @@ local timerInspireCD	= mod:NewCDTimer(16, 19779, nil, "Tank|Healer", nil, 5, nil
 local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
 local timerHeal			= mod:NewCastTimer(2, 19775, nil, nil, 2, 4, nil, DBM_CORE_INTERRUPT_ICON)
 
-local voiceHeal			= mod:NewVoice(19775, "HasInterrupt")--kickcast
-
 function mod:OnCombatStart(delay)
 	timerInspireCD:Start(-delay)
 end
@@ -57,7 +55,7 @@ function mod:SPELL_CAST_START(args)
 		if self:CheckInterruptFilter(args.sourceGUID) then--Only show warning/timer for your own target.
 			timerHeal:Start()
 			specWarnHeal:Show(args.sourceName)
-			voiceHeal:Play("kickcast")
+			specWarnHeal:Play("kickcast")
 		end
 	end
 end

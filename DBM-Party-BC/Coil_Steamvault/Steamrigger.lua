@@ -21,8 +21,6 @@ local timerNet			= mod:NewTargetTimer(6, 35107, nil, nil, nil, 3)
 
 local enrageTimer		= mod:NewBerserkTimer(300)
 
-local voiceSummon		= mod:NewVoice("ej5999", "-Healer")--killmob
-
 function mod:OnCombatStart(delay)
 	if self:IsDifficulty("heroic5") then
         enrageTimer:Start(-delay)
@@ -45,6 +43,6 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Mechs then		-- Adds
 		specWarnSummon:Show()
-		voiceSummon:Play("killmob")
+		specWarnSummon:Play("killmob")
 	end
 end

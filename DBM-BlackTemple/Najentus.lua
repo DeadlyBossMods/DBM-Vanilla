@@ -26,8 +26,6 @@ local timerShield		= mod:NewCDTimer(56, 39872, nil, nil, nil, 5)
 
 local berserkTimer		= mod:NewBerserkTimer(480)
 
-local voiceSpineTank	= mod:NewVoice(39837)--tauntboss
-
 mod:AddSetIconOption("SpineIcon", 39837)
 mod:AddInfoFrameOption(39872, true)
 mod:AddRangeFrameOption("8")
@@ -71,7 +69,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if self:IsTanking(uId) then--Tank got spike and it wasn't us
 				--Taunt off spiked tank
 				specWarnSpineTank:Show(args.destName)
-				voiceSpineTank:Play("tauntboss")
+				specWarnSpineTank:Play("tauntboss")
 			end
 		end
 	end

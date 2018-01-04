@@ -25,9 +25,6 @@ local timerNoxiousBreathCD		= mod:NewCDTimer(18.3, 243401, nil, "Tank", nil, 5, 
 local timerSleepingFogCD		= mod:NewCDTimer(16.8, 243399, nil, nil, nil, 3)
 local timerShadowBoltWhirlCD	= mod:NewCDTimer(15.8, 243468, nil, nil, nil, 3)
 
-local voiceSleepingFog			= mod:NewVoice(243399)--watchstep
-local voiceShadowBoltWhirl		= mod:NewVoice(243468)--watchorb
-
 --mod:AddReadyCheckOption(48620, false)
 
 function mod:OnCombatStart(delay, yellTriggered)
@@ -42,7 +39,7 @@ function mod:SPELL_CAST_START(args)
 		timerNoxiousBreathCD:Start()
 	elseif args.spellId == 243468 then
 		specWarnShadowBoltWhirl:Show()
-		voiceShadowBoltWhirl:Play("watchorb")
+		specWarnShadowBoltWhirl:Play("watchorb")
 		timerShadowBoltWhirlCD:Start()
 	end
 end
@@ -50,7 +47,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 243399 then
 		specWarnSleepingFog:Show()
-		voiceSleepingFog:Play("watchstep")
+		specWarnSleepingFog:Play("watchstep")
 		timerSleepingFogCD:Start()
 	end
 end
