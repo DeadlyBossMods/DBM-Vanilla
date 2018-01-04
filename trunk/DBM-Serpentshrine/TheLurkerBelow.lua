@@ -27,8 +27,6 @@ local timerSpoutCD		= mod:NewCDTimer(50, 37433, nil, nil, nil, 3, nil, DBM_CORE_
 local timerSpout		= mod:NewBuffActiveTimer(22, 37433, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)
 local timerWhirlCD		= mod:NewCDTimer(18, 37363, nil, nil, nil, 2)
 
-local voiceSpout		= mod:NewVoice(37433)--watchwave
-
 mod.vb.submerged = false
 mod.vb.guardianKill = 0
 mod.vb.ambusherKill = 0
@@ -50,7 +48,7 @@ end
 function mod:RAID_BOSS_EMOTE(msg, source)
 	if (source or "") == L.name then
 		specWarnSpout:Show()
-		voiceSpout:Play("watchwave")
+		specWarnSpout:Play("watchwave")
 		timerSpout:Start()
 		timerSpoutCD:Start()
 	end

@@ -15,12 +15,10 @@ local specWarnShell			= mod:NewSpecialWarningReflect(32358, "SpellCaster", nil, 
 
 local timerShell			= mod:NewBuffActiveTimer(7, 32358, nil, nil, nil, 5)
 
-local voiceReflect			= mod:NewVoice(38592, "SpellCaster")--stopattack
-
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(32358, 38759) then
 		specWarnShell:Show(args.sourceName)
 		timerShell:Start()
-		voiceReflect:Play("stopattack")
+		specWarnShell:Play("stopattack")
 	end
 end

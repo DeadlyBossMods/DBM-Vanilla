@@ -30,8 +30,6 @@ local timerFACD			= mod:NewCDTimer(20.7, 41001, nil, nil, nil, 3)--20-28
 local timerAura			= mod:NewTimer(15, "timerAura", 22599)
 local timerShriekCD		= mod:NewCDTimer(15.8, 40823, nil, nil, nil, 2)
 
-local voiceFA			= mod:NewVoice(41001)--scatter
-
 mod:AddSetIconOption("FAIcons", 41001, true)
 
 mod.vb.prewarn_enrage = false
@@ -67,7 +65,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnFA:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
 			specWarnFA:Show()
-			voiceFA:Play("scatter")
+			specWarnFA:Play("scatter")
 		end
 		if self.Options.FAIcons then
 			self:SetSortedIcon(1, args.destName, 1)

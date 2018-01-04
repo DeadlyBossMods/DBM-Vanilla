@@ -29,8 +29,6 @@ local specWarnBronze	= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316, nil, nil, 3)
 local timerEnrage		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage", 2, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_ENRAGE_ICON)
 
-local voiceBronze		= mod:NewVoice(23170)--useitem
-
 mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
@@ -57,7 +55,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnBlack:Show()
 	elseif args.spellId == 23170 and args:IsPlayer() then
 		specWarnBronze:Show()
-		voiceBronze:Play("useitem")
+		specWarnBronze:Play("useitem")
 	elseif args.spellId == 23128 then
 		warnEnrage:Show()
 		timerEnrage:Start()

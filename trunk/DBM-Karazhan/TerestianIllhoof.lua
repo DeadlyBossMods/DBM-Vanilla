@@ -28,8 +28,6 @@ local timerSacrificeCD	= mod:NewNextTimer(43, 30115, nil, nil, nil, 1)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local voiceSacrifice	= mod:NewVoice(30115)--targetyou
-
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 end
@@ -43,7 +41,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerSacrificeCD:Start()
 		if args:IsPlayer() then
 			specWarnSacrifice:Show()
-			voiceSacrifice:Play("targetyou")
+			specWarnSacrifice:Play("targetyou")
 			yellSacrifice:Yell()
 		else
 			warningSacrifice:Show(args.destName)

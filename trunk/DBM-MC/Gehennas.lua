@@ -22,8 +22,6 @@ local timerRoF		= mod:NewCDTimer(6, 19717, nil, false, nil, 3)
 local timerCurse	= mod:NewNextTimer(30, 19716, nil, nil, nil, 3, nil, DBM_CORE_HEALER_ICON..DBM_CORE_CURSE_ICON)
 local timerFist		= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 
-local voiceRoF		= mod:NewVoice(19717)--runaway
-
 function mod:OnCombatStart(delay)
 	timerCurse:Start(6-delay)
 	if self:IsDifficulty("event40") or not self:IsTrivial(75) then--Only want to warn if it's a threat
@@ -57,7 +55,7 @@ end
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId)
 	if spellId == 19717 and destGUID == UnitGUID("player") and self:AntiSpam() then
 		specWarnRoF:Show()
-		voiceRoF:Play("runaway")
+		specWarnRoF:Play("runaway")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE

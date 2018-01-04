@@ -26,8 +26,6 @@ local timerVoidBoltCD			= mod:NewCDTimer(20.8, 243713, nil, "Tank", nil, 5, nil,
 local timerMarkCD				= mod:NewCDTimer(22.2, 243723, nil, nil, nil, 3, nil, DBM_CORE_MAGIC_ICON)
 local timerShadowBoltVolleyCD	= mod:NewCDTimer(11, 243712, nil, nil, nil, 2)
 
-local voiceMark					= mod:NewVoice(243723)--runout
-
 --mod:AddReadyCheckOption(48620, false)
 
 function mod:OnCombatStart(delay, yellTriggered)
@@ -58,7 +56,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerMarkCD:DelayedStart(0.5)
 		if args:IsPlayer() then
 			specWarnMark:Show()
-			voiceMark:Play("runout")
+			specWarnMark:Play("runout")
 		end
 	end
 end

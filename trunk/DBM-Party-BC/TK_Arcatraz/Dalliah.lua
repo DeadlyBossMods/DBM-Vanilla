@@ -21,16 +21,13 @@ local specwarnHeal		= mod:NewSpecialWarningInterrupt(39013, "-Healer", nil, nil,
 
 local timerGift			= mod:NewTargetTimer(10, 39009, nil, false, 2, 3)
 
-local voiceHeal			= mod:NewVoice(39013, "-Healer")--kickcast
-local voiceWhirlwind	= mod:NewVoice(36175, "Melee")--Whirlwind
-
 function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(39013, 36144) then
 		specwarnHeal:Show()
-		voiceHeal:Play("kickcast")
+		specwarnHeal:Play("kickcast")
 	elseif args:IsSpellID(36175, 36142) then
 		specwarnWhirlwind:Show()
-		voiceWhirlwind:Play("whirlwind")--Probably get this sound file renamed to "whirlwind" in 7.0
+		specwarnWhirlwind:Play("whirlwind")--Probably get this sound file renamed to "whirlwind" in 7.0
 	end
 end
 

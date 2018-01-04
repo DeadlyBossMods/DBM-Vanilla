@@ -25,8 +25,6 @@ local timerBreathCast		= mod:NewCastTimer(2.5, 38523, nil, nil, nil, 3)
 
 local berserkTimer			= mod:NewBerserkTimer(540)
 
-local voiceVoid				= mod:NewVoice(30533)--runaway
-
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	timerPortalPhase:Start(63.5-delay)
@@ -58,7 +56,7 @@ end
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 30533 and destGUID == UnitGUID("player") and self:AntiSpam() then
 		specWarnVoid:Show()
-		voiceVoid:Play("runaway")
+		specWarnVoid:Play("runaway")
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE

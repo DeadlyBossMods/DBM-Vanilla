@@ -32,8 +32,6 @@ local specWarnHeal		= mod:NewSpecialWarningInterrupt(38330, "HasInterrupt", nil,
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-local voiceHeal			= mod:NewVoice(211368, "HasInterrupt")--kickcast
-
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 end
@@ -52,7 +50,7 @@ function mod:SPELL_CAST_START(args)
 	if args.spellId == 38330 then
 		if self:CheckInterruptFilter(args.sourceGUID) then
 			specWarnHeal:Show(args.sourceName)
-			voiceHeal:Play("kickcast")
+			specWarnHeal:Play("kickcast")
 		end
 	end
 end

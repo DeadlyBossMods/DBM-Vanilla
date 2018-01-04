@@ -20,14 +20,12 @@ local yellMark		= mod:NewYell(30689)
 
 local timerMark     = mod:NewTargetTimer(6, 30689, nil, nil, nil, 3)
 
-local voiceMark		= mod:NewVoice(30689)--targetyou
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 30689 then
 		timerMark:Start(args.destName)
 		if args:IsPlayer() then
             specwarnMark:Show()
-            voiceMark:Play("targetyou")
+            specwarnMark:Play("targetyou")
             yellMark:Yell()
         else
         	warnMark:Show(args.destName)

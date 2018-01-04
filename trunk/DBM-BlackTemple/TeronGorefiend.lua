@@ -28,8 +28,6 @@ local timerCrushed			= mod:NewBuffActiveTimer(15, 40243, nil, "Healer", 2, 5, ni
 local timerDeath			= mod:NewTargetTimer(55, 40251, nil, nil, nil, 3)
 local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325, nil, nil, 1)
 
-local voiceDeath			= mod:NewVoice(40251)--targetyou/runout
-
 mod:AddBoolOption("CrushIcon", false)
 
 local CrushedTargets = {}
@@ -59,9 +57,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerDeath:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnDeath:Show()
-			voiceDeath:Play("targetyou")
+			specWarnDeath:Play("targetyou")
 			specWarnDeathEnding:Schedule(50)
-			voiceDeath:Schedule(50, "runout")
+			specWarnDeathEnding:ScheduleVoice(50, "runout")
 		else
 			warnDeath:Show(args.destName)
 		end
@@ -78,7 +76,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerVengefulSpirit:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnDeathEnding:Cancel()
-			voiceDeath:Cancel()
+			specWarnDeathEnding:CancelVoice()
 		end
 	end
 end

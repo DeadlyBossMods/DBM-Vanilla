@@ -33,8 +33,6 @@ local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CO
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|Healer", 2, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
 
-local voiceAcid			= mod:NewVoice(26050)--stackhigh/Tauntboss
-
 mod.vb.prewarn_berserk = false
 local StingTargets = {}
 
@@ -84,10 +82,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if amount >= 10 then
 			if args:IsPlayer() then
 				specWarnAcid:Show(amount)
-				voiceAcid:Play("stackhigh")
+				specWarnAcid:Play("stackhigh")
 			elseif not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
 				specWarnAcidTaunt:Show(args.destName)
-				voiceAcid:Play("tauntboss")
+				specWarnAcidTaunt:Play("tauntboss")
 			else
 				warnAcid:Show(args.destName, amount)
 			end

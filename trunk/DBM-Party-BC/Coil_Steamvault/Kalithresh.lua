@@ -18,8 +18,6 @@ local specWarnReflect	= mod:NewSpecialWarningReflect(31534, "-Melee", nil, nil, 
 
 local timerReflect		= mod:NewBuffActiveTimer(8, 31534, nil, nil, nil, 5)
 
-local voiceReflect		= mod:NewVoice(31534, "-Melee")--stopattack. CasterDps after new core
-
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 31543 then
 		WarnChannel:Show()
@@ -30,6 +28,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 31534 then
 		timerReflect:Start(args.destName)
 		specWarnReflect:Show(args.destName)
-		voiceReflect:Play("stopattack")
+		specWarnReflect:Play("stopattack")
 	end
 end

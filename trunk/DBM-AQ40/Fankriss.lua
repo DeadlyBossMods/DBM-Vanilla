@@ -19,8 +19,6 @@ local specWarnWoundTaunt= mod:NewSpecialWarningTaunt(25646, nil, nil, nil, 1, 2)
 
 local timerWound		= mod:NewTargetTimer(20, 25646, nil, "Tank", 2, 5, nil, DBM_CORE_TANK_ICON)
 
-local voiceWound		= mod:NewVoice(25646)--stackhigh/Tauntboss
-
 function mod:OnCombatStart(delay)
 	if not self:IsTrivial(85) then
 		self:RegisterShortTermEvents(
@@ -42,10 +40,10 @@ function mod:SPELL_AURA_APPLIED(args)
 		if amount >= 5 then
 			if args:IsPlayer() then
 				specWarnWound:Show(amount)
-				voiceWound:Play("stackhigh")
+				specWarnWound:Play("stackhigh")
 			elseif not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
 				specWarnWoundTaunt:Show(args.destName)
-				voiceWound:Play("tauntboss")
+				specWarnWoundTaunt:Play("tauntboss")
 			else
 				warnWound:Show(args.destName, amount)
 			end
