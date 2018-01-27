@@ -59,10 +59,10 @@ local timerGravity		= mod:NewBuffActiveTimer(32, 35941, nil, nil, nil, 6)
 
 local countdownPhase	= mod:NewCountdown(105, 190978)
 
-mod:AddBoolOption("HealthFrame", false)
 mod:AddBoolOption("MCIcon", true)
 mod:AddBoolOption("GazeIcon", false)
 mod:AddBoolOption("RangeFrame", true)
+mod:AddInfoFrameOption(36815, true)
 
 mod.vb.mcIcon = 8
 local warnConflagTargets = {}
@@ -98,6 +98,9 @@ function mod:OnCombatEnd()
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Hide()
 	end
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -125,10 +128,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnToy:Show(args.destName)
 		end
 	elseif args.spellId == 36815 and self.vb.phase ~= 5 then
-		self:ShowShieldHealthBar(args.destGUID, args.spellName, 80000)
-		self:ScheduleMethod(10, "RemoveShieldHealthBar", args.destGUID)
 		specWarnShield:Show()
 		timerShieldCD:Start()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:SetHeader(args.spellName)
+			DBM.InfoFrame:Show(2, "enemyabsorb", nil, UnitGetTotalAbsorbs("boss1"))
+		end
 	elseif args.spellId == 35859 and args:IsPlayer() and self:IsInCombat() and (args.amount or 1) >= 2 then
 		specWarnVapor:Show(args.amount)
 		specWarnVapor:Play("stackhigh")
@@ -140,8 +145,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 36815 and self.vb.phase ~= 5 then
 		specWarnPyro:Show(args.sourceName)
 		specWarnPyro:Play("kickcast")
-		self:UnscheduleMethod("RemoveShieldHealthBar", args.destGUID)
-		self:RemoveShieldHealthBar(args.destGUID)
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end
 	elseif args.spellId == 36797 then
 		if self.Options.MCIcon then
 			self:SetIcon(args.destName, 0)
