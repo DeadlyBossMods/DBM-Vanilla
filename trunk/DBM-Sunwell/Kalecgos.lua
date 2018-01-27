@@ -56,11 +56,6 @@ function mod:OnCombatStart(delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show()
 	end
-	if DBM.BossHealth:IsShown() then
-		DBM.BossHealth:Clear()
-		DBM.BossHealth:AddBoss(24850, L.name)
-		DBM.BossHealth:AddBoss(24892, L.Demon)
-	end
 end
 
 function mod:OnCombatEnd()

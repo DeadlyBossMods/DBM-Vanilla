@@ -64,11 +64,6 @@ function mod:OnCombatStart(delay)
 	self.vb.lastFixate = "None"
 	timerNextFrenzy:Start(49-delay)
 	warnFrenzySoon:Schedule(44-delay)
-	if DBM.BossHealth:IsShown() then
-		DBM.BossHealth:Clear()
-		DBM.BossHealth:Show(L.name)
-		DBM.BossHealth:AddBoss(23418, L.Suffering)
-	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -129,15 +124,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerMana:Start()
 		timerNextShield:Start(13)
 		timerNextDeaden:Start(28)
-		if DBM.BossHealth:IsShown() then
-			DBM.BossHealth:AddBoss(23419, L.Desire)
-		end
 	elseif args.spellId == 41337 then --Aura of Anger
 		warnPhase3:Show()
 		timerNextSoul:Start()
-		if DBM.BossHealth:IsShown() then
-			DBM.BossHealth:AddBoss(23450, L.Anger)
-		end
 	end
 end
 
@@ -176,8 +165,5 @@ function mod:OnSync(msg)
 		countdownDeaden:Cancel()
 		timerNextShock:Stop()
 		timerPhaseChange:Start()--41
-		if DBM.BossHealth:IsShown() then
-			DBM.BossHealth:Clear()
-		end
 	end
 end

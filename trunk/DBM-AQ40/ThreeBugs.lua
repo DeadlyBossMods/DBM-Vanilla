@@ -13,13 +13,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 25807",
 	"UNIT_DIED"
 )
-mod:SetBossHealthInfo(
-	15543, L.Yauj,
-	15544, L.Vem,
-	15511, L.Kri
-)
 
---TODO, cd timer for fear/heal?
 local warnFear			= mod:NewSpellAnnounce(26580, 2)
 local warnHeal			= mod:NewCastAnnounce(25807, 3)
 

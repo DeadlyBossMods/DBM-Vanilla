@@ -6,10 +6,7 @@ mod:SetCreatureID(15276, 15275)
 mod:SetEncounterID(715)
 mod:SetModelID(15778)
 mod:RegisterCombat("combat")
-mod:SetBossHealthInfo(
-	15276, L.Veklor,
-	15275, L.Veknil
-)
+
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 799 800 26613",
 	"SPELL_CAST_SUCCESS 802 804"--26613

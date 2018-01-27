@@ -19,11 +19,6 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
 
-mod:SetBossHealthInfo(
-	25165, L.Sacrolash,
-	25166, L.Alythess
-)
-
 local warnBlade				= mod:NewSpellAnnounce(45248, 3)
 local warnBlow				= mod:NewTargetAnnounce(45256, 3)
 local warnConflag			= mod:NewTargetAnnounce(45333, 3)

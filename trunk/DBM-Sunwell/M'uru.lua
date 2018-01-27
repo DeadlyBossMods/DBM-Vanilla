@@ -55,10 +55,6 @@ local function phase2(self)
 	self:Unschedule(HumanSpawn)
 	self:Unschedule(VoidSpawn)
 	timerBlackHoleCD:Start(17)
-	if DBM.BossHealth:IsShown() then
-		DBM.BossHealth:Clear()
-		DBM.BossHealth:AddBoss(25840, L.Entropius)
-	end
 end
 
 function mod:OnCombatStart(delay)

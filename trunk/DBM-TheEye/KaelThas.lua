@@ -87,11 +87,6 @@ function mod:OnCombatStart(delay)
 	self.vb.phase = 1
 	timerPhase1mob:Start(32, L.Thaladred)
 	countdownPhase:Start(32)
-	if DBM.BossHealth:IsShown() then
-		DBM.BossHealth:Clear()
-		DBM.BossHealth:Show(L.name)
-		DBM.BossHealth:AddBoss(20064, L.Thaladred)
-	end
 end
 
 function mod:OnCombatEnd()
@@ -185,10 +180,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnEgg:Show()
 		specWarnEgg:Play("killmob")
 		timerRebirth:Show()
-		DBM.BossHealth:AddBoss(21364, L.Egg)
-		self:Schedule(15, function()
-			DBM.BossHealth:RemoveBoss(21364)
-		end)
 	end
 end
 
@@ -196,41 +187,28 @@ function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 20064 then
 		timerNextGaze:Cancel()
-		DBM.BossHealth:RemoveBoss(20064)
 	elseif cid == 20060 then
 		timerFearCD:Cancel()
-		DBM.BossHealth:RemoveBoss(20060)
 	elseif cid == 20062 then
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Hide()
 		end
-		DBM.BossHealth:RemoveBoss(20062)
-	elseif cid == 20063 then
-		DBM.BossHealth:RemoveBoss(20063)
 	elseif cid == 21268 then
 		warnMobDead:Show(L.Bow)
-		DBM.BossHealth:RemoveBoss(21268)
 	elseif cid == 21269 then
 		warnMobDead:Show(L.Axe)
-		DBM.BossHealth:RemoveBoss(21269)
 	elseif cid == 21270 then
 		warnMobDead:Show(L.Mace)
-		DBM.BossHealth:RemoveBoss(21270)
 	elseif cid == 21271 then
 		warnMobDead:Show(L.Dagger)
-		DBM.BossHealth:RemoveBoss(21271)
 	elseif cid == 21272 then
 		warnMobDead:Show(L.Sword)
-		DBM.BossHealth:RemoveBoss(21272)
 	elseif cid == 21273 then
 		warnMobDead:Show(L.Shield)
-		DBM.BossHealth:RemoveBoss(21273)
 	elseif cid == 21274 then
 		warnMobDead:Show(L.Staff)
-		DBM.BossHealth:RemoveBoss(21274)
 	elseif cid == 21364 then
 		timerRebirth:Cancel()
-		DBM.BossHealth:RemoveBoss(21364)
 	end
 end
 
@@ -254,47 +232,32 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellSang or msg:find(L.YellSang) then
 		timerPhase1mob:Start(12.5, L.Sanguinar)
 		countdownPhase:Start(12.5)
-		DBM.BossHealth:AddBoss(20060, L.Sanguinar)
 	elseif msg == L.YellCaper or msg:find(L.YellCaper) then
 		timerPhase1mob:Start(7, L.Capernian)
 		countdownPhase:Start(7)
-		DBM.BossHealth:AddBoss(20062, L.Capernian)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show()
 		end
 	elseif msg == L.YellTelo or msg:find(L.YellTelo) then
 		timerPhase1mob:Start(8.4, L.Telonicus)
 		countdownPhase:Start(8.4)
-		DBM.BossHealth:AddBoss(20063, L.Telonicus)
 	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
 		self.vb.phase = 2
 		timerPhase:Start(105)
 		countdownPhase:Start()
 		warnPhase2:Show()
 		warnPhase3:Schedule(105)
-		DBM.BossHealth:AddBoss(21268, L.Bow)
-		DBM.BossHealth:AddBoss(21269, L.Axe)
-		DBM.BossHealth:AddBoss(21270, L.Mace)
-		DBM.BossHealth:AddBoss(21271, L.Dagger)
-		DBM.BossHealth:AddBoss(21272, L.Sword)
-		DBM.BossHealth:AddBoss(21273, L.Shield)
-		DBM.BossHealth:AddBoss(21274, L.Staff)
 	elseif msg == L.YellPhase3 or msg:find(L.YellPhase3) then
 		self.vb.phase = 3
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show()
 		end
 		self:Schedule(10, function()
-			DBM.BossHealth:AddBoss(20064, L.Thaladred)
-			DBM.BossHealth:AddBoss(20060, L.Sanguinar)
-			DBM.BossHealth:AddBoss(20062, L.Capernian)
-			DBM.BossHealth:AddBoss(20063, L.Telonicus)
 			timerPhase:Start(173)
 			countdownPhase:Start(173)
 		end)
 	elseif msg == L.YellPhase4 or msg:find(L.YellPhase4) then
 		self.vb.phase = 4
-		DBM.BossHealth:AddBoss(19622, L.name)
 		warnPhase4:Show()
 		timerPhase:Cancel()
 		countdownPhase:Cancel()
