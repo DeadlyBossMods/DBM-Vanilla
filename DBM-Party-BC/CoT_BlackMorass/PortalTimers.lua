@@ -18,7 +18,6 @@ local warnBossPortal		= mod:NewAnnounce("WarnBossPortal", 4, 33341)
 local timerNextPortal		= mod:NewTimer(120, "TimerNextPortal", 57687, nil, nil, 6)
 
 --mod:AddBoolOption("ShowAllPortalTimers", false, "timer")
-mod:RemoveOption("HealthFrame")
 
 local lastPortal = 0
 

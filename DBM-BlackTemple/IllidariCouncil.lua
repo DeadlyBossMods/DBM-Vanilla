@@ -18,13 +18,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 41479 41485"
 )
 
-mod:SetBossHealthInfo(
-	22949, L.Gathios,
-	22950, L.Zerevor,
-	22951, L.Malande,
-	22952, L.Veras
-)
-
 local warnPoison			= mod:NewTargetAnnounce(41485, 3, nil, "Healer", 3)
 local warnVanish			= mod:NewTargetAnnounce(41476, 3)
 local warnVanishEnd			= mod:NewEndAnnounce(41476, 3)

@@ -15,13 +15,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 38236"
 )
 
-mod:SetBossHealthInfo(
-	21214, L.name,
-	21964, L.Caribdis,
-	21965, L.Tidalvess,
-	21966, L.Sharkkis
-)
-
 local warnTotem			= mod:NewTargetAnnounce(38236, 4)
 local warnCariPower		= mod:NewSpellAnnounce(38451, 3)
 local warnTidalPower	= mod:NewSpellAnnounce(38452, 3)
