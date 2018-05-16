@@ -1,6 +1,6 @@
 ﻿## Interface: 70300
 ## X-Min-Interface: 70300
-## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Azeroth|r
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Azeroth (Classic)|r
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Azeroth|r
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0艾澤拉斯|r
 ## LoadOnDemand: 1
@@ -12,7 +12,7 @@
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-Mod-World-Boss: 1
 ## X-DBM-Mod-Has-Single-Format: 1
-## X-DBM-Mod-Name: Azeroth
+## X-DBM-Mod-Name: Azeroth (Classic)
 ## X-DBM-Mod-Name-deDE: Azeroth
 ## X-DBM-Mod-Sort: 1107
 ## X-DBM-Mod-MapID: 0, 1
