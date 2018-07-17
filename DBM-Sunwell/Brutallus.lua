@@ -43,12 +43,11 @@ local debuffName = DBM:GetSpellInfo(46394)
 local DebuffFilter
 do
 	DebuffFilter = function(uId)
-		return UnitDebuff(uId, debuffName)
+		return DBM:UnitDebuff(uId, debuffName)
 	end
 end
 
 function mod:OnCombatStart(delay)
-	debuffName = DBM:GetSpellInfo(46394)
 	self.vb.burnIcon = 8
 	timerBurnCD:Start(-delay)
 	timerStompCD:Start(-delay)
@@ -81,7 +80,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBurn:Play("targetyou")
 		end
 		if self.Options.RangeFrame then
-			if UnitDebuff("player", args.spellName) then--You have debuff, show everyone
+			if DBM:UnitDebuff("player", args.spellName) then--You have debuff, show everyone
 				DBM.RangeCheck:Show(4, nil)
 			else--You do not have debuff, only show players who do
 				DBM.RangeCheck:Show(4, DebuffFilter)

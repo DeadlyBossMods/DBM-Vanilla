@@ -50,7 +50,6 @@ local function Add(self)--An attempt to avoid ugly target scanning, but i get fe
 end
 
 function mod:OnCombatStart(delay)
-	buffetName = DBM:GetSpellInfo(34121)
 	self:AntiSpam(30, 1)--Prevent it thinking add spawn on pull and messing up first platform timer
 	self.vb.flying = false
 	self.vb.phase = 1
