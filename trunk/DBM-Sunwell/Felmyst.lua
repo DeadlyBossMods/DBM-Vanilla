@@ -133,7 +133,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 45661 and self:AntiSpam(2, 1) then
 		self:BossTargetScanner(25038, "EncapsulateTarget", 0.05, 10)
 	end

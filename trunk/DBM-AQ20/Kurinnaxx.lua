@@ -30,7 +30,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			if args:IsPlayer() then
 				specWarnWound:Show(amount)
 				specWarnWound:Play("stackhigh")
-			elseif not UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
+			elseif not DBM:UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
 				specWarnWoundTaunt:Show(args.destName)
 				specWarnWoundTaunt:Play("tauntboss")
 			else

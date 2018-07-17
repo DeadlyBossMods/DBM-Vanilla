@@ -41,7 +41,6 @@ local damageNext = {
 }
 
 function mod:OnCombatStart(delay)
-	markOfH, markOfC = DBM:GetSpellInfo(38215), DBM:GetSpellInfo(38219)
 	timerMark:Start(16-delay, markOfH, "10%")
 	berserkTimer:Start(-delay)
 	if self.Options.RangeFrame then

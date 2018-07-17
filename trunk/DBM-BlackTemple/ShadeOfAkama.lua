@@ -109,7 +109,7 @@ function mod:SWING_DAMAGE(_, sourceName)
 end
 mod.SWING_MISSED = mod.SWING_DAMAGE
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if (spellId == 40607 or spellId == 40955) and self.vb.phase == 1 then--Fixate/Summon Shade of Akama Trigger
 		self:UnregisterShortTermEvents()
 		self.vb.phase = 2

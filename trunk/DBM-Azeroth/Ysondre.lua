@@ -61,7 +61,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, _, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 243672 and self:AntiSpam(5, 1) then--Lightning Wave
 		warningLightningWave:Show()
 		timerLightningWaveCD:Start()
