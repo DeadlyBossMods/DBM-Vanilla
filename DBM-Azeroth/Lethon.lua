@@ -37,7 +37,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 243401 then
 		timerNoxiousBreathCD:Start()
-	elseif args.spellId == 243468 then
+	elseif args.spellId == 243468 and self:AntiSpam(3, 1) then
 		specWarnShadowBoltWhirl:Show()
 		specWarnShadowBoltWhirl:Play("watchorb")
 		timerShadowBoltWhirlCD:Start()
