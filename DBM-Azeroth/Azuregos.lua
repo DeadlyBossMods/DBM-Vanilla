@@ -20,8 +20,8 @@ local specWarnArcaneVacuum		= mod:NewSpecialWarningSpell(243784, nil, nil, nil, 
 local specWarnReflection		= mod:NewSpecialWarningSpell(243835, "SpellCaster", nil, nil, 1, 2)--Change to CasterDps after next core release
 
 local timerReflectionCD			= mod:NewCDTimer(15.7, 243835, nil, "SpellCaster", nil, 5, nil, DBM_CORE_DAMAGER_ICON)--15.7-30
-local timerFrostBreathCD		= mod:NewCDTimer(8.5, 243789, nil, nil, nil, 3)--8.5-20.1
-local timerArcaneVacuumCD		= mod:NewCDTimer(19.8, 243784, nil, nil, nil, 2)
+local timerFrostBreathCD		= mod:NewCDTimer(5, 243789, nil, nil, nil, 3)--8.5-20.1
+--local timerArcaneVacuumCD		= mod:NewCDTimer(19.8, 243784, nil, nil, nil, 2)
 
 --mod:AddReadyCheckOption(48620, false)
 
@@ -37,10 +37,10 @@ function mod:SPELL_CAST_START(args)
 	if args.spellId == 243784 then
 		specWarnArcaneVacuum:Show()
 		specWarnArcaneVacuum:Play("teleyou")
-		timerArcaneVacuumCD:Start()
+		--timerArcaneVacuumCD:Start()
 	elseif args.spellId == 243789 and self:AntiSpam(3, 1) then
 		warningFrostBreath:Show()
-		timerFrostBreathCD:Start()
+		--timerFrostBreathCD:Start()
 	end
 end
 
