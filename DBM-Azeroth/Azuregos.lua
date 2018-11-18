@@ -34,11 +34,11 @@ function mod:OnCombatStart(delay, yellTriggered)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 243784 then
+	if args.spellId == 243784  and self:AntiSpam(3, 1) then
 		specWarnArcaneVacuum:Show()
 		specWarnArcaneVacuum:Play("teleyou")
 		--timerArcaneVacuumCD:Start()
-	elseif args.spellId == 243789 and self:AntiSpam(3, 1) then
+	elseif args.spellId == 243789 and self:AntiSpam(3, 2) then
 		warningFrostBreath:Show()
 		--timerFrostBreathCD:Start()
 	end
