@@ -37,7 +37,7 @@ function mod:OnCombatStart(delay, yellTriggered)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 243401 then
+	if args.spellId == 243401 and self:AntiSpam(3, 1) then
 		timerNoxiousBreathCD:Start()
 	end
 end
@@ -62,7 +62,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 243672 and self:AntiSpam(5, 1) then--Lightning Wave
+	if spellId == 243672 and self:AntiSpam(5, 2) then--Lightning Wave
 		warningLightningWave:Show()
 		timerLightningWaveCD:Start()
 	end
