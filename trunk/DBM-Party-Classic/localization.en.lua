@@ -1,7 +1,7 @@
 local L
 
 -------------------------
---  Blackfathom Deeps  --
+--  Blackfathom Deeps (1)  --
 -----------------------------
 --  Ghamoo-Ra  --
 -----------------------------
@@ -73,6 +73,138 @@ L = DBM:GetModLocalization(444)
 L:SetGeneralLocalization{
 	name 		= "Aku'mai"
 }
+
+-------------------------
+--  Dire Maul-230J/429M (3)  --
+-----------------------------
+--  Zevrim Thornhoof  --
+-----------------------------
+L = DBM:GetModLocalization(402)
+
+L:SetGeneralLocalization{
+	name 		= "Zevrim Thornhoof"
+}
+-----------------------------
+--  Hydrospawn  --
+-----------------------------
+L = DBM:GetModLocalization(403)
+
+L:SetGeneralLocalization{
+	name 		= "Hydrospawn"
+}
+-----------------------------
+--  Lethtendris  --
+-----------------------------
+L = DBM:GetModLocalization(404)
+
+L:SetGeneralLocalization{
+	name 		= "Lethtendris"
+}
+-----------------------------
+--  Alzzin the Wildshaper  --
+-----------------------------
+L = DBM:GetModLocalization(405)
+
+L:SetGeneralLocalization{
+	name 		= "Alzzin the Wildshaper"
+}
+-----------------------------
+--  Tendris Warpwood  --
+-----------------------------
+L = DBM:GetModLocalization(406)
+
+L:SetGeneralLocalization{
+	name 		= "Tendris Warpwood"
+}
+-----------------------------
+--  Illyanna Ravensoak  --
+-----------------------------
+L = DBM:GetModLocalization(407)
+
+L:SetGeneralLocalization{
+	name 		= "Illyanna Ravensoak"
+}
+-----------------------------
+--  Magister Kelendris  --
+-----------------------------
+L = DBM:GetModLocalization(408)
+
+L:SetGeneralLocalization{
+	name 		= "Magister Kelendris"
+}
+-----------------------------
+--  Immol'thar  --
+-----------------------------
+L = DBM:GetModLocalization(409)
+
+L:SetGeneralLocalization{
+	name 		= "Immol'thar"
+}
+-----------------------------
+--  Prince Tortheldrin  --
+-----------------------------
+L = DBM:GetModLocalization(410)
+
+L:SetGeneralLocalization{
+	name 		= "Prince Tortheldrin"
+}
+-----------------------------
+--  Guard Mol'dar  --
+-----------------------------
+L = DBM:GetModLocalization(411)
+
+L:SetGeneralLocalization{
+	name 		= "Guard Mol'dar"
+}
+-----------------------------
+--  Stomper Kreeg  --
+-----------------------------
+L = DBM:GetModLocalization(412)
+
+L:SetGeneralLocalization{
+	name 		= "Stomper Kreeg"
+}
+-----------------------------
+--  Guard Fengus  --
+-----------------------------
+L = DBM:GetModLocalization(413)
+
+L:SetGeneralLocalization{
+	name 		= "Guard Fengus"
+}
+-----------------------------
+--  Guard Slip'kik  --
+-----------------------------
+L = DBM:GetModLocalization(414)
+
+L:SetGeneralLocalization{
+	name 		= "Guard Slip'kik"
+}
+-----------------------------
+--  Captain Kromcrush  --
+-----------------------------
+L = DBM:GetModLocalization(415)
+
+L:SetGeneralLocalization{
+	name 		= "Captain Kromcrush"
+}
+-----------------------------
+--  Cho'Rush the Observer  --
+-----------------------------
+L = DBM:GetModLocalization(416)
+
+L:SetGeneralLocalization{
+	name 		= "Cho'Rush the Observer"
+}
+-----------------------------
+--  King Gordok  --
+-----------------------------
+L = DBM:GetModLocalization(417)
+
+L:SetGeneralLocalization{
+	name 		= "King Gordok"
+}
+
 
 -------------------------
 --  Ragefire Chasm (7)  --
