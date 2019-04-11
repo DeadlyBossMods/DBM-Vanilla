@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 
 local warnInferno		= mod:NewSpellAnnounce(19695, 3)
 local warnIgnite		= mod:NewSpellAnnounce(19659, 2)
-local warnBomb			= mod:NewTargetAnnounce(20475, 4)
+local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
 local warnArmageddon	= mod:NewSpellAnnounce(20478, 3)
 
 local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)

@@ -13,7 +13,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, if BOSS isn't available in classic, common local it in core
-local warnTeleport			= mod:NewTargetAnnounce(20534)
+local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee")
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee")
