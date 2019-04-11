@@ -14,7 +14,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnCurse			= mod:NewSpellAnnounce(19713)
-local warnGrounding		= mod:NewTargetAnnounce(19714, 2, nil, "MagicDispeller")
+local warnGrounding		= mod:NewTargetNoFilterAnnounce(19714, 2, nil, "MagicDispeller")
 local warnCntrSpell		= mod:NewSpellAnnounce(19715)
 
 local specWarnGrounding	= mod:NewSpecialWarningDispel(19714, "MagicDispeller", nil, nil, 1, 2)

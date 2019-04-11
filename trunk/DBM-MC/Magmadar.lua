@@ -26,7 +26,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19451 then
 		if self.Options.SpecWarn19451dispel then
 			specWarnEnrage:Show(args.destName)
-			specWarnEnrage:Play("trannow")
+			specWarnEnrage:Play("enrage")
 		else
 			warnEnrage:Show(args.destName)
 		end
