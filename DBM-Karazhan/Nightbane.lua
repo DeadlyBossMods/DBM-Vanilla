@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("NightbaneRaid", "DBM-Karazhan")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(("$Revision$"):sub(12, -3))
+mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
 mod:SetCreatureID(17225)
 mod:SetEncounterID(662)
 mod:SetModelID(18062)
