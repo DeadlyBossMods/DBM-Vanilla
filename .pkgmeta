@@ -1,0 +1,17 @@
+package-as: DBM-BC
+enable-nolib-creation: no
+
+move-folders:
+    DBM-BC/DBM-AQ20: DBM-AQ20
+    DBM-BC/DBM-AQ40: DBM-AQ40
+    DBM-BC/DBM-Azeroth: DBM-Azeroth
+    DBM-BC/DBM-BWL: DBM-BWL
+    DBM-BC/DBM-BlackTemple: DBM-BlackTemple
+    DBM-BC/DBM-Hyjal: DBM-Hyjal
+    DBM-BC/DBM-Karazhan: DBM-Karazhan
+    DBM-BC/DBM-MC: DBM-MC
+    DBM-BC/DBM-Outlands: DBM-Outlands
+    DBM-BC/DBM-Serpentshrine: DBM-Serpentshrine
+    DBM-BC/DBM-Sunwell: DBM-Sunwell
+    DBM-BC/DBM-TheEye: DBM-TheEye
+   
