@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("Kal", "DBM-Sunwell")
 local Kal 	= DBM:GetModByName("Kal")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
+mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(24850)
 mod:SetEncounterID(724)
 mod:SetModelID(26628)

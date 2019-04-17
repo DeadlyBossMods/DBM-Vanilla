@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Muru", "DBM-Sunwell")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
+mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(25741)--25741 Muru, 25840 Entropius
 mod:SetEncounterID(728)
 mod:SetModelID(23404)

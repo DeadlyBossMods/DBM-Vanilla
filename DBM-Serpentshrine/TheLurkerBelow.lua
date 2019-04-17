@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("LurkerBelow", "DBM-Serpentshrine")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
+mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(21217)
 mod:SetEncounterID(624)
 mod:SetModelID(20216)

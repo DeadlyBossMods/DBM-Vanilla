@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Emeriss", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
+mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(121913)--121913 TW ID, 14889 classic ID
 --mod:SetModelID(17887)
 mod:SetZone()

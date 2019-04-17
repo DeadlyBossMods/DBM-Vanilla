@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod("Ossirian", "DBM-AQ20", 1)
 local L		= mod:GetLocalizedStrings()
 
-mod:SetRevision(string.sub("@file-date-integer@", 1, -5))
+mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15339)
 mod:SetEncounterID(723)
 mod:SetModelID(15432)
