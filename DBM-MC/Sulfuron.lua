@@ -24,19 +24,24 @@ local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, 
 local timerHeal			= mod:NewCastTimer(2, 19775, nil, nil, 2, 4, nil, DBM_CORE_INTERRUPT_ICON)
 
 function mod:OnCombatStart(delay)
-	timerInspireCD:Start(-delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19779 then
 		warnInspire:Show(args.destName)
-		timerInspireCD:Start()
+		timerInspireCD:Start(args.destName)
 	elseif args.spellId == 19780 and args:IsDestTypePlayer() then
 		warnHandRagnaros:CombinedShow(0.3, args.destName)
 	elseif args.spellId == 19776 then
 		warnShadowPain:CombinedShow(0.3, args.destName)
 	elseif args.spellId == 20294 then
 		warnImmolate:CombinedShow(0.3, args.destName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args.spellId == 19779 then
+		timerInspireCD:Stop(args.destName)
 	end
 end
 
