@@ -47,7 +47,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBomb:Play("runout")
 			if self:IsDifficulty("event40") or not self:IsTrivial(75) then
 				yellBomb:Yell()
-				yellBombFades:Countdown(8)
+				yellBombFades:Countdown(args.spellId)
 			end
 		else
 			warnBomb:Show(args.destName)

@@ -13,7 +13,7 @@ mod:RegisterEvents(--An exception to not use incombat events, cause boss might n
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local warnWave			= mod:NewAnnounce("WarnWave", 2, "Interface\\Icons\\Spell_Nature_WispSplode")
+local warnWave			= mod:NewAnnounce("WarnWave", 2, "136116")
 local warnOrder			= mod:NewTargetAnnounce(25471)
 local warnCloud			= mod:NewSpellAnnounce(26550)
 local warnThundercrash	= mod:NewSpellAnnounce(25599)

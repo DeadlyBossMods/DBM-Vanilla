@@ -25,7 +25,7 @@ local specWarnFlameWreath	= mod:NewSpecialWarning("DBM_ARAN_DO_NOT_MOVE", nil, n
 local specWarnArcane		= mod:NewSpecialWarningRun(29973, nil, nil, nil, 4, 7)
 local specWarnBlizzard		= mod:NewSpecialWarningMove(29951, nil, nil, nil, 1, 2)
 
-local timerSpecial			= mod:NewTimer(30, "timerSpecial", "Interface\\Icons\\INV_Enchant_EssenceMagicLarge", nil, nil, 2)
+local timerSpecial			= mod:NewTimer(30, "timerSpecial", "132866", nil, nil, 2)
 local timerFlameCast		= mod:NewCastTimer(5, 30004, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)
 local timerArcaneExplosion	= mod:NewCastTimer(10, 29973, nil, nil, nil, 2)
 local timerFlame			= mod:NewBuffActiveTimer(20.2, 29946, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)

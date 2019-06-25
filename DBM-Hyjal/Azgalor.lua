@@ -44,7 +44,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnDoom:Show()
 			specWarnDoom:Play("targetyou")
-			yellDoom:Countdown(20)
+			yellDoom:Countdown(args.spellId)
 		else
 			warnDoom:Show(args.destName)
 		end
