@@ -23,9 +23,9 @@ local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil,
 local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_CORE_TANK_ICON..DBM_CORE_HEALER_ICON)
 local timerHeal			= mod:NewCastTimer(2, 19775, nil, nil, 2, 4, nil, DBM_CORE_INTERRUPT_ICON)
 
-function mod:OnCombatStart(delay)
+--function mod:OnCombatStart(delay)
 
-end
+--end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19779 then
