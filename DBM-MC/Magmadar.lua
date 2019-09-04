@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 local warnPanic			= mod:NewSpellAnnounce(19408, 2)
 local warnEnrage		= mod:NewTargetAnnounce(19451, 3, nil , "Healer|Tank|RemoveEnrage")
 
-local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage")
+local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 
 --local timerPanicCD	= mod:NewCDTimer(30, 19408)
 local timerPanic		= mod:NewBuffActiveTimer(8, 19408, nil, nil, nil, 3)

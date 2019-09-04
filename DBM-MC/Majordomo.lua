@@ -15,8 +15,8 @@ mod:RegisterEventsInCombat(
 --TODO, if BOSS isn't available in classic, common local it in core
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
 
-local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee")
-local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee")
+local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
+local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
 
 local timerMagicReflect		= mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_CORE_DAMAGE_ICON)
 local timerDamageShield		= mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_CORE_DAMAGE_ICON)
