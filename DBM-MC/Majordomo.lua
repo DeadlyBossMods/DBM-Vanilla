@@ -27,7 +27,7 @@ local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, ni
 
 function mod:OnCombatStart(delay)
 	timerTeleportCD:Start(19.4-delay)
-	timerShieldCD:Start(27.8-delay))--27-30
+	timerShieldCD:Start(27.8-delay)--27-30
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
