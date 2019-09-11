@@ -16,6 +16,7 @@ mod:RegisterEventsInCombat(
 (ability.id = 20619 or ability.id = 21075 or ability.id = 20534) and type = "cast"
 --]]
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
+local warnDamageShield		= mod:NewSpellAnnounce(21075, 2)
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
@@ -38,9 +39,11 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerMagicReflect:Start()
 		timerShieldCD:Start()
 	elseif spellId == 21075 then
-		if self:IsDifficulty("event40") or not self:IsTrivial(75) then--Not a threat to high level melee
+		if self.Options.SpecWarn21075reflect and (self:IsDifficulty("event40") or not self:IsTrivial(75)) then--Not a threat to high level melee
 			specWarnDamageShield:Show(BOSS)
 			specWarnDamageShield:Play("stopattack")
+		else
+			warnDamageShield:Show()
 		end
 		timerDamageShield:Start()
 		timerShieldCD:Start()
