@@ -70,7 +70,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 20566 then
 		warnWrathRag:Show()
 		timerWrathRag:Start()
-	elseif args.spellId = 19773 then
+	elseif args.spellId == 19773 then
 		self:SendSync("DomoDeath")
 	end
 end
