@@ -5,8 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(11502)
 mod:SetEncounterID(672)
 mod:SetModelID(11121)
-mod:SetHotfixNoticeRev(20191226000000)--2019, 12, 26
-mod:SetMinSyncRevision(20191226000000)
+mod:SetHotfixNoticeRev(20200206000000)--2020, 02, 06
+mod:SetMinSyncRevision(20200206000000)
 
 mod:RegisterCombat("combat")
 
@@ -30,9 +30,10 @@ local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Cor
 local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerCombatStart	= mod:NewCombatTimer(73)
+local timerCombatStart	= mod:NewTimer(73, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)
 
 mod.vb.addLeft = 8
+mod.vb.ragnarosEmerged = true
 local addsGuidCheck = {}
 
 mod:AddRangeFrameOption("10", nil, "-Melee")
@@ -40,6 +41,7 @@ mod:AddRangeFrameOption("10", nil, "-Melee")
 function mod:OnCombatStart(delay)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 0
+	self.vb.ragnarosEmerged = true
 	timerWrathRag:Start(26.7-delay)
 	timerSubmerge:Start(180-delay)
 	if self.Options.RangeFrame then
@@ -54,6 +56,7 @@ function mod:OnCombatEnd()
 end
 
 local function emerged(self)
+	self.vb.ragnarosEmerged = true
 	timerEmerge:Cancel()
 	warnEmerge:Show()
 	timerWrathRag:Start(26.7)
@@ -114,6 +117,7 @@ end
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
 	if msg == "Submerge" then
+		self.vb.ragnarosEmerged = false
 		self:Unschedule(emerged)
 		timerWrathRag:Cancel()
 		warnSubmerge:Show()
@@ -124,7 +128,7 @@ function mod:OnSync(msg)
 		--A unit died we didn't detect ourselves, so we correct our adds counter from sync
 		addsGuidCheck[guid] = true
 		self.vb.addLeft = self.vb.addLeft - 1
-		if self.vb.addLeft == 0 then--After all 8 die he emerges immediately
+		if not self.vb.ragnarosEmerged and self.vb.addLeft == 0 then--After all 8 die he emerges immediately
 			self:Unschedule(emerged)
 			emerged(self)
 		end
