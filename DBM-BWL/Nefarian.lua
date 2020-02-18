@@ -76,29 +76,29 @@ end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellDK or msg:find(L.YellDK) then
-		self:SendSync("ClassCall", "DK")
+		self:SendSync("ClassCall", "DEATHKNIGHT")
 	elseif msg == L.YellDH or msg:find(L.YellDH) then
-		self:SendSync("ClassCall", "DH")
+		self:SendSync("ClassCall", "DEMONHUNTER")
 	elseif msg == L.YellDruid or msg:find(L.YellDruid) then
-		self:SendSync("ClassCall", "Druid")
+		self:SendSync("ClassCall", "DRUID")
 	elseif msg == L.YellHunter or msg:find(L.YellHunter) then
-		self:SendSync("ClassCall", "Hunter")
-	elseif msg == L.YellMage or msg:find(L.YellMage) then
-		self:SendSync("ClassCall", "Mage")
-	elseif msg == L.YellPaladin or msg:find(L.YellPaladin) then
-		self:SendSync("ClassCall", "Paladin")
-	elseif msg == L.YellPriest or msg:find(L.YellPriest) then
-		self:SendSync("ClassCall", "Priest")
-	elseif msg == L.YellRogue or msg:find(L.YellRogue) then
-		self:SendSync("ClassCall", "Rogue")
-	elseif msg == L.YellShaman or msg:find(L.YellShaman) then
-		self:SendSync("ClassCall", "Shaman")
+		self:SendSync("ClassCall", "HUNTER")
 	elseif msg == L.YellWarlock or msg:find(L.YellWarlock) then
-		self:SendSync("ClassCall", "Warlock")
+		self:SendSync("ClassCall", "WARLOCK")
+	elseif msg == L.YellMage or msg:find(L.YellMage) then
+		self:SendSync("ClassCall", "MAGE")
+	elseif msg == L.YellPaladin or msg:find(L.YellPaladin) then
+		self:SendSync("ClassCall", "PALADIN")
+	elseif msg == L.YellPriest or msg:find(L.YellPriest) then
+		self:SendSync("ClassCall", "PRIEST")
+	elseif msg == L.YellRogue or msg:find(L.YellRogue) then
+		self:SendSync("ClassCall", "ROGUE")
+	elseif msg == L.YellShaman or msg:find(L.YellShaman) then
+		self:SendSync("ClassCall", "SHAMAN")
 	elseif msg == L.YellWarrior or msg:find(L.YellWarrior) then
-		self:SendSync("ClassCall", "Warrior")
+		self:SendSync("ClassCall", "WARRIOR")
 	elseif msg == L.YellMonk or msg:find(L.YellMonk) then
-		self:SendSync("ClassCall", "Monk")
+		self:SendSync("ClassCall", "MONK")
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
 		self:SendSync("Phase", 2)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
@@ -108,7 +108,7 @@ end
 
 function mod:OnSync(msg, arg)
 	if msg == "ClassCall" then
-		warnClassCall:Show(arg)
+		warnClassCall:Show(LOCALIZED_CLASS_NAMES_MALE[arg])
 		timerClassCall:Start(arg)
 	elseif msg == "Phase" then
 		local phase = tonumber(arg) or 0
