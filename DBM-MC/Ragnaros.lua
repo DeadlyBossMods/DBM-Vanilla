@@ -5,8 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(11502)
 mod:SetEncounterID(672)
 mod:SetModelID(11121)
-mod:SetHotfixNoticeRev(20200206000000)--2020, 02, 06
-mod:SetMinSyncRevision(20200206000000)
+mod:SetHotfixNoticeRev(20200218000000)--2020, 02, 18
+mod:SetMinSyncRevision(20200218000000)
 
 mod:RegisterCombat("combat")
 
@@ -87,7 +87,7 @@ function mod:UNIT_DIED(args)
 		if not addsGuidCheck[guid] then
 			addsGuidCheck[guid] = true
 			self.vb.addLeft = self.vb.addLeft - 1
-			if self.vb.addLeft == 0 then--After all 8 die he emerges immediately
+			if not self.vb.ragnarosEmerged and self.vb.addLeft == 0 then--After all 8 die he emerges immediately
 				self:Unschedule(emerged)
 				emerged(self)
 			end
@@ -114,7 +114,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	end
 end
 
-function mod:OnSync(msg)
+function mod:OnSync(msg, arg)
 	if not self:IsInCombat() then return end
 	if msg == "Submerge" then
 		self.vb.ragnarosEmerged = false
@@ -124,9 +124,9 @@ function mod:OnSync(msg)
 		timerEmerge:Start(90)
 		self:Schedule(90, emerged, self)
 		self.vb.addLeft = self.vb.addLeft + 8
-	elseif msg == "AddDied" and guid and not addsGuidCheck[guid] then
+	elseif msg == "AddDied" and arg and not addsGuidCheck[arg] then
 		--A unit died we didn't detect ourselves, so we correct our adds counter from sync
-		addsGuidCheck[guid] = true
+		addsGuidCheck[arg] = true
 		self.vb.addLeft = self.vb.addLeft - 1
 		if not self.vb.ragnarosEmerged and self.vb.addLeft == 0 then--After all 8 die he emerges immediately
 			self:Unschedule(emerged)
