@@ -124,5 +124,6 @@ L:SetMiscLocalization{
 	YellHunter	= "Hunters and your annoying pea-shooters!",
 	YellMage	= "Mages too? You should be more careful when you play with magic...",
 	YellDK		= "Death Knights... get over here!",
-	YellMonk	= "Monk"
+	YellMonk	= "Monk",
+	YellDH		= "Demon hunters? How odd, covering your eyes like that. Doesn't it make it hard to see the world around you?"
 }
