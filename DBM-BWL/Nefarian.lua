@@ -16,7 +16,6 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
---TODO, demon hunter class call
 local warnClassCall		= mod:NewAnnounce("WarnClassCall", 3, "136116")
 local warnPhase			= mod:NewPhaseChangeAnnounce()
 local warnPhase3Soon	= mod:NewPrePhaseAnnounce(3)
@@ -78,6 +77,8 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellDK or msg:find(L.YellDK) then
 		self:SendSync("ClassCall", "DK")
+	elseif msg == L.YellDH or msg:find(L.YellDH) then
+		self:SendSync("ClassCall", "DH")
 	elseif msg == L.YellDruid or msg:find(L.YellDruid) then
 		self:SendSync("ClassCall", "Druid")
 	elseif msg == L.YellHunter or msg:find(L.YellHunter) then
