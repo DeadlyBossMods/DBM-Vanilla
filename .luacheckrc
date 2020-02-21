@@ -34,6 +34,7 @@ globals = {
 	"KuiNameplates",
 	"TidyPlatesThreatDBM",
 	"DBMKalFrameDrag",
+	"DBMKalFrameDragTitle",
 
 	-- DBM
 	"DBM_ADD",
