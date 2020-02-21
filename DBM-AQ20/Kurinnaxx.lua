@@ -51,5 +51,5 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerWound:Stop(args.destName)
 	elseif args.spellId == 25656 then
 		timerSandTrap:Stop(args.destName)
-	end	
+	end
 end

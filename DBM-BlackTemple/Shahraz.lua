@@ -58,7 +58,7 @@ end
 
 function mod:OnCombatEnd()
 	self:UnregisterShortTermEvents()
-end 
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 41001 then

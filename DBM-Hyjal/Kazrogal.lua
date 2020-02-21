@@ -25,7 +25,7 @@ mod.vb.time = 45
 
 function mod:OnCombatStart(delay)
 	self.vb.time = 45
-	self.vb.count = 0 
+	self.vb.count = 0
 	timerMark:Start(45-delay)
 end
 

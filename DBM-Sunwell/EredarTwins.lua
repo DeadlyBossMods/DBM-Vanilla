@@ -97,8 +97,8 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
-	if msg == L.Nova or msg:find(L.Nova) then
-		local target = DBM:GetUnitFullName(target)
+	if (msg == L.Nova or msg:find(L.Nova)) and target then
+		target = DBM:GetUnitFullName(target)
 		timerNova:Start()
 		timerNovaCD:Start()
 		if target == UnitName("player") then
@@ -111,8 +111,8 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		if self.Options.NovaIcon then
 			self:SetIcon(target, 7, 5)
 		end
-	elseif msg == L.Conflag or msg:find(L.Conflag) then
-		local target = DBM:GetUnitFullName(target)
+	elseif (msg == L.Conflag or msg:find(L.Conflag)) and target then
+		target = DBM:GetUnitFullName(target)
 		timerConflag:Start()
 		timerConflagCD:Start()
 		if target == UnitName("player") then

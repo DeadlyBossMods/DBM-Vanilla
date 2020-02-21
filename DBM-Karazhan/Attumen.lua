@@ -35,7 +35,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timerCurseCD:Start()
 		end
-	
 	end
 end
 
