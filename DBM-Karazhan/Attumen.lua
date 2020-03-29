@@ -30,11 +30,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnKnockdown:Show()
 	elseif args.spellId == 29833 then
 		warningCurse:Show()
-		if Phase == 2 then
-			timerCurseCD:Start(41)
-		else
-			timerCurseCD:Start(27)
-		end
+		timerCurseCD:Start(self.vb.phase == 2 and 41 or 27)
 	end
 end
 
