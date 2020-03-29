@@ -22,7 +22,6 @@ local timerShadowFlameCD	= mod:NewCDTimer(14, 22539, nil, false)--14-21
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", 4, 5, nil, DBM_CORE_ENRAGE_ICON)
 
 function mod:OnCombatStart(delay)
-	timerEnrageNext:Start(9.6-delay)
 	timerShadowFlameCD:Start(18-delay)
 	timerWingBuffet:Start(30-delay)
 end

@@ -47,7 +47,7 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpellID(23309, 23313, 23189, 23316, 23312) then
 		warnBreath:Show(args.spellName)
 		timerBreath:Start(2, args.spellName)
-		timerBreath:UpdateIcon(spellIcons[args.spellName])
+		timerBreath:UpdateIcon(args.spellId)
 		timerBreathCD:Start(args.spellName)
 		timerBreathCD:UpdateIcon(args.spellId)
 	end
