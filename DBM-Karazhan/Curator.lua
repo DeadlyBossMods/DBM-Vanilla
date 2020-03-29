@@ -21,7 +21,7 @@ local timerNextEvo		= mod:NewNextTimer(115, 30254, nil, nil, nil, 6)
 
 local berserkTimer		= mod:NewBerserkTimer(720)
 
-mod:AddBoolOption("RangeFrame", true)
+mod:AddRangeFrameOption("10", nil, true)
 
 local addGUIDS = {}
 

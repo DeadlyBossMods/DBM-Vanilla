@@ -19,10 +19,10 @@ local warnPhase2	= mod:NewPhaseAnnounce(2)
 
 local timerCurseCD	= mod:NewCDTimer(27, 43127, nil, nil, nil, 3, nil, DBM_CORE_CURSE_ICON)
 
-local Phase	= 1
+mod.vb.phase = 1
 
 function mod:OnCombatStart(delay)
-	Phase = 1
+	self.vb.phase = 1
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -33,14 +33,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 		if Phase == 2 then
 			timerCurseCD:Start(41)
 		else
-			timerCurseCD:Start()
+			timerCurseCD:Start(27)
 		end
 	end
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_ATH_YELL_1 then
-		Phase = 2
+		self.vb.phase = 2
 		warnPhase2:Show()
 		timerCurseCD:Start(25)
 	end

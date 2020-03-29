@@ -7,8 +7,8 @@ mod:SetModelID(15363)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
+	"SPELL_CAST_START 38523",
+	"SPELL_CAST_SUCCESS 37014 37063",
 	"RAID_BOSS_EMOTE"
 )
 
@@ -30,8 +30,8 @@ function mod:OnCombatStart(delay)
 	timerPortalPhase:Start(63.5-delay)
 	if not self:IsTrivial(85) then
 		self:RegisterShortTermEvents(
-			"SPELL_PERIODIC_DAMAGE",
-			"SPELL_PERIODIC_MISSED"
+			"SPELL_PERIODIC_DAMAGE 30533",
+			"SPELL_PERIODIC_MISSED 30533"
 		)
 	end
 end

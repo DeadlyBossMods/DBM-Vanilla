@@ -14,13 +14,15 @@ mod:RegisterEventsInCombat(
 )
 
 local warningRepentance		= mod:NewSpellAnnounce(29511, 4)
-local warningHolyFire		= mod:NewTargetAnnounce(29522, 2)
+local warningHolyFire		= mod:NewTargetNoFilterAnnounce(29522, 2)
+
+--local specWarnHolyFire		= mod:NewSpecialWarningMoveAway(29522, nil, nil, nil, 1, 2)
 
 local timerRepentance		= mod:NewBuffActiveTimer(12.6, 29511, nil, nil, nil, 2)
 local timerRepentanceCD		= mod:NewCDTimer(45, 29511, nil, nil, nil, 6)
-local timerHolyFire			= mod:NewTargetTimer(12, 29522, nil, nil, nil, 3)
+local timerHolyFire			= mod:NewTargetTimer(12, 29522, nil, nil, nil, 5, nil, DBM_CORE_MAGIC_ICON)
 
-mod:AddBoolOption("RangeFrame", true)
+mod:AddRangeFrameOption(10, 29522)
 
 function mod:OnCombatStart(delay)
 	timerRepentanceCD:Start(35-delay)

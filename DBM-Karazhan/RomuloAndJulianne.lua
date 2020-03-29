@@ -23,8 +23,8 @@ mod:RegisterEventsInCombat(
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnPhase3		= mod:NewPhaseAnnounce(3)
 local warningHeal		= mod:NewCastAnnounce(30878, 3)
-local warningDaring		= mod:NewTargetAnnounce(30841, 3, nil, "Tank|MagicDispeller", 2)
-local warningDevotion	= mod:NewTargetAnnounce(30887, 3, nil, "Tank|MagicDispeller", 2)
+local warningDaring		= mod:NewTargetNoFilterAnnounce(30841, 3, nil, "Tank|MagicDispeller", 2)
+local warningDevotion	= mod:NewTargetNoFilterAnnounce(30887, 3, nil, "Tank|MagicDispeller", 2)
 local warningPoison		= mod:NewStackAnnounce(30830, 2, nil, "Tank|Healer")
 
 local timerHeal			= mod:NewCastTimer(2.5, 30878)
