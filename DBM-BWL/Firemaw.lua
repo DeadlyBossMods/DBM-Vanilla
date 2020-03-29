@@ -17,7 +17,7 @@ local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFlameBuffet		= mod:NewStackAnnounce(23341, 3)
 
-local timerWingBuffet		= mod:NewNextTimer(31, 23339, nil, nil, nil, 2)
+local timerWingBuffet		= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewCDTimer(14, 22539, nil, false)--14-21
 
 function mod:OnCombatStart(delay)
