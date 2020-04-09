@@ -94,7 +94,7 @@ function mod:OnCombatStart(delay)
 		self:RegisterShortTermEvents(
 			"SPELL_DAMAGE 40841",
 			"SPELL_MISSED 40841",
-			"UNIT_HEALTH_FREQUENT boss1"
+			"UNIT_HEALTH boss1"
 		)
 	end
 end
@@ -245,7 +245,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:UNIT_HEALTH_FREQUENT(uId)
+function mod:UNIT_HEALTH(uId)
 	local cid = self:GetUnitCreatureId(uId)
 	if not self.vb.warned_preP2 and cid == 22917 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
 		self.vb.warned_preP2 = true

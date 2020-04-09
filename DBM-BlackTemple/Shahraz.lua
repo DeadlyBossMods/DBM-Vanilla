@@ -51,7 +51,7 @@ function mod:OnCombatStart(delay)
 	timerFACD:Start(24.4-delay)
 	if not self:IsTrivial(85) then
 		self:RegisterShortTermEvents(
-			"UNIT_HEALTH_FREQUENT boss1"
+			"UNIT_HEALTH boss1"
 		)
 	end
 end
@@ -93,7 +93,7 @@ function mod:RAID_BOSS_EMOTE(msg, source)
 	end
 end
 
-function mod:UNIT_HEALTH_FREQUENT(uId)
+function mod:UNIT_HEALTH(uId)
 	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 and self:GetUnitCreatureId(uId) == 22947 and not self.vb.prewarn_enrage then
 		self:UnregisterShortTermEvents()
 		self.vb.prewarn_enrage = true
