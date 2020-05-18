@@ -13,7 +13,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 34172 34162 25778"
 )
 
-local warnOrb			= mod:NewTargetAnnounce(34172, 2)
+local warnOrb			= mod:NewTargetNoFilterAnnounce(34172, 2)
 local warnKnockBack		= mod:NewSpellAnnounce(25778, 4)
 local warnPounding		= mod:NewSpellAnnounce(34162, 3)
 

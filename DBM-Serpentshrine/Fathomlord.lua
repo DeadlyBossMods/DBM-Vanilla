@@ -15,7 +15,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 38236"
 )
 
-local warnTotem			= mod:NewTargetAnnounce(38236, 4)
+local warnTotem			= mod:NewTargetNoFilterAnnounce(38236, 4)
 local warnCariPower		= mod:NewSpellAnnounce(38451, 3)
 local warnTidalPower	= mod:NewSpellAnnounce(38452, 3)
 local warnSharPower		= mod:NewSpellAnnounce(38455, 3)

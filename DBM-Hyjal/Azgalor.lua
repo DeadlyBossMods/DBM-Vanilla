@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnSilence		= mod:NewSpellAnnounce(31344, 3)
-local warnDoom			= mod:NewTargetAnnounce(31347, 4)
+local warnDoom			= mod:NewTargetNoFilterAnnounce(31347, 4)
 
 local specWarnFire		= mod:NewSpecialWarningMove(31340)
 local specWarnDoom		= mod:NewSpecialWarningYou(31347)
@@ -29,7 +29,7 @@ local timerSilenceCD	= mod:NewCDTimer(18, 31344, nil, nil, nil, 2, nil, DBM_CORE
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("DoomIcon", true)
+mod:AddSetIconOption("DoomIcon", 31347, true, false, {8})
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)

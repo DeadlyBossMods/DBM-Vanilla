@@ -24,8 +24,7 @@ L:SetOptionLocalization{
 	WarnMark		= "Объявить знаки",
 	WarnPhase		= "Объявить фазы",
 	SpecWarnMark	= "Show warning when Marks debuff damage over 100%",--Translate
-	TimerMark		= "Show timer for next Marks",--Translate
-	RangeFrame		= "Range Check Frame anzeigen"
+	TimerMark		= "Show timer for next Marks"--Translate
 }
 
 L:SetMiscLocalization{
@@ -88,8 +87,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnPhase		= "Show warning for next phase",--Translate
 	WarnPhaseSoon	= "Show pre-warning for next phase",--Translate
-	TimerPhase		= "Show time for next phase",--Translate
-	DemonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37676)
+	TimerPhase		= "Show time for next phase"--Translate
 }
 
 L:SetMiscLocalization{
@@ -185,7 +183,6 @@ L:SetOptionLocalization{
 	TimerStrider		= "Show time for next Strider",--Translate
 	TimerNaga			= "Show time for next Strider",--Translate
 	SpecWarnElemental	= "Show special warning when Tainted Elemental coming",--Translate
-	RangeFrame			= "Distanz Frame anzeigen",
 	ChargeIcon			= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(38280),
 	AutoChangeLootToFFA		= "Смена режима добычи на Каждый за себя в фазе 2"
 }

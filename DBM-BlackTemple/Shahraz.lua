@@ -19,7 +19,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, announce auras?
-local warnFA			= mod:NewTargetAnnounce(41001, 4)
+local warnFA			= mod:NewTargetNoFilterAnnounce(41001, 4)
 local warnShriek		= mod:NewSpellAnnounce(40823)
 local warnEnrageSoon	= mod:NewSoonAnnounce(21340)--not actual spell id
 local warnEnrage		= mod:NewSpellAnnounce(21340)

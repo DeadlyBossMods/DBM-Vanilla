@@ -17,9 +17,9 @@ mod:RegisterEventsInCombat(
 )
 
 --Incinerate useful?
-local warnCrushed			= mod:NewTargetAnnounce(40243, 3)
+local warnCrushed			= mod:NewTargetNoFilterAnnounce(40243, 3, nil, "Healer")
 local warnIncinerate		= mod:NewSpellAnnounce(40239, 3)
-local warnDeath				= mod:NewTargetAnnounce(40251, 3)
+local warnDeath				= mod:NewTargetNoFilterAnnounce(40251, 3)
 
 local specWarnDeath			= mod:NewSpecialWarningYou(40251, nil, nil, nil, 1, 2)
 local specWarnDeathEnding	= mod:NewSpecialWarningMoveAway(40251, nil, nil, nil, 3, 2)

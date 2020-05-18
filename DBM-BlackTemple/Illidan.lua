@@ -38,19 +38,20 @@ local warnDemon				= mod:NewAnnounce("WarnDemon", 3 , 40506)
 local warnHuman				= mod:NewAnnounce("WarnHuman", 3 , 97061)
 local warnFlame				= mod:NewTargetAnnounce(40932, 3)
 local warnFlameBurst		= mod:NewSpellAnnounce(41131, 3)
-local warnShadowDemon		= mod:NewTargetAnnounce(41117, 3)
+local warnShadowDemon		= mod:NewTargetNoFilterAnnounce(41117, 3)
 local warnPhase4Soon		= mod:NewPrePhaseAnnounce(4, 3)
 local warnPhase4			= mod:NewPhaseAnnounce(4)
 local warnEnrage			= mod:NewSpellAnnounce(40683, 3)
 local warnCaged				= mod:NewSpellAnnounce(40695, 3)
 
 local specWarnParasite		= mod:NewSpecialWarningYou(41917, nil, nil, nil, 1, 2)
+local yellParasiteFades		= mod:NewShortFadesYell(41917)
 local specWarnBarrage		= mod:NewSpecialWarningMoveAway(40585, nil, nil, nil, 1, 2)
 local specWarnShadowDemon	= mod:NewSpecialWarningSwitch(41117, "Dps", nil, nil, 3, 2)
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(40841, nil, nil, nil, 1, 2)
 
-local timerParasite			= mod:NewTargetTimer(10, 41917, nil, nil, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
-local timerBarrage			= mod:NewTargetTimer(10, 40585, nil, nil, nil, 3)
+local timerParasite			= mod:NewTargetTimer(10, 41917, nil, false, nil, 1, nil, DBM_CORE_DAMAGE_ICON)
+local timerBarrage			= mod:NewTargetTimer(10, 40585, nil, false, nil, 3)
 local timerNextBarrage		= mod:NewCDTimer(44, 40585, nil, nil, nil, 3)
 --local timerFlame			= mod:NewTargetTimer(60, 40932)
 local timerNextFlameBurst	= mod:NewCDTimer(20, 41131, nil, nil, nil, 3)
@@ -113,6 +114,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnParasite:Show()
 			specWarnParasite:Play("targetyou")
+			yellParasiteFades:Countdown(spellId)
 		else
 			warnParasite:Show(args.destName)
 		end
@@ -147,6 +149,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 41917 or spellId == 41914 then
 		timerParasite:Stop(args.destName)
+		if args:IsPlayer() then
+			yellParasiteFades:Cancel()
+		end
 		if self.Options.ParasiteIcon then
 			self:SetIcon(args.destName, 0)
 		end

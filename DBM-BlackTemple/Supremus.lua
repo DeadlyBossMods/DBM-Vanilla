@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 
 --TODO, see if CLEU method is reliable enough to scrap scan method. scan method may still have been faster.
 local warnPhase			= mod:NewAnnounce("WarnPhase", 4, 42052)
-local warnFixate		= mod:NewTargetAnnounce(41951, 3)
+local warnFixate		= mod:NewTargetNoFilterAnnounce(41951, 3)
 
 local specWarnMolten	= mod:NewSpecialWarningMove(40265, nil, nil, nil, 1, 2)
 local specWarnVolcano	= mod:NewSpecialWarningMove(42052, nil, nil, nil, 1, 2)

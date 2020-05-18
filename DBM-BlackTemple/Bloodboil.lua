@@ -18,7 +18,7 @@ mod:RegisterEventsInCombat(
 
 local warnBlood			= mod:NewTargetAnnounce(42005, 3)
 local warnWound			= mod:NewStackAnnounce(40481, 2, nil, "Tank", 2)
-local warnStrike		= mod:NewTargetAnnounce(40491, 3, nil, "Tank", 2)
+local warnStrike		= mod:NewTargetNoFilterAnnounce(40491, 3, nil, "Tank", 2)
 local warnRage			= mod:NewTargetAnnounce(40604, 4)
 local warnRageSoon		= mod:NewSoonAnnounce(40604, 3)
 local warnRageEnd		= mod:NewEndAnnounce(40604, 4)

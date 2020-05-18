@@ -26,7 +26,7 @@ local timerGroundSlamCD	= mod:NewCDTimer(74, 36300, nil, nil, nil, 2)--74-80 sec
 local timerShatterCD	= mod:NewNextTimer(10, 33654, nil, nil, nil, 2, nil, DBM_CORE_DEADLY_ICON)--10 seconds after ground slam
 local timerSilenceCD	= mod:NewCDTimer(32, 36300, nil, nil, nil, 5, nil, DBM_CORE_HEALER_ICON)--Also showing a HUGE variation of 32-48 seconds.
 
-mod:AddBoolOption("RangeFrame", true)
+mod:AddRangeFrameOption(10, 33654)
 
 function mod:OnCombatStart(delay)
 	timerGrowthCD:Start(-delay)

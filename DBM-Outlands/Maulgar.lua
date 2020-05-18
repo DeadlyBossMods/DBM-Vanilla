@@ -18,9 +18,9 @@ local warningWhirlwind		= mod:NewSpellAnnounce(33238, 4)
 --Olm
 local warningFelHunter		= mod:NewSpellAnnounce(33131, 3)
 --Krosh
-local warningShield			= mod:NewTargetAnnounce(33054, 4)
+local warningShield			= mod:NewTargetNoFilterAnnounce(33054, 3)
 --Blindeye
-local warningPWS			= mod:NewTargetAnnounce(33147, 3, nil, false)
+local warningPWS			= mod:NewTargetNoFilterAnnounce(33147, 3, nil, false)
 local warningPoH			= mod:NewCastAnnounce(33152, 4)
 local warningHeal			= mod:NewCastAnnounce(33144, 4)
 

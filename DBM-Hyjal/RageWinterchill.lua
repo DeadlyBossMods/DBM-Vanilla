@@ -20,13 +20,13 @@ local warnIceBolt		= mod:NewSpellAnnounce(31249, 3)
 local warnDnd			= mod:NewSpellAnnounce(31258, 3)
 
 local specWarnIceBolt	= mod:NewSpecialWarningYou(31249, nil, nil, nil, 1, 2)
-local specWarnDnD		= mod:NewSpecialWarningMove(31258, nil, nil, nil, 1, 2)
+local specWarnDnD		= mod:NewSpecialWarningGTFO(31258, nil, nil, nil, 1, 8)
 
 local timerDndCD		= mod:NewCDTimer(46, 31258, nil, nil, nil, 3)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("IceBoltIcon", false)
+mod:AddSetIconOption("IceBoltIcon", 31249, false, false, {8})
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
@@ -44,8 +44,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetIcon(args.destName, 8)
 		end
 	elseif args.spellId == 31258 and args:IsPlayer() and self:AntiSpam() then
-		specWarnDnD:Show()
-		specWarnDnD:Play("runaway")
+		specWarnDnD:Show(args.spellName)
+		specWarnDnD:Play("watchfeet")
 	end
 end
 

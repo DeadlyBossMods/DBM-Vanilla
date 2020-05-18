@@ -78,8 +78,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnPhase		= "Anunciar cambios de fase",
-	TimerPhase		= "Mostrar temporizador para la siguiente fase",
-	DemonIcon		= DBM_CORE_AUTO_ICONS_OPTION_TEXT:format(37676)
+	TimerPhase		= "Mostrar temporizador para la siguiente fase"
 }
 
 L:SetMiscLocalization{

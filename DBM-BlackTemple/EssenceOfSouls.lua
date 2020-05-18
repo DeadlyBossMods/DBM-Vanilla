@@ -22,15 +22,15 @@ mod:RegisterEventsInCombat(
 )
 
 --maybe a warning for Seethe if tanks mess up in phase 3
-local warnFixate		= mod:NewTargetAnnounce(41294, 3, nil, "Tank|Healer", 2)
-local warnDrain			= mod:NewTargetAnnounce(41303, 3, nil, "Healer", 2)
+local warnFixate		= mod:NewTargetNoFilterAnnounce(41294, 3, nil, "Tank|Healer", 2)
+local warnDrain			= mod:NewTargetNoFilterAnnounce(41303, 3, nil, "Healer", 2)
 local warnFrenzy		= mod:NewSpellAnnounce(41305, 3, nil, "Tank|Healer", 2)
 local warnFrenzySoon	= mod:NewPreWarnAnnounce(41305, 5, 2)
 local warnFrenzyEnd		= mod:NewEndAnnounce(41305, 1, nil, "Tank|Healer", 2)
 
 local warnPhase2		= mod:NewPhaseAnnounce(2, 2)
 local warnMana			= mod:NewAnnounce("WarnMana", 4, 41350)
-local warnDeaden		= mod:NewTargetAnnounce(41410, 1)
+local warnDeaden		= mod:NewTargetNoFilterAnnounce(41410, 1)
 local specWarnShock		= mod:NewSpecialWarningInterrupt(41426, "HasInterrupt", nil, 2)
 
 local warnPhase3		= mod:NewPhaseAnnounce(3, 2)
