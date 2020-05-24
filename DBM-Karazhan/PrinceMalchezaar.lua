@@ -26,7 +26,7 @@ local specWarnNova				= mod:NewSpecialWarningRun(30852, "Melee", nil, nil, 4, 2)
 
 local timerNovaCD				= mod:NewNextTimer(30, 30852, nil, nil, nil, 2)
 local timerNextInfernal			= mod:NewCDTimer(45, 37277, nil, nil, nil, 1)
-local timerEnfeebleCD			= mod:NewNextTimer(30, 30843, nil, nil, nil, 3, nil, DBM_CORE_DEADLY_ICON)
+local timerEnfeebleCD			= mod:NewNextTimer(30, 30843, nil, nil, nil, 3, nil, DBM_CORE_L.DEADLY_ICON)
 local timerEnfeeble				= mod:NewBuffFadesTimer(9, 30843)
 
 mod.vb.phase = 1

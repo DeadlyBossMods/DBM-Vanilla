@@ -133,7 +133,7 @@ function mod:OnSync(msg, arg)
 		elseif phase == 3 then
 			self.vb.phase = 3
 		end
-		warnPhase:Show(DBM_CORE_AUTO_ANNOUNCE_TEXTS.stage:format(arg))
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	elseif msg == "AddDied" and arg and not addsGuidCheck[arg] then
 		--A unit died we didn't detect ourselves, so we correct our adds counter from sync
 		addsGuidCheck[arg] = true
