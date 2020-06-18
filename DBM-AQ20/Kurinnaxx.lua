@@ -59,9 +59,9 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		else
 			warnWound:Show(args.destName, amount)
-		elseif args.spellId == 26527 then
-			warnFrenzy:Show(args.destName)
 		end
+	elseif args.spellId == 26527 then
+		warnFrenzy:Show(args.destName)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
@@ -69,7 +69,5 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args.spellId == 25646 then
 		timerWound:Stop(args.destName)
-	elseif args.spellId == 25656 then
-		timerSandTrap:Stop(args.destName)
 	end
 end
