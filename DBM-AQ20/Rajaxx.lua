@@ -47,7 +47,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)--some of these yells have line breaks that message match doesn't grab, so will try find.
-	if msg == L.Wave12 or msg:find(L.Wave12) then
+	if msg == L.Wave12 or msg:find(L.Wave12) or msg == L.Wave12Alt or msg:find(L.Wave12Alt) then
 		self:SendSync("Wave", "1, 2")
 	elseif msg == L.Wave3 or msg:find(L.Wave3) then
 		self:SendSync("Wave", 3)
@@ -65,6 +65,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)--some of these yells have line breaks th
 end
 
 function mod:OnSync(msg, count)
+	if DBM:GetCurrentArea() ~= 509 then return end--Block syncs if not in the zone
 	if msg == "Wave" then
 		warnWave:Show(count)
 	end
