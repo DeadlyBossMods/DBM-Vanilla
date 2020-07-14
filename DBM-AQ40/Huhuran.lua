@@ -33,6 +33,8 @@ local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CO
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|Healer", 2, 5, nil, DBM_CORE_L.TANK_ICON..DBM_CORE_L.HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_CORE_L.TANK_ICON)
 
+mod:AddRangeFrameOption("18", nil, "-Melee")
+
 mod.vb.prewarn_berserk = false
 local StingTargets = {}
 
@@ -42,6 +44,15 @@ function mod:OnCombatStart(delay)
 	timerEnrageCD:Start(9.6-delay)
 	timerPoisonCD:Start(11-delay)
 	timerStingCD:Start(24.4-delay)
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Show(18)
+	end
+end
+
+function mod:OnCombatEnd(wipe)
+	if self.Options.RangeFrame then
+		DBM.RangeCheck:Hide()
+	end
 end
 
 local function warnStingTargets()

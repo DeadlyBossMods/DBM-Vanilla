@@ -139,3 +139,12 @@ L:SetOptionLocalization{
 	WarnEmerge			= "Show warning for emerge",
 	TimerEmerge			= "Show timer for emerge"
 }
+
+----------------
+-- AQ40 Trash --
+----------------
+L = DBM:GetModLocalization("AQ40Trash")
+
+L:SetGeneralLocalization{
+	name = "AQ40 Trash"
+}
