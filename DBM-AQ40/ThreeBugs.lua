@@ -60,7 +60,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 25786 and args:IsPlayer() and self:AntiSpam(3, 2) then
-		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
 end
