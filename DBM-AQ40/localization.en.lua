@@ -115,7 +115,8 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Eye			= "Eye of C'Thun",
-	Weakened 	= "weaken"
+	Weakened 	= "weaken",
+	NotValid	= "AQ40 partially cleared after %s. This is not a full clear so time will not be saved from this run."
 }
 ----------------
 -- Ouro --
