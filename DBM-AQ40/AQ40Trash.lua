@@ -19,9 +19,7 @@ mod:AddSpeedClearOption("AQ40", true)
 
 --Speed Clear variables
 mod.vb.firstEngageTime = nil
-mod.vb.OuroDefeated = false
-mod.vb.ViscidusDefeated = false
-mod.vb.RoyaltyDefeated = false
+mod.vb.requiredBosses = 0
 
 --Register all damage events on mod load
 mod:RegisterShortTermEvents(
@@ -98,11 +96,29 @@ end
 
 function mod:ENCOUNTER_END(encounterID, _, _, _, success)
 	if success == 0 then return end--wipe
-	if encounterID == 716 then
-		self.vb.OuroDefeated = true
-	elseif encounterID == 713 then
-		self.vb.ViscidusDefeated = true
-	elseif encounterID == 710 then
-		self.vb.RoyaltyDefeated = true
+	--All the required bosses for the raid to be full cleared.
+	if encounterID == 710 or encounterID == 713 or encounterID == 716 or encounterID == 717 then
+		self.vb.requiredBosses = self.vb.requiredBosses + 1
+		if self.vb.requiredBosses == 4 then
+			DBM.Bars:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
+			if self.vb.firstEngageTime then
+				local thisTime = GetServerTime() - self.vb.firstEngageTime
+				if thisTime and thisTime > 0 then
+					if not self.Options.FastestClear then
+						--First clear, just show current clear time
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format("AQ40", DBM:strFromTime(thisTime)))
+						self.Options.FastestClear = thisTime
+					elseif (self.Options.FastestClear > thisTime) then
+						--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format("AQ40", DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear)))
+						self.Options.FastestClear = thisTime
+					else
+						--Just show this clear time, and current record time (that you did NOT beat)
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format("AQ40", DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear)))
+					end
+				end
+				self.vb.firstEngageTime = nil
+			end
+		end
 	end
 end
