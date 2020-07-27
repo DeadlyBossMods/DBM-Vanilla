@@ -12,18 +12,18 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
-local warnEyeTentacle		= mod:NewAnnounce("WarnEyeTentacle", 2, 6228)
+local warnEyeTentacle		= mod:NewAnnounce("WarnEyeTentacle", 2, 126)
 --local warnClawTentacle		= mod:NewAnnounce("WarnClawTentacle", 2, 26391)
 --local warnGiantEyeTentacle	= mod:NewAnnounce("WarnGiantEyeTentacle", 3, 26391)
 --local warnGiantClawTentacle	= mod:NewAnnounce("WarnGiantClawTentacle", 3, 26391)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 
-local specWarnDarkGlare		= mod:NewSpecialWarningSpell(26029, nil, nil, nil, 3, 2)--Dodge?
+local specWarnDarkGlare		= mod:NewSpecialWarningDodge(26029, nil, nil, nil, 3, 2)
 local specWarnWeakened		= mod:NewSpecialWarning("SpecWarnWeakened", nil, nil, nil, 2, 2, nil, 28598)
 
 local timerDarkGlareCD		= mod:NewNextTimer(86, 26029)
 local timerDarkGlare		= mod:NewBuffActiveTimer(39, 26029)
-local timerEyeTentacle		= mod:NewTimer(45, "TimerEyeTentacle", 6228, nil, nil, 1)
+local timerEyeTentacle		= mod:NewTimer(45, "TimerEyeTentacle", 126, nil, nil, 1)
 --local timerGiantEyeTentacle	= mod:NewTimer(60, "TimerGiantEyeTentacle", 26391, nil, nil, 1)
 --local timerClawTentacle		= mod:NewTimer(11, "TimerClawTentacle", 26391, nil, nil, 1)
 --local timerGiantClawTentacle = mod:NewTimer(60, "TimerGiantClawTentacle", 26391, nil, nil, 1)
@@ -51,7 +51,7 @@ function mod:OnCombatEnd(wipe, isSecondRun)
 		DBM.RangeCheck:Hide()
 	end
 	--Only run on second run, to ensure trash mod has had enough time to update requiredBosses
-	if not wipe and isSecondRun and firstBossMod.vb.firstEngageTime and firstBossMod.Options.FastestClear then
+	if not wipe and isSecondRun and firstBossMod.vb.firstEngageTime and firstBossMod.Options.SpeedClearTimer then
 		if firstBossMod.vb.requiredBosses < 4 then
 			DBM:AddMsg(L.NotValid:format(4 - firstBossMod.vb.requiredBosses .. "/3"))
 		end
