@@ -5,7 +5,6 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(25038)
 mod:SetEncounterID(726)
 mod:SetModelID(22838)
-mod:SetZone()
 mod:SetUsedIcons(8, 7)
 
 mod:RegisterCombat("combat")

@@ -7,7 +7,6 @@ mod:SetEncounterID(725)
 mod:DisableESCombatDetection()--ES fires for the RP event that has nothing to do with engaging boss
 mod:SetModelID(22711)
 mod:SetMinSyncRevision(441)--Block bad pulls from old versions
-mod:SetZone()
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 mod:SetHotfixNoticeRev(20200726000000)--2020, 7, 26
 mod:SetMinSyncRevision(20200726000000)--2020, 7, 26
