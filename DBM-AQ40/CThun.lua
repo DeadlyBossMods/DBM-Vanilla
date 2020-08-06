@@ -52,8 +52,8 @@ function mod:OnCombatEnd(wipe, isSecondRun)
 	end
 	--Only run on second run, to ensure trash mod has had enough time to update requiredBosses
 	if not wipe and isSecondRun and firstBossMod.vb.firstEngageTime and firstBossMod.Options.SpeedClearTimer then
-		if firstBossMod.vb.requiredBosses < 4 then
-			DBM:AddMsg(L.NotValid:format(4 - firstBossMod.vb.requiredBosses .. "/3"))
+		if firstBossMod.vb.requiredBosses < 5 then
+			DBM:AddMsg(L.NotValid:format(5 - firstBossMod.vb.requiredBosses .. "/4"))
 		end
 	end
 end
@@ -73,7 +73,7 @@ function mod:DarkGlare()
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg:find(L.Weakened) then
+	if msg == L.Weakened or msg:find(L.Weakened) then
 		specWarnWeakened:Show()
 		specWarnWeakened:Play("targetchange")
 		timerWeakened:Start()
@@ -85,6 +85,7 @@ function mod:UNIT_DIED(args)
 	if cid == 15589 then
 		self.vb.phase = 2
 		warnPhase2:Show()
+		timerEyeTentacle:Stop()
 		self:UnscheduleMethod("EyeTentacle")
 		self:UnscheduleMethod("DarkGlare")
 	end

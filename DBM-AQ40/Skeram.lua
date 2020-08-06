@@ -23,7 +23,7 @@ local warnSummonSoon	= mod:NewSoonAnnounce(747, 2)
 
 local timerMindControl	= mod:NewBuffActiveTimer(20, 785, nil, nil, nil, 3)
 
-mod:AddBoolOption("SetIconOnMC", true)
+mod:AddSetIconOption("SetIconOnMC", 785, true, false, {4, 5, 6, 7, 8})
 
 local MCTargets = {}
 mod.vb.splitCount = 0
@@ -65,13 +65,13 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(20449, 4801, 8195) and self:AntiSpam() then
+	if args:IsSpellID(20449, 4801, 8195) and self:AntiSpam(3, 1) then
 		warnTeleport:Show()
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args.spellId == 747 then
+	if args.spellId == 747 and self:AntiSpam(3, 2) then
 		warnSummon:Show()
 	end
 end
