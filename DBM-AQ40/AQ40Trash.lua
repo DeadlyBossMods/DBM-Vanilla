@@ -11,6 +11,7 @@ mod:RegisterEvents(
 	"ENCOUNTER_END",
 	"SPELL_AURA_APPLIED 22997 25698 26079",
 	"SPELL_AURA_REMOVED 22997",
+	"SPELL_DAMAGE",
 	"SPELL_MISSED"
 )
 
@@ -27,7 +28,6 @@ mod.vb.requiredBosses = 0
 --Register all damage events on mod load
 local eventsRegistered = true
 mod:RegisterShortTermEvents(
-	"SPELL_DAMAGE",
 	"SPELL_MISSED",
 	"SWING_DAMAGE",
 	"SPELL_PERIODIC_DAMAGE",
@@ -36,6 +36,44 @@ mod:RegisterShortTermEvents(
 
 --Request speed clear variables, in case it was already started before mod loaded
 mod:SendSync("IsAQ40Started")
+
+do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
+	local warnPlague                    = mod:NewTargetNoFilterAnnounce(22997, 2)
+	local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
+
+	local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2)
+	local yellPlague                    = mod:NewYell(22997)
+	local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
+
+	-- aura applied didn't seem to catch the reflects and other buffs
+	function mod:SPELL_AURA_APPLIED(args)
+		if args.spellId == 22997 and not self:IsTrivial(80) then
+			if args:IsPlayer() then
+				specWarnPlague:Show()
+				specWarnPlague:Play("runout")
+				yellPlague:Yell()
+				if self.Options.RangeFrame then
+					DBM.RangeCheck:Show(10)
+				end
+			else
+				warnPlague:Show(args.destName)
+			end
+		elseif args.spellId == 25698 and not self:IsTrivial(80) then
+			specWarnExplode:Show()
+			specWarnExplode:Play("justrun")
+		elseif args.spellId == 26079 then
+			warnCauseInsanity:CombinedShow(0.75, args.destName)
+		end
+	end
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args.spellId == 22997 then
+			if args:IsPlayer() and self.Options.RangeFrame then
+				DBM.RangeCheck:Hide()
+			end
+		end
+	end
+end
 
 do
 	local startCreatureIds = {
@@ -59,10 +97,36 @@ do
 		end
 	end
 
-	function mod:SPELL_DAMAGE(_, _, _, _, destGUID)
-		checkFirstPull(self, destGUID or 0)
+	-- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
+	local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
+	local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
+	local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
+
+	-- todo: thorns
+	local playerGUID = UnitGUID("player")
+	function mod:SPELL_DAMAGE(_, sourceName, _, _, destGUID, _, _, _, spellId)
+		if spellId == 26555 and destGUID == playerGUID and self:AntiSpam(3, 3) and not self:IsTrivial(80) then
+			specWarnShadowStorm:Show(sourceName)
+			specWarnShadowStorm:Play("findshelter")
+		end
+		if eventsRegistered then-- for AQ40 timer
+			checkFirstPull(self, destGUID or 0)
+		end
 	end
-	mod.SPELL_MISSED = mod.SPELL_DAMAGE
+	function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, _, _, _, spellSchool, missType)
+		if (missType == "REFLECT" or missType == "DEFLECT") and sourceGUID == playerGUID and not self:IsTrivial(80) then
+			if (spellSchool == 32 or spellSchool == 16) and self:AntiSpam(3, 1) then
+				specWarnShadowFrostReflect:Show(destName)
+				specWarnShadowFrostReflect:Play("stopattack")
+			elseif (spellSchool == 4 or spellSchool == 64) and self:AntiSpam(3, 2) then
+				specWarnFireArcaneReflect:Show(destName)
+				specWarnFireArcaneReflect:Play("stopattack")
+			end
+		end
+		if eventsRegistered then-- for AQ40 timer
+			checkFirstPull(self, destGUID or 0)
+		end
+	end
 
 	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID)
 		checkFirstPull(self, destGUID or 0)
@@ -124,67 +188,6 @@ function mod:ENCOUNTER_END(encounterID, _, _, _, success)
 				end
 				self.vb.firstEngageTime = nil
 			end
-		end
-	end
-end
-
-do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-	local warnPlague                    = mod:NewTargetNoFilterAnnounce(22997, 2)
-	local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
-
-	local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2)
-	local yellPlague                    = mod:NewYell(22997)
-	local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
-
-	-- aura applied didn't seem to catch the reflects and other buffs
-	function mod:SPELL_AURA_APPLIED(args)
-		if args.spellId == 22997 and not self:IsTrivial(80) then
-			if args:IsPlayer() then
-				specWarnPlague:Show()
-				specWarnPlague:Play("runout")
-				yellPlague:Yell()
-				if self.Options.RangeFrame then
-					DBM.RangeCheck:Show(10)
-				end
-			else
-				warnPlague:Show(args.destName)
-			end
-		elseif args.spellId == 25698 and not self:IsTrivial(80) then
-			specWarnExplode:Show()
-			specWarnExplode:Play("justrun")
-		elseif args.spellId == 26079 then
-			warnCauseInsanity:CombinedShow(0.75, args.destName)
-		end
-	end
-
-	function mod:SPELL_AURA_REMOVED(args)
-		if args.spellId == 22997 then
-			if args:IsPlayer() and self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-		end
-	end
-end
-
-do-- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-	local specWarnShadowFrostReflect    = mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
-	local specWarnFireArcaneReflect     = mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
-
-	-- todo: thorns, shadow storm
-
-	local playerGUID = UnitGUID("player")
-	function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, _, _, _, spellSchool, missType)
-		if (missType == "REFLECT" or missType == "DEFLECT") and sourceGUID == playerGUID and not self:IsTrivial(80) then
-			if (spellSchool == 32 or spellSchool == 16) and self:AntiSpam(3, 1) then
-				specWarnShadowFrostReflect:Show(destName)
-				specWarnShadowFrostReflect:Play("stopattack")
-			elseif (spellSchool == 4 or spellSchool == 64) and self:AntiSpam(3, 2) then
-				specWarnFireArcaneReflect:Show(destName)
-				specWarnFireArcaneReflect:Play("stopattack")
-			end
-		end
-		if eventsRegistered then-- for AQ40 timer
-			self:SPELL_DAMAGE(nil, nil, nil, nil, destGUID)
 		end
 	end
 end
