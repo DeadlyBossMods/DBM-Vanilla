@@ -158,7 +158,7 @@ do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args.spellName == Plague then
+		if args.spellId == 22997 then
 			if args:IsPlayer() and self.Options.RangeFrame then
 				DBM.RangeCheck:Hide()
 			end
