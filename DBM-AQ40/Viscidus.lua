@@ -91,6 +91,7 @@ do
 			self:UnregisterShortTermEvents()
 		end
 	end
+
 	function mod:SPELL_CAST_SUCCESS(args)
 		if args.spellId == 25991 then
 			self.vb.volleyCount = self.vb.volleyCount + 1
@@ -106,21 +107,52 @@ do
 			BossVisible(self)
 		end
 	end
+
+	local frostSpellSchools = {
+		[16] = true,--Frost
+		[17] = true,--Froststrike
+		[18] = true,--Holyfrost
+		[20] = true,--Frostfire
+		[24] = true,--Froststorm
+		[48] = true,--Shadowfrost
+		[80] = true,--Spellfrost
+		[28] = true,--Elemental
+		[124] = true,--Chromatic
+		[126] = true,--Magic
+		[127] = true,--Chaos
+	}
+
 	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, _, _, spellSchool)
 		local creatureID = creatureIDCache[destGUID]
 		if creatureID == nil then
 			creatureID = DBM:GetCIDFromGUID(destGUID)
 			creatureIDCache[destGUID] = creatureID
 		end
-		if ((not self.vb.Frozen and spellSchool == 16) or (self.vb.Frozen and spellSchool == 1)) and creatureID == 15299 then
+		if ((not self.vb.Frozen and frostSpellSchools[spellSchool]) or (self.vb.Frozen and spellSchool == 1)) and creatureID == 15299 then
 				hits = hits - 1
 		end
 		if self.vb.Frozen and creatureID == 15667 then
 			GlobPhase(self)-- reset on a glob hit if still in frozen mode
 		end
 	end
-	mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
 	mod.SWING_DAMAGE = mod.SPELL_DAMAGE
+
+	function mod:RANGE_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+		local creatureID = creatureIDCache[destGUID]
+		if creatureID == nil then
+			creatureID = DBM:GetCIDFromGUID(destGUID)
+			creatureIDCache[destGUID] = creatureID
+		end
+		--RANGE_DAMAGE,Player-4395-00282794,"Anshlun-Whitemane",0x511,0x0,Creature-0-4400-189-11806-4542-00006BB674,"High Inquisitor Fairbanks",0x10a48,0x0,5019,"Shoot",
+		--Count all wand hits as frost, since we can't get school out of them
+		--RANGED melee hits don't count for shattering, it's left out on purpose
+		if (self.vb.Frozen and spellId == 5019) and creatureID == 15299 then
+			hits = hits - 1
+		end
+		if self.vb.Frozen and creatureID == 15667 then
+			GlobPhase(self)-- reset on a glob hit if still in frozen mode
+		end
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
