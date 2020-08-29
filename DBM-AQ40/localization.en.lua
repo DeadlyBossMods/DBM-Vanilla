@@ -63,7 +63,11 @@ L:SetMiscLocalization{
 	Frozen	= "is frozen solid",
 	Phase4 	= "begins to crack",
 	Phase5 	= "looks ready to shatter",
-	Phase6 	= "Explodes."
+	Phase6 	= "Explodes.",
+
+	HitsRemain	= "Hits Remaining",
+	Frost		= "Frost",
+	Physical	= "Physical"
 }
 -------------
 -- Huhuran --

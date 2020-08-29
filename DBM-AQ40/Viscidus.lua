@@ -11,7 +11,7 @@ mod:SetMinSyncRevision(20200828000000)--2020, 8, 28
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 25991",
+	"SPELL_CAST_SUCCESS 25991 25896",
 	"SPELL_AURA_APPLIED 25989",
 	"CHAT_MSG_MONSTER_EMOTE"
 )
@@ -25,27 +25,102 @@ local specWarnGTFO				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
 local timerPoisonBoltVolleyCD	= mod:NewCDCountTimer(11, 25991, nil, nil, nil, 2, nil, DBM_CORE_L.POISON_ICON)
 local timerFrozen				= mod:NewBuffActiveTimer(30, 25937, nil, nil, nil, 6)
 
+mod:AddInfoFrameOption(nil, true)
+
 mod.vb.Frozen = false
 mod.vb.volleyCount = 0
+
+local twipe = table.wipe
+local updateInfoFrame
+
+local creatureIDCache = {}
+local hits = 30
+
+local function BossVisible(self)
+	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() and DBM.Options.DebugMode then
+		self:RegisterShortTermEvents(
+			"RANGE_DAMAGE",
+			"SPELL_DAMAGE",
+			"SWING_DAMAGE"
+		)
+		DBM.InfoFrame:SetHeader(L.HitsRemain)
+		DBM.InfoFrame:Show(1, "function", updateInfoFrame, false, false)
+	end
+end
 
 function mod:OnCombatStart(delay)
 	self.vb.Frozen = false
 	self.vb.volleyCount = 0
 	timerPoisonBoltVolleyCD:Start(12.9, 1)
+	hits = 30
+	twipe(creatureIDCache)
+	BossVisible(self)
 end
 
-function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 25991 then
-		self.vb.volleyCount = self.vb.volleyCount + 1
-		warnPoisonBoltVolley:Show(self.vb.volleyCount)
-		timerPoisonBoltVolleyCD:Start(11, self.vb.volleyCount+1)
-		if self.vb.Frozen then
-			--Boss casts this near instantly coming out of frozen
-			self.vb.Frozen = false
-			timerFrozen:Stop()
-			warnShatter:Show(3)
+function mod:OnCombatEnd(delay)
+	self:UnregisterShortTermEvents()
+	twipe(creatureIDCache)
+	if DBM.InfoFrame:IsShown() then
+		DBM.InfoFrame:Hide()
+	end
+end
+
+do
+	local lines = {}
+	local sortedLines = {}
+	updateInfoFrame = function()
+		twipe(lines)
+		twipe(sortedLines)
+
+		local key = mod.vb.Frozen and L.Physical or L.Frost
+		lines[key] = tostring(hits)
+		sortedLines[1] = key
+
+		return lines, sortedLines
+	end
+end
+
+do
+	local function GlobPhase(self)
+		timerFrozen:Stop()
+		warnShatter:Show(3)
+		self.vb.Frozen = false
+		hits = 200
+		if DBM.InfoFrame:IsShown() then
+			DBM.InfoFrame:Hide()
+			self:UnregisterShortTermEvents()
 		end
 	end
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args.spellId == 25991 then
+			self.vb.volleyCount = self.vb.volleyCount + 1
+			warnPoisonBoltVolley:Show(self.vb.volleyCount)
+			timerPoisonBoltVolleyCD:Start(11, self.vb.volleyCount+1)
+			if self.vb.Frozen then
+				--Boss casts this near instantly coming out of frozen
+				self.vb.Frozen = false
+				timerFrozen:Stop()
+				warnShatter:Show(3)
+			end
+		elseif args.spellId == 25896 then--Rejoin
+			BossVisible(self)
+		end
+	end
+	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, _, _, spellSchool)
+		local creatureID = creatureIDCache[destGUID]
+		if creatureID == nil then
+			creatureID = DBM:GetCIDFromGUID(destGUID)
+			creatureIDCache[destGUID] = creatureID
+		end
+		if ((not self.vb.Frozen and spellSchool == 16) or (self.vb.Frozen and spellSchool == 1)) and creatureID == 15299 then
+				hits = hits - 1
+		end
+		if self.vb.Frozen and creatureID == 15667 then
+			GlobPhase(self)-- reset on a glob hit if still in frozen mode
+		end
+	end
+	mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
+	mod.SWING_DAMAGE = mod.SPELL_DAMAGE
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -84,6 +159,9 @@ function mod:OnSync(msg, count)
 		if count == 3 then
 			timerFrozen:Start()
 			timerPoisonBoltVolleyCD:Stop()
+			hits = 15
+			self.vb.Frozen = true
 		end
+		BossVisible(self)
 	end
 end
