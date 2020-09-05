@@ -128,7 +128,7 @@ do
 			creatureID = DBM:GetCIDFromGUID(destGUID)
 			creatureIDCache[destGUID] = creatureID
 		end
-		if ((not self.vb.Frozen and frostSpellSchools[spellSchool]) or (self.vb.Frozen and spellSchool == 1)) and creatureID == 15299 then
+		if ((not self.vb.Frozen and frostSpellSchools[tonumber(spellSchool)]) or (self.vb.Frozen and spellSchool == 1)) and creatureID == 15299 then
 				hits = hits - 1
 		end
 		if self.vb.Frozen and creatureID == 15667 then
@@ -146,7 +146,7 @@ do
 		--RANGE_DAMAGE,Player-4395-00282794,"Anshlun-Whitemane",0x511,0x0,Creature-0-4400-189-11806-4542-00006BB674,"High Inquisitor Fairbanks",0x10a48,0x0,5019,"Shoot",
 		--Count all wand hits as frost, since we can't get school out of them
 		--RANGED melee hits don't count for shattering, it's left out on purpose
-		if (self.vb.Frozen and spellId == 5019) and creatureID == 15299 then
+		if not self.vb.Frozen and spellId == 5019 and creatureID == 15299 then
 			hits = hits - 1
 		end
 		if self.vb.Frozen and creatureID == 15667 then
