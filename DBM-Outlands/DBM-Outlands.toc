@@ -12,7 +12,7 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
 ## X-DBM-Mod-World-Boss: 1
-## X-DBM-Mod-Has-Single-Format: 1
+## X-DBM-StatTypes: normal
 ## X-DBM-Mod-Sort: 1006
 ## X-DBM-Mod-MapID: 530,565,544
 ## X-DBM-Mod-LoadCID: 17711,18728
