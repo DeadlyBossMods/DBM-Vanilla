@@ -11,10 +11,6 @@ L:SetGeneralLocalization{
 	name = "Пророк Скерам"
 }
 
-L:SetOptionLocalization{
-	SetIconOnMC		= DBM_CORE_L.AUTO_ICONS_OPTION_TEXT:format(785)
-}
-
 ----------------
 -- Three Bugs --
 ----------------
@@ -98,7 +94,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnEyeTentacle 	= "Появляются глазные отростки!",
-	WarnClawTentacle	= "Появляется когтещупальце!",
+	WarnClawTentacle2	= "Появляется когтещупальце!",
 	WarnGiantEyeTentacle	= "Появляется гигантский глазной отросток!",
 	WarnGiantClawTentacle	= "Появляется гигантское когтещупальце!",
 	WarnWeakened 		= "К'Тун ослаблен! Бейте его!"

@@ -4,7 +4,6 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(121818)--121818 TW ID, 12397 classic ID
 --mod:SetModelID(17887)
-mod:SetZone()
 
 mod:RegisterCombat("combat_yell", L.Pull)
 
