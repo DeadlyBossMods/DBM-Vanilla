@@ -69,7 +69,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnEnfeeble:Show()
 			specWarnEnfeeble:Play("targetyou")
 		end
-	elseif spellId == 30859 and not args:IsDestTypePlayer() then--Hellfire applied to Infernals
+	elseif args.spellId == 30859 and not args:IsDestTypePlayer() then--Hellfire applied to Infernals
 		warningInfernal:Show()
 		-- (during TBC there was like a 5 second delay between landing and gaining hellfire, but at some point they changed it to gain instantly
 		--If this changes on classic TBC, this will probably need adjustment
