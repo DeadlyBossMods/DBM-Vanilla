@@ -62,6 +62,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.DBM_NB_YELL_AIR then
 		WarnAir:Show()
+		timerAirPhase:Stop()
 		timerAirPhase:Start()
 	elseif msg == L.DBM_NB_YELL_GROUND or msg == L.DBM_NB_YELL_GROUND2 then--needed. because if you deal more 25% damage in air phase, air phase repeated and shroten. So need to update exact ground phase.
 		timerAirPhase:Update(43, 57)
