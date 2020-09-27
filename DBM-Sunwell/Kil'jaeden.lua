@@ -142,7 +142,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			timerDartCD:Cancel()
 			timerBombCD:Cancel()
 			timerBlueOrb:Start()
-			timerDartCD:Start(59)
+			timerDartCD:Start(48.7)
 			timerBombCD:Start(77)
 		elseif self.vb.phase == 4 then
 			warnPhase4:Show()
