@@ -43,7 +43,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(StingTargets)
 	timerEnrageCD:Start(9.6-delay)
 	timerPoisonCD:Start(11-delay)
-	timerStingCD:Start(24.4-delay)
+	timerStingCD:Start(20-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(18)
 	end
