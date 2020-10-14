@@ -33,7 +33,7 @@ function mod:GOSSIP_SHOW()
 	if not GetRealZoneText() == L.HyjalZoneName then return end
 	local target = UnitName("target")
 	if target == L.Thrall or target == L.Jaina then
-		local selection = GetGossipOptions()
+		local selection = C_GossipInfo.GetOptions()[1].name
 		if selection == L.RageGossip then
 			boss = 1
 			self:SendSync("boss", 1)
