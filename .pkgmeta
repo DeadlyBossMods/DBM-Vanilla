@@ -4,7 +4,6 @@ enable-nolib-creation: no
 move-folders:
     DBM-Outlands/DBM-AQ20: DBM-AQ20
     DBM-Outlands/DBM-AQ40: DBM-AQ40
-    DBM-Outlands/DBM-Azeroth: DBM-Azeroth
     DBM-Outlands/DBM-BWL: DBM-BWL
     DBM-Outlands/DBM-BlackTemple: DBM-BlackTemple
     DBM-Outlands/DBM-Hyjal: DBM-Hyjal
@@ -14,4 +13,4 @@ move-folders:
     DBM-Outlands/DBM-Serpentshrine: DBM-Serpentshrine
     DBM-Outlands/DBM-Sunwell: DBM-Sunwell
     DBM-Outlands/DBM-TheEye: DBM-TheEye
-   
+
