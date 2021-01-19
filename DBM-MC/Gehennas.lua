@@ -27,7 +27,7 @@ local timerFist		= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 
 function mod:OnCombatStart(delay)
 	timerCurse:Start(6-delay)
-	if self:IsDifficulty("event40") or not self:IsTrivial(75) then--Only want to warn if it's a threat
+	if self:IsDifficulty("event40") or not self:IsTrivial() then--Only want to warn if it's a threat
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_DAMAGE 19717",
 			"SPELL_PERIODIC_MISSED 19717"

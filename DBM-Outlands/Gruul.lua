@@ -67,7 +67,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if amount == 3 then--First silence is 15 seconds after 3rd growth.
 			timerSilenceCD:Start(15)
 		end
-	elseif args.spellId == 36240 and args:IsPlayer() and not self:IsTrivial(85) then--Cave In
+	elseif args.spellId == 36240 and args:IsPlayer() and not self:IsTrivial() then--Cave In
 		specWarnCaveIn:Show()
 		specWarnCaveIn:Play("runaway")
 	end

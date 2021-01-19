@@ -55,7 +55,7 @@ function mod:OnCombatStart(delay)
 	self.vb.flameWreathIcon = 8
 	table.wipe(WreathTargets)
 	self.vb.mobIcon = 1
-	if not self:IsTrivial(85) then
+	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_DAMAGE 29951",
 			"SPELL_PERIODIC_MISSED 29951"

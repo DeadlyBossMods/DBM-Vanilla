@@ -90,7 +90,7 @@ function mod:OnCombatStart(delay)
 	self.vb.warned_preP2 = false
 	self.vb.warned_preP4 = false
 	berserkTimer:Start(-delay)
-	if not self:IsTrivial(85) then
+	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
 			"SPELL_DAMAGE 40841",
 			"SPELL_MISSED 40841",

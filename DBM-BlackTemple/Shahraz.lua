@@ -48,7 +48,7 @@ function mod:OnCombatStart(delay)
 	self.vb.enrage = false
 	timerShriekCD:Start(15.8-delay)
 	timerFACD:Start(24.4-delay)
-	if not self:IsTrivial(85) then
+	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
 			"UNIT_HEALTH boss1"
 		)

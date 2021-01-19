@@ -22,7 +22,7 @@ local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 
 local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", 2, 5, nil, DBM_CORE_L.TANK_ICON)
 
 function mod:OnCombatStart(delay)
-	if not self:IsTrivial(80) then
+	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
 			"SPELL_AURA_APPLIED 96",
 			"SPELL_AURA_APPLIED_DOSE 96",

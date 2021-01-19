@@ -29,7 +29,7 @@ local berserkTimer			= mod:NewBerserkTimer(540)
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
 	timerPortalPhase:Start(63.5-delay)
-	if not self:IsTrivial(85) then
+	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_DAMAGE 30533",
 			"SPELL_PERIODIC_MISSED 30533"

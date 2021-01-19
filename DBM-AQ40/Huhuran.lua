@@ -87,7 +87,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerStingCD:Stop()
 		timerEnrageCD:Stop()
 		timerPoisonCD:Stop()
-	elseif args.spellId == 26050 and not self:IsTrivial(80) then
+	elseif args.spellId == 26050 and not self:IsTrivial() then
 		local amount = args.amount or 1
 		timerAcid:Start(args.destName)
 		if amount >= 10 then

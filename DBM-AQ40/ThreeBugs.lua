@@ -25,7 +25,7 @@ local timerFearCD		= mod:NewCDTimer(20.5, 26580, nil, nil, nil, 2)
 
 function mod:OnCombatStart(delay)
 	timerFearCD:Start(10-delay)
-	if self:IsDifficulty("event40") or not self:IsTrivial(75) then--Only want to warn if it's a threat
+	if self:IsDifficulty("event40") or not self:IsTrivial() then--Only want to warn if it's a threat
 		self:RegisterShortTermEvents(
 			"SPELL_AURA_APPLIED 25786",
 			"SPELL_PERIODIC_DAMAGE 25786",
