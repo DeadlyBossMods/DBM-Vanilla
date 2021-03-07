@@ -15,6 +15,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, improve phase change timer updates, I don't really feel like it right now
+--TODO, also switch to pre changed timers, these are probably wrong for classic TBC, they were changed on retail
 local warningNovaCast			= mod:NewCastAnnounce(30852, 3)
 local warningInfernal			= mod:NewSpellAnnounce(37277, 2)
 local warningEnfeeble			= mod:NewTargetNoFilterAnnounce(30843, 4)

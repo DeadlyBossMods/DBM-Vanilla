@@ -12,6 +12,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 30235"
 )
 
+--TODO, fix evocate timer in classic TBC, it was fucked with on retail and kinda broken but should work fine in TBC
 local warnAdd			= mod:NewAnnounce("warnAdd", 3, "136116")
 local warnEvo			= mod:NewSpellAnnounce(30254, 2)
 local warnArcaneInfusion= mod:NewSpellAnnounce(30403, 4)
