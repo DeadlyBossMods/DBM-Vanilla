@@ -13,6 +13,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
+--Get custom voice pack sound for cubes
 local warningHeal			= mod:NewSpellAnnounce(30528, 3)
 local warningInfernal		= mod:NewSpellAnnounce(30511, 2)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
@@ -21,10 +22,10 @@ local warnPhase3			= mod:NewPhaseAnnounce(3)
 local specWarnBlastNova		= mod:NewSpecialWarningInterrupt(30616, nil, nil, nil, 3, 2)
 local specWarnHeal			= mod:NewSpecialWarningInterrupt(30528, "HasInterrupt", nil, nil, 1, 2)
 
-local timerHeal				= mod:NewCastTimer(2, 30528, nil, nil, nil, 4)
+local timerHeal				= mod:NewCastTimer(2, 30528, nil, nil, nil, 4, nil, DBM_CORE_L.INTERRUPT_ICON)
 local timerPhase2			= mod:NewTimer(120, "timerP2", "135566", nil, nil, 6)
-local timerBlastNovaCD		= mod:NewCDTimer(54, 30616, nil, nil, nil, 2)
-local timerDebris			= mod:NewNextTimer(15, 36449, nil, nil, nil, 2)--Only happens once per fight, after the phase 3 yell.
+local timerBlastNovaCD		= mod:NewCDTimer(54, 30616, nil, nil, nil, 2, nil, DBM_CORE_L.DEADLY_ICON)
+local timerDebris			= mod:NewNextTimer(15, 36449, nil, nil, nil, 2, nil, DBM_CORE_L.HEALER_ICON..DBM_CORE_L.TANK_ICON)--Only happens once per fight, after the phase 3 yell.
 
 mod.vb.phase = 1
 

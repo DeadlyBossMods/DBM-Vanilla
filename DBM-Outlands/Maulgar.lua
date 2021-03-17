@@ -16,17 +16,17 @@ mod:RegisterEventsInCombat(
 --Maulgar
 local warningWhirlwind		= mod:NewSpellAnnounce(33238, 4)
 --Olm
-local warningFelHunter		= mod:NewSpellAnnounce(33131, 3)
+local warningFelHunter		= mod:NewSpellAnnounce(33131, 3, nil, mod:IsTank() or mod:UnitClass() == "WARLOCK")
 --Krosh
-local warningShield			= mod:NewTargetNoFilterAnnounce(33054, 3)
+local warningShield			= mod:NewTargetNoFilterAnnounce(33054, 3, nil, "MagicDispeller")
 --Blindeye
 local warningPWS			= mod:NewTargetNoFilterAnnounce(33147, 3, nil, false)
 local warningPoH			= mod:NewCastAnnounce(33152, 4)
 local warningHeal			= mod:NewCastAnnounce(33144, 4)
 
 local specWarnWhirlwind		= mod:NewSpecialWarningRun(33238, "Melee", nil, nil, 4, 2)
-local specWarnPoH			= mod:NewSpecialWarningInterrupt(33152, "HasInterrupt")
-local specWarnHeal			= mod:NewSpecialWarningInterrupt(33144, "HasInterrupt")
+local specWarnPoH			= mod:NewSpecialWarningInterrupt(33152, "HasInterrupt", nil, nil, 1, 2)
+local specWarnHeal			= mod:NewSpecialWarningInterrupt(33144, "HasInterrupt", nil, nil, 1, 2)
 
 local timerWhirlwindCD		= mod:NewCDTimer(55, 33238, nil, nil, nil, 2)
 local timerWhirlwind		= mod:NewBuffActiveTimer(15, 33238, nil, nil, nil, 2)
@@ -40,7 +40,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 33152 then--Prayer of Healing
-		if self:CheckInterruptFilter(args.sourceGUID) then
+		if self:CheckInterruptFilter(args.sourceGUID, nil, true) then
 			specWarnPoH:Show(args.sourceName)
 			specWarnPoH:Play("kickcast")
 			timerPoH:Start()
@@ -48,7 +48,7 @@ function mod:SPELL_CAST_START(args)
 			warningPoH:Show()
 		end
 	elseif args.spellId == 33144 then--Heal
-		if self:CheckInterruptFilter(args.sourceGUID) then
+		if self:CheckInterruptFilter(args.sourceGUID, nil, true) then
 			specWarnHeal:Show(args.sourceName)
 			specWarnHeal:Play("kickcast")
 			timerHeal:Start()

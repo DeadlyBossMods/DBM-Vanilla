@@ -19,6 +19,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_RAID_BOSS_EMOTE"
 )
 
+--Verify cheat timer
 local timerHeroism			= mod:NewBuffActiveTimer(10, 37471)
 local timerBloodlust		= mod:NewBuffActiveTimer(10, 37472)
 local timerRecentlyInGame	= mod:NewBuffFadesTimer(10, 30529, nil, nil, nil, 5)
