@@ -23,11 +23,12 @@ local yellSacrifice		= mod:NewYell(30115)
 
 local timerWeakened		= mod:NewBuffActiveTimer(31, 30065, nil, nil, nil, 6)
 local timerSacrifice	= mod:NewTargetTimer(30, 30115, nil, nil, nil, 3)
-local timerSacrificeCD	= mod:NewNextTimer(43, 30115, nil, nil, nil, 1)
+local timerSacrificeCD	= mod:NewCDTimer(40.4, 30115, nil, nil, nil, 1)--40.4-47
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
 function mod:OnCombatStart(delay)
+	--timerSacrificeCD:Start(30-delay)--30-50?
 	berserkTimer:Start(-delay)
 end
 

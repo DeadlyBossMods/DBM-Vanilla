@@ -164,8 +164,8 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerPortalPhase	= "Portal Phase",
-	timerBanishPhase	= "Banish Phase"
+	timerPortalPhase	= "Portal Phase Ends",
+	timerBanishPhase	= "Banish Phase Ends"
 }
 
 L:SetOptionLocalization{

@@ -42,7 +42,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 30852 then
-		if self.Options.SpecWarn30852run then
+		if self.Options.SpecWarn30852run and DBM:UnitDebuff("player", 30843) then
 			specWarnNova:Show()--Trivial damage, but because of enfeeble, don't want to do a blind level check here
 			specWarnNova:Play("justrun")
 		else
