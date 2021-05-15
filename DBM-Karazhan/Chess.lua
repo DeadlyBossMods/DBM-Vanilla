@@ -26,7 +26,7 @@ local timerRecentlyInGame	= mod:NewBuffFadesTimer(10, 30529, nil, nil, nil, 5)
 local timerNextCheat		= mod:NewTimer(108, "timerCheat", 39342, nil, nil, 3)
 
 function mod:OnCombatStart(delay)
-	timerNextCheat:Start(111)
+	timerNextCheat:Start(108)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
