@@ -108,9 +108,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		self.vb.mcIcon = self.vb.mcIcon - 1
 		if #warnMCTargets >= 3 then
-			showMC()
+			showMC(self)
 		else
-			self:Schedule(0.3, showMC)
+			self:Schedule(0.3, showMC, self)
 		end
 	elseif args.spellId == 37027 then
 		timerToy:Start(args.destName)
