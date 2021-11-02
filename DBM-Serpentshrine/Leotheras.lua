@@ -6,6 +6,10 @@ mod:SetCreatureID(21215)
 mod:SetEncounterID(625)
 mod:SetModelID(20514)
 mod:SetUsedIcons(5, 6, 7, 8)
+mod:SetHotfixNoticeRev(20211102000000)--11-02-21
+mod:SetMinSyncRevision(20211102000000)--11-02-21
+mod:DisableRegenDetection()--Disable Player regen pull detection
+--mod:DisableESCombatDetection()--Disable ENCOUNTER_START
 
 mod:RegisterCombat("combat")
 
