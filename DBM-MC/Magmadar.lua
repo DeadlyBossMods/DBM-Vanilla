@@ -21,7 +21,7 @@ local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, n
 
 local timerPanicCD		= mod:NewCDTimer(30, 19408)--30-40
 local timerPanic		= mod:NewBuffActiveTimer(8, 19408, nil, nil, nil, 3)
-local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_CORE_L.ENRAGE_ICON)
+local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 19451 then
