@@ -35,6 +35,8 @@ globals = {
 	"LOCALIZED_CLASS_NAMES_MALE",
 	"RAID_CLASS_COLORS",
 	"SHIELDSLOT",
+	"WOW_PROJECT_ID",
+	"WOW_PROJECT_MAINLINE",
 
 	"C_GossipInfo.GetOptions",
 	"C_UIWidgetManager.GetIconAndTextWidgetVisualizationInfo",

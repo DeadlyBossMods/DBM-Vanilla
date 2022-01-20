@@ -82,7 +82,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if spellId == 42005 then
 		warnBlood:CombinedShow(0.8, args.destName)
 		if args:IsPlayer() then
-			specWarnBlood:Show(amount)
+			specWarnBlood:Show(args.amount)
 			specWarnBlood:Play("targetyou")
 		end
 	elseif spellId == 40481 then
