@@ -21,7 +21,7 @@ local warnDnd			= mod:NewSpellAnnounce(31258, 3)
 local specWarnIceBolt	= mod:NewSpecialWarningYou(31249, nil, nil, nil, 1, 2)
 local specWarnDnD		= mod:NewSpecialWarningGTFO(31258, nil, nil, nil, 1, 8)
 
-local timerDndCD		= mod:NewCDTimer(46, 31258, nil, nil, nil, 3)
+local timerDndCD		= mod:NewCDTimer(32, 31258, nil, nil, nil, 3)--changed to 32 to match tbc classic, but maybe it really is 46 on retail?
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
