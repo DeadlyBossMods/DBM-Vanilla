@@ -96,7 +96,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerNextSoul:Start()
 	elseif args.spellId == 41431 then
 		timerNextShield:Start()
-	if spellId == 41545 then
+	elseif spellId == 41545 then
 		warnSoul:Show()
 		timerNextSoul:Start()
 	end

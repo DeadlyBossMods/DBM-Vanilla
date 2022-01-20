@@ -110,7 +110,7 @@ mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
-	elseif spellId == 40604 then--Ending on player
+	if spellId == 40604 then--Ending on player
 		timerRageEnd:Stop(args.destName)
 	elseif spellId == 40594 then--Ending on Boss
 		warnRageEnd:Show()
