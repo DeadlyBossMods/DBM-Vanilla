@@ -58,5 +58,6 @@ globals = {
 	"UnitHealth",
 	"UnitHealthMax",
 	"UnitIsDeadOrGhost",
+	"UnitIsGroupLeader"
 	"UnitName",
 }
