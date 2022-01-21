@@ -23,9 +23,7 @@ local warnDevAura			= mod:NewSpellAnnounce(41452, 3, nil, "Physical", 2)
 local warnResAura			= mod:NewSpellAnnounce(41453, 3, nil, "-Physical", 2)
 
 local specWarnShield		= mod:NewSpecialWarningReflect(41475, "Dps", nil, nil, 1, 2)
-local specWarnFlame			= mod:NewSpecialWarningMove(41481, nil, nil, nil, 1, 2)
-local specWarnBlizzard		= mod:NewSpecialWarningMove(41482, nil, nil, nil, 1, 2)
-local specWarnConsecration	= mod:NewSpecialWarningMove(41541, nil, nil, nil, 1, 2)
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(41481, nil, nil, nil, 1, 8)
 local specWarnCoH			= mod:NewSpecialWarningInterrupt(41455, "HasInterrupt", nil, 2, 1, 2)
 local specWarnImmune		= mod:NewSpecialWarning("Immune", false)
 
@@ -53,14 +51,14 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetIcon(args.destName, 1)
 		end
 	elseif spellId == 41481 and args:IsPlayer() and self:AntiSpam(3, 1) and not self:IsTrivial() then
-		 specWarnFlame:Show()
-		 specWarnFlame:Play("runaway")
+		 specWarnGTFO:Show(args.spellName)
+		 specWarnGTFO:Play("watchfeet")
 	elseif spellId == 41482 and args:IsPlayer() and self:AntiSpam(3, 2) and not self:IsTrivial() then
-		 specWarnBlizzard:Show()
-		 specWarnBlizzard:Play("runaway")
+		 specWarnGTFO:Show(args.spellName)
+		 specWarnGTFO:Play("watchfeet")
 	elseif spellId == 41541 and args:IsPlayer() and self:AntiSpam(3, 3) and not self:IsTrivial() then
-		 specWarnConsecration:Show()
-		 specWarnConsecration:Play("runaway")
+		 specWarnGTFO:Show(args.spellName)
+		 specWarnGTFO:Play("watchfeet")
 	elseif spellId == 41476 then
 		warnVanish:Show(args.destName)
 		timerVanish:Start(args.destName)
@@ -96,7 +94,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 41455 then
-		if self:CheckInterruptFilter(args.sourceGUID) then
+		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnCoH:Show(args.sourceName)
 			specWarnCoH:Play("kickcast")
 		end
