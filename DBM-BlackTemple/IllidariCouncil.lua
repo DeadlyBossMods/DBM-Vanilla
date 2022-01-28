@@ -50,13 +50,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 1)
 		end
-	elseif spellId == 41481 and args:IsPlayer() and self:AntiSpam(3, 1) and not self:IsTrivial() then
+	elseif spellId == 41481 and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
 		 specWarnGTFO:Show(args.spellName)
 		 specWarnGTFO:Play("watchfeet")
-	elseif spellId == 41482 and args:IsPlayer() and self:AntiSpam(3, 2) and not self:IsTrivial() then
+	elseif spellId == 41482 and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
 		 specWarnGTFO:Show(args.spellName)
 		 specWarnGTFO:Play("watchfeet")
-	elseif spellId == 41541 and args:IsPlayer() and self:AntiSpam(3, 3) and not self:IsTrivial() then
+	elseif spellId == 41541 and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
 		 specWarnGTFO:Show(args.spellName)
 		 specWarnGTFO:Play("watchfeet")
 	elseif spellId == 41476 then
