@@ -28,7 +28,8 @@ local warnShriek		= mod:NewSpellAnnounce(40823)
 local warnEnrageSoon	= mod:NewSoonAnnounce(21340)--not actual spell id
 local warnEnrage		= mod:NewSpellAnnounce(21340)
 
-local specWarnFA		= mod:NewSpecialWarningMoveAway(41001, nil, nil, nil, 1, 2)
+local specWarnFA		= mod:NewSpecialWarningYouPos(41001, nil, nil, nil, 1, 2)
+local yellFA			= mod:NewShortPosYell(41001)
 
 local timerFACD			= mod:NewCDTimer(20.7, 41001, nil, nil, nil, 3)--20-51
 local timerAura			= mod:NewTimer(15, "timerAura", 22599)
@@ -124,8 +125,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		local icon = #FATargets
 		warnFA:CombinedShow(1, args.destName)
 		if args:IsPlayer() then
-			specWarnFA:Show()
+			specWarnFA:Show(self:IconNumToTexture(icon))
 			specWarnFA:Play("scatter")
+			yellFA:Yell(icon, icon)
 			if self.vb.FABehavior ~= "None" then
 				if icon == 1 then--Star is Left
 					DBM.Arrow:ShowStatic(270, 12)
