@@ -30,7 +30,7 @@ local bossNames = {
 }
 
 function mod:GOSSIP_SHOW()
-	if not GetRealZoneText() == L.HyjalZoneName then return end
+	if GetRealZoneText() ~= L.HyjalZoneName then return end
 	local target = UnitName("target")
 	if target == L.Thrall or target == L.Jaina then
 		local table = C_GossipInfo.GetOptions()
