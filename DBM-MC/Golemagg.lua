@@ -13,7 +13,7 @@ mod:RegisterEventsInCombat(
 
 local warnQuake		= mod:NewSpellAnnounce(20553)
 
-function mod:SPELL_AURA_APPLIED(args)
+function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 20553 then
 		warnQuake:Show()
 	end

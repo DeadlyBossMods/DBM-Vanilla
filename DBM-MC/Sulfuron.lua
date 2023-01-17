@@ -9,6 +9,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 19779 19780 19776 20294",
+	"SPELL_AURA_REMOVED 19779",
 	"SPELL_CAST_START 19775"
 )
 
