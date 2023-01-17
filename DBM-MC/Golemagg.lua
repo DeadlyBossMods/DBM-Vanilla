@@ -11,6 +11,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 20553"
 )
 
+--TODO, verify spellId, it might be 19798
 local warnQuake		= mod:NewSpellAnnounce(20553)
 
 function mod:SPELL_CAST_SUCCESS(args)
