@@ -9,7 +9,7 @@
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariables: DBMSunwell_AllSavedVars
-## SavedVariablesPerCharacter: DBMSunwell_SavedStats
+## SavedVariablesPerCharacter: DBMSunwell_SavedStatsv
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: BC
