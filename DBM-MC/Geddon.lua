@@ -26,6 +26,7 @@ local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2)
 local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2)
+local specWarnGTFO		= mod:NewSpecialWarningGTFO(19698, nil, nil, nil, 1, 8)
 
 local timerInfernoCD	= mod:NewCDTimer(21, 19695, nil, nil, nil, 2)--21-27.9
 local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 2)
@@ -39,6 +40,16 @@ mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, false, {8})
 function mod:OnCombatStart(delay)
 	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first
 	timerBombCD:Start(11-delay)
+	if not self:IsTank() and (self:IsDifficulty("event40") or not self:IsTrivial()) then--Only want to warn if it's a threat
+		self:RegisterShortTermEvents(
+			"SPELL_DAMAGE 19698",
+			"SPELL_MISSED 19698"
+		)
+	end
+end
+
+function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -97,3 +108,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
+	if spellId == 19698 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
+		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
