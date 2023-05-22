@@ -17,7 +17,7 @@
 ## X-DBM-Mod-World-Boss: 1
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-Sort: 1006
-## X-DBM-Mod-MapID: 530,565,544
+## X-DBM-Mod-MapID: 530
 ## X-DBM-Mod-LoadCID: 17711,18728
 ## X-DBM-Mod-MinCoreRevision: 20210721040757
 ## X-DBM-Mod-MinExpansion: 1
@@ -32,8 +32,5 @@ localization.tw.lua
 localization.cn.lua
 localization.ru.lua
 localization.kr.lua
-Maulgar.lua
-Gruul.lua
-Magtheridon.lua
 Kazzak.lua
 Doomwalker.lua

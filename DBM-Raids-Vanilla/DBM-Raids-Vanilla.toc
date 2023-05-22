@@ -1,0 +1,68 @@
+## Interface: 100100
+## X-Min-Interface: 80000
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Vanilla)|r
+## Author: MysticalOS
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariables: DBMRaidsVanilla_AllSavedVars
+## SavedVariablesPerCharacter: DBMRaidsVanilla_SavedStats
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
+## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
+## X-DBM-Mod-Category: Classic
+## X-DBM-StatTypes: normal
+## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409
+## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DBM-Mod-Sort: 1101
+## X-DBM-Mod-MapID: 531, 509, 469, 409
+## X-DBM-Mod-MinCoreRevision: 20230521000000
+## X-DBM-Mod-MinExpansion: 1
+## Version: @project-version@
+
+localization.en.lua
+localization.tw.lua
+localization.cn.lua
+localization.de.lua
+localization.es.lua
+localization.kr.lua
+localization.ru.lua
+
+DBM-AQ40\AQ40Trash.lua
+DBM-AQ40\Skeram.lua
+DBM-AQ40\ThreeBugs.lua
+DBM-AQ40\Sartura.lua
+DBM-AQ40\Fankriss.lua
+DBM-AQ40\Viscidus.lua
+DBM-AQ40\Huhuran.lua
+DBM-AQ40\TwinEmps.lua
+DBM-AQ40\CThun.lua
+DBM-AQ40\Ouro.lua
+
+DBM-AQ20\AQ20Trash.lua
+DBM-AQ20\Kurinnaxx.lua
+DBM-AQ20\Rajaxx.lua
+DBM-AQ20\Moam.lua
+DBM-AQ20\Buru.lua
+DBM-AQ20\Ayamiss.lua
+DBM-AQ20\Ossirian.lua
+
+DBM-BWL\Razorgore.lua
+DBM-BWL\Vaelastrasz.lua
+DBM-BWL\Broodlord.lua
+DBM-BWL\Firemaw.lua
+DBM-BWL\Ebonroc.lua
+DBM-BWL\Flamegor.lua
+DBM-BWL\Chromaggus.lua
+DBM-BWL\Nefarian.lua
+
+DBM-MC\MCTrash.lua
+DBM-MC\Lucifron.lua
+DBM-MC\Magmadar.lua
+DBM-MC\Gehennas.lua
+DBM-MC\Garr.lua
+DBM-MC\Geddon.lua
+DBM-MC\Shazzrah.lua
+DBM-MC\Sulfuron.lua
+DBM-MC\Golemagg.lua
+DBM-MC\Majordomo.lua
+DBM-MC\Ragnaros.lua

@@ -2,15 +2,6 @@ package-as: DBM-Outlands
 enable-nolib-creation: no
 
 move-folders:
-    DBM-Outlands/DBM-AQ20: DBM-AQ20
-    DBM-Outlands/DBM-AQ40: DBM-AQ40
-    DBM-Outlands/DBM-BWL: DBM-BWL
-    DBM-Outlands/DBM-BlackTemple: DBM-BlackTemple
-    DBM-Outlands/DBM-Hyjal: DBM-Hyjal
-    DBM-Outlands/DBM-Karazhan: DBM-Karazhan
-    DBM-Outlands/DBM-MC: DBM-MC
+    DBM-Outlands/DBM-Raids-BC: DBM-Raids-BC
+    DBM-Outlands/DBM-Raids-Vanilla: DBM-Raids-Vanilla
     DBM-Outlands/DBM-Outlands: DBM-Outlands
-    DBM-Outlands/DBM-Serpentshrine: DBM-Serpentshrine
-    DBM-Outlands/DBM-Sunwell: DBM-Sunwell
-    DBM-Outlands/DBM-TheEye: DBM-TheEye
-
