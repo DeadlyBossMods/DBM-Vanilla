@@ -47,7 +47,7 @@ globals = {
 	"GetServerTime",
 	"GetTime",
 	"GetQuestLogTitle",
-	"GetGossipOptions"
+	"GetGossipOptions",
 	"IsInGroup",
 	"UIDropDownMenu_AddButton",
 	"UIDropDownMenu_CreateInfo",
