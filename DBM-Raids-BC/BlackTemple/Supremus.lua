@@ -103,7 +103,7 @@ function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.PhaseKite or msg:find(L.PhaseKite) then
 		warnPhase:Show(L.Kite)
 		timerPhase:Start(L.Tank)
-		if self:IsClassic()
+		if self:IsClassic() then
 			self:Unschedule(ScanTarget)
 			self:Schedule(4, ScanTarget, self)
 		end

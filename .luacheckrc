@@ -46,6 +46,8 @@ globals = {
 	"GetRealZoneText",
 	"GetServerTime",
 	"GetTime",
+	"GetQuestLogTitle",
+	"GetGossipOptions"
 	"IsInGroup",
 	"UIDropDownMenu_AddButton",
 	"UIDropDownMenu_CreateInfo",

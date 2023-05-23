@@ -34,14 +34,14 @@ local specWarnArmaClose	= mod:NewSpecialWarningClose(45909, nil, nil, nil, 2, 2)
 local yellArmageddon	= mod:NewYell(45909)
 local specWarnBloom		= mod:NewSpecialWarningYou(45641, nil, nil, nil, 1, 2)
 local yellBloom			= mod:NewYell(45641)
-local specWarnBomb		= mod:NewSpecialWarningMoveTo(46605, nil, nil, nil, 3, 2)--findshield
+local specWarnDarkness	= mod:NewSpecialWarningMoveTo(46605, nil, nil, nil, 3, 2)--findshield
 local specWarnDarkOrb	= mod:NewSpecialWarning("SpecWarnDarkOrb", false)
 local specWarnBlueOrb	= mod:NewSpecialWarning("SpecWarnBlueOrb", false)
 
 local timerBloomCD		= mod:NewCDTimer(20, 45641, nil, nil, nil, 2)
 local timerDartCD		= mod:NewCDTimer(20, 45740, nil, nil, nil, 2)--Targeted or aoe?
-local timerBomb			= mod:NewCastTimer(9, 46605, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
-local timerBombCD		= mod:NewCDTimer(45, 46605, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
+local timerDarkness		= mod:NewCastTimer(9, 46605, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
+local timerDarknessCD	= mod:NewCDTimer(45, 46605, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerSpike		= mod:NewCastTimer(28, 46680, nil, nil, nil, 3)
 local timerBlueOrb		= mod:NewTimer(37, "TimerBlueOrb", 45109, nil, nil, 5)
 
@@ -128,13 +128,13 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args.spellId == 46605 then
-		specWarnBomb:Show(SHIELDSLOT)
-		specWarnBomb:Play("findshield")
-		timerBomb:Start()
+		specWarnDarkness:Show(SHIELDSLOT)
+		specWarnDarkness:Play("findshield")
+		timerDarkness:Start()
 		if self:GetStage(4) then
-			timerBombCD:Start(25)
+			timerDarknessCD:Start(25)
 		else
-			timerBombCD:Start()
+			timerDarknessCD:Start()
 		end
 	elseif args.spellId == 45737 then
 		warnDart:Show()
@@ -161,20 +161,20 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnPhase2:Show()
 			timerBlueOrb:Start()
 			timerDartCD:Start(59)
-			timerBombCD:Start(77)
+			timerDarknessCD:Start(77)
 		elseif self.vb.phase == 3 then
 			warnPhase3:Show()
 			timerBlueOrb:Cancel()
 			timerDartCD:Cancel()
-			timerBombCD:Cancel()
+			timerDarknessCD:Cancel()
 			timerBlueOrb:Start()
 			timerDartCD:Start(48.7)
-			timerBombCD:Start(77)
+			timerDarknessCD:Start(77)
 		elseif self.vb.phase == 4 then
 			warnPhase4:Show()
 			timerBlueOrb:Cancel()
 			timerDartCD:Cancel()
-			timerBombCD:Cancel()
+			timerDarknessCD:Cancel()
 			timerBlueOrb:Start(45)
 			timerDarknessCD:Start(57.8)
 			timerDartCD:Start(72.3)
