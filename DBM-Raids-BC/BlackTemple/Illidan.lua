@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22917)
-mod:SetEncounterID(609)
+mod:SetEncounterID(609, 2481)
 mod:SetModelID(21135)
 mod:SetUsedIcons(8)
 
@@ -96,7 +96,7 @@ function mod:OnCombatStart(delay)
 		self:RegisterShortTermEvents(
 			"SPELL_DAMAGE 40841",
 			"SPELL_MISSED 40841",
-			"UNIT_HEALTH boss1"
+			"UNIT_HEALTH"
 		)
 	end
 end

@@ -93,12 +93,6 @@ L:SetGeneralLocalization{
 	name = "Eredar Twins"
 }
 
-L:SetOptionLocalization{
-	NovaIcon		= DBM_CORE_L.AUTO_ICONS_OPTION_TARGETS:format(45329),
-	ConflagIcon		= DBM_CORE_L.AUTO_ICONS_OPTION_TARGETS:format(45333),
-	RangeFrame		= DBM_CORE_L.AUTO_RANGE_OPTION_TEXT:format(10, 45333)
-}
-
 L:SetMiscLocalization{
 	Nova			= "directs Shadow Nova at (.+)",
 	Conflag			= "directs Conflagration at (.+)",
@@ -231,6 +225,23 @@ L = DBM:GetModLocalization("Akama")
 L:SetGeneralLocalization{
 	name = "Shade of Akama"
 }
+
+L:SetWarningLocalization({
+	warnAshtongueDefender	= "Ashtongue Defender",
+	warnAshtongueSorcerer	= "Ashtongue Sorcerer"
+})
+
+L:SetTimerLocalization({
+	timerAshtongueDefender	= "Ashtongue Defender: %s",
+	timerAshtongueSorcerer	= "Ashtongue Sorcerer: %s"
+})
+
+L:SetOptionLocalization({
+	warnAshtongueDefender	= "Show warning for Ashtongue Defender",
+	warnAshtongueSorcerer	= "Show warning for Ashtongue Sorcerer",
+	timerAshtongueDefender	= "Show timer for Ashtongue Defender",
+	timerAshtongueSorcerer	= "Show timer for Ashtongue Sorcerer"
+})
 
 -------------------------
 --  Teron Gorefiend  --
@@ -671,6 +682,7 @@ L:SetMiscLocalization{
 	Human		= "Human",
 	Demon		= "Demon",
 	YellDemon	= "Be gone, trifling elf%.%s*I am in control now!",
+	YellPhase1  = "Finally my banishment ends!",
 	YellPhase2	= "No... no! What have you done? I am the master! Do you hear me? I am... aaggh! Can't... contain him."
 }
 
@@ -790,9 +802,11 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnGrowth	= "Show warning for $spell:36300"
+	WarnGrowth		= "Show warning for $spell:36300",
+	RangeDistance	= "Range frame distance for |cff71d5ff|Hspell:33654|hShatter|h|r",
+	Smaller			= "Smaller distance (11)",
+	Safe			= "Safer distance (18)"
 }
-
 
 -- Magtheridon
 L = DBM:GetModLocalization("Magtheridon")
@@ -1076,24 +1090,115 @@ L:SetGeneralLocalization{
 	name = "Rokad the Ravager"
 }
 
--- Doom Lord Kazzak
-L = DBM:GetModLocalization("Kazzak")
+if WOW_PROJECT_ID == (WOW_PROJECT_MAINLINE or 1) then return end--Anything below here is only needed for classic wrath or classic bc
+
+---------------
+--  Nalorakk --
+---------------
+L = DBM:GetModLocalization("Nalorakk")
 
 L:SetGeneralLocalization{
-	name = "Doom Lord Kazzak"
+	name = "Nalorakk"
+}
+
+L:SetWarningLocalization{
+	WarnBear		= "Bear Form",
+	WarnBearSoon	= "Bear Form in 5 sec",
+	WarnNormal		= "Normal Form",
+	WarnNormalSoon	= "Normal Form in 5 sec"
+}
+
+L:SetTimerLocalization{
+	TimerBear		= "Bear Form",
+	TimerNormal		= "Normal Form"
+}
+
+L:SetOptionLocalization{
+	WarnBear		= "Show warning for Bear form",
+	WarnBearSoon	= "Show pre-warning for Bear form",
+	WarnNormal		= "Show warning for Normal form",
+	WarnNormalSoon	= "Show pre-warning for Normal form",
+	TimerBear		= "Show timer for Bear form",
+	TimerNormal		= "Show timer for Normal form"
 }
 
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	YellBear 	= "You call on da beast, you gonna get more dan you bargain for!",
+	YellNormal	= "Make way for Nalorakk!"
 }
 
--- Doomwalker
-L = DBM:GetModLocalization("Doomwalker")
+---------------
+--  Akil'zon --
+---------------
+L = DBM:GetModLocalization("Akilzon")
 
 L:SetGeneralLocalization{
-	name = "Doomwalker"
+	name = "Akil'zon"
+}
+
+---------------
+--  Jan'alai --
+---------------
+L = DBM:GetModLocalization("Janalai")
+
+L:SetGeneralLocalization{
+	name = "Jan'alai"
 }
 
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	YellBomb	= "I burn ya now!",
+	YellAdds	= "Where ma hatcha? Get to work on dem eggs!"
+}
+
+--------------
+--  Halazzi --
+--------------
+L = DBM:GetModLocalization("Halazzi")
+
+L:SetGeneralLocalization{
+	name = "Halazzi"
+}
+
+L:SetWarningLocalization{
+	WarnSpirit	= "Spirit Phase",
+	WarnNormal	= "Normal Phase"
+}
+
+L:SetOptionLocalization{
+	WarnSpirit	= "Show warning for Spirit phase",
+	WarnNormal	= "Show warning for Normal phase"
+}
+
+L:SetMiscLocalization{
+	YellSpirit	= "I fight wit' untamed spirit....",
+	YellNormal	= "Spirit, come back to me!"
+}
+
+--------------------------
+--  Hex Lord Malacrass --
+--------------------------
+L = DBM:GetModLocalization("Malacrass")
+
+L:SetGeneralLocalization{
+	name = "Hex Lord Malacrass"
+}
+
+L:SetMiscLocalization{
+	YellPull	= "Da shadow gonna fall on you...."
+}
+
+--------------
+--  Zul'jin --
+--------------
+L = DBM:GetModLocalization("ZulJin")
+
+L:SetGeneralLocalization{
+	name = "Zul'jin"
+}
+
+L:SetMiscLocalization{
+	YellPhase2	= "Got me some new tricks... like me brudda bear....",
+	YellPhase3	= "Dere be no hidin' from da eagle!",
+	YellPhase4	= "Let me introduce you to me new bruddas: fang and claw!",
+	YellPhase5	= "Ya don' have to look to da sky to see da dragonhawk!"
 }

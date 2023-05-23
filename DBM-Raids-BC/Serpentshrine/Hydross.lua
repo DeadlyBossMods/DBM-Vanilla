@@ -5,8 +5,11 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(21216)
-mod:SetEncounterID(623)
+mod:SetEncounterID(623, 2458)
+mod:DisableEEKillDetection()--EE always fires wipe (at least on classic)
 mod:SetModelID(20162)
+mod:SetHotfixNoticeRev(20220130000000)
+mod:SetMinSyncRevision(20220130000000)
 
 mod:RegisterCombat("combat")
 
@@ -16,6 +19,11 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 38215 38216 38217 38219 38220 38221 38218 38231 40584 38222 38230 40583 25035"
 )
 
+--[[
+(ability.id = 38215 or ability.id = 38216 or ability.id = 38217 or ability.id = 38219 or ability.id = 38220 or ability.id = 38221
+ or ability.id = 38218 or ability.id = 38231 or ability.id = 40584 or ability.id = 38222 or ability.id = 38230 or ability.id = 40583
+ or ability.id = 25035) and type = "cast"
+--]]
 local warnMark		= mod:NewAnnounce("WarnMark", 3, 38215)
 local warnPhase		= mod:NewAnnounce("WarnPhase", 4)
 local warnTomb		= mod:NewTargetNoFilterAnnounce(38235, 3)
@@ -71,11 +79,11 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(38215, 38216, 38217) or args:IsSpellID(38219, 38220, 38221) then
+	if args:IsSpellID(38215, 38216, 38217, 38219, 38220, 38221) then
 		warnMark:Show(args.spellName, damage[args.spellId] or "10%")
 		timerMark:Cancel()
 		timerMark:Show(args.spellName, damageNext[args.spellId] or "10%")
-	elseif args:IsSpellID(38218, 38231, 40584) or args:IsSpellID(38222, 38230, 40583) then
+	elseif args:IsSpellID(38218, 38231, 40584, 38222, 38230, 40583) then
 		warnMark:Show(args.spellName, damage[args.spellId] or "10%")
 		specWarnMark:Show(args.spellName, damage[args.spellId] or "10%")
 		timerMark:Cancel()

@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22948)
-mod:SetEncounterID(605)
+mod:SetEncounterID(605, 2477)
 mod:SetModelID(21443)
 mod:SetHotfixNoticeRev(20220120000000)
 mod:SetMinSyncRevision(20220120000000)

@@ -86,8 +86,6 @@ L:SetOptionLocalization{
 	WarnBreath		= "Show warning for Deep Breath",--Translate
 	TimerPhase		= "Show time for next phase",--Translate
 	TimerBreath		= "Show timer for Deep Breath cooldown",--Translate
-	VaporIcon		= DBM_CORE_L.AUTO_ICONS_OPTION_TARGETS:format(45392),
-	EncapsIcon		= DBM_CORE_L.AUTO_ICONS_OPTION_TARGETS:format(45665),
 	YellOnEncaps	= "Yell on $spell:45665"
 }
 
@@ -912,9 +910,11 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnGrowth	= "Show warning for $spell:36300"
+	WarnGrowth		= "Показывать предупреждение для $spell:36300",
+	RangeDistance	= "Фрейм дистанции для |cff71d5ff|Hspell:33654|hДробление|h|r",
+	Smaller			= "Маленькая дистанция (11)",
+	Safe			= "Безопасная дистанция (18)"
 }
-
 
 -- Magtheridon
 L = DBM:GetModLocalization("Magtheridon")
@@ -1163,24 +1163,115 @@ L:SetGeneralLocalization{
 	name = "Rokad the Ravager"
 }
 
--- Doom Lord Kazzak
-L = DBM:GetModLocalization("Kazzak")
+if WOW_PROJECT_ID == (WOW_PROJECT_MAINLINE or 1) then return end--Anything below here is only needed for classic wrath or classic bc
+
+---------------
+--  Nalorakk --
+---------------
+L = DBM:GetModLocalization("Nalorakk")
 
 L:SetGeneralLocalization{
-	name = "Владыка Судеб Каззак"
+	name = "Налоракк"
+}
+
+L:SetWarningLocalization{
+	WarnBear		= "Форма медведя",
+	WarnBearSoon	= "Форма медведя через 5 секунд",
+	WarnNormal		= "Обычная форма",
+	WarnNormalSoon	= "Обычная форма через 5 секунд"
+}
+
+L:SetTimerLocalization{
+	TimerBear		= "Форма медведя",
+	TimerNormal		= "Обычная форма"
+}
+
+L:SetOptionLocalization{
+	WarnBear		= "Show warning for Bear form",--Translate
+	WarnBearSoon	= "Show pre-warning for Bear form",--Translate
+	WarnNormal		= "Show warning for Normal form",--Translate
+	WarnNormalSoon	= "Show pre-warning for Normal form",--Translate
+	TimerBear		= "Show timer for Bear form",--Translate
+	TimerNormal		= "Show timer for Normal form"--Translate
 }
 
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	YellBear 	= "Если вызвать чудовище, то мало не покажется, точно говорю!",
+	YellNormal	= "Пропустите Налоракка!"
 }
 
--- Doomwalker
-L = DBM:GetModLocalization("Doomwalker")
+---------------
+--  Akil'zon --
+---------------
+L = DBM:GetModLocalization("Akilzon")
 
 L:SetGeneralLocalization{
-	name = "Судьболом"
+	name = "Акил'зон"
+}
+
+---------------
+--  Jan'alai --
+---------------
+L = DBM:GetModLocalization("Janalai")
+
+L:SetGeneralLocalization{
+	name = "Джан'алаи"
 }
 
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	YellBomb	= "Сгиньте в огне!",
+	YellAdds	= "Где мои Наседки? Пора за яйца приниматься!"
+}
+
+--------------
+--  Halazzi --
+--------------
+L = DBM:GetModLocalization("Halazzi")
+
+L:SetGeneralLocalization{
+	name = "Халаззи"
+}
+
+L:SetWarningLocalization{
+	WarnSpirit	= "Призывает дух",
+	WarnNormal	= "Дух исчезает"
+}
+
+L:SetOptionLocalization{
+	WarnSpirit	= "Show warning for Spirit phase",--Translate
+	WarnNormal	= "Show warning for Normal phase"--Translate
+}
+
+L:SetMiscLocalization{
+	YellSpirit	= "Со мною дикий дух...",
+	YellNormal	= "О дух, вернись ко мне!"
+}
+
+--------------------------
+--  Hex Lord Malacrass --
+--------------------------
+L = DBM:GetModLocalization("Malacrass")
+
+L:SetGeneralLocalization{
+	name = "Повелитель проклятий Малакрасс"
+}
+
+L:SetMiscLocalization{
+	YellPull	= "На вас падет тень..."
+}
+
+--------------
+--  Zul'jin --
+--------------
+L = DBM:GetModLocalization("ZulJin")
+
+L:SetGeneralLocalization{
+	name = "Зул'джин"
+}
+
+L:SetMiscLocalization{
+	YellPhase2	= "Выучил новый фокус… прямо как братишка-медведь...",
+	YellPhase3	= "От орла нигде не скрыться!",
+	YellPhase4	= "Позвольте представить моих двух братцев: клык и коготь!",
+	YellPhase5	= "Для того чтобы увидеть дракондора, в небо смотреть необязательно!"
 }

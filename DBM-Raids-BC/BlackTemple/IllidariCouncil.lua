@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22949, 22950, 22951, 22952)
-mod:SetEncounterID(608)
+mod:SetEncounterID(608, 2480)
 mod:SetModelID(21416)
 mod:SetUsedIcons(1)
 
@@ -52,13 +52,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.PoisonIcon then
 			self:SetIcon(args.destName, 1)
 		end
-	elseif spellId == 41481 and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
-		 specWarnGTFO:Show(args.spellName)
-		 specWarnGTFO:Play("watchfeet")
-	elseif spellId == 41482 and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
-		 specWarnGTFO:Show(args.spellName)
-		 specWarnGTFO:Play("watchfeet")
-	elseif spellId == 41541 and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
+	elseif args:IsSpellID(41481, 41482, 41541) and args:IsPlayer() and self:AntiSpam(2.5, 1) and not self:IsTrivial() then
 		 specWarnGTFO:Show(args.spellName)
 		 specWarnGTFO:Play("watchfeet")
 	elseif spellId == 41476 then

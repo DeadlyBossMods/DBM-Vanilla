@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22947)
-mod:SetEncounterID(607)
+mod:SetEncounterID(607, 2478)
 mod:SetModelID(21252)
 mod:SetUsedIcons(1, 2, 3)
 
@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 41001",
 	"SPELL_AURA_REMOVED 41001",
 	"SPELL_CAST_SUCCESS 40823",
-	"UNIT_SPELLCAST_SUCCEEDED boss1"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --[[
@@ -89,7 +89,7 @@ function mod:OnCombatStart(delay)
 	timerFACD:Start(24.4-delay)
 	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
-			"UNIT_HEALTH boss1"
+			"UNIT_HEALTH"
 		)
 	end
 	if UnitIsGroupLeader("player") then

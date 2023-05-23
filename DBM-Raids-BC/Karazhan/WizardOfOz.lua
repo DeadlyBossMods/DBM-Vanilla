@@ -3,16 +3,16 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(18168)
---mod:SetEncounterID(655)--used by all 3 of them, so not usuable
+--mod:SetEncounterID(655, 2447)--used by all 3 of them, so not usuable
 mod:SetModelID(17550)
 mod:RegisterCombat("yell", L.DBM_OZ_YELL_DOROTHEE)
 mod:SetMinCombatTime(25)
 mod:SetWipeTime(30)
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED",
-	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS",
+	"SPELL_AURA_APPLIED 31046",
+	"SPELL_CAST_START 31014 32337",
+	"SPELL_CAST_SUCCESS 31013",
 	"CHAT_MSG_MONSTER_YELL"
 )
 

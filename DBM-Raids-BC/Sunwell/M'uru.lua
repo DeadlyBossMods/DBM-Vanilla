@@ -5,15 +5,15 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(25741)--25741 Muru, 25840 Entropius
-mod:SetEncounterID(728)
+mod:SetEncounterID(728, 2492)
 mod:SetModelID(23404)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 45996",
-	"SPELL_CAST_SUCCESS 46177",
-	"SPELL_SUMMON 46268 46282",
+	"SPELL_CAST_SUCCESS 46177 46282",
+	"SPELL_SUMMON 46268",
 	"UNIT_DIED"
 )
 
@@ -34,7 +34,6 @@ local berserkTimer		= mod:NewBerserkTimer(600)
 
 mod.vb.humanCount = 1
 mod.vb.voidCount = 1
-mod.vb.phase = 1
 
 local function HumanSpawn(self)
 	warnHuman:Show(self.vb.humanCount)
@@ -51,15 +50,12 @@ local function VoidSpawn(self)
 end
 
 local function phase2(self)
-	self.vb.phase = 2
+	self:SetStage(2)
 	warnPhase2:Show()
-	self:Unschedule(HumanSpawn)
-	self:Unschedule(VoidSpawn)
-	timerBlackHoleCD:Start(17)
 end
 
 function mod:OnCombatStart(delay)
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.humanCount = 1
 	self.vb.voidCount = 1
 	timerHuman:Start(15-delay, 1)
@@ -82,17 +78,20 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerNextDarkness:Stop()
 		timerHuman:Stop()
 		timerVoid:Stop()
+		self:Unschedule(HumanSpawn)
+		self:Unschedule(VoidSpawn)
 		timerPhase:Start()
+		timerBlackHoleCD:Start(22.6)
 		self:Schedule(10, phase2, self)
+	elseif args.spellId == 46282 then
+		warnBlackHole:Show()--args.destName valid on retail but not classic
+		timerBlackHoleCD:Start()
 	end
 end
 
 function mod:SPELL_SUMMON(args)
 	if args.spellId == 46268 then
 		warnFiend:Show()
-	elseif args.spellId == 46282 then
-		warnBlackHole:Show()
-		timerBlackHoleCD:Start()
 	end
 end
 
@@ -101,4 +100,3 @@ function mod:UNIT_DIED(args)
 		DBM:EndCombat(self)
 	end
 end
-

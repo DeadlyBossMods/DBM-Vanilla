@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(21217)
-mod:SetEncounterID(624)
+mod:SetEncounterID(624, 2459)
 mod:SetModelID(20216)
 
 mod:RegisterCombat("combat")
@@ -18,7 +18,7 @@ mod:RegisterEventsInCombat(
 	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
---UNIT_SPELLCAST_SUCCEEDED is invalid in classic TBC, it needs to be reverted there
+--Is UNIT_SPELLCAST_SUCCEEDED is invalid in classic TBC?, if so, it needs to be reverted for there
 --https://github.com/DeadlyBossMods/DBM-BCVanilla/commit/2a6f82618007a84e25fee5dd513ceb8cabe57a57
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 1, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")

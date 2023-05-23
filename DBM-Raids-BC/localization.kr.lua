@@ -228,6 +228,23 @@ L:SetGeneralLocalization{
 	name = "아카마의 망령"
 }
 
+L:SetWarningLocalization({
+	warnAshtongueDefender	= "잿빛혓바닥 수호병",
+	warnAshtongueSorcerer	= "잿빛혓바닥 사술사"
+})
+
+L:SetTimerLocalization({
+	timerAshtongueDefender	= "잿빛혓바닥 수호병: %s",
+	timerAshtongueSorcerer	= "잿빛혓바닥 사술사: %s"
+})
+
+L:SetOptionLocalization({
+	warnAshtongueDefender	= "잿빛혓바닥 수호병 경고 보기",
+	warnAshtongueSorcerer	= "잿빛혓바닥 사술사 경고 보기",
+	timerAshtongueDefender	= "잿빛혓바닥 수호병 타이머 바 보기",
+	timerAshtongueSorcerer	= "잿빛혓바닥 사술사 타이머 바 보기"
+})
+
 -------------------------
 --  Teron Gorefiend  --
 -------------------------
@@ -663,6 +680,7 @@ L:SetMiscLocalization{
 	Human		= "인간",
 	Demon		= "악마",
 	YellDemon	= "꺼져라, 엘프 꼬맹이. 지금부터는 내가 주인이다!",
+	YellPhase1  = "드디어, 내가 풀려났도다!",
 	YellPhase2	= "안 돼... 안 돼! 무슨 짓이냐? 내가 주인이야! 내 말 듣지 못해? 나란 말이야! 내가... 으아악! 놈을 억누를 수... 없...어."
 }
 
@@ -770,9 +788,11 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnGrowth	= "$spell:36300 알림 보기"
+	WarnGrowth	= "$spell:36300 알림 보기",
+	RangeDistance	= "|cff71d5ff|Hspell:33654|h산산조각|h|r 거리 창 범위 설정",
+	Smaller			= "좁은 범위 (11m)",
+	Safe			= "안전 범위 (18m)"
 }
-
 
 -- Magtheridon
 L = DBM:GetModLocalization("Magtheridon")
@@ -1054,24 +1074,115 @@ L:SetGeneralLocalization{
 	name = "파괴자 로카드"
 }
 
--- Doom Lord Kazzak
-L = DBM:GetModLocalization("Kazzak")
+if WOW_PROJECT_ID == (WOW_PROJECT_MAINLINE or 1) then return end--Anything below here is only needed for classic wrath or classic bc
+
+---------------
+--  Nalorakk --
+---------------
+L = DBM:GetModLocalization("Nalorakk")
 
 L:SetGeneralLocalization{
-	name = "파멸의 군주 카자크"
+	name = "날로라크"
+}
+
+L:SetWarningLocalization{
+	WarnBear		= "곰 형상",
+	WarnBearSoon	= "5초 후 곰 형상",
+	WarnNormal		= "일반 형상",
+	WarnNormalSoon	= "5초 후 일반 형상"
+}
+
+L:SetTimerLocalization{
+	TimerBear		= "곰 형상",
+	TimerNormal		= "일반 형상"
+}
+
+L:SetOptionLocalization{
+	WarnBear		= "곰 형상 경고 보기",
+	WarnBearSoon	= "곰 형상 사전 경고 보기",
+	WarnNormal		= "일반 형상 경고 보기",
+	WarnNormalSoon	= "일반 형상 사전 경고 보기",
+	TimerBear		= "곰 형상 타이머 바 보기",
+	TimerNormal		= "일반 형상 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s|1이;가; 분노에 휩싸입니다!"--확인필요
+	YellBear 	= "너희들이 짐승을 불러냈다. 놀랄 준비나 해라!",
+	YellNormal	= "날로라크 나가신다!"
 }
 
--- Doomwalker
-L = DBM:GetModLocalization("Doomwalker")
+---------------
+--  Akil'zon --
+---------------
+L = DBM:GetModLocalization("Akilzon")
 
 L:SetGeneralLocalization{
-	name = "파멸의 절단기"
+	name = "아킬존"
+}
+
+---------------
+--  Jan'alai --
+---------------
+L = DBM:GetModLocalization("Janalai")
+
+L:SetGeneralLocalization{
+	name = "잔알라이"
 }
 
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s|1이;가; 분노에 휩싸입니다!"--확인필요
+	YellBomb	= "태워버리겠다!",
+	YellAdds	= "다 어디 갔지? 당장 알을 부화시켜!"
+}
+
+--------------
+--  Halazzi --
+--------------
+L = DBM:GetModLocalization("Halazzi")
+
+L:SetGeneralLocalization{
+	name = "할라지"
+}
+
+L:SetWarningLocalization{
+	WarnSpirit	= "영혼 단계",
+	WarnNormal	= "일반 단계"
+}
+
+L:SetOptionLocalization{
+	WarnSpirit	= "영혼 단계 경고 보기",
+	WarnNormal	= "일반 단계 경고 보기"
+}
+
+L:SetMiscLocalization{
+	YellSpirit	= "야생의 혼이 내 편이다...",
+	YellNormal	= "혼이여, 이리 돌아오라!"
+}
+
+--------------------------
+--  Hex Lord Malacrass --
+--------------------------
+L = DBM:GetModLocalization("Malacrass")
+
+L:SetGeneralLocalization{
+	name = "주술군주 말라크라스"
+}
+
+L:SetMiscLocalization{
+	YellPull	= "너희에게 그림자가 드리우리라..."
+}
+
+--------------
+--  Zul'jin --
+--------------
+L = DBM:GetModLocalization("ZulJin")
+
+L:SetGeneralLocalization{
+	name = "줄진"
+}
+
+L:SetMiscLocalization{
+	YellPhase2	= "새로운 기술을 익혔지... 내 형제, 곰처럼...",
+	YellPhase3	= "독수리의 눈을 피할 수는 없다!",
+	YellPhase4	= "내 새로운 형제, 송곳니와 발톱을 보아라!",
+	YellPhase5	= "용매를 하늘에서만 찾을 필요는 없다!"
 }

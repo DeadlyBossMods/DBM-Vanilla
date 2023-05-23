@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22871)
-mod:SetEncounterID(604)
+mod:SetEncounterID(604, 2476)
 mod:SetModelID(21254)
 mod:SetUsedIcons(1, 2, 3, 4, 5)
 
@@ -14,10 +14,14 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 40243 40251",
 	"SPELL_AURA_REMOVED 40243 40251",
-	"SPELL_CAST_SUCCESS 40239"
+	"SPELL_CAST_SUCCESS 40239 40251"
 )
 
 --Incinerate useful?
+--[[
+(ability.id = 40243 or ability.id = 40251 or ability.id = 40239) and type = "cast"
+ or ability.id = 40251 and type = "removedebuff"
+--]]
 local warnCrushed			= mod:NewTargetNoFilterAnnounce(40243, 3, nil, "Healer")
 local warnIncinerate		= mod:NewSpellAnnounce(40239, 3)
 local warnDeath				= mod:NewTargetNoFilterAnnounce(40251, 3)
@@ -26,6 +30,7 @@ local specWarnDeath			= mod:NewSpecialWarningYou(40251, nil, nil, nil, 1, 2)
 local specWarnDeathEnding	= mod:NewSpecialWarningMoveAway(40251, nil, nil, nil, 3, 2)
 
 local timerCrushed			= mod:NewBuffActiveTimer(15, 40243, nil, "Healer", 2, 5, nil, DBM_COMMON_L.HEALER_ICON)
+local timerDeathCD			= mod:NewCDTimer(32, 40251, nil, nil, nil, 3)--32-40 (small sample size, could be bigger range)
 local timerDeath			= mod:NewTargetTimer(55, 40251, nil, nil, nil, 3)
 local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325, nil, nil, 1)
 
@@ -42,6 +47,7 @@ end
 
 function mod:OnCombatStart(delay)
 	table.wipe(CrushedTargets)
+	timerDeathCD:Start(11.1)--11-13?
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -85,5 +91,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 40239 then
 		warnIncinerate:Show()
+	elseif args.spellId == 40251 then
+		timerDeathCD:Start()
 	end
 end

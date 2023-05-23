@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(19622)
-mod:SetEncounterID(733)
+mod:SetEncounterID(733, 2467)
 mod:SetModelID(20023)
 
 mod:RegisterCombat("combat")
@@ -20,7 +20,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED",
-	"UNIT_SPELLCAST_SUCCEEDED boss1 boss2 boss3 boss4 boss5"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnGaze			= mod:NewAnnounce("WarnGaze", 4, 39414)
@@ -35,7 +35,6 @@ local warnDisruption	= mod:NewSpellAnnounce(36834, 3)
 local warnMC			= mod:NewTargetNoFilterAnnounce(36797, 4)
 local warnPhoenix		= mod:NewSpellAnnounce(36723, 2)
 local warnFlamestrike	= mod:NewSpellAnnounce(36735, 4)
-local warnEgg			= mod:NewAnnounce("WarnEgg", 4, 36723)
 local warnPyro			= mod:NewCastAnnounce(36819, 4)
 local warnPhase5		= mod:NewPhaseAnnounce(5)
 local warnGravity		= mod:NewSpellAnnounce(35966, 3)
@@ -67,7 +66,6 @@ mod:AddInfoFrameOption(36815, true)
 mod.vb.mcIcon = 8
 local warnConflagTargets = {}
 local warnMCTargets = {}
-mod.vb.phase = 1
 
 local function showConflag()
 	warnConflag:Show(table.concat(warnConflagTargets, "<, >"))
@@ -84,7 +82,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(warnConflagTargets)
 	table.wipe(warnMCTargets)
 	self.vb.mcIcon = 8
-	self.vb.phase = 1
+	self:SetStage(1)
 	timerPhase1mob:Start(32, L.Thaladred)
 end
 
@@ -175,7 +173,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args.spellId == 36834 then
 		warnDisruption:Show()
 	elseif args.spellId == 34341 and self:IsInCombat() then
-		warnEgg:Show()
 		specWarnEgg:Show()
 		specWarnEgg:Play("killmob")
 		timerRebirth:Show()
@@ -238,27 +235,27 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	elseif msg == L.YellTelo or msg:find(L.YellTelo) then
 		timerPhase1mob:Start(8.4, L.Telonicus)
 	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
-		self.vb.phase = 2
+		self:SetStage(2)
 		timerPhase:Start(104.6)
 		warnPhase2:Show()
 		warnPhase3:Schedule(104.6)
 	elseif msg == L.YellPhase3 or msg:find(L.YellPhase3) then
-		self.vb.phase = 3
+		self:SetStage(3)
 		if self.Options.RangeFrame then
 			DBM.RangeCheck:Show(10)
 		end
 		self:Schedule(10, function()
-			timerPhase:Start(173)
+			timerPhase:Start(173)--123 pre nerf, 183 post nerf
 		end)
 	elseif msg == L.YellPhase4 or msg:find(L.YellPhase4) then
-		self.vb.phase = 4
+		self:SetStage(5)
 		warnPhase4:Show()
 		timerPhase:Stop()
 		timerPhoenixCD:Stop()
 		timerPhoenixCD:Start(50)
 		timerShieldCD:Start(60)
 	elseif msg == L.YellPhase5 or msg:find(L.YellPhase5) then
-		self.vb.phase = 5
+		self:SetStage(5)
 		timerPhoenixCD:Stop()
 		timerShieldCD:Stop()
 		timerPhase:Start(45)
@@ -269,12 +266,12 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 36735 then
-		warnFlamestrike:Show()
+	if spellId == 36735 and self:AntiSpam(3, 1) then
+		self:SendSync("Flamestrike")
 	end
 end
 
-function mod:OnSync(event, arg)
+function mod:OnSync(event)
 	if event == "Flamestrike" then
 		warnFlamestrike:Show()
 	end

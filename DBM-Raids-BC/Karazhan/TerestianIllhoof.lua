@@ -3,10 +3,10 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15688)
-mod:SetEncounterID(657)
+mod:SetEncounterID(657, 2449)
 mod:SetModelID(11343)
 
-mod:RegisterCombat("combat", 15688)
+mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 30115 30065",

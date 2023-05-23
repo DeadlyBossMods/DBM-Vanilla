@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22898)
-mod:SetEncounterID(602)
+mod:SetEncounterID(602, 2474)
 mod:SetModelID(21145)
 mod:SetUsedIcons(8)
 
@@ -16,7 +16,7 @@ mod:RegisterEventsInCombat(
 	"RAID_BOSS_EMOTE"
 )
 
---TODO, see if CLEU method is reliable enough to scrap scan method. scan method may still have been faster.
+--NOTE: Blizzard refused to add CLEU to classic so had to keep legacy scan method for classic compat. this hybrid mod just chooses method based on game version
 local warnPhase			= mod:NewAnnounce("WarnPhase", 4, 42052)
 local warnFixate		= mod:NewTargetNoFilterAnnounce(41951, 3)
 
@@ -30,10 +30,8 @@ local berserkTimer		= mod:NewBerserkTimer(900)
 
 mod:AddBoolOption("KiteIcon", true)
 
---mod.vb.phase2 = false
 mod.vb.lastTarget = "None"
 
---[[
 local function ScanTarget(self)
 	local target, uId = self:GetBossTarget(22898)
 	if target then
@@ -52,7 +50,6 @@ local function ScanTarget(self)
 		end
 	end
 end
---]]
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
@@ -74,7 +71,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 41951 then
+	if args.spellId == 41951 and not self:IsClassic() then
 		if self.vb.lastTarget ~= args.destName then
 			self.vb.lastTarget = args.destName
 			if args:IsPlayer() and not self:IsTrivial() then
@@ -106,8 +103,10 @@ function mod:RAID_BOSS_EMOTE(msg)
 	if msg == L.PhaseKite or msg:find(L.PhaseKite) then
 		warnPhase:Show(L.Kite)
 		timerPhase:Start(L.Tank)
-		--self:Unschedule(ScanTarget)
-		--self:Schedule(4, ScanTarget, self)
+		if self:IsClassic()
+			self:Unschedule(ScanTarget)
+			self:Schedule(4, ScanTarget, self)
+		end
 		if self.vb.lastTarget ~= "None" then
 			self:SetIcon(self.vb.lastTarget, 0)
 		end
@@ -120,12 +119,14 @@ function mod:RAID_BOSS_EMOTE(msg)
 	elseif msg == L.PhaseTank or msg:find(L.PhaseTank) then
 		warnPhase:Show(L.Tank)
 		timerPhase:Start(L.Kite)
-		--self:Unschedule(ScanTarget)
+		if self:IsClassic() then
+			self:Unschedule(ScanTarget)
+		end
 		if self.vb.lastTarget ~= "None" then
 			self:SetIcon(self.vb.lastTarget, 0)
 		end
-	--elseif msg == L.ChangeTarget or msg:find(L.ChangeTarget) then
-		--self:Unschedule(ScanTarget)
-		--self:Schedule(0.5, ScanTarget, self)
+	elseif (msg == L.ChangeTarget or msg:find(L.ChangeTarget)) and self:IsClassic() then
+		self:Unschedule(ScanTarget)
+		self:Schedule(0.5, ScanTarget, self)
 	end
 end

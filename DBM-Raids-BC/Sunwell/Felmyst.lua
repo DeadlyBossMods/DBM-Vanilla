@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(25038)
-mod:SetEncounterID(726)
+mod:SetEncounterID(726, 2490)
 mod:SetModelID(22838)
 mod:SetUsedIcons(8, 7)
 
@@ -17,7 +17,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 45392",
 	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_SPELLCAST_SUCCEEDED boss1"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnEncaps			= mod:NewTargetAnnounce(45665, 4)
@@ -30,7 +30,7 @@ local specWarnEncaps		= mod:NewSpecialWarningYou(45665, nil, nil, nil, 1, 2)
 local yellEncaps			= mod:NewYell(45665)
 local specWarnEncapsNear	= mod:NewSpecialWarningClose(45665, nil, nil, nil, 1, 2)
 local specWarnVapor			= mod:NewSpecialWarningYou(45402, nil, nil, nil, 1, 2)
-local specWarnBreath		= mod:NewSpecialWarningCount(45717, nil, nil, nil, 3, 2)
+local specWarnBreath		= mod:NewSpecialWarningDodgeCount(45717, nil, nil, nil, 3, 2)
 
 local timerGasCD			= mod:NewCDTimer(19, 45855, nil, nil, nil, 3)
 local timerCorrosion		= mod:NewTargetTimer(10, 45866, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -40,8 +40,8 @@ local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550, nil, nil, 6)
 
 local berserkTimer			= mod:NewBerserkTimer(600)
 
-mod:AddBoolOption("EncapsIcon", true)
-mod:AddBoolOption("VaporIcon", true)
+mod:AddSetIconOption("EncapsIcon", 45665, true, false, {7})
+mod:AddSetIconOption("VaporIcon", 45402, true, false, {8})
 
 mod.vb.breathCounter = 0
 

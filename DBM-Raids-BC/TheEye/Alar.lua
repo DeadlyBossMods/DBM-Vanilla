@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(19514)
-mod:SetEncounterID(730)
+mod:SetEncounterID(730, 2464)
 mod:SetModelID(18945)
 
 mod:RegisterCombat("combat")
@@ -35,7 +35,6 @@ local UnitGUID = UnitGUID
 local UnitName = UnitName
 mod.vb.phase2Start = 0
 mod.vb.flying = false
-mod.vb.phase = 1
 
 --Loop doesn't work do to varying travel time between platforms. We just need to do target scanning and start next platform timer when Al'ar reaches a platform and starts targeting player again
 --Still semi inaccurate. Sometimes Al'ar changes platforms 5-8 seconds early with no explanation. I have a feeling it's just tied to Al'ars behavior being buggy with one person.
@@ -53,7 +52,7 @@ end
 function mod:OnCombatStart(delay)
 	self:AntiSpam(30, 1)--Prevent it thinking add spawn on pull and messing up first platform timer
 	self.vb.flying = false
-	self.vb.phase = 1
+	self:SetStage(1)
 	self.vb.phase2Start = 0
 	timerNextPlatform:Start(35-delay)
 	self:RegisterOnUpdateHandler(function(self)
@@ -79,10 +78,10 @@ function mod:OnCombatStart(delay)
 				end
 			end
 
-			if foundIt and not target and self.vb.phase == 1 and self:AntiSpam(30, 1) then--Al'ar is no longer targeting anything, which means he spawned an add and is moving platforms
+			if foundIt and not target and self:GetStage(1) and self:AntiSpam(30, 1) then--Al'ar is no longer targeting anything, which means he spawned an add and is moving platforms
 				Add(self)
 				--Could also be quills though, which is why we can't really put in an actual add warning.
-			elseif not target and self.vb.phase == 2 and self:AntiSpam(30, 2) and (GetTime() - self.vb.phase2Start) > 25 then--No target in phase 2 means meteor
+			elseif not target and self:GetStage(2) and self:AntiSpam(30, 2) and (GetTime() - self.vb.phase2Start) > 25 then--No target in phase 2 means meteor
 				warnMeteor:Show()
 				timerMeteor:Start()
 			elseif target and self.vb.flying then--Al'ar has reached a platform and is once again targeting aggro player
@@ -119,7 +118,7 @@ end
 function mod:SPELL_HEAL(_, _, _, _, _, _, _, _, spellId)
 	if spellId == 34342 then
 		self.vb.phase2Start = GetTime()
-		self.vb.phase = 2
+		self:SetStage(2)
 		warnPhase2:Show()
 		berserkTimer:Start()
 		timerMeteor:Start(30)--This seems to vary slightly depending on where in room he shoots it.

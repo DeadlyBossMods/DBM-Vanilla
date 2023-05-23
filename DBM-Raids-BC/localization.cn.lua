@@ -108,23 +108,7 @@ L:SetGeneralLocalization{
 	name = "艾瑞达双子"
 }
 
-L:SetWarningLocalization{
-}
-
-L:SetTimerLocalization{
-}
-
-L:SetOptionLocalization{
-	NovaIcon		= DBM_CORE_L.AUTO_ICONS_OPTION_TARGETS:format(45329),
-	ConflagIcon		= DBM_CORE_L.AUTO_ICONS_OPTION_TARGETS:format(45333),
-	RangeFrame		= "Show range frame (10 yards)",--Translate
-	NovaWhisper		= "Send whisper to $spell:45329 target (requires Raid Leader)",--Translate
-	ConflagWhisper	= "Send whisper to $spell:45333 target (requires Raid Leader)",--Translate
-}
-
 L:SetMiscLocalization{
-	NovaWhisper		= "暗影新星！",
-	ConflagWhisper	= "燃烧！",
 	Nova			= "萨洛拉丝向([^%s]+)施放暗影新星。",--Verify
 	Conflag			= "奥蕾塞丝向([^%s]+)施放燃烧。"--Verify
 }
@@ -262,6 +246,23 @@ L = DBM:GetModLocalization("Akama")
 L:SetGeneralLocalization{
 	name = "阿卡玛之影"
 }
+
+L:SetWarningLocalization({
+	warnAshtongueDefender	= "灰舌防御者",
+	warnAshtongueSorcerer	= "灰舌巫师"
+})
+
+L:SetTimerLocalization({
+	timerAshtongueDefender	= "灰舌防御者: %s",
+	timerAshtongueSorcerer	= "灰舌巫师: %s"
+})
+
+L:SetOptionLocalization({
+	warnAshtongueDefender	= "警报：灰舌防御者",
+	warnAshtongueSorcerer	= "警报：灰舌巫师",
+	timerAshtongueDefender	= "计时条：灰舌防御者",
+	timerAshtongueSorcerer	= "计时条：灰舌巫师"
+})
 
 -------------------------
 --  Teron Gorefiend  --
@@ -716,6 +717,7 @@ L:SetMiscLocalization{
 	Human		= "Human",--Translate
 	Demon		= "Demon",--Translate
 	YellDemon	= "滚开吧，脆弱的精灵。现在我说了算！",
+	YellPhase1  = "我的放逐终于结束了！",
 	YellPhase2	= "不……不！你在干什么？我才是主宰！你听到没有？我……啊啊啊啊！控制……不住了。"
 }
 
@@ -1084,24 +1086,115 @@ L:SetGeneralLocalization{
 	name = "蹂躏者洛卡德"
 }
 
--- Doom Lord Kazzak
-L = DBM:GetModLocalization("Kazzak")
+if WOW_PROJECT_ID == (WOW_PROJECT_MAINLINE or 1) then return end--Anything below here is only needed for classic wrath or classic bc
+
+---------------
+--  Nalorakk --
+---------------
+L = DBM:GetModLocalization("Nalorakk")
 
 L:SetGeneralLocalization{
-	name = "末日领主卡扎克"
+	name = "纳洛拉克"
+}
+
+L:SetWarningLocalization{
+	WarnBear		= "熊形态",
+	WarnBearSoon	= "5秒后变为熊形态",
+	WarnNormal		= "人形态",
+	WarnNormalSoon	= "5秒后变为人形态"
+}
+
+L:SetTimerLocalization{
+	TimerBear		= "熊形态",
+	TimerNormal		= "人形态"
+}
+
+L:SetOptionLocalization{
+	WarnBear		= "警报：熊形态",
+	WarnBearSoon	= "预警：熊形态",
+	WarnNormal		= "警报：人形态",
+	WarnNormalSoon	= "预警：人形态",
+	TimerBear		= "计时条：熊形态",
+	TimerNormal		= "计时条：人形态"
 }
 
 L:SetMiscLocalization{
-	DBM_KAZZAK_EMOTE_ENRAGE		= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	YellBear 	= "你们召唤野兽？你马上就要大大的后悔了！",
+	YellNormal	= "纳洛拉克，变形，出发！"
 }
 
--- Doomwalker
-L = DBM:GetModLocalization("Doomwalker")
+---------------
+--  Akil'zon --
+---------------
+L = DBM:GetModLocalization("Akilzon")
 
 L:SetGeneralLocalization{
-	name = "末日行者"
+	name = "埃基尔松"
+}
+
+---------------
+--  Jan'alai --
+---------------
+L = DBM:GetModLocalization("Janalai")
+
+L:SetGeneralLocalization{
+	name = "加亚莱"
 }
 
 L:SetMiscLocalization{
-	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
+	YellBomb	= "烧死你们！",
+	YellAdds	= "雌鹰哪里去了？快去孵蛋！"
+}
+
+--------------
+--  Halazzi --
+--------------
+L = DBM:GetModLocalization("Halazzi")
+
+L:SetGeneralLocalization{
+	name = "哈尔拉兹"
+}
+
+L:SetWarningLocalization{
+	WarnSpirit	= "灵魂分裂",
+	WarnNormal	= "灵魂消失"
+}
+
+L:SetOptionLocalization{
+	WarnSpirit	= "警报：灵魂阶段",
+	WarnNormal	= "警报：正常阶段"
+}
+
+L:SetMiscLocalization{
+	YellSpirit	= "狂野的灵魂与我同在……",
+	YellNormal	= "灵魂，到我这里来！"
+}
+
+--------------------------
+--  Hex Lord Malacrass --
+--------------------------
+L = DBM:GetModLocalization("Malacrass")
+
+L:SetGeneralLocalization{
+	name = "妖术领主玛拉卡斯"
+}
+
+L:SetMiscLocalization{
+	YellPull	= "阴影将会降临在你们头上……"
+}
+
+--------------
+--  Zul'jin --
+--------------
+L = DBM:GetModLocalization("ZulJin")
+
+L:SetGeneralLocalization{
+	name = "祖尔金"
+}
+
+L:SetMiscLocalization{
+	YellPhase2	= "你看我有许多新招，变个熊……",
+	YellPhase3	= "变成猎鹰，谁也别想逃出我的眼睛！",
+	YellPhase4	= "现在来让你看看我的尖牙和利爪！",
+	YellPhase5	= "龙鹰，不用抬头就能看见！"
 }

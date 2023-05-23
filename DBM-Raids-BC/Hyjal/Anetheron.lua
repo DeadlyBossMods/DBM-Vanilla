@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(17808)
-mod:SetEncounterID(619)
+mod:SetEncounterID(619, 2469)
 mod:SetModelID(21069)
 
 mod:RegisterCombat("combat")
@@ -18,6 +18,10 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 31306 31298"
 )
 
+--[[
+ability.id = 31299 and type = "begincast"
+ or (ability.id = 31306 or ability.id = 31298) and type = "cast"
+--]]
 local warnSwarm			= mod:NewSpellAnnounce(31306, 3)
 local warnSleep			= mod:NewTargetNoFilterAnnounce(31298, 2)
 local warnInferno		= mod:NewTargetNoFilterAnnounce(31299, 4)
@@ -28,7 +32,7 @@ local yellInferno		= mod:NewYell(31299)
 local timerSwarm		= mod:NewBuffFadesTimer(20, 31306, nil, nil, nil, 3)
 local timerSleep		= mod:NewBuffFadesTimer(10, 31298, nil, nil, nil, 3)
 local timerSleepCD		= mod:NewCDTimer(19, 31298, nil, nil, nil, 3)
-local timerInferno		= mod:NewCDTimer(51, 31299, nil, nil, nil, 3)
+local timerInferno		= mod:NewCDTimer(51, 31299, nil, nil, nil, 3)-- ~55? leaving 51 for now
 
 function mod:InfernoTarget(targetname, uId)
 	if not targetname then return end

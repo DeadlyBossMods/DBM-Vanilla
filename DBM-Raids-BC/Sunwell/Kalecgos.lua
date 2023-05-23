@@ -6,7 +6,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(24850)
-mod:SetEncounterID(724)
+mod:SetEncounterID(724, 2488)
 mod:SetModelID(26628)
 
 mod:RegisterCombat("combat")
@@ -16,6 +16,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 45018",
 	"SPELL_AURA_APPLIED 44978 45001 45002 45004 45006 45010 45029 46021 45018",
 	"SPELL_AURA_APPLIED_DOSE 45018",
+	"UNIT_HEALTH",
 	"UNIT_DIED"
 )
 
@@ -33,7 +34,7 @@ local timerBuffetCD		= mod:NewCDTimer(8, 45018, nil, nil, nil, 2)
 local timerPorted		= mod:NewBuffActiveTimer(60, 46021, nil, nil, nil, 6)
 local timerExhausted	= mod:NewBuffActiveTimer(60, 44867, nil, nil, nil, 6)
 
-mod:AddBoolOption("RangeFrame", true)
+mod:AddRangeFrameOption(10, 46021)
 mod:AddBoolOption("ShowFrame", true)
 mod:AddBoolOption("FrameLocked", false)
 mod:AddBoolOption("FrameClassColor", true, nil, function()
@@ -147,5 +148,19 @@ function mod:UNIT_DIED(args)
 			grp = 0
 		end
 		Kal:RemoveEntry(("%s (%d)"):format(args.destName, grp or 0))
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	local id = self:GetUnitCreatureId(uId)
+	if id == 24850 or id == 24892 then
+		self:SendSync("Health", id, math.floor(100 * UnitHealth(uId) / UnitHealthMax(uId)))
+	end
+end
+
+function mod:OnSync(msg, id, health, sender)
+	if not self:IsInCombat() or msg ~= "Health" then return end
+	if self.Options.ShowFrame then
+		Kal:UpdateHealth(tonumber(id), tonumber(health))
 	end
 end

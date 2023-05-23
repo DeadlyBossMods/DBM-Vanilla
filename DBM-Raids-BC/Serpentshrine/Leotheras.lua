@@ -5,25 +5,28 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(21215)
-mod:SetEncounterID(625)
+mod:SetEncounterID(625, 2460)
 mod:SetModelID(20514)
 mod:SetUsedIcons(5, 6, 7, 8)
-mod:SetHotfixNoticeRev(20211102000000)--11-02-21
-mod:SetMinSyncRevision(20211102000000)--11-02-21
+mod:SetHotfixNoticeRev(20220114000000)--01-14-22
+mod:SetMinSyncRevision(20220114000000)--01-14-22
 mod:DisableRegenDetection()--Disable Player regen pull detection
 --mod:DisableESCombatDetection()--Disable ENCOUNTER_START
 
 mod:RegisterCombat("combat")
 
+--TODO, possibly adjust timers for unit died P1 trigger method. Yell method should primarily be a backup, not primary, but kept around for now
 --Not using RegisterEventsInCombat on purpose because it uses weird combat rules
-mod:RegisterEvents(
-	"UNIT_DIED"
-)
+--mod:RegisterEvents(
+--	"UNIT_DIED"
+--)
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 37640 37676 37749",
+	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
+--TODO, verify syncing classic code didn't break retail
 local warnPhase			= mod:NewAnnounce("WarnPhase", 2)
 local warnDemon			= mod:NewTargetAnnounce(37676, 4)
 local warnMC			= mod:NewTargetNoFilterAnnounce(37749, 4)
@@ -52,7 +55,7 @@ mod.vb.phase = 1
 local function humanWarns(self)
 	self.vb.whirlCount = 0
 	warnPhase:Show(L.Human)
-	timerWhirlCD:Start(15)
+	--timerWhirlCD:Start(15)
 	timerPhase:Start(nil, L.Demon)
 end
 
@@ -69,8 +72,12 @@ local function showMCTargets()
 end
 
 function mod:OnCombatStart(delay)
+	self.vb.phase = 0--Can't use setstage, 0 isn't accepted permeter except auto advancement
+	self.vb.binderKill = 0
 	self.vb.demonIcon = 8
 	self.vb.whirlCount = 0
+	table.wipe(warnMCTargets)
+	table.wipe(warnDemonTargets)
 end
 
 function mod:OnCombatEnd(delay)
@@ -113,8 +120,32 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
+function mod:UNIT_DIED(args)
+	local cId = self:GetCIDFromGUID(args.destGUID)
+	if cId == 21806 then
+		self.vb.binderKill = self.vb.binderKill + 1
+		if self.vb.binderKill == 3 and self.vb.phase == 0  then
+			self:SetStage(1)
+			timerWhirlCD:Start(15)
+			timerPhase:Start(60, L.Demon)
+			berserkTimer:Start()
+		end
+	end
+end
+
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellDemon or msg:find(L.YellDemon) then
+		self:SendSync("Demon")
+    elseif msg == L.YellPhase1 or msg:find(L.YellPhase1) then
+        self:SendSync("Phase1")
+	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
+		self:SendSync("Phase2")
+	end
+end
+
+function mod:OnSync(msg)
+	if not self:IsInCombat() then return end
+	if msg == "Demon" then
 		warnPhase:Show(L.Demon)
 		timerWhirl:Cancel()
 		timerWhirlCD:Cancel()
@@ -122,8 +153,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerDemonCD:Start()
 		timerPhase:Start(nil, L.Human)
 		self:Schedule(60, humanWarns, self)
-	elseif msg == L.YellPhase2 or msg:find(L.YellPhase2) then
-		self.vb.phase = 2
+	elseif msg == "Phase2" and self.vb.phase < 2 then
+		self:SetStage(2)
 		self:Unschedule(humanWarns)
 		timerPhase:Cancel()
 		timerWhirl:Cancel()
@@ -131,23 +162,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		timerDemonCD:Cancel()
 		warnPhase2:Show()
 		timerWhirlCD:Start(22.5)
-	end
-end
-
-function mod:UNIT_DIED(args)
-	local cId = self:GetCIDFromGUID(args.destGUID)
-	if cId == 21806 then
-		self.vb.binderKill = self.vb.binderKill + 1
-		if self.vb.binderKill == 3 and not self:IsInCombat() then
-			DBM:StartCombat(self, 0)
-			self.vb.demonIcon = 8
-			self.vb.whirlCount = 0
-			self.vb.phase = 1
-			table.wipe(warnMCTargets)
-			table.wipe(warnDemonTargets)
-			timerWhirlCD:Start(15)
-			timerPhase:Start(nil, L.Demon)
-			berserkTimer:Start()
-		end
+    elseif msg == "Phase1" and self.vb.phase == 0 then
+		self:SetStage(1)
+		timerWhirlCD:Start(15)
+		timerPhase:Start(60, L.Demon)
+		berserkTimer:Start()
 	end
 end

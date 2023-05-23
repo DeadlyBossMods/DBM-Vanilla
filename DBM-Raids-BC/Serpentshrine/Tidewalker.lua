@@ -5,7 +5,7 @@ mod.statTypes = "normal25"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(21213)
-mod:SetEncounterID(627)
+mod:SetEncounterID(627, 2462)
 mod:SetModelID(20739)
 mod:SetUsedIcons(5, 6, 7, 8)
 
@@ -28,7 +28,7 @@ local timerGraveCD		= mod:NewCDTimer(28.5, 38049, nil, nil, nil, 3)
 local timerMurlocs		= mod:NewTimer(51, "TimerMurlocs", 39088, nil, nil, 1)
 local timerBubble		= mod:NewBuffActiveTimer(35, 37854, nil, nil, nil, 1)
 
-mod:AddBoolOption("GraveIcon", true)
+mod:AddSetIconOption("GraveIcon", 38049, true, false, {8, 7, 6, 5})
 
 local warnGraveTargets = {}
 mod.vb.graveIcon = 8
