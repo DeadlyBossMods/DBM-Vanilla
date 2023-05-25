@@ -73,4 +73,5 @@ globals = {
 	"UnitDebuff",
 	"UnitPosition",
 	"UIParent",
+	"UnitInRaid",
 }
