@@ -30,6 +30,8 @@ local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Healer", 4)
 
+local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6)
+
 local timerWingBuffet		= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewCDTimer(14, 22539, nil, false)--14-21
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", 4, 5, nil, DBM_COMMON_L.ENRAGE_ICON)

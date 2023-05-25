@@ -24,8 +24,8 @@ mod:RegisterEventsInCombat(
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnSweep			= mod:NewSpellAnnounce(26103, 2, nil, "Tank", 2)
-local warnEnrage		= mod:NewSpellAnnounce(26615, 3)
-local warnEnrageSoon	= mod:NewSoonAnnounce(26615, 2)
+local warnBerserk		= mod:NewSpellAnnounce(26615, 3)
+local warnBerserkSoon	= mod:NewSoonAnnounce(26615, 2)
 
 local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2)
 
@@ -92,7 +92,7 @@ end
 function mod:UNIT_HEALTH(uId)
 	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 and self:GetUnitCreatureId(uId) == 15517 and not self.vb.prewarn_enrage then
 		self.vb.prewarn_enrage = true
-		warnEnrageSoon:Show()
+		warnBerserkSoon:Show()
 		self:UnregisterShortTermEvents()
 	end
 end
