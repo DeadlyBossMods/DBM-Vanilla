@@ -32,20 +32,20 @@ mod:RegisterEventsInCombat(
 	"UNIT_HEALTH"
 )
 
-local WarnAddsLeft				= mod:NewAnnounce("WarnAddsLeft", 2, "136116")
-local warnClassCall				= mod:NewAnnounce("WarnClassCall", 3, "136116")
-local warnPhase					= mod:NewPhaseChangeAnnounce()
-local warnPhase3Soon			= mod:NewPrePhaseAnnounce(3)
-local warnShadowFlame			= mod:NewCastAnnounce(22539, 2)
-local warnFear					= mod:NewCastAnnounce(22686, 2)
+local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "136116")
+local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
+local warnPhase				= mod:NewPhaseChangeAnnounce()
+local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
+local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
+local warnFear				= mod:NewCastAnnounce(22686, 2)
 
-local specwarnShadowCommand		= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2)		= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2)
-local specwarnVeilShadow		= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
-local specwarnClassCall			= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
+local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2)
+local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
+local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
-local timerPhase				= mod:NewPhaseTimer(15)
-local timerClassCall			= mod:NewTimer(30, "TimerClassCall", "136116", nil, nil, 5)
-local timerFearNext				= mod:NewCDTimer(26.7, 22686, nil, nil, nil, 2)--26-42.5
+local timerPhase			= mod:NewPhaseTimer(15)
+local timerClassCall		= mod:NewTimer(30, "TimerClassCall", "136116", nil, nil, 5)
+local timerFearNext			= mod:NewCDTimer(26.7, 22686, nil, nil, nil, 2)--26-42.5
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
