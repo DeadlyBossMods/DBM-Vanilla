@@ -1,7 +1,6 @@
-## Interface: 100100
-## X-Min-Interface: 80000
+## Interface: 30401
+## X-Min-Interface: 30401
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Vanilla)|r
-## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Рейды (классический)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -12,11 +11,10 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409
+## X-DBM-Mod-SubCategoriesID: 531, 509, 309, 469, 409
 ## X-DBM-Mod-Name: Raids (Vanilla)
-## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 531, 509, 469, 409
+## X-DBM-Mod-MapID: 531, 509, 309, 469, 409
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 1
 ## Version: @project-version@
@@ -50,6 +48,17 @@ AQ20\Moam.lua
 AQ20\Buru.lua
 AQ20\Ayamiss.lua
 AQ20\Ossirian.lua
+
+VanillaZG\Venoxis.lua
+VanillaZG\Jeklik.lua
+VanillaZG\Marli.lua
+VanillaZG\Thekal.lua
+VanillaZG\Arlokk.lua
+VanillaZG\Hakkar.lua
+VanillaZG\Bloodlord.lua
+VanillaZG\EdgeOfMadness.lua
+VanillaZG\Gahzranka.lua
+VanillaZG\Jindo.lua
 
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua

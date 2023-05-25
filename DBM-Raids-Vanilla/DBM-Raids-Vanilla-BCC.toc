@@ -1,7 +1,6 @@
-## Interface: 100100
-## X-Min-Interface: 80000
+## Interface: 20501
+## X-Min-Interface: 20501
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Vanilla)|r
-## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Рейды (классический)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -12,11 +11,10 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249
 ## X-DBM-Mod-Name: Raids (Vanilla)
-## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 531, 509, 469, 409
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 1
 ## Version: @project-version@
@@ -31,6 +29,22 @@ localization.fr.lua
 localization.kr.lua
 localization.mx.lua
 localization.ru.lua
+
+VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua
+VanillaNaxx\ArachnidQuarter\Faerlina.lua
+VanillaNaxx\ArachnidQuarter\Maexxna.lua
+VanillaNaxx\ConstructQuarter\Patchwerk.lua
+VanillaNaxx\ConstructQuarter\Grobbulus.lua
+VanillaNaxx\ConstructQuarter\Gluth.lua
+VanillaNaxx\ConstructQuarter\Thaddius.lua
+VanillaNaxx\PlagueQuarter\Noth.lua
+VanillaNaxx\PlagueQuarter\Heigan.lua
+VanillaNaxx\PlagueQuarter\Loatheb.lua
+VanillaNaxx\MilitaryQuarter\Razuvious.lua
+VanillaNaxx\MilitaryQuarter\Gothik.lua
+VanillaNaxx\MilitaryQuarter\Horsemen.lua
+VanillaNaxx\FrostwyrmLair\Sapphiron.lua
+VanillaNaxx\FrostwyrmLair\Kel'Thuzad.lua
 
 AQ40\AQ40Trash.lua
 AQ40\Skeram.lua
@@ -50,6 +64,17 @@ AQ20\Moam.lua
 AQ20\Buru.lua
 AQ20\Ayamiss.lua
 AQ20\Ossirian.lua
+
+VanillaZG\Venoxis.lua
+VanillaZG\Jeklik.lua
+VanillaZG\Marli.lua
+VanillaZG\Thekal.lua
+VanillaZG\Arlokk.lua
+VanillaZG\Hakkar.lua
+VanillaZG\Bloodlord.lua
+VanillaZG\EdgeOfMadness.lua
+VanillaZG\Gahzranka.lua
+VanillaZG\Jindo.lua
 
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
@@ -72,3 +97,5 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
+
+VanillaOnyxia\Onyxia.lua
