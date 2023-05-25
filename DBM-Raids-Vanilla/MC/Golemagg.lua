@@ -15,7 +15,9 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(11988)--, 11672
 mod:SetEncounterID(670)
-mod:SetModelID(11986)
+if not mod:IsClassic() then
+	mod:SetModelID(11986)--Totally fucked on classic
+end
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(

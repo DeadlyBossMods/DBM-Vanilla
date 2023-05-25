@@ -12,7 +12,9 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15341)
 mod:SetEncounterID(719)
-mod:SetModelID(15376)
+if not mod:IsClassic() then
+	mod:SetModelID(15376)
+end
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(--An exception to not use incombat events, cause boss might not engage until after his waves

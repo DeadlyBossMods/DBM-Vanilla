@@ -15,7 +15,9 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(11502)
 mod:SetEncounterID(672)
-mod:SetModelID(11121)
+if not mod:IsClassic() then
+	mod:SetModelID(11121)--Totally fucked on classic
+end
 mod:SetHotfixNoticeRev(20200218000000)--2020, 02, 18
 mod:SetMinSyncRevision(20200218000000)
 

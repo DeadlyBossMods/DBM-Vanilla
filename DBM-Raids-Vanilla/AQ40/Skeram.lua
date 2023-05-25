@@ -12,7 +12,9 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15263)
 mod:SetEncounterID(709)
-mod:SetModelID(15345)
+if not mod:IsClassic() then
+	mod:SetModelID(15345)
+end
 mod:SetUsedIcons(4, 5, 6, 7, 8)
 mod.noBossDeathKill = true
 mod:SetHotfixNoticeRev(20210522000000)--2021-05-22

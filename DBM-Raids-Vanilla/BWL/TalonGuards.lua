@@ -1,4 +1,15 @@
-local mod	= DBM:NewMod("TalonGuards", "DBM-BWL", 1)
+local isClassic = WOW_PROJECT_ID == (WOW_PROJECT_CLASSIC or 2)
+local isBCC = WOW_PROJECT_ID == (WOW_PROJECT_BURNING_CRUSADE_CLASSIC or 5)
+local isWrath = WOW_PROJECT_ID == (WOW_PROJECT_WRATH_CLASSIC or 11)
+local catID
+if isWrath then
+	catID = 4
+elseif isBCC or isClassic then
+	catID = 5
+else--retail or cataclysm classic and later
+	catID = 3
+end
+local mod	= DBM:NewMod("TalonGuards", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
