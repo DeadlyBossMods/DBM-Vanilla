@@ -16,13 +16,13 @@ mod:RegisterEventsInCombat(
 	"RAID_BOSS_EMOTE"
 )
 
---NOTE: Blizzard refused to add CLEU to classic so had to keep legacy scan method for classic compat. this hybrid mod just chooses method based on game version
+--NOTE: Blizzard refused to add 41951 CLEU to classic so had to keep legacy scan method for classic compat. this hybrid mod just chooses method based on game version
 local warnPhase			= mod:NewAnnounce("WarnPhase", 4, 42052)
-local warnFixate		= mod:NewTargetNoFilterAnnounce(41951, 3)
+local warnFixate		= mod:NewTargetNoFilterAnnounce(41976, 3)
 
 local specWarnMolten	= mod:NewSpecialWarningMove(40265, nil, nil, nil, 1, 2)
 local specWarnVolcano	= mod:NewSpecialWarningMove(42052, nil, nil, nil, 1, 2)
-local specWarnFixate	= mod:NewSpecialWarningRun(41951, nil, nil, nil, 4, 2)
+local specWarnFixate	= mod:NewSpecialWarningRun(41976, nil, nil, nil, 4, 2)--41951 doesn't exist in classic
 
 local timerPhase		= mod:NewTimer(60, "TimerPhase", 42052, nil, nil, 6)
 
