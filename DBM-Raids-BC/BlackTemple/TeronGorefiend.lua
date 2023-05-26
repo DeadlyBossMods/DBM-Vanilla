@@ -1,7 +1,11 @@
 local mod	= DBM:NewMod("TeronGorefiend", "DBM-Raids-BC", 2)
 local L		= mod:GetLocalizedStrings()
 
-mod.statTypes = "normal25"
+if not mod:IsClassic() then
+	mod.statTypes = "normal,timewalker"
+else
+	mod.statTypes = "normal25"
+end
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(22871)
