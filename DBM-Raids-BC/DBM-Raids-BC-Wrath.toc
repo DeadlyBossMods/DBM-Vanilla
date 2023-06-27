@@ -1,6 +1,7 @@
 ## Interface: 30402
 ## X-Min-Interface: 30401
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (BC)|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0공격대 (불성)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -13,6 +14,7 @@
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 580, 564, 534, 550, 548, 544, 565, 532, 568
 ## X-DBM-Mod-Name: Raids (BC)
+## X-DBM-Mod-Name-koKR: 공격대 (불성)
 ## X-DBM-Mod-Sort: 1001
 ## X-DBM-Mod-MapID: 580, 564, 534, 550, 548, 544, 565, 532, 568
 ## X-DBM-Mod-MinCoreRevision: 20230521000000

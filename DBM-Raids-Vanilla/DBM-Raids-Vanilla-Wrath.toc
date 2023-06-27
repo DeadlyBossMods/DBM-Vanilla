@@ -1,6 +1,7 @@
 ## Interface: 30402
 ## X-Min-Interface: 30401
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0Raids (Vanilla)|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0공격대 (클래식)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -13,6 +14,7 @@
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 309, 469, 409
 ## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 531, 509, 309, 469, 409
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
