@@ -1,6 +1,6 @@
 ## Interface: 20501
 ## X-Min-Interface: 20501
-## Title:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010 (Vanilla)|r
+## Title:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1

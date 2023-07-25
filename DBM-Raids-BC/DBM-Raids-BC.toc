@@ -1,6 +1,6 @@
 ## Interface: 100105
 ## X-Min-Interface: 80000
-## Title:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010 (BC)|r
+## Title:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010Raids (BC)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010공격대 (불성)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cffff6010Рейды (BC)|r
 ## Author: MysticalOS
