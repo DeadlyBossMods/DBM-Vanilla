@@ -7,11 +7,11 @@
 ## X-Min-Interface-BCC: 20504
 ## X-Min-Interface-Wrath: 30401
 ## Version: @project-version@
-## Title:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cff10ff10World Bosses (BC)|r
-## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cff10ff10아웃랜드|r
-## Title-deDE:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cff10ff10Scherbenwelt|r
-## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cff10ff10外域|r
-## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Module|r|cffffe00a>|r |cff10ff10Мировые боссы (BC)|r
+## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10World Bosses (BC)|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10아웃랜드|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10Scherbenwelt|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10外域|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10Мировые боссы (BC)|r
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
 ## SavedVariables: DBMOutlands_AllSavedVars
