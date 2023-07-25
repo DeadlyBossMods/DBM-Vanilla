@@ -2,6 +2,7 @@
 ## X-Min-Interface: 20501
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Рейды (классический)|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -15,6 +16,7 @@
 ## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249
 ## X-DBM-Mod-Name: Raids (Vanilla)
 ## X-DBM-Mod-Name-KoKR: 공격대 (클래식)
+## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
