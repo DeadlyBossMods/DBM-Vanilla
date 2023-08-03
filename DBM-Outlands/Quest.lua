@@ -38,20 +38,17 @@ end
 function mod:QUEST_LOG_UPDATE()
 	local hasBars = false
 	for questID, bar in pairs(bars) do
-		local isComplete = false
+		local isInProgress = false
 		if C_QuestLog then -- Retail
-			local questIndex = C_QuestLog.GetLogIndexForQuestID(questID)
-			if questIndex then
-				local info = C_QuestLog.GetInfo(questIndex)
-				isComplete = info and info.questID and C_QuestLog.IsQuestFlaggedCompleted(questID)
-			end
+			-- Is in quest log, and not complete
+			isInProgress = C_QuestLog.GetLogIndexForQuestID(questID) and not C_QuestLog.IsComplete(questID)
 		else -- Classic
 			local questIndex = GetQuestLogIndexByID(questID)
-			if questIndex then
-				isComplete = select(6, GetQuestLogTitle(questIndex))
+			if questIndex then -- Is in quest log
+				isInProgress = select(6, GetQuestLogTitle(questIndex)) -- And not complete
 			end
 		end
-		if bar and not isComplete then
+		if bar and not isInProgress then
 			bar:Cancel()
 			bars[questID] = nil
 		elseif bar ~= nil then

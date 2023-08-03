@@ -44,7 +44,7 @@ globals = {
 	"C_GossipInfo.GetOptions",
 	"C_QuestLog.GetInfo",
 	"C_QuestLog.GetLogIndexForQuestID",
-	"C_QuestLog.IsQuestFlaggedCompleted",
+	"C_QuestLog.IsComplete",
 	"C_UIWidgetManager.GetIconAndTextWidgetVisualizationInfo",
 	"CreateFrame",
 	"GetLocale",
