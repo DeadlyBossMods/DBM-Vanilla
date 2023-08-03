@@ -1,3 +1,4 @@
+if not C_QuestLog then return end--Not 100% sure if wrath and classic era have synced these changes or not
 local mod	= DBM:NewMod("Quest", "DBM-Outlands")
 local L		= mod:GetLocalizedStrings()
 
@@ -23,28 +24,29 @@ local bars = {}
 frame = CreateFrame("Frame")
 frame:RegisterEvent("QUEST_ACCEPTED")
 
-frame:SetScript("OnEvent", function(self, e, id)
+frame:SetScript("OnEvent", function(self, e, qid)
 	if not mod.Options.Timers then
 		frame:UnregisterAllEvents()
 		frame = nil
 		return
 	end
 	if e == "QUEST_ACCEPTED" then
-		local title, _, _, _, _, _, _, qid = GetQuestLogTitle(id)
-		if questTimers[qid] then
+		local questIndex = C_QuestLog.GetLogIndexForQuestID(qid)
+		local info = C_QuestLog.GetInfo(questIndex)
+		if questTimers[z] then
 			if bars[qid] then
 				bars[qid]:Cancel()
 			end
-			bars[qid] = DBT:CreateBar(questTimers[qid], tostring(title) or tostring(id), 136106)
+			bars[qid] = DBT:CreateBar(questTimers[qid], tostring(info.title) or tostring(qid), 136106)
 			frame:RegisterEvent("QUEST_LOG_UPDATE")
 		end
 	elseif e == "QUEST_LOG_UPDATE" then
 		-- check for the user abandoning the quest
 		local quests = {}
 		for i = 1, maxQuests do
-			local _, _, _, _, _, complete, _, qid = GetQuestLogTitle(i)
+			local info = C_QuestLog.GetInfo(i)
 			-- check for completion as the shat escort can complete early if someone elses npc finishes next to you
-			if qid and not complete then
+			if info and info.questID and not C_QuestLog.IsQuestFlaggedCompleted(info.questID) then
 				quests[qid] = true
 			end
 		end

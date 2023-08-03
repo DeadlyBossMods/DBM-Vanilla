@@ -43,6 +43,7 @@ globals = {
 
 	"C_GossipInfo.GetOptions",
 	"C_UIWidgetManager.GetIconAndTextWidgetVisualizationInfo",
+	"C_QuestLog",
 	"CreateFrame",
 	"GetLocale",
 	"GetNumGroupMembers",
