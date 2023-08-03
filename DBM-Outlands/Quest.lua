@@ -33,7 +33,7 @@ frame:SetScript("OnEvent", function(self, e, qid)
 	if e == "QUEST_ACCEPTED" then
 		local questIndex = C_QuestLog.GetLogIndexForQuestID(qid)
 		local info = C_QuestLog.GetInfo(questIndex)
-		if questTimers[z] then
+		if questTimers[qid] then
 			if bars[qid] then
 				bars[qid]:Cancel()
 			end
@@ -51,10 +51,10 @@ frame:SetScript("OnEvent", function(self, e, qid)
 			end
 		end
 		local nbars = 0
-		for qid, bar in pairs(bars) do
-			if bar and not quests[qid] then
+		for id, bar in pairs(bars) do
+			if bar and not quests[id] then
 				bar:Cancel()
-				bars[qid] = nil
+				bars[id] = nil
 			elseif bar ~= nil then
 				nbars = nbars + 1
 			end
