@@ -31,26 +31,26 @@ local bossNames = {
 
 function mod:GOSSIP_SHOW()
 	if GetRealZoneText() ~= L.HyjalZoneName then return end
-	local target = UnitName("target")
+	local target = UnitName("target") -- TODO: Change to unitID?
 	if target == L.Thrall or target == L.Jaina then
 		local table = C_GossipInfo and C_GossipInfo.GetOptions and C_GossipInfo.GetOptions()
 		local selection
-		if table and table[1] and table[1].name then
-			selection = table[1].name
+		if table and table[1] then
+			selection = table[1].name or nil
 		else
 			selection = GetGossipOptions()
 		end
 		if selection then
-			if selection == L.RageGossip then
+			if selection == L.RageGossip then -- Retail: GossipID - 32918
 				boss = 1
 				self:SendSync("boss", 1)
-			elseif selection == L.AnetheronGossip then
+			elseif selection == L.AnetheronGossip then -- Retail: GossipID - 32919
 				boss = 2
 				self:SendSync("boss", 2)
-			elseif selection == L.KazrogalGossip then
+			elseif selection == L.KazrogalGossip then -- Retail: GossipID - 32920 / 35378
 				boss = 3
 				self:SendSync("boss", 3)
-			elseif selection == L.AzgalorGossip then
+			elseif selection == L.AzgalorGossip then -- Retail: GossipID - 35377
 				boss = 4
 				self:SendSync("boss", 4)
 			end
@@ -61,15 +61,13 @@ mod.QUEST_PROGRESS = mod.GOSSIP_SHOW
 
 function mod:UPDATE_UI_WIDGET(table)
 	local id = table.widgetID
-	if not (id == 528 or id == 3121) then return end
+	if id ~= 528 and id ~= 3121 then
+		return
+	end
 	local widgetInfo = C_UIWidgetManager.GetIconAndTextWidgetVisualizationInfo(id)
 	local text = widgetInfo.text
 	if not text then return end
-	local currentWave = text:match("(%d)")
-	if not currentWave then
-		currentWave = 0
-	end
-	self:WaveFunction(currentWave)
+	self:WaveFunction(text:match("(%d)") or 0)
 end
 
 function mod:OnSync(msg, arg)
