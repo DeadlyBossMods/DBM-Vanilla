@@ -45,7 +45,7 @@ function mod:QUEST_LOG_UPDATE()
 		else -- Classic
 			local questIndex = GetQuestLogIndexByID(questID)
 			if questIndex then -- Is in quest log
-				isInProgress = select(6, GetQuestLogTitle(questIndex)) -- And not complete
+				isInProgress = not select(6, GetQuestLogTitle(questIndex)) -- And not complete
 			end
 		end
 		if bar and not isInProgress then
