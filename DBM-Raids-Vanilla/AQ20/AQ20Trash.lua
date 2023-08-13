@@ -25,7 +25,7 @@ mod:RegisterEvents(
 
 mod:AddRangeFrameOption(10, 22997)
 
-local eventsRegistered = false
+--local eventsRegistered = false
 
 do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
 	local warnPlague                    = mod:NewTargetAnnounce(22997, 2)
@@ -57,7 +57,7 @@ do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args.spellName == 22997 then
+		if args.spellId == 22997 then
 			if args:IsPlayer() and self.Options.RangeFrame then
 				DBM.RangeCheck:Hide()
 			end

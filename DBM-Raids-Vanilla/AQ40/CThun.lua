@@ -73,9 +73,9 @@ do
 			local uId = DBM:GetRaidUnitId(name)
 			if uId then
 				--First, display their stomach debuff stacks
-				local spellName, _, count = DBM:UnitDebuff(uId, 26476)
-				if spellName and count then
-					addLine(name, count)
+				local spellName, _, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = DBM:UnitDebuff(uId, 26476)
+				if spellName and (count or count2) then
+					addLine(name, count2 or count)
 				end
 				--Also, process their target information for tentacles
 				local targetuId = uId.."target"
