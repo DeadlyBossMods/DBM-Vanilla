@@ -61,7 +61,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(799, 800) and self:AntiSpam(5, 1) then
 		warnTeleport:Show()
 		timerTeleport:Start()
-	elseif args:IsSpell(26613 and not self:IsTrivial() then
+	elseif args:IsSpell(26613) and not self:IsTrivial() then
 		if args:IsPlayer() then
 			specWarnStrike:Show()
 			specWarnStrike:Play("defensive")

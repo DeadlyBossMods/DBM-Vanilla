@@ -58,7 +58,7 @@ end
 
 do
 	local Decimate = DBM:GetSpellInfo(28375)--Classic Note
-	function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
+	function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId, spellName)
 		if (spellId == 28375 or spellName == Decimate) and self:AntiSpam(20) then
 			warnDecimateNow:Show()
 			--timerDecimate:Start()

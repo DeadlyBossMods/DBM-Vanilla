@@ -132,7 +132,7 @@ end
 
 do
 	local tailSweep = DBM:GetSpellInfo(15847)--Classic Note
-	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
 		if (spellId == 15847 or spellName == tailSweep) and destGUID == UnitGUID("player") and self.Options.SoundWTF3 then -- Tail Sweep
 			DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\watch-the-tail.ogg")
 		end
