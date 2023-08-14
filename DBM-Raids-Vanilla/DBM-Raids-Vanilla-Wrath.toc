@@ -20,7 +20,7 @@
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 531, 509, 309, 469, 409
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
-## X-DBM-Mod-MinExpansion: 1
+## X-DBM-Mod-MinExpansion: 0
 ## Version: @project-version@
 
 localization.en.lua
