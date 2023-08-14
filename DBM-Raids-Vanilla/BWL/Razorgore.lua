@@ -60,7 +60,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 22425 and args:IsDestTypePlayer() then
+	if args:IsSpell(22425) and args:IsDestTypePlayer() then
 		if self.Options.SpecWarn22425moveto then
 			specWarnFireballVolley:Show(DBM_COMMON_L.BREAK_LOS)
 			specWarnFireballVolley:Play("findshelter")
@@ -71,18 +71,18 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 23040 and self.vb.phase < 2 then
+	if args:IsSpell(23040) and self.vb.phase < 2 then
 		warnPhase2:Show()
 		self:SetStage(2)
 	--This may not be accurate, it depends on how large expanded combat log range is
-	elseif args.spellId == 19873 then
+	elseif args:IsSpell(19873) then
 		self.vb.eggsLeft = self.vb.eggsLeft - 1
 		warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 23023 and args:IsDestTypePlayer() then
+	if args:IsSpell(23023) and args:IsDestTypePlayer() then
 		warnConflagration:CombinedShow(0.3, args.destName)
 	end
 end

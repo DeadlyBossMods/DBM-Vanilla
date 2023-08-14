@@ -58,20 +58,20 @@ end
 
 --Teleport-pull:30.6, 35.2, 37.8, 40.1, 36.5, 36.6, 37.7, 31.9, 31.7, 38.8, 32.9, 30.4, 40.2, 30.6, 37.6, 35.4, 32.9, 34.2, 35.3, 36.5, 30.4, 29.2, 34.3, 32.8, 40.0, 35.4, 36.5, 35.3
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(799, 800) and self:AntiSpam(5, 1) then
+	if args:IsSpell(799, 800) and self:AntiSpam(5, 1) then
 		warnTeleport:Show()
 		timerTeleport:Start()
-	elseif args.spellId == 26613 and not self:IsTrivial() then
+	elseif args:IsSpell(26613 and not self:IsTrivial() then
 		if args:IsPlayer() then
 			specWarnStrike:Show()
 			specWarnStrike:Play("defensive")
 		else
 			warnStrike:Show(args.destName)
 		end
-	elseif args.spellId == 26607 and args:IsPlayer() and args:IsSrcTypeHostile() and not self:IsTrivial() then
+	elseif args:IsSpell(26607) and args:IsPlayer() and args:IsSrcTypeHostile() and not self:IsTrivial() then
 		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
-	elseif args.spellID == 804 then
+	elseif args:IsSpell(804) then
 		if self.Options.NPAuraOnMutateBug then
 			DBM.Nameplate:Show(true, args.destGUID, 804, 135826, 4)
 		end
@@ -89,7 +89,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 804 then
+	if args:IsSpell(804) then
 		if self.Options.NPAuraOnMutateBug then
 			DBM.Nameplate:Hide(true, args.destGUID, 804, 135826)
 		end
@@ -97,12 +97,12 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 802 then
+	if args:IsSpell(802) then
 		warnMutateBug:Show()
 		timerMutateBugCD:Start()
-	elseif args.spellId == 804 then
+	elseif args:IsSpell(804) then
 		timerExplodeBugCD:Start()
---	elseif spellId == 26613 then
+--	elseif args:IsSpell(26613) then
 		--timerStrikeCD:Start()
 	end
 end

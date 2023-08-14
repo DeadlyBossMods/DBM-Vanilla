@@ -39,7 +39,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CREATE(args)
-	if args.spellId == 25648 then
+	if args:IsSpell(25648) then
 		timerSandTrapCD:Start()
 		if args:IsPlayerSource() then
 			specWarnSandTrap:Show()
@@ -52,7 +52,7 @@ function mod:SPELL_CREATE(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 25646 and not self:IsTrivial() then
+	if args:IsSpell(25646) and not self:IsTrivial() then
 		local amount = args.amount or 1
 		timerWound:Start(args.destName)
 		if amount >= 5 then
@@ -68,14 +68,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnWound:Show(args.destName, amount)
 		end
-	elseif args.spellId == 26527 then
+	elseif args:IsSpell(26527) then
 		warnFrenzy:Show(args.destName)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 25646 then
+	if args:IsSpell(25646) then
 		timerWound:Stop(args.destName)
 	end
 end

@@ -37,7 +37,7 @@ do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash
 
 	-- aura applied didn't seem to catch the reflects and other buffs
 	function mod:SPELL_AURA_APPLIED(args)
-		if args.spellId == 22997 and not self:IsTrivial() then
+		if args:IsSpell(22997) and not self:IsTrivial() then
 			if args:IsPlayer() then
 				specWarnPlague:Show()
 				specWarnPlague:Play("runout")
@@ -48,16 +48,16 @@ do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash
 			else
 				warnPlague:Show(args.destName)
 			end
-		elseif args.spellId == 25698 and not self:IsTrivial() then
+		elseif args:IsSpell(25698) and not self:IsTrivial() then
 			specWarnExplode:Show()
 			specWarnExplode:Play("justrun")
-		elseif args.spellId == 26079 then
+		elseif args:IsSpell(26079) then
 			warnCauseInsanity:CombinedShow(0.75, args.destName)
 		end
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args.spellId == 22997 then
+		if args:IsSpell(22997) then
 			if args:IsPlayer() and self.Options.RangeFrame then
 				DBM.RangeCheck:Hide()
 			end

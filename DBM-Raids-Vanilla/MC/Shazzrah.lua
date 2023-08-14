@@ -48,7 +48,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 19714 and not args:IsDestTypePlayer() then
+	if args:IsSpell(19714) and not args:IsDestTypePlayer() then
 		if self.Options.SpecWarn19714dispel then
 			specWarnDeadenMagic:Show(args.destName)
 			specWarnDeadenMagic:Play("dispelboss")
@@ -60,19 +60,19 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 19714 then
+	if args:IsSpell(19714) then
 		timerDeadenMagic:Stop()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19713 then
+	if args:IsSpell(19713) then
 		warnCurse:Show()
 		timerCurseCD:Start()
-	elseif args.spellId == 19715 then
+	elseif args:IsSpell(19715) then
 		warnCntrSpell:Show()
 		timerCounterSpellCD:Start()
-	elseif args.spellId == 23138 then
+	elseif args:IsSpell(23138) then
 		specWarnGate:Show(args.sourceName)
 		specWarnGate:Play("tauntboss")
 		timerGateCD:Start()

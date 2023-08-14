@@ -34,7 +34,7 @@ local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic|Healer", nil,
 local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 5, nil, DBM_COMMON_L.CURSE_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 24306 then
+	if args:IsSpell(24306) then
 		timerDelusion:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnDelusion:Show()
@@ -42,31 +42,31 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnDelusion:Show(args.destName)
 		end
-	elseif args.spellId == 17172 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(17172) and args:IsDestTypePlayer() then
 		timerHex:Start(args.destName)
 		warnHex:Show(args.destName)
-	elseif args.spellId == 24261 then
+	elseif args:IsSpell(24261) then
 		warnBrainWash:Show(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 17172 and args:IsDestTypePlayer() then
+	if args:IsSpell(17172) and args:IsDestTypePlayer() then
 		timerHex:Stop(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 24466 and args:IsSrcTypeHostile() then
+	if args:IsSpell(24466) and args:IsSrcTypeHostile() then
 		warnBanish:Show(args.destName)
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args.spellId == 24309 and args:IsDestTypeHostile() then
+	if args:IsSpell(24309) and args:IsDestTypeHostile() then
 		specWarnHealingWard:Show()
 		specWarnHealingWard:Play("attacktotem")
-	elseif args.spellId == 24262 then
+	elseif args:IsSpell(24262) then
 		specWarnBrainTotem:Show()
 		specWarnBrainTotem:Play("attacktotem")
 	end

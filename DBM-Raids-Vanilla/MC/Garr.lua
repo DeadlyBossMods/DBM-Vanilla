@@ -36,13 +36,13 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 15732 and args:IsDestTypePlayer() then
+	if args:IsSpell(15732) and args:IsDestTypePlayer() then
 		warnImmolate:CombinedShow(1, args.destName)
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19492 then
+	if args:IsSpell(19492) then
 		warnAntiMagicPulse:Show()
 		timerAntiMagicPulseCD:Start()
 	end

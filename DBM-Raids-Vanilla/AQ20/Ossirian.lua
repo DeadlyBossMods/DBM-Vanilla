@@ -28,19 +28,19 @@ local timerCyclone		= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
 local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable", "132866", nil, nil, 6)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 25176 then
+	if args:IsSpell(25176) then
 		warnSupreme:Show()
-	elseif args.spellId == 25189 then
+	elseif args:IsSpell(25189) then
 		warnCyclone:Show(args.destName)
 		timerCyclone:Start(args.destName)
-	elseif args:IsSpellID(25177, 25178, 25180, 25181, 25183) then
+	elseif args:IsSpell(25177, 25178, 25180, 25181, 25183) then
 		warnVulnerable:Show(args.spellName)
 		timerVulnerable:Show(args.spellName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 25189 then
+	if args:IsSpell(25189) then
 		timerCyclone:Stop(args.destName)
 	end
 end

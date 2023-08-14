@@ -48,16 +48,16 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26580 and args:IsSrcTypeHostile() and self:AntiSpam(3, 1) then
+	if args:IsSpell(26580) and args:IsSrcTypeHostile() and self:AntiSpam(3, 1) then
 		warnFear:Show()
 		timerFearCD:Start()
-	elseif args.spellId == 25812 then
+	elseif args:IsSpell(25812) then
 		warnToxicVolley:Show()
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 25807 and args:IsSrcTypeHostile() then
+	if args:IsSpell(25807) and args:IsSrcTypeHostile() then
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnHeal:Show(args.sourceName)
 			specWarnHeal:Play("kickcast")
@@ -68,19 +68,23 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if (args.spellId == 25786 or args.spellId == 25989) and args:IsPlayer() and self:AntiSpam(3, 2) then
+	if args:IsSpell(25786, 25989) and args:IsPlayer() and self:AntiSpam(3, 2) then
 		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
 end
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
-	if (spellId == 25786 or spellId == 25989) and destGUID == UnitGUID("player") and self:AntiSpam(3, 2) then
-		specWarnGTFO:Show(spellName)
-		specWarnGTFO:Play("watchfeet")
+do
+	local ToxicVaper = DBM:GetSpellInfo(25786)--Classic Note
+	local Toxin 	 = DBM:GetSpellInfo(25989)--Classic Note
+	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
+		if (spellId == 25786 or spellId == 25989 or spellName == ToxicVaper or spellName == Toxin) and destGUID == UnitGUID("player") and self:AntiSpam(3, 2) then
+			specWarnGTFO:Show(spellName)
+			specWarnGTFO:Play("watchfeet")
+		end
 	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)

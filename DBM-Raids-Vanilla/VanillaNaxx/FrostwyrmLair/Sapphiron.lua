@@ -102,20 +102,19 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 28522 and args:IsDestTypePlayer() then
+	if args:IsSpell(28522) and args:IsDestTypePlayer() then
 		warnIceBlock:CombinedShow(0.5, args.destName)
 		if args:IsPlayer() then
 			yellIceBlock:Yell()
 		end
-	elseif args.spellId == 28547 and args:IsPlayer() then
+	elseif args:IsSpell(28547) and args:IsPlayer() then
 		warnBlizzard:Show(args.spellName)
 		warnBlizzard:Play("watchfeet")
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	--if args:IsSpellID(28542, 55665) then -- Life Drain
-	if args.spellId == 28524 and args:IsSrcTypeHostile() then -- Frost Breath
+	if args:IsSpell(28524) and args:IsSrcTypeHostile() then -- Frost Breath
 		timerIceBlast:Start()
 		timerLanding:Update(16.3, 28.5)--Probably not even needed, if base timer is more accurate
 		self:Schedule(12.2, Landing, self)
@@ -125,8 +124,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	--if args:IsSpellID(28542, 55665) then -- Life Drain
-	if args.spellId == 28542 and args:IsSrcTypeHostile() then -- Life Drain
+	if args:IsSpell(28542) and args:IsSrcTypeHostile() then -- Life Drain
 		warnDrainLifeNow:Show()
 		warnDrainLifeSoon:Schedule(18.5)
 		timerDrainLife:Start()

@@ -193,7 +193,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpellID(23308, 23309, 23313, 23314, 23197, 23189, 23315, 23316, 23310, 23312) then
+	if args:IsSpell(23308, 23309, 23313, 23314, 23197, 23189, 23315, 23316, 23310, 23312) then
 		warnBreath:Show(args.spellName)
 		timerBreath:Start(2, args.spellName)
 		timerBreath:UpdateIcon(args.spellId)
@@ -203,7 +203,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 23155 and self:AntiSpam(3, 1) then
+	if args:IsSpell(23155) and self:AntiSpam(3, 1) then
 		if self:AntiSpam(3, 3) then
 			warnRed:Show()
 		end
@@ -213,7 +213,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				warnMutation:Show(mydebuffs.."/5")
 			end
 		end
-	elseif args.spellId == 23169 and self:AntiSpam(3, 2) then
+	elseif args:IsSpell(23169) and self:AntiSpam(3, 2) then
 		if self:AntiSpam(3, 4) then
 			warnGreen:Show()
 		end
@@ -223,7 +223,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				warnMutation:Show(mydebuffs.."/5")
 			end
 		end
-	elseif args.spellId == 23153 and self:AntiSpam(3, 3) then
+	elseif args:IsSpell(23153) and self:AntiSpam(3, 3) then
 		if self:AntiSpam(3, 5) then
 			warnBlue:Show()
 		end
@@ -233,7 +233,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				warnMutation:Show(mydebuffs.."/5")
 			end
 		end
-	elseif args.spellId == 23154 and self:AntiSpam(3, 4) then
+	elseif args:IsSpell(23154) and self:AntiSpam(3, 4) then
 		if self:AntiSpam(3, 6) then
 			warnBlack:Show()
 		end
@@ -243,14 +243,14 @@ function mod:SPELL_AURA_APPLIED(args)
 				warnMutation:Show(mydebuffs.."/5")
 			end
 		end
-	elseif args.spellId == 23170 and args:IsPlayer() then
+	elseif args:IsSpell(23170) and args:IsPlayer() then
 		specWarnBronze:Show()
 		specWarnBronze:Play("useitem")
 		mydebuffs = mydebuffs + 1
 		if mydebuffs >= 3 then
 			warnMutation:Show(mydebuffs.."/5")
 		end
-	elseif args.spellId == 23128 and args:IsDestTypeHostile() then
+	elseif args:IsSpell(23128) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn23128dispel then
 			specWarnFrenzy:Show(args.destName)
 			specWarnFrenzy:Play("enrage")
@@ -258,7 +258,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnFrenzy:Show()
 		end
 		timerFrenzy:Start()
-	elseif args.spellId == 23537 and args:IsDestTypeHostile() then
+	elseif args:IsSpell(23537) and args:IsDestTypeHostile() then
 		if self.vb.phase < 2 then
 			self:SetStage(2)
 			warnPhase2:Show()
@@ -269,17 +269,17 @@ end
 --mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 23128 and args:IsPlayer() then
+	if args:IsSpell(23128) and args:IsPlayer() then
 		mydebuffs = mydebuffs - 1
-	elseif args.spellId == 23169 and self:AntiSpam(3, 2) and args:IsPlayer() then
+	elseif args:IsSpell(23169) and self:AntiSpam(3, 2) and args:IsPlayer() then
 		mydebuffs = mydebuffs - 1
-	elseif args.spellId == 23153 and self:AntiSpam(3, 3) and args:IsPlayer() then
+	elseif args:IsSpell(23153) and self:AntiSpam(3, 3) and args:IsPlayer() then
 		mydebuffs = mydebuffs - 1
-	elseif args.spellId == 23154 and self:AntiSpam(3, 4) and args:IsPlayer() then
+	elseif args:IsSpell(23154) and self:AntiSpam(3, 4) and args:IsPlayer() then
 		mydebuffs = mydebuffs - 1
-	elseif args.spellId == 23170 and args:IsPlayer() then
+	elseif args:IsSpell(23170) and args:IsPlayer() then
 		mydebuffs = mydebuffs - 1
-	elseif args.spellId == 23128 and args:IsDestTypeHostile() then
+	elseif args:IsSpell(23128) and args:IsDestTypeHostile() then
 		timerFrenzy:Stop()
 	end
 end

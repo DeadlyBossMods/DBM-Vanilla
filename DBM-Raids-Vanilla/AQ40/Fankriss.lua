@@ -42,7 +42,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 25646 then
+	if args:IsSpell(25646) then
 		local amount = args.amount or 1
 		timerWound:Show(args.destName)
 		if amount >= 5 then
@@ -63,13 +63,13 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 25646 then
+	if args:IsSpell(25646) then
 		timerWound:Stop(args.destName)
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpellID(518, 25832, 25831) then
+	if args:IsSpell(518, 25832, 25831) then
 		warnWorm:Show()
 	end
 end

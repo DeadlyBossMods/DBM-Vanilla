@@ -54,7 +54,7 @@ function mod:OnCombatEnd(wipe, isSecondRun)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 28089 then
+	if args:IsSpell(28089) then
 		self:SetStage(2)
 		timerNextShift:Start()
 		timerShiftCast:Start()

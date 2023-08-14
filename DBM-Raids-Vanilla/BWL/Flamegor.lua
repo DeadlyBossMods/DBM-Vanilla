@@ -44,17 +44,17 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
-	if args.spellId == 23339 then
+	if args:IsSpell(23339) then
 		warnWingBuffet:Show()
 		timerWingBuffet:Start()
-	elseif args.spellId == 22539 then
+	elseif args:IsSpell(22539) then
 		warnShadowFlame:Show()
 		timerShadowFlameCD:Start()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 23342 and args:IsSrcTypeHostile() then
+	if args:IsSpell(23342) and args:IsSrcTypeHostile() then
 		if self.Options.SpecWarn23342dispel then
 			specWarnFrenzy:Show(args.sourceName)
 			specWarnFrenzy:Play("enrage")
@@ -65,13 +65,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)--did not see ebon use any of these abilities
-	if args.spellId == 23342 then
+	if args:IsSpell(23342) then
 		timerFrenzy:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)--did not see ebon use any of these abilities
-	if args.spellId == 23342 then
+	if args:IsSpell(23342) then
 		timerFrenzy:Stop()
 	end
 end

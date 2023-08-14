@@ -70,32 +70,32 @@ local function warnStingTargets()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26053 then
+	if args:IsSpell(26053) then
 		warnPoison:Show()
 		timerPoisonCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 26180 then
+	if args:IsSpell(26180) then
 		StingTargets[#StingTargets + 1] = args.destName
 		self:Unschedule(warnStingTargets)
 		self:Schedule(1, warnStingTargets)
 		if args:IsPlayer() then
 			timerSting:Start()
 		end
-	elseif args.spellId == 26053 and args:IsPlayer() then
+	elseif args:IsSpell(26053) and args:IsPlayer() then
 		timerPoison:Start()
-	elseif args.spellId == 26051 then
+	elseif args:IsSpell(26051) then
 		warnEnrage:Show()
 		timerEnrage:Start()
 		timerEnrageCD:Start()
-	elseif args.spellId == 26068 then
+	elseif args:IsSpell(26068) then
 		warnBerserk:Show()
 		timerStingCD:Stop()
 		timerEnrageCD:Stop()
 		timerPoisonCD:Stop()
-	elseif args.spellId == 26050 and not self:IsTrivial() then
+	elseif args:IsSpell(26050) and not self:IsTrivial() then
 		local amount = args.amount or 1
 		timerAcid:Start(args.destName)
 		if amount >= 10 then
@@ -116,11 +116,11 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 26180 and args:IsPlayer() then
+	if args:IsSpell(26180) and args:IsPlayer() then
 		timerSting:Stop()
-	elseif args.spellId == 26053 and args:IsPlayer() then
+	elseif args:IsSpell(26053) and args:IsPlayer() then
 		timerPoison:Stop()
-	elseif args.spellId == 26050 then
+	elseif args:IsSpell(26050) then
 		timerAcid:Stop(args.destName)
 	end
 end

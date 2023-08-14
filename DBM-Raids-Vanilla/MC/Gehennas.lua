@@ -51,25 +51,28 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19716 and args:IsSrcTypeHostile() then
+	if args:IsSpell(19716) and args:IsSrcTypeHostile() then
 		warnCurse:Show()
 		timerCurse:Start()
-	elseif args.spellId == 19717 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(19717) and args:IsSrcTypeHostile() then
 		warnRainFire:Show()
 		timerRoF:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 20277 and args:IsDestTypePlayer() then
+	if args:IsSpell(20277) and args:IsDestTypePlayer() then
 		warnFist:CombinedShow(0.3, args.destName)
 	end
 end
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
-	if spellId == 19717 and destGUID == UnitGUID("player") and self:AntiSpam() then
-		specWarnGTFO:Show(spellName)
-		specWarnGTFO:Play("watchfeet")
+do
+	local RainofFire = DBM:GetSpellInfo(19717)--Classic Note
+	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
+		if (spellId == 19717 or spellName == RainofFire) and destGUID == UnitGUID("player") and self:AntiSpam() then
+			specWarnGTFO:Show(spellName)
+			specWarnGTFO:Play("watchfeet")
+		end
 	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE

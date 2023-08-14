@@ -101,22 +101,22 @@ function mod:FireballTarget(targetname, uId)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 17086 and args:IsSrcTypeHostile() and self:AntiSpam(8, 1) then
+	if args:IsSpell(17086) and args:IsSrcTypeHostile() and self:AntiSpam(8, 1) then
 		specWarnBreath:Show()
 		specWarnBreath:Play("breathsoon")
 		timerBreath:Start()
 		--timerNextDeepBreath:Start()
-	elseif args.spellId == 18435 and args:IsSrcTypeHostile() then -- Flame Breath (Ground phases)
+	elseif args:IsSpell(18435) and args:IsSrcTypeHostile() then -- Flame Breath (Ground phases)
 		timerNextFlameBreath:Start()
-	elseif args.spellId == 18431 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(18431) and args:IsSrcTypeHostile() then
 		self:SendSync("Fear")
 		if self:AntiSpam(3, 3) then
 			specWarnBellowingRoar:Show()
 			specWarnBellowingRoar:Play("fearsoon")
 		end
-	elseif args.spellId == 18500 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(18500) and args:IsSrcTypeHostile() then
 		warnWingBuffet:Show()
-	elseif args.spellId == 18392 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(18392) and args:IsSrcTypeHostile() then
 		self:SendSync("Fireball", args.sourceGUID)
 		if self:AntiSpam(3, 2) then
 			self:BossTargetScanner(args.sourceGUID, "FireballTarget", 0.3, 6)
@@ -125,14 +125,17 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19633 and args:IsSrcTypeHostile() then
+	if args:IsSpell(19633) and args:IsSrcTypeHostile() then
 		warnKnockAway:Show(args.destName)
 	end
 end
 
-function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
-	if spellId == 15847 and destGUID == UnitGUID("player") and self.Options.SoundWTF3 then -- Tail Sweep
-		DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\watch-the-tail.ogg")
+do
+	local tailSweep = DBM:GetSpellInfo(15847)--Classic Note
+	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+		if (spellId == 15847 or spellName == tailSweep) and destGUID == UnitGUID("player") and self.Options.SoundWTF3 then -- Tail Sweep
+			DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\watch-the-tail.ogg")
+		end
 	end
 end
 

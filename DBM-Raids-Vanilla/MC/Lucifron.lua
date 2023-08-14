@@ -72,19 +72,19 @@ function mod:MCTarget(targetname, uId)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 20604 and args:IsSrcTypeHostile() then
+	if args:IsSpell(20604) and args:IsSrcTypeHostile() then
 		self:BossTargetScanner(args.sourceGUID, "MCTarget", 0.2, 8)
 	end
 end
 
 --[[function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 20604 then
+	if args:IsSpell(20604 then
 		warnMC:CombinedShow(1, args.destName)
 	end
 end--]]
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 20604 and args:IsDestTypePlayer() then
+	if args:IsSpell(20604) and args:IsDestTypePlayer() then
 		if self.Options.SetIconOnMC then
 			self:SetIcon(args.destName, 0)
 		end
@@ -92,11 +92,11 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19702 then
+	if args:IsSpell(19702) then
 		warnDoom:Show()
 		--timerDoom:Start()
 		timerDoomCD:Start()
-	elseif args.spellId == 19703 then
+	elseif args:IsSpell(19703) then
 		warnCurse:Show()
 		timerCurseCD:Start()
 	end

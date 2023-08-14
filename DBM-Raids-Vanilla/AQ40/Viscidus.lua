@@ -42,7 +42,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 25991 then
+	if args:IsSpell(25991) then
 		self.vb.volleyCount = self.vb.volleyCount + 1
 		warnPoisonBoltVolley:Show(self.vb.volleyCount)
 		timerPoisonBoltVolleyCD:Start(11, self.vb.volleyCount+1)
@@ -50,7 +50,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 25989 and args:IsPlayer() and self:AntiSpam(3, 2) then
+	if args:IsSpell(25989) and args:IsPlayer() and self:AntiSpam(3, 2) then
 		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	end

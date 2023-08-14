@@ -48,11 +48,11 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(28832, 28833, 28834, 28835) and self:AntiSpam(10) then
+	if args:IsSpell(28832, 28833, 28834, 28835) and self:AntiSpam(10) then
 		self.vb.markCount = self.vb.markCount + 1
 		timerMarkCD:Start(nil, self.vb.markCount+1)
 		warnMarkSoon:Schedule(9.9, self.vb.markCount+1)
-	elseif args.spellId == 28863 then
+	elseif args:IsSpell(28863) then
 		timerVoidZoneCD:Start()
 		if args:IsPlayer() then
 			specWarnVoidZone:Show()
@@ -61,10 +61,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		elseif self:CheckNearby(12, args.destName) then
 			warnVoidZone:Show(args.destName)
 		end
-	elseif args.spellId == 28883 then
+	elseif args:IsSpell(28883) then
 		warnHolyWrath:Show(args.destName)
 		timerHolyWrathCD:Start()
-	elseif args.spellId == 28884 then
+	elseif args:IsSpell(28884) then
 		warnMeteor:Show()
 		timerMeteorCD:Start()
 	end
@@ -72,7 +72,7 @@ end
 
 
 function mod:SPELL_AURA_APPLIED_DOSE(args)
-	if args:IsSpellID(28832, 28833, 28834, 28835) and args:IsPlayer() then
+	if args:IsSpell(28832, 28833, 28834, 28835) and args:IsPlayer() then
 		if args.amount >= 4 then
 			specWarnMarkOnPlayer:Show(args.spellName, args.amount)
 			specWarnMarkOnPlayer:Play("stackhigh")
@@ -81,14 +81,14 @@ function mod:SPELL_AURA_APPLIED_DOSE(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 29061 and args:IsSrcTypeHostile() then
+	if args:IsSpell(29061) and args:IsSrcTypeHostile() then
 		warnBoneBarrier:Show(args.destName)
 		timerBoneBarrier:Start(20, args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 29061 then
+	if args:IsSpell(29061) then
 		timerBoneBarrier:Stop(args.destName)
 	end
 end
