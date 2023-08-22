@@ -1,9 +1,7 @@
 ## Interface: 100105
-## Interface-Classic: 11404
 ## Interface-BCC: 20504
 ## Interface-Wrath: 30402
 ## X-Min-Interface: 80000
-## X-Min-Interface-Classic: 11403
 ## X-Min-Interface-BCC: 20504
 ## X-Min-Interface-Wrath: 30401
 ## Version: @project-version@
