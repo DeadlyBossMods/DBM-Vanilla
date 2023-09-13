@@ -37,7 +37,7 @@ function mod:GOSSIP_SHOW()
 		local selection
 		if table and table[1] then
 			selection = table[1].name or nil
-		else
+		elseif GetGossipOptions then
 			selection = GetGossipOptions()
 		end
 		if selection then
