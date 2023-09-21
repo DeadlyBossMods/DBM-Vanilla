@@ -76,7 +76,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBomb:Play("runout")
 			if self:IsEvent() or not self:IsTrivial() then
 				yellBomb:Yell()
-				yellBombFades:Countdown(20475)
+				yellBombFades:Countdown(8)
 			end
 		else
 			warnBomb:Show(args.destName)
