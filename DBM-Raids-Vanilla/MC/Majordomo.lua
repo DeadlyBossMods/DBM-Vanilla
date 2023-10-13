@@ -46,12 +46,12 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
-	if spellId == 20619 then
+	if args:IsSpell(20619) then
 		specWarnMagicReflect:Show(BOSS)--Always a threat to casters
 		specWarnMagicReflect:Play("stopattack")
 		timerMagicReflect:Start()
 		timerShieldCD:Start()
-	elseif spellId == 21075 then
+	elseif args:IsSpell(21075) then
 		if self.Options.SpecWarn21075reflect and (self:IsEvent() or not self:IsTrivial()) then--Not a threat to high level melee
 			specWarnDamageShield:Show(BOSS)
 			specWarnDamageShield:Play("stopattack")
@@ -60,7 +60,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 		timerDamageShield:Start()
 		timerShieldCD:Start()
-	elseif spellId == 20534 then
+	elseif args:IsSpell(20534) then
 		warnTeleport:Show(args.destName)
 		timerTeleportCD:Start()
 	end

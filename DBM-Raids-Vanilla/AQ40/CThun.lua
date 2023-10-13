@@ -73,9 +73,9 @@ do
 			local uId = DBM:GetRaidUnitId(name)
 			if uId then
 				--First, display their stomach debuff stacks
-				local spellName, _, count = DBM:UnitDebuff(uId, 26476)
-				if spellName and count then
-					addLine(name, count)
+				local spellName, _, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = DBM:UnitDebuff(uId, 26476)
+				if spellName and (count or count2) then
+					addLine(name, count2 or count)
 				end
 				--Also, process their target information for tentacles
 				local targetuId = uId.."target"
@@ -151,7 +151,7 @@ do
 	end
 
 	function mod:SPELL_CAST_START(args)
-		if args.spellId == 26134 then
+		if args:IsSpell(26134) then
 			-- the eye target can change to the correct target a tiny bit after the cast starts
 			self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "EyeBeamTarget", 0.1, 3)
 		end
@@ -159,7 +159,7 @@ do
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26586 then
+	if args:IsSpell(26586) then
 		 local cid = self:GetCIDFromGUID(args.sourceGUID)
 		 if self:AntiSpam(5, cid) then--Throttle multiple spawn within 5 seconds
 			if cid == 15726 then--Eye Tentacle
@@ -184,7 +184,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 26476 then
+	if args:IsSpell(26476) then
 		--I'm aware debuff stacks, but it's a context that doesn't matter to this mod
 		if not tContains(playersInStomach, args.destName) then
 			table.insert(playersInStomach, args.destName)
@@ -198,7 +198,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 26476 then
+	if args:IsSpell(26476) then
 		tDeleteItem(playersInStomach, args.destName)
 	end
 end

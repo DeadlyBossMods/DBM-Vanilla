@@ -32,7 +32,7 @@ local timerGaze 	= mod:NewTargetTimer(6, 24314, nil, nil, nil, 3)
 local timerMortal	= mod:NewTargetTimer(5, 16856, nil, "Tank|Healer", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 24314 then
+	if args:IsSpell(24314) then
 		timerGaze:Start(args.destName)
 		if self:AntiSpam(3, args.destName) then
 			if args:IsPlayer() then
@@ -42,9 +42,9 @@ function mod:SPELL_AURA_APPLIED(args)
 				warnGaze:Show(args.destName)
 			end
 		end
-	elseif args.spellId == 24318 and args:IsDestTypeHostile() then
+	elseif args:IsSpell(24318) and args:IsDestTypeHostile() then
 		warnFrenzy:Show(args.destName)
-	elseif args.spellId == 16856 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(16856) and args:IsDestTypePlayer() then
 		warnMortal:Show(args.destName)
 		timerMortal:Start(args.destName)
 	end

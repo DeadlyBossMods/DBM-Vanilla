@@ -60,7 +60,7 @@ function mod:Emerge()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 26615 and args:IsDestTypeHostile() then
+	if args:IsSpell(26615) and args:IsDestTypeHostile() then
 		self.vb.Berserked = true
 		warnBerserk:Show()
 		timerSubmerge:Stop()
@@ -68,18 +68,18 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 26102 then
+	if args:IsSpell(26102) then
 		specWarnBlast:Show()
 		specWarnBlast:Play("stunsoon")
 		timerBlastCD:Start()
-	elseif args.spellId == 26103 then
+	elseif args:IsSpell(26103) then
 		warnSweep:Show()
 		timerSweepCD:Start()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26058 and self:AntiSpam(3) and not self.vb.Berserked then
+	if args:IsSpell(26058) and self:AntiSpam(3) and not self.vb.Berserked then
 		timerBlastCD:Stop()
 		timerSweepCD:Stop()
 		timerSubmerge:Stop()

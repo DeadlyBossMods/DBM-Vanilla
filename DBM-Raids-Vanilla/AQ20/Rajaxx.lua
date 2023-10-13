@@ -35,7 +35,7 @@ local timerOrder		= mod:NewTargetTimer(10, 25471, nil, nil, nil, 3)
 local timerCloud		= mod:NewBuffActiveTimer(15, 26550, nil, nil, nil, 3)--? Good color?
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 25471 then
+	if args:IsSpell(25471) then
 		timerOrder:Start(args.destName)
 		if args:IsPlayer() then
 			specWarnOrder:Show()
@@ -48,10 +48,10 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26550 then
+	if args:IsSpell(26550) then
 		warnCloud:Show()
 		timerCloud:Start()
-	elseif args.spellId == 25599 then
+	elseif args:IsSpell(25599) then
 		warnThundercrash:Show()
 	end
 end

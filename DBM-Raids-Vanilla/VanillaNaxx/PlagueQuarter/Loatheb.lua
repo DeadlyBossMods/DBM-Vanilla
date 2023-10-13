@@ -100,12 +100,12 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 29234 then
+	if args:IsSpell(29234) then
 		self.vb.sporeCounter = self.vb.sporeCounter + 1
 		timerSpore:Start(self.vb.sporeTimer, self.vb.sporeCounter+1)
 		warnSporeNow:Show(self.vb.sporeCounter)
 		warnSporeSoon:Schedule(self.vb.sporeTimer - 5)
-	elseif args.spellId == 29204 then
+	elseif args:IsSpell(29204) then
 		self.vb.doomCounter = self.vb.doomCounter + 1
 		local timer = self.vb.doomCounter % 2 == 0 and 32.4 or 29.1
 		if self.vb.doomCounter >= 7 then
@@ -113,10 +113,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 		warnDoomNow:Show(self.vb.doomCounter)
 		timerDoom:Start(timer, self.vb.doomCounter + 1)
-	elseif args.spellId == 30281 then
+	elseif args:IsSpell(30281) then
 		warnRemoveCurse:Show()
 		timerRemoveCurseCD:Start()
-	--elseif args.spellId == 55593 then
+	--elseif args:IsSpell(55593 then
 		--timerAura:Start()
 		--warnHealSoon:Schedule(14)
 		--warnHealNow:Schedule(17)
@@ -128,7 +128,7 @@ end
 --29185--Priest
 --29198--Shaman
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpellID(29185, 29194, 29196, 29198) and DBM:UnitDebuff(args.destName, 29184, 29195, 29197, 29199) then
+	if args:IsSpell(29185, 29194, 29196, 29198) and DBM:UnitDebuff(args.destName, 29184, 29195, 29197, 29199) then
 		hadCorrupted[args.destName] = GetTime() + 60
 		if args:IsPlayer() then
 			warnHealSoon:Schedule(55)
@@ -137,7 +137,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpellID(29185, 29194, 29196, 29198) and not DBM:UnitDebuff(args.destName, 29184, 29195, 29197, 29199) then
+	if args:IsSpell(29185, 29194, 29196, 29198) and not DBM:UnitDebuff(args.destName, 29184, 29195, 29197, 29199) then
 		if args:IsPlayer() then
 			warnHealNow:Show()
 		end

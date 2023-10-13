@@ -42,20 +42,18 @@ function mod:ImpaleTarget(targetname, uId)
 end
 
 function mod:SPELL_CAST_START(args)
-	--if args:IsSpellID(28785, 54021) then -- Locust Swarm
-	if args.spellId == 28785 then -- Locust Swarm
+	if args:IsSpell(28785) then -- Locust Swarm
 		specialWarningLocust:Show()
 		specialWarningLocust:Play("aesoon")
 		timerLocustIn:Stop()
 		timerLocustFade:Start(23)
-	elseif args.spellId == 28783 then -- Impale
+	elseif args:IsSpell(28783) then -- Impale
 		self:BossTargetScanner(args.sourceGUID, "ImpaleTarget", 0.1, 6)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	--if args:IsSpellID(28785, 54021) and args.auraType == "BUFF" then
-	if args.spellId == 28785 and args:IsDestTypeHostile() then--Want it removing from boss, not players, without ID we check hostility of affected unit
+	if args:IsSpell(28785) and args:IsDestTypeHostile() then--Want it removing from boss, not players, without ID we check hostility of affected unit
 		warningLocustFaded:Show()
 		timerLocustIn:Start(69.2)--More consistent
 		warningLocustSoon:Schedule(54.2)

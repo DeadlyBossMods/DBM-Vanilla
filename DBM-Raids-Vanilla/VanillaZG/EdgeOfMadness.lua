@@ -32,29 +32,29 @@ local timerSleep	= mod:NewBuffActiveTimer(6, 24664, nil, nil, nil, 3)
 local timerCloud	= mod:NewBuffActiveTimer(15, 24683, nil, nil, nil, 3)
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 24684 then
+	if args:IsSpell(24684) then
 		warnChainBurn:Show()
-	elseif args.spellId == 24699 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(24699) and args:IsSrcTypeHostile() then
 		warnVanish:Show()
-	elseif args.spellId == 24683 then
+	elseif args:IsSpell(24683) then
 		warnCloud:Show()
 		timerCloud:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 24664 and args:IsDestTypePlayer() and  self:AntiSpam(3, 1) then
+	if args:IsSpell(24664) and args:IsDestTypePlayer() and  self:AntiSpam(3, 1) then
 		warnSleep:Show()
 		timerSleep:Start()
-	elseif args.spellId == 24699 and args:IsDestTypeHostile() then
+	elseif args:IsSpell(24699) and args:IsDestTypeHostile() then
 		warnFrenzy:Show()
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args.spellId == 24728 then
+	if args:IsSpell(24728) then
 		warnIllusions:Show()
-	--elseif args:IsSpellID(24683) then
+	--elseif args:IsSpell(24683) then
 	--	warnCloud:Show()
 	--	timerCloud:Start()
 	end

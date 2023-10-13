@@ -43,7 +43,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 24208 and args:IsSrcTypeHostile() then
+	if args:IsSpell(24208) and args:IsSrcTypeHostile() then
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnHeal:Show(args.sourceName)
 			specWarnHeal:Play("kickcast")
@@ -52,25 +52,25 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 21060 and args:IsDestTypePlayer() then
+	if args:IsSpell(21060) and args:IsDestTypePlayer() then
 		warnBlind:Show(args.destName)
 		timerBlind:Start(args.destName)
-	elseif args.spellId == 12540 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(12540) and args:IsDestTypePlayer() then
 		warnGouge:Show(args.destName)
 		timerGouge:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 21060 and args:IsDestTypePlayer() then
+	if args:IsSpell(21060) and args:IsDestTypePlayer() then
 		timerBlind:Stop(args.destName)
-	elseif args.spellId == 12540 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(12540) and args:IsDestTypePlayer() then
 		timerGouge:Stop(args.destName)
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args.spellId == 24183 then
+	if args:IsSpell(24183) then
 		warnAdds:Show()
 	end
 end

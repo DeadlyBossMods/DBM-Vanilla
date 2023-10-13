@@ -55,19 +55,19 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 23461 then
+	if args:IsSpell(23461) then
 		warnBreath:Show()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 18173 then
+	if args:IsSpell(18173) then
 		timerAdrenalineCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 18173 then
+	if args:IsSpell(18173) then
 		timerAdrenaline:Start(args.destName)
 		if self.Options.SetIconOnDebuffTarget2 then
 			self:SetIcon(args.destName, self.vb.debuffIcon)
@@ -90,7 +90,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 18173 then
+	if args:IsSpell(18173) then
 		if args:IsPlayer() then
 			specWarnAdrenalineOut:Cancel()
 			specWarnAdrenalineOut:CancelVoice()

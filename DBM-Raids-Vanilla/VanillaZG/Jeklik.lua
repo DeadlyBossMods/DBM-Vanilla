@@ -35,7 +35,7 @@ local timerPain			= mod:NewTargetTimer(18, 23952, nil, "RemoveMagic|Healer", nil
 local timerHealCD		= mod:NewNextTimer(20, 23954, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 23954 and args:IsSrcTypeHostile() then
+	if args:IsSpell(23954) and args:IsSrcTypeHostile() then
 		timerHealCD:Start()
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnHeal:Show(args.sourceName)
@@ -45,24 +45,24 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 23918 then
+	if args:IsSpell(23918) then
 		timerSonicBurst:Start()
 		warnSonicBurst:Show()
-	elseif args.spellId == 22884 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(22884) and args:IsSrcTypeHostile() then
 		timerScreech:Start()
 		warnScreech:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 23952 and args:IsDestTypePlayer() then
+	if args:IsSpell(23952) and args:IsDestTypePlayer() then
 		timerPain:Start(args.destName)
 		warnPain:Show(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellID == 23952 and args:IsDestTypePlayer() then
+	if args:IsSpell(23952) and args:IsDestTypePlayer() then
 		timerPain:Stop(args.destName)
 	end
 end

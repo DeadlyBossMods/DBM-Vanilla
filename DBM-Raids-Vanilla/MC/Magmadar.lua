@@ -40,7 +40,7 @@ local timerPanicCD		= mod:NewCDTimer(30, 19408)--30-40
 local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 19451 and args:IsDestTypeHostile() then
+	if args:IsSpell(19451) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn19451dispel then
 			specWarnEnrage:Show(args.destName)
 			specWarnEnrage:Play("enrage")
@@ -48,19 +48,19 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnEnrage:Show(args.destName)
 		end
 		timerEnrage:Start()
-	elseif args.spellId == 19428 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(19428) and args:IsDestTypePlayer() then
 		warnConflagration:CombinedShow(0.5, args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 19451 and args:IsDestTypeHostile() then
+	if args:IsSpell(19451) and args:IsDestTypeHostile() then
 		timerEnrage:Stop()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 19408 then
+	if args:IsSpell(19408) then
 		warnPanic:Show()
 		timerPanicCD:Start()
 	end

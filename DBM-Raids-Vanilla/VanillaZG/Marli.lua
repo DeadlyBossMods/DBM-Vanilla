@@ -32,13 +32,13 @@ local timerDrain		= mod:NewTargetTimer(7, 24300, nil, "RemoveMagic|Healer", nil,
 local timerCorrosive	= mod:NewTargetTimer(30, 24111, nil, "RemovePoison", nil, 5, nil, DBM_COMMON_L.POISON_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 24111 then
+	if args:IsSpell(24111) then
 		warnCorrosive:Show(args.destName)
 		timerCorrosive:Start(args.destName)
-	elseif args.spellId == 24300 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(24300) and args:IsDestTypePlayer() then
 		warnDrain:Show(args.destName)
 		timerDrain:Start(args.destName)
-	elseif args.spellId == 24109 then
+	elseif args:IsSpell(24109) then
 		if self.Options.SpecWarn24109dispel then
 			specWarnEnlarge:Show(args.destName)
 			specWarnEnlarge:Play("dispelboss")
@@ -49,15 +49,15 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 24111 then
+	if args:IsSpell(24111) then
 		timerCorrosive:Stop(args.destName)
-	elseif args.spellId == 24300 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(24300) and args:IsDestTypePlayer() then
 		timerDrain:Stop(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 24083 then
+	if args:IsSpell(24083) then
 		warnSpiders:Show()
 	end
 end

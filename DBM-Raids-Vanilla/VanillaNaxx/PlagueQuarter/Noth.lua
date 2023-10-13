@@ -99,8 +99,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	--if args:IsSpellID(29213, 54835) then -- Curse of the Plaguebringer
-	if args.spellId == 29213 then -- Curse of the Plaguebringer
+	if args:IsSpell(29213) then -- Curse of the Plaguebringer
 		self.vb.curseCount = self.vb.curseCount + 1
 		warnCurse:Show()
 		if self.vb.teleCount == 2 and self.vb.curseCount == 2 or self.vb.teleCount == 3 and self.vb.curseCount == 1 then
@@ -108,10 +107,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 		elseif self.vb.curseCount < 2 then
 			timerCurseCD:Start()
 		end
-	--elseif args.spellId == 29212 then--Cripple that's always cast when he teleports away
+	--elseif args:IsSpell(29212 then--Cripple that's always cast when he teleports away
 		--self:UnscheduleMethod("Balcony")
 		--self:Balcony()
-	elseif args.spellId == 29208 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(29208) and args:IsSrcTypeHostile() then
 		warnBlink:Show()
 	end
 end

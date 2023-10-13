@@ -34,6 +34,8 @@ jobs:
       - name: Create Package
         uses: BigWigsMods/packager@master
         if: ${{ github.event_name != 'pull_request' }}
+        with:
+          args: -g retail
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
@@ -46,3 +48,29 @@ jobs:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
         if: ${{ failure() }}
+  sync:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name != 'pull_request' }}
+    needs:
+      - build
+
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          repository: 'DeadlyBossMods/DBM-Classic'
+          ref: 'master'
+          token: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Deploy on DBM-Classic
+        run: |
+          COMMIT_MESSAGE=$(cat <<'EOF'
+          ${{ github.event.head_commit.message }}
+          EOF
+          )
+          COMMIT_MESSAGE=$(echo $COMMIT_MESSAGE | sed 's/"/\\"/g')
+          cd /home/runner/work/DBM-BCVanilla/DBM-Classic
+          git remote set-url origin "https://${{ secrets.PERSONAL_TOKEN }}@github.com/DeadlyBossMods/DBM-Classic.git"
+          git config user.email "${{ github.event.head_commit.author.email }}"
+          git config user.name "${{ github.event.head_commit.author.username }}"
+          git commit --allow-empty -m "$COMMIT_MESSAGE"
+          git push origin HEAD:master

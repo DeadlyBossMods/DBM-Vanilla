@@ -44,17 +44,17 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
-	if args.spellId == 23339 then
+	if args:IsSpell(23339) then
 		warnWingBuffet:Show()
 		timerWingBuffet:Start()
-	elseif args.spellId == 22539 then
+	elseif args:IsSpell(22539) then
 		warnShadowFlame:Show()
 		timerShadowFlameCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 23340 then
+	if args:IsSpell(23340) then
 		if args:IsPlayer() then
 			specWarnShadowYou:Show()
 			specWarnShadowYou:Play("targetyou")
@@ -71,7 +71,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 23340 then
+	if args:IsSpell(23340) then
 		timerShadow:Stop(args.destName)
 	end
 end

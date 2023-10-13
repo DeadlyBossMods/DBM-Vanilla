@@ -93,7 +93,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 27810 then
+	if args:IsSpell(27810) then
 		if args.destName then
 			if args:IsPlayer() then
 				specWarnFissureYou:Show()
@@ -108,15 +108,15 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			warnFissure:Show(DBM_COMMON_L.UNKNOWN)
 		end
-	elseif args.spellId == 27819 then
+	elseif args:IsSpell(27819) then
 		timerManaBomb:Start()
-	elseif args.spellId == 27808 then
+	elseif args:IsSpell(27808) then
 		timerFrostBlastCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 27808 then -- Frost Blast
+	if args:IsSpell(27808) then -- Frost Blast
 		table.insert(frostBlastTargets, args.destName)
 		self:Unschedule(AnnounceBlastTargets)
 		self:Schedule(0.5, AnnounceBlastTargets, self)
@@ -126,7 +126,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnBlastTargets:CombinedShow(0.5, args.destName)
 		end
-	elseif args.spellId == 27819 then -- Mana Bomb
+	elseif args:IsSpell(27819) then -- Mana Bomb
 		if self.Options.SetIconOnManaBomb then
 			self:SetIcon(args.destName, 8, 5.5)
 		end
@@ -137,7 +137,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnMana:Show(args.destName)
 		end
-	elseif args.spellId == 28410 then -- Chains of Kel'Thuzad
+	elseif args:IsSpell(28410) then -- Chains of Kel'Thuzad
 		if self:AntiSpam() then
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
@@ -158,7 +158,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 28410 then
+	if args:IsSpell(28410) then
 		if self.Options.SetIconOnMC2 then
 			self:SetIcon(args.destName, 0)
 		end

@@ -30,14 +30,13 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	--if args:IsSpellID(29107, 55543) then  -- Disrupting Shout
-	if args.spellId == 29107 then--What does an MCed unit return?
+	if args:IsSpell(29107) then--What does an MCed unit return?
 		timerShout:Start()
 		warnShoutNow:Show()
 		warnShoutSoon:Schedule(20)
-	elseif args.spellId == 29060 and args:IsPetSource() then -- Taunt
+	elseif args:IsSpell(29060) and args:IsPetSource() then -- Taunt
 		timerTaunt:Start(60, args.sourceGUID)
-	elseif args.spellId == 29061 and args:IsPetSource() then -- ShieldWall
+	elseif args:IsSpell(29061) and args:IsPetSource() then -- ShieldWall
 		timerShieldWall:Start(20, args.sourceGUID)
 		warnShieldWall:Schedule(15)
 	end

@@ -58,7 +58,7 @@ local function warnMCTargets(self)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 785 then
+	if args:IsSpell(785) then
 		MCTargets[#MCTargets + 1] = args.destName
 		self:Unschedule(warnMCTargets)
 		if self.Options.SetIconOnMC then
@@ -74,19 +74,19 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 785 and self.Options.SetIconOnMC then
+	if args:IsSpell(785) and self.Options.SetIconOnMC then
 		self:SetIcon(args.destName, 0)
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpellID(20449, 4801, 8195) and args:IsSrcTypeHostile() and self:AntiSpam(3, 1) then
+	if args:IsSpell(20449, 4801, 8195) and args:IsSrcTypeHostile() and self:AntiSpam(3, 1) then
 		warnTeleport:Show()
 	end
 end
 
 function mod:SPELL_SUMMON(args)
-	if args.spellId == 747 and self:AntiSpam(3, 2) then
+	if args:IsSpell(747) and self:AntiSpam(3, 2) then
 		warnSummon:Show()
 	end
 end

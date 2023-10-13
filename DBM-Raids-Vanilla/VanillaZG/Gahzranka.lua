@@ -22,9 +22,9 @@ local warnBreath	= mod:NewCastAnnounce(16099)
 local warnGeyser	= mod:NewCastAnnounce(22421)
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 16099 then
+	if args:IsSpell(16099) then
 		warnBreath:Show()
-	elseif args.spellId == 22421 then
+	elseif args:IsSpell(22421) then
 		warnGeyser:Show()
 	end
 end

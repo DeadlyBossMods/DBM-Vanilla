@@ -56,14 +56,14 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 23861 then
+	if args:IsSpell(23861) then
 		warnCloud:Show()
 		timerCloud:Start()
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 23860 and args:IsSrcTypeHostile() then
+	if args:IsSpell(23860) and args:IsSrcTypeHostile() then
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnHolyFire:Show(args.sourceName)
 			specWarnHolyFire:Play("kickcast")
@@ -72,7 +72,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 23895 and args:IsDestTypeHostile() then
+	if args:IsSpell(23895) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn23895dispel then
 			specWarnRenew:Show(args.destName)
 			specWarnRenew:Play("dispelboss")
@@ -80,18 +80,18 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnRenew:Show(args.destName)
 		end
 		timerRenew:Start(args.destName)
-	elseif args.spellId == 23860 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(23860) and args:IsDestTypePlayer() then
 		warnFire:Show(args.destName)
 		timerFire:Start(args.destName)
-	elseif args.spellId == 23865 then
+	elseif args:IsSpell(23865) then
 		warnSerpent:Show(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 23895 and args:IsDestTypeHostile() then
+	if args:IsSpell(23895) and args:IsDestTypeHostile() then
 		timerRenew:Stop(args.destName)
-	elseif args.spellId == 23860 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(23860) and args:IsDestTypePlayer() then
 		timerFire:Stop(args.destName)
 	end
 end

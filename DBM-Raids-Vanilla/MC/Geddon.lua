@@ -66,7 +66,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 20475 then
+	if args:IsSpell(20475) then
 		timerBomb:Start(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 8)
@@ -76,19 +76,19 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBomb:Play("runout")
 			if self:IsEvent() or not self:IsTrivial() then
 				yellBomb:Yell()
-				yellBombFades:Countdown(20475)
+				yellBombFades:Countdown(8)
 			end
 		else
 			warnBomb:Show(args.destName)
 		end
-	elseif args.spellId == 19659 and self:CheckDispelFilter() then
+	elseif args:IsSpell(19659) and self:CheckDispelFilter() then
 		specWarnIgnite:CombinedShow(0.3, args.destName)
 		specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 20475 then
+	if args:IsSpell(20475) then
 		timerBomb:Stop(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 0)
@@ -100,8 +100,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellId
-	if spellId == 19695 then
+	if args:IsSpell(19695) then
 		if self:IsEvent() or not self:IsTrivial() then
 			specWarnInferno:Show()
 			specWarnInferno:Play("aesoon")
@@ -110,20 +109,23 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 		timerInferno:Start()
 		timerInfernoCD:Start()
-	elseif spellId == 19659 then
+	elseif args:IsSpell(19659) then
 		timerIgniteManaCD:Start()
-	elseif spellId == 20478 then
+	elseif args:IsSpell(20478) then
 		warnArmageddon:Show()
 		timerArmageddon:Start()
-	elseif args.spellId == 20475 then
+	elseif args:IsSpell(20475) then
 		timerBombCD:Start()
 	end
 end
 
-function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
-	if spellId == 19698 and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
-		specWarnGTFO:Show(spellName)
-		specWarnGTFO:Play("watchfeet")
+do
+	local Inferno = DBM:GetSpellInfo(19695)--Classic Note
+	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
+		if (spellId == 19698 or spellName == Inferno) and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
+			specWarnGTFO:Show(spellName)
+			specWarnGTFO:Play("watchfeet")
+		end
 	end
+	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end
-mod.SPELL_MISSED = mod.SPELL_DAMAGE

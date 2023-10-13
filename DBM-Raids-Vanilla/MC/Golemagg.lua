@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 local warnQuake		= mod:NewSpellAnnounce(20553)
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 20553 then
+	if args:IsSpell(20553) then
 		warnQuake:Show()
 	end
 end

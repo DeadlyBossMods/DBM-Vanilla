@@ -36,26 +36,26 @@ local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, 
 local timerHeal			= mod:NewCastTimer(2, 19775, nil, nil, 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args.spellId == 19779 then
+	if args:IsSpell(19779) then
 		warnInspire:Show(args.destName)
 		timerInspire:Start(args.destName)
-	elseif args.spellId == 19780 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(19780) and args:IsDestTypePlayer() then
 		warnHandRagnaros:CombinedShow(0.3, args.destName)
-	elseif args.spellId == 19776 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(19776) and args:IsDestTypePlayer() then
 		warnShadowPain:CombinedShow(0.3, args.destName)
-	elseif args.spellId == 20294 and args:IsDestTypePlayer() then
+	elseif args:IsSpell(20294) and args:IsDestTypePlayer() then
 		warnImmolate:CombinedShow(0.3, args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args.spellId == 19779 then
+	if args:IsSpell(19779) then
 		timerInspire:Stop(args.destName)
 	end
 end
 
 function mod:SPELL_CAST_START(args)
-	if args.spellId == 19775 and args:IsSrcTypeHostile() and self:CheckInterruptFilter(args.sourceGUID, false, true) then--Only show warning/timer for your own target.
+	if args:IsSpell(19775) and args:IsSrcTypeHostile() and self:CheckInterruptFilter(args.sourceGUID, false, true) then--Only show warning/timer for your own target.
 		timerHeal:Start()
 		specWarnHeal:Show(args.sourceName)
 		specWarnHeal:Play("kickcast")

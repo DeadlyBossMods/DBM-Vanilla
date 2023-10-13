@@ -40,14 +40,14 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args.spellId == 26083 and args:IsSrcTypeHostile() and self:AntiSpam(4, 1) then
+	if args:IsSpell(26083) and args:IsSrcTypeHostile() and self:AntiSpam(4, 1) then
 		if self:CheckInterruptFilter(args.sourceGUID, true) and self.Options.SpecWarn26083run then
 			specWarnWhirlwind:Show()
 			specWarnWhirlwind:Play("justrun")
 		else
 			warnWhirlwind:Show()
 		end
-	elseif args.spellId == 8269 and args:IsSrcTypeHostile() then
+	elseif args:IsSpell(8269) and args:IsSrcTypeHostile() then
 		warnEnrage:Show()
 	end
 end
