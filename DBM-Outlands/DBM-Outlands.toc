@@ -6,7 +6,7 @@
 ## X-Min-Interface-Wrath: 30401
 ## Version: @project-version@
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10World Bosses (BC)|r
-## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10아웃랜드|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10필드 보스 (불성)|r
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10Scherbenwelt|r
 ## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10外域|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cff10ff10Мировые боссы (BC)|r
@@ -21,6 +21,7 @@
 ## X-DBM-Mod-World-Boss: 1
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-Name: World Bosses (BC)
+## X-DBM-Mod-Name-koKR: 필드 보스 (불성)
 ## X-DBM-Mod-Name-ruRU: Мировые боссы (BC)
 ## X-DBM-Mod-Sort: 1003
 ## X-DBM-Mod-MapID: 530, 1
