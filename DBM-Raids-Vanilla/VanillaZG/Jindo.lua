@@ -16,7 +16,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 24306 17172 24261",
-	"SPELL_AURA_REMOVED 17172",
+	"SPELL_AURA_REMOVED 17172 24306",
 	"SPELL_CAST_SUCCESS 24466",
 	"SPELL_SUMMON 24309 24262"
 )
@@ -53,6 +53,8 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(17172) and args:IsDestTypePlayer() then
 		timerHex:Stop(args.destName)
+	elseif args:IsSpell(24306) then
+		timerDelusion:Stop(args.destName)
 	end
 end
 
