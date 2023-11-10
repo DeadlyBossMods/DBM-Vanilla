@@ -32,8 +32,6 @@ local specWarnGTFO				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
 
 local timerPoisonBoltVolleyCD	= mod:NewCDCountTimer(11, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
 
-mod:AddInfoFrameOption(nil, true)
-
 mod.vb.volleyCount = 0
 
 function mod:OnCombatStart(delay)
