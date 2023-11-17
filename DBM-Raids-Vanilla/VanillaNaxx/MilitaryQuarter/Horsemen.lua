@@ -58,7 +58,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			specWarnVoidZone:Show()
 			specWarnVoidZone:Play("targetyou")
 			yellVoidZone:Yell()
-		elseif self:CheckNearby(12, args.destName) then
+		else
 			warnVoidZone:Show(args.destName)
 		end
 	elseif args:IsSpell(28883) then
