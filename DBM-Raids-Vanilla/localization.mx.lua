@@ -7,7 +7,7 @@ local L
 L = DBM:GetModLocalization("Kurinnaxx")
 
 L:SetGeneralLocalization{
-	name 		= "Куриннакс"
+	name 		= "Kurinnaxx"
 }
 ------------
 -- Rajaxx --
@@ -15,23 +15,23 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Rajaxx")
 
 L:SetGeneralLocalization{
-	name 		= "Генерал Раджакс"
+	name 		= "General Rajaxx"
 }
 L:SetWarningLocalization{
-	WarnWave	= "Волна %s",
+	WarnWave	= "Oleada %s"
 }
 L:SetOptionLocalization{
-	WarnWave	= "Показывать предупреждение о следующей волне"
+	WarnWave	= "Mostrar aviso previo para la siguiente oleada"
 }
 L:SetMiscLocalization{
-	Wave1		= "Они пришли. Постарайся не дать себя убить, ",
-	Wave12Alt	= "Раджакс, напомни, когда я в последний раз обещал тебя убить?",
-	Wave3		= "Час возмездия близок! Да охватит мрак сердца наших врагов!",
-	Wave4		= "Мы не будем больше ждать за закрытыми дверьми и каменными стенами! Мы не будем больше отказываться от возмездия! Даже драконы содрогнутся перед нашим гневом!",
-	Wave5		= "Пусть наши враги трепещут! Смерть им!",
-	Wave6		= "Олений Шлем будет скулить и молить о пощаде, в точности как его сопливый сынок! Тысячелетняя несправедливость сегодня закончится!",
-	Wave7		= "Фэндрал! Твой час пробил! Иди же, прячься в изумрудном сне и молись, чтобы мы до тебя не добрались!",
-	Wave8		= "Настырная тварь! Я сам тебя убью!"
+	Wave12		= "Ahí vienen. Intenta que no te maten,",--Followed by 'chico' or 'chica'
+	Wave12Alt	= "Rajaxx, ¿recuerdas que te dije que serías el último en morir?",
+	Wave3		= "¡La hora de las recompensas está próxima! ¡Que la oscuridad reine en el corazón de nuestros enemigos!",
+	Wave4		= "¡No volveremos a esperar detrás de rejas y muros de piedra! ¡Nunca más podrán negarnos nuestra venganza! ¡Hasta los dragones temblarán frente a nuestra ira!",
+	Wave5		= "¡El miedo es para el enemigo! ¡Miedo y muerte!",
+	Wave6		= "¡Corzocelada llorará y rogará por su vida, igual que lo hizo su débil hijo! ¡Hoy acabará un milenio lleno de injusticia!",
+	Wave7		= "¡Fandral! ¡Ha llegado tu hora! ¡Ve y escóndete en el Sueño Esmeralda y reza para que nunca te encontremos!",
+	Wave8		= "¡Loco imprudente! ¡Acabaré contigo yo mismo!"
 }
 
 ----------
@@ -40,7 +40,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Moam")
 
 L:SetGeneralLocalization{
-	name 		= "Моам"
+	name 		= "Moam"
 }
 
 ----------
@@ -49,20 +49,20 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Buru")
 
 L:SetGeneralLocalization{
-	name 		= "Буру Ненасытный"
+	name 		= "Buru el Manducador"
 }
 L:SetWarningLocalization{
-	WarnPursue		= "Преследует >%s<",
-	SpecWarnPursue	= "Преследует вас!",
-	WarnDismember	= "%s на >%s< (%s)"
+	WarnPursue		= "Persiguiendo a >%s<",
+	SpecWarnPursue	= "Buru te está persiguiendo",
+	WarnDismember	= "%s en >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Называть преследуемые цели",
-	SpecWarnPursue	= "Показывать специальное предупреждение, когда преследование на вас",
+	WarnPursue		= "Anunciar objetivos de la persecución de Buru",
+	SpecWarnPursue	= "Mostrar aviso especial cuando te persiga el jefe",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "%s смотрит на"
+	PursueEmote 	= "¡%s mira a"
 }
 
 -------------
@@ -71,7 +71,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ayamiss")
 
 L:SetGeneralLocalization{
-	name 		= "Аямисса Охотница"
+	name 		= "Ayamiss el Cazador"
 }
 
 --------------
@@ -80,7 +80,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Ossirian")
 
 L:SetGeneralLocalization{
-	name 		= "Оссириан Неуязвимый"
+	name 		= "Osirio el Sinmarcas"
 }
 L:SetWarningLocalization{
 	WarnVulnerable	= "%s"
@@ -89,8 +89,8 @@ L:SetTimerLocalization{
 	TimerVulnerable	= "%s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable	= "Объявлять слабость",
-	TimerVulnerable	= "Показывать таймер до слабости"
+	WarnVulnerable	= "Anunciar debilidades",
+	TimerVulnerable	= "Mostrar temporizador para la duración de las debilidades"
 }
 
 ----------------
@@ -99,7 +99,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "АК20: Треш"
+	name = "AQ20: Bichos"
 }
 
 ------------
