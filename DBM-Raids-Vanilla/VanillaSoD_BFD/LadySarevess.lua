@@ -1,8 +1,6 @@
 local mod	= DBM:NewMod("LadySarevessSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
-mod.statTypes = "normal10"
-
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(204068)
 mod:SetEncounterID(2699)--2762 is likely 5 man version in instance type 201

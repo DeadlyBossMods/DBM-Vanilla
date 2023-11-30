@@ -1,8 +1,6 @@
 local mod	= DBM:NewMod("BaronAuanisSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
-mod.statTypes = "normal10"
-
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(202699)
 mod:SetEncounterID(2694)--2765 is likely 5 man version in instance type 201 (which has Old Serra'kis instead of Baron)
