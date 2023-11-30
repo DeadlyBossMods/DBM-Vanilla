@@ -1093,3 +1093,74 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "Phase 2"
 })
+
+---------------------------
+--  Season of Discovery  --
+---------------------------
+
+---------------------------
+--  Blackfathom Deeps  --
+---------------------------
+
+------------------
+--  Baron Aquanis  --
+------------------
+L = DBM:GetModLocalization("BaronAuanisSoD")
+
+L:SetGeneralLocalization({
+	name = "Baron Aquanis"
+})
+
+------------------
+--  Ghamoo-ra  --
+------------------
+L = DBM:GetModLocalization("GhamooraSoD")
+
+L:SetGeneralLocalization({
+	name = "Ghamoo-ra"
+})
+
+------------------
+--  Lady Sarevess  --
+------------------
+L = DBM:GetModLocalization("LadySarevessSoD")
+
+L:SetGeneralLocalization({
+	name = "Lady Sarevess"
+})
+
+------------------
+--  Gelihast  --
+------------------
+L = DBM:GetModLocalization("GelihastSoD")
+
+L:SetGeneralLocalization({
+	name = "Gelihast"
+})
+
+------------------
+--  Lorgus Jett  --
+------------------
+L = DBM:GetModLocalization("LorgusJettSoD")
+
+L:SetGeneralLocalization({
+	name = "Lorgus Jett"
+})
+
+------------------
+--  Twilight Lord Kelris  --
+------------------
+L = DBM:GetModLocalization("TwilightLordKelrisSoD")
+
+L:SetGeneralLocalization({
+	name = "Twilight Lord Kelris"
+})
+
+------------------
+--  Aku'mai  --
+------------------
+L = DBM:GetModLocalization("AkumaiSoD")
+
+L:SetGeneralLocalization({
+	name = "Aku'mai"
+})
