@@ -14,6 +14,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED"
 )
 
+--https://www.wowhead.com/classic/spell=425234/orbs-of-shadow
 --local warningSleep			= mod:NewTargetNoFilterAnnounce(8399, 2)
 
 --local timerSleepCD			= mod:NewAITimer(180, 8399, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
