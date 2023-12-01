@@ -122,7 +122,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args.spellId == 36815 and self.vb.phase ~= 5 then
 		specWarnShield:Show()
 		timerShieldCD:Start()
-		if self.Options.InfoFrame then
+		if self.Options.InfoFrame and self:IsRetail() then
 			DBM.InfoFrame:SetHeader(args.spellName)
 			DBM.InfoFrame:Show(2, "enemyabsorb", nil, UnitGetTotalAbsorbs("boss1"))
 		end

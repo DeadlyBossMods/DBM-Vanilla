@@ -33,7 +33,6 @@ local specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
 local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, nil, nil, nil, 1, 2)
 local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2)
 local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
-local specWarnFissureClose	= mod:NewSpecialWarningClose(27810, nil, nil, nil, 2, 2)
 local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
@@ -99,9 +98,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 				specWarnFissureYou:Show()
 				specWarnFissureYou:Play("targetyou")
 				yellFissure:Yell()
-			elseif self:CheckNearby(8, args.destName) then
-				specWarnFissureClose:Show(args.destName)
-				specWarnFissureClose:Play("watchfeet")
 			else
 				warnFissure:Show(args.destName)
 			end

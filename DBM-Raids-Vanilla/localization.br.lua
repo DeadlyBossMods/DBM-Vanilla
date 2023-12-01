@@ -527,9 +527,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "fogem à medida que o poder do orbe é drenado.",
-	YellEgg1	= "Vocês pagarão caro por me forçarem a fazer isso!",
-	YellEgg2	= "Tolos! Esses ovos são mais preciosos do que vocês imaginam!",
-	YellEgg3	= "Não! Mais um, não! Cortarei suas cabeças por esta atrocidade!",
 	YellPull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
 }
 -------------------

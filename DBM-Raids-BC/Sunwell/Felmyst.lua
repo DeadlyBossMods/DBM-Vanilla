@@ -28,7 +28,6 @@ local specWarnGas			= mod:NewSpecialWarningSpell(45855, "Healer", nil, nil, 1, 2
 local specWarnCorrosion		= mod:NewSpecialWarningTaunt(45866, nil, nil, nil, 1, 2)
 local specWarnEncaps		= mod:NewSpecialWarningYou(45665, nil, nil, nil, 1, 2)
 local yellEncaps			= mod:NewYell(45665)
-local specWarnEncapsNear	= mod:NewSpecialWarningClose(45665, nil, nil, nil, 1, 2)
 local specWarnVapor			= mod:NewSpecialWarningYou(45402, nil, nil, nil, 1, 2)
 local specWarnBreath		= mod:NewSpecialWarningDodgeCount(45717, nil, nil, nil, 3, 2)
 
@@ -62,9 +61,6 @@ function mod:EncapsulateTarget(targetname, uId)
 		specWarnEncaps:Show()
 		specWarnEncaps:Play("targetyou")
 		yellEncaps:Yell()
-	elseif self:CheckNearby(21, targetname) then
-		specWarnEncapsNear:Show(targetname)
-		specWarnEncapsNear:Play("runaway")
 	else
 		warnEncaps:Show(targetname)
 	end

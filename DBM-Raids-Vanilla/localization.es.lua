@@ -270,7 +270,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
-	YellPull 	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
+	YellPull	= "¡Tenemos intrusos en El Criadero! ¡Haced sonar la alarma! ¡Proteged los huevos a toda costa!"
 }
 -------------------
 --  Vaelastrasz  --
@@ -290,7 +290,11 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Broodlord")
 
 L:SetGeneralLocalization{
-	name	= "Señor de linaje Capazote"
+    name    = "Señor de prole Capazote"
+}
+
+L:SetMiscLocalization{
+    Pull    = "¡Ninguno de los vuestros debería estar aquí! ¡Os habéis condenado vosotros mismos!"
 }
 
 ---------------

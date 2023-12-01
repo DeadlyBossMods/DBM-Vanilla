@@ -23,7 +23,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537",
 --	"SPELL_AURA_REFRESH",
 	"SPELL_AURA_REMOVED 23155 23169 23153 23154 23170 23128",
-	"UNIT_HEALTH boss1"
+	"UNIT_HEALTH boss1",
+	"CHAT_MSG_MONSTER_EMOTE"
 )
 
 --(ability.id = 23309 or ability.id = 23313 or ability.id = 23189 or ability.id = 23315 or ability.id = 23312 or ability.id = 23314) and type = "begincast"
