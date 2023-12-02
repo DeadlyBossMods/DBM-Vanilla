@@ -4,6 +4,8 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(201722)
 mod:SetEncounterID(2697)--2761 is likely 5 man version in instance type 201
+mod:SetHotfixNoticeRev(20231201000000)
+--mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
 
