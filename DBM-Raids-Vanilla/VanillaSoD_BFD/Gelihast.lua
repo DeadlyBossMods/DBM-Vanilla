@@ -55,7 +55,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerCurseofBlackfathomCD:Start()
 	elseif args:IsSpell(411990) then
 		timerShadowCrashCD:Start()
-	elseif args:IsSpell(412528 and self:AntiSpam(5, 1) then
+	elseif args:IsSpell(412528) and self:AntiSpam(5, 1) then
 		warnGroundRupture:Show()
 		timerGroundRuptureCD:Start()
 	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then

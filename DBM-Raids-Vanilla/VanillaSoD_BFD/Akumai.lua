@@ -89,7 +89,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(427625) then
 		local amount = args.amount or 1
 		if amount % 3 == 0 or amount >= 6 then
-			warnShadowStrike:Show(args.destName, amount)
+			warnCorrosion:Show(args.destName, amount)
 		end
 	elseif args:IsSpell(428482) then
 		local amount = args.amount or 1

@@ -11,7 +11,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 425265",
-	"SPELL_CAST_SUCCESS 426199 425460",
+	"SPELL_CAST_SUCCESS 425460",
 	"SPELL_AURA_APPLIED 426495 423135 426199 425460"
 )
 
@@ -44,9 +44,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(426199) then
-		timerShadowCrashCD:Start()
-	elseif args:IsSpell(425460) then
+	if args:IsSpell(425460) then
 		timerDreamEaterCD:Start()
 	end
 end
