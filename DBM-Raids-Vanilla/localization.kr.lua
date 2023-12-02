@@ -679,7 +679,7 @@ L:SetMiscLocalization{
 }
 
 -------------------
---  아눕레칸     --
+--  Anub'Rekhan  --
 -------------------
 L = DBM:GetModLocalization("Anub'Rekhan")
 
@@ -698,9 +698,9 @@ L:SetMiscLocalization({
 	Pull2				= "어디 맛 좀 볼까..."
 })
 
----------------------
---  귀부인 펠리나  --
----------------------
+----------------------------
+--  Grand Widow Faerlina  --
+----------------------------
 L = DBM:GetModLocalization("Faerlina")
 
 L:SetGeneralLocalization({
@@ -722,7 +722,7 @@ L:SetMiscLocalization({
 })
 
 ---------------
---  맥스나   --
+--  Maexxna  --
 ---------------
 L = DBM:GetModLocalization("Maexxna")
 
@@ -749,9 +749,9 @@ L:SetMiscLocalization({
 	ArachnophobiaTimer	= "거미의 공포"
 })
 
----------------------
---  역병술사 노스  --
----------------------
+------------------------------
+--  Noth the Plaguebringer  --
+------------------------------
 L = DBM:GetModLocalization("Noth")
 
 L:SetGeneralLocalization({
@@ -783,7 +783,7 @@ L:SetMiscLocalization({
 })
 
 --------------------------
---  부정의 헤이건  --
+--  Heigan the Unclean  --
 --------------------------
 L = DBM:GetModLocalization("Heigan")
 
@@ -810,9 +810,9 @@ L:SetMiscLocalization({
 	Pull				= "이제 넌 내 것이다."
 })
 
-----------------
---  로데브  --
-----------------
+---------------
+--  Loatheb  --
+---------------
 L = DBM:GetModLocalization("Loatheb")
 
 L:SetGeneralLocalization({
@@ -830,7 +830,7 @@ L:SetOptionLocalization({
 })
 
 -----------------
---  패치워크  --
+--  Patchwerk  --
 -----------------
 L = DBM:GetModLocalization("Patchwerk")
 
@@ -847,7 +847,7 @@ L:SetMiscLocalization({
 })
 
 -----------------
---  그라불루스  --
+--  Grobbulus  --
 -----------------
 L = DBM:GetModLocalization("Grobbulus")
 
@@ -856,7 +856,7 @@ L:SetGeneralLocalization({
 })
 
 -------------
---  글루스  --
+--  Gluth  --
 -------------
 L = DBM:GetModLocalization("Gluth")
 
@@ -865,7 +865,7 @@ L:SetGeneralLocalization({
 })
 
 ----------------
---  타디우스  --
+--  Thaddius  --
 ----------------
 L = DBM:GetModLocalization("Thaddius")
 
@@ -897,9 +897,9 @@ L:SetWarningLocalization({
 	WarningChargeNotChanged	= "극성 변경 안됨"
 })
 
----------------------------
---  훈련교관 라주비어스  --
----------------------------
+----------------------------
+--  Instructor Razuvious  --
+----------------------------
 L = DBM:GetModLocalization("Razuvious")
 
 L:SetGeneralLocalization({
@@ -921,9 +921,9 @@ L:SetWarningLocalization({
 	WarningShieldWallSoon	= "뼈 보호막 종료 5초 전"
 })
 
-------------------------
---  영혼 착취자 고딕  --
-------------------------
+----------------------------
+--  Gothik the Harvester  --
+----------------------------
 L = DBM:GetModLocalization("Gothik")
 
 L:SetGeneralLocalization({
@@ -962,9 +962,9 @@ L:SetMiscLocalization({
 	Rider			= "기병"
 })
 
---------------------
---  4인의 기사단  --
---------------------
+---------------------
+--  Four Horsemen  --
+---------------------
 L = DBM:GetModLocalization("Horsemen")
 
 L:SetGeneralLocalization({
@@ -992,9 +992,9 @@ L:SetMiscLocalization({
 	Zeliek		= "젤리에크 경"
 })
 
---------------
---  사피론  --
---------------
+-----------------
+--  Sapphiron  --
+-----------------
 L = DBM:GetModLocalization("Sapphiron")
 
 L:SetGeneralLocalization({
@@ -1029,7 +1029,7 @@ L:SetTimerLocalization({
 })
 
 ------------------
---  켈투자드  --
+--  Kel'Thuzad  --
 ------------------
 L = DBM:GetModLocalization("Kel'Thuzad")
 
@@ -1054,4 +1054,75 @@ L:SetWarningLocalization({
 
 L:SetTimerLocalization({
 	TimerPhase2			= "2단계"
+})
+
+---------------------------
+--  Season of Discovery  --
+---------------------------
+
+---------------------------
+--  Blackfathom Deeps  --
+---------------------------
+
+------------------
+--  Baron Aquanis  --
+------------------
+L = DBM:GetModLocalization("BaronAuanisSoD")
+
+L:SetGeneralLocalization({
+	name = "군주 아쿠아니스"
+})
+
+------------------
+--  Ghamoo-ra  --
+------------------
+L = DBM:GetModLocalization("GhamooraSoD")
+
+L:SetGeneralLocalization({
+	name = "가무라"
+})
+
+------------------
+--  Lady Sarevess  --
+------------------
+L = DBM:GetModLocalization("LadySarevessSoD")
+
+L:SetGeneralLocalization({
+	name = "여왕 사레베스"
+})
+
+------------------
+--  Gelihast  --
+------------------
+L = DBM:GetModLocalization("GelihastSoD")
+
+L:SetGeneralLocalization({
+	name = "겔리하스트"
+})
+
+------------------
+--  Lorgus Jett  --
+------------------
+L = DBM:GetModLocalization("LorgusJettSoD")
+
+L:SetGeneralLocalization({
+	name = "로구스 제트"
+})
+
+------------------
+--  Twilight Lord Kelris  --
+------------------
+L = DBM:GetModLocalization("TwilightLordKelrisSoD")
+
+L:SetGeneralLocalization({
+	name = "황혼의 군주 켈리스"
+})
+
+------------------
+--  Aku'mai  --
+------------------
+L = DBM:GetModLocalization("AkumaiSoD")
+
+L:SetGeneralLocalization({
+	name = "아쿠마이"
 })
