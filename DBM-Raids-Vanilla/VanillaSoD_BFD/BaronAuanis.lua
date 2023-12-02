@@ -4,6 +4,8 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(202699)
 mod:SetEncounterID(2694)--2765 is likely 5 man version in instance type 201 (which has Old Serra'kis instead of Baron)
+mod:SetHotfixNoticeRev(20231201000000)
+--mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
 
