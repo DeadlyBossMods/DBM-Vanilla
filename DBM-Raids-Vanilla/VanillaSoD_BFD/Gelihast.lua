@@ -72,7 +72,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(412072) and args:IsDestTypePlayer() then
 		local amount = args.amount or 1
 		warnShadowStrike:Show(args.destName, amount)
-	elseif args:IsSpell(412072) and args:IsDestTypePlayer()
+	elseif args:IsSpell(412072) and args:IsDestTypePlayer() then
 		warnCurseofBlackfathom:CombinedShow(0.5, args.destName)
 	end
 end
