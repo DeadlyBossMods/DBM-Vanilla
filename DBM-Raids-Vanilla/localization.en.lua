@@ -1111,6 +1111,10 @@ L:SetGeneralLocalization({
 	name = "Baron Aquanis"
 })
 
+L:SetMiscLocalization({
+	Water		= "Water"
+})
+
 ------------------
 --  Ghamoo-ra  --
 ------------------
