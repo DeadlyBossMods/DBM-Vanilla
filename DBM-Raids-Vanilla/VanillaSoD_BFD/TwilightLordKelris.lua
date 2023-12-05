@@ -34,7 +34,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(425265) then
+	if args:IsSpell(425265) then--426494 is non interruptable version in stage 2
 		timerShadowyChainsCD:Start()
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnShadowyChains:Show(args.sourceName)
@@ -48,8 +48,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerDreamEaterCD:Start()
 	end
 end
-
-
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(426495) and args:IsDestTypePlayer() then

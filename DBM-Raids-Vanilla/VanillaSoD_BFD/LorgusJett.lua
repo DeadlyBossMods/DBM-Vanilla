@@ -28,9 +28,9 @@ mod:RegisterEventsInCombat(
 --local warnSleep					= mod:NewTargetNoFilterAnnounce(8399, 2)
 local warnBlackfathomMurloc			= mod:NewSpellAnnounce(419649, 2)
 local warnWindfuryTotem				= mod:NewSpellAnnounce(414691, 2)
-local warnLightningShieldtotem		= mod:NewSpellAnnounce(414763, 2)
 local warnMoltenFuryTotem			= mod:NewSpellAnnounce(419636, 2)
 
+local specWarnLightningShield		= mod:NewSpecialWarningSwitch(414763, nil, nil, nil, 1, 2)
 local specWarnHeal					= mod:NewSpecialWarningInterrupt(407568, "HasInterrupt", nil, nil, 1, 2)
 
 local timerTriplePunctureCD			= mod:NewCDNPTimer(10.9, 407794, nil, nil, nil, 5)
@@ -42,7 +42,7 @@ local timerLightningShieldTotemCD	= mod:NewCDTimer(9.5, 414763, nil, nil, nil, 1
 local timerMoltenFuryTotemCD		= mod:NewCDTimer(9.5, 419636, nil, nil, nil, 1)
 
 mod:AddSetIconOption("SetIconOnAdds", 419649, true, 5, {1, 2})
-mod:AddSetIconOption("SetIconOnTotem", 414691, true, 5, {8})
+mod:AddSetIconOption("SetIconOnTotem", 414763, true, 5, {8})
 
 mod.vb.iconCount = 1
 
@@ -76,7 +76,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnWindfuryTotem:Show()
 		timerLightningShieldTotemCD:Start()
 	elseif args:IsSpell(414763) then--Lighting Shield totem
-		warnLightningShieldtotem:Show()
+		specWarnLightningShield:Show()
+		specWarnLightningShield:Play("attacktotem")
 		timerMoltenFuryTotemCD:Start()
 	elseif args:IsSpell(419636) then--Molten Fury totem
 		warnMoltenFuryTotem:Show()
@@ -94,7 +95,7 @@ function mod:SPELL_SUMMON(args)
 			end
 			self.vb.iconCount = self.vb.iconCount + 1
 --		end
-	elseif args:IsSpell(414691, 414763, 419636) then--All the totems
+	elseif args:IsSpell(414763) then--All the totems, 419636, 414691
 		if self.Options.SetIconOnTotem then--Only use up to 5 icons
 			self:ScanForMobs(args.destGUID, 2, 8, 1, nil, 12, "SetIconOnTotem")
 		end

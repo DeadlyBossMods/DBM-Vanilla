@@ -27,13 +27,14 @@ local warnCurseofBlackfathom	= mod:NewTargetNoFilterAnnounce(411956, 2, nil, "Re
 local warnMarchofMurlocs		= mod:NewSpellAnnounce(412456, 2)
 local warnGroundRupture			= mod:NewSpellAnnounce(412528, 2)
 
-local timerShadowStrikeCD		= mod:NewCDTimer(11.3, 412072, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerCurseofBlackfathomCD	= mod:NewCDTimer(11.3, 411973, nil, nil, nil, 5, nil, DBM_COMMON_L.CURSE_ICON)
+local timerShadowStrikeCD		= mod:NewCDTimer(11.3, 412072, nil, "Tank|Healer", 2, 5, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerCurseofBlackfathomCD	= mod:NewCDTimer(11.3, 411973, nil, "RemoveCurse", 2, 5, nil, DBM_COMMON_L.CURSE_ICON)
 local timerShadowCrashCD		= mod:NewCDTimer(11.3, 411990, nil, nil, nil, 3)
 local timerGroundRuptureCD		= mod:NewCDTimer(11.3, 412528, nil, nil, nil, 3)
-local timerMarchofMurlocsCD		= mod:NewCDTimer(77.6, 412456, nil, nil, nil, 1)
+local timerMarchofMurlocsCD		= mod:NewCDTimer(77.6, 412456, nil, nil, nil, 6)--Might not be timer based
 
 function mod:OnCombatStart(delay)
+	self:SetStage(1)
 	timerShadowStrikeCD:Start(3-delay)
 	timerCurseofBlackfathomCD:Start(6-delay)
 	timerShadowCrashCD:Start(8-delay)
@@ -59,12 +60,15 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnGroundRupture:Show()
 		timerGroundRuptureCD:Start()
 	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then
+		self:SetStage(0)
 		--Boss stops casting these during murlocs
 		timerCurseofBlackfathomCD:Stop()
 		timerShadowStrikeCD:Stop()
 		timerShadowCrashCD:Stop()
 		warnMarchofMurlocs:Show()
-		timerMarchofMurlocsCD:Start()
+		if self:GetStage(3, 1) then
+			timerMarchofMurlocsCD:Start()
+		end
 	end
 end
 
