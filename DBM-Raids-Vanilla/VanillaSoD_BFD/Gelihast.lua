@@ -47,13 +47,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(412528) and self:AntiSpam(5, 1) then
 		warnGroundRupture:Show()
 		timerGroundRuptureCD:Start()
---	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then--Backup, but USCS is faster and more accurate
---		self:SetStage(0)
---		--Boss stops casting these during murlocs
---		timerCurseofBlackfathomCD:Stop()
---		timerShadowStrikeCD:Stop()
---		timerShadowCrashCD:Stop()
---		warnMarchofMurlocs:Show()
+	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then--Backup, but USCS is faster and more accurate
+		self:SetStage(0)
+		--Boss stops casting these during murlocs
+		timerCurseofBlackfathomCD:Stop()
+		timerShadowStrikeCD:Stop()
+		timerShadowCrashCD:Stop()
+		warnMarchofMurlocs:Show()
 	end
 end
 
@@ -82,7 +82,7 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(5, 2) then
+	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
 		self:SetStage(0)
 		--Boss stops casting these during murlocs
 		timerCurseofBlackfathomCD:Stop()
