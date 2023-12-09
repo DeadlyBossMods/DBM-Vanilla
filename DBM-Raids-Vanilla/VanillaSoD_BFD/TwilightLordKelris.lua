@@ -29,7 +29,7 @@ local specWarnShadowyChains		= mod:NewSpecialWarningInterrupt(425265, "HasInterr
 
 local timerShadowyChainsCD		= mod:NewCDTimer(11.3, 425265, nil, nil, nil, 4)--Remove interrupt icon since timer is used for stage 2 as well, CD affected by spell lockouts, so if shadow school locked out from pain kick, delayed
 --local timerSleepCD				= mod:NewCDTimer(40, 423135, nil, nil, nil, 3)
-local timerDreamEater			= mod:NewFadesTimer(15, 425460, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON)
+local timerDreamEater			= mod:NewBuffFadesTimer(15, 425460, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON)
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
