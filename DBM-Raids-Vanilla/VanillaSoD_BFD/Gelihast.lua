@@ -4,23 +4,21 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(204921)
 mod:SetEncounterID(2704)--2763 is likely 5 man version in instance type 201
-mod:SetHotfixNoticeRev(20231201000000)
+mod:SetHotfixNoticeRev(20231208000000)
 --mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
---	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS 412072 411973 412456 411990 412528",
-	"SPELL_AURA_APPLIED 412072 411956",
-	"SPELL_AURA_APPLIED_DOSE 412072"
+	"SPELL_CAST_SUCCESS 412072 411973 411990 412528 412079 412080",--412456
+	"SPELL_AURA_APPLIED 412072 411956 412079 412080",
+	"SPELL_AURA_APPLIED_DOSE 412072",
+	"UNIT_SPELLCAST_SUCCEEDED"--no boss unit Ids in classic
 )
 
---TODO, better detect march starting/ending to cleanup antispam and resume nono murloc phase timers
 --TODO, what does shadow crash even do, does it need an alert?
---TODO, void empowerment is what? stage change?
 --[[
-(ability.id = 412456  or ability.id = 411973 or ability.id = 412072 or ability.id = 411990 or ability.id = 412248 or ability.id = 412528) and type = "cast"
+(ability.id = 412456  or ability.id = 411973 or ability.id = 412072 or ability.id = 411990 or ability.id = 412248 or ability.id = 412528 or ability.id = 412079 or ability.id = 412080 or ability.id = 412296 or ability.id = 412421 or ability.id = 412443) and type = "cast"
 --]]
 local warnShadowStrike			= mod:NewStackAnnounce(412072, 2, nil, "Tank|Healer")
 local warnCurseofBlackfathom	= mod:NewTargetNoFilterAnnounce(411956, 2, nil, "RemoveCurse")
@@ -31,26 +29,16 @@ local timerShadowStrikeCD		= mod:NewCDTimer(11.3, 412072, nil, "Tank|Healer", 2,
 local timerCurseofBlackfathomCD	= mod:NewCDTimer(11.3, 411973, nil, "RemoveCurse", 2, 5, nil, DBM_COMMON_L.CURSE_ICON)
 local timerShadowCrashCD		= mod:NewCDTimer(11.3, 411990, nil, nil, nil, 3)
 local timerGroundRuptureCD		= mod:NewCDTimer(11.3, 412528, nil, nil, nil, 3)
-local timerMarchofMurlocsCD		= mod:NewCDTimer(77.6, 412456, nil, nil, nil, 6)--Might not be timer based
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
 	timerShadowStrikeCD:Start(3-delay)
 	timerCurseofBlackfathomCD:Start(6-delay)
 	timerShadowCrashCD:Start(8-delay)
-	timerMarchofMurlocsCD:Start(40-delay)
 end
-
---[[
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(8399) and args:IsSrcTypeHostile() then
-
-	end
-end
---]]
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(412072) then
+	if args:IsSpell(412072, 412079, 412080) then--Spell Id for each stage
 		timerShadowStrikeCD:Start()
 	elseif args:IsSpell(411973) then
 		timerCurseofBlackfathomCD:Start()
@@ -59,21 +47,18 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(412528) and self:AntiSpam(5, 1) then
 		warnGroundRupture:Show()
 		timerGroundRuptureCD:Start()
-	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then
-		self:SetStage(0)
-		--Boss stops casting these during murlocs
-		timerCurseofBlackfathomCD:Stop()
-		timerShadowStrikeCD:Stop()
-		timerShadowCrashCD:Stop()
-		warnMarchofMurlocs:Show()
-		if self:GetStage(3, 1) then
-			timerMarchofMurlocsCD:Start()
-		end
+--	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then--Backup, but USCS is faster and more accurate
+--		self:SetStage(0)
+--		--Boss stops casting these during murlocs
+--		timerCurseofBlackfathomCD:Stop()
+--		timerShadowStrikeCD:Stop()
+--		timerShadowCrashCD:Stop()
+--		warnMarchofMurlocs:Show()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(412072) and args:IsDestTypePlayer() then
+	if args:IsSpell(412072, 412079, 412080) and args:IsDestTypePlayer() then--Spell Id for each stage
 		local amount = args.amount or 1
 		warnShadowStrike:Show(args.destName, amount)
 	elseif args:IsSpell(412072) and args:IsDestTypePlayer() then
@@ -81,3 +66,28 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+--"<709.97 20:52:13> [UNIT_SPELLCAST_SUCCEEDED] Gelihast(6.5%-0.0%){Target:Valiseer} -Replace Stand with Swim- [[nameplate1:Cast-3-5164-48-10012-411583-00016E824D:411583]]", -- [10473]
+--"<709.97 20:52:13> [UNIT_SPELLCAST_SUCCEEDED] Gelihast(6.5%-0.0%){Target:Valiseer} -Replace Stand with Swim- [[target:Cast-3-5164-48-10012-411583-00016E824D:411583]]", -- [10474]
+--"<709.97 20:52:13> [UNIT_SPELLCAST_SUCCEEDED] Gelihast(6.5%-0.0%){Target:Valiseer} -Void Empowerment- [[nameplate1:Cast-3-5164-48-10012-412296-0001EE824D:412296]]", -- [10475]
+--"<709.97 20:52:13> [UNIT_SPELLCAST_SUCCEEDED] Gelihast(6.5%-0.0%){Target:Valiseer} -Void Empowerment- [[target:Cast-3-5164-48-10012-412296-0001EE824D:412296]]", -- [10476]
+--"<711.97 20:52:15> [CLEU] SPELL_SUMMON#Creature-0-5164-48-10012-205765-00036E79CF#Murloc Egg#Creature-0-5164-48-10012-205767-00006E824F#Void Murloc#412272#March of the Murlocs#nil#nil", -- [10501]
+--"<711.97 20:52:15> [CLEU] SPELL_SUMMON#Creature-0-5164-48-10012-205765-0002EE79CF#Murloc Egg#Creature-0-5164-48-10012-205767-0000EE824F#Void Murloc#412272#March of the Murlocs#nil#nil", -- [10502]
+--"<711.97 20:52:15> [CLEU] SPELL_SUMMON#Creature-0-5164-48-10012-205765-0001EE79CF#Murloc Egg#Creature-0-5164-48-10012-205767-00016E824F#Void Murloc#412272#March of the Murlocs#nil#nil", -- [10503]
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+	if spellId == 411583 then--Replace Stand with Swim
+		self:SendSync("PhaseChange")
+	end
+end
+
+function mod:OnSync(msg)
+	if not self:IsInCombat() then return end
+	if msg == "PhaseChange" and self:AntiSpam(5, 2) then
+		self:SetStage(0)
+		--Boss stops casting these during murlocs
+		timerCurseofBlackfathomCD:Stop()
+		timerShadowStrikeCD:Stop()
+		timerShadowCrashCD:Stop()
+		warnMarchofMurlocs:Show()
+	end
+end
