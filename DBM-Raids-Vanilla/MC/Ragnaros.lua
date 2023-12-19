@@ -53,6 +53,7 @@ local firstBossMod = DBM:GetModByName("MCTrash")
 mod:AddRangeFrameOption("18", nil, "-Melee")
 
 function mod:OnCombatStart(delay)
+	self:SetStage(1)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 0
 	self.vb.ragnarosEmerged = true
@@ -91,6 +92,7 @@ function mod:OnCombatEnd(wipe)
 end
 
 local function emerged(self)
+	self:SetStage(1)
 	self.vb.ragnarosEmerged = true
 	timerEmerge:Cancel()
 	warnEmerge:Show()
@@ -148,6 +150,7 @@ function mod:OnSync(msg)
 	if msg == "SummonRag" and self:AntiSpam(5, 2) then
 		timerCombatStart:Start()
 	elseif msg == "Submerge" and self:IsInCombat() then
+		self:SetStage(2)
 		self.vb.ragnarosEmerged = false
 		self:Unschedule(emerged)
 		timerWrathRag:Stop()
