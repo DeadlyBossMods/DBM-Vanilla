@@ -23,10 +23,10 @@ mod:RegisterEventsInCombat(
 local timerHeroism			= mod:NewBuffActiveTimer(10, 37471)
 local timerBloodlust		= mod:NewBuffActiveTimer(10, 37472)
 local timerRecentlyInGame	= mod:NewBuffFadesTimer(10, 30529, nil, nil, nil, 5)
-local timerNextCheat		= mod:NewTimer(108, "timerCheat", 39342, nil, nil, 3)
+local timerNextCheat		= mod:NewTimer(102.1, "timerCheat", 39342, nil, nil, 3)
 
 function mod:OnCombatStart(delay)
-	timerNextCheat:Start(108)
+	timerNextCheat:Start(108)--Also 102.1?
 end
 
 function mod:SPELL_AURA_APPLIED(args)
