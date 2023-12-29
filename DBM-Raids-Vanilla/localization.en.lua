@@ -293,7 +293,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Event				= "Too late, friends! Nefarius' corruption has taken hold...I cannot...control myself."
+	Event				= "Too late, friends!"
 }
 -----------------
 --  Broodlord  --
