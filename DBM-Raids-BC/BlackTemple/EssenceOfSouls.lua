@@ -71,6 +71,7 @@ mod:AddSetIconOption("SpiteIcon", 41376, false, 6)
 mod.vb.lastFixate = "None"
 
 function mod:OnCombatStart(delay)
+	self:SetStage(1)
 	self.vb.lastFixate = "None"
 	timerNextFrenzy:Start(49-delay)
 	warnFrenzySoon:Schedule(44-delay)
@@ -92,12 +93,14 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args.spellId == 41350 then --Aura of Desire
+		self:SetStage(2)
 		warnPhase2:Show()
 		warnMana:Schedule(130)
 		timerMana:Start()
-		timerNextShield:Start(13)
-		timerNextDeaden:Start(28)
+		timerNextShield:Start(12.1)
+		timerNextDeaden:Start(26.7)
 	elseif args.spellId == 41337 then --Aura of Anger
+		self:SetStage(3)
 		warnPhase3:Show()
 		timerNextSoul:Start()
 	elseif args.spellId == 41431 then

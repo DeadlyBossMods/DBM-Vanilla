@@ -34,7 +34,7 @@ local specWarnDeath			= mod:NewSpecialWarningYou(40251, nil, nil, nil, 1, 2)
 local specWarnDeathEnding	= mod:NewSpecialWarningMoveAway(40251, nil, nil, nil, 3, 2)
 
 local timerCrushed			= mod:NewBuffActiveTimer(15, 40243, nil, "Healer", 2, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerDeathCD			= mod:NewCDTimer(32, 40251, nil, nil, nil, 3)--32-40 (small sample size, could be bigger range)
+local timerDeathCD			= mod:NewCDTimer(26.7, 40251, nil, nil, nil, 3)--32-40 (small sample size, could be bigger range)
 local timerDeath			= mod:NewTargetTimer(55, 40251, nil, nil, nil, 3)
 local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325, nil, nil, 1)
 
