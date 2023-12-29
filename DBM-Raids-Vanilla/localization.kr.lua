@@ -1109,6 +1109,14 @@ L:SetGeneralLocalization({
 	name = "로구스 제트"
 })
 
+L:SetWarningLocalization({
+	warnPriestRemaining		= "여사제 %s 남음"
+})
+
+L:SetOptionLocalization({
+	warnPriestRemaining	= "검은심연의 바다여사제 남은 숫자 보기"
+})
+
 ------------------
 --  Twilight Lord Kelris  --
 ------------------
