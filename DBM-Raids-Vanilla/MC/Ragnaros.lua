@@ -43,7 +43,7 @@ local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Cor
 local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)
+local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5
 
 mod.vb.addLeft = 8
 mod.vb.ragnarosEmerged = true
