@@ -103,12 +103,13 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
---Missing first line
+--"<??> [CHAT_MSG_MONSTER_YELL] Too late, friends! Nefarius' corruption has taken hold...I cannot...control myself.\r\n#Vaelastrasz the Corrupt###Omegal##0#0##0#7803#nil#0#false#false#false#false",
 --"<8.85 19:59:36> [CHAT_MSG_MONSTER_YELL] I beg you, mortals - FLEE! Flee before I lose all sense of control! The black fire rages within my heart! I MUST- release it! #Vaelastrasz the Corrupt###Adornment##0#0##0#13862#nil#0#false#false#
 --"<28.25 19:59:55> [CHAT_MSG_MONSTER_YELL] FLAME! DEATH! DESTRUCTION! Cower, mortals before the wrath of Lord...NO - I MUST fight this! Alexstrasza help me, I MUST fight it! #Vaelastrasz the Corrupt###Adornment
 --"<38.98 20:00:06> [ENCOUNTER_START] 611#Vaelastrasz the Corrupt#9#40", -- [152]
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Event or msg:find(L.Event) then
+		--/run DBM:GetModByName("Vaelastrasz"):SendSync("PullRP")
 		self:SendSync("PullRP")
 	end
 end

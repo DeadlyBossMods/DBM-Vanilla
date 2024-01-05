@@ -68,7 +68,7 @@ local timerNextEnrage		= mod:NewCDTimer(40, 40683)
 local timerCaged			= mod:NewBuffActiveTimer(15, 40695, nil, nil, nil, 6)
 local timerPhase4			= mod:NewPhaseTimer(30)
 
-local timerCombatStart		= mod:NewCombatTimer(36)
+local timerCombatStart		= mod:NewRPTimer(36)
 local berserkTimer			= mod:NewBerserkTimer(1500)
 
 mod:AddRangeFrameOption(6, 40932)--Spell is 5 yards, but give it 6 or good measure since 5 yard check is probably least precise one since nerfs.
