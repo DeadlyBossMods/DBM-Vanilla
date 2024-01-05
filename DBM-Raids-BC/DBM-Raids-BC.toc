@@ -21,6 +21,9 @@
 ## X-DBM-Mod-MapID: 580, 564, 534, 550, 548, 544, 565, 532
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 1
+## X-Curse-Project-ID: 16442
+## X-WoWI-ID: 11700
+## X-Wago-ID: 7x61xpN1
 ## Version: @project-version@
 
 localization.en.lua
