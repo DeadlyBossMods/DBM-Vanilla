@@ -36,8 +36,7 @@ local timerShatterCD	= mod:NewNextTimer(10, 33654, nil, nil, nil, 2, nil, DBM_CO
 --local timerSilenceCD	= mod:NewCDTimer(32, 36297, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)--Also showing a HUGE variation of 32-48 seconds.
 
 mod:AddRangeFrameOption(mod.Options.RangeDistance == "Smaller" and 11 or 18, 33654)
-mod:AddMiscLine(DBM_CORE_L.OPTION_CATEGORY_DROPDOWNS)
-mod:AddDropdownOption("RangeDistance", {"Smaller", "Safe"}, "Safe", "misc")
+mod:AddDropdownOption("RangeDistance", {"Smaller", "Safe"}, "Safe", "misc", nil, 33654)
 
 function mod:OnCombatStart(delay)
 	timerGrowthCD:Start(-delay)
