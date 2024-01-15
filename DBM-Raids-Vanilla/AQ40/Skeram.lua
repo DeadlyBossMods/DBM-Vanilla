@@ -16,7 +16,7 @@ if not mod:IsClassic() then
 	mod:SetModelID(15345)
 end
 mod:SetUsedIcons(4, 5, 6, 7, 8)
-mod.noBossDeathKill = true
+mod:DisableBossDeathKill()
 mod:SetHotfixNoticeRev(20210522000000)--2021-05-22
 mod:SetMinSyncRevision(20210522000000)
 
