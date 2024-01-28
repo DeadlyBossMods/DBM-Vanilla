@@ -43,7 +43,7 @@ local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Cor
 local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerCombatStart	= mod:NewTimer(73, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)
+local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5
 
 mod.vb.addLeft = 8
 mod.vb.ragnarosEmerged = true
@@ -53,6 +53,7 @@ local firstBossMod = DBM:GetModByName("MCTrash")
 mod:AddRangeFrameOption("18", nil, "-Melee")
 
 function mod:OnCombatStart(delay)
+	self:SetStage(1)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 0
 	self.vb.ragnarosEmerged = true
@@ -91,6 +92,7 @@ function mod:OnCombatEnd(wipe)
 end
 
 local function emerged(self)
+	self:SetStage(1)
 	self.vb.ragnarosEmerged = true
 	timerEmerge:Cancel()
 	warnEmerge:Show()
@@ -148,6 +150,7 @@ function mod:OnSync(msg)
 	if msg == "SummonRag" and self:AntiSpam(5, 2) then
 		timerCombatStart:Start()
 	elseif msg == "Submerge" and self:IsInCombat() then
+		self:SetStage(2)
 		self.vb.ragnarosEmerged = false
 		self:Unschedule(emerged)
 		timerWrathRag:Stop()
@@ -157,14 +160,7 @@ function mod:OnSync(msg)
 		self.vb.addLeft = self.vb.addLeft + 8
 	elseif msg == "DomoDeath" and self:AntiSpam(5, 3) then
 		--The timer between yell/summon start and ragnaros being attackable is variable, but time between domo death and him being attackable is not.
-		--As such, we start lowest timer of that variation on the RP start, but adjust timer if it's less than 10 seconds at time domo dies
-		local remaining = timerCombatStart:GetRemaining()
-		if remaining then
-			if remaining < 10 then
-				timerCombatStart:AddTime(10 - remaining)
-			elseif remaining > 10 then
-				timerCombatStart:RemoveTime(remaining - 10)
-			end
-		end
+		--As such, we start with a reasonable guess on the RP start, but adjust timer to 10 seconds once domo dies.
+		timerCombatStart:Update(73, 83)
 	end
 end

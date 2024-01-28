@@ -1,3 +1,4 @@
+---@diagnostic disable: inject-field
 local Kal 	= DBM:GetModByName("Kal")
 local L		= Kal:GetLocalizedStrings()
 
@@ -47,7 +48,7 @@ function Kal:InitializeMenu()
 end
 
 local firstEntry = nil
-local lastEntry = nil
+local lastEntry = nil ---@type DBMKalBar?
 local frames = {}
 
 local fCounter = 1
@@ -66,8 +67,10 @@ local function createBarFrame(name)
 	return frame
 end
 
+---@class DBMKalBar
 local barMethods = {}
 local function createBar(name)
+	---@class DBMKalBar
 	local newEntry = setmetatable({
 		prev = lastEntry,
 		next = nil,
@@ -94,8 +97,10 @@ end
 
 local function createBarHealth(id, name)
 	local entry = createBar(name)
-	lastEntry.data.timer = nil
-	lastEntry.data.id = id
+	if lastEntry then
+		lastEntry.data.timer = nil
+		lastEntry.data.id = id
+	end
 
 	local bar = entry:GetBar()
 	local r, g, b = 0, 0.7, 0

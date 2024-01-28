@@ -293,7 +293,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Event				= "Too late, friends! Nefarius' corruption has taken hold...I cannot...control myself."
+	Event				= "Too late, friends!"
 }
 -----------------
 --  Broodlord  --
@@ -1140,6 +1140,14 @@ L = DBM:GetModLocalization("GelihastSoD")
 
 L:SetGeneralLocalization({
 	name = "Gelihast"
+})
+
+L:SetTimerLocalization{
+	TimerImmune = "Immunity ends"
+}
+
+L:SetOptionLocalization({
+	TimerImmune	= "Show timer for the duration of Gelihast's immunity during phase transitions."
 })
 
 ------------------

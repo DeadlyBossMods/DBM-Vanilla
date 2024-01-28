@@ -58,7 +58,7 @@ local vulnSpells = {
 --Local Functions
 -- in theory this should only alert on a new vulnerability on your target or when you change target
 local function update_vulnerability(self)
-	local target = UnitGUID("target")
+	local target = UnitGUID("target") or ""
 	local spellSchool = vulnerabilities[target]
 	local cid = self:GetCIDFromGUID(target)
 	if not spellSchool or not vulnMobs[cid] then

@@ -46,7 +46,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(407794) then
 		timerTriplePunctureCD:Start(nil, args.sourceGUID)
 	elseif args:IsSpell(407653) then
-		timerForkedLightningCD:start()
+		timerForkedLightningCD:Start()
 	end
 end
 

@@ -1,4 +1,4 @@
-## Interface: 100200
+## Interface: 100205
 ## X-Min-Interface: 80000
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (BC)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (불성)|r
@@ -21,6 +21,9 @@
 ## X-DBM-Mod-MapID: 580, 564, 534, 550, 548, 544, 565, 532
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 1
+## X-Curse-Project-ID: 16442
+## X-WoWI-ID: 11700
+## X-Wago-ID: 7x61xpN1
 ## Version: @project-version@
 
 localization.en.lua
