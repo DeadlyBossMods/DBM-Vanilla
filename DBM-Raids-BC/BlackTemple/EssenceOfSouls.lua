@@ -54,7 +54,7 @@ local timerPhaseChange	= mod:NewPhaseTimer(41)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 41305, nil, "Tank|Healer", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerNextFrenzy	= mod:NewNextTimer(40, 41305, nil, "Tank|Healer", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 --Phase 2
-local timerDeaden		= mod:NewTargetTimer(10, 41410, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON, nil, mod:IsTank() and select(2, UnitClass("player")) == "WARRIOR" and 2, 4)
+local timerDeaden		= mod:NewTargetTimer(10, 41410, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON, nil, mod:IsTank() and select(2, UnitClass("player")) == "WARRIOR" and 2 or nil, 4)
 local timerNextDeaden	= mod:NewCDTimer(31, 41410, nil, nil, nil, 5)--Roll timer because I don't want to assign it interrupt one when many groups will use prot warrior
 local timerMana			= mod:NewTimer(160, "TimerMana", 41350)
 local timerNextShock--On retail it has a CD, in TBC it has 0 cooldown, only spell lockout from interrupts
