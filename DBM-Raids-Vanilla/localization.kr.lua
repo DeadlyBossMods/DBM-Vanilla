@@ -1100,6 +1100,14 @@ L:SetGeneralLocalization({
 	name = "겔리하스트"
 })
 
+L:SetTimerLocalization{
+	TimerImmune = "무적 종료"
+}
+
+L:SetOptionLocalization({
+	TimerImmune	= "페이즈 전환 동안 겔리하스트의 무적 시간 타이머 바를 표시합니다."
+})
+
 ------------------
 --  Lorgus Jett  --
 ------------------
