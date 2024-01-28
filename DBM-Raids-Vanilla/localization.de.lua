@@ -1055,3 +1055,28 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "Phase 2"
 })
+
+---------------------------
+--  Season of Discovery  --
+---------------------------
+
+---------------------------
+--  Blackfathom Deeps  --
+---------------------------
+
+------------------
+--  Gelihast  --
+------------------
+L = DBM:GetModLocalization("GelihastSoD")
+
+L:SetGeneralLocalization({
+	name = "Gelihast"
+})
+
+L:SetTimerLocalization{
+	TimerImmune = "Immunität endet"
+}
+
+L:SetOptionLocalization({
+	TimerImmune	= "Zeige Timer für die Immunität zwischen den Phasen."
+})

@@ -1142,6 +1142,14 @@ L:SetGeneralLocalization({
 	name = "Gelihast"
 })
 
+L:SetTimerLocalization{
+	TimerImmune = "Immunity ends"
+}
+
+L:SetOptionLocalization({
+	TimerImmune	= "Show timer for the duration of Gelihast's immunity during phase transitions."
+})
+
 ------------------
 --  Lorgus Jett  --
 ------------------

@@ -22,13 +22,19 @@ mod:RegisterEventsInCombat(
 --]]
 local warnShadowStrike			= mod:NewStackAnnounce(412072, 2, nil, "Tank|Healer")
 local warnCurseofBlackfathom	= mod:NewTargetNoFilterAnnounce(411956, 2, nil, "RemoveCurse")
-local warnMarchofMurlocs		= mod:NewSpellAnnounce(412456, 2)
+local warnMarchofMurlocs		= mod:NewSpellAnnounce(412456, 2, 24939)
 local warnGroundRupture			= mod:NewSpellAnnounce(412528, 2)
 
 local timerShadowStrikeCD		= mod:NewCDTimer(11.3, 412072, nil, "Tank|Healer", 2, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerCurseofBlackfathomCD	= mod:NewCDTimer(11.3, 411973, nil, "RemoveCurse", 2, 5, nil, DBM_COMMON_L.CURSE_ICON)
 local timerShadowCrashCD		= mod:NewCDTimer(11.3, 411990, nil, nil, nil, 3)
 local timerGroundRuptureCD		= mod:NewCDTimer(11.3, 412528, nil, nil, nil, 3)
+
+-- Murlocs actively spawn for 18.0 seconds starting 2 seconds after the UCS trigger and it takes about 14 seconds for them to cross the room.
+-- However, we don't care about a few murlocs left at the edge of the room at the end, so 32 second timer it is.
+-- Boss becomes immune 2.0 seconds prior to murloc spawning and stays immune for 4.2 more seconds
+local murlocsActive				= mod:NewBuffActiveTimer(32, 412456, nil, nil, nil, 6, 24939)
+local bossImmune				= mod:NewTimer(24.2, "TimerImmune", 14893, nil, "TimerImmune", 6, nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, "active")
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
@@ -47,13 +53,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(412528) and self:AntiSpam(5, 1) then
 		warnGroundRupture:Show()
 		timerGroundRuptureCD:Start()
-	elseif args:IsSpell(412456) and self:AntiSpam(25, 2) then--Backup, but USCS is faster and more accurate
-		self:SetStage(0)
-		--Boss stops casting these during murlocs
-		timerCurseofBlackfathomCD:Stop()
-		timerShadowStrikeCD:Stop()
-		timerShadowCrashCD:Stop()
-		warnMarchofMurlocs:Show()
+	elseif args:IsSpell(412456) and self:AntiSpam(25, "Murlocs") then--Backup, but USCS is 2 seconds faster and more accurate
+		self:SendSync("PhaseChange", 2)
 	end
 end
 
@@ -76,18 +77,21 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 --"<711.97 20:52:15> [CLEU] SPELL_SUMMON#Creature-0-5164-48-10012-205765-0001EE79CF#Murloc Egg#Creature-0-5164-48-10012-205767-00016E824F#Void Murloc#412272#March of the Murlocs#nil#nil", -- [10503]
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 411583 then--Replace Stand with Swim
-		self:SendSync("PhaseChange")
+		self:SendSync("PhaseChange", 0)
 	end
 end
 
-function mod:OnSync(msg)
+function mod:OnSync(msg, delay)
 	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
+	delay = tonumber(delay) or 0
+	if msg == "PhaseChange" and self:AntiSpam(30, "Murlocs") then
 		self:SetStage(0)
 		--Boss stops casting these during murlocs
 		timerCurseofBlackfathomCD:Stop()
 		timerShadowStrikeCD:Stop()
 		timerShadowCrashCD:Stop()
 		warnMarchofMurlocs:Show()
+		murlocsActive:Start(-delay)
+		bossImmune:Start(-delay)
 	end
 end
