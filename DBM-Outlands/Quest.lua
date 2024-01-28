@@ -27,7 +27,7 @@ function mod:QUEST_ACCEPTED(questID)
 		end
 		local title =
 			C_QuestLog and -- Retail
-				C_QuestLog.GetInfo(C_QuestLog.GetLogIndexForQuestID(questID)).title
+				C_QuestLog.GetInfo(C_QuestLog.GetLogIndexForQuestID(questID) or 0).title
 			or -- Classic
 				GetQuestLogTitle(questID)
 		bars[questID] = DBT:CreateBar(questTimers[questID], tostring(title) or tostring(questID), 136106)
@@ -38,7 +38,7 @@ end
 function mod:QUEST_LOG_UPDATE()
 	local hasBars = false
 	for questID, bar in pairs(bars) do
-		local isInProgress = false
+		local isInProgress = nil
 		if C_QuestLog then -- Retail
 			-- Is in quest log, and not complete
 			isInProgress = C_QuestLog.GetLogIndexForQuestID(questID) and not C_QuestLog.IsComplete(questID)
@@ -56,6 +56,6 @@ function mod:QUEST_LOG_UPDATE()
 		end
 	end
 	if not hasBars then
-		self:UnregisterShortTermEvents("QUEST_LOG_UPDATE")
+		self:UnregisterShortTermEvents()
 	end
 end
