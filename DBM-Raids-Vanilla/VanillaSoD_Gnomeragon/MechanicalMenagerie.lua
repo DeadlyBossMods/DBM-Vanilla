@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("MechanicalMenagerieSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
---mod:SetCreatureID(213334)
+--mod:SetCreatureID(213334)--218969, 218971, 218973, 218975 (red, blue, green, gray)
 mod:SetEncounterID(2935)
 --mod:SetHotfixNoticeRev(20231201000000)
 --mod:SetMinSyncRevision(20231115000000)
@@ -64,6 +64,10 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 --]]
 
+--https://www.wowhead.com/classic/spell=438505/mech-pilot-transform-red
+--https://www.wowhead.com/classic/spell=438602/mech-pilot-transform-blue
+--https://www.wowhead.com/classic/spell=438603/mech-pilot-transform-green
+--https://www.wowhead.com/classic/spell=438604/mech-pilot-transform-gray
 --[[
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 411583 then--Replace Stand with Swim
