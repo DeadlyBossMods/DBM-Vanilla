@@ -13,12 +13,12 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 48
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 90, 48
 ## X-DBM-Mod-Name: Raids (Vanilla)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 48
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 90, 48
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 0
 ## Version: @project-version@
@@ -103,6 +103,13 @@ MC\Majordomo.lua
 MC\Ragnaros.lua
 
 VanillaOnyxia\Onyxia.lua
+
+VanillaSoD_Gnomeragon\CrowdPummeler.lua
+VanillaSoD_Gnomeragon\Grubbis.lua
+VanillaSoD_Gnomeragon\Electrocutioner6000.lua
+VanillaSoD_Gnomeragon\ViscousFallout.lua
+VanillaSoD_Gnomeragon\MechanicalMenagerie.lua
+VanillaSoD_Gnomeragon\MekgineerThermaplugg.lua
 
 VanillaSoD_BFD\BaronAuanis.lua
 VanillaSoD_BFD\Ghamoora.lua
