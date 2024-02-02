@@ -104,12 +104,12 @@ MC\Ragnaros.lua
 
 VanillaOnyxia\Onyxia.lua
 
-VanillaSoD_Gnomeragon\CrowdPummeler.lua
-VanillaSoD_Gnomeragon\Grubbis.lua
-VanillaSoD_Gnomeragon\Electrocutioner6000.lua
-VanillaSoD_Gnomeragon\ViscousFallout.lua
-VanillaSoD_Gnomeragon\MechanicalMenagerie.lua
-VanillaSoD_Gnomeragon\MekgineerThermaplugg.lua
+VanillaSoD_Gnomeregan\CrowdPummeler.lua
+VanillaSoD_Gnomeregan\Grubbis.lua
+VanillaSoD_Gnomeregan\Electrocutioner6000.lua
+VanillaSoD_Gnomeregan\ViscousFallout.lua
+VanillaSoD_Gnomeregan\MechanicalMenagerie.lua
+VanillaSoD_Gnomeregan\MekgineerThermaplugg.lua
 
 VanillaSoD_BFD\BaronAuanis.lua
 VanillaSoD_BFD\Ghamoora.lua
