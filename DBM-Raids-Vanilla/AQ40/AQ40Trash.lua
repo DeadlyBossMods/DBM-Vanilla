@@ -38,6 +38,7 @@ local eventsRegistered = true
 mod:RegisterShortTermEvents(
 	"SPELL_MISSED",
 	"SWING_DAMAGE",
+	"SWING_MISSED",
 	"SPELL_PERIODIC_DAMAGE",
 	"SPELL_PERIODIC_MISSED"
 )
