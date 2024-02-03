@@ -9,13 +9,13 @@ mod:SetEncounterID(2940)
 
 mod:RegisterCombat("combat")
 
---mod:RegisterEventsInCombat(
+mod:RegisterEventsInCombat(
 --	"SPELL_CAST_START",
 	"SPELL_CAST_SUCCESS 438863 438862 438861 437853"
 --	"SPELL_AURA_APPLIED",
 --	"SPELL_AURA_APPLIED_DOSE",
 --	"SPELL_AURA_REMOVED"
---)
+)
 
 local warningSummonBomb			= mod:NewSpellAnnounce(438863, 2)
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
