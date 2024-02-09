@@ -10,7 +10,7 @@ mod:SetUsedIcons(8, 7, 6)
 
 mod:RegisterCombat("combat")
 
---mod:RegisterEventsInCombat(
+mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 434358",
 --	"SPELL_CAST_SUCCESS",
 	"SPELL_SUMMON 434762",
@@ -19,7 +19,7 @@ mod:RegisterCombat("combat")
 --	"SPELL_AURA_REMOVED",
 	"SPELL_PERIODIC_DAMAGE 434433",
 	"SPELL_PERIODIC_MISSED 434433"
---)
+)
 
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
 local warnSummonIrradiatedGoo		= mod:NewSpellAnnounce(434358, 3)
