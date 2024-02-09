@@ -2,10 +2,28 @@ local mod	= DBM:NewMod("MechanicalMenagerieSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
---mod:SetCreatureID(213334)--218969, 218971, 218973, 218975 (red, blue, green, gray)
+mod:SetCreatureID(218969, 218971, 218973, 218975)--(red, blue, green, gray)
 mod:SetEncounterID(2935)
+mod:SetBossHPInfoToHighest()
 --mod:SetHotfixNoticeRev(20231201000000)
 --mod:SetMinSyncRevision(20231115000000)
+
+--[[
+STX-99/XD 218975 (gray/XD? main boss)
+STX-98/PO 218973 (green/Poison main boss)
+STX-97/IC 218971 (blue/Ice main boss
+STX-96/FR 218969 (red/Fire main boss)
+
+STX-99/XD 218974 (inactive id for gray main boss?)
+STX-98/PO 218972 (inactive id for green main boss?)
+STX-97/IC 218970 (inactive id for blue main boss?)
+STX-96/FR 218538 (inactive id for red main boss?)
+
+STX-37/CN 218245 (Chicken add?)
+STX-25/NB 218244 (Squirrel Add?)
+STX-13/LL 218243 (sheep add?)
+STX-04/BD 218242 (whelp add?)
+--]]
 
 mod:RegisterCombat("combat")
 
@@ -17,6 +35,10 @@ mod:RegisterCombat("combat")
 --	"SPELL_AURA_REMOVED"
 --)
 
+--NOTE: Based on the scripting. it looks like each of the 4 main bosses has an inactive id and an active ID
+--and they activate via scripts below which transforms model from one id to othe other
+--TODO: As such, probably need to carefully verified which ID dies and which IDs are needed for boss health reporting.
+--I suspect just active Ids should be in mod and 4 inactives ignored
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
 --local warnDarkProtection		= mod:NewSpellAnnounce(429541, 3)
 

@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("ElectrocutionerSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
---mod:SetCreatureID(213334)
+mod:SetCreatureID(220072)
 mod:SetEncounterID(2927)
 --mod:SetHotfixNoticeRev(20231201000000)
 --mod:SetMinSyncRevision(20231115000000)
