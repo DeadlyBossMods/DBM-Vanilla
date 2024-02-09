@@ -47,13 +47,13 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(429207) and self:AntiSpam(3, 1) then
+	if args:IsSpell(433359) and self:AntiSpam(3, 1) then
 		timerMagneticPulseCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(427625) then
+	if args:IsSpell(433359) then
 		if args:IsPlayer() then
 			specWarnMagneticPulse:Show()
 			specWarnMagneticPulse:Play("runout")
