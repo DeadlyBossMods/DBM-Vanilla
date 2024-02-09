@@ -40,7 +40,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(429168) then
+	if args:IsSpell(434358) then
 		self.vb.gooIcon = 8
 		warnSummonIrradiatedGoo:Show()
 		timerSummonIrradiatedGooCD:Start()
