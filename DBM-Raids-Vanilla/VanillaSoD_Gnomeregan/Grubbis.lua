@@ -60,16 +60,19 @@ local timerToxicVigor			= mod:NewBuffActiveTimer(30, 434941, nil, nil, nil, 6)
 local timerTroggRage			= mod:NewBuffActiveTimer(10, 436074, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)--CD was anywhere from 25-100, so no CD timer
 
 mod.vb.quakeCount = 0
+mod.vb.madCount = 0
 
 function mod:OnCombatStart(delay)
 	self.vb.quakeCount = 0
+	self.vb.madCount = 0
 	self:SetStage(1)
 	--Adds instantly on pull
 end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(436027) then
-		specWarnGrubbisMad:Show()
+		self.vb.madCount = self.vb.madCount + 1
+		specWarnGrubbisMad:Show(self.vb.madCount)
 		specWarnGrubbisMad:Play("aesoon")
 	elseif args:IsSpell(436100) then
 		timerPetrifyCD:Start()
