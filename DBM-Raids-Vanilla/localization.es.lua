@@ -1097,7 +1097,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("GhamooraSoD")
 
 L:SetGeneralLocalization({
-	name = "Ghamoo-ra"
+	name = "Ghamoo-Ra"
 })
 
 ------------------
@@ -1152,3 +1152,70 @@ L = DBM:GetModLocalization("AkumaiSoD")
 L:SetGeneralLocalization({
 	name = "Aku'mai"
 })
+
+------------------
+--  Gnomeregan  --
+------------------
+
+---------------------------
+--  Crowd Pummeler 9-60  --
+---------------------------
+L = DBM:GetModLocalization("CrowdPummellerSoD")
+
+L:SetGeneralLocalization({
+	name = "Golpeamasa 9-60"
+})
+
+---------------
+--  Grubbis  --
+---------------
+L = DBM:GetModLocalization("GrubbisSoD")
+
+L:SetGeneralLocalization({
+	name = "Grubbis"
+})
+
+----------------------------
+--  Electrocutioner 6000  --
+----------------------------
+L = DBM:GetModLocalization("ElectrocutionerSoD")
+
+L:SetGeneralLocalization({
+	name = "Electrocutor 6000"
+})
+
+-----------------------
+--  Viscous Fallout  --
+-----------------------
+L = DBM:GetModLocalization("ViscousFalloutSoD")
+
+L:SetGeneralLocalization({
+	name = "Radiactivo viscoso"
+})
+
+----------------------------
+--  Mechanical Menagerie  --
+----------------------------
+L = DBM:GetModLocalization("MechanicalMenagerieSoD")
+
+L:SetGeneralLocalization({
+	name = "Animalario mecánico"
+})
+
+-----------------------------
+--  Mekgineer Thermaplugg  --
+-----------------------------
+L = DBM:GetModLocalization("ThermapluggSoD")
+
+L:SetGeneralLocalization({
+	name = "Mekigeniero Termochufe"
+})
+
+L:SetTimerLocalization{
+	timerTankCD = "Habilidad de tanque"
+}
+
+L:SetOptionLocalization({
+	timerTankCD	= "Mostrar temporizador para la reutilización aleatoria de habilidades de tanque en la etapa 4."
+})
+
