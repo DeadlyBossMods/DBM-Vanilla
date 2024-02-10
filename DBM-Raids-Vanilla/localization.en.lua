@@ -1243,3 +1243,11 @@ L:SetGeneralLocalization({
 	name = "Mekgineer Thermaplugg"
 })
 
+L:SetTimerLocalization{
+	timerTankCD = "Tank Ability"
+}
+
+L:SetOptionLocalization({
+	timerTankCD	= "Show timer for random tank ability cooldown in stage 4"
+})
+

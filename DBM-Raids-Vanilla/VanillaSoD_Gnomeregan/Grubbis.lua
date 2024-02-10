@@ -15,9 +15,9 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 435832 435835",
 	"SPELL_AURA_APPLIED 434941",
 --	"SPELL_AURA_APPLIED_DOSE",
-	"SPELL_AURA_REMOVED 434941",
-	"SPELL_PERIODIC_DAMAGE 438732",
-	"SPELL_PERIODIC_MISSED 438732"
+	"SPELL_AURA_REMOVED 434941"
+--	"SPELL_PERIODIC_DAMAGE",
+--	"SPELL_PERIODIC_MISSED"
 )
 
 --Notes. This boss seems to be 3 stage boss. Cave A, Cave B, and Final phase. Three waves in A, Three waves in B, then Three waves in final phase
@@ -36,7 +36,7 @@ local warnActivateVents			= mod:NewSpellAnnounce(438732, 3)--Toxic Ventilation s
 
 --local specWarnCorrosiveBlast	= mod:NewSpecialWarningDodge(429168, nil, nil, nil, 2, 2)
 --local yellDepthCharge			= mod:NewYell(404806)
-local specWarnGTFO				= mod:NewSpecialWarningGTFO(438732, nil, nil, nil, 1, 8)
+--local specWarnGTFO				= mod:NewSpecialWarningGTFO(438732, nil, nil, nil, 1, 8)
 
 local timerSpawnAmbusher		= mod:NewAITimer(30, 435832, nil, nil, nil, 1)
 local timerSpawnPillager		= mod:NewAITimer(30, 435835, nil, nil, nil, 1)
@@ -95,6 +95,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
+--[[
 function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
 	if spellId == 438732 and destGUID == UnitGUID("player") and self:AntiSpam(3, 4) then--Toxic Ventilation (assumed since it's the boss with vent mechanic)
 		specWarnGTFO:Show(spellName)
@@ -102,6 +103,7 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spell
 	end
 end
 mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+--]]
 
 --[[
 --Most of these will likely be UNIT_SPELLCAST events and not in combat log, so not drycoding em yet
