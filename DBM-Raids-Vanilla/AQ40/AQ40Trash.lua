@@ -36,7 +36,6 @@ mod.vb.requiredBosses = 0
 --Register all damage events on mod load
 local eventsRegistered = true
 mod:RegisterShortTermEvents(
-	"SPELL_MISSED",
 	"SWING_DAMAGE",
 	"SWING_MISSED",
 	"SPELL_PERIODIC_DAMAGE",
