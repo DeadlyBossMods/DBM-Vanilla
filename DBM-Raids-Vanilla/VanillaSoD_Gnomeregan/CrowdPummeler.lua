@@ -25,7 +25,7 @@ ability.id = 432062 and type = "begincast"
 --TODO, announce he's murdering gnomes in bleachers? does this affect players?
 --TODO, detect blades spawning on ground? probably needs transcriptor, didn't see a CLEU event
 --TODO, true stage 2 trigger for starting claw timer and updating smash timer. Again, needs transcriptor probably a yell or emote or USCS
-local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432423, 3)
+local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
 local warnOffBalance				= mod:NewCountAnnounce(431839, 3, nil, nil, DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.stack:format(431839))--Player
 
 local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
