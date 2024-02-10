@@ -64,7 +64,7 @@ local specWarnFrayedWiring			= mod:NewSpecialWarningReflect(436825, nil, 27564, 
 
 mod:AddNamePlateOption("NPAuraOnFrayed", 436825)
 --STX-04/BD
-local warnOverheat						= mod:NewCastAnnounce(436741, 1)
+local warnOverheat						= mod:NewCastAnnounce(436741, 1, 3)
 
 local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, 18351, nil, 2, 2)--Short name "Breath"
 
