@@ -56,7 +56,7 @@ local specWarnAdds				= mod:NewSpecialWarningAdds(435832, "-Healer", nil, nil, 1
 --local timerAdds				= mod:NewAddsCustomTimer(30, 435832)--next wave based on previous wave defeat, so maybe mob death counting then starting timer for next wave on all dead?
 local timerGrubbisMad			= mod:NewBuffActiveTimer(5, 436027, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)--also no CD timer, far too variable. i think it does have a CD, but it also has many conditions that disable it?
 local timerPetrifyCD			= mod:NewCDTimer(22.6, 434941, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
-local timerToxicVigor			= mod:NewBuffActiveTimer(30, 434941, nil, nil, nil, 6)
+local timerToxicVigor			= mod:NewBuffActiveTimer(30, 436100, nil, nil, nil, 6)
 local timerTroggRage			= mod:NewBuffActiveTimer(10, 436074, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)--CD was anywhere from 25-100, so no CD timer
 
 mod.vb.quakeCount = 0
