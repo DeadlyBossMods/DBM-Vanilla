@@ -4,6 +4,7 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(220072)
 mod:SetEncounterID(2927)
+mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20240209000000)
 --mod:SetMinSyncRevision(20231115000000)
 
@@ -13,20 +14,18 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 433251",
 	"SPELL_CAST_SUCCESS 433398",
 	"SPELL_AURA_APPLIED 433359"
---	"SPELL_AURA_APPLIED_DOSE",
---	"SPELL_AURA_REMOVED"
 )
 
---TODO, https://www.wowhead.com/classic/spell=433398/discombobulation-protocol is an instant cast so can't really prewarn it?
 --[[
  ability.id = 433251 and type = "begincast"
  or ability.id = 433398 and type = "cast"
  or ability.name = "Magnetic Pulse" and type = "applydebuff"
 --]]
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
---local warnDarkProtection		= mod:NewSpellAnnounce(429541, 3)
+local warnStaticArc					= mod:NewTargetCountAnnounce(433251, 3, nil, nil, nil, nil, nil, nil, true)
 
-local specWarnStaticArc				= mod:NewSpecialWarningCount(433251, nil, nil, nil, 2, 2)
+local specWarnStaticArc				= mod:NewSpecialWarningYouCount(433251, nil, nil, nil, 2, 2)
+local yellStaticArc					= mod:NewYell(433251)
 local specWarnMagneticPulse			= mod:NewSpecialWarningMoveAway(433359, nil, nil, nil, 1, 2)
 local yellMagneticPulse				= mod:NewYell(433359)
 local specWarnDiscombobulation		= mod:NewSpecialWarningSpell(433398, nil, nil, nil, 2, 2)
@@ -36,7 +35,23 @@ local timerMagneticPulseCD			= mod:NewCDTimer(12.9, 433359, nil, nil, nil, 3)--1
 local timerDiscombobulationCD		= mod:NewNextTimer(30.7, 433398, nil, nil, nil, 2)
 --local timerCorrosiveBiteCD		= mod:NewCDTimer(6.5, 429207, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
+mod:AddSetIconOption("SetIconOnArc", 433251, true, 0, {8})
+
 mod.vb.arcCount = 0
+
+function mod:ArcTarget(targetname, uId)
+	if not targetname then return end
+	if targetname == UnitName("player") then
+		specWarnStaticArc:Show(self.vb.arcCount)
+		specWarnStaticArc:Play("targetyou")
+		yellStaticArc:Yell()
+	else
+		warnStaticArc:Show(self.vb.arcCount, targetname)
+	end
+	if self.Options.SetIconOnArc then
+		self:SetIcon(targetname, 8, 3)
+	end
+end
 
 function mod:OnCombatStart(delay)
 	self.vb.arcCount = 0
@@ -51,9 +66,8 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(433251) then
 		self.vb.arcCount = self.vb.arcCount + 1
-		specWarnStaticArc:Show(self.vb.arcCount)
-		specWarnStaticArc:Play("specialsoon")
 		timerStaticArcCD:Start(nil, self.vb.arcCount+1)
+		self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "ArcTarget", 0.1, 5)
 	end
 end
 
@@ -78,27 +92,3 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	end
 end
---mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
-
---[[
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(429541) then
-
-	end
-end
---]]
-
---[[
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 411583 then--Replace Stand with Swim
-		self:SendSync("PhaseChange")
-	end
-end
-
-function mod:OnSync(msg)
-	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
-
-	end
-end
---]]

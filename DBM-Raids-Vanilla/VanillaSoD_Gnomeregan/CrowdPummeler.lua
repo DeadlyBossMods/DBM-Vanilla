@@ -12,17 +12,21 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 432062",
-	"SPELL_CAST_SUCCESS 432423"
+	"SPELL_CAST_SUCCESS 432423",
+	"SPELL_AURA_APPLIED 431839",
+	"SPELL_AURA_APPLIED_DOSE 431839"
 )
 
 --[[
 ability.id = 432062 and type = "begincast"
  or (ability.id = 436532 or ability.id = 432423) and type = "cast"
+ or ability.id = 431839
 --]]
 --TODO, announce he's murdering gnomes in bleachers? does this affect players?
 --TODO, detect blades spawning on ground? probably needs transcriptor, didn't see a CLEU event
 --TODO, true stage 2 trigger for starting claw timer and updating smash timer. Again, needs transcriptor probably a yell or emote or USCS
 local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432423, 3)
+local warnOffBalance				= mod:NewCountAnnounce(431839, 3, nil, nil, DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.stack:format(431839))--Player
 
 local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
 local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
@@ -55,7 +59,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(432062) then
 		timerTheClawCD:Start()
-		self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "ClawTarget", 0.1, 3)
+		self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "ClawTarget", 0.1, 5)
 	end
 end
 
@@ -68,6 +72,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 
 	end
 end
+
+function mod:SPELL_AURA_APPLIED(args)
+	local spellId = args.spellId
+	if spellId == 431839 and args:IsPlayer() then
+		warnOffBalance:Show(args.amount or 1)
+	end
+end
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 --[[
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
