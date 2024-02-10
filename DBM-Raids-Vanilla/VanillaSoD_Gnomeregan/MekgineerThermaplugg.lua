@@ -35,6 +35,7 @@ mod:RegisterEventsInCombat(
 --TODO, dispel alerts for tank stacks?
 --TODO, verify combat timer with transcriptor
 --TODO, better phase change transitions with transcriptor
+--TODO, interrupt warnings when it's clearer which channels aren't interrupt immune. i think ventilation in p3 is interruptable, not sure about p1 or 2 spells
 --[[
 (ability.id = 438723 or ability.id = 438713) and type = "begincast"
  or (ability.id = 438719 or ability.id = 438732 or ability.id = 438726 or ability.id = 11518 or ability.id = 11521 or ability.id = 11798 or ability.id = 11524 or ability.id = 11526 or ability.id = 11527 or ability.id = 438683) and type = "cast"
