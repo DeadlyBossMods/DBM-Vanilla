@@ -35,7 +35,6 @@ mod:RegisterEventsInCombat(
 --TODO, dispel alerts for tank stacks?
 --TODO, verify combat timer with transcriptor
 --TODO, better phase change transitions with transcriptor
---TODO, interrupt warnings when it's clearer which channels aren't interrupt immune. i think ventilation in p3 is interruptable, not sure about p1 or 2 spells
 --[[
 (ability.id = 438723 or ability.id = 438713) and type = "begincast"
  or (ability.id = 438719 or ability.id = 438732 or ability.id = 438726 or ability.id = 11518 or ability.id = 11521 or ability.id = 11798 or ability.id = 11524 or ability.id = 11526 or ability.id = 11527 or ability.id = 438683) and type = "cast"
@@ -70,7 +69,8 @@ local timerCoolantDischargeCD		= mod:NewCDTimer(24.2, 438723, nil, nil, nil, 2)
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
 local warningHazHammer				= mod:NewSpellAnnounce(438726, 2, nil, "Tank|Healer")
 local warnRadiationSickness			= mod:NewStackAnnounce(438727, 2, nil, "Tank|Healer")
-local warningToxicVentilation		= mod:NewSpellAnnounce(438732, 3)
+
+local specWarnToxicVentilation		= mod:NewSpecialWarningInterrupt(438732, nil, nil, nil, 1, 2)
 
 local timerHazHammerCD				= mod:NewCDTimer(5.2, 438726, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--5.2-8.5
 local timerToxicVentilationCD		= mod:NewCDTimer(22.6, 438732, nil, nil, nil, 2)
@@ -180,7 +180,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 			uglyAssStageChangeBecauseBlizzardHatesCombatLog(self, args.sourceGUID)--Stage 3 ability but also stage 4
 		end
 	elseif args:IsSpell(438732) then
-		warningToxicVentilation:Show()
+		specWarnToxicVentilation:Show(args.sourceName)
+		specWarnToxicVentilation:Play("kickcast")
 		if self:GetStage(4) then
 			timerSpecialCD:Start(21)
 		else
