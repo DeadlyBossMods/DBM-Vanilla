@@ -155,7 +155,9 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(436825) then
-		warnFrayedOver:Show()
+		if self:AntiSpam(3, 4) then
+			warnFrayedOver:Show()
+		end
 		if self.Options.NPAuraOnFrayed then
 			DBM.Nameplate:Hide(true, args.destGUID, 436825)
 		end
