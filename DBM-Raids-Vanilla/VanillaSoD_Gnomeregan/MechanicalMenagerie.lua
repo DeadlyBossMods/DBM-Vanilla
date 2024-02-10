@@ -51,14 +51,14 @@ mod:AddSetIconOption("SetIconOnEgg", 436692, true, 5, {8})
 --STX-25/NB
 local warnWidgetFortress			= mod:NewCastAnnounce(436836, 4)
 
-local specWarnWidgetVolley			= mod:NewSpecialWarningInterrupt(436692, "HasInterrupt", nil, nil, 1, 2)
+local specWarnWidgetVolley			= mod:NewSpecialWarningInterrupt(436833, "HasInterrupt", nil, nil, 1, 2)
 local specWarnWidgetFortress		= mod:NewSpecialWarningMove(436836, "Tank", nil, nil, 1, 2)
 --local yellDepthCharge				= mod:NewYell(404806)
 
 --local timerWidgetFortressCD		= mod:NewCDTimer(6.5, 436836, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--50-89 so no timer for now
 -- STX-13/LL
 local warnBinaryBleat				= mod:NewTargetNoFilterAnnounce(436828, 3, nil, false)--off by default optioanl announce for anyone who gets silenced for 10 seconds. ALso, no timer since 11-21 variation
-local warnFrayedOver				= mod:NewFadesAnnounce(436825, 1)
+local warnFrayedOver				= mod:NewFadesAnnounce(436825, 1, nil, nil, 27564)
 
 local specWarnFrayedWiring			= mod:NewSpecialWarningReflect(436825, nil, 27564, nil, 1, 2)--Short name "Reflection"
 
