@@ -199,9 +199,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(438720) then
 		local amount = args.amount or 1
 		if amount >= 3 then--ability is cast in 3s for most part so a good starting point
-			local playerUID, bossUID = DBM:GetRaidUnitId(args.destName), DBM:GetUnitIdFromCID(218972)
+			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName), DBM:GetUnitIdFromCID(218972), DBM:GetUnitIdFromCID(218974)
 			--Freezing is also applied ot others who walk through ice on ground, so we try to scope it to tanks only by only reporting units who are highest threat on bots threat table
-			if bossUID and self:IsTanking(playerUID, bossUID, nil, true) then
+			if (bossUID or bossUIDTwo) and self:IsTanking(playerUID, bossUIDTwo or bossUID, nil, true) then
 				warnFreezing:Show(args.destName, amount)
 			end
 		end
