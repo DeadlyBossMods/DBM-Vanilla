@@ -59,7 +59,7 @@ local timerSprocketfireCD			= mod:NewCDTimer(5.2, 438683, nil, "Tank|Healer", ni
 local timerFurnaceSurgeCD			= mod:NewCDTimer(33.9, 438713, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 --Stage 2: STX-97/IC
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
-local warningSupercooledSmash		= mod:NewSpellAnnounce(438719, 2, nil, false 2)
+local warningSupercooledSmash		= mod:NewSpellAnnounce(438719, 2, nil, false, 2)
 local warnFreezing					= mod:NewStackAnnounce(438720, 2, nil, "Tank|Healer")
 local warningCoolantDischarge		= mod:NewSpellAnnounce(438723, 3)
 
