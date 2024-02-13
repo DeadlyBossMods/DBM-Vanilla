@@ -50,7 +50,7 @@ local timerSummonBombCD				= mod:NewCDTimer(10.1, 437853, nil, nil, nil, 1)--10.
 mod:AddInfoFrameOption(438735)
 --Stage 1: STX-96/FR
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
-local warningSprocketfire			= mod:NewSpellAnnounce(438683, 2, nil, "Tank|Healer")
+local warningSprocketfire			= mod:NewSpellAnnounce(438683, 2, nil, false, 2)
 local warnSprocketFireDebuff		= mod:NewStackAnnounce(438710, 2, nil, "Tank|Healer")
 
 local specWarnFurnaceSurge			= mod:NewSpecialWarningRun(438713, nil, nil, nil, 4, 2)
@@ -59,7 +59,7 @@ local timerSprocketfireCD			= mod:NewCDTimer(5.2, 438683, nil, "Tank|Healer", ni
 local timerFurnaceSurgeCD			= mod:NewCDTimer(33.9, 438713, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 --Stage 2: STX-97/IC
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
-local warningSupercooledSmash		= mod:NewSpellAnnounce(438719, 2, nil, "Tank|Healer")
+local warningSupercooledSmash		= mod:NewSpellAnnounce(438719, 2, nil, false 2)
 local warnFreezing					= mod:NewStackAnnounce(438720, 2, nil, "Tank|Healer")
 local warningCoolantDischarge		= mod:NewSpellAnnounce(438723, 3)
 
@@ -67,7 +67,7 @@ local timerSupercooledSmashCD		= mod:NewCDTimer(5.2, 438719, nil, "Tank|Healer",
 local timerCoolantDischargeCD		= mod:NewCDTimer(24.2, 438723, nil, nil, nil, 2)
 --Stage 3: STX-98/PO
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
-local warningHazHammer				= mod:NewSpellAnnounce(438726, 2, nil, "Tank|Healer")
+local warningHazHammer				= mod:NewSpellAnnounce(438726, 2, nil, false, 2)
 local warnRadiationSickness			= mod:NewStackAnnounce(438727, 2, nil, "Tank|Healer")
 
 local specWarnToxicVentilation		= mod:NewSpecialWarningInterrupt(438732, nil, nil, nil, 1, 2)
