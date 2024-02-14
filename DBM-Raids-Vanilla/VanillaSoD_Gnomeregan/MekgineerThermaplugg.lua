@@ -5,8 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(218538, 218970, 218972, 218974, 218537)--(red, blue, green, gray, thermaplugg)
 mod:SetEncounterID(2940)
 mod:SetBossHPInfoToHighest()
-mod:SetHotfixNoticeRev(20240209000000)
-mod:SetMinSyncRevision(20240209000000)
+mod:SetHotfixNoticeRev(20240214000000)
+mod:SetMinSyncRevision(20240214000000)
 
 --[[
 STX-99/XD 218975 (inactive id for gray/hybrid main boss)
@@ -21,6 +21,7 @@ STX-96/FR 218538 (active id for red main boss)
 --]]
 
 mod:RegisterCombat("combat")
+mod:SetMinCombatTime(25)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 438713 438723",
@@ -48,7 +49,7 @@ local timerRP						= mod:NewCombatTimer(12.45)
 local timerSummonBombCD				= mod:NewCDTimer(10.1, 437853, nil, nil, nil, 1)--10.1 but can't be cast while bots are casting other things, and gets long delay during their long breath casts
 
 mod:AddInfoFrameOption(438735)
-mod:AddSetIconOption("SetIconOnButtonDebuff", 438735, true, 0, {1, 2, 3, 4, 5, 6, 7, 8})
+mod:AddSetIconOption("SetIconOnButtonDebuff", 438735, true, 0, {1, 2, 3, 4, 5, 6})
 
 --Stage 1: STX-96/FR
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
@@ -229,7 +230,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(438735) and self.Options.SetIconOnButtonDebuff then
 		self:SetIcon(args.destName, self.vb.currentIcon)
-		self.vb.currentIcon = self.vb.currentIcon % 8 + 1
+		self.vb.currentIcon = self.vb.currentIcon % 6 + 1
 		-- Get rid of the icon a bit early, if you have a second left you are a good designated button clicker
 		self:ScheduleMethod(29, "RemoveIcon", args.destName)
 	end
