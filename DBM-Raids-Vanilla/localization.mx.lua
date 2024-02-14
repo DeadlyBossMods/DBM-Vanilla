@@ -1238,7 +1238,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization{
 	Sheep		= "Oveja",
-	Whelp		= "Dragón",
+	Whelp		= "Dragoncito",
 	Squirrel	= "Ardilla",
 	Chicken		= "Pollo"
 }
