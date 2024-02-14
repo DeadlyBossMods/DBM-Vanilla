@@ -36,7 +36,7 @@ mod:RegisterEventsInCombat(
  or (ability.id = 436828 or ability.id = 436570) and type = "cast"
 --]]
 --General
-local warnSelfRepair				= mod:NewCastAnnounce(440073, 4)
+local warnSelfRepair				= mod:NewSpecialWarningSpell(440073, nil, nil, nil, 3)
 
 local timerSelfRepair				= mod:NewCastSourceTimer(20, 440073, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 --STX-37/CN
@@ -102,7 +102,7 @@ function mod:SPELL_CAST_START(args)
 		local cid = self:GetCIDFromGUID(args.sourceGUID)
 		local bossName = bossRenames[cid] or args.sourceName
 		timerSelfRepair:Start(20, bossName)
-		if self:AntiSpam(3, 1) then
+		if self:AntiSpam(10, 1) then
 			warnSelfRepair:Show()
 		end
 		if cid == 218242 then--STX-04/BD
