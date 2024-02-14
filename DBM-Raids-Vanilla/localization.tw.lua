@@ -1050,3 +1050,166 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "第二階段"
 })
+---------------------------
+--  Season of Discovery  --
+---------------------------
+
+---------------------------
+--  Blackfathom Deeps  --
+---------------------------
+
+------------------
+--  Baron Aquanis  --
+------------------
+L = DBM:GetModLocalization("BaronAuanisSoD")
+
+L:SetGeneralLocalization({
+	name = "阿奎尼斯男爵"
+})
+
+L:SetMiscLocalization({
+	Water		= "水"
+})
+
+------------------
+--  Ghamoo-ra  --
+------------------
+L = DBM:GetModLocalization("GhamooraSoD")
+
+L:SetGeneralLocalization({
+	name = "加摩拉"
+})
+
+------------------
+--  Lady Sarevess  --
+------------------
+L = DBM:GetModLocalization("LadySarevessSoD")
+
+L:SetGeneralLocalization({
+	name = "薩利維絲女士"
+})
+
+------------------
+--  Gelihast  --
+------------------
+L = DBM:GetModLocalization("GelihastSoD")
+
+L:SetGeneralLocalization({
+	name = "格里哈斯特"
+})
+
+L:SetTimerLocalization{
+	TimerImmune = "Immunity ends"
+}
+
+L:SetOptionLocalization({
+	TimerImmune	= "Show timer for the duration of Gelihast's immunity during phase transitions."
+})
+
+------------------
+--  Lorgus Jett  --
+------------------
+L = DBM:GetModLocalization("LorgusJettSoD")
+
+L:SetGeneralLocalization({
+	name = "洛古斯·傑特"
+})
+
+L:SetWarningLocalization({
+	warnPriestRemaining		= "%s Priestesses remaining"
+})
+
+L:SetOptionLocalization({
+	warnPriestRemaining	= "Show warning for how maining Blackfathom Tide Priestesses are remaining"
+})
+
+------------------
+--  Twilight Lord Kelris  --
+------------------
+L = DBM:GetModLocalization("TwilightLordKelrisSoD")
+
+L:SetGeneralLocalization({
+	name = "暮光領主克爾里斯"
+})
+
+------------------
+--  Aku'mai  --
+------------------
+L = DBM:GetModLocalization("AkumaiSoD")
+
+L:SetGeneralLocalization({
+	name = "阿庫麥爾"
+})
+
+------------------
+--  Gnomeregan  --
+------------------
+
+---------------------------
+--  Crowd Pummeler 9-60  --
+---------------------------
+L = DBM:GetModLocalization("CrowdPummellerSoD")
+
+L:SetGeneralLocalization({
+	name = "群體打擊者9-60"
+})
+
+---------------
+--  Grubbis  --
+---------------
+L = DBM:GetModLocalization("GrubbisSoD")
+
+L:SetGeneralLocalization({
+	name = "格魯比斯"
+})
+
+----------------------------
+--  Electrocutioner 6000  --
+----------------------------
+L = DBM:GetModLocalization("ElectrocutionerSoD")
+
+L:SetGeneralLocalization({
+	name = "電刑器6000型"
+})
+
+-----------------------
+--  Viscous Fallout  --
+-----------------------
+L = DBM:GetModLocalization("ViscousFalloutSoD")
+
+L:SetGeneralLocalization({
+	name = "粘性輻射塵"
+})
+
+----------------------------
+--  Mechanical Menagerie  --
+----------------------------
+L = DBM:GetModLocalization("MechanicalMenagerieSoD")
+
+L:SetGeneralLocalization({
+	name = "機械展示廳"
+})
+
+L:SetMiscLocalization{
+	Sheep		= "羊",
+	Whelp		= "雛龍",
+	Squirrel	= "松鼠",
+	Chicken		= "雞"
+}
+
+-----------------------------
+--  Mekgineer Thermaplugg  --
+-----------------------------
+L = DBM:GetModLocalization("ThermapluggSoD")
+
+L:SetGeneralLocalization({
+	name = "機電師瑟瑪普拉格"
+})
+
+L:SetTimerLocalization{
+	timerTankCD = "Tank Ability"
+}
+
+L:SetOptionLocalization({
+	timerTankCD	= "Show timer for random tank ability cooldown in stage 4"
+})
