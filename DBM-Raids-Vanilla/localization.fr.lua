@@ -1235,6 +1235,12 @@ L:SetGeneralLocalization({
 	name = "Ménagerie mécanique"
 })
 
+L:SetMiscLocalization{
+	Sheep		= "Mouton",
+	Whelp		= "Dragonnet",
+	Squirrel	= "Écureuil",
+	Chicken		= "Poulet"
+}
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
