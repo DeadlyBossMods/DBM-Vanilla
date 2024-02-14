@@ -1091,7 +1091,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("CrowdPummellerSoD")
 
 L:SetGeneralLocalization({
-	name = "Meute-Verprügler 9-60"
+	name = "Meuteverprügler 9-60"
 })
 
 ---------------
@@ -1109,7 +1109,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("ElectrocutionerSoD")
 
 L:SetGeneralLocalization({
-	name = "Elektrokutionator 6000"
+	name = "Elektrokutor 6000"
 })
 
 -----------------------
@@ -1130,6 +1130,14 @@ L:SetGeneralLocalization({
 	name = "Mechanische Menagerie"
 })
 
+L:SetMiscLocalization{
+	Sheep		= "Schaf",
+	Whelp		= "Drachenwelpe",
+	Squirrel	= "Eichhörnchen",
+	Chicken		= "Huhn"
+}
+
+
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1139,3 +1147,10 @@ L:SetGeneralLocalization({
 	name = "Robogenieur Thermaplugg"
 })
 
+L:SetTimerLocalization{
+	timerTankCD = "Ritzelfeuerschlag"
+}
+
+L:SetOptionLocalization({
+	timerTankCD	= "Zeige Timer für Cooldown von Ritzelfeuerschlag auf den Maintank in Phase 4 (Tank wechseln)"
+})
