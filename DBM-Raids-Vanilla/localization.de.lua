@@ -1091,7 +1091,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("CrowdPummellerSoD")
 
 L:SetGeneralLocalization({
-	name = "Meute-Verprügler 9-60"
+	name = "Meuteverprügler 9-60"
 })
 
 ---------------
@@ -1109,7 +1109,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("ElectrocutionerSoD")
 
 L:SetGeneralLocalization({
-	name = "Elektrokutionator 6000"
+	name = "Elektrokutor 6000"
 })
 
 -----------------------
