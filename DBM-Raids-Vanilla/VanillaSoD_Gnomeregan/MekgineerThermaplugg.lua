@@ -25,13 +25,13 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 438713 438723",
 	"SPELL_CAST_SUCCESS 11518 11521 11798 11524 11526 11527 438683 438719 438726 438732",
-	"SPELL_AURA_APPLIED 438710 438720 438727",
+	"SPELL_AURA_APPLIED 438710 438720 438727 438735",
+	"SPELL_AURA_REMOVED 438735",
 	"SPELL_AURA_APPLIED_DOSE 438710 438720 438727",
 	"UNIT_DIED"
 )
 
 --NOTE: Fire --> Frost --> Poison --> Hybrid (has powers of 3 previous ones)
---TODO, what causes https://www.wowhead.com/classic/spell=441448/charged ? warn for it?
 --TODO, dispel alerts for tank stacks?
 --TODO, verify combat timer with transcriptor
 --TODO, better phase change transitions with transcriptor
@@ -44,10 +44,12 @@ mod:RegisterEventsInCombat(
 --General
 local warningSummonBomb				= mod:NewSpellAnnounce(437853, 2)
 
---local timerRP						= mod:NewCombatTimer(13)
+local timerRP						= mod:NewCombatTimer(12.45)
 local timerSummonBombCD				= mod:NewCDTimer(10.1, 437853, nil, nil, nil, 1)--10.1 but can't be cast while bots are casting other things, and gets long delay during their long breath casts
 
 mod:AddInfoFrameOption(438735)
+mod:AddSetIconOption("SetIconOnButtonDebuff", 438735, true, 0, {1, 2, 3, 4, 5, 6, 7, 8})
+
 --Stage 1: STX-96/FR
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
 local warningSprocketfire			= mod:NewSpellAnnounce(438683, 2, nil, false, 2)
@@ -110,9 +112,18 @@ local function uglyAssStageChangeBecauseBlizzardHatesCombatLog(self, guid)
 	end
 end
 
+mod.vb.currentIcon = 8
+
+-- "<0.77 20:49:45> [ENCOUNTER_START] 2940#Mekgineer Thermaplugg#198#10", -- [1]
+-- "<2.04 20:49:46> [CHAT_MSG_MONSTER_YELL] Usurpers! Gnomeregan is mine!#Mekgineer Thermaplugg###Mekgineer Thermaplugg##0#0##0#26662#nil#0#false#false#false#false", -- [1]
+-- "<13.18 20:49:57> [CLEU] SWING_DAMAGE#Vehicle-0-5250-90-10566-218538-00004BC7DE#STX-96/FR#Player-5826-01FA12C2#Frankblack#618#-1#nil#nil", -- [80]
+-- "<13.22 20:49:57> [PLAYER_REGEN_DISABLED] +Entering combat!", -- [3]
+-- "<13.66 20:49:57> [UNIT_SPELLCAST_SUCCEEDED] PLAYER_SPELL{Frankblack} -Sunder Armor- [[raid6:Cast-3-5250-90-10566-8380-000B4BC7E5:8380]]", -- [86]
+
 function mod:OnCombatStart(delay)
+	self.vb.currentIcon = 1
 	self:SetStage(1)
---	timerRP:Start(13-delay)
+	timerRP:Start(-delay)
 	timerSprocketfireCD:Start(21.4-delay)
 	timerFurnaceSurgeCD:Start(33.7-delay)--33-36
 	if self.Options.InfoFrame then
@@ -216,9 +227,21 @@ function mod:SPELL_AURA_APPLIED(args)
 		if amount >= 3 then--ability is cast in 3s for most part so a good starting point
 			warnRadiationSickness:Show(args.destName, amount)
 		end
+	elseif args:IsSpell(438735) and self.Options.SetIconOnButtonDebuff then
+		self:SetIcon(args.destName, self.vb.currentIcon)
+		self.vb.currentIcon = self.vb.currentIcon % 8 + 1
+		-- Get rid of the icon a bit early, if you have a second left you are a good designated button clicker
+		self:ScheduleMethod(29, "RemoveIcon", args.destName)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(438735) and self.Options.SetIconOnButtonDebuff then
+		-- Shouldn't be necessary since removal is scheduled 1 second prior to expiration
+		self:RemoveIcon(args.destName)
+	end
+end
 
 function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 218974 then--The only mech that dies
