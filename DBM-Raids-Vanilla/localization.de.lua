@@ -1130,6 +1130,14 @@ L:SetGeneralLocalization({
 	name = "Mechanische Menagerie"
 })
 
+L:SetMiscLocalization{
+	Sheep		= "Schaf",
+	Whelp		= "Drachenwelpe",
+	Squirrel	= "Eichhörnchen",
+	Chicken		= "Huhn"
+}
+
+
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1139,3 +1147,10 @@ L:SetGeneralLocalization({
 	name = "Robogenieur Thermaplugg"
 })
 
+L:SetTimerLocalization{
+	timerTankCD = "Ritzelfeuerschlag"
+}
+
+L:SetOptionLocalization({
+	timerTankCD	= "Zeige Timer für Cooldown von Ritzelfeuerschlag auf den Maintank in Phase 4 (Tank wechseln)"
+})
