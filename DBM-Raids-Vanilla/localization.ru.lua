@@ -421,6 +421,7 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "Показывать спецпредупреждение, когда Вы подвержены классовому зову"
 }
 L:SetMiscLocalization{
+	YellP1		= "Let the games begin!",
 	YellP2		= "Браво, слуги мои! Смертные утрачивают мужество! Поглядим же, как они справятся с истинным Повелителем Черной горы!!!",
 	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
 	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",
@@ -431,7 +432,10 @@ L:SetMiscLocalization{
 	YellRogue	= "Rogues? Stop hiding and face me!",
 	YellWarlock	= "Чернокнижники, ну не беритесь вы за волшебство, которого сами не понимаете! Видите, что получилось?",
 	YellHunter	= "Охотники со своими жалкими пугачами!",
-	YellMage	= "И маги тоже? Осторожнее надо быть, когда играешь с магией…"
+	YellMage	= "И маги тоже? Осторожнее надо быть, когда играешь с магией…",
+	YellDK		= "Death Knights... get over here!",
+	YellMonk	= "Monk",
+	YellDH		= "Demon hunters? How odd, covering your eyes like that. Doesn't it make it hard to see the world around you?"
 }
 
 ----------------
@@ -518,7 +522,7 @@ L:SetTimerLocalization{
 	timerShieldCD		= "Следующий щит"
 }
 L:SetOptionLocalization{
-	timerShieldCD		= "Показать таймер для следующего урона/отражения щита"
+	timerShieldCD		= "Показывать таймер для следующего урона/отражения щита"
 }
 
 ----------------
@@ -1004,7 +1008,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Предупреждать перед следующими знаком",
 	SpecialWarningMarkOnPlayer	= "Спецпредупреждение, когда больше 4-х знаков на Вас",
-	timerMark					= "Show timer for next horseman's Mark (with count)"
+	timerMark					= "Показывать таймер для следующего знака Всадника (со счетчиком)"
 })
 
 L:SetTimerLocalization({
@@ -1140,7 +1144,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization({
-	TimerImmune	= "Show timer for the duration of Gelihast's immunity during phase transitions."
+	TimerImmune	= "Показывать таймер продолжительности невосприимчивости Гелихаста во время смены фаз"
 })
 
 ------------------
@@ -1157,7 +1161,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "Показать предупреждение о том, сколько осталось Жриц прилива из Непроглядной Пучины" --Жрица прилива из Непроглядной Пучины
+	warnPriestRemaining	= "Показывать предупреждение о том, сколько осталось Жриц прилива из Непроглядной Пучины" --Жрица прилива из Непроглядной Пучины
 })
 
 ------------------
