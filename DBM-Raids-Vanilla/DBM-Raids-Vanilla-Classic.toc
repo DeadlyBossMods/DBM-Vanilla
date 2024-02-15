@@ -104,10 +104,10 @@ MC\Ragnaros.lua
 
 VanillaOnyxia\Onyxia.lua
 
-VanillaSoD_Gnomeregan\CrowdPummeler.lua
 VanillaSoD_Gnomeregan\Grubbis.lua
-VanillaSoD_Gnomeregan\Electrocutioner6000.lua
 VanillaSoD_Gnomeregan\ViscousFallout.lua
+VanillaSoD_Gnomeregan\Electrocutioner6000.lua
+VanillaSoD_Gnomeregan\CrowdPummeler.lua
 VanillaSoD_Gnomeregan\MechanicalMenagerie.lua
 VanillaSoD_Gnomeregan\MekgineerThermaplugg.lua
 
