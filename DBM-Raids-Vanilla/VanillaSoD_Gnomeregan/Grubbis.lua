@@ -4,10 +4,11 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(217280)--217956 Chomper, 217216 Grubbis Controller
 mod:SetEncounterID(2925)
-mod:SetHotfixNoticeRev(20240209000000)
---mod:SetMinSyncRevision(20231115000000)
+mod:SetHotfixNoticeRev(20240212000000)
+mod:SetMinSyncRevision(20240212000000)
 
 mod:RegisterCombat("combat")
+mod:SetWipeTime(30)--Combat drops between adds waves
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 436027 436100 436059",

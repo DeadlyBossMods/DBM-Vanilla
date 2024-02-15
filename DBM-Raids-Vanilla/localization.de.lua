@@ -1065,6 +1065,37 @@ L:SetTimerLocalization({
 ---------------------------
 
 ------------------
+--  Baron Aquanis  --
+------------------
+L = DBM:GetModLocalization("BaronAuanisSoD")
+
+L:SetGeneralLocalization({
+	name = "Baron Aquanis"
+})
+
+L:SetMiscLocalization({
+	Water		= "Wasser"
+})
+
+------------------
+--  Ghamoo-ra  --
+------------------
+L = DBM:GetModLocalization("GhamooraSoD")
+
+L:SetGeneralLocalization({
+	name = "Ghamoo-ra"
+})
+
+------------------
+--  Lady Sarevess  --
+------------------
+L = DBM:GetModLocalization("LadySarevessSoD")
+
+L:SetGeneralLocalization({
+	name = "Lady Sarevess"
+})
+
+------------------
 --  Gelihast  --
 ------------------
 L = DBM:GetModLocalization("GelihastSoD")
@@ -1082,6 +1113,41 @@ L:SetOptionLocalization({
 })
 
 ------------------
+--  Lorgus Jett  --
+------------------
+L = DBM:GetModLocalization("LorgusJettSoD")
+
+L:SetGeneralLocalization({
+	name = "Lorgus Jett"
+})
+
+L:SetWarningLocalization({
+	warnPriestRemaining		= "%s Priestesses remaining"
+})
+
+L:SetOptionLocalization({
+	warnPriestRemaining	= "Show warning for how maining Blackfathom Tide Priestesses are remaining"
+})
+
+------------------
+--  Twilight Lord Kelris  --
+------------------
+L = DBM:GetModLocalization("TwilightLordKelrisSoD")
+
+L:SetGeneralLocalization({
+	name = "Twilight-Lord Kelris"
+})
+
+------------------
+--  Aku'mai  --
+------------------
+L = DBM:GetModLocalization("AkumaiSoD")
+
+L:SetGeneralLocalization({
+	name = "Aku'mai"
+})
+
+------------------
 --  Gnomeregan  --
 ------------------
 
@@ -1091,7 +1157,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("CrowdPummellerSoD")
 
 L:SetGeneralLocalization({
-	name = "Meute-Verprügler 9-60"
+	name = "Meuteverprügler 9-60"
 })
 
 ---------------
@@ -1109,7 +1175,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("ElectrocutionerSoD")
 
 L:SetGeneralLocalization({
-	name = "Elektrokutionator 6000"
+	name = "Elektrokutor 6000"
 })
 
 -----------------------
@@ -1130,6 +1196,14 @@ L:SetGeneralLocalization({
 	name = "Mechanische Menagerie"
 })
 
+L:SetMiscLocalization{
+	Sheep		= "Schaf",
+	Whelp		= "Drachenwelpe",
+	Squirrel	= "Eichhörnchen",
+	Chicken		= "Huhn"
+}
+
+
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1139,3 +1213,10 @@ L:SetGeneralLocalization({
 	name = "Robogenieur Thermaplugg"
 })
 
+L:SetTimerLocalization{
+	timerTankCD = "Ritzelfeuerschlag"
+}
+
+L:SetOptionLocalization({
+	timerTankCD	= "Zeige Timer für Cooldown von Ritzelfeuerschlag auf den Maintank in Phase 4 (Tank wechseln)"
+})

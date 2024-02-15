@@ -1189,8 +1189,15 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("MechanicalMenagerieSoD")
 
 L:SetGeneralLocalization({
-	name = "기계 야수들"
+	name = "기계 동물원"
 })
+
+L:SetMiscLocalization{
+	Sheep		= "양",
+	Whelp		= "새끼용",
+	Squirrel	= "다람쥐",
+	Chicken		= "닭"
+}
 
 -----------------------------
 --  Mekgineer Thermaplugg  --

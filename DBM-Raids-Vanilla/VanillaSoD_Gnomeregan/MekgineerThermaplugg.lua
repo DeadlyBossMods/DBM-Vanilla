@@ -5,8 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(218538, 218970, 218972, 218974, 218537)--(red, blue, green, gray, thermaplugg)
 mod:SetEncounterID(2940)
 mod:SetBossHPInfoToHighest()
-mod:SetHotfixNoticeRev(20240209000000)
-mod:SetMinSyncRevision(20240209000000)
+mod:SetHotfixNoticeRev(20240214000000)
+mod:SetMinSyncRevision(20240214000000)
 
 --[[
 STX-99/XD 218975 (inactive id for gray/hybrid main boss)
@@ -21,17 +21,19 @@ STX-96/FR 218538 (active id for red main boss)
 --]]
 
 mod:RegisterCombat("combat")
+mod:SetMinCombatTime(25)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 438713 438723",
 	"SPELL_CAST_SUCCESS 11518 11521 11798 11524 11526 11527 438683 438719 438726 438732",
-	"SPELL_AURA_APPLIED 438710 438720 438727",
+	"SPELL_AURA_APPLIED 438710 438720 438727 438735",
+	"SPELL_AURA_REMOVED 438735",
 	"SPELL_AURA_APPLIED_DOSE 438710 438720 438727",
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --NOTE: Fire --> Frost --> Poison --> Hybrid (has powers of 3 previous ones)
---TODO, what causes https://www.wowhead.com/classic/spell=441448/charged ? warn for it?
 --TODO, dispel alerts for tank stacks?
 --TODO, verify combat timer with transcriptor
 --TODO, better phase change transitions with transcriptor
@@ -44,13 +46,15 @@ mod:RegisterEventsInCombat(
 --General
 local warningSummonBomb				= mod:NewSpellAnnounce(437853, 2)
 
---local timerRP						= mod:NewCombatTimer(13)
+local timerRP						= mod:NewCombatTimer(12.45)
 local timerSummonBombCD				= mod:NewCDTimer(10.1, 437853, nil, nil, nil, 1)--10.1 but can't be cast while bots are casting other things, and gets long delay during their long breath casts
 
 mod:AddInfoFrameOption(438735)
+mod:AddSetIconOption("SetIconOnButtonDebuff", 438735, true, 0, {1, 2, 3, 4, 5, 6})
+
 --Stage 1: STX-96/FR
 mod:AddTimerLine(SCENARIO_STAGE:format(1))
-local warningSprocketfire			= mod:NewSpellAnnounce(438683, 2, nil, "Tank|Healer")
+local warningSprocketfire			= mod:NewSpellAnnounce(438683, 2, nil, false, 2)
 local warnSprocketFireDebuff		= mod:NewStackAnnounce(438710, 2, nil, "Tank|Healer")
 
 local specWarnFurnaceSurge			= mod:NewSpecialWarningRun(438713, nil, nil, nil, 4, 2)
@@ -59,7 +63,7 @@ local timerSprocketfireCD			= mod:NewCDTimer(5.2, 438683, nil, "Tank|Healer", ni
 local timerFurnaceSurgeCD			= mod:NewCDTimer(33.9, 438713, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 --Stage 2: STX-97/IC
 mod:AddTimerLine(SCENARIO_STAGE:format(2))
-local warningSupercooledSmash		= mod:NewSpellAnnounce(438719, 2, nil, "Tank|Healer")
+local warningSupercooledSmash		= mod:NewSpellAnnounce(438719, 2, nil, false, 2)
 local warnFreezing					= mod:NewStackAnnounce(438720, 2, nil, "Tank|Healer")
 local warningCoolantDischarge		= mod:NewSpellAnnounce(438723, 3)
 
@@ -67,7 +71,7 @@ local timerSupercooledSmashCD		= mod:NewCDTimer(5.2, 438719, nil, "Tank|Healer",
 local timerCoolantDischargeCD		= mod:NewCDTimer(24.2, 438723, nil, nil, nil, 2)
 --Stage 3: STX-98/PO
 mod:AddTimerLine(SCENARIO_STAGE:format(3))
-local warningHazHammer				= mod:NewSpellAnnounce(438726, 2, nil, "Tank|Healer")
+local warningHazHammer				= mod:NewSpellAnnounce(438726, 2, nil, false, 2)
 local warnRadiationSickness			= mod:NewStackAnnounce(438727, 2, nil, "Tank|Healer")
 
 local specWarnToxicVentilation		= mod:NewSpecialWarningInterrupt(438732, nil, nil, nil, 1, 2)
@@ -110,9 +114,18 @@ local function uglyAssStageChangeBecauseBlizzardHatesCombatLog(self, guid)
 	end
 end
 
+mod.vb.currentIcon = 8
+
+-- "<0.77 20:49:45> [ENCOUNTER_START] 2940#Mekgineer Thermaplugg#198#10", -- [1]
+-- "<2.04 20:49:46> [CHAT_MSG_MONSTER_YELL] Usurpers! Gnomeregan is mine!#Mekgineer Thermaplugg###Mekgineer Thermaplugg##0#0##0#26662#nil#0#false#false#false#false", -- [1]
+-- "<13.18 20:49:57> [CLEU] SWING_DAMAGE#Vehicle-0-5250-90-10566-218538-00004BC7DE#STX-96/FR#Player-5826-01FA12C2#Frankblack#618#-1#nil#nil", -- [80]
+-- "<13.22 20:49:57> [PLAYER_REGEN_DISABLED] +Entering combat!", -- [3]
+-- "<13.66 20:49:57> [UNIT_SPELLCAST_SUCCEEDED] PLAYER_SPELL{Frankblack} -Sunder Armor- [[raid6:Cast-3-5250-90-10566-8380-000B4BC7E5:8380]]", -- [86]
+
 function mod:OnCombatStart(delay)
+	self.vb.currentIcon = 1
 	self:SetStage(1)
---	timerRP:Start(13-delay)
+	timerRP:Start(-delay)
 	timerSprocketfireCD:Start(21.4-delay)
 	timerFurnaceSurgeCD:Start(33.7-delay)--33-36
 	if self.Options.InfoFrame then
@@ -194,7 +207,12 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(438710) then
 		local amount = args.amount or 1
 		if amount >= 3 then--ability is cast in 3s for most part so a good starting point
-			warnSprocketFireDebuff:Show(args.destName, amount)
+			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName), DBM:GetUnitIdFromCID(218538), DBM:GetUnitIdFromCID(218974)
+			--Freezing is also applied ot others who walk through ice on ground, so we try to scope it to tanks only by only reporting units who are highest threat on bots threat table
+			if (bossUID or bossUIDTwo) and self:IsTanking(playerUID, bossUIDTwo or bossUID, nil, true) then
+				warnSprocketFireDebuff:Cancel()
+				warnSprocketFireDebuff:Schedule(1, args.destName, amount)
+			end
 		end
 	elseif args:IsSpell(438720) then
 		local amount = args.amount or 1
@@ -202,7 +220,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName), DBM:GetUnitIdFromCID(218972), DBM:GetUnitIdFromCID(218974)
 			--Freezing is also applied ot others who walk through ice on ground, so we try to scope it to tanks only by only reporting units who are highest threat on bots threat table
 			if (bossUID or bossUIDTwo) and self:IsTanking(playerUID, bossUIDTwo or bossUID, nil, true) then
-				warnFreezing:Show(args.destName, amount)
+				warnFreezing:Cancel()
+				warnFreezing:Schedule(1, args.destName, amount)
 			end
 		end
 	elseif args:IsSpell(438727) then
@@ -210,9 +229,21 @@ function mod:SPELL_AURA_APPLIED(args)
 		if amount >= 3 then--ability is cast in 3s for most part so a good starting point
 			warnRadiationSickness:Show(args.destName, amount)
 		end
+	elseif args:IsSpell(438735) and self.Options.SetIconOnButtonDebuff then
+		self:SetIcon(args.destName, self.vb.currentIcon)
+		self.vb.currentIcon = self.vb.currentIcon % 6 + 1
+		-- Get rid of the icon a bit early, if you have a second left you are a good designated button clicker
+		self:ScheduleMethod(29, "RemoveIcon", args.destName)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(438735) and self.Options.SetIconOnButtonDebuff then
+		-- Shouldn't be necessary since removal is scheduled 1 second prior to expiration
+		self:RemoveIcon(args.destName)
+	end
+end
 
 function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 218974 then--The only mech that dies
@@ -223,21 +254,31 @@ function mod:UNIT_DIED(args)
 	end
 end
 
---[[
---https://www.wowhead.com/classic/spell=438505/mech-pilot-transform-red
---https://www.wowhead.com/classic/spell=438602/mech-pilot-transform-blue
---https://www.wowhead.com/classic/spell=438603/mech-pilot-transform-green
---https://www.wowhead.com/classic/spell=438604/mech-pilot-transform-gray
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 411583 then--Replace Stand with Swim
-		self:SendSync("PhaseChange")
+	if spellId == 438572 then--Vehicle Damaged (Fires for the end of stage 1-4
+		local cid = self:GetUnitCreatureId(uId)
+		self:SendSync("PhaseChange", cid)
 	end
 end
 
-function mod:OnSync(msg)
+--Support early stopping previous stage timers at very least.
+--Can't start next stage timers here though do to inconsistency with transition time (due to RP walking)
+function mod:OnSync(msg, cid)
 	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
-
+	if msg == "PhaseChange" and cid and self:AntiSpam(10, 2) then
+		cid = tonumber(cid)
+		if cid == 218538 then--STX-96/FR (Fire)
+			timerSprocketfireCD:Stop()
+			timerFurnaceSurgeCD:Stop()
+		elseif cid == 218970 then--STX-97/IC (Fire)
+			timerSupercooledSmashCD:Stop()
+			timerCoolantDischargeCD:Stop()
+		elseif cid == 218972 then--STX-98/PO (Poison)
+			timerHazHammerCD:Stop()
+			timerToxicVentilationCD:Stop()
+		elseif cid == 218974 then--STX-99/XD (Hybrid)
+			timerTankCD:Stop()
+			timerSpecialCD:Stop()
+		end
 	end
 end
---]]

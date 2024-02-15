@@ -36,6 +36,7 @@ local timerDiscombobulationCD		= mod:NewNextTimer(30.7, 433398, nil, nil, nil, 2
 --local timerCorrosiveBiteCD		= mod:NewCDTimer(6.5, 429207, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 mod:AddSetIconOption("SetIconOnArc", 433251, true, 0, {8})
+mod:AddInfoFrameOption(433251)
 
 mod.vb.arcCount = 0
 
@@ -61,6 +62,16 @@ function mod:OnCombatStart(delay)
 	--Since it's incast cast and an aoe knockback, we pre schedule it to warn 2.5 seconds before initial cast
 	specWarnDiscombobulation:Schedule(27.5)
 	specWarnDiscombobulation:ScheduleVoice(27.5, "carefly")
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(433251))
+		DBM.InfoFrame:Show(10, "playerdebuffremaining", 433251)
+	end
+end
+
+function mod:OnCombatEnd()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
+	end
 end
 
 function mod:SPELL_CAST_START(args)

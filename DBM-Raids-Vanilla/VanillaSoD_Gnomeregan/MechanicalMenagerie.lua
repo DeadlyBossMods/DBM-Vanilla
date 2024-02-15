@@ -71,6 +71,13 @@ local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, 1835
 local timerOverheat						= mod:NewBuffActiveTimer(15, 436741, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerSprocketfireBreathCD			= mod:NewCDTimer(21, 436816, 18351, nil, nil, 3)--21-26, first timer that's not too radically variable and we can include
 
+local bossRenames = {
+	[218245] = L.Chicken,
+	[218244] = L.Squirrel,
+	[218243] = L.Sheep,
+	[218242] = L.Whelp
+}
+
 function mod:OnCombatStart(delay)
 --	timerWidgetFortressCD:Start(1)
 	timerSprocketfireBreathCD:Start(13)--13-23 (gross)
@@ -92,26 +99,31 @@ function mod:SPELL_CAST_START(args)
 		specWarnExplosiveEgg:Play("targetchange")
 		timerExplosiveEggCD:Start()
 	elseif args:IsSpell(440073) then
-		timerSelfRepair:Start(20, args.sourceName)
+		local cid = self:GetCIDFromGUID(args.sourceGUID)
+		local bossName = bossRenames[cid] or args.sourceName
+		timerSelfRepair:Start(20, bossName)
 		if self:AntiSpam(3, 1) then
 			warnSelfRepair:Show()
 		end
-		local cid = self:GetCIDFromGUID(args.destGUID)
 		if cid == 218242 then--STX-04/BD
 			--20 second channel, safe to assume any existing breath timer is delayed
 			timerSprocketfireBreathCD:Stop()
 		end
 	elseif args:IsSpell(436833) then
 --		timerPetrifyCD:Start()
+		local cid = self:GetCIDFromGUID(args.sourceGUID)
+		local bossName = bossRenames[cid] or args.sourceName
 		if self:CheckInterruptFilter(args.sourceGUID, false, true, true) then--Since it's council boss, target/focus filter is disabled for now.
-			specWarnWidgetVolley:Show(args.sourceName)
+			specWarnWidgetVolley:Show(bossName)
 			specWarnWidgetVolley:Play("kickcast")
 		end
 	elseif args:IsSpell(436836) then
 		warnWidgetFortress:Show()
 --		timerWidgetFortressCD:Start()
 	elseif args:IsSpell(436824) then
-		specWarnFrayedWiring:Show(args.sourceName)
+		local cid = self:GetCIDFromGUID(args.sourceGUID)
+		local bossName = bossRenames[cid] or args.sourceName
+		specWarnFrayedWiring:Show(bossName)
 		specWarnFrayedWiring:Play("stopattack")
 	elseif args:IsSpell(436816) then
 		specWarnSprocketfireBreath:Show()
@@ -142,7 +154,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnWidgetFortress:Show()
 		specWarnWidgetFortress:Play("moveboss")
 	elseif args:IsSpell(436828) then
-		warnBinaryBleat:CombinedShow(0.3, args.destName)
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		local bossName = bossRenames[cid] or args.destName
+		warnBinaryBleat:CombinedShow(0.3, bossName)
 	elseif args:IsSpell(436825) then
 		if self.Options.NPAuraOnFrayed then
 			DBM.Nameplate:Show(true, args.destGUID, 436825, nil, 15)
