@@ -212,7 +212,7 @@ L:SetTimerLocalization{
 	TimerClawTentacle		= "Prochain Tentacule griffu",
 	TimerGiantEyeTentacle	= "Prochain Tentacule oculaire géant",
 	TimerGiantClawTentacle	= "Prochain Tentacule griffu géant",
-	TimerWeakened			= "Faiblesse terminé"
+	TimerWeakened			= "L'affaiblissement terminé"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Afficher l'avertissement pour Tentacule oculaire",
