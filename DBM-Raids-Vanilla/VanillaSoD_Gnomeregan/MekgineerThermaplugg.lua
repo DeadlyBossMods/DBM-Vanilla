@@ -29,7 +29,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 438710 438720 438727 438735",
 	"SPELL_AURA_REMOVED 438735",
 	"SPELL_AURA_APPLIED_DOSE 438710 438720 438727",
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --NOTE: Fire --> Frost --> Poison --> Hybrid (has powers of 3 previous ones)
@@ -253,21 +254,31 @@ function mod:UNIT_DIED(args)
 	end
 end
 
---[[
---https://www.wowhead.com/classic/spell=438505/mech-pilot-transform-red
---https://www.wowhead.com/classic/spell=438602/mech-pilot-transform-blue
---https://www.wowhead.com/classic/spell=438603/mech-pilot-transform-green
---https://www.wowhead.com/classic/spell=438604/mech-pilot-transform-gray
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 411583 then--Replace Stand with Swim
-		self:SendSync("PhaseChange")
+	if spellId == 438572 then--Vehicle Damaged (Fires for the end of stage 1-4
+		local cid = self:GetUnitCreatureId(uId)
+		self:SendSync("PhaseChange", cid)
 	end
 end
 
-function mod:OnSync(msg)
+--Support early stopping previous stage timers at very least.
+--Can't start next stage timers here though do to inconsistency with transition time (due to RP walking)
+function mod:OnSync(msg, cid)
 	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
-
+	if msg == "PhaseChange" and cid and self:AntiSpam(10, 2) then
+		cid = tonumber(cid)
+		if cid == 218538 then--STX-96/FR (Fire)
+			timerSprocketfireCD:Stop()
+			timerFurnaceSurgeCD:Stop()
+		elseif cid == 218970 then--STX-97/IC (Fire)
+			timerSupercooledSmashCD:Stop()
+			timerCoolantDischargeCD:Stop()
+		elseif cid == 218972 then--STX-98/PO (Poison)
+			timerHazHammerCD:Stop()
+			timerToxicVentilationCD:Stop()
+		elseif cid == 218974 then--STX-99/XD (Hybrid)
+			timerTankCD:Stop()
+			timerSpecialCD:Stop()
+		end
 	end
 end
---]]
