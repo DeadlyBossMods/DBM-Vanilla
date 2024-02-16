@@ -23,14 +23,3 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	DBM_DOOMW_EMOTE_ENRAGE	= "%s becomes enraged!"--Probalby won't be used, at least not long. Once spellid replaces it
 }
-
--- Quest
-L = DBM:GetModLocalization("Quest")
-
-L:SetGeneralLocalization{
-	name = "Квест",
-}
-
-L:SetOptionLocalization{
-	Timers = "Показывать таймеры для некоторых квестов сопровождений"
-}

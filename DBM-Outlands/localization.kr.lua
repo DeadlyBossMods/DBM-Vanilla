@@ -23,14 +23,3 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	DBM_DOOMW_EMOTE_ENRAGE	= "%s|1이;가; 분노에 휩싸입니다!"--확인필요
 }
-
--- Quest
-L = DBM:GetModLocalization("Quest")
-
-L:SetGeneralLocalization{
-	name = "퀘스트",
-}
-
-L:SetOptionLocalization{
-	Timers = "몇가지 호위 퀘스트의 타이머 바 보기"
-}
