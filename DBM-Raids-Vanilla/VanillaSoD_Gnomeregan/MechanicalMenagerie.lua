@@ -35,6 +35,9 @@ mod:RegisterEventsInCombat(
 (ability.id = 436692 or ability.id = 440073 or ability.id = 436833 or ability.id = 436836 or ability.id = 436824 or ability.id = 436816 or ability.id = 436695) and type = "begincast"
  or (ability.id = 436828 or ability.id = 436570) and type = "cast"
 --]]
+
+mod:AddInfoFrameOption()
+
 --General
 local warnSelfRepair				= mod:NewSpecialWarningSpell(440073, nil, nil, nil, 3)
 
@@ -85,11 +88,18 @@ function mod:OnCombatStart(delay)
 	if self.Options.NPAuraOnFrayed then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 	end
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Show(10, "bosshealth", bossRenames)
+		self.bossHealthUpdateTime = 0.5
+	end
 end
 
 function mod:OnCombatEnd()
 	if self.Options.NPAuraOnFrayed then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)
+	end
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
 	end
 end
 
