@@ -1122,11 +1122,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnPriestRemaining		= "%s Priestesses remaining"
+	warnPriestRemaining		= "%s Priesterinnen übrig"
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "Show warning for how maining Blackfathom Tide Priestesses are remaining"
+	warnPriestRemaining	= "Zeige Warnung für Anzahl verbleibender Priesterinnen"
 })
 
 ------------------
