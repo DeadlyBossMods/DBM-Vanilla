@@ -20,6 +20,8 @@ mod:RegisterEventsInCombat(
 (ability.id = 28832 or ability.id = 28833 or ability.id = 28834 or ability.id = 28835 or ability.id = 28863 or ability.id = 28883 or ability.id = 28884) and type = "cast"
 --]]
 --TODO, shouldn't timers stop when horseman die?
+mod:AddInfoFrameOption()
+
 local warnMarkSoon				= mod:NewAnnounce("WarningMarkSoon", 1, 28835, false)
 local warnMeteor				= mod:NewSpellAnnounce(28884, 4)
 local warnVoidZone				= mod:NewTargetNoFilterAnnounce(28863, 3)--Only warns for nearby targets, to reduce spam
@@ -45,6 +47,22 @@ function mod:OnCombatStart(delay)
 	timerMeteorCD:Start(20.9 - delay)
 	timerHolyWrathCD:Start(20.9 - delay)
 	warnMarkSoon:Schedule(16 - delay)
+	if self.Options.InfoFrame then
+		local bosses = {
+			[16062] = true,
+			[16063] = true,
+			[16064] = true,
+			[16065] = true,
+		}
+		DBM.InfoFrame:Show(10, "bosshealth", bosses)
+		self.bossHealthUpdateTime = 0.5
+	end
+end
+
+function mod:OnCombatEnd()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

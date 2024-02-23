@@ -1196,7 +1196,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("CrowdPummellerSoD")
 
 L:SetGeneralLocalization({
-	name = "Faucheur de foule 9-60"
+	name = "Disperseur de foule 9-60"
 })
 
 ---------------
