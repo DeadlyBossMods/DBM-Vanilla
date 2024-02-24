@@ -52,7 +52,7 @@ function mod:SPELL_CAST_START(args)
 		if not castsPerGUID[args.sourceGUID] then
 			castsPerGUID[args.sourceGUID] = 0
 			if self.Options.SetIconOnGoo then
-				self:ScanForMobs(args.sourceGUID, 2, self.vb.gooIcon, 1, nil, 12, "SetIconOnGoo")
+				self:ScanForMobs(args.sourceGUID, 2, self.vb.gooIcon, 1, nil, 12, "SetIconOnGoo", nil, nil, true)
 			end
 			self.vb.gooIcon = self.vb.gooIcon - 1
 		end
