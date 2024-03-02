@@ -140,7 +140,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			--timerMCCD:Start(60)--60 seconds?
 		end
 		if self.Options.SetIconOnMC2 then
-			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName))
+			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
 			if group % 2 == 1 then
 				self:SetIcon(args.destName, self.vb.MCIcon1)
 				self.vb.MCIcon1 = self.vb.MCIcon1 + 1
