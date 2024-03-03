@@ -1208,6 +1208,10 @@ L:SetGeneralLocalization({
 	name = "Grubbis"
 })
 
+L:SetMiscLocalization({
+	FirstPull = "Des buses de ventilation continuent de cracher de la matière radioactive au-dessus de Gnomeregan.",
+	Pull = "Oh non ! Des secousses pareilles ne peuvent signifier qu’une chose…"
+})
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------
