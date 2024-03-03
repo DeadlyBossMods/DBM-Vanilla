@@ -46,7 +46,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpellID(43095) then
 		warnParalyzeSoon:Schedule(22)
 		if self.Options.SpecWarn43095dispel and self:CheckDispelFilter("magic") then
-			specWarnParalyze:Show(DBM_CORE_L.ALLIES)
+			specWarnParalyze:Show(DBM_COMMON_L.ALLIES)
 			specWarnParalyze:Play("helpdispel")
 		else
 			warnParalyze:Show()
