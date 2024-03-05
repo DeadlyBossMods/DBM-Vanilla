@@ -5,7 +5,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(220007)--217308 Irradiated Goo adds
 mod:SetEncounterID(2928)
 mod:SetUsedIcons(8, 7, 6)
-mod:SetHotfixNoticeRev(20240209000000)
+mod:SetHotfixNoticeRev(20240305000000)
 --mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
