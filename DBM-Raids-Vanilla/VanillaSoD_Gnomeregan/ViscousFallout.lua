@@ -13,6 +13,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 434358 433546",
 	"SPELL_CAST_SUCCESS 433546 434434",
+	"SPELL_AURA_APPLIED 434399",
 	"SPELL_PERIODIC_DAMAGE 434433",
 	"SPELL_PERIODIC_MISSED 434433",
 	"UNIT_DIED"
@@ -21,6 +22,7 @@ mod:RegisterEventsInCombat(
 --[[
  (ability.id = 434358 or ability.id = 433546) and type = "begincast"
  or (ability.id = 434434) and type = "cast"
+ or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
 local warnSummonIrradiatedGoo		= mod:NewSpellAnnounce(434358, 3)
 local warnSludge					= mod:NewSpellAnnounce(434434, 2)
@@ -51,10 +53,6 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(433546) then
 		if not castsPerGUID[args.sourceGUID] then
 			castsPerGUID[args.sourceGUID] = 0
-			if self.Options.SetIconOnGoo then
-				self:ScanForMobs(args.sourceGUID, 2, self.vb.gooIcon, 1, nil, 12, "SetIconOnGoo", nil, nil, true)
-			end
-			self.vb.gooIcon = self.vb.gooIcon - 1
 		end
 		castsPerGUID[args.sourceGUID] = castsPerGUID[args.sourceGUID] + 1
 		local count = castsPerGUID[args.sourceGUID]
@@ -75,6 +73,15 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(434434) then
 		warnSludge:Show()
 		timerSludgeCD:Start()
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(434399) then--Toxic Emission (gained on spawn)
+		if self.Options.SetIconOnGoo then
+			self:ScanForMobs(args.destGUID, 2, self.vb.gooIcon, 1, nil, 12, "SetIconOnGoo", nil, nil, true)
+		end
+		self.vb.gooIcon = self.vb.gooIcon - 1
 	end
 end
 
