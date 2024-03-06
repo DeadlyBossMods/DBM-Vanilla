@@ -1171,12 +1171,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	FirstPull = "In ganz Gnomeregan speien Lüftungsschächten noch immer aktiv radioaktives Material aus.",
-	-- No clue about the second message, the RP looks like this in deDE, the last message seems to be missing?
-	-- enUS has the other message for both first pulls and after wipes, dunno what is going on.
-	-- "<63.24 19:05:04> [CHAT_MSG_MONSTER_SAY] In ganz Gnomeregan speien Lüftungsschächten noch immer aktiv radioaktives Material aus.#Sprengmeisterin Emi Shortfuse###Tandanu##0#0##0#554#nil#0#false#false#false#false",
-	-- "<68.94 19:05:10> [CHAT_MSG_MONSTER_SAY] Wenn mein Volk eine Chance haben soll, zurückzukehren...#Sprengmeisterin Emi Shortfuse###Tandanu##0#0##0#566#nil#0#false#false#false#false",
-	-- "<75.40 19:05:17> [CHAT_MSG_MONSTER_SAY] in diese Stadt...#Sprengmeisterin Emi Shortfuse###Tandanu##0#0##0#583#nil#0#false#false#false#false",
-	--Pull = "Oh no! Tremors like these can only mean one thing..."
+	Pull = "Oh nein! Solche Erschütterungen können nur eins bedeuten...",
 })
 
 ----------------------------
