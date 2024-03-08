@@ -1163,6 +1163,11 @@ L:SetGeneralLocalization({
 	name = "格魯比斯"
 })
 
+L:SetMiscLocalization({
+	FirstPull = "諾姆瑞根各處仍有運作中的通風井，持續噴出放射性物質。",
+	Pull = "喔不！像這樣的震顫只意味著一件事…"
+})
+
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------
