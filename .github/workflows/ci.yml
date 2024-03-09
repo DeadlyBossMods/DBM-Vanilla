@@ -15,9 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
         with:
-          fetch-depth: 100
+          fetch-depth: 0
 
       - name: Install and run Luacheck
         uses: nebularg/actions-luacheck@v1
@@ -43,7 +43,7 @@ jobs:
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-        if: ${{ failure() }}
+        if: ${{ github.event_name != 'pull_request' && failure() }}
   sync:
     runs-on: ubuntu-latest
     if: ${{ github.event_name != 'pull_request' }}
