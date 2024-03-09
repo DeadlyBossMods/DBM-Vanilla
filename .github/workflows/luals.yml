@@ -29,4 +29,4 @@ jobs:
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
-        if: ${{ failure() }}
+        if: ${{ github.event_name != 'pull_request' && failure() }}
