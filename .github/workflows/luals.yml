@@ -22,6 +22,11 @@ jobs:
       - name: LuaLS check
         uses: DeadlyBossMods/LuaLS-config@main
         with:
-          luals-repo: emmericp/lua-language-server
-          luals-ref: 606e9cd238dbc924929d7047497de30ff44ee50c
+          luals-ref: 5623a84ea9a2b27dd7121f88dd995389c702eac1
           luals-check-dir: ${{ github.workspace }}/workspace
+      - name: Send Status to Discord
+        uses: nebularg/actions-discord-webhook@v1
+        with:
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+        if: ${{ failure() }}
