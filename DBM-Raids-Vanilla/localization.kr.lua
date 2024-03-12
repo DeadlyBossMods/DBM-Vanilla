@@ -1165,6 +1165,10 @@ L:SetGeneralLocalization({
 	name = "그루비스"
 })
 
+L:SetMiscLocalization({
+	FirstPull = "놈리건에는 아직도 방사능 물질을 뿜어내는 환풍구가 곳곳에 있어요.",
+	Pull = "아, 이런! 이런 진동이 의미하는 건 딱 하나뿐인데..."
+})
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------
