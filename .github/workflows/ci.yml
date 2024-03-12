@@ -54,6 +54,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: 'DeadlyBossMods/DBM-Classic'
+          path: 'DBM-Classic'
           ref: 'master'
           token: ${{ secrets.PERSONAL_TOKEN }}
 
