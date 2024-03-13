@@ -45,7 +45,7 @@ do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash
 				if self.Options.RangeFrame then
 					DBM.RangeCheck:Show(10)
 				end
-			elseif UnitGUID("pet") == args.destGUID then
+			elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
 				specWarnPlague:Show()
 				specWarnPlague:Play("runout")
 			else
