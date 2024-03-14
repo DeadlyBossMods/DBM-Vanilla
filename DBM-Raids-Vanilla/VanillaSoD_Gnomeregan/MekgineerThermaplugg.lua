@@ -168,7 +168,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(11518, 11521, 11798, 11524, 11526, 11527) and self:AntiSpam(3, 1) then
 		timerSummonBombCD:Start()
 		if args:IsSpell(11518) then -- Activate Bomb 01
-			warningSummonBomb:Show(2)
+			warningSummonBomb:Show(1)
 		elseif args:IsSpell(11521) then -- Activate Bomb 02
 			warningSummonBomb:Show(2)
 		elseif args:IsSpell(11798) then -- Activate Bomb 03B (yes 03B)
