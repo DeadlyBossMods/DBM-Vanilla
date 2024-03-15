@@ -1174,7 +1174,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("TwilightLordKelrisSoD")
 
 L:SetGeneralLocalization({
-	name = "Seigneur du crépuscule Kelris"
+	name = "Seigneur du Crépuscule Kelris"
 })
 
 ------------------
