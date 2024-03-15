@@ -1,8 +1,5 @@
-## Interface: 100205
-## Interface-Wrath: 30403
-## X-Min-Interface: 80000
+## Interface: 20504
 ## X-Min-Interface-BCC: 20504
-## X-Min-Interface-Wrath: 30401
 ## Version: @project-version@
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10World Bosses (BC)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10필드 보스 (불성)|r

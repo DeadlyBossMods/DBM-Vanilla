@@ -1,5 +1,5 @@
-## Interface: 20501
-## X-Min-Interface-BCC: 20501
+## Interface: 40400
+## X-Min-Interface-Cata: 40400
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (BC)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (불성)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (BC)|r
@@ -95,4 +95,3 @@ ZulAmanLegacy\Janalai.lua
 ZulAmanLegacy\Halazzi.lua
 ZulAmanLegacy\Malacrass.lua
 ZulAmanLegacy\Zuljin.lua
-
