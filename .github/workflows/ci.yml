@@ -42,30 +42,3 @@ jobs:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           status: ${{ job.status }}
         if: ${{ github.event_name != 'pull_request' && failure() }}
-  sync:
-    runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
-    needs:
-      - build
-
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          repository: 'DeadlyBossMods/DBM-Classic'
-          path: './DBM-Classic'
-          ref: 'master'
-          token: ${{ secrets.PERSONAL_TOKEN }}
-
-      - name: Deploy on DBM-Classic
-        run: |
-          COMMIT_MESSAGE=$(cat <<'EOF'
-          ${{ github.event.head_commit.message }}
-          EOF
-          )
-          COMMIT_MESSAGE=$(echo $COMMIT_MESSAGE | sed 's/"/\\"/g')
-          cd /home/runner/work/DBM-BCVanilla/DBM-BCVanilla/DBM-Classic
-          git remote set-url origin "https://${{ secrets.PERSONAL_TOKEN }}@github.com/DeadlyBossMods/DBM-Classic.git"
-          git config user.email "${{ github.event.head_commit.author.email }}"
-          git config user.name "${{ github.event.head_commit.author.username }}"
-          git commit --allow-empty -m "$COMMIT_MESSAGE"
-          git push origin HEAD:master
