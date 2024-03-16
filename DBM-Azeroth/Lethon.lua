@@ -12,8 +12,8 @@ mod:RegisterCombat("combat_yell", L.Pull)
 mod:RegisterEventsInCombat(
 --	"SPELL_CAST_START 24818 243468",
 	"SPELL_CAST_SUCCESS 24814 24813"
---	"SPELL_AURA_APPLIED 243401",
---	"SPELL_AURA_APPLIED_DOSE 243401"
+	"SPELL_AURA_APPLIED 24818",
+	"SPELL_AURA_APPLIED_DOSE 24818"
 )
 
 --TODO, maybe taunt special warnings for classic version when it matters more.
