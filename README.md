@@ -19,7 +19,7 @@
 <li><a href="https://wow.curseforge.com/projects/deadly-boss-mods-cataclysm-mods">Cataclysm Raid Mods</a></li>
 <li><a href="https://wow.curseforge.com/projects/deadly-boss-mods-wotlk">Wrath of the Lich King Raid Mods</a></li>
 </ul>
-<h2 id="w-notes"><strong>Notes</strong></h2>
+<h2 id="w-notes"><strong>Important</strong></h2>
 <ul>
-<li>Please make sure you have the latest version of <a href="http://wow.curse.com/downloads/wow-addons/details/deadly-boss-mods.aspx">Deadly Boss Mods</a> when updating the old content mods.</li>
+<li>Please make sure you have the latest version of <a href="http://wow.curse.com/downloads/wow-addons/details/deadly-boss-mods.aspx">Deadly Boss Mods</a> when updating the old content mods. This is a required dependancy</li>
 </ul>
