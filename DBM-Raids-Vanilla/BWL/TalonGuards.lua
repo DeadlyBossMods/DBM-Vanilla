@@ -70,6 +70,7 @@ local function update_vulnerability(self)
 	local name = L[info[1]] or info[1]
 
 	if not lastAnnounce[target] or lastAnnounce[target] ~= name then
+		---@diagnostic disable-next-line: inject-field
 		warnVuln.icon = info[3]
 		warnVuln:Show(name)
 		lastAnnounce[target] = name

@@ -540,14 +540,12 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerSubmerge		= "Погружение",
 	TimerEmerge			= "Появление",
-	timerCombatStart	= DBM_CORE_L.GENERIC_TIMER_COMBAT
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "Показывать предупреждение о погружении",
 	TimerSubmerge		= "Показывать время до погружения",
 	WarnEmerge			= "Показывать предупреждение о появлении",
 	TimerEmerge			= "Показывать время до появления",
-	timerCombatStart	= DBM_CORE_L.OPTION_TIMER_COMBAT
 }
 L:SetMiscLocalization{
 	Submerge	= "ПРИДИТЕ, МОИ СЛУГИ! ЗАЩИТИТЕ СВОЕГО ХОЗЯИНА!",
@@ -1202,6 +1200,11 @@ L = DBM:GetModLocalization("GrubbisSoD")
 
 L:SetGeneralLocalization({
 	name = "Грязнюк"
+})
+
+L:SetMiscLocalization({
+	FirstPull = "Некоторые вентиляционные шахты до сих пор разносят радиоактивные вещества по всему Гномрегану.",
+	Pull = "О нет! Такие толчки могут означать только одно..."
 })
 
 ----------------------------

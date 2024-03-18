@@ -5,7 +5,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(217280)--217956 Chomper, 217216 Grubbis Controller
 mod:SetEncounterID(2925)
 mod:SetHotfixNoticeRev(20240212000000)
-mod:SetMinSyncRevision(20240212000000)
+mod:SetMinSyncRevision(20240313000000)
 
 mod:RegisterCombat("combat")
 mod:SetWipeTime(30)--Combat drops between adds waves
@@ -13,13 +13,17 @@ mod:SetWipeTime(30)--Combat drops between adds waves
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 436027 436100 436059",
 	"SPELL_CAST_SUCCESS 435520 435525 435526 436168 435361 435362 435363",
-	"SPELL_SUMMON 435832 435835",
+--	"SPELL_SUMMON 435832 435835",
 	"SPELL_AURA_APPLIED 434941 3019 436074 434165 436027",
 --	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_AURA_REMOVED 434941 436074 436027",
 --	"SPELL_PERIODIC_DAMAGE",
 --	"SPELL_PERIODIC_MISSED",
 	"UNIT_DIED"
+)
+
+mod:RegisterEvents(
+	"CHAT_MSG_MONSTER_SAY"
 )
 
 --NOTE: timers seem to be a sequence of sorts, but variable due to how fast you kill adds and such cause certain things activate no cooldown windows. Timers for this will need a large subset of data and may even involve counting add deaths to pause/unpause timers
@@ -35,6 +39,7 @@ mod:RegisterEventsInCombat(
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
 --Stage 1/2
+local startTimer				= mod:NewCombatTimer(53)
 local warnEnrage				= mod:NewTargetNoFilterAnnounce(3019, 3, nil, "RemoveMagic")
 local warnIrradiatedCloud		= mod:NewSpellAnnounce(434168, 3)--Spawn
 local warnIrradiatedCloudTarget	= mod:NewTargetAnnounce(434168, 3)
@@ -68,6 +73,36 @@ function mod:OnCombatStart(delay)
 	self.vb.madCount = 0
 	self:SetStage(1)
 	--Adds instantly on pull
+end
+
+-- First pull:
+-- "<175.97 22:16:56> [CHAT_MSG_MONSTER_SAY] There are still ventilation shafts actively spewing radioactive material throughout Gnomeregan.#Blastmaster Emi Shortfuse###Tandanu##0#0##0#10027#nil#0#false#false#false#false",
+-- "<213.53 22:17:33> [CHAT_MSG_MONSTER_SAY] Oh no! Tremors like these can only mean one thing...#Blastmaster Emi Shortfuse###Tandanu##0#0##0#10098#nil#0#false#false#false#false",
+-- "<219.90 22:17:40> [ENCOUNTER_START] 2925#Grubbis#198#10",
+-- "<226.85 22:17:47> [PLAYER_REGEN_DISABLED] +Entering combat!",
+-- "<229.53 22:17:49> [CLEU] SPELL_CAST_START#Player-5826-01FD20C7#Grasul##nil#17920#Searing Pain#nil#nil",
+-- always a bit difficult what to set such a timer to, do we want the timer to expire when mobs spawn or when they reach us?
+-- let's go for 229.53 as rough start time, that's our warlock tank casting searing pain on the first mob
+-- that's 53.56 seconds, but let's make it a bit shorter to a nice even 53 seconds.
+
+-- Pull after a wipe:
+-- RP starts with this instead on second attempt
+-- "<120.57 22:24:19> [CHAT_MSG_MONSTER_SAY] Oh no! Tremors like these can only mean one thing...#Blastmaster Emi Shortfuse###Tandanu##0#0##0#10783#nil#0#false#false#false#false",
+-- "<126.52 22:24:25> [ENCOUNTER_START] 2925#Grubbis#198#10",
+-- "<133.85 22:24:32> [PLAYER_REGEN_DISABLED] +Entering combat!",
+-- "<135.76 22:24:34> [CLEU] SPELL_CAST_START#Player-5826-01FD20C7#Grasul##nil#17920#Searing Pain#nil#nil",
+-- ~15 seconds
+
+
+function mod:CHAT_MSG_MONSTER_SAY(msg)
+	-- This is intentionally not a combat start trigger because it only triggers on the first pull.
+	-- Using this as a combat start trigger would mess up kill time statistics because the first pull would get a huge penalty for the RP.
+	-- I'm glad we managed to wipe on the first boss to figure this out :D
+	if msg == L.FirstPull or msg:match(L.FirstPull) then
+		self:SendSync("FirstPull")
+	elseif msg == L.Pull or msg:match(L.Pull) then
+		self:SendSync("Pull")
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -188,3 +223,11 @@ function mod:OnSync(msg)
 	end
 end
 --]]
+
+function mod:OnSync(msg)
+	if msg == "FirstPull" then
+		startTimer:Start()
+	elseif msg == "Pull" and not startTimer:IsStarted() then
+		startTimer:Start(15)
+	end
+end

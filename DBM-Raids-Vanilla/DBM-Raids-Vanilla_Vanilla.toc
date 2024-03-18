@@ -1,5 +1,5 @@
-## Interface: 20501
-## X-Min-Interface: 20501
+## Interface: 11501
+## X-Min-Interface-Classic: 11403
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
@@ -13,12 +13,16 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 90, 48
 ## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DVM-Mod-Name-esES: Bandas (Clásico)
+## X-DVM-Mod-Name-esMX: Bandas (Clásico)
+## X-DVM-Mod-Name-ptBR: Raides (Clássico)
+## X-DVM-Mod-Name-frFR: Raids (Classique)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 90, 48
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 0
 ## Version: @project-version@
@@ -103,3 +107,18 @@ MC\Majordomo.lua
 MC\Ragnaros.lua
 
 VanillaOnyxia\Onyxia.lua
+
+VanillaSoD_Gnomeregan\Grubbis.lua
+VanillaSoD_Gnomeregan\ViscousFallout.lua
+VanillaSoD_Gnomeregan\Electrocutioner6000.lua
+VanillaSoD_Gnomeregan\CrowdPummeler.lua
+VanillaSoD_Gnomeregan\MechanicalMenagerie.lua
+VanillaSoD_Gnomeregan\MekgineerThermaplugg.lua
+
+VanillaSoD_BFD\BaronAuanis.lua
+VanillaSoD_BFD\Ghamoora.lua
+VanillaSoD_BFD\LadySarevess.lua
+VanillaSoD_BFD\Gelihast.lua
+VanillaSoD_BFD\LorgusJett.lua
+VanillaSoD_BFD\TwilightLordKelris.lua
+VanillaSoD_BFD\Akumai.lua

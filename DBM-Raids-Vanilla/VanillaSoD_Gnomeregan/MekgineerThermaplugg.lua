@@ -44,7 +44,7 @@ mod:RegisterEventsInCombat(
  or type = "death" and (target.id = 218538 or target.id = 218970 or target.id = 218972 or target.id = 218974 or target.id = 218537)
 --]]
 --General
-local warningSummonBomb				= mod:NewSpellAnnounce(437853, 2)
+local warningSummonBomb				= mod:NewCountAnnounce(437853, 2)
 
 local timerRP						= mod:NewCombatTimer(12.45)
 local timerSummonBombCD				= mod:NewCDTimer(10.1, 437853, nil, nil, nil, 1)--10.1 but can't be cast while bots are casting other things, and gets long delay during their long breath casts
@@ -166,8 +166,21 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(11518, 11521, 11798, 11524, 11526, 11527) and self:AntiSpam(3, 1) then
-		warningSummonBomb:Show()
 		timerSummonBombCD:Start()
+		if args:IsSpell(11518) then -- Activate Bomb 01
+			warningSummonBomb:Show(1)
+		elseif args:IsSpell(11521) then -- Activate Bomb 02
+			warningSummonBomb:Show(2)
+		elseif args:IsSpell(11798) then -- Activate Bomb 03B (yes 03B)
+			-- Never actually shows up in combat log at the moment, see UNIT_SPELLCAST_SUCCEEDED below for triggering this one.
+			warningSummonBomb:Show(3)
+		elseif args:IsSpell(11524) then -- Activate Bomb 04
+			warningSummonBomb:Show(4)
+		elseif args:IsSpell(11526) then -- Activate Bomb 05
+			warningSummonBomb:Show(5)
+		elseif args:IsSpell(11527) then -- Activate Bomb 06
+			warningSummonBomb:Show(6)
+		end
 	elseif args:IsSpell(438683) then
 		warningSprocketfire:Show()
 		if self:GetStage(4) then
@@ -258,7 +271,9 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 438572 then--Vehicle Damaged (Fires for the end of stage 1-4
 		local cid = self:GetUnitCreatureId(uId)
 		self:SendSync("PhaseChange", cid)
-	end
+	elseif spellId == 11523 then -- Activate Bomb 03, missing from SPELL_CAST_START
+		self:SendSync("Bomb3")
+	end -- There is also 11511 which is "Bomb A" (whatever that is). All other bombs are missing vom UCS but are in combat log
 end
 
 --Support early stopping previous stage timers at very least.
@@ -280,5 +295,7 @@ function mod:OnSync(msg, cid)
 			timerTankCD:Stop()
 			timerSpecialCD:Stop()
 		end
+	elseif msg == "Bomb3" and self:AntiSpam(3, 1) then
+		warningSummonBomb:Show(3)
 	end
 end

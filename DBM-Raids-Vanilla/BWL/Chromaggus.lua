@@ -114,6 +114,7 @@ local function update_vulnerability(self)
 	timerVuln:UpdateIcon(info[3])
 	timerVuln:UpdateName(name)
 	if not lastVulnName or lastVulnName ~= name then
+		---@diagnostic disable-next-line: inject-field
 		warnVuln.icon = info[3]
 		warnVuln:Show(name)
 		lastVulnName = name

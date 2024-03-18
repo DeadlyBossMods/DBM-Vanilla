@@ -1327,6 +1327,10 @@ L:SetGeneralLocalization({
 	name = "Grúdio"
 })
 
+L:SetMiscLocalization({
+	FirstPull = "Ainda há dutos de ventilação espalhando material radioativo em Gnomeregan.",
+	Pull = "Ah, não! Tremores assim só podem significar uma coisa..."
+})
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------

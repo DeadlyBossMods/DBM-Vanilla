@@ -1189,6 +1189,10 @@ L:SetGeneralLocalization({
 	name = "格鲁比斯"
 })
 
+L:SetMiscLocalization({
+	FirstPull = "在诺莫瑞根各地，还有一些会喷出辐射性物质的通风井。",
+	Pull = "糟了！这样的震颤只能代表一件事……"
+})
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------

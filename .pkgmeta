@@ -4,4 +4,5 @@ enable-nolib-creation: no
 move-folders:
     DBM-Raids-BC/DBM-Raids-Vanilla: DBM-Raids-Vanilla
     DBM-Raids-BC/DBM-Outlands: DBM-Outlands
+    DBM-Raids-BC/DBM-Azeroth: DBM-Azeroth
     DBM-Raids-BC/DBM-Raids-BC: DBM-Raids-BC

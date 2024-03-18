@@ -22,10 +22,8 @@ mod:RegisterEventsInCombat(
  or ability.name = "Magnetic Pulse" and type = "applydebuff"
 --]]
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
-local warnStaticArc					= mod:NewTargetCountAnnounce(433251, 3, nil, nil, nil, nil, nil, nil, true)
+local warnStaticArc					= mod:NewCountAnnounce(433251, 3)
 
-local specWarnStaticArc				= mod:NewSpecialWarningYouCount(433251, nil, nil, nil, 2, 2)
-local yellStaticArc					= mod:NewYell(433251)
 local specWarnMagneticPulse			= mod:NewSpecialWarningMoveAway(433359, nil, nil, nil, 1, 2)
 local yellMagneticPulse				= mod:NewYell(433359)
 local specWarnDiscombobulation		= mod:NewSpecialWarningSpell(433398, nil, nil, nil, 2, 2)
@@ -35,24 +33,9 @@ local timerMagneticPulseCD			= mod:NewCDTimer(12.9, 433359, nil, nil, nil, 3)--1
 local timerDiscombobulationCD		= mod:NewNextTimer(30.7, 433398, nil, nil, nil, 2)
 --local timerCorrosiveBiteCD		= mod:NewCDTimer(6.5, 429207, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-mod:AddSetIconOption("SetIconOnArc", 433251, true, 0, {8})
 mod:AddInfoFrameOption(433251)
 
 mod.vb.arcCount = 0
-
-function mod:ArcTarget(targetname, uId)
-	if not targetname then return end
-	if targetname == UnitName("player") then
-		specWarnStaticArc:Show(self.vb.arcCount)
-		specWarnStaticArc:Play("targetyou")
-		yellStaticArc:Yell()
-	else
-		warnStaticArc:Show(self.vb.arcCount, targetname)
-	end
-	if self.Options.SetIconOnArc then
-		self:SetIcon(targetname, 8, 3)
-	end
-end
 
 function mod:OnCombatStart(delay)
 	self.vb.arcCount = 0
@@ -77,8 +60,8 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(433251) then
 		self.vb.arcCount = self.vb.arcCount + 1
+		warnStaticArc:Show(self.vb.arcCount)
 		timerStaticArcCD:Start(nil, self.vb.arcCount+1)
-		self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "ArcTarget", 0.1, 5)
 	end
 end
 
