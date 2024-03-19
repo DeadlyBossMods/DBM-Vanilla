@@ -1,4 +1,4 @@
-## Interface: 100205
+## Interface: 100206
 ## X-Min-Interface: 80000
 ## Version: @project-version@
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cff10ff10World Bosses (BC)|r
