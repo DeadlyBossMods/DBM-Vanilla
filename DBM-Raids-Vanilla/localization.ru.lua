@@ -1190,7 +1190,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("CrowdPummellerSoD")
 
 L:SetGeneralLocalization({
-	name = "Толпогон 9-60"
+	name = "\"Толпогон 9-60\""
 })
 
 ---------------
@@ -1213,7 +1213,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("ElectrocutionerSoD")
 
 L:SetGeneralLocalization({
-	name = "Электрошокер-6000"
+	name = "Электрошокер 6000"
 })
 
 -----------------------
