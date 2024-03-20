@@ -12,33 +12,33 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPortal			= "정신 세계 #%d : >%s< (%d 파티)",
+	WarnPortal			= "%d번 차원문 : >%s<(%d조)",
 	SpecWarnWildMagic	= "마법 폭주 - %s!"
 }
 
 L:SetOptionLocalization{
 	WarnPortal			= "$spell:46021 대상 알림 보기",
-	SpecWarnWildMagic	= "마법 폭주 대상이 된 경우 특수 경고 보기",
-	ShowFrame			= "정신 세계에 있는 공격대원을 별도 창으로 보기" ,
-	FrameClassColor		= "정신 세계 창 직업 색상 사용",
-	FrameUpwards		= "정신 세계 창 바를 위쪽으로 확장",
-	FrameLocked			= "정신 세계 창 고정(이동불가로 설정)"
+	SpecWarnWildMagic	= "마법 폭주 특수 알림 보기",
+	ShowFrame			= "정신 세계 창 표시" ,
+	FrameClassColor		= "정신 세계 창에 직업 색상 사용",
+	FrameUpwards		= "정신 세계 창을 위쪽으로 확장",
+	FrameLocked			= "정신 세계 창 위치 고정"
 }
 
 L:SetMiscLocalization{
 	Demon				= "타락의 사스로바르",
-	Heal				= "치유량 100% 증가",
-	Haste				= "시전속도 100% 증가",
-	Hit					= "물리 적중률 50% 감소",
-	Crit				= "치명타 대미지 100% 증가",
-	Aggro				= "위협수준 생성 100% 증가",
-	Mana				= "마나 소모량 50% 감소",
+	Heal				= "치유량 +100%",
+	Haste				= "시전속도 +100%",
+	Hit					= "물리 적중률 -50%",
+	Crit				= "치명타 피해량 +100%",
+	Aggro				= "어그로 +100%",
+	Mana				= "자원 소비 50% 감소",
 	FrameTitle			= "정신 세계",
 	FrameLock			= "프레임 잠금",
 	FrameClassColor		= "직업 색상 사용",
 	FrameOrientation	= "위로 확장",
-	FrameHide			= "프레임 숨김",
-	FrameClose			= "메뉴 닫기"
+	FrameHide			= "창 숨김",
+	FrameClose			= "닫기"
 }
 
 ----------------
@@ -72,12 +72,12 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "단계 전환 알림 보기",
-	TimerPhase		= "다음 단계 바 보기"
+	WarnPhase		= "다음 단계 알림 보기",
+	TimerPhase		= "다음 단계 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
-	Air				= "비행",
+	Air				= "공중",
 	Ground			= "지상",
 	AirPhase		= "나는 어느 때보다도 강하다!",
 	Breath			= "숨을 깊게 들이마십니다."
@@ -109,24 +109,24 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnHuman		= "타락한 엘프 (%d)",
+	WarnHuman		= "인간형 (%d)",
 	WarnVoid		= "공허의 파수병 (%d)",
-	WarnFiend		= "어둠 마귀"
+	WarnFiend		= "어둠 마귀 등장"
 }
 
 L:SetTimerLocalization{
-	TimerHuman		= "다음 타락한 엘프 (%s)",
-	TimerVoid		= "다음 공허의 파수병 (%s)",
+	TimerHuman		= "다음 인간형 (%s)",
+	TimerVoid		= "다음 공허 (%s)",
 	TimerPhase		= "엔트로피우스"
 }
 
 L:SetOptionLocalization{
-	WarnHuman		= "타락한 엘프 알림 보기",
+	WarnHuman		= "인간형 알림 보기",
 	WarnVoid		= "공허의 파수병 알림 보기",
-	WarnFiend		= "어둠 마귀 알림 보기",
-	TimerHuman		= "다음 타락한 엘프 바 보기",
-	TimerVoid		= "다음 공허의 파수병 바 보기",
-	TimerPhase		= "2 단계 바 보기"
+	WarnFiend		= "2단계에서 어둠 마귀 알림 보기",
+	TimerHuman		= "다음 인간형 타이머 바 보기",
+	TimerVoid		= "다음 공허의 파수병 타이머 바 보기",
+	TimerPhase		= "2단계 전환 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -143,22 +143,22 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnDarkOrb		= "보호의 구슬 생성",
-	WarnBlueOrb		= "푸른용의 수정구",
-	SpecWarnDarkOrb	= "보호의 구슬 생성!",
-	SpecWarnBlueOrb	= "푸른용의 수정구 활성화!"
+	WarnDarkOrb		= "암흑 구슬 등장",
+	WarnBlueOrb		= "용 수정구 활성화",
+	SpecWarnDarkOrb	= "암흑 구슬 등장!",
+	SpecWarnBlueOrb	= "용 수정구 활성화!"
 }
 
 L:SetTimerLocalization{
-	TimerBlueOrb	= "수정구 활성화"
+	TimerBlueOrb	= "용 수정구 활성화"
 }
 
 L:SetOptionLocalization{
-	WarnDarkOrb		= "보호의 구슬 생성 알림 보기",
-	WarnBlueOrb		= "푸른용의 수정구 알림 보기",
-	SpecWarnDarkOrb	= "보호의 구슬 생성 특수 경고 보기",
-	SpecWarnBlueOrb	= "푸른용의 수정구 활성화 특수 경고 보기",
-	TimerBlueOrb	= "푸른용의 수정구 활성화 바 보기"
+	WarnDarkOrb		= "암흑 구슬 알림 보기",
+	WarnBlueOrb		= "용 수정구 알림 보기",
+	SpecWarnDarkOrb	= "암흑 구슬 특수 알림 보기",
+	SpecWarnBlueOrb	= "용 수정구 특수 알림 보기",
+	TimerBlueOrb	= "용 수정구 활성화 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -178,12 +178,8 @@ L:SetGeneralLocalization{
 	name = "대장군 나젠투스"
 }
 
-L:SetOptionLocalization{
-	InfoFrame	= "체력이 낮은 대상을 정보 창으로 보기(8800 미만)"
-}
-
 L:SetMiscLocalization{
-	HealthInfo	= "체력 정보"
+	HealthInfo	= "생명력 정보"
 }
 
 ----------------
@@ -196,8 +192,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnPhase		= "%s 단계",
-	WarnKite		= "추적 : >%s<"
+	WarnPhase		= "%s 단계"
 }
 
 L:SetTimerLocalization{
@@ -205,15 +200,14 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "단계 전환 알림 보기",
-	WarnKite		= "추적 대상 알림 보기",
-	TimerPhase		= "다음 단계 바 보기",
-	KiteIcon		= "추적 대상에게 전술 목표 아이콘 설정"
+	WarnPhase		= "다음 단계 알림 보기",
+	TimerPhase		= "다음 단계 타이머 바 보기",
+	KiteIcon		= "추적 대상에 공격대 징표 설정"
 }
 
 L:SetMiscLocalization{
-	PhaseTank		= "땅이 갈라져서 열리기 시작합니다!",--Check if Backwards
-	PhaseKite		= "분노하여 땅을 내리찍습니다!",--Check if Backwards
+	PhaseTank		= "땅이 갈라져서 열리기 시작합니다!",
+	PhaseKite		= "분노하여 땅을 내리찍습니다!",
 	ChangeTarget	= "새로운 대상이 필요합니다!",
 	Kite			= "추적",
 	Tank			= "일반"
@@ -239,8 +233,8 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	warnAshtongueDefender	= "잿빛혓바닥 수호병 경고 보기",
-	warnAshtongueSorcerer	= "잿빛혓바닥 사술사 경고 보기",
+	warnAshtongueDefender	= "잿빛혓바닥 수호병 알림 보기",
+	warnAshtongueSorcerer	= "잿빛혓바닥 사술사 알림 보기",
 	timerAshtongueDefender	= "잿빛혓바닥 수호병 타이머 바 보기",
 	timerAshtongueSorcerer	= "잿빛혓바닥 사술사 타이머 바 보기"
 })
@@ -259,7 +253,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerVengefulSpirit		= "유령 유지시간 바 보기"
+	TimerVengefulSpirit		= "유령 지속 시간 타이머 바 보기"
 }
 
 ----------------------------
@@ -289,14 +283,16 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnMana		= "2 단계 에서 마나 0 이 되기 30초 전에 알림 보기",
-	TimerMana		= "마나 0까지 남은시간 바 보기"
+	WarnMana		= "2단계에서 마나 0이 될때까지 알림 보기",
+	TimerMana		= "2단계에서 마나 0 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
 	Suffering		= "고뇌의 정수",
 	Desire			= "욕망의 정수",
-	Anger			= "격노의 정수"
+	Anger			= "격노의 정수",
+	Phase1End		= "나 안 돌아갈래!",
+	Phase2End		= "멀리 가진 않겠다..."
 }
 
 -----------------------
@@ -308,12 +304,12 @@ L:SetGeneralLocalization{
 	name = "대모 샤라즈"
 }
 
-L:SetTimerLocalization{
-	timerAura	= "%s"
-}
-
 L:SetOptionLocalization{
-	timerAura	= "변위의 오라 바 보기"
+	timerAura	= "변위의 오라 타이머 바 보기",
+	FAHelper	= "치명적인 매력때 행동 방식을 설정합니다. 공대장이 DBM을 사용중이면 공대장의 설정이 사용됩니다",
+	North		= "별이 왼쪽/서쪽, 동그라미가 오른쪽/동쪽, 다이아몬드가 위/북쪽",--Default
+	South		= "별이 왼쪽/서쪽, 동그라미가 오른쪽/동쪽, 다이아몬드가 아래/남쪽",
+	None		= "화살표가 나오지 않으며 정보 창에서 방향 대신 걸린 사람 수만 표시합니다"
 }
 
 ----------------------
@@ -326,11 +322,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	Immune			= "말란데 - 15초간 %s 면역!"
+	Immune			= "말란데 - 15초간 %s 면역"
 }
 
 L:SetOptionLocalization{
-	Immune			= "말란데가 물리 또는 주문 면역이 되었을 때 특수 경고 보기"
+	Immune			= "말란데가 물리 또는 주문 면역이 되었을 때 특수 알림 보기"
 }
 
 L:SetMiscLocalization{
@@ -352,21 +348,21 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnHuman		= "인간 형상",
-	WarnDemon		= "악마 형상"
+	WarnHuman		= "인간 단계",
+	WarnDemon		= "악마 단계"
 }
 
 L:SetTimerLocalization{
-	TimerNextHuman		= "다음 인간 형상",
-	TimerNextDemon		= "다음 악마 형상"
+	TimerNextHuman		= "다음 인간 단계",
+	TimerNextDemon		= "다음 악마 단계"
 }
 
 L:SetOptionLocalization{
-	WarnHuman		= "인간 형상 알림 보기",
-	WarnDemon		= "악마 형상 알림 보기",
-	TimerNextHuman	= "다음 인간 형상 바 보기",
-	TimerNextDemon	= "다음 악마 형상 바 보기",
-	RangeFrame		= "3, 4 단계에서 거리 창 보기(10m)"
+	WarnHuman		= "인간 단계 알림 보기",
+	WarnDemon		= "악마 단계 알림 보기",
+	TimerNextHuman	= "다음 인간 단계 타이머 바 보기",
+	TimerNextDemon	= "악마 단계 타이머 바 보기",
+	RangeFrame		= "3, 4단계에서 거리 창 보기 (10m)"
 }
 
 L:SetMiscLocalization{
@@ -427,11 +423,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("HyjalWaveTimers")
 
 L:SetGeneralLocalization{
-	name 		= "하이잘: 일반구간"
-}
-
-L:SetWarningLocalization{
-	WarnWave	= "%s",
+	name 		= "일반몹 공격"
 }
 
 L:SetTimerLocalization{
@@ -439,20 +431,20 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnWave		= "다음 공격 알림 보기",
-	DetailedWave	= "다음 공격 알림시 적 조합까지 자세히 보기",
-	TimerWave		= "다음 공격 바 보기"
+	WarnWave		= "다음 공격시 알림 보기",
+	DetailedWave	= "다음 공격 경고를 자세히 보기 (몹 종류)",
+	TimerWave		= "다음 공격 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
 	HyjalZoneName	= "하이잘 정상",
 	Thrall			= "스랄",
 	Jaina			= "제이나 프라우드무어",
-	GeneralBoss		= "곧 우두머리",
-	RageWinterchill	= "곧 격노한 윈터칠",
-	Anetheron		= "곧 아네테론",
-	Kazrogal		= "곧 카즈로갈",
-	Azgalor			= "곧 아즈갈로",
+	GeneralBoss		= "보스 등장",
+	RageWinterchill	= "격노한 윈터칠 등장",
+	Anetheron		= "아네테론 등장",
+	Kazrogal		= "카즈로갈 등장",
+	Azgalor			= "아즈갈로 등장",
 	WarnWave_0		= "공격 %s/8",
 	WarnWave_1		= "공격 %s/8 - %s %s",
 	WarnWave_2		= "공격 %s/8 - %s %s, %s %s",
@@ -484,11 +476,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	NextPlatform	= "단상 머무름"
+	NextPlatform	= "최대 단상 시간"
 }
 
 L:SetOptionLocalization{
-	NextPlatform	= "단상 머무름 바 보기(더 빨리 떠날수는 있으나 더 늦게 떠나진 않습니다.)"
+	NextPlatform	= "알라르가 단상에서 최대한 오래있는 시간 타이머 바 보기 (더 빨리 갈수는 있어도 더 오래 있지는 않음)"
 }
 
 ------------------
@@ -511,24 +503,25 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnSplit		= "분리",
-	WarnAgent		= "요원",
-	WarnPriest		= "사제/솔라리안",
-
+	WarnSplitSoon	= "5초 후 분리",
+	WarnAgent		= "요원 등장",
+	WarnPriest		= "사제와 솔라리안 등장",
 }
 
 L:SetTimerLocalization{
 	TimerSplit		= "다음 분리",
-	TimerAgent		= "다음 요원",
-	TimerPriest		= "다음 사제/솔라리안"
+	TimerAgent		= "요원 등장",
+	TimerPriest		= "사제와 솔라리안 등장"
 }
 
 L:SetOptionLocalization{
 	WarnSplit		= "분리 알림 보기",
+	WarnSplitSoon	= "분리 사전 경고 보기",
 	WarnAgent		= "요원 등장 알림 보기",
-	WarnPriest		= "사제/솔라리안 등장 알림 보기",
-	TimerSplit		= "다음 분리 바 보기",
-	TimerAgent		= "다음 요원 바 보기",
-	TimerPriest		= "다음 사제/솔라리안 바 보기"
+	WarnPriest		= "사제와 솔라리안 등장 알림 보기",
+	TimerSplit		= "분리 타이머 바 보기",
+	TimerAgent		= "요원 등장 타이머 바 보기",
+	TimerPriest		= "사제와 솔라리안 등장 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -551,27 +544,26 @@ L:SetWarningLocalization{
 	WarnMobDead		= "%s 처치",
 	WarnEgg			= "불사조 알 생성",
 	SpecWarnGaze	= "당신을 추적 - 도망치세요!",
-	SpecWarnEgg		= "불사조 알 생성 - 대상 전환!"
+	SpecWarnEgg		= "불사조 알 생성 - 공격 대상을 바꾸세요!"
 }
 
 L:SetTimerLocalization{
 	TimerPhase		= "다음 단계",
-	TimerPhase1mob	= "%s",
 	TimerNextGaze	= "추적 대상 변경",
-	TimerRebirth	= "불사조 환생 가능"
+	TimerRebirth	= "불사조 부활"
 }
 
 L:SetOptionLocalization{
 	WarnGaze		= "탈라드레드 추적 대상 알림 보기",
-	WarnMobDead		= "무기 처치 알림 보기",
+	WarnMobDead		= "2단계 무기 처치 알림 보기",
 	WarnEgg			= "불사조 알 생성 알림 보기",
-	SpecWarnGaze	= "탈라드레드 추적 대상이 된 경우 특수 경고 보기",
-	SpecWarnEgg		= "불사조 알 생성 특수 경고 보기",
-	TimerPhase		= "다음 단계 바 보기",
-	TimerPhase1mob	= "1단계 조언가 등장 바 보기",
-	TimerNextGaze	= "탈라드레드 추적 대상 변경 바 보기",
-	TimerRebirth	= "불사조 알 환생 가능 바 보기",
-	GazeIcon		= "탈라드레드 추적 대상에게 전술 목표 아이콘 설정"
+	SpecWarnGaze	= "추적 대상이 되면 특수 알림 보기",
+	SpecWarnEgg		= "불사조 알 생성 특수 알림 보기",
+	TimerPhase		= "다음 단계 타이머 바 보기",
+	TimerPhase1mob	= "1단계 조언가 활성화 타이머 바 보기",
+	TimerNextGaze	= "탈라드레드 추적 대상 변경 타이머 바 보기",
+	TimerRebirth	= "불사조 알 부활 남은시간 타이머 바 보기",
+	GazeIcon		= "탈라드레드 추적 대상에 공격대 징표 설정"
 }
 
 L:SetMiscLocalization{
@@ -607,9 +599,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnMark 		= "%s : %s",
-	WarnPhase		= "%s 단계",
-	SpecWarnMark	= "%s : %s"
+	WarnPhase		= "%s 단계"
 }
 
 L:SetTimerLocalization{
@@ -618,9 +608,9 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	WarnMark		= "징표 알림 보기",
-	WarnPhase		= "단계 전환 알림 보기",
-	SpecWarnMark	= "징표 피해가 100%를 넘을 경우 특수 경고 보기",
-	TimerMark		= "다음 징표 바 보기"
+	WarnPhase		= "다음 단계 알림 보기",
+	SpecWarnMark	= "징표 피해가 100% 이상일때 알림 보기",
+	TimerMark		= "다음 징표 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -639,19 +629,19 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnEmerge			= "재등장"
+	WarnEmerge			= "등장"
 }
 
 L:SetTimerLocalization{
-	TimerSubmerge		= "잠수",
-	TimerEmerge			= "재등장"
+	TimerSubmerge		= "잠수 쿨타임",
+	TimerEmerge			= "등장 쿨타임"
 }
 
 L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
-	WarnEmerge			= "재등장 알림 보기",
-	TimerSubmerge		= "다음 잠수 바 보기",
-	TimerEmerge			= "다음 재등장 바 보기"
+	WarnEmerge			= "등장시 알림 보기",
+	TimerSubmerge		= "잠수 타이머 바 보기",
+	TimerEmerge			= "등장 타이머 바 보기"
 }
 
 --------------------------
@@ -672,8 +662,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnPhase		= "단계 전환 알림 보기",
-	TimerPhase		= "다음 단계 바 보기"
+	WarnPhase		= "다음 단계 알림 보기",
+	TimerPhase		= "다음 단계 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -693,6 +683,15 @@ L:SetGeneralLocalization{
 	name = "심해군주 카라드레스"
 }
 
+L:SetWarningLocalization{
+}
+
+L:SetTimerLocalization{
+}
+
+L:SetOptionLocalization{
+}
+
 L:SetMiscLocalization{
 	Caribdis	= "심연의 경비병 카리브디스",
 	Tidalvess	= "심연의 경비병 타이달베스",
@@ -709,18 +708,19 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnMurlocs		= "멀록 소환",
-	SpecWarnMurlocs	= "멀록 소환!"
+	SpecWarnMurlocs	= "멀록 등장!"
 }
 
 L:SetTimerLocalization{
-	TimerMurlocs	= "다음 멀록 소환"
+	TimerMurlocs	= "멀록"
 }
 
 L:SetOptionLocalization{
-	WarnMurlocs		= "멀록 소환 알림 보기",
-	SpecWarnMurlocs	= "멀록 소환 특수 경고 보기",
-	TimerMurlocs	= "다음 멀록 소환 바 보기"
+	SpecWarnMurlocs	= "멀록 등장시 특수 알림 보기",
+	TimerMurlocs	= "멀록 등장 타이머 바 보기",
+}
+
+L:SetMiscLocalization{
 }
 
 -----------------
@@ -733,39 +733,38 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnElemental			= "곧 오염된 정령 등장 (%s)",
-	WarnStrider				= "곧 포자손 등장 (%s)",
-	WarnNaga				= "곧 나가 등장 (%s)",
-	WarnShield				= "보호막 %d/4 남음",
+	WarnElemental			= "오염된 정령 등장 (%s)",
+	WarnStrider				= "포자손 등장 (%s)",
+	WarnNaga				= "나가 등장 (%s)",
+	WarnShield				= "보호막 %d/4 깨짐",
 	WarnLoot				= "오염된 핵: >%s<",
-	SpecWarnElemental		= "오염된 정령 - 대상 전환!"
+	SpecWarnElemental		= "오염된 정령 - 공격 대상 변경하세요!"
 }
 
 L:SetTimerLocalization{
-	TimerElementalActive	= "오염된 정령 활성화",
-	TimerElemental			= "오염된 정령 가능 (%d)",
+	TimerElementalActive	= "정령 활성화",
+	TimerElemental			= "정령 쿨타임 (%d)",
 	TimerStrider			= "다음 포자손 (%d)",
 	TimerNaga				= "다음 나가 (%d)"
 }
 
 L:SetOptionLocalization{
-	WarnElemental			= "오염된 정령 등장 이전에 알림 보기",
-	WarnStrider				= "포자손 등장 이전에 알림 보기",
-	WarnNaga				= "나가 등장 이전에 알림 보기",
-	WarnShield				= "보호막 사라짐 알림 보기",
-	WarnLoot				= "오염된 핵 획득 대상 알림 보기",
-	TimerElementalActive	= "오염된 정령 활성화 시간 바 보기",
-	TimerElemental			= "오염된 정령 대기시간 바 보기",
-	TimerStrider			= "다음 포자손 바 보기",
-	TimerNaga				= "다음 나가 바 보기",
-	SpecWarnElemental		= "오염된 정령 등장 특수 경고 보기",
-	AutoChangeLootToFFA		= "2 단계에서 전리품 획득 설정 자동으로 변경"
+	WarnElemental			= "다음 오염된 정령 사전 경고 보기",
+	WarnStrider				= "다음 포자손 사전 경고 보기",
+	WarnNaga				= "다음 나가 사전 경고 보기",
+	WarnShield				= "2단계 보호막 깨짐 알림 보기",
+	WarnLoot				= "오염된 핵 획득 알림 보기",
+	TimerElementalActive	= "오염된 정령 활성화 시간 타이머 바 보기",
+	TimerElemental			= "오염된 정령 쿨타임 타이머 바 보기",
+	TimerStrider			= "다음 포자손 타이머 바 보기",
+	TimerNaga				= "다음 나가 타이머 바 보기",
+	SpecWarnElemental		= "오염된 정령 등장 특수 알림 보기",
+	AutoChangeLootToFFA		= "2단계에서 전리품 획득 설정을 자유 획득으로 자동 변경"
 }
 
 L:SetMiscLocalization{
 	DBM_VASHJ_YELL_PHASE2	= "때가 왔다! 한 놈도 살려두지 마라!",
-	DBM_VASHJ_YELL_PHASE3	= "숨을 곳이나 마련해 둬라!",
-	LootMsg					= "([^%s]+).*Hitem:(%d+)"
+	DBM_VASHJ_YELL_PHASE3	= "숨을 곳이나 마련해 둬라!"
 }
 
 --Maulgar
@@ -783,15 +782,11 @@ L:SetGeneralLocalization{
 	name = "용 학살자 그룰"
 }
 
-L:SetWarningLocalization{
-	WarnGrowth	= "%s (%d)"
-}
-
 L:SetOptionLocalization{
 	WarnGrowth	= "$spell:36300 알림 보기",
 	RangeDistance	= "|cff71d5ff|Hspell:33654|h산산조각|h|r 거리 창 범위 설정",
 	Smaller			= "좁은 범위 (11m)",
-	Safe			= "안전 범위 (18m)"
+	Safe			= "보다 안전한 범위 (18m)"
 }
 
 -- Magtheridon
@@ -802,15 +797,15 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	timerP2	= "2 단계"
+	timerP2	= "2단계"
 }
 
 L:SetOptionLocalization{
-	timerP2	= "2 단계 시작 바 보기"
+	timerP2	= "2단계 시작 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
-	DBM_MAG_EMOTE_PULL		= "%s의 속박이 약해지기 시작합니다!",--확인필요
+	DBM_MAG_EMOTE_PULL		= "%s의 속박이 약해지기 시작합니다!",
 	DBM_MAG_YELL_PHASE2		= "내가... 풀려났도다!",
 	DBM_MAG_YELL_PHASE3		= "그렇게 쉽게"
 }
@@ -835,11 +830,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	DBM_MOROES_VANISH_FADED	= "등장"
+	DBM_MOROES_VANISH_FADED	= "소멸 끝남"
 }
 
 L:SetOptionLocalization{
-	DBM_MOROES_VANISH_FADED	= "등장 알림 보기"
+	DBM_MOROES_VANISH_FADED	= "소멸 끝 알림 보기"
 }
 
 
@@ -874,10 +869,12 @@ L:SetGeneralLocalization{
 	name = "커다란 나쁜 늑대"
 }
 
+L:SetWarningLocalization{
+}
+
 L:SetMiscLocalization{
 	DBM_BBW_YELL_1			= "잡아 먹기 좋으라고 그런거지!"
 }
-
 
 -- Wizard of Oz
 L = DBM:GetModLocalization("Oz")
@@ -902,8 +899,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	AnnounceBosses			= "우두머리 등장 알림 보기",
-	ShowBossTimers			= "우두머리 등장 바 보기"
+	AnnounceBosses			= "보스 등장 알림 보기",
+	ShowBossTimers			= "보스 등장 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -923,11 +920,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	warnAdd		= "별의 섬광"
+	warnAdd		= "쫄 등장"
 }
 
 L:SetOptionLocalization{
-	warnAdd		= "별의 섬광 알림 보기"
+	warnAdd		= "쫄 등장시 알림 보기"
 }
 
 
@@ -956,12 +953,12 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerSpecial			= "다음 신폭/고리/눈보라"
+	timerSpecial			= "특수 기술 쿨타임"
 }
 
 L:SetOptionLocalization{
-	timerSpecial			= "다음 $spell:30004 또는 $spell:29973 또는 $spell:29969 바 보기",
-	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 특수 경고 보기"
+	timerSpecial			= "특수 기술 쿨타임 타이머 바 보기",
+	DBM_ARAN_DO_NOT_MOVE	= "$spell:30004 특수 알림 보기"
 }
 
 --Netherspite
@@ -973,19 +970,19 @@ L:SetGeneralLocalization{
 
 L:SetWarningLocalization{
 	warningPortal			= "차원문 단계",
-	warningBanish			= "소멸 단계"
+	warningBanish			= "추방 단계"
 }
 
 L:SetTimerLocalization{
 	timerPortalPhase	= "차원문 단계 종료",
-	timerBanishPhase	= "소멸 단계 종료"
+	timerBanishPhase	= "추방 단계 종료"
 }
 
 L:SetOptionLocalization{
 	warningPortal			= "차원문 단계 알림 보기",
-	warningBanish			= "소멸 단계 알림 보기",
-	timerPortalPhase		= "차원문 단계 유지시간 바 보기",
-	timerBanishPhase		= "소멸 단계 유지시간 바 보기"
+	warningBanish			= "추방 단계 알림 보기",
+	timerPortalPhase		= "차원문 단계 지속 시간 타이머 바 보기",
+	timerBanishPhase		= "추방 단계 지속 시간 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -1001,11 +998,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	timerCheat	= "속임수 가능"
+	timerCheat	= "속임수 쿨타임"
 }
 
 L:SetOptionLocalization{
-	timerCheat	= "속임수 대기시간 바 보기"
+	timerCheat	= "속임수 쿨타임 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -1031,7 +1028,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("NightbaneRaid")
 
 L:SetGeneralLocalization{
-	name = "파멸의 어둠"
+	name = "파멸의 어둠 (공격대)"
 }
 
 L:SetWarningLocalization{
@@ -1039,12 +1036,12 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	timerAirPhase			= "공중 단계 종료"
+	timerAirPhase			= "공중 단계"
 }
 
 L:SetOptionLocalization{
 	DBM_NB_AIR_WARN			= "공중 단계 알림 보기",
-	timerAirPhase			= "공중 단계 유지시간 바 보기"
+	timerAirPhase			= "공중 단계 지속 시간 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
@@ -1098,9 +1095,9 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnBear		= "곰 형상 경고 보기",
+	WarnBear		= "곰 형상 알림 보기",
 	WarnBearSoon	= "곰 형상 사전 경고 보기",
-	WarnNormal		= "일반 형상 경고 보기",
+	WarnNormal		= "일반 형상 알림 보기",
 	WarnNormalSoon	= "일반 형상 사전 경고 보기",
 	TimerBear		= "곰 형상 타이머 바 보기",
 	TimerNormal		= "일반 형상 타이머 바 보기"
@@ -1149,8 +1146,8 @@ L:SetWarningLocalization{
 }
 
 L:SetOptionLocalization{
-	WarnSpirit	= "영혼 단계 경고 보기",
-	WarnNormal	= "일반 단계 경고 보기"
+	WarnSpirit	= "영혼 단계 알림 보기",
+	WarnNormal	= "일반 단계 알림 보기"
 }
 
 L:SetMiscLocalization{
