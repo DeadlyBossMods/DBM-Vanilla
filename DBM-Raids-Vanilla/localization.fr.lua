@@ -1218,7 +1218,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("ElectrocutionerSoD")
 
 L:SetGeneralLocalization({
-	name = "Électrocuteur 6000"
+	name = "Electrocuteur 6000"
 })
 
 -----------------------
