@@ -13,7 +13,7 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 90, 48
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 90, 48, 109
 ## X-DBM-Mod-Name: Raids (Vanilla)
 ## X-DVM-Mod-Name-esES: Bandas (Clásico)
 ## X-DVM-Mod-Name-esMX: Bandas (Clásico)
@@ -22,7 +22,7 @@
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 90, 48
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 90, 48, 109
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 0
 ## Version: @project-version@
@@ -122,3 +122,12 @@ VanillaSoD_BFD\Gelihast.lua
 VanillaSoD_BFD\LorgusJett.lua
 VanillaSoD_BFD\TwilightLordKelris.lua
 VanillaSoD_BFD\Akumai.lua
+
+VanillaSoD_SunkenTemple\Atalalarion.lua
+VanillaSoD_SunkenTemple\FesteringRotslime.lua
+VanillaSoD_SunkenTemple\AtalaiDefenders.lua
+VanillaSoD_SunkenTemple\DreamscytheAndWeaver.lua
+VanillaSoD_SunkenTemple\AvatarofHakkar.lua
+VanillaSoD_SunkenTemple\JammalanAndOgom.lua
+VanillaSoD_SunkenTemple\MorphazAndHazzas.lua
+VanillaSoD_SunkenTemple\ShadeOfEranikus.lua
