@@ -1,4 +1,5 @@
 package-as: DBM-Raids-BC
+changelog-title: DBM - Season of Discovery, Vanilla, and TBC
 enable-nolib-creation: no
 
 move-folders:

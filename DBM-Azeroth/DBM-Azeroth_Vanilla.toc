@@ -1,4 +1,4 @@
-## Interface: 11501
+## Interface: 11502
 ## X-Min-Interface: 11500
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0World Bosses (Vanilla)|r
 ## Title-deDE:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0World Bosses (Vanilla)|r

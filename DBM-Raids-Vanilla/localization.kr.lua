@@ -1248,3 +1248,74 @@ L:SetTimerLocalization{
 L:SetOptionLocalization({
 	timerTankCD	= "4단계에서 무작위 탱커 스킬 쿨타임 타이머 바 보기"
 })
+
+------------------
+--  Sunken Temple  --
+------------------
+
+---------------------------
+--  Atal'alarion  --
+---------------------------
+L = DBM:GetModLocalization("AtalalarionSoD")
+
+L:SetGeneralLocalization({
+	name = "아탈알라리온"
+})
+
+---------------------------
+--  Festering Rotslime  --
+---------------------------
+L = DBM:GetModLocalization("FesteringRotslimeSoD")
+
+L:SetGeneralLocalization({
+	name = "곪아가는 부식수액"
+})
+
+---------------------------
+--  Atal'ai Defenders  --
+---------------------------
+L = DBM:GetModLocalization("AtalaiDefendersSoD")
+
+L:SetGeneralLocalization({
+	name = "아탈라이 파수병"
+})
+---------------------------
+--  Dreamscythe and Weaver  --
+---------------------------
+L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
+
+L:SetGeneralLocalization({
+	name = "드림사이드와 위버"
+})
+---------------------------
+--  Avatar of Hakkar  --
+---------------------------
+L = DBM:GetModLocalization("AvatarofHakkarSoD")
+
+L:SetGeneralLocalization({
+	name = "학카르의 화신"
+})
+---------------------------
+--  Jammal'an and Ogom  --
+---------------------------
+L = DBM:GetModLocalization("JammalanAndOgomSoD")
+
+L:SetGeneralLocalization({
+	name = "잠말란과 오그옴"
+})
+---------------------------
+--  Morphaz and Hazzas  --
+---------------------------
+L = DBM:GetModLocalization("MorphazandHazzasSoD")
+
+L:SetGeneralLocalization({
+	name = "몰파즈와 하자스"
+})
+---------------------------
+--  Shade of Eranikus  --
+---------------------------
+L = DBM:GetModLocalization("ShadeofEranikusSoD")
+
+L:SetGeneralLocalization({
+	name = "에라니쿠스의 사령"
+})

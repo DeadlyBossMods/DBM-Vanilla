@@ -1257,3 +1257,74 @@ L:SetTimerLocalization{
 L:SetOptionLocalization({
 	timerTankCD	= "Показывать таймер перезарядки случайных способностей танка на 4 этапе"
 })
+
+------------------
+--  Sunken Temple  --
+------------------
+
+---------------------------
+--  Atal'alarion  --
+---------------------------
+L = DBM:GetModLocalization("AtalalarionSoD")
+
+L:SetGeneralLocalization({
+	name = "Атал'аларион"
+})
+
+---------------------------
+--  Festering Rotslime  --
+---------------------------
+L = DBM:GetModLocalization("FesteringRotslimeSoD")
+
+L:SetGeneralLocalization({
+	name = "Гнойная гнилослизь"
+})
+
+---------------------------
+--  Atal'ai Defenders  --
+---------------------------
+L = DBM:GetModLocalization("AtalaiDefendersSoD")
+
+L:SetGeneralLocalization({
+	name = "Защитники Атал'ай"
+})
+---------------------------
+--  Dreamscythe and Weaver  --
+---------------------------
+L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
+
+L:SetGeneralLocalization({
+	name = "Жнец Снов и Ткачик"
+})
+---------------------------
+--  Avatar of Hakkar  --
+---------------------------
+L = DBM:GetModLocalization("AvatarofHakkarSoD")
+
+L:SetGeneralLocalization({
+	name = "Аватара Хаккара"
+})
+---------------------------
+--  Jammal'an and Ogom  --
+---------------------------
+L = DBM:GetModLocalization("JammalanAndOgomSoD")
+
+L:SetGeneralLocalization({
+	name = "Джаммал'ан и Огом"
+})
+---------------------------
+--  Morphaz and Hazzas  --
+---------------------------
+L = DBM:GetModLocalization("MorphazandHazzasSoD")
+
+L:SetGeneralLocalization({
+	name = "Морфаз и Хаззас"
+})
+---------------------------
+--  Shade of Eranikus  --
+---------------------------
+L = DBM:GetModLocalization("ShadeofEranikusSoD")
+
+L:SetGeneralLocalization({
+	name = "Тень Эраникуса"
+})
