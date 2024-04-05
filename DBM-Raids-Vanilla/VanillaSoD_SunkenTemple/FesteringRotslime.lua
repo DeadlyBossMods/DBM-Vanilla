@@ -22,6 +22,7 @@ ability.id = 438142 and type = "begincast"
  or ability.id = 438130 and type = "cast"
 --]]
 --TODO, figure out what the actual objects do, for boss mod purposes?
+--TODO, track slow on boss from objects?
 local warnGunk						= mod:NewCountAnnounce(432062, 3)
 local warnNauseousGas				= mod:NewCountAnnounce(438130, 2)
 
