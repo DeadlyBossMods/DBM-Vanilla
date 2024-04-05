@@ -2,12 +2,11 @@ local mod	= DBM:NewMod("AtalaiDefendersSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(222542, 222543, 222544, 222545)--Drum, Slab, Mask, Candle
+mod:SetCreatureID()
 mod:SetEncounterID(2954)
 --mod:SetUsedIcons(8)
 --mod:SetHotfixNoticeRev(20240209000000)
 --mod:SetMinSyncRevision(20231115000000)
-
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
