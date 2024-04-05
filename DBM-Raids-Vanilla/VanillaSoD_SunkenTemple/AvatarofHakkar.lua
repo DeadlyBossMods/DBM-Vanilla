@@ -49,9 +49,9 @@ function mod:ClawTarget(targetname, uId)
 end
 --]]
 
---function mod:OnCombatStart(delay)
---
---end
+function mod:OnCombatStart(delay)
+	DBM:AddMsg("This module will be completed April 5th, or 6th if not dead by 5th")
+end
 
 --[[
 function mod:SPELL_CAST_START(args)
