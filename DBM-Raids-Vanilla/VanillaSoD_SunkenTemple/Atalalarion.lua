@@ -12,46 +12,21 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 437503 437597"
---	"SPELL_CAST_SUCCESS",
---	"SPELL_AURA_APPLIED",
---	"SPELL_AURA_APPLIED_DOSE"
 )
 
 --[[
 (ability.id = 437503 or ability.id = 437597) and type = "begincast"
 --]]
---https://www.wowhead.com/classic/npc=218606/lumbering-dreamwalker
---https://www.wowhead.com/classic/spell=448995/rune-scrying
---local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
+--https://www.wowhead.com/classic/spell=448995/rune-scrying cast by trash mob if you don't pull balcony?
 local warnPillarsOfMight			= mod:NewCountAnnounce(437503, 3)
 
 local specWarnDemolishingSmash		= mod:NewSpecialWarningCount(437597, nil, nil, nil, 2, 2)
---local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
---local yellTheClaw					= mod:NewYell(432062)
 
 local timerPillarsofMightCD			= mod:NewCDCountTimer(12.9, 437503, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)--12.9-14.5
 local timerDemolishingSmashCD		= mod:NewCDCountTimer(27.5, 437597, nil, nil, nil, 3)--27.5-29.1
 
---mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
-
 mod.vb.pillarsCount = 0
 mod.vb.smashCount = 0
-
---[[
-function mod:ClawTarget(targetname, uId)
-	if not targetname then return end
-	if targetname == UnitName("player") then
-		specWarnTheClaw:Show()
-		specWarnTheClaw:Play("runout")
-		yellTheClaw:Yell()
-	else
-		warnTheClaw:Show(targetname)
-	end
-	if self.Options.SetIconOnClaw then
-		self:SetIcon(targetname, 8, 3)
-	end
-end
---]]
 
 function mod:OnCombatStart(delay)
 	self.vb.pillarsCount = 0
@@ -74,36 +49,3 @@ function mod:SPELL_CAST_START(args)
 		timerDemolishingSmashCD:Start(nil, self.vb.smashCount+1)
 	end
 end
-
---[[
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(432423) then
-
-	end
-end
---]]
-
---[[
-function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellId
-	if spellId == 431839 and args:IsPlayer() then
-
-	end
-end
---mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
---]]
-
---[[
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 411583 then--Replace Stand with Swim
-		self:SendSync("PhaseChange")
-	end
-end
-
-function mod:OnSync(msg)
-	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
-
-	end
-end
---]]
