@@ -64,7 +64,7 @@ L:SetMiscLocalization{
 	Frozen	= "变成冰冻的固体!",
 	Phase4 	= "开始爆裂!",
 	Phase5 	= "看來准备好毁灭了!",
-	Phase6 	= "爆炸."
+	Phase6 	= "爆炸。"
 }
 -------------
 -- Huhuran --
@@ -201,7 +201,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Buru")
 
 L:SetGeneralLocalization{
-	name 		= "『暴食者』布鲁"
+	name 		= "暴食者布鲁"
 }
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追击了",
@@ -222,7 +222,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ayamiss")
 
 L:SetGeneralLocalization{
-	name 		= "『狩猎者』阿亚米斯"
+	name 		= "狩猎者阿亚米斯"
 }
 
 --------------
@@ -231,7 +231,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Ossirian")
 
 L:SetGeneralLocalization{
-	name 		= "『无疤者』奥斯里安"
+	name 		= "无疤者奥斯里安"
 }
 L:SetWarningLocalization{
 	WarnVulnerable	= "%s"
