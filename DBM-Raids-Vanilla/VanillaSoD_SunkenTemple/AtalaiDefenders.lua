@@ -134,8 +134,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self:SetStage(0)--Auto increment stage by 1
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(self.vb.phase))
 		warnPhase:Play("phasechange")
-		--Bosses are NOT a fixed order, so starting timers here not possible
-		--Can update restart timers here, but can't set initial timers for new spawning boss since group decides which one they pull, so that check needs scanning player damage events :\
+		--Bosses are NOT a fixed order, so starting timers here not possible for living npcs
+		--Can restart timers here for resurrected ones, but can't set initial timers for new spawning boss since group decides which one they pull, so that check needs scanning player damage events :\
 		if args:IsSpell(444960) then--Laro
 			--maybe stop sooner (UNIT_DIED)?
 			timerDemoShoutCD:Restart(14.6)

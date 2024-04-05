@@ -6,7 +6,7 @@ mod:SetCreatureID(218721, 218718)--Jammal'an, Ogom
 mod:SetEncounterID(2957)
 mod:SetBossHPInfoToHighest()
 --mod:SetUsedIcons(8)
-mod:SetHotfixNoticeRev(20240404000000)
+mod:SetHotfixNoticeRev(20240405000000)
 --mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
@@ -43,6 +43,7 @@ local timerMortalLashCD				= mod:NewCDTimer(25.4, 437847, nil, "Tank|Healer", ni
 local timerAgonizingWeaknessCD		= mod:NewCDTimer(27.1, 437868, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerShadowSermonPainCD		= mod:NewCDTimer(22.2, 437927, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerPsychicScreamCD			= mod:NewCDTimer(43.7, 437928, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--Can be delayed by other casts
+local timerMassPenanceCD			= mod:NewCDTimer(21, 437921, nil, nil, nil, 3)
 local timerPWSCD					= mod:NewCDTimer(15.8, 437930, nil, nil, nil, 5)--15.8-23 (lowest spell priority, so gets queued often)
 
 function mod:OnCombatStart(delay)
@@ -72,9 +73,17 @@ function mod:SPELL_CAST_START(args)
 		warnPhase2:Play("p2two")
 		--TODO< find a log where Jammal dies first and see if Ogom casts this instead (with diff ability timers)
 		if args:GetSrcCreatureID() == 218721 then--Jammal'an the Prophet casting it
+			--Stop stage 1 timers
+			timerHolyFireCD:Stop()
+			timerMortalLashCD:Stop()
+			timerHolyNovaCD:Stop()
+			timerAgonizingWeaknessCD:Stop()
+			--Start Stage 2 timers
 			timerShadowSermonPainCD:Start(15.7)
+			timerHolyNovaCD:Start(17.7)--17.7-19.4
 			timerPsychicScreamCD:Start(22.6)
 			timerPWSCD:Start(25.4)
+			timerMassPenanceCD:Start(28.7)
 		else
 			DBM:AddMsg("Please share your kill log with DBM authors, we don't have this kill order implimented yet")
 		end
@@ -85,6 +94,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(437921) then
 		specWarnMassPenance:Show()
 		specWarnMassPenance:Play("watchstep")
+		timerMassPenanceCD:Start()
 	elseif args:IsSpell(437809) then
 		timerHolyFireCD:Start()
 	elseif args:IsSpell(437927) then

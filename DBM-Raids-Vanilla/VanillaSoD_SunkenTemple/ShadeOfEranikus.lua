@@ -12,19 +12,18 @@ mod.respawnTime = 29--VERIFY, it felt like at least this long
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 437353 437301 437390 445498 437398 437425",
+	"SPELL_CAST_START 437353 437301 437390 445498 437398 437425 437410",
 	"SPELL_CAST_SUCCESS 3391",
 	"SPELL_SUMMON 437416 437418",--445545 isn't logged
 	"SPELL_AURA_APPLIED 437353 437390 437425",
---	"SPELL_AURA_APPLIED_DOSE",
 	"SPELL_DAMAGE 445575",
 	"SPELL_MISSED 445575"
 )
 
 --[[
  (ability.id = 437353 or ability.id = 437301 or ability.id = 437390 or ability.id = 445498 or ability.id = 437398 or ability.id = 437425) and type = "begincast"
- or ability.id = 3391 and type = "cast"
- or ability.id = 437416 or abilty.id = 445545 or ability.id = 437418
+ or (ability.id = 437416 or ability.id = 437418 or ability.id = 3391) and type = "cast"
+ or ability.id = 437416 or abilty.id = 445545 or ability.id = 437418 or ability.id = 437410
  or (source.type = "NPC" and source.firstSeen = timestamp and source.id = 222089) or (target.type = "NPC" and target.firstSeen = timestamp and target.id = 222089)
 --]]
 --NOTE: https://www.wowhead.com/classic/spell=445545/dream-awakening not logged
@@ -46,8 +45,9 @@ local timerDeepSlumberCD			= mod:NewCDCountTimer(19.3, 437301, nil, nil, nil, 3)
 local timerLethargicPoisonCD		= mod:NewCDTimer(19.3, 437390, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON)
 local timerBellowingRoarCD			= mod:NewCDCountTimer(19.3, 445498, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 local timerWakingNightmareCD		= mod:NewCDCountTimer(66.3, 437398, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
+local timerDeepSlumber				= mod:NewBuffActiveTimer(23, 437410, nil, nil, nil, 6)
 
-mod:AddSetIconOption("SetIconOnBigAdd", 437416, true, 5, {8, 7})--TEMP ID
+mod:AddSetIconOption("SetIconOnBigAdd", 437416, true, 5, {8, 7})
 
 mod.vb.slumberCount = 0
 mod.vb.roarCount = 0
@@ -111,6 +111,8 @@ function mod:SPELL_CAST_START(args)
 				specWarnLethargicPoisonAdd:Play("kickcast")
 			end
 		end
+	elseif args:IsSpell(437410) then
+		timerDeepSlumber:Start()
 	end
 end
 
@@ -122,23 +124,26 @@ end
 
 function mod:SPELL_SUMMON(args)
 	local spellId = args.spellId
-	if args:IsSpell(437416, 437418) then--Dreamwalker
-		if self:AntiSpam(7.5, 1) then
+	if args:IsSpell(437416, 437418) then--Dreamwalker 1st Add, 2nd Add
+		if args:IsSpell(437416) then--First add
 			self.vb.addIcon = 8
 			self:SetStage(0)
-			--70% and 40%?
+			--70% and 40%
 			--If timers have less than a certain amount remaining on add spawns, they are pushed back
 			--if there is MORE time remaining than these values, the old remaining is used
 			--This there still needs more testing/vetting but it seems closest to explain large timer variations (besides the 66-75 CD window)
 			if self.vb.phase == 2 then
+				--This may be wrong, it may work same as below rule for stage 3, just rarely see that since most trigger nightmare just before first slumber
+				--But this does at least kinda fix the 75-90sec timers so i'll leave til i get better sample of data with different push timings
 				if timerWakingNightmareCD:GetRemaining(self.vb.nightmareCount+1) < 60 then
 					timerWakingNightmareCD:Stop()
 					timerWakingNightmareCD:Start(60.1, self.vb.nightmareCount+1)--60.1-66
 				end
 			else--Stage 3
+				--https://sod.warcraftlogs.com/reports/qr31gtbXQDY6zyHL#fight=116&view=events&type=summary&hostility=1&pins=2%24Off%24%23244F4B%24expression%24%20(ability.id%20%3D%20437353%20or%20ability.id%20%3D%20437301%20or%20ability.id%20%3D%20437390%20or%20ability.id%20%3D%20445498%20or%20ability.id%20%3D%20437398%20or%20ability.id%20%3D%20437425)%20and%20type%20%3D%20%22begincast%22%0A%20or%20(ability.id%20%3D%20437416%20or%20ability.id%20%3D%20437418%20or%20ability.id%20%3D%203391)%20and%20type%20%3D%20%22cast%22%0A%20or%20ability.id%20%3D%20437416%20or%20abilty.id%20%3D%20445545%20or%20ability.id%20%3D%20437418%20or%20ability.id%20%3D%20437410%0A%20or%20(source.type%20%3D%20%22NPC%22%20and%20source.firstSeen%20%3D%20timestamp%20and%20source.id%20%3D%20222089)%20or%20(target.type%20%3D%20%22NPC%22%20and%20target.firstSeen%20%3D%20timestamp%20and%20target.id%20%3D%20222089)
 				if timerWakingNightmareCD:GetRemaining(self.vb.nightmareCount+1) < 27 then
 					timerWakingNightmareCD:Stop()
-					timerWakingNightmareCD:Start(27.4, self.vb.nightmareCount+1)
+					timerWakingNightmareCD:Start(27.4, self.vb.nightmareCount+1)--Basically 4 seconds after dragon reactivates
 				end
 			end
 		end

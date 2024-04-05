@@ -6,28 +6,28 @@ mod:SetCreatureID(220833, 220864)--Dreamscythe, Weaver
 mod:SetEncounterID(2955)
 mod:SetBossHPInfoToHighest()
 --mod:SetUsedIcons(8)
-mod:SetHotfixNoticeRev(20240404000000)
+mod:SetHotfixNoticeRev(20240405000000)
 --mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 443766 443830",
+	"SPELL_CAST_START 443766 443830 443793 443827",
 	"SPELL_CAST_SUCCESS 442622 442620",
-	"SPELL_AURA_APPLIED 443302",
---	"SPELL_AURA_APPLIED_DOSE"
+	"SPELL_AURA_APPLIED 443302 442622",
+	"SPELL_AURA_APPLIED_DOSE 442622"
 	"SPELL_AURA_REMOVED 443302"
 )
 
 --[[
-(ability.id = 443766 or ability.id = 443830) and type = "begincast"
+(ability.id = 443766 or ability.id = 443830 or ability.id = 443793 or ability.id = 443827) and type = "begincast"
  or (ability.id = 442622 or ability.id = 442620) and type = "cast"
  or ability.id = 443302
 --]]
 --Once again, timers are too variable across board for acid breath and wing flap, especially when both out. Wing buffet has problem too in stage 3 but a bit more consistent in stage 1 and 2
 local warnPhase						= mod:NewPhaseChangeAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 --local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
-local warnAcidBreath				= mod:NewSpellAnnounce(442622, 3)--Used by both
+local warnAcidBreath				= mod:NewStackAnnounce(442622, 2, nil, "Tank|Healer")--Used by both
 local warnWingFlap					= mod:NewSpellAnnounce(442620, 3)--Used by both
 
 local specWarnWingBuffet			= mod:NewSpecialWarningSpell(432423, nil, nil, nil, 2, 2)
@@ -44,13 +44,13 @@ end
 
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(443766) then
+	if args:IsSpell(443766, 443793) then--Diff Ids based on which side boss goes to
 		if self:AntiSpam(3, 1) then--Aggregate warnings when both dragons are out, they're cast at same time
 			specWarnWingBuffet:Show()
 			specWarnWingBuffet:Play("carefly")
 			timerWingBuffetCD:Start()
 		end
-	elseif args:IsSpell(443830) then
+	elseif args:IsSpell(443830, 443827) then--Diff Ids based on which side boss goes to
 		if self:AntiSpam(3, 1) then--Aggregate warnings when both dragons are out, they're cast at same time
 			specWarnDelayedWingBuffet:Show()
 			specWarnDelayedWingBuffet:Play("carefly")
@@ -60,9 +60,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(442622) then
-		warnAcidBreath:Show()
-	elseif args:IsSpell(442620) then
+	if args:IsSpell(442620) then
 		warnWingFlap:Show()
 	end
 end
@@ -75,8 +73,15 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnPhase:Play("ptwo")
 		timerWingBuffetCD:Stop()
 		timerWingBuffetCD:Start(5)
+	elseif spellId == 442622 then
+		local uId = DBM:GetRaidUnitId(args.destName)
+		if self:IsTanking(uId, nil, nil, true, args.destGUID) then
+			local amount = args.amount or 1
+			warnAcidBreath:Show(args.destName, amount)
+		end
 	end
 end
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId

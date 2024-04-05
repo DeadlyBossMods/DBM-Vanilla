@@ -12,16 +12,17 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 438142",
-	"SPELL_CAST_SUCCESS 438130"
+	"SPELL_CAST_SUCCESS 438130",
 --	"SPELL_AURA_APPLIED",
---	"SPELL_AURA_APPLIED_DOSE"
+--	"SPELL_AURA_APPLIED_DOSE",
+	"SPELL_PERIODIC_DAMAGE 438136",
+	"SPELL_PERIODIC_MISSED 438136"
 )
 
 --[[
 ability.id = 438142 and type = "begincast"
  or ability.id = 438130 and type = "cast"
 --]]
---TODO, figure out what the actual objects do, for boss mod purposes?
 --TODO, track slow on boss from objects?
 local warnGunk						= mod:NewCountAnnounce(432062, 3)
 local warnNauseousGas				= mod:NewCountAnnounce(438130, 2)
@@ -29,6 +30,7 @@ local warnNauseousGas				= mod:NewCountAnnounce(438130, 2)
 --local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
 --local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
 --local yellTheClaw					= mod:NewYell(432062)
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(438136, nil, nil, nil, 1, 8)
 
 --local timerGnomereganSmashCD		= mod:NewAITimer(11.3, 432423, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerGunkCD					= mod:NewCDCountTimer(17.8, 438142, nil, nil, nil, 3)
@@ -87,6 +89,14 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 --mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 --]]
+
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+	if spellId == 438136 and destGUID == UnitGUID("player") and self:AntiSpam(3, 2) then
+		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 --[[
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
