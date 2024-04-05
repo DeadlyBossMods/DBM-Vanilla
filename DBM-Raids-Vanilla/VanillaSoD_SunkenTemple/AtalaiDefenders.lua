@@ -88,14 +88,12 @@ function mod:OnCombatStart(delay)
 	--If it's one of those things where timers start based on who you pull then we'd need to scan for initial attacks on every boss, entire fight  :\
 	--timerFrailtyCD:Start(6.3-delay)
 	--timerChargeCD:Start(14.4-delay)
-	--timerCorruptedSlamCD:Start(15.6-delay)
 end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(446372) then
 		specWarnCorruptedSlam:Show()
 		specWarnCorruptedSlam:Play("watchstep")
-		timerCorruptedSlamCD:Start()
 	elseif args:IsSpell(438294) then
 		warnThorns:Show(args.sourceName)--Paladin aura of a druid ability, nani?
 	elseif args:IsSpell(438335) then

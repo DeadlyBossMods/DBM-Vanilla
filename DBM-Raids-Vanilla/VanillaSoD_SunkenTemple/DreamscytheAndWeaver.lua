@@ -50,7 +50,7 @@ function mod:SPELL_CAST_START(args)
 			specWarnWingBuffet:Play("carefly")
 			timerWingBuffetCD:Start()
 		end
-	elseif arsg:IsSpell(443830) then
+	elseif args:IsSpell(443830) then
 		if self:AntiSpam(3, 1) then--Aggregate warnings when both dragons are out, they're cast at same time
 			specWarnDelayedWingBuffet:Show()
 			specWarnDelayedWingBuffet:Play("carefly")

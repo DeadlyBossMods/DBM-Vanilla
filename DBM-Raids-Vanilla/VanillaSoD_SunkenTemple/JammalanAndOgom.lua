@@ -94,7 +94,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(437847) then
 		timerMortalLashCD:Start()
-	elseif spellId == 437930 then
+	elseif args:IsSpell(437930) then
 		timerPWSCD:Start()
 	end
 end
