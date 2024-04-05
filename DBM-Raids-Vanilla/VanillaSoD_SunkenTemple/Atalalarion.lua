@@ -2,7 +2,7 @@ local mod	= DBM:NewMod("AtalalarionSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(218624)
+mod:SetCreatureID(218624)--Atal'ai High Priest 224258
 mod:SetEncounterID(2952)
 --mod:SetUsedIcons(8)
 --mod:SetHotfixNoticeRev(20240209000000)
@@ -11,7 +11,7 @@ mod:SetEncounterID(2952)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 437503"
+	"SPELL_CAST_START 437503 437597"
 --	"SPELL_CAST_SUCCESS",
 --	"SPELL_AURA_APPLIED",
 --	"SPELL_AURA_APPLIED_DOSE"
@@ -21,6 +21,7 @@ mod:RegisterEventsInCombat(
 
 --]]
 --https://www.wowhead.com/classic/npc=218606/lumbering-dreamwalker
+--https://www.wowhead.com/classic/spell=448995/rune-scrying
 --local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
 local warnPillarsOfMight			= mod:NewCountAnnounce(437503, 3)
 
@@ -28,12 +29,13 @@ local warnPillarsOfMight			= mod:NewCountAnnounce(437503, 3)
 --local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
 --local yellTheClaw					= mod:NewYell(432062)
 
-local timerPillarsofMightCD			= mod:NewAITimer(11.3, 437503, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
---local timerTheClawCD				= mod:NewAITimer(15.2, 432062, nil, nil, nil, 3)
+local timerPillarsofMightCD			= mod:NewCDCountTimer(11.3, 437503, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerDemolishingSmashCD		= mod:NewCDCountTimer(15.2, 437597, nil, nil, nil, 3)
 
 --mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
 
 mod.vb.pillarsCount = 0
+mod.vb.smashCount = 0
 
 --[[
 function mod:ClawTarget(targetname, uId)
@@ -53,7 +55,9 @@ end
 
 function mod:OnCombatStart(delay)
 	self.vb.pillarsCount = 0
-	timerPillarsofMightCD:Start(1-delay)
+	self.vb.smashCount = 0
+	timerPillarsofMightCD:Start(4.8-delay, 1)
+	timerDemolishingSmashCD:Start(22.6-delay, 1)
 end
 
 
@@ -61,7 +65,11 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpell(437503) then
 		self.vb.pillarsCount = self.vb.pillarsCount + 1
 		warnPillarsOfMight:Show(self.vb.pillarsCount)
-		timerPillarsofMightCD:Start()
+		timerPillarsofMightCD:Start(nil, self.vb.pillarsCount+1)
+	elseif args:IsSpell(437597) then
+		self.vb.smashCount = self.vb.smashCount + 1
+
+		timerDemolishingSmashCD:Start()
 	end
 end
 
