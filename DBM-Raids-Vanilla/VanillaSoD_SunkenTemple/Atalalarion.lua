@@ -11,7 +11,7 @@ mod:SetEncounterID(2952)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
---	"SPELL_CAST_START",
+	"SPELL_CAST_START 437503"
 --	"SPELL_CAST_SUCCESS",
 --	"SPELL_AURA_APPLIED",
 --	"SPELL_AURA_APPLIED_DOSE"
@@ -22,15 +22,18 @@ mod:RegisterEventsInCombat(
 --]]
 --https://www.wowhead.com/classic/npc=218606/lumbering-dreamwalker
 --local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
+local warnPillarsOfMight			= mod:NewCountAnnounce(437503, 3)
 
 --local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
 --local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
 --local yellTheClaw					= mod:NewYell(432062)
 
---local timerGnomereganSmashCD		= mod:NewAITimer(11.3, 432423, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
+local timerPillarsofMightCD			= mod:NewAITimer(11.3, 437503, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
 --local timerTheClawCD				= mod:NewAITimer(15.2, 432062, nil, nil, nil, 3)
 
 --mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
+
+mod.vb.pillarsCount = 0
 
 --[[
 function mod:ClawTarget(targetname, uId)
@@ -48,17 +51,21 @@ function mod:ClawTarget(targetname, uId)
 end
 --]]
 
---function mod:OnCombatStart(delay)
---
---end
+function mod:OnCombatStart(delay)
+	self.vb.pillarsCount = 0
+	timerPillarsofMightCD:Start(1-delay)
+end
 
---[[
+
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(432062) then
-
+	if args:IsSpell(437503) then
+		self.vb.pillarsCount = self.vb.pillarsCount + 1
+		warnPillarsOfMight:Show(self.vb.pillarsCount)
+		timerPillarsofMightCD:Start()
 	end
 end
 
+--[[
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(432423) then
 
