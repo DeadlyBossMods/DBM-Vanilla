@@ -11,16 +11,16 @@ mod:SetHotfixNoticeRev(20240404000000)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361",
-	"SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360",
+	"SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361 438335",
+	"SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964",
 	"SPELL_AURA_APPLIED 446354 445284",
 	"SPELL_AURA_APPLIED_DOSE 445284",
 	"SPELL_AURA_REMOVED 445284"
 )
 
 --[[
-(ability.id = 446372 or ability.id = 438294 or ability.id = 446338 or ability.id = 438341 or ability.id = 438339 or ability.id = 23511 or ability.id = 446361) and type = "begincast"
- or (ability.id = 446364 or ability.id = 446369 or ability.id = 444962 or ability.id = 445912 or ability.id = 445940 or ability.id = 446339 or ability.id = 445289 or ability.id = 444747 or ability.id = 444960 or ability.id = 444961 or ability.id = 446360) and type = "cast"
+(ability.id = 438335 or ability.id = 446372 or ability.id = 438294 or ability.id = 446338 or ability.id = 438341 or ability.id = 438339 or ability.id = 23511 or ability.id = 446361) and type = "begincast"
+ or (ability.id = 446364 or ability.id = 446369 or ability.id = 444962 or ability.id = 445912 or ability.id = 445940 or ability.id = 446339 or ability.id = 445289 or ability.id = 444747 or ability.id = 444960 or ability.id = 444961 or ability.id = 446360 or ability.id = 444963 or ability.id = 444964) and type = "cast"
 --]]
 --TODO, possibly cull less important abilities (or disable by default) if it feels spammy
 --TODO, initial timers from activatd bosses, if they have clean USCS event or emote or something (I don't really want to check all damage events from players to detect this if it can be helped)
