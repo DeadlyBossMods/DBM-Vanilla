@@ -66,7 +66,7 @@ function mod:OnCombatStart(delay)
 	self.vb.lamentCount = 0
 	--Dreamer's Lament and backfire can swap orders on pull
 	--One will be at 6.1-6.2 and other at 7.7-7.8
-	timerBackfireCD:Start(6.2-delay, 1)
+--	timerBackfireCD:Start(6.2-delay, 1)
 --	timerDreamersLamentCD:Start(6.2-delay, 1)
 	timerCorruptedBreathCD:Start(10.6-delay)
 end
@@ -76,7 +76,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.backfireCount = self.vb.backfireCount + 1
 		specWarnBackfire:Show(self.vb.backfireCount)
 		specWarnBackfire:Play("carefly")
-		timerBackfireCD:Start(nil, self.vb.backfireCount+1)
+--		timerBackfireCD:Start(nil, self.vb.backfireCount+1)
 	elseif args:IsSpell(446468) then
 		self.vb.lamentCount = self.vb.lamentCount + 1
 		warnDreamersLament:Show(self.vb.lamentCount)
