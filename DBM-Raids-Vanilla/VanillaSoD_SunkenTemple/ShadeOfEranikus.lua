@@ -56,6 +56,7 @@ local castsPerGUID = {}
 local slumberName = DBM:GetSpellInfo(437301)
 
 function mod:OnCombatStart(delay)
+	self:SetStage(1)
 	table.wipe(castsPerGUID)
 	self.vb.slumberCount = 0
 	self.vb.roarCount = 0
@@ -123,6 +124,8 @@ function mod:SPELL_SUMMON(args)
 	if args:IsSpell(437416, 437418) then--Dreamwalker
 		if self:AntiSpam(7.5, 1) then
 			self.vb.addIcon = 8
+			self:SetStage(0)
+			--70% and 40%?
 			--If timers have less than a certain amount remaining on add spawns, they are pushed back
 			--if there is MORE time remaining than these values, the old remaining is used
 			--This there still needs more testing/vetting but it seems closest to explain large timer variations (besides the 66-75 CD window)
