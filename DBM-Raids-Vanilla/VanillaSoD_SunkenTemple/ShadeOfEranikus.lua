@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 --]]
 --NOTE: https://www.wowhead.com/classic/spell=445545/dream-awakening not logged
 --218606
-local warnDeepSlumber				= mod:NewCountAnnounce(432062, 2)
+local warnDeepSlumber				= mod:NewCountAnnounce(437301, 2)
 local warnLethargicPoison			= mod:NewTargetNoFilterAnnounce(437390, 3, nil, "RemovePoison")
 local warnThrash					= mod:NewSpellAnnounce(3391, 4, nil, "Tank|Healer")
 
