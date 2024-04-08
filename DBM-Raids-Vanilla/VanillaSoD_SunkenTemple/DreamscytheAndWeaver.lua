@@ -75,7 +75,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerWingBuffetCD:Start(5)
 	elseif spellId == 442622 then
 		local uId = DBM:GetRaidUnitId(args.destName)
-		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
+		--Makes sure the target of the debuff, is highest threat of the caster
+		--(basically filters everyone who's not actively tanking mob such as melee in wrong place)
+		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then--playerUnitID, enemyUnitID, isName, onlyRequested, enemyGUID
 			local amount = args.amount or 1
 			warnAcidBreath:Show(args.destName, amount)
 		end
