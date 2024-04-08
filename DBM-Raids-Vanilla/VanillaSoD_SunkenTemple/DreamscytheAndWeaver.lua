@@ -75,7 +75,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerWingBuffetCD:Start(5)
 	elseif spellId == 442622 then
 		local uId = DBM:GetRaidUnitId(args.destName)
-		if self:IsTanking(uId, nil, nil, true, args.destGUID) then
+		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
 			local amount = args.amount or 1
 			warnAcidBreath:Show(args.destName, amount)
 		end
