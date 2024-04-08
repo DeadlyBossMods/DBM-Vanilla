@@ -38,6 +38,7 @@ local specWarnFrightsomeHowl		= mod:NewSpecialWarningInterrupt(443990, nil, nil,
 local specWarnCorruptedBlood		= mod:NewSpecialWarningMoveAway(444253, nil, nil, nil, 1, 2)
 local yellCorruptedBlood			= mod:NewYell(444253)
 local specWarnCurseofTongues		= mod:NewSpecialWarningYou(444046, false, nil, nil, 1, 2)
+local specWarnDrainBlood			= mod:NewSpecialWarningMoveTo(444132, nil, nil, nil, 1, 2)
 local specWarnSkeletal				= mod:NewSpecialWarningYou(444165, false, nil, nil, 1, 2)
 
 local timerBubblingBloodCD			= mod:NewCDTimer(9.7, 443940, nil, nil, nil, 3)
@@ -94,7 +95,12 @@ function mod:SPELL_CAST_START(args)
 		timerCurseofTonguesCD:Start(nil, self.vb.curseCount+1)
 	elseif args:IsSpell(444132) then
 		self.vb.drainCount = self.vb.drainCount + 1
-		warnDrainBlood:Show(self.vb.drainCount)
+		if DBM:UnitDebuff("player", 444255) then
+			specWarnDrainBlood:Show(DBM_COMMON_L.FRONT)--Or also say "tank?" (DBM_COMMON_L.TANK)
+			specWarnDrainBlood:Play("movetotank")
+		else
+			warnDrainBlood:Show(self.vb.drainCount)
+		end
 		timerDrainBloodCD:Start(nil, self.vb.drainCount+1)
 	end
 end
