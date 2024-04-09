@@ -13,55 +13,64 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 438142",
 	"SPELL_CAST_SUCCESS 438130",
---	"SPELL_AURA_APPLIED",
---	"SPELL_AURA_APPLIED_DOSE",
-	"SPELL_PERIODIC_DAMAGE 438136",
-	"SPELL_PERIODIC_MISSED 438136"
+	"SPELL_DAMAGE 438136",
+	"SPELL_MISSED 438136",
+	"SPELL_AURA_APPLIED_DOSE 446311",
+	"SPELL_AURA_REMOVED 446311",
+	"SPELL_AURA_APPLIED 448824"
 )
 
---[[
-ability.id = 438142 and type = "begincast"
- or ability.id = 438130 and type = "cast"
---]]
---TODO, track slow on boss from objects?
+-- Slow stuff
+-- on pull: 448526 which activates it stacks of "move faster"
+-- 446311 keeps adding up, and REMOVED when it's slow
+-- "<139.75 22:01:42> [CLEU] SPELL_AURA_REMOVED#Vehicle-0-5250-109-7069-218819-0000144CB7#Festering Rotslime#Vehicle-0-5250-109-7069-218819-0000144CB7#Festering Rotslime#446311#Slime Time#BUFF#nil", -- [4384]
+-- "<141.62 22:01:43> [CLEU] SPELL_AURA_APPLIED#Vehicle-0-5250-109-7069-218819-0000144CB7#Festering Rotslime#Vehicle-0-5250-109-7069-218819-0000144CB7#Festering Rotslime#446311#Slime Time#BUFF#nil", -- [4549]
+
+-- Devour: can be both on players (which means you should heal them, but doesn't help) or objects which eventually triggers slow
+-- "<1097.16 21:53:11> [CLEU] SPELL_AURA_APPLIED##nil#Player-5826-020CBDBB#Tandanu#448824#Devour#DEBUFF#nil", -- [51512]
+
+
+
 local warnGunk						= mod:NewCountAnnounce(432062, 3)
-local warnNauseousGas				= mod:NewCountAnnounce(438130, 2)
+local warnNauseousGas				= mod:NewCountAnnounce(438130, 2, nil, false, 2)
+local warnSlimeTime					= mod:NewCountAnnounce(446311, 4, nil, nil, DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.stack:format(446311))
 
---local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
---local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
---local yellTheClaw					= mod:NewYell(432062)
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(438136, nil, nil, nil, 1, 8)
+local specWarnSlimeTimeFades		= mod:NewSpecialWarningFades(446311, nil, nil, nil, nil, 16)
+local devourPlayerYell				= mod:NewYell(448824)
 
---local timerGnomereganSmashCD		= mod:NewAITimer(11.3, 432423, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
+
 local timerGunkCD					= mod:NewCDCountTimer(17.8, 438142, nil, nil, nil, 3)
-local timerNauseousGasCD			= mod:NewCDCountTimer(8, 438130, nil, nil, nil, 3)
+local timerNauseousGasCD			= mod:NewCDCountTimer(8, 438130, nil, false, 2, 3)
 
---mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
 
 mod.vb.gunkCount = 0
 mod.vb.gasCount = 0
-
---[[
-function mod:ClawTarget(targetname, uId)
-	if not targetname then return end
-	if targetname == UnitName("player") then
-		specWarnTheClaw:Show()
-		specWarnTheClaw:Play("runout")
-		yellTheClaw:Yell()
-	else
-		warnTheClaw:Show(targetname)
-	end
-	if self.Options.SetIconOnClaw then
-		self:SetIcon(targetname, 8, 3)
-	end
-end
---]]
 
 function mod:OnCombatStart(delay)
 	self.vb.gunkCount = 0
 	self.vb.gasCount = 0
 	timerNauseousGasCD:Start(8-delay, 1)
 	timerGunkCD:Start(12.8-delay, 1)
+end
+
+function mod:SPELL_AURA_APPLIED_DOSE(args)
+	if args:IsSpell(446311) and args.amount % 5 == 0 then
+		warnSlimeTime:Show(args.amount)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(446311) then
+		specWarnSlimeTimeFades:Show()
+		specWarnSlimeTimeFades:Play("dpshard")
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(448824) and args:IsPlayer() and self:AntiSpam(10, 1) then
+		devourPlayerYell:Yell()
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -90,13 +99,13 @@ end
 --mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 --]]
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
 	if spellId == 438136 and destGUID == UnitGUID("player") and self:AntiSpam(3, 2) then
 		specWarnGTFO:Show(spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
 end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 --[[
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)

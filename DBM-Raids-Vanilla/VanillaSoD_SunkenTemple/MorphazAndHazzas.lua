@@ -69,6 +69,7 @@ function mod:OnCombatStart(delay)
 --	timerBackfireCD:Start(6.2-delay, 1)
 --	timerDreamersLamentCD:Start(6.2-delay, 1)
 	timerCorruptedBreathCD:Start(10.6-delay)
+	self:SetStage(1)
 end
 
 function mod:SPELL_CAST_START(args)

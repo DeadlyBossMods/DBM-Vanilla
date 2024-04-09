@@ -1293,6 +1293,11 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 L:SetGeneralLocalization({
 	name = "Atal'ai Defenders"
 })
+
+L:SetOptionLocalization({
+	SetIconsOnGhosts = "Set icons on ghost bosses"
+})
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------

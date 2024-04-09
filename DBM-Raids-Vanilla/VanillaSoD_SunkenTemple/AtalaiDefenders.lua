@@ -15,7 +15,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964",
 	"SPELL_AURA_APPLIED 446354 445284",
 	"SPELL_AURA_APPLIED_DOSE 445284",
-	"SPELL_AURA_REMOVED 445284"
+	"SPELL_AURA_REMOVED 445284",
+	"SPELL_SUMMON 444962 444963 444964 444747 444960 444961"
 )
 
 --[[
@@ -25,7 +26,9 @@ mod:RegisterEventsInCombat(
 --TODO, possibly cull less important abilities (or disable by default) if it feels spammy
 --TODO, initial timers from activatd bosses, if they have clean USCS event or emote or something (I don't really want to check all damage events from players to detect this if it can be helped)
 --General
-local warnPhase						= mod:NewPhaseChangeAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
+local warnPhase = mod:NewPhaseChangeAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
+mod:AddSetIconOption("SetIconsOnGhosts", nil, true, 5, {1, 2, 3, 4, 5, 6})
+
 --Zul'Lor
 --NOTE, if charge is prevented with a fiegn or the like, the corrupted slam doesn't happen
 local warnFrailty					= mod:NewSpellAnnounce(446364, 2)
@@ -40,16 +43,19 @@ local specWarnCorruptedSlam			= mod:NewSpecialWarningDodge(446372, nil, nil, nil
 
 --mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
 --Mijan
-local warnAtalaiSerpentTotem		= mod:NewSpellAnnounce(445912, 2)
 local warnThorns					= mod:NewSpellAnnounce(445912, 2)
 local warnHealingWard				= mod:NewSpellAnnounce(438335, 3)
+
+local specWarnAtalaiSerpentTotem	= mod:NewSpecialWarningSwitch(445912, "Dps", nil, nil, nil, 2)
+
 --Zolo
 local warnUnstableCask				= mod:NewSpellAnnounce(445940, 3, nil, "Healer")--Stun on the tank i believe
-local warnAtalaiSkeletonTotem		= mod:NewSpellAnnounce(446339, 2)
 
 local specWarnChainLightning		= mod:NewSpecialWarningInterrupt(446338, "HasInterrupt", nil, nil, 1, 2)
 local specWarnRenew					= mod:NewSpecialWarningInterrupt(438341, "HasInterrupt", nil, nil, 1, 2)
 local specWarnHealingWave			= mod:NewSpecialWarningInterrupt(438339, "HasInterrupt", nil, nil, 1, 2)
+local specWarnAtalaiSkeletonTotem	= mod:NewSpecialWarningSwitch(446339, "Dps", nil, nil, nil, 2)
+
 
 --local timerAtalaiSkeletonTotemCD	= mod:NewAITimer(8, 446339, nil, nil, nil, 3)--9-17 so disabled for now
 --Gasher
@@ -141,11 +147,12 @@ function mod:SPELL_CAST_SUCCESS(args)
 			timerDemoShoutCD:Restart(14.6)
 		end
 	elseif args:IsSpell(445912) then
-		warnAtalaiSerpentTotem:Show()
+		specWarnAtalaiSerpentTotem:Show()
 	elseif args:IsSpell(445940) then
 		warnUnstableCask:Show()
 	elseif args:IsSpell(446339) then
-		warnAtalaiSkeletonTotem:Show()
+		specWarnAtalaiSkeletonTotem:Show()
+		specWarnAtalaiSkeletonTotem:Play("attacktotem")
 	elseif args:IsSpell(445289) then
 		warnSpinningAxes:Show()
 	elseif args:IsSpell(446360) then
@@ -170,6 +177,32 @@ function mod:SPELL_AURA_REMOVED(args)
 	local spellId = args.spellId
 	if spellId == 445284 and self:AntiSpam(8, 1) then--In case continously kited don't want to spam announce it faded
 		warnFervorFaded:Show()
+	end
+end
+
+-- Summons:
+--[[
+"<529.92 22:21:02> [CLEU] SPELL_SUMMON#Creature-0-5250-109-7069-221640-0000143F40#Zul'Lor#Creature-0-5250-109-7069-221837-00001451AE#Zul'Lor#444962#Summon Zul'Lor#nil#nil", -- [6972]
+"<579.26 22:21:52> [CLEU] SPELL_SUMMON#Creature-0-5250-109-7069-218868-0000143F41#Mijan#Creature-0-5250-109-7069-221835-00001451E0#Mijan#444963#Summon Mijan#nil#nil", -- [11470]
+"<629.82 22:22:42> [CLEU] SPELL_SUMMON#Creature-0-5250-109-7069-221639-0000143F41#Zolo#Creature-0-5250-109-7069-221836-0000145212#Zolo#444964#Summon Zolo#nil#nil", -- [16440]
+"<710.68 22:24:03> [CLEU] SPELL_SUMMON#Creature-0-5250-109-7069-221637-0000143F40#Gasher#Creature-0-5250-109-7069-221759-0000145263#Gasher#444747#Summon Gasher#nil#nil", -- [23682]
+"<797.26 22:25:30> [CLEU] SPELL_SUMMON#Creature-0-5250-109-7069-221638-0000143F40#Loro#Creature-0-5250-109-7069-221834-00001452BA#Loro#444960#Summon Loro#nil#nil", -- [31440]
+-- (one missing from my log because random order, but we know it from warcraftlogs)
+]]
+function mod:SPELL_SUMMON(args)
+	if args:IsSpell(444962, 444963, 444964, 444747, 444960, 444961) then
+		local iconOrder = {
+			[444962] = 1,
+			[444963] = 2,
+			[444964] = 3,
+			[444747] = 4,
+			[444960] = 5,
+			[444961] = 6
+		}
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if self.Options.SetIconsOnGhosts and cid and iconOrder[cid] then
+			self:ScanForMobs(args.destGUID, 2, iconOrder[cid], 1, nil, 30, "SetIconsOnGhosts", nil, nil, true)
+		end
 	end
 end
 
