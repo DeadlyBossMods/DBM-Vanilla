@@ -35,9 +35,9 @@ local specWarnCorrosiveBreath		= mod:NewSpecialWarningDefensive(437353, nil, nil
 local specWarnCorrosiveBreathTaunt	= mod:NewSpecialWarningTaunt(437353, nil, nil, nil, 1, 2)
 local specWarnBellowingRoar			= mod:NewSpecialWarningInterruptCount(445498, nil, nil, nil, 1, 2)
 local specWarnWakingNightmare		= mod:NewSpecialWarningMoveTo(437398, nil, nil, nil, 3, 2)
+local specWarnDeepSlumber			= mod:NewSpecialWarningDodgeCount(437301, nil, nil, nil, 2, 2)
 local specWarnLethargicPoisonAdd	= mod:NewSpecialWarningInterruptCount(437425, nil, nil, nil, 1, 2)
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(445575, nil, nil, nil, 1, 8)
-local specWarnDeepSlumber			= mod:NewSpecialWarningMove(437301, nil, nil, nil, 3, 2)
 
 --local timerThrashCD				= mod:NewCDTimer(16.1, 3391, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--16-49, seems to be filler GCD of boss so used in spell gaps
 local timerCorrosiveBreathCD		= mod:NewCDTimer(19.3, 437353, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--19.3 except when spell queued
@@ -79,8 +79,8 @@ function mod:SPELL_CAST_START(args)
 		timerCorrosiveBreathCD:Start()
 	elseif args:IsSpell(437301) then
 		self.vb.slumberCount = self.vb.slumberCount + 1
-		specWarnDeepSlumber:Show()
-		specWarnDeepSlumber:Play("movesoon")
+		specWarnDeepSlumber:Show(self.vb.slumberCount)
+		specWarnDeepSlumber:Play("watchstep")
 		timerDeepSlumberCD:Start(nil, self.vb.slumberCount+1)
 	elseif args:IsSpell(437390) then--Boss Version
 		timerLethargicPoisonCD:Start()
