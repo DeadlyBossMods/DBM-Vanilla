@@ -1,101 +1,97 @@
-local mod	= DBM:NewMod("DreamscytheAndWeaverSoD", "DBM-Raids-Vanilla", 9)
+local mod	= DBM:NewMod("DreamscytheAndWeaverSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(220833, 220864)--Dreamscythe, Weaver
 mod:SetEncounterID(2955)
+mod:SetBossHPInfoToHighest()
 --mod:SetUsedIcons(8)
---mod:SetHotfixNoticeRev(20240209000000)
+mod:SetHotfixNoticeRev(20240405000000)
 --mod:SetMinSyncRevision(20231115000000)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
---	"SPELL_CAST_START",
---	"SPELL_CAST_SUCCESS",
---	"SPELL_AURA_APPLIED",
---	"SPELL_AURA_APPLIED_DOSE"
+	"SPELL_CAST_START 443766 443830 443793 443827",
+	"SPELL_CAST_SUCCESS 442622 442620",
+	"SPELL_AURA_APPLIED 443302 442622",
+	"SPELL_AURA_APPLIED_DOSE 442622",
+	"SPELL_AURA_REMOVED 443302"
 )
 
 --[[
-
+(ability.id = 443766 or ability.id = 443830 or ability.id = 443793 or ability.id = 443827) and type = "begincast"
+ or (ability.id = 442622 or ability.id = 442620) and type = "cast"
+ or ability.id = 443302
 --]]
---https://www.wowhead.com/classic/spell=442622/acid-breath (lock target, avoidable by all, aoe breath warning)
---https://www.wowhead.com/classic/spell=442620/wing-flap
---https://www.wowhead.com/classic/spell=445545/dream-awakening
+--Once again, timers are too variable across board for acid breath and wing flap, especially when both out. Wing buffet has problem too in stage 3 but a bit more consistent in stage 1 and 2
+local warnPhase						= mod:NewPhaseChangeAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 --local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
+local warnAcidBreath				= mod:NewStackAnnounce(442622, 2, nil, "Tank|Healer")--Used by both
+local warnWingFlap					= mod:NewSpellAnnounce(442620, 3)--Used by both
 
---local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
---local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
---local yellTheClaw					= mod:NewYell(432062)
+local specWarnWingBuffet			= mod:NewSpecialWarningSpell(432423, nil, nil, nil, 2, 2)
+local specWarnDelayedWingBuffet		= mod:NewSpecialWarningSpell(443830, nil, nil, nil, 2, 2)
 
---local timerGnomereganSmashCD		= mod:NewAITimer(11.3, 432423, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
+--local timerAcidBreathCD			= mod:NewAITimer(11.3, 442622, nil, "Healer|Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Far to variable
 --local timerTheClawCD				= mod:NewAITimer(15.2, 432062, nil, nil, nil, 3)
+local timerWingBuffetCD				= mod:NewCDTimer(22.6, 432423, nil, nil, nil, 3)--22.6-70 (they have same variable timer, only need one object
 
---mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
-
---[[
-function mod:ClawTarget(targetname, uId)
-	if not targetname then return end
-	if targetname == UnitName("player") then
-		specWarnTheClaw:Show()
-		specWarnTheClaw:Play("runout")
-		yellTheClaw:Yell()
-	else
-		warnTheClaw:Show(targetname)
-	end
-	if self.Options.SetIconOnClaw then
-		self:SetIcon(targetname, 8, 3)
-	end
+function mod:OnCombatStart(delay)
+	self:SetStage(1)
+	timerWingBuffetCD:Start(19.4-delay)--19-26
 end
---]]
 
---function mod:OnCombatStart(delay)
---
---end
 
---[[
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(432062) then
-
+	if args:IsSpell(443766, 443793) then--Diff Ids based on which side boss goes to
+		if self:AntiSpam(3, 1) then--Aggregate warnings when both dragons are out, they're cast at same time
+			specWarnWingBuffet:Show()
+			specWarnWingBuffet:Play("carefly")
+			timerWingBuffetCD:Start()
+		end
+	elseif args:IsSpell(443830, 443827) then--Diff Ids based on which side boss goes to
+		if self:AntiSpam(3, 1) then--Aggregate warnings when both dragons are out, they're cast at same time
+			specWarnDelayedWingBuffet:Show()
+			specWarnDelayedWingBuffet:Play("carefly")
+			timerWingBuffetCD:Start()
+		end
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(432423) then
-
+	if args:IsSpell(442620) then
+		warnWingFlap:Show()
 	end
 end
---]]
 
---[[
 function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
-	if spellId == 431839 and args:IsPlayer() then
-
+	if spellId == 443302 and args:GetDestCreatureID() == 220833 then--Emerald Ward on Dreamscythe
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		warnPhase:Play("ptwo")
+		timerWingBuffetCD:Stop()
+		timerWingBuffetCD:Start(5)
+	elseif spellId == 442622 then
+		local uId = DBM:GetRaidUnitId(args.destName)
+		--Makes sure the target of the debuff, is highest threat of the caster
+		--(basically filters everyone who's not actively tanking mob such as melee in wrong place)
+		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then--playerUnitID, enemyUnitID, isName, onlyRequested, enemyGUID
+			local amount = args.amount or 1
+			warnAcidBreath:Show(args.destName, amount)
+		end
 	end
 end
---mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
---]]
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
---[[
-function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 55862 then
-
+function mod:SPELL_AURA_REMOVED(args)
+	local spellId = args.spellId
+	if spellId == 443302 and args:GetDestCreatureID() == 220833 then--Emerald Ward removed from Dreamscythe
+		self:SetStage(3)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(3))
+		warnPhase:Play("pthree")
+		timerWingBuffetCD:Stop()
+		timerWingBuffetCD:Start(3)--Can be as early as 3 or delayed quite a bit
 	end
 end
-
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 411583 then--Replace Stand with Swim
-		self:SendSync("PhaseChange")
-	end
-end
-
-function mod:OnSync(msg)
-	if not self:IsInCombat() then return end
-	if msg == "PhaseChange" and self:AntiSpam(30, 2) then
-
-	end
-end
---]]
