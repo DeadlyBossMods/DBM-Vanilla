@@ -127,7 +127,7 @@ VanillaSoD_SunkenTemple\Atalalarion.lua
 VanillaSoD_SunkenTemple\FesteringRotslime.lua
 VanillaSoD_SunkenTemple\AtalaiDefenders.lua
 VanillaSoD_SunkenTemple\DreamscytheAndWeaver.lua
-VanillaSoD_SunkenTemple\AvatarofHakkar.lua
 VanillaSoD_SunkenTemple\JammalanAndOgom.lua
 VanillaSoD_SunkenTemple\MorphazAndHazzas.lua
 VanillaSoD_SunkenTemple\ShadeOfEranikus.lua
+VanillaSoD_SunkenTemple\AvatarofHakkar.lua
