@@ -28,7 +28,6 @@ mod:RegisterEventsInCombat(
 --]]
 --NOTE: https://www.wowhead.com/classic/spell=445545/dream-awakening not logged
 --218606
-local warnDeepSlumber				= mod:NewCountAnnounce(437301, 2)
 local warnLethargicPoison			= mod:NewTargetNoFilterAnnounce(437390, 3, nil, "RemovePoison")
 local warnThrash					= mod:NewSpellAnnounce(3391, 4, nil, "Tank|Healer")
 
@@ -36,12 +35,13 @@ local specWarnCorrosiveBreath		= mod:NewSpecialWarningDefensive(437353, nil, nil
 local specWarnCorrosiveBreathTaunt	= mod:NewSpecialWarningTaunt(437353, nil, nil, nil, 1, 2)
 local specWarnBellowingRoar			= mod:NewSpecialWarningInterruptCount(445498, nil, nil, nil, 1, 2)
 local specWarnWakingNightmare		= mod:NewSpecialWarningMoveTo(437398, nil, nil, nil, 3, 2)
+local specWarnDeepSlumber			= mod:NewSpecialWarningDodgeCount(437301, nil, nil, nil, 2, 2)
 local specWarnLethargicPoisonAdd	= mod:NewSpecialWarningInterruptCount(437425, nil, nil, nil, 1, 2)
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(445575, nil, nil, nil, 1, 8)
 
 --local timerThrashCD				= mod:NewCDTimer(16.1, 3391, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--16-49, seems to be filler GCD of boss so used in spell gaps
 local timerCorrosiveBreathCD		= mod:NewCDTimer(19.3, 437353, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--19.3 except when spell queued
-local timerDeepSlumberCD			= mod:NewCDCountTimer(19.3, 437301, nil, nil, nil, 3)--19.3 except when spell queued
+local timerDeepSlumberCD			= mod:NewCDCountTimer(19.4, 437301, nil, nil, nil, 3)--19.4 except when spell queued
 local timerLethargicPoisonCD		= mod:NewCDTimer(19.3, 437390, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON)
 local timerBellowingRoarCD			= mod:NewCDCountTimer(33.5, 445498, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)--33.5 but often spell queued due to lowest cast priority, delaying it often
 local timerWakingNightmareCD		= mod:NewCDCountTimer(66.3, 437398, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
@@ -79,7 +79,8 @@ function mod:SPELL_CAST_START(args)
 		timerCorrosiveBreathCD:Start()
 	elseif args:IsSpell(437301) then
 		self.vb.slumberCount = self.vb.slumberCount + 1
-		warnDeepSlumber:Show(self.vb.slumberCount)
+		specWarnDeepSlumber:Show(self.vb.slumberCount)
+		specWarnDeepSlumber:Play("watchstep")
 		timerDeepSlumberCD:Start(nil, self.vb.slumberCount+1)
 	elseif args:IsSpell(437390) then--Boss Version
 		timerLethargicPoisonCD:Start()
