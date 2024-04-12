@@ -1277,8 +1277,13 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("AtalaiDefendersSoD")
 
 L:SetGeneralLocalization({
-	name = "아탈라이 파수병"
+	name = "아탈라이 수호자들"
 })
+
+L:SetOptionLocalization({
+	SetIconsOnGhosts = "유령 보스에 공격대 징표 설정"
+})
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
