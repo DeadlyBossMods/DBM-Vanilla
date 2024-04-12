@@ -1411,6 +1411,10 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 L:SetGeneralLocalization({
 	name = "Defensores Atal'ai"
 })
+
+L:SetOptionLocalization({
+	SetIconsOnGhosts = "Colocar ícones nos chefes fantasmas"
+})
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
