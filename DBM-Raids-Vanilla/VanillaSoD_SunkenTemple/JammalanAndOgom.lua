@@ -12,11 +12,12 @@ mod:SetHotfixNoticeRev(20240405000000)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 437805 437868 437817 437995 437928 437921 437809 437927",
-	"SPELL_CAST_SUCCESS 437847 437930",
+	"SPELL_CAST_START 437805 437868 437817 437995 437928 437921 437809 437927 437915 437951 437920",
+	"SPELL_CAST_SUCCESS 437847 437930 437915 437884 437920",
 	"SPELL_AURA_APPLIED 437809 437847 437927 437930",
---	"SPELL_AURA_APPLIED_DOSE",
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"SPELL_DAMAGE 437887", -- Consecration damage is a different spell ID than consecration cast
+	"SPELL_MISSED 437887"
 )
 
 --[[
@@ -24,18 +25,21 @@ mod:RegisterEventsInCombat(
  or (ability.id = 437847 or ability.id = 437930) and type = "cast"
  or (target.id = 218721 or target.id = 218718) and type = "death"
 --]]
---TODO. First kill killed Ogom first and Jammal cast draining (and empowere). Can Jammal die first and then have Ogom empower instead?
 local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 local warnHolyFire					= mod:NewTargetNoFilterAnnounce(437809, 2, nil, "RemoveMagic")
 local warnMortalLash				= mod:NewTargetNoFilterAnnounce(437847, 2, nil, "Healer|Tank")
 local warnAgonizingWeakness			= mod:NewSpellAnnounce(437868, 3)
 local warnShadowSermonPain			= mod:NewTargetNoFilterAnnounce(437927, 2, nil, "RemoveMagic")
 local warnPowerWordShield			= mod:NewTargetNoFilterAnnounce(437930, 2)--Maybe a special warning for purgers?
+local warnHammersOfJustice			= mod:NewCastAnnounce(437915, 3, 4)
+local warnConsecration				= mod:NewSpellAnnounce(437884, 3)
+local warnDivineStorm				= mod:NewCastAnnounce(437920, 3, 1.5)
 
 local specWarnSmite					= mod:NewSpecialWarningInterrupt(437805, "HasInterrupt", nil, nil, 1, 2)
 local specWarnHolyNova				= mod:NewSpecialWarningDodge(437817, nil, nil, nil, 2, 2)
 local specWarnPsychicScream			= mod:NewSpecialWarningSpell(437928, nil, nil, nil, 2, 2)
 local specWarnMassPenance			= mod:NewSpecialWarningDodge(437921, nil, nil, nil, 2, 2)
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(437884, nil, nil, nil, 1, 8)
 
 local timerHolyFireCD				= mod:NewCDTimer(13.4, 437809, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerHolyNovaCD				= mod:NewCDTimer(17.3, 437817, nil, nil, nil, 3)
@@ -45,6 +49,22 @@ local timerShadowSermonPainCD		= mod:NewCDTimer(22.2, 437927, nil, nil, nil, 5, 
 local timerPsychicScreamCD			= mod:NewCDTimer(43.7, 437928, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--Can be delayed by other casts
 local timerMassPenanceCD			= mod:NewCDTimer(21, 437921, nil, nil, nil, 3)
 local timerPWSCD					= mod:NewCDTimer(15.8, 437930, nil, nil, nil, 5)--15.8-23 (lowest spell priority, so gets queued often)
+-- "Hammers of Justice-437915-npc:218718-000016C225 = pull:121.8, 35.5, 35.0"
+local timerHammersOfJustice			= mod:NewNextTimer(35.0, 437915, nil, nil, nil, 3)
+-- "Consecration-437884-npc:218718-000016C225 = pull:103.9, 16.2, 16.2, 15.8, 16.6, 16.2"
+local timerConsecration				= mod:NewCDTimer(15.8, 437884, nil, nil, nil, 3)
+-- "Divine Storm-437920-npc:218718-000016C225 = pull:106.9, 32.7, 32.4"
+local timerDivineStorm				= mod:NewCDTimer(32.4, 437920, nil, nil, nil, 3)
+
+-- There is some correlation between Divine Storm and Consecration, we could maybe use it to update the timer
+--[[
+"<304.22 20:20:12> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437884#Consecration#nil#nil",
+"<308.64 20:20:16> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437920#Divine Storm#nil#nil", +4.4
+"<336.58 20:20:44> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437884#Consecration#nil#nil",
+"<341.32 20:20:49> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437920#Divine Storm#nil#nil", +4.7
+"<368.93 20:21:16> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437884#Consecration#nil#nil",
+"<373.67 20:21:21> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437920#Divine Storm#nil#nil", +4.7
+]]
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
@@ -67,25 +87,30 @@ function mod:SPELL_CAST_START(args)
 		specWarnHolyNova:Show()
 		specWarnHolyNova:Play("watchstep")
 		timerHolyNovaCD:Start()
-	elseif args:IsSpell(437995) then--Draining...
+	elseif args:IsSpell(437995, 437951) then -- "Draining..."" or "Eating...""
 		self:SetStage(2)
 		warnPhase2:Show()
 		warnPhase2:Play("p2two")
-		--TODO< find a log where Jammal dies first and see if Ogom casts this instead (with diff ability timers)
-		if args:GetSrcCreatureID() == 218721 then--Jammal'an the Prophet casting it
-			--Stop stage 1 timers
-			timerHolyFireCD:Stop()
-			timerMortalLashCD:Stop()
-			timerHolyNovaCD:Stop()
-			timerAgonizingWeaknessCD:Stop()
-			--Start Stage 2 timers
+		--Stop stage 1 timers
+		timerHolyFireCD:Stop()
+		timerMortalLashCD:Stop()
+		timerHolyNovaCD:Stop()
+		timerAgonizingWeaknessCD:Stop()
+		if args:IsSpell(437995) then -- Jammal'an casting
 			timerShadowSermonPainCD:Start(15.7)
 			timerHolyNovaCD:Start(17.7)--17.7-19.4
 			timerPsychicScreamCD:Start(22.6)
 			timerPWSCD:Start(25.4)
 			timerMassPenanceCD:Start(28.7)
-		else
-			DBM:AddMsg("Please share your kill log with DBM authors, we don't have this kill order implimented yet")
+		elseif args:IsSpell(437951) then -- Ogam casting
+			-- "<291.25 20:19:59> [CLEU] SPELL_CAST_START#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437951#Eating...#nil#nil",
+			-- "<322.06 20:20:29> [CLEU] SPELL_CAST_START#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437915#Hammers of Justice#nil#nil",
+			-- "<326.06 20:20:33> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437915#Hammers of Justice#nil#nil",
+			timerHammersOfJustice:Start() -- TODO: was it co-incidence that this was pretty much exactly the usual delay?
+			-- "<304.22 20:20:12> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437884#Consecration#nil#nil",
+			timerConsecration:Start(13) -- TODO: is this accurate? just based on one log
+			-- "<308.64 20:20:16> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437920#Divine Storm#nil#nil"
+			timerDivineStorm:Start(17.4) -- Seems to be correlated to Consecration in general
 		end
 	elseif args:IsSpell(437928) then
 		specWarnPsychicScream:Show()
@@ -99,6 +124,12 @@ function mod:SPELL_CAST_START(args)
 		timerHolyFireCD:Start()
 	elseif args:IsSpell(437927) then
 		timerShadowSermonPainCD:Start()
+	elseif args:IsSpell(437915) then
+		warnHammersOfJustice:Show()
+		timerHammersOfJustice:Update(31, 35)
+	elseif args:IsSpell(437920) then
+		warnDivineStorm:Show()
+		timerDivineStorm:Update(32.4 - 1.5, 32.4)
 	end
 end
 
@@ -107,6 +138,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerMortalLashCD:Start()
 	elseif args:IsSpell(437930) then
 		timerPWSCD:Start()
+	elseif args:IsSpell(437915) then
+		timerHammersOfJustice:Start()
+	elseif args:IsSpell(437884) then
+		timerConsecration:Start()
+		warnConsecration:Show()
+	elseif args:IsSpell(437920) then
+		timerDivineStorm:Start()
 	end
 end
 
@@ -133,3 +171,11 @@ function mod:UNIT_DIED(args)
 		timerHolyNovaCD:Stop()
 	end
 end
+
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+	if spellId == 437887 and destGUID == UnitGUID("player") and self:AntiSpam(4, 1) then
+		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
