@@ -30,12 +30,12 @@ local warnPhase						= mod:NewPhaseChangeAnnounce(2, 2, nil, nil, nil, nil, nil,
 local warnAcidBreath				= mod:NewStackAnnounce(442622, 2, nil, "Tank|Healer")--Used by both
 local warnWingFlap					= mod:NewSpellAnnounce(442620, 3)--Used by both
 
-local specWarnWingBuffet			= mod:NewSpecialWarningSpell(432423, nil, nil, nil, 2, 2)
+local specWarnWingBuffet			= mod:NewSpecialWarningSpell(443766, nil, nil, nil, 2, 2)
 local specWarnDelayedWingBuffet		= mod:NewSpecialWarningSpell(443830, nil, nil, nil, 2, 2)
 
 --local timerAcidBreathCD			= mod:NewAITimer(11.3, 442622, nil, "Healer|Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Far to variable
 --local timerTheClawCD				= mod:NewAITimer(15.2, 432062, nil, nil, nil, 3)
-local timerWingBuffetCD				= mod:NewCDTimer(22.6, 432423, nil, nil, nil, 3)--22.6-70 (they have same variable timer, only need one object
+local timerWingBuffetCD				= mod:NewCDTimer(22.6, 443766, nil, nil, nil, 3)--22.6-70 (they have same variable timer, only need one object
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
