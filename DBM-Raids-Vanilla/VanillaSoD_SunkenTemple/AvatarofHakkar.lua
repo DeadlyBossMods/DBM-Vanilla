@@ -30,7 +30,7 @@ local warnCorruptedBlood			= mod:NewTargetNoFilterAnnounce(444253, 4)--Initial B
 local warnCorruptedBloodSpread		= mod:NewTargetSourceAnnounce(444253, 4, nil, nil, nil, nil, nil, nil, true)--Jumps between players
 local warnCurseofTongues			= mod:NewTargetNoFilterAnnounce(444046, 3, nil, "RemoveCurse")
 local warnDrainBlood				= mod:NewCountAnnounce(444132, 3)--Cast
-local warnSkeletal					= mod:NewTargetNoFilterAnnounce(444165, 3)--Drain Blood Targets
+local warnSkeletal					= mod:NewTargetNoFilterAnnounce(444165, 3, nil, false, 2)--Drain Blood Targets
 
 local specWarnSpiritChains			= mod:NewSpecialWarningMoveAway(443975, nil, nil, nil, 1, 2)
 local yellSpiritChains				= mod:NewYell(443975)
