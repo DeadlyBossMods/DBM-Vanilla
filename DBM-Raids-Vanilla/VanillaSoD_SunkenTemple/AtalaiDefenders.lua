@@ -13,9 +13,9 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361 438335",
 	"SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964",
-	"SPELL_AURA_APPLIED 446354 445284",
+	"SPELL_AURA_APPLIED 446354 445284 438294",
 	"SPELL_AURA_APPLIED_DOSE 445284",
-	"SPELL_AURA_REMOVED 445284",
+	"SPELL_AURA_REMOVED 445284 438294",
 	"SPELL_SUMMON 444962 444963 444964 444747 444960 444961"
 )
 
@@ -41,12 +41,15 @@ local specWarnCorruptedSlam			= mod:NewSpecialWarningDodge(446372, nil, nil, nil
 --local timerFrailtyCD				= mod:NewAITimer(9.7, 446364, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--9.7-30, so disabled for now
 --local timerChargeCD				= mod:NewAITimer(8, 446369, nil, nil, nil, 3)--8-17.8 so disabled for now
 
---mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
 --Mijan
 local warnThorns					= mod:NewSpellAnnounce(438294, 2)
 local warnHealingWard				= mod:NewSpellAnnounce(438335, 3)
 
 local specWarnAtalaiSerpentTotem	= mod:NewSpecialWarningSwitch(445912, "Dps", nil, nil, nil, 2)
+local specWarnThornsPurge			= mod:NewSpecialWarningDispel(438294, "MagicDispeller", nil, nil, 1, 2)
+local specWarnThornsStopDps			= mod:NewSpecialWarningReflect(438294, "Melee", nil, nil, 1, 2)
+
+local timerThorns					= mod:NewBuffActiveTimer(60, 438294)
 
 --Zolo
 local warnUnstableCask				= mod:NewSpellAnnounce(445940, 3, nil, "Healer")--Stun on the tank i believe
@@ -102,6 +105,8 @@ function mod:SPELL_CAST_START(args)
 		specWarnCorruptedSlam:Play("watchstep")
 	elseif args:IsSpell(438294) then
 		warnThorns:Show(args.sourceName)--Paladin aura of a druid ability, nani?
+		specWarnThornsStopDps:Show(args.sourceName)
+		specWarnThornsStopDps:Play("stopattack")
 	elseif args:IsSpell(438335) then
 		warnHealingWard:Show()
 	elseif args:IsSpell(446338) then
@@ -169,14 +174,19 @@ function mod:SPELL_AURA_APPLIED(args)
 		if amount % 10 == 0 then--Some kills had 80+ stacks, so trying every 10 stack for now
 			warnFervor:Show(args.destName, args.amount or 1)
 		end
+	elseif args:IsSpell(438294) and self:AntiSpam(30, 1) then -- Spell description says it also applies to nearby "party members", maybe it spreads to ghosts? Antispam to be safe
+		timerThorns:Start()
+		specWarnThornsPurge:Show(args.destName)
+		specWarnThornsPurge:Play("dispel")
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	local spellId = args.spellId
-	if spellId == 445284 and self:AntiSpam(8, 1) then--In case continously kited don't want to spam announce it faded
+	if args.spellId == 445284 and self:AntiSpam(8, 1) then--In case continously kited don't want to spam announce it faded
 		warnFervorFaded:Show()
+	elseif args.spellId == 438294 and args:GetDestCreatureID() == 218868 then
+		timerThorns:Stop()
 	end
 end
 
