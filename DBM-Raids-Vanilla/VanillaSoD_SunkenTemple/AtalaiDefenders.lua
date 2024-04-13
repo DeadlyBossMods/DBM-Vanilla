@@ -43,7 +43,7 @@ local specWarnCorruptedSlam			= mod:NewSpecialWarningDodge(446372, nil, nil, nil
 
 --mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
 --Mijan
-local warnThorns					= mod:NewSpellAnnounce(445912, 2)
+local warnThorns					= mod:NewSpellAnnounce(438294, 2)
 local warnHealingWard				= mod:NewSpellAnnounce(438335, 3)
 
 local specWarnAtalaiSerpentTotem	= mod:NewSpecialWarningSwitch(445912, "Dps", nil, nil, nil, 2)
