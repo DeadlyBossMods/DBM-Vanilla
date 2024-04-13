@@ -34,7 +34,7 @@ local warnThrash					= mod:NewSpellAnnounce(3391, 4, nil, "Tank|Healer")
 local specWarnCorrosiveBreath		= mod:NewSpecialWarningDefensive(437353, nil, nil, nil, 1, 2)
 local specWarnCorrosiveBreathTaunt	= mod:NewSpecialWarningTaunt(437353, nil, nil, nil, 1, 2)
 local specWarnBellowingRoar			= mod:NewSpecialWarningInterruptCount(445498, nil, nil, nil, 1, 2)
-local specWarnWakingNightmare		= mod:NewSpecialWarningMoveTo(437398, nil, nil, nil, 3, 2)
+local specWarnWakingNightmare		= mod:NewSpecialWarningMoveTo(437398, nil, nil, nil, 3)
 local specWarnDeepSlumber			= mod:NewSpecialWarningDodgeCount(437301, nil, nil, nil, 2, 2)
 local specWarnLethargicPoisonAdd	= mod:NewSpecialWarningInterruptCount(437425, nil, nil, nil, 1, 2)
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(445575, nil, nil, nil, 1, 8)
@@ -92,7 +92,6 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(437398) then
 		self.vb.nightmareCount = self.vb.nightmareCount + 1
 		specWarnWakingNightmare:Show(slumberName)
-		specWarnWakingNightmare:Play("specialsoon")
 		timerWakingNightmareCD:Start(nil, self.vb.nightmareCount+1)
 	elseif args:IsSpell(437425) then
 		if not castsPerGUID[args.sourceGUID] then--Shouldn't happen, but just in case
