@@ -37,8 +37,6 @@ function mod:GOSSIP_SHOW()
 		local selection
 		if table and table[1] then
 			selection = table[1].name or nil
-		elseif GetGossipOptions then
-			selection = GetGossipOptions()
 		end
 		if selection then
 			if selection == L.RageGossip then -- Retail: GossipID - 32918
