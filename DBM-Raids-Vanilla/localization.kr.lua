@@ -1277,7 +1277,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("AtalaiDefendersSoD")
 
 L:SetGeneralLocalization({
-	name = "아탈라이 수호자들"
+	name = "아탈라이 파수병"
 })
 
 L:SetOptionLocalization({
