@@ -23,7 +23,7 @@ ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
 local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "134321")
-local warnPhase2			= mod:NewPhaseAnnounce(2, 3)
+local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
 local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
@@ -80,6 +80,7 @@ function mod:OnCombatStart(delay)
 	specwarnP2Soon:Schedule(320-delay)
 	timerPhase2:Start()
 	warnPhase2:Schedule(330)
+	warnPhase2:ScheduleVoice(330, "ptwo")
 	if self.Options.RangeFrame then
 		self:Schedule(330-delay, RangeToggle, true)
 	end
@@ -173,6 +174,7 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	if self.vb.phase == 1 then
 		self:Unschedule(RangeToggle)
 		warnPhase2:Cancel()
+		warnPhase2:CancelVoice()
 		self:SetStage(2)
 		warnPhase2:Show()
 		warnPhase2:Play("ptwo")

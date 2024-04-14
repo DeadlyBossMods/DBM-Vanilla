@@ -1,4 +1,4 @@
-<p><img src="https://media.forgecdn.net/attachments/76/25/patreon-medium-button.png" width="408" height="80" /></p>
+<p><img src="http://mysticalos.com/images/DBM/support_on_patreon.png" width="408" height="80" /></p>
 <p><a href="https://www.patreon.com/deadlybossmods">https://www.patreon.com/deadlybossmods</a></p>
 <h2 id="w-bc-and-vanilla-boss-mods-for-dbm"><strong>BC and Vanilla boss mods for DBM</strong></h2>
 <p>Vanilla WoW and Burning Crusade raid mods for <a href="http://wow.curse.com/downloads/wow-addons/details/deadly-boss-mods.aspx">Deadly Boss Mods</a></p>

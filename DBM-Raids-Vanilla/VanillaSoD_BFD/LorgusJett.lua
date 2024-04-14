@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 --TODO, find a way to detect stage 2 start in cleaner better way
 --NOTE, New Totem every 9.5 seconds. Windfury 414691 -- > Lighting Shield 414763 -- > Molten Fury 419636 -- > repeat.
 local warnPriestRemaining			= mod:NewAnnounce("warnPriestRemaining", 2)
-local warnPhase2					= mod:NewPhaseAnnounce(2, 2)
+local warnPhase2					= mod:NewPhaseAnnounce(2, 2, nil, nil, nil, nil, nil, 2)
 local warnBlackfathomMurloc			= mod:NewSpellAnnounce(419649, 2)
 local warnWindfuryTotem				= mod:NewSpellAnnounce(414691, 2)
 local warnMoltenFuryTotem			= mod:NewSpellAnnounce(419636, 2)
@@ -134,6 +134,7 @@ function mod:UNIT_DIED(args)
 				if self:GetStage(1) then
 					self:SetStage(2)
 					warnPhase2:Show()
+					warnPhase2:Play("ptwo")
 					timerBlackfathomMurlocCD:Stop()
 					timerWindfuryTotemCD:Start(6.3)
 				end
