@@ -13,7 +13,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 443940 443990 444050 444039 444253 444046 444132",
 	"SPELL_CAST_SUCCESS 443964 444761",
-	"SPELL_AURA_APPLIED 443964 444039 444255 444165 444046"
+	"SPELL_AURA_APPLIED 443964 444039 444255 444165 444046 443953"
 --	"SPELL_AURA_APPLIED_DOSE"
 )
 
@@ -40,6 +40,8 @@ local yellCorruptedBlood			= mod:NewYell(444253)
 local specWarnCurseofTongues		= mod:NewSpecialWarningYou(444046, false, nil, nil, 1, 2)
 local specWarnDrainBlood			= mod:NewSpecialWarningMoveTo(444132, nil, nil, nil, 1, 2)
 local specWarnSkeletal				= mod:NewSpecialWarningYou(444165, false, nil, nil, 1, 2)
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(443953, nil, nil, nil, 1, 8)
+
 
 local timerBubblingBloodCD			= mod:NewCDTimer(9.7, 443940, nil, nil, nil, 3)
 local timerSpiritChainsCD			= mod:NewCDTimer(16.2, 443975, nil, nil, nil, 3)
@@ -49,8 +51,6 @@ local timerInsanityCD				= mod:NewCDCountTimer(27.5, 444039, nil, nil, nil, 3)--
 local timerCorruptedBloodCD			= mod:NewCDCountTimer(16.2, 444253, nil, nil, nil, 3)
 local timerCurseofTonguesCD			= mod:NewCDCountTimer(32.3, 444046, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerDrainBloodCD				= mod:NewCDCountTimer(34, 444132, nil, nil, nil, 2)
-
---mod:AddSetIconOption("SetIconOnClaw", 432062, true, 0, {8})
 
 mod.vb.novaCount = 0
 mod.vb.curseCount = 0
@@ -154,6 +154,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() then
 			specWarnSkeletal:Show()
 			specWarnSkeletal:Play("targetyou")
+		end
+	elseif args:IsSpell(443953) then
+		if args:IsPlayer() and self:AntiSpam(3, 1) then
+			specWarnGTFO:Show(args.spellName)
+			specWarnGTFO:Play("watchfeet")
 		end
 	end
 end
