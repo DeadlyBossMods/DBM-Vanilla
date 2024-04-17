@@ -30,7 +30,7 @@ local warnHolyFire					= mod:NewTargetNoFilterAnnounce(437809, 2, nil, "RemoveMa
 local warnMortalLash				= mod:NewTargetNoFilterAnnounce(437847, 2, nil, "Healer|Tank")
 local warnAgonizingWeakness			= mod:NewSpellAnnounce(437868, 3)
 local warnShadowSermonPain			= mod:NewTargetNoFilterAnnounce(437927, 2, nil, "RemoveMagic")
-local warnPowerWordShield			= mod:NewTargetNoFilterAnnounce(437930, 2)--Maybe a special warning for purgers?
+local warnPowerWordShield			= mod:NewTargetNoFilterAnnounce(437930, 2)
 local warnHammersOfJustice			= mod:NewCastAnnounce(437915, 3, 4)
 local warnConsecration				= mod:NewSpellAnnounce(437884, 3)
 local warnDivineStorm				= mod:NewCastAnnounce(437920, 3, 1.5)
@@ -40,6 +40,7 @@ local specWarnHolyNova				= mod:NewSpecialWarningDodge(437817, nil, nil, nil, 2,
 local specWarnPsychicScream			= mod:NewSpecialWarningSpell(437928, nil, nil, nil, 2, 2)
 local specWarnMassPenance			= mod:NewSpecialWarningDodge(437921, nil, nil, nil, 2, 2)
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(437884, nil, nil, nil, 1, 8)
+local specWarnPowerWordShieldPurge	= mod:NewSpecialWarningDispel(437930, "MagicDispeller", nil, nil, 1, 2)
 
 local timerHolyFireCD				= mod:NewCDTimer(13.4, 437809, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerHolyNovaCD				= mod:NewCDTimer(17.3, 437817, nil, nil, nil, 3)
@@ -149,15 +150,18 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellId
-	if spellId == 437809 then
+	if args.spellId == 437809 then
 		warnHolyFire:CombinedShow(0.3, args.destName)--On multiple targets?
-	elseif spellId == 437847 then
+	elseif args.spellId == 437847 then
 		warnMortalLash:Show(args.destName)
-	elseif spellId == 437927 then
+	elseif args.spellId == 437927 then
 		warnShadowSermonPain:CombinedShow(0.3, args.destName)--On multiple targets?
-	elseif spellId == 437930 then
-		warnPowerWordShield:Show(args.destName)
+	elseif args.spellId == 437930 then
+		if not self.Options[specWarnPowerWordShieldPurge.option] then
+			warnPowerWordShield:Show(args.destName)
+		end
+		specWarnPowerWordShieldPurge:Show(args.destName)
+		specWarnPowerWordShieldPurge:Play("dispelboss")
 	end
 end
 
