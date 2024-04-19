@@ -91,7 +91,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(437995, 437951) then -- "Draining..."" or "Eating...""
 		self:SetStage(2)
 		warnPhase2:Show()
-		warnPhase2:Play("p2two")
+		warnPhase2:Play("ptwo")
 		--Stop stage 1 timers
 		timerHolyFireCD:Stop()
 		timerMortalLashCD:Stop()

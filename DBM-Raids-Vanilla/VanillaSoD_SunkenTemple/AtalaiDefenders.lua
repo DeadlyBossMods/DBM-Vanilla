@@ -177,7 +177,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(438294) and self:AntiSpam(30, 1) then -- Spell description says it also applies to nearby "party members", maybe it spreads to ghosts? Antispam to be safe
 		timerThorns:Start()
 		specWarnThornsPurge:Show(args.destName)
-		specWarnThornsPurge:Play("dispel")
+		specWarnThornsPurge:Play("dispelboss")
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
