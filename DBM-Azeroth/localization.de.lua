@@ -2,7 +2,7 @@ if GetLocale() ~= "deDE" then return end
 local L
 
 -- Lord Kazzak (Badlands)
-L = DBM:GetModLocalization("KazzakClassic")
+L = DBM:GetModLocalization("KazzakClassicVanilla")
 
 L:SetGeneralLocalization{
 	name = "Lord Kazzak"
@@ -13,7 +13,7 @@ L:SetMiscLocalization({
 })
 
 -- Azuregos (Azshara)
-L = DBM:GetModLocalization("Azuregos")
+L = DBM:GetModLocalization("AzuregosVanilla")
 
 L:SetGeneralLocalization{
 	name = "Azuregos"
@@ -24,7 +24,7 @@ L:SetMiscLocalization({
 })
 
 -- Taerar (Ashenvale)
-L = DBM:GetModLocalization("Taerar")
+L = DBM:GetModLocalization("TaerarVanilla")
 
 L:SetGeneralLocalization{
 	name = "Taerar"
@@ -35,7 +35,7 @@ L:SetMiscLocalization({
 })
 
 -- Ysondre (Feralas)
-L = DBM:GetModLocalization("Ysondre")
+L = DBM:GetModLocalization("YsondreVanilla")
 
 L:SetGeneralLocalization{
 	name = "Ysondre"
@@ -46,7 +46,7 @@ L:SetMiscLocalization({
 })
 
 -- Lethon (Hinterlands)
-L = DBM:GetModLocalization("Lethon")
+L = DBM:GetModLocalization("LethonVanilla")
 
 L:SetGeneralLocalization{
 	name = "Lethon"
@@ -57,7 +57,7 @@ L:SetMiscLocalization({
 })
 
 -- Emeriss (Duskwood)
-L = DBM:GetModLocalization("Emeriss")
+L = DBM:GetModLocalization("EmerissVanilla")
 
 L:SetGeneralLocalization{
 	name = "Emeriss"

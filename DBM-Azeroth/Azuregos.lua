@@ -1,4 +1,4 @@
-local mod	= DBM:NewMod("Azuregos", "DBM-Azeroth")
+local mod	= DBM:NewMod("AzuregosVanilla", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
