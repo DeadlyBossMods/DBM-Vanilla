@@ -1,5 +1,5 @@
 -- this file uses the texture Textures/arrow.tga. This image was created by Everaldo Coelho and is licensed under the GNU Lesser General Public License. See Textures/lgpl.txt.
-local mod	= DBM:NewMod("Thaddius", "DBM-Raids-Vanilla", 1)
+local mod	= DBM:NewMod("ThaddiusVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")

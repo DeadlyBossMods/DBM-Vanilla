@@ -2,7 +2,7 @@ if GetLocale() ~= "zhCN" then return end
 local L
 --Last update: 2020/07/03 （重新整理）
 -- Lord Kazzak (Badlands)
-L = DBM:GetModLocalization("KazzakClassic")
+L = DBM:GetModLocalization("KazzakClassicVanilla")
 
 L:SetGeneralLocalization{
 	name = "卡扎克"
@@ -13,7 +13,7 @@ L:SetMiscLocalization({
 })
 
 -- Azuregos (Azshara)
-L = DBM:GetModLocalization("Azuregos")
+L = DBM:GetModLocalization("AzuregosVanilla")
 
 L:SetGeneralLocalization{
 	name = "艾索雷葛斯"
@@ -24,7 +24,7 @@ L:SetMiscLocalization({
 })
 
 -- Taerar (Ashenvale)
-L = DBM:GetModLocalization("Taerar")
+L = DBM:GetModLocalization("TaerarVanilla")
 
 L:SetGeneralLocalization{
 	name = "泰拉尔"
@@ -35,7 +35,7 @@ L:SetMiscLocalization({
 })
 
 -- Ysondre (Feralas)
-L = DBM:GetModLocalization("Ysondre")
+L = DBM:GetModLocalization("YsondreVanilla")
 
 L:SetGeneralLocalization{
 	name = "伊森德雷"
@@ -46,7 +46,7 @@ L:SetMiscLocalization({
 })
 
 -- Lethon (Hinterlands)
-L = DBM:GetModLocalization("Lethon")
+L = DBM:GetModLocalization("LethonVanilla")
 
 L:SetGeneralLocalization{
 	name = "莱索恩"
@@ -57,7 +57,7 @@ L:SetMiscLocalization({
 })
 
 -- Emeriss (Duskwood)
-L = DBM:GetModLocalization("Emeriss")
+L = DBM:GetModLocalization("EmerissVanilla")
 
 L:SetGeneralLocalization{
 	name = "艾莫莉丝"
