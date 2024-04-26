@@ -115,7 +115,7 @@ do
 
 	-- todo: thorns
 	local playerGUID = UnitGUID("player")
-	local ShadowStorm = DBM:GetSpellInfo(26555)--Classic Note
+	local ShadowStorm = DBM:GetSpellName(26555)--Classic Note
 	function mod:SPELL_DAMAGE(_, sourceName, _, _, destGUID, _, _, _, spellId, spellName)
 		if (spellId == 26555 or spellName == ShadowStorm) and destGUID == playerGUID and self:AntiSpam(3, 3) then
 			specWarnShadowStorm:Show(sourceName)

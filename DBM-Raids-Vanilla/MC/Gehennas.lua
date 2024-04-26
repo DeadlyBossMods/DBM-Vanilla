@@ -67,7 +67,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 do
-	local RainofFire = DBM:GetSpellInfo(19717)--Classic Note
+	local RainofFire = DBM:GetSpellName(19717)--Classic Note
 	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
 		if (spellId == 19717 or spellName == RainofFire) and destGUID == UnitGUID("player") and self:AntiSpam() then
 			specWarnGTFO:Show(spellName)

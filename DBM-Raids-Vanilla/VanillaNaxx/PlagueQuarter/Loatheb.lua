@@ -87,7 +87,7 @@ function mod:OnCombatStart(delay)
 		end
 	end
 	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(29184))
+		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29184))
 		DBM.InfoFrame:Show(40, "function", updateInfoFrame, false, false)
 		DBM.InfoFrame:SetColumns(2)
 	end

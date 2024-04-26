@@ -129,7 +129,7 @@ function mod:OnCombatStart(delay)
 	timerSprocketfireCD:Start(21.4-delay)
 	timerFurnaceSurgeCD:Start(33.7-delay)--33-36
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(438735))
+		DBM.InfoFrame:SetHeader(DBM:GetSpellName(438735))
 		DBM.InfoFrame:Show(10, "playerdebuffremaining", 438735)
 	end
 end

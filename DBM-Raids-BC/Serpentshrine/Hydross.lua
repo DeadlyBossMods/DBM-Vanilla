@@ -38,7 +38,7 @@ local berserkTimer	= mod:NewBerserkTimer(600)
 
 mod:AddRangeFrameOption("10")
 
-local markOfH, markOfC = DBM:GetSpellInfo(38215), DBM:GetSpellInfo(38219)
+local markOfH, markOfC = DBM:GetSpellName(38215), DBM:GetSpellName(38219)
 local damage = {
 	[38215] = "10%", [38216] = "25%", [38217] = "50%", [38218] = "100%", [38231] = "250%", [40584] = "500%",
 	[38219] = "10%", [38220] = "25%", [38221] = "50%", [38222] = "100%", [38230] = "250%", [40583] = "500%",

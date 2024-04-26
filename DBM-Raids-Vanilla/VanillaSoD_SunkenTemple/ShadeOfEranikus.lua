@@ -54,7 +54,7 @@ mod.vb.roarCount = 0
 mod.vb.nightmareCount = 0
 mod.vb.addIcon = 8
 local castsPerGUID = {}
-local slumberName = DBM:GetSpellInfo(437301)
+local slumberName = DBM:GetSpellName(437301)
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
