@@ -46,7 +46,7 @@ function mod:OnCombatStart(delay)
 	specWarnDiscombobulation:Schedule(27.5)
 	specWarnDiscombobulation:ScheduleVoice(27.5, "carefly")
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(433251))
+		DBM.InfoFrame:SetHeader(DBM:GetSpellName(433251))
 		DBM.InfoFrame:Show(10, "playerdebuffremaining", 433251)
 	end
 end

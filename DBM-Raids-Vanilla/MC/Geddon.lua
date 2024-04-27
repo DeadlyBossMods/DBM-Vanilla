@@ -81,7 +81,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnBomb:Show(args.destName)
 		end
-	elseif args:IsSpell(19659) and self:CheckDispelFilter() then
+	elseif args:IsSpell(19659) and self:CheckDispelFilter("magic") then
 		specWarnIgnite:CombinedShow(0.3, args.destName)
 		specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
 	end
@@ -120,7 +120,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 do
-	local Inferno = DBM:GetSpellInfo(19695)--Classic Note
+	local Inferno = DBM:GetSpellName(19695)--Classic Note
 	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
 		if (spellId == 19698 or spellName == Inferno) and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
 			specWarnGTFO:Show(spellName)

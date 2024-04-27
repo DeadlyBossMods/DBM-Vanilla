@@ -42,7 +42,7 @@ mod:AddSetIconOption("BurnIcon", 46394, true, false, {1, 2, 3, 4, 5, 6, 7, 8})
 mod:AddRangeFrameOption(46394, 4)
 
 mod.vb.burnIcon = 8
-local debuffName = DBM:GetSpellInfo(46394)
+local debuffName = DBM:GetSpellName(46394)
 
 local DebuffFilter
 do

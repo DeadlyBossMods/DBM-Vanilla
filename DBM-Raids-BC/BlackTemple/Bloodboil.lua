@@ -60,7 +60,7 @@ function mod:OnCombatStart(delay)
 --	timerStrikeCD:Start(26.8-delay)
 	timerRageCD:Start(-delay)--52-58
 	if self.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(42005))
+		DBM.InfoFrame:SetHeader(DBM:GetSpellName(42005))
 		DBM.InfoFrame:Show(30, "playerdebuffstacks", 42005, 1)
 	end
 end
