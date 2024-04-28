@@ -38,7 +38,7 @@ local timerDeathCD			= mod:NewCDTimer(24.5, 40251, nil, nil, nil, 3)--24.5-40 (s
 local timerDeath			= mod:NewTargetTimer(55, 40251, nil, nil, nil, 3)
 local timerVengefulSpirit	= mod:NewTimer(60, "TimerVengefulSpirit", 40325, nil, nil, 1)
 
-mod:AddSetIconOption("CrushIcon", 40243, false, false, {1, 2, 3, 4, 5})
+mod:AddSetIconOption("CrushIcon", 40243, false, 0, {1, 2, 3, 4, 5})
 
 local CrushedTargets = {}
 mod.vb.crushIcon = 1

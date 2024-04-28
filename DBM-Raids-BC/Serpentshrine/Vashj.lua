@@ -46,7 +46,7 @@ local timerNaga			= mod:NewTimer(47.5, "TimerNaga", 2120, nil, nil, 1)
 --local timerMC			= mod:NewCDTimer(21, 38511, nil, nil, nil, 3)--21-27
 
 mod:AddRangeFrameOption(10, 38280)
-mod:AddSetIconOption("ChargeIcon", 38280, false, false, {1})
+mod:AddSetIconOption("ChargeIcon", 38280, false, 0, {1})
 --mod:AddSetIconOption("MCIcon", 38511, false, false, {2, 3})
 
 mod.vb.shieldLeft = 4

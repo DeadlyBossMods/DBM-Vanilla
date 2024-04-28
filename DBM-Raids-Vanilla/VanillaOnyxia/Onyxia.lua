@@ -53,7 +53,7 @@ local timerBreath			= mod:NewCastTimer(5, 18584, nil, nil, nil, 3)
 
 mod:AddBoolOption("SoundWTF3", true, "sound")
 mod:AddRangeFrameOption(8, 18392)
-mod:AddSetIconOption("SetIconOnFireball", 18392, true, false, {8})
+mod:AddSetIconOption("SetIconOnFireball", 18392, true, 0, {8})
 
 mod.vb.warned_preP2 = false
 mod.vb.warned_preP3 = false

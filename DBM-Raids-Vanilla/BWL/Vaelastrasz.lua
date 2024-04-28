@@ -45,7 +45,7 @@ local timerAdrenalineCD		= mod:NewCDTimer(15.7, 18173, nil, nil, nil, 3)
 local timerAdrenaline		= mod:NewTargetTimer(20, 18173, nil, nil, nil, 3)
 local timerCombatStart		= mod:NewCombatTimer(43)
 
-mod:AddSetIconOption("SetIconOnDebuffTarget2", 18173, true, false, {8, 7, 6})
+mod:AddSetIconOption("SetIconOnDebuffTarget2", 18173, true, 0, {8, 7, 6})
 
 mod.vb.debuffIcon = 8
 

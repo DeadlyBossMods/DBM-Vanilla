@@ -41,7 +41,7 @@ local timerFACD			= mod:NewCDTimer(20.7, 41001, nil, nil, nil, 3)--20-51
 local timerAura			= mod:NewTimer(15, "timerAura", 22599)
 local timerShriekCD		= mod:NewCDTimer(15.8, 40823, nil, nil, nil, 2)--15-46.9
 
-mod:AddSetIconOption("FAIcons", 41001, true, false, {1, 2, 3})
+mod:AddSetIconOption("FAIcons", 41001, true, 0, {1, 2, 3})
 mod:AddInfoFrameOption(41001, true)
 mod:AddDropdownOption("FAHelper", {"North", "South", "None"}, "North", "misc", nil, 41001)
 

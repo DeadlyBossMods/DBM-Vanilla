@@ -44,8 +44,8 @@ local timerNova				= mod:NewCastTimer(3.5, 45329, nil, false, 2)
 local berserkTimer			= mod:NewBerserkTimer(360)
 
 mod:AddRangeFrameOption(10, 45333)
-mod:AddSetIconOption("ConflagIcon", 45333, false, false, {8})
-mod:AddSetIconOption("NovaIcon", 45329, false, false, {7})
+mod:AddSetIconOption("ConflagIcon", 45333, false, 0, {8})
+mod:AddSetIconOption("NovaIcon", 45329, false, 0, {7})
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)

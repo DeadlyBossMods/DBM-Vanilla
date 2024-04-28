@@ -47,7 +47,7 @@ local timerGiantClawTentacle	= mod:NewTimer(60, "TimerGiantClawTentacle", 26391,
 local timerWeakened				= mod:NewTimer(45, "TimerWeakened", 28598)
 
 mod:AddRangeFrameOption("10")
-mod:AddSetIconOption("SetIconOnEyeBeam", 26134, true, false, {1})
+mod:AddSetIconOption("SetIconOnEyeBeam", 26134, true, 0, {1})
 mod:AddInfoFrameOption(26476, true)
 
 local firstBossMod = DBM:GetModByName("AQ40Trash")

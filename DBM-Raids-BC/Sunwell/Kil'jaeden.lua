@@ -46,7 +46,7 @@ local timerBlueOrb		= mod:NewTimer(37, "TimerBlueOrb", 45109, nil, nil, 5)
 
 local berserkTimer		= mod:NewBerserkTimer(900)
 
-mod:AddSetIconOption("BloomIcon", 45641, true, false, {4, 5, 6, 7, 8})
+mod:AddSetIconOption("BloomIcon", 45641, true, 0, {4, 5, 6, 7, 8})
 mod:AddRangeFrameOption(10, 45641)
 
 local warnBloomTargets = {}

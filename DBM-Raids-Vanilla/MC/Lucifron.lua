@@ -41,7 +41,7 @@ local timerCurseCD	= mod:NewCDTimer(20.5, 19703, nil, nil, nil, 3, nil, DBM_COMM
 local timerDoomCD	= mod:NewCDTimer(20, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--20-25
 --local timerDoom		= mod:NewCastTimer(10, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 
-mod:AddSetIconOption("SetIconOnMC", 20604, true, false, {1, 2})
+mod:AddSetIconOption("SetIconOnMC", 20604, true, 0, {1, 2})
 
 mod.vb.lastIcon = 1
 

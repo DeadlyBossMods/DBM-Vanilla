@@ -22,7 +22,7 @@ local timerRRH			= mod:NewTargetTimer(20, 30753, nil, nil, nil, 3)
 local timerRRHCD		= mod:NewNextTimer(30, 30753, nil, nil, nil, 3)
 local timerFearCD		= mod:NewNextTimer(24, 30752, nil, nil, nil, 2)
 
-mod:AddSetIconOption("RRHIcon", 30753, true, false, {8})
+mod:AddSetIconOption("RRHIcon", 30753, true, 0, {8})
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 30753 then

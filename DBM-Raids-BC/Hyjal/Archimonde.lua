@@ -29,7 +29,7 @@ local timerFearCD		= mod:NewCDTimer(41, 31970, nil, nil, nil, 2)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddSetIconOption("BurstIcon", 32014, true, false, {8})
+mod:AddSetIconOption("BurstIcon", 32014, true, 0, {8})
 mod:AddRangeFrameOption(13, 32014)
 
 function mod:BurstTarget(targetname, uId)

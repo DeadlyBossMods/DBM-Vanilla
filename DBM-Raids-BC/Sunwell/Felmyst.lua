@@ -39,8 +39,8 @@ local timerPhase			= mod:NewTimer(60, "TimerPhase", 31550, nil, nil, 6)
 
 local berserkTimer			= mod:NewBerserkTimer(600)
 
-mod:AddSetIconOption("EncapsIcon", 45665, true, false, {7})
-mod:AddSetIconOption("VaporIcon", 45402, true, false, {8})
+mod:AddSetIconOption("EncapsIcon", 45665, true, 0, {7})
+mod:AddSetIconOption("VaporIcon", 45402, true, 0, {8})
 
 mod.vb.breathCounter = 0
 
