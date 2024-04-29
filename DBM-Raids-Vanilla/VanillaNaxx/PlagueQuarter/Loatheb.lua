@@ -79,11 +79,11 @@ function mod:OnCombatStart(delay)
 
 	local startTime = GetTime()
 	table.wipe(hadCorrupted)
-	for unit in DBM:GetGroupMembers() do
-		local _, cls = UnitClass(unit)
-		local _, _, _, mapId = UnitPosition(unit)
-		if not UnitIsDeadOrGhost(unit) and mapId == 533 and (cls == "DRUID" or cls == "PALADIN" or cls == "PRIEST" or cls == "SHAMAN") then
-			hadCorrupted[UnitName(unit)] = startTime
+	for uId in DBM:GetGroupMembers() do
+		local _, cls = UnitClass(uId)
+		local _, _, _, mapId = UnitPosition(uId)
+		if not UnitIsDeadOrGhost(uId) and mapId == 533 and (cls == "DRUID" or cls == "PALADIN" or cls == "PRIEST" or cls == "SHAMAN") then
+			hadCorrupted[UnitName(uId)] = startTime
 		end
 	end
 	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
