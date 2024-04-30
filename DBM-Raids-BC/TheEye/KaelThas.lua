@@ -57,7 +57,7 @@ local timerShieldCD		= mod:NewCDTimer(60, 36815, nil, nil, nil, 4)
 local timerGravityCD	= mod:NewNextTimer(92, 35941, nil, nil, nil, 6)
 local timerGravity		= mod:NewBuffActiveTimer(32, 35941, nil, nil, nil, 6)
 
-mod:AddSetIconOption("MCIcon", 36797, true, false, {8, 7, 6})
+mod:AddSetIconOption("MCIcon", 36797, true, 0, {8, 7, 6})
 mod:AddBoolOption("GazeIcon", false)
 --mod:AddSetIconOption("GazeIcon", 38280, false, false, {1})--Problem with no auto localized spellID to use
 mod:AddRangeFrameOption(10, 37018)

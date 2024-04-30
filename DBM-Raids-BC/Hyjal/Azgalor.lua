@@ -30,7 +30,7 @@ local timerSilenceCD	= mod:NewCDTimer(16.7, 31344, nil, nil, nil, 2, nil, DBM_CO
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddSetIconOption("DoomIcon", 31347, true, false, {8})
+mod:AddSetIconOption("DoomIcon", 31347, true, 0, {8})
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)

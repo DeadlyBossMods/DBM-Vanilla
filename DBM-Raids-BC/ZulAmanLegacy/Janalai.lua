@@ -27,7 +27,7 @@ local timerBomb			= mod:NewCastTimer(12, 42630, nil, nil, nil, 3)--Cast bar?
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddSetIconOption("FlameIcon", 43140, true, false, {1})
+mod:AddSetIconOption("FlameIcon", 43140, true, 0, {1})
 
 function mod:FlameTarget(targetname, uId)
 	if not targetname then return end

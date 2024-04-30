@@ -38,7 +38,7 @@ local timerBurnCD		= mod:NewCDTimer(20, 46394, nil, nil, nil, 3)
 
 local berserkTimer		= mod:NewBerserkTimer(360)
 
-mod:AddSetIconOption("BurnIcon", 46394, true, false, {1, 2, 3, 4, 5, 6, 7, 8})
+mod:AddSetIconOption("BurnIcon", 46394, true, 0, {1, 2, 3, 4, 5, 6, 7, 8})
 mod:AddRangeFrameOption(46394, 4)
 
 mod.vb.burnIcon = 8

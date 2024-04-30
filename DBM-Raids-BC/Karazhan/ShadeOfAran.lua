@@ -36,8 +36,8 @@ local timerChains			= mod:NewTargetTimer(10, 29991, nil, nil, nil, 3, nil, DBM_C
 
 local berserkTimer			= mod:NewBerserkTimer(900)
 
-mod:AddSetIconOption("WreathIcons", 29946, true, false, {5, 6, 7, 8})
-mod:AddSetIconOption("ElementalIcons", 37053, true, true, {1, 2, 3, 4})
+mod:AddSetIconOption("WreathIcons", 29946, true, 0, {5, 6, 7, 8})
+mod:AddSetIconOption("ElementalIcons", 37053, true, 5, {1, 2, 3, 4})
 
 local WreathTargets = {}
 mod.vb.flameWreathIcon = 8

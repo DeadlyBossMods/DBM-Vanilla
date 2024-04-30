@@ -48,7 +48,7 @@ local timerBombCD		= mod:NewCDTimer(13.3, 20475, nil, nil, nil, 3)--13.3-18.3
 local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
 local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2)
 
-mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, false, {8})
+mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8})
 
 function mod:OnCombatStart(delay)
 	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first

@@ -34,7 +34,7 @@ local timerPriest		= mod:NewTimer(20, "TimerPriest", 39414, nil, nil, 1)
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddSetIconOption("WrathIcon", 42783, true, false, {8})
+mod:AddSetIconOption("WrathIcon", 42783, true, 0, {8})
 
 function mod:OnCombatStart(delay)
 	timerSplit:Start(50-delay)

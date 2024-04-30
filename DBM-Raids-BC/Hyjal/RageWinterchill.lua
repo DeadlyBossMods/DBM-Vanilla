@@ -27,7 +27,7 @@ local timerDndCD		= mod:NewCDTimer(32, 31258, nil, nil, nil, 3)--changed to 32 t
 
 local berserkTimer		= mod:NewBerserkTimer(600)
 
-mod:AddSetIconOption("IceBoltIcon", 31249, false, false, {8})
+mod:AddSetIconOption("IceBoltIcon", 31249, false, 0, {8})
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(-delay)
