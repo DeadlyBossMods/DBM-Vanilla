@@ -98,8 +98,7 @@ function mod:OnCombatStart(delay)
 		local _, cls = UnitClass(uId)
 		local _, _, _, mapId = UnitPosition(uId)
 		if not UnitIsDeadOrGhost(uId) and mapId == 533 and (cls == "DRUID" or cls == "PALADIN" or cls == "PRIEST" or cls == "SHAMAN") then
-			local unitName = DBM:GetShortServerName(DBM:GetUnitFullName(uId))
-			hadCorrupted[unitName] = startTime
+			hadCorrupted[UnitName(uId)] = startTime
 		end
 	end
 	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
