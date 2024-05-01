@@ -202,7 +202,7 @@ do
 	function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		if self:AntiSpam(3, spellId) then
 			if aura[spellId] then
-				local spellName = DBM:GetSpellName(tonumber(spellId))
+				local spellName = DBM:GetSpellName(spellId)
 				timerAura:Start(spellName)
 			elseif spellId == 40869 then--Cast event not in combat log, only applied and that can be resisted (especially on non timewalker). this ensures timer always exists
 				table.wipe(FATargets)
