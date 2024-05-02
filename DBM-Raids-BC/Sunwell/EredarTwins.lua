@@ -143,7 +143,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		else
 			warnNova:Show(target)
 		end
-		if self.Options.NovaIcon then
+		if target and self.Options.NovaIcon then
 			self:SetIcon(target, 7, 5)
 		end
 	elseif (msg == L.Conflag or msg:find(L.Conflag)) and target and self:AntiSpam(5, target..2) then
@@ -155,7 +155,7 @@ function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, _, _, _, target)
 		else
 			warnConflag:Show(target)
 		end
-		if self.Options.ConflagIcon then
+		if target and self.Options.ConflagIcon then
 			self:SetIcon(target, 8, 5)
 		end
 	end
