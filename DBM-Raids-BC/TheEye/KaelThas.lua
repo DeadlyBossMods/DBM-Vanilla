@@ -218,7 +218,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
 		else
 			warnGaze:Show(target)
 		end
-		if self.Options.GazeIcon then
+		if target and self.Options.GazeIcon then
 			self:SetIcon(target, 1, 15)
 		end
 	end
