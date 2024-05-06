@@ -126,7 +126,7 @@ local function update_vulnerability(self)
 				DBM.InfoFrame:Update()
 			end
 		end
-		if self.Options.NPAuraOnVulnerable then
+		if target and self.Options.NPAuraOnVulnerable then
 			DBM.Nameplate:Hide(true, target, 22277, 135924)
 			DBM.Nameplate:Hide(true, target, 22277, 135808)
 			DBM.Nameplate:Hide(true, target, 22277, 136006)
