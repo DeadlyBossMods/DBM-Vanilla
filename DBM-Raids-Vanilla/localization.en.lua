@@ -1267,6 +1267,15 @@ L:SetOptionLocalization({
 --  Sunken Temple  --
 ------------------
 
+--------------
+-- ST Trash --
+--------------
+L = DBM:GetModLocalization("STTrashSoD")
+
+L:SetGeneralLocalization{
+	name = "Sunken Temple Trash"
+}
+
 ---------------------------
 --  Atal'alarion  --
 ---------------------------
