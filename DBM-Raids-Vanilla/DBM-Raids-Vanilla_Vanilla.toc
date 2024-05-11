@@ -123,6 +123,7 @@ VanillaSoD_BFD\LorgusJett.lua
 VanillaSoD_BFD\TwilightLordKelris.lua
 VanillaSoD_BFD\Akumai.lua
 
+VanillaSoD_SunkenTemple\Trash.lua
 VanillaSoD_SunkenTemple\Atalalarion.lua
 VanillaSoD_SunkenTemple\FesteringRotslime.lua
 VanillaSoD_SunkenTemple\AtalaiDefenders.lua
