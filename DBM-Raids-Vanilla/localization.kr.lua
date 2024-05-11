@@ -1253,6 +1253,15 @@ L:SetOptionLocalization({
 --  Sunken Temple  --
 ------------------
 
+--------------
+-- ST Trash --
+--------------
+L = DBM:GetModLocalization("STTrashSoD")
+
+L:SetGeneralLocalization{
+	name = "가라앉은 사원 일반몹"
+}
+
 ---------------------------
 --  Atal'alarion  --
 ---------------------------
