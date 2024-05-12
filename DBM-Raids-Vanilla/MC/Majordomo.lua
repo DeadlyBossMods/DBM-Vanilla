@@ -37,7 +37,7 @@ local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, n
 local timerMagicReflect		= mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerDamageShield		= mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerTeleportCD		= mod:NewCDTimer(25, 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
-local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 function mod:OnCombatStart(delay)
 	timerTeleportCD:Start(19.4-delay)

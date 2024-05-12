@@ -18,7 +18,7 @@ mod:SetModelID(12460)
 mod:RegisterCombat("combat")
 mod.noStatistics = true
 
-local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, false)
+local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, false)
 
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
 

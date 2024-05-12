@@ -31,7 +31,8 @@ jobs:
         uses: BigWigsMods/packager@master
         if: ${{ github.event_name != 'pull_request' }}
         with:
-          args: -n "DBM-Vanilla_SoD_BC-{project-version}{classic}"
+          # Ugly hack to use a different .pkgmeta for alpha builds to work around https://github.com/BigWigsMods/packager/issues/165
+          args: -n "DBM-Vanilla_SoD-{project-version}{classic}" $(if [[ -z $(git tag --points-at HEAD) ]]; then echo "-m .pkgmeta-alpha" ; else echo "-m .pkgmeta" ; fi)
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
           GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
