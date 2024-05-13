@@ -1,8 +1,8 @@
 DBM.Test:Report[[
-Test: SoD/ST/Atalarion
+Test: SoD/ST/Atalalarion
 Mod:  DBM-Raids-Vanilla/AtalalarionSoD
 
-Registered but untriggered events:
+Findings:
 	None
 
 Unused objects:
@@ -35,9 +35,10 @@ Voice pack sounds:
 	VoicePack/movetopillar
 		Unknown trigger
 
+Icons:
+	None
+
 Event trace:
-	[ 0.00] ADDON_LOADED: DBM-Raids-Vanilla, 0
-		RegisterEvents: InCombat, SPELL_CAST_START 437503 437597
 	[ 0.00] ENCOUNTER_START: 2952, Atal'alarion, 215, 20, 0
 		StartCombat: ENCOUNTER_START
 		RegisterEvents: Regular, SPELL_CAST_START 437503 437597
@@ -61,4 +62,6 @@ Event trace:
 	[45.19] SPELL_CAST_START: [Atal'alarion: Pillars of Might] Creature-0-5208-109-4570-218624-00003BC782, Atal'alarion, 0xa48, "", nil, 0x0, 437503, Pillars of Might, 0, 0
 		ShowAnnounce: Pillars of Might (4)
 		StartTimer: 12.2, Pillars of Might (5)
+	[46.67] ENCOUNTER_END: 2952, Atal'alarion, 215, 20, 1, 0
+		EndCombat: ENCOUNTER_END
 ]]

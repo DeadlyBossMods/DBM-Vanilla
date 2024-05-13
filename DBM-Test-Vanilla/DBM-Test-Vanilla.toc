@@ -8,5 +8,5 @@
 ## LoadOnDemand: 1
 ## X-DBM-Test: true
 
-Season of Discovery/Sunken Temple/Atal'arion.lua
-Season of Discovery/Sunken Temple/Reports/Atal'arion.lua
+Season of Discovery/Sunken Temple/Atalalarion.lua
+Season of Discovery/Sunken Temple/Reports/Atalalarion.lua
