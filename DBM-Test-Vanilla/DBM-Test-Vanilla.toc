@@ -9,4 +9,6 @@
 ## X-DBM-Test: true
 
 Season of Discovery/Sunken Temple/Atalalarion.lua
+Season of Discovery/Sunken Temple/FesteringRotslime.lua
 Season of Discovery/Sunken Temple/Reports/Atalalarion.lua
+Season of Discovery/Sunken Temple/Reports/FesteringRotslime.lua

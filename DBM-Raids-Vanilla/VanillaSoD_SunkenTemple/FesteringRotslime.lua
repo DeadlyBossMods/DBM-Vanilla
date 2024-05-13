@@ -31,7 +31,7 @@ mod:RegisterEventsInCombat(
 
 
 
-local warnGunk						= mod:NewCountAnnounce(432062, 3)
+local warnGunk						= mod:NewCountAnnounce(438142, 3)
 local warnNauseousGas				= mod:NewCountAnnounce(438130, 2, nil, false, 2)
 local warnSlimeTime					= mod:NewCountAnnounce(446311, 4, nil, nil, DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.stack:format(446311))
 
