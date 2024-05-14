@@ -1241,6 +1241,15 @@ L:SetOptionLocalization({
 --  Sunken Temple  --
 ------------------
 
+--------------
+-- ST Trash --
+--------------
+L = DBM:GetModLocalization("STTrashSoD")
+
+L:SetGeneralLocalization{
+	name = "Bichos del Templo Sumergido"
+}
+
 ---------------------------
 --  Atal'alarion  --
 ---------------------------
