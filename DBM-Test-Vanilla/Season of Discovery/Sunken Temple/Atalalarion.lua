@@ -1,5 +1,5 @@
 DBM.Test:DefineTest{
-	name = "SoD/ST/Atalarion",
+	name = "SoD/ST/Atalalarion",
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
 	mod = "AtalalarionSoD",
