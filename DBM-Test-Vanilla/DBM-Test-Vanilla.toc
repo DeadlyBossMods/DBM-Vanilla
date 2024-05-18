@@ -19,6 +19,8 @@ Season of Discovery/Sunken Temple/JammalanAndOgom-OgomFirst-Wipe.lua
 Season of Discovery/Sunken Temple/JammalanAndOgom-OgomFirst-Kill.lua
 Season of Discovery/Sunken Temple/MorphazAndHazzas.lua
 Season of Discovery/Sunken Temple/ShadeOfEranikus.lua
+Season of Discovery/Sunken Temple/AvatarOfHakkar-1.lua
+Season of Discovery/Sunken Temple/AvatarOfHakkar-2.lua
 
 Season of Discovery/Sunken Temple/Reports/Atalalarion.lua
 Season of Discovery/Sunken Temple/Reports/FesteringRotslime.lua
@@ -30,3 +32,5 @@ Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-OgomFirst-Wipe.lua
 Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-OgomFirst-Kill.lua
 Season of Discovery/Sunken Temple/Reports/MorphazAndHazzas.lua
 Season of Discovery/Sunken Temple/Reports/ShadeOfEranikus.lua
+Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-1.lua
+Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-2.lua
