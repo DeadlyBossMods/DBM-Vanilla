@@ -107,7 +107,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	local spellId = args.spellId
 	if spellId == 446487 then
 		local uId = DBM:GetRaidUnitId(args.destName)
-		if self:IsTanking(uId, nil, nil, true, args.destGUID) then
+		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
 			local amount = args.amount or 1
 			warnCorruptedBreath:Show(args.destName, amount)
 		end

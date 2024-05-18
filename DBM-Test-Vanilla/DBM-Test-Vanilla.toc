@@ -12,8 +12,10 @@ Season of Discovery/Sunken Temple/Atalalarion.lua
 Season of Discovery/Sunken Temple/FesteringRotslime.lua
 Season of Discovery/Sunken Temple/AtalaiDefenders-1.lua
 Season of Discovery/Sunken Temple/AtalaiDefenders-2.lua
+Season of Discovery/Sunken Temple/MorphazAndHazzas.lua
 
 Season of Discovery/Sunken Temple/Reports/Atalalarion.lua
 Season of Discovery/Sunken Temple/Reports/FesteringRotslime.lua
 Season of Discovery/Sunken Temple/Reports/AtalaiDefenders-1.lua
 Season of Discovery/Sunken Temple/Reports/AtalaiDefenders-2.lua
+Season of Discovery/Sunken Temple/Reports/MorphazAndHazzas.lua
