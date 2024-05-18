@@ -12,7 +12,7 @@ Timers:
 	Pillars of Might (%s), time=12.20, type=cdcount, spellId=437503
 		[ 0.00] ENCOUNTER_START: 2952, Atal'alarion, 215, 20, 0
 		[ 6.30] SPELL_CAST_START: [Atal'alarion: Pillars of Might] Creature-0-5208-109-4570-218624-00003BC782, Atal'alarion, 0xa48, "", nil, 0x0, 437503, Pillars of Might, 0, 0
-			 Triggered 4x, delta times: 6.3, 13.34, 12.02, 13.53
+			 Triggered 4x, delta times: 6.30, 13.34, 12.02, 13.53
 	Demolishing Smash (%s), time=27.10, type=cdcount, spellId=437597
 		[ 0.00] ENCOUNTER_START: 2952, Atal'alarion, 215, 20, 0
 		[24.14] SPELL_CAST_START: [Atal'alarion: Demolishing Smash] Creature-0-5208-109-4570-218624-00003BC782, Atal'alarion, 0xa48, "", nil, 0x0, 437597, Demolishing Smash, 0, 0
@@ -20,7 +20,7 @@ Timers:
 Announces:
 	Pillars of Might (%s), type=count, spellId=437503
 		[ 6.30] SPELL_CAST_START: [Atal'alarion: Pillars of Might] Creature-0-5208-109-4570-218624-00003BC782, Atal'alarion, 0xa48, "", nil, 0x0, 437503, Pillars of Might, 0, 0
-			 Triggered 4x, delta times: 6.3, 13.34, 12.02, 13.53
+			 Triggered 4x, delta times: 6.30, 13.34, 12.02, 13.53
 
 Special warnings:
 	Demolishing Smash! (%s), type=count, spellId=437597

@@ -18,7 +18,7 @@ Timers:
 	Corrupted Breath, time=11.30, type=cd, spellId=446487
 		[  0.00] ENCOUNTER_START: 2958, Morphaz and Hazzas, 215, 20, 0
 		[  9.70] SPELL_CAST_SUCCESS: [Hazzas: Corrupted Breath] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 446487, Corrupted Breath, 0, 0
-			 Triggered 7x, delta times: 9.7, 21.06, 38.9, 14.58, 16.22, 17.78, 19.86
+			 Triggered 7x, delta times: 9.70, 21.06, 38.90, 14.58, 16.22, 17.78, 19.86
 		[ 38.87] SPELL_CAST_START: [Hazzas: Lucid Dreaming] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 445235, Lucid Dreaming, 0, 0
 		[142.51] SPELL_CAST_START: [Hazzas: Lucid Dreaming] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 449422, Lucid Dreaming, 0, 0
 
@@ -28,7 +28,7 @@ Announces:
 			 Triggered 8x, delta times: 12.95, 19.43, 27.57, 4.86, 21.05, 16.21, 17.79, 12.94
 	Corrupted Breath on >%s< (%d), type=stack, spellId=446487
 		[  9.70] SPELL_AURA_APPLIED: [Hazzas->Simplyorc: Corrupted Breath] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 446487, Corrupted Breath, 0, DEBUFF, 0
-			 Triggered 4x, delta times: 9.7, 21.06, 38.9, 68.46
+			 Triggered 4x, delta times: 9.70, 21.06, 38.90, 68.46
 		[ 84.24] SPELL_AURA_APPLIED_DOSE: [Hazzas->Simplyorc: Corrupted Breath] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 446487, Corrupted Breath, 0, DEBUFF, 2, 0
 		[100.47] SPELL_AURA_APPLIED: [Hazzas->Mafakacoil: Corrupted Breath] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 446487, Corrupted Breath, 0, DEBUFF, 0
 		[118.25] SPELL_AURA_APPLIED_DOSE: [Hazzas->Mafakacoil: Corrupted Breath] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 446487, Corrupted Breath, 0, DEBUFF, 2, 0

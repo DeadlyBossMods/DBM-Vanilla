@@ -5,7 +5,7 @@ DBM.Test:DefineTest{
 	mod = "ShadeofEranikusSoD",
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
 	playerName = "Simplyorc",
-	-- Warning: log seems to be created by player Tandanu, you provided player Simplyorc on CLI, this mismatch can mess with flags and targets
+	-- Warning: log was created by player Tandanu, but player Simplyorc was given on the CLI for reconstructions, this can potentially cause problems (but is usually fine)
 	log = {
 		{0.00, "ENCOUNTER_START", 2959, "Shade of Eranikus", 215, 20},
 		{0.01, "IsEncounterInProgress()", true},

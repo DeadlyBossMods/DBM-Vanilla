@@ -28,7 +28,7 @@ Timers:
 		[216.97] SPELL_CAST_START: [Loro: Demoralizing Shout] Creature-0-5250-109-10825-221834-0000200B7C, Loro, 0xa48, "", nil, 0x0, 23511, Demoralizing Shout, 0, 0
 
 Announces:
-	%s, type=stagechange, spellId=0
+	%s, type=stagechange, spellId=<none>
 		[ 28.68] SPELL_CAST_SUCCESS: [Zul'Lor: Summon Zul'Lor] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, "", nil, 0x0, 444962, Summon Zul'Lor, 0, 0
 		[ 56.47] SPELL_CAST_SUCCESS: [Mijan: Summon Mijan] Creature-0-5250-109-10825-218868-00001FFD61, Mijan, 0xa48, "", nil, 0x0, 444963, Summon Mijan, 0, 0
 		[ 90.51] SPELL_CAST_SUCCESS: [Hukku: Summon Hukku] Creature-0-5250-109-10825-218922-00001FFD61, Hukku, 0xa48, "", nil, 0x0, 444961, Summon Hukku, 0, 0
@@ -41,7 +41,7 @@ Announces:
 	Healing Ward, type=spell, spellId=438335
 		[ 46.48] SPELL_CAST_START: [Mijan: Healing Ward] Creature-0-5250-109-10825-218868-00001FFD61, Mijan, 0xa48, "", nil, 0x0, 438335, Healing Ward, 0, 0
 		[ 65.11] SPELL_CAST_START: [Mijan: Healing Ward] Creature-0-5250-109-10825-221835-0000200AEC, Mijan, 0xa48, "", nil, 0x0, 438335, Healing Ward, 0, 0
-			 Triggered 6x, delta times: 65.11, 37.22, 22.63, 12.96, 55.08, 17.8
+			 Triggered 6x, delta times: 65.11, 37.22, 22.63, 12.96, 55.08, 17.80
 	Fervor faded, type=fades, spellId=445284
 		[124.34] SPELL_AURA_REMOVED: [Gasher->Gasher: Fervor] Creature-0-5250-109-10825-221637-00001FFD61, Gasher, 0xa48, Creature-0-5250-109-10825-221637-00001FFD61, Gasher, 0xa48, 445284, Fervor, 0, BUFF, 0
 			 Triggered 2x, delta times: 124.34, 16.83
@@ -66,7 +66,7 @@ Announces:
 		[  5.98] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
 			 Triggered 2x, delta times: 5.98, 12.15
 		[ 33.90] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5250-109-10825-221837-0000200AD0, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
-			 Triggered 5x, delta times: 33.9, 19.87, 6.07, 60.28, 9.69
+			 Triggered 5x, delta times: 33.90, 19.87, 6.07, 60.28, 9.69
 	Charge, type=spell, spellId=446369
 		[ 11.66] SPELL_CAST_SUCCESS: [Zul'Lor->Camie: Charge] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, Player-5826-01FA7B12, Camie, 0x512, 446369, Charge, 0, 0
 		[ 22.99] SPELL_CAST_SUCCESS: [Zul'Lor->Krashnakh: Charge] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, Player-5826-01FE8271, Krashnakh, 0x512, 446369, Charge, 0, 0
@@ -82,7 +82,7 @@ Special warnings:
 	Atal'ai Serpent Totem - switch targets, type=switch, spellId=445912
 		[ 56.20] SPELL_CAST_SUCCESS: [Mijan: Atal'ai Serpent Totem] Creature-0-5250-109-10825-218868-00001FFD61, Mijan, 0xa48, "", nil, 0x0, 445912, Atal'ai Serpent Totem, 0, 0
 		[ 63.07] SPELL_CAST_SUCCESS: [Mijan: Atal'ai Serpent Totem] Creature-0-5250-109-10825-221835-0000200AEC, Mijan, 0xa48, "", nil, 0x0, 445912, Atal'ai Serpent Totem, 0, 0
-			 Triggered 5x, delta times: 63.07, 34.4, 35.6, 34.02, 63.12
+			 Triggered 5x, delta times: 63.07, 34.40, 35.60, 34.02, 63.12
 	Chain Lightning - interrupt >%s<!, type=interrupt, spellId=446338
 		[203.38] SPELL_CAST_START: [Zolo: Chain Lightning] Creature-0-5250-109-10825-221639-00001FFD61, Zolo, 0xa48, "", nil, 0x0, 446338, Chain Lightning, 0, 0
 			 Triggered 4x, delta times: 203.38, 6.62, 16.16, 9.68
@@ -98,7 +98,7 @@ Special warnings:
 		[ 11.67] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
 			 Triggered 2x, delta times: 11.67, 11.34
 		[ 38.77] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5250-109-10825-221837-0000200AD0, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
-			 Triggered 4x, delta times: 38.77, 10.54, 61.9, 26.29
+			 Triggered 4x, delta times: 38.77, 10.54, 61.90, 26.29
 
 Yells:
 	None
@@ -124,7 +124,7 @@ Voice pack sounds:
 		[ 11.67] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
 			 Triggered 2x, delta times: 11.67, 11.34
 		[ 38.77] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5250-109-10825-221837-0000200AD0, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
-			 Triggered 4x, delta times: 38.77, 10.54, 61.9, 26.29
+			 Triggered 4x, delta times: 38.77, 10.54, 61.90, 26.29
 
 Icons:
 	Icon 1, target=Creature-0-5250-109-10825-221837-0000200AD0, scanMethod=nil
@@ -141,7 +141,7 @@ Icons:
 Event trace:
 	[  0.00] ENCOUNTER_START: 2954, Atal'ai Defenders, 215, 20, 0
 		StartCombat: ENCOUNTER_START
-		RegisterEvents: Regular, SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361 438335, SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964, SPELL_AURA_APPLIED 446354 445284 438294, SPELL_AURA_APPLIED_DOSE 445284, SPELL_AURA_REMOVED 445284 438294, SPELL_SUMMON 444962 444963 444964 444747 444960 444961
+		RegisterEvents: Regular, SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361 438335, SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964, SPELL_AURA_APPLIED 446354 438294, SPELL_AURA_APPLIED_DOSE 445284, SPELL_AURA_REMOVED 445284 438294, SPELL_SUMMON 444962 444963 444964 444747 444960 444961
 	[  5.98] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
 		ShowAnnounce: Frailty
 	[ 11.66] SPELL_CAST_SUCCESS: [Zul'Lor->Camie: Charge] Creature-0-5250-109-10825-221640-00001FFD61, Zul'Lor, 0xa48, Player-5826-01FA7B12, Camie, 0x512, 446369, Charge, 0, 0
