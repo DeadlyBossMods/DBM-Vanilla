@@ -342,12 +342,12 @@ Event trace:
 		StartTimer: 17.3, Holy Nova
 	[195.60] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
-	Unknown trigger
-		ShowAnnounce: Shadow Sermon: Pain on Elemento
 	[198.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 		ShowSpecialWarning: Psychic Scream!
 		PlaySound: VoicePack/fearsoon
 		StartTimer: 43.7, Psychic Scream
+	Unknown trigger
+		ShowAnnounce: Shadow Sermon: Pain on Elemento
 	[200.47] ENCOUNTER_END: 2957, Jammal'an and Ogom, 215, 20, 0, 0
 		EndCombat: ENCOUNTER_END
 ]]
