@@ -69,7 +69,7 @@ local timerDivineStorm				= mod:NewCDTimer(32.4, 437920, nil, nil, nil, 3)
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
-	timerHolyFireCD:Start(6-delay)
+	timerHolyFireCD:Start(7.5-delay)
 	timerMortalLashCD:Start(6-delay)
 	timerHolyNovaCD:Start(8-delay)
 	timerAgonizingWeaknessCD:Start(12.5-delay)
@@ -103,7 +103,7 @@ function mod:SPELL_CAST_START(args)
 			timerPsychicScreamCD:Start(22.6)
 			timerPWSCD:Start(25.4)
 			timerMassPenanceCD:Start(28.7)
-		elseif args:IsSpell(437951) then -- Ogam casting
+		elseif args:IsSpell(437951) then -- Ogom casting
 			-- "<291.25 20:19:59> [CLEU] SPELL_CAST_START#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437951#Eating...#nil#nil",
 			-- "<322.06 20:20:29> [CLEU] SPELL_CAST_START#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437915#Hammers of Justice#nil#nil",
 			-- "<326.06 20:20:33> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5209-109-15379-218718-000016C225#Ogom the Wretched##nil#437915#Hammers of Justice#nil#nil",
@@ -151,11 +151,11 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args.spellId == 437809 then
-		warnHolyFire:CombinedShow(0.3, args.destName)--On multiple targets?
+		warnHolyFire:PreciseShow(5, args.destName)
 	elseif args.spellId == 437847 then
 		warnMortalLash:Show(args.destName)
 	elseif args.spellId == 437927 then
-		warnShadowSermonPain:CombinedShow(0.3, args.destName)--On multiple targets?
+		warnShadowSermonPain:PreciseShow(10, args.destName)
 	elseif args.spellId == 437930 then
 		if not self.Options[specWarnPowerWordShieldPurge.option] then
 			warnPowerWordShield:Show(args.destName)

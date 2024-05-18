@@ -14,6 +14,9 @@ Season of Discovery/Sunken Temple/FesteringRotslime.lua
 Season of Discovery/Sunken Temple/AtalaiDefenders-1.lua
 Season of Discovery/Sunken Temple/AtalaiDefenders-2.lua
 Season of Discovery/Sunken Temple/DreamscytheAndWeaver.lua
+Season of Discovery/Sunken Temple/JammalanAndOgom-JammalanFirst.lua
+Season of Discovery/Sunken Temple/JammalanAndOgom-OgomFirst-Wipe.lua
+Season of Discovery/Sunken Temple/JammalanAndOgom-OgomFirst-Kill.lua
 Season of Discovery/Sunken Temple/MorphazAndHazzas.lua
 
 Season of Discovery/Sunken Temple/Reports/Atalalarion.lua
@@ -21,4 +24,7 @@ Season of Discovery/Sunken Temple/Reports/FesteringRotslime.lua
 Season of Discovery/Sunken Temple/Reports/AtalaiDefenders-1.lua
 Season of Discovery/Sunken Temple/Reports/AtalaiDefenders-2.lua
 Season of Discovery/Sunken Temple/Reports/DreamscytheAndWeaver.lua
+Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-JammalanFirst.lua
+Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-OgomFirst-Wipe.lua
+Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-OgomFirst-Kill.lua
 Season of Discovery/Sunken Temple/Reports/MorphazAndHazzas.lua
