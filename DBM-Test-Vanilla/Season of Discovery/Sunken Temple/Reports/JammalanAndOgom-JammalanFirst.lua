@@ -35,12 +35,12 @@ Timers:
 	Holy Nova, time=17.30, type=cd, spellId=437817
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  8.26] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
-			 Triggered 4x, delta times: 8.26, 18.84, 18.4, 19.45
+			 Triggered 4x, delta times: 8.26, 18.84, 18.40, 19.45
 		[ 66.59] UNIT_DIED: [->Jammal'an the Prophet] "", nil, 0x0, Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, -1, false, 0, 0
 	Mortal Lash, time=25.40, type=cd, spellId=437847
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  6.64] SPELL_CAST_SUCCESS: [Ogom the Wretched->Simplyorc: Mortal Lash] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 437847, Mortal Lash, 0, 0
-			 Triggered 2x, delta times: 6.64, 25.9
+			 Triggered 2x, delta times: 6.64, 25.90
 		[ 58.48] SPELL_CAST_SUCCESS: [Ogom the Wretched->Mafakacoil: Mortal Lash] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 437847, Mortal Lash, 0, 0
 		[ 66.59] SPELL_CAST_START: [Ogom the Wretched: Eating...] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437951, Eating..., 0, 0
 	Agonizing Weakness, time=27.10, type=cd, spellId=437868
@@ -51,7 +51,7 @@ Timers:
 	Consecration, time=15.80, type=cd, spellId=437884
 		[ 66.59] SPELL_CAST_START: [Ogom the Wretched: Eating...] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437951, Eating..., 0, 0
 		[ 79.55] SPELL_CAST_SUCCESS: [Ogom the Wretched: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437884, Consecration, 0, 0
-			 Triggered 5x, delta times: 79.55, 16.16, 16.2, 16.16, 16.17
+			 Triggered 5x, delta times: 79.55, 16.16, 16.20, 16.16, 16.17
 	Hammers of Justice, time=35.00, type=next, spellId=437915
 		[ 66.59] SPELL_CAST_START: [Ogom the Wretched: Eating...] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437951, Eating..., 0, 0
 		[ 97.33] SPELL_CAST_START: [Ogom the Wretched: Hammers of Justice] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437915, Hammers of Justice, 0, 0
@@ -74,14 +74,14 @@ Announces:
 		[ 49.74] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Shabbyx: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, Player-5826-02751148, Shabbyx, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
 	Mortal Lash on >%s<, type=target, spellId=437847
 		[  6.64] SPELL_AURA_APPLIED: [Ogom the Wretched->Simplyorc: Mortal Lash] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 437847, Mortal Lash, 0, DEBUFF, 0
-			 Triggered 2x, delta times: 6.64, 25.9
+			 Triggered 2x, delta times: 6.64, 25.90
 		[ 58.48] SPELL_AURA_APPLIED: [Ogom the Wretched->Mafakacoil: Mortal Lash] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 437847, Mortal Lash, 0, DEBUFF, 0
 	Agonizing Weakness, type=spell, spellId=437868
 		[ 12.68] SPELL_CAST_START: [Ogom the Wretched: Agonizing Weakness] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437868, Agonizing Weakness, 0, 0
 			 Triggered 2x, delta times: 12.68, 27.97
 	Consecration, type=spell, spellId=437884
 		[ 79.55] SPELL_CAST_SUCCESS: [Ogom the Wretched: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437884, Consecration, 0, 0
-			 Triggered 5x, delta times: 79.55, 16.16, 16.2, 16.16, 16.17
+			 Triggered 5x, delta times: 79.55, 16.16, 16.20, 16.16, 16.17
 	Casting Hammers of Justice: 4.0 sec, type=cast, spellId=437915
 		[ 97.33] SPELL_CAST_START: [Ogom the Wretched: Hammers of Justice] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437915, Hammers of Justice, 0, 0
 			 Triggered 2x, delta times: 97.33, 34.06
@@ -95,11 +95,11 @@ Special warnings:
 			 Triggered 11x, delta times: 3.42, 7.65, 4.83, 8.54, 0.66, 5.82, 4.88, 4.85, 9.71, 6.49, 4.87
 	Holy Nova - dodge attack, type=dodge, spellId=437817
 		[  8.26] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
-			 Triggered 4x, delta times: 8.26, 18.84, 18.4, 19.45
+			 Triggered 4x, delta times: 8.26, 18.84, 18.40, 19.45
 	%s damage - move away, type=gtfo, spellId=437884
-		[ 81.54] SPELL_MISSED: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
-		[ 89.56] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
-			 Triggered 3x, delta times: 89.56, 14.18, 4
+		[ 81.54] SPELL_MISSED: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
+		[ 89.56] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
+			 Triggered 3x, delta times: 89.56, 14.18, 4.00
 
 Yells:
 	None
@@ -111,12 +111,12 @@ Voice pack sounds:
 	VoicePack/ptwo
 		[ 66.59] SPELL_CAST_START: [Ogom the Wretched: Eating...] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437951, Eating..., 0, 0
 	VoicePack/watchfeet
-		[ 81.54] SPELL_MISSED: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
-		[ 89.56] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
-			 Triggered 3x, delta times: 89.56, 14.18, 4
+		[ 81.54] SPELL_MISSED: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
+		[ 89.56] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
+			 Triggered 3x, delta times: 89.56, 14.18, 4.00
 	VoicePack/watchstep
 		[  8.26] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
-			 Triggered 4x, delta times: 8.26, 18.84, 18.4, 19.45
+			 Triggered 4x, delta times: 8.26, 18.84, 18.40, 19.45
 
 Icons:
 	None
@@ -223,7 +223,7 @@ Event trace:
 	[ 79.55] SPELL_CAST_SUCCESS: [Ogom the Wretched: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437884, Consecration, 0, 0
 		StartTimer: 15.8, Consecration
 		ShowAnnounce: Consecration
-	[ 81.54] SPELL_MISSED: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
+	[ 81.54] SPELL_MISSED: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
 		AntiSpam: 1
 		ShowSpecialWarning: Consecration damage - move away
 		PlaySound: VoicePack/watchfeet
@@ -232,7 +232,7 @@ Event trace:
 		UpdateTimer: Timer437920cd, 30.9, 32.4
 	[ 84.27] SPELL_CAST_SUCCESS: [Ogom the Wretched: Divine Storm] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437920, Divine Storm, 0, 0
 		StartTimer: 32.4, Divine Storm
-	[ 89.56] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
+	[ 89.56] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
 		AntiSpam: 1
 			Filtered: 2x SPELL_DAMAGE at 90.57, 91.56
 		ShowSpecialWarning: Consecration damage - move away
@@ -245,11 +245,11 @@ Event trace:
 		UpdateTimer: Timer437915next, 31, 35
 	[101.35] SPELL_CAST_SUCCESS: [Ogom the Wretched: Hammers of Justice] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437915, Hammers of Justice, 0, 0
 		StartTimer: 35, Hammers of Justice
-	[103.74] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
+	[103.74] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
 		AntiSpam: 1
 		ShowSpecialWarning: Consecration damage - move away
 		PlaySound: VoicePack/watchfeet
-	[107.74] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x512, 437887, Consecration, 0, 0
+	[107.74] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
 		AntiSpam: 1
 			Filtered: 3x SPELL_DAMAGE at 108.72, 109.73, 110.72
 		ShowSpecialWarning: Consecration damage - move away

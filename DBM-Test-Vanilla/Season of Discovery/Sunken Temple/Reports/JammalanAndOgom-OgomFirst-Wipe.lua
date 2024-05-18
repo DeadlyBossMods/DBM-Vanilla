@@ -31,17 +31,17 @@ Timers:
 	Holy Fire, time=13.40, type=cd, spellId=437809
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  7.82] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
-			 Triggered 6x, delta times: 7.82, 13.31, 14.2, 13.38, 17.41, 13.31
+			 Triggered 6x, delta times: 7.82, 13.31, 14.20, 13.38, 17.41, 13.31
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 	Holy Nova, time=17.30, type=cd, spellId=437817
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
-			 Triggered 10x, delta times: 9.42, 17.8, 18.23, 17.82, 17.38, 26.32, 17.42, 19.4, 22.67, 21.43
+			 Triggered 10x, delta times: 9.42, 17.80, 18.23, 17.82, 17.38, 26.32, 17.42, 19.40, 22.67, 21.43
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 	Mortal Lash, time=25.40, type=cd, spellId=437847
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  6.19] SPELL_CAST_SUCCESS: [Ogom the Wretched->Schamuhne: Mortal Lash] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, Player-5826-023E0641, Schamuhne, 0x512, 437847, Mortal Lash, 0, 0
-			 Triggered 4x, delta times: 6.19, 25.9, 25.94, 25.77
+			 Triggered 4x, delta times: 6.19, 25.90, 25.94, 25.77
 		[ 85.52] UNIT_DIED: [->Ogom the Wretched] "", nil, 0x0, Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, -1, false, 0, 0
 	Agonizing Weakness, time=27.10, type=cd, spellId=437868
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
@@ -51,7 +51,7 @@ Timers:
 	Mass Penance, time=21.00, type=cd, spellId=437921
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[118.30] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
-			 Triggered 4x, delta times: 118.3, 21.03, 22.69, 21.02
+			 Triggered 4x, delta times: 118.30, 21.03, 22.69, 21.02
 	Shadow Sermon: Pain, time=22.20, type=cd, spellId=437927
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[104.97] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
@@ -59,7 +59,7 @@ Timers:
 	Psychic Scream, time=43.70, type=cd, spellId=437928
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[111.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
-			 Triggered 3x, delta times: 111.83, 43.7, 43.3
+			 Triggered 3x, delta times: 111.83, 43.70, 43.30
 	Power Word: Shield, time=15.80, type=cd, spellId=437930
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[115.08] SPELL_CAST_SUCCESS: [Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437930, Power Word: Shield, 0, 0
@@ -90,16 +90,16 @@ Announces:
 Special warnings:
 	Smite - interrupt >%s<!, type=interrupt, spellId=437805
 		[  4.59] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
-			 Triggered 13x, delta times: 4.59, 8.47, 6.47, 4.84, 4.87, 7.71, 4.87, 8.5, 4.88, 4.83, 8.11, 6.44, 8.11
+			 Triggered 13x, delta times: 4.59, 8.47, 6.47, 4.84, 4.87, 7.71, 4.87, 8.50, 4.88, 4.83, 8.11, 6.44, 8.11
 	Holy Nova - dodge attack, type=dodge, spellId=437817
 		[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
-			 Triggered 10x, delta times: 9.42, 17.8, 18.23, 17.82, 17.38, 26.32, 17.42, 19.4, 22.67, 21.43
+			 Triggered 10x, delta times: 9.42, 17.80, 18.23, 17.82, 17.38, 26.32, 17.42, 19.40, 22.67, 21.43
 	Mass Penance - dodge attack, type=dodge, spellId=437921
 		[118.30] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
-			 Triggered 4x, delta times: 118.3, 21.03, 22.69, 21.02
+			 Triggered 4x, delta times: 118.30, 21.03, 22.69, 21.02
 	Psychic Scream!, type=spell, spellId=437928
 		[111.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
-			 Triggered 3x, delta times: 111.83, 43.7, 43.3
+			 Triggered 3x, delta times: 111.83, 43.70, 43.30
 	Power Word: Shield on >%s< - dispel now, type=dispel, spellId=437930
 		[115.08] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, 437930, Power Word: Shield, 0, BUFF, 0
 			 Triggered 5x, delta times: 115.08, 16.18, 15.78, 19.42, 21.43
@@ -113,17 +113,17 @@ Voice pack sounds:
 			 Triggered 5x, delta times: 115.08, 16.18, 15.78, 19.42, 21.43
 	VoicePack/fearsoon
 		[111.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
-			 Triggered 3x, delta times: 111.83, 43.7, 43.3
+			 Triggered 3x, delta times: 111.83, 43.70, 43.30
 	VoicePack/kickcast
 		[  4.59] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
-			 Triggered 13x, delta times: 4.59, 8.47, 6.47, 4.84, 4.87, 7.71, 4.87, 8.5, 4.88, 4.83, 8.11, 6.44, 8.11
+			 Triggered 13x, delta times: 4.59, 8.47, 6.47, 4.84, 4.87, 7.71, 4.87, 8.50, 4.88, 4.83, 8.11, 6.44, 8.11
 	VoicePack/ptwo
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 	VoicePack/watchstep
 		[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
-			 Triggered 10x, delta times: 9.42, 17.8, 18.23, 17.82, 17.38, 26.32, 17.42, 19.4, 22.67, 21.43
+			 Triggered 10x, delta times: 9.42, 17.80, 18.23, 17.82, 17.38, 26.32, 17.42, 19.40, 22.67, 21.43
 		[118.30] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
-			 Triggered 4x, delta times: 118.3, 21.03, 22.69, 21.02
+			 Triggered 4x, delta times: 118.30, 21.03, 22.69, 21.02
 
 Icons:
 	None
