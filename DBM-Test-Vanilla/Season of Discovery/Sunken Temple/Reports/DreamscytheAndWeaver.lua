@@ -23,17 +23,20 @@ Timers:
 		[113.29] SPELL_CAST_START: [Dreamscythe: Wing Buffet] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 443766, Wing Buffet, 0, 0
 
 Announces:
-	%s, type=stagechange, spellId=0
+	%s, type=stagechange, spellId=<none>
 		[ 25.88] SPELL_AURA_APPLIED: [Dreamscythe->Dreamscythe: Emerald Ward] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, 443302, Emerald Ward, 0, BUFF, 0
 		[ 58.26] SPELL_AURA_REMOVED: [Dreamscythe->Dreamscythe: Emerald Ward] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, 443302, Emerald Ward, 0, BUFF, 0
 	Wing Flap, type=spell, spellId=442620
 		[  8.35] SPELL_CAST_SUCCESS: [Dreamscythe: Wing Flap] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 442620, Wing Flap, 0, 0
 			 Triggered 3x, delta times: 8.35, 57.98, 19.46
 		[ 25.90] SPELL_CAST_SUCCESS: [Weaver: Wing Flap] Creature-0-5208-109-4570-220864-00003BD44E, Weaver, 0xa48, "", nil, 0x0, 442620, Wing Flap, 0, 0
-			 Triggered 4x, delta times: 25.9, 21.03, 51.8, 19.4
+			 Triggered 4x, delta times: 25.90, 21.03, 51.80, 19.40
 	Acid Breath on >%s< (%d), type=stack, spellId=442622
 		[  3.23] SPELL_AURA_APPLIED: [Dreamscythe->Simplyorc: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 442622, Acid Breath, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 3.23, 66.36
+		[ 10.37] SPELL_AURA_APPLIED: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 0
+		[ 48.55] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 2, 0
+			 Triggered 5x, delta times: 48.55, 9.71, 22.67, 22.65, 1.60
 		[ 80.93] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Simplyorc: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 442622, Acid Breath, 0, DEBUFF, 2, 0
 			 Triggered 2x, delta times: 80.93, 22.65
 
@@ -71,6 +74,8 @@ Event trace:
 		ShowAnnounce: Acid Breath on Simplyorc (1)
 	[  8.35] SPELL_CAST_SUCCESS: [Dreamscythe: Wing Flap] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 442620, Wing Flap, 0, 0
 		ShowAnnounce: Wing Flap
+	[ 10.37] SPELL_AURA_APPLIED: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 0
+		ShowAnnounce: Acid Breath on Mafakacoil (1)
 	[ 19.41] SPELL_CAST_START: [Dreamscythe: Wing Buffet] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 443793, Wing Buffet, 0, 0
 		AntiSpam: 1
 		ShowSpecialWarning: Wing Buffet!
@@ -90,10 +95,14 @@ Event trace:
 		StartTimer: 22.6, Wing Buffet
 	[ 46.93] SPELL_CAST_SUCCESS: [Weaver: Wing Flap] Creature-0-5208-109-4570-220864-00003BD44E, Weaver, 0xa48, "", nil, 0x0, 442620, Wing Flap, 0, 0
 		ShowAnnounce: Wing Flap
+	[ 48.55] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 2, 0
+		ShowAnnounce: Acid Breath on Mafakacoil (2)
 	[ 58.26] SPELL_AURA_REMOVED: [Dreamscythe->Dreamscythe: Emerald Ward] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, 443302, Emerald Ward, 0, BUFF, 0
 		ShowAnnounce: Stage 3
 		PlaySound: VoicePack/pthree
 		StartTimer: 3, Wing Buffet
+	[ 58.26] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 3, 0
+		ShowAnnounce: Acid Breath on Mafakacoil (3)
 	[ 63.10] SPELL_CAST_START: [Dreamscythe: Wing Buffet] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 443793, Wing Buffet, 0, 0
 		AntiSpam: 1
 			Filtered: 1x SPELL_CAST_START at 63.1
@@ -106,6 +115,8 @@ Event trace:
 		ShowAnnounce: Acid Breath on Simplyorc (1)
 	[ 80.93] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Simplyorc: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 442622, Acid Breath, 0, DEBUFF, 2, 0
 		ShowAnnounce: Acid Breath on Simplyorc (2)
+	[ 80.93] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 4, 0
+		ShowAnnounce: Acid Breath on Mafakacoil (4)
 	[ 85.79] SPELL_CAST_SUCCESS: [Dreamscythe: Wing Flap] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 442620, Wing Flap, 0, 0
 		ShowAnnounce: Wing Flap
 	[ 85.79] SPELL_CAST_START: [Dreamscythe: Wing Buffet] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 443793, Wing Buffet, 0, 0
@@ -118,6 +129,10 @@ Event trace:
 		ShowAnnounce: Wing Flap
 	[103.58] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Simplyorc: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 442622, Acid Breath, 0, DEBUFF, 3, 0
 		ShowAnnounce: Acid Breath on Simplyorc (3)
+	[103.58] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 5, 0
+		ShowAnnounce: Acid Breath on Mafakacoil (5)
+	[105.18] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 6, 0
+		ShowAnnounce: Acid Breath on Mafakacoil (6)
 	[113.29] SPELL_CAST_START: [Dreamscythe: Wing Buffet] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 443766, Wing Buffet, 0, 0
 		AntiSpam: 1
 			Filtered: 1x SPELL_CAST_START at 113.29
