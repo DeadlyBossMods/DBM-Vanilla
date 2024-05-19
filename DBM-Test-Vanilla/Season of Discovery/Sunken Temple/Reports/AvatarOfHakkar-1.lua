@@ -171,7 +171,7 @@ Event trace:
 		PlaySound: VoicePack/watchfeet
 	[ 60.41] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (1)
-		StartTimer: 8, Blood Nova (2)
+		StartTimer: 8.0, Blood Nova (2)
 	[ 65.27] SPELL_CAST_START: [Avatar of Hakkar: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444039, Insanity, 0, 0
 		StartTimer: 27.5, Insanity (2)
 	[ 66.79] SPELL_AURA_APPLIED: [Avatar of Hakkar->Stahlsand: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02229CFC, Stahlsand, 0x512, 444039, Insanity, 0, BUFF, 0
@@ -180,20 +180,20 @@ Event trace:
 		StartTimer: 16.2, Corrupted Blood (2)
 	[ 70.07] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (2)
-		StartTimer: 8, Blood Nova (3)
+		StartTimer: 8.0, Blood Nova (3)
 	[ 70.72] SPELL_AURA_APPLIED: [Avatar of Hakkar->Vivix: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-021B5C9D, Vivix, 0x512, 444255, Corrupted Blood, 0, DEBUFF, 0
 		ShowAnnounce: Corrupted Blood on Mazl, Vivix
 	[ 71.75] SPELL_CAST_START: [Avatar of Hakkar: Curse of Tongues] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444046, Curse of Tongues, 0, 0
 		StartTimer: 32.3, Curse of Tongues (2)
 	[ 76.61] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (3)
-		StartTimer: 8, Blood Nova (4)
+		StartTimer: 8.0, Blood Nova (4)
 	[ 78.11] SPELL_CAST_START: [Avatar of Hakkar: Drain Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444132, Drain Blood, 0, 0
 		ShowAnnounce: Drain Blood (1)
-		StartTimer: 34, Drain Blood (2)
+		StartTimer: 34.0, Drain Blood (2)
 	[ 83.22] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (4)
-		StartTimer: 8, Blood Nova (5)
+		StartTimer: 8.0, Blood Nova (5)
 	Unknown trigger
 		ShowAnnounce: Skeletal on Mazl, Simplyorc, Vivix
 	[ 84.70] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
@@ -202,14 +202,14 @@ Event trace:
 		ShowAnnounce: Corrupted Blood on Shabbyx, Snuqz
 	[ 91.17] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (5)
-		StartTimer: 8, Blood Nova (6)
+		StartTimer: 8.0, Blood Nova (6)
 	[ 92.77] SPELL_CAST_START: [Avatar of Hakkar: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444039, Insanity, 0, 0
 		StartTimer: 27.5, Insanity (3)
 	[ 94.29] SPELL_AURA_APPLIED: [Avatar of Hakkar->Shabbyx: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02751148, Shabbyx, 0x512, 444039, Insanity, 0, BUFF, 0
 		ShowAnnounce: Insanity on Shabbyx
 	[ 99.26] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (6)
-		StartTimer: 8, Blood Nova (7)
+		StartTimer: 8.0, Blood Nova (7)
 	[100.86] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
 		StartTimer: 16.2, Corrupted Blood (4)
 	Unknown trigger
@@ -220,13 +220,13 @@ Event trace:
 		ShowAnnounce: Curse of Tongues on Simplyorc
 	[107.34] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (7)
-		StartTimer: 8, Blood Nova (8)
+		StartTimer: 8.0, Blood Nova (8)
 	[112.17] SPELL_CAST_START: [Avatar of Hakkar: Drain Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444132, Drain Blood, 0, 0
 		ShowAnnounce: Drain Blood (2)
-		StartTimer: 34, Drain Blood (3)
+		StartTimer: 34.0, Drain Blood (3)
 	[116.59] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (8)
-		StartTimer: 8, Blood Nova (9)
+		StartTimer: 8.0, Blood Nova (9)
 	Unknown trigger
 		ShowAnnounce: Skeletal on Simplyorc, Snuqz
 	[118.63] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
@@ -239,10 +239,10 @@ Event trace:
 		ShowAnnounce: Corrupted Blood on Discokeks
 	[123.50] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (9)
-		StartTimer: 8, Blood Nova (10)
+		StartTimer: 8.0, Blood Nova (10)
 	[131.61] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (10)
-		StartTimer: 8, Blood Nova (11)
+		StartTimer: 8.0, Blood Nova (11)
 	[134.83] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
 		StartTimer: 16.2, Corrupted Blood (6)
 	[136.09] SPELL_AURA_APPLIED: [Avatar of Hakkar->Bruzo: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02004B73, Bruzo, 0x512, 444255, Corrupted Blood, 0, DEBUFF, 0
@@ -253,13 +253,13 @@ Event trace:
 		ShowAnnounce: Curse of Tongues on Simplyorc
 	[139.70] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (11)
-		StartTimer: 8, Blood Nova (12)
+		StartTimer: 8.0, Blood Nova (12)
 	[147.80] SPELL_CAST_START: [Avatar of Hakkar: Drain Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444132, Drain Blood, 0, 0
 		ShowAnnounce: Drain Blood (3)
-		StartTimer: 34, Drain Blood (4)
+		StartTimer: 34.0, Drain Blood (4)
 	[152.64] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (12)
-		StartTimer: 8, Blood Nova (13)
+		StartTimer: 8.0, Blood Nova (13)
 	Unknown trigger
 		ShowAnnounce: Skeletal on Bruzo, Discokeks, Shabbyx, Simplyorc, Snuqz
 	[154.26] SPELL_CAST_START: [Avatar of Hakkar: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444039, Insanity, 0, 0
@@ -272,25 +272,25 @@ Event trace:
 		ShowAnnounce: Corrupted Blood on Bruzo, Shabbyx
 	[160.73] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (13)
-		StartTimer: 8, Blood Nova (14)
+		StartTimer: 8.0, Blood Nova (14)
 	[167.20] SPELL_CAST_START: [Avatar of Hakkar: Curse of Tongues] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444046, Curse of Tongues, 0, 0
 		StartTimer: 32.3, Curse of Tongues (5)
 	Unknown trigger
 		ShowAnnounce: Curse of Tongues on Shelisea, Simplyorc
 	[168.80] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (14)
-		StartTimer: 8, Blood Nova (15)
+		StartTimer: 8.0, Blood Nova (15)
 	[172.04] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
 		StartTimer: 16.2, Corrupted Blood (8)
 	[174.13] SPELL_AURA_APPLIED: [Avatar of Hakkar->Holyforce: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-01FA3CB9, Holyforce, 0x511, 444255, Corrupted Blood, 0, DEBUFF, 0
 		ShowSpecialWarning: Corrupted Blood - move away from others
 		PlaySound: VoicePack/scatter
-		ShowYell: Corrupted Blood on Moobie
+		ShowYell: Corrupted Blood on PlayerName
 	[174.19] SPELL_AURA_APPLIED: [Avatar of Hakkar->Stahlsand: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02229CFC, Stahlsand, 0x512, 444255, Corrupted Blood, 0, DEBUFF, 0
 		ShowAnnounce: Corrupted Blood on Holyforce, Stahlsand
 	[176.91] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (15)
-		StartTimer: 8, Blood Nova (16)
+		StartTimer: 8.0, Blood Nova (16)
 	[181.78] SPELL_CAST_START: [Avatar of Hakkar: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444039, Insanity, 0, 0
 		StartTimer: 27.5, Insanity (6)
 	[183.28] SPELL_AURA_APPLIED: [Avatar of Hakkar->Bruzo: Insanity] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02004B73, Bruzo, 0x512, 444039, Insanity, 0, BUFF, 0
@@ -298,26 +298,26 @@ Event trace:
 	[183.40] SPELL_CAST_START: [Avatar of Hakkar: Drain Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444132, Drain Blood, 0, 0
 		ShowSpecialWarning: Drain Blood - move to Front
 		PlaySound: VoicePack/movetotank
-		StartTimer: 34, Drain Blood (5)
+		StartTimer: 34.0, Drain Blood (5)
 	[188.27] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
 		StartTimer: 16.2, Corrupted Blood (9)
 	Unknown trigger
 		ShowAnnounce: Skeletal on Bruzo, Shabbyx, Simplyorc, Stahlsand
 	[189.61] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (16)
-		StartTimer: 8, Blood Nova (17)
+		StartTimer: 8.0, Blood Nova (17)
 	[190.34] SPELL_AURA_APPLIED: [Avatar of Hakkar->Arthritîs: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02233DFA, Arthritîs, 0x512, 444255, Corrupted Blood, 0, DEBUFF, 0
 		ShowAnnounce: Corrupted Blood on Arthritîs, Stolzenburg
 	[196.38] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (17)
-		StartTimer: 8, Blood Nova (18)
+		StartTimer: 8.0, Blood Nova (18)
 	[198.61] SPELL_CAST_START: [Avatar of Hakkar: Curse of Tongues] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444046, Curse of Tongues, 0, 0
 		StartTimer: 32.3, Curse of Tongues (6)
 	Unknown trigger
 		ShowAnnounce: Curse of Tongues on Shabbyx, Simplyorc
 	[204.47] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (18)
-		StartTimer: 8, Blood Nova (19)
+		StartTimer: 8.0, Blood Nova (19)
 	[206.10] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
 		StartTimer: 16.2, Corrupted Blood (10)
 	[208.22] SPELL_AURA_APPLIED: [Avatar of Hakkar->Luschimage: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-022F30B2, Luschimage, 0x512, 444255, Corrupted Blood, 0, DEBUFF, 0
@@ -328,17 +328,17 @@ Event trace:
 		ShowAnnounce: Insanity on Biztog
 	[212.57] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (19)
-		StartTimer: 8, Blood Nova (20)
+		StartTimer: 8.0, Blood Nova (20)
 	[217.41] SPELL_CAST_START: [Avatar of Hakkar: Drain Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444132, Drain Blood, 0, 0
 		ShowAnnounce: Drain Blood (5)
-		StartTimer: 34, Drain Blood (6)
+		StartTimer: 34.0, Drain Blood (6)
 	[222.27] SPELL_CAST_START: [Avatar of Hakkar: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444253, Corrupted Blood, 0, 0
 		StartTimer: 16.2, Corrupted Blood (11)
 	Unknown trigger
 		ShowAnnounce: Skeletal on Arthritîs, Simplyorc, Snuqz, Stolzenburg
 	[223.87] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (20)
-		StartTimer: 8, Blood Nova (21)
+		StartTimer: 8.0, Blood Nova (21)
 	[224.30] SPELL_AURA_APPLIED: [Avatar of Hakkar->Arthritîs: Corrupted Blood] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, Player-5826-02233DFA, Arthritîs, 0x512, 444255, Corrupted Blood, 0, DEBUFF, 0
 		ShowAnnounce: Corrupted Blood on Arthritîs, Discokeks
 	[230.26] SPELL_CAST_START: [Avatar of Hakkar: Curse of Tongues] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444046, Curse of Tongues, 0, 0
@@ -351,7 +351,7 @@ Event trace:
 		ShowAnnounce: Curse of Tongues on Shabbyx, Simplyorc
 	[231.94] SPELL_CAST_START: [Avatar of Hakkar: Blood Nova] Vehicle-0-5208-109-4570-221394-00003BDC8E, Avatar of Hakkar, 0xa48, "", nil, 0x0, 444050, Blood Nova, 0, 0
 		ShowAnnounce: Blood Nova (21)
-		StartTimer: 8, Blood Nova (22)
+		StartTimer: 8.0, Blood Nova (22)
 	[232.13] ENCOUNTER_END: 2956, Avatar of Hakkar, 215, 20, 1, 0
 		EndCombat: ENCOUNTER_END
 ]]

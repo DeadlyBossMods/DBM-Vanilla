@@ -151,7 +151,7 @@ Event trace:
 		ShowSpecialWarning: Thorns on Mijan - stop attacking
 		PlaySound: VoicePack/stopattack
 	[ 31.51] SPELL_AURA_APPLIED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
-		StartTimer: 60, Thorns ends
+		StartTimer: 60.0, Thorns ends
 		ShowSpecialWarning: Thorns on Mijan - dispel now
 		PlaySound: VoicePack/dispelboss
 	[ 32.21] SPELL_AURA_REMOVED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0

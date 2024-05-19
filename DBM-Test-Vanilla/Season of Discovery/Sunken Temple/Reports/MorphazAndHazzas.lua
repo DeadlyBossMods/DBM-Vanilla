@@ -75,11 +75,11 @@ Event trace:
 		ShowAnnounce: Animate Flame
 	[ 38.87] SPELL_CAST_START: [Hazzas: Lucid Dreaming] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 445235, Lucid Dreaming, 0, 0
 		StopTimer: Timer446487cd
-		StartTimer: 20, Lucid Dreaming
+		StartTimer: 20.0, Lucid Dreaming
 	[ 59.95] SPELL_CAST_START: [Hazzas: Dreamer's Lament] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 446468, Dreamer's Lament, 0, 0
 		ShowAnnounce: Dreamer's Lament (3)
 	[ 59.95] SPELL_CAST_START: [Hazzas: Eternal Slumber] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 446144, Eternal Slumber, 0, 0
-		StartTimer: 30, Eternal Slumber
+		StartTimer: 30.0, Eternal Slumber
 	[ 64.81] SPELL_CAST_START: [Hazzas: Dreamer's Lament] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 446468, Dreamer's Lament, 0, 0
 		ShowAnnounce: Dreamer's Lament (4)
 	[ 67.53] SPELL_CAST_START: [Hazzas: Backfire] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 446489, Backfire, 0, 0
@@ -124,9 +124,9 @@ Event trace:
 		PlaySound: VoicePack/carefly
 	[142.51] SPELL_CAST_START: [Hazzas: Lucid Dreaming] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 449422, Lucid Dreaming, 0, 0
 		StopTimer: Timer446487cd
-		StartTimer: 4, Lucid Dreaming
+		StartTimer: 4.0, Lucid Dreaming
 	[147.38] SPELL_CAST_START: [Hazzas: Eternal Slumber] Creature-0-5208-109-4570-221943-00003BC782, Hazzas, 0xa48, "", nil, 0x0, 446144, Eternal Slumber, 0, 0
-		StartTimer: 30, Eternal Slumber
+		StartTimer: 30.0, Eternal Slumber
 	[163.16] ENCOUNTER_END: 2958, Morphaz and Hazzas, 215, 20, 1, 0
 		EndCombat: ENCOUNTER_END
 ]]

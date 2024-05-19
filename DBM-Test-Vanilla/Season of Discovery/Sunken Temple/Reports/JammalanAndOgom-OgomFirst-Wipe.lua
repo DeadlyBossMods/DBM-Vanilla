@@ -133,8 +133,8 @@ Event trace:
 		StartCombat: ENCOUNTER_START
 		RegisterEvents: Regular, SPELL_CAST_START 437805 437868 437817 437995 437928 437921 437809 437927 437915 437951 437920, SPELL_CAST_SUCCESS 437847 437930 437915 437884 437920, SPELL_AURA_APPLIED 437809 437847 437927 437930, UNIT_DIED, SPELL_DAMAGE 437887, SPELL_MISSED 437887
 		StartTimer: 7.5, Holy Fire
-		StartTimer: 6, Mortal Lash
-		StartTimer: 8, Holy Nova
+		StartTimer: 6.0, Mortal Lash
+		StartTimer: 8.0, Holy Nova
 		StartTimer: 12.5, Agonizing Weakness
 	[  4.59] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
@@ -275,7 +275,7 @@ Event trace:
 	[118.30] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 		ShowSpecialWarning: Mass Penance - dodge attack
 		PlaySound: VoicePack/watchstep
-		StartTimer: 21, Mass Penance
+		StartTimer: 21.0, Mass Penance
 	[124.39] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -292,7 +292,7 @@ Event trace:
 	[139.33] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 		ShowSpecialWarning: Mass Penance - dodge attack
 		PlaySound: VoicePack/watchstep
-		StartTimer: 21, Mass Penance
+		StartTimer: 21.0, Mass Penance
 	[143.79] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -313,7 +313,7 @@ Event trace:
 	[162.02] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 		ShowSpecialWarning: Mass Penance - dodge attack
 		PlaySound: VoicePack/watchstep
-		StartTimer: 21, Mass Penance
+		StartTimer: 21.0, Mass Penance
 	[166.46] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, 437930, Power Word: Shield, 0, BUFF, 0
 		ShowSpecialWarning: Power Word: Shield on Jammal'an the Prophet - dispel now
 		PlaySound: VoicePack/dispelboss
@@ -330,7 +330,7 @@ Event trace:
 	[183.04] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 		ShowSpecialWarning: Mass Penance - dodge attack
 		PlaySound: VoicePack/watchstep
-		StartTimer: 21, Mass Penance
+		StartTimer: 21.0, Mass Penance
 	[187.89] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, 437930, Power Word: Shield, 0, BUFF, 0
 		ShowSpecialWarning: Power Word: Shield on Jammal'an the Prophet - dispel now
 		PlaySound: VoicePack/dispelboss
