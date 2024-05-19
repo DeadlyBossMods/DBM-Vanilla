@@ -126,8 +126,8 @@ Event trace:
 		StartCombat: ENCOUNTER_START
 		RegisterEvents: Regular, SPELL_CAST_START 437805 437868 437817 437995 437928 437921 437809 437927 437915 437951 437920, SPELL_CAST_SUCCESS 437847 437930 437915 437884 437920, SPELL_AURA_APPLIED 437809 437847 437927 437930, UNIT_DIED, SPELL_DAMAGE 437887, SPELL_MISSED 437887
 		StartTimer: 7.5, Holy Fire
-		StartTimer: 6, Mortal Lash
-		StartTimer: 8, Holy Nova
+		StartTimer: 6.0, Mortal Lash
+		StartTimer: 8.0, Holy Nova
 		StartTimer: 12.5, Agonizing Weakness
 	[  3.42] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
@@ -217,8 +217,8 @@ Event trace:
 		PlaySound: VoicePack/ptwo
 		StopTimer: Timer437847cd
 		StopTimer: Timer437868cd
-		StartTimer: 35, Hammers of Justice
-		StartTimer: 13, Consecration
+		StartTimer: 35.0, Hammers of Justice
+		StartTimer: 13.0, Consecration
 		StartTimer: 17.4, Divine Storm
 	[ 79.55] SPELL_CAST_SUCCESS: [Ogom the Wretched: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437884, Consecration, 0, 0
 		StartTimer: 15.8, Consecration
@@ -244,7 +244,7 @@ Event trace:
 		ShowAnnounce: Casting Hammers of Justice: 4.0 sec
 		UpdateTimer: Timer437915next, 31, 35
 	[101.35] SPELL_CAST_SUCCESS: [Ogom the Wretched: Hammers of Justice] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437915, Hammers of Justice, 0, 0
-		StartTimer: 35, Hammers of Justice
+		StartTimer: 35.0, Hammers of Justice
 	[103.74] SPELL_DAMAGE: [Ogom the Wretched->Snuqz: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-02520AE4, Snuqz, 0x511, 437887, Consecration, 0, 0
 		AntiSpam: 1
 		ShowSpecialWarning: Consecration damage - move away
@@ -269,7 +269,7 @@ Event trace:
 		ShowAnnounce: Casting Hammers of Justice: 4.0 sec
 		UpdateTimer: Timer437915next, 31, 35
 	[135.40] SPELL_CAST_SUCCESS: [Ogom the Wretched: Hammers of Justice] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437915, Hammers of Justice, 0, 0
-		StartTimer: 35, Hammers of Justice
+		StartTimer: 35.0, Hammers of Justice
 	[144.24] SPELL_CAST_SUCCESS: [Ogom the Wretched: Consecration] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, "", nil, 0x0, 437884, Consecration, 0, 0
 		StartTimer: 15.8, Consecration
 		ShowAnnounce: Consecration

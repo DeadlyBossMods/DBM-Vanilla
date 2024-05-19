@@ -136,7 +136,7 @@ Event trace:
 	[ 32.06] SPELL_SUMMON: [Shade of Eranikus->Lumbering Dreamwalker: Dreamwalker] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Creature-0-5208-109-4570-218606-0000BBDA4D, Lumbering Dreamwalker, 0xa48, 437418, Dreamwalker, 0, 0
 		ScanForMobs: Creature-0-5208-109-4570-218606-0000BBDA4D, 2, 7, 1
 	[ 32.06] SPELL_CAST_START: [Shade of Eranikus: Deep Slumber] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437410, Deep Slumber, 0, 0
-		StartTimer: 23, Deep Slumber ends
+		StartTimer: 23.0, Deep Slumber ends
 	[ 37.32] SPELL_CAST_START: [Lumbering Dreamwalker: Lethargic Poison] Creature-0-5208-109-4570-218606-00003BDA4D, Lumbering Dreamwalker, 0xa48, "", nil, 0x0, 437425, Lethargic Poison, 0, 0
 		ShowSpecialWarning: Lethargic Poison - interrupt Lumbering Dreamwalker! (1)
 		PlaySound: VoicePack/kick1r
@@ -179,7 +179,7 @@ Event trace:
 	[ 93.58] SPELL_SUMMON: [Shade of Eranikus->Lumbering Dreamwalker: Dreamwalker] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Creature-0-5208-109-4570-218606-0000BBDA8B, Lumbering Dreamwalker, 0xa48, 437418, Dreamwalker, 0, 0
 		ScanForMobs: Creature-0-5208-109-4570-218606-0000BBDA8B, 2, 7, 1
 	[ 93.58] SPELL_CAST_START: [Shade of Eranikus: Deep Slumber] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437410, Deep Slumber, 0, 0
-		StartTimer: 23, Deep Slumber ends
+		StartTimer: 23.0, Deep Slumber ends
 	[ 98.44] SPELL_CAST_START: [Lumbering Dreamwalker: Lethargic Poison] Creature-0-5208-109-4570-218606-0000BBDA8B, Lumbering Dreamwalker, 0xa48, "", nil, 0x0, 437425, Lethargic Poison, 0, 0
 		ShowSpecialWarning: Lethargic Poison - interrupt Lumbering Dreamwalker! (1)
 		PlaySound: VoicePack/kick1r

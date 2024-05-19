@@ -85,7 +85,7 @@ Event trace:
 		ShowAnnounce: Stage 2
 		PlaySound: VoicePack/ptwo
 		StopTimer: Timer443766cd
-		StartTimer: 5, Wing Buffet
+		StartTimer: 5.0, Wing Buffet
 	[ 25.90] SPELL_CAST_SUCCESS: [Weaver: Wing Flap] Creature-0-5208-109-4570-220864-00003BD44E, Weaver, 0xa48, "", nil, 0x0, 442620, Wing Flap, 0, 0
 		ShowAnnounce: Wing Flap
 	[ 32.35] SPELL_CAST_START: [Weaver: Delayed Wing Buffet] Creature-0-5208-109-4570-220864-00003BD44E, Weaver, 0xa48, "", nil, 0x0, 443830, Delayed Wing Buffet, 0, 0
@@ -100,7 +100,7 @@ Event trace:
 	[ 58.26] SPELL_AURA_REMOVED: [Dreamscythe->Dreamscythe: Emerald Ward] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, 443302, Emerald Ward, 0, BUFF, 0
 		ShowAnnounce: Stage 3
 		PlaySound: VoicePack/pthree
-		StartTimer: 3, Wing Buffet
+		StartTimer: 3.0, Wing Buffet
 	[ 58.26] SPELL_AURA_APPLIED_DOSE: [Dreamscythe->Mafakacoil: Acid Breath] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 442622, Acid Breath, 0, DEBUFF, 3, 0
 		ShowAnnounce: Acid Breath on Mafakacoil (3)
 	[ 63.10] SPELL_CAST_START: [Dreamscythe: Wing Buffet] Creature-0-5208-109-4570-220833-00003BD44E, Dreamscythe, 0xa48, "", nil, 0x0, 443793, Wing Buffet, 0, 0
