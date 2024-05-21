@@ -3,6 +3,12 @@ DBM.Test:DefineTest{
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
 	mod = "JammalanAndOgomSoD",
+	ignoreWarnings = {
+		sharedWith = "SoD/ST/JammalanAndOgom/Ogom.*",
+		phaseChangeSpells = {
+			"Draining..."
+		},
+	},
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
 	playerName = "Tandanu",
 	log = {
