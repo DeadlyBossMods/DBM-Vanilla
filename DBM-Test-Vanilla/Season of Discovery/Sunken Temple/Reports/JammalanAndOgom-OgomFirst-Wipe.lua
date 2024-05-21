@@ -3,11 +3,6 @@ Test: SoD/ST/JammalanAndOgom/Ogom-First/Wipe
 Mod:  DBM-Raids-Vanilla/JammalanAndOgomSoD
 
 Findings:
-	Timer for spell ID 437817 (Holy Nova) is triggered by event SPELL_CAST_START 437995 (Draining...)
-	Timer for spell ID 437921 (Mass Penance) is triggered by event SPELL_CAST_START 437995 (Draining...)
-	Timer for spell ID 437927 (Shadow Sermon: Pain) is triggered by event SPELL_CAST_START 437995 (Draining...)
-	Timer for spell ID 437928 (Psychic Scream) is triggered by event SPELL_CAST_START 437995 (Draining...)
-	Timer for spell ID 437930 (Power Word: Shield) is triggered by event SPELL_CAST_START 437995 (Draining...)
 	Unused event registration: SPELL_CAST_START 437915 (Hammers of Justice)
 	Unused event registration: SPELL_CAST_START 437920 (Divine Storm)
 	Unused event registration: SPELL_CAST_START 437951 (Eating...)
@@ -28,79 +23,80 @@ Unused objects:
 	[Timer] Divine Storm, time=32.40, type=cd, spellId=437920
 
 Timers:
-	Holy Fire, time=13.40, type=cd, spellId=437809
+	Holy Fire, time=13.40, type=cd, spellId=437809, triggerDeltas = 0.00, 7.82, 13.31, 14.20, 13.38, 17.41, 13.31
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  7.82] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 			 Triggered 6x, delta times: 7.82, 13.31, 14.20, 13.38, 17.41, 13.31
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
-	Holy Nova, time=17.30, type=cd, spellId=437817
+	Holy Nova, time=17.30, type=cd, spellId=437817, triggerDeltas = 0.00, 9.42, 17.80, 18.23, 17.82, 17.38, 10.13, 16.19, 17.42, 19.40, 22.67, 21.43
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 			 Triggered 10x, delta times: 9.42, 17.80, 18.23, 17.82, 17.38, 26.32, 17.42, 19.40, 22.67, 21.43
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
-	Mortal Lash, time=25.40, type=cd, spellId=437847
+	Mortal Lash, time=25.40, type=cd, spellId=437847, triggerDeltas = 0.00, 6.19, 25.90, 25.94, 25.77
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[  6.19] SPELL_CAST_SUCCESS: [Ogom the Wretched->Schamuhne: Mortal Lash] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, Player-5826-023E0641, Schamuhne, 0x512, 437847, Mortal Lash, 0, 0
 			 Triggered 4x, delta times: 6.19, 25.90, 25.94, 25.77
 		[ 85.52] UNIT_DIED: [->Ogom the Wretched] "", nil, 0x0, Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, -1, false, 0, 0
-	Agonizing Weakness, time=27.10, type=cd, spellId=437868
+	Agonizing Weakness, time=27.10, type=cd, spellId=437868, triggerDeltas = 0.00, 13.06, 27.54, 27.54
 		[  0.00] ENCOUNTER_START: 2957, Jammal'an and Ogom, 215, 20, 0
 		[ 13.06] SPELL_CAST_START: [Ogom the Wretched: Agonizing Weakness] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, "", nil, 0x0, 437868, Agonizing Weakness, 0, 0
 			 Triggered 3x, delta times: 13.06, 27.54, 27.54
 		[ 85.52] UNIT_DIED: [->Ogom the Wretched] "", nil, 0x0, Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, -1, false, 0, 0
-	Mass Penance, time=21.00, type=cd, spellId=437921
+	Mass Penance, time=21.00, type=cd, spellId=437921, triggerDeltas = 90.78, 27.52, 21.03, 22.69, 21.02
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[118.30] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 			 Triggered 4x, delta times: 118.30, 21.03, 22.69, 21.02
-	Shadow Sermon: Pain, time=22.20, type=cd, spellId=437927
+	Shadow Sermon: Pain, time=22.20, type=cd, spellId=437927, triggerDeltas = 90.78, 14.19, 23.05, 22.66, 22.25, 22.67
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[104.97] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 			 Triggered 5x, delta times: 104.97, 23.05, 22.66, 22.25, 22.67
-	Psychic Scream, time=43.70, type=cd, spellId=437928
+	Psychic Scream, time=43.70, type=cd, spellId=437928, triggerDeltas = 90.78, 21.05, 43.70, 43.30
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[111.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 			 Triggered 3x, delta times: 111.83, 43.70, 43.30
-	Power Word: Shield, time=15.80, type=cd, spellId=437930
+	Power Word: Shield, time=15.80, type=cd, spellId=437930, triggerDeltas = 90.78, 24.30, 16.18, 15.78, 19.42, 21.43
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
 		[115.08] SPELL_CAST_SUCCESS: [Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437930, Power Word: Shield, 0, 0
 			 Triggered 5x, delta times: 115.08, 16.18, 15.78, 19.42, 21.43
 
 Announces:
-	Stage 2, type=stage, spellId=<none>
+	Stage 2, type=stage, spellId=<none>, triggerDeltas = 90.78
 		[ 90.78] SPELL_CAST_START: [Jammal'an the Prophet: Draining...] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437995, Draining..., 0, 0
-	Holy Fire on >%s<, type=target, spellId=437809
+	Holy Fire on >%s<, type=target, spellId=437809, triggerDeltas = 8.82, 13.33, 14.18, 13.38, 17.41, 13.33
 		[  8.82] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Muhscle: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-023E078B, Muhscle, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
 		[ 22.15] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Snui: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024EEB02, Snui, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
 		[ 36.33] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Shelisea: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-0222D437, Shelisea, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
 		[ 49.71] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
 		[ 67.12] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Discomuh: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-023D8989, Discomuh, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
 		[ 80.45] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Rajkan: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-022B87C7, Rajkan, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-	Mortal Lash on >%s<, type=target, spellId=437847
+	Mortal Lash on >%s<, type=target, spellId=437847, triggerDeltas = 6.21, 25.88, 51.71
 		[  6.21] SPELL_AURA_APPLIED: [Ogom the Wretched->Schamuhne: Mortal Lash] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, Player-5826-023E0641, Schamuhne, 0x512, 437847, Mortal Lash, 0, DEBUFF, 0
 			 Triggered 3x, delta times: 6.21, 25.88, 51.71
-	Agonizing Weakness, type=spell, spellId=437868
+	Agonizing Weakness, type=spell, spellId=437868, triggerDeltas = 13.06, 27.54, 27.54
 		[ 13.06] SPELL_CAST_START: [Ogom the Wretched: Agonizing Weakness] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, "", nil, 0x0, 437868, Agonizing Weakness, 0, 0
 			 Triggered 3x, delta times: 13.06, 27.54, 27.54
-	Shadow Sermon: Pain on >%s<, type=target, spellId=437927
-		Unknown trigger
+	Shadow Sermon: Pain on >%s<, type=target, spellId=437927, triggerDeltas = 108.17, 21.86, 22.65, 23.45, 22.67
+		[108.17] Scheduled at 106.97 by SPELL_AURA_APPLIED: [Jammal'an the Prophet->Abdizz: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024C3FC3, Abdizz, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
 		[130.03] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
 		[152.68] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Snui: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024EEB02, Snui, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
-		Unknown trigger
+		[176.13] Scheduled at 174.93 by SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
+		[198.80] Scheduled at 197.60 by SPELL_AURA_APPLIED: [Jammal'an the Prophet->Elemento: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-02256816, Elemento, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
 
 Special warnings:
-	Smite - interrupt >%s<!, type=interrupt, spellId=437805
+	Smite - interrupt >%s<!, type=interrupt, spellId=437805, triggerDeltas = 4.59, 8.47, 6.47, 4.84, 4.87, 7.71, 4.87, 8.50, 4.88, 4.83, 8.11, 6.44, 8.11
 		[  4.59] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 			 Triggered 13x, delta times: 4.59, 8.47, 6.47, 4.84, 4.87, 7.71, 4.87, 8.50, 4.88, 4.83, 8.11, 6.44, 8.11
-	Holy Nova - dodge attack, type=dodge, spellId=437817
+	Holy Nova - dodge attack, type=dodge, spellId=437817, triggerDeltas = 9.42, 17.80, 18.23, 17.82, 17.38, 26.32, 17.42, 19.40, 22.67, 21.43
 		[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 			 Triggered 10x, delta times: 9.42, 17.80, 18.23, 17.82, 17.38, 26.32, 17.42, 19.40, 22.67, 21.43
-	Mass Penance - dodge attack, type=dodge, spellId=437921
+	Mass Penance - dodge attack, type=dodge, spellId=437921, triggerDeltas = 118.30, 21.03, 22.69, 21.02
 		[118.30] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 			 Triggered 4x, delta times: 118.30, 21.03, 22.69, 21.02
-	Psychic Scream!, type=spell, spellId=437928
+	Psychic Scream!, type=spell, spellId=437928, triggerDeltas = 111.83, 43.70, 43.30
 		[111.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 			 Triggered 3x, delta times: 111.83, 43.70, 43.30
-	Power Word: Shield on >%s< - dispel now, type=dispel, spellId=437930
+	Power Word: Shield on >%s< - dispel now, type=dispel, spellId=437930, triggerDeltas = 115.08, 16.18, 15.78, 19.42, 21.43
 		[115.08] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, 437930, Power Word: Shield, 0, BUFF, 0
 			 Triggered 5x, delta times: 115.08, 16.18, 15.78, 19.42, 21.43
 
@@ -146,7 +142,7 @@ Event trace:
 	[  7.82] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[  8.82] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Muhscle: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-023E078B, Muhscle, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Gotchya, Illiath, Muhscle, Schamuhne, Tandanu
+		ShowAnnounce: Holy Fire on Gotchya, Illiath, PlayerName, Muhscle, Schamuhne
 	[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -217,7 +213,7 @@ Event trace:
 	[ 66.12] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 67.12] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Discomuh: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-023D8989, Discomuh, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Camie, Discomuh, Shelisea, Tandanu, Vargana
+		ShowAnnounce: Holy Fire on Camie, Discomuh, PlayerName, Shelisea, Vargana
 	[ 68.14] SPELL_CAST_START: [Ogom the Wretched: Agonizing Weakness] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, "", nil, 0x0, 437868, Agonizing Weakness, 0, 0
 		ShowAnnounce: Agonizing Weakness
 		StartTimer: 27.1, Agonizing Weakness
@@ -257,12 +253,13 @@ Event trace:
 		StartTimer: 28.7, Mass Penance
 	[104.97] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
+	[106.97] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Abdizz: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024C3FC3, Abdizz, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
+		ScheduleTask: announce437927target:PreciseShow(10.0, "Abdizz") at 108.17 (+1.20)
+			ShowAnnounce: Shadow Sermon: Pain on Discomuh, Elemento, Hantha, PlayerName, Obile, Schamuhne, Vargana and 2 others
 	[106.97] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
 		StartTimer: 17.3, Holy Nova
-	Unknown trigger
-		ShowAnnounce: Shadow Sermon: Pain on Discomuh, Elemento, Hantha, Obile, Schamuhne, Tandanu, Vargana and 2 others
 	[111.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 		ShowSpecialWarning: Psychic Scream!
 		PlaySound: VoicePack/fearsoon
@@ -305,7 +302,7 @@ Event trace:
 	[150.68] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
 	[152.68] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Snui: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024EEB02, Snui, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
-		ShowAnnounce: Shadow Sermon: Pain on Elemento, Hantha, Illiath, Krashnakh, Rajkan, Shelisea, Tandanu and 3 others
+		ShowAnnounce: Shadow Sermon: Pain on Elemento, Hantha, Illiath, Krashnakh, PlayerName, Rajkan, Shelisea and 3 others
 	[155.53] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 		ShowSpecialWarning: Psychic Scream!
 		PlaySound: VoicePack/fearsoon
@@ -325,8 +322,9 @@ Event trace:
 		StartTimer: 17.3, Holy Nova
 	[172.93] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
-	Unknown trigger
-		ShowAnnounce: Shadow Sermon: Pain on Beppoo, Discomuh, Elemento, Gotchya, Illiath, Schamuhne, Tandanu and 2 others
+	[174.93] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
+		ScheduleTask: announce437927target:PreciseShow(10.0, "Tisakyle") at 176.13 (+1.20)
+			ShowAnnounce: Shadow Sermon: Pain on Beppoo, Discomuh, Elemento, Gotchya, Illiath, PlayerName, Schamuhne and 2 others
 	[183.04] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 		ShowSpecialWarning: Mass Penance - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -342,12 +340,13 @@ Event trace:
 		StartTimer: 17.3, Holy Nova
 	[195.60] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
+	[197.60] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Elemento: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-02256816, Elemento, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
+		ScheduleTask: announce437927target:PreciseShow(10.0, "Elemento") at 198.80 (+1.20)
+			ShowAnnounce: Shadow Sermon: Pain on Elemento
 	[198.83] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 		ShowSpecialWarning: Psychic Scream!
 		PlaySound: VoicePack/fearsoon
 		StartTimer: 43.7, Psychic Scream
-	Unknown trigger
-		ShowAnnounce: Shadow Sermon: Pain on Elemento
 	[200.47] ENCOUNTER_END: 2957, Jammal'an and Ogom, 215, 20, 0, 0
 		EndCombat: ENCOUNTER_END
 ]]

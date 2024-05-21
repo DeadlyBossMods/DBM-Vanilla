@@ -10,31 +10,31 @@ Unused objects:
 	[Yell] Devour on PlayerName, type=yell, spellId=448824
 
 Timers:
-	Nauseous Gas (%s), time=8.00, type=cdcount, spellId=438130
+	Nauseous Gas (%s), time=8.00, type=cdcount, spellId=438130, triggerDeltas = 0.00, 9.31, 8.15, 8.08, 8.09, 8.11, 8.09, 8.09, 8.10, 8.10
 		[ 0.00] ENCOUNTER_START: 2953, Festering Rotslime, 215, 20, 0
 		[ 9.31] SPELL_CAST_SUCCESS: [Festering Rotslime: Nauseous Gas] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, "", nil, 0x0, 438130, Nauseous Gas, 0, 0
 			 Triggered 9x, delta times: 9.31, 8.15, 8.08, 8.09, 8.11, 8.09, 8.09, 8.10, 8.10
-	Gunk (%s), time=17.80, type=cdcount, spellId=438142
+	Gunk (%s), time=17.80, type=cdcount, spellId=438142, triggerDeltas = 0.00, 12.52, 17.89, 17.80, 19.45
 		[ 0.00] ENCOUNTER_START: 2953, Festering Rotslime, 215, 20, 0
 		[12.52] SPELL_CAST_START: [Festering Rotslime: Gunk] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, "", nil, 0x0, 438142, Gunk, 0, 0
 			 Triggered 4x, delta times: 12.52, 17.89, 17.80, 19.45
 
 Announces:
-	Nauseous Gas (%s), type=count, spellId=438130
+	Nauseous Gas (%s), type=count, spellId=438130, triggerDeltas = 9.31, 8.15, 8.08, 8.09, 8.11, 8.09, 8.09, 8.10, 8.10
 		[ 9.31] SPELL_CAST_SUCCESS: [Festering Rotslime: Nauseous Gas] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, "", nil, 0x0, 438130, Nauseous Gas, 0, 0
 			 Triggered 9x, delta times: 9.31, 8.15, 8.08, 8.09, 8.11, 8.09, 8.09, 8.10, 8.10
-	Gunk (%s), type=count, spellId=438142
+	Gunk (%s), type=count, spellId=438142, triggerDeltas = 12.52, 17.89, 17.80, 19.45
 		[12.52] SPELL_CAST_START: [Festering Rotslime: Gunk] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, "", nil, 0x0, 438142, Gunk, 0, 0
 			 Triggered 4x, delta times: 12.52, 17.89, 17.80, 19.45
-	Slime Time (%s), type=count, spellId=446311
+	Slime Time (%s), type=count, spellId=446311, triggerDeltas = 24.01, 14.99, 18.00, 15.00
 		[24.01] SPELL_AURA_APPLIED_DOSE: [Festering Rotslime->Festering Rotslime: Slime Time] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, 446311, Slime Time, 0, BUFF, 5, 0
 			 Triggered 4x, delta times: 24.01, 14.99, 18.00, 15.00
 
 Special warnings:
-	%s damage - move away, type=gtfo, spellId=438136
+	%s damage - move away, type=gtfo, spellId=438136, triggerDeltas = 16.65, 18.15, 3.00
 		[16.65] SPELL_DAMAGE: [Festering Rotslime->Tandanu: Nauseous Gas] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, Player-5826-020CBDBB, Tandanu, 0x511, 438136, Nauseous Gas, 0, 0
 			 Triggered 3x, delta times: 16.65, 18.15, 3.00
-	Slime Time faded, type=fades, spellId=446311
+	Slime Time faded, type=fades, spellId=446311, triggerDeltas = 11.16, 31.49, 33.12
 		[11.16] SPELL_AURA_REMOVED: [Festering Rotslime->Festering Rotslime: Slime Time] Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, Vehicle-0-5208-109-4570-218819-00003BC782, Festering Rotslime, 0xa48, 446311, Slime Time, 0, BUFF, 0
 			 Triggered 3x, delta times: 11.16, 31.49, 33.12
 
