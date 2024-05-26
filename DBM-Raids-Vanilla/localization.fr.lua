@@ -1266,6 +1266,15 @@ L:SetOptionLocalization({
 --  Sunken Temple  --
 ------------------
 
+--------------
+-- ST Trash --
+--------------
+L = DBM:GetModLocalization("STTrashSoD")
+
+L:SetGeneralLocalization{
+	name = "Ennemis communs du Temple englouti"
+}
+
 ---------------------------
 --  Atal'alarion  --
 ---------------------------

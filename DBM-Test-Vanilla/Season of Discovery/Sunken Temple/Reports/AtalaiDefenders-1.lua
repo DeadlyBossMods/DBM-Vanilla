@@ -22,7 +22,7 @@ Timers:
 		[ 32.21] SPELL_AURA_REMOVED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
 
 Announces:
-	%s, type=stagechange, spellId=0
+	%s, type=stagechange, spellId=<none>
 		[ 20.15] SPELL_CAST_SUCCESS: [Gasher: Summon Gasher] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, "", nil, 0x0, 444747, Summon Gasher, 0, 0
 		[ 45.97] SPELL_CAST_SUCCESS: [Mijan: Summon Mijan] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 444963, Summon Mijan, 0, 0
 		[ 71.29] SPELL_CAST_SUCCESS: [Zolo: Summon Zolo] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, "", nil, 0x0, 444964, Summon Zolo, 0, 0
@@ -47,14 +47,14 @@ Announces:
 		[ 62.35] SPELL_CAST_SUCCESS: [Zolo->Mafakacoil: Unstable Cask] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 445940, Unstable Cask, 0, 0
 	Shield Slam on >%s<, type=target, spellId=446354
 		[113.43] SPELL_AURA_APPLIED: [Loro->Mafakacoil: Shield Slam] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 446354, Shield Slam, 0, DEBUFF, 0
-			 Triggered 2x, delta times: 113.43, 8.8
+			 Triggered 2x, delta times: 113.43, 8.80
 	Hukku's Guardians, type=spell, spellId=446360
 		[129.11] SPELL_CAST_SUCCESS: [Hukku: Hukku's Guardians] Creature-0-5208-109-4570-218922-00003BC782, Hukku, 0xa48, "", nil, 0x0, 446360, Hukku's Guardians, 0, 0
 	Frailty, type=spell, spellId=446364
 		[ 82.58] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
 			 Triggered 2x, delta times: 82.58, 5.49
 		[102.70] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5208-109-4570-221837-00003BD3EE, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
-			 Triggered 4x, delta times: 102.7, 9.39, 21.04, 6.47
+			 Triggered 4x, delta times: 102.70, 9.39, 21.04, 6.47
 	Charge, type=spell, spellId=446369
 		[ 77.73] SPELL_CAST_SUCCESS: [Zul'Lor->Bruzo: Charge] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, Player-5826-02004B73, Bruzo, 0x512, 446369, Charge, 0, 0
 		[ 95.18] SPELL_CAST_SUCCESS: [Zul'Lor->Shelisea: Charge] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, Player-5826-0222D437, Shelisea, 0x512, 446369, Charge, 0, 0
@@ -77,7 +77,7 @@ Special warnings:
 			 Triggered 2x, delta times: 59.11, 11.31
 	Shadow Bolt - interrupt >%s<!, type=interrupt, spellId=446361
 		[130.71] SPELL_CAST_START: [Hukku: Shadow Bolt] Creature-0-5208-109-4570-218922-00003BC782, Hukku, 0xa48, "", nil, 0x0, 446361, Shadow Bolt, 0, 0
-			 Triggered 4x, delta times: 130.71, 3.23, 2.77, 10.2
+			 Triggered 4x, delta times: 130.71, 3.23, 2.77, 10.20
 	Corrupted Slam - dodge attack, type=dodge, spellId=446372
 		[ 78.13] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
 			 Triggered 2x, delta times: 78.13, 17.78
@@ -96,7 +96,7 @@ Voice pack sounds:
 	VoicePack/kickcast
 		[ 55.86] SPELL_CAST_START: [Zolo: Chain Lightning] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, "", nil, 0x0, 446338, Chain Lightning, 0, 0
 		[130.71] SPELL_CAST_START: [Hukku: Shadow Bolt] Creature-0-5208-109-4570-218922-00003BC782, Hukku, 0xa48, "", nil, 0x0, 446361, Shadow Bolt, 0, 0
-			 Triggered 4x, delta times: 130.71, 3.23, 2.77, 10.2
+			 Triggered 4x, delta times: 130.71, 3.23, 2.77, 10.20
 		[142.87] SPELL_CAST_START: [Zolo: Chain Lightning] Creature-0-5208-109-4570-221836-00003BD3D5, Zolo, 0xa48, "", nil, 0x0, 446338, Chain Lightning, 0, 0
 	VoicePack/phasechange
 		[ 20.15] SPELL_CAST_SUCCESS: [Gasher: Summon Gasher] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, "", nil, 0x0, 444747, Summon Gasher, 0, 0
@@ -127,7 +127,7 @@ Icons:
 Event trace:
 	[  0.00] ENCOUNTER_START: 2954, Atal'ai Defenders, 215, 20, 0
 		StartCombat: ENCOUNTER_START
-		RegisterEvents: Regular, SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361 438335, SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964, SPELL_AURA_APPLIED 446354 445284 438294, SPELL_AURA_APPLIED_DOSE 445284, SPELL_AURA_REMOVED 445284 438294, SPELL_SUMMON 444962 444963 444964 444747 444960 444961
+		RegisterEvents: Regular, SPELL_CAST_START 446372 438294 446338 438341 438339 23511 446361 438335, SPELL_CAST_SUCCESS 446364 446369 444962 445912 445940 446339 445289 444747 444960 444961 446360 444963 444964, SPELL_AURA_APPLIED 446354 438294, SPELL_AURA_APPLIED_DOSE 445284, SPELL_AURA_REMOVED 445284 438294, SPELL_SUMMON 444962 444963 444964 444747 444960 444961
 	[ 10.14] SPELL_CAST_SUCCESS: [Gasher: Spinning Axes] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, "", nil, 0x0, 445289, Spinning Axes, 0, 0
 		ShowAnnounce: Spinning Axes
 	[ 10.79] SPELL_AURA_APPLIED_DOSE: [Gasher->Gasher: Fervor] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, 445284, Fervor, 0, BUFF, 10, 0

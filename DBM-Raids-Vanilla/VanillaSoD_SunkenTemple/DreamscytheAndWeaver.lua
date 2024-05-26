@@ -13,7 +13,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 443766 443830 443793 443827",
-	"SPELL_CAST_SUCCESS 442622 442620",
+	"SPELL_CAST_SUCCESS 442620",
 	"SPELL_AURA_APPLIED 443302 442622",
 	"SPELL_AURA_APPLIED_DOSE 442622",
 	"SPELL_AURA_REMOVED 443302"
@@ -77,7 +77,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		local uId = DBM:GetRaidUnitId(args.destName)
 		--Makes sure the target of the debuff, is highest threat of the caster
 		--(basically filters everyone who's not actively tanking mob such as melee in wrong place)
-		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then--playerUnitID, enemyUnitID, isName, onlyRequested, enemyGUID
+		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then--playerUnitID, enemyUnitID, isName, onlyRequested, enemyGUID
 			local amount = args.amount or 1
 			warnAcidBreath:Show(args.destName, amount)
 		end

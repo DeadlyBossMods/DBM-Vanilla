@@ -160,7 +160,6 @@ function mod:SPELL_SUMMON(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellId
 	if args:IsSpell(437353) and not args:IsPlayer() then
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
@@ -168,7 +167,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnCorrosiveBreathTaunt:Play("tauntboss")
 		end
 	elseif args:IsSpell(437390, 437425) then
-		warnLethargicPoison:CombinedShow(0.5, args.destName)
+		warnLethargicPoison:PreciseShow(4, args.destName)
 	end
 end
 --mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
