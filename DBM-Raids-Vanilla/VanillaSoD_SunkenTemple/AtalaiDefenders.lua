@@ -202,12 +202,12 @@ end
 function mod:SPELL_SUMMON(args)
 	if args:IsSpell(444962, 444963, 444964, 444747, 444960, 444961) then
 		local iconOrder = {
-			[221837] = 1,
-			[221835] = 2,
-			[221836] = 3,
-			[221759] = 4,
-			[221834] = 5,
-			[221833] = 6
+			[221837] = 1,--Zul'Lor
+			[221835] = 2,--Mijan
+			[221836] = 3,--Zolo
+			[221759] = 4,--Gasher
+			[221834] = 5,--Loro
+			[221833] = 6--Hukku
 		}
 		local cid = self:GetCIDFromGUID(args.destGUID)
 		if self.Options.SetIconsOnGhosts and cid and iconOrder[cid] then
