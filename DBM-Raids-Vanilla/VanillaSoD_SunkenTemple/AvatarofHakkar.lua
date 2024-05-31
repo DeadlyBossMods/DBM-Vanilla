@@ -126,7 +126,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(443964) then
-		warnSpiritChains:PreciseShow(2, args.destName)
+		warnSpiritChains:Show(args.destName)
 		if args:IsPlayer() then
 			specWarnSpiritChains:Show()
 			specWarnSpiritChains:Play("scatter")

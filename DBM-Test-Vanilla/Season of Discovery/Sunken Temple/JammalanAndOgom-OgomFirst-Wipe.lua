@@ -937,4 +937,3 @@ DBM.Test:DefineTest{
 		{200.47, "ENCOUNTER_END", 2957, "Jammal'an and Ogom", 215, 20, 0},
 	}
 }
-

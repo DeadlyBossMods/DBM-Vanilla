@@ -3,7 +3,6 @@ Test: SoD/ST/AtalaiDefenders/1
 Mod:  DBM-Raids-Vanilla/AtalaiDefendersSoD
 
 Findings:
-	Timer for spell ID 23511 (Demoralizing Shout) is triggered by event SPELL_CAST_SUCCESS 444960 (Summon Loro)
 	Unused event registration: SPELL_CAST_START 438339 (Healing Wave)
 	Unused event registration: SPELL_CAST_START 438341 (Renew)
 	Unused event registration: SPELL_CAST_SUCCESS 444961 (Summon Hukku)
@@ -14,48 +13,48 @@ Unused objects:
 	[Special Warning] Renew - interrupt >%s<!, type=interrupt, spellId=438341
 
 Timers:
-	Demoralizing Shout, time=22.80, type=cd, spellId=23511
+	Demoralizing Shout, time=22.80, type=cd, spellId=23511, triggerDeltas = 111.27, 16.10
 		[111.27] SPELL_CAST_START: [Loro: Demoralizing Shout] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, "", nil, 0x0, 23511, Demoralizing Shout, 0, 0
 		[127.37] SPELL_CAST_SUCCESS: [Loro: Summon Loro] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, "", nil, 0x0, 444960, Summon Loro, 0, 0
-	Thorns ends, time=60.00, type=active, spellId=438294
+	Thorns ends, time=60.00, type=active, spellId=438294, triggerDeltas = 31.51
 		[ 31.51] SPELL_AURA_APPLIED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
 		[ 32.21] SPELL_AURA_REMOVED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
 
 Announces:
-	%s, type=stagechange, spellId=<none>
+	%s, type=stagechange, spellId=<none>, triggerDeltas = 20.15, 25.82, 25.32, 25.44, 30.64
 		[ 20.15] SPELL_CAST_SUCCESS: [Gasher: Summon Gasher] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, "", nil, 0x0, 444747, Summon Gasher, 0, 0
 		[ 45.97] SPELL_CAST_SUCCESS: [Mijan: Summon Mijan] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 444963, Summon Mijan, 0, 0
 		[ 71.29] SPELL_CAST_SUCCESS: [Zolo: Summon Zolo] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, "", nil, 0x0, 444964, Summon Zolo, 0, 0
 		[ 96.73] SPELL_CAST_SUCCESS: [Zul'Lor: Summon Zul'Lor] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, "", nil, 0x0, 444962, Summon Zul'Lor, 0, 0
 		[127.37] SPELL_CAST_SUCCESS: [Loro: Summon Loro] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, "", nil, 0x0, 444960, Summon Loro, 0, 0
-	Casting Demoralizing Shout: 2.5 sec, type=cast, spellId=23511
+	Casting Demoralizing Shout: 2.5 sec, type=cast, spellId=23511, triggerDeltas = 111.27
 		[111.27] SPELL_CAST_START: [Loro: Demoralizing Shout] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, "", nil, 0x0, 23511, Demoralizing Shout, 0, 0
-	Thorns, type=spell, spellId=438294
+	Thorns, type=spell, spellId=438294, triggerDeltas = 30.01
 		[ 30.01] SPELL_CAST_START: [Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 438294, Thorns, 0, 0
-	Healing Ward, type=spell, spellId=438335
+	Healing Ward, type=spell, spellId=438335, triggerDeltas = 38.08, 63.10
 		[ 38.08] SPELL_CAST_START: [Mijan: Healing Ward] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 438335, Healing Ward, 0, 0
 		[101.18] SPELL_CAST_START: [Mijan: Healing Ward] Creature-0-5208-109-4570-221835-00003BD3BB, Mijan, 0xa48, "", nil, 0x0, 438335, Healing Ward, 0, 0
-	Fervor faded, type=fades, spellId=445284
+	Fervor faded, type=fades, spellId=445284, triggerDeltas = 21.83
 		[ 21.83] SPELL_AURA_REMOVED: [Gasher->Gasher: Fervor] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, 445284, Fervor, 0, BUFF, 0
-	Fervor on >%s< (%d), type=stack, spellId=445284
+	Fervor on >%s< (%d), type=stack, spellId=445284, triggerDeltas = 10.79, 7.54
 		[ 10.79] SPELL_AURA_APPLIED_DOSE: [Gasher->Gasher: Fervor] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, 445284, Fervor, 0, BUFF, 10, 0
 			 Triggered 2x, delta times: 10.79, 7.54
-	Spinning Axes, type=spell, spellId=445289
+	Spinning Axes, type=spell, spellId=445289, triggerDeltas = 10.14, 16.00
 		[ 10.14] SPELL_CAST_SUCCESS: [Gasher: Spinning Axes] Creature-0-5208-109-4570-221637-00003BC782, Gasher, 0xa48, "", nil, 0x0, 445289, Spinning Axes, 0, 0
 		[ 26.14] SPELL_CAST_SUCCESS: [Gasher: Spinning Axes] Creature-0-5208-109-4570-221759-00003BD3A2, Gasher, 0xa48, "", nil, 0x0, 445289, Spinning Axes, 0, 0
-	Unstable Cask, type=spell, spellId=445940
+	Unstable Cask, type=spell, spellId=445940, triggerDeltas = 62.35
 		[ 62.35] SPELL_CAST_SUCCESS: [Zolo->Mafakacoil: Unstable Cask] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 445940, Unstable Cask, 0, 0
-	Shield Slam on >%s<, type=target, spellId=446354
+	Shield Slam on >%s<, type=target, spellId=446354, triggerDeltas = 113.43, 8.80
 		[113.43] SPELL_AURA_APPLIED: [Loro->Mafakacoil: Shield Slam] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, Player-5826-0237C47D, Mafakacoil, 0x512, 446354, Shield Slam, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 113.43, 8.80
-	Hukku's Guardians, type=spell, spellId=446360
+	Hukku's Guardians, type=spell, spellId=446360, triggerDeltas = 129.11
 		[129.11] SPELL_CAST_SUCCESS: [Hukku: Hukku's Guardians] Creature-0-5208-109-4570-218922-00003BC782, Hukku, 0xa48, "", nil, 0x0, 446360, Hukku's Guardians, 0, 0
-	Frailty, type=spell, spellId=446364
+	Frailty, type=spell, spellId=446364, triggerDeltas = 82.58, 5.49, 14.63, 9.39, 21.04, 6.47
 		[ 82.58] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
 			 Triggered 2x, delta times: 82.58, 5.49
 		[102.70] SPELL_CAST_SUCCESS: [Zul'Lor: Frailty] Creature-0-5208-109-4570-221837-00003BD3EE, Zul'Lor, 0xa48, "", nil, 0x0, 446364, Frailty, 0, 0
 			 Triggered 4x, delta times: 102.70, 9.39, 21.04, 6.47
-	Charge, type=spell, spellId=446369
+	Charge, type=spell, spellId=446369, triggerDeltas = 77.73, 17.45, 32.34, 8.86, 8.09
 		[ 77.73] SPELL_CAST_SUCCESS: [Zul'Lor->Bruzo: Charge] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, Player-5826-02004B73, Bruzo, 0x512, 446369, Charge, 0, 0
 		[ 95.18] SPELL_CAST_SUCCESS: [Zul'Lor->Shelisea: Charge] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, Player-5826-0222D437, Shelisea, 0x512, 446369, Charge, 0, 0
 		[127.52] SPELL_CAST_SUCCESS: [Zul'Lor->Stolzenburg: Charge] Creature-0-5208-109-4570-221837-00003BD3EE, Zul'Lor, 0xa48, Player-5826-0244A0F3, Stolzenburg, 0x512, 446369, Charge, 0, 0
@@ -63,22 +62,22 @@ Announces:
 		[144.47] SPELL_CAST_SUCCESS: [Zul'Lor->Gotchya: Charge] Creature-0-5208-109-4570-221837-00003BD3EE, Zul'Lor, 0xa48, Player-5826-020EC278, Gotchya, 0x512, 446369, Charge, 0, 0
 
 Special warnings:
-	Thorns on >%s< - dispel now, type=dispel, spellId=438294
+	Thorns on >%s< - dispel now, type=dispel, spellId=438294, triggerDeltas = 31.51
 		[ 31.51] SPELL_AURA_APPLIED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
-	Thorns on >%s< - stop attacking, type=reflect, spellId=438294
+	Thorns on >%s< - stop attacking, type=reflect, spellId=438294, triggerDeltas = 30.01
 		[ 30.01] SPELL_CAST_START: [Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 438294, Thorns, 0, 0
-	Atal'ai Serpent Totem - switch targets, type=switch, spellId=445912
+	Atal'ai Serpent Totem - switch targets, type=switch, spellId=445912, triggerDeltas = 26.75
 		[ 26.75] SPELL_CAST_SUCCESS: [Mijan: Atal'ai Serpent Totem] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 445912, Atal'ai Serpent Totem, 0, 0
-	Chain Lightning - interrupt >%s<!, type=interrupt, spellId=446338
+	Chain Lightning - interrupt >%s<!, type=interrupt, spellId=446338, triggerDeltas = 55.86, 87.01
 		[ 55.86] SPELL_CAST_START: [Zolo: Chain Lightning] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, "", nil, 0x0, 446338, Chain Lightning, 0, 0
 		[142.87] SPELL_CAST_START: [Zolo: Chain Lightning] Creature-0-5208-109-4570-221836-00003BD3D5, Zolo, 0xa48, "", nil, 0x0, 446338, Chain Lightning, 0, 0
-	Atal'ai Skeleton Totem - switch targets, type=switch, spellId=446339
+	Atal'ai Skeleton Totem - switch targets, type=switch, spellId=446339, triggerDeltas = 59.11, 11.31
 		[ 59.11] SPELL_CAST_SUCCESS: [Zolo: Atal'ai Skeleton Totem] Creature-0-5208-109-4570-221639-00003BC783, Zolo, 0xa48, "", nil, 0x0, 446339, Atal'ai Skeleton Totem, 0, 0
 			 Triggered 2x, delta times: 59.11, 11.31
-	Shadow Bolt - interrupt >%s<!, type=interrupt, spellId=446361
+	Shadow Bolt - interrupt >%s<!, type=interrupt, spellId=446361, triggerDeltas = 130.71, 3.23, 2.77, 10.20
 		[130.71] SPELL_CAST_START: [Hukku: Shadow Bolt] Creature-0-5208-109-4570-218922-00003BC782, Hukku, 0xa48, "", nil, 0x0, 446361, Shadow Bolt, 0, 0
 			 Triggered 4x, delta times: 130.71, 3.23, 2.77, 10.20
-	Corrupted Slam - dodge attack, type=dodge, spellId=446372
+	Corrupted Slam - dodge attack, type=dodge, spellId=446372, triggerDeltas = 78.13, 17.78, 10.93, 23.05, 6.51, 9.29
 		[ 78.13] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5208-109-4570-221640-00003BC783, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
 			 Triggered 2x, delta times: 78.13, 17.78
 		[106.84] SPELL_CAST_START: [Zul'Lor: Corrupted Slam] Creature-0-5208-109-4570-221837-00003BD3EE, Zul'Lor, 0xa48, "", nil, 0x0, 446372, Corrupted Slam, 0, 0
@@ -151,7 +150,7 @@ Event trace:
 		ShowSpecialWarning: Thorns on Mijan - stop attacking
 		PlaySound: VoicePack/stopattack
 	[ 31.51] SPELL_AURA_APPLIED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
-		StartTimer: 60, Thorns ends
+		StartTimer: 60.0, Thorns ends
 		ShowSpecialWarning: Thorns on Mijan - dispel now
 		PlaySound: VoicePack/dispelboss
 	[ 32.21] SPELL_AURA_REMOVED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
