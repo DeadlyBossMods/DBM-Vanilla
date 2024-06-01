@@ -142,8 +142,10 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(438713) then
-		timerSummonBombCD:Restart(14)
-		timerSprocketfireCD:Restart(18.9)--18.9-24.3
+		timerSummonBombCD:Stop()
+		timerSummonBombCD:Start(14)
+		timerSprocketfireCD:Stop()
+		timerSprocketfireCD:Start(18.9)--18.9-24.3
 		if self:GetStage(4) then
 			timerSpecialCD:Start(21)
 		else
