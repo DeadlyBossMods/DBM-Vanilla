@@ -149,7 +149,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		--Can restart timers here for resurrected ones, but can't set initial timers for new spawning boss since group decides which one they pull, so that check needs scanning player damage events :\
 		if args:IsSpell(444960) then--Laro
 			--maybe stop sooner (UNIT_DIED)?
-			timerDemoShoutCD:Restart(14.6)
+			timerDemoShoutCD:Stop()
+			timerDemoShoutCD:Start(14.6)
 		end
 	elseif args:IsSpell(445912) then
 		specWarnAtalaiSerpentTotem:Show()
