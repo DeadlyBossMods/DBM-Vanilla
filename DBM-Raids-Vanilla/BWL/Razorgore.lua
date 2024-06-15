@@ -35,7 +35,7 @@ mod:RegisterEventsInCombat(
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 local warnFireballVolley	= mod:NewCastAnnounce(22425, 3)
 local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
-local warnEggsLeft			= mod:NewCountAnnounce(19873, 1)
+local warnEggsLeft			= mod:NewCountAnnounce(19873, 1) ---@type Announce -- string as count in :Show() is unusual but valid
 
 local specWarnFireballVolley= mod:NewSpecialWarningMoveTo(22425, false, nil, nil, 2, 2)
 
