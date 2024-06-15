@@ -12,7 +12,7 @@ Findings:
 	Unused event registration: SPELL_SUMMON 444964 (Summon Zolo)
 
 Unused objects:
-	[Announce] Thorns, type=spell, spellId=438294
+	[Announce] Thorns on >%s<, type=target, spellId=438294
 	[Special Warning] Thorns on >%s< - dispel now, type=dispel, spellId=438294
 	[Special Warning] Thorns on >%s< - stop attacking, type=reflect, spellId=438294
 	[Special Warning] Healing Wave - interrupt >%s<!, type=interrupt, spellId=438339

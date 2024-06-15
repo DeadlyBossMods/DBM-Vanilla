@@ -42,7 +42,7 @@ local specWarnCorruptedSlam			= mod:NewSpecialWarningDodge(446372, nil, nil, nil
 --local timerChargeCD				= mod:NewAITimer(8, 446369, nil, nil, nil, 3)--8-17.8 so disabled for now
 
 --Mijan
-local warnThorns					= mod:NewSpellAnnounce(438294, 2)
+local warnThorns					= mod:NewTargetNoFilterAnnounce(438294, 2)
 local warnHealingWard				= mod:NewSpellAnnounce(438335, 3)
 
 local specWarnAtalaiSerpentTotem	= mod:NewSpecialWarningSwitch(445912, "Dps", nil, nil, nil, 2)

@@ -29,7 +29,7 @@ Announces:
 		[127.37] SPELL_CAST_SUCCESS: [Loro: Summon Loro] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, "", nil, 0x0, 444960, Summon Loro, 0, 0
 	Casting Demoralizing Shout: 2.5 sec, type=cast, spellId=23511, triggerDeltas = 111.27
 		[111.27] SPELL_CAST_START: [Loro: Demoralizing Shout] Creature-0-5208-109-4570-221638-00003BC782, Loro, 0xa48, "", nil, 0x0, 23511, Demoralizing Shout, 0, 0
-	Thorns, type=spell, spellId=438294, triggerDeltas = 30.01
+	Thorns on >%s<, type=target, spellId=438294, triggerDeltas = 30.01
 		[ 30.01] SPELL_CAST_START: [Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 438294, Thorns, 0, 0
 	Healing Ward, type=spell, spellId=438335, triggerDeltas = 38.08, 63.10
 		[ 38.08] SPELL_CAST_START: [Mijan: Healing Ward] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 438335, Healing Ward, 0, 0
@@ -146,7 +146,7 @@ Event trace:
 	[ 26.75] SPELL_CAST_SUCCESS: [Mijan: Atal'ai Serpent Totem] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 445912, Atal'ai Serpent Totem, 0, 0
 		ShowSpecialWarning: Atal'ai Serpent Totem - switch targets
 	[ 30.01] SPELL_CAST_START: [Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, "", nil, 0x0, 438294, Thorns, 0, 0
-		ShowAnnounce: Thorns
+		ShowAnnounce: Thorns on Mijan
 		ShowSpecialWarning: Thorns on Mijan - stop attacking
 		PlaySound: VoicePack/stopattack
 	[ 31.51] SPELL_AURA_APPLIED: [Mijan->Mijan: Thorns] Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, Creature-0-5208-109-4570-218868-00003BC782, Mijan, 0xa48, 438294, Thorns, 0, BUFF, 0
