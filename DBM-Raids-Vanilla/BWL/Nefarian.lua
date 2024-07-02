@@ -45,7 +45,7 @@ local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1,
 local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
-local timerPhase			= mod:NewPhaseTimer(15)
+local timerPhase			= mod:NewStageTimer(15)
 local timerClassCall		= mod:NewTimer(30, "TimerClassCall", "136116", nil, nil, 5)
 local timerFearNext			= mod:NewCDTimer(26.7, 22686, nil, nil, nil, 2)--26-42.5
 
