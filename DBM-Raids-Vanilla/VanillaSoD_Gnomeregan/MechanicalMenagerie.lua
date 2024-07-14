@@ -124,7 +124,8 @@ function mod:SPELL_CAST_START(args)
 		local cid = self:GetCIDFromGUID(args.sourceGUID)
 		local bossName = bossRenames[cid] or args.sourceName
 		if self:CheckInterruptFilter(args.sourceGUID, false, true, true) then--Since it's council boss, target/focus filter is disabled for now.
-			specWarnWidgetVolley:Show(bossName)
+			---@diagnostic disable-next-line: param-type-mismatch
+			specWarnWidgetVolley:Show(bossName or args.sourceName)
 			specWarnWidgetVolley:Play("kickcast")
 		end
 	elseif args:IsSpell(436836) then
@@ -133,6 +134,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(436824) then
 		local cid = self:GetCIDFromGUID(args.sourceGUID)
 		local bossName = bossRenames[cid] or args.sourceName
+		---@diagnostic disable-next-line: param-type-mismatch
 		specWarnFrayedWiring:Show(bossName)
 		specWarnFrayedWiring:Play("stopattack")
 	elseif args:IsSpell(436816) then
