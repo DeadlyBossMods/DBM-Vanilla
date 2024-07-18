@@ -3,6 +3,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(12397)--121818 TW ID, 12397 classic ID
+mod:SetEncounterID(3026)--Sod Encounter ID
 --mod:SetModelID(17887)
 mod:EnableWBEngageSync()--Enable syncing engage in outdoors
 
