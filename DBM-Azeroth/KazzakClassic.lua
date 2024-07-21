@@ -23,6 +23,8 @@ local warningShadowBoltVolley	= mod:NewSpellAnnounce(21341, 2)
 
 local specWarnMark				= mod:NewSpecialWarningYou(21056, nil, nil, nil, 1, 2)--No Yell on purpose, outdoor chat restrictions and all
 
+local enrageTimer				= mod:NewBerserkTimer(180)
+
 --Timers seem totally random, like 5-40 type random nonsense, so are utterly worthless
 --local timerMarkCD				= mod:NewCDTimer(19.1, 21056, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 --local timerShadowBoltVolleyCD	= mod:NewCDTimer(7.6, 21341, nil, nil, nil, 2)
@@ -33,6 +35,9 @@ function mod:OnCombatStart(delay, yellTriggered)
 	if yellTriggered then
 		--timerShadowBoltVolleyCD:Start(11.5-delay)
 		--timerMarkCD:Start(14.1-delay)
+	end
+	if IsInInstance() or yellTriggered then -- To unreliable for random outdoor pull timers
+		enrageTimer:Start(-delay)
 	end
 end
 
