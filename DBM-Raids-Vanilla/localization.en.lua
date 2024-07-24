@@ -553,6 +553,15 @@ L:SetMiscLocalization{
 }
 
 -----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "The Molten Core"
+}
+
+-----------------
 --  MC: Trash  --
 -----------------
 L = DBM:GetModLocalization("MCTrash")

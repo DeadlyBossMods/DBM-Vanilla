@@ -108,6 +108,7 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
+MC\MoltenCore.lua
 
 VanillaOnyxia\Onyxia.lua
 
