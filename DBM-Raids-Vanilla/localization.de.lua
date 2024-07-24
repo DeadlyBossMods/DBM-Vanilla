@@ -679,7 +679,8 @@ L:SetMiscLocalization{
    Breath = "%s atmet tief ein...",
 	YellPull = "Was für ein Zufall. Normalerweise muss ich meinen Unterschlupf verlassen, um etwas zu essen.",
 	YellP2 = "Diese sinnlose Anstrengung langweilt mich. Ich werde Euch alle von oben verbrennen!",
-	YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!"
+	YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!",
+	SoDWarning = "Willkommen in %s. DBM wird während dem Kampf einige witzige Sounds aus einem legendären Classic Raid spielen. Wer keinen Spaß versteht kann das im DBM UI deaktivieren: /dbm eingeben und die Einstellungen für Onyxia unter Raids -> Classic öffnen.",
 }
 
 -------------------
