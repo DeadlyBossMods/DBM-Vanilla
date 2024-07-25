@@ -8,14 +8,27 @@ mod:SetEncounterID(3018)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
---	"SPELL_CAST_SUCCESS"
+	"SPELL_AURA_APPLIED 460890",
+	"SPELL_AURA_APPLIED_DOSE 460890",
+	"SPELL_CAST_SUCCESS 462619"
 )
 
-----TODO, verify spellId, it might be 19798
---local warnQuake		= mod:NewSpellAnnounce(20553)
---
---function mod:SPELL_CAST_SUCCESS(args)
---	if args:IsSpell(20553) then
---		warnQuake:Show()
---	end
---end
+local warnMeltArmor	= mod:NewStackAnnounce(460890, 2)
+local warnAdds		= mod:NewSpellAnnounce(462619)
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(460890) then
+		local uId = DBM:GetRaidUnitId(args.destName)
+		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then
+			local amount = args.amount or 1
+			warnMeltArmor:Show(args.destName, amount)
+		end
+	end
+end
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(462619) then
+		warnAdds:Show()
+	end
+end
