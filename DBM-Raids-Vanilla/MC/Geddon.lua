@@ -50,7 +50,7 @@ local timerBombCD		= mod:NewCDTimer(13.3, 20475, nil, nil, nil, 3)--13.3-18.3
 local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
 local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2)
 
-mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8})
+mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8, 7, 6}) -- up to 3 bombs on heat level 3 (TODO: confirm)
 
 function mod:OnCombatStart(delay)
 	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first
@@ -67,11 +67,17 @@ function mod:OnCombatEnd()
 	self:UnregisterShortTermEvents()
 end
 
+local bombIcon = 8
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(20475, 461090, 461105, 462402) then
 		timerBomb:Start(args.destName)
 		if self.Options.SetIconOnBombTarget then
-			self:SetIcon(args.destName, 8)
+			if self:AntiSpam(5, "Bomb") then
+				bombIcon = 8
+			end
+			self:SetIcon(args.destName, bombIcon)
+			bombIcon = bombIcon - 1
 		end
 		if args:IsPlayer() then
 			specWarnBomb:Show()
@@ -81,7 +87,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				yellBombFades:Countdown(8)
 			end
 		else
-			warnBomb:Show(args.destName)
+			warnBomb:CombinedShow(0.3, args.destName)
 		end
 	elseif args:IsSpell(19659) and self:CheckDispelFilter("magic") then
 		specWarnIgnite:CombinedShow(0.3, args.destName)
