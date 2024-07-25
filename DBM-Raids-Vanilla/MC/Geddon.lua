@@ -22,10 +22,12 @@ mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 20475 19659",
-	"SPELL_AURA_REMOVED 20475",
-	"SPELL_CAST_SUCCESS 19695 19659 20478 20475"
+	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402",
+	"SPELL_AURA_REMOVED 20475 461090 461105 462402",
+	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402"
 )
+
+-- 461090 461105 462402 seem to be bombs on SoD (only confirmed first one at heat level 1)
 
 --[[
 (ability.id = 19695 or ability.id = 19659 or ability.id = 20478) and type = "cast"
@@ -66,7 +68,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(20475) then
+	if args:IsSpell(20475, 461090, 461105, 462402) then
 		timerBomb:Start(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 8)
@@ -88,7 +90,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(20475) then
+	if args:IsSpell(20475, 461090, 461105, 462402) then
 		timerBomb:Stop(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 0)
@@ -114,7 +116,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(20478) then
 		warnArmageddon:Show()
 		timerArmageddon:Start()
-	elseif args:IsSpell(20475) then
+	elseif args:IsSpell(20475, 461090, 461105, 462402) then
 		timerBombCD:Start()
 	end
 end
