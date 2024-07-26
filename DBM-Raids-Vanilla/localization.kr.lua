@@ -542,12 +542,21 @@ L:SetMiscLocalization{
 }
 
 -----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "화산 심장부"
+}
+
+-----------------
 --  MC: Trash  --
 -----------------
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "화산심장부 일반몹"
+	name = "화산 심장부 일반몹"
 }
 
 -------------------
@@ -700,7 +709,8 @@ L:SetMiscLocalization{
 	Breath 		= "%s 숨을 깊게 들이쉽니다.",
 	YellPull 	= "오늘은 운이 아주 좋군. 평소엔 먹이를 찾으려면 둥지에서 나가야 하는데 말이야.",
 	YellP2 		= "쓸데없이 힘을 쓰는 것도 지루하군. 네 녀석들 머리 위에서 모조리 불살라 주마!",
-	YellP3 		= "혼이 더 나야 정신을 차리겠구나!"
+	YellP3 		= "혼이 더 나야 정신을 차리겠구나!",
+	SoDWarning	= "%s에 오신 것을 환영합니다. 이 전투동안 DBM은 옛 전설적인 레이드에서 가져온 재미있는 효과음을 재생할 것입니다. DBM UI에서 이 옵션을 끌 수 있습니다: /dbm 입력 후 공격대 -> 오리지널 메뉴에서 오닉시아 모듈을 찾아가세요.",
 }
 
 -------------------
