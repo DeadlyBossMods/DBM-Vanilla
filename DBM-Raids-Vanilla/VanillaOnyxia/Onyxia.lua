@@ -47,10 +47,15 @@ local yellFireball				= mod:NewYell(18392)
 --local specWarnAdds			= mod:NewSpecialWarningAdds(68959, "-Healer", nil, nil, 1, 2)
 
 local timerNextFlameBreath	= mod:NewCDTimer(13.3, 18435, nil, "Tank|Healer", 3, 5)--13.3-20 Breath she does on ground in frontal cone.
---local timerNextDeepBreath	= mod:NewCDTimer(35, 18584, nil, nil, nil, 3)--Range from 35-60seconds in between based on where she moves to.
 local timerBreath			= mod:NewCastTimer(5, 18584, nil, nil, nil, 3)
 --local timerWhelps			= mod:NewTimer(105, "TimerWhelps", 10697, nil, nil, 1)
 --local timerBigAddCD			= mod:NewAddsTimer(44.9, 68959, nil, "-Healer")
+
+-- First Deep Breath is on a fixed timer in SoD
+local specWarnBreathSoon
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	specWarnBreathSoon = mod:NewSpecialWarningSoon(18584, nil, nil, nil, 2, 2)
+end
 
 mod:AddBoolOption("SoundWTF3", true, "sound")
 mod:AddRangeFrameOption(8, 18392)
@@ -146,6 +151,17 @@ function mod:UNIT_DIED(args)
 	end
 end
 
+-- Looks like SoD has a scripted Breath in Phase 2, pretty cool, avoids the boring fights where this never happens
+-- "<169.88 22:13:32> [CHAT_MSG_MONSTER_YELL] This meaningless exertion bores me. I'll incinerate you all from above!#Onyxia#####0#0##0#1673#nil#0#false#false#false#false",
+-- "<199.08 22:14:01> [CHAT_MSG_MONSTER_EMOTE] %s takes in a deep breath...#Onyxia#####0#0##0#1701#nil#0#false#false#false#false",
+-- +29.2s
+-- "<342.34 22:48:04> [CHAT_MSG_MONSTER_YELL] This meaningless exertion bores me. I'll incinerate you all from above!#Onyxia#####0#0##0#1088#nil#0#false#false#false#false",
+-- "<371.51 22:48:33> [CHAT_MSG_MONSTER_EMOTE] %s takes in a deep breath...#Onyxia#####0#0##0#1118#nil#0#false#false#false#false",
+-- +29.17s
+-- "<238.47 23:00:39> [CHAT_MSG_MONSTER_YELL] This meaningless exertion bores me. I'll incinerate you all from above!#Onyxia#####0#0##0#1891#nil#0#false#false#false#false",
+-- "<267.59 23:01:09> [CHAT_MSG_MONSTER_EMOTE] %s takes in a deep breath...#Onyxia#####0#0##0#1914#nil#0#false#false#false#false",
+-- +29.12s
+
 function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
 	if msg == L.Breath or msg:find(L.Breath) then
 		self:SendSync("Breath")
@@ -181,7 +197,11 @@ function mod:OnSync(msg, guid, sender)
 	if msg == "Breath" and self:AntiSpam(8, 1) then
 		specWarnBreath:Show()
 		specWarnBreath:Play("breathsoon")
-		timerBreath:Start()
+		if timerBreath:IsStarted() then
+			timerBreath:Update(29.1, 29.1 + 5)
+		else
+			timerBreath:Start()
+		end
 		--timerNextDeepBreath:Start()
 	elseif msg == "Phase2" then
 		self:SetStage(2)
@@ -199,6 +219,13 @@ function mod:OnSync(msg, guid, sender)
 			DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\i-dont-see-enough-dots.ogg")
 			self:Schedule(10, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\throw-more-dots.ogg")
 			self:Schedule(18, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\whelps-left-side-even-side-handle-it.ogg")
+		end
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			-- Starts casting 29.1 seconds after phase change (small diff likely due to rp walk), 5 sec cast time
+			timerBreath:Start(29.1 + 5)
+			-- This is likely going to be the only Deep Breath that happens and the only one where we have an exact timing, so make sure everyone is as prepared as possible
+			-- with an extra special warning before the cast even starts
+			specWarnBreathSoon:Schedule(25)
 		end
 	elseif msg == "Phase3" then
 		self:SetStage(3)
