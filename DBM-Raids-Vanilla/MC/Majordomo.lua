@@ -22,7 +22,8 @@ mod:RegisterCombat("combat")
 --mod:RegisterKill("yell", L.Kill)
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 20619 21075 20534"
+	"SPELL_CAST_SUCCESS 20619 21075 20534 461056",
+	"SPELL_CAST_START 461056"
 )
 
 --[[
@@ -39,13 +40,17 @@ local timerDamageShield		= mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, n
 local timerTeleportCD		= mod:NewCDTimer(25, 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
 local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
+-- New in SoD
+-- https://sod.warcraftlogs.com/reports/6RBYhaHdc17x94J8#fight=64&type=casts&by=ability&view=events&hostility=1
+local specWarnFlare			= mod:NewSpecialWarningSpell(461056)
+local timerNextFlare		= mod:NewNextTimer(30, 461056, nil, nil, nil, 2)
+
 function mod:OnCombatStart(delay)
 	timerTeleportCD:Start(19.4-delay)
 	timerShieldCD:Start(27.8-delay)--27-30
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	local spellId = args.spellId
 	if args:IsSpell(20619) then
 		specWarnMagicReflect:Show(BOSS)--Always a threat to casters
 		specWarnMagicReflect:Play("stopattack")
@@ -63,5 +68,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(20534) then
 		warnTeleport:Show(args.destName)
 		timerTeleportCD:Start()
+	elseif args:IsSpell(461056) then
+		-- Next cast is always 30 seconds after *success*, if the cast fails (e.g., mage ice block) then it just tries again ~immediately
+		timerNextFlare:Start()
+	end
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpell(461056) then
+		specWarnFlare:Show()
 	end
 end

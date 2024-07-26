@@ -14,6 +14,7 @@
 		"SHIELDSLOT",
 		"BOSS",
 		"UnitDebuff",
-		"SCENARIO_STAGE"
+		"SCENARIO_STAGE",
+		"DBMRaidsVanilla_AllSavedVars"
 	]
 }

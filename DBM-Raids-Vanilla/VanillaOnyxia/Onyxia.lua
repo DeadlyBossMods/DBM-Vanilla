@@ -26,7 +26,8 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
-	"UNIT_HEALTH"
+	"UNIT_HEALTH",
+	"LOADING_SCREEN_DISABLED"
 )
 
 --Todo, adds stuff (if they exist) with classic IDs
@@ -223,3 +224,25 @@ function mod:OnSync(msg, guid, sender)
 		specWarnBellowingRoar:Play("fearsoon")
 	end
 end
+
+function mod:ShowSoundWarning()
+	-- Ugly option handling because default mod options are all per character
+	local globalOptions = DBMRaidsVanilla_AllSavedVars["global-options"] or {}
+	DBMRaidsVanilla_AllSavedVars["global-options"] = globalOptions
+	if not globalOptions.OnyxiaSoundWarningShown then
+		mod:AddMsg(L.SoDWarning:format((GetInstanceInfo())))
+		DBM:PlaySoundFile(567458) -- "Ding"
+		globalOptions.OnyxiaSoundWarningShown = true
+	end
+end
+
+function mod:ShowSoundWarningDelayed()
+	-- SoD players might not be used to DBM's fun sounds here, let's add a message for them
+	-- Only trigger when entering Onyxia's Lair on SoD
+	if select(8, GetInstanceInfo()) == 249 and DBM:IsSeasonal("SeasonOfDiscovery") then
+		self:ScheduleMethod(4, "ShowSoundWarning")
+	end
+end
+
+mod.OnInitialize = mod.ShowSoundWarningDelayed
+mod.LOADING_SCREEN_DISABLED = mod.ShowSoundWarningDelayed
