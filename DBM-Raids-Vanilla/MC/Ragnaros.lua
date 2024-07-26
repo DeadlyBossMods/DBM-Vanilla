@@ -13,12 +13,12 @@ local mod	= DBM:NewMod("Ragnaros-Classic", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(11502)
+mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228438 or 11502)
 mod:SetEncounterID(672)
 if not mod:IsClassic() then
 	mod:SetModelID(11121)--Totally fucked on classic
 end
-mod:SetHotfixNoticeRev(20200218000000)--2020, 02, 18
+mod:SetHotfixNoticeRev(20240724000000)
 mod:SetMinSyncRevision(20200218000000)
 
 mod:RegisterCombat("combat")
@@ -40,7 +40,7 @@ local warnWrathRag		= mod:NewSpellAnnounce(20566, 3)
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 
-local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30
+local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30 (29-33 in SoD?)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5

@@ -13,22 +13,23 @@ local mod	= DBM:NewMod("Lucifron", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(12118)--, 12119
+mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228429 or 12118)--, 12119
 mod:SetEncounterID(663)
 mod:SetModelID(13031)
+mod:SetHotfixNoticeRev(20240724000000)
 mod:SetUsedIcons(1, 2)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 20604",
-	"SPELL_CAST_SUCCESS 19702 19703",
+	"SPELL_CAST_SUCCESS 19702 19703 460931 460932",
 --	"SPELL_AURA_APPLIED 20604",
 	"SPELL_AURA_REMOVED 20604"
 )
 
 --[[
-(ability.id = 19702 or ability.id = 19703 or ability.id = 20604) and type = "cast"
+(ability.id = 19702 or ability.id = 19703 or ability.id = 20604 or ability.id = 460931 or ability.id = 460932) and type = "cast"
 --]]
 local warnDoom		= mod:NewSpellAnnounce(19702, 2)
 local warnCurse		= mod:NewSpellAnnounce(19703, 3)
@@ -37,8 +38,8 @@ local warnMC		= mod:NewTargetNoFilterAnnounce(20604, 4)
 local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2)
 local yellMC		= mod:NewYell(20604)
 
-local timerCurseCD	= mod:NewCDTimer(20.5, 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)--20-25
-local timerDoomCD	= mod:NewCDTimer(20, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--20-25
+local timerCurseCD	= mod:NewCDTimer(20.5, 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)--20-25 (22.6-28 on sod?)
+local timerDoomCD	= mod:NewCDTimer(20, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--20-25 (16-21 on sod)
 --local timerDoom		= mod:NewCastTimer(10, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 
 mod:AddSetIconOption("SetIconOnMC", 20604, true, 0, {1, 2})
@@ -92,11 +93,11 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19702) then
+	if args:IsSpell(19702, 460931) then
 		warnDoom:Show()
 		--timerDoom:Start()
-		timerDoomCD:Start()
-	elseif args:IsSpell(19703) then
+		timerDoomCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 16 or 20)
+	elseif args:IsSpell(19703, 460932) then
 		warnCurse:Show()
 		timerCurseCD:Start()
 	end
