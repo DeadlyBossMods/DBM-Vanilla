@@ -45,7 +45,10 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 end
 
-local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30 (29-33 in SoD?)
+-- "Wrath of Ragnaros-20566-npc:228438-000024194D = pull:30.6, 27.5, 27.5, 35.6, 139.2, 27.5, 34.0, 30.8, 27.5, 31.3",
+-- "Wrath of Ragnaros-20566-npc:228438-0000241D6F = pull:26.0, 27.5, 27.5, 30.8, 32.4, 34.2, 127.8, 27.5, 25.9, 29.1, 30.9, 26.6",
+-- "Wrath of Ragnaros-20566-npc:228438-00002421C6 = pull:27.6, 29.2, 32.3, 102.0, 29.1, 25.9, 34.0",
+local timerWrathRag		= mod:NewCDTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 25, 20566, nil, nil, nil, 2)--25-30 (26-34 in SoD?)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5
@@ -64,7 +67,7 @@ function mod:OnCombatStart(delay)
 	self.vb.addLeft = 0
 	self.vb.ragnarosEmerged = true
 	self.vb.submergeHealthPrewarnShown = false
-	timerWrathRag:Start(26.7-delay)
+	timerWrathRag:Start((DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 26.7) - delay)
 	timerSubmerge:Start(180-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(18)
@@ -103,7 +106,7 @@ local function emerged(self)
 	self.vb.ragnarosEmerged = true
 	timerEmerge:Cancel()
 	warnEmerge:Show()
-	timerWrathRag:Start(26.7)
+	timerWrathRag:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 26.7)
 	timerSubmerge:Start(180)
 end
 
@@ -155,7 +158,7 @@ end
 
 function mod:UNIT_HEALTH(uId)
 	-- SoD Ragnaros has a health-based submerge at 50% (SoD check implicit via cid which is new in SoD)
-	if self.vb.ragnarosEmerged and not self.vb.submergeHealthPrewarnShown and self:GetUnitCreatureId(uId) == 228438 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 then
+	if self.vb.ragnarosEmerged and not self.vb.submergeHealthPrewarnShown and self:GetUnitCreatureId(uId) == 228438 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 and warnPhase2Soon then
 		self.vb.submergeHealthPrewarnShown = true
 		warnPhase2Soon:Show()
 	end
