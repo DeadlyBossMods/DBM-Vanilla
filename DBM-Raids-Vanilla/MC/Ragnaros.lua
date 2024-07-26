@@ -26,7 +26,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_START 19774",
 	"SPELL_CAST_SUCCESS 20566 19773",
-	"CHAT_MSG_MONSTER_YELL"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_HEALTH"
 )
 mod:RegisterEventsInCombat(
 	"UNIT_DIED",
@@ -39,6 +40,10 @@ ability.id = 20566 and type = "cast" or target.id = 12143 and type = "death"
 local warnWrathRag		= mod:NewSpellAnnounce(20566, 3)
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
+local warnPhase2Soon
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
+end
 
 local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30 (29-33 in SoD?)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
@@ -47,6 +52,7 @@ local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil
 
 mod.vb.addLeft = 8
 mod.vb.ragnarosEmerged = true
+mod.vb.submergeHealthPrewarnShown = false
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("MCTrash")
 
@@ -57,6 +63,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 0
 	self.vb.ragnarosEmerged = true
+	self.vb.submergeHealthPrewarnShown = false
 	timerWrathRag:Start(26.7-delay)
 	timerSubmerge:Start(180-delay)
 	if self.Options.RangeFrame then
@@ -146,6 +153,14 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	end
 end
 
+function mod:UNIT_HEALTH(uId)
+	-- SoD Ragnaros has a health-based submerge at 50% (SoD check implicit via cid which is new in SoD)
+	if self.vb.ragnarosEmerged and not self.vb.submergeHealthPrewarnShown and self:GetUnitCreatureId(uId) == 228438 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 then
+		self.vb.submergeHealthPrewarnShown = true
+		warnPhase2Soon:Show()
+	end
+end
+
 function mod:OnSync(msg)
 	if msg == "SummonRag" and self:AntiSpam(5, 2) then
 		timerCombatStart:Start()
@@ -153,6 +168,7 @@ function mod:OnSync(msg)
 		self:SetStage(2)
 		self.vb.ragnarosEmerged = false
 		self:Unschedule(emerged)
+		timerSubmerge:Stop()
 		timerWrathRag:Stop()
 		warnSubmerge:Show()
 		timerEmerge:Start(90)
