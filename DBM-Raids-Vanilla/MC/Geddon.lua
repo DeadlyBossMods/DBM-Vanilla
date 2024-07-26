@@ -88,9 +88,8 @@ function mod:SPELL_AURA_APPLIED(args)
 				yellBomb:Yell()
 				yellBombFades:Countdown(8)
 			end
-		else
-			warnBomb:CombinedShow(0.3, args.destName)
 		end
+		warnBomb:CombinedShow(0.1, args.destName)
 	elseif args:IsSpell(19659) and self:CheckDispelFilter("magic") then
 		specWarnIgnite:CombinedShow(0.3, args.destName)
 		specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
