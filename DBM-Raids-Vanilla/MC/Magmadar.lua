@@ -23,7 +23,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 19451",
 	"SPELL_AURA_REMOVED 19451",
-	"SPELL_CAST_SUCCESS 19408 461125"
+	"SPELL_CAST_SUCCESS 19408 19451 461125",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --[[
@@ -32,28 +33,35 @@ mod:RegisterEventsInCombat(
 --]]
 --TODO, core hound summon not in combat log, so need transcriptor to add alert/timer for that
 local warnPanic			= mod:NewSpellAnnounce(19408, 2)
-local warnEnrage		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|RemoveEnrage")
+local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|RemoveEnrage")
 
-local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
+local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 
 local timerPanicCD		= mod:NewCDTimer(30, 19408)--30-40
-local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD		= mod:NewCDTimer(17.8, 19451, nil, nil, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+
+local warnCoreHound--timerCoreHound
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnCoreHound		= mod:NewSpellAnnounce(364727, 2)
+--	timerCoreHound		= mod:NewCDTimer(30, 364727, nil, nil, nil, 1)
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(19451) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn19451dispel then
-			specWarnEnrage:Show(args.destName)
-			specWarnEnrage:Play("enrage")
+			specWarnFrenzy:Show(args.destName)
+			specWarnFrenzy:Play("enrage")
 		else
-			warnEnrage:Show(args.destName)
+			warnFrenzy:Show(args.destName)
 		end
-		timerEnrage:Start()
+		timerFrenzy:Start()
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(19451) and args:IsDestTypeHostile() then
-		timerEnrage:Stop()
+		timerFrenzy:Stop()
 	end
 end
 
@@ -61,5 +69,28 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19408, 461125) then
 		warnPanic:Show()
 		timerPanicCD:Start()
+	elseif args:IsSpell(19451) and DBM:IsSeasonal("SeasonOfDiscovery") then--Timer is chaotic in regular classic but in SoD it's consistent 17.8-21~
+		timerFrenzyCD:Start()
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+	if spellId == 364727 or spellId == 461131 then--Lower heat levels (confirmed), higher heat levels?
+		self:SendSync("CoreHound")
+	end
+end
+
+function mod:OnSync(msg)
+	if msg == "CoreHound" and self:AntiSpam(5, 1) then
+		warnCoreHound:Show()
+--		timerCoreHound:Start()
+	end
+end
+
+--Snoop BW comms for event as well
+function mod:OnBWSync(msg)
+	if msg == "sum" and self:AntiSpam(5, 1) then
+		warnCoreHound:Show()
+--		timerCoreHound:Start()
 	end
 end
