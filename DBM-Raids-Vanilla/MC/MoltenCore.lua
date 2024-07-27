@@ -3,7 +3,7 @@ local mod	= DBM:NewMod("MoltenCore", "DBM-Raids-Vanilla", 6)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
---mod:SetCreatureID(11988)
+mod:SetCreatureID(227939)
 mod:SetEncounterID(3018)
 mod:RegisterCombat("combat")
 
@@ -13,8 +13,9 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 462619"
 )
 
-local warnMeltArmor	= mod:NewStackAnnounce(460890, 2)
-local warnAdds		= mod:NewSpellAnnounce(462619)
+--TODO, which Meteor spellId to warn for. 460883 (cast success) fires first but might be too early. 462583 (Cast start) fires second
+local warnMeltArmor		= mod:NewStackAnnounce(460890, 2)
+local warnAdds			= mod:NewSpellAnnounce(462619, 2)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(460890) then

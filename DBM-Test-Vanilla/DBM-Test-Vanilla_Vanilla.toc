@@ -31,3 +31,7 @@ Season of Discovery/Sunken Temple/Reports/MorphazAndHazzas.lua
 Season of Discovery/Sunken Temple/Reports/ShadeOfEranikus.lua
 Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-1.lua
 Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-2.lua
+
+
+Season of Discovery/Onyxia/Onyxia.lua
+Season of Discovery/Onyxia/Reports/Onyxia.lua

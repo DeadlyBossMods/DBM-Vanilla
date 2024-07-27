@@ -13,12 +13,12 @@ local mod	= DBM:NewMod("Ragnaros-Classic", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(11502)
+mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228438 or 11502)
 mod:SetEncounterID(672)
 if not mod:IsClassic() then
 	mod:SetModelID(11121)--Totally fucked on classic
 end
-mod:SetHotfixNoticeRev(20200218000000)--2020, 02, 18
+mod:SetHotfixNoticeRev(20240724000000)
 mod:SetMinSyncRevision(20200218000000)
 
 mod:RegisterCombat("combat")
@@ -26,7 +26,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_START 19774",
 	"SPELL_CAST_SUCCESS 20566 19773",
-	"CHAT_MSG_MONSTER_YELL"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_HEALTH"
 )
 mod:RegisterEventsInCombat(
 	"UNIT_DIED",
@@ -39,14 +40,22 @@ ability.id = 20566 and type = "cast" or target.id = 12143 and type = "death"
 local warnWrathRag		= mod:NewSpellAnnounce(20566, 3)
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
+local warnPhase2Soon
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
+end
 
-local timerWrathRag		= mod:NewCDTimer(25, 20566, nil, nil, nil, 2)--25-30
+-- "Wrath of Ragnaros-20566-npc:228438-000024194D = pull:30.6, 27.5, 27.5, 35.6, 139.2, 27.5, 34.0, 30.8, 27.5, 31.3",
+-- "Wrath of Ragnaros-20566-npc:228438-0000241D6F = pull:26.0, 27.5, 27.5, 30.8, 32.4, 34.2, 127.8, 27.5, 25.9, 29.1, 30.9, 26.6",
+-- "Wrath of Ragnaros-20566-npc:228438-00002421C6 = pull:27.6, 29.2, 32.3, 102.0, 29.1, 25.9, 34.0",
+local timerWrathRag		= mod:NewCDTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 25, 20566, nil, nil, nil, 2)--25-30 (26-34 in SoD?)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5
 
 mod.vb.addLeft = 8
 mod.vb.ragnarosEmerged = true
+mod.vb.submergeHealthPrewarnShown = false
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("MCTrash")
 
@@ -57,7 +66,8 @@ function mod:OnCombatStart(delay)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 0
 	self.vb.ragnarosEmerged = true
-	timerWrathRag:Start(26.7-delay)
+	self.vb.submergeHealthPrewarnShown = false
+	timerWrathRag:Start((DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 26.7) - delay)
 	timerSubmerge:Start(180-delay)
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(18)
@@ -96,7 +106,7 @@ local function emerged(self)
 	self.vb.ragnarosEmerged = true
 	timerEmerge:Cancel()
 	warnEmerge:Show()
-	timerWrathRag:Start(26.7)
+	timerWrathRag:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 26.7)
 	timerSubmerge:Start(180)
 end
 
@@ -146,6 +156,14 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	end
 end
 
+function mod:UNIT_HEALTH(uId)
+	-- SoD Ragnaros has a health-based submerge at 50% (SoD check implicit via cid which is new in SoD)
+	if self.vb.ragnarosEmerged and not self.vb.submergeHealthPrewarnShown and self:GetUnitCreatureId(uId) == 228438 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 and warnPhase2Soon then
+		self.vb.submergeHealthPrewarnShown = true
+		warnPhase2Soon:Show()
+	end
+end
+
 function mod:OnSync(msg)
 	if msg == "SummonRag" and self:AntiSpam(5, 2) then
 		timerCombatStart:Start()
@@ -153,6 +171,7 @@ function mod:OnSync(msg)
 		self:SetStage(2)
 		self.vb.ragnarosEmerged = false
 		self:Unschedule(emerged)
+		timerSubmerge:Stop()
 		timerWrathRag:Stop()
 		warnSubmerge:Show()
 		timerEmerge:Start(90)

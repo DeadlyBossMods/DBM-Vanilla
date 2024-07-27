@@ -13,9 +13,11 @@ local mod	= DBM:NewMod("Sulfuron", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(12098)--, 11662
+mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228436 or 12098)--, 11662
 mod:SetEncounterID(669)
 mod:SetModelID(13030)
+mod:SetHotfixNoticeRev(20240724000000)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
@@ -25,6 +27,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, nameplate aura if classic API supports it enough
+--TODO, add https://www.wowhead.com/classic/spell=461043/sundering-shout in any capacity
 local warnInspire		= mod:NewTargetNoFilterAnnounce(19779, 2, nil, "Tank|Healer")
 local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
 local warnShadowPain	= mod:NewTargetAnnounce(19776, 2, nil, false, 2)
