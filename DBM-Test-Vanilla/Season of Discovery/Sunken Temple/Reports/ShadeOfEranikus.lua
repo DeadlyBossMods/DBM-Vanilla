@@ -118,7 +118,7 @@ Event trace:
 	[ 17.12] SPELL_AURA_APPLIED: [Shade of Eranikus->Gigachaddmg: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-026CD99F, Gigachaddmg, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
 		ShowAnnounce: Lethargic Poison on Arthritîs, Bruzo, Gigachaddmg, PlayerName
 	[ 22.32] SPELL_CAST_START: [Shade of Eranikus: Bellowing Roar] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 445498, Bellowing Roar, 0, 0
-		ShowSpecialWarning: Bellowing Roar - interrupt 1! (0)
+		ShowSpecialWarning: Bellowing Roar - interrupt Shade of Eranikus! (1)
 		PlaySound: VoicePack/kickcast
 		StartTimer: 33.5, Bellowing Roar (2)
 	[ 25.56] SPELL_CAST_START: [Shade of Eranikus: Corrosive Breath] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437353, Corrosive Breath, 0, 0
@@ -197,7 +197,7 @@ Event trace:
 	[120.25] SPELL_AURA_APPLIED: [Shade of Eranikus->Discokeks: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-0239D943, Discokeks, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
 		ShowAnnounce: Lethargic Poison on Arthritîs, Behlial, Discokeks, Mafakacoil
 	[123.77] SPELL_CAST_START: [Shade of Eranikus: Bellowing Roar] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 445498, Bellowing Roar, 0, 0
-		ShowSpecialWarning: Bellowing Roar - interrupt 2! (0)
+		ShowSpecialWarning: Bellowing Roar - interrupt Shade of Eranikus! (2)
 		PlaySound: VoicePack/kickcast
 		StartTimer: 33.5, Bellowing Roar (3)
 	[129.21] SPELL_CAST_START: [Shade of Eranikus: Corrosive Breath] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437353, Corrosive Breath, 0, 0
