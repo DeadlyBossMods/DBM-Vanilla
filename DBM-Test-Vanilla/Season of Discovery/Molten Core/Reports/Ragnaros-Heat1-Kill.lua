@@ -16,10 +16,9 @@ Timers:
 	Emerge, time=90.00, type=cd, spellId=<none>, triggerDeltas = 90.96
 		[ 90.96] CHAT_MSG_MONSTER_YELL: COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!, Ragnaros, "", "", "", "", 0, 0, "", 0, 12519, nil, 0, false, false, false, false, 0
 		[162.91] UNIT_DIED: [->Son of Flame] "", nil, 0x0, Creature-0-5210-409-2703-12143-000324238F, Son of Flame, 0xa48, -1, false, 0, 0
-	Submerge, time=180.00, type=cd, spellId=<none>, triggerDeltas = 0.00, 162.91
+	Submerge, time=180.00, type=cd, spellId=<none>, triggerDeltas = 0.00
 		[  0.00] ENCOUNTER_START: 672, Ragnaros, 226, 20, 0
 		[ 90.96] CHAT_MSG_MONSTER_YELL: COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!, Ragnaros, "", "", "", "", 0, 0, "", 0, 12519, nil, 0, false, false, false, false, 0
-		[162.91] UNIT_DIED: [->Son of Flame] "", nil, 0x0, Creature-0-5210-409-2703-12143-000324238F, Son of Flame, 0xa48, -1, false, 0, 0
 	Wrath of Ragnaros, time=26.00, type=cd, spellId=20566, triggerDeltas = 0.00, 27.59, 29.19, 32.35, 73.78, 28.17, 29.14, 25.92, 33.98
 		[  0.00] ENCOUNTER_START: 672, Ragnaros, 226, 20, 0
 		[ 27.59] SPELL_CAST_SUCCESS: [Ragnaros: Wrath of Ragnaros] Creature-0-5210-409-2703-228438-00002421C6, Ragnaros, 0xa48, "", nil, 0x0, 20566, Wrath of Ragnaros, 0, 0
@@ -77,7 +76,6 @@ Event trace:
 		StopTimer: TimerEmerge
 		ShowAnnounce: Emerge
 		StartTimer: 26.0, Wrath of Ragnaros
-		StartTimer: 180.0, Submerge
 	[191.08] SPELL_CAST_SUCCESS: [Ragnaros: Wrath of Ragnaros] Creature-0-5210-409-2703-228438-00002421C6, Ragnaros, 0xa48, "", nil, 0x0, 20566, Wrath of Ragnaros, 0, 0
 		ShowAnnounce: Wrath of Ragnaros
 		StartTimer: 26.0, Wrath of Ragnaros
