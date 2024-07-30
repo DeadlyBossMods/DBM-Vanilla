@@ -44,7 +44,6 @@ local warnPhase2Soon
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 end
-
 -- "Wrath of Ragnaros-20566-npc:228438-000024194D = pull:30.6, 27.5, 27.5, 35.6, 139.2, 27.5, 34.0, 30.8, 27.5, 31.3",
 -- "Wrath of Ragnaros-20566-npc:228438-0000241D6F = pull:26.0, 27.5, 27.5, 30.8, 32.4, 34.2, 127.8, 27.5, 25.9, 29.1, 30.9, 26.6",
 -- "Wrath of Ragnaros-20566-npc:228438-00002421C6 = pull:27.6, 29.2, 32.3, 102.0, 29.1, 25.9, 34.0",
@@ -107,7 +106,9 @@ local function emerged(self)
 	timerEmerge:Cancel()
 	warnEmerge:Show()
 	timerWrathRag:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 26.7)
-	timerSubmerge:Start(180)
+	if DBM:GetModifierLevel() ~= 1 then -- No second submerge on SoD heat level 1 (non-SoD always returns 0 here)
+		timerSubmerge:Start(180)
+	end
 end
 
 function mod:SPELL_CAST_START(args)
