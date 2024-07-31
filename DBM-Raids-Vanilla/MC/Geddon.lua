@@ -16,7 +16,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228433 or 12056)
 mod:SetEncounterID(668)
 mod:SetModelID(12129)
-mod:SetHotfixNoticeRev(20240724000000)
+mod:SetHotfixNoticeRev(20240730000000)
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:SetUsedIcons(8, 7, 6)
@@ -27,9 +27,9 @@ end
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402",
-	"SPELL_AURA_REMOVED 20475 461090 461105 462402",
-	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121"
+	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725",
+	"SPELL_AURA_REMOVED 20475 461090 461105 462402 465725",
+	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725"
 )
 
 -- 461090 461105 462402 seem to be bombs on SoD (only confirmed first one at heat level 1)
@@ -75,7 +75,7 @@ end
 local bombIcon = 8
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(20475, 461090, 461105, 462402) then
+	if args:IsSpell(20475, 461090, 461105, 462402, 465725) then
 		timerBomb:Start(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, bombIcon)
@@ -97,7 +97,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(20475, 461090, 461105, 462402) then
+	if args:IsSpell(20475, 461090, 461105, 462402, 465725) then
 		timerBomb:Stop(args.destName)
 		if self.Options.SetIconOnBombTarget then
 			self:SetIcon(args.destName, 0)
@@ -123,7 +123,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(20478, 461121) then
 		warnArmageddon:Show()
 		timerArmageddon:Start()
-	elseif args:IsSpell(20475, 461090, 461105, 462402) then
+	elseif args:IsSpell(20475, 461090, 461105, 462402, 465725) then
 		bombIcon = 8
 		timerBombCD:Start()
 	end
