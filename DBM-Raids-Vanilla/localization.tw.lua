@@ -528,6 +528,15 @@ L:SetMiscLocalization{
 	Pull		= "你這個莽撞的傢伙!你簡直是自尋死路!看吧，你驚動了主人!"
 }
 
+-----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "熔火之心"
+}
+
 -------------------
 --  Venoxis  --
 -------------------
