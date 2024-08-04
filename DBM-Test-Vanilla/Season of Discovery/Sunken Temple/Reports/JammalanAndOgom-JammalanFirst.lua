@@ -134,7 +134,7 @@ Event trace:
 	[  6.64] SPELL_AURA_APPLIED: [Ogom the Wretched->Simplyorc: Mortal Lash] Creature-0-5208-109-4570-218718-00003BC782, Ogom the Wretched, 0xa48, Player-5826-0201D763, Simplyorc, 0x512, 437847, Mortal Lash, 0, DEBUFF, 0
 		ShowAnnounce: Mortal Lash on Simplyorc
 	[  7.64] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Swain: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, Player-5826-0254EA77, Swain, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Mafakacoil, PlayerName, Simplyorc, Swain, Vivix
+		ShowAnnounce: Holy Fire on Simplyorc, Vivix, Mafakacoil, PlayerName, Swain
 	[  8.26] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -170,7 +170,7 @@ Event trace:
 	[ 34.18] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 35.20] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Luschimage: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, Player-5826-022F30B2, Luschimage, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Gotchya, Holyforce, Luschimage, Sandstahl, Tandanu
+		ShowAnnounce: Holy Fire on Holyforce, PlayerName, Gotchya, Sandstahl, Luschimage
 	[ 35.80] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
 		PlaySound: VoicePack/kickcast
@@ -187,7 +187,7 @@ Event trace:
 	[ 48.74] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 49.74] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Shabbyx: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, Player-5826-02751148, Shabbyx, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Mazl, PlayerName, Sandstahl, Shabbyx, Stahlsand
+		ShowAnnounce: Holy Fire on Mazl, Sandstahl, Stahlsand, PlayerName, Shabbyx
 	[ 50.36] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
 		PlaySound: VoicePack/kickcast
