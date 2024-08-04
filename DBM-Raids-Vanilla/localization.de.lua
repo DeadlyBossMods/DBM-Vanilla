@@ -529,6 +529,15 @@ L:SetMiscLocalization{
 	Pull		= "Unverschämte Welpen! Ihr seid sehenden Auges dem Tod in die Arme gelaufen! Seht her, der Meister regt sich!"
 }
 
+-----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "Der geschmolzene Kern"
+}
+
 -------------------
 --  Venoxis  --
 -------------------
