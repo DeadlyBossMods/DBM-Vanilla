@@ -116,7 +116,7 @@ Event trace:
 	[ 15.87] SPELL_CAST_START: [Shade of Eranikus: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437390, Lethargic Poison, 0, 0
 		StartTimer: 19.3, Lethargic Poison
 	[ 17.12] SPELL_AURA_APPLIED: [Shade of Eranikus->Gigachaddmg: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-026CD99F, Gigachaddmg, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
-		ShowAnnounce: Lethargic Poison on Arthritîs, Bruzo, Gigachaddmg, PlayerName
+		ShowAnnounce: Lethargic Poison on PlayerName, Arthritîs, Bruzo, Gigachaddmg
 	[ 22.32] SPELL_CAST_START: [Shade of Eranikus: Bellowing Roar] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 445498, Bellowing Roar, 0, 0
 		ShowSpecialWarning: Bellowing Roar - interrupt Shade of Eranikus! (1)
 		PlaySound: VoicePack/kickcast
@@ -149,7 +149,7 @@ Event trace:
 	[ 56.80] SPELL_CAST_START: [Shade of Eranikus: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437390, Lethargic Poison, 0, 0
 		StartTimer: 19.3, Lethargic Poison
 	[ 57.92] SPELL_AURA_APPLIED: [Shade of Eranikus->Mazl: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-02005C8A, Mazl, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
-		ShowAnnounce: Lethargic Poison on Discokeks, Mazl, Shelisea, Stolzenburg
+		ShowAnnounce: Lethargic Poison on Stolzenburg, Shelisea, Discokeks, Mazl
 	[ 66.51] SPELL_CAST_START: [Shade of Eranikus: Corrosive Breath] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437353, Corrosive Breath, 0, 0
 		ShowSpecialWarning: Corrosive Breath - defensive
 		PlaySound: VoicePack/defensive
@@ -161,7 +161,7 @@ Event trace:
 	[ 75.79] SPELL_CAST_START: [Shade of Eranikus: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437390, Lethargic Poison, 0, 0
 		StartTimer: 19.3, Lethargic Poison
 	[ 76.89] SPELL_AURA_APPLIED: [Shade of Eranikus->Behlial: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-01FE80C7, Behlial, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
-		ShowAnnounce: Lethargic Poison on Arthritîs, Behlial, Bruzo, Holyforce
+		ShowAnnounce: Lethargic Poison on Bruzo, Arthritîs, Holyforce, Behlial
 	[ 82.27] SPELL_CAST_START: [Shade of Eranikus: Waking Nightmare] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437398, Waking Nightmare, 0, 0
 		ShowSpecialWarning: Waking Nightmare - move to Deep Slumber
 		PlaySound: DBM/SpecialWarningSound3
@@ -195,7 +195,7 @@ Event trace:
 	[119.50] SPELL_CAST_START: [Shade of Eranikus: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437390, Lethargic Poison, 0, 0
 		StartTimer: 19.3, Lethargic Poison
 	[120.25] SPELL_AURA_APPLIED: [Shade of Eranikus->Discokeks: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-0239D943, Discokeks, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
-		ShowAnnounce: Lethargic Poison on Arthritîs, Behlial, Discokeks, Mafakacoil
+		ShowAnnounce: Lethargic Poison on Mafakacoil, Behlial, Arthritîs, Discokeks
 	[123.77] SPELL_CAST_START: [Shade of Eranikus: Bellowing Roar] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 445498, Bellowing Roar, 0, 0
 		ShowSpecialWarning: Bellowing Roar - interrupt Shade of Eranikus! (2)
 		PlaySound: VoicePack/kickcast
@@ -212,7 +212,7 @@ Event trace:
 		StartTimer: 19.3, Lethargic Poison
 	[139.65] SPELL_AURA_APPLIED: [Shade of Eranikus->Arthritîs: Lethargic Poison] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, Player-5826-02233DFA, Arthritîs, 0x512, 437390, Lethargic Poison, 0, DEBUFF, 0
 		ScheduleTask: announce437390target:PreciseShow(4.0, "Arthritîs") at 140.85 (+1.20)
-			ShowAnnounce: Lethargic Poison on Arthritîs, Bruzo, Stolzenburg
+			ShowAnnounce: Lethargic Poison on Stolzenburg, Bruzo, Arthritîs
 	[148.29] SPELL_CAST_START: [Shade of Eranikus: Corrosive Breath] Creature-0-5208-109-4570-218571-00003BC783, Shade of Eranikus, 0xa48, "", nil, 0x0, 437353, Corrosive Breath, 0, 0
 		ShowSpecialWarning: Corrosive Breath - defensive
 		PlaySound: VoicePack/defensive
