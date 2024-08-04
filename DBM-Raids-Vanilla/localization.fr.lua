@@ -673,6 +673,15 @@ L:SetMiscLocalization{
 }
 
 -----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "Le Cœur du Magma"
+}
+
+-----------------
 --  MC: Trash  --
 -----------------
 L = DBM:GetModLocalization("MCTrash")
@@ -708,7 +717,8 @@ L:SetMiscLocalization{
 	Breath = "%s prend une grande inspiration...",
 	YellPull = "Quelle chance ! D'habitude, je dois quitter mon repaire pour me nourrir.",
 	YellP2 = "Cet exercice dénué de sens m'ennuie. Je vais vous incinérer d'un seul coup !",
-	YellP3 = "Il semble que vous ayez besoin d'une autre leçon, mortels !"
+	YellP3 = "Il semble que vous ayez besoin d'une autre leçon, mortels !",
+	SoDWarning = "Bienvenue à %s. DBM jouera des sons amusants d'un raid classique légendaire pendant le combat. Vous pouvez désactiver cela dans l'interface utilisateur de DBM : tapez /dbm et allez dans le mod Onyxia sous Raids -> Classique."
 }
 
 -------------------
