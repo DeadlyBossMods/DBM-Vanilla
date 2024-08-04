@@ -7,8 +7,8 @@ DBM.Test:DefineTest{
 		phaseChangeSpells = "Summon Loro",
 	},
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
-	playerName = "Tandanu",
 	log = {
+		{0.00, "COMBAT_LOG_EVENT_UNFILTERED", "SPELL_CAST_SUCCESS", "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, 0, "Fake spell to ensure logging player has at least one entry, this is added if the logging player would not show up otherwise, please ignore this entry", 0x0, nil, nil},		{0.00, "COMBAT_LOG_EVENT_UNFILTERED", "SPELL_CAST_SUCCESS", "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, 0, "Fake spell to ensure logging player has at least one entry, this is added if the logging player would not show up otherwise, please ignore this entry", 0x0, nil, nil},
 		{0.00, "ENCOUNTER_START", 2954, "Atal'ai Defenders", 215, 20},
 		{0.00, "IsEncounterInProgress()", true},
 		{0.04, "PLAYER_REGEN_DISABLED", "+Entering combat!"},
