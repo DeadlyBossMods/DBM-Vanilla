@@ -13,7 +13,6 @@ DBM.Test:DefineTest{
 		},
 	},
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
-	playerName = "Holyforce",
 	-- Warning: log was created by player Tandanu, but player Holyforce was given on the CLI for reconstructions, this can potentially cause problems (but is usually fine)
 	log = {
 		{0.00, "ENCOUNTER_START", 2956, "Avatar of Hakkar", 215, 20},
