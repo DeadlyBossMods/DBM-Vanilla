@@ -674,6 +674,15 @@ L:SetMiscLocalization{
 }
 
 -----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "El Núcleo de Magma"
+}
+
+-----------------
 --  MC: Trash  --
 -----------------
 L = DBM:GetModLocalization("MCTrash")
@@ -710,6 +719,7 @@ L:SetMiscLocalization{
 	YellPull = "Qué casualidad. Generalmente, debo salir de mi guarida para poder comer.",
 	YellP2 = "Este ejercicio sin sentido me aburre. ¡Los incineraré a todos desde arriba!",
 	YellP3 = "¡Parece ser que van a necesitar otra lección, mortales!"
+	SoDWarning = "Bienvenido a %s. DBM reproducirá algunos sonidos divertidos de una banda clásica legendaria durante la pelea. Puedes desactivar esto en la interfaz de usuario de DBM: escribe /dbm y navega hasta el mod de Onyxia en Bandas -> Clásico."
 }
 
 -----------------
