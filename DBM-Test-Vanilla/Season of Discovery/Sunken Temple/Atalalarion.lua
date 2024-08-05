@@ -4,7 +4,6 @@ DBM.Test:DefineTest{
 	addon = "DBM-Raids-Vanilla",
 	mod = "AtalalarionSoD",
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
-	playerName = "Tandanu",
 	log = {
 		{0.00, "ENCOUNTER_START", 2952, "Atal'alarion", 215, 20},
 		{0.00, "CHAT_MSG_MONSTER_YELL", "My banishment is ended! Let the blood flow!", "Atal'alarion", "Troll", "", "", "", 0, 0, "", 14, 1156, nil, 0, false, false, false, false},

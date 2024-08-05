@@ -142,7 +142,7 @@ Event trace:
 	[  7.82] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[  8.82] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Muhscle: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-023E078B, Muhscle, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Gotchya, Illiath, PlayerName, Muhscle, Schamuhne
+		ShowAnnounce: Holy Fire on PlayerName, Illiath, Gotchya, Schamuhne, Muhscle
 	[  9.42] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -159,7 +159,7 @@ Event trace:
 	[ 21.13] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 22.15] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Snui: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024EEB02, Snui, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Beppoo, Camie, Obile, Schamuhne, Snui
+		ShowAnnounce: Holy Fire on Camie, Obile, Beppoo, Schamuhne, Snui
 	[ 24.37] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
 		PlaySound: VoicePack/kickcast
@@ -177,7 +177,7 @@ Event trace:
 	[ 35.33] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 36.33] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Shelisea: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-0222D437, Shelisea, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Gotchya, Hantha, Illiath, Krashnakh, Shelisea
+		ShowAnnounce: Holy Fire on Hantha, Krashnakh, Illiath, Gotchya, Shelisea
 	[ 36.95] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
 		PlaySound: VoicePack/kickcast
@@ -194,7 +194,7 @@ Event trace:
 	[ 48.71] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 49.71] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Beppoo, Noxea, Schamuhne, Shelisea, Tisakyle
+		ShowAnnounce: Holy Fire on Beppoo, Shelisea, Schamuhne, Noxea, Tisakyle
 	[ 50.32] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
 		PlaySound: VoicePack/kickcast
@@ -213,7 +213,7 @@ Event trace:
 	[ 66.12] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 67.12] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Discomuh: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-023D8989, Discomuh, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Camie, Discomuh, PlayerName, Shelisea, Vargana
+		ShowAnnounce: Holy Fire on Camie, PlayerName, Shelisea, Vargana, Discomuh
 	[ 68.14] SPELL_CAST_START: [Ogom the Wretched: Agonizing Weakness] Creature-0-5250-109-10825-218718-000020105B, Ogom the Wretched, 0xa48, "", nil, 0x0, 437868, Agonizing Weakness, 0, 0
 		ShowAnnounce: Agonizing Weakness
 		StartTimer: 27.1, Agonizing Weakness
@@ -226,7 +226,7 @@ Event trace:
 	[ 79.43] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 80.45] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Rajkan: Holy Fire] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-022B87C7, Rajkan, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Beppoo, Camie, Hantha, Muhnshine, Rajkan
+		ShowAnnounce: Holy Fire on Camie, Hantha, Beppoo, Muhnshine, Rajkan
 	[ 80.65] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -255,7 +255,7 @@ Event trace:
 		StartTimer: 22.2, Shadow Sermon: Pain
 	[106.97] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Abdizz: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024C3FC3, Abdizz, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
 		ScheduleTask: announce437927target:PreciseShow(10.0, "Abdizz") at 108.17 (+1.20)
-			ShowAnnounce: Shadow Sermon: Pain on Discomuh, Elemento, Hantha, PlayerName, Obile, Schamuhne, Vargana and 2 others
+			ShowAnnounce: Shadow Sermon: Pain on Obile, Hantha, PlayerName, Elemento, Vargana, Discomuh, Schamuhne and 2 others
 	[106.97] SPELL_CAST_START: [Jammal'an the Prophet: Holy Nova] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437817, Holy Nova, 0, 0
 		ShowSpecialWarning: Holy Nova - dodge attack
 		PlaySound: VoicePack/watchstep
@@ -280,7 +280,7 @@ Event trace:
 	[128.02] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
 	[130.03] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
-		ShowAnnounce: Shadow Sermon: Pain on Beppoo, Elemento, Hantha, Illiath, Krashnakh, Muhnshine, Obile and 3 others
+		ShowAnnounce: Shadow Sermon: Pain on Obile, Hantha, Krashnakh, Beppoo, Muhnshine, Illiath, Elemento and 3 others
 	[131.26] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Jammal'an the Prophet: Power Word: Shield] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, 437930, Power Word: Shield, 0, BUFF, 0
 		ShowSpecialWarning: Power Word: Shield on Jammal'an the Prophet - dispel now
 		PlaySound: VoicePack/dispelboss
@@ -302,7 +302,7 @@ Event trace:
 	[150.68] SPELL_CAST_START: [Jammal'an the Prophet: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437927, Shadow Sermon: Pain, 0, 0
 		StartTimer: 22.2, Shadow Sermon: Pain
 	[152.68] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Snui: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-024EEB02, Snui, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
-		ShowAnnounce: Shadow Sermon: Pain on Elemento, Hantha, Illiath, Krashnakh, PlayerName, Rajkan, Shelisea and 3 others
+		ShowAnnounce: Shadow Sermon: Pain on Hantha, Krashnakh, PlayerName, Illiath, Shelisea, Elemento, Rajkan and 3 others
 	[155.53] SPELL_CAST_START: [Jammal'an the Prophet: Psychic Scream] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437928, Psychic Scream, 0, 0
 		ShowSpecialWarning: Psychic Scream!
 		PlaySound: VoicePack/fearsoon
@@ -324,7 +324,7 @@ Event trace:
 		StartTimer: 22.2, Shadow Sermon: Pain
 	[174.93] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Tisakyle: Shadow Sermon: Pain] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, Player-5826-026C3CA7, Tisakyle, 0x512, 437927, Shadow Sermon: Pain, 0, DEBUFF, 0
 		ScheduleTask: announce437927target:PreciseShow(10.0, "Tisakyle") at 176.13 (+1.20)
-			ShowAnnounce: Shadow Sermon: Pain on Beppoo, Discomuh, Elemento, Gotchya, Illiath, PlayerName, Schamuhne and 2 others
+			ShowAnnounce: Shadow Sermon: Pain on Beppoo, PlayerName, Illiath, Gotchya, Elemento, Discomuh, Schamuhne and 2 others
 	[183.04] SPELL_CAST_START: [Jammal'an the Prophet: Mass Penance] Creature-0-5250-109-10825-218721-000020105B, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437921, Mass Penance, 0, 0
 		ShowSpecialWarning: Mass Penance - dodge attack
 		PlaySound: VoicePack/watchstep

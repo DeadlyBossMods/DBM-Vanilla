@@ -10,8 +10,8 @@ DBM.Test:DefineTest{
 		},
 	},
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
-	playerName = "Tandanu",
 	log = {
+		{0.00, "COMBAT_LOG_EVENT_UNFILTERED", "SPELL_CAST_SUCCESS", "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, 0, "Fake spell to ensure logging player has at least one entry, this is added if the logging player would not show up otherwise, please ignore this entry", 0x0, nil, nil},		{0.00, "COMBAT_LOG_EVENT_UNFILTERED", "SPELL_CAST_SUCCESS", "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, "Player-5826-020CBDBB", "Tandanu", 0x511, 0x0, 0, "Fake spell to ensure logging player has at least one entry, this is added if the logging player would not show up otherwise, please ignore this entry", 0x0, nil, nil},
 		{0.00, "ENCOUNTER_START", 2955, "Dreamscythe and Weaver", 215, 20},
 		{0.00, "COMBAT_LOG_EVENT_UNFILTERED", "SPELL_AURA_APPLIED", "Creature-0-5208-109-4570-220864-00003BD44E", "Weaver", 0xa48, 0x0, "Creature-0-5208-109-4570-220864-00003BD44E", "Weaver", 0xa48, 0x0, 443302, "Emerald Ward", 0x0, "BUFF", nil},
 		{0.00, "COMBAT_LOG_EVENT_UNFILTERED", "SPELL_CAST_SUCCESS", "Creature-0-5208-109-4570-220864-00003BD44E", "Weaver", 0xa48, 0x0, "", nil, 0x0, 0x0, 443302, "Emerald Ward", 0x0, nil, nil},
