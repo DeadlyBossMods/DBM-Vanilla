@@ -26,6 +26,9 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(
 	"SPELL_CAST_START 19774",
 	"SPELL_CAST_SUCCESS 20566 19773",
+	"SPELL_AURA_APPLIED 461062",
+	"SPELL_DAMAGE 461062",
+	"SPELL_MISSED 461062",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_HEALTH"
 )
@@ -33,6 +36,9 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED",
 	"UNIT_SPELLCAST_SUCCEEDED"--TBC and later, no good in vanilla
 )
+
+-- TODO: need a better log of this UCS event, was standing too far away not rarely targeting him, so only got one. wonder if this is useful
+-- "<820.13 22:13:49> [UNIT_SPELLCAST_SUCCEEDED] Ragnaros(25.1%-0.0%){Target:Mafakacoil} -Call Meteor- [[target:Cast-3-5210-409-10629-365123-001133D57E:365123]]",
 
 --[[
 ability.id = 20566 and type = "cast" or target.id = 12143 and type = "death"
@@ -51,6 +57,11 @@ local timerWrathRag		= mod:NewCDTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 26
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5
+
+local specWarnGTFO
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	specWarnGTFO		= mod:NewSpecialWarningGTFO(461062, nil, nil, nil, 1, 8)
+end
 
 mod.vb.addLeft = 8
 mod.vb.ragnarosEmerged = true
@@ -164,6 +175,21 @@ function mod:UNIT_HEALTH(uId)
 		warnPhase2Soon:Show()
 	end
 end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(461062) and args:IsPlayer() and self:AntiSpam(3, "gtfo") and specWarnGTFO then
+		specWarnGTFO:Show(args.spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+	if spellId == 461062 and destGUID == UnitGUID("player") and self:AntiSpam(3, "gtfo") and specWarnGTFO then
+		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE
 
 function mod:OnSync(msg)
 	if msg == "SummonRag" and self:AntiSpam(5, 2) then
