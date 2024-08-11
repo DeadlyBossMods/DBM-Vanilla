@@ -13,7 +13,7 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 531, 509, 309, 469, 409
+## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 309
 ## X-DBM-Mod-Name: Raids (Vanilla)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
