@@ -533,6 +533,14 @@ L:SetMiscLocalization{
 	Pull		= "¡Crías imprudentes! ¡Os habéis precipitado hasta vuestra propia muerte! ¡Ahora mirad, el maestro se agita!"
 }
 
+-----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "El Núcleo de Magma"
+}
 -------------------
 --  Venoxis  --
 -------------------
@@ -683,7 +691,8 @@ L:SetMiscLocalization{
 	Breath = "%s toma aliento...",
 	YellPull = "Qué casualidad. Generalmente, debo salir de mi guarida para poder comer.",
 	YellP2 = "Este ejercicio sin sentido me aburre. ¡Os incineraré a todos desde arriba!",
-	YellP3 = "¡Parece ser que vais a necesitar otra lección, mortales!"
+	YellP3 = "¡Parece ser que vais a necesitar otra lección, mortales!",
+	SoDWarning = "Bienvenido a %s. DBM reproducirá algunos sonidos divertidos de una banda clásica legendaria durante la pelea. Puedes desactivar esto en la interfaz de usuario de DBM: escribe /dbm y navega hasta el módulo de Onyxia en Bandas -> Clásico."
 }
 
 -----------------

@@ -170,7 +170,7 @@ Event trace:
 	[ 34.18] SPELL_CAST_START: [Jammal'an the Prophet: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437809, Holy Fire, 0, 0
 		StartTimer: 13.4, Holy Fire
 	[ 35.20] SPELL_AURA_APPLIED: [Jammal'an the Prophet->Luschimage: Holy Fire] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, Player-5826-022F30B2, Luschimage, 0x512, 437809, Holy Fire, 0, DEBUFF, 0
-		ShowAnnounce: Holy Fire on Holyforce, PlayerName, Gotchya, Sandstahl, Luschimage
+		ShowAnnounce: Holy Fire on Holyforce, Tandanu, Gotchya, Sandstahl, Luschimage
 	[ 35.80] SPELL_CAST_START: [Jammal'an the Prophet: Smite] Creature-0-5208-109-4570-218721-00003BC782, Jammal'an the Prophet, 0xa48, "", nil, 0x0, 437805, Smite, 0, 0
 		ShowSpecialWarning: Smite - interrupt Jammal'an the Prophet!
 		PlaySound: VoicePack/kickcast

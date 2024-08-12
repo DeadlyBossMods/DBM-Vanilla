@@ -794,6 +794,15 @@ L:SetMiscLocalization{
 }
 
 -----------------
+--  The Molten Core (Placeholder?_  --
+-----------------
+L = DBM:GetModLocalization("MoltenCore")
+
+L:SetGeneralLocalization{
+	name = "O Núcleo Derretido"
+}
+
+-----------------
 --  MC: Trash  --
 -----------------
 L = DBM:GetModLocalization("MCTrash")
@@ -829,7 +838,8 @@ L:SetMiscLocalization{
 	Breath = "%s respira fundo...",
 	YellPull = "Que sorte. Geralmente costumo sair de minha caverna para poder me alimentar.",
 	YellP2 = "Este esforço inútil me aborrece. Vou atear fogo em todos vocês do alto!",
-	YellP3 = "Parece que vocês vão precisar de outra lição, mortais!"
+	YellP3 = "Parece que vocês vão precisar de outra lição, mortais!",
+	SoDWarning = "Bem-vindo a %s. O DBM tocará alguns sons divertidos de uma raide clássica lendária durante a luta. Você pode desativar isso na interface do DBM: digite /dbm e navegue até o mod Onyxia em Raides -> Clássico."
 }
 
 -----------------

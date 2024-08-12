@@ -27,7 +27,9 @@ end
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725",
+	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725 461103",
+	"SPELL_PERIODIC_DAMAGE 461103",
+	"SPELL_PERIODIC_MISSED 461103",
 	"SPELL_AURA_REMOVED 20475 461090 461105 462402 465725",
 	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725"
 )
@@ -39,7 +41,7 @@ mod:RegisterEventsInCombat(
 --]]
 local warnInferno		= mod:NewSpellAnnounce(19695, 3)
 local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
-local warnArmageddon	= mod:NewSpellAnnounce(20478, 3)
+local specWarnArma		= mod:NewSpecialWarningSpell(20478)
 
 local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)
 local yellBomb			= mod:NewYell(20475)
@@ -56,6 +58,11 @@ local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
 local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2)
 
 mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8, 7, 6}) -- up to 3 bombs on heat level 3 (TODO: confirm)
+
+local specWarnGTFO2
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	specWarnGTFO2		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8)
+end
 
 function mod:OnCombatStart(delay)
 	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first
@@ -93,8 +100,19 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(19659) and self:CheckDispelFilter("magic") then
 		specWarnIgnite:CombinedShow(0.3, args.destName)
 		specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
+	elseif args:IsSpell(461103) and args:IsPlayer() and self:AntiSpam(3, "gtfo") and specWarnGTFO then
+		specWarnGTFO2:Show(args.spellName)
+		specWarnGTFO2:Play("watchfeet")
 	end
 end
+
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+	if spellId == 461103 and destGUID == UnitGUID("player") and self:AntiSpam(3, "gtfo") and specWarnGTFO then
+		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(20475, 461090, 461105, 462402, 465725) then
@@ -121,7 +139,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(19659) then
 		timerIgniteManaCD:Start()
 	elseif args:IsSpell(20478, 461121) then
-		warnArmageddon:Show()
+		specWarnArma:Show()
 		timerArmageddon:Start()
 	elseif args:IsSpell(20475, 461090, 461105, 462402, 465725) then
 		bombIcon = 8
