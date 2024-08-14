@@ -27,7 +27,7 @@ mod:RegisterEventsInCombat(
 )
 local specWarnFallingRocks, yellFallingRocks, timerFallingRocks
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerFallingRocks		= mod:NewCDTimer(461463, 25)
+	timerFallingRocks		= mod:NewCDTimer(25, 461463)
 	specWarnFallingRocks	= mod:NewSpecialWarningDodge(461463, nil, nil, nil, 2, 2)
 	yellFallingRocks		= mod:NewIconRepeatYell(461463)
 end
