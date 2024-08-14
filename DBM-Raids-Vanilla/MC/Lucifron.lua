@@ -24,7 +24,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 20604",
 	"SPELL_CAST_SUCCESS 19702 19703 460931 460932",
---	"SPELL_AURA_APPLIED 20604",
+	"SPELL_AURA_APPLIED 20604",
 	"SPELL_AURA_REMOVED 20604"
 )
 
@@ -52,9 +52,11 @@ function mod:OnCombatStart(delay)
 	timerCurseCD:Start(12-delay)--12-15
 end
 
-function mod:MCTarget(targetname, uId)
-	if not targetname then return end
-	if not DBM:GetRaidRoster(targetname) then return end--Ignore junk target scans that include pets
+function mod:MCTarget(targetname)
+	if not targetname or not DBM:GetRaidRoster(targetname) then return end--Ignore junk target scans that include pets
+	if not self:AntiSpam(1.5, "MC" .. targetname) then -- gets called for both SPELL_CAST_START and AURA_APPLIED because the former doesn't seem to exist at least on SoD
+		return
+	end
 	if self.Options.SetIconOnMC then
 		self:SetIcon(targetname, self.vb.lastIcon)
 	end
@@ -64,25 +66,21 @@ function mod:MCTarget(targetname, uId)
 		specWarnMC:Play("targetyou")
 		yellMC:Yell()
 	end
-	--Alternate icon between 1 and 2
-	if self.vb.lastIcon == 1 then
-		self.vb.lastIcon = 2
-	else
-		self.vb.lastIcon = 1
-	end
+	-- Up to 4 targets can be active in SoD if you mess up
+	self.vb.lastIcon = self.vb.lastIcon % 4 + 1
 end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(20604) and args:IsSrcTypeHostile() then
-		self:BossTargetScanner(args.sourceGUID, "MCTarget", 0.2, 8)
+		self:BossTargetScanner(args.sourceGUID, "MCTarget", 0.2, 5)
 	end
 end
 
---[[function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(20604 then
-		warnMC:CombinedShow(1, args.destName)
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(20604) then
+		self:MCTarget(args.destName)
 	end
-end--]]
+end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(20604) and args:IsDestTypePlayer() then
