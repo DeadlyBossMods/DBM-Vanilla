@@ -48,6 +48,7 @@ Season of Discovery/Molten Core/Sulfuron-Heat2-Kill.lua
 Season of Discovery/Molten Core/Golemagg-Heat2-Kill.lua
 Season of Discovery/Molten Core/Majordomo-Heat1-Kill.lua
 Season of Discovery/Molten Core/Ragnaros-Heat2-Kill.lua
+Season of Discovery/Molten Core/TheMoltenCore-Heat3-Wipe.lua
 
 Season of Discovery/Molten Core/Reports/Lucifron-Heat1-Kill.lua
 Season of Discovery/Molten Core/Reports/Lucifron-Heat2-Wipe.lua
@@ -60,3 +61,4 @@ Season of Discovery/Molten Core/Reports/Sulfuron-Heat2-Kill.lua
 Season of Discovery/Molten Core/Reports/Golemagg-Heat2-Kill.lua
 Season of Discovery/Molten Core/Reports/Majordomo-Heat1-Kill.lua
 Season of Discovery/Molten Core/Reports/Ragnaros-Heat2-Kill.lua
+Season of Discovery/Molten Core/Reports/TheMoltenCore-Heat3-Wipe.lua
