@@ -529,14 +529,24 @@ L:SetMiscLocalization{
 	Pull		= "Unverschämte Welpen! Ihr seid sehenden Auges dem Tod in die Arme gelaufen! Seht her, der Meister regt sich!"
 }
 
------------------
---  The Molten Core (Placeholder?_  --
------------------
+----------------------
+--  The Molten Core --
+----------------------
 L = DBM:GetModLocalization("MoltenCore")
 
 L:SetGeneralLocalization{
 	name = "Der geschmolzene Kern"
 }
+
+L:SetOptionLocalization{
+	YellHeartCleared	= "Zeige Sprechblase wenn Herz der Asche/Glut entfernt wurde.",
+	WarnBossPower		= "Zeige Warnungen wenn der Boss 50%, 75%, 90% und 100% Energielevel erreicht"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "Energie bei %d%%"
+}
+
 
 -------------------
 --  Venoxis  --
