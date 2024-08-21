@@ -36,9 +36,7 @@ Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-2.lua
 Season of Discovery/Onyxia/Onyxia.lua
 Season of Discovery/Onyxia/Reports/Onyxia.lua
 
-
-Season of Discovery/Molten Core/Lucifron-Heat1-Kill.lua
-Season of Discovery/Molten Core/Lucifron-Heat2-Wipe.lua
+Season of Discovery/Molten Core/Lucifron-Heat3-Kill.lua
 Season of Discovery/Molten Core/Magmadar-Heat1-Kill.lua
 Season of Discovery/Molten Core/Gehennas-Heat1-Kill.lua
 Season of Discovery/Molten Core/Garr-Heat1-Kill.lua
@@ -49,9 +47,9 @@ Season of Discovery/Molten Core/Golemagg-Heat2-Kill.lua
 Season of Discovery/Molten Core/Majordomo-Heat1-Kill.lua
 Season of Discovery/Molten Core/Ragnaros-Heat2-Kill.lua
 Season of Discovery/Molten Core/TheMoltenCore-Heat3-Wipe.lua
+Season of Discovery/Molten Core/TheMoltenCore-Heat3-Kill.lua
 
-Season of Discovery/Molten Core/Reports/Lucifron-Heat1-Kill.lua
-Season of Discovery/Molten Core/Reports/Lucifron-Heat2-Wipe.lua
+Season of Discovery/Molten Core/Reports/Lucifron-Heat3-Kill.lua
 Season of Discovery/Molten Core/Reports/Magmadar-Heat1-Kill.lua
 Season of Discovery/Molten Core/Reports/Gehennas-Heat1-Kill.lua
 Season of Discovery/Molten Core/Reports/Garr-Heat1-Kill.lua
@@ -62,3 +60,4 @@ Season of Discovery/Molten Core/Reports/Golemagg-Heat2-Kill.lua
 Season of Discovery/Molten Core/Reports/Majordomo-Heat1-Kill.lua
 Season of Discovery/Molten Core/Reports/Ragnaros-Heat2-Kill.lua
 Season of Discovery/Molten Core/Reports/TheMoltenCore-Heat3-Wipe.lua
+Season of Discovery/Molten Core/Reports/TheMoltenCore-Heat3-Kill.lua
