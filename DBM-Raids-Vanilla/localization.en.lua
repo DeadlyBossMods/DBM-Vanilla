@@ -552,13 +552,22 @@ L:SetMiscLocalization{
 	Pull		= "Impudent whelps! You've rushed headlong to your own deaths! See now, the master stirs!\r\n"
 }
 
------------------
---  The Molten Core (Placeholder?_  --
------------------
+----------------------
+--  The Molten Core --
+----------------------
 L = DBM:GetModLocalization("MoltenCore")
 
 L:SetGeneralLocalization{
 	name = "The Molten Core"
+}
+
+L:SetOptionLocalization{
+	YellHeartCleared	= "Yell when Heart of Ash/Cinder is removed.",
+	WarnBossPower		= "Show warnings when boss energy reaches 50%, 75%, 90%, and 100%"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "Boss energy at %d%%"
 }
 
 -----------------
