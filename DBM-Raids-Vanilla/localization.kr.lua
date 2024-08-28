@@ -541,13 +541,22 @@ L:SetMiscLocalization{
 	Pull		= "건방진 젖먹이! 죽고 싶어 안달이구나! 자, 보아라. 주인님께서 일어나신다!"
 }
 
------------------
---  The Molten Core (Placeholder?_  --
------------------
+----------------------
+--  The Molten Core --
+----------------------
 L = DBM:GetModLocalization("MoltenCore")
 
 L:SetGeneralLocalization{
 	name = "화산 심장부"
+}
+
+L:SetOptionLocalization{
+	YellHeartCleared	= "재/불씨의 심장이 사라질 때 말풍선으로 알립니다.",
+	WarnBossPower		= "보스 기력 50%, 75%, 90%, 100%에 알림 보기"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "보스 기력 %d%%"
 }
 
 -----------------
