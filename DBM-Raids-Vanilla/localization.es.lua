@@ -543,7 +543,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetOptionLocalization{
-	YellHeartCleared	= "Grita cuando el Corazón de pavesa/ceniza sea removido.",
+	YellHeartCleared	= "Gritar cuando el Corazón de pavesa/ceniza sea removido.",
 	WarnBossPower		= "Mostrar avisos cuando la energía del jefe alcance el 50%, 75%, 90% y 100%"
 }
 
