@@ -673,7 +673,7 @@ L:SetMiscLocalization{
 }
 
 -----------------
---  The Molten Core (Placeholder?_  --
+--  The Molten Core  --
 -----------------
 L = DBM:GetModLocalization("MoltenCore")
 
@@ -681,6 +681,14 @@ L:SetGeneralLocalization{
 	name = "Le Cœur du Magma"
 }
 
+L:SetOptionLocalization{
+	YellHeartCleared	= "Crier lorsque le Cœur de cendre/braise est retiré.",
+	WarnBossPower		= "Afficher des avertissements lorsque l'énergie du boss atteint 50 %, 75 %, 90 % et 100 %"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "L'énergie du boss à %d%%"
+}
 -----------------
 --  MC: Trash  --
 -----------------

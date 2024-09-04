@@ -534,12 +534,21 @@ L:SetMiscLocalization{
 }
 
 -----------------
---  The Molten Core (Placeholder?_  --
+--  The Molten Core  --
 -----------------
 L = DBM:GetModLocalization("MoltenCore")
 
 L:SetGeneralLocalization{
 	name = "El Núcleo de Magma"
+}
+
+L:SetOptionLocalization{
+	YellHeartCleared	= "Gritar cuando el Corazón de pavesa/ceniza sea removido.",
+	WarnBossPower		= "Mostrar avisos cuando la energía del jefe alcance el 50%, 75%, 90% y 100%"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "Energía del jefe al %d%%"
 }
 -------------------
 --  Venoxis  --
