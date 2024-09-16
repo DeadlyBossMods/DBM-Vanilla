@@ -13,7 +13,7 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409
+## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 230
 ## X-DBM-Mod-Name: Raids (Vanilla)
 ## X-DBM-Mod-Name-esES: Bandas (Clásico)
 ## X-DBM-Mod-Name-esMX: Bandas (Clásico)
@@ -22,7 +22,7 @@
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 531, 509, 469, 409
+## X-DBM-Mod-MapID: 531, 509, 469, 409, 2792
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 0
 ## X-Curse-Project-ID: 16442
@@ -81,3 +81,12 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
+
+BlackrockDepths\LordRoccor.lua
+BlackrockDepths\BaelGar.lua
+BlackrockDepths\LordIncendius.lua
+BlackrockDepths\GolemLordArgelmach.lua
+BlackrockDepths\TheSeven.lua
+BlackrockDepths\GeneralAngerforge.lua
+BlackrockDepths\AmbassadorFlamelash.lua
+BlackrockDepths\EmperorDagranThaurissan.lua
