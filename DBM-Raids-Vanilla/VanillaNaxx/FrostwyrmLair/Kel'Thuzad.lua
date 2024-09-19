@@ -40,7 +40,7 @@ local yellFissure			= mod:NewYell(27810)
 local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50 (still true in vanilla, kind of shitty variation too)
 local timerFrostBlastCD		= mod:NewCDTimer(33.5, 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
---local timerMCCD			= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--actually 60 second cdish but its easier to do it this way for the first one.
+local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--actually 60 second cdish but its easier to do it this way for the first one.
 local timerPhase2			= mod:NewTimer(330, "TimerPhase2", "136116", nil, nil, 6)
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
@@ -138,7 +138,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam() then
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
-			--timerMCCD:Start(60)--60 seconds?
+			timerMCCD:Start(60)--60 seconds?
 		end
 		if self.Options.SetIconOnMC2 then
 			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
