@@ -11,6 +11,7 @@ else--retail or cataclysm classic and later
 end
 local mod	= DBM:NewMod("Razorgore", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
@@ -41,6 +42,12 @@ local specWarnFireballVolley= mod:NewSpecialWarningMoveTo(22425, false, nil, nil
 
 local timerAddsSpawn		= mod:NewTimer(47, "TimerAddsSpawn", 19879, nil, nil, 1)--Only for start of adds, not adds after the adds.
 
+local timerDrakeSpawn, warnDrakeSpawn
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	timerDrakeSpawn = mod:NewTimer(120, CL.BIG_ADD, 466277, nil, nil, 1) -- Big drake after 2 min or after 10 eggs
+	warnDrakeSpawn = mod:NewAnnounce(CL.BIG_ADD, 3)
+end
+
 mod:AddSpeedClearOption("BWL", true)
 
 mod.vb.eggsLeft = 30
@@ -56,6 +63,9 @@ function mod:OnCombatStart(delay)
 			--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
 			DBT:CreateBar(self.Options.FastestClear, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
 		end
+	end
+	if timerDrakeSpawn then
+		timerDrakeSpawn:Start()
 	end
 end
 
@@ -78,6 +88,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(19873) then
 		self.vb.eggsLeft = self.vb.eggsLeft - 1
 		warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
+		if self.vb.eggsLeft == 20 and timerDrakeSpawn then
+			warnDrakeSpawn:Show()
+			timerDrakeSpawn:Stop()
+		end
 	end
 end
 
