@@ -39,11 +39,13 @@ local timerWingBuffet	= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD= mod:NewCDTimer(14, 22539, nil, false)--14-21
 local timerShadow		= mod:NewTargetTimer(8, 23340, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-local specWarnStop, specWarnGo, specWarnBrandShadow, specWarnBrandFlame
+local specWarnStop, specWarnGo, specWarnBrandShadow, specWarnBrandFlame, timerStop, timerGo
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	specWarnStop		= mod:NewSpecialWarningSpell(467732, nil, nil, nil, 2, 2)
 	specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2)
+	timerStop			= mod:NewCDTimer(20, 467732) -- TODO: 20 seconds is probably way off but a reasonable lower bound
+	timerGo				= mod:NewCDTimer(20, 467764)
 	specWarnBrandShadow	= mod:NewSpecialWarningCount(368515)
 	specWarnBrandFlame	= mod:NewSpecialWarningCount(368521)
 end
@@ -51,6 +53,11 @@ end
 function mod:OnCombatStart(delay)
 	timerShadowFlameCD:Start(18-delay)
 	timerWingBuffet:Start(30-delay)
+	if timerStop then
+		-- According to some random youtube video the first one triggers a biter later
+		-- TODO: does it always start with Stop?
+		timerStop:Start(24 - delay)
+	end
 end
 
 function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
@@ -80,9 +87,15 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(467732) and args:IsPlayer() then
 		specWarnStop:Show()
 		specWarnStop:Play("stopmove")
+		if timerGo then
+			timerGo:Start()
+		end
 	elseif args:IsSpell(467764) and args:IsPlayer() then
 		specWarnGo:Show()
 		specWarnGo:Play("justrun")
+		if timerStop then
+			timerStop:Start()
+		end
 	end
 end
 
