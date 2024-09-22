@@ -14,7 +14,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(14601)
-mod:SetEncounterID(614)
+mod:SetEncounterID(614) -- TODO: Ebonroc and Flamegor trigger at the same time for SoD, we probably want to split the mod by who casts which spells
 if not mod:IsClassic() then
 	mod:SetModelID(6377)
 end
@@ -22,7 +22,8 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23339 22539",
-	"SPELL_AURA_APPLIED 23340",
+	"SPELL_AURA_APPLIED 23340 467732 467764",
+	"SPELL_AURA_APPLIED_DOSE 368515 368521",
 	"SPELL_AURA_REMOVED 23340"
 )
 
@@ -37,6 +38,15 @@ local specWarnShadow	= mod:NewSpecialWarningTaunt(23340, nil, nil, nil, 1, 2)
 local timerWingBuffet	= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD= mod:NewCDTimer(14, 22539, nil, false)--14-21
 local timerShadow		= mod:NewTargetTimer(8, 23340, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
+
+local specWarnStop, specWarnGo, specWarnBrandShadow, specWarnBrandFlame
+
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	specWarnStop		= mod:NewSpecialWarningSpell(467732, nil, nil, nil, 2, 2)
+	specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2)
+	specWarnBrandShadow	= mod:NewSpecialWarningCount(368515)
+	specWarnBrandFlame	= mod:NewSpecialWarningCount(368521)
+end
 
 function mod:OnCombatStart(delay)
 	timerShadowFlameCD:Start(18-delay)
@@ -67,6 +77,20 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		timerShadow:Start(args.destName)
+	elseif args:IsSpell(467732) and args:IsPlayer() then
+		specWarnStop:Show()
+		specWarnStop:Play("stopmove")
+	elseif args:IsSpell(467764) and args:IsPlayer() then
+		specWarnGo:Show()
+		specWarnGo:Play("justrun")
+	end
+end
+
+function mod:SPELL_AURA_APPLIED_DOSE(args)
+	if args:IsSpell(368515) and args:IsPlayer() and args.amount > 2 then
+		specWarnBrandShadow:Show(args.amount)
+	elseif args:IsSpell(368521) and args:IsPlayer() and args.amount > 2 then
+		specWarnBrandFlame:Show(args.amount)
 	end
 end
 
