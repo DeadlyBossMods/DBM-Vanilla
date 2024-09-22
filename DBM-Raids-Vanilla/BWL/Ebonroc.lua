@@ -1,3 +1,4 @@
+if DBM:IsSeasonal("SeasonOfDiscovery") then return end--If SoM/SoD, this is handled by combo mod
 local isClassic = WOW_PROJECT_ID == (WOW_PROJECT_CLASSIC or 2)
 local isBCC = WOW_PROJECT_ID == (WOW_PROJECT_BURNING_CRUSADE_CLASSIC or 5)
 local isWrath = WOW_PROJECT_ID == (WOW_PROJECT_WRATH_CLASSIC or 11)
@@ -14,7 +15,7 @@ local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(14601)
-mod:SetEncounterID(614) -- TODO: Ebonroc and Flamegor trigger at the same time for SoD, we probably want to split the mod by who casts which spells
+mod:SetEncounterID(614)
 if not mod:IsClassic() then
 	mod:SetModelID(6377)
 end
@@ -22,8 +23,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23339 22539",
-	"SPELL_AURA_APPLIED 23340 467732 467764",
-	"SPELL_AURA_APPLIED_DOSE 368515 368521",
+	"SPELL_AURA_APPLIED 23340",
 	"SPELL_AURA_REMOVED 23340"
 )
 
@@ -39,25 +39,9 @@ local timerWingBuffet	= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD= mod:NewCDTimer(14, 22539, nil, false)--14-21
 local timerShadow		= mod:NewTargetTimer(8, 23340, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-local specWarnStop, specWarnGo, specWarnBrandShadow, specWarnBrandFlame, timerStop, timerGo
-
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnStop		= mod:NewSpecialWarningSpell(467732, nil, nil, nil, 2, 2)
-	specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2)
-	timerStop			= mod:NewCDTimer(20, 467732) -- TODO: 20 seconds is probably way off but a reasonable lower bound
-	timerGo				= mod:NewCDTimer(20, 467764)
-	specWarnBrandShadow	= mod:NewSpecialWarningCount(368515)
-	specWarnBrandFlame	= mod:NewSpecialWarningCount(368521)
-end
-
 function mod:OnCombatStart(delay)
 	timerShadowFlameCD:Start(18-delay)
 	timerWingBuffet:Start(30-delay)
-	if timerStop then
-		-- According to some random youtube video the first one triggers a biter later
-		-- TODO: does it always start with Stop?
-		timerStop:Start(24 - delay)
-	end
 end
 
 function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
@@ -84,26 +68,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		timerShadow:Start(args.destName)
-	elseif args:IsSpell(467732) and args:IsPlayer() then
-		specWarnStop:Show()
-		specWarnStop:Play("stopmove")
-		if timerGo then
-			timerGo:Start()
-		end
-	elseif args:IsSpell(467764) and args:IsPlayer() then
-		specWarnGo:Show()
-		specWarnGo:Play("justrun")
-		if timerStop then
-			timerStop:Start()
-		end
-	end
-end
-
-function mod:SPELL_AURA_APPLIED_DOSE(args)
-	if args:IsSpell(368515) and args:IsPlayer() and args.amount > 2 then
-		specWarnBrandShadow:Show(args.amount)
-	elseif args:IsSpell(368521) and args:IsPlayer() and args.amount > 2 then
-		specWarnBrandFlame:Show(args.amount)
 	end
 end
 

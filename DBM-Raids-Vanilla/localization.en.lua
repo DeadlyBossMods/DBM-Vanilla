@@ -335,6 +335,27 @@ L:SetGeneralLocalization{
 	name = "Flamegor"
 }
 
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
+L:SetGeneralLocalization{
+	name = "Ebonroc and Flamegor"
+}
+
+L:SetTimerLocalization{
+	TimerBrandCD	= "Brand"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "Show timer for Brand cooldown"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "Ebonroc",
+	Flamegor	= "Flamegor"
+}
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------

@@ -327,6 +327,27 @@ L:SetGeneralLocalization{
 	name = "플레임고르"
 }
 
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
+L:SetGeneralLocalization{
+	name = "에본로크와 플레임고르"
+}
+
+L:SetTimerLocalization{
+	TimerBrandCD	= "낙인"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "낙인 쿨타임 타이머 바 보기"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "에본로크",
+	Flamegor	= "플레임고르"
+}
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------
