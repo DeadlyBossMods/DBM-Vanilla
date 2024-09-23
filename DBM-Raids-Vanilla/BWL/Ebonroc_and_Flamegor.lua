@@ -38,8 +38,8 @@ local specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2)
 local timerWingBuffet		= mod:NewCDTimer(25, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewCDTimer(25, 22539)--25-32
 local TimerBrandCD			= mod:NewTimer(13, "TimerBrandCD", 368521, nil, nil, 3)
-local timerStop				= mod:NewCDTimer(20, 467732) -- TODO: 20 seconds is probably way off but a reasonable lower bound
-local timerGo				= mod:NewCDTimer(20, 467764)
+local timerStop				= mod:NewCDTimer(20, 467732, nil, nil, nil, 5) -- TODO: 20 seconds is probably way off but a reasonable lower bound
+local timerGo				= mod:NewCDTimer(20, 467764, nil, nil, nil, 5)
 
 --Ebonroc
 mod:AddTimerLine(L.Ebonroc)
