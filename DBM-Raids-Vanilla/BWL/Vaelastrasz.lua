@@ -29,7 +29,8 @@ mod:RegisterEvents(
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23461",
 	"SPELL_CAST_SUCCESS 18173",
-	"SPELL_AURA_APPLIED 18173",
+	"SPELL_AURA_APPLIED 18173 367987",
+	"SPELL_AURA_APPLIED_DOSE 367987",
 	"SPELL_AURA_REMOVED 18173"
 )
 
@@ -51,7 +52,9 @@ mod.vb.debuffIcon = 8
 
 function mod:OnCombatStart(delay)
 	self.vb.debuffIcon = 8
-	timerAdrenalineCD:Start(15.7-delay)
+	if not DBM:IsSeasonal("SeasonOfDiscovery") then
+		timerAdrenalineCD:Start(15.7-delay)
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -86,8 +89,33 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.vb.debuffIcon == 5 then
 			self.vb.debuffIcon = 8
 		end
+	elseif args:IsSpell(367987) then -- SoD/SoM adrenaile is stack-based, 15 is a good value to run out
+		local amount = args.amount or 1
+		if amount == 15 then
+			if args:IsPlayer() then
+				specWarnAdrenalineOut:Show()
+				specWarnAdrenalineOut:Play("runout")
+				yellAdrenaline:Yell()
+			end
+		elseif amount == 1 then
+			if args:IsPlayer() then
+				specWarnAdrenaline:Show()
+				specWarnAdrenaline:Play("targetyou")
+			else
+				warnAdrenaline:Show(args.destName)
+			end
+			self.vb.debuffIcon = self.vb.debuffIcon - 1
+			if self.vb.debuffIcon == 5 then
+				self.vb.debuffIcon = 8
+			end
+			if self.Options.SetIconOnDebuffTarget2 then
+				self:SetIcon(args.destName, self.vb.debuffIcon)
+			end
+		end
 	end
 end
+
+mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(18173) then
