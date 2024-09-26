@@ -39,12 +39,12 @@ local warnAdrenaline		= mod:NewTargetNoFilterAnnounce(18173, 2)
 
 local specWarnAdrenaline	= mod:NewSpecialWarningYou(18173, nil, nil, nil, 1, 2)
 local specWarnAdrenalineOut	= mod:NewSpecialWarningMoveAway(18173, nil, nil, nil, 1, 2)
-local yellAdrenaline		= mod:NewYell(18173, nil, false)
+local yellAdrenaline		= mod:NewYell(18173, nil, true, 2)
 local yellAdrenalineFades	= mod:NewShortFadesYell(18173)
 
 local timerAdrenalineCD		= mod:NewCDTimer(15.7, 18173, nil, nil, nil, 3)
 local timerAdrenaline		= mod:NewTargetTimer(20, 18173, nil, nil, nil, 3)
-local timerCombatStart		= mod:NewCombatTimer(43)
+local timerCombatStart		= mod:NewCombatTimer(43.5)
 
 mod:AddSetIconOption("SetIconOnDebuffTarget2", 18173, true, 0, {8, 7, 6})
 
@@ -91,19 +91,20 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(367987) then -- SoD/SoM adrenaile is stack-based, 15 is a good value to run out
 		local amount = args.amount or 1
-		if amount == 15 then
+		if amount >= 15 and amount % 5 == 0 then -- Warn every 5 stacks at >= 15
 			if args:IsPlayer() then
 				specWarnAdrenalineOut:Show()
 				specWarnAdrenalineOut:Play("runout")
 				yellAdrenaline:Yell()
 			end
-		elseif amount == 1 then
+		elseif amount == 1 then -- Warning when it gets started
 			if args:IsPlayer() then
 				specWarnAdrenaline:Show()
 				specWarnAdrenaline:Play("targetyou")
 			else
 				warnAdrenaline:Show(args.destName)
 			end
+		elseif amount == 8 then -- Set icon a bit later
 			self.vb.debuffIcon = self.vb.debuffIcon - 1
 			if self.vb.debuffIcon == 5 then
 				self.vb.debuffIcon = 8
