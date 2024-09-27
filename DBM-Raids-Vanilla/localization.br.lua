@@ -580,7 +580,24 @@ L = DBM:GetModLocalization("Flamegor")
 L:SetGeneralLocalization{
 	name = "Flamagor"
 }
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L:SetGeneralLocalization{
+	name = "Petrébano e Flamagor"
+}
 
+L:SetTimerLocalization{
+	TimerBrandCD	= "Marca"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "Exibir cronômetro para recarga da marca"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "Petrébano",
+	Flamegor	= "Flamagor"
+}
 -----------------------
 --  Vulnerabilities  --
 -----------------------
