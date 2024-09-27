@@ -322,6 +322,27 @@ L:SetGeneralLocalization{
 	name = "Flammenmaul"
 }
 
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
+L:SetGeneralLocalization{
+	name = "Schattenschwinge und Flammenmaul"
+}
+
+L:SetTimerLocalization{
+	TimerBrandCD	= "Brandmal"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "Zeige Timer für Cooldown von Brandmal"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "Schattenschwinge",
+	Flamegor	= "Flammenmaul"
+}
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------
