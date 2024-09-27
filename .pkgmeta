@@ -5,6 +5,4 @@ enable-nolib-creation: no
 move-folders:
     DBM-Raids-Vanilla/DBM-Raids-Vanilla: DBM-Raids-Vanilla
     DBM-Raids-Vanilla/DBM-Azeroth: DBM-Azeroth
-
-ignore:
-  - DBM-Test-Vanilla
+    DBM-Raids-Vanilla/DBM-Test-Vanilla: DBM-Test-Vanilla

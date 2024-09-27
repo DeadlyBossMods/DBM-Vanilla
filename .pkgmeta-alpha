@@ -1,8 +1,0 @@
-package-as: DBM-Raids-Vanilla
-changelog-title: DBM - Vanilla and Season of Discovery
-enable-nolib-creation: no
-
-move-folders:
-    DBM-Raids-Vanilla/DBM-Raids-Vanilla: DBM-Raids-Vanilla
-    DBM-Raids-Vanilla/DBM-Azeroth: DBM-Azeroth
-    DBM-Raids-Vanilla/DBM-Test-Vanilla: DBM-Test-Vanilla
