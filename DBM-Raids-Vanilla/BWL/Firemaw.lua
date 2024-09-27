@@ -45,7 +45,9 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23339) then
-		warnWingBuffet:Show()
+		if not self.Options[specWarnWingBuffet.option] then -- Don't show warning as both normal and special
+			warnWingBuffet:Show()
+		end
 		timerWingBuffet:Start()
 		specWarnWingBuffet:Show()
 	elseif args:IsSpell(22539) then
