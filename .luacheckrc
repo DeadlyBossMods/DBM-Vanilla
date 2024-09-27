@@ -2,7 +2,8 @@
 std = "lua51"
 max_line_length = false
 exclude_files = {
-	".luacheckrc"
+	".luacheckrc",
+	"DBM-Test-Vanilla/*"
 }
 ignore = {
 	"1..", -- Everything related to globals, the LuaLS check is better
