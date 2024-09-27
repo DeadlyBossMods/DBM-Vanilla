@@ -65,3 +65,10 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization({
 	Pull		= "Hope is a DISEASE of the soul! This land shall wither and die!"
 })
+
+-- Thunderaan (SoD only)
+L = DBM:GetModLocalization("Thunderaan")
+
+L:SetGeneralLocalization{
+	name = "Prince Thunderaan"
+}
