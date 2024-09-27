@@ -458,7 +458,24 @@ L = DBM:GetModLocalization("Flamegor")
 L:SetGeneralLocalization{
 	name = "Flamegor"
 }
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L:SetGeneralLocalization{
+	name = "Rochébène et Flamegor"
+}
 
+L:SetTimerLocalization{
+	TimerBrandCD	= "Marque"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "Afficher le chronomètre pour le temps de recharge de la marque"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "Rochébène",
+	Flamegor	= "Flamegor"
+}
 
 -----------------------
 --  Vulnerabilities  --
@@ -483,7 +500,6 @@ L:SetMiscLocalization{
 	Arcane		= "Arcanes",
 	Holy		= "Sacré"
 }
-
 
 ------------------
 --  Chromaggus  --
