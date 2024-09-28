@@ -13,6 +13,12 @@ local mod	= DBM:NewMod("Razorgore", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 local CL	= DBM_COMMON_L
 
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod.statTypes = "normal,heroic,mythic"
+else
+	mod.statTypes = "normal"
+end
+
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
 mod:SetEncounterID(610)--BOSS_KILL is valid, but ENCOUNTER_END is not
