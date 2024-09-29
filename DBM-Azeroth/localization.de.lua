@@ -66,3 +66,18 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization({
 	Pull		= "Die Hoffnung ist eine KRANKHEIT der Seele. Dieses Land wird verdorren und sterben!"
 })
+
+-- Thunderaan (SoD only)
+L = DBM:GetModLocalization("Thunderaan")
+
+L:SetGeneralLocalization{
+	name = "Prince Thunderaan"
+}
+
+L:SetWarningLocalization{
+	AddIncoming = DBM_CORE_L.AUTO_SPEC_WARN_TEXTS.adds
+}
+
+L:SetOptionLocalization{
+	AddIncoming = "Zeige Warnung wenn ein neues Add spawnt"
+}

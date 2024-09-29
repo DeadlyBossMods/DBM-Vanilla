@@ -10,11 +10,15 @@ mod:SetEncounterID(3079)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 466774",
+	"SPELL_CAST_START 466774 15234 11642",
 	"SPELL_AURA_APPLIED 470866",
 	"SPELL_PERIODIC_DAMAGE 470866",
 	"SPELL_PERIODIC_MISSED 470866"
 )
+
+-- Adds
+-- First log entry for them is typically them casting Cast Lightning Bolt (15234)
+-- Cast Heal (11642) on the boss, needs interrupt
 
 -- Cyclonic Winds: ~27s cooldown, active for 6 seconds, but I don't think anyone really cares about it?
 -- "Cyclonic Winds-466774-npc:231494-000076DEDB = pull:26.5, 26.9, 27.9, 32.9, 31.9, 29.4, 38.6, 27.5",
@@ -31,11 +35,15 @@ mod:RegisterEventsInCombat(
 local timerWindsCD     = mod:NewCDTimer(27, 466774)
 local timerWindsActive = mod:NewBuffActiveTimer(7.5, 466774) -- yes, that's cast time + active, but don't want too many timers
 
-local warnWinds        = mod:NewCastAnnounce(466774)
+local warnAdd          = mod:NewAnnounce("AddIncoming", 3, 25681) -- Icon: Summon Mana Fiend
 
 local specWarnGTFO     = mod:NewSpecialWarningGTFO(470866, nil, nil, nil, 1, 8)
+local specWarnHeal     = mod:NewSpecialWarningInterrupt(11642, "HasInterrupt", nil, nil, 1, 2)
+
+local addsSeen = {}
 
 function mod:OnCombatStart(delay)
+	table.wipe(addsSeen)
 	timerWindsCD:Start(26.5 - delay)
 end
 
@@ -44,6 +52,14 @@ function mod:SPELL_CAST_START(args)
 		timerWindsCD:Start()
 		timerWindsActive:Start()
 		warnWinds:Show()
+	elseif args:IsSpell(15234) and args:GetSrcCreatureID() == 232694 then -- Shared Spell IDs with some random dungeons
+		if not addsSeen[args.sourceGUID] then
+			addsSeen[args.sourceGUID] = true
+			warnAdd:Show()
+		end
+	elseif args:IsSpell(11642) and args:GetSrcCreatureID() == 232694 then
+		specWarnHeal:Show(args.sourceName)
+		specWarnHeal:Play("kickcast")
 	end
 end
 
