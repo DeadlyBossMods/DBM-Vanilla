@@ -35,6 +35,7 @@ mod:RegisterEventsInCombat(
 local timerWindsCD     = mod:NewCDTimer(27, 466774)
 local timerWindsActive = mod:NewBuffActiveTimer(7.5, 466774) -- yes, that's cast time + active, but don't want too many timers
 
+local warnWinds        = mod:NewCastAnnounce(466774, nil, nil, nil, false, 2)
 local warnAdd          = mod:NewAnnounce("AddIncoming", 3, 25681) -- Icon: Summon Mana Fiend
 
 local specWarnGTFO     = mod:NewSpecialWarningGTFO(470866, nil, nil, nil, 1, 8)
@@ -64,7 +65,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:CloudOnYou(spellName)
-	if self:AntiSpam(5, "gtfo") then -- Effectively triggers every 2 ticks, the damage isn't too bad, so don't want to bother people too much
+	if self:AntiSpam(7, "gtfo") then -- Effectively triggers every 3 ticks, the damage isn't too bad, so don't want to bother people too much
 		specWarnGTFO:Show(spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
