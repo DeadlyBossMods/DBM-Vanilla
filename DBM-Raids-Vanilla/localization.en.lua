@@ -457,6 +457,15 @@ L:SetMiscLocalization{
 	YellDH		= "Demon hunters? How odd, covering your eyes like that. Doesn't it make it hard to see the world around you?"
 }
 
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Season of Discovery Trials"
+}
+
 ----------------
 --  Lucifron  --
 ----------------
