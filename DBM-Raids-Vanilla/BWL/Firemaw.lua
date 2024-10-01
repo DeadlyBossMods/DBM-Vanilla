@@ -12,6 +12,12 @@ end
 local mod	= DBM:NewMod("Firemaw", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod.statTypes = "normal,heroic,mythic"
+else
+	mod.statTypes = "normal"
+end
+
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(11983)
 mod:SetEncounterID(613)
@@ -45,7 +51,9 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23339) then
-		warnWingBuffet:Show()
+		if not self.Options[specWarnWingBuffet.option] then -- Don't show warning as both normal and special
+			warnWingBuffet:Show()
+		end
 		timerWingBuffet:Start()
 		specWarnWingBuffet:Show()
 	elseif args:IsSpell(22539) then

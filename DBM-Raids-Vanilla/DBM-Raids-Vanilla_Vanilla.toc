@@ -87,6 +87,7 @@ VanillaZG\EdgeOfMadness.lua
 VanillaZG\Gahzranka.lua
 VanillaZG\Jindo.lua
 
+BWL\SoDTrials.lua
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
 BWL\Broodlord.lua

@@ -30,7 +30,7 @@
 ## X-DBM-Mod-Name-zhTW: 艾澤拉斯 (經典)
 ## X-DBM-Mod-Name-zhCN: 世界首领 (经典)
 ## X-DBM-Mod-Sort: 1106
-## X-DBM-Mod-MapID: 0, 1, 2789, 2791
+## X-DBM-Mod-MapID: 0, 1, 2789, 2791, 2804
 ## X-DBM-Mod-LoadCID: 14889,14888,14887,14890,12397,6109
 ## X-DBM-Mod-MinCoreRevision: 12473
 ## X-DBM-Mod-MinExpansion: 0
@@ -50,3 +50,4 @@ Taerar.lua
 Ysondre.lua
 Lethon.lua
 Emeriss.lua
+Thunderaan.lua

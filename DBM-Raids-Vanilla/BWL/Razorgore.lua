@@ -13,6 +13,12 @@ local mod	= DBM:NewMod("Razorgore", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 local CL	= DBM_COMMON_L
 
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod.statTypes = "normal,heroic,mythic"
+else
+	mod.statTypes = "normal"
+end
+
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
 mod:SetEncounterID(610)--BOSS_KILL is valid, but ENCOUNTER_END is not
@@ -44,7 +50,7 @@ local timerAddsSpawn		= mod:NewTimer(47, "TimerAddsSpawn", 19879, nil, nil, 1)--
 
 local timerDrakeSpawn, warnDrakeSpawn
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerDrakeSpawn = mod:NewTimer(120, CL.BIG_ADD, 466277, nil, nil, 1) -- Big drake after 2 min or after 10 eggs
+	timerDrakeSpawn = mod:NewTimer(90, CL.BIG_ADD, 466277, nil, nil, 1) -- Big drake after 1:30 min or after 10 eggs (some sources suggest 2:00, but warcraftlogs has him appearing at exactly 1:30 in slow kills)
 	warnDrakeSpawn = mod:NewAnnounce(CL.BIG_ADD, 3)
 end
 
@@ -52,6 +58,15 @@ mod:AddSpeedClearOption("BWL", true)
 
 mod.vb.eggsLeft = 30
 mod.vb.firstEngageTime = nil
+
+-- Polyfill because I don't feel like this justifies a forced core update
+local function isBlackEssenceEnabled()
+	if mod.IsBwlBlackEssenceEnabled then
+		return mod:IsBwlBlackEssenceEnabled()
+	else
+		return DBM:UnitDebuff("player", 467047) ~= nil
+	end
+end
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
@@ -64,7 +79,7 @@ function mod:OnCombatStart(delay)
 			DBT:CreateBar(self.Options.FastestClear, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
 		end
 	end
-	if timerDrakeSpawn then
+	if timerDrakeSpawn and isBlackEssenceEnabled() then
 		timerDrakeSpawn:Start()
 	end
 end
@@ -84,11 +99,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23040) and self.vb.phase < 2 then
 		warnPhase2:Show()
 		self:SetStage(2)
-	--This may not be accurate, it depends on how large expanded combat log range is
 	elseif args:IsSpell(19873) then
 		self.vb.eggsLeft = self.vb.eggsLeft - 1
 		warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
-		if self.vb.eggsLeft == 20 and timerDrakeSpawn then
+		if self.vb.eggsLeft == 20 and timerDrakeSpawn and isBlackEssenceEnabled() and GetTime() - (self.combatInfo.pull or 0) <= 90 then
 			warnDrakeSpawn:Show()
 			timerDrakeSpawn:Stop()
 		end
@@ -101,7 +115,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
---For some reason this no longer works
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if (msg == L.Phase2Emote or msg:find(L.Phase2Emote)) and self.vb.phase < 2 then
 		self:SendSync("Phase2")
