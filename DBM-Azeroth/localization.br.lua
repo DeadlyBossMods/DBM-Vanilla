@@ -66,3 +66,18 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization({
 	Pull		= "A esperança é uma DOENÇA da alma! Estas terras definharão até a morte!"
 })
+
+-- Thunderaan (SoD only)
+L = DBM:GetModLocalization("Thunderaan")
+
+L:SetGeneralLocalization{
+	name = "Príncipe Trovejardus"
+}
+
+L:SetWarningLocalization{
+	AddIncoming = DBM_CORE_L.AUTO_SPEC_WARN_TEXTS.adds
+}
+
+L:SetOptionLocalization{
+	AddIncoming = "Exibir aviso para um lacaio"
+}
