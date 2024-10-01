@@ -441,6 +441,15 @@ L:SetMiscLocalization{
 	YellMonk	= "Monjes, ¿no os mareáis con tanta vuelta?",
 	YellDH		= "¿Cazadores de demonios? Qué raro eso de taparos los ojos así. ¿No os cuesta ver lo que tenéis alrededor?"--Demon Hunter call; I know this hasn't been implemented yet in DBM, but I added it just in case.
 }
+	
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Pruebas de Temporada de descubrimiento"
+}
 
 ----------------
 --  Lucifron  --
