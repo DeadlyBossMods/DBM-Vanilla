@@ -573,6 +573,15 @@ L:SetMiscLocalization{
 	YellMage	= "Magos também? Vocês deveriam ter mais cuidado ao brincar com magia..."
 }
 
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Provações da Temporada da Descoberta"
+}
+
 ----------------
 --  Lucifron  --
 ----------------
