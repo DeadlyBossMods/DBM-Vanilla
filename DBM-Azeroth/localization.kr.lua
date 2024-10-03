@@ -66,3 +66,18 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization({
 	Pull		= "희망은 영혼의 병! 이 땅은 말라 죽을 것이다!"
 })
+
+-- Thunderaan (SoD only)
+L = DBM:GetModLocalization("Thunderaan")
+
+L:SetGeneralLocalization{
+	name = "왕자 썬더란"
+}
+
+L:SetWarningLocalization{
+	AddIncoming = DBM_CORE_L.AUTO_SPEC_WARN_TEXTS.adds
+}
+
+L:SetOptionLocalization{
+	AddIncoming = "쫄 등장시 경고 보기"
+}
