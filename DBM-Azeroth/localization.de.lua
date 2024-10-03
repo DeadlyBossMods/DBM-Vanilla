@@ -71,7 +71,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("Thunderaan")
 
 L:SetGeneralLocalization{
-	name = "Prince Thunderaan"
+	name = "Prinz Donneraan"
 }
 
 L:SetWarningLocalization{
