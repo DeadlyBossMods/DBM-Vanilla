@@ -442,6 +442,31 @@ L:SetMiscLocalization{
 	YellMonk	= "Mönche, macht Euch dieses Herumrollen denn nicht schwindlig?"--needs to be verified (wowhead-captured translation)
 }
 
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Season of Discovery Trials"
+}
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Blau und Grün auf >%s<",
+	SpecWarnBothBombsYou	= "Blau und Grün auf DIR",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+	SpecWarnBothBombs		= "Zeige Special Warning wenn Blau und Grün beide auf dem selben Spieler sind.",
+	SpecWarnBothBombsYou	= "Zeige Special Warning wenn Blau und Grün beide auf dir sind.",
+	TimerBombs				= "Zeige Timer für die Bomben"
+}
+
+L:SetMiscLocalization{
+	-- Used in options
+	BlueTrial = "Blau",
+	GreenTrial = "Grün",
+	GreenAndBlue = "Blau und Grün auf dem selben Spieler",
+}
+
 ----------------
 --  Lucifron  --
 ----------------
