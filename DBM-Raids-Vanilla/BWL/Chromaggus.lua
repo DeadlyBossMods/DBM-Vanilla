@@ -66,12 +66,12 @@ local vulnerabilities = {
 --Constants
 -- https://wow.gamepedia.com/COMBAT_LOG_EVENT
 local spellInfo = {
-	[2] =	{"Holy",	{r=255, g=230, b=128},	"135924"},-- Smite
-	[4] =	{"Fire",	{r=255, g=128, b=0},	"135808"},-- Pyroblast
-	[8] =	{"Nature",	{r=77, g=255, b=77},	"136006"},-- Wrath
-	[16] =	{"Frost",	{r=128, g=255, b=255},	"135846"},-- Frostbolt
-	[32] =	{"Shadow",	{r=128, g=128, b=255},	"136197"},-- Shadow Bolt
-	[64] =	{"Arcane",	{r=255, g=128, b=255},	"136096"},-- Arcane Missiles
+	[2] =	{"Holy",	{r=255 / 255, g=230 / 255, b=128 / 255},	"135924"},-- Smite
+	[4] =	{"Fire",	{r=255 / 255, g=128 / 255, b=0 / 255},		"135808"},-- Pyroblast
+	[8] =	{"Nature",	{r=77 / 255, g=255 / 255, b=77 / 255},		"136006"},-- Wrath
+	[16] =	{"Frost",	{r=128 / 255, g=255 / 255, b=255 / 255},	"135846"},-- Frostbolt
+	[32] =	{"Shadow",	{r=128 / 255, g=128 / 255, b=255 / 255},	"136197"},-- Shadow Bolt
+	[64] =	{"Arcane",	{r=255 / 255, g=128 / 255, b=255 / 255},	"136096"},-- Arcane Missiles
 }
 
 local vulnSpells = {
