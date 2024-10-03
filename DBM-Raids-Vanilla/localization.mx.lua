@@ -519,7 +519,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Mostrar aviso cuando Chromaggus lance uno de sus alientos",
-	WarnVulnerable	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
+	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
 	TimerBreathCD	= "Mostrar TdR de aliento",
 	TimerBreath		= "Mostrar lanzamiento de aliento",
 	TimerVulnCD		= "Mostrar TdR de Vulnerabilidad"

@@ -520,7 +520,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Afficher un avertissement lorsque Chromaggus lance un de ses souffles",
-	WarnVulnerable	= "Afficher un avertissement pour les vulnérabilités des sorts",
+	WarnVulnerableNew	= "Afficher un avertissement pour les vulnérabilités des sorts",
 	TimerBreathCD	= "Afficher le temps de recharge de souffle",
 	TimerBreath		= "Afficher le lancement du souffle",
 	TimerVulnCD		= "Afficher le temps de recharge de vulnérabilité"

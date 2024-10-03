@@ -377,7 +377,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnBreath = "%s",
-	WarnVulnerable = "%sverwundbarkeit"
+	WarnVulnerable = "Verwundbarkeit: %s"
 }
 L:SetTimerLocalization{
 	TimerBreathCD = "Abklingzeit der %s",
@@ -386,7 +386,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath = "Zeige Warnung, wenn Chromaggus einen seiner Atem wirkt",
-	WarnVulnerable = "Zeige Warnung für Zauberverwundbarkeit",
+	WarnVulnerableNew = "Zeige Warnung für Zauberverwundbarkeit",
 	TimerBreathCD = "Abklingzeit des Atem anzeigen",
 	TimerBreath = "Zeige Atem Zauber",
 	TimerVulnCD = "Zeige Abklingzeit der Verwundbarkeit"
