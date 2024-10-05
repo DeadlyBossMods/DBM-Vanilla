@@ -145,7 +145,7 @@ local function checkTargetVulnerabilities(self)
 		return
 	end
 
-	local spellId = select(10, DBM:UnitBuff("target", 22277, 22280, 22278, 22279, 22281)) or 0
+	local spellId = select(10, DBM:UnitBuff("target", 22277, 22280, 22278, 22279, 22281))
 	local vulnSchool = vulnSpells[spellId]
 	updateVulnerability(self, vulnSchool)
 end
