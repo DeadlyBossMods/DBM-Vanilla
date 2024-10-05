@@ -82,3 +82,7 @@ Season of Discovery/Blackwing Lair/Reports/Broodlord-Heroic-Kill.lua
 Season of Discovery/Blackwing Lair/Reports/Firemaw-Normal-Wipe.lua
 Season of Discovery/Blackwing Lair/Reports/EbonrocAndFlamegor-BlueGreenBronze-Kill.lua
 Season of Discovery/Blackwing Lair/Reports/Chromaggus-BlueGreenBronze-Kill.lua
+
+# Zul'Gurub
+Season of Discovery/ZulGurub/Hakkar-Kill.lua
+Season of Discovery/ZulGurub/Reports/Hakkar-Kill.lua
