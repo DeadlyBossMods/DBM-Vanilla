@@ -18,7 +18,7 @@ mod:SetEncounterID(788)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 24684 24699 24683",
+	"SPELL_CAST_SUCCESS 24684 24699 24683 24646",
 	"SPELL_AURA_APPLIED 24664 8269 24699",
 	"SPELL_SUMMON 24728 24683"
 )
@@ -31,8 +31,11 @@ local warnFrenzy	= mod:NewSpellAnnounce(8269)
 local warnVanish	= mod:NewSpellAnnounce(24699)
 local warnCloud		= mod:NewSpellAnnounce(24683)
 
+local specWarnKite	= mod:NewSpecialWarningMove(24646, true, nil, nil, 1, 2)
+
 local timerSleep	= mod:NewBuffActiveTimer(6, 24664, nil, nil, nil, 3)
 local timerCloud	= mod:NewBuffActiveTimer(15, 24683, nil, nil, nil, 3)
+local timerKite		= mod:NewBuffActiveTimer(15, 24646)
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(24684) then
@@ -42,6 +45,10 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(24683) then
 		warnCloud:Show()
 		timerCloud:Start()
+	elseif args:IsSpell(24646) then -- Gri'lek kiting
+		specWarnKite:Show()
+		specWarnKite:Play("keepmove")
+		timerKite:Start()
 	end
 end
 
