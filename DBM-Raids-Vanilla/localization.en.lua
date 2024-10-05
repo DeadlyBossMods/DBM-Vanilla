@@ -756,6 +756,10 @@ L:SetGeneralLocalization{
 	name = "Jin'do the Hexxer"
 }
 
+L:SetMiscLocalization{
+	Ghosts = "Ghosts"
+}
+
 --------------
 --  Onyxia  --
 --------------

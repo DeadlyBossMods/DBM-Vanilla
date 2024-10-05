@@ -717,6 +717,10 @@ L:SetGeneralLocalization{
 	name = "Jin'do der Verhexer"
 }
 
+L:SetMiscLocalization{
+	Ghosts = "Geister"
+}
+
 --------------
 --  Onyxia  --
 --------------
