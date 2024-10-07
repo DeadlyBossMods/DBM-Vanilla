@@ -108,6 +108,7 @@ function mod:OnSync(msg)
 			timerSimulKill:Start()
 		end
 	elseif msg == "YellPhase2" and self.vb.phase < 2 then
+		DBM.InfoFrame:Hide()
 		self:SetStage(2)
 		warnPhase2:Show()
 		timerSimulKill:Stop()
