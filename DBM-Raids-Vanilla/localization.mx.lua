@@ -388,7 +388,9 @@ L = DBM:GetModLocalization("Jindo")
 L:SetGeneralLocalization{
 	name = "Jin'do el Aojador"
 }
-
+L:SetMiscLocalization{
+	Ghosts = "Fantasmas"
+}
 -----------------
 --  Razorgore  --
 -----------------
