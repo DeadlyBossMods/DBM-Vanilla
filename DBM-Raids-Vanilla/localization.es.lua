@@ -698,7 +698,9 @@ L = DBM:GetModLocalization("Jindo")
 L:SetGeneralLocalization{
 	name = "Jin'do el Malhechor"
 }
-
+L:SetMiscLocalization{
+	Ghosts = "Fantasmas"
+}
 --------------
 --  Onyxia  --
 --------------
