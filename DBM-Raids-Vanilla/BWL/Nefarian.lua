@@ -184,7 +184,10 @@ do
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" and sender then
 			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
-			if playerClass == className then
+			if arg == "SHAMAN" then
+				specwarnClassCall:Play("attacktotem")
+			end
+			if playerClass == className and arg ~= "SHAMAN" then
 				specwarnClassCall:Show()
 				specwarnClassCall:Play("targetyou")
 			else
