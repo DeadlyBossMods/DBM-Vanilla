@@ -67,6 +67,10 @@ end
 
 function mod:OnCombatEnd(wipe)
 	if not wipe then
+		local sodTrialMod = DBM:GetModByName("SoDBWLTrials")
+		if sodTrialMod then
+			sodTrialMod:StopBombTimerLoop()
+		end
 		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
 		if firstBossMod.vb.firstEngageTime then
 			local thisTime = GetServerTime() - firstBossMod.vb.firstEngageTime
