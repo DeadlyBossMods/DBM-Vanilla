@@ -105,7 +105,10 @@ do
 	end
 end
 
-local function updateVulnerability(self, spellSchool)
+local lastIcon
+
+local function updateVulnerability(self, spellId)
+	local spellSchool = vulnSpells[spellId]
 	local info = spellInfo[spellSchool]
 	if not info then return end
 	local name = L[info[1]] or info[1]
@@ -127,13 +130,13 @@ local function updateVulnerability(self, spellSchool)
 			end
 		end
 		if self.Options.NPAuraOnVulnerable then
-			DBM.Nameplate:Hide(true, bossGuid, 22277, 135924)
-			DBM.Nameplate:Hide(true, bossGuid, 22277, 135808)
-			DBM.Nameplate:Hide(true, bossGuid, 22277, 136006)
-			DBM.Nameplate:Hide(true, bossGuid, 22277, 135846)
-			DBM.Nameplate:Hide(true, bossGuid, 22277, 136197)
-			DBM.Nameplate:Hide(true, bossGuid, 22277, 136096)
-			DBM.Nameplate:Show(true, bossGuid, 22277, tonumber(info[3]), nil, nil, true)
+			local icon = tonumber(info[3])
+			if icon ~= lastIcon then
+				-- FIXME: there is some kind of bug that breaks nameplate icons if you try to remove the same that you add in a frame (?)
+				if lastIcon then DBM.Nameplate:Hide(true, bossGuid, 22277, lastIcon) end
+				DBM.Nameplate:Show(true, bossGuid, 22277, icon, nil, nil, true)
+				lastIcon = icon
+			end
 		end
 	end
 end
@@ -146,8 +149,7 @@ local function checkTargetVulnerabilities(self)
 	end
 
 	local spellId = select(10, DBM:UnitBuff("target", 22277, 22280, 22278, 22279, 22281))
-	local vulnSchool = vulnSpells[spellId]
-	updateVulnerability(self, vulnSchool)
+	updateVulnerability(self, spellId)
 end
 
 function mod:OnCombatStart(delay)
@@ -250,7 +252,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(22277, 22278, 22279, 22280, 22281) then
 		bossGuid = args.destGUID
 		timerVuln:Start()
-		updateVulnerability(self, vulnSpells[args.spellId])
+		updateVulnerability(self, args.spellId)
 	end
 end
 
