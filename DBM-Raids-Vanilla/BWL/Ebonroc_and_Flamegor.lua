@@ -81,10 +81,21 @@ local specWarnBrandofFlame	= mod:NewSpecialWarningStack(368521, nil, 4, nil, nil
 local timerFrenzyCD			= mod:NewCDTimer(25, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
+-- Polyfill because I don't feel like this justifies a forced core update
+local function isBlackEssenceEnabled()
+	if mod.IsBwlBlackEssenceEnabled then
+		return mod:IsBwlBlackEssenceEnabled()
+	else
+		return DBM:UnitDebuff("player", 467047) ~= nil
+	end
+end
+
 function mod:OnCombatStart(delay)
 	--Both
 	TimerBrandCD:Start(16-delay)
-	timerStop:Start(24 - delay)
+	if isBlackEssenceEnabled() then
+		timerStop:Start(24 - delay)
+	end
 	timerShadowFlameCD:Start(29-delay)--29-50, yep, classic for you
 	timerWingBuffet:Start(40-delay)--40-42, better than shadow flame
 	specWarnWingBuffet:Schedule(36)

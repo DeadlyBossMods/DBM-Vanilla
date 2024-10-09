@@ -22,6 +22,7 @@ Unused objects:
 	[Special Warning] Shadow of Ebonroc on you, type=you, spellId=23340
 	[Special Warning] Stop!!, type=spell, spellId=467732
 	[Special Warning] Go!!, type=spell, spellId=467764
+	[Timer] Stop!, time=20.00, type=cd, spellId=467732
 	[Timer] Go!, time=20.00, type=cd, spellId=467764
 
 Timers:
@@ -63,8 +64,6 @@ Timers:
 		[  0.00] ENCOUNTER_START: 614, Ebonroc, 186, 40, 0
 		[ 40.06] SPELL_CAST_SUCCESS: [Ebonroc: Wing Buffet] Creature-0-1-469-1-14601-0000000002, Ebonroc, 0xa48, "", nil, 0x0, 369103, Wing Buffet, 0, 0
 			 Triggered 11x, delta times: 40.06, 25.95, 25.92, 25.89, 25.88, 25.89, 25.85, 25.96, 25.90, 25.89, 25.91
-	Stop!, time=20.00, type=cd, spellId=467732, triggerDeltas = 0.00
-		[  0.00] ENCOUNTER_START: 614, Ebonroc, 186, 40, 0
 
 Announces:
 	Wing Buffet, type=spell, spellId=368941, triggerDeltas = 40.06, 25.95, 25.92, 25.89, 25.88, 25.89, 25.85, 25.96, 25.90, 25.89, 25.91
@@ -147,7 +146,6 @@ Event trace:
 		StartCombat: ENCOUNTER_START
 		RegisterEvents: Regular, SPELL_CAST_START 22539, SPELL_CAST_SUCCESS 23340 23342 368515 368521 368941 369080 369105 369103, SPELL_AURA_APPLIED 23340 23342 368515 368521 467732 467764, SPELL_AURA_APPLIED_DOSE 368515 368521, SPELL_AURA_REMOVED 23340 23342
 		StartTimer: 16.0, Brand
-		StartTimer: 24.0, Stop!
 		StartTimer: 29.0, Shadow Flame
 		StartTimer: 40.0, Wing Buffet
 		ScheduleTask: specWarn368941soon:Schedule() at 36.00 (+36.00)
