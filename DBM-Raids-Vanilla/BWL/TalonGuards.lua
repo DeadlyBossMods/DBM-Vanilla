@@ -18,7 +18,7 @@ mod:SetModelID(12460)
 mod:RegisterCombat("combat")
 mod.noStatistics = true
 
-mod:RegisterEventsInCombat(
+mod:RegisterEvents(
 	"PLAYER_TARGET_CHANGED",
 	"SPELL_AURA_APPLIED 22277 22278 22279 22280 22281"
 )
@@ -65,22 +65,17 @@ function mod:OnCombatStart()
 	end
 end
 
-function mod:OnCombatEnd()
+function mod:OnCombatEnd(...)
 	table.wipe(lastAnnounce)
-	if self.Options.NPAuraOnVulnerable then
-		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)--isGUID, unit, spellId, texture, force, isHostile, isFriendly
-	end
 end
 
-local function updateNameplate(guid, texture)
-	DBM.Nameplate:Hide(true, guid, 22277, 135924)
-	DBM.Nameplate:Hide(true, guid, 22277, 135808)
-	DBM.Nameplate:Hide(true, guid, 22277, 136006)
-	DBM.Nameplate:Hide(true, guid, 22277, 135846)
-	DBM.Nameplate:Hide(true, guid, 22277, 136197)
-	DBM.Nameplate:Hide(true, guid, 22277, 136096)
-	DBM.Nameplate:Show(true, guid, 22277, texture)
+local shownNameplates = {}
 
+local function updateNameplate(guid, texture)
+	if not shownNameplates[guid] then
+		shownNameplates[guid] = true
+		DBM.Nameplate:Show(true, guid, 22277, texture)
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
