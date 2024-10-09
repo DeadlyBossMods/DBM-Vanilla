@@ -8,6 +8,7 @@
 
 # Blackwing Lair
 Season of Discovery/Blackwing Lair/SoDTrials.lua
+Season of Discovery/Blackwing Lair/SoDTrialsv2.lua
 Season of Discovery/Blackwing Lair/Razorgore-Heroic-Kill.lua
 Season of Discovery/Blackwing Lair/Vaelastrasz-Normal-Kill.lua
 Season of Discovery/Blackwing Lair/Broodlord-Heroic-Kill.lua
@@ -16,6 +17,7 @@ Season of Discovery/Blackwing Lair/EbonrocAndFlamegor-BlueGreenBronze-Kill.lua
 Season of Discovery/Blackwing Lair/Chromaggus-BlueGreenBronze-Kill.lua
 
 Season of Discovery/Blackwing Lair/Reports/SoDTrials.lua
+Season of Discovery/Blackwing Lair/Reports/SoDTrialsv2.lua
 Season of Discovery/Blackwing Lair/Reports/Razorgore-Heroic-Kill.lua
 Season of Discovery/Blackwing Lair/Reports/Vaelastrasz-Normal-Kill.lua
 Season of Discovery/Blackwing Lair/Reports/Broodlord-Heroic-Kill.lua
