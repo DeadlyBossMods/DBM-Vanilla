@@ -24,6 +24,8 @@ mod:RegisterEvents(
 
 local timerBombs		= mod:NewTimer(47.36, "TimerBombs", 3823)
 timerBombs.simpType = "next"
+local timerBlueBomb		= mod:NewNextTimer(47.36, 466357)
+local timerGreenBomb	= mod:NewNextTimer(47.36, 466435)
 
 mod:AddOptionLine(L.BlueTrial)
 -- Blue Trial
@@ -55,6 +57,7 @@ local specWarnBothYou	= mod:NewSpecialWarning("SpecWarnBothBombsYou", nil, "Spec
 local function gtfo(self, spellName)
 	if self:AntiSpam(3, "GreenTrialGtfo") then
 		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
 	end
 end
 
@@ -62,7 +65,7 @@ local blueTarget, greenTarget = "", ""
 local blueTargetTime, greenTargetTime = 0, 0
 local lastBomb = 0
 
--- Both bombs trigger at the same time, need special handling for both on the same target
+-- Bombs used to trigger at the exact same time in weeks 1 and 2, but as of week 3 they trigger separately, maybe timed by the trial activation time?
 function mod:Bombs()
 	local hasBlue = GetTime() - blueTargetTime < 1
 	local hasGreen = GetTime() - greenTargetTime < 1
@@ -104,10 +107,18 @@ function mod:Bombs()
 			warnGreenTrial:Show(greenTarget)
 		end
 	end
-	timerBombs:Start()
-	lastBomb = GetTime()
-	self:UnscheduleMethod("BombTimerLoop")
-	self:ScheduleMethod(47.36 + 0.3, "BombTimerLoop")
+	if timerBombs:GetTime() >= 8 and timerBombs:GetRemaining() > 1 and not (hasGreen and hasBlue) then -- Two non-synced bomb timers
+		if hasGreen then
+			timerGreenBomb:Start()
+		elseif hasBlue then
+			timerBlueBomb:Start()
+		end
+	else -- Single bomb or synced bombs
+		timerBombs:Start()
+		lastBomb = GetTime()
+		self:UnscheduleMethod("BombTimerLoop")
+		self:ScheduleMethod(47.36 + 0.3, "BombTimerLoop")
+	end
 end
 
 function mod:BombTimerLoop() -- Fallback if the bomb doesn't get cast, delayed by 0.3 second vs. expected time
@@ -119,6 +130,11 @@ function mod:BombTimerLoop() -- Fallback if the bomb doesn't get cast, delayed b
 			self:RecoverBombTimer()
 		end
 	end
+end
+
+function mod:StopBombTimerLoop()
+	lastBomb = 0
+	self:UnscheduleMethod("BombTimerLoop")
 end
 
 function mod:RecoverBombTimer()

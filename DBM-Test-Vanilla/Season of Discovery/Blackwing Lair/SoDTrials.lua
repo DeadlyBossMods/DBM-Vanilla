@@ -1,5 +1,5 @@
 DBM.Test:DefineTest{
-	name = "SoD/BWL/SoDTrials/Synthetic",
+	name = "SoD/BWL/SoDTrials/Synthetic/Week1",
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
 	mod = "SoDBWLTrials",

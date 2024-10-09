@@ -1,5 +1,5 @@
 DBM.Test:Report[[
-Test: SoD/BWL/SoDTrials/Synthetic
+Test: SoD/BWL/SoDTrials/Synthetic/Week1
 Mod:  DBM-Raids-Vanilla/SoDBWLTrials
 
 Findings:
@@ -17,19 +17,21 @@ Unused objects:
 	[Special Warning] %s damage - move away, type=gtfo, spellId=466448
 
 Timers:
-	Bombs, time=47.36, type=cd, spellId=<none>, triggerDeltas = 1.00, 9.00, 9.00, 9.00, 9.00, 9.05, 9.00, 9.00, 9.00, 47.66, 127.29, 14.79
+	Bombs, time=47.36, type=cd, spellId=<none>, triggerDeltas = 1.00, 9.00, 9.00, 9.00, 9.00, 47.66, 163.34
 		[  1.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466435, Nature's Fury, 0, DEBUFF, 0
 		[ 10.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000002, Player2, 0x512, 466435, Nature's Fury, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 10.00, 18.00
 		[ 19.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player3: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000003, Player3, 0x512, 466435, Nature's Fury, 0, DEBUFF, 0
 		[ 37.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000002, Player2, 0x512, 466357, Arcane Bomb, 0, DEBUFF, 0
-		[ 46.05] Scheduled at 46.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466357, Arcane Bomb, 0, DEBUFF, 0
-		[ 55.05] Scheduled at 55.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000002, Player2, 0x512, 466357, Arcane Bomb, 0, DEBUFF, 0
-		[ 64.05] Scheduled at 64.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466435, Nature's Fury, 0, DEBUFF, 0
-		[ 73.05] Scheduled at 73.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-2-00000002, Player2, 0x512, 466435, Nature's Fury, 0, DEBUFF, 0
-			 Triggered 3x, delta times: 73.05, 47.66, 142.08
+		[ 84.66] Scheduled at 37.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000002, Player2, 0x512, 466357, Arcane Bomb, 0, DEBUFF, 0
 		[128.00] LOADING_SCREEN_DISABLED: , 0
 			 Triggered 2x, delta times: 128.00, 120.00
+	Arcane Bomb, time=47.36, type=next, spellId=466357, triggerDeltas = 46.05, 9.00
+		[ 46.05] Scheduled at 46.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466357, Arcane Bomb, 0, DEBUFF, 0
+		[ 55.05] Scheduled at 55.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000002, Player2, 0x512, 466357, Arcane Bomb, 0, DEBUFF, 0
+	Nature's Fury, time=47.36, type=next, spellId=466435, triggerDeltas = 64.05, 9.00
+		[ 64.05] Scheduled at 64.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466435, Nature's Fury, 0, DEBUFF, 0
+		[ 73.05] Scheduled at 73.00 by SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-2-00000002, Player2, 0x512, 466435, Nature's Fury, 0, DEBUFF, 0
 
 Announces:
 	Blue Bomb on >%s<, type=target, spellId=466357, triggerDeltas = 19.00, 18.00, 18.05
@@ -186,7 +188,12 @@ Event trace:
 		StartTimer: 47.4, Bombs
 		UnscheduleTask: mod:BombTimerLoop() scheduled by ScheduleTask at 28.00
 		ScheduleTask: mod:BombTimerLoop() at 84.66 (+47.66)
-			Unscheduled by ExecuteScheduledTask at 46.05
+			ScheduleTask: mod:BombTimerLoop() at 132.02 (+47.36)
+				ScheduleTask: mod:BombTimerLoop() at 179.38 (+47.36)
+					ScheduleTask: mod:BombTimerLoop() at 226.74 (+47.36)
+						ScheduleTask: mod:BombTimerLoop() at 274.10 (+47.36)
+			StartTimer: 47.4, Bombs
+			UpdateTimer: TimerBombs, 0.3066664888896, 47.36
 	[ 46.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466357, Arcane Bomb, 0, DEBUFF, 0
 		ScheduleTask: mod:Bombs() at 46.05 (+0.05)
 			ShowYell: {rt6}{rt6}{rt6}
@@ -200,19 +207,13 @@ Event trace:
 				ShowYell: {rt6}4
 			ShowSpecialWarning: Blue Bomb on you
 			PlaySound: VoicePack/gather
-			StartTimer: 47.4, Bombs
-			UnscheduleTask: mod:BombTimerLoop() scheduled by ScheduleTask at 37.00
-			ScheduleTask: mod:BombTimerLoop() at 93.71 (+47.66)
-				Unscheduled by ExecuteScheduledTask at 55.05
+			StartTimer: 47.4, Arcane Bomb
 	[ 55.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Arcane Bomb] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000002, Player2, 0x512, 466357, Arcane Bomb, 0, DEBUFF, 0
 		ScheduleTask: mod:Bombs() at 55.05 (+0.05)
 			ShowSpecialWarning: Blue Bomb on Player2
 			PlaySound: VoicePack/helpsoak
 			ShowAnnounce: Blue Bomb on Player2
-			StartTimer: 47.4, Bombs
-			UnscheduleTask: mod:BombTimerLoop() scheduled by ScheduleTask at 46.05
-			ScheduleTask: mod:BombTimerLoop() at 102.71 (+47.66)
-				Unscheduled by ExecuteScheduledTask at 64.05
+			StartTimer: 47.4, Arcane Bomb
 	[ 64.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player1: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-1-00000001, Player1, 0x511, 466435, Nature's Fury, 0, DEBUFF, 0
 		ScheduleTask: mod:Bombs() at 64.05 (+0.05)
 			ShowYell: {rt8}{rt8}{rt8}
@@ -225,27 +226,14 @@ Event trace:
 			ShowSpecialWarning: Green Bomb - move away from others
 			PlaySound: VoicePack/runout
 			ShowAnnounce: Green Bomb on PlayerName
-			StartTimer: 47.4, Bombs
-			UnscheduleTask: mod:BombTimerLoop() scheduled by ScheduleTask at 55.05
-			ScheduleTask: mod:BombTimerLoop() at 111.71 (+47.66)
-				Unscheduled by ExecuteScheduledTask at 73.05
+			StartTimer: 47.4, Nature's Fury
 	[ 73.00] SPELL_AURA_APPLIED: [(DNT) Invisible Stalker->Player2: Nature's Fury] Creature-0-1-469-1-231678-0000000001, (DNT) Invisible Stalker, 0xa48, Player-2-00000002, Player2, 0x512, 466435, Nature's Fury, 0, DEBUFF, 0
 		ScheduleTask: mod:Bombs() at 73.05 (+0.05)
 			ShowAnnounce: Green Bomb on Player2
-			StartTimer: 47.4, Bombs
-			UnscheduleTask: mod:BombTimerLoop() scheduled by ScheduleTask at 64.05
-			ScheduleTask: mod:BombTimerLoop() at 120.71 (+47.66)
-				ScheduleTask: mod:BombTimerLoop() at 168.07 (+47.36)
-					ScheduleTask: mod:BombTimerLoop() at 215.43 (+47.36)
-						ScheduleTask: mod:BombTimerLoop() at 262.79 (+47.36)
-							ScheduleTask: mod:BombTimerLoop() at 310.15 (+47.36)
-							StartTimer: 47.4, Bombs
-							UpdateTimer: TimerBombs, 0.32666728518903, 47.36
-				StartTimer: 47.4, Bombs
-				UpdateTimer: TimerBombs, 0.30666682207026, 47.36
+			StartTimer: 47.4, Nature's Fury
 	[128.00] LOADING_SCREEN_DISABLED: , 0
 		StopTimer: TimerBombs
 	[248.00] LOADING_SCREEN_DISABLED: , 0
 		StartTimer: 47.4, Bombs
-		UpdateTimer: TimerBombs, 32.853333903607, 47.36
+		UpdateTimer: TimerBombs, 21.55999921415, 47.36
 ]]
