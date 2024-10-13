@@ -395,14 +395,16 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s CD",
 	TimerBreath		= "%s cast",
-	TimerVulnCD		= "Vulnerability CD"
+	TimerVulnCD		= "Vulnerability CD",
+	TimerAllBreaths = "Breath Volley"
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Show warning when Chromaggus casts one of his Breaths",
 	WarnVulnerableNew	= "Show warning for spell vulnerabilities",
-	TimerBreathCD	= "Show Breath CD",
-	TimerBreath		= "Show Breath cast",
-	TimerVulnCD		= "Show Vulnerability CD"
+	TimerBreathCD	= "Show timer for Breath cooldown",
+	TimerBreath		= "Show timer for Breath cast",
+	TimerVulnCD		= "Show Vulnerability CD",
+	TimerAllBreaths = "Show timer for Breath Volley"
 }
 L:SetMiscLocalization{
 	Breath1		= "First Breath",
