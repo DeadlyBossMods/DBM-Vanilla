@@ -42,7 +42,7 @@ local yellGreenTrial      = mod:NewIconTargetYell(466435)
 local yellGreenTrialFades = mod:NewIconFadesYell(466435)
 local specWarnGreenTrial  = mod:NewSpecialWarningMoveAway(466435, nil, nil, L.GreenBomb, 3, 2)
 local warnGreenTrial      = mod:NewTargetNoFilterAnnounce(466435, 4, nil, nil, nil, nil, L.GreenBomb)
-local specWarnGTFO        = mod:NewSpecialWarningGTFO(466448)
+local specWarnGTFO        = mod:NewSpecialWarningGTFO(466448, nil, nil, nil, 1, 8)
 mod:AddSetIconOption("SetIconOnGreenBombTarget", 466435, true, 0, {4})
 
 mod:AddOptionLine(L.GreenAndBlue)
