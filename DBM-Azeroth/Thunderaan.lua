@@ -62,8 +62,8 @@ function mod:ChainLightningTarget(target)
 		specWarnLightning:Play("runout")
 		yellLightning:Show()
 		-- Not using Countdown() because it doesn't schedule anything < 1
-		yellLightningFades:Schedule(1.9, 2)
-		yellLightningFades:Schedule(0.9, 1)
+		yellLightningFades:Schedule(1.9, 1)
+		yellLightningFades:Schedule(0.9, 2)
 	end
 	if self.Options.SetIconOnChaingLightning then
 		self:SetIcon(target, 8, 4)
