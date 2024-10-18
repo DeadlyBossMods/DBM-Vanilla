@@ -842,8 +842,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation!",
-	WarningTeleportSoon		= "Téléportation dans in 20 sec"
+	WarningTeleportNow		= "Téléportation !",
+	WarningTeleportSoon		= "Téléportation dans 20 sec"
 })
 
 L:SetTimerLocalization({
@@ -874,7 +874,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation!",
+	WarningTeleportNow		= "Téléportation !",
 	WarningTeleportSoon		= "Téléporation dans %d sec"
 })
 
@@ -883,9 +883,9 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningTeleportNow		= "Activer l'avertissement de Téléporation",
-	WarningTeleportSoon		= "Activer le pré-avertissement de Téléporation",
-	TimerTeleport			= "Activer le chronomètre pour la Téléporation"
+	WarningTeleportNow		= "Activer l'avertissement de la téléporation",
+	WarningTeleportSoon		= "Activer le pré-avertissement de la téléporation",
+	TimerTeleport			= "Activer le chronomètre pour la téléporation"
 })
 
 L:SetMiscLocalization({
@@ -902,7 +902,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningHealSoon		= "Soins possibles dans 3 sec",
-	WarningHealNow		= "SOIGNEZ MAINTENANT!"
+	WarningHealNow		= "SOIGNEZ MAINTENANT !"
 })
 
 L:SetOptionLocalization({
@@ -1013,12 +1013,12 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerWave			= "Afficher le chronomètre des vagues",
-	TimerPhase2			= "Afficher le chronomètre pour la Phase 2",
-	WarningWaveSoon		= "Activer le pré-avertissement pour les Vagues",
+	TimerPhase2			= "Afficher le chronomètre pour la phase 2",
+	WarningWaveSoon		= "Activer le pré-avertissement pour les vagues",
 	WarningWaveSpawned	= "Avertir quand une vague est arrivée",
 	WarningRiderDown	= "Avertir quand un Cavalier meurt",
 	WarningKnightDown	= "Avertir quand un Chevalier meurt",
-	WarningPhase2		= "Activer l'avertissement pour la Phase 2"
+	WarningPhase2		= "Activer l'avertissement pour la phase 2"
 })
 
 L:SetTimerLocalization({
@@ -1029,8 +1029,8 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningWaveSoon		= "Vague %d: %s dans 3 sec",
 	WarningWaveSpawned	= "Vague %d: %s arrivée",
-	WarningRiderDown	= "Cavalier down",
-	WarningKnightDown	= "Chevalier down",
+	WarningRiderDown	= "Cavalier mort",
+	WarningKnightDown	= "Chevalier mort",
 	WarningPhase2		= "Phase 2"
 })
 
@@ -1054,8 +1054,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerMark					= "Afficher le chronomètre des Marques",
-	WarningMarkSoon				= "Activer le pré-avertissement des Marques",
+	TimerMark					= "Afficher le chronomètre des marques",
+	WarningMarkSoon				= "Activer le pré-avertissement des marques",
 	SpecialWarningMarkOnPlayer	= "Avertissement spécial quand vous avez plus de 4 marques sur vous"
 })
 
@@ -1085,10 +1085,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningAirPhaseSoon	= "Activer le pré-avertissement de la phase en vol",
-	WarningAirPhaseNow	= "Activer l'avertissement de la phase en vol",
+	WarningAirPhaseSoon		= "Activer le pré-avertissement de la phase en vol",
+	WarningAirPhaseNow		= "Activer l'avertissement de la phase en vol",
 	WarningLanded		    = "Activer l'avertissement pour la phase au sol",
-	TimerAir			    	= "Afficher le chronomètre de la phase en vol",
+	TimerAir			    = "Afficher le chronomètre de la phase en vol",
 	TimerLanding		   	= "Afficher le chronomètre de l'atterrissage",
 	TimerIceBlast		   	= "Afficher le chronomètre du Souffle de givre",
 	WarningDeepBreath		= "Activer l'avertissement spécial pour le Souffle de givre",
@@ -1097,14 +1097,14 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	EmoteBreath			    = "prend une grande inspiration",
-	WarningYellIceblock	= "Je suis un bloc de glace !"
+	WarningYellIceblock		= "Je suis un bloc de glace !"
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "Envol dans 10 sec",
-	WarningAirPhaseNow	= "Dans les airs",
+	WarningAirPhaseSoon		= "Envol dans 10 sec",
+	WarningAirPhaseNow		= "Dans les airs",
 	WarningLanded		    = "Atterrissage de Sapphiron",
-	WarningDeepBreath	  = "Souffle de givre !"
+	WarningDeepBreath	  	= "Souffle de givre !"
 })
 
 L:SetTimerLocalization({
@@ -1124,8 +1124,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2				= "Afficher le chronomètre pour la Phase 2",
-	specwarnP2Soon 			= "Montre un timer pour prévenir 10 secondes avant l'arrivée de Kel'Thuzad"
+	TimerPhase2				= "Afficher le chronomètre pour la phase 2",
+	specwarnP2Soon 			= "Afficher un chronomètre pour prévenir 10 secondes avant l'arrivée de Kel'Thuzad"
 })
 
 L:SetMiscLocalization({
