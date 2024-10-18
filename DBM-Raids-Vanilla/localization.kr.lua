@@ -463,8 +463,8 @@ L:SetWarningLocalization{
 	SpecWarnBothBombsYou	= "나에게 파랑과 녹색",
 }
 L:SetOptionLocalization{
-	SpecWarnBothBombs		= "파랑 녹색 폭탄에 같이 걸린 사람이 있을 때 특수 경고를 보여줍니다.",
-	SpecWarnBothBombsYou	= "내가 파랑 녹색 폭탄에 같이 걸렸을 때 특수 경고를 보여줍니다.",
+	SpecWarnBothBombs		= "파랑 녹색 폭탄에 같이 걸린 사람이 있을 때 특수 알림을 보여줍니다.",
+	SpecWarnBothBombsYou	= "내가 파랑 녹색 폭탄에 같이 걸렸을 때 특수 알림을 보여줍니다.",
 	TimerBombs				= "파랑 녹색 시련 폭탄 타이머 바 보기"
 }
 
