@@ -584,7 +584,18 @@ L = DBM:GetModLocalization("SoDBWLTrials")
 L:SetGeneralLocalization{
 	name = "Épreuves de la saison de la découverte"
 }
-
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Bleu et vert sur >%s<",
+	SpecWarnBothBombsYou	= "Bleu et vert sur VOUS",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+SpecWarnBothBombs			= "Afficher un avertissement spécial si les bombes bleue et verte sont sur le même joueur",
+SpecWarnBothBombsYou		= "Afficher un avertissement spécial si les bombes bleue et verte sont sur vous",
+TimerBombs					= "Afficher un chronomètre pour les bombes d'épreuve bleue et verte"
+}
 ----------------
 --  Lucifron  --
 ----------------
