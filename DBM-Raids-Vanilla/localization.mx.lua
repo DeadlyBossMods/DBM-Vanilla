@@ -918,7 +918,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningHealSoon	= "Sanación posible en 3 s",
-	WarningHealNow	= "¡Sanad ahora!"
+	WarningHealNow	= "¡Sanan ahora!"
 })
 
 L:SetOptionLocalization({
