@@ -365,7 +365,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "為克洛瑪古斯其中一個吐息顯示警告",
-	WarnVulnerable	= "爲法術弱點顯示警告",
+	WarnVulnerableNew	= "爲法術弱點顯示警告",
 	TimerBreathCD	= "顯示吐息冷卻",
 	TimerBreath		= "顯示吐息施放",
 	TimerVulnCD		= "顯示弱點冷卻"

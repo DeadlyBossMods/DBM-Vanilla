@@ -17,7 +17,7 @@ mod:SetBossHPInfoToHighest()
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 22539",
-	"SPELL_CAST_SUCCESS 23339 23340 23342 368515 368521",
+	"SPELL_CAST_SUCCESS 23340 23342 368515 368521 368941 369080 369105 369103",
 	"SPELL_AURA_APPLIED 23340 23342 368515 368521 467732 467764",
 	"SPELL_AURA_APPLIED_DOSE 368515 368521",
 	"SPELL_AURA_REMOVED 23340 23342"
@@ -34,14 +34,27 @@ mod:RegisterEventsInCombat(
  or (ability.id = 368942 or ability.id = 23342 or ability.id = 369103 or ability.id = 369105 or ability.id = 23340 or ability.id = 368515 or ability.id = 368521) and type = "cast"
 --]]
 --Both
+
+
+--[[
+-- Flamegor Wing Buffet: 368941 and 369080, 368941 has _START but 0 cast time
+-- Ebonroc Wing Buffet: 369105 and 369103, neither has _START events
+-- Just triggering on all of them with a spam filter
+"Wing Buffet-368941-npc:14601-00007DABF1 = pull:42.6, 25.9, 77.7, 25.9, 25.8, 26.0, 25.9, 25.9, 25.9",
+"Wing Buffet-369080-npc:11981-00007DABF1 = pull:42.6, 25.9, 77.7, 25.9, 25.8, 26.0, 25.9, 25.9, 25.9",
+"Wing Buffet-369103-npc:14601-00007DABF1 = pull:40.1, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 26.0, 25.9, 25.9, 25.9",
+"Wing Buffet-369105-npc:11981-00007DABF1 = pull:40.1, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 26.0, 25.9, 25.9, 25.9",
+]]
+
 mod:AddTimerLine(DBM_COMMON_L.BOTH)
-local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
+local warnWingBuffet		= mod:NewSpellAnnounce(368941, 2)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 
 local specWarnStop			= mod:NewSpecialWarningSpell(467732, nil, nil, nil, 2, 2)
 local specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2)
 
-local timerWingBuffet		= mod:NewCDTimer(25, 23339, nil, nil, nil, 2)
+local timerWingBuffet		= mod:NewNextTimer(25.9, 368941, nil, nil, nil, 2)
+local specWarnWingBuffet	= mod:NewSpecialWarningSoon(368941, "Tank")
 local timerShadowFlameCD	= mod:NewCDTimer(25, 22539)--25-32
 local TimerBrandCD			= mod:NewTimer(13, "TimerBrandCD", 368521, nil, nil, 3)
 local timerStop				= mod:NewCDTimer(20, 467732, nil, nil, nil, 5) -- TODO: 20 seconds is probably way off but a reasonable lower bound
@@ -68,12 +81,24 @@ local specWarnBrandofFlame	= mod:NewSpecialWarningStack(368521, nil, 4, nil, nil
 local timerFrenzyCD			= mod:NewCDTimer(25, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
+-- Polyfill because I don't feel like this justifies a forced core update
+local function isBlackEssenceEnabled()
+	if mod.IsBwlBlackEssenceEnabled then
+		return mod:IsBwlBlackEssenceEnabled()
+	else
+		return DBM:UnitDebuff("player", 467047) ~= nil
+	end
+end
+
 function mod:OnCombatStart(delay)
 	--Both
 	TimerBrandCD:Start(16-delay)
-	timerStop:Start(24 - delay)
+	if isBlackEssenceEnabled() then
+		timerStop:Start(24 - delay)
+	end
 	timerShadowFlameCD:Start(29-delay)--29-50, yep, classic for you
 	timerWingBuffet:Start(40-delay)--40-42, better than shadow flame
+	specWarnWingBuffet:Schedule(36)
 	--Ebon
 	timerShadowCD:Start(27-delay)--27-37
 	--Flame
@@ -97,13 +122,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnFrenzy:Show()
 		end
 		timerFrenzyCD:Start()
-	elseif args:IsSpell(23339) and self:AntiSpam(3, 2) then
-		warnWingBuffet:Show()
-		timerWingBuffet:Start()
 	elseif args:IsSpell(23340) then
 		timerShadowCD:Start()
 	elseif args:IsSpell(368515, 368521) and self:AntiSpam(3, 3) then
 		TimerBrandCD:Start()
+	elseif args:IsSpell(368941, 369080, 369105, 369103) and self:AntiSpam(3, "WingBuffet") then
+		warnWingBuffet:Show()
+		timerWingBuffet:Start()
+		specWarnWingBuffet:Schedule(21)
 	end
 end
 

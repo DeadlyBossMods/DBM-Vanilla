@@ -388,7 +388,9 @@ L = DBM:GetModLocalization("Jindo")
 L:SetGeneralLocalization{
 	name = "Jin'do le Maléficieur"
 }
-
+L:SetMiscLocalization{
+	Ghosts = "Fantômes"
+}
 -----------------
 --  Razorgore  --
 -----------------
@@ -520,7 +522,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Afficher un avertissement lorsque Chromaggus lance un de ses souffles",
-	WarnVulnerable	= "Afficher un avertissement pour les vulnérabilités des sorts",
+	WarnVulnerableNew	= "Afficher un avertissement pour les vulnérabilités des sorts",
 	TimerBreathCD	= "Afficher le temps de recharge de souffle",
 	TimerBreath		= "Afficher le lancement du souffle",
 	TimerVulnCD		= "Afficher le temps de recharge de vulnérabilité"
@@ -572,6 +574,15 @@ L:SetMiscLocalization{
     YellWarlock		= "Démonistes, vous ne devriez pas jouer avec une magie qui vous dépasse. Vous voyez ce qui arrive ?",
     YellHunter		= "Ah, les chasseurs et les stupides sarbacanes !",
     YellMage		= "Les mages aussi ? Vous devriez être plus prudents lorsque vous jouez avec la magie."
+}
+
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Épreuves de la saison de la découverte"
 }
 
 ----------------

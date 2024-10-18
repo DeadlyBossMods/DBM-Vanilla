@@ -377,7 +377,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnBreath = "%s",
-	WarnVulnerable = "%sverwundbarkeit"
+	WarnVulnerable = "Verwundbarkeit: %s"
 }
 L:SetTimerLocalization{
 	TimerBreathCD = "Abklingzeit der %s",
@@ -386,7 +386,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath = "Zeige Warnung, wenn Chromaggus einen seiner Atem wirkt",
-	WarnVulnerable = "Zeige Warnung für Zauberverwundbarkeit",
+	WarnVulnerableNew = "Zeige Warnung für Zauberverwundbarkeit",
 	TimerBreathCD = "Abklingzeit des Atem anzeigen",
 	TimerBreath = "Zeige Atem Zauber",
 	TimerVulnCD = "Zeige Abklingzeit der Verwundbarkeit"
@@ -440,6 +440,31 @@ L:SetMiscLocalization{
 	YellMage	= "Auch Magier? Ihr solltet vorsichtiger sein, wenn Ihr mit Magie spielt...",
 	YellDK		= "Todesritter... kommt hierher!",
 	YellMonk	= "Mönche, macht Euch dieses Herumrollen denn nicht schwindlig?"--needs to be verified (wowhead-captured translation)
+}
+
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Season of Discovery Trials"
+}
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Blau und Grün auf >%s<",
+	SpecWarnBothBombsYou	= "Blau und Grün auf DIR",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+	SpecWarnBothBombs		= "Zeige Special Warning wenn Blau und Grün beide auf dem selben Spieler sind.",
+	SpecWarnBothBombsYou	= "Zeige Special Warning wenn Blau und Grün beide auf dir sind.",
+	TimerBombs				= "Zeige Timer für die Bomben"
+}
+
+L:SetMiscLocalization{
+	-- Used in options
+	BlueTrial = "Blau",
+	GreenTrial = "Grün",
+	GreenAndBlue = "Blau und Grün auf dem selben Spieler",
 }
 
 ----------------
@@ -690,6 +715,10 @@ L = DBM:GetModLocalization("Jindo")
 
 L:SetGeneralLocalization{
 	name = "Jin'do der Verhexer"
+}
+
+L:SetMiscLocalization{
+	Ghosts = "Geister"
 }
 
 --------------

@@ -390,7 +390,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "크로마구스가 숨결 시전 시 알림 보기",
-	WarnVulnerable	= "주문 속성 약화 알림 보기",
+	WarnVulnerableNew	= "주문 속성 약화 알림 보기",
 	TimerBreathCD	= "숨결 쿨타임 보기",
 	TimerBreath		= "숨결 시전 보기",
 	TimerVulnCD		= "약화 쿨타임 보기"

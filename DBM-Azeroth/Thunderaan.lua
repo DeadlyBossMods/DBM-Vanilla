@@ -10,7 +10,7 @@ mod:SetEncounterID(3079)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 466774 15234 11642",
+	"SPELL_CAST_START 466774 15234 11642 465700",
 	"SPELL_AURA_APPLIED 470866",
 	"SPELL_PERIODIC_DAMAGE 470866",
 	"SPELL_PERIODIC_MISSED 470866"
@@ -25,6 +25,7 @@ mod:RegisterEventsInCombat(
 
 -- Chain Lightning is basically random
 -- "Chain Lightning-465700-npc:231494-000076DEDB = pull:7.5, 15.2, 19.8, 25.9, 40.5, 27.6, 25.9, 15.2, 23.7, 21.0, 16.2",
+-- But it targets someone and you can spread (not like anyone bothers doing that, but might as well show a warning)
 
 -- Lightning Cloud is just a GTFO warning, ticks only every 3 seconds, so you got a lot of time
 -- "<493.09 18:37:25> [CLEU] SPELL_AURA_APPLIED#Creature-0-5208-2804-6591-231494-000076DEDB#Prince Thunderaan#Player-5827-0272A77A#Tandanu#470866#Lightning Cloud#DEBUFF#nil#nil#nil#nil#nil",
@@ -32,20 +33,41 @@ mod:RegisterEventsInCombat(
 
 -- Don't care for the knockback and "no tank in range" spells
 
-local timerWindsCD     = mod:NewCDTimer(27, 466774)
-local timerWindsActive = mod:NewBuffActiveTimer(7.5, 466774) -- yes, that's cast time + active, but don't want too many timers
+local timerWindsCD       = mod:NewCDTimer(27, 466774)
+local timerWindsActive   = mod:NewBuffActiveTimer(7.5, 466774) -- yes, that's cast time + active, but don't want too many timers
 
-local warnWinds        = mod:NewCastAnnounce(466774, nil, nil, nil, false, 2)
-local warnAdd          = mod:NewAnnounce("AddIncoming", 3, 25681) -- Icon: Summon Mana Fiend
+local warnWinds          = mod:NewCastAnnounce(466774, nil, nil, nil, false, 2)
+local warnAdd            = mod:NewAnnounce("AddIncoming", 3, 25681) -- Icon: Summon Mana Fiend
 
-local specWarnGTFO     = mod:NewSpecialWarningGTFO(470866, nil, nil, nil, 1, 8)
-local specWarnHeal     = mod:NewSpecialWarningInterrupt(11642, "HasInterrupt", nil, nil, 1, 2)
+local specWarnGTFO       = mod:NewSpecialWarningGTFO(470866, nil, nil, nil, 1, 8)
+local specWarnHeal       = mod:NewSpecialWarningInterrupt(11642, "HasInterrupt", nil, nil, 1, 2)
+local specWarnLightning  = mod:NewSpecialWarningYou(465700, nil, nil, nil, 1, 2)
+
+local yellLightning      = mod:NewYell(465700)
+local yellLightningFades = mod:NewShortFadesYell(465700)
+
+mod:AddSetIconOption("SetIconOnChaingLightning", 465700, true, 0, {8})
+
 
 local addsSeen = {}
 
 function mod:OnCombatStart(delay)
 	table.wipe(addsSeen)
 	timerWindsCD:Start(26.5 - delay)
+end
+
+function mod:ChainLightningTarget(target)
+	if target == UnitName("player") then
+		specWarnLightning:Show()
+		specWarnLightning:Play("runout")
+		yellLightning:Show()
+		-- Not using Countdown() because it doesn't schedule anything < 1
+		yellLightningFades:Schedule(1.9, 1)
+		yellLightningFades:Schedule(0.9, 2)
+	end
+	if self.Options.SetIconOnChaingLightning then
+		self:SetIcon(target, 8, 4)
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -61,6 +83,9 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(11642) and args:GetSrcCreatureID() == 232694 then
 		specWarnHeal:Show(args.sourceName)
 		specWarnHeal:Play("kickcast")
+	elseif args:IsSpell(465700) then
+		-- Target is still the tank on CAST_START unclear when exactly he switches, but stays on Chaing Lightning target until cast finishes
+		self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "ChainLightningTarget", 0.1, 2)
 	end
 end
 

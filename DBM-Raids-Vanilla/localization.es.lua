@@ -385,7 +385,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Mostrar aviso cuando Chromaggus lance uno de sus alientos",
-	WarnVulnerable	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
+	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
 	TimerBreathCD	= "Mostrar TdR de aliento",
 	TimerBreath		= "Mostrar lanzamiento de aliento",
 	TimerVulnCD		= "Mostrar TdR de Vulnerabilidad"
@@ -440,6 +440,15 @@ L:SetMiscLocalization{
 	YellDK		= "¡Caballeros de la Muerte... venid aquí!",
 	YellMonk	= "Monjes, ¿no os mareáis con tanta vuelta?",
 	YellDH		= "¿Cazadores de demonios? Qué raro eso de taparos los ojos así. ¿No os cuesta ver lo que tenéis alrededor?"--Demon Hunter call; I know this hasn't been implemented yet in DBM, but I added it just in case.
+}
+
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Pruebas de Temporada de descubrimiento"
 }
 
 ----------------
@@ -689,7 +698,9 @@ L = DBM:GetModLocalization("Jindo")
 L:SetGeneralLocalization{
 	name = "Jin'do el Malhechor"
 }
-
+L:SetMiscLocalization{
+	Ghosts = "Fantasmas"
+}
 --------------
 --  Onyxia  --
 --------------

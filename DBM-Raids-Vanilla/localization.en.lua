@@ -395,14 +395,16 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s CD",
 	TimerBreath		= "%s cast",
-	TimerVulnCD		= "Vulnerability CD"
+	TimerVulnCD		= "Vulnerability CD",
+	TimerAllBreaths = "Breath Volley"
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Show warning when Chromaggus casts one of his Breaths",
-	WarnVulnerable	= "Show warning for spell vulnerabilities",
-	TimerBreathCD	= "Show Breath CD",
-	TimerBreath		= "Show Breath cast",
-	TimerVulnCD		= "Show Vulnerability CD"
+	WarnVulnerableNew	= "Show warning for spell vulnerabilities",
+	TimerBreathCD	= "Show timer for Breath cooldown",
+	TimerBreath		= "Show timer for Breath cast",
+	TimerVulnCD		= "Show Vulnerability CD",
+	TimerAllBreaths = "Show timer for Breath Volley"
 }
 L:SetMiscLocalization{
 	Breath1		= "First Breath",
@@ -464,6 +466,30 @@ L = DBM:GetModLocalization("SoDBWLTrials")
 
 L:SetGeneralLocalization{
 	name = "Season of Discovery Trials"
+}
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Blue and Green on >%s<",
+	SpecWarnBothBombsYou	= "Blue and Green on YOU",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+	SpecWarnBothBombs		= "Show special warning if both Blue and Green bombs are on the same player.",
+	SpecWarnBothBombsYou	= "Show special warning if both Blue and Green bombs are on you.",
+	TimerBombs				= "Show timer for Blue and Green Trial bombs"
+}
+
+L:SetMiscLocalization{
+	-- Does not need translation if "BLUE BOMB" is okay, the "Blue"/"Green" strings are just fallbacks if Core is outdated
+	-- Only translate that if you need something like "BOMB BLUE"
+	BlueBomb = (DBM_COMMON_L.BLUE or "Blue") .. " " .. DBM_COMMON_L.BOMB,
+	GreenBomb = (DBM_COMMON_L.GREEN or "Green") .. " " .. DBM_COMMON_L.BOMB,
+
+	-- Used in options
+	BlueTrial = "Blue Trial",
+	GreenTrial = "Green Trial",
+	GreenAndBlue = "Green and Blue on the same player",
 }
 
 ----------------
@@ -730,6 +756,10 @@ L = DBM:GetModLocalization("Jindo")
 
 L:SetGeneralLocalization{
 	name = "Jin'do the Hexxer"
+}
+
+L:SetMiscLocalization{
+	Ghosts = "Ghosts"
 }
 
 --------------

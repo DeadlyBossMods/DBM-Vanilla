@@ -387,7 +387,9 @@ L = DBM:GetModLocalization("Jindo")
 L:SetGeneralLocalization{
 	name = "Jin'do, o Bagateiro"
 }
-
+L:SetMiscLocalization{
+	Ghosts = "Fantasmas"
+}
 -----------------
 --  Razorgore  --
 -----------------
@@ -518,7 +520,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Exibir aviso quando Cromaggus lançar uma das suas respirações",
-	WarnVulnerable	= "Exibir cronômetro para recarga da respiração",
+	WarnVulnerableNew	= "Exibir cronômetro para recarga da respiração",
 	TimerBreathCD	= "Exibir recarga da respiração",
 	TimerBreath		= "Exibir lançamento da respiração",
 	TimerVulnCD		= "Exibir recarga de Vulnerabilidade"
@@ -571,6 +573,15 @@ L:SetMiscLocalization{
 	YellWarlock	= "Bruxos, vocês não deveriam brincar com magias que não compreendem. Viram só o que acontece?",
 	YellHunter	= "Caçadores e seus irritantes atiradores de ervilhas!",
 	YellMage	= "Magos também? Vocês deveriam ter mais cuidado ao brincar com magia..."
+}
+
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Provações da Temporada da Descoberta"
 }
 
 ----------------

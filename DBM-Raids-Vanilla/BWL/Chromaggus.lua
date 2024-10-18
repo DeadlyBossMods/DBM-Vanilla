@@ -26,10 +26,10 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23308 23309 23313 23314 23187 23189 23315 23316 23310 23312",
-	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537",
---	"SPELL_AURA_REFRESH",
+	"SPELL_CAST_SUCCESS 467883 468594",
+	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537 22277 22278 22279 22280 22281",
 	"SPELL_AURA_REMOVED 23155 23169 23153 23154 23170 23128",
-	"UNIT_HEALTH boss1",
+	"UNIT_HEALTH",
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
@@ -43,15 +43,22 @@ local warnFrenzy		= mod:NewSpellAnnounce(23128, 3, nil, "Tank|RemoveEnrage|Heale
 local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2, 1)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
-local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, false)
+local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, nil, "WarnVulnerableNew")
+local warnRollOverSoon	= mod:NewSoonAnnounce(468199)
+local warnRollOver		= mod:NewSpellAnnounce(468199)
+local warnFetch			= mod:NewSpellAnnounce(467884)
 
-local specWarnBronze	= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
-local specWarnFrenzy	= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
+local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316, nil, nil, 3)
+local timerAllBreaths	= mod:NewTimer(80, "TimerAllBreaths", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
-local timerVuln			= mod:NewTimer(17, "TimerVulnCD")-- seen 16.94 - 25.53, avg 21.8
+local timerVuln			= mod:NewTimer(19.5, "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
+local timerFetch		= mod:NewCDTimer(40, 467884)
+local timerRollOver		= mod:NewBuffActiveTimer(16, 468199)
 
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
 mod:AddInfoFrameOption(22277, true)
@@ -59,19 +66,18 @@ mod:AddInfoFrameOption(22277, true)
 local mydebuffs = 0
 
 local lastVulnName = nil
-local vulnerabilities = {
-	-- [guid] = school
-}
+local bossGuid = ""
+
 
 --Constants
 -- https://wow.gamepedia.com/COMBAT_LOG_EVENT
 local spellInfo = {
-	[2] =	{"Holy",	{r=255, g=230, b=128},	"135924"},-- Smite
-	[4] =	{"Fire",	{r=255, g=128, b=0},	"135808"},-- Pyroblast
-	[8] =	{"Nature",	{r=77, g=255, b=77},	"136006"},-- Wrath
-	[16] =	{"Frost",	{r=128, g=255, b=255},	"135846"},-- Frostbolt
-	[32] =	{"Shadow",	{r=128, g=128, b=255},	"136197"},-- Shadow Bolt
-	[64] =	{"Arcane",	{r=255, g=128, b=255},	"136096"},-- Arcane Missiles
+	[2] =	{"Holy",	{r=255 / 255, g=230 / 255, b=128 / 255},	"135924"},-- Smite
+	[4] =	{"Fire",	{r=255 / 255, g=128 / 255, b=0 / 255},		"135808"},-- Pyroblast
+	[8] =	{"Nature",	{r=77 / 255, g=255 / 255, b=77 / 255},		"136006"},-- Wrath
+	[16] =	{"Frost",	{r=128 / 255, g=255 / 255, b=255 / 255},	"135846"},-- Frostbolt
+	[32] =	{"Shadow",	{r=128 / 255, g=128 / 255, b=255 / 255},	"136197"},-- Shadow Bolt
+	[64] =	{"Arcane",	{r=255 / 255, g=128 / 255, b=255 / 255},	"136096"},-- Arcane Missiles
 }
 
 local vulnSpells = {
@@ -82,6 +88,11 @@ local vulnSpells = {
 	[22279] = 32,
 	[22281] = 64,
 }
+
+-- SoD vulnerabilities
+-- Seem to last 19 to 22 seconds, outliers are somewhat rare (likely related to casting other stuff)
+-- ~20 second timer with "keep" is good
+-- They are logged with SPELL_AURA_APPLIED if someone has detect magic up, so let's just rely on that and nothing else
 
 local updateInfoFrame
 do
@@ -102,16 +113,10 @@ do
 	end
 end
 
---Local Functions
--- in theory this should only alert on a new vulnerability on your target or when you change target
-local function update_vulnerability(self)
-	local target = UnitGUID("target")
-	local spellSchool = vulnerabilities[target]
-	local cid = self:GetCIDFromGUID(target)
-	if not spellSchool or cid ~= 14020 then
-		return
-	end
+local lastIcon
 
+local function updateVulnerability(self, spellId)
+	local spellSchool = vulnSpells[spellId]
 	local info = spellInfo[spellSchool]
 	if not info then return end
 	local name = L[info[1]] or info[1]
@@ -132,68 +137,54 @@ local function update_vulnerability(self)
 				DBM.InfoFrame:Update()
 			end
 		end
-		if target and self.Options.NPAuraOnVulnerable then
-			DBM.Nameplate:Hide(true, target, 22277, 135924)
-			DBM.Nameplate:Hide(true, target, 22277, 135808)
-			DBM.Nameplate:Hide(true, target, 22277, 136006)
-			DBM.Nameplate:Hide(true, target, 22277, 135846)
-			DBM.Nameplate:Hide(true, target, 22277, 136197)
-			DBM.Nameplate:Hide(true, target, 22277, 136096)
-			DBM.Nameplate:Show(true, target, 22277, tonumber(info[3]))
-		end
-	end
-	self:UnregisterShortTermEvents()--Unregister SPELL_DAMAGE until next shimmer emote
-end
-
-local damageThreshold = DBM:IsSeasonal("SeasonOfDiscovery") and 1000 or 800
-
-local function check_spell_damage(self, target, amount, spellSchool, critical)
-	local cid = self:GetCIDFromGUID(target)
-	if cid ~= 14020 then
-		return
-	end
-	if amount > (critical and damageThreshold * 2 or damageThreshold) then
-		if not vulnerabilities[target] or vulnerabilities[target] ~= spellSchool then
-			vulnerabilities[target] = spellSchool
-			update_vulnerability(self)
+		if self.Options.NPAuraOnVulnerable then
+			local icon = tonumber(info[3])
+			if icon ~= lastIcon then
+				-- FIXME: there is some kind of bug that breaks nameplate icons if you try to remove the same that you add in a frame (?)
+				if lastIcon then DBM.Nameplate:Hide(true, bossGuid, 22277, lastIcon) end
+				DBM.Nameplate:Show(true, bossGuid, 22277, icon, nil, nil, true)
+				lastIcon = icon
+			end
 		end
 	end
 end
 
-local function check_target_vulns(self)
+local function checkTargetVulnerabilities(self)
 	local target = UnitGUID("target")
 	local cid = self:GetCIDFromGUID(target)
 	if cid ~= 14020 then
 		return
 	end
 
-	local spellId = select(10, DBM:UnitBuff("target", 22277, 22280, 22278, 22279, 22281)) or 0
-	local vulnSchool = vulnSpells[spellId]
-	if vulnSchool then
-		return check_spell_damage(self, target, 10000, vulnSchool)
-	end
+	local spellId = select(10, DBM:UnitBuff("target", 22277, 22280, 22278, 22279, 22281))
+	updateVulnerability(self, spellId)
 end
 
+local nextBreath, nextVolley, volleyCount = 0, 0, 0
+local rolloverWarnShown
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
+	rolloverWarnShown = false
+	nextBreath = GetTime() + 30 - delay
+	nextVolley = GetTime() + 40 - delay
+	volleyCount = 0
 	timerBreathCD:Start(30-delay, L.Breath1)
 	timerBreathCD:Start(60-delay, L.Breath2)--60
+	specWarnBreathSoon:Schedule(27-delay) -- +2 sec casting time == you got 5 seconds to run
+	specWarnBreathSoon:Schedule(57-delay)
 	mydebuffs = 0
-	table.wipe(vulnerabilities)
-	if self.Options.WarnVulnerable then--Don't register high cpu combat log events if option isn't enabled
-		self:RegisterShortTermEvents(
-			"SPELL_DAMAGE"
-		)
-		check_target_vulns(self)
-		if self.Options.NPAuraOnVulnerable then
-			DBM:FireEvent("BossMod_EnableHostileNameplates")
-		end
+	if self.Options.NPAuraOnVulnerable then
+		DBM:FireEvent("BossMod_EnableHostileNameplates")
+	end
+	checkTargetVulnerabilities(self)
+	if self:IsBwlBlackEssenceEnabled() then
+		timerFetch:Start(20.9-delay)
+		timerAllBreaths:Start(40-delay)
+		specWarnBreathSoon:Schedule(37-delay)
 	end
 end
 
 function mod:OnCombatEnd()
-	table.wipe(vulnerabilities)
-	self:UnregisterShortTermEvents()
 	if self.Options.NPAuraOnVulnerable  then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)--isGUID, unit, spellId, texture, force, isHostile, isFriendly
 	end
@@ -202,18 +193,45 @@ function mod:OnCombatEnd()
 	end
 end
 
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(467883) then
+		warnFetch:Show()
+		timerFetch:Start()
+	elseif args:IsSpell(468594) then
+		timerRollOver:Start()
+		warnRollOver:Show()
+	end
+end
+
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23308, 23309, 23313, 23314, 23187, 23189, 23315, 23316, 23310, 23312) then
 		warnBreath:Show(args.spellName)
 		timerBreath:Start(2, args.spellName)
 		timerBreath:UpdateIcon(args.spellId)
-		timerBreathCD:Start(60, args.spellName)
-		timerBreathCD:UpdateIcon(args.spellId)
+		-- Is part of a volley or regular breath? This is bit messy to reconstruct :/
+		local nextBreathOffset = math.abs(GetTime() - nextBreath)
+		local nextVolleyOffset = math.abs(GetTime() - nextVolley)
+		if (nextBreathOffset < nextVolleyOffset and volleyCount == 0) or not self:IsBwlBlackEssenceEnabled() then -- Regular breath
+			timerBreathCD:Start(60, args.spellName)
+			timerBreathCD:UpdateIcon(args.spellId)
+			nextBreath = GetTime() + 30
+			specWarnBreathSoon:Schedule(57)
+		else -- part of a volley
+			if volleyCount == 0 then
+				nextVolley = GetTime() + 80
+				timerAllBreaths:Start()
+			end
+			volleyCount = volleyCount + 1
+			if volleyCount == 5 then
+				volleyCount = 0
+			end
+		end
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(23155) and self:AntiSpam(3, 1) then
+		bossGuid = args.sourceGUID
 		if self:AntiSpam(3, 3) then
 			warnRed:Show()
 		end
@@ -224,6 +242,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif args:IsSpell(23169) and self:AntiSpam(3, 2) then
+		bossGuid = args.sourceGUID
 		if self:AntiSpam(3, 4) then
 			warnGreen:Show()
 		end
@@ -234,6 +253,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif args:IsSpell(23153) and self:AntiSpam(3, 3) then
+		bossGuid = args.sourceGUID
 		if self:AntiSpam(3, 5) then
 			warnBlue:Show()
 		end
@@ -244,6 +264,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif args:IsSpell(23154) and self:AntiSpam(3, 4) then
+		bossGuid = args.sourceGUID
 		if self:AntiSpam(3, 6) then
 			warnBlack:Show()
 		end
@@ -254,6 +275,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 	elseif args:IsSpell(23170) and args:IsPlayer() then
+		bossGuid = args.sourceGUID
 		specWarnBronze:Show()
 		specWarnBronze:Play("useitem")
 		mydebuffs = mydebuffs + 1
@@ -273,10 +295,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:SetStage(2)
 			warnPhase2:Show()
 		end
+	elseif args:IsSpell(22277, 22278, 22279, 22280, 22281) then
+		bossGuid = args.destGUID
+		timerVuln:Start()
+		updateVulnerability(self, args.spellId)
 	end
 end
---Possibly needed hard to say.
---mod.SPELL_AURA_REFRESH = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(23128) and args:IsPlayer() then
@@ -294,14 +318,17 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, _, _, spellSchool, amount, _, _, _, _, _, critical)
-	check_spell_damage(self, destGUID, amount, spellSchool, critical)
-end
-
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 14020 and self.vb.phase == 1 then
+	if self:GetUnitCreatureId(uId) ~= 14020 then
+		return
+	end
+	local health = UnitHealth(uId) / UnitHealthMax(uId)
+	if health <= 0.25 and self.vb.phase == 1 then
 		warnPhase2Soon:Show()
 		self:SetStage(1.5)
+	elseif health <= 0.65 and health >= 0.6 and self:IsBwlBlackEssenceEnabled() and not rolloverWarnShown then
+		warnRollOverSoon:Show()
+		rolloverWarnShown = true
 	end
 end
 
@@ -314,13 +341,9 @@ end
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
 	if msg == "Vulnerable" then
-		timerVuln:Start()
-		table.wipe(vulnerabilities)
-		if self.Options.WarnVulnerable then
-			self:RegisterShortTermEvents(
-				"SPELL_DAMAGE"
-			)
-			check_target_vulns(self)
+		if not timerVuln:IsStarted() then
+			timerVuln:Start()
+			checkTargetVulnerabilities(self)
 		end
 	end
 end
