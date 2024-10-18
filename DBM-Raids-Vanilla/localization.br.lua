@@ -311,7 +311,7 @@ L:SetTimerLocalization({
 
 L:SetOptionLocalization({
 	WarnSimulKill	= "Anunciar o primeiro lacaio morto",
-	TimerSimulKill	= "Mostrar a hora da ressurreição do sacerdote"
+	TimerSimulKill	= "Exibir a hora da ressurreição do sacerdote"
 })
 
 L:SetMiscLocalization({
@@ -583,7 +583,18 @@ L = DBM:GetModLocalization("SoDBWLTrials")
 L:SetGeneralLocalization{
 	name = "Provações da Temporada da Descoberta"
 }
-
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Azul e verde em >%s<",
+	SpecWarnBothBombsYou	= "Azul e verde em VOCÊ",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+SpecWarnBothBombs			= "Exibir aviso especial se as bombas azul e verde estiverem no mesmo jogador",
+SpecWarnBothBombsYou		= "Exibir aviso especial se as bombas azul e verde estiverem em você",
+TimerBombs					= "Exibir cronômetro para as bombas de teste azul e verde"
+}
 ----------------
 --  Lucifron  --
 ----------------
@@ -668,7 +679,7 @@ L:SetTimerLocalization{
 	timerShieldCD		= "Próximo escudo"
 }
 L:SetOptionLocalization{
-	timerShieldCD		= "Mostrar cronômetro para o próximo escudo de dano/reflexão"
+	timerShieldCD		= "Exibir cronômetro para o próximo escudo de dano/reflexão"
 }
 
 ----------------
@@ -688,10 +699,10 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Emersão",
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Mostrar aviso para submersão",
-	TimerSubmerge		= "Mostrar cronômetro para submersão",
-	WarnEmerge			= "Mostrar aviso para emersão",
-	TimerEmerge			= "Mostrar cronômetro para emersão",
+	WarnSubmerge		= "Exibir aviso para submersão",
+	TimerSubmerge		= "Exibir cronômetro para submersão",
+	WarnEmerge			= "Exibir aviso para emersão",
+	TimerEmerge			= "Exibir cronômetro para emersão",
 }
 L:SetMiscLocalization{
 	Submerge	= "VENHAM, MEUS SERVOS! DEFENDAM SEU SENHOR!",
@@ -709,7 +720,7 @@ L:SetGeneralLocalization{
 
 L:SetOptionLocalization{
 	YellHeartCleared	= "Grite quando o Coração de cinzas/brasas for removido.",
-	WarnBossPower		= "Mostrar avisos quando a energia do chefe atingir 50%, 75%, 90% e 100%"
+	WarnBossPower		= "Exibir avisos quando a energia do chefe atingir 50%, 75%, 90% e 100%"
 }
 
 L:SetWarningLocalization{
@@ -742,8 +753,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerWhelps				= "Mostrar cronômetro para os seguintes Dragonetes Onyxiano",
-	WarnWhelpsSoon			= "Mostrar aviso prévio para os seguintes Dragonetes Onyxiano",
+	TimerWhelps				= "Exibir cronômetro para os seguintes Dragonetes Onyxiano",
+	WarnWhelpsSoon			= "Exibir aviso prévio para os seguintes Dragonetes Onyxiano",
 	SoundWTF3				= "Reproduzir sons engraçados de um lendário raide clássico de Onyxia"
 }
 
@@ -1190,7 +1201,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization({
-	TimerImmune	= "Mostrar temporizador para a duração da imunidade de Gelihast durante as transições de fase"
+	TimerImmune	= "Exibir temporizador para a duração da imunidade de Gelihast durante as transições de fase"
 })
 
 ------------------
@@ -1207,7 +1218,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "Mostrar um aviso indicando quantas Sacerdotisas das Marés da Profundezas Negras ainda estão restantes"
+	warnPriestRemaining	= "Exibir um aviso indicando quantas Sacerdotisas das Marés da Profundezas Negras ainda estão restantes"
 })
 
 ------------------
