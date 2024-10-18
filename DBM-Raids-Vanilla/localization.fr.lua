@@ -525,7 +525,7 @@ L:SetOptionLocalization{
 	WarnVulnerableNew	= "Afficher un avertissement pour les vulnérabilités des sorts",
 	TimerBreathCD		= "Afficher le temps de recharge du souffle",
 	TimerBreath			= "Afficher l'incantation du souffle",
-	TimerVulnCD			= "Afficher le temps de recharge de vulnérabilité"
+	TimerVulnCD			= "Afficher le temps de recharge de la vulnérabilité"
 }
 L:SetMiscLocalization{
 	Breath1		= "Premier souffle",
