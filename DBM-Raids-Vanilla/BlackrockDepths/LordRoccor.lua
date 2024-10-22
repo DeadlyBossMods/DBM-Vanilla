@@ -17,8 +17,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 462351 463674 462319 462320 462317",
 --	"SPELL_SUMMON",
-	"SPELL_AURA_APPLIED 462348",
-	"SPELL_AURA_APPLIED_DOSE 462348",
+	"SPELL_AURA_APPLIED 462348 400279",
+	"SPELL_AURA_APPLIED_DOSE 462348 400279",
 	"SPELL_AURA_REMOVED 462348",
 	"SPELL_PERIODIC_DAMAGE 462352",
 	"SPELL_PERIODIC_MISSED 462352"
@@ -33,8 +33,11 @@ mod:RegisterEventsInCombat(
 --auto mark igneous based on add power using https://www.wowhead.com/ptr-2/spell=462330/igneous-crystallization or https://www.wowhead.com/ptr-2/spell=462329/igneous-crystallization or https://www.wowhead.com/ptr-2/spell=462328/igneous-crystallization or https://www.wowhead.com/ptr-2/spell=462326/igneous-crystallization
 --TODO, find out if big aoe is timer based or fuckup based
 --TODO, determine what's actually a high stack count of LivingMagma
+--TODO, determine what's a stack too high on tanks for Slag Armor
+--TODO, slag armor nameplate timers?
 local warnRoilingMagma						= mod:NewCountAnnounce(462351, 3)
 local warnCrystallize						= mod:NewCountAnnounce(463674, 2)
+local warnSlagArmorStack					= mod:NewStackAnnounce(400279, 2, nil, "Tank|Healer")
 
 local specWarnEruption						= mod:NewSpecialWarningSwitchCount(462319, nil, nil, nil, 1, 2)
 local specWarnVolcanicUpheaval				= mod:NewSpecialWarningCount(462317, nil, nil, nil, 2, 2)
@@ -124,6 +127,15 @@ function mod:SPELL_AURA_APPLIED(args)
 		--end
 		if self.Options.InfoFrame then
 			DBM.InfoFrame:UpdateTable(MagmaStacks)
+		end
+	elseif spellId == 400279 then
+		local uId = DBM:GetRaidUnitId(args.destName)
+		--(basically filters everyone who's not actively tanking mob such as melee in wrong place)
+		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
+			local amount = args.amount or 1
+			if amount % 3 == 0 then--Tweak as needed
+				warnSlagArmorStack:Show(args.destName, amount)
+			end
 		end
 	end
 end
