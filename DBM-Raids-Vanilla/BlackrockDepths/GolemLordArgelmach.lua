@@ -273,13 +273,18 @@ mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 230219 then--Arcanotron Mk. II
-
+		timerArcaneOverchargeCD:Stop()
+		timerPowerGeneratorSoakCD:Stop()
 	elseif cid == 230216 then--Magmatron Mk. II
-
+		timerFlamethrowerCD:Stop()
+		timerIncinerationCD:Stop()
 	elseif cid == 230217 then--Toxitron Mk. II
-
+		timerChemicalBombCD:Stop()
+		timerPoisonMistCD:Stop()
 	elseif cid == 230218 then--Electron Mk. II
-
+		timerChainLightningCD:Stop()
+		timerLiveWireCD:Stop()
+		timerLethalAttractionCD:Stop()
 	end
 end
 
