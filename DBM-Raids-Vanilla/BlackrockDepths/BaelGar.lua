@@ -32,7 +32,6 @@ mod:RegisterEventsInCombat(
 --NOTE, Figure out how many boulders fall during rockfall for automarking
 --TODO, auto mark spawns of bael'Gar with https://www.wowhead.com/ptr-2/spell=462966/spawn-of-baelgar ?
 local warnMoltenHeart						= mod:NewTargetNoFilterAnnounce(462968, 3, nil, "Healer")
-local warnShatter							= mod:NewCountAnnounce(462972, 2)
 
 local specWarnRockFall						= mod:NewSpecialWarningDodgeCount(463890, nil, nil, nil, 2, 2)
 local specWarnMoltenFurnace					= mod:NewSpecialWarningCount(462969, nil, nil, nil, 2, 2)
@@ -94,12 +93,8 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 462972 then
 		self.vb.shatterCount = self.vb.shatterCount + 1
-		if self.vb.activeBoulders >= 2 then
-			specWarnShatter:Show(self.vb.shatterCount)
-			specWarnShatter:Play("aesoon")
-		else
-			warnShatter:Show(self.vb.shatterCount)
-		end
+		specWarnShatter:Show(self.vb.shatterCount)
+		specWarnShatter:Play("aesoon")
 	end
 end
 
