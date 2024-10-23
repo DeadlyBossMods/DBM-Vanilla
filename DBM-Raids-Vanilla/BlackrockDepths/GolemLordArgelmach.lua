@@ -70,8 +70,9 @@ local timerIncinerationCD					= mod:NewAITimer(22, 463823, nil, nil, nil, 2, nil
 --Toxitron Mk. II
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30789))
 local warnPoisonMist						= mod:NewCountAnnounce(463837, 2)
+local warnChemicalBomb						= mod:NewCountAnnounce(463829, 2)
 
-local specWarnChemicalBomb					= mod:NewSpecialWarningBait(463829, nil, nil, nil, 2, 2)
+local specWarnChemicalBomb					= mod:NewSpecialWarningBait(463829, false, nil, 2, 2, 2)
 
 local timerChemicalBombCD					= mod:NewAITimer(33, 463829, nil, nil, nil, 3)
 local timerPoisonMistCD						= mod:NewAITimer(22, 463837, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
@@ -167,8 +168,12 @@ function mod:SPELL_CAST_START(args)
 		timerIncinerationCD:Start()--, self.vb.incinerationCount+1
 	elseif spellId == 463829 then
 		self.vb.chemicalBombCount = self.vb.chemicalBombCount + 1
-		specWarnChemicalBomb:Show()--self.vb.chemicalBombCount
-		specWarnChemicalBomb:Play("bait")
+		if self.Options.SpecWarn463829count then
+			specWarnChemicalBomb:Show()
+			specWarnChemicalBomb:Play("bait")
+		else
+			warnChemicalBomb:Show(self.vb.chemicalBombCount)
+		end
 		timerChemicalBombCD:Start()--, self.vb.chemicalBombCount+1
 	elseif spellId == 463837 then
 		self.vb.mistCount = self.vb.mistCount + 1
