@@ -42,6 +42,7 @@ mod:RegisterEventsInCombat(
 --mod:AddNamePlateOption("NPOnHoney", 443983)
 local specWarnGTFO							= mod:NewSpecialWarningGTFO(464350, nil, nil, nil, 1, 8)
 
+local berserkTimer							= mod:NewBerserkTimer(600)
 mod:AddSetIconOption("SetIconOnCorp", 464371, true, 5, {1})
 --Anger'rel
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30766))
@@ -159,6 +160,7 @@ function mod:OnCombatStart(delay)
 	table.wipe(castsPerGUID)
 	self.vb.activeBossGUID = "unknown"
 	self:Schedule(1, scanBosses, self, delay)--1 second delay to give IEEU time to populate boss guids
+	berserkTimer:Start(420-delay)
 end
 
 function mod:OnCombatEnd()
@@ -296,7 +298,7 @@ function mod:SPELL_SUMMON(args)
 			castsPerGUID[args.destGUID] = {}
 		end
 		if self.Options.SetIconOnFireElemental then
-			self:ScanForMobs(args.destGUID, 2, 2, 1, nil, 12, "SetIconOnFireElemental", nil, nil, nil, true)
+			self:ScanForMobs(args.destGUID, 2, 2, 1, nil, 12, "SetIconOnFireElemental", nil, nil, true, true)
 		end
 	end
 end
@@ -368,7 +370,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			castsPerGUID[args.destGUID] = {}
 		end
 		if self.Options.SetIconOnCorp then
-			self:ScanForMobs(args.destGUID, 2, 8, 1, nil, 6, "SetIconOnCorp", nil, nil, nil, true)
+			self:ScanForMobs(args.destGUID, 2, 8, 1, nil, 6, "SetIconOnCorp", nil, nil, true, true)
 		end
 		local cid = self:GetCIDFromGUID(args.destGUID)
 		--226307 Anger'rel, 226310/doomrel, 226309/doperel, 226313/gloomrel, 226311/haterel, 226312/seethrel, 226308/vilerel
