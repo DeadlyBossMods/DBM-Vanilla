@@ -6,7 +6,7 @@ mod.statTypes = "lfr,normal,heroic"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(226302)
-mod:SetEncounterID(3047)
+mod:SetEncounterID(3046)
 --mod:SetUsedIcons(8, 7, 6)
 --mod:SetHotfixNoticeRev(20220322000000)
 --mod:SetMinSyncRevision(20211203000000)
