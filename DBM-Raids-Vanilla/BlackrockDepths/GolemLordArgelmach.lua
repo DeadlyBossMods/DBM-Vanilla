@@ -6,7 +6,7 @@ mod.statTypes = "lfr,normal,heroic"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(226302)
-mod:SetEncounterID(3047)
+mod:SetEncounterID(3046)
 --mod:SetUsedIcons(8, 7, 6)
 --mod:SetHotfixNoticeRev(20220322000000)
 --mod:SetMinSyncRevision(20211203000000)
@@ -15,7 +15,7 @@ mod:SetEncounterID(3047)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 463821 470014 470073 467919 463823 463829 463837 463820",
+	"SPELL_CAST_START 463821 470014 470073 467919 463823 463829 463837",
 	"SPELL_CAST_SUCCESS 467926 463847",
 	"SPELL_AURA_APPLIED 464939 470655 463852 467927 463848 464609",
 	"SPELL_AURA_APPLIED_DOSE 470655",
@@ -70,14 +70,14 @@ local timerIncinerationCD					= mod:NewAITimer(22, 463823, nil, nil, nil, 2, nil
 --Toxitron Mk. II
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30789))
 local warnPoisonMist						= mod:NewCountAnnounce(463837, 2)
+local warnChemicalBomb						= mod:NewCountAnnounce(463829, 2)
 
-local specWarnChemicalBomb					= mod:NewSpecialWarningBait(463829, nil, nil, nil, 2, 2)
+local specWarnChemicalBomb					= mod:NewSpecialWarningBait(463829, false, nil, 2, 2, 2)
 
 local timerChemicalBombCD					= mod:NewAITimer(33, 463829, nil, nil, nil, 3)
 local timerPoisonMistCD						= mod:NewAITimer(22, 463837, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
 --Electron Mk. II
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30792))
-local warnChainLighting						= mod:NewCountAnnounce(463820, 2)
 local warnLiveWire							= mod:NewTargetAnnounce(467926, 2)
 local warnLethalAttraction					= mod:NewTargetAnnounce(463847, 2)
 local warnLethalAttractionOver				= mod:NewFadesAnnounce(463847, 1)
@@ -88,7 +88,6 @@ local yellLiveWireFades						= mod:NewShortFadesYell(467926)
 local specWarnLethalAttraction				= mod:NewSpecialWarningMoveTo(463847, nil, nil, nil, 1, 2)
 local yellLethalAttraction					= mod:NewYell(463847, nil, nil, nil, "YELL")
 
-local timerChainLightningCD					= mod:NewAITimer(33, 463820, nil, nil, nil, 3)
 local timerLiveWireCD						= mod:NewAITimer(33, 467926, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerLethalAttractionCD				= mod:NewAITimer(22, 463847, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 
@@ -102,7 +101,6 @@ mod.vb.flamethrowerCount = 0
 mod.vb.incinerationCount = 0
 mod.vb.chemicalBombCount = 0
 mod.vb.mistCount = 0
-mod.vb.chainLightningCount = 0
 mod.vb.livewireCount = 0
 mod.vb.lethalCount = 0
 
@@ -113,7 +111,6 @@ function mod:OnCombatStart(delay)
 	self.vb.incinerationCount = 0
 	self.vb.chemicalBombCount = 0
 	self.vb.mistCount = 0
-	self.vb.chainLightningCount = 0
 	self.vb.livewireCount = 0
 	self.vb.lethalCount = 0
 	--Arcanotron
@@ -123,7 +120,6 @@ function mod:OnCombatStart(delay)
 	--Toxitron
 	timerChemicalBombCD:Start(1)
 	--Electron
-	timerChainLightningCD:Start(1)
 	timerLiveWireCD:Start(1)
 	if self.Options.NPOnOverdrive  then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
@@ -167,17 +163,17 @@ function mod:SPELL_CAST_START(args)
 		timerIncinerationCD:Start()--, self.vb.incinerationCount+1
 	elseif spellId == 463829 then
 		self.vb.chemicalBombCount = self.vb.chemicalBombCount + 1
-		specWarnChemicalBomb:Show()--self.vb.chemicalBombCount
-		specWarnChemicalBomb:Play("bait")
+		if self.Options.SpecWarn463829count then
+			specWarnChemicalBomb:Show()
+			specWarnChemicalBomb:Play("bait")
+		else
+			warnChemicalBomb:Show(self.vb.chemicalBombCount)
+		end
 		timerChemicalBombCD:Start()--, self.vb.chemicalBombCount+1
 	elseif spellId == 463837 then
 		self.vb.mistCount = self.vb.mistCount + 1
 		warnPoisonMist:Show(self.vb.mistCount)
 		timerPoisonMistCD:Start()--, self.vb.mistCount+1
-	elseif spellId == 463820 then
-		self.vb.chainLightningCount = self.vb.chainLightningCount + 1
-		warnChainLighting:Show(self.vb.chainLightningCount)
-		timerChainLightningCD:Start()--, self.vb.chainLightningCount+1
 	end
 end
 
@@ -282,7 +278,6 @@ function mod:UNIT_DIED(args)
 		timerChemicalBombCD:Stop()
 		timerPoisonMistCD:Stop()
 	elseif cid == 230218 then--Electron Mk. II
-		timerChainLightningCD:Stop()
 		timerLiveWireCD:Stop()
 		timerLethalAttractionCD:Stop()
 	end
