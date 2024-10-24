@@ -386,14 +386,16 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s 쿨타임",
 	TimerBreath		= "%s 시전",
-	TimerVulnCD		= "약화 쿨타임"
+	TimerVulnCD		= "약화 쿨타임",
+	TimerAllBreaths	= "연발 숨결"
 }
 L:SetOptionLocalization{
 	WarnBreath		= "크로마구스가 숨결 시전 시 알림 보기",
 	WarnVulnerableNew	= "주문 속성 약화 알림 보기",
-	TimerBreathCD	= "숨결 쿨타임 보기",
-	TimerBreath		= "숨결 시전 보기",
-	TimerVulnCD		= "약화 쿨타임 보기"
+	TimerBreathCD	= "숨결 쿨타임 타이머 바 보기",
+	TimerBreath		= "숨결 시전 타이머 바 보기",
+	TimerVulnCD		= "약화 쿨타임 보기",
+	TimerAllBreaths = "연발 숨결 타이머 바 보기"
 }
 L:SetMiscLocalization{
 	Breath1	= "1번 숨결",
@@ -455,6 +457,27 @@ L = DBM:GetModLocalization("SoDBWLTrials")
 
 L:SetGeneralLocalization{
 	name = "디스커버리 시즌 시련"
+}
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= ">%s<에게 파랑과 녹색",
+	SpecWarnBothBombsYou	= "나에게 파랑과 녹색",
+}
+L:SetOptionLocalization{
+	SpecWarnBothBombs		= "파랑 녹색 폭탄에 같이 걸린 사람이 있을 때 특수 알림을 보여줍니다.",
+	SpecWarnBothBombsYou	= "내가 파랑 녹색 폭탄에 같이 걸렸을 때 특수 알림을 보여줍니다.",
+	TimerBombs				= "파랑 녹색 시련 폭탄 타이머 바 보기"
+}
+
+L:SetMiscLocalization{
+	-- Does not need translation if "BLUE BOMB" is okay, the "Blue"/"Green" strings are just fallbacks if Core is outdated
+	-- Only translate that if you need something like "BOMB BLUE"
+	BlueBomb = (DBM_COMMON_L.BLUE or "파랑") .. " " .. DBM_COMMON_L.BOMB,
+	GreenBomb = (DBM_COMMON_L.GREEN or "녹색") .. " " .. DBM_COMMON_L.BOMB,
+
+	-- Used in options
+	BlueTrial = "푸른용의 시련",
+	GreenTrial = "녹색용의 시련",
+	GreenAndBlue = "녹색과 파랑에 같이 걸린 사람",
 }
 
 ----------------
@@ -719,6 +742,10 @@ L = DBM:GetModLocalization("Jindo")
 
 L:SetGeneralLocalization{
 	name = "주술사 진도"
+}
+
+L:SetMiscLocalization{
+	Ghosts = "망령"
 }
 
 --------------
