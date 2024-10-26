@@ -185,7 +185,7 @@ function mod:SPELL_CAST_START(args)
 		timerRecklessnessCD:Start(nil, args.sourceGUID)
 	elseif spellId == 464331 and self.vb.activeBossGUID == args.sourceGUID then
 		--timerShadowBoltVolleyCD:Start(nil, args.sourceGUID)
-		if castsPerGUID[args.sourceGUID] then
+		if not castsPerGUID[args.sourceGUID] then
 			castsPerGUID[args.sourceGUID] = {}
 		end
 		if not castsPerGUID[args.sourceGUID][spellId] then
@@ -203,7 +203,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 464363 and self.vb.activeBossGUID == args.sourceGUID then
 		--timerMagmaBoltCD:Start(nil, args.sourceGUID)
-		if castsPerGUID[args.sourceGUID] then
+		if not castsPerGUID[args.sourceGUID] then
 			castsPerGUID[args.sourceGUID] = {}
 		end
 		if not castsPerGUID[args.sourceGUID][spellId] then
@@ -221,7 +221,7 @@ function mod:SPELL_CAST_START(args)
 		end
 	elseif spellId == 464334 then
 		timerSummonFelguardCD:Start(nil, args.sourceGUID)
-		if castsPerGUID[args.sourceGUID] then
+		if not castsPerGUID[args.sourceGUID] then
 			castsPerGUID[args.sourceGUID] = {}
 		end
 		if not castsPerGUID[args.sourceGUID][spellId] then
@@ -240,7 +240,7 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 464367 then
 		--timerFireNovaCD:Start(nil, args.sourceGUID)
 		--Delete redundant table creation if spell summon is in CLEU
-		if castsPerGUID[args.sourceGUID] then
+		if not castsPerGUID[args.sourceGUID] then
 			castsPerGUID[args.sourceGUID] = {}
 		end
 		if not castsPerGUID[args.sourceGUID][spellId] then
@@ -294,7 +294,7 @@ function mod:SPELL_SUMMON(args)
 	local spellId = args.spellId
 	if spellId == 464366 then
 		--timerFireNovaCD:Start(nil, args.destGUID)
-		if castsPerGUID[args.destGUID] then
+		if not castsPerGUID[args.destGUID] then
 			castsPerGUID[args.destGUID] = {}
 		end
 		if self.Options.SetIconOnFireElemental then
@@ -366,7 +366,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif spellId == 464371 then--Corporeal
 		self.vb.activeBossGUID = args.destGUID
-		if castsPerGUID[args.destGUID] then
+		if not castsPerGUID[args.destGUID] then
 			castsPerGUID[args.destGUID] = {}
 		end
 		if self.Options.SetIconOnCorp then

@@ -96,7 +96,7 @@ mod:AddNamePlateOption("NPOnFixate", 466258)
 --Anvilrage Artillerist
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30777))
 local warnArtilleryBarrage					= mod:NewSpellAnnounce(467424, 2)
-local warnMortar							= mod:NewSpellAnnounce(467505, 2)
+--local warnMortar							= mod:NewSpellAnnounce(467505, 2)
 
 --local timerArtilleryBarrageCD				= mod:NewCDNPTimer(33, 467424, nil, nil, nil, 3)
 --local timerMortarCD						= mod:NewCDNPTimer(33, 467505, nil, nil, nil, 3)
@@ -172,7 +172,7 @@ function mod:SPELL_CAST_START(args)
 	elseif spellId == 466111 then
 --		timerCripplingPoisonCD:Start(nil, args.sourceGUID)
 	elseif spellId == 467505 then
-		warnMortar:Show()
+--		warnMortar:Show()
 		--timerMortarCD:Start(nil, args.sourceGUID)
 	end
 end

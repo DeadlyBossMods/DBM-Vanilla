@@ -17,7 +17,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 463821 470014 470073 467919 463823 463829 463837",
 	"SPELL_CAST_SUCCESS 467926 463847",
-	"SPELL_AURA_APPLIED 464939 470655 463852 467927 463848 464609",
+	"SPELL_AURA_APPLIED 464939 470655 463852 467927 463848 464609 463837",
 	"SPELL_AURA_APPLIED_DOSE 470655",
 	"SPELL_AURA_REMOVED 464939 463852 467927 463848 464609",
 	"SPELL_PERIODIC_DAMAGE 464473",
@@ -73,6 +73,7 @@ local warnPoisonMist						= mod:NewCountAnnounce(463837, 2)
 local warnChemicalBomb						= mod:NewCountAnnounce(463829, 2)
 
 local specWarnChemicalBomb					= mod:NewSpecialWarningBait(463829, false, nil, 2, 2, 2)
+local specWarnPoisonMist					= mod:NewSpecialWarningMoveTo(463837, "-Tank", nil, nil, 1, 2)
 
 local timerChemicalBombCD					= mod:NewAITimer(33, 463829, nil, nil, nil, 3)
 local timerPoisonMistCD						= mod:NewAITimer(22, 463837, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
@@ -103,6 +104,7 @@ mod.vb.chemicalBombCount = 0
 mod.vb.mistCount = 0
 mod.vb.livewireCount = 0
 mod.vb.lethalCount = 0
+local flameThrower = DBM:GetSpellName(467919)
 
 function mod:OnCombatStart(delay)
 	self.vb.overchargeCount = 0
@@ -225,6 +227,11 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnLethalAttraction:Show()
 			specWarnLethalAttraction:Play("linegather")
 			yellLethalAttraction:Yell()
+		end
+	elseif spellId == 463837 then
+		if args:IsPlayer() then
+			specWarnPoisonMist:Show(flameThrower)
+			specWarnPoisonMist:Play("movetoflamethrower")
 		end
 	end
 end
