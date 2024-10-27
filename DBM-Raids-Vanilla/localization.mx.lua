@@ -587,7 +587,18 @@ L = DBM:GetModLocalization("SoDBWLTrials")
 L:SetGeneralLocalization{
 	name = "Pruebas de Temporada de descubrimiento"
 }
-
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Azul y verde en >%s<",
+	SpecWarnBothBombsYou	= "Azul y verde en TI",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+SpecWarnBothBombs			= "Mostrar aviso especial si las bombas azul y verde están en el mismo jugador",
+SpecWarnBothBombsYou		= "Mostrar aviso especial si las bombas azul y verde están en ti",
+TimerBombs					= "Mostrar temporizador para las bombas de prueba azul y verde"
+}
 ----------------
 --  Lucifron  --
 ----------------
@@ -907,7 +918,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningHealSoon	= "Sanación posible en 3 s",
-	WarningHealNow	= "¡Sanad ahora!"
+	WarningHealNow	= "¡Sanan ahora!"
 })
 
 L:SetOptionLocalization({
