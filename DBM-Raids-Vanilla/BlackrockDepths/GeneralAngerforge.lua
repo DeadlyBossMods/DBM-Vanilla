@@ -23,7 +23,6 @@ mod:RegisterEventsInCombat(
 --	"SPELL_PERIODIC_DAMAGE",
 --	"SPELL_PERIODIC_MISSED",
 	"UNIT_DIED",
-	"UNIT_AURA_UNFILTERED",
 	"UNIT_SPELLCAST_SUCCEEDED_UNFILTERED",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"INSTANCE_ENCOUNTER_ENGAGE_UNIT"
@@ -94,7 +93,7 @@ local warnFixate							= mod:NewTargetAnnounce(466258, 2)
 local specWarnCripplingDispel				= mod:NewSpecialWarningDispel(466111, "RemovePoison", nil, nil, 1, 2)
 local specWarnFixate						= mod:NewSpecialWarningYou(466258, nil, nil, nil, 1, 2)
 
-local timerCripplingPoisonCD				= mod:NewCDNPTimer(10.9, 466111, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON)
+local timerCripplingPoisonCD				= mod:NewCDNPTimer(10.6, 466111, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON)
 local timerShadowstepCD						= mod:NewCDNPTimer(10.9, 466254, nil, nil, nil, 3)
 
 mod:AddNamePlateOption("NPOnFixate", 466258)
@@ -113,7 +112,6 @@ local specWarnFiringLine					= mod:NewSpecialWarningDodge(469943, nil, nil, nil,
 --local timerFiringLineCD					= mod:NewCDNPTimer(33, 469943, nil, nil, nil, 3)
 
 local castsPerGUID = {}
-local torchWarned = {}
 --mod.vb.FlamesRemaining = 3
 mod.vb.addsCount = 0
 mod.vb.torchesDropped = 0
@@ -149,7 +147,6 @@ end
 
 function mod:OnCombatStart(delay)
 	table.wipe(castsPerGUID)
-	table.wipe(torchWarned)
 --	self.vb.FlamesRemaining = 3
 	self.vb.torchesDropped = 0
 	self.vb.addsCount = 0
@@ -161,7 +158,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	table.wipe(torchWarned)
 	if self.Options.NPOnCommandingAura or self.Options.NPOnFixate then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)
 	end
@@ -328,24 +324,15 @@ function mod:UNIT_DIED(args)
 	end
 end
 
---Still not in the combat log in TWW
-function mod:UNIT_AURA_UNFILTERED(uId)
-	local isTorch = DBM:UnitDebuff(uId, 467607)
-	local name = DBM:GetUnitFullName(uId) or "UNKNOWN"
-	if not isTorch and torchWarned[name] then
-		torchWarned[name] = nil
-	elseif isTorch and not torchWarned[name] then
-		torchWarned[name] = true
-		warnTorchCarried:Show(name)
-	end
-end
-
 --Spells not logged and have no other detection
-function mod:UNIT_SPELLCAST_SUCCEEDED_UNFILTERED(_, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED_UNFILTERED(uId, _, spellId)
 	if spellId == 467622 and self:AntiSpam(5, 3) then
 		self:SendSync("TorchDropped")
 	elseif spellId == 469943 and self:AntiSpam(5, 4) then--Limited range, will only detect if near the nameplate of the caster or it's your actual target
 		self:SendSync("FiringLine")
+	elseif spellId == 467607 and self:AntiSpam(5, 5) then
+		local name = DBM:GetUnitFullName(uId) or "UNKNOWN"
+		warnTorchCarried:Show(name)
 	end
 end
 
