@@ -111,7 +111,7 @@ function mod:SPELL_SUMMON(args)
 	if spellId == 462949 then--Boulder Spawning
 		self.vb.activeBoulders = self.vb.activeBoulders + 1
 		if self.Options.SetIconOnRockfall then
-			self:ScanForMobs(args.destGUID, 2, self.vb.rockIcon, 1, nil, 12, "SetIconOnRockfall")
+			self:ScanForMobs(args.destGUID, 2, self.vb.rockIcon, 1, nil, 14, "SetIconOnRockfall", nil, nil, true)
 		end
 		self.vb.rockIcon = self.vb.rockIcon + 1
 	elseif spellId == 462966 then--Spawn of Bael'Gar (boulder dying)
