@@ -7,14 +7,14 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(226303)
 mod:SetEncounterID(3044)
 mod:SetUsedIcons(1, 2, 3, 4)
---mod:SetHotfixNoticeRev(20220322000000)
+mod:SetHotfixNoticeRev(20241029000000)
 --mod:SetMinSyncRevision(20211203000000)
 --mod.respawnTime = 29
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 462974 463890 462969 462972",
+	"SPELL_CAST_START 463890 462969 462972",
 	"SPELL_CAST_SUCCESS 462969",
 	"SPELL_SUMMON 462949 462966",
 	"SPELL_AURA_APPLIED 462968"
@@ -26,25 +26,27 @@ mod:RegisterEventsInCombat(
 )
 
 --[[
-
+(ability.id = 463890 or ability.id = 462969 or ability.id = 462972) and type = "begincast"
+ or ability.id = 462969 and type = "cast"
 --]]
 --NOTE, Figure out how many boulders fall during rockfall for automarking
 --TODO, auto mark spawns of bael'Gar with https://www.wowhead.com/ptr-2/spell=462966/spawn-of-baelgar ?
 local warnMoltenHeart						= mod:NewTargetNoFilterAnnounce(462968, 3, nil, "Healer")
+local warnMoltenFurnaceOver					= mod:NewEndAnnounce(462969, 1, nil, nil, nil, nil, nil, 2)
 
 local specWarnRockFall						= mod:NewSpecialWarningDodgeCount(463890, nil, nil, nil, 2, 2)
-local specWarnMoltenFurnace					= mod:NewSpecialWarningCount(462969, nil, nil, nil, 2, 2)
+local specWarnMoltenFurnace					= mod:NewSpecialWarningMoveTo(462969, nil, nil, nil, 2, 2)
 local specWarnShatter						= mod:NewSpecialWarningCount(462972, nil, nil, nil, 2, 2)
 --local yellHoneyMarinade					= mod:NewShortYell(438025)
 --local yellHoneyMarinadeFades				= mod:NewShortFadesYell(438025)
 
-local timerGiantStrikeCD					= mod:NewAITimer(33, 462974, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK)
-local timerRockfallCD						= mod:NewAITimer(33, 463890, nil, nil, nil, 3)
-local timerMoltenFurnaceCD					= mod:NewAITimer(33, 462969, nil, nil, nil, 2)
+local timerRockfallCD						= mod:NewCDCountTimer(33, 463890, nil, nil, nil, 3)
+local timerMoltenFurnaceCD					= mod:NewCDCountTimer(33, 462969, nil, nil, nil, 5, nil, DBM_COMMON_L.DEADLY_ICON)
+local timerShatterCD						= mod:NewCDCountTimer(22, 462972, nil, nil, nil, 2)
 
 --mod:AddNamePlateOption("NPOnHoney", 443983)
 mod:AddSetIconOption("SetIconOnRockfall", -30947, true, 5, {1, 2, 3, 4})
-mod:AddInfoFrameOption(462969, false)
+--mod:AddInfoFrameOption(462969, false)
 
 --local castsPerGUID = {}
 mod.vb.GiantStrikeCount = 0
@@ -53,6 +55,7 @@ mod.vb.rockIcon = 1
 mod.vb.furnaceCount = 0
 mod.vb.activeBoulders = 0
 mod.vb.shatterCount = 0
+local BoulderName = DBM:GetSpellName(42139)
 
 function mod:OnCombatStart(delay)
 	self.vb.GiantStrikeCount = 0
@@ -61,9 +64,8 @@ function mod:OnCombatStart(delay)
 	self.vb.furnaceCount = 0
 	self.vb.activeBoulders = 0
 	self.vb.shatterCount = 0
-	timerGiantStrikeCD:Start(1-delay)
-	timerRockfallCD:Start(1-delay)
-	timerMoltenFurnaceCD:Start(1-delay)
+	timerRockfallCD:Start(10-delay, 1)
+	timerMoltenFurnaceCD:Start(50-delay, 1)
 end
 
 --function mod:OnCombatEnd()
@@ -72,24 +74,19 @@ end
 
 function mod:SPELL_CAST_START(args)
 	local spellId = args.spellId
-	if spellId == 462974 then
-		self.vb.GiantStrikeCount = self.vb.GiantStrikeCount + 1
-		timerGiantStrikeCD:Start()--, self.vb.GiantStrikeCount+1)
-	elseif spellId == 463890 then
+	if spellId == 463890 then
 		self.vb.rockIcon = 1
 		self.vb.RockfallCount = self.vb.RockfallCount + 1
 		specWarnRockFall:Show(self.vb.RockfallCount)
 		specWarnRockFall:Play("watchstep")
-		timerRockfallCD:Start()--, self.vb.RockfallCount+1)
 	elseif spellId == 462969 then
 		self.vb.furnaceCount = self.vb.furnaceCount + 1
-		specWarnMoltenFurnace:Show(self.vb.furnaceCount)
+		specWarnMoltenFurnace:Show(BoulderName)
 		specWarnMoltenFurnace:Play("findshelter")
-		timerMoltenFurnaceCD:Start()--, self.vb.furnaceCount+1)
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:SetHeader(DBM_COMMON_L.NOTSAFE)
-			DBM.InfoFrame:Show(15, "playergooddebuff", 462971)
-		end
+		--if self.Options.InfoFrame then
+		--	DBM.InfoFrame:SetHeader(DBM_COMMON_L.NOTSAFE)
+		--	DBM.InfoFrame:Show(15, "playergooddebuff", 462971)
+		--end
 	elseif spellId == 462972 then
 		self.vb.shatterCount = self.vb.shatterCount + 1
 		specWarnShatter:Show(self.vb.shatterCount)
@@ -100,9 +97,14 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	local spellId = args.spellId
 	if spellId == 462969 then--Molten Furnace
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
-		end
+		warnMoltenFurnaceOver:Show()
+		warnMoltenFurnaceOver:Play("safenow")
+		timerShatterCD:Start(21.9, self.vb.shatterCount+1)
+		timerRockfallCD:Start(39, self.vb.RockfallCount+1)
+		timerMoltenFurnaceCD:Start(79, self.vb.furnaceCount+1)
+		--if self.Options.InfoFrame then
+		--	DBM.InfoFrame:Hide()
+		--end
 	end
 end
 
