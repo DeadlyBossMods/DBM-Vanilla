@@ -247,7 +247,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif spellId == 464417 and self:CheckDispelFilter("magic") then
 		specWarnKeepersFlameDispel:Show(args.destName)
 		specWarnKeepersFlameDispel:Play("dispelboss")
---	elseif spellId == 467607 then
+	elseif spellId == 467607 then
 --		warnTorchCarried:Show(args.destName)
 		DBM:AddMsg("Blizzard has fixed torches not showing in combat log. Report to DBM authors if you see this message")
 	elseif spellId == 466111 and self:CheckDispelFilter("poison") then
@@ -352,7 +352,7 @@ function mod:INSTANCE_ENCOUNTER_ENGAGE_UNIT()
 		warnStage2:Show()
 		warnStage2:Play("ptwo")
 		timerShatterArmorCD:Start(5.4, 1)
-		timerDarkIronBombsCD:Start(11.5, 1)
+		timerDarkIronBombsCD:Start(10.4, 1)
 		timerFireburstGrenadeCD:Start(15.1, 1)
 	end
 end
