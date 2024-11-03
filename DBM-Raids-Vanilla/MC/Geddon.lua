@@ -17,6 +17,7 @@ mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228433 or 12056)
 mod:SetEncounterID(668)
 mod:SetModelID(12129)
 mod:SetHotfixNoticeRev(20240730000000)
+mod:SetZone(409)
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:SetUsedIcons(8, 7, 6)

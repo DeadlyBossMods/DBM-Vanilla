@@ -8,6 +8,7 @@ mod:SetCreatureID(226302)
 mod:SetEncounterID(3047)
 mod:SetHotfixNoticeRev(20241029000000)
 --mod:SetMinSyncRevision(20211203000000)
+mod:SetZone(2792)
 --mod.respawnTime = 29
 
 mod:RegisterCombat("combat")

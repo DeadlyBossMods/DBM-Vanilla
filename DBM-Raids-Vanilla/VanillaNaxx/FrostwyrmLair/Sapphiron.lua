@@ -5,6 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15989)
 mod:SetEncounterID(1119)
 --mod:SetModelID(16033)--Scales incorrectly
+mod:SetZone(533)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(

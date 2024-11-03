@@ -21,6 +21,7 @@ end
 mod:SetEncounterID(671)
 mod:SetModelID(12029)
 mod:SetHotfixNoticeRev(20240724000000)
+mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 --mod:RegisterKill("yell", L.Kill)

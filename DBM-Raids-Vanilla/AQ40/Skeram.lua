@@ -19,6 +19,7 @@ mod:SetUsedIcons(4, 5, 6, 7, 8)
 mod:DisableBossDeathKill()
 mod:SetHotfixNoticeRev(20210522000000)--2021-05-22
 mod:SetMinSyncRevision(20210522000000)
+mod:SetZone(531)
 
 mod:RegisterCombat("combat")
 

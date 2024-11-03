@@ -7,6 +7,7 @@ mod:SetEncounterID(2935)
 mod:SetBossHPInfoToHighest()
 mod:SetHotfixNoticeRev(20240209000000)
 --mod:SetMinSyncRevision(20231115000000)
+mod:SetZone(90)
 
 --[[
 STX-37/CN 218245 (Chicken)

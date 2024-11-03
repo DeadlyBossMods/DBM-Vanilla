@@ -17,6 +17,7 @@ mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228431 or 12259)--, 11
 mod:SetEncounterID(665)
 mod:SetModelID(13030)
 mod:SetHotfixNoticeRev(20240724000000)
+mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 

@@ -14,6 +14,7 @@ mod:SetCreatureID(15589, 15727)
 mod:SetEncounterID(717)
 mod:SetHotfixNoticeRev(20200823000000)--2020, 8, 23
 mod:SetMinSyncRevision(20200820000000)--2020, 8, 20
+mod:SetZone(531)
 
 mod:RegisterCombat("combat")
 mod:SetWipeTime(25)

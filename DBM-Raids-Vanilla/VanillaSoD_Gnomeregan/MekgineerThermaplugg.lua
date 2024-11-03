@@ -7,6 +7,7 @@ mod:SetEncounterID(2940)
 mod:SetBossHPInfoToHighest()
 mod:SetHotfixNoticeRev(20240214000000)
 mod:SetMinSyncRevision(20240214000000)
+mod:SetZone(90)
 
 --[[
 STX-99/XD 218975 (inactive id for gray/hybrid main boss)

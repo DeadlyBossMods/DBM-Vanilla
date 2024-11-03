@@ -20,6 +20,7 @@ if not mod:IsClassic() then
 end
 mod:SetHotfixNoticeRev(20240724000000)
 mod:SetMinSyncRevision(20200218000000)
+mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 

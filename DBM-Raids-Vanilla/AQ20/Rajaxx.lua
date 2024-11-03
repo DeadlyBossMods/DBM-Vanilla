@@ -12,6 +12,8 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15341)
 mod:SetEncounterID(719)
+mod:SetZone(509)
+
 if not mod:IsClassic() then
 	mod:SetModelID(15376)
 end

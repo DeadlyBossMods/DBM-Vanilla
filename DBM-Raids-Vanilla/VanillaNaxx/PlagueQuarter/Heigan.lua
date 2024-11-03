@@ -5,6 +5,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15936)
 mod:SetEncounterID(1112)
 mod:SetModelID(16309)
+mod:SetZone(533)
+
 mod:RegisterCombat("combat_yell", L.Pull)
 
 local warnTeleportSoon	= mod:NewAnnounce("WarningTeleportSoon", 2, "135736")

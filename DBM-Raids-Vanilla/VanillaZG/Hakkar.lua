@@ -16,6 +16,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(14834)
 mod:SetEncounterID(793)
 mod:SetHotfixNoticeRev(20200419000000)--2020, 04, 19
+mod:SetZone(309)
 
 mod:RegisterCombat("combat")
 

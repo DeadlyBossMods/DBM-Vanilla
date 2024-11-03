@@ -15,6 +15,7 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 --mod:SetModelID(47785)
 mod:SetMinSyncRevision(20200710000000)--2020, 7, 10
+mod:SetZone(409)
 
 mod.isTrashMod = true
 

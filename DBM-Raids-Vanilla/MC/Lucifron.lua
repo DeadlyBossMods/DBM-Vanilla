@@ -18,6 +18,7 @@ mod:SetEncounterID(663)
 mod:SetModelID(13031)
 mod:SetHotfixNoticeRev(20240724000000)
 mod:SetUsedIcons(1, 2)
+mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 
