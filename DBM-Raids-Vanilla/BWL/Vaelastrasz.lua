@@ -24,6 +24,7 @@ mod:SetEncounterID(611)
 if not mod:IsClassic() then
 	mod:SetModelID(13992)
 end
+mod:SetZone(469)
 mod:SetUsedIcons(8, 7, 6)
 
 mod:RegisterCombat("combat")

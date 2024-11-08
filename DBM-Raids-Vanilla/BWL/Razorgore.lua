@@ -26,6 +26,7 @@ mod:DisableEEKillDetection()--So disable only EE
 mod:SetModelID(10115)
 mod:SetHotfixNoticeRev(20200904000000)--2020, September, 4th
 mod:SetMinSyncRevision(20200904000000)--2020, September, 4th
+mod:SetZone(469)
 
 mod:RegisterCombat("yell", L.YellPull)
 mod:SetWipeTime(180)--guesswork

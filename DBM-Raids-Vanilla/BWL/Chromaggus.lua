@@ -22,6 +22,8 @@ mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(14020)
 mod:SetEncounterID(616)
 mod:SetModelID(14367)
+mod:SetZone(469)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(

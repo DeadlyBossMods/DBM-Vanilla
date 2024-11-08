@@ -8,6 +8,8 @@ mod:SetBossHPInfoToHighest()
 --mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20240404000000)
 --mod:SetMinSyncRevision(20231115000000)
+mod:SetZone(109)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(

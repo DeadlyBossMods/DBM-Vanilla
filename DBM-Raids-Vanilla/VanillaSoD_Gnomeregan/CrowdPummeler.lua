@@ -7,6 +7,7 @@ mod:SetEncounterID(2899)
 mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20240209000000)
 --mod:SetMinSyncRevision(20231115000000)
+mod:SetZone(90)
 
 mod:RegisterCombat("combat")
 

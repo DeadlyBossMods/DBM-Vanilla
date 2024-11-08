@@ -15,6 +15,7 @@ mod:SetEncounterID(713)
 mod:SetModelID(15686)
 mod:SetHotfixNoticeRev(20200828000000)--2020, 8, 28
 mod:SetMinSyncRevision(20200828000000)--2020, 8, 28
+mod:SetZone(531)
 
 mod:RegisterCombat("combat")
 

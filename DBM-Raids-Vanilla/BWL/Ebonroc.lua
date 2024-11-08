@@ -19,6 +19,8 @@ mod:SetEncounterID(614)
 if not mod:IsClassic() then
 	mod:SetModelID(6377)
 end
+mod:SetZone(469)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(

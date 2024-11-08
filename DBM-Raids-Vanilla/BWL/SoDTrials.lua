@@ -5,6 +5,7 @@ local L		= mod:GetLocalizedStrings()
 local CL	= DBM_COMMON_L
 
 mod:SetRevision("@file-date-integer@")
+mod:SetZone(469)
 mod.isTrashMod = true
 mod.isTrashModBossFightAllowed = true
 

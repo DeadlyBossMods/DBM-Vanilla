@@ -7,6 +7,7 @@ mod:SetEncounterID(1084)
 mod:SetModelID(8570)
 mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
+mod:SetZone(249)
 
 mod:RegisterCombat("combat")
 

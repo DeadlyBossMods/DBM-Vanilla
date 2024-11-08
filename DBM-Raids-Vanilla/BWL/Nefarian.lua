@@ -28,6 +28,7 @@ mod:RegisterCombat("combat_yell", L.YellP1)--ENCOUNTER_START appears to fire whe
 mod:SetWipeTime(50)--guesswork
 mod:SetHotfixNoticeRev(20200310000000)--2020, Mar, 10th
 mod:SetMinSyncRevision(20200310000000)--2020, Mar, 10th
+mod:SetZone(469)
 
 mod:RegisterEvents(
 	"CHAT_MSG_MONSTER_YELL"

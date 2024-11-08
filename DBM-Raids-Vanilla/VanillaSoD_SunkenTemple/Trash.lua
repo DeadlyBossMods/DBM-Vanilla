@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("STTrashSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:SetZone(109)
 
 mod.isTrashMod = true
 

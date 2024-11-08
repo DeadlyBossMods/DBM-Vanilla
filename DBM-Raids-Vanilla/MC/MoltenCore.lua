@@ -7,6 +7,7 @@ mod:SetCreatureID(227939)
 mod:SetEncounterID(3018)
 mod:RegisterCombat("combat")
 mod:SetUsedIcons(1, 2)
+mod:SetZone(409)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 460890 460898 460895",

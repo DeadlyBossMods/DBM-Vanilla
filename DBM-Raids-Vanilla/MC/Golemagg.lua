@@ -19,6 +19,7 @@ if not mod:IsClassic() then
 	mod:SetModelID(11986)--Totally fucked on classic
 end
 mod:SetHotfixNoticeRev(20240724000000)
+mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 

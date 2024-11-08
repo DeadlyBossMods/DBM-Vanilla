@@ -14,6 +14,7 @@ if not mod:IsClassic() then
 	mod:SetModelID(15741)-- Qiraji Gladiator
 end
 mod:SetMinSyncRevision(20200710000000)--2020, 7, 10
+mod:SetZone(509)
 
 mod.isTrashMod = true
 

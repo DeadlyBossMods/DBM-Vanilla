@@ -15,6 +15,8 @@ mod:SetEncounterID(715)
 if not mod:IsClassic() then
 	mod:SetModelID(15778)--Renders too close in classic
 end
+mod:SetZone(531)
+
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
