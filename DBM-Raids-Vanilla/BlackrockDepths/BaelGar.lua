@@ -17,8 +17,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 463890 462969 462972",
 	"SPELL_CAST_SUCCESS 462969",
-	"SPELL_SUMMON 462949 462966",
-	"SPELL_AURA_APPLIED 462968"
+	"SPELL_SUMMON 462949 462966"
 --	"SPELL_AURA_REMOVED",
 --	"SPELL_PERIODIC_DAMAGE",
 --	"SPELL_PERIODIC_MISSED",
@@ -32,7 +31,6 @@ mod:RegisterEventsInCombat(
 --]]
 --NOTE, Figure out how many boulders fall during rockfall for automarking
 --TODO, auto mark spawns of bael'Gar with https://www.wowhead.com/ptr-2/spell=462966/spawn-of-baelgar ?
-local warnMoltenHeart						= mod:NewTargetNoFilterAnnounce(462968, 3, nil, "Healer")
 local warnMoltenFurnaceOver					= mod:NewEndAnnounce(462969, 1, nil, nil, nil, nil, nil, 2)
 
 local specWarnRockFall						= mod:NewSpecialWarningDodgeCount(463890, nil, nil, nil, 2, 2)
@@ -121,14 +119,6 @@ function mod:SPELL_SUMMON(args)
 		self.vb.activeBoulders = self.vb.activeBoulders - 1
 	end
 end
-
-function mod:SPELL_AURA_APPLIED(args)
-	local spellId = args.spellId
-	if spellId == 462968 then
-		warnMoltenHeart:Show(args.destName)
-	end
-end
---mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 --[[
 function mod:SPELL_AURA_REMOVED(args)
