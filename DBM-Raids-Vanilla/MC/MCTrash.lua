@@ -30,7 +30,7 @@ mod:SendSync("IsMCStarted")
 
 --TODO, maybe check if any bosses killed, in case group pulls Molten Giant after killing ragnaros
 --Right now, it'd start a speed run timer if you pull a molten giant after ragnaros killedd
-function mod:StartNameplateTimers(guid, cid)
+function mod:StartEngageTimers(guid, cid)
 	if cid == 11658 then--Molten Giants
 		if not self.vb.firstEngageTime then
 			self.vb.firstEngageTime = GetServerTime()

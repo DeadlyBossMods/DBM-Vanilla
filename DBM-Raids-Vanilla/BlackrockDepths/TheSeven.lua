@@ -151,7 +151,7 @@ function mod:BladestormTarget(targetname, uId)
 	end
 end
 
-function mod:StartNameplateTimers(guid, cid, delay)
+function mod:StartEngageTimers(guid, cid, delay)
 	if cid == 226307 then--Anger'rel (First activation)
 		if self:IsHeroic() then
 			timerMortalStrikeCD:Start(5.0-delay, guid)
