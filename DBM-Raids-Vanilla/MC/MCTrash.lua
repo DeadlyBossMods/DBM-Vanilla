@@ -197,6 +197,13 @@ function mod:StartEngageTimers(guid, cid)
 	end
 end
 
+--Abort timers when all players out of combat, so NP timers clear on a wipe
+--Caveat, it won't calls top with GUIDs, so while it might terminate bar objects, it may leave lingering nameplate icons
+function mod:LeavingZoneCombat()
+	self:Stop()
+end
+
+
 function mod:OnSync(msg, startTime, sender)
 	--Sync recieved with start time and ours is currently not started
 	if msg == "MCStarted" and startTime and not self.vb.firstEngageTime then
