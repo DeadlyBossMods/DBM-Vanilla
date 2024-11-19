@@ -41,17 +41,17 @@ local warnFireBlossom				= mod:NewSpellAnnounce(19636, 2)
 local warnInciteFlames				= mod:NewSpellAnnounce(19635, 2, nil, "RemoveMagic")
 local warnConeofFire				= mod:NewSpellAnnounce(19630, 3)
 
-local timerKnockAwayCD				= mod:NewCDNPTimer(11.1, 18945, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON, true)--11.1-14.8
-local timerSmashCD					= mod:NewCDNPTimer(7.2, 18944, nil, nil, nil, 2, nil, nil, true)--7.2-9.9
-local timerSummonLavaSpawnCD		= mod:NewCDNPTimer(16.8, 19392, nil, nil, nil, 1, nil, nil, true)--16.8-19.5
-local timerSurgeCD					= mod:NewCDNPTimer(10, 19196, nil, nil, nil, 3, nil, nil, true)--5.9-14.5
-local timerLavaBreathCD				= mod:NewCDNPTimer(12.1, 19272, nil, nil, nil, 3, nil, nil, true)--12.1-19.4
-local timerKnockDownCD				= mod:NewCDNPTimer(8.3, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON, true)--Poor sample size
-local timerMassiveTremorCD			= mod:NewCDNPTimer(17, 19129, nil, nil, nil, 2, nil, nil, true)--Poor sample size
-local timerPyroclastBarrageCD		= mod:NewCDNPTimer(9.8, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON, true)--9.8-20.7
-local timerFireBlossomCD			= mod:NewCDNPTimer(13.2, 19636, nil, nil, nil, 2, nil, nil, true)--13.2-19.6
-local timerInciteFlamesCD			= mod:NewCDNPTimer(17.0, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON, true)--17.0-18.2
-local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 3, nil, nil, true)--13.5-15.9
+local timerKnockAwayCD				= mod:NewCDNPTimer(11.1, 18945, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--11.1-14.8
+local timerSmashCD					= mod:NewCDNPTimer(7.2, 18944, nil, nil, nil, 2)--7.2-9.9
+local timerSummonLavaSpawnCD		= mod:NewCDNPTimer(16.8, 19392, nil, nil, nil, 1)--16.8-19.5
+local timerSurgeCD					= mod:NewCDNPTimer(10, 19196, nil, nil, nil, 3)--5.9-14.5
+local timerLavaBreathCD				= mod:NewCDNPTimer(12.1, 19272, nil, nil, nil, 3)--12.1-19.4
+local timerKnockDownCD				= mod:NewCDNPTimer(8.3, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Poor sample size
+local timerMassiveTremorCD			= mod:NewCDNPTimer(17, 19129, nil, nil, nil, 2)--Poor sample size
+local timerPyroclastBarrageCD		= mod:NewCDNPTimer(9.8, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--9.8-20.7
+local timerFireBlossomCD			= mod:NewCDNPTimer(13.2, 19636, nil, nil, nil, 2)--13.2-19.6
+local timerInciteFlamesCD			= mod:NewCDNPTimer(17.0, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)--17.0-18.2
+local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 3)--13.5-15.9
 
 mod:AddSpeedClearOption("MC", true)
 
