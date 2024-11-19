@@ -1,4 +1,4 @@
-## Interface: 11504
+## Interface: 11505
 ## X-Min-Interface-Classic: 11403
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
