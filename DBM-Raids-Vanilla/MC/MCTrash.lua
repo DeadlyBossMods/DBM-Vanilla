@@ -41,16 +41,16 @@ local warnFireBlossom				= mod:NewSpellAnnounce(19636, 2)
 local warnInciteFlames				= mod:NewSpellAnnounce(19635, 2, nil, "RemoveMagic")
 local warnConeofFire				= mod:NewSpellAnnounce(19630, 3)
 
-local timerKnockAwayCD				= mod:NewCDNPTimer(11.1, 18945, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--11.1-14.8
+local timerKnockAwayCD				= mod:NewCDNPTimer(10.7, 18945, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--10.7-14.8
 local timerSmashCD					= mod:NewCDNPTimer(7.2, 18944, nil, nil, nil, 2)--7.2-9.9
 local timerSummonLavaSpawnCD		= mod:NewCDNPTimer(16.8, 19392, nil, nil, nil, 1)--16.8-19.5
-local timerSurgeCD					= mod:NewCDNPTimer(10, 19196, nil, nil, nil, 3)--5.9-14.5
-local timerLavaBreathCD				= mod:NewCDNPTimer(12.1, 19272, nil, nil, nil, 3)--12.1-19.4
-local timerKnockDownCD				= mod:NewCDNPTimer(8.3, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Poor sample size
-local timerMassiveTremorCD			= mod:NewCDNPTimer(17, 19129, nil, nil, nil, 2)--Poor sample size
-local timerPyroclastBarrageCD		= mod:NewCDNPTimer(9.8, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--9.8-20.7
+local timerSurgeCD					= mod:NewCDNPTimer(7.1, 19196, nil, nil, nil, 3)--7.1-14.5
+local timerLavaBreathCD				= mod:NewCDNPTimer(10.9, 19272, nil, nil, nil, 3)--10.9-19.4
+local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
+local timerMassiveTremorCD			= mod:NewCDNPTimer(13.3, 19129, nil, nil, nil, 2)--13.3-17.0
+local timerPyroclastBarrageCD		= mod:NewCDNPTimer(8.6, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--8.6-20.7
 local timerFireBlossomCD			= mod:NewCDNPTimer(13.2, 19636, nil, nil, nil, 2)--13.2-19.6
-local timerInciteFlamesCD			= mod:NewCDNPTimer(17.0, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)--17.0-18.2
+local timerInciteFlamesCD			= mod:NewCDNPTimer(12.1, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)--12.1-18.2
 local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 3)--13.5-15.9
 
 mod:AddSpeedClearOption("MC", true)
@@ -169,7 +169,7 @@ end
 function mod:StartEngageTimers(guid, cid)
 	if cid == 11658 then--Molten Giants
 		timerSmashCD:Start(3.3, guid)
-		timerKnockAwayCD:Start(6.9, guid)--6.9-10.5
+		timerKnockAwayCD:Start(5.3, guid)--5.3-10.5
 		if not self.vb.firstEngageTime then
 			self.vb.firstEngageTime = GetServerTime()
 			if self.Options.FastestClear2 and self.Options.SpeedClearTimer then
@@ -180,20 +180,20 @@ function mod:StartEngageTimers(guid, cid)
 		end
 	elseif cid == 11668 then--Firelord
 		timerSummonLavaSpawnCD:Start(10, guid)--10-14
-	elseif cid == 12101 then--Lava Surger
-		timerSurgeCD:Start(3.7, guid)
+--	elseif cid == 12101 then--Lava Surger
+--		timerSurgeCD:Start(3.7, guid)--Near instantly on some pulls, if pulled from range
 	elseif cid == 11673 then--Ancient Core Hound
 		timerLavaBreathCD:Start(4.4, guid)--4.4-24.3
 	elseif cid == 11659 then--Molten Destroyer
-		timerKnockDownCD:Start(4.5, guid)
+		timerKnockDownCD:Start(4.2, guid)
 		timerMassiveTremorCD:Start(6.9, guid)
 	elseif cid == 12076 then--Lava Elemental
-		timerPyroclastBarrageCD:Start(8.9, guid)--8.9-13.5
+		timerPyroclastBarrageCD:Start(6.5, guid)--6.5-13.5
 	elseif cid == 11666 then--Firewalker
 		timerFireBlossomCD:Start(6.4, guid)--6.4-17.4
-		timerInciteFlamesCD:Start(11.2, guid)--11.2-12.4
+		timerInciteFlamesCD:Start(10.6, guid)--10.6-12.4
 	elseif cid == 11667 then--Flameguard
-		timerConeofFireCD:Start(10, guid)--10-13
+		timerConeofFireCD:Start(7, guid)--7-13
 	end
 end
 
