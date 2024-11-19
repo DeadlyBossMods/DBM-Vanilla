@@ -144,6 +144,7 @@ function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 11658 then--Molten Giant
 		timerKnockAwayCD:Stop(args.destGUID)
+		timerSmashCD:Stop(args.destGUID)
 	elseif cid == 11668 then--Firelord
 		timerSummonLavaSpawnCD:Stop(args.destGUID)
 	elseif cid == 12101 then--Lava Surger
@@ -167,6 +168,7 @@ end
 --Right now, it'd start a speed run timer if you pull a molten giant after ragnaros killedd
 function mod:StartEngageTimers(guid, cid)
 	if cid == 11658 then--Molten Giants
+		timerSmashCD:Start(3.3, guid)
 		timerKnockAwayCD:Start(6.9, guid)--6.9-10.5
 		if not self.vb.firstEngageTime then
 			self.vb.firstEngageTime = GetServerTime()
