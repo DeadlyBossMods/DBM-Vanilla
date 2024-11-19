@@ -56,7 +56,7 @@ local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 2)
 local timerIgniteManaCD	= mod:NewCDTimer(27, 19659, nil, nil, nil, 2)--27-33
 local timerBombCD		= mod:NewCDTimer(13.3, 20475, nil, nil, nil, 3)--13.3-21
 local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
-local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2)
+local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, nil, nil, nil, nil, nil, nil, nil, nil, true)
 
 mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8, 7, 6}) -- up to 3 bombs on heat level 3 (TODO: confirm)
 
@@ -141,7 +141,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerIgniteManaCD:Start()
 	elseif args:IsSpell(20478, 461121) then
 		specWarnArma:Show()
-		timerArmageddon:Start()
+		timerArmageddon:Start(nil, args.sourceGUID)
 	elseif args:IsSpell(20475, 461090, 461105, 462402, 465725) then
 		bombIcon = 8
 		timerBombCD:Start()

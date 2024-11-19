@@ -26,7 +26,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_PERIODIC_DAMAGE 461103",
 	"SPELL_PERIODIC_MISSED 461103",
 	"SPELL_AURA_REMOVED 19779",
-	"SPELL_CAST_START 19775"
+	"SPELL_CAST_START 19775",
+	"SPELL_INTERRUPT"
 )
 
 --TODO, nameplate aura if classic API supports it enough
@@ -39,7 +40,7 @@ local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2)
 
 local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
-local timerHeal			= mod:NewCastTimer(2, 19775, nil, nil, 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+local timerHeal			= mod:NewCastNPTimer(2, 19775, nil, nil, 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
 local specWarnGTFO
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -77,9 +78,19 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(19775) and args:IsSrcTypeHostile() and self:CheckInterruptFilter(args.sourceGUID, true, true) then--Only show warning/timer for your own target.
-		timerHeal:Start()
-		specWarnHeal:Show(args.sourceName)
-		specWarnHeal:Play("kickcast")
+	if args:IsSpell(19775) and args:IsSrcTypeHostile() then--Only show warning/timer for your own target.
+		timerHeal:Start(nil, args.sourceGUID)
+		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+			specWarnHeal:Show(args.sourceName)
+			specWarnHeal:Play("kickcast")
+		end
+	end
+end
+
+function mod:SPELL_INTERRUPT(args)
+	if not self.Options.Enabled then return end
+	if type(args.extraSpellId) ~= "number" then return end
+	if args.extraSpellId == 19775 then
+		timerHeal:Stop(args.destGUID)
 	end
 end
