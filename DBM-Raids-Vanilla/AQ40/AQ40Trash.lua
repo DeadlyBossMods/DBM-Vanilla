@@ -28,16 +28,6 @@ mod:RegisterEvents(
 --TODO, meteor those big guys use, maybe some other stuff
 --local specWarnPrimalRampage			= mod:NewSpecialWarningDodge(198379, "Melee", nil, nil, 1, 2)
 
-mod:AddRangeFrameOption(10, 22997)
-mod:AddSpeedClearOption("AQ40", true)
-
---Speed Clear variables
-mod.vb.firstEngageTime = nil
-mod.vb.requiredBosses = 0
-
---Request speed clear variables, in case it was already started before mod loaded
-mod:SendSync("IsAQ40Started")
-
 -- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
 local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
@@ -48,6 +38,16 @@ local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
 local yellPlague                    = mod:NewYell(26556)
 local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
+
+mod:AddRangeFrameOption(10, 22997)
+mod:AddSpeedClearOption("AQ40", true)
+
+--Speed Clear variables
+mod.vb.firstEngageTime = nil
+mod.vb.requiredBosses = 0
+
+--Request speed clear variables, in case it was already started before mod loaded
+mod:SendSync("IsAQ40Started")
 
 -- aura applied didn't seem to catch the reflects and other buffs
 function mod:SPELL_AURA_APPLIED(args)
