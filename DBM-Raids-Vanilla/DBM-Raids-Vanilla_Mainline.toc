@@ -60,6 +60,7 @@ AQ20\Buru.lua
 AQ20\Ayamiss.lua
 AQ20\Ossirian.lua
 
+BWL\BWLTrash.lua
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
 BWL\Broodlord.lua
@@ -68,7 +69,6 @@ BWL\Ebonroc.lua
 BWL\Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
-BWL\BWLTrash.lua
 
 MC\MCTrash.lua
 MC\Lucifron.lua

@@ -83,6 +83,7 @@ VanillaZG\EdgeOfMadness.lua
 VanillaZG\Gahzranka.lua
 VanillaZG\Jindo.lua
 
+BWL\BWLTrash.lua
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
 BWL\Broodlord.lua
@@ -91,7 +92,6 @@ BWL\Ebonroc.lua
 BWL\Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
-BWL\BWLTrash.lua
 
 MC\MCTrash.lua
 MC\Lucifron.lua
