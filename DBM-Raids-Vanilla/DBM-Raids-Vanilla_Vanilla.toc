@@ -97,7 +97,7 @@ BWL\Flamegor.lua
 BWL\Ebonroc_and_Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
-BWL\TalonGuards.lua
+BWL\BWLTrash.lua
 
 MC\MCTrash.lua
 MC\Lucifron.lua

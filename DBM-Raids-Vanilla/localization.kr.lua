@@ -352,10 +352,10 @@ L:SetMiscLocalization{
 --  Vulnerabilities  --
 -----------------------
 -- Chromaggus, Death Talon Overseer and Death Talon Wyrmguard
-L = DBM:GetModLocalization("TalonGuards")
+L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "죽음의발톱 수호병"
+	name = "죽음의발톱 수호병"--FIXME
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s 약화"

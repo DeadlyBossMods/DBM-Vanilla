@@ -48,8 +48,8 @@ local timerSurgeCD					= mod:NewCDNPTimer(7.1, 19196, nil, nil, nil, 3)--7.1-14.
 local timerLavaBreathCD				= mod:NewCDNPTimer(10.9, 19272, nil, nil, nil, 3)--10.9-19.4
 local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
 local timerMassiveTremorCD			= mod:NewCDNPTimer(13.3, 19129, nil, nil, nil, 2)--13.3-17.0
-local timerPyroclastBarrageCD		= mod:NewCDNPTimer(8.6, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--8.6-20.7
-local timerFireBlossomCD			= mod:NewCDNPTimer(13.2, 19636, nil, nil, nil, 2)--13.2-19.6
+local timerPyroclastBarrageCD		= mod:NewCDNPTimer(8.3, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--8.3-20.7
+local timerFireBlossomCD			= mod:NewCDNPTimer(11.1, 19636, nil, nil, nil, 2)--11.1-19.6
 local timerInciteFlamesCD			= mod:NewCDNPTimer(12.1, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)--12.1-18.2
 local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 3)--13.5-15.9
 
@@ -183,15 +183,15 @@ function mod:StartEngageTimers(guid, cid)
 --	elseif cid == 12101 then--Lava Surger
 --		timerSurgeCD:Start(3.7, guid)--Near instantly on some pulls, if pulled from range
 	elseif cid == 11673 then--Ancient Core Hound
-		timerLavaBreathCD:Start(4.4, guid)--4.4-24.3
+		timerLavaBreathCD:Start(3.8, guid)--3.8-24.3
 	elseif cid == 11659 then--Molten Destroyer
-		timerKnockDownCD:Start(4.2, guid)
+		timerKnockDownCD:Start(3.9, guid)
 		timerMassiveTremorCD:Start(6.9, guid)
 	elseif cid == 12076 then--Lava Elemental
 		timerPyroclastBarrageCD:Start(6.5, guid)--6.5-13.5
 	elseif cid == 11666 then--Firewalker
+		timerInciteFlamesCD:Start(5, guid)--5-12.4
 		timerFireBlossomCD:Start(6.4, guid)--6.4-17.4
-		timerInciteFlamesCD:Start(10.6, guid)--10.6-12.4
 	elseif cid == 11667 then--Flameguard
 		timerConeofFireCD:Start(7, guid)--7-13
 	end

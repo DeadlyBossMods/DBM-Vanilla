@@ -481,10 +481,10 @@ L:SetMiscLocalization{
 --  Vulnerabilities  --
 -----------------------
 -- Chromaggus, Death Talon Overseer and Death Talon Wyrmguard
-L = DBM:GetModLocalization("TalonGuards")
+L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Guarda Garra da Morte"
+	name = "Guarda Garra da Morte"--FIXME
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidade: %s"
