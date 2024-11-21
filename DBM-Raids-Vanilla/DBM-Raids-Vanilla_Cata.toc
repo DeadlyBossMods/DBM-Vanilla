@@ -1,6 +1,10 @@
 ## Interface: 40401
 ## X-Min-Interface-Cata: 40400
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-esMX:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-frFR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Clássico)|r
+## Title-ptBR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raides (Classique)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
 ## Author: MysticalOS
