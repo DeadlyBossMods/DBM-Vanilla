@@ -41,6 +41,9 @@ localization.kr.lua
 localization.mx.lua
 localization.ru.lua
 
+# Temporary, will be moved to Core
+Blocks\Gtfo.lua
+
 VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua
 VanillaNaxx\ArachnidQuarter\Faerlina.lua
 VanillaNaxx\ArachnidQuarter\Maexxna.lua
