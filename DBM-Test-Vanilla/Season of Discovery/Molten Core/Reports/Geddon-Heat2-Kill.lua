@@ -4,6 +4,7 @@ Mod:  DBM-Raids-Vanilla/Geddon
 
 Findings:
 	Unused event registration: SPELL_AURA_APPLIED 20475 (Living Bomb)
+	Unused event registration: SPELL_AURA_APPLIED 364838 (Inferno)
 	Unused event registration: SPELL_AURA_APPLIED 461105 (Living Bomb)
 	Unused event registration: SPELL_AURA_APPLIED 462402 (Living Bomb)
 	Unused event registration: SPELL_AURA_APPLIED 465725 (Living Bomb)
@@ -19,7 +20,9 @@ Findings:
 	Unused event registration: SPELL_CAST_SUCCESS 462402 (Living Bomb)
 	Unused event registration: SPELL_CAST_SUCCESS 465725 (Living Bomb)
 	Unused event registration: SPELL_DAMAGE 19698 (Inferno)
+	Unused event registration: SPELL_DAMAGE 461088 (Inferno)
 	Unused event registration: SPELL_MISSED 19698 (Inferno)
+	Unused event registration: SPELL_MISSED 461088 (Inferno)
 	Unused event registration: SPELL_PERIODIC_DAMAGE 461103 (Living Fallout)
 	Unused event registration: SPELL_PERIODIC_MISSED 461103 (Living Fallout)
 	SpecialWarning for spell ID 19695 (Inferno) is triggered by event SPELL_CAST_SUCCESS 461110 (Inferno)
@@ -33,7 +36,6 @@ Findings:
 
 Unused objects:
 	[Announce] Inferno, type=spell, spellId=19695
-	[Special Warning] %s damage - move away, type=gtfo, spellId=19698
 
 Timers:
 	Ignite Mana, time=27.00, type=cd, spellId=19659, triggerDeltas = 23.64, 30.24, 42.02, 30.34, 31.20
@@ -89,6 +91,11 @@ Announces:
 		[183.43] Scheduled at 183.33 by SPELL_AURA_APPLIED: [Baron Geddon->Healer2: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000009, Healer2, 0x512, 461090, Living Bomb, 0, DEBUFF, 0
 
 Special warnings:
+	%s damage - move away, type=gtfo, spellId=<none>, triggerDeltas = 42.12, 16.92, 16.23, 51.12, 25.59, 3.05
+		[ 42.12] SPELL_AURA_APPLIED: [->Dps5: Living Fallout] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461103, Living Fallout, 0, DEBUFF, 0
+			 Triggered 2x, delta times: 42.12, 16.92
+		[ 75.27] SPELL_AURA_APPLIED: [->Dps5: Inferno] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461111, Inferno, 0, DEBUFF, 0
+			 Triggered 4x, delta times: 75.27, 51.12, 25.59, 3.05
 	Ignite Mana on >%s< - dispel now, type=dispel, spellId=19659, triggerDeltas = 23.96, 30.23, 42.01, 30.36, 31.18
 		[ 23.96] Scheduled at 23.66 by SPELL_AURA_APPLIED: [Baron Geddon->Pet1: Ignite Mana] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Pet-0-1-409-1-213450-0000000001, Pet1, 0x1112, 19659, Ignite Mana, 0, DEBUFF, 0
 		[ 54.19] Scheduled at 53.89 by SPELL_AURA_APPLIED: [Baron Geddon->Dps16: Ignite Mana] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000020, Dps16, 0x512, 19659, Ignite Mana, 0, DEBUFF, 0
@@ -102,9 +109,6 @@ Special warnings:
 		[ 82.99] SPELL_AURA_APPLIED: [Baron Geddon->Dps5: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000005, Dps5, 0x511, 461090, Living Bomb, 0, DEBUFF, 0
 	Armageddon!, type=spell, spellId=20478, triggerDeltas = 191.38
 		[191.38] SPELL_CAST_SUCCESS: [Baron Geddon: Armageddon] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, "", nil, 0x0, 461121, Armageddon, 0, 0
-	%s damage - move away, type=gtfo, spellId=461103, triggerDeltas = 42.12, 16.92
-		[ 42.12] SPELL_AURA_APPLIED: [->Dps5: Living Fallout] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461103, Living Fallout, 0, DEBUFF, 0
-			 Triggered 2x, delta times: 42.12, 16.92
 
 Yells:
 	%d, type=shortfade, spellId=20475
@@ -128,6 +132,8 @@ Voice pack sounds:
 	VoicePack/watchfeet
 		[ 42.12] SPELL_AURA_APPLIED: [->Dps5: Living Fallout] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461103, Living Fallout, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 42.12, 16.92
+		[ 75.27] SPELL_AURA_APPLIED: [->Dps5: Inferno] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461111, Inferno, 0, DEBUFF, 0
+			 Triggered 4x, delta times: 75.27, 51.12, 25.59, 3.05
 
 Icons:
 	None
@@ -135,10 +141,8 @@ Icons:
 Event trace:
 	[  0.00] ENCOUNTER_START: 668, Baron Geddon, 226, 20, 0
 		StartCombat: ENCOUNTER_START
-		RegisterEvents: Regular, SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725 461103, SPELL_PERIODIC_DAMAGE 461103, SPELL_PERIODIC_MISSED 461103, SPELL_AURA_REMOVED 20475 461090 461105 462402 465725, SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725
+		RegisterEvents: Regular, SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725 364838 461111 461103, SPELL_AURA_REMOVED 20475 461090 461105 462402 465725, SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725, SPELL_DAMAGE 19698 461088, SPELL_MISSED 19698 461088, SPELL_PERIODIC_DAMAGE 461103, SPELL_PERIODIC_MISSED 461103
 		StartTimer: 11.0, Living Bomb
-		RegisterEvents: ShortTerm, SPELL_DAMAGE 19698, SPELL_MISSED 19698
-		RegisterEvents: Regular, SPELL_DAMAGE 19698, SPELL_MISSED 19698
 	[ 13.00] SPELL_CAST_SUCCESS: [Baron Geddon: Inferno] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, "", nil, 0x0, 461110, Inferno, 0, 0
 		ShowSpecialWarning: Inferno - run away
 		PlaySound: VoicePack/aesoon
@@ -264,6 +268,10 @@ Event trace:
 		PlaySound: VoicePack/aesoon
 		StartTimer: 8.0, Inferno ends
 		StartTimer: 21.0, Inferno
+	[ 75.27] SPELL_AURA_APPLIED: [->Dps5: Inferno] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461111, Inferno, 0, DEBUFF, 0
+		AntiSpam: gtfo
+		ShowSpecialWarning: Inferno damage - move away
+		PlaySound: VoicePack/watchfeet
 	[ 82.97] SPELL_CAST_SUCCESS: [Baron Geddon: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, "", nil, 0x0, 461090, Living Bomb, 0, 0
 		StartTimer: 13.3, Living Bomb
 	[ 82.99] SPELL_AURA_APPLIED: [Baron Geddon->Dps1: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000001, Dps1, 0x512, 461090, Living Bomb, 0, DEBUFF, 0
@@ -385,6 +393,10 @@ Event trace:
 		UnscheduleTask: specWarn19659dispel:ScheduleVoice("helpdispel") scheduled by ScheduleTask at 126.26
 		ScheduleTask: specWarn19659dispel:ScheduleVoice("helpdispel") at 126.56 (+0.30)
 			PlaySound: VoicePack/helpdispel
+	[126.39] SPELL_AURA_APPLIED: [->Dps5: Inferno] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461111, Inferno, 0, DEBUFF, 0
+		AntiSpam: gtfo
+		ShowSpecialWarning: Inferno damage - move away
+		PlaySound: VoicePack/watchfeet
 	[141.22] SPELL_CAST_SUCCESS: [Baron Geddon: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, "", nil, 0x0, 461090, Living Bomb, 0, 0
 		StartTimer: 13.3, Living Bomb
 	[141.22] SPELL_AURA_APPLIED: [Baron Geddon->Dps13: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000017, Dps13, 0x512, 461090, Living Bomb, 0, DEBUFF, 0
@@ -398,6 +410,10 @@ Event trace:
 		PlaySound: VoicePack/aesoon
 		StartTimer: 8.0, Inferno ends
 		StartTimer: 21.0, Inferno
+	[151.98] SPELL_AURA_APPLIED: [->Dps5: Inferno] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461111, Inferno, 0, DEBUFF, 0
+		AntiSpam: gtfo
+		ShowSpecialWarning: Inferno damage - move away
+		PlaySound: VoicePack/watchfeet
 	[153.80] SPELL_CAST_SUCCESS: [Baron Geddon: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, "", nil, 0x0, 461090, Living Bomb, 0, 0
 		StartTimer: 13.3, Living Bomb
 	[153.80] SPELL_AURA_APPLIED: [Baron Geddon->Dps9: Living Bomb] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000012, Dps9, 0x512, 461090, Living Bomb, 0, DEBUFF, 0
@@ -406,6 +422,10 @@ Event trace:
 		StartTimer: 8.0, Living Bomb: Dps12
 		ScheduleTask: announce20475target:CombinedShow("Dps12") at 153.90 (+0.10)
 			ShowAnnounce: Living Bomb on Dps9, Dps12
+	[155.03] SPELL_AURA_APPLIED: [->Dps5: Inferno] "", nil, 0x0, Player-1-00000005, Dps5, 0x511, 461111, Inferno, 0, DEBUFF, 0
+		AntiSpam: gtfo
+		ShowSpecialWarning: Inferno damage - move away
+		PlaySound: VoicePack/watchfeet
 	[157.44] SPELL_CAST_SUCCESS: [Baron Geddon: Ignite Mana] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, "", nil, 0x0, 19659, Ignite Mana, 0, 0
 		StartTimer: 27.0, Ignite Mana
 	[157.44] SPELL_AURA_APPLIED: [Baron Geddon->Dps1: Ignite Mana] Creature-0-1-409-1-228433-0000000001, Baron Geddon, 0xa48, Player-1-00000001, Dps1, 0x512, 19659, Ignite Mana, 0, DEBUFF, 0
