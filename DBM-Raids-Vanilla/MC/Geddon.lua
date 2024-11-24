@@ -32,7 +32,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_PERIODIC_DAMAGE 461103",
 	"SPELL_PERIODIC_MISSED 461103",
 	"SPELL_AURA_REMOVED 20475 461090 461105 462402 465725",
-	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725"
+	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725 461087"
 )
 
 -- 461090 461105 462402 seem to be bombs on SoD (only confirmed first one at heat level 1)
@@ -128,7 +128,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19695, 461110) then
+	if args:IsSpell(19695, 461110, 461087) then
 		if self:IsEvent() or not self:IsTrivial() then
 			specWarnInferno:Show()
 			specWarnInferno:Play("aesoon")
