@@ -397,7 +397,7 @@ function mod:SPELL_AURA_APPLIED(args)
 				timerMindTorrentCD:Start(15, args.destGUID)
 			else
 				timerTerrifyCD:Stop(args.destGUID)
-				timerTerrifyCD:Start(9.8, args.destGUID)--restarts only on non heroic
+				timerTerrifyCD:Start(7.8, args.destGUID)--restarts only on non heroic
 				timerMindTorrentCD:Start(20, args.destGUID)
 			end
 		end
