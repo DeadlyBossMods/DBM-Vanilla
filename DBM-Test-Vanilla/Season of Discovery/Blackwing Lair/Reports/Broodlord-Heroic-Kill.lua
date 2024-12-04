@@ -6,7 +6,8 @@ Findings:
 	Unused event registration: SPELL_AURA_REMOVED 24573 (Mortal Strike)
 
 Unused objects:
-	None
+	[Special Warning] Tactical Charge on you, type=you, spellId=367369
+	[Yell] Tactical Charge on PlayerName, type=yell, spellId=367369
 
 Timers:
 	Mortal Strike: %s, time=5.00, type=target, spellId=24573, triggerDeltas = 17.73, 81.80, 51.73
@@ -28,6 +29,11 @@ Announces:
 		[ 17.73] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Tank2: Mortal Strike] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000013, Tank2, 0x512, 24573, Mortal Strike, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 17.73, 133.53
 		[ 99.53] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Tank1: Mortal Strike] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000011, Tank1, 0x512, 24573, Mortal Strike, 0, DEBUFF, 0
+	Tactical Charge on >%s<, type=target, spellId=367369, triggerDeltas = 25.10, 76.04, 19.41, 17.80
+		[ 25.10] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Dps3: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000005, Dps3, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		[101.14] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Healer2: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000002, Healer2, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		[120.55] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Dps13: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000020, Dps13, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		[138.35] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Healer4: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000008, Healer4, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
 
 Special warnings:
 	None
@@ -44,7 +50,7 @@ Icons:
 Event trace:
 	[  0.00] ENCOUNTER_START: 612, Broodlord Lashlayer, 186, 40, 0
 		StartCombat: ENCOUNTER_START
-		RegisterEvents: Regular, SPELL_CAST_SUCCESS 23331 18670, SPELL_AURA_APPLIED 24573, SPELL_AURA_REMOVED 24573, UNIT_HEALTH boss1 boss2 boss3 boss4 boss5 target focus
+		RegisterEvents: Regular, SPELL_CAST_SUCCESS 23331 18670, SPELL_AURA_APPLIED 24573 367369, SPELL_AURA_REMOVED 24573, UNIT_HEALTH boss1 boss2 boss3 boss4 boss5 target focus
 	[ 13.76] SPELL_CAST_SUCCESS: [Broodlord Lashlayer->Tank2: Knock Away] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000013, Tank2, 0x512, 18670, Knock Away, 0, 0
 		ShowAnnounce: Knock Away
 	[ 15.38] SPELL_CAST_SUCCESS: [Broodlord Lashlayer: Blast Wave] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, "", nil, 0x0, 23331, Blast Wave, 0, 0
@@ -52,6 +58,8 @@ Event trace:
 	[ 17.73] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Tank2: Mortal Strike] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000013, Tank2, 0x512, 24573, Mortal Strike, 0, DEBUFF, 0
 		ShowAnnounce: Mortal Strike on Tank2
 		StartTimer: 5.0, Mortal Strike: Tank2
+	[ 25.10] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Dps3: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000005, Dps3, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		ShowAnnounce: Tactical Charge on Dps3
 	[ 39.65] SPELL_CAST_SUCCESS: [Broodlord Lashlayer: Blast Wave] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, "", nil, 0x0, 23331, Blast Wave, 0, 0
 		ShowAnnounce: Blast Wave
 	[ 47.76] SPELL_CAST_SUCCESS: [Broodlord Lashlayer->Tank1: Knock Away] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000011, Tank1, 0x512, 18670, Knock Away, 0, 0
@@ -65,14 +73,20 @@ Event trace:
 	[ 99.53] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Tank1: Mortal Strike] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000011, Tank1, 0x512, 24573, Mortal Strike, 0, DEBUFF, 0
 		ShowAnnounce: Mortal Strike on Tank1
 		StartTimer: 5.0, Mortal Strike: Tank1
+	[101.14] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Healer2: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000002, Healer2, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		ShowAnnounce: Tactical Charge on Healer2
 	[106.79] UNIT_HEALTH: target, 0
 		ShowAnnounce: Stage 2 soon
 	[115.69] SPELL_CAST_SUCCESS: [Broodlord Lashlayer->Tank1: Knock Away] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000011, Tank1, 0x512, 18670, Knock Away, 0, 0
 		ShowAnnounce: Knock Away
+	[120.55] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Dps13: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000020, Dps13, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		ShowAnnounce: Tactical Charge on Dps13
 	[133.48] SPELL_CAST_SUCCESS: [Broodlord Lashlayer->Tank1: Knock Away] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000011, Tank1, 0x512, 18670, Knock Away, 0, 0
 		ShowAnnounce: Knock Away
 	[133.51] SPELL_CAST_SUCCESS: [Broodlord Lashlayer: Blast Wave] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, "", nil, 0x0, 23331, Blast Wave, 0, 0
 		ShowAnnounce: Blast Wave
+	[138.35] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Healer4: Tactical Charge] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000008, Healer4, 0x512, 367369, Tactical Charge, 0, DEBUFF, 0
+		ShowAnnounce: Tactical Charge on Healer4
 	[151.26] SPELL_AURA_APPLIED: [Broodlord Lashlayer->Tank2: Mortal Strike] Creature-0-1-469-1-12017-0000000001, Broodlord Lashlayer, 0xa48, Player-1-00000013, Tank2, 0x512, 24573, Mortal Strike, 0, DEBUFF, 0
 		ShowAnnounce: Mortal Strike on Tank2
 		StartTimer: 5.0, Mortal Strike: Tank2
