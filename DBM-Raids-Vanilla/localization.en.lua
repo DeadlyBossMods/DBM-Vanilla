@@ -357,13 +357,13 @@ L:SetMiscLocalization{
 }
 
 -----------------------
---  Vulnerabilities  --
+--  BWL Trash  --
 -----------------------
 -- Chromaggus, Death Talon Overseer and Death Talon Wyrmguard
-L = DBM:GetModLocalization("TalonGuards")
+L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Talon Guards"
+	name = "BWL Trash"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s Vulnerability"

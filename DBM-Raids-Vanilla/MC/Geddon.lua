@@ -28,11 +28,9 @@ end
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725 461103",
-	"SPELL_PERIODIC_DAMAGE 461103",
-	"SPELL_PERIODIC_MISSED 461103",
+	"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725",
 	"SPELL_AURA_REMOVED 20475 461090 461105 462402 465725",
-	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725"
+	"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725 461087"
 )
 
 -- 461090 461105 462402 seem to be bombs on SoD (only confirmed first one at heat level 1)
@@ -49,35 +47,42 @@ local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2)
 local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2)
-local specWarnGTFO		= mod:NewSpecialWarningGTFO(19698, nil, nil, nil, 1, 8)
 
 local timerInfernoCD	= mod:NewCDTimer(21, 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
 local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 2)
 local timerIgniteManaCD	= mod:NewCDTimer(27, 19659, nil, nil, nil, 2)--27-33
 local timerBombCD		= mod:NewCDTimer(13.3, 20475, nil, nil, nil, 3)--13.3-21
 local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
-local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2)
+local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, nil, nil, nil, nil, nil, nil, nil, nil, true)
 
 mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8, 7, 6}) -- up to 3 bombs on heat level 3 (TODO: confirm)
 
-local specWarnGTFO2
+local function shouldShowInfernoGtfo()
+	if mod:IsTank() then
+		return false
+	end
+	return mod:IsEvent() or not mod:IsTrivial()
+end
+
+-- Inferno
+mod:NewGtfo{
+	spell = "19698 461088",
+	spellAura = "364838 461111",
+	spellPeriodicDamage = false,
+	filter = shouldShowInfernoGtfo
+}
+
+-- Bomb residue in SoD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnGTFO2		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8)
+	mod:NewGtfo{
+		spell = 461103,
+		spellDamage = false,
+	}
 end
 
 function mod:OnCombatStart(delay)
 	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first
 	timerBombCD:Start(11-delay)
-	if not self:IsTank() and (self:IsEvent() or not self:IsTrivial()) then--Only want to warn if it's a threat
-		self:RegisterShortTermEvents(
-			"SPELL_DAMAGE 19698",
-			"SPELL_MISSED 19698"
-		)
-	end
-end
-
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
 end
 
 local bombIcon = 8
@@ -101,19 +106,8 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(19659) and self:CheckDispelFilter("magic") then
 		specWarnIgnite:CombinedShow(0.3, args.destName)
 		specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
-	elseif args:IsSpell(461103) and args:IsPlayer() and self:AntiSpam(3, "gtfo") and specWarnGTFO then
-		specWarnGTFO2:Show(args.spellName)
-		specWarnGTFO2:Play("watchfeet")
 	end
 end
-
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
-	if spellId == 461103 and destGUID == UnitGUID("player") and self:AntiSpam(3, "gtfo") and specWarnGTFO then
-		specWarnGTFO:Show(spellName)
-		specWarnGTFO:Play("watchfeet")
-	end
-end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(20475, 461090, 461105, 462402, 465725) then
@@ -128,7 +122,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19695, 461110) then
+	if args:IsSpell(19695, 461110, 461087) then
 		if self:IsEvent() or not self:IsTrivial() then
 			specWarnInferno:Show()
 			specWarnInferno:Play("aesoon")
@@ -141,20 +135,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerIgniteManaCD:Start()
 	elseif args:IsSpell(20478, 461121) then
 		specWarnArma:Show()
-		timerArmageddon:Start()
+		timerArmageddon:Start(nil, args.sourceGUID)
 	elseif args:IsSpell(20475, 461090, 461105, 462402, 465725) then
 		bombIcon = 8
 		timerBombCD:Start()
 	end
-end
-
-do
-	local Inferno = DBM:GetSpellName(19695)--Classic Note
-	function mod:SPELL_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
-		if (spellId == 19698 or spellName == Inferno) and destGUID == UnitGUID("player") and self:AntiSpam(2, 1) then
-			specWarnGTFO:Show(spellName)
-			specWarnGTFO:Play("watchfeet")
-		end
-	end
-	mod.SPELL_MISSED = mod.SPELL_DAMAGE
 end

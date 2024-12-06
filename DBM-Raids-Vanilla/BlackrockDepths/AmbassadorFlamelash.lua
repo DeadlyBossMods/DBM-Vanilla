@@ -67,9 +67,9 @@ local allTimers = {
 	},
 	["lfr"] = {--Complete up to 7 minute berserk
 		[470203] = {51.9, 53, 63, 58, 70, 58.4},--Cremate
-		[470164] = {18.3, 62, 74, 55, 66, 62, 68},--Magma Infusion
-		[470244] = {9.2, 144, 115, 130},--Summon Firestarters
-		[464378] = {30, 97, 32, 76.8, 18, 35, 90, 40},--Summon Flamewalker
+		[470164] = {18.3, 62, 66, 55, 66, 62, 68},--Magma Infusion
+		[470244] = {9.2, 130, 115, 130},--Summon Firestarters
+		[464378] = {30, 90, 32, 76.8, 18, 35, 90, 40},--Summon Flamewalker
 		[464372] = {65, 124, 130},--Portal Anchors
 	},
 }

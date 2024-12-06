@@ -1,6 +1,10 @@
 ## Interface: 110005, 110007
 ## X-Min-Interface: 80000
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-esMX:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-frFR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Classique)|r
+## Title-ptBR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raides (Clássico)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
 ## Author: MysticalOS
@@ -41,6 +45,9 @@ localization.kr.lua
 localization.mx.lua
 localization.ru.lua
 
+# Temporary, will be moved to Core
+Blocks\Gtfo.lua
+
 AQ40\AQ40Trash.lua
 AQ40\Skeram.lua
 AQ40\ThreeBugs.lua
@@ -60,6 +67,7 @@ AQ20\Buru.lua
 AQ20\Ayamiss.lua
 AQ20\Ossirian.lua
 
+BWL\BWLTrash.lua
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
 BWL\Broodlord.lua
@@ -68,7 +76,6 @@ BWL\Ebonroc.lua
 BWL\Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
-BWL\TalonGuards.lua
 
 MC\MCTrash.lua
 MC\Lucifron.lua

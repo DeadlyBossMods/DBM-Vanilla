@@ -102,7 +102,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self:SetStage(2)
 	elseif args:IsSpell(19873) then
 		self.vb.eggsLeft = self.vb.eggsLeft - 1
-		warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
+		if self:IsRetail() then
+			if self.vb.eggsLeft % 3 == 0 then
+				warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
+			end
+		else
+			warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
+		end
 		if self.vb.eggsLeft == 20 and timerDrakeSpawn and isBlackEssenceEnabled() and GetTime() - (self.combatInfo.pull or 0) <= 90 then
 			warnDrakeSpawn:Show()
 			timerDrakeSpawn:Stop()
@@ -139,3 +145,6 @@ function mod:OnSync(msg)
 		self:SetStage(2)
 	end
 end
+
+--Possible auto gossip for Vael using ID 29549, 30850
+--Possible auto gossip for engaging nef (retial only) 28595, 28897, 29020

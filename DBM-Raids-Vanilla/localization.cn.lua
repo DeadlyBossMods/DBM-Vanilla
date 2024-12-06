@@ -327,10 +327,10 @@ L:SetGeneralLocalization{
 --  Vulnerabilities  --
 -----------------------
 -- Chromaggus, Death Talon Overseer and Death Talon Wyrmguard
-L = DBM:GetModLocalization("TalonGuards")
+L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "龙人护卫"
+	name = "龙人护卫"--FIXME
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s易伤"

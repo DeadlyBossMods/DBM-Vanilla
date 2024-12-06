@@ -28,7 +28,7 @@ mod:RegisterCombat("combat_yell", L.Pull)--L.Pull is backup for classic, since c
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 23331 18670",
-	"SPELL_AURA_APPLIED 24573",
+	"SPELL_AURA_APPLIED 24573 367369",
 	"SPELL_AURA_REMOVED 24573",
 	"UNIT_HEALTH"
 )
@@ -38,9 +38,12 @@ local warnBlastWave		= mod:NewSpellAnnounce(23331, 2)
 local warnKnockAway		= mod:NewSpellAnnounce(18670, 3)
 local warnMortal		= mod:NewTargetNoFilterAnnounce(24573, 2, nil, "Tank|Healer", 3)
 
-local warnPhase2Soon
+local warnPhase2Soon, yellCharge, warnCharge, specWarnCharge
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	 warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
+	 yellCharge = mod:NewYell(367369)
+	 warnCharge = mod:NewTargetNoFilterAnnounce(367369, 2)
+	 specWarnCharge = mod:NewSpecialWarningYou(367369, nil, nil, nil, 3, 2)
 end
 
 local timerMortal		= mod:NewTargetTimer(5, 24573, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -72,6 +75,12 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(24573) and args:IsDestTypePlayer() then
 		warnMortal:Show(args.destName)
 		timerMortal:Start(args.destName)
+	elseif args:IsSpell(367369) and warnCharge then
+		if args:IsPlayer() then
+			yellCharge:Yell()
+			specWarnCharge:Show()
+		end
+		warnCharge:Show(args.destName)
 	end
 end
 

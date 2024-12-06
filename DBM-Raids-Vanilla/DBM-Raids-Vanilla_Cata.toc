@@ -1,6 +1,10 @@
 ## Interface: 40401
 ## X-Min-Interface-Cata: 40400
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-esMX:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-frFR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Classique)|r
+## Title-ptBR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raides (Clássico)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
 ## Author: MysticalOS
@@ -15,6 +19,10 @@
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 309
 ## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DBM-Mod-Name-esES: Bandas (Clásico)
+## X-DBM-Mod-Name-esMX: Bandas (Clásico)
+## X-DBM-Mod-Name-ptBR: Raides (Clássico)
+## X-DBM-Mod-Name-frFR: Raids (Classique)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
@@ -36,6 +44,9 @@ localization.fr.lua
 localization.kr.lua
 localization.mx.lua
 localization.ru.lua
+
+# Temporary, will be moved to Core
+Blocks\Gtfo.lua
 
 AQ40\AQ40Trash.lua
 AQ40\Skeram.lua
@@ -67,6 +78,7 @@ VanillaZG\EdgeOfMadness.lua
 VanillaZG\Gahzranka.lua
 VanillaZG\Jindo.lua
 
+BWL\BWLTrash.lua
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
 BWL\Broodlord.lua
@@ -75,7 +87,6 @@ BWL\Ebonroc.lua
 BWL\Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
-BWL\TalonGuards.lua
 
 MC\MCTrash.lua
 MC\Lucifron.lua

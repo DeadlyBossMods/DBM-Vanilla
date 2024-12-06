@@ -13,6 +13,7 @@ mod:SetRevision("@file-date-integer@")
 --mod:SetModelID(47785)
 mod:SetMinSyncRevision(20200710000000)--2020, 7, 10
 mod:SetZone(531)
+mod:RegisterZoneCombat(531)
 
 mod.isTrashMod = true
 
@@ -27,6 +28,17 @@ mod:RegisterEvents(
 --TODO, meteor those big guys use, maybe some other stuff
 --local specWarnPrimalRampage			= mod:NewSpecialWarningDodge(198379, "Melee", nil, nil, 1, 2)
 
+-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
+local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
+local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
+-- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
+local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
+local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
+local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
+local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
+local yellPlague                    = mod:NewYell(26556)
+local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
+
 mod:AddRangeFrameOption(10, 22997)
 mod:AddSpeedClearOption("AQ40", true)
 
@@ -34,122 +46,85 @@ mod:AddSpeedClearOption("AQ40", true)
 mod.vb.firstEngageTime = nil
 mod.vb.requiredBosses = 0
 
---Register all damage events on mod load
-local eventsRegistered = true
-mod:RegisterShortTermEvents(
-	"SWING_DAMAGE",
-	"SWING_MISSED",
-	"SPELL_PERIODIC_DAMAGE",
-	"SPELL_PERIODIC_MISSED"
-)
-
 --Request speed clear variables, in case it was already started before mod loaded
 mod:SendSync("IsAQ40Started")
 
-do-- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-	local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
-	local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
-
-	local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
-	local yellPlague                    = mod:NewYell(26556)
-	local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
-
-	-- aura applied didn't seem to catch the reflects and other buffs
-	function mod:SPELL_AURA_APPLIED(args)
-		if args:IsSpell(26556) and not self:IsTrivial() then
-			if args:IsPlayer() then
-				specWarnPlague:Show()
-				specWarnPlague:Play("runout")
-				yellPlague:Yell()
-				if self.Options.RangeFrame then
-					DBM.RangeCheck:Show(10)
-				end
-			elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
-				specWarnPlague:Show()
-				specWarnPlague:Play("runout")
-			else
-				warnPlague:Show(args.destName)
+-- aura applied didn't seem to catch the reflects and other buffs
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(26556) and not self:IsTrivial() then
+		if args:IsPlayer() then
+			specWarnPlague:Show()
+			specWarnPlague:Play("runout")
+			yellPlague:Yell()
+			if self.Options.RangeFrame then
+				DBM.RangeCheck:Show(10)
 			end
-		elseif args:IsSpell(25698) and not self:IsTrivial() then
-			specWarnExplode:Show()
-			specWarnExplode:Play("justrun")
-		elseif args:IsSpell(26079) then
-			warnCauseInsanity:CombinedShow(0.75, args.destName)
+		elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
+			specWarnPlague:Show()
+			specWarnPlague:Play("runout")
+		else
+			warnPlague:Show(args.destName)
+		end
+	elseif args:IsSpell(25698) and not self:IsTrivial() then
+		specWarnExplode:Show()
+		specWarnExplode:Play("justrun")
+	elseif args:IsSpell(26079) then
+		warnCauseInsanity:CombinedShow(0.75, args.destName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(26556) then
+		if args:IsPlayer() and self.Options.RangeFrame then
+			DBM.RangeCheck:Hide()
 		end
 	end
+end
 
-	function mod:SPELL_AURA_REMOVED(args)
-		if args:IsSpell(26556) then
-			if args:IsPlayer() and self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
+-- todo: thorns
+local playerGUID = UnitGUID("player")
+local ShadowStorm = DBM:GetSpellName(26555)--Classic Note
+function mod:SPELL_DAMAGE(_, sourceName, _, _, destGUID, _, _, _, spellId, spellName)
+	if (spellId == 26555 or spellName == ShadowStorm) and destGUID == playerGUID and self:AntiSpam(3, 3) then
+		specWarnShadowStorm:Show(sourceName)
+		specWarnShadowStorm:Play("findshelter")
+	end
+end
+function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, _, _, _, spellSchool, missType)
+	if (missType == "REFLECT" or missType == "DEFLECT") and sourceGUID == playerGUID then
+		if (spellSchool == 32 or spellSchool == 16) and self:AntiSpam(3, 1) then
+			specWarnShadowFrostReflect:Show(destName)
+			specWarnShadowFrostReflect:Play("stopattack")
+		elseif (spellSchool == 4 or spellSchool == 64) and self:AntiSpam(3, 2) then
+			specWarnFireArcaneReflect:Show(destName)
+			specWarnFireArcaneReflect:Play("stopattack")
 		end
 	end
 end
 
 do
-	local startCreatureIds = {
-		[15264] = true,--Anubisath Sentinel
-		[15262] = true--Obsidian Eradicator
-	}
-	local function checkFirstPull(self, GUID)
-		local cid = self:GetCIDFromGUID(GUID)
-		if startCreatureIds[cid] then
-			if not self.vb.firstEngageTime then
-				self.vb.firstEngageTime = GetServerTime()
-				if self.Options.FastestClear3 and self.Options.SpeedClearTimer then
-					--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
-					DBT:CreateBar(self.Options.FastestClear3, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
-				end
-				self:SendSync("AQ40Started", self.vb.firstEngageTime)--Also sync engage time
+	--Speed Run Handling
+	--(and bonus nameplate timer if added later)
+	local function checkFirstPull(self)
+		if not self.vb.firstEngageTime then
+			self.vb.firstEngageTime = GetServerTime()
+			if self.Options.FastestClear3 and self.Options.SpeedClearTimer then
+				--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
+				DBT:CreateBar(self.Options.FastestClear3, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
 			end
-			--Unregister high CPU combat log events
-			self:UnregisterShortTermEvents()
-			eventsRegistered = false
+			self:SendSync("AQ40Started", self.vb.firstEngageTime)--Also sync engage time
 		end
 	end
 
-	-- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-	local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
-	local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
-	local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
-
-	-- todo: thorns
-	local playerGUID = UnitGUID("player")
-	local ShadowStorm = DBM:GetSpellName(26555)--Classic Note
-	function mod:SPELL_DAMAGE(_, sourceName, _, _, destGUID, _, _, _, spellId, spellName)
-		if (spellId == 26555 or spellName == ShadowStorm) and destGUID == playerGUID and self:AntiSpam(3, 3) then
-			specWarnShadowStorm:Show(sourceName)
-			specWarnShadowStorm:Play("findshelter")
-		end
-		if eventsRegistered then-- for AQ40 timer
-			checkFirstPull(self, destGUID or 0)
+	--TODO, maybe check if any bosses killed in saved lockout, in case group pulls trash after killing all required bosses
+	--Right now, it'd start a new speed run timer if you pull trash after
+	function mod:StartEngageTimers(guid, cid)
+		if cid == 15264 then--Anubisath Sentinel
+			checkFirstPull(self)
+		elseif cid == 15262 then--Obsidian Eradicator
+			checkFirstPull(self)
 		end
 	end
-	function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, _, _, _, spellSchool, missType)
-		if (missType == "REFLECT" or missType == "DEFLECT") and sourceGUID == playerGUID then
-			if (spellSchool == 32 or spellSchool == 16) and self:AntiSpam(3, 1) then
-				specWarnShadowFrostReflect:Show(destName)
-				specWarnShadowFrostReflect:Play("stopattack")
-			elseif (spellSchool == 4 or spellSchool == 64) and self:AntiSpam(3, 2) then
-				specWarnFireArcaneReflect:Show(destName)
-				specWarnFireArcaneReflect:Play("stopattack")
-			end
-		end
-		if eventsRegistered then-- for AQ40 timer
-			checkFirstPull(self, destGUID or 0)
-		end
-	end
-
-	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID)
-		checkFirstPull(self, destGUID or 0)
-	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
-
-	function mod:SWING_DAMAGE(_, _, _, _, destGUID)
-		checkFirstPull(self, destGUID or 0)
-	end
-	mod.SWING_MISSED = mod.SWING_DAMAGE
 
 	local function updateDefeatedBosses(self, encounterId)
 		if self:AntiSpam(10, encounterId) then
