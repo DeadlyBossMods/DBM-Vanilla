@@ -22,7 +22,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 799 800 26613 26607 804",
 	"SPELL_AURA_REMOVED 804",
-	"SPELL_CAST_SUCCESS 802 804"--26613
+	"SPELL_CAST_SUCCESS 802 804 1217333"--26613
 )
 
 --Add warning for classic to actually swap for strike? boss taunt immune though.
@@ -46,7 +46,11 @@ mod:AddNamePlateOption("NPAuraOnMutateBug", 802)
 function mod:OnCombatStart(delay)
 	--timerStrikeCD:Start(14.2-delay)
 	berserkTimer:Start()
-	timerTeleport:Start(-delay)
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		timerTeleport:Start(31 - delay)
+	else
+		timerTeleport:Start(-delay)
+	end
 	if self.Options.NPAuraOnMutateBug then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 	end
@@ -60,7 +64,7 @@ end
 
 --Teleport-pull:30.6, 35.2, 37.8, 40.1, 36.5, 36.6, 37.7, 31.9, 31.7, 38.8, 32.9, 30.4, 40.2, 30.6, 37.6, 35.4, 32.9, 34.2, 35.3, 36.5, 30.4, 29.2, 34.3, 32.8, 40.0, 35.4, 36.5, 35.3
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(799, 800) and self:AntiSpam(5, 1) then
+	if args:IsSpell(799, 800) and not DBM:IsSeasonal("SeasonOfDiscovery") and self:AntiSpam(5, 1) then
 		warnTeleport:Show()
 		timerTeleport:Start()
 	elseif args:IsSpell(26613) and not self:IsTrivial() then
@@ -106,5 +110,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerExplodeBugCD:Start()
 --	elseif args:IsSpell(26613) then
 		--timerStrikeCD:Start()
+	elseif args:IsSpell(1217333) and self:AntiSpam(5, 1) then -- SoD teleport
+		-- https://sod.warcraftlogs.com/reports/BGT3zQYnb82wfAkM#fight=48&type=casts&options=1026&hostility=1&source=165&ability=1217333&view=events
+		warnTeleport:Show()
+		timerTeleport:Start(35.5)
 	end
 end
