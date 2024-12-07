@@ -25,6 +25,7 @@ mod:SetModelID(14367)
 mod:SetZone(469)
 
 mod:RegisterCombat("combat")
+mod:SetWipeTime(20) -- ENCOUNTER_START triggers when you pull the lever, but it can take a bit until your group is in combat
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23308 23309 23313 23314 23187 23189 23315 23316 23310 23312",
