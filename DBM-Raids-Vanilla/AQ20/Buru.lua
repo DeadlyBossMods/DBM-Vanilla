@@ -73,6 +73,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
+	-- "<15.57 22:24:07> [CHAT_MSG_MONSTER_EMOTE] %s sets eyes on Exikør!#Buru the Gorger###Exikør##0#0##0#914#nil#0#false#false#false#false",
 	if not msg:find(L.PursueEmote) then return end
 	if target then
 		target = DBM:GetUnitFullName(target)
