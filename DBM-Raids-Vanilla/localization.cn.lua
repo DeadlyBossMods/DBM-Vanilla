@@ -213,7 +213,7 @@ L:SetOptionLocalization{
 	SpecWarnPursue	= "当你被追击的时候显示特別警告"
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "%s凝视着%s!"
+	PursueEmote 	= "凝视着"
 }
 
 -------------
