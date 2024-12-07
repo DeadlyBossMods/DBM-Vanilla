@@ -2,9 +2,18 @@ local mod	= DBM:NewMod("EmerissVanilla", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(14889)--121913 TW ID, 14889 classic ID
+
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod:SetCreatureID(234880)
+else
+	mod:SetCreatureID(14889)--121913 TW ID, 14889 classic ID
+end
+
 --mod:SetModelID(17887)
 mod:EnableWBEngageSync()--Enable syncing engage in outdoors
+
+mod:SetEncounterID(3111)--Sod Encounter ID
+
 
 mod:RegisterCombat("combat_yell", L.Pull)
 
@@ -40,11 +49,25 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 --]]
+-- "<0.20 23:34:17> [DBM_Debug] This event is started byMONSTER_MESSAGE. Review ENCOUNTER_START event to ensure if this is still needed#2",
+--
+-- "<56.50 23:53:45> [DBM_Debug] ENCOUNTER_START event fired: 3111 Emeriss 9 40#nil",
+-- "<123.41 23:54:52> [DBM_Debug] CHAT_MSG_MONSTER_YELL from Alliance Hunter while looking at Emeriss#2",
+
+-- "<54.36 00:06:04> [DBM_Debug] ENCOUNTER_START event fired: 3111 Emeriss 9 40#nil",
+-- "<159.80 00:07:49> [DBM_Debug] CHAT_MSG_MONSTER_YELL from Alliance Druid while looking at Emeriss#2",
+
+-- "<101.72 00:14:08> [DBM_Debug] ENCOUNTER_START event fired: 3111 Emeriss 9 40#nil",
+-- "<210.43 00:15:57> [DBM_Debug] CHAT_MSG_MONSTER_YELL from Alliance Hunter while looking at Emeriss#2",
+
+
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(24814, 24813) then
-		specWarnSleepingFog:Show()
-		specWarnSleepingFog:Play("watchstep")
+		if self:AntiSpam(600, "SpecWarnFog") then -- It's more active than inactive, only warn for the initial one
+			specWarnSleepingFog:Show()
+			specWarnSleepingFog:Play("watchstep")
+		end
 		timerSleepingFogCD:Start()
 	--elseif args.spellId == 24818 and self:AntiSpam(3, 1) then
 		--timerNoxiousBreathCD

@@ -2,12 +2,17 @@ local mod	= DBM:NewMod("TaerarVanilla", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetCreatureID(14890)--121911 TW ID, 14890 classic ID
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod:SetCreatureID(235197)
+else
+	mod:SetCreatureID(14890)--121911 TW ID, 14890 classic ID
+end
 --mod:SetModelID(17887)
 mod:EnableWBEngageSync()--Enable syncing engage in outdoors
 
 mod:RegisterCombat("combat_yell", L.Pull)
 
+mod:SetEncounterID(3113)--Sod Encounter ID
 
 mod:RegisterEventsInCombat(
 --	"SPELL_CAST_START 24818 243401",
@@ -50,8 +55,10 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(24814, 24813) then
-		specWarnSleepingFog:Show()
-		specWarnSleepingFog:Play("watchstep")
+		if self:AntiSpam(600, "SpecWarnFog") then -- It's more active than inactive, only warn for the initial one
+			specWarnSleepingFog:Show()
+			specWarnSleepingFog:Play("watchstep")
+		end
 		timerSleepingFogCD:Start()
 	--elseif args.spellId == 24818 and self:AntiSpam(3, 1) then
 		--timerNoxiousBreathCD
