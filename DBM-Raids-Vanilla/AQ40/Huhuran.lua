@@ -18,24 +18,23 @@ mod:SetZone(531)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050 1215757 1215752 1215753",
+	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050 1215757 1215752 1215753 1215755 1215885",
 	"SPELL_AURA_APPLIED_DOSE 26050 1215757",
-	"SPELL_AURA_REMOVED 26180 26053 26050 1215757 1215752 1215753",
-	"SPELL_CAST_SUCCESS 26053 1215752",
+	"SPELL_AURA_REMOVED 26180 26053 26050 1215757 1215752 1215753 26051 1215755",
+	"SPELL_CAST_SUCCESS 26053 1215752 1215755",
 	"UNIT_HEALTH"
 )
 
 local warnSting			= mod:NewTargetAnnounce(26180, 2)
 local warnAcid			= mod:NewStackAnnounce(26050, 3, nil, "Tank", 2)
 local warnPoison		= mod:NewSpellAnnounce(26053, 3)
-local warnEnrage		= mod:NewSpellAnnounce(26051, 2, nil, "Tank", 2)
+local warnEnrage		= mod:NewSpellAnnounce(26051, 2, nil, "Tank|Healer", 2)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 local warnBerserk		= mod:NewSpellAnnounce(26068, 2)
-local warnFrenzy		= mod:NewSpellAnnounce(1215755, 3, nil, "Tank|Healer", 4)
 
 local specWarnAcid		= mod:NewSpecialWarningStack(26050, nil, 10, nil, nil, 1, 6)
 local specWarnAcidTaunt	= mod:NewSpecialWarningTaunt(26050, nil, nil, nil, 1, 2)
-local specWarnFrenzy	= mod:NewSpecialWarningDispel(1215755, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnFrenzy	= mod:NewSpecialWarningDispel(26051, "RemoveEnrage", nil, nil, 1, 6)
 
 
 local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
@@ -74,20 +73,10 @@ local function warnStingTargets()
 	table.wipe(StingTargets)
 end
 
-local function frenzy(self)
-	if self:AntiSpam(8, "Frenzy") then
-		specWarnFrenzy:Show()
-		specWarnFrenzy:Play("trannow")
-		warnFrenzy:Show()
-	end
-end
-
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(26053, 1215752) then
 		warnPoison:Show()
 		timerPoisonCD:Start()
-	elseif args:IsSpell(1215755) then -- TODO: validate if this trigger is needed or if AURA_APPLIED works
-		frenzy(self)
 	end
 end
 
@@ -101,10 +90,12 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(26053, 1215752) and args:IsPlayer() then
 		timerPoison:Start()
-	elseif args:IsSpell(26051) then
+	elseif args:IsSpell(26051, 1215755) then
 		warnEnrage:Show()
 		timerEnrage:Start()
 		timerEnrageCD:Start()
+		specWarnFrenzy:Show(args.destName)
+		specWarnFrenzy:Play("trannow")
 	elseif args:IsSpell(26068, 1215885) then
 		warnBerserk:Show()
 		timerStingCD:Stop()
@@ -126,8 +117,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnAcid:Show(args.destName, amount)
 		end
-	elseif args:IsSpell(1215755) then
-		frenzy(self)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
@@ -139,6 +128,8 @@ function mod:SPELL_AURA_REMOVED(args)
 		timerPoison:Stop()
 	elseif args:IsSpell(26050, 1215757) then
 		timerAcid:Stop(args.destName)
+	elseif args:IsSpell(26051, 1215755) then
+		timerEnrage:Stop()
 	end
 end
 
