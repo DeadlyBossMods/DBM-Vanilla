@@ -6,6 +6,11 @@
 ## LoadOnDemand: 1
 ## X-DBM-Test: true
 
+# World Bosses
+Season of Discovery/World Bosses/Ysondre.lua
+
+Season of Discovery/World Bosses/Reports/Ysondre.lua
+
 # Blackwing Lair
 Season of Discovery/Blackwing Lair/SoDTrials.lua
 Season of Discovery/Blackwing Lair/SoDTrialsv2.lua
