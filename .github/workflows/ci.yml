@@ -30,7 +30,7 @@ jobs:
         if: startsWith(github.ref, 'refs/tags/r')
         shell: bash
         run: |
-          cd "${{ github.workspace }}
+          cd "${{ github.workspace }}"
           find DBM-Test-* -name \*.lua -not -path '*/Reports/*' -print0 | xargs -0 -n1 sed -i -z 's/--@strip-from-release@.*@end-strip-from-release@/-- Raw test log stripped from release build./'
       - name: Create Package
         uses: BigWigsMods/packager@master
