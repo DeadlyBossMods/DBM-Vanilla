@@ -27,17 +27,19 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 785",
 	"SPELL_AURA_REMOVED 785",
 	"SPELL_CAST_SUCCESS 20449 4801 8195",
+	"SPELL_CAST_START 26192",
 	"SPELL_SUMMON 747",
 	"UNIT_HEALTH"
 )
 
 --TODO, special warning optimizing?
-local warnMindControl	= mod:NewTargetAnnounce(785, 4)
+local warnMindControl	= mod:NewTargetNoFilterAnnounce(785, 4)
 local warnTeleport		= mod:NewSpellAnnounce(20449, 3)
 local warnSummon		= mod:NewSpellAnnounce(747, 3)
 local warnSummonSoon	= mod:NewSoonAnnounce(747, 2)
 
 local timerMindControl	= mod:NewBuffActiveTimer(20, 785, nil, nil, nil, 3)
+local specWarnAoE		= mod:NewSpecialWarningInterrupt(26192, "HasInterrupt", nil, nil, 1, 2)
 
 mod:AddSetIconOption("SetIconOnMC", 785, true, 0, {4, 5, 6, 7, 8})
 
@@ -60,17 +62,22 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(785) then
-		MCTargets[#MCTargets + 1] = args.destName
-		self:Unschedule(warnMCTargets)
 		if self.Options.SetIconOnMC then
 			self:SetIcon(args.destName, self.vb.MCIcon)
 		end
-		if #MCTargets >= 3 then
+		-- TODO: Cleanup to use normal combined show
+		MCTargets[#MCTargets + 1] = args.destName
+		if DBM:IsSeasonal("SeasonOfDiscovery") then -- Single target in SoD
 			warnMCTargets(self)
 		else
-			self:Schedule(0.5, warnMCTargets, self)
+			self:Unschedule(warnMCTargets)
+			if #MCTargets >= 3 then
+				warnMCTargets(self)
+			else
+				self:Schedule(0.5, warnMCTargets, self)
+			end
+			self.vb.MCIcon = self.vb.MCIcon - 1
 		end
-		self.vb.MCIcon = self.vb.MCIcon - 1
 	end
 end
 
@@ -89,6 +96,13 @@ end
 function mod:SPELL_SUMMON(args)
 	if args:IsSpell(747) and self:AntiSpam(3, 2) then
 		warnSummon:Show()
+	end
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpell(26192) and self:AntiSpam(3, "ArcaneExplosion") then
+		specWarnAoE:Show(args.sourceName)
+		specWarnAoE:Play("kickcast")
 	end
 end
 
