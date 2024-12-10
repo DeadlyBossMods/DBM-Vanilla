@@ -37,6 +37,7 @@ local timerFearCD		= mod:NewCDTimer(20.5, 26580, nil, nil, nil, 2)
 function mod:OnCombatStart(delay)
 	timerFearCD:Start(10-delay)
 	if self:IsEvent() or not self:IsTrivial() then
+		self:UnscheduleMethod("UnregisterShortTermEvents")
 		self:RegisterShortTermEvents(
 			"SPELL_AURA_APPLIED 25786 25989",
 			"SPELL_PERIODIC_DAMAGE 25786 25989",
@@ -46,7 +47,8 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
+	-- Poison cloud stays around after the boss dies
+	self:ScheduleMethod(60, "UnregisterShortTermEvents")
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
