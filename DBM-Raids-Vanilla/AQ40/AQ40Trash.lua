@@ -12,18 +12,22 @@ local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
 --mod:SetModelID(47785)
 mod:SetMinSyncRevision(20200710000000)--2020, 7, 10
-mod:SetZone(531)
+mod:SetZone(531) -- Important to keep to not double trigger shared IDs with AQ20
 mod:RegisterZoneCombat(531)
 
 mod.isTrashMod = true
+mod.isTrashModBossFightAllowed = true
 
 mod:RegisterEvents(
 	"ENCOUNTER_END",
-	"SPELL_AURA_APPLIED 26556 25698 26079",
+	"SPELL_AURA_APPLIED 26556 25698 26079 1215202",
 	"SPELL_AURA_REMOVED 26556",
 	"SPELL_DAMAGE",
 	"SPELL_MISSED"
 )
+
+-- Toxic Pool
+mod:NewGtfo{spell = "1215421"}
 
 --TODO, meteor those big guys use, maybe some other stuff
 --local specWarnPrimalRampage			= mod:NewSpecialWarningDodge(198379, "Melee", nil, nil, 1, 2)
@@ -38,6 +42,7 @@ local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
 local yellPlague                    = mod:NewYell(26556)
 local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
+local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
 
 mod:AddRangeFrameOption(10, 22997)
 mod:AddSpeedClearOption("AQ40", true)
@@ -70,6 +75,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		specWarnExplode:Play("justrun")
 	elseif args:IsSpell(26079) then
 		warnCauseInsanity:CombinedShow(0.75, args.destName)
+	elseif args:IsSpell(1215202) and self:AntiSpam(4, "Burst") then
+		-- This works slightly differently when triggered during a boss fight vs. during trash:
+		-- In a boss fight it is immediately cast on everyone, in trash it's only on a few and spreads from there
+		-- The AQ20 mod has some elaborate logic to play different sounds in different scenarios
+		-- But in AQ40 it's extremely likely that it will just spread to anyone anyways, so just tell people to spread
+		specWarnBurst:Show()
+		specWarnBurst:Play("scatter")
 	end
 end
 
