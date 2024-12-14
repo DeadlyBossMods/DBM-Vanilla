@@ -357,7 +357,7 @@ function mod:TrackTrashAbility(guid, ability, raidFlags, name)
 	mobs[guid] = mobInfo
 	mobInfo.name = name
 	mobInfo.lastSeen = GetTime()
-	mobInfo.icon = 3 --math.log(raidFlags) / math.log(2) + 1
+	mobInfo.icon = math.log(raidFlags) / math.log(2) + 1
 	if not mobInfo.abilities[ability] then
 		mobInfo.abilities[ability] = true
 		mobInfo.sortedAbilities[#mobInfo.sortedAbilities + 1] = trashAbilitiesLocalized[ability] or ability

@@ -29,7 +29,7 @@ local timerEnrage			= mod:NewCDTimer(56, 28131, nil, nil, nil, 6)-- 56-76
 mod.vb.enraged = false
 
 function mod:OnCombatStart(delay)
-	timerEnrage:Start(-delay)
+	timerEnrage:Start(56-delay)
 	warnEnrageSoon:Schedule(55 - delay)
 	self.vb.enraged = false
 end

@@ -51,7 +51,7 @@ function mod:OnCombatStart(delay)
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerTeleport:Start(31 - delay)
 	else
-		timerTeleport:Start(-delay)
+		timerTeleport:Start() --fixme: -delay for variable timers?
 	end
 	if self.Options.NPAuraOnMutateBug then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")

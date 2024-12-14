@@ -126,7 +126,7 @@ mod.vb.currentIcon = 8
 function mod:OnCombatStart(delay)
 	self.vb.currentIcon = 1
 	self:SetStage(1)
-	timerRP:Start(-delay)
+	timerRP:Start(12.45-delay)
 	timerSprocketfireCD:Start(21.4-delay)
 	timerFurnaceSurgeCD:Start(33.7-delay)--33-36
 	if self.Options.InfoFrame then
