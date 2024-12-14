@@ -33,7 +33,7 @@ mod:RegisterEventsInCombat(
 local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)
 
-local timerAntiMagicPulseCD	= mod:NewCDTimer(15.7, 19492, nil, nil, nil, 2)--15.7-20 variation
+local timerAntiMagicPulseCD	= mod:NewVarTimer("v15.7-20", 19492, nil, nil, nil, 2)--15.7-20 variation
 local timerMagmakinCD		= mod:NewCDTimer(5, 20506, nil, nil, nil, 1)--5-6.5 variation
 
 function mod:OnCombatStart(delay)

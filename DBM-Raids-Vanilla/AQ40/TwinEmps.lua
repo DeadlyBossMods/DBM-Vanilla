@@ -34,9 +34,9 @@ local specWarnStrike		= mod:NewSpecialWarningDefensive(26613, nil, nil, nil, 1, 
 local specWarnExplodeBug	= mod:NewSpecialWarningMove(804, nil, nil, nil, 1, 2)
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(26607, nil, nil, nil, 8, 2)
 
-local timerTeleport			= mod:NewCDTimer(29.2, 800, nil, nil, nil, 6, nil, nil, true, 1, 4)--29.2-40.2
-local timerExplodeBugCD		= mod:NewCDTimer(4.9, 804, nil, false, nil, 1)--4.9-9
-local timerMutateBugCD		= mod:NewCDTimer(11, 802, nil, false, nil, 1)--11-16
+local timerTeleport			= mod:NewVarTimer("v29.2-40.2", 800, nil, nil, nil, 6, nil, nil, true, 1, 4)--29.2-40.2
+local timerExplodeBugCD		= mod:NewVarTimer("v4.9-9", 804, nil, false, nil, 1)--4.9-9
+local timerMutateBugCD		= mod:NewVarTimer("v11-16", 802, nil, false, nil, 1)--11-16
 --local timerStrikeCD			= mod:NewCDTimer(9.7, 26613, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--9.7-42.6
 
 local berserkTimer			= mod:NewBerserkTimer(900)
