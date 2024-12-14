@@ -126,15 +126,15 @@ end
 function mod:AspectTimer(delay)
 	delay = delay or 0
 	if not timerNextAspect then return end
-	timerNextAspect:Start(-delay)
+	timerNextAspect:Start(20-delay)
 	self:UnscheduleMethod("AspectTimer")
 	self:ScheduleMethod(22 - delay, "AspectTimer", 2)
 end
 
 function mod:OnCombatStart(delay)
-	enrageTimer:Start(-delay)
+	enrageTimer:Start(585-delay)
 	warnSiphonSoon:Schedule(80-delay)
-	timerSiphon:Start(-delay)
+	timerSiphon:Start(90-delay)
 	--Hard Mode Timers
 	--This just checks for Hakkar's health which is higher on hard mode
 	--Can't just start these on all normal mode pulls

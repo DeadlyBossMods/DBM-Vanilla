@@ -92,7 +92,7 @@ function mod:OnSync(msg, delay)
 		timerShadowStrikeCD:Stop()
 		timerShadowCrashCD:Stop()
 		warnMarchofMurlocs:Show()
-		murlocsActive:Start(-delay)
-		bossImmune:Start(-delay)
+		murlocsActive:Start(32-delay)
+		bossImmune:Start(24.2-delay)
 	end
 end

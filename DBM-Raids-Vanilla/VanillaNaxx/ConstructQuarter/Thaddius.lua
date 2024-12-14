@@ -42,7 +42,7 @@ function mod:OnCombatStart(delay)
 	currentCharge = nil
 	down = 0
 	self:ScheduleMethod(40.6 - delay, "TankThrow")
-	timerThrow:Start(-delay)
+	timerThrow:Start(20.6-delay)
 	warnThrowSoon:Schedule(37.6 - delay)
 end
 

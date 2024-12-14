@@ -37,7 +37,7 @@ function mod:OnCombatStart(delay, yellTriggered)
 		--timerMarkCD:Start(14.1-delay)
 	end
 	if IsInInstance() or yellTriggered then -- To unreliable for random outdoor pull timers
-		enrageTimer:Start(-delay)
+		enrageTimer:Start(180-delay)
 	end
 end
 
