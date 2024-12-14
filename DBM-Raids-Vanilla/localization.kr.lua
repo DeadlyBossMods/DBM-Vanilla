@@ -214,13 +214,13 @@ L:SetGeneralLocalization{
 	name 		= "먹보 부루"
 }
 L:SetWarningLocalization{
-	WarnPursue		= "추적 : >%s<",
-	SpecWarnPursue	= "당신을 추적!",
-	WarnDismember	= "%s : >%s< (%s)"
+	WarnPursue		= "추적: >%s<",
+	SpecWarnPursue	= "당신을 추적중",
+	WarnDismember	= "%s: >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "추적 대상 알림 보기",
-	SpecWarnPursue	= "추적 대상이 된 경우 특수 알림 보기"
+	WarnPursue		= "추적 대상 알림",
+	SpecWarnPursue	= "추적 대상이 됐을 때 특수 알림 보기"
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "노려봅니다!"
@@ -244,7 +244,7 @@ L:SetGeneralLocalization{
 	name 		= "무적의 오시리안"
 }
 L:SetOptionLocalization{
-	WarnVulnerable	= "약화 알림 보기",
+	WarnVulnerable	= "약화 알림",
 	TimerVulnerable	= "약화 타이머 바 보기"
 }
 
@@ -255,6 +255,13 @@ L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
 	name = "안퀴20 일반몹"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "폭발 5초 전"
+}
+L:SetOptionLocalization{
+	WarnExplosion = "$spell:1214871 알림 보기 (눈알 촉수 광역 스킬)"
 }
 
 -----------------
@@ -459,25 +466,25 @@ L:SetGeneralLocalization{
 	name = "디스커버리 시즌 시련"
 }
 L:SetWarningLocalization{
-	SpecWarnBothBombs		= ">%s<에게 파랑과 녹색",
-	SpecWarnBothBombsYou	= "나에게 파랑과 녹색",
+	SpecWarnBothBombs		= ">%s<에게 파란색과 녹색",
+	SpecWarnBothBombsYou	= "나에게 파란색과 녹색",
 }
 L:SetOptionLocalization{
-	SpecWarnBothBombs		= "파랑 녹색 폭탄에 같이 걸린 사람이 있을 때 특수 알림을 보여줍니다.",
-	SpecWarnBothBombsYou	= "내가 파랑 녹색 폭탄에 같이 걸렸을 때 특수 알림을 보여줍니다.",
-	TimerBombs				= "파랑 녹색 시련 폭탄 타이머 바 보기"
+	SpecWarnBothBombs		= "파란색 녹색 폭탄에 같이 걸린 사람이 있을 때 특수 알림을 보여줍니다.",
+	SpecWarnBothBombsYou	= "내가 파란색 녹색 폭탄에 같이 걸렸을 때 특수 알림을 보여줍니다.",
+	TimerBombs				= "파란색 녹색 시련 폭탄 타이머 바 보기"
 }
 
 L:SetMiscLocalization{
 	-- Does not need translation if "BLUE BOMB" is okay, the "Blue"/"Green" strings are just fallbacks if Core is outdated
 	-- Only translate that if you need something like "BOMB BLUE"
-	BlueBomb = (DBM_COMMON_L.BLUE or "파랑") .. " " .. DBM_COMMON_L.BOMB,
+	BlueBomb = (DBM_COMMON_L.BLUE or "파란색") .. " " .. DBM_COMMON_L.BOMB,
 	GreenBomb = (DBM_COMMON_L.GREEN or "녹색") .. " " .. DBM_COMMON_L.BOMB,
 
 	-- Used in options
-	BlueTrial = "푸른용의 시련",
-	GreenTrial = "녹색용의 시련",
-	GreenAndBlue = "녹색과 파랑에 같이 걸린 사람",
+	BlueTrial = "파란색 시련",
+	GreenTrial = "녹색 시련",
+	GreenAndBlue = "녹색 파란색이 다 걸린 사람",
 }
 
 ----------------
@@ -1223,7 +1230,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnPriestRemaining		= "여사제 %s 남음"
+	warnPriestRemaining		= "여사제 남은 수: %s"
 })
 
 L:SetOptionLocalization({
