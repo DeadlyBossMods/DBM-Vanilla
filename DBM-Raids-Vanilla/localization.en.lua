@@ -99,26 +99,26 @@ L:SetGeneralLocalization{
 	name = "C'Thun"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle			= "Eye Tentacle",
+	WarnEyeTentacle			= "Eye Tentacles",
 	WarnClawTentacle2		= "Claw Tentacle",
 	WarnGiantEyeTentacle	= "Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Giant Claw Tentacle",
-	SpecWarnWeakened		= "C'Thun Weaken!"
+	SpecWarnWeakened		= "C'Thun Weakened!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Eye Tentacle",
+	TimerEyeTentacle		= "Eye Tentacles",
 	TimerClawTentacle		= "Claw Tentacle",
 	TimerGiantEyeTentacle	= "Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Giant Claw Tentacle",
 	TimerWeakened			= "Weaken ends"
 }
 L:SetOptionLocalization{
-	WarnEyeTentacle			= "Show warning for Eye Tentacle",
+	WarnEyeTentacle			= "Show warning for Eye Tentacles",
 	WarnClawTentacle2		= "Show warning for Claw Tentacle",
 	WarnGiantEyeTentacle	= "Show warning for Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Show warning for Giant Claw Tentacle",
 	SpecWarnWeakened		= "Show special warning when boss weaken",
-	TimerEyeTentacle		= "Show timer for next Eye Tentacle",
+	TimerEyeTentacle		= "Show timer for next Eye Tentacles",
 	TimerClawTentacle		= "Show timer for next Claw Tentacle",
 	TimerGiantEyeTentacle	= "Show timer for next Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Show timer for next Giant Claw Tentacle",
@@ -162,6 +162,20 @@ L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
 	name = "AQ40 Trash"
+}
+
+L:SetTimerLocalization{
+	TimerExplosion = "Exploding Ghosts"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "Single exploding ghost spawned - dodge",
+	SpecWarnExplosion = "Exploding ghosts - dodge",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "Show announce for exploding ghosts ($spell:1214871)",
+	SpecWarnExplosion = "Show special warning when multiple exploding ghosts spawn ($spell:1214871)",
+	TimerExplosion = "Show timer for when multiple exploding ghosts spawn ($spell:1214871)"
 }
 
 ---------------
@@ -265,13 +279,19 @@ L:SetGeneralLocalization{
 	name = "AQ20 Trash"
 }
 
-L:SetWarningLocalization{
-	WarnExplosion = "Explosion in 5 sec"
-}
-L:SetOptionLocalization{
-	WarnExplosion = "Show announce for $spell:1214871 (Eye Tentacle AoE)"
+L:SetTimerLocalization{
+	TimerExplosion = "Exploding Ghosts"
 }
 
+L:SetWarningLocalization{
+	WarnExplosion = "Single exploding ghost spawned - dodge",
+	SpecWarnExplosion = "Exploding ghosts - dodge",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "Show announce for exploding ghosts ($spell:1214871)",
+	SpecWarnExplosion = "Show special warning when multiple exploding ghosts spawn ($spell:1214871)",
+	TimerExplosion = "Show timer for when multiple exploding ghosts spawn ($spell:1214871)"
+}
 -----------------
 --  Razorgore  --
 -----------------
