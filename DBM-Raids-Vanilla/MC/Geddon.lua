@@ -48,10 +48,10 @@ local yellBombFades		= mod:NewShortFadesYell(20475)
 local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2)
 local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2)
 
-local timerInfernoCD	= mod:NewCDTimer(21, 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
+local timerInfernoCD	= mod:NewVarTimer("v21-27.9", 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
 local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 2)
-local timerIgniteManaCD	= mod:NewCDTimer(27, 19659, nil, nil, nil, 2)--27-33
-local timerBombCD		= mod:NewCDTimer(13.3, 20475, nil, nil, nil, 3)--13.3-21
+local timerIgniteManaCD	= mod:NewVarTimer("v27-33", 19659, nil, nil, nil, 2)--27-33
+local timerBombCD		= mod:NewVarTimer("v13.3-21", 20475, nil, nil, nil, 3)--13.3-21
 local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 3)
 local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, nil, nil, nil, nil, nil, nil, nil, nil, true)
 

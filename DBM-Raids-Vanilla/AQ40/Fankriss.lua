@@ -71,7 +71,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_SUMMON(args)
-	if args:IsSpell(518, 25832, 25831) then
+	if args:IsSpell(518, 25832, 25831) and self:AntiSpam(3, "SummonWorm") then
 		warnWorm:Show()
 	end
 end

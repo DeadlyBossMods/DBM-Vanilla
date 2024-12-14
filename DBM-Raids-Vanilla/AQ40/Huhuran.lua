@@ -18,22 +18,24 @@ mod:SetZone(531)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050",
-	"SPELL_AURA_APPLIED_DOSE 26050",
-	"SPELL_AURA_REMOVED 26180 26053 26050",
-	"SPELL_CAST_SUCCESS 26053",
+	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050 1215757 1215752 1215753 1215755 1215885",
+	"SPELL_AURA_APPLIED_DOSE 26050 1215757",
+	"SPELL_AURA_REMOVED 26180 26053 26050 1215757 1215752 1215753 26051 1215755",
+	"SPELL_CAST_SUCCESS 26053 1215752 1215755",
 	"UNIT_HEALTH"
 )
 
 local warnSting			= mod:NewTargetAnnounce(26180, 2)
 local warnAcid			= mod:NewStackAnnounce(26050, 3, nil, "Tank", 2)
 local warnPoison		= mod:NewSpellAnnounce(26053, 3)
-local warnEnrage		= mod:NewSpellAnnounce(26051, 2, nil, "Tank", 2)
+local warnEnrage		= mod:NewSpellAnnounce(26051, 2, nil, "Tank|Healer", 2)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 local warnBerserk		= mod:NewSpellAnnounce(26068, 2)
 
 local specWarnAcid		= mod:NewSpecialWarningStack(26050, nil, 10, nil, nil, 1, 6)
 local specWarnAcidTaunt	= mod:NewSpecialWarningTaunt(26050, nil, nil, nil, 1, 2)
+local specWarnFrenzy	= mod:NewSpecialWarningDispel(26051, "RemoveEnrage", nil, nil, 1, 6)
+
 
 local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
 local timerStingCD		= mod:NewCDTimer(25, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
@@ -72,32 +74,37 @@ local function warnStingTargets()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(26053) then
+	if args:IsSpell(26053, 1215752) then
 		warnPoison:Show()
 		timerPoisonCD:Start()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(26180) then
+	if args:IsSpell(26180, 1215753) then
 		StingTargets[#StingTargets + 1] = args.destName
 		self:Unschedule(warnStingTargets)
 		self:Schedule(1, warnStingTargets)
 		if args:IsPlayer() then
 			timerSting:Start()
 		end
-	elseif args:IsSpell(26053) and args:IsPlayer() then
+	elseif args:IsSpell(26053, 1215752) and args:IsPlayer() then
 		timerPoison:Start()
-	elseif args:IsSpell(26051) then
-		warnEnrage:Show()
+	elseif args:IsSpell(26051, 1215755) then
 		timerEnrage:Start()
 		timerEnrageCD:Start()
-	elseif args:IsSpell(26068) then
+		if self.Options.SpecWarn26051dispel then
+			specWarnFrenzy:Show(args.destName)
+			specWarnFrenzy:Play("trannow")
+		else
+			warnEnrage:Show()
+		end
+	elseif args:IsSpell(26068, 1215885) then
 		warnBerserk:Show()
 		timerStingCD:Stop()
 		timerEnrageCD:Stop()
 		timerPoisonCD:Stop()
-	elseif args:IsSpell(26050) and not self:IsTrivial() then
+	elseif args:IsSpell(26050, 1215757) and not self:IsTrivial() then
 		local amount = args.amount or 1
 		timerAcid:Start(args.destName)
 		if amount >= 10 then
@@ -118,12 +125,14 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(26180) and args:IsPlayer() then
+	if args:IsSpell(26180, 1215753) and args:IsPlayer() then
 		timerSting:Stop()
-	elseif args:IsSpell(26053) and args:IsPlayer() then
+	elseif args:IsSpell(26053, 1215752) and args:IsPlayer() then
 		timerPoison:Stop()
-	elseif args:IsSpell(26050) then
+	elseif args:IsSpell(26050, 1215757) then
 		timerAcid:Stop(args.destName)
+	elseif args:IsSpell(26051, 1215755) then
+		timerEnrage:Stop()
 	end
 end
 

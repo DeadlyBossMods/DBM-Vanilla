@@ -20,7 +20,7 @@ mod:RegisterCombat("combat")
 mod:SetWipeTime(25)
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 26134",
+	"SPELL_CAST_START 26134 341722",
 	"SPELL_CAST_SUCCESS 26586",
 	"SPELL_AURA_APPLIED 26476",
 	"SPELL_AURA_REMOVED 26476",
@@ -152,7 +152,7 @@ do
 	end
 
 	function mod:SPELL_CAST_START(args)
-		if args:IsSpell(26134) then
+		if args:IsSpell(26134, 341722) then
 			-- the eye target can change to the correct target a tiny bit after the cast starts
 			self:ScheduleMethod(0.1, "BossTargetScanner", args.sourceGUID, "EyeBeamTarget", 0.1, 3)
 		end

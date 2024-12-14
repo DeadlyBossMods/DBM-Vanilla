@@ -25,6 +25,7 @@ mod:RegisterEvents(--An exception to not use incombat events, cause boss might n
 	"CHAT_MSG_MONSTER_YELL"
 )
 
+local timerCombatStart  = mod:NewCombatTimer(30)
 local warnWave			= mod:NewAnnounce("WarnWave", 2, "136116")
 local warnOrder			= mod:NewTargetAnnounce(25471)
 local warnCloud			= mod:NewSpellAnnounce(26550)
@@ -58,8 +59,17 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
+-- "<156.72 22:13:40> [CHAT_MSG_MONSTER_YELL] Remember, Rajaxx, when I said I'd kill you last?#Lieutenant General Andorov###Paszeko##0#0##0#615#nil#0#false#false#false#false",
+-- "<160.22 22:13:43> [CHAT_MSG_MONSTER_YELL] I lied...#Lieutenant General Andorov###Paszeko##0#0##0#617#nil#0#false#false#false#false",
+-- "<178.07 22:14:01> [CHAT_MSG_MONSTER_YELL] They come now. Try not to get yourself killed, young blood.#Lieutenant General Andorov###Paszeko##0#0##0#622#nil#0#false#false#false#false",
+-- "<187.59 22:14:11> [ENCOUNTER_START] 719#General Rajaxx#148#20",
+-- "<187.76 22:14:11> [CHAT_MSG_MONSTER_YELL] Kill first, ask questions later... Incoming!#Lieutenant General Andorov###Paszeko##0#0##0#629#nil#0#false#false#false#false",
+-- "<188.81 22:14:12> [CLEU] SPELL_CAST_SUCCESS#Player-5827-02704792#Azká#Creature-0-5208-509-200-15344-0009536630#Swarmguard Needler#400613#Living Bomb#nil#nil#nil#nil#nil#nil",
+
 function mod:CHAT_MSG_MONSTER_YELL(msg)--some of these yells have line breaks that message match doesn't grab, so will try find.
-	if msg == L.Wave12 or msg:find(L.Wave12) or msg == L.Wave12Alt or msg:find(L.Wave12Alt) then
+	if msg == L.Wave12Alt or msg:find(L.Wave12Alt) then -- RP start
+		self:SendSync("Pull")
+	elseif msg == L.Wave12 or msg:find(L.Wave12) then -- Actual first waves
 		self:SendSync("Wave", "1, 2")
 	elseif msg == L.Wave3 or msg:find(L.Wave3) then
 		self:SendSync("Wave", 3)
@@ -80,5 +90,7 @@ function mod:OnSync(msg, count)
 	if DBM:GetCurrentArea() ~= 509 then return end--Block syncs if not in the zone
 	if msg == "Wave" then
 		warnWave:Show(count)
+	elseif msg == "Pull" then
+		timerCombatStart:Start(31.8) -- 31 seconds until wave starts moving, ~31.8 until they enter the room
 	end
 end

@@ -41,7 +41,7 @@ local warnFlameBuffet		= mod:NewStackAnnounce(23341, 3)
 local specWarnWingBuffet	= mod:NewSpecialWarningSpell(23339, "Tank")
 
 local timerWingBuffet		= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
-local timerShadowFlameCD	= mod:NewCDTimer(14, 22539, nil, false)--14-21
+local timerShadowFlameCD	= mod:NewVarTimer("v14-21", 22539, nil, false)--14-21
 
 local specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2)
 local yellStaticHigh		= mod:NewCountYell(366305)

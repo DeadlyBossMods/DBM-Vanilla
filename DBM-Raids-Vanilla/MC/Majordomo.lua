@@ -44,7 +44,7 @@ local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, n
 
 local timerMagicReflect		= mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerDamageShield		= mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerTeleportCD		= mod:NewCDTimer(25, 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
+local timerTeleportCD		= mod:NewVarTimer("v25-30", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
 local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)--33.9 on SoD
 
 -- New in SoD
@@ -58,7 +58,7 @@ end
 
 function mod:OnCombatStart(delay)
 	timerTeleportCD:Start(19.4-delay)
-	timerShieldCD:Start(27.8-delay)--27-30
+	timerShieldCD:Start(string.format("v%s-%s", 27.8-delay, 30-delay))--27-30
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextFlare:Start(16-delay)
 	end

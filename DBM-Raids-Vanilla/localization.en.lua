@@ -265,6 +265,13 @@ L:SetGeneralLocalization{
 	name = "AQ20 Trash"
 }
 
+L:SetWarningLocalization{
+	WarnExplosion = "Explosion in 5 sec"
+}
+L:SetOptionLocalization{
+	WarnExplosion = "Show announce for $spell:1214871 (Eye Tentacle AoE)"
+}
+
 -----------------
 --  Razorgore  --
 -----------------

@@ -25,6 +25,7 @@ mod:SetModelID(14367)
 mod:SetZone(469)
 
 mod:RegisterCombat("combat")
+mod:SetWipeTime(20) -- ENCOUNTER_START triggers when you pull the lever, but it can take a bit until your group is in combat
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23308 23309 23313 23314 23187 23189 23315 23316 23310 23312",
@@ -58,7 +59,7 @@ local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316, nil, nil, 3)
 local timerAllBreaths	= mod:NewTimer(80, "TimerAllBreaths", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
-local timerVuln			= mod:NewTimer(19.5, "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
+local timerVuln			= mod:NewTimer("v17-25.5", "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
 local timerFetch		= mod:NewCDTimer(40, 467884)
 local timerRollOver		= mod:NewBuffActiveTimer(16, 468199)
 
