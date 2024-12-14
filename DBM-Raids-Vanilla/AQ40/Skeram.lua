@@ -43,20 +43,15 @@ local specWarnAoE		= mod:NewSpecialWarningInterrupt(26192, "HasInterrupt", nil, 
 
 mod:AddSetIconOption("SetIconOnMC", 785, true, 0, {4, 5, 6, 7, 8})
 
-local MCTargets = {}
 mod.vb.splitCount = 0
 mod.vb.MCIcon = 8
 
 function mod:OnCombatStart(delay)
 	self.vb.splitCount = 0
-	table.wipe(MCTargets)
 	self.vb.MCIcon = 8
 end
 
-local function warnMCTargets(self)
-	warnMindControl:Show(table.concat(MCTargets, "<, >"))
-	timerMindControl:Start()
-	table.wipe(MCTargets)
+local function resetMcIcon(self)
 	self.vb.MCIcon = 8
 end
 
@@ -65,20 +60,12 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self.Options.SetIconOnMC then
 			self:SetIcon(args.destName, self.vb.MCIcon)
 		end
-		-- TODO: Cleanup to use normal combined show
-		MCTargets[#MCTargets + 1] = args.destName
-		if DBM:IsSeasonal("SeasonOfDiscovery") then -- Single target in SoD
-			warnMCTargets(self)
-		else
-			self:Unschedule(warnMCTargets)
-			if #MCTargets >= 3 then
-				warnMCTargets(self)
-			else
-				self:Schedule(0.5, warnMCTargets, self)
-			end
-			self.vb.MCIcon = self.vb.MCIcon - 1
-		end
+		self.vb.MCIcon = self.vb.MCIcon - 1
+		self:Unschedule(resetMcIcon)
+		self:Schedule(3, resetMcIcon, self)
 	end
+	warnMindControl:CombinedShow(0.3, args.destName)
+	timerMindControl:Start()
 end
 
 function mod:SPELL_AURA_REMOVED(args)
