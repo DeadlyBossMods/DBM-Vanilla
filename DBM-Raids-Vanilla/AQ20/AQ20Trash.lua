@@ -88,7 +88,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(1215202) then
 		aq40Trash:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
 	elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then
-		specWarnGTFO:Show()
+		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	elseif args:IsSpell(2855) and not args:IsDestTypePlayer() then
 		local caster = DBM:GetRaidUnitIdByGuid(args.sourceGUID)
@@ -99,9 +99,9 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
 	if spellId == 1215421 and destGUID == UnitGUID("player") and self:AntiSpam(4, "ToxicPool") then
-		specWarnGTFO:Show()
+		specWarnGTFO:Show(spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
 end

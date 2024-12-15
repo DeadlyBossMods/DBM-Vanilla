@@ -114,7 +114,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(1215202) then
 		self:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
 	elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then
-		specWarnGTFO:Show()
+		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	elseif args:IsSpell(24573) and args:IsDestTypePlayer() then
 		self:TrackTrashAbility(args.sourceGUID, "MortalStrike", args.sourceRaidFlags, args.sourceName)
@@ -175,9 +175,9 @@ function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, destRaidFl
 	end
 end
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
 	if spellId == 1215421 and destGUID == UnitGUID("player") and self:AntiSpam(4, "ToxicPool") then
-		specWarnGTFO:Show()
+		specWarnGTFO:Show(spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
 end
