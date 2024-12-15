@@ -27,6 +27,7 @@ mod:RegisterEvents(
 	"SPELL_AURA_REMOVED 22997",
 	"SPELL_MISSED",
 	"UNIT_DIED",
+	"SPELL_DAMAGE 14297 24340 8732",
 	"PLAYER_TARGET_CHANGED",
 	"NAME_PLATE_UNIT_ADDED"
 )
@@ -99,6 +100,16 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 1215421 and destGUID == UnitGUID("player") and self:AntiSpam(4, "ToxicPool") then
 		specWarnGTFO:Show()
 		specWarnGTFO:Play("watchfeet")
+	end
+end
+
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _, spellId)
+	if spellId == 14297 then
+		aq40Trash:TrackTrashAbility(sourceGUID, "ShadowStorm", sourceRaidFlags, sourceName)
+	elseif spellId == 24340 then
+		aq40Trash:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
+	elseif spellId == 8732 then
+		aq40Trash:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
 	end
 end
 
