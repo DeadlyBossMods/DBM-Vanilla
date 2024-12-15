@@ -546,7 +546,7 @@ L:SetTimerLocalization{
 	TimerAllBreaths = "Salva da respiração"
 }
 L:SetOptionLocalization{
-	WarnBreath			= "Exibir anúncio quando Cromaggus lançar uma das suas respirações",
+	WarnBreath			= "Exibir anúncio quando Cromaggus lança uma das suas respirações",
 	WarnVulnerableNew	= "Exibir cronômetro para recarga da respiração",
 	TimerBreathCD		= "Exibir recarga da respiração",
 	TimerBreath			= "Exibir lançamento da respiração",
