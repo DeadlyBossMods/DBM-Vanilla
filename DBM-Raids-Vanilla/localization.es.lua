@@ -154,6 +154,28 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Mostrar temporizador para cuando Ouro regrese a la superficie"
 }
 
+----------------
+-- AQ40 Trash --
+----------------
+L = DBM:GetModLocalization("AQ40Trash")
+
+L:SetGeneralLocalization{
+	name = "AQ40: Bichos"
+}
+
+L:SetTimerLocalization{
+	TimerExplosion = "Fantasmas explosivos"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "Apareció un solo fantasma explosivo - esquiva",
+	SpecWarnExplosion = "Fantasmas explosivos - esquiva",
+}
+L:SetOptionLocalization{
+	WarnExplosion 		= "Mostrar anuncio para fantasmas explosivos ($spell:1214871)",
+	SpecWarnExplosion 	= "Mostrar aviso especial cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)",
+	TimerExplosion 		= "Mostrar temporizador para cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)"
+}
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -253,6 +275,20 @@ L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
 	name = "AQ20: Bichos"
+}
+
+L:SetTimerLocalization{
+	TimerExplosion 		= "Fantasmas Explosivos"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion 		= "Apareció un solo fantasma explosivo - esquiva",
+	SpecWarnExplosion 	= "Fantasmas explosivos - esquiva",
+}
+L:SetOptionLocalization{
+	WarnExplosion 		= "Mostrar anuncio para fantasmas explosivos ($spell:1214871)",
+	SpecWarnExplosion 	= "Mostrar aviso especial cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)",
+	TimerExplosion 		= "Mostrar temporizador para cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)"
 }
 
 -----------------
@@ -382,13 +418,15 @@ L:SetTimerLocalization{
 	TimerBreathCD	= "%s TdR",
 	TimerBreath		= "%s lanzamiento",
 	TimerVulnCD		= "TdR de Vulnerabilidad"
+	TimerAllBreaths = "Lluvia de aliento"
 }
 L:SetOptionLocalization{
-	WarnBreath		= "Mostrar aviso cuando Chromaggus lance uno de sus alientos",
+	WarnBreath			= "Mostrar aviso cuando Chromaggus lance uno de sus alientos",
 	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
-	TimerBreathCD	= "Mostrar TdR de aliento",
-	TimerBreath		= "Mostrar lanzamiento de aliento",
-	TimerVulnCD		= "Mostrar TdR de Vulnerabilidad"
+	TimerBreathCD		= "Mostrar TdR de aliento",
+	TimerBreath			= "Mostrar lanzamiento de aliento",
+	TimerVulnCD			= "Mostrar TdR de Vulnerabilidad"
+	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
 	Breath1	= "Primer aliento",
