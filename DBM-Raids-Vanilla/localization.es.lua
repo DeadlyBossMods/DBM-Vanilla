@@ -278,7 +278,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerExplosion 		= "Fantasmas Explosivos"
+	TimerExplosion 		= "Fantasmas explosivos"
 }
 
 L:SetWarningLocalization{
@@ -425,7 +425,7 @@ L:SetOptionLocalization{
 	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
 	TimerBreathCD		= "Mostrar TdR de aliento",
 	TimerBreath			= "Mostrar lanzamiento de aliento",
-	TimerVulnCD			= "Mostrar TdR de Vulnerabilidad"
+	TimerVulnCD			= "Mostrar TdR de Vulnerabilidad",
 	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
