@@ -25,6 +25,7 @@ mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS 26586",
 	"SPELL_DAMAGE 26555 26558 26554",
 	"SPELL_PERIODIC_DAMAGE 1215421",
+	"SPELL_SUMMON 17430 17431",
 	"SPELL_MISSED", -- Unfiltered to catch Reflect from Trash
 	"UNIT_DIED",
 	"PLAYER_TARGET_CHANGED",
@@ -43,6 +44,9 @@ local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
 local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
 local warnExplosion					= mod:NewAnnounce("WarnExplosion", 3, nil, false)
+-- Not sure if both can happen in AQ40
+local warnAdd1						= mod:NewSpellAnnounce(17430)
+local warnAdd2						= mod:NewSpellAnnounce(17431)
 
 local specWarnExplosion				= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
@@ -80,7 +84,9 @@ local trashAbilitiesLocalized = {
 	Mending				= DBM:GetSpellName(2147),
 	KnockAway			= DBM:GetSpellName(18670),
 	Thorns				= DBM:GetSpellName(22351),
-	Plague				= DBM:GetSpellName(26556)
+	Plague				= DBM:GetSpellName(26556),
+	Summon1				= DBM:GetSpellName(17430),
+	Summon2				= DBM:GetSpellName(17431),
 }
 
 -- aura applied didn't seem to catch the reflects and other buffs
@@ -266,6 +272,16 @@ do
 			updateDefeatedBosses(self, encounterId)--Still want to fire this on event because the event will always be faster than sync
 			self:SendSync("EncounterEnd", encounterId)
 		end
+	end
+end
+
+function mod:SPELL_SUMMON(args)
+	if args:IsSpell(17430) then
+		warnAdd1:Show()
+		self:TrackTrashAbility(args.sourceGUID, "Summon1", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(17431) then
+		warnAdd2:Show()
+		self:TrackTrashAbility(args.sourceGUID, "Summon2", args.sourceRaidFlags, args.sourceName)
 	end
 end
 

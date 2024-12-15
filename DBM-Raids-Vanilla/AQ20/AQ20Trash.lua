@@ -25,6 +25,7 @@ mod:RegisterEvents(
 	"SPELL_PERIODIC_DAMAGE 1215421",
 	"SPELL_CAST_SUCCESS 26586",
 	"SPELL_AURA_REMOVED 22997",
+	"SPELL_SUMMON 17430 17431",
 	"SPELL_MISSED",
 	"UNIT_DIED",
 	"SPELL_DAMAGE 14297 24340 8732",
@@ -44,6 +45,8 @@ local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
 local warnPlague                    = mod:NewTargetAnnounce(22997, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
 local warnExplosion					= mod:NewAnnounce("WarnExplosion", 3, nil, false)
+local warnAdd1						= mod:NewSpellAnnounce(17430)
+local warnAdd2						= mod:NewSpellAnnounce(17431)
 
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2)
 local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
@@ -144,6 +147,16 @@ function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, destRaidFl
 			end
 			aq40Trash:TrackTrashAbility(destGUID, "FireArcaneReflect", destRaidFlags, destName)
 		end
+	end
+end
+
+function mod:SPELL_SUMMON(args)
+	if args:IsSpell(17430) then
+		warnAdd1:Show()
+		aq40Trash:TrackTrashAbility(args.sourceGUID, "Summon1", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(17431) then
+		warnAdd2:Show()
+		aq40Trash:TrackTrashAbility(args.sourceGUID, "Summon2", args.sourceRaidFlags, args.sourceName)
 	end
 end
 
