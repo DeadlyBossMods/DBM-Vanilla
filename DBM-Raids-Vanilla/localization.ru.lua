@@ -920,7 +920,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Смерть чужакам!"
+	Pull				= "Смерть чужакам!",
 	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
 	Adds				= "summons forth Skeletal Warriors!",
 	AddsTwo				= "raises more skeletons!"
