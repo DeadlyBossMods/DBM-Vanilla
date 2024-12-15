@@ -13,6 +13,8 @@ Unused objects:
 	[Special Warning] Mortal Wound on >%s< - taunt now, type=taunt, spellId=25646
 
 Timers:
+	Exploding Ghosts, time=30.00, type=cd, spellId=<none>, triggerDeltas = 0.00, 0.00, 0.00, 0.00
+		Unknown trigger
 	Mortal Wound: %s, time=15.00, type=target, spellId=25646, triggerDeltas = 9.69, 8.09, 8.06, 9.74, 8.11, 11.32, 8.11, 8.07, 8.09, 8.11, 8.12, 10.03, 12.61, 8.10, 8.13
 		[  9.69] SPELL_AURA_APPLIED: [Kurinnaxx->Tank1: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000004, Tank1, 0x512, 25646, Mortal Wound, 0, DEBUFF, 0
 		[ 17.78] SPELL_AURA_APPLIED_DOSE: [Kurinnaxx->Tank1: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000004, Tank1, 0x512, 25646, Mortal Wound, 0, DEBUFF, 2, 0
@@ -46,8 +48,6 @@ Timers:
 		[136.00] SPELL_CREATE: [Healer2->Sand Trap: Sand Trap] Player-1-00000011, Healer2, 0x512, GameObject-0-1-509-1-180647-0000000057, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 
 Announces:
-	Single exploding ghost spawned - dodge, type=nil, spellId=<none>, triggerDeltas = 0.00, 0.00, 0.00, 0.00
-		Unknown trigger
 	Mortal Wound on >%s< (%d), type=stack, spellId=25646, triggerDeltas = 9.69, 8.09, 8.06, 9.74, 51.81, 8.12, 10.03, 12.61, 8.10, 8.13
 		[  9.69] SPELL_AURA_APPLIED: [Kurinnaxx->Tank1: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000004, Tank1, 0x512, 25646, Mortal Wound, 0, DEBUFF, 0
 		[ 17.78] SPELL_AURA_APPLIED_DOSE: [Kurinnaxx->Tank1: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000004, Tank1, 0x512, 25646, Mortal Wound, 0, DEBUFF, 2, 0
@@ -78,6 +78,8 @@ Announces:
 		[ 92.26] SPELL_AURA_APPLIED: [Kurinnaxx->Kurinnaxx: Enrage] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, 26527, Enrage, 0, BUFF, 0
 
 Special warnings:
+	Exploding ghosts - dodge, type=nil, spellId=<none>, triggerDeltas = 0.00, 0.00, 0.00, 0.00
+		Unknown trigger
 	Sand Trap on you, type=you, spellId=25656, triggerDeltas = 76.05
 		[ 76.05] SPELL_CREATE: [Healer1->Sand Trap: Sand Trap] Player-1-00000007, Healer1, 0x511, GameObject-0-1-509-1-180647-0000000036, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 
@@ -86,6 +88,8 @@ Yells:
 		[ 76.05] SPELL_CREATE: [Healer1->Sand Trap: Sand Trap] Player-1-00000007, Healer1, 0x511, GameObject-0-1-509-1-180647-0000000036, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 
 Voice pack sounds:
+	VoicePack/ghostsoon
+		Unknown trigger
 	VoicePack/targetyou
 		[ 76.05] SPELL_CREATE: [Healer1->Sand Trap: Sand Trap] Player-1-00000007, Healer1, 0x511, GameObject-0-1-509-1-180647-0000000036, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 
@@ -115,11 +119,10 @@ Event trace:
 	[ 25.84] SPELL_AURA_APPLIED_DOSE: [Kurinnaxx->Tank1: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000004, Tank1, 0x512, 25646, Mortal Wound, 0, DEBUFF, 3, 0
 		StartTimer: 15.0, Mortal Wound: Tank1
 		ShowAnnounce: Mortal Wound on Tank1 (3)
-	[ 31.02] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-509-1-235528-0000000015, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
-		AntiSpam: EyeTentacleExplosion
-			Filtered: 9x SPELL_CAST_SUCCESS at 31.03, 31.03, 31.03, 31.03, 31.03, 31.03, 31.03, 31.03, 31.03
 	Unknown trigger
-		ShowAnnounce: Single exploding ghost spawned - dodge
+		ShowSpecialWarning: Exploding ghosts - dodge
+		PlaySound: VoicePack/ghostsoon
+		StartTimer: 30.0, Exploding Ghosts
 	[ 32.34] SPELL_CREATE: [Dps2->Sand Trap: Sand Trap] Player-1-00000002, Dps2, 0x512, GameObject-0-1-509-1-180647-0000000016, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 		StartTimer: 8.0, Sand Trap
 		ShowAnnounce: Sand Trap on Dps2
@@ -139,11 +142,10 @@ Event trace:
 	[ 59.89] SPELL_CREATE: [Dps3->Sand Trap: Sand Trap] Player-1-00000003, Dps3, 0x512, GameObject-0-1-509-1-180647-0000000029, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 		StartTimer: 8.0, Sand Trap
 		ShowAnnounce: Sand Trap on Dps3
-	[ 61.03] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-509-1-235528-000000002B, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
-		AntiSpam: EyeTentacleExplosion
-			Filtered: 9x SPELL_CAST_SUCCESS at 61.03, 61.03, 61.03, 61.03, 61.03, 61.03, 61.03, 61.03, 61.03
 	Unknown trigger
-		ShowAnnounce: Single exploding ghost spawned - dodge
+		ShowSpecialWarning: Exploding ghosts - dodge
+		PlaySound: VoicePack/ghostsoon
+		StartTimer: 30.0, Exploding Ghosts
 	[ 63.12] SPELL_AURA_APPLIED_DOSE: [Kurinnaxx->Tank1: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000004, Tank1, 0x512, 25646, Mortal Wound, 0, DEBUFF, 7, 0
 		StartTimer: 15.0, Mortal Wound: Tank1
 	[ 67.96] SPELL_CREATE: [Tank1->Sand Trap: Sand Trap] Player-1-00000004, Tank1, 0x512, GameObject-0-1-509-1-180647-0000000030, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
@@ -166,13 +168,12 @@ Event trace:
 	[ 87.39] SPELL_AURA_APPLIED: [Kurinnaxx->Dps3: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000003, Dps3, 0x512, 25646, Mortal Wound, 0, DEBUFF, 0
 		StartTimer: 15.0, Mortal Wound: Dps3
 		ShowAnnounce: Mortal Wound on Dps3 (1)
-	[ 91.03] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-509-1-235528-000000003E, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
-		AntiSpam: EyeTentacleExplosion
-			Filtered: 8x SPELL_CAST_SUCCESS at 91.03, 91.03, 91.03, 91.03, 91.03, 91.03, 91.03, 91.03
 	[ 91.04] SPELL_AURA_REMOVED: [Kurinnaxx->Dps3: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000003, Dps3, 0x512, 25646, Mortal Wound, 0, DEBUFF, 0
 		StopTimer: Timer25646target\tDps3
 	Unknown trigger
-		ShowAnnounce: Single exploding ghost spawned - dodge
+		ShowSpecialWarning: Exploding ghosts - dodge
+		PlaySound: VoicePack/ghostsoon
+		StartTimer: 30.0, Exploding Ghosts
 	[ 92.26] SPELL_AURA_APPLIED: [Kurinnaxx->Kurinnaxx: Enrage] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, 26527, Enrage, 0, BUFF, 0
 		ShowAnnounce: Enrage on Kurinnaxx
 	[ 92.26] SPELL_CREATE: [Dps2->Sand Trap: Sand Trap] Player-1-00000002, Dps2, 0x512, GameObject-0-1-509-1-180647-000000003F, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
@@ -198,11 +199,10 @@ Event trace:
 	[119.77] SPELL_CREATE: [Dps1->Sand Trap: Sand Trap] Player-1-00000001, Dps1, 0x512, GameObject-0-1-509-1-180647-000000004E, Sand Trap, 0x0, 25648, Sand Trap, 0, 0
 		StartTimer: 8.0, Sand Trap
 		ShowAnnounce: Sand Trap on Dps1
-	[121.02] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-509-1-235528-000000004F, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
-		AntiSpam: EyeTentacleExplosion
-			Filtered: 6x SPELL_CAST_SUCCESS at 121.02, 121.02, 121.02, 121.02, 121.02, 121.02
 	Unknown trigger
-		ShowAnnounce: Single exploding ghost spawned - dodge
+		ShowSpecialWarning: Exploding ghosts - dodge
+		PlaySound: VoicePack/ghostsoon
+		StartTimer: 30.0, Exploding Ghosts
 	[126.25] SPELL_AURA_APPLIED: [Kurinnaxx->Dps4: Mortal Wound] Creature-0-1-509-1-15348-0000000001, Kurinnaxx, 0xa48, Player-1-00000005, Dps4, 0x512, 25646, Mortal Wound, 0, DEBUFF, 0
 		StartTimer: 15.0, Mortal Wound: Dps4
 		ShowAnnounce: Mortal Wound on Dps4 (1)

@@ -112,7 +112,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	-- 26586 (Birth) is used by a lot, here it indicates that Eye Tentacles (ghosts that don't look like Eye Tentacles at all) spawned that explode if they walk into you
-	if args:IsSpell(26586) and DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528 and self:AntiSpam(5, "EyeTentacleExplosion") then
+	if args:IsSpell(26586) and (DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528) then
 		aq40Trash:ExplodingGhost(warnExplosion, specWarnExplosion, timerExplosion)
 	end
 end
