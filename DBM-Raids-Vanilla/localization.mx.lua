@@ -275,7 +275,7 @@ L:SetOptionLocalization{
 ----------------
 -- AQ40 Trash --
 ----------------
-L = DBM:GetModLocalization("AQ20Trash")
+L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
 	name = "AQ40: Bichos"
