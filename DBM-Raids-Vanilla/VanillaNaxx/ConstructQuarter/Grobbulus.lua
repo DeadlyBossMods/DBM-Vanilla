@@ -49,7 +49,7 @@ end
 
 function mod:OnCombatStart(delay)
 	table.wipe(mutateIcons)
-	enrageTimer:Start(-delay)
+	enrageTimer:Start(720-delay)
 end
 
 function mod:OnCombatEnd()

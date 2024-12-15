@@ -63,7 +63,7 @@ function mod:OnCombatStart(delay)
 	self.vb.isFlying = false
 	warnAirPhaseSoon:Schedule(38.5 - delay)
 	timerAirPhase:Start(48.5 - delay)
-	berserkTimer:Start(-delay)
+	berserkTimer:Start(900-delay)
 	self:RegisterOnUpdateHandler(function(self, elapsed)
 		if not self:IsInCombat() then return end
 		local foundBoss, target

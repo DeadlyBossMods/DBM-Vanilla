@@ -21,6 +21,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 26083 8269"
 )
 
+mod:NewGtfo{spell = 26084, spellAura = false, spellPeriodicDamage = false}
+
 --Add sundering cleave?
 local warnEnrageSoon	= mod:NewSoonAnnounce(8269, 2)
 local warnEnrage		= mod:NewSpellAnnounce(8269, 4)

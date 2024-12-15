@@ -20,14 +20,22 @@ mod.isTrashModBossFightAllowed = true
 
 mod:RegisterEvents(
 	"ENCOUNTER_END",
-	"SPELL_AURA_APPLIED 26556 25698 26079 1215202",
+	"SPELL_AURA_APPLIED 26556 25698 26079 1215202 1215421 24573 2855",
 	"SPELL_AURA_REMOVED 26556",
-	"SPELL_DAMAGE",
-	"SPELL_MISSED"
+	"SPELL_CAST_SUCCESS 26586",
+	"SPELL_DAMAGE 26555 26558 26554",
+	"SPELL_PERIODIC_DAMAGE 1215421",
+	"SPELL_SUMMON 17430 17431",
+	"SPELL_MISSED", -- Unfiltered to catch Reflect from Trash
+	"UNIT_DIED",
+	"PLAYER_TARGET_CHANGED",
+	"NAME_PLATE_UNIT_ADDED"
 )
 
--- Toxic Pool
-mod:NewGtfo{spell = "1215421"}
+
+-- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
+-- This is a problem out of combat often enough
+local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
 
 --TODO, meteor those big guys use, maybe some other stuff
 --local specWarnPrimalRampage			= mod:NewSpecialWarningDodge(198379, "Melee", nil, nil, 1, 2)
@@ -35,17 +43,29 @@ mod:NewGtfo{spell = "1215421"}
 -- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
 local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
+local warnExplosion					= mod:NewAnnounce("WarnExplosion", 3, nil, false)
+-- Not sure if both can happen in AQ40
+local warnAdd1						= mod:NewSpellAnnounce(17430)
+local warnAdd2						= mod:NewSpellAnnounce(17431)
+
+local specWarnExplosion				= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
 local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
 local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
 local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
-local yellPlague                    = mod:NewYell(26556)
 local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
 local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
 
+local timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
+local timerBurst					= mod:NewNextTimer(30, 1215202)
+
+local yellPlague                    = mod:NewYell(26556)
+local yellBurst						= mod:NewIconTargetYell(1215202)
+
 mod:AddRangeFrameOption(10, 22997)
 mod:AddSpeedClearOption("AQ40", true)
+mod:AddInfoFrameOption(nil, true)
 
 --Speed Clear variables
 mod.vb.firstEngageTime = nil
@@ -53,6 +73,21 @@ mod.vb.requiredBosses = 0
 
 --Request speed clear variables, in case it was already started before mod loaded
 mod:SendSync("IsAQ40Started")
+
+local trashAbilitiesLocalized = {
+	FireArcaneReflect	= DBM:GetSpellName(13022),
+	ShadowFrostReflect	= DBM:GetSpellName(19595),
+	Meteor				= DBM:GetSpellName(26558),
+	Thunderclap			= DBM:GetSpellName(15548),
+	ShadowStorm			= DBM:GetSpellName(26546),
+	MortalStrike		= DBM:GetSpellName(24573),
+	Mending				= DBM:GetSpellName(2147),
+	KnockAway			= DBM:GetSpellName(18670),
+	Thorns				= DBM:GetSpellName(22351),
+	Plague				= DBM:GetSpellName(26556),
+	Summon1				= DBM:GetSpellName(17430),
+	Summon2				= DBM:GetSpellName(17431),
+}
 
 -- aura applied didn't seem to catch the reflects and other buffs
 function mod:SPELL_AURA_APPLIED(args)
@@ -70,18 +105,32 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnPlague:Show(args.destName)
 		end
+		self:TrackTrashAbility(args.sourceGUID, "Plague", args.sourceRaidFlags, args.sourceName)
 	elseif args:IsSpell(25698) and not self:IsTrivial() then
 		specWarnExplode:Show()
 		specWarnExplode:Play("justrun")
 	elseif args:IsSpell(26079) then
 		warnCauseInsanity:CombinedShow(0.75, args.destName)
-	elseif args:IsSpell(1215202) and self:AntiSpam(4, "Burst") then
-		-- This works slightly differently when triggered during a boss fight vs. during trash:
-		-- In a boss fight it is immediately cast on everyone, in trash it's only on a few and spreads from there
-		-- The AQ20 mod has some elaborate logic to play different sounds in different scenarios
-		-- But in AQ40 it's extremely likely that it will just spread to anyone anyways, so just tell people to spread
-		specWarnBurst:Show()
-		specWarnBurst:Play("scatter")
+	elseif args:IsSpell(1215202) then
+		self:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
+	elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then
+		specWarnGTFO:Show(args.spellName)
+		specWarnGTFO:Play("watchfeet")
+	elseif args:IsSpell(24573) and args:IsDestTypePlayer() then
+		self:TrackTrashAbility(args.sourceGUID, "MortalStrike", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(2855) and not args:IsDestTypePlayer() then
+		local caster = DBM:GetRaidUnitIdByGuid(args.sourceGUID)
+		if caster and UnitExists(caster .. "target") then
+			self:ScheduleMethod(0.01, "ScanTrashAbilities", caster .. "target")
+			-- TODO: check if the schedule/delay is necessary
+		end
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	-- 26586 (Birth) is used by a lot, here it indicates that Eye Tentacles (ghosts that don't look like Eye Tentacles at all) spawned that explode if they walk into you
+	if args:IsSpell(26586) and (DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528) then
+		self:ExplodingGhost(warnExplosion, specWarnExplosion, timerExplosion)
 	end
 end
 
@@ -95,23 +144,46 @@ end
 
 -- todo: thorns
 local playerGUID = UnitGUID("player")
-local ShadowStorm = DBM:GetSpellName(26555)--Classic Note
-function mod:SPELL_DAMAGE(_, sourceName, _, _, destGUID, _, _, _, spellId, spellName)
-	if (spellId == 26555 or spellName == ShadowStorm) and destGUID == playerGUID and self:AntiSpam(3, 3) then
-		specWarnShadowStorm:Show(sourceName)
-		specWarnShadowStorm:Play("findshelter")
+function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, destGUID, _, _, _, spellId, spellName)
+	if spellId == 26555 then
+		if destGUID == playerGUID and self:AntiSpam(3, 3) then
+			specWarnShadowStorm:Show(sourceName)
+			specWarnShadowStorm:Play("findshelter")
+		end
+		self:TrackTrashAbility(sourceGUID, "ShadowStorm", sourceRaidFlags, sourceName)
+	elseif spellId == 26558 then
+		self:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
+	elseif spellId == 26554 then
+		self:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
 	end
 end
-function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, _, _, _, spellSchool, missType)
-	if (missType == "REFLECT" or missType == "DEFLECT") and sourceGUID == playerGUID then
-		if (spellSchool == 32 or spellSchool == 16) and self:AntiSpam(3, 1) then
-			specWarnShadowFrostReflect:Show(destName)
-			specWarnShadowFrostReflect:Play("stopattack")
-		elseif (spellSchool == 4 or spellSchool == 64) and self:AntiSpam(3, 2) then
-			specWarnFireArcaneReflect:Show(destName)
-			specWarnFireArcaneReflect:Play("stopattack")
+function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, destRaidFlags, _, _, spellSchool, missType)
+	if missType == "REFLECT" or missType == "DEFLECT" then
+		if spellSchool == 32 or spellSchool == 16 then
+			if sourceGUID == playerGUID and self:AntiSpam(3, 1) then
+				specWarnShadowFrostReflect:Show(destName)
+				specWarnShadowFrostReflect:Play("stopattack")
+			end
+			self:TrackTrashAbility(destGUID, "ShadowFrostReflect", destRaidFlags, destName)
+		elseif spellSchool == 4 or spellSchool == 64 then
+			if sourceGUID == playerGUID and self:AntiSpam(3, 2) then
+				specWarnFireArcaneReflect:Show(destName)
+				specWarnFireArcaneReflect:Play("stopattack")
+			end
+			self:TrackTrashAbility(destGUID, "FireArcaneReflect", destRaidFlags, destName)
 		end
 	end
+end
+
+function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+	if spellId == 1215421 and destGUID == UnitGUID("player") and self:AntiSpam(4, "ToxicPool") then
+		specWarnGTFO:Show(spellName)
+		specWarnGTFO:Play("watchfeet")
+	end
+end
+
+function mod:UNIT_DIED(args)
+	self:RemoveTrackTrashAbilityMob(args.destGUID)
 end
 
 do
@@ -200,5 +272,193 @@ do
 			updateDefeatedBosses(self, encounterId)--Still want to fire this on event because the event will always be faster than sync
 			self:SendSync("EncounterEnd", encounterId)
 		end
+	end
+end
+
+function mod:SPELL_SUMMON(args)
+	if args:IsSpell(17430) then
+		warnAdd1:Show()
+		self:TrackTrashAbility(args.sourceGUID, "Summon1", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(17431) then
+		warnAdd2:Show()
+		self:TrackTrashAbility(args.sourceGUID, "Summon2", args.sourceRaidFlags, args.sourceName)
+	end
+end
+
+function mod:PLAYER_TARGET_CHANGED()
+	self:ScanTrashAbilities("target")
+end
+
+function mod:NAME_PLATE_UNIT_ADDED(uid)
+	self:ScanTrashAbilities(uid)
+end
+
+-- Shared between AQ20 and AQ40
+-- The timers likely also repeat while out of combat (similar to BWL trial bombs), might want to support that eventually, but these seem less important than bombs
+
+-- Noxious Burst works differently depending on whether it triggers in a boss fight or during trash
+-- During trash it targets a few players (some cases indicate a single target, some have 3?) and it spreads immediately to adjacent players. The explosion itself also spreads it
+-- During boss fights it always hits everyone at the same time.
+-- This is kinda annoying because it means we need different types of warnings as the spreading during trash just triggers too often.
+-- The idea is that we track the number of affected people and then show the appropriate warning based on this
+local burstTargets = {}
+local targetCount = 0
+
+function mod:NoxiousBurst(args, specWarn, yell, timer)
+	-- It can target a single player multiple times even during one cast
+	if burstTargets[args.destName] then
+		return
+	end
+	burstTargets[args.destName] = true
+	targetCount = targetCount + 1
+	self:UnscheduleMethod("NoxiousBurstDelayed")
+	self:ScheduleMethod(0.1, "NoxiousBurstDelayed", specWarn, yell, timer)
+end
+
+function mod:NoxiousBurstDelayed(specWarn, yell, timer)
+	if targetCount >= 5 then
+		if self:AntiSpam(5, "NoxiousBurst") then
+			specWarn:Show()
+			specWarn:Play("scatter")
+			local remaining = timer:GetRemaining()
+			-- Isn't 100% correct because we technically would need to distinguish between it being cast on everyone and it spreading, but close enough
+			-- Just making sure to not re-start immediately if it's spreading across the raid
+			if remaining <= 15 then
+				timer:Start()
+			end
+		end
+	else
+		if burstTargets[UnitName("player")] and self:AntiSpam(5, "NoxiousBurst") then
+			yell:Show()
+			specWarn:Show()
+			specWarn:Play("scatter")
+		end
+		-- else: few players and not yet including you, the special warning will trigger if it spreads further
+	end
+	table.wipe(burstTargets)
+	targetCount = 0
+end
+
+
+-- Illusionary Shatter by ghostly mobs that are named Eye Tentacles (but don't look like Eye Tentacles at all).
+-- Every 30 seconds a lot of them spawn, and sometimes only a single one spawns, only the 30 second one seems to be on a timer
+local explodingGhostCount = 0
+
+function mod:ExplodingGhost(warn, specWarn, timer)
+	explodingGhostCount = explodingGhostCount + 1
+	self:UnscheduleMethod("ExplodingGhostDelayed")
+	self:ScheduleMethod(0.15, "ExplodingGhostDelayed", warn, specWarn, timer) -- Sometimes there is a small delay between spawns
+end
+
+function mod:ExplodingGhostDelayed(warn, specWarn, timer)
+	if explodingGhostCount >= 3 then
+		specWarn:Show()
+		specWarn:Play("ghostsoon")
+		if IsEncounterInProgress() then
+			timer:Start()
+		end
+	else
+		warn:Show()
+	end
+	explodingGhostCount = 0
+end
+
+
+-- Trash InfoFrame
+local mobs = {}
+
+-- TODO: Grab spell info frame Detect Magic as well, unfortunately these don't show up in logs :/
+function mod:TrackTrashAbility(guid, ability, raidFlags, name)
+	local mobInfo = mobs[guid] or {abilities = {}, sortedAbilities = {}}
+	mobs[guid] = mobInfo
+	mobInfo.name = name
+	mobInfo.lastSeen = GetTime()
+	mobInfo.icon = math.log(raidFlags) / math.log(2) + 1
+	if not mobInfo.abilities[ability] then
+		mobInfo.abilities[ability] = true
+		mobInfo.sortedAbilities[#mobInfo.sortedAbilities + 1] = trashAbilitiesLocalized[ability] or ability
+	end
+	self:ShowInfoFrame()
+end
+
+function mod:RemoveTrackTrashAbilityMob(guid)
+	mobs[guid] = nil
+end
+
+function mod:ScanTrashAbilities(uid)
+	local guid = UnitGUID(uid)
+	local cid = DBM:GetCIDFromGUID(guid)
+	if cid ~= 15264 and cid ~= 15355 and cid ~= 15277 and cid ~= 15311 and cid ~= 234830 then
+		return
+	end
+	local name = UnitName(uid)
+	if not name then return end
+	local icon = GetRaidTargetIndex(uid)
+	local raidFlags = icon and icon > 0 and 2^(icon - 1) or 0
+	if DBM:UnitBuff(uid, 19595) then
+		self:TrackTrashAbility(guid, "ShadowFrostReflect", raidFlags, name)
+	end
+	if DBM:UnitBuff(uid, 474564) then
+		self:TrackTrashAbility(guid, "Thunderclap", raidFlags, name)
+	end
+	if DBM:UnitBuff(uid, 474565) then
+		self:TrackTrashAbility(guid, "ShadowStorm", raidFlags, name)
+	end
+	if DBM:UnitBuff(uid, 474570) then
+		self:TrackTrashAbility(guid, "Meteor", raidFlags, name)
+	end
+	if DBM:UnitBuff(uid, 474571) then
+		self:TrackTrashAbility(guid, "Plague", raidFlags, name)
+	end
+	-- I can't find Thorns anywhere in my logs, maybe I never had it?
+	-- Also can't find Mending, but I'm sure I saw it on nameplates :/
+	-- Fire/Arcane reflect is impossible to detect like this because detect magic gets reflected (but that reflection itself is detected!)
+	-- I also don't have a log for AQ20 because no one bothers with detect magic
+end
+
+local lines = {}
+local sortedLines = {}
+
+local function addLine(key, value)
+	value = value or ""
+	-- sort by insertion order
+	lines[key] = tostring(value)
+	sortedLines[#sortedLines + 1] = key
+end
+
+local function updateInfoFrame()
+	for k, mob in pairs(mobs) do
+		if GetTime() - mob.lastSeen > 30 then
+			mobs[k] = nil
+		end
+	end
+	if next(mobs) == nil then
+		-- Calling hide directly from the updater doesn't work because as part of updating it makes sure that it is visible
+		DBM:Schedule(0.1, DBM.InfoFrame.Hide, DBM.InfoFrame)
+		return lines, sortedLines
+	end
+	table.wipe(lines)
+	table.wipe(sortedLines)
+	for k, mob in pairs(mobs) do
+		local name = HIGHLIGHT_FONT_COLOR:WrapTextInColorCode(mob.name)
+		if mob.icon > 0 then
+			name = DBM:IconNumToTexture(mob.icon) .. " " .. name
+		end
+		addLine(name)
+		for _, ability in ipairs(mob.sortedAbilities) do
+			addLine(NORMAL_FONT_COLOR:WrapTextInColorCode((" "):rep(6) .. ability))
+		end
+		if next(mobs, k) then
+			addLine(" ")
+		end
+	end
+	return lines, sortedLines
+end
+
+-- FIXME: InfoFrame option is shared between AQ20 and AQ40, each mod should have their own
+function mod:ShowInfoFrame()
+	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
+		DBM.InfoFrame:Show(42, "function", updateInfoFrame, false, false)
+		DBM.InfoFrame:SetColumns(1)
 	end
 end

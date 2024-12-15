@@ -6,6 +6,44 @@
 ## LoadOnDemand: 1
 ## X-DBM-Test: true
 
+# AQ40
+Season of Discovery/AQ40/Skeram-Hardmode.lua
+Season of Discovery/AQ40/ThreeBugs-Hardmode.lua
+Season of Discovery/AQ40/Sartura-Hardmode.lua
+Season of Discovery/AQ40/Fankriss-Hardmode.lua
+Season of Discovery/AQ40/Viscidus-Hardmode.lua
+Season of Discovery/AQ40/Huhuran-Hardmode.lua
+Season of Discovery/AQ40/TwinEmps-Hardmode.lua
+Season of Discovery/AQ40/Ouro-Hardmode.lua
+Season of Discovery/AQ40/CThun-Hardmode.lua
+
+Season of Discovery/AQ40/Reports/Skeram-Hardmode.lua
+Season of Discovery/AQ40/Reports/ThreeBugs-Hardmode.lua
+Season of Discovery/AQ40/Reports/Sartura-Hardmode.lua
+Season of Discovery/AQ40/Reports/Fankriss-Hardmode.lua
+Season of Discovery/AQ40/Reports/Viscidus-Hardmode.lua
+Season of Discovery/AQ40/Reports/Huhuran-Hardmode.lua
+Season of Discovery/AQ40/Reports/TwinEmps-Hardmode.lua
+Season of Discovery/AQ40/Reports/Ouro-Hardmode.lua
+Season of Discovery/AQ40/Reports/CThun-Hardmode.lua
+
+# AQ20
+Season of Discovery/AQ20/Kurinaxx-Hardmode.lua
+Season of Discovery/AQ20/Rajaxx-Hardmode.lua
+Season of Discovery/AQ20/Moam-Hardmode.lua
+Season of Discovery/AQ20/Buru-Hardmode.lua
+Season of Discovery/AQ20/Ayamiss-Hardmode.lua
+Season of Discovery/AQ20/Ossirian-Hardmode.lua
+Season of Discovery/AQ20/Trash.lua
+
+Season of Discovery/AQ20/Reports/Kurinaxx-Hardmode.lua
+Season of Discovery/AQ20/Reports/Rajaxx-Hardmode.lua
+Season of Discovery/AQ20/Reports/Moam-Hardmode.lua
+Season of Discovery/AQ20/Reports/Buru-Hardmode.lua
+Season of Discovery/AQ20/Reports/Ayamiss-Hardmode.lua
+Season of Discovery/AQ20/Reports/Ossirian-Hardmode.lua
+Season of Discovery/AQ20/Reports/Trash.lua
+
 # World Bosses
 Season of Discovery/World Bosses/Ysondre.lua
 
