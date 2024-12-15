@@ -66,3 +66,18 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization({
 	Pull		= "Надежда – это БОЛЕЗНЬ души! Эта земля зачахнет и умрет!"
 })
+
+-- Thunderaan (SoD only)
+L = DBM:GetModLocalization("Thunderaan")
+
+L:SetGeneralLocalization{
+	name = "Принц Громораан"
+}
+
+L:SetWarningLocalization{
+	AddIncoming = DBM_CORE_L.AUTO_SPEC_WARN_TEXTS.adds
+}
+
+L:SetOptionLocalization{
+	AddIncoming = "Показывать предупреждение при появлении аддов"
+}
