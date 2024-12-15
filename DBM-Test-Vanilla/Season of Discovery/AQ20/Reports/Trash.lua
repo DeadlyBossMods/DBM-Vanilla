@@ -11,6 +11,9 @@ Findings:
 	Unused event registration: SPELL_AURA_APPLIED 2855 (Detect Magic)
 	Unused event registration: SPELL_AURA_REMOVED 22997 (Plague)
 	Unused event registration: SPELL_CAST_SUCCESS 26586 (Birth)
+	Unused event registration: SPELL_DAMAGE 14297 (Shadow Storm)
+	Unused event registration: SPELL_DAMAGE 24340 (Meteor)
+	Unused event registration: SPELL_DAMAGE 8732 (Thunderclap)
 	Unused event registration: SPELL_MISSED
 	Unused event registration: SPELL_PERIODIC_DAMAGE 1215421 (Toxic Pool)
 	Unused event registration: UNIT_DIED
@@ -55,7 +58,7 @@ Icons:
 
 Event trace:
 	[  0.00] ADDON_LOADED: DBM-Raids-Vanilla, 0
-		RegisterEvents: Regular, SPELL_AURA_APPLIED 22997 25698 26079 1215202 1215421 2855, SPELL_PERIODIC_DAMAGE 1215421, SPELL_CAST_SUCCESS 26586, SPELL_AURA_REMOVED 22997, SPELL_MISSED, UNIT_DIED, PLAYER_TARGET_CHANGED, NAME_PLATE_UNIT_ADDED
+		RegisterEvents: Regular, SPELL_AURA_APPLIED 22997 25698 26079 1215202 1215421 2855, SPELL_PERIODIC_DAMAGE 1215421, SPELL_CAST_SUCCESS 26586, SPELL_AURA_REMOVED 22997, SPELL_MISSED, UNIT_DIED, SPELL_DAMAGE 14297 24340 8732, PLAYER_TARGET_CHANGED, NAME_PLATE_UNIT_ADDED
 	Unknown trigger
 		AntiSpam: NoxiousBurst
 		ShowSpecialWarning: Noxious Burst - dodge attack
