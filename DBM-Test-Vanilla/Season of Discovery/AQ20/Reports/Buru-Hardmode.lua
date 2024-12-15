@@ -68,7 +68,7 @@ Event trace:
 	[ 59.28] SPELL_AURA_APPLIED: [->Healer1: Toxic Pool] "", nil, 0x0, Player-1-00000007, Healer1, 0x511, 1215421, Toxic Pool, 0, DEBUFF, 0
 		AntiSpam: ToxicPool
 			Filtered: 1x SPELL_AURA_APPLIED at 61.12
-		ShowSpecialWarning: Bad damage - move away
+		ShowSpecialWarning: Toxic Pool damage - move away
 		PlaySound: VoicePack/watchfeet
 	[ 71.39] CHAT_MSG_MONSTER_EMOTE: %s sets eyes on Dps3!, Buru the Gorger, "", "", Dps3, "", 0, 0, "", 0, 1402, nil, 0, false, false, false, false, 0
 		ShowAnnounce: Pursue on Unknown
@@ -76,7 +76,7 @@ Event trace:
 		ShowAnnounce: Pursue on Unknown
 	[ 91.04] SPELL_AURA_APPLIED: [->Healer1: Toxic Pool] "", nil, 0x0, Player-1-00000007, Healer1, 0x511, 1215421, Toxic Pool, 0, DEBUFF, 0
 		AntiSpam: ToxicPool
-		ShowSpecialWarning: Bad damage - move away
+		ShowSpecialWarning: Toxic Pool damage - move away
 		PlaySound: VoicePack/watchfeet
 	[100.15] ENCOUNTER_END: 721, Buru the Gorger, 185, 20, 1, 0
 		EndCombat: ENCOUNTER_END
