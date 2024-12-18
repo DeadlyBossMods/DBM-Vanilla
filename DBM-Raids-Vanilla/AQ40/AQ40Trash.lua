@@ -462,16 +462,18 @@ local function updateInfoFrame()
 	end
 	table.wipe(lines)
 	table.wipe(sortedLines)
-	for k, mob in pairs(mobs) do
+	for guid, mob in pairs(mobs) do
+		local hp = DBM:GetBossHP(guid)
+		mob.hp = hp or mob.hp
 		local name = HIGHLIGHT_FONT_COLOR:WrapTextInColorCode(mob.name)
 		if mob.icon > 0 then
 			name = DBM:IconNumToTexture(mob.icon) .. " " .. name
 		end
-		addLine(name)
+		addLine(name, mob.hp and ("%d%%"):format(mob.hp))
 		for _, ability in ipairs(mob.sortedAbilities) do
 			addLine(NORMAL_FONT_COLOR:WrapTextInColorCode((" "):rep(6) .. ability))
 		end
-		if next(mobs, k) then
+		if next(mobs, guid) then
 			addLine(" ")
 		end
 	end
