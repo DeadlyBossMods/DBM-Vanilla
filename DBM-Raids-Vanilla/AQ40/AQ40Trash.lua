@@ -22,8 +22,9 @@ mod:RegisterEvents(
 	"ENCOUNTER_END",
 	"SPELL_AURA_APPLIED 26556 25698 26079 1215202 1215421 24573 2855",
 	"SPELL_AURA_REMOVED 26556",
-	"SPELL_CAST_SUCCESS 26586",
-	"SPELL_DAMAGE 26555 26558 26554",
+	"SPELL_CAST_SUCCESS 26586 26073",
+	"SPELL_CAST_START 26069 26070 26071 26072",
+	"SPELL_DAMAGE 26555 26558 26554 25779 26546 24340 8732",
 	"SPELL_PERIODIC_DAMAGE 1215421",
 	"SPELL_SUMMON 17430 17431",
 	"SPELL_MISSED", -- Unfiltered to catch Reflect from Trash
@@ -87,6 +88,12 @@ local trashAbilitiesLocalized = {
 	Plague				= DBM:GetSpellName(26556),
 	Summon1				= DBM:GetSpellName(17430),
 	Summon2				= DBM:GetSpellName(17431),
+	ManaBurn			= DBM:GetSpellName(25779),
+	Fear				= DBM:GetSpellName(26070),
+	Roots				= DBM:GetSpellName(26071),
+	DustCloud			= DBM:GetSpellName(26072),
+	Silence				= DBM:GetSpellName(26069),
+	FireNova			= DBM:GetSpellName(26073),
 }
 
 -- aura applied didn't seem to catch the reflects and other buffs
@@ -131,6 +138,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	-- 26586 (Birth) is used by a lot, here it indicates that Eye Tentacles (ghosts that don't look like Eye Tentacles at all) spawned that explode if they walk into you
 	if args:IsSpell(26586) and (DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528) then
 		self:ExplodingGhost(warnExplosion, specWarnExplosion, timerExplosion)
+	elseif args:IsSpell(26073) then
+		self:TrackTrashAbility(args.sourceGUID, "FireNova", args.sourceRaidFlags, args.sourceName)
 	end
 end
 
@@ -145,16 +154,18 @@ end
 -- todo: thorns
 local playerGUID = UnitGUID("player")
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, destGUID, _, _, _, spellId, spellName)
-	if spellId == 26555 then
+	if spellId == 26555 or spellId == 26546 then
 		if destGUID == playerGUID and self:AntiSpam(3, 3) then
 			specWarnShadowStorm:Show(sourceName)
 			specWarnShadowStorm:Play("findshelter")
 		end
 		self:TrackTrashAbility(sourceGUID, "ShadowStorm", sourceRaidFlags, sourceName)
-	elseif spellId == 26558 then
+	elseif spellId == 26558 or spellId == 24340 then
 		self:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
-	elseif spellId == 26554 then
+	elseif spellId == 26554 or spellId == 8732 then
 		self:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
+	elseif spellId == 25779 then
+		self:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end
 end
 function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, destRaidFlags, _, _, spellSchool, missType)
@@ -272,6 +283,18 @@ do
 			updateDefeatedBosses(self, encounterId)--Still want to fire this on event because the event will always be faster than sync
 			self:SendSync("EncounterEnd", encounterId)
 		end
+	end
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpell(26070) then
+		self:TrackTrashAbility(args.sourceGUID, "Fear", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(26071) then
+		self:TrackTrashAbility(args.sourceGUID, "Roots", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(26072) then
+		self:TrackTrashAbility(args.sourceGUID, "DustCloud", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(26069) then
+		self:TrackTrashAbility(args.sourceGUID, "Silence", args.sourceRaidFlags, args.sourceName)
 	end
 end
 
