@@ -164,6 +164,20 @@ L:SetGeneralLocalization{
 	name = "안퀴40 일반몹"
 }
 
+L:SetTimerLocalization{
+	TimerExplosion = "폭발하는 유령"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "폭발하는 유령 한마리 등장 - 피하세요",
+	SpecWarnExplosion = "폭발하는 유령 - 피하세요",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "폭발하는 유령 알림 보기 ($spell:1214871)",
+	SpecWarnExplosion = "폭발하는 유령이 여러마리 등장시 특수 경고 보기 ($spell:1214871)",
+	TimerExplosion = "폭발하는 유령이 여러마리 등장시 타이머 바 보기 ($spell:1214871)"
+}
+
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -257,13 +271,19 @@ L:SetGeneralLocalization{
 	name = "안퀴20 일반몹"
 }
 
-L:SetWarningLocalization{
-	WarnExplosion = "폭발 5초 전"
-}
-L:SetOptionLocalization{
-	WarnExplosion = "$spell:1214871 알림 보기 (눈알 촉수 광역 스킬)"
+L:SetTimerLocalization{
+	TimerExplosion = "폭발하는 유령"
 }
 
+L:SetWarningLocalization{
+	WarnExplosion = "폭발하는 유령 한마리 등장 - 피하세요",
+	SpecWarnExplosion = "폭발하는 유령 - 피하세요",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "폭발하는 유령 알림 보기 ($spell:1214871)",
+	SpecWarnExplosion = "폭발하는 유령이 여러마리 등장시 특수 경고 보기 ($spell:1214871)",
+	TimerExplosion = "폭발하는 유령이 여러마리 등장시 타이머 바 보기 ($spell:1214871)"
+}
 -----------------
 --  Razorgore  --
 -----------------
