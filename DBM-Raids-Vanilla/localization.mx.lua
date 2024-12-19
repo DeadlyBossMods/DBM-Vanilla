@@ -1001,14 +1001,13 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningChargeChanged	= "Exibir anúncio especial quando sua polaridade mudar",
-	WarningChargeNotChanged	= "Exibir anúncio especial quando sua polaridade não mudar",
-	AirowsEnabled			= "Exibir setas durante $spell:28089",
-	Never					= "Nunca",
-	TwoCamp					= "Exibir setas (estratégia típica de dois grupos para correr através)",
-	ArrowsRightLeft			= "Exibir setas para a esquerda e direita (estratégia de quatro grupos; exibe a seta para a esquerda se a polaridade mudar, seta para a direita se não mudar)",
-	ArrowsInverse			= "Exibir setas esquerda e direita reversas (estratégia de quatro grupos; exibe a seta para a direita se a polaridade mudar, a seta para a esquerda se não mudar)"
-})
+	WarningChargeChanged	= "Mostrar anuncio especial cuando tu polaridad cambie",
+	WarningChargeNotChanged	= "Mostrar anuncio especial cuando tu polaridad no cambie",
+	AirowsEnabled			= "Mostrar flechas durante $spell:28089",
+	Never 					= "Nunca",
+	TwoCamp					= "Mostrar flechas (estrategia normal de dos grupos para correr a través)",
+	ArrowsRightLeft			= "Mostrar flechas de izquierda y derecha (estrategia de cuatro grupos; muestra la flecha izquierda si cambia la polaridad, y la derecha si no cambia)",
+	ArrowsInverse			= "Mostrar flechas de izquierda y derecha inversas (estrategia de cuatro grupos; muestra la flecha derecha si cambia la polaridad, y la izquierda si no cambia)"
 
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polaridad cambiada a %s",
