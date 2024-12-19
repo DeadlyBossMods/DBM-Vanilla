@@ -1028,6 +1028,7 @@ L:SetOptionLocalization({
 	WarningChargeChanged	= "Show special warning when your polarity changed",
 	WarningChargeNotChanged	= "Show special warning when your polarity did not change",
 	AirowsEnabled			= "Show arrows during $spell:28089",
+	Never					= "Never",
 	TwoCamp					= "Show arrows (normal \"2 camp\" run through strategy)",
 	ArrowsRightLeft			= "Show left/right arrows for the \"4 camp\" strategy (show left arrow if polarity changed, right if not)",
 	ArrowsInverse			= "Inverse \"4 camp\" strategy (show right arrow if polarity changed, left if not)"
