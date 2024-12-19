@@ -57,7 +57,7 @@ L:SetWarningLocalization{
 	WarnDismember	= "%s en >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Mostrar anuncio para objetivos de la persecución de Buru",
+	WarnPursue		= "Mostrar anuncio para los objetivos de la persecución de Buru",
 	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga el jefe",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
