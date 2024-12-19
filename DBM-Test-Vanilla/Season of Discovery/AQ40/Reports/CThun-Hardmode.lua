@@ -3,8 +3,7 @@ Test: SoD/AQ40/CThun/Hardmode
 Mod:  DBM-Raids-Vanilla/CThun
 
 Findings:
-	Unused event registration: SPELL_AURA_APPLIED 26476 (Digestive Acid)
-	Unused event registration: SPELL_AURA_REMOVED 26476 (Digestive Acid)
+	None
 
 Unused objects:
 	[Special Warning] Eye Beam on you, type=you, spellId=26134
@@ -241,6 +240,8 @@ Event trace:
 		AntiSpam: 15728
 		ShowAnnounce: Giant Claw Tentacle
 		StartTimer: 60.0, Giant Claw Tentacle
+	[150.43] SPELL_AURA_APPLIED: [C'Thun->Dps10: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000012, Dps10, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps10
 	[156.65] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-531-1-15726-0000000083, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15726
 			Filtered: 7x SPELL_CAST_SUCCESS at 156.65, 156.65, 156.65, 156.65, 156.65, 156.65, 156.65
@@ -250,18 +251,34 @@ Event trace:
 		AntiSpam: 15334
 		ShowAnnounce: Giant Eye Tentacle
 		StartTimer: 60.0, Giant Eye Tentacle
+	[160.45] SPELL_AURA_APPLIED: [C'Thun->Dps14: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000020, Dps14, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps14
 	[160.63] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-0000000084, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000084", "EyeBeamTarget", 0.1, 3.0) at 160.73 (+0.10)
 	[162.25] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-0000000084, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000084", "EyeBeamTarget", 0.1, 3.0) at 162.35 (+0.10)
+	[166.58] SPELL_AURA_REMOVED: [C'Thun->Dps10: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000012, Dps10, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps10
 	[166.72] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-0000000084, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000084", "EyeBeamTarget", 0.1, 3.0) at 166.82 (+0.10)
+	[170.44] SPELL_AURA_APPLIED: [C'Thun->Healer4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000019, Healer4, 0x511, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, PlayerName
+	[180.42] SPELL_AURA_APPLIED: [C'Thun->Dps4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000004, Dps4, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps4
+	[182.55] UNIT_DIED: [->Flesh Tentacle] "", nil, 0x0, Creature-0-1-531-1-15802-0000000064, Flesh Tentacle, 0xa48, -1, false, 0, 0
+		ScheduleTask: (anonymous function) at 212.55 (+30.00)
 	[186.63] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-531-1-15726-000000009B, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15726
 			Filtered: 1x SPELL_CAST_SUCCESS at 186.63
 		StopTimer: TimerEyeTentacle
 		ShowAnnounce: Eye Tentacles
 		StartTimer: 30.0, Eye Tentacles
+	[190.44] SPELL_AURA_APPLIED: [C'Thun->Dps13: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000017, Dps13, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps13
+	[195.75] SPELL_AURA_REMOVED: [C'Thun->Dps14: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000020, Dps14, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps14
+	[195.75] SPELL_AURA_REMOVED: [C'Thun->Healer4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000019, Healer4, 0x511, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, PlayerName
 	[195.89] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-000000009E, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 195.99 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 196.09 (+0.10)
@@ -270,10 +287,16 @@ Event trace:
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 199.21 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 199.31 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 199.41 (+0.10)
+	[200.43] SPELL_AURA_APPLIED: [C'Thun->Dps3: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000003, Dps3, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps3
 	[203.98] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-000000009E, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 204.08 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 204.18 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-000000009E", "EyeBeamTarget", 0.1, 3.0) at 204.28 (+0.10)
+	[210.42] UNIT_DIED: [->Flesh Tentacle] "", nil, 0x0, Creature-0-1-531-1-15802-000000019A, Flesh Tentacle, 0xa48, -1, false, 0, 0
+		ScheduleTask: (anonymous function) at 240.42 (+30.00)
+	[210.44] SPELL_AURA_APPLIED: [C'Thun->Dps12: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000014, Dps12, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps12
 	[210.64] CHAT_MSG_MONSTER_EMOTE: %s is weakened!, C'Thun, "", "", C'Thun, "", 0, 0, "", 0, 4525, nil, 0, false, false, false, false, 0
 		ShowSpecialWarning: C'Thun Weakened!
 		PlaySound: VoicePack/targetchange
@@ -283,6 +306,14 @@ Event trace:
 		StartTimer: 83.0, Eye Tentacles
 		StartTimer: 53.0, Giant Claw Tentacle
 		StartTimer: 83.7, Giant Eye Tentacle
+	[214.71] SPELL_AURA_REMOVED: [C'Thun->Dps13: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000017, Dps13, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps13
+	[214.71] SPELL_AURA_REMOVED: [C'Thun->Dps4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000004, Dps4, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps4
+	[214.71] SPELL_AURA_REMOVED: [C'Thun->Dps3: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000003, Dps3, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps3
+	[219.83] SPELL_AURA_REMOVED: [C'Thun->Dps12: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000014, Dps12, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps12
 	[262.32] SPELL_CAST_SUCCESS: [Giant Claw Tentacle: Birth] Creature-0-1-531-1-15728-00000000CE, Giant Claw Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15728
 		StopTimer: TimerGiantClawTentacle
@@ -307,16 +338,24 @@ Event trace:
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-00000000E6", "EyeBeamTarget", 0.1, 3.0) at 303.77 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-00000000E6", "EyeBeamTarget", 0.1, 3.0) at 303.87 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-00000000E6", "EyeBeamTarget", 0.1, 3.0) at 303.97 (+0.10)
+	[306.12] SPELL_AURA_APPLIED: [C'Thun->Dps14: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000020, Dps14, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps14
 	[312.34] SPELL_CAST_SUCCESS: [Giant Claw Tentacle: Birth] Creature-0-1-531-1-15728-00000000F3, Giant Claw Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15728
 		StopTimer: TimerGiantClawTentacle
 		ShowAnnounce: Giant Claw Tentacle
 		StartTimer: 60.0, Giant Claw Tentacle
+	[316.12] SPELL_AURA_APPLIED: [C'Thun->Dps3: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000003, Dps3, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps3
 	[322.30] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-531-1-15726-00000000FB, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15726
 			Filtered: 7x SPELL_CAST_SUCCESS at 322.3, 322.3, 322.3, 322.3, 322.3, 322.3, 322.3
 		ShowAnnounce: Eye Tentacles
 		StartTimer: 30.0, Eye Tentacles
+	[323.06] UNIT_DIED: [->Flesh Tentacle] "", nil, 0x0, Creature-0-1-531-1-15802-00000000CA, Flesh Tentacle, 0xa48, -1, false, 0, 0
+		ScheduleTask: (anonymous function) at 353.06 (+30.00)
+	[326.15] SPELL_AURA_APPLIED: [C'Thun->Dps10: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000012, Dps10, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps10
 	[328.05] SPELL_CAST_SUCCESS: [Giant Eye Tentacle: Birth] Creature-0-1-531-1-15334-0000000100, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15334
 		StopTimer: TimerGiantEyeTentacle
@@ -326,6 +365,10 @@ Event trace:
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000100", "EyeBeamTarget", 0.1, 3.0) at 331.95 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000100", "EyeBeamTarget", 0.1, 3.0) at 332.05 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000100", "EyeBeamTarget", 0.1, 3.0) at 332.15 (+0.10)
+	[336.11] SPELL_AURA_APPLIED: [C'Thun->Dps4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000004, Dps4, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps4
+	[337.13] UNIT_DIED: [->Flesh Tentacle] "", nil, 0x0, Creature-0-1-531-1-15802-00000001CA, Flesh Tentacle, 0xa48, -1, false, 0, 0
+		ScheduleTask: (anonymous function) at 367.13 (+30.00)
 	[337.19] CHAT_MSG_MONSTER_EMOTE: %s is weakened!, C'Thun, "", "", C'Thun, "", 0, 0, "", 0, 4556, nil, 0, false, false, false, false, 0
 		ShowSpecialWarning: C'Thun Weakened!
 		PlaySound: VoicePack/targetchange
@@ -340,17 +383,33 @@ Event trace:
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000100", "EyeBeamTarget", 0.1, 3.0) at 339.91 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000100", "EyeBeamTarget", 0.1, 3.0) at 340.01 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000100", "EyeBeamTarget", 0.1, 3.0) at 340.11 (+0.10)
+	[341.10] SPELL_AURA_REMOVED: [C'Thun->Dps10: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000012, Dps10, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps10
+	[341.10] SPELL_AURA_REMOVED: [C'Thun->Dps3: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000003, Dps3, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps3
+	[348.33] SPELL_AURA_REMOVED: [C'Thun->Dps4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000004, Dps4, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps4
 	[388.59] SPELL_CAST_SUCCESS: [Giant Claw Tentacle: Birth] Creature-0-1-531-1-15728-000000012F, Giant Claw Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15728
 		StopTimer: TimerGiantClawTentacle
 		ShowAnnounce: Giant Claw Tentacle
 		StartTimer: 60.0, Giant Claw Tentacle
+	[402.40] SPELL_AURA_APPLIED: [C'Thun->Dps3: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000003, Dps3, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps3
+	[412.41] SPELL_AURA_APPLIED: [C'Thun->Healer4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000019, Healer4, 0x511, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, PlayerName
+	[414.76] UNIT_DIED: [->Flesh Tentacle] "", nil, 0x0, Creature-0-1-531-1-15802-000000012A, Flesh Tentacle, 0xa48, -1, false, 0, 0
+		ScheduleTask: (anonymous function) at 444.76 (+30.00)
 	[418.60] SPELL_CAST_SUCCESS: [Eye Tentacle: Birth] Creature-0-1-531-1-15726-0000000143, Eye Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15726
 			Filtered: 2x SPELL_CAST_SUCCESS at 418.6, 418.6
 		StopTimer: TimerEyeTentacle
 		ShowAnnounce: Eye Tentacles
 		StartTimer: 30.0, Eye Tentacles
+	[420.92] SPELL_AURA_REMOVED: [C'Thun->Dps3: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000003, Dps3, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps3
+	[422.42] SPELL_AURA_APPLIED: [C'Thun->Dps11: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000013, Dps11, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps11
 	[423.00] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-0000000144, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 423.10 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 423.20 (+0.10)
@@ -367,15 +426,22 @@ Event trace:
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 430.77 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 430.87 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 430.97 (+0.10)
+	[432.41] SPELL_AURA_APPLIED: [C'Thun->Healer2: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000016, Healer2, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Healer2
 	[433.91] SPELL_CAST_START: [Giant Eye Tentacle: Eye Beam] Creature-0-1-531-1-15334-0000000144, Giant Eye Tentacle, 0xa48, "", nil, 0x0, 26134, Eye Beam, 0, 0
 		ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 434.01 (+0.10)
 			ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 434.11 (+0.10)
 				ScheduleTask: mod:BossTargetScanner("Creature-0-1-531-1-15334-0000000144", "EyeBeamTarget", 0.1, 3.0) at 434.21 (+0.10)
+	[436.65] SPELL_AURA_REMOVED: [C'Thun->Healer4: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000019, Healer4, 0x511, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, PlayerName
 	[438.61] SPELL_CAST_SUCCESS: [Giant Claw Tentacle: Birth] Creature-0-1-531-1-15728-0000000150, Giant Claw Tentacle, 0xa48, "", nil, 0x0, 26586, Birth, 0, 0
 		AntiSpam: 15728
 		StopTimer: TimerGiantClawTentacle
 		ShowAnnounce: Giant Claw Tentacle
 		StartTimer: 60.0, Giant Claw Tentacle
+	[440.46] UNIT_DIED: [->Flesh Tentacle] "", nil, 0x0, Creature-0-1-531-1-15802-000000020A, Flesh Tentacle, 0xa48, -1, false, 0, 0
+		ScheduleTask: (anonymous function) at 470.46 (+30.00)
+			Unscheduled by ENCOUNTER_END at 468.61
 	[440.65] CHAT_MSG_MONSTER_EMOTE: %s is weakened!, C'Thun, "", "", C'Thun, "", 0, 0, "", 0, 4582, nil, 0, false, false, false, false, 0
 		ShowSpecialWarning: C'Thun Weakened!
 		PlaySound: VoicePack/targetchange
@@ -385,8 +451,17 @@ Event trace:
 		StartTimer: 83.0, Eye Tentacles
 		StartTimer: 53.0, Giant Claw Tentacle
 		StartTimer: 83.7, Giant Eye Tentacle
+	[442.40] SPELL_AURA_APPLIED: [C'Thun->Dps1: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000001, Dps1, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: EnterStomach, Dps1
+	[446.34] SPELL_AURA_REMOVED: [C'Thun->Healer2: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000016, Healer2, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Healer2
+	[446.34] SPELL_AURA_REMOVED: [C'Thun->Dps11: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000013, Dps11, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps11
+	[455.31] SPELL_AURA_REMOVED: [C'Thun->Dps1: Digestive Acid] Creature-0-1-531-1-15727-0000000001, C'Thun, 0xa48, Player-1-00000001, Dps1, 0x512, 26476, Digestive Acid, 0, DEBUFF, 0
+		ModTrace: LeaveStomach, Dps1
 	[468.61] ENCOUNTER_END: 717, C'thun, 186, 40, 1, 0
 		EndCombat: ENCOUNTER_END
+		UnscheduleTask: (anonymous function) scheduled by ScheduleTask at 440.46
 		AntiSpam: 717
 	Unknown trigger
 		UnregisterEvents: Regular, SPELL_AURA_REMOVED 26476

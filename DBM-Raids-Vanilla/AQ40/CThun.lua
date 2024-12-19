@@ -62,15 +62,14 @@ do
 	local sortedLines = {}
 	local function addLine(key, value)
 		-- sort by insertion order
-		lines[key] = value
+		lines[key] = tostring(value)
 		sortedLines[#sortedLines + 1] = key
 	end
 	updateInfoFrame = function()
 		twipe(lines)
 		twipe(sortedLines)
 		--First, process players in stomach and gather tentacle information and debuff stacks
-		for i = 1, #playersInStomach do
-			local name = playersInStomach[i]
+		for name in pairs(playersInStomach) do
 			local uId = DBM:GetRaidUnitId(name)
 			if uId then
 				--First, display their stomach debuff stacks
@@ -90,7 +89,7 @@ do
 		local nLines = 0
 		for _, health in pairs(fleshTentacles) do
 			nLines = nLines + 1
-			addLine(L.FleshTent .. " " .. nLines, health .. '%')
+			addLine(L.FleshTent .. " " .. nLines, health == 0 and DEAD or (health .. "%"))
 		end
 		return lines, sortedLines
 	end
@@ -187,9 +186,10 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(26476) then
 		--I'm aware debuff stacks, but it's a context that doesn't matter to this mod
-		if not tContains(playersInStomach, args.destName) then
-			table.insert(playersInStomach, args.destName)
+		if not playersInStomach[args.destName] then
+			self:TestTrace("EnterStomach", args.destName)
 		end
+		playersInStomach[args.destName] = true
 		if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
 			DBM.InfoFrame:SetHeader(L.Stomach)
 			DBM.InfoFrame:Show(42, "function", updateInfoFrame, false, false)
@@ -200,7 +200,8 @@ end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(26476) then
-		tDeleteItem(playersInStomach, args.destName)
+		playersInStomach[args.destName] = nil
+		self:TestTrace("LeaveStomach", args.destName)
 	end
 end
 
@@ -208,6 +209,11 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.Weakened or msg:find(L.Weakened) then
 		self:SendSync("Weakened")
 	end
+end
+
+local function removeDeadTentacle(guid)
+	fleshTentacles[guid] = nil
+	diedTentacles[guid] = true
 end
 
 function mod:UNIT_DIED(args)
@@ -223,8 +229,10 @@ function mod:UNIT_DIED(args)
 		timerGiantEyeTentacle:Start(41.3)
 		self:UnscheduleMethod("DarkGlare")
 	elseif cid == 15802 then -- Flesh Tentacle
-		fleshTentacles[args.destGUID] = nil
-		diedTentacles[args.destGUID] = true
+		-- Delayed removal to keep dead tentacles visible in the frame while the phase is still ongoing
+		-- Weaken will also clear the table clearing the frame
+		fleshTentacles[args.destGUID] = 0
+		self:Schedule(30, removeDeadTentacle, args.destGUID)
 	end
 end
 
