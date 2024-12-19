@@ -162,7 +162,21 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ40: Трэш мобы"
+	name = "Трэш мобы Ан'Кираж 40"
+}
+
+L:SetTimerLocalization{
+	TimerExplosion = "Взрывающиеся Призраки"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "Появился одиночный взрывающийся Призрак - уклоняйтесь",
+	SpecWarnExplosion = "Взрывающиеся Призраки - уклоняйтесь",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "Показывать предупреждение взрывающихся Призраков ($spell:1214871)",
+	SpecWarnExplosion = "Показывать спецпредупреждение при появлении нескольких взрывающихся Призраков ($spell:1214871)",
+	TimerExplosion = "Показывать таймер, когда появляется несколько взрывающихся Призраков ($spell:1214871)"
 }
 
 ---------------
@@ -221,11 +235,12 @@ L:SetWarningLocalization{
 	WarnDismember	= "%s на >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Называть преследуемые цели",
+	WarnPursue		= "Показывать предупреждение о преследуемых целях",
 	SpecWarnPursue	= "Показывать спецпредупреждение, когда преследование на Вас",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
+	PursueEmote 	= " смотрит на "
 }
 
 -------------
@@ -252,7 +267,7 @@ L:SetTimerLocalization{
 	TimerVulnerable	= "%s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable	= "Объявлять слабость",
+	WarnVulnerable	= "Показывать предупреждение о слабости",
 	TimerVulnerable	= "Показывать таймер до слабости"
 }
 
@@ -262,7 +277,21 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ20: Трэш мобы"
+	name = "Трэш мобы Ан'Кираж 20"
+}
+
+L:SetTimerLocalization{
+	TimerExplosion = "Взрывающиеся Призраки"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "Появился одиночный взрывающийся Призрак - уклоняйтесь",
+	SpecWarnExplosion = "Взрывающиеся Призраки - уклоняйтесь",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "Показывать предупреждение взрывающихся Призраков ($spell:1214871)",
+	SpecWarnExplosion = "Показывать спецпредупреждение при появлении нескольких взрывающихся Призраков ($spell:1214871)",
+	TimerExplosion = "Показывать таймер, когда появляется несколько взрывающихся Призраков ($spell:1214871)"
 }
 
 -----------------
@@ -336,14 +365,35 @@ L:SetGeneralLocalization{
 	name = "Пламегор"
 }
 
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
+L:SetGeneralLocalization{
+	name = "Черноскал и Пламегор"
+}
+
+L:SetTimerLocalization{
+	TimerBrandCD	= "Клеймо"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "Показать таймер для восстановления Клейма"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "Черноскал",
+	Flamegor	= "Пламегор"
+}
+
 -----------------------
---  Vulnerabilities  --
+--  BWL Trash  --
 -----------------------
 -- Chromaggus, Death Talon Overseer and Death Talon Wyrmguard
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Стражи Когтя Смерти"--FIXME
+	name = "Трэш мобы Логово Крыла Тьмы"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Уязвимость к %s"
@@ -375,14 +425,16 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s восстановление",
 	TimerBreath		= "Применение %s",
-	TimerVulnCD		= "Восстановление уязвимости"
+	TimerVulnCD		= "Восстановление уязвимости",
+	TimerAllBreaths = "Дыхательный град"
 }
 L:SetOptionLocalization{
 	WarnBreath		= "Показывать предупреждение о дыханиях Хромаггуса",
 	WarnVulnerableNew	= "Показывать предупреждение об уязвимости к заклинаниям",
 	TimerBreathCD	= "Показывать время восстановления дыханий",
 	TimerBreath		= "Показывать применение Дыхания",
-	TimerVulnCD		= "Показывать восстановление уязвимости"
+	TimerVulnCD		= "Показывать восстановление уязвимости",
+	TimerAllBreaths = "Показывать таймер для Дыхательного града"
 }
 L:SetMiscLocalization{
 	Breath1		= "Первое Дыхание",
@@ -435,6 +487,39 @@ L:SetMiscLocalization{
 	YellDK		= "Death Knights... get over here!",
 	YellMonk	= "Monk",
 	YellDH		= "Demon hunters? How odd, covering your eyes like that. Doesn't it make it hard to see the world around you?"
+}
+
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "Сезон открытий Испытания"
+}
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= "Синий и зеленый на >%s<",
+	SpecWarnBothBombsYou	= "Синий и зеленый на ТЕБЕ",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+	SpecWarnBothBombs		= "Показывать спецпредупреждение, если на одном и том же игроке находятся и синяя, и зеленая бомбы.",
+	SpecWarnBothBombsYou	= "Показывать спецпредупреждение, если на Вас как синяя, так и зеленая бомбы.",
+	TimerBombs				= "Показывать таймер для синих и зеленых бомб (Испытание драконов)"
+}
+
+L:SetMiscLocalization{
+	-- Does not need translation if "BLUE BOMB" is okay, the "Blue"/"Green" strings are just fallbacks if Core is outdated
+	-- Only translate that if you need something like "BOMB BLUE"
+	BlueBomb = (DBM_COMMON_L.BLUE or "Blue") .. " " .. DBM_COMMON_L.BOMB,
+	GreenBomb = (DBM_COMMON_L.GREEN or "Green") .. " " .. DBM_COMMON_L.BOMB,
+
+	-- Used in options
+	BlueTrial = "Испытание синих драконов",
+	GreenTrial = "Испытание зеленых драконов",
+	GreenAndBlue = "Зеленый и синий на одном игроке",
 }
 
 ----------------
@@ -539,25 +624,36 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerSubmerge		= "Погружение",
 	TimerEmerge			= "Появление",
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_TEXTS.combat
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "Показывать предупреждение о погружении",
 	TimerSubmerge		= "Показывать время до погружения",
 	WarnEmerge			= "Показывать предупреждение о появлении",
 	TimerEmerge			= "Показывать время до появления",
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
 }
 L:SetMiscLocalization{
 	Submerge	= "ПРИДИТЕ, МОИ СЛУГИ! ЗАЩИТИТЕ СВОЕГО ХОЗЯИНА!",
 	Pull		= "Нахальные щенки! Вы сами обрекли себя на смерть! Узрите же Повелителя в гневе!"
 }
 
------------------
---  The Molten Core (Placeholder?_  --
------------------
+----------------------
+--  The Molten Core --
+----------------------
 L = DBM:GetModLocalization("MoltenCore")
 
 L:SetGeneralLocalization{
 	name = "Огненные Недра"
+}
+
+L:SetOptionLocalization{
+	YellHeartCleared	= "Кричать, когда Сердце Пепла/Пепел будет удалено.",
+	WarnBossPower		= "Показывать предупреждения, когда энергия босса достигает 50%, 75%, 90% и 100%"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "Энергия босса на %d%%"
 }
 
 -----------------
@@ -566,7 +662,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "MC: Трэш мобы"
+	name = "Трэш мобы Огненные Недра"
 }
 
 -------------------
@@ -692,6 +788,10 @@ L:SetGeneralLocalization{
 	name = "Мастер проклятий Джин'до"
 }
 
+L:SetMiscLocalization{
+	Ghosts = "Призраки"
+}
+
 --------------
 --  Onyxia  --
 --------------
@@ -706,7 +806,7 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerWhelps	= "Вызов дракончиков Ониксии"
+	TimerWhelps	= "Дракончики Ониксии"
 }
 
 L:SetOptionLocalization{
@@ -719,7 +819,8 @@ L:SetMiscLocalization{
 	Breath = "%s под воздействием Глубокого вдоха...",
 	YellPull = "Вот это сюрприз. Обычно, чтобы найти обед, мне приходится покидать логово.",
 	YellP2 = "Эта бессмысленная возня вгоняет меня в тоску. Я сожгу вас всех!",
-	YellP3 = "Похоже, вам требуется преподать еще один урок, смертные!"
+	YellP3 = "Похоже, вам требуется преподать еще один урок, смертные!",
+	SoDWarning = "Добро пожаловать в %s. DBM воспроизведет несколько забавных звуков из легендарного классического рейда во время боя. Вы можете отключить это в пользовательском интерфейсе DBM: введите /dbm и перейдите к моду Ониксия в разделе Рейды -> Классический."
 }
 
 -------------------
@@ -819,7 +920,10 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Смерть чужакам!"
+	Pull				= "Смерть чужакам!",
+	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
+	Adds				= "summons forth Skeletal Warriors!",
+	AddsTwo				= "raises more skeletons!"
 })
 
 --------------------------
@@ -954,11 +1058,11 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Предупреждать о скором исчезновении Стены костей"
+	WarningShieldWallSoon	= "Предупреждать о скором окончании Глухой обороны"
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Стена костей закончится через 5 секунд"
+	WarningShieldWallSoon	= "Глухая оборона закончится через 5 секунд"
 })
 
 ----------------------------
@@ -1018,10 +1122,11 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "Метка %d",
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon				= "Знак %d через 3 секунды",
+	WarningMarkSoon				= "Метка %d через 3 секунды",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
@@ -1263,12 +1368,21 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization({
-	timerTankCD	= "Показывать таймер перезарядки случайных способностей танка на 4 этапе"
+	timerTankCD	= "Показывать таймер перезарядки случайных способностей танка на 4-й фазе"
 })
 
 ------------------
 --  Sunken Temple  --
 ------------------
+
+--------------
+-- ST Trash --
+--------------
+L = DBM:GetModLocalization("STTrashSoD")
+
+L:SetGeneralLocalization{
+	name = "Трэш мобы Затонувший храм"
+}
 
 ---------------------------
 --  Atal'alarion  --
@@ -1296,6 +1410,11 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 L:SetGeneralLocalization({
 	name = "Защитники Атал'ай"
 })
+
+L:SetOptionLocalization({
+	SetIconsOnGhosts = "Установить иконки на боссов-призраков"
+})
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
@@ -1304,6 +1423,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "Жнец Снов и Ткачик"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1312,6 +1432,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "Аватара Хаккара"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1320,6 +1441,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "Джаммал'ан и Огом"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1328,6 +1450,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "Морфаз и Хаззас"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
@@ -1336,3 +1459,43 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Тень Эраникуса"
 })
+
+---------------------------
+--  Lord Roccor (3042) --
+---------------------------
+--L= DBM:GetModLocalization(2663)
+
+---------------------------
+--  Bael'Gar (3044) --
+---------------------------
+--L= DBM:GetModLocalization(2664)
+
+---------------------------
+--  Lord Incendius (3043) --
+---------------------------
+--L= DBM:GetModLocalization(2665)
+
+---------------------------
+--  Golem Lord Argelmach (3046) --
+---------------------------
+--L= DBM:GetModLocalization(2666)
+
+---------------------------
+--  The Seven (3048) --
+---------------------------
+--L= DBM:GetModLocalization(2667)
+
+---------------------------
+--  General Angerforge (3045) --
+---------------------------
+--L= DBM:GetModLocalization(2668)
+
+---------------------------
+--  Ambassador Flamelash (3047) --
+---------------------------
+--L= DBM:GetModLocalization(2669)
+
+---------------------------
+--  Emperor Dagran Thaurissan (3049) --
+---------------------------
+--L= DBM:GetModLocalization(2670)

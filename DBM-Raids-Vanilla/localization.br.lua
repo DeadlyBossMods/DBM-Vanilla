@@ -58,7 +58,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Anunciar alvos perseguidos",
-	SpecWarnPursue	= "Exibir aviso especial quando estiver sendo perseguido",
+	SpecWarnPursue	= "Exibir anúncio especial quando estiver sendo perseguido",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
@@ -100,6 +100,19 @@ L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
 	name = "AQ20: Lixo"
+}
+L:SetTimerLocalization{
+	TimerExplosion = "Fantasmas explosivos"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion 		= "Um único fantasma explosivo apareceu - desvie",
+	SpecWarnExplosion 	= "Fantasmas explosivos - desvie",
+}
+L:SetOptionLocalization{
+	WarnExplosion 		= "Exibir anúncio para fantasmas explosivos ($spell:1214871)",
+	SpecWarnExplosion 	= "Exibir anúncio especial quando vários fantasmas explosivos aparecerem ($spell:1214871)",
+	TimerExplosion 		= "Exibir cronômetro para quando vários fantasmas explosivos aparecerem ($spell:1214871)"
 }
 
 ------------
@@ -214,11 +227,11 @@ L:SetTimerLocalization{
 	TimerWeakened			= "Enfraquece acaba"
 }
 L:SetOptionLocalization{
-	WarnEyeTentacle			= "Exibir aviso para Tentóculo",
-	WarnClawTentacle2		= "Exibir aviso para Tentáculo de Garra",
-	WarnGiantEyeTentacle	= "Exibir aviso para Tentóculo Gigante",
-	WarnGiantClawTentacle	= "Exibir aviso para Tentáculo de Garra Gigante",
-	SpecWarnWeakened		= "Exibir aviso especial quando o chefe enfraquece",
+	WarnEyeTentacle			= "Exibir anúncio para Tentóculo",
+	WarnClawTentacle2		= "Exibir anúncio para Tentáculo de Garra",
+	WarnGiantEyeTentacle	= "Exibir anúncio para Tentóculo Gigante",
+	WarnGiantClawTentacle	= "Exibir anúncio para Tentáculo de Garra Gigante",
+	SpecWarnWeakened		= "Exibir anúncio especial quando o chefe enfraquece",
 	TimerEyeTentacle		= "Exibir cronômetro para o próximo Tentóculo",
 	TimerClawTentacle		= "Exibir cronômetro para o próximo Tentáculo de Garra",
 	TimerGiantEyeTentacle	= "Exibir cronômetro para o próximo Tentóculo Gigante",
@@ -250,9 +263,9 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Emersão"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Exibir aviso para submersão",
+	WarnSubmerge		= "Exibir anúncio para submersão",
 	TimerSubmerge		= "Exibir cronômetro para submersão",
-	WarnEmerge			= "Exibir aviso para emersão",
+	WarnEmerge			= "Exibir anúncio para emersão",
 	TimerEmerge			= "Exibir cronômetro para emersão"
 }
 
@@ -263,6 +276,19 @@ L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
 	name = "AQ40: Lixo"
+}
+L:SetTimerLocalization{
+	TimerExplosion = "Fantasmas explosivos"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion 		= "Um único fantasma explosivo apareceu - desvie",
+	SpecWarnExplosion 	= "Fantasmas explosivos - desvie",
+}
+L:SetOptionLocalization{
+	WarnExplosion 		= "Exibir anúncio para fantasmas explosivos ($spell:1214871)",
+	SpecWarnExplosion 	= "Exibir anúncio especial quando vários fantasmas explosivos aparecerem ($spell:1214871)",
+	TimerExplosion 		= "Exibir cronômetro para quando vários fantasmas explosivos aparecerem ($spell:1214871)"
 }
 
 -------------------
@@ -490,7 +516,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidade: %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Exibir aviso de vulnerabilidades de feitiços"
+	WarnVulnerable		= "Exibir anúncio de vulnerabilidades de feitiços"
 }
 L:SetMiscLocalization{
 	Fire		= "Fogo",
@@ -516,18 +542,20 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s recarga",
 	TimerBreath		= "%s lançamento",
-	TimerVulnCD		= "Recarga de Vulnerabilidade"
+	TimerVulnCD		= "Recarga de Vulnerabilidade",
+	TimerAllBreaths = "Salva da respiração"
 }
 L:SetOptionLocalization{
-	WarnBreath		= "Exibir aviso quando Cromaggus lançar uma das suas respirações",
+	WarnBreath			= "Exibir anúncio quando Cromaggus lança uma das suas respirações",
 	WarnVulnerableNew	= "Exibir cronômetro para recarga da respiração",
-	TimerBreathCD	= "Exibir recarga da respiração",
-	TimerBreath		= "Exibir lançamento da respiração",
-	TimerVulnCD		= "Exibir recarga de Vulnerabilidade"
+	TimerBreathCD		= "Exibir recarga da respiração",
+	TimerBreath			= "Exibir lançamento da respiração",
+	TimerVulnCD			= "Exibir recarga de Vulnerabilidade",
+	TimerAllBreaths 	= "Exibir chronômetro para Salva da respiração"
 }
 L:SetMiscLocalization{
-	Breath1	= "Primeira respiração",
-	Breath2	= "Segunda respiração",
+	Breath1		= "Primeira respiração",
+	Breath2		= "Segunda respiração",
 	VulnEmote	= "%s tem espasmos à medida que sua pele começa a brilhar.",
 	Vuln		= "Vulnerabilidade",
 	Fire		= "Fogo",
@@ -557,8 +585,8 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	TimerClassCall		= "Exibir cronômetro para duração da chamada em cada classe",
 	WarnAddsLeft		= "Anunciar as mortes restantes até a Fase 2",
-	WarnClassCall		= "Exibir aviso para chamadas de classe",
-	specwarnClassCall	= "Exibir aviso especial quando afetado por chamada em classe"
+	WarnClassCall		= "Exibir anúncio para chamadas de classe",
+	specwarnClassCall	= "Exibir anúncio especial quando afetado por chamada em classe"
 }
 L:SetMiscLocalization{
 	YellP1		= "Que comecem os jogos!",
@@ -591,8 +619,8 @@ L:SetTimerLocalization{
 	TimerBombs				= DBM_COMMON_L.BOMBS
 }
 L:SetOptionLocalization{
-SpecWarnBothBombs			= "Exibir aviso especial se as bombas azul e verde estiverem no mesmo jogador",
-SpecWarnBothBombsYou		= "Exibir aviso especial se as bombas azul e verde estiverem em você",
+SpecWarnBothBombs			= "Exibir anúncio especial se as bombas azul e verde estiverem no mesmo jogador",
+SpecWarnBothBombsYou		= "Exibir anúncio especial se as bombas azul e verde estiverem em você",
 TimerBombs					= "Exibir cronômetro para as bombas de teste azul e verde"
 }
 ----------------
@@ -699,9 +727,9 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Emersão",
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Exibir aviso para submersão",
+	WarnSubmerge		= "Exibir anúncio para submersão",
 	TimerSubmerge		= "Exibir cronômetro para submersão",
-	WarnEmerge			= "Exibir aviso para emersão",
+	WarnEmerge			= "Exibir anúncio para emersão",
 	TimerEmerge			= "Exibir cronômetro para emersão",
 }
 L:SetMiscLocalization{
@@ -720,7 +748,7 @@ L:SetGeneralLocalization{
 
 L:SetOptionLocalization{
 	YellHeartCleared	= "Grite quando o Coração de cinzas/brasas for removido.",
-	WarnBossPower		= "Exibir avisos quando a energia do chefe atingir 50%, 75%, 90% e 100%"
+	WarnBossPower		= "Exibir anúncios quando a energia do chefe atingir 50%, 75%, 90% e 100%"
 }
 
 L:SetWarningLocalization{
@@ -754,7 +782,7 @@ L:SetTimerLocalization{
 
 L:SetOptionLocalization{
 	TimerWhelps				= "Exibir cronômetro para os seguintes Dragonetes Onyxiano",
-	WarnWhelpsSoon			= "Exibir aviso prévio para os seguintes Dragonetes Onyxiano",
+	WarnWhelpsSoon			= "Exibir anúncio prévio para os seguintes Dragonetes Onyxiano",
 	SoundWTF3				= "Reproduzir sons engraçados de um lendário raide clássico de Onyxia"
 }
 
@@ -781,8 +809,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	SpecialLocust		= "Exibir aviso especial para $spell:28785",
-	WarningLocustFaded	= "Exibir aviso cuando termina $spell:28785",
+	SpecialLocust		= "Exibir anúncio especial para $spell:28785",
+	WarningLocustFaded	= "Exibir anúncio cuando termina $spell:28785",
 	ArachnophobiaTimer	= "Exibir cronômetro para a conquista 'Aracnofobia'"
 })
 
@@ -807,8 +835,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Exibir aviso prévio para quando expira Abraço da Viúva",
-	WarningEmbraceExpired	= "Exibir aviso cuando expira Abraço da Viúvaex"
+	WarningEmbraceExpire	= "Exibir anúncio prévio para quando expira Abraço da Viúva",
+	WarningEmbraceExpired	= "Exibir anúncio cuando expira Abraço da Viúvaex"
 })
 
 L:SetMiscLocalization({
@@ -834,8 +862,8 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon	= "Exibir aviso prévio para quando os Proles de Maexxna aparecerem",
-	WarningSpidersNow	= "Exibir aviso quando Proles de Maexxna aparecem",
+	WarningSpidersSoon	= "Exibir anúncio prévio para quando os Proles de Maexxna aparecerem",
+	WarningSpidersNow	= "Exibir anúncio quando Proles de Maexxna aparecem",
 	TimerSpider			= "Exibir cronômetro para os seguintes Proles de Maexxna"
 })
 
@@ -863,8 +891,8 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningTeleportNow	= "Exibir aviso para Teleporte",
-	WarningTeleportSoon	= "Exibir aviso prévio para Teleporte",
+	WarningTeleportNow	= "Exibir anúncio para Teleporte",
+	WarningTeleportSoon	= "Exibir anúncio prévio para Teleporte",
 	TimerTeleport		= "Exibir cronômetro para o próximo Teleporte: Sacada",
 	TimerTeleportBack	= "Exibir cronômetro para Teleporte: Chão"
 })
@@ -892,9 +920,9 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningTeleportNow	= "Exibir aviso para Teleporte",
-	WarningTeleportSoon	= "Exibir aviso prévio para Teleporte",
-	TimerTeleport		= "Exibir aviso para Teleporte"
+	WarningTeleportNow	= "Exibir anúncio para Teleporte",
+	WarningTeleportSoon	= "Exibir anúncio prévio para Teleporte",
+	TimerTeleport		= "Exibir anúncio para Teleporte"
 })
 
 L:SetMiscLocalization({
@@ -916,8 +944,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHealSoon		= "Exibir aviso prévio para janela de cura de 3 segundos",
-	WarningHealNow		= "Exibir aviso prévio para janela de cura"
+	WarningHealSoon		= "Exibir anúncio prévio para janela de cura de 3 segundos",
+	WarningHealNow		= "Exibir anúncio prévio para janela de cura"
 })
 
 ---------------
@@ -975,8 +1003,8 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningChargeChanged	= "Exibir aviso especial quando sua polaridade mudar",
-	WarningChargeNotChanged	= "Exibir aviso especial quando sua polaridade não mudar",
+	WarningChargeChanged	= "Exibir anúncio especial quando sua polaridade mudar",
+	WarningChargeNotChanged	= "Exibir anúncio especial quando sua polaridade não mudar",
 	AirowsEnabled			= "Exibir setas (estratégia típica de dois grupos)",
 	ArrowsRightLeft			= "Exibe as setas para a esquerda e direita (estratégia de quatro grupos; mostra a seta para a esquerda se a polaridade mudar, seta para a direita se não mudar)",
 	ArrowsInverse			= "Exibe as setas esquerda e direita reversas (estratégia de quatro grupos; mostra a seta para a direita se a polaridade mudar, a seta para a esquerda se não mudar)"
@@ -1004,7 +1032,7 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Exibir aviso prévio para quando termina $spell:29061"
+	WarningShieldWallSoon	= "Exibir anúncio prévio para quando termina $spell:29061"
 })
 
 L:SetWarningLocalization({
@@ -1023,10 +1051,10 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	TimerWave			= "Exibir cronômetro para a próxima onda de lacaios",
 	TimerPhase2			= "Exibir cronômetro para mudar para a Fase 2",
-	WarningWaveSoon		= "Exibir aviso prévio para a próxima onda de lacaios",
-	WarningWaveSpawned	= "Exibir aviso quando uma onda de lacaios começar",
-	WarningRiderDown	= "Exibir aviso quando um Cavalgante Implacável morre",
-	WarningKnightDown	= "Exibir aviso quando um Cavaleiro da Morte Implacável morre"
+	WarningWaveSoon		= "Exibir anúncio prévio para a próxima onda de lacaios",
+	WarningWaveSpawned	= "Exibir anúncio quando uma onda de lacaios começar",
+	WarningRiderDown	= "Exibir anúncio quando um Cavalgante Implacável morre",
+	WarningKnightDown	= "Exibir anúncio quando um Cavaleiro da Morte Implacável morre"
 })
 
 L:SetTimerLocalization({
@@ -1062,8 +1090,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningMarkSoon				= "Exibir aviso prévio para marcas",
-	SpecialWarningMarkOnPlayer	= "Exibir um aviso especial quando você for afetado por mais de quatro marcas"
+	WarningMarkSoon				= "Exibir anúncio prévio para marcas",
+	SpecialWarningMarkOnPlayer	= "Exibir um anúncio especial quando você for afetado por mais de quatro marcas"
 })
 
 L:SetTimerLocalization({
@@ -1091,13 +1119,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningAirPhaseSoon	= "Exibir aviso prévio para mudança de fase de ar",
+	WarningAirPhaseSoon	= "Exibir anúncio prévio para mudança de fase de ar",
 	WarningAirPhaseNow	= "Anunciar mudança para fase de ar",
 	WarningLanded		= "Anunciar mudança de fase no solo",
 	TimerAir			= "Exibir cronômetro para mudança para fase de ar",
 	TimerLanding		= "Exibir cronômetro para mudança de fase no terra",
 	TimerIceBlast		= "Exibir cronômetro para $spell:28524",
-	WarningDeepBreath	= "Exibir aviso especial para $spell:28524",
+	WarningDeepBreath	= "Exibir anúncio especial para $spell:28524",
 	WarningIceblock		= "Grite quando te afeta $spell:28522"
 })
 
@@ -1131,8 +1159,8 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Exibir cronômetro para mudar para a Fase 2",
-	specwarnP2Soon		= "Exibir aviso especial 10 s antes de mudar para a Fase 2",
-	warnAddsSoon		= "Exibir aviso prévio para quando os Guardiões da Coroa de Gelo aparecerem"
+	specwarnP2Soon		= "Exibir anúncio especial 10 s antes de mudar para a Fase 2",
+	warnAddsSoon		= "Exibir anúncio prévio para quando os Guardiões da Coroa de Gelo aparecerem"
 })
 
 L:SetMiscLocalization({
@@ -1201,7 +1229,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization({
-	TimerImmune	= "Exibir temporizador para a duração da imunidade de Gelihast durante as transições de fase"
+	TimerImmune	= "Exibir cronômetro para a duração da imunidade de Gelihast durante as transições de fase"
 })
 
 ------------------
@@ -1218,7 +1246,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "Exibir um aviso indicando quantas Sacerdotisas das Marés da Profundezas Negras ainda estão restantes"
+	warnPriestRemaining	= "Exibir um anúncio indicando quantas Sacerdotisas das Marés da Profundezas Negras ainda estão restantes"
 })
 
 ------------------
@@ -1312,7 +1340,7 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization({
-	timerTankCD	= "Exibir temporizador para o tempo de recarga aleatório da habilidade do tanque na fase 4."
+	timerTankCD	= "Exibir cronômetro para o tempo de recarga aleatório da habilidade do tanque na fase 4."
 })
 
 ------------------

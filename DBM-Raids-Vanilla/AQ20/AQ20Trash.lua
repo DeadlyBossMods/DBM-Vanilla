@@ -28,7 +28,7 @@ mod:RegisterEvents(
 	"SPELL_SUMMON 17430 17431",
 	"SPELL_MISSED",
 	"UNIT_DIED",
-	"SPELL_DAMAGE 14297 24340 8732",
+	"SPELL_DAMAGE 14297 24340 8732 26546 26558 26554 25779",
 	"PLAYER_TARGET_CHANGED",
 	"NAME_PLATE_UNIT_ADDED"
 )
@@ -107,12 +107,14 @@ function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spell
 end
 
 function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _, spellId)
-	if spellId == 14297 then
+	if spellId == 14297 or spellId == 26546 then
 		aq40Trash:TrackTrashAbility(sourceGUID, "ShadowStorm", sourceRaidFlags, sourceName)
-	elseif spellId == 24340 then
+	elseif spellId == 26558 or spellId == 24340 then
 		aq40Trash:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
-	elseif spellId == 8732 then
+	elseif spellId == 26554 or spellId == 8732 then
 		aq40Trash:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
+	elseif spellId == 25779 then
+		aq40Trash:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end
 end
 
