@@ -26,7 +26,7 @@
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2835
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2835, 2856
 ## X-DBM-Mod-MinCoreRevision: 20230521000000
 ## X-DBM-Mod-MinExpansion: 0
 ## X-Curse-Project-ID: 16442
