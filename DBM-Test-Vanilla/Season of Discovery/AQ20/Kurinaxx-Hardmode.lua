@@ -3,6 +3,7 @@ DBM.Test:DefineTest{
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
 	mod = "Kurinnaxx",
+	otherMods = "AQ20Trash",
 	instanceInfo = {name = "Ruins of Ahn'Qiraj", instanceType = "raid", difficultyID = 185, difficultyName = "20 Player", difficultyModifier = 0, maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 509, instanceGroupSize = 20, lfgDungeonID = nil},
 	players = {
 		{"Tank1",   "Player-1-00000004", class = "WARRIOR"},

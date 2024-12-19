@@ -3,6 +3,7 @@ DBM.Test:DefineTest{
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
 	mod = "Viscidus",
+	otherMods = "AQ40Trash",
 	instanceInfo = {name = "Ahn'Qiraj Temple", instanceType = "raid", difficultyID = 186, difficultyName = "40 Player", difficultyModifier = 0, maxPlayers = 40, dynamicDifficulty = 0, isDynamic = false, instanceID = 531, instanceGroupSize = 40, lfgDungeonID = nil},
 	players = {
 		{"Tank1",   "Player-1-00000003", class = "WARRIOR", healer = 0.00, tank = 1.00, dps = 0.44},
