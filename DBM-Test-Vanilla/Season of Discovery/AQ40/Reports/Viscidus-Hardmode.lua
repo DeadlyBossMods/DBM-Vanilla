@@ -4,8 +4,6 @@ Mod:  DBM-Raids-Vanilla/Viscidus
 
 Findings:
 	Unused event registration: SPELL_CAST_SUCCESS 25896 (Rejoin Viscidus)
-	SpecialWarning for spell ID 25786 (Toxic Vapors) is triggered by event SPELL_AURA_APPLIED 25989 (Toxin)
-	SpecialWarning for spell ID 25786 (Toxic Vapors) is triggered by event SPELL_PERIODIC_DAMAGE 25989 (Toxin)
 
 Unused objects:
 	None
@@ -50,10 +48,6 @@ Announces:
 			 Triggered 28x, delta times: 11.00, 11.37, 37.24, 11.33, 11.32, 11.35, 11.34, 11.32, 12.98, 11.34, 11.35, 25.87, 11.31, 11.34, 11.34, 11.28, 11.35, 30.77, 11.34, 11.38, 12.93, 11.36, 11.32, 11.38, 11.34, 11.31, 11.36, 11.34
 
 Special warnings:
-	%s damage - move away, type=gtfo, spellId=25786, triggerDeltas = 242.95, 3.99, 5.08
-		[242.95] SPELL_AURA_APPLIED: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, DEBUFF, 0
-			 Triggered 2x, delta times: 242.95, 9.07
-		[246.94] SPELL_PERIODIC_DAMAGE: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, 0
 	%s damage - move away, type=gtfo, spellId=25989, triggerDeltas = 242.95, 9.07
 		[242.95] SPELL_AURA_APPLIED: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 242.95, 9.07
@@ -69,7 +63,6 @@ Voice pack sounds:
 	VoicePack/watchfeet
 		[242.95] SPELL_AURA_APPLIED: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, DEBUFF, 0
 			 Triggered 2x, delta times: 242.95, 9.07
-		[246.94] SPELL_PERIODIC_DAMAGE: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, 0
 
 Icons:
 	None
@@ -205,24 +198,9 @@ Event trace:
 		ShowAnnounce: Shatter: 2/3
 	[242.95] SPELL_AURA_APPLIED: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, DEBUFF, 0
 		AntiSpam: 2
-			Filtered: 1x SPELL_AURA_APPLIED at 242.95
-			Filtered: 2x SPELL_PERIODIC_DAMAGE at 244.96, 244.96
-		ShowSpecialWarning: Toxin damage - move away
-		PlaySound: VoicePack/watchfeet
-		AntiSpam: 2
-		ShowSpecialWarning: Toxin damage - move away
-		PlaySound: VoicePack/watchfeet
-	[246.94] SPELL_PERIODIC_DAMAGE: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, 0
-		AntiSpam: 2
-			Filtered: 1x SPELL_PERIODIC_DAMAGE at 246.94
 		ShowSpecialWarning: Toxin damage - move away
 		PlaySound: VoicePack/watchfeet
 	[252.02] SPELL_AURA_APPLIED: [Toxic Slime->Healer2: Toxin] Creature-0-1-531-1-15925-00000000B7, Toxic Slime, 0xa48, Player-1-00000005, Healer2, 0x511, 25989, Toxin, 0, DEBUFF, 0
-		AntiSpam: 2
-			Filtered: 1x SPELL_AURA_APPLIED at 252.02
-			Filtered: 2x SPELL_PERIODIC_DAMAGE at 254.02, 254.02
-		ShowSpecialWarning: Toxin damage - move away
-		PlaySound: VoicePack/watchfeet
 		AntiSpam: 2
 		ShowSpecialWarning: Toxin damage - move away
 		PlaySound: VoicePack/watchfeet
