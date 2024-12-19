@@ -1004,6 +1004,7 @@ L:SetOptionLocalization({
 	WarningChargeChanged	= "Exibir anúncio especial quando sua polaridade mudar",
 	WarningChargeNotChanged	= "Exibir anúncio especial quando sua polaridade não mudar",
 	AirowsEnabled			= "Exibir setas durante $spell:28089",
+	Never					= "Nunca",
 	TwoCamp					= "Exibir setas (estratégia típica de dois grupos para correr através)",
 	ArrowsRightLeft			= "Exibir setas para a esquerda e direita (estratégia de quatro grupos; exibe a seta para a esquerda se a polaridade mudar, seta para a direita se não mudar)",
 	ArrowsInverse			= "Exibir setas esquerda e direita reversas (estratégia de quatro grupos; exibe a seta para a direita se a polaridade mudar, a seta para a esquerda se não mudar)"
