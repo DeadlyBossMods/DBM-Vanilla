@@ -45,6 +45,8 @@ localization.kr.lua
 localization.mx.lua
 localization.ru.lua
 
+Polyfills.lua
+
 # Temporary, will be moved to Core
 Blocks\Gtfo.lua
 
