@@ -388,10 +388,15 @@ end
 
 
 -- Trash InfoFrame
-local mobs = {}
+local mobs, deadMobs = {}, {}
 
 -- TODO: Grab spell info frame Detect Magic as well, unfortunately these don't show up in logs :/
 function mod:TrackTrashAbility(guid, ability, raidFlags, name)
+	if deadMobs[guid] and GetTime() - deadMobs[guid] < 20 then
+		-- Their abilities can hit after they die, we don't want to add them again in this case
+		-- Except if it's longer than 20 seconds ago that we saw them die in case of mysterious resurrections (or, well, tests running multiple times)
+		return
+	end
 	local mobInfo = mobs[guid] or {abilities = {}, sortedAbilities = {}}
 	mobs[guid] = mobInfo
 	mobInfo.name = name
@@ -400,11 +405,16 @@ function mod:TrackTrashAbility(guid, ability, raidFlags, name)
 	if not mobInfo.abilities[ability] then
 		mobInfo.abilities[ability] = true
 		mobInfo.sortedAbilities[#mobInfo.sortedAbilities + 1] = trashAbilitiesLocalized[ability] or ability
+		self:TestTrace("DetectAbility", guid, name, ability)
 	end
 	self:ShowInfoFrame()
 end
 
 function mod:RemoveTrackTrashAbilityMob(guid)
+	if mobs[guid] then
+		deadMobs[guid] = GetTime()
+		self:TestTrace("StopTracking", guid)
+	end
 	mobs[guid] = nil
 end
 
@@ -462,6 +472,7 @@ local function updateInfoFrame()
 	end
 	table.wipe(lines)
 	table.wipe(sortedLines)
+	local mobId = 0
 	for guid, mob in pairs(mobs) do
 		local hp = DBM:GetBossHP(guid)
 		mob.hp = hp or mob.hp
@@ -469,7 +480,8 @@ local function updateInfoFrame()
 		if mob.icon > 0 then
 			name = DBM:IconNumToTexture(mob.icon) .. " " .. name
 		end
-		addLine(name, mob.hp and ("%d%%"):format(mob.hp))
+		addLine(name .. (" "):rep(mobId), mob.hp and ("%d%%"):format(mob.hp))
+		mobId = mobId + 1 -- ugly hack to make health tracking work if you have multiple mobs of the same name without raid target icons
 		for _, ability in ipairs(mob.sortedAbilities) do
 			addLine(NORMAL_FONT_COLOR:WrapTextInColorCode((" "):rep(6) .. ability))
 		end
