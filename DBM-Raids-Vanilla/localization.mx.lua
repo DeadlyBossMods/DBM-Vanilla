@@ -1008,7 +1008,7 @@ L:SetOptionLocalization({
 	TwoCamp					= "Mostrar flechas (estrategia normal de dos grupos para correr a través)",
 	ArrowsRightLeft			= "Mostrar flechas de izquierda y derecha (estrategia de cuatro grupos; muestra la flecha izquierda si cambia la polaridad, y la derecha si no cambia)",
 	ArrowsInverse			= "Mostrar flechas de izquierda y derecha inversas (estrategia de cuatro grupos; muestra la flecha derecha si cambia la polaridad, y la izquierda si no cambia)"
-
+})
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polaridad cambiada a %s",
 	WarningChargeNotChanged	= "Tu polaridad no ha cambiado"
