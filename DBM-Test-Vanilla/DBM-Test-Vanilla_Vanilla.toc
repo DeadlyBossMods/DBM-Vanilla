@@ -16,6 +16,8 @@ Season of Discovery/AQ40/Huhuran-Hardmode.lua
 Season of Discovery/AQ40/TwinEmps-Hardmode.lua
 Season of Discovery/AQ40/Ouro-Hardmode.lua
 Season of Discovery/AQ40/CThun-Hardmode.lua
+Season of Discovery/AQ40/Trash1.lua
+Season of Discovery/AQ40/Trash2.lua
 
 Season of Discovery/AQ40/Reports/Skeram-Hardmode.lua
 Season of Discovery/AQ40/Reports/ThreeBugs-Hardmode.lua
@@ -26,6 +28,8 @@ Season of Discovery/AQ40/Reports/Huhuran-Hardmode.lua
 Season of Discovery/AQ40/Reports/TwinEmps-Hardmode.lua
 Season of Discovery/AQ40/Reports/Ouro-Hardmode.lua
 Season of Discovery/AQ40/Reports/CThun-Hardmode.lua
+Season of Discovery/AQ40/Reports/Trash1.lua
+Season of Discovery/AQ40/Reports/Trash2.lua
 
 # AQ20
 Season of Discovery/AQ20/Kurinaxx-Hardmode.lua

@@ -55,7 +55,7 @@ end
 
 function mod:MCTarget(targetname)
 	if not targetname or not DBM:GetRaidRoster(targetname) then return end--Ignore junk target scans that include pets
-	if not self:AntiSpam(1.5, "MC" .. targetname) then -- gets called for both SPELL_CAST_START and AURA_APPLIED because the former doesn't seem to exist at least on SoD
+	if not self:AntiSpam(1.5, "MC", targetname) then -- gets called for both SPELL_CAST_START and AURA_APPLIED because the former doesn't seem to exist at least on SoD
 		return
 	end
 	if self.Options.SetIconOnMC then
