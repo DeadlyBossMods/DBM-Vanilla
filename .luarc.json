@@ -13,6 +13,7 @@
 		"UIDropDownMenu_CreateInfo",
 		"SHIELDSLOT",
 		"BOSS",
+		"DEAD",
 		"UnitDebuff",
 		"SCENARIO_STAGE",
 		"DBMRaidsVanilla_AllSavedVars"
