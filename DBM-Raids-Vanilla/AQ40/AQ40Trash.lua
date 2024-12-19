@@ -46,8 +46,8 @@ local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
 local warnExplosion					= mod:NewAnnounce("WarnExplosion", 3, nil, false)
 -- Not sure if both can happen in AQ40
-local warnAdd1						= mod:NewSpellAnnounce(17430)
-local warnAdd2						= mod:NewSpellAnnounce(17431)
+local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802)
+local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802)
 
 local specWarnExplosion				= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
