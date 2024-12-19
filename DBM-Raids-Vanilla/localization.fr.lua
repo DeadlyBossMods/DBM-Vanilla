@@ -997,7 +997,8 @@ L:SetOptionLocalization({
 	WarningChargeNotChanged	= "Afficher une annonce spéciale quand votre polarité n'a pas changé",
 	TimerShiftCast			= "Afficher un chronomètre pour le cast du changement de polarité",
 	AirowsEnabled			= "Afficher les flèches pendant $spell:28089",
-	TwoCamp					= "Afficher les flèches (stratégie normale de '2 camp' pour traverser)",
+	Never					= "Jamais",
+	TwoCamp					= "Afficher les flèches (stratégie normale de \"2 camps\" pour traverser)",
 	ArrowsRightLeft			= "Afficher les flèches droite / gauche pour la stratégie \"4 camps\" (affiche la flèche gauche si la polarité a changé, et la flèche droite sinon)",
 	ArrowsInverse			= "Inverser la statégie \"4 camps\" (affiche la flèche droite si la polarité a changé, et la flèche gauche sinon)"
 })
