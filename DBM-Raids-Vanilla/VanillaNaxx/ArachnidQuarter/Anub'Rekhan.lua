@@ -1,6 +1,12 @@
 local mod	= DBM:NewMod("AnubRekhanVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
 
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod.statTypes = "normal,heroic,mythic"
+else
+	mod.statTypes = "normal"
+end
+
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(15956)
 mod:SetEncounterID(1107)
