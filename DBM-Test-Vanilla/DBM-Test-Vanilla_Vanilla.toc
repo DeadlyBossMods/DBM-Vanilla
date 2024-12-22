@@ -6,6 +6,10 @@
 ## LoadOnDemand: 1
 ## X-DBM-Test: true
 
+# Nax
+Season of Discovery/Naxxramas/Razuvious-PTR.lua
+Season of Discovery/Naxxramas/Reports/Razuvious-PTR.lua
+
 # AQ40
 Season of Discovery/AQ40/Skeram-Hardmode.lua
 Season of Discovery/AQ40/ThreeBugs-Hardmode.lua
