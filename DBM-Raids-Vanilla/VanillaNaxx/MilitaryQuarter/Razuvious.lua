@@ -9,6 +9,12 @@ mod:SetZone(533)
 
 mod:RegisterCombat("combat_yell", L.Yell1, L.Yell2, L.Yell3, L.Yell4)
 
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod.statTypes = "normal,heroic,mythic"
+else
+	mod.statTypes = "normal"
+end
+
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29107 29060 29061",--55543
 	"UNIT_DIED"
