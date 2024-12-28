@@ -84,20 +84,20 @@ local timerNemesisCD						= mod:NewCDTimer(9.6, 466504, nil, nil, nil, 5, nil, D
 --Avatar of Ragnaros
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30906))
 
-local specWarnVolcanicBlast					= mod:NewSpecialWarningYou(443983, nil, nil, nil, 1, 2)
-local yellVolcanicBlast						= mod:NewYell(443983, nil, nil, nil, "YELL")
-local yellVolcanicBlastFades				= mod:NewShortFadesYell(443983, nil, nil, nil, "YELL")
-local specWarnVolcanicBlastSoak				= mod:NewSpecialWarningMoveTo(443983, nil, nil, nil, 1, 2)
+local specWarnVolcanicBlast					= mod:NewSpecialWarningYou(465225, nil, nil, nil, 1, 2)
+local yellVolcanicBlast						= mod:NewYell(465225, nil, nil, nil, "YELL")
+local yellVolcanicBlastFades				= mod:NewShortFadesYell(465225, nil, nil, nil, "YELL")
+local specWarnVolcanicBlastSoak				= mod:NewSpecialWarningMoveTo(465225, nil, nil, nil, 1, 2)
 local specWarnVolcanicVolley				= mod:NewSpecialWarningCount(470649, nil, nil, nil, 2, 2)
 local specWarnSummonFireguard				= mod:NewSpecialWarningSwitchCount(465100, "Dps", nil, nil, 1, 2)
 local specWarnFireNova						= mod:NewSpecialWarningInterrupt(465093, "HasInterrupt", nil, nil, 1, 2)
 local specWarnFieryDemise					= mod:NewSpecialWarningSoak(465268, nil, nil, nil, 2, 2)
 
-local timerVolcanicBlastCD					= mod:NewCDCountTimer(26.1, 443983, nil, nil, nil, 3)
+local timerVolcanicBlastCD					= mod:NewCDCountTimer(26.1, 465225, nil, nil, nil, 3)
 local timerVolcanicVolleyCD					= mod:NewCDCountTimer(15, 470649, nil, nil, nil, 2)
 local timerSummonFireguardCD				= mod:NewCDCountTimer(30, 465100, nil, nil, nil, 1)
 
---mod:AddNamePlateOption("NPOnHoney", 443983)
+--mod:AddNamePlateOption("NPOnHoney", 465225)
 --mod:AddSetIconOption("SetIconOnBees", 438025, true, 5, {8, 7, 6})
 
 local handWarned = {}
