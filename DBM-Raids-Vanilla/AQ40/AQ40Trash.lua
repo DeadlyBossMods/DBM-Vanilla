@@ -109,7 +109,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
-		else
+		elseif args.destName then -- I've seen events without a target for some reason, avoid the "on unknown" warning in this case
 			warnPlague:Show(args.destName)
 		end
 		self:TrackTrashAbility(args.sourceGUID, "Plague", args.sourceRaidFlags, args.sourceName)
@@ -431,10 +431,10 @@ function mod:ScanTrashAbilities(uid)
 	if DBM:UnitBuff(uid, 19595) then
 		self:TrackTrashAbility(guid, "ShadowFrostReflect", raidFlags, name)
 	end
-	if DBM:UnitBuff(uid, 474564) then
+	if DBM:UnitBuff(uid, 474564, 2834) then
 		self:TrackTrashAbility(guid, "Thunderclap", raidFlags, name)
 	end
-	if DBM:UnitBuff(uid, 474565) then
+	if DBM:UnitBuff(uid, 474565, 2148) then
 		self:TrackTrashAbility(guid, "ShadowStorm", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 474570) then
@@ -443,8 +443,16 @@ function mod:ScanTrashAbilities(uid)
 	if DBM:UnitBuff(uid, 474571) then
 		self:TrackTrashAbility(guid, "Plague", raidFlags, name)
 	end
+	if DBM:UnitBuff(uid, 2147) then
+		self:TrackTrashAbility(guid, "Mending", raidFlags, name)
+	end
+	if DBM:UnitBuff(uid, 21737) then
+		self:TrackTrashAbility(guid, "KnockAway", raidFlags, name)
+	end
+	if DBM:UnitBuff(uid, 812) then
+		self:TrackTrashAbility(guid, "ManaBurn", raidFlags, name)
+	end
 	-- I can't find Thorns anywhere in my logs, maybe I never had it?
-	-- Also can't find Mending, but I'm sure I saw it on nameplates :/
 	-- Fire/Arcane reflect is impossible to detect like this because detect magic gets reflected (but that reflection itself is detected!)
 	-- I also don't have a log for AQ20 because no one bothers with detect magic
 end
