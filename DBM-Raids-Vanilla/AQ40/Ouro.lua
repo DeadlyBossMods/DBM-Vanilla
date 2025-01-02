@@ -20,7 +20,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 26615",
 	"SPELL_CAST_START 26102 26103",
-	"SPELL_CAST_SUCCESS 26058"
+	"SPELL_CAST_SUCCESS 26058",
+	"SPELL_DAMAGE 1215745"
 )
 
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
@@ -30,11 +31,13 @@ local warnBerserk		= mod:NewSpellAnnounce(26615, 3)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26615, 2)
 
 local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2)
+local specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2)
 
 local timerSubmerge		= mod:NewTimer(30, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(30, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerSweepCD		= mod:NewNextTimer(20.5, 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerBlastCD		= mod:NewNextTimer(23, 26102, nil, nil, nil, 2)
+local timerNextEye		= mod:NewNextTimer(30, 1215744)
 
 mod.vb.prewarn_enrage = false
 mod.vb.enraged = false
@@ -48,6 +51,9 @@ function mod:OnCombatStart(delay)
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
+	if DBM:UnitDebuff("player", 1213261) then
+		self:BlindingAdmiration(delay)
+	end
 end
 
 function mod:OnCombatEnd()
@@ -96,5 +102,19 @@ function mod:UNIT_HEALTH(uId)
 		self.vb.prewarn_enrage = true
 		warnBerserkSoon:Show()
 		self:UnregisterShortTermEvents()
+	end
+end
+
+function mod:BlindingAdmiration(delay)
+	if delay == 0 then delay = 0.001 end -- FIXME: remove after core fixes
+	timerNextEye:Start(-delay)
+	specWarnEye:Schedule(26 - delay)
+	specWarnEye:ScheduleVoice(26 - delay, "turnaway")
+end
+
+function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
+	if spellId == 1215745 and self:AntiSpam(10, "BlindingAdmiration") then
+		self:BlindingAdmiration(0)
+		specWarnEye:Play("safenow")
 	end
 end
