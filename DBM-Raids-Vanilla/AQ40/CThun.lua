@@ -103,7 +103,7 @@ function mod:OnCombatStart(delay)
 	timerClawTentacle:Start(9-delay) -- Combatlog told me, the first Claw Tentacle spawn in 00:00:09, but need more test.
 	timerEyeTentacle:Start(45-delay)
 	timerDarkGlareCD:Start(48-delay)
-	self:ScheduleMethod(48-delay, "DarkGlare")
+	self:ScheduleMethod(45-delay, "DarkGlare")
 	if self.Options.RangeFrame then
 		DBM.RangeCheck:Show(10)
 	end
@@ -166,7 +166,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 				timerEyeTentacle:Stop()
 				warnEyeTentacle:Show()
 				timerEyeTentacle:Start(self:GetStage(2) and 30 or 45)
-			elseif cid == 15725 then -- Claw Tentacle
+			elseif cid == 15724 then -- Claw Tentacle
 				timerClawTentacle:Stop()
 				warnClawTentacle:Show()
 				timerClawTentacle:Start()
@@ -254,3 +254,4 @@ function mod:OnSync(msg)
 		end
 	end
 end
+
