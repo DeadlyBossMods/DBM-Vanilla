@@ -213,7 +213,7 @@ do
 
 	--TODO, maybe check if any bosses killed in saved lockout, in case group pulls trash after killing all required bosses
 	--Right now, it'd start a new speed run timer if you pull trash after
-	function mod:StartEngageTimers(guid, cid)
+	function mod:StartEngageTimers(guid, cid, delay)
 		if cid == 15264 or cid == 234830 then -- Anubisath Sentinel Era/SoD
 			checkFirstPull(self)
 		elseif cid == 15262 then--Obsidian Eradicator
