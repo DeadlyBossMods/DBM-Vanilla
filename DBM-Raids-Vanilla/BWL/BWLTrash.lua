@@ -145,14 +145,14 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:StartEngageTimers(guid, cid)
+function mod:StartEngageTimers(guid, cid, delay)
 	if vulnMobs[cid] then--Death Talon Wyrmguard / Death Talon Overseer
 		self:PLAYER_TARGET_CHANGED()
 		if self.Options.NPAuraOnVulnerable then
 			DBM:FireEvent("BossMod_EnableHostileNameplates")
 		end
 --	elseif cid == 12468 then--Seether
---		timerFlameStrikeCD:Start(8.5, guid)
+--		timerFlameStrikeCD:Start(8.5-delay, guid)
 	end
 end
 
