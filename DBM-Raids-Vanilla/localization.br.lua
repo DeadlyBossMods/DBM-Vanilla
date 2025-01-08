@@ -255,18 +255,20 @@ L:SetGeneralLocalization{
 	name = "Ouroboros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submersão",
-	WarnEmerge			= "Emersão"
+	WarnSubmerge		= "Ouroboros se submergiu",
+	WarnEmerge			= "Ouroboros emergiu",
+	SpecWarnEye 		= "Desvia o olhar"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersão",
 	TimerEmerge			= "Emersão"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Exibir anúncio para submersão",
-	TimerSubmerge		= "Exibir cronômetro para submersão",
-	WarnEmerge			= "Exibir anúncio para emersão",
-	TimerEmerge			= "Exibir cronômetro para emersão"
+	WarnSubmerge		= "Exibir anúncio para a submersão de Ouroboros",
+	TimerSubmerge		= "Exibir cronômetro para a submersão de Ouroboros",
+	WarnEmerge			= "Exibir anúncio para a emersão de Ouroboros",
+	TimerEmerge			= "Exibir cronômetro para a emersão de Ouroboros",
+	SpecWarnEye 		= "Exibir anúncio para o olho gigante"
 }
 
 ----------------
@@ -282,8 +284,8 @@ L:SetTimerLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnExplosion 		= "Um único fantasma explosivo apareceu - desvie",
-	SpecWarnExplosion 	= "Fantasmas explosivos - desvie",
+	WarnExplosion 		= "Um único fantasma explosivo apareceu - desvia",
+	SpecWarnExplosion 	= "Fantasmas explosivos - desvia",
 }
 L:SetOptionLocalization{
 	WarnExplosion 		= "Exibir anúncio para fantasmas explosivos ($spell:1214871)",
