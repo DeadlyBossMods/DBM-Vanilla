@@ -166,10 +166,10 @@ end
 
 --TODO, maybe check if any bosses killed, in case group pulls Molten Giant after killing ragnaros
 --Right now, it'd start a speed run timer if you pull a molten giant after ragnaros killedd
-function mod:StartEngageTimers(guid, cid)
+function mod:StartEngageTimers(guid, cid, delay)
 	if cid == 11658 then--Molten Giants
-		timerSmashCD:Start(3.3, guid)
-		timerKnockAwayCD:Start(5.3, guid)--5.3-10.5
+		timerSmashCD:Start(3.3-delay, guid)
+		timerKnockAwayCD:Start(5.3-delay, guid)--5.3-10.5
 		if not self.vb.firstEngageTime then
 			self.vb.firstEngageTime = GetServerTime()
 			if self.Options.FastestClear2 and self.Options.SpeedClearTimer then
@@ -179,21 +179,21 @@ function mod:StartEngageTimers(guid, cid)
 			self:SendSync("MCStarted", self.vb.firstEngageTime)--Also sync engage time
 		end
 	elseif cid == 11668 then--Firelord
-		timerSummonLavaSpawnCD:Start(10, guid)--10-14
+		timerSummonLavaSpawnCD:Start(10-delay, guid)--10-14
 --	elseif cid == 12101 then--Lava Surger
---		timerSurgeCD:Start(3.7, guid)--Near instantly on some pulls, if pulled from range
+--		timerSurgeCD:Start(3.7-delay, guid)--Near instantly on some pulls, if pulled from range
 	elseif cid == 11673 then--Ancient Core Hound
-		timerLavaBreathCD:Start(3.8, guid)--3.8-24.3
+		timerLavaBreathCD:Start(3.8-delay, guid)--3.8-24.3
 	elseif cid == 11659 then--Molten Destroyer
-		timerKnockDownCD:Start(3.9, guid)
-		timerMassiveTremorCD:Start(6.9, guid)
+		timerKnockDownCD:Start(3.9-delay, guid)
+		timerMassiveTremorCD:Start(6.9-delay, guid)
 	elseif cid == 12076 then--Lava Elemental
-		timerPyroclastBarrageCD:Start(6.5, guid)--6.5-13.5
+		timerPyroclastBarrageCD:Start(6.5-delay, guid)--6.5-13.5
 	elseif cid == 11666 then--Firewalker
-		timerInciteFlamesCD:Start(5, guid)--5-12.4
-		timerFireBlossomCD:Start(6.4, guid)--6.4-17.4
+		timerInciteFlamesCD:Start(5-delay, guid)--5-12.4
+		timerFireBlossomCD:Start(6.4-delay, guid)--6.4-17.4
 	elseif cid == 11667 then--Flameguard
-		timerConeofFireCD:Start(7, guid)--7-13
+		timerConeofFireCD:Start(7-delay, guid)--7-13
 	end
 end
 

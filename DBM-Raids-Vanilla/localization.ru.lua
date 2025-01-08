@@ -119,19 +119,19 @@ L:SetOptionLocalization{
 	WarnGiantEyeTentacle	= "Показывать предупреждение для Гигантского глазного отростка",
 	WarnGiantClawTentacle	= "Показывать предупреждение для Гигантского Когтещупальца",
 	SpecWarnWeakened		= "Показывать спецпредупреждение, когда босс ослабевает",
-	TimerEyeTentacle		= "Показывать таймер для следующих Глазных отростков",
-	TimerClawTentacle		= "Показывать таймер для следующего Когтещупальца",
-	TimerGiantEyeTentacle	= "Показывать таймер для следующих Гигантских Глазных отростков",
-	TimerGiantClawTentacle	= "Показывать таймер для следующего Гигантского Когтещупальца",
+	TimerEyeTentacle		= "Показывать таймер до следующих Глазных отростков",
+	TimerClawTentacle		= "Показывать таймер до следующего Когтещупальца",
+	TimerGiantEyeTentacle	= "Показывать таймер до следующих Гигантских Глазных отростков",
+	TimerGiantClawTentacle	= "Показывать таймер до следующего Гигантского Когтещупальца",
 	TimerWeakened			= "Показывать таймер продолжительности ослабления босса",
 	RangeFrame				= "Показывать окно дистанции (10)"
 }
 L:SetMiscLocalization{
-	Stomach		= "Stomach",
-	Eye			= "Eye of C'Thun",
-	FleshTent	= "Flesh Tentacle",--Localized so it shows on frame in users language, not senders
+	Stomach		= "Желудок",
+	Eye			= "Око К'Туна",
+	FleshTent	= "Мясистое щупальце",
 	Weakened 	= "weaken",
-	NotValid	= "AQ40 partially cleared. %s optional bosses remain."
+	NotValid	= "AQ40 частично очищен. Осталось %s дополнительных боссов."
 }
 ----------------
 -- Ouro --
@@ -143,7 +143,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Закапывание",
-	WarnEmerge			= "Появление"
+	WarnEmerge			= "Появление",
+	SpecWarnEye			= "Отвернитесь",
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Закапывание",
@@ -153,7 +154,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "Показывать предупреждение о закапывании",
 	TimerSubmerge		= "Показывать таймер до закапывания",
 	WarnEmerge			= "Показывать предупреждение о появлении",
-	TimerEmerge			= "Показывать таймер до появления"
+	TimerEmerge			= "Показывать таймер до появления",
+	SpecWarnEye			= "Показывать предупреждение о Гигантском глазе"
 }
 
 ----------------
@@ -309,8 +311,8 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Показывать таймер до первого появления аддов"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "flee as the controlling power of the orb is drained.",
-	YellPull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
+	Phase2Emote	= "убегает, как только сила сферы пошла на спад.",
+	YellPull 	= "Враги в инкубаторе! Бейте тревогу! Защищайте яйца любой ценой!\r\n"
 }
 
 -------------------
@@ -335,7 +337,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull	= "None of your kind should be here!  You've doomed only yourselves!"
+	Pull	= "Таких, как вы, здесь быть не должно! Смерть грозит лишь вам!"
 }
 
 ---------------
@@ -472,7 +474,7 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "Показывать спецпредупреждение, когда Вы подвержены классовому зову"
 }
 L:SetMiscLocalization{
-	YellP1		= "Let the games begin!",
+	YellP1		= "Ну что ж, поиграем!",
 	YellP2		= "Браво, слуги мои! Смертные утрачивают мужество! Поглядим же, как они справятся с истинным Повелителем Черной горы!!!",
 	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
 	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",
@@ -702,7 +704,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization({
-	WarnSimulKill	= "Первый адд пал - воскрешение через ~15 сек."
+	WarnSimulKill	= "Первый адд мертв - воскрешение через ~15 сек."
 })
 
 L:SetTimerLocalization({
@@ -862,7 +864,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Склонитесь передо мной, черви!"--Not actually pull trigger, but often said on pull
+	Pull					= "Склонитесь передо мной, черви!"
 })
 
 ---------------
@@ -921,9 +923,9 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "Смерть чужакам!",
-	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
-	Adds				= "summons forth Skeletal Warriors!",
-	AddsTwo				= "raises more skeletons!"
+	AddsYell			= "Восстаньте, мои воины! Восстаньте и сразитесь вновь!",
+	Adds				= "призывает скелетов-воинов!",
+	AddsTwo				= "поднимает новых скелетов!"
 })
 
 --------------------------

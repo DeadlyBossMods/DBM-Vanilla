@@ -165,7 +165,7 @@ function mod:StartEngageTimers(guid, cid, delay)
 	elseif cid == 226313 then--Gloom'rel (First activation)
 		timerRampageCD:Start(6.1-delay, guid)
 		timerRendCD:Start(12.2-delay, guid)
-		timerRecklessnessCD:Start(self:IsHeroic() and 26.7 or 36.1-delay, guid)
+		timerRecklessnessCD:Start(self:IsHeroic() and (26.7-delay) or (36.1-delay), guid)
 --	elseif cid == 226310 then--Doom'rel (First activation)
 		--Empowered timers handled by corporeal activation
 		--Volley cast instantly on pull
