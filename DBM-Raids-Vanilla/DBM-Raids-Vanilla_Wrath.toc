@@ -36,6 +36,8 @@
 ## X-Wago-ID: 7x61xpN1
 ## Version: @project-version@
 
+locale.generated.lua
+
 localization.en.lua
 localization.tw.lua
 localization.br.lua
