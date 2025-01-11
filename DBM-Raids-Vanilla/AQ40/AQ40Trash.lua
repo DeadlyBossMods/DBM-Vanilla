@@ -165,7 +165,9 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, destGUID, 
 		self:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
 	elseif spellId == 26554 or spellId == 8732 then
 		self:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
-		timerThunderClapCD:Start(7, sourceGUID)
+		if self:AntiSpam(1, "Thunderclap", sourceGUID) then
+			timerThunderClapCD:Start(7, sourceGUID)
+		end
 	elseif spellId == 25779 then
 		self:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end
