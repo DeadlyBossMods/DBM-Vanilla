@@ -36,6 +36,9 @@
 ## X-DBM-Mod-LoadCID: 14889,14888,14887,14890,12397,6109
 ## X-DBM-Mod-MinCoreRevision: 12473
 ## X-DBM-Mod-MinExpansion: 0
+
+locale.generated.lua
+
 localization.en.lua
 localization.de.lua
 localization.br.lua
