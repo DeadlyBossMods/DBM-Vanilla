@@ -406,6 +406,7 @@ function mod:TrackTrashAbility(guid, ability, raidFlags, name)
 		mobInfo.abilities[ability] = true
 		mobInfo.sortedAbilities[#mobInfo.sortedAbilities + 1] = trashAbilitiesLocalized[ability] or ability
 		self:TestTrace("DetectAbility", guid, name, ability)
+		DBM:Debug(("TrackTrashAbility %s %s %s"):format(guid, name, ability), 1)
 	end
 	self:ShowInfoFrame()
 end
@@ -452,7 +453,9 @@ function mod:ScanTrashAbilities(uid)
 	if DBM:UnitBuff(uid, 812) then
 		self:TrackTrashAbility(guid, "ManaBurn", raidFlags, name)
 	end
-	-- I can't find Thorns anywhere in my logs, maybe I never had it?
+	if DBM:UnitBuff(uid, 25777) then
+		self:TrackTrashAbility(guid, "Thorns", raidFlags, name)
+	end
 	-- Fire/Arcane reflect is impossible to detect like this because detect magic gets reflected (but that reflection itself is detected!)
 	-- I also don't have a log for AQ20 because no one bothers with detect magic
 end
