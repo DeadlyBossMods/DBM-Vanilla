@@ -67,6 +67,7 @@ local yellBurst						= mod:NewIconTargetYell(1215202)
 mod:AddRangeFrameOption(10, 22997)
 mod:AddSpeedClearOption("AQ40", true)
 mod:AddInfoFrameOption(nil, true)
+mod:AddNamePlateOption("ThunderclapNameplate", 26554)
 
 --Speed Clear variables
 mod.vb.firstEngageTime = nil
@@ -164,6 +165,9 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, destGUID, 
 		self:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
 	elseif spellId == 26554 or spellId == 8732 then
 		self:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
+		if self.Options.ThunderclapNameplate and self:AntiSpam(1, "Thunderclap", sourceGUID) then
+			DBM.Nameplate:Show(true, sourceGUID, spellId, nil, 7)
+		end
 	elseif spellId == 25779 then
 		self:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end
