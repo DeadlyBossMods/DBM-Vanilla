@@ -19,7 +19,7 @@ jobs:
         continue-on-error: true
         uses: DeadlyBossMods/DBM-Offline@main
         with:
-          game-flavor: Vanilla
+          game-flavor: SoD
           dbm-mod-repo: DeadlyBossMods/DBM-Vanilla
           dbm-mod-ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.event.after }}
           dbm-mod-base-ref: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
