@@ -143,6 +143,7 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
 	WarnEmerge			= "등장",
+	SpecWarnEye			= "고개 돌리세요",
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "잠수",
@@ -152,7 +153,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
 	TimerSubmerge		= "잠수 타이머 바 보기",
 	WarnEmerge			= "등장 알림 보기",
-	TimerEmerge			= "등장 타이머 바 보기"
+	TimerEmerge			= "등장 타이머 바 보기",
+	SpecWarnEye			= "대형 눈알 경고 보기"
 }
 
 ----------------
