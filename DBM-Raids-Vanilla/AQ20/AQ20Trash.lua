@@ -34,6 +34,7 @@ mod:RegisterEvents(
 )
 
 mod:AddRangeFrameOption(10, 22997)
+mod:AddNamePlateOption("ThunderclapNameplate", 8732)
 
 -- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
 -- This is a problem out of combat often enough
@@ -113,6 +114,9 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _
 		aq40Trash:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
 	elseif spellId == 26554 or spellId == 8732 then
 		aq40Trash:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
+		if self.Options.ThunderclapNameplate and self:AntiSpam(1, "Thunderclap", sourceGUID) then
+			DBM.Nameplate:Show(true, sourceGUID, spellId, nil, 7)
+		end
 	elseif spellId == 25779 then
 		aq40Trash:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end

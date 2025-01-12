@@ -60,6 +60,7 @@ local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 
 
 local timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 local timerBurst					= mod:NewNextTimer(30, 1215202)
+local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
 local yellPlague                    = mod:NewYell(26556)
 local yellBurst						= mod:NewIconTargetYell(1215202)
@@ -164,6 +165,9 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, destGUID, 
 		self:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
 	elseif spellId == 26554 or spellId == 8732 then
 		self:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
+		if self:AntiSpam(1, "Thunderclap", sourceGUID) then
+			timerThunderClapCD:Start(7, sourceGUID)
+		end
 	elseif spellId == 25779 then
 		self:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end
@@ -406,6 +410,7 @@ function mod:TrackTrashAbility(guid, ability, raidFlags, name)
 		mobInfo.abilities[ability] = true
 		mobInfo.sortedAbilities[#mobInfo.sortedAbilities + 1] = trashAbilitiesLocalized[ability] or ability
 		self:TestTrace("DetectAbility", guid, name, ability)
+		DBM:Debug(("TrackTrashAbility %s %s %s"):format(guid, name, ability), 1)
 	end
 	self:ShowInfoFrame()
 end
@@ -452,7 +457,9 @@ function mod:ScanTrashAbilities(uid)
 	if DBM:UnitBuff(uid, 812) then
 		self:TrackTrashAbility(guid, "ManaBurn", raidFlags, name)
 	end
-	-- I can't find Thorns anywhere in my logs, maybe I never had it?
+	if DBM:UnitBuff(uid, 25777) then
+		self:TrackTrashAbility(guid, "Thorns", raidFlags, name)
+	end
 	-- Fire/Arcane reflect is impossible to detect like this because detect magic gets reflected (but that reflection itself is detected!)
 	-- I also don't have a log for AQ20 because no one bothers with detect magic
 end
