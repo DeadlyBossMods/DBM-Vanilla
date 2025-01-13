@@ -256,18 +256,20 @@ L:SetGeneralLocalization{
 	name = "Ouro"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submerger",
-	WarnEmerge			= "Émerger"
+	WarnSubmerge		= "Ouro a submergé",
+	WarnEmerge			= "Ouro a émergé",
+	SpecWarnEye			= "Détournez le regard"
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submerger",
-	TimerEmerge			= "Émerger"
+	TimerSubmerge		= "Submersion",
+	TimerEmerge			= "Émersion"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Afficher une annonce pour submerger",
-	TimerSubmerge		= "Afficher un chronomètre pour submerger",
-	WarnEmerge			= "Afficher une annonce pour émerger",
-	TimerEmerge			= "Afficher un chronomètre pour émerger"
+	WarnSubmerge		= "Afficher une annonce pour la submersion d'Ouro",
+	TimerSubmerge		= "Afficher un chronomètre pour la submersion d'Ouro",
+	WarnEmerge			= "Afficher une annonce pour l'émersion d'Ouro",
+	TimerEmerge			= "Afficher un chronomètre pour l'émersion d'Ouro",
+	SpecWarnEye			= "Afficher une annonce pour l'œil géant"
 }
 
 ----------------
