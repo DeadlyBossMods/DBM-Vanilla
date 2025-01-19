@@ -39,7 +39,7 @@ local warnCntrSpell				= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
 local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, false, nil, 2, 1, 2)
 local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2)--aggro wipe, needs fresh taunt
 
-local timerCurseCD				= mod:NewVarTimer("v22-25.5", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)--22-25.5 (20-25?)
+local timerCurseCD				= mod:NewVarTimer("v18-25.5", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerDeadenMagic			= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerGateCD				= mod:NewVarTimer("v41.3-50", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--41-50
 local timerCounterSpellCD		= mod:NewVarTimer("v15-19", 19715, nil, "SpellCaster", nil, 3)--15-19

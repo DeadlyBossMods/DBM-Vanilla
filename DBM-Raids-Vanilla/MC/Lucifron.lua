@@ -49,7 +49,7 @@ mod.vb.lastIcon = 1
 
 function mod:OnCombatStart(delay)
 	self.vb.lastIcon = 1
-	timerDoomCD:Start(7-delay)--7-8
+	timerDoomCD:Start(6.5-delay)--6.5-8
 	timerCurseCD:Start(12-delay)--12-15
 end
 

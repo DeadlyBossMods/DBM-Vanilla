@@ -25,7 +25,7 @@ local warnPillarsOfMight			= mod:NewCountAnnounce(437503, 3)
 local specWarnDemolishingSmash		= mod:NewSpecialWarningCount(437597, nil, nil, nil, 2, 2)
 
 --12.2-14.6 "Pillars of Might-437503-npc:218624-0000143F40 = pull:6.4, 21.0, 13.4, 13.7, 12.2, 18.3, 13.6, 14.6, 13.6, 15.6",
-local timerPillarsofMightCD			= mod:NewCDCountTimer(12.2, 437503, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerPillarsofMightCD			= mod:NewCDCountTimer(12, 437503, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
 --27.1-29.2 "Demolishing Smash-437597-npc:218624-0000143F40 = pull:21.3, 27.1, 29.1, 29.1, 29.2"
 local timerDemolishingSmashCD		= mod:NewCDCountTimer(27.1, 437597, nil, nil, nil, 3)
 
