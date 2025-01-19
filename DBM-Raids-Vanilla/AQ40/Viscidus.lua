@@ -37,7 +37,7 @@ mod.vb.volleyCount = 0
 
 function mod:OnCombatStart(delay)
 	self.vb.volleyCount = 0
-	timerPoisonBoltVolleyCD:Start(12.9, 1)
+	timerPoisonBoltVolleyCD:Start(-delay, 1)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

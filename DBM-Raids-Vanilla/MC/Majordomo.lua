@@ -45,7 +45,7 @@ local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, n
 local timerMagicReflect		= mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerDamageShield		= mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerTeleportCD		= mod:NewVarTimer("v25-30", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
-local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)--33.9 on SoD
+local timerShieldCD			= mod:NewTimer(27, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 -- New in SoD
 -- https://sod.warcraftlogs.com/reports/6RBYhaHdc17x94J8#fight=64&type=casts&by=ability&view=events&hostility=1

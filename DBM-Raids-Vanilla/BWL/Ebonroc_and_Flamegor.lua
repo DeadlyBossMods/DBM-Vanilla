@@ -70,7 +70,7 @@ local specWarnShadowYou		= mod:NewSpecialWarningYou(23340, nil, nil, nil, 1, 2)
 local specWarnShadow		= mod:NewSpecialWarningTaunt(23340, nil, nil, nil, 1, 2)
 local specWarnBrandofShadow	= mod:NewSpecialWarningStack(368515, nil, 4, nil, nil, 1, 6)
 
-local timerShadowCD			= mod:NewCDTimer(25, 23340, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerShadowCD			= mod:NewVarTimer("v16.2-26", 23340, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerShadow			= mod:NewTargetTimer(8, 23340, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 --Flamegore
@@ -80,8 +80,7 @@ local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Heal
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6)
 local specWarnBrandofFlame	= mod:NewSpecialWarningStack(368521, nil, 4, nil, nil, 1, 6)
 
-local timerFrenzyCD			= mod:NewCDTimer(25, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD			= mod:NewVarTimer("v16.2-26", 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 -- Polyfill because I don't feel like this justifies a forced core update
 local function isBlackEssenceEnabled()
@@ -94,7 +93,7 @@ end
 
 function mod:OnCombatStart(delay)
 	--Both
-	TimerBrandCD:Start(16-delay)
+	TimerBrandCD:Start(15.8-delay)
 	if isBlackEssenceEnabled() then
 		timerStop:Start(24 - delay)
 	end
@@ -102,9 +101,9 @@ function mod:OnCombatStart(delay)
 	timerWingBuffet:Start(40-delay)--40-42, better than shadow flame
 	specWarnWingBuffet:Schedule(36)
 	--Ebon
-	timerShadowCD:Start(27-delay)--27-37
+	timerShadowCD:Start()
 	--Flame
-	timerFrenzyCD:Start(27-delay)--27-38
+	timerFrenzyCD:Start()
 end
 
 
