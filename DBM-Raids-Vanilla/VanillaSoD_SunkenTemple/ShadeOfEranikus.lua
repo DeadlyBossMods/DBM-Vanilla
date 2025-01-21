@@ -41,8 +41,8 @@ local specWarnLethargicPoisonAdd	= mod:NewSpecialWarningInterruptCount(437425, n
 local specWarnGTFO					= mod:NewSpecialWarningGTFO(445575, nil, nil, nil, 1, 8)
 
 --local timerThrashCD				= mod:NewCDTimer(16.1, 3391, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--16-49, seems to be filler GCD of boss so used in spell gaps
-local timerCorrosiveBreathCD		= mod:NewCDTimer(19.3, 437353, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--19.3 except when spell queued
-local timerDeepSlumberCD			= mod:NewCDCountTimer(19.4, 437301, nil, nil, nil, 3)--19.4 except when spell queued
+local timerCorrosiveBreathCD		= mod:NewCDTimer(19.1, 437353, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--19.1 except when spell queued
+local timerDeepSlumberCD			= mod:NewCDCountTimer(19, 437301, nil, nil, nil, 3)--19 except when spell queued
 local timerLethargicPoisonCD		= mod:NewCDTimer(19.3, 437390, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON)
 local timerBellowingRoarCD			= mod:NewCDCountTimer(33.5, 445498, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)--33.5 but often spell queued due to lowest cast priority, delaying it often
 local timerWakingNightmareCD		= mod:NewCDCountTimer(66.3, 437398, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
