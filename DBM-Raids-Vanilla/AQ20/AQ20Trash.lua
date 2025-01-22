@@ -174,6 +174,14 @@ function mod:NAME_PLATE_UNIT_ADDED(uid)
 	aq40Trash:ScanTrashAbilities(uid)
 end
 
+function mod:OnCombatStart()
+	aq40Trash:NameplateScanningLoop()
+end
+
+function mod:OnCombatEnd()
+	aq40Trash:UnscheduleMethod("NameplateScanningLoop")
+end
+
 function mod:UNIT_DIED(args)
 	aq40Trash:RemoveTrackTrashAbilityMob(args.destGUID)
 end
