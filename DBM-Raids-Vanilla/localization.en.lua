@@ -65,9 +65,8 @@ L:SetMiscLocalization{
 	Phase5 	= "looks ready to shatter",
 	Phase6 	= "Explodes.",
 
-	HitsRemain	= "Hits Remaining",
-	Frost		= "Frost",
-	Physical	= "Physical"
+	FrostHitsPerSecond = "Frost hits per second",
+	MeleeHitsPerSecond = "Melee hits per second",
 }
 -------------
 -- Huhuran --
