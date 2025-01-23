@@ -411,7 +411,7 @@ end
 local mobs, deadMobs = {}, {}
 
 -- TODO: Grab spell info frame Detect Magic as well, unfortunately these don't show up in logs :/
-function mod:TrackTrashAbility(guid, ability, raidFlags, name, uid)
+function mod:TrackTrashAbility(guid, ability, raidFlags, name)
 	if deadMobs[guid] and GetTime() - deadMobs[guid] < 20 then
 		-- Their abilities can hit after they die, we don't want to add them again in this case
 		-- Except if it's longer than 20 seconds ago that we saw them die in case of mysterious resurrections (or, well, tests running multiple times)
@@ -427,7 +427,6 @@ function mod:TrackTrashAbility(guid, ability, raidFlags, name, uid)
 		mobInfo.sortedAbilities[#mobInfo.sortedAbilities + 1] = trashAbilitiesLocalized[ability] or ability
 		self:TestTrace("DetectAbility", guid, name, ability)
 		DBM:Debug(("TrackTrashAbility %s %s %s"):format(guid, name, ability), 1)
-		DBM:Debug("Learned ability from uid: " .. tostring(uid))
 	end
 	self:ShowInfoFrame()
 end
@@ -451,31 +450,31 @@ function mod:ScanTrashAbilities(uid)
 	local icon = GetRaidTargetIndex(uid)
 	local raidFlags = icon and icon > 0 and 2^(icon - 1) or 0
 	if DBM:UnitBuff(uid, 19595) then
-		self:TrackTrashAbility(guid, "ShadowFrostReflect", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "ShadowFrostReflect", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 474564, 2834) then
-		self:TrackTrashAbility(guid, "Thunderclap", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "Thunderclap", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 474565, 2148) then
-		self:TrackTrashAbility(guid, "ShadowStorm", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "ShadowStorm", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 474570) then
-		self:TrackTrashAbility(guid, "Meteor", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "Meteor", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 474571) then
-		self:TrackTrashAbility(guid, "Plague", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "Plague", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 2147) then
-		self:TrackTrashAbility(guid, "Mending", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "Mending", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 21737) then
-		self:TrackTrashAbility(guid, "KnockAway", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "KnockAway", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 812) then
-		self:TrackTrashAbility(guid, "ManaBurn", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "ManaBurn", raidFlags, name)
 	end
 	if DBM:UnitBuff(uid, 25777) then
-		self:TrackTrashAbility(guid, "Thorns", raidFlags, name, uid)
+		self:TrackTrashAbility(guid, "Thorns", raidFlags, name)
 	end
 	-- Fire/Arcane reflect is impossible to detect like this because detect magic gets reflected (but that reflection itself is detected!)
 	-- I also don't have a log for AQ20 because no one bothers with detect magic
