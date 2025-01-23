@@ -66,9 +66,8 @@ L:SetMiscLocalization{
 	Phase5 	= "выглядит готовым разлететься вдребезги",
 	Phase6 	= "Взрывается.",
 
-	HitsRemain	= "Оставшиеся попадания",
-	Frost		= "Мороз",
-	Physical	= "Физический"
+	FrostHitsPerSecond = "Попадания мороза в секунду",
+	MeleeHitsPerSecond = "Попадания в ближнем бою в секунду"
 }
 -------------
 -- Huhuran --
