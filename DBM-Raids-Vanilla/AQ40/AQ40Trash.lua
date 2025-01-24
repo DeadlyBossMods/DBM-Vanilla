@@ -323,8 +323,11 @@ end
 function mod:NameplateScanningLoop()
 	self:UnscheduleMethod("NameplateScanningLoop")
 	self:ScheduleMethod(1, "NameplateScanningLoop")
-	for i = 1, 10 do
-		self:ScanTrashAbilities("nameplate" .. i)
+	for _, frame in pairs(C_NamePlate.GetNamePlates()) do
+		local foundUnit = frame.namePlateUnitToken
+		if foundUnit and not UnitIsFriend(foundUnit, "player") then
+			self:ScanTrashAbilities(foundUnit)
+		end
 	end
 end
 
