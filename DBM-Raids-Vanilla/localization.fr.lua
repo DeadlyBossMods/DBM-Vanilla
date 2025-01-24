@@ -169,8 +169,8 @@ L:SetWarningLocalization{
 	WarnShatter	= "Briser : %d/3"
 }
 L:SetOptionLocalization{
-	WarnFreeze	= "Afficher une annonce pour Gel",
-	WarnShatter	= "Afficher une annonce pour Bris"
+	WarnFreeze	= "Afficher une annonce pour le Gel",
+	WarnShatter	= "Afficher une annonce pour le Bris"
 }
 L:SetMiscLocalization{
 	Slow	= "commence à ralentir !",
