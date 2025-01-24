@@ -182,7 +182,7 @@ L:SetMiscLocalization{
 	Phase6 	= "explota!",
 
 	FrostHitsPerSecond = "Golpes de escarcha por segundo",
-	MeleeHitsPerSecond = "Golpes por segundo",
+	MeleeHitsPerSecond = "Golpes cuerpo a cuerpo por segundo",
 }
 -------------
 -- Huhuran --
