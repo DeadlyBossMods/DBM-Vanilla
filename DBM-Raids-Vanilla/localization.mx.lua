@@ -181,9 +181,8 @@ L:SetMiscLocalization{
 	Phase5 	= "parece a punto de hacerse añicos!",
 	Phase6 	= "explota!",
 
-	HitsRemain	= "Golpes restantes",
-	Frost		= "Escarcha",
-	Physical	= "Daño físico"
+	FrostHitsPerSecond = "Golpes de escarcha por segundo",
+	MeleeHitsPerSecond = "Golpes por segundo",
 }
 -------------
 -- Huhuran --
