@@ -3,15 +3,6 @@ DBM.Test:DefineTest{
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
 	mod = "JammalanAndOgomSoD",
-	ignoreWarnings = {
-		sharedWith = "SoD/ST/JammalanAndOgom/Jammalan.*",
-		phaseChangeSpells = {
-			"Eating...",
-		},
-		spellIdMismatches = {
-			["Consecration"] = "Consecration",
-		}
-	},
 	instanceInfo = {name = "Sunken Temple", instanceType = "party", difficultyID = 215, difficultyName = "Normal", maxPlayers = 20, dynamicDifficulty = 0, isDynamic = false, instanceID = 109, instanceGroupSize = 20, lfgDungeonID = nil},
 	-- Warning: log was created by player Tandanu, but player Snuqz was given on the CLI for reconstructions, this can potentially cause problems (but is usually fine)
 	log = {
