@@ -65,9 +65,8 @@ L:SetMiscLocalization{
 	Phase5 	= "부서질 것 같습니다!",
 	Phase6 	= "폭발",
 
-	HitsRemain	= "남은 타격",
-	Frost		= "냉기",
-	Physical	= "물리"
+	FrostHitsPerSecond = "초당 냉기 공격 횟수",
+	MeleeHitsPerSecond = "초당 물리 공격 횟수",
 }
 -------------
 -- Huhuran --
