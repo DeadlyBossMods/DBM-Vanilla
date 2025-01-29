@@ -320,6 +320,25 @@ function mod:NAME_PLATE_UNIT_ADDED(uid)
 	self:ScanTrashAbilities(uid)
 end
 
+function mod:NameplateScanningLoop()
+	self:UnscheduleMethod("NameplateScanningLoop")
+	self:ScheduleMethod(1, "NameplateScanningLoop")
+	for _, frame in pairs(C_NamePlate.GetNamePlates()) do
+		local foundUnit = frame.namePlateUnitToken
+		if foundUnit and not UnitIsFriend(foundUnit, "player") then
+			self:ScanTrashAbilities(foundUnit)
+		end
+	end
+end
+
+function mod:OnCombatStart()
+	self:NameplateScanningLoop()
+end
+
+function mod:OnCombatEnd()
+	self:UnscheduleMethod("NameplateScanningLoop")
+end
+
 -- Shared between AQ20 and AQ40
 -- The timers likely also repeat while out of combat (similar to BWL trial bombs), might want to support that eventually, but these seem less important than bombs
 

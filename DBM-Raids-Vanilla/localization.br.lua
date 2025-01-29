@@ -169,8 +169,8 @@ L:SetWarningLocalization{
 	WarnShatter	= "Estilhaçar: %d/3"
 }
 L:SetOptionLocalization{
-	WarnFreeze	= "Exibir anúncio para status de congelamento",
-	WarnShatter	= "Exibir anúncio para status de estilhaçar"
+	WarnFreeze	= "Exibir anúncio para congelamento",
+	WarnShatter	= "Exibir anúncio para estilhaço"
 }
 L:SetMiscLocalization{
 	Slow	= "começa a ficar lento!",
@@ -179,9 +179,9 @@ L:SetMiscLocalization{
 	Phase4 	= "começa a rachar!",
 	Phase5 	= "parece estar a ponto de se estilhaçar!",
 	Phase6 	= "explode!",
-	HitsRemain	= "Acertos restantes",
-	Frost		= "Gelo",
-	Physical	= "Dano físico"
+
+	FrostHitsPerSecond = "Golpes de gelo por segundo",
+	MeleeHitsPerSecond = "Golpes corpo a corpo por segundo",
 }
 -------------
 -- Huhuran --
