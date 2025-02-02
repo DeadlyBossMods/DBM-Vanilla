@@ -10,7 +10,6 @@
 
 # Nax
 Season of Discovery/Naxxramas/Razuvious-PTR.lua
-Season of Discovery/Naxxramas/Reports/Razuvious-PTR.lua
 
 # AQ40
 Season of Discovery/AQ40/Skeram-Hardmode.lua
@@ -25,18 +24,6 @@ Season of Discovery/AQ40/CThun-Hardmode.lua
 Season of Discovery/AQ40/Trash1.lua
 Season of Discovery/AQ40/Trash2.lua
 
-Season of Discovery/AQ40/Reports/Skeram-Hardmode.lua
-Season of Discovery/AQ40/Reports/ThreeBugs-Hardmode.lua
-Season of Discovery/AQ40/Reports/Sartura-Hardmode.lua
-Season of Discovery/AQ40/Reports/Fankriss-Hardmode.lua
-Season of Discovery/AQ40/Reports/Viscidus-Hardmode.lua
-Season of Discovery/AQ40/Reports/Huhuran-Hardmode.lua
-Season of Discovery/AQ40/Reports/TwinEmps-Hardmode.lua
-Season of Discovery/AQ40/Reports/Ouro-Hardmode.lua
-Season of Discovery/AQ40/Reports/CThun-Hardmode.lua
-Season of Discovery/AQ40/Reports/Trash1.lua
-Season of Discovery/AQ40/Reports/Trash2.lua
-
 # AQ20
 Season of Discovery/AQ20/Kurinaxx-Hardmode.lua
 Season of Discovery/AQ20/Rajaxx-Hardmode.lua
@@ -46,18 +33,8 @@ Season of Discovery/AQ20/Ayamiss-Hardmode.lua
 Season of Discovery/AQ20/Ossirian-Hardmode.lua
 Season of Discovery/AQ20/Trash.lua
 
-Season of Discovery/AQ20/Reports/Kurinaxx-Hardmode.lua
-Season of Discovery/AQ20/Reports/Rajaxx-Hardmode.lua
-Season of Discovery/AQ20/Reports/Moam-Hardmode.lua
-Season of Discovery/AQ20/Reports/Buru-Hardmode.lua
-Season of Discovery/AQ20/Reports/Ayamiss-Hardmode.lua
-Season of Discovery/AQ20/Reports/Ossirian-Hardmode.lua
-Season of Discovery/AQ20/Reports/Trash.lua
-
 # World Bosses
 Season of Discovery/World Bosses/Ysondre.lua
-
-Season of Discovery/World Bosses/Reports/Ysondre.lua
 
 # Blackwing Lair
 Season of Discovery/Blackwing Lair/SoDTrials.lua
@@ -70,19 +47,8 @@ Season of Discovery/Blackwing Lair/EbonrocAndFlamegor-BlueGreenBronze-Kill.lua
 Season of Discovery/Blackwing Lair/Chromaggus-BlueGreenBronze-Kill.lua
 Season of Discovery/Blackwing Lair/Chromaggus-Black-Synthetic.lua
 
-Season of Discovery/Blackwing Lair/Reports/SoDTrials.lua
-Season of Discovery/Blackwing Lair/Reports/SoDTrialsv2.lua
-Season of Discovery/Blackwing Lair/Reports/Razorgore-Heroic-Kill.lua
-Season of Discovery/Blackwing Lair/Reports/Vaelastrasz-Normal-Kill.lua
-Season of Discovery/Blackwing Lair/Reports/Broodlord-Heroic-Kill.lua
-Season of Discovery/Blackwing Lair/Reports/Firemaw-Normal-Wipe.lua
-Season of Discovery/Blackwing Lair/Reports/EbonrocAndFlamegor-BlueGreenBronze-Kill.lua
-Season of Discovery/Blackwing Lair/Reports/Chromaggus-BlueGreenBronze-Kill.lua
-Season of Discovery/Blackwing Lair/Reports/Chromaggus-Black-Synthetic.lua
-
 # Zul'Gurub
 Season of Discovery/ZulGurub/Hakkar-Kill.lua
-Season of Discovery/ZulGurub/Reports/Hakkar-Kill.lua
 
 # Molten Core
 Season of Discovery/Molten Core/Lucifron-Heat3-Kill.lua
@@ -98,23 +64,8 @@ Season of Discovery/Molten Core/Ragnaros-Heat2-Kill.lua
 Season of Discovery/Molten Core/TheMoltenCore-Heat3-Wipe.lua
 Season of Discovery/Molten Core/TheMoltenCore-Heat3-Kill.lua
 
-Season of Discovery/Molten Core/Reports/Lucifron-Heat3-Kill.lua
-Season of Discovery/Molten Core/Reports/Magmadar-Heat1-Kill.lua
-Season of Discovery/Molten Core/Reports/Gehennas-Heat1-Kill.lua
-Season of Discovery/Molten Core/Reports/Garr-Heat1-Kill.lua
-Season of Discovery/Molten Core/Reports/Geddon-Heat2-Kill.lua
-Season of Discovery/Molten Core/Reports/Shazzrah-Heat1-Kill.lua
-Season of Discovery/Molten Core/Reports/Sulfuron-Heat2-Kill.lua
-Season of Discovery/Molten Core/Reports/Golemagg-Heat2-Kill.lua
-Season of Discovery/Molten Core/Reports/Majordomo-Heat1-Kill.lua
-Season of Discovery/Molten Core/Reports/Ragnaros-Heat2-Kill.lua
-Season of Discovery/Molten Core/Reports/TheMoltenCore-Heat3-Wipe.lua
-Season of Discovery/Molten Core/Reports/TheMoltenCore-Heat3-Kill.lua
-
 # Ony
 Season of Discovery/Onyxia/Onyxia.lua
-Season of Discovery/Onyxia/Reports/Onyxia.lua
-
 
 # Sunken Temple
 Season of Discovery/Sunken Temple/Atalalarion.lua
@@ -129,16 +80,3 @@ Season of Discovery/Sunken Temple/MorphazAndHazzas.lua
 Season of Discovery/Sunken Temple/ShadeOfEranikus.lua
 Season of Discovery/Sunken Temple/AvatarOfHakkar-1.lua
 Season of Discovery/Sunken Temple/AvatarOfHakkar-2.lua
-
-Season of Discovery/Sunken Temple/Reports/Atalalarion.lua
-Season of Discovery/Sunken Temple/Reports/FesteringRotslime.lua
-Season of Discovery/Sunken Temple/Reports/AtalaiDefenders-1.lua
-Season of Discovery/Sunken Temple/Reports/AtalaiDefenders-2.lua
-Season of Discovery/Sunken Temple/Reports/DreamscytheAndWeaver.lua
-Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-JammalanFirst.lua
-Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-OgomFirst-Wipe.lua
-Season of Discovery/Sunken Temple/Reports/JammalanAndOgom-OgomFirst-Kill.lua
-Season of Discovery/Sunken Temple/Reports/MorphazAndHazzas.lua
-Season of Discovery/Sunken Temple/Reports/ShadeOfEranikus.lua
-Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-1.lua
-Season of Discovery/Sunken Temple/Reports/AvatarOfHakkar-2.lua
