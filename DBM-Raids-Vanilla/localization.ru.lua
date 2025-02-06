@@ -123,7 +123,7 @@ L:SetOptionLocalization{
 	TimerGiantEyeTentacle	= "Показывать таймер до следующих Гигантских Глазных отростков",
 	TimerGiantClawTentacle	= "Показывать таймер до следующего Гигантского Когтещупальца",
 	TimerWeakened			= "Показывать таймер продолжительности ослабления босса",
-	RangeFrame				= "Показывать окно дистанции (10)"
+	RangeFrame				= "Показывать окно дистанции (10 м.)"
 }
 L:SetMiscLocalization{
 	Stomach		= "Желудок",
@@ -853,7 +853,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Объятие Вдовы через 5 секунд",
+	WarningEmbraceExpire	= "Объятие Вдовы через 5 сек.",
 	WarningEmbraceExpired	= "Объятие Вдовы исчезает"
 })
 
@@ -876,7 +876,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Паученыши Мексны через 5 секунд",
+	WarningSpidersSoon	= "Паученыши Мексны через 5 сек.",
 	WarningSpidersNow	= "В паутине появляются паучата"
 })
 
@@ -905,7 +905,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "Телепортация",
-	WarningTeleportSoon	= "Телепортация через 20 секунд"
+	WarningTeleportSoon	= "Телепортация через 20 сек."
 })
 
 L:SetTimerLocalization({
@@ -965,7 +965,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningHealSoon	= "Можно исцелять через 3 секунды",
+	WarningHealSoon	= "Можно исцелять через 3 сек.",
 	WarningHealNow	= "Исцеляйте сейчас"
 })
 
@@ -1064,7 +1064,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Глухая оборона закончится через 5 секунд"
+	WarningShieldWallSoon	= "Глухая оборона закончится через 5 сек."
 })
 
 ----------------------------
@@ -1087,15 +1087,15 @@ L:SetOptionLocalization({
 
 L:SetTimerLocalization({
 	TimerWave	= "Волна %d",
-	TimerPhase2	= "Фаза 2"
+	TimerPhase2	= "2-я фаза"
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon		= "Волна %d: %s через 3 секунды",
+	WarningWaveSoon		= "Волна %d: %s через 3 сек.",
 	WarningWaveSpawned	= "Волна %d: %s призван",
 	WarningRiderDown	= "Всадник мертв",
 	WarningKnightDown	= "Рыцарь мертв",
-	WarningPhase2		= "Фаза 2"
+	WarningPhase2		= "2-я фаза"
 })
 
 L:SetMiscLocalization({
@@ -1128,7 +1128,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon				= "Метка %d через 3 секунды",
+	WarningMarkSoon				= "Метка %d через 3 сек.",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
@@ -1163,7 +1163,7 @@ L:SetMiscLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "Воздушная фаза через 10 секунд",
+	WarningAirPhaseSoon	= "Воздушная фаза через 10 сек.",
 	WarningAirPhaseNow	= "Воздушная фаза",
 	WarningLanded		= "Сапфирон приземляется",
 	WarningDeepBreath	= "Ледяное дыхание"
@@ -1187,7 +1187,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Отсчет времени до 2-й фазы",
-	specwarnP2Soon		= "Спецпредупреждение за 10 секунд до вступления Кел'Тузада в бой",
+	specwarnP2Soon		= "Спецпредупреждение за 10 сек. до вступления Кел'Тузада в бой",
 	warnAddsSoon		= "Предупреждать заранее о Стражах Ледяной Короны"
 })
 
@@ -1196,12 +1196,67 @@ L:SetMiscLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Кел'Тузад вступает в бой через 10 секунд",
+	specwarnP2Soon	= "Кел'Тузад вступает в бой через 10 сек.",
 	warnAddsSoon	= "Скоро прибытие Стражей Ледяной Короны"
 })
 
 L:SetTimerLocalization({
-	TimerPhase2	= "Фаза 2"
+	TimerPhase2	= "2-я фаза"
+})
+
+--------------------
+--  SoD Hardmode  --
+--------------------
+
+L = DBM:GetModLocalization("SoD_NaxxHardmode")
+
+L:SetGeneralLocalization({
+	name = "Сезон открытий Хардмод"
+})
+
+L:SetOptionLocalization({
+	AutomateEmote		= "Автоматически активировать правильную эмоцию для выполнения приказов",
+	AffixTimer			= "Показывать таймеры для аффиксов сложного режима",
+	WarnEggs			= "Показывать предупреждение для появления яиц (сложный режим «Паучий квартал»)",
+	SpecWarnOrders		= "Показывать спецпредупреждение, когда DBM не может автоматизировать выполнение приказов"
+})
+
+L.MarchingOrderTranslationComplete = false -- Set this to false until *all* of the Order* below are translated to the actual string used in the game
+L:SetMiscLocalization({
+	Affixes				= "Аффиксы",
+	ConstructAffix		= "Молниевая бомба",
+	SpiderAffix			= "Взрывающееся яйцо",
+	UnsupportedLocale	= [[Добро пожаловать в усиленный Военный квартал!
+Механика сложного режима выбирает случайных игроков и требует от них проявить определенную эмоцию.
+DBM пытается полностью автоматизировать этот процесс, однако наша поддержка вашего клиентского региона %s все еще не завершена, так что DBM может не поддерживать эмоции.
+Вы можете помочь! Поделитесь с нами в discord.gg/deadlybossmods точным текстом (скриншотами, видео, логами транскриптора), используемым в механике сложного режима.
+]],
+	AutomatedEmote		= "DBM автоматизировал эмоцию %s для выполнения приказов.",
+	AutomatedEmoteGuess	= "DBM автоматизировал эмоцию %s для выполнения приказов на основе догадки. Это было неправильно? Дайте нам знать в discord.gg/deadlybossmods",
+	-- List of emotes may not be complete, let me know if I missed one
+	OrderDance			= "DANCE for me!",
+	OrderRoar			= "Show me your best ROAR!",
+	OrderSalute			= "SALUTE, maggot!",
+	OrderBow			= "BOW before me, mortal!",
+	OrderPray			= "Get on your knees and PRAY!",
+	OrderKneel			= nil, -- I thought i saw this one, but maybe I mistook it for pray? Don't have it in logs
+	-- Guessed regexes for emotes, by default the emote tokens are used (which actually works 100% in en locale)
+	-- Optional and obsolete if all Order* strings above are complete
+	GuessOrderDance		= nil,
+	GuessOrderRoar		= nil,
+	GueesOrderSalute	= nil,
+	GuessOrderBow		= nil,
+	GuessOrderPray		= nil,
+	GuessOrderKneel		= nil,
+})
+
+L:SetWarningLocalization({
+	WarnEggs		= "Появление яиц",
+	SpecWarnOrders	= "Выполнение приказа: %s"
+})
+
+L:SetTimerLocalization({
+	AffixTimer	= "Аффикс"
 })
 
 ---------------------------
