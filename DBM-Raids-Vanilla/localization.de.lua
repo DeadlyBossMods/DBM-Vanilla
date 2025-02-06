@@ -1127,6 +1127,54 @@ L:SetTimerLocalization({
 	TimerPhase2	= "Phase 2"
 })
 
+--------------------
+--  SoD Hardmode  --
+--------------------
+
+L = DBM:GetModLocalization("SoD_NaxxHardmode")
+
+L:SetGeneralLocalization({
+	name = "SoD Hardmode"
+})
+
+L:SetOptionLocalization({
+	AutomateEmote		= "Emote für Marschbefehle automatisch ausführen",
+	AffixTimer			= "Zeige Timer für Hardmode Affixe",
+	WarnEggs			= "Zeige Warnungen für explodierende Eier",
+	SpecWarnOrders		= "Zeige Spezialwarnung wenn DBM es nicht schafft Marschbefehle zu automatisieren"
+})
+
+L.MarchingOrderTranslationComplete = false
+L:SetMiscLocalization({
+	Affixes				= "Affixe",
+	ConstructAffix		= "Blitzbombe",
+	SpiderAffix			= "Explodierende Eier",
+	UnsupportedLocale	= [[Willkommen im ermächtigten Militärquartier!
+Die Hardmode Mechanik wählt zufällige Spieler aus und befiehlt diesen ein ausgewähltes Emote auszuführen.
+DBM versucht das vollständig zu automatisieren, aber unsere Unterstützung für die Sprache %s ist unvollständig.
+Du kannst helfen! Teile den genauen Text (Screenshots, Videos, Transcriptor logs) den die Hardmode Mechanik benutzt mit uns auf discord.gg/deadlybossmods.
+]],
+	AutomatedEmote		= "DBM hat das Emote %s für Marschbefehle automatisiert.",
+	AutomatedEmoteGuess	= "DBM hat das Emote %s für Marschbefehle automatisiert, aber wir sind uns nicht sicher ob das richtig war. Falls das Emote falsch war sag uns Bescheid auf discord.gg/deadlybossmods",
+	-- List of emotes may not be complete, let me know if I missed one
+	OrderDance			= "TANZT für mich!",
+	OrderSalute			= "SALUTIERT, Made!",
+	GuessOrderRoar		= "BRÜLLT",
+	GuessOrderBow		= "VERBEUGT",
+	GuessOrderPray		= "BETET",
+	GuessOrderKneel		= "KNIET",
+})
+
+L:SetWarningLocalization({
+	WarnEggs		= "Eggs spawned",
+	SpecWarnOrders	= "Marching Order: %s"
+})
+
+L:SetTimerLocalization({
+	AffixTimer	= "Affix"
+})
+
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
