@@ -10,6 +10,7 @@
 
 # Nax
 Season of Discovery/Naxxramas/Razuvious-PTR.lua
+Season of Discovery/Naxxramas/MilitaryQuarter-Synthetic.lua
 
 # AQ40
 Season of Discovery/AQ40/Skeram-Hardmode.lua

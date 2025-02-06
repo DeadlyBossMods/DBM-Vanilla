@@ -54,6 +54,7 @@ Polyfills.lua
 # Temporary, will be moved to Core
 Blocks\Gtfo.lua
 
+VanillaNaxx\SoD_Hardmode.lua
 VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua
 VanillaNaxx\ArachnidQuarter\Faerlina.lua
 VanillaNaxx\ArachnidQuarter\Maexxna.lua
