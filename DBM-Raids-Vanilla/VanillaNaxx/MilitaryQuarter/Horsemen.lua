@@ -17,11 +17,14 @@ mod:SetZone(533)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 28832 28833 28834 28835 28863 28883 28884",
+	"SPELL_CAST_SUCCESS 28832 28833 28834 28835 28863 28883 28884 1226218 1226219 1226220 1226221",
 	"SPELL_AURA_APPLIED 29061",
 	"SPELL_AURA_REMOVED 29061",
 	"SPELL_AURA_APPLIED_DOSE 28832 28833 28834 28835"
 )
+
+-- SoD uses new spell IDs for all marks, holy bolt, shadow bolt and unyielding pain. Only marks are relevant here
+-- Meteor, void zone, holy wrath are confirmed old IDs
 
 --[[
 (ability.id = 28832 or ability.id = 28833 or ability.id = 28834 or ability.id = 28835 or ability.id = 28863 or ability.id = 28883 or ability.id = 28884) and type = "cast"
@@ -39,7 +42,7 @@ local specWarnMarkOnPlayer		= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer"
 local specWarnVoidZone			= mod:NewSpecialWarningYou(28863, nil, nil, nil, 1, 2)
 local yellVoidZone				= mod:NewYell(28863)
 
-local timerMarkCD				= mod:NewTimer(12.9, "timerMark", 28835, nil, nil, 2)-- 12.9
+local timerMarkCD				= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 13 or 12.9, "timerMark", 28835, nil, nil, 2)-- 12.9
 local timerMeteorCD				= mod:NewCDTimer(12.9, 28884, nil, nil, nil, 3)-- 12.9-14.6
 local timerVoidZoneCD			= mod:NewCDTimer(12.9, 28863, nil, nil, nil, 3)-- 12.9-16
 local timerHolyWrathCD			= mod:NewCDTimer(11.3, 28883, nil, nil, nil, 3)-- 11.3-14.5
@@ -73,10 +76,10 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(28832, 28833, 28834, 28835) and self:AntiSpam(10) then
+	if args:IsSpell(28832, 28833, 28834, 28835, 1226218, 1226219, 1226220, 1226221) and self:AntiSpam(10) then
 		self.vb.markCount = self.vb.markCount + 1
-		timerMarkCD:Start(nil, self.vb.markCount+1)
-		warnMarkSoon:Schedule(9.9, self.vb.markCount+1)
+		timerMarkCD:Start(nil, self.vb.markCount + 1)
+		warnMarkSoon:Schedule(9.9, self.vb.markCount + 1)
 	elseif args:IsSpell(28863) then
 		timerVoidZoneCD:Start()
 		if args:IsPlayer() then
