@@ -25,6 +25,9 @@ mod:RegisterEventsInCombat(
 	"UNIT_TARGETABLE_CHANGED"
 )
 
+-- New spell ID found in logs on SoD
+-- 364341 (Survivor of the Damned) cast on kill, ID looks like SoM, seems irrelevant
+
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
