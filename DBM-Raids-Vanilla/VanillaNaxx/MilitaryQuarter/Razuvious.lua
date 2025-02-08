@@ -20,6 +20,9 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
+-- New spell ID found in logs on SoD
+-- 1225423 (Disarm) cast by Understudies, TBD if we want to do something with that
+
 local warnShoutNow		= mod:NewSpellAnnounce(29107, 1, 6673)
 local warnShoutSoon		= mod:NewSoonAnnounce(29107, 3, 6673)
 local warnShieldWall	= mod:NewAnnounce("WarningShieldWallSoon", 3, 29061)

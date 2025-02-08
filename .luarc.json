@@ -16,6 +16,7 @@
 		"DEAD",
 		"UnitDebuff",
 		"SCENARIO_STAGE",
-		"DBMRaidsVanilla_AllSavedVars"
+		"DBMRaidsVanilla_AllSavedVars",
+		"UNKNOWN"
 	]
 }

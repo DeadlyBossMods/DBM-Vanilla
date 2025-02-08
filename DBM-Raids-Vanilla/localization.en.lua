@@ -1202,6 +1202,62 @@ L:SetTimerLocalization({
 	TimerPhase2	= "Phase 2"
 })
 
+--------------------
+--  SoD Hardmode  --
+--------------------
+
+L = DBM:GetModLocalization("SoD_NaxxHardmode")
+
+L:SetGeneralLocalization({
+	name = "SoD Hardmode"
+})
+
+L:SetOptionLocalization({
+	AutomateEmote		= "Automatically trigger the correct emote for Marching Orders",
+	AffixTimer			= "Show timers for hardmode affixes",
+	WarnEggs			= "Show announce for egg spawn (Spider wing hard mode)",
+	SpecWarnOrders		= "Show special warning when DBM fails to automate a Marching Order"
+})
+
+L.MarchingOrderTranslationComplete = true -- Set this to false until *all* of the Order* below are translated to the actual string used in the game
+L:SetMiscLocalization({
+	Affixes				= "Affixes",
+	ConstructAffix		= "Lightning Bomb",
+	SpiderAffix			= "Exploding Eggs",
+	UnsupportedLocale	= [[Welcome to the empowered Military Quarter!
+The hard mode mechanic here selects random players and requires them to do a given emote.
+DBM tries to fully automate this, however, our support for your client locale %s is still incomplete, DBM may miss emotes.
+You can help! Share the exact text (screenshots, videos, Transcriptor logs) used in the hard mode mechanic here with us at discord.gg/deadlybossmods.
+]],
+	AutomatedEmote		= "DBM automated emote %s for marching orders.",
+	AutomatedEmoteGuess	= "DBM automated emote %s for marching orders based on a guess. Was this wrong? Let us know at discord.gg/deadlybossmods",
+	-- List of emotes may not be complete, let me know if I missed one
+	OrderDance			= "DANCE for me!",
+	OrderRoar			= "Show me your best ROAR!",
+	OrderSalute			= "SALUTE, maggot!",
+	OrderBow			= "BOW before me, mortal!",
+	OrderPray			= "Get on your knees and PRAY!",
+	OrderKneel			= nil, -- I thought i saw this one, but maybe I mistook it for pray? Don't have it in logs
+	-- Guessed regexes for emotes, by default the emote tokens are used (which actually works 100% in en locale)
+	-- Optional and obsolete if all Order* strings above are complete
+	GuessOrderDance		= nil,
+	GuessOrderRoar		= nil,
+	GueesOrderSalute	= nil,
+	GuessOrderBow		= nil,
+	GuessOrderPray		= nil,
+	GuessOrderKneel		= nil,
+})
+
+L:SetWarningLocalization({
+	WarnEggs		= "Eggs spawned",
+	SpecWarnOrders	= "Marching Order: %s"
+})
+
+L:SetTimerLocalization({
+	AffixTimer	= "Affix"
+})
+
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
