@@ -28,6 +28,11 @@ mod:RegisterEventsInCombat(
 -- New spell ID found in logs on SoD
 -- 364341 (Survivor of the Damned) cast on kill, ID looks like SoM, seems irrelevant
 
+-- TODO: we currently trigger on yell because this mod predates all of the encounter stuff
+-- But it looks like the encounter_start and the first yell are only about 3 seconds apart, with encounter_start triggering earlier
+-- let's use that once confirmed, at least for SoD
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 234 or 330
+
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
@@ -48,10 +53,10 @@ local yellFissure			= mod:NewYell(27810)
 
 --Fissure timer is 13-30 or something pretty wide, so no timer
 local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50 (still true in vanilla, kind of shitty variation too)
-local timerFrostBlastCD		= mod:NewCDTimer(33.5, 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
+local timerFrostBlastCD		= mod:NewVarTimer("v33.5-46", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--actually 60 second cdish but its easier to do it this way for the first one.
-local timerPhase2			= mod:NewTimer(330, "TimerPhase2", "136116", nil, nil, 6)
+local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--Probably should also be made a var timer with good variance data
+local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
@@ -87,12 +92,12 @@ function mod:OnCombatStart(delay)
 	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
-	specwarnP2Soon:Schedule(320-delay)
+	specwarnP2Soon:Schedule(phase1Duration - 10 - delay)
 	timerPhase2:Start()
-	warnPhase2:Schedule(330)
-	warnPhase2:ScheduleVoice(330, "ptwo")
+	warnPhase2:Schedule(phase1Duration - delay)
+	warnPhase2:ScheduleVoice(phase1Duration - delay, "ptwo")
 	if self.Options.RangeFrame then
-		self:Schedule(330-delay, RangeToggle, true)
+		self:Schedule(phase1Duration - delay, RangeToggle, true)
 	end
 end
 

@@ -23,20 +23,20 @@ mod:RegisterEventsInCombat(
 local warnEmbraceActive		= mod:NewSpellAnnounce(28732, 1)
 local warnEmbraceExpire		= mod:NewAnnounce("WarningEmbraceExpire", 2, 28732)
 local warnEmbraceExpired	= mod:NewAnnounce("WarningEmbraceExpired", 3, 28732)
-local warnEnrageSoon		= mod:NewSoonAnnounce(28131, 3)
+--local warnEnrageSoon		= mod:NewSoonAnnounce(28131, 3)--For something that has a 20 second variation, it doesn't need a "soon" warning
 local warnEnrageNow			= mod:NewSpellAnnounce(28131, 4)
 
 local specWarnEnrage		= mod:NewSpecialWarningDefensive(28131, nil, nil, nil, 3, 2)
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(28794, nil, nil, nil, 1, 8)
 
 local timerEmbrace			= mod:NewBuffActiveTimer(30, 28732, nil, nil, nil, 6)
-local timerEnrage			= mod:NewCDTimer(56, 28131, nil, nil, nil, 6)-- 56-76
+local timerEnrage			= mod:NewVarTimer("v56-76", 28131, nil, nil, nil, 6)-- 56-76
 
 mod.vb.enraged = false
 
 function mod:OnCombatStart(delay)
 	timerEnrage:Start(56-delay)
-	warnEnrageSoon:Schedule(55 - delay)
+--	warnEnrageSoon:Schedule(55 - delay)
 	self.vb.enraged = false
 end
 
@@ -53,11 +53,11 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5) then
 		warnEmbraceExpire:Cancel()
 		warnEmbraceExpired:Cancel()
-		warnEnrageSoon:Cancel()
+--		warnEnrageSoon:Cancel()
 		timerEnrage:Stop()
 		if self.vb.enraged then
 			timerEnrage:Start()
-			warnEnrageSoon:Schedule(45)
+			--warnEnrageSoon:Schedule(45)
 		end
 		timerEmbrace:Start()
 		warnEmbraceActive:Show()
@@ -72,7 +72,7 @@ end
 
 function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 15953 then
-		warnEnrageSoon:Cancel()
+		--warnEnrageSoon:Cancel()
 		warnEmbraceExpire:Cancel()
 		warnEmbraceExpired:Cancel()
 	end
