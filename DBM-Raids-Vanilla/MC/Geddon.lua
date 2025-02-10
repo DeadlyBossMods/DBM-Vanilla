@@ -85,6 +85,14 @@ function mod:OnCombatStart(delay)
 	timerBombCD:Start(11-delay)
 end
 
+function mod:OnCombatEnd()
+	if DBM:UnitDebuff("player", 20475) then
+		specWarnBomb:Show()
+		specWarnBomb:Play("runout")
+		yellBomb:Yell()
+	end
+end
+
 local bombIcon = 8
 
 function mod:SPELL_AURA_APPLIED(args)
