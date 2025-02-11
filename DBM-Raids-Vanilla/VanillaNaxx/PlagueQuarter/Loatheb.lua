@@ -49,7 +49,7 @@ local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3)
 local warnHealSoon, warnHealNow
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 1225419, nil, nil, nil, 1225419)
-	warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, nil, 8, nil, 1225419, 1225419) -- keep name like a warning, not special warning to use same logic/locales as era above
+	warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, 2, 8, nil, 1225419, 1225419) -- keep name like a warning, not special warning to use same logic/locales as era above
 else
 	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184)
 	warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
