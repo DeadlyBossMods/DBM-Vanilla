@@ -15,7 +15,11 @@ mod:SetMinCombatTime(60)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Yell)
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod:RegisterCombat("combat")
+else
+	mod:RegisterCombat("combat_yell", L.Yell)
+end
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410",
@@ -28,10 +32,9 @@ mod:RegisterEventsInCombat(
 -- New spell ID found in logs on SoD
 -- 364341 (Survivor of the Damned) cast on kill, ID looks like SoM, seems irrelevant
 
--- TODO: we currently trigger on yell because this mod predates all of the encounter stuff
--- But it looks like the encounter_start and the first yell are only about 3 seconds apart, with encounter_start triggering earlier
--- let's use that once confirmed, at least for SoD
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 234 or 330
+-- On SoD ENCOUTNER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
+-- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 247 or 330
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
