@@ -1202,6 +1202,16 @@ L:SetTimerLocalization({
 	TimerPhase2	= "Phase 2"
 })
 
+-----------------
+--  Naxx Trash --
+-----------------
+
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "Trash"
+})
+
 --------------------
 --  SoD Hardmode  --
 --------------------
