@@ -184,9 +184,11 @@ function mod:OrderFallback()
 	end
 end
 
-function mod:CHAT_MSG_RAID_WARNING(msg, ...)
-	local senderGuid = select(11, ...)
-	if senderGuid == UnitGUID("player") then
+function mod:CHAT_MSG_RAID_WARNING(msg, playerName, ...)
+	local senderGuid = select(10, ...)
+	-- On PTR UnitGUID was enough, but I've seen some evidence that this wasn't working reliably for people.
+	--  Unfortunately it didn't trigger even once for me, so I don't have a log, but let's also check player name for now
+	if senderGuid == UnitGUID("player") or playerName == UnitName("player") then
 		-- The 0.2 delay was not necessary on PTR, but hard to test. Let's just make extra sure that the debuff is indeed there.
 		self:ScheduleMethod(0.2, "TryHandleOrders", msg, "CHAT_MSG_RAID_WARNING")
 	end

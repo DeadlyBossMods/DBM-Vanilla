@@ -55,6 +55,7 @@ Polyfills.lua
 Blocks\Gtfo.lua
 
 VanillaNaxx\SoD_Hardmode.lua
+VanillaNaxx\NaxxTrash.lua
 VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua
 VanillaNaxx\ArachnidQuarter\Faerlina.lua
 VanillaNaxx\ArachnidQuarter\Maexxna.lua
