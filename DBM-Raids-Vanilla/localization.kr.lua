@@ -1186,6 +1186,16 @@ L:SetTimerLocalization({
 	TimerPhase2			= "2단계"
 })
 
+-----------------
+--  Naxx Trash --
+-----------------
+
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "일반몹"
+})
+
 --------------------
 --  SoD Hardmode  --
 --------------------
