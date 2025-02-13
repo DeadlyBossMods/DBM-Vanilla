@@ -29,7 +29,13 @@ ability.id = 28524 and type = "begincast"
 --TODO, air phase and landing better detection from transcriptor, timer adjustments
 local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 2)
 local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 1)
-local warnIceBlock		= mod:NewTargetNoFilterAnnounce(28522, 2)
+local warnIceBlock
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
+	warnIceBlock.noFilter = true
+else
+	warnIceBlock		= mod:NewTargetNoFilterAnnounce(28522, 2)
+end
 local warnAirPhaseSoon	= mod:NewAnnounce("WarningAirPhaseSoon", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
@@ -49,6 +55,7 @@ mod:AddRangeFrameOption(10, 28522)
 
 local noTargetTime = 0
 mod.vb.isFlying = false
+mod.vb.iceBlocks = 0
 local UnitAffectingCombat = UnitAffectingCombat
 
 local function resetIsFlying(self)
@@ -58,17 +65,22 @@ local function resetIsFlying(self)
 	end
 end
 
+local initialAirPhaseTimer = DBM:IsSeasonal("SeasonOfDiscovery") and 33.24 or 48.5
+local airPhaseTimer = DBM:IsSeasonal("SeasonOfDiscovery") and 59.6 or 66
+
 local function Landing()
-	warnAirPhaseSoon:Schedule(56)
+	mod.vb.iceBlocks = 0
+	warnAirPhaseSoon:Schedule(airPhaseTimer - 10)
 	warnLanded:Show()
-	timerAirPhase:Start()--66
+	timerAirPhase:Start(airPhaseTimer)
 end
 
 function mod:OnCombatStart(delay)
 	noTargetTime = 0
 	self.vb.isFlying = false
-	warnAirPhaseSoon:Schedule(38.5 - delay)
-	timerAirPhase:Start(48.5 - delay)
+	self.vb.iceBlocks = 0
+	warnAirPhaseSoon:Schedule(initialAirPhaseTimer - 10 - delay)
+	timerAirPhase:Start(initialAirPhaseTimer - delay)
 	berserkTimer:Start(900-delay)
 	self:RegisterOnUpdateHandler(function(self, elapsed)
 		if not self:IsInCombat() then return end
@@ -111,7 +123,13 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(28522) and args:IsDestTypePlayer() then
-		warnIceBlock:CombinedShow(0.5, args.destName)
+		self.vb.iceBlocks = self.vb.iceBlocks + 1
+		if DBM:IsSeasonal("SeasonOfDiscovery") then -- They're a few seconds apart on SoD and she lands after 5
+			---@diagnostic disable-next-line: param-type-mismatch
+			warnIceBlock:Show(self.vb.iceBlocks, args.destName)
+		else -- I don't remember how it worked on Era back in the day, but the combined show may be redundant
+			warnIceBlock:CombinedShow(0.5, args.destName)
+		end
 		if args:IsPlayer() then
 			yellIceBlock:Yell()
 		end
