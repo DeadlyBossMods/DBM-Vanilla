@@ -58,8 +58,19 @@ function mod:OnCombatStart(delay)
 			[15930] = true,
 		})
 		self.bossHealthUpdateTime = 0.5
+		self:BossHealthUpdate()
 	end
 end
+
+-- FIXME: this is required because core by default only checks mod creature IDs, but it should really check everything that info frame wants to see as well
+function mod:BossHealthUpdate()
+	self:GetBossHP(15929)
+	self:GetBossHP(15930)
+	if self.vb.phase ~= 2 then
+		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
+	end
+end
+
 
 function mod:OnCombatEnd(wipe, isSecondRun)
 	if wipe and not isSecondRun then
