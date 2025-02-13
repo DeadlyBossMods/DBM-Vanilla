@@ -2,7 +2,7 @@ DBM.Test:DefineTest{
 	name = "SoD/Naxx/Gothik/Heroic",
 	gameVersion = "SeasonOfDiscovery",
 	addon = "DBM-Raids-Vanilla",
-	mod = "Gothik",
+	mod = "GothikVanilla",
 	instanceInfo = {name = "Naxxramas", instanceType = "raid", difficultyID = 186, difficultyName = "40 Player", difficultyModifier = 1, maxPlayers = 40, dynamicDifficulty = 0, isDynamic = false, instanceID = 533, instanceGroupSize = 40, lfgDungeonID = nil},
 	players = {
 		{"Tank1",   "Player-1-00000004", class = "DRUID", healer = 0.00, tank = 1.00, dps = 0.87},
