@@ -9,7 +9,21 @@
 ## X-DBM-Test: true
 
 # Nax
-Season of Discovery/Naxxramas/Razuvious-PTR.lua
+Season of Discovery/Naxxramas/AnubRekhan.lua
+Season of Discovery/Naxxramas/Faerlina.lua
+Season of Discovery/Naxxramas/Maexxna.lua
+Season of Discovery/Naxxramas/Patchwerk.lua
+Season of Discovery/Naxxramas/Grobbulus.lua
+Season of Discovery/Naxxramas/Gluth.lua
+Season of Discovery/Naxxramas/Thaddius.lua
+Season of Discovery/Naxxramas/Noth.lua
+Season of Discovery/Naxxramas/Heigan.lua
+Season of Discovery/Naxxramas/Loatheb.lua
+Season of Discovery/Naxxramas/Razuvious.lua
+Season of Discovery/Naxxramas/Gothik.lua
+Season of Discovery/Naxxramas/Horsemen.lua
+Season of Discovery/Naxxramas/Sapphiron.lua
+Season of Discovery/Naxxramas/KelThuzad.lua
 Season of Discovery/Naxxramas/MilitaryQuarter-Synthetic.lua
 
 # AQ40

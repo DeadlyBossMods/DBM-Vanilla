@@ -32,9 +32,9 @@ mod:RegisterEventsInCombat(
 -- New spell ID found in logs on SoD
 -- 364341 (Survivor of the Damned) cast on kill, ID looks like SoM, seems irrelevant
 
--- On SoD ENCOUTNER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
+-- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
 -- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 247 or 330
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 237.6 or 330
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
@@ -54,9 +54,13 @@ local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
 local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
+-- Frost blast is a mess on SoD, consider removing it completely
+-- 	"Frost Blast-27808-npc:15990-00002CE928 = pull:265.1, 116.6, 40.1, 31.5, 58.2",
+-- 	"Frost Blast-27808-npc:15990-00002D1657 = pull:290.0, 30.3, 52.2, 36.4",
+
 --Fissure timer is 13-30 or something pretty wide, so no timer
 local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50 (still true in vanilla, kind of shitty variation too)
-local timerFrostBlastCD		= mod:NewVarTimer("v33.5-46", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
+local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-46", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--Probably should also be made a var timer with good variance data
 local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
