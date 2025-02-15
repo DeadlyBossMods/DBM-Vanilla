@@ -16,7 +16,8 @@ mod:SetZone(533)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"UNIT_DIED"
+	"UNIT_DIED",
+	"UNIT_HEALTH"
 )
 
 -- New spell ID found in logs on SoD
@@ -31,6 +32,11 @@ local warnPhase2		= mod:NewPhaseAnnounce(2, 3)
 
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
+local timerTeleport, warnTeleport
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnTeleport		= mod:NewSoonAnnounce(1222332, 3)
+	timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
+end
 
 mod:AddInfoFrameOption(nil, true)
 
@@ -137,6 +143,12 @@ function mod:NextWave()
 	end
 end
 
+function mod:Teleport()
+	timerTeleport:Start()
+	warnTeleport:Schedule(27)
+	self:ScheduleMethod(20, "Teleport")
+end
+
 function mod:OnCombatStart(delay)
 	self.vb.wave = 0
 	timerPhase2:Start()
@@ -144,6 +156,9 @@ function mod:OnCombatStart(delay)
 	timerWave:Start(27, self.vb.wave + 1)
 	warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 	self:ScheduleMethod(27, "NextWave")
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		self:ScheduleMethod(270.7, "Teleport") -- Seems to be a bit of an offset between phase 2 starting and teleport being active
+	end
 	table.wipe(mobNames)
 	table.wipe(mobCounts)
 
@@ -179,5 +194,13 @@ function mod:UNIT_DIED(args)
 	elseif undeadMobIds[cid] then
 		mobCounts[cid] = (mobCounts[cid] or 0) - 1
 		mobNames[cid] = args.destName
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	if DBM:IsSeasonal("SeasonOfDiscovery") and self:GetUnitCreatureId(uId) == 16060 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.3 then
+		self:UnscheduleMethod("Teleport")
+		timerTeleport:Cancel()
+		warnTeleport:Cancel()
 	end
 end
