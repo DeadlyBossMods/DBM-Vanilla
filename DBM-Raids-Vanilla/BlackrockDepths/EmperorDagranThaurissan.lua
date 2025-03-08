@@ -343,7 +343,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		warnCallGuard:Show()
 		warnCallGuard:Play("securityguardcoming")
 		local timer = guardTimers[self.vb.guardCount+1]
-		if timer then
+		if timer and timer > 0 then
 			timerCallGuardCD:Start(timer, self.vb.guardCount+1)
 		end
 	elseif spellId == 465079 then

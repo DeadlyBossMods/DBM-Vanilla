@@ -129,7 +129,7 @@ function mod:SPELL_CAST_START(args)
 	if spellId == 470203 then
 		self.vb.cremateCount = self.vb.cremateCount + 1
 		local timer = self:GetFromTimersTable(allTimers, difficulty, false, spellId, self.vb.cremateCount+1)
-		if timer then
+		if timer and timer > 0 then
 			timerCremateCD:Start(timer, self.vb.cremateCount+1)
 		end
 	elseif spellId == 470164 and args:GetSrcCreatureID() == 226302 then
@@ -137,7 +137,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.sweepCount = 0
 		warnMagmaInfusion:Show(self.vb.infusionCount)
 		local timer = self:GetFromTimersTable(allTimers, difficulty, false, spellId, self.vb.infusionCount+1)
-		if timer then
+		if timer and timer > 0 then
 			timerMagmaInfusionCD:Start(timer, self.vb.infusionCount+1)
 		end
 	elseif spellId == 464379 then
@@ -158,7 +158,7 @@ function mod:SPELL_CAST_START(args)
 		self.vb.firestartersCount = self.vb.firestartersCount + 1
 		warnSummonFirestarters:Show(self.vb.firestartersCount)
 		local timer = self:GetFromTimersTable(allTimers, difficulty, false, spellId, self.vb.firestartersCount+1)
-		if timer then
+		if timer and timer > 0 then
 			timerSummonFirestartersCD:Start(timer, self.vb.firestartersCount+1)
 		end
 	elseif spellId == 464378 then
@@ -166,7 +166,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnSummonFlamewalker:Show(self.vb.flamewalkerCount)
 		specWarnSummonFlamewalker:Play("killmob")
 		local timer = self:GetFromTimersTable(allTimers, difficulty, false, spellId, self.vb.flamewalkerCount+1)
-		if timer then
+		if timer and timer > 0 then
 			timerSummonFlamewalkerCD:Start(timer, self.vb.flamewalkerCount+1)
 		end
 	elseif spellId == 470330 then
@@ -177,7 +177,7 @@ function mod:SPELL_CAST_START(args)
 		specWarnPortalAnchors:Show(self.vb.portalCount)
 		specWarnPortalAnchors:Play("targetchange")
 		local timer = self:GetFromTimersTable(allTimers, difficulty, false, spellId, self.vb.portalCount+1)
-		if timer then
+		if timer and timer > 0 then
 			timerPortalAnchorsCD:Start(timer, self.vb.portalCount+1)
 		end
 	end
