@@ -553,7 +553,7 @@ L:SetOptionLocalization{
 	TimerBreathCD		= "Exibir recarga da respiração",
 	TimerBreath			= "Exibir lançamento da respiração",
 	TimerVulnCD			= "Exibir recarga de Vulnerabilidade",
-	TimerAllBreaths 	= "Exibir chronômetro para Salva da respiração"
+	TimerAllBreaths 	= "Exibir cronômetro para Salva da respiração"
 }
 L:SetMiscLocalization{
 	Breath1		= "Primeira respiração",
