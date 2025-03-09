@@ -65,8 +65,8 @@ local function resetIsFlying(self)
 	end
 end
 
-local initialAirPhaseTimer = DBM:IsSeasonal("SeasonOfDiscovery") and 33.24 or 48.5
-local airPhaseTimer = DBM:IsSeasonal("SeasonOfDiscovery") and 59.6 or 66
+local initialAirPhaseTimer = DBM:IsSeasonal("SeasonOfDiscovery") and 23.24 or 48.5
+local airPhaseTimer = DBM:IsSeasonal("SeasonOfDiscovery") and 44.6 or 66
 
 local function Landing()
 	mod.vb.iceBlocks = 0
