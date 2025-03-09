@@ -1223,7 +1223,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	AutomateEmote		= "Automatically trigger the correct emote for Marching Orders",
+	AutomateEmote		= "Attempt to automatically trigger the correct emote for Marching Orders (may be broken due a fix by Blizzard)",
 	AffixTimer			= "Show timers for hardmode affixes",
 	WarnEggs			= "Show announce for egg spawn (Spider wing hard mode)",
 	SpecWarnOrders		= "Show special warning when DBM fails to automate a Marching Order"
@@ -1236,11 +1236,11 @@ L:SetMiscLocalization({
 	SpiderAffix			= "Exploding Eggs",
 	UnsupportedLocale	= [[Welcome to the empowered Military Quarter!
 The hard mode mechanic here selects random players and requires them to do a given emote.
-DBM tries to fully automate this, however, our support for your client locale %s is still incomplete, DBM may miss emotes.
+Our support for your client locale %s is still incomplete, DBM may miss emotes.
 You can help! Share the exact text (screenshots, videos, Transcriptor logs) used in the hard mode mechanic here with us at discord.gg/deadlybossmods.
 ]],
-	AutomatedEmote		= "DBM automated emote %s for marching orders.",
-	AutomatedEmoteGuess	= "DBM automated emote %s for marching orders based on a guess. Was this wrong? Let us know at discord.gg/deadlybossmods",
+	AutomatedEmote		= "DBM attempted to automate emote %s for marching orders (this might not work due to Blizzard blocking the automation).",
+	AutomatedEmoteGuess	= "DBM attempted to automated emote %s for marching orders based on a guess. Was this the correct emote? Let us know at discord.gg/deadlybossmods",
 	-- List of emotes may not be complete, let me know if I missed one
 	OrderDance			= "DANCE for me!",
 	OrderRoar			= "Show me your best ROAR!",

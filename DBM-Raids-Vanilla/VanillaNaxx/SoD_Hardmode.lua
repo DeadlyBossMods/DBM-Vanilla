@@ -107,7 +107,10 @@ function mod:DoEmote(emote, isGuess)
 		self:TestTrace("DoEmote", emote)
 	else
 		DoEmote(emote)
+		self:Schedule(0.2, DoEmote, emote)
 	end
+	self:UnscheduleMethod("OrderFallback")
+	self:ScheduleMethod(0.5, "OrderFallback", emote)
 	if isGuess then
 		self:AddMsg(L.AutomatedEmoteGuess:format(emote))
 	else
@@ -172,16 +175,14 @@ function mod:TryHandleOrders(msg, event)
 	end
 end
 
-function mod:OrderFallback()
+function mod:OrderFallback(msg)
 	if not DBM:UnitDebuff("player", 1219060) then -- Already cleared
 		return
 	end
-	-- Triggers 2 sec after it should already trigger from the CHAT_MSG_* event (either automated or a warning)
-	-- This should never be necessary
-	if self:AntiSpam(5, "MarchingOrders") then
-		specWarnOrders:Show(UNKNOWN)
-		specWarnOrders:Play("targetyou")
-	end
+	-- Triggers 0.5 sec after an emote was detected with the emote as message or 1.5 sec after the debuff was applied without an emote
+	-- This should not be necessary, but it looks like DoEmote got banned in combat from automation (which, I think, is a good thing because automating this was lame)
+	specWarnOrders:Show(msg or UNKNOWN)
+	specWarnOrders:Play("targetyou")
 end
 
 function mod:CHAT_MSG_RAID_WARNING(msg, playerName, ...)
