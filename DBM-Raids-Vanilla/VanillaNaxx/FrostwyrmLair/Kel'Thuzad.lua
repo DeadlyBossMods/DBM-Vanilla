@@ -34,7 +34,7 @@ mod:RegisterEventsInCombat(
 
 -- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
 -- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 237.6 or 330
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 232.8 or 330
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
