@@ -22,7 +22,7 @@ else
 end
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 27808 27819 28410",
+	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
 	"SPELL_AURA_REMOVED 28410",
 	"SPELL_CAST_SUCCESS 27810 27819 27808",
 	"UNIT_HEALTH mouseover target",
@@ -34,7 +34,7 @@ mod:RegisterEventsInCombat(
 
 -- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
 -- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 237.6 or 330
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 232.8 or 330
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
@@ -42,6 +42,7 @@ ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
 --]]
 local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "134321")
 local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
 local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
@@ -173,6 +174,10 @@ function mod:SPELL_AURA_APPLIED(args)
 			end
 		end
 		warnChainsTargets:CombinedShow(1, args.destName)
+	elseif args:IsSpell(1222430) then -- SoD Mythic extra phase
+		self:SetStage(3)
+		warnPhase3:Show()
+		warnPhase3:Play("pthree")
 	end
 end
 

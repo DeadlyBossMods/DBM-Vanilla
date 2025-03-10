@@ -13,26 +13,26 @@ mod:RegisterEvents(
 	"RAID_BOSS_EMOTE",
 	"CHAT_MSG_RAID_BOSS_WHISPER",
 	"SPELL_AURA_APPLIED 1219234 1219235 1219058 1218198 1219229 1219060",
+	"SPELL_AURA_REMOVED 1219235",
 	"SPELL_CAST_SUCCESS 1218210 1219108 1219234"
 )
 
 -- This looks broken as of latest PTR, the SPELL_CAST_SUCCESS are missing. Maybe needs similar logic to BWL, will need a bit more data first
 local timerAffix		= mod:NewTimer(31.59, "AffixTimer")
 timerAffix.simpType = "next"
-local timerBomb			= mod:NewCastTimer(5, 1219234, nil, nil, nil, 3)
 
-local warnBomb			= mod:NewTargetNoFilterAnnounce(1219234, 4)
+local warnBomb			= mod:NewTargetNoFilterAnnounce(1219235, 4)
 local warnEggs			= mod:NewAnnounce("WarnEggs", 1, "132832")
 
 local specWarnAoe		= mod:NewSpecialWarningDodge(1219235, nil, nil, nil, 2, 2)
-local specWarnBomb		= mod:NewSpecialWarningYou(1219234, nil, nil, nil, 3, 2)
+local specWarnBomb		= mod:NewSpecialWarningYou(1219235, nil, nil, nil, 3, 2)
 local specWarnOrders	= mod:NewSpecialWarning("SpecWarnOrders", nil, nil, nil, 1, 2)
 
-local yellBomb			= mod:NewYell(1219234)
-local yellBombFades		= mod:NewShortFadesYell(1219234)
+local yellBomb			= mod:NewYell(1219235)
+local yellBombRepeat	= mod:NewIconFadesYell(1219235)
 
 mod:AddBoolOption("AutomateEmotes", true)
-mod:AddSetIconOption("SetIconOnBombs", 1219234, true, 0, {1, 2, 3, 4})
+mod:AddSetIconOption("SetIconOnBombs", 1219235, true, 0, {1, 2, 3})
 
 -- Affixes are on a 31.59s global loop but only do something in combat.
 -- "<259.93 02:27:27> [CLEU] SPELL_CAST_SUCCESS#Creature-0-5528-533-738-237752-000065EF52#(DNT) Affix Manager Stalker##nil#1218210#(DNT) Force Cast Egg Summon#nil#nil#nil#nil#nil#nil",
@@ -107,7 +107,10 @@ function mod:DoEmote(emote, isGuess)
 		self:TestTrace("DoEmote", emote)
 	else
 		DoEmote(emote)
+		self:Schedule(0.2, DoEmote, emote)
 	end
+	self:UnscheduleMethod("OrderFallback")
+	self:ScheduleMethod(0.5, "OrderFallback", emote)
 	if isGuess then
 		self:AddMsg(L.AutomatedEmoteGuess:format(emote))
 	else
@@ -172,16 +175,14 @@ function mod:TryHandleOrders(msg, event)
 	end
 end
 
-function mod:OrderFallback()
+function mod:OrderFallback(msg)
 	if not DBM:UnitDebuff("player", 1219060) then -- Already cleared
 		return
 	end
-	-- Triggers 2 sec after it should already trigger from the CHAT_MSG_* event (either automated or a warning)
-	-- This should never be necessary
-	if self:AntiSpam(5, "MarchingOrders") then
-		specWarnOrders:Show(UNKNOWN)
-		specWarnOrders:Play("targetyou")
-	end
+	-- Triggers 0.5 sec after an emote was detected with the emote as message or 1.5 sec after the debuff was applied without an emote
+	-- This should not be necessary, but it looks like DoEmote got banned in combat from automation (which, I think, is a good thing because automating this was lame)
+	specWarnOrders:Show(msg or UNKNOWN)
+	specWarnOrders:Play("targetyou")
 end
 
 function mod:CHAT_MSG_RAID_WARNING(msg, playerName, ...)
@@ -209,31 +210,42 @@ function mod:CHAT_MSG_RAID_BOSS_WHISPER(msg)
 	self:ScheduleMethod(0.2, "TryHandleOrders", msg, "CHAT_MSG_RAID_BOSS_WHISPER")
 end
 
-
 local icon = 1
+local function resetIcon()
+	icon = 1
+end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(1219234) then
-		timerBomb:Start()
+	if args:IsSpell(1219235) then
 		if args:IsPlayer() then
 			yellBomb:Yell()
-			yellBombFades:Countdown(5)
+			yellBombRepeat:Schedule(25, 5, 8)
+			yellBombRepeat:Schedule(20, 10, 8)
+			yellBombRepeat:Schedule(15, 15, 8)
+			yellBombRepeat:Schedule(10, 20, 8)
+			yellBombRepeat:Schedule(5, 25, 8)
 			specWarnBomb:Show()
 			specWarnBomb:Play("bombyou")
+		elseif self:AntiSpam(6, "Bombs") then -- Sometimes there's a seemingly random 5 sec delay between the targets of Overcharge?
+			specWarnAoe:Show()
+			specWarnAoe:Play("scatter")
 		end
 		warnBomb:CombinedShow(0.1, args.destName)
 		-- We had some cases on the PTR where this got cast onto every single player which seemed buggy
-		-- Anyhow, 4 icons is good enough?
-		icon = icon + 1
+		-- Anyhow, haven't seen more than 3, but may depend on raid size?
 		if self.Options.SetIconOnBombs then
-			self:SetIcon(args.destName, icon, 5)
+			self:SetIcon(args.destName, icon, 30)
 		end
-		if icon == 5 then
+		icon = icon + 1
+		if icon == 4 then
 			icon = 1
 		end
-	elseif args:IsSpell(1219235) and self:AntiSpam(3, "Overcharged") then
-		specWarnAoe:Show()
-		specWarnAoe:Play("scatter")
+		self:Unschedule(resetIcon)
+		self:Schedule(15, resetIcon)
+		-- TODO: timer seems too randomized for this to work
+		--if self:AntiSpam(10, "AffixCast") then
+		--	self:LoopAffixTimer(true)
+		--end
 	elseif args:IsSpell(1219058, 1218198, 1219229) then
 		self:RecoverAffixTimer()
 		if args:IsSpell(1219058) and self:AntiSpam(60 * 60, "WelcomeMilitaryHardmode") then -- Military Quarter
@@ -252,6 +264,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self:LoopAffixTimer(true)
 		if DBM:UnitDebuff("player", 1218198) then
 			warnEggs:Show()
+		end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(1219235) then
+		if args:IsPlayer() then
+			yellBombRepeat:Cancel()
 		end
 	end
 end
