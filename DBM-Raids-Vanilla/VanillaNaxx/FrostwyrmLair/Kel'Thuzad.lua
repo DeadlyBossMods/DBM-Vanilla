@@ -35,7 +35,14 @@ mod:RegisterEventsInCombat(
 
 -- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
 -- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 232.8 or 330
+-- People reported that the phase time changed on Era as well, so the diff is just the trigger
+
+-- "<127.94 22:09:41> [ENCOUNTER_START] 1114#Kel'Thuzad#186#40",
+-- "<128.16 22:09:41> [CHAT_MSG_MONSTER_YELL] Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!#Kel'Thuzad###Sephyx##0#0##0#5535#nil#0#false#false#false#false",
+-- "<342.09 22:13:15> [CHAT_MSG_MONSTER_YELL] The end is upon you!#Kel'Thuzad###World Trigger##0#0##0#5661#nil#0#false#false#false#false",
+-- "<358.05 22:13:31> [CLEU] SWING_DAMAGE#Creature-0-5252-533-11218-15990-000051CFAB#Kel'Thuzad#Player-5827-0271EB0C#Ironjoke#3824#-1#nil#nil#false#false#nil#nil",
+-- "<358.05 22:13:31> [IsEncounterInProgress()] true",
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or 229.9
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
