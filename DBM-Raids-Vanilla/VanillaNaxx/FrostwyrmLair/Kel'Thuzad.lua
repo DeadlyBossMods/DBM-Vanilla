@@ -16,6 +16,7 @@ mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 mod:SetZone(533)
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
+	mod:DisableBossDeathKill() -- He actually dies at end of P2 in on SoD Mythic and gets resurrected
 	mod:RegisterCombat("combat")
 else
 	mod:RegisterCombat("combat_yell", L.Yell)
