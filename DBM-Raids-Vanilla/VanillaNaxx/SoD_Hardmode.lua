@@ -21,6 +21,7 @@ mod:RegisterEvents(
 local timerAffix		= mod:NewTimer(31.59, "AffixTimer")
 timerAffix.simpType = "next"
 
+local timerBomb			= mod:NewTargetTimer(10, 1219234)
 local warnBomb			= mod:NewTargetNoFilterAnnounce(1219235, 4)
 local warnEggs			= mod:NewAnnounce("WarnEggs", 1, "132832")
 
@@ -215,8 +216,22 @@ local function resetIcon()
 	icon = 1
 end
 
+function mod:BombPrewarn(name)
+	if name and self:AntiSpam(2, "Bombprewarn", name) then
+		warnBomb:CombinedShow(0.1, name)
+	end
+end
+
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(1219235) then
+	if args:IsSpell(1219234) then
+		if args:IsPlayer() then
+			self:SendSync("Overcharged")
+			specWarnBomb:Play("bombyou")
+			specWarnBomb:ScheduleVoice(5, "useitem") -- Use LIP 5 sec before the actual debuff happens
+			timerBomb:Start(args.destName) -- TODO: do we want this for everyone?
+		end
+		self:BombPrewarn(args.destName)
+	elseif args:IsSpell(1219235) then
 		if args:IsPlayer() then
 			yellBomb:Yell()
 			yellBombRepeat:Schedule(25, 5, 8)
@@ -225,12 +240,12 @@ function mod:SPELL_AURA_APPLIED(args)
 			yellBombRepeat:Schedule(10, 20, 8)
 			yellBombRepeat:Schedule(5, 25, 8)
 			specWarnBomb:Show()
-			specWarnBomb:Play("bombyou")
+			specWarnBomb:Play("bombyou") -- Didn't LIP, you get another warning
 		elseif self:AntiSpam(6, "Bombs") then -- Sometimes there's a seemingly random 5 sec delay between the targets of Overcharge?
 			specWarnAoe:Show()
 			specWarnAoe:Play("scatter")
 		end
-		warnBomb:CombinedShow(0.1, args.destName)
+		warnBomb:CombinedShow(0.1, args.destName) -- This may be redundant if 1219234 above is working correctly, but the logs are very confusing
 		-- We had some cases on the PTR where this got cast onto every single player which seemed buggy
 		-- Anyhow, haven't seen more than 3, but may depend on raid size?
 		if self.Options.SetIconOnBombs then
@@ -322,4 +337,11 @@ function mod:LoopAffixTimer(sync, delay)
 	nextAffixCast = GetTime() + 31.5 - delay
 	self:RecoverAffixTimer()
 	self:ScheduleMethod(31.6, "LoopAffixTimer", false, 0.1)
+end
+
+function mod:OnSync(msg, sender)
+	if msg == "Overcharged" and sender then -- There is something extremely weird about logs for this event, sync magic for now, might remove later
+		self:BombPrewarn(sender)
+		DBM:Debug("Overcharge sync from " .. tostring(sender), 1)
+	end
 end
