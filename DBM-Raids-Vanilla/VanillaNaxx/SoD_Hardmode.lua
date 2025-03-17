@@ -14,7 +14,8 @@ mod:RegisterEvents(
 	"CHAT_MSG_RAID_BOSS_WHISPER",
 	"SPELL_AURA_APPLIED 1219234 1219235 1219058 1218198 1219229 1219060",
 	"SPELL_AURA_REMOVED 1219235",
-	"SPELL_CAST_SUCCESS 1218210 1219108 1219234"
+	"SPELL_CAST_SUCCESS 1218210 1219108 1219234",
+	"UNIT_AURA player"
 )
 
 -- This looks broken as of latest PTR, the SPELL_CAST_SUCCESS are missing. Maybe needs similar logic to BWL, will need a bit more data first
@@ -217,18 +218,31 @@ local function resetIcon()
 end
 
 function mod:BombPrewarn(name)
-	if name and self:AntiSpam(2, "Bombprewarn", name) then
+	if name and self:AntiSpam(11, "Bombprewarn", name) then
 		warnBomb:CombinedShow(0.1, name)
+	end
+end
+
+function mod:BombYou()
+	if self:AntiSpam(11, "BombYou") then
+		self:SendSync("Overcharged")
+		specWarnBomb:Play("bombyou")
+		specWarnBomb:ScheduleVoice(5, "useitem") -- Use LIP 5 sec before the actual debuff happens
+		timerBomb:Start(UnitName("player")) -- TODO: do we want this for everyone?
+	end
+end
+
+function mod:UNIT_AURA(uId)
+	if UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1219234) then
+		self:BombPrewarn(UnitName(uId))
+		self:BombYou()
 	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1219234) then
 		if args:IsPlayer() then
-			self:SendSync("Overcharged")
-			specWarnBomb:Play("bombyou")
-			specWarnBomb:ScheduleVoice(5, "useitem") -- Use LIP 5 sec before the actual debuff happens
-			timerBomb:Start(args.destName) -- TODO: do we want this for everyone?
+			self:BombYou()
 		end
 		self:BombPrewarn(args.destName)
 	elseif args:IsSpell(1219235) then
