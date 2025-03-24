@@ -225,39 +225,67 @@ end
 
 function mod:BombYou()
 	if self:AntiSpam(11, "BombYou") then
-		self:SendSync("Overcharged")
+		yellBomb:Yell()
 		specWarnBomb:Play("bombyou")
 		specWarnBomb:ScheduleVoice(5, "useitem") -- Use LIP 5 sec before the actual debuff happens
-		timerBomb:Start(UnitName("player")) -- TODO: do we want this for everyone?
+		timerBomb:Start(UnitName("player"))
+		self:ScheduleMethod(7, "BombYouAgain")
+	end
+end
+
+function mod:BombYouAgain()
+	if DBM:UnitAura("player", 1219234) then
+		specWarnBomb:Show()
+		specWarnBomb:Play("useitem")
 	end
 end
 
 function mod:UNIT_AURA(uId)
 	if UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1219234) then
-		self:BombPrewarn(UnitName(uId))
 		self:BombYou()
 	end
 end
+
+function mod:ScanBombTargets()
+	for uId in DBM:GetGroupMembers() do
+		if DBM:UnitDebuff(uId, 1219234) then
+			self:BombPrewarn(UnitName(uId))
+			if UnitIsUnit(uId, "player") then
+				self:BombYou() -- Fallback, should always be antispam-filtered as UNIT_AURA should trigger for us
+			end
+		end
+	end
+	self:RescheduleBombLoop()
+end
+
+function mod:RescheduleBombLoop()
+	if DBM:UnitDebuff("player", 1219229) then
+		self:UnscheduleMethod("ScanBombTargets")
+		self:ScheduleMethod(0.5, "ScanBombTargets")
+	end
+end
+
+mod:ScheduleMethod(5, "RescheduleBombLoop")
+
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1219234) then
 		if args:IsPlayer() then
 			self:BombYou()
 		end
-		self:BombPrewarn(args.destName)
 	elseif args:IsSpell(1219235) then
 		if args:IsPlayer() then
-			yellBomb:Yell()
 			yellBombRepeat:Schedule(25, 5, 8)
 			yellBombRepeat:Schedule(20, 10, 8)
 			yellBombRepeat:Schedule(15, 15, 8)
 			yellBombRepeat:Schedule(10, 20, 8)
 			yellBombRepeat:Schedule(5, 25, 8)
+			yellBombRepeat:Show(30, 8)
 			specWarnBomb:Show()
-			specWarnBomb:Play("bombyou") -- Didn't LIP, you get another warning
+			-- No more voice, you should already have run out by now, there were 3 voice warnings: bombyou, useitem, and useitem again
 		elseif self:AntiSpam(6, "Bombs") then -- Sometimes there's a seemingly random 5 sec delay between the targets of Overcharge?
 			specWarnAoe:Show()
-			specWarnAoe:Play("scatter")
+			specWarnAoe:Play("watchstep")
 		end
 		warnBomb:CombinedShow(0.1, args.destName) -- This may be redundant if 1219234 above is working correctly, but the logs are very confusing
 		-- We had some cases on the PTR where this got cast onto every single player which seemed buggy
@@ -276,6 +304,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		--	self:LoopAffixTimer(true)
 		--end
 	elseif args:IsSpell(1219058, 1218198, 1219229) then
+		if args:IsSpell(1219229) and args:IsPlayer() then
+			self:RescheduleBombLoop()
+		end
 		self:RecoverAffixTimer()
 		if args:IsSpell(1219058) and self:AntiSpam(60 * 60, "WelcomeMilitaryHardmode") then -- Military Quarter
 			if not DBM:GetModLocalization("SoD_NaxxHardmode").MarchingOrderTranslationComplete then
@@ -351,11 +382,4 @@ function mod:LoopAffixTimer(sync, delay)
 	nextAffixCast = GetTime() + 31.5 - delay
 	self:RecoverAffixTimer()
 	self:ScheduleMethod(31.6, "LoopAffixTimer", false, 0.1)
-end
-
-function mod:OnSync(msg, sender)
-	if msg == "Overcharged" and sender then -- There is something extremely weird about logs for this event, sync magic for now, might remove later
-		self:BombPrewarn(sender)
-		DBM:Debug("Overcharge sync from " .. tostring(sender), 1)
-	end
 end

@@ -2,9 +2,6 @@ name: DBM-Offline test diff
 run-name: DBM-Offline on PR
 
 on:
-  push:
-    branches:
-      - master
   pull_request:
     branches:
       - master
