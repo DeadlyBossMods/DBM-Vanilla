@@ -171,8 +171,8 @@ function mod:OnCombatStart(delay)
 	nextBreath = GetTime() + 30 - delay
 	nextVolley = GetTime() + 40 - delay
 	volleyCount = 0
-	timerBreathCD:Start(30-delay, L.Breath1)
-	timerBreathCD:Start(60-delay, L.Breath2)--60
+	timerBreathCD:Start(string.format("v%s-%s", 30-delay, 36-delay), L.Breath1)
+	timerBreathCD:Start(string.format("v%s-%s", 60-delay, 66-delay), L.Breath2)--60
 	specWarnBreathSoon:Schedule(27-delay) -- +2 sec casting time == you got 5 seconds to run
 	specWarnBreathSoon:Schedule(57-delay)
 	mydebuffs = 0
@@ -180,6 +180,7 @@ function mod:OnCombatStart(delay)
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 	end
 	checkTargetVulnerabilities(self)
+	--Is it intended to start the mythic breath volley timer in ADDITION to regular breath timers above?
 	if self:IsBwlBlackEssenceEnabled() then
 		timerFetch:Start(20.9-delay)
 		timerAllBreaths:Start(40-delay)
