@@ -88,6 +88,14 @@ if GetLocale() == "enUS" then
 		[2958] = "Morphaz and Hazzas",
 		[2959] = "Shade of Eranikus",
 		[3018] = "The Molten Core",
+		[3185] = "Balnazzar",
+		[3186] = "Solistrasza",
+		[3187] = "Beatrix",
+		[3188] = "Reborn Council",
+		[3189] = "Caldoran",
+		[3190] = "Lillian Voss",
+		[3196] = "Beastmaster",
+		[3197] = "Mason",
 	})
 end
 if GetLocale() == "deDE" then
@@ -173,6 +181,14 @@ if GetLocale() == "deDE" then
 		[2958] = "Morphaz und Hazzas",
 		[2959] = "Eranikus' Schemen",
 		[3018] = "Der Geschmolzene Kern",
+		[3185] = "Balnazzar",
+		[3186] = "Solistrasza",
+		[3187] = "Beatrix",
+		[3188] = "Wiedergeborener Rat",
+		[3189] = "Caldoran",
+		[3190] = "Lilian Voss",
+		[3196] = "Bestienmeister",
+		[3197] = "Mason",
 	})
 end
 if GetLocale() == "esES" then
@@ -258,6 +274,14 @@ if GetLocale() == "esES" then
 		[2958] = "Morphaz y Hazzas",
 		[2959] = "Sombra de Eranikus",
 		[3018] = "Núcleo de Magma",
+		[3185] = "Balnazzar",
+		[3186] = "Solistrasza",
+		[3187] = "Beatrix",
+		[3188] = "Consejo renacido",
+		[3189] = "Caldoran",
+		[3190] = "Lilian Voss",
+		[3196] = "Maestro de bestias",
+		[3197] = "Mason",
 	})
 end
 if GetLocale() == "esMX" then
@@ -343,6 +367,14 @@ if GetLocale() == "esMX" then
 		[2958] = "Morphaz y Hazzas",
 		[2959] = "Sombra de Eranikus",
 		[3018] = "El Núcleo de Magma",
+		[3185] = "Balnazzar",
+		[3186] = "Solistrasza",
+		[3187] = "Beatrix",
+		[3188] = "Consejo renacido",
+		[3189] = "Caldoran",
+		[3190] = "Lillian Voss",
+		[3196] = "Maestro de bestias",
+		[3197] = "Mampostero",
 	})
 end
 if GetLocale() == "frFR" then
@@ -428,6 +460,14 @@ if GetLocale() == "frFR" then
 		[2958] = "Morphaz et Hazzas",
 		[2959] = "Ombre d’Eranikus",
 		[3018] = "Le Cœur du Magma",
+		[3185] = "Balnazzar",
+		[3186] = "Solistrasza",
+		[3187] = "Beatrix",
+		[3188] = "Le conseil ressuscité",
+		[3189] = "Caldoran",
+		[3190] = "Lilian Voss",
+		[3196] = "Belluaire",
+		[3197] = "Maçon",
 	})
 end
 if GetLocale() == "koKR" then
@@ -513,6 +553,14 @@ if GetLocale() == "koKR" then
 		[2958] = "몰파즈와 하자스",
 		[2959] = "에라니쿠스의 사령",
 		[3018] = "화산 심장부",
+		[3185] = "발나자르",
+		[3186] = "솔리스트라자",
+		[3187] = "베아트릭스",
+		[3188] = "부활의 의회",
+		[3189] = "칼도란",
+		[3190] = "릴리안 보스",
+		[3196] = "야수조련사",
+		[3197] = "석공",
 	})
 end
 if GetLocale() == "ptBR" then
@@ -598,6 +646,14 @@ if GetLocale() == "ptBR" then
 		[2958] = "Morphaz e Hazzas",
 		[2959] = "Vulto de Erânicos",
 		[3018] = "O Núcleo Derretido",
+		[3185] = "Balnazzar",
+		[3186] = "Solistrasza",
+		[3187] = "Beatrix",
+		[3188] = "Conselho Renascido",
+		[3189] = "Caldoran",
+		[3190] = "Lilian Voss",
+		[3196] = "Senhor das Feras",
+		[3197] = "Alvano",
 	})
 end
 if GetLocale() == "ruRU" then
@@ -683,6 +739,14 @@ if GetLocale() == "ruRU" then
 		[2958] = "Морфаз и Хаззас",
 		[2959] = "Тень Эраникуса",
 		[3018] = "Огненные Недра",
+		[3185] = "Балназзар",
+		[3186] = "Солистраза",
+		[3187] = "Беатриса",
+		[3188] = "Возрожденный совет",
+		[3189] = "Калдоран",
+		[3190] = "Лилиан Восс",
+		[3196] = "Повелитель зверей",
+		[3197] = "Мейсон",
 	})
 end
 if GetLocale() == "zhCN" then
@@ -768,6 +832,14 @@ if GetLocale() == "zhCN" then
 		[2958] = "摩弗拉斯和哈扎斯",
 		[2959] = "伊兰尼库斯的阴影",
 		[3018] = "熔火之心",
+		[3185] = "巴纳扎尔",
+		[3186] = "瑟莉斯塔萨",
+		[3187] = "碧阿崔克丝",
+		[3188] = "复生议会",
+		[3189] = "凯尔多兰",
+		[3190] = "莉莉安·沃斯",
+		[3196] = "兽王",
+		[3197] = "梅森",
 	})
 end
 if GetLocale() == "zhTW" then
@@ -853,5 +925,13 @@ if GetLocale() == "zhTW" then
 		[2958] = "摩弗拉斯與哈札斯",
 		[2959] = "伊蘭尼庫斯的陰影",
 		[3018] = "熔火之心",
+		[3185] = "巴納札爾",
+		[3186] = "索利史卓莎",
+		[3187] = "碧翠絲",
+		[3188] = "重生議會",
+		[3189] = "凱爾多蘭",
+		[3190] = "莉莉安‧佛斯",
+		[3196] = "野獸大師",
+		[3197] = "梅森",
 	})
 end
