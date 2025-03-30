@@ -93,6 +93,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19702, 460931) then
+			error("testing error messages!")
 		warnDoom:Show()
 		--timerDoom:Start()
 		timerDoomCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and "v16-21" or "v20-25")
