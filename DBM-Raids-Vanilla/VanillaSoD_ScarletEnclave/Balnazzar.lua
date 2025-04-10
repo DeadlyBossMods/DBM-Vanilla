@@ -18,6 +18,7 @@ mod:RegisterEventsInCombat(
 
 local warnMc = mod:NewTargetNoFilterAnnounce(1231844)
 local warnMcYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
+local timerMc = mod:NewNextTimer(10, 1231844)
 
 local warnSilenceYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
 
@@ -27,15 +28,20 @@ local specWarnStack = mod:NewSpecialWarningCast(1231636, nil, nil, nil, 2, 2)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1231844) then
-		if args:IsPlayer() and self:AntiSpam(5, "MCYou") then -- MC: Move to somewhere to block it
+		-- MC: Don't fully understand it, why does it give you a 6 sec pre-warning? with the other debuff? what should you do?
+		if args:IsPlayer() and self:AntiSpam(5, "MCYou") then
 			warnMcYou:Show()
-			warnMcYou:Play("findshelter")
+			warnMcYou:Play("targetyou")
 		end
+		timerMc:Start()
 		warnMc:CombinedShow(0.1, args.destName) -- Looks like Combined is not necessary, but maybe on higher difficulties?
 	elseif args:IsSpell(1231836) then
-		if args:IsPlayer() and self:AntiSpam(8, "Carrion") then -- Affects *a lot* of players
-			warnCarrionYou:Show()
-			warnCarrionYou:Play("scatter")
+		local amount = args.amount or 1
+		if args:IsPlayer() then -- Affects *a lot* of players
+			if self:AntiSpam(amount >= 5 and 2 or 8, "Carrion") then -- If you have 5 stacks: where are you standing?!
+				warnCarrionYou:Show()
+				warnCarrionYou:Play("scatter")
+			end
 		end
 	elseif args:IsSpell(1231777) then -- Silence, pretty much always active, so very generous antispam
 		if args:IsPlayer() and self:AntiSpam(30, "Silence") then
@@ -48,7 +54,7 @@ end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(1231636) then
+	if args:IsSpell(1231636) then -- Spell seems rare
 		specWarnStack:Show()
 		specWarnStack:Play("gather")
 	end
