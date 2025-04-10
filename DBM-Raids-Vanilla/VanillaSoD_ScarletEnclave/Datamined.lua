@@ -31,7 +31,7 @@ local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2)
 local specWarnPoison	= mod:NewSpecialWarningYou(1233901, nil, nil, nil, 1, 2)
 local specWarnShield	= mod:NewSpecialWarningReflect(1232703)
 
-local yellPoison		= mod:NewYell(1233901, nil, false)
+local yellPoison		= mod:NewYell(1233901)
 
 function mod:KeepMovingYou(amount)
 	if amount >= 4 then
