@@ -1590,3 +1590,9 @@ L = DBM:GetModLocalization("Beastmaster")
 
 
 L = DBM:GetModLocalization("Mason")
+
+
+L = DBM:GetModLocalization("ScarletDatamine")
+L:SetGeneralLocalization{
+	name = "Datamined Mechanics"
+}
