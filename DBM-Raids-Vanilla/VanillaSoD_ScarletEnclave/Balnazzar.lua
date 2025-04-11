@@ -28,6 +28,12 @@ local warnCarrionYou = mod:NewSpecialWarningYou(1231836, nil, nil, nil, 2, 2)
 
 local specWarnStack = mod:NewSpecialWarningCast(1231636, nil, nil, nil, 2, 2)
 
+local berserkTimer = mod:NewBerserkTimer(480)
+
+function mod:OnCombatStart(delay)
+	berserkTimer:Start(480 - delay)
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1231844) then
 		-- MC: Don't fully understand it, why does it give you a 6 sec pre-warning? with the other debuff? what should you do?
