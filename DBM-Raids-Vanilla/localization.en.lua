@@ -1576,6 +1576,10 @@ L = DBM:GetModLocalization("Solistrasza")
 
 L = DBM:GetModLocalization("Beatrix")
 
+L:SetMiscLocalization{
+	OtherPlayer = "another player" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+}
+
 
 L = DBM:GetModLocalization("RebornCouncil")
 

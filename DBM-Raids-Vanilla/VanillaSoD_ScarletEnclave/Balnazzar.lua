@@ -26,7 +26,7 @@ local warnSilenceYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
 
 local warnCarrionYou = mod:NewSpecialWarningYou(1231836, nil, nil, nil, 2, 2)
 
-local specWarnStack = mod:NewSpecialWarningCast(1231636, nil, nil, nil, 2, 2)
+local specWarnGather = mod:NewSpecialWarningMoveTo(1231636, nil, nil, nil, 2, 2)
 
 local berserkTimer = mod:NewBerserkTimer(480)
 
@@ -63,7 +63,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1231636) then -- Spell seems rare
-		specWarnStack:Show()
-		specWarnStack:Play("gather")
+		specWarnGather:Show(L.OtherPlayer)
+		specWarnGather:Play("gather")
 	end
 end
