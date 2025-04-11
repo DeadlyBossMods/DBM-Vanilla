@@ -1,3 +1,5 @@
+if not DBM:IsSeasonal("SeasonOfDiscovery") then return end
+
 local mod	= DBM:NewMod("LillianVoss", "DBM-Raids-Vanilla", 11)
 local L		= mod:GetLocalizedStrings()
 

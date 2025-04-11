@@ -1,4 +1,4 @@
-## Interface: 11505, 11506
+## Interface: 11507
 ## X-Min-Interface-Classic: 11403
 ## Category: DBM
 
@@ -154,6 +154,8 @@ VanillaSoD_SunkenTemple\MorphazAndHazzas.lua
 VanillaSoD_SunkenTemple\ShadeOfEranikus.lua
 VanillaSoD_SunkenTemple\AvatarofHakkar.lua
 
+VanillaSoD_ScarletEnclave\Datamined.lua
+VanillaSoD_ScarletEnclave\Trash.lua
 VanillaSoD_ScarletEnclave\Balnazzar.lua
 VanillaSoD_ScarletEnclave\Solistrasza.lua
 VanillaSoD_ScarletEnclave\Beatrix.lua
