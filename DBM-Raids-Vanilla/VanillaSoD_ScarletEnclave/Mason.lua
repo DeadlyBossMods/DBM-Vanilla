@@ -39,7 +39,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1231592) then
 		if self:AntiSpam(5, "Decurse") then
-			warnDrown:Show(RAID)
+			warnDrown:Show(DBM_COMMON_L.ALLIES)
 			warnDrown:Play("helpdispel")
 		end
 	elseif args:IsSpell(1229005) then
