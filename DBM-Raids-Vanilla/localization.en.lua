@@ -1588,6 +1588,14 @@ L = DBM:GetModLocalization("LillianVoss")
 
 L = DBM:GetModLocalization("Beastmaster")
 
+L:SetOptionLocalization({
+	TimerMark = "Show timer for next Enervate/Enkindle marks (with count)",
+})
+
+L:SetTimerLocalization({
+	TimerMark	= "Mark %d",
+})
+
 
 L = DBM:GetModLocalization("Mason")
 
