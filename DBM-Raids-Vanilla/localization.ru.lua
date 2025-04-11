@@ -1567,3 +1567,48 @@ L:SetGeneralLocalization({
 --  Emperor Dagran Thaurissan (3049) --
 ---------------------------
 --L= DBM:GetModLocalization(2670)
+
+
+-----------------------------
+--  Scarlet Enclave (SoD)  --
+-----------------------------
+-- This mostly relies on the new auto-generated locales for boss names from encounter data.
+-- Only add name localization if the name in locale.generated.lua is inconsistent with the commonly used name in the language.
+
+L = DBM:GetModLocalization("Balnazzar")
+
+L = DBM:GetModLocalization("Solistrasza")
+
+L = DBM:GetModLocalization("Beatrix")
+
+L:SetMiscLocalization{
+	OtherPlayer = "другой игрок" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+}
+
+L = DBM:GetModLocalization("RebornCouncil")
+
+L = DBM:GetModLocalization("Caldoran")
+
+L = DBM:GetModLocalization("LillianVoss")
+
+L = DBM:GetModLocalization("Beastmaster")
+
+L:SetOptionLocalization({
+	TimerMark = "Показывать таймер для следующих меток Озарение/Воспламенение (со счётчиком)",
+})
+
+L:SetTimerLocalization({
+	TimerMark	= "Метка %d",
+})
+
+L = DBM:GetModLocalization("Mason")
+
+L = DBM:GetModLocalization("ScarletDatamine")
+L:SetGeneralLocalization{
+	name = "Механика со скрытыми данными"
+}
+
+L = DBM:GetModLocalization("SE_Trash")
+L:SetGeneralLocalization{
+	name = "Трэш мобы Анклав Алого Ордена"
+}
