@@ -11,10 +11,8 @@ mod.isTrashMod = true
 mod.isTrashModBossFightAllowed = true
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED 1233883 1233901 1232703",
-	"SPELL_AURA_APPLIED_DOSE 1233883 1233901 1232703",
-	"SPELL_CAST_START 1232703",
-	"UNIT_SPELLCAST_START target nameplate1 nameplate2 nameplate3",
+	"SPELL_AURA_APPLIED 1233883 1233901",
+	"SPELL_AURA_APPLIED_DOSE 1233883 1233901",
 	"UNIT_AURA player target"
 )
 
