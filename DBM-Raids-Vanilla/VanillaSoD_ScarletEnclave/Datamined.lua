@@ -11,32 +11,17 @@ mod.isTrashMod = true
 mod.isTrashModBossFightAllowed = true
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED 1233883 1233901",
-	"SPELL_AURA_APPLIED_DOSE 1233883 1233901",
+	"SPELL_AURA_APPLIED 1233901",
+	"SPELL_AURA_APPLIED_DOSE 1233901",
 	"UNIT_AURA player target"
 )
 
-mod:NewGtfo{antiSpam = 5, spell = 1234708, spellAura = 1234708, spellPeriodicDamage = 1234708}
 
 
 local warnPoison		= mod:NewTargetNoFilterAnnounce(1233901)
-
-local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2)
 local specWarnPoison	= mod:NewSpecialWarningYou(1233901, nil, nil, nil, 1, 2)
-
 local yellPoison		= mod:NewYell(1233901)
 
-function mod:KeepMovingYou(amount)
-	if amount >= 4 then
-		if self:AntiSpam(10, "KeepmovingHigh") then
-			specWarnMove:Show()
-			specWarnMove:Play("stackhigh")
-		end
-	elseif self:AntiSpam(10, "Keepmoving") then
-		specWarnMove:Show()
-		specWarnMove:Play("keepmove")
-	end
-end
 
 function mod:PoisonYou()
 	if self:AntiSpam(10, "Poison")  then
@@ -47,11 +32,7 @@ function mod:PoisonYou()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(1233883) then
-		if args:IsPlayer() then
-			self:KeepMovingYou(args.amount or 1)
-		end
-	elseif args:IsSpell(1233901) then
+	if args:IsSpell(1233901) then
 		warnPoison:CombinedShow(0.1, args.destName)
 		if args:IsPlayer() then
 			self:PoisonYou()
@@ -64,9 +45,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 
 function mod:UNIT_AURA(uId)
-	if UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1233883) then
-		self:KeepMovingYou(1) -- TODO: get count here if necessary
-	elseif UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1233901) then
+	if UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1233901) then
 		self:PoisonYou()
 	end
 end
