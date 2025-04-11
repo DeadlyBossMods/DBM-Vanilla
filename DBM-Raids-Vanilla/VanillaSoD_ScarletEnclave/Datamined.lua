@@ -22,11 +22,9 @@ mod:NewGtfo{antiSpam = 5, spell = 1234708, spellAura = 1234708, spellPeriodicDam
 
 
 local warnPoison		= mod:NewTargetNoFilterAnnounce(1233901)
-local warnShieldSoon	= mod:NewCastAnnounce(1232703)
 
 local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2)
 local specWarnPoison	= mod:NewSpecialWarningYou(1233901, nil, nil, nil, 1, 2)
-local specWarnShield	= mod:NewSpecialWarningReflect(1232703)
 
 local yellPoison		= mod:NewYell(1233901)
 
@@ -61,39 +59,16 @@ function mod:SPELL_AURA_APPLIED(args)
 			self:PoisonYou()
 		end
 		self:SetIcon(args.destName, 8) -- FIXME: use different icons in a mod with proper icon id sync
-	elseif args:IsSpell(1232703) then
-		if self:AntiSpam(10, "Shield") then
-			specWarnShield:Show(args.destName)
-		end
 	end
 end
 
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(1232703) then
-		if self:AntiSpam(5, "ShieldSoon") then
-			warnShieldSoon:Show()
-		end
-	end
-end
-
-function mod:UNIT_SPELLCAST_START(_, _, spellId)
-	if spellId == 1232703 then
-		if self:AntiSpam(5, "ShieldSoon") then
-			warnShieldSoon:Show()
-		end
-	end
-end
 
 function mod:UNIT_AURA(uId)
 	if UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1233883) then
 		self:KeepMovingYou(1) -- TODO: get count here if necessary
 	elseif UnitIsUnit(uId, "player") and DBM:UnitAura(uId, 1233901) then
 		self:PoisonYou()
-	elseif UnitIsUnit(uId, "target") and DBM:UnitAura(uId, 1232703) then
-		if self:AntiSpam(10, "Shield") then
-			specWarnShield:Show(UnitName(uId))
-		end
 	end
 end
