@@ -1559,6 +1559,10 @@ L = DBM:GetModLocalization("Solistrasza")
 
 L = DBM:GetModLocalization("Beatrix")
 
+L:SetMiscLocalization{
+	OtherPlayer = "다른 사람" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+}
+
 
 L = DBM:GetModLocalization("RebornCouncil")
 
@@ -1570,6 +1574,14 @@ L = DBM:GetModLocalization("LillianVoss")
 
 
 L = DBM:GetModLocalization("Beastmaster")
+
+L:SetOptionLocalization({
+	TimerMark = "다음 무기력/점화 징표 타이머 바 보기 (횟수 포함)",
+})
+
+L:SetTimerLocalization({
+	TimerMark	= "징표 %d",
+})
 
 
 L = DBM:GetModLocalization("Mason")
