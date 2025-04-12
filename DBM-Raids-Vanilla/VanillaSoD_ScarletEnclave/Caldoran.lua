@@ -35,7 +35,7 @@ local timerExecutionSentence	= mod:NewVarTimer("v117-130", 1229503)
 
 
 -- Quietus: phase 3 only, somewhat exact timer
-local timerQuietus = mod:NewVarTimer("v24.5-v29", 1231651)
+local timerQuietus = mod:NewVarTimer("v24.5-29", 1231651)
 local warnQuietus = mod:NewCastAnnounce(1231651)
 
 -- Blinding Flare
