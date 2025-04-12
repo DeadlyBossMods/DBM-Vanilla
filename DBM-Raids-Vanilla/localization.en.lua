@@ -1577,7 +1577,14 @@ L = DBM:GetModLocalization("Solistrasza")
 L = DBM:GetModLocalization("Beatrix")
 
 L:SetMiscLocalization{
-	OtherPlayer = "another player" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+	YellFroggers1 = "break their ranks",
+	YellFroggers2 = "Ready your lances",
+	CannonMistress = "Cannon Mistress Lind", -- TODO: can we automatically get the localized name?
+	YellCannons = ""
+}
+
+L:SetTimerLocalization{
+	Froggers = "Froggers"
 }
 
 
