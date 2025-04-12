@@ -154,7 +154,6 @@ VanillaSoD_SunkenTemple\MorphazAndHazzas.lua
 VanillaSoD_SunkenTemple\ShadeOfEranikus.lua
 VanillaSoD_SunkenTemple\AvatarofHakkar.lua
 
-VanillaSoD_ScarletEnclave\Datamined.lua
 VanillaSoD_ScarletEnclave\Trash.lua
 VanillaSoD_ScarletEnclave\Balnazzar.lua
 VanillaSoD_ScarletEnclave\Beatrix.lua

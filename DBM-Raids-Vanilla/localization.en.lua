@@ -1604,11 +1604,6 @@ L:SetTimerLocalization({
 L = DBM:GetModLocalization("Mason")
 
 
-L = DBM:GetModLocalization("ScarletDatamine")
-L:SetGeneralLocalization{
-	name = "Datamined Mechanics"
-}
-
 L = DBM:GetModLocalization("SE_Trash")
 L:SetGeneralLocalization{
 	name = "Scarlet Enclave Trash"
