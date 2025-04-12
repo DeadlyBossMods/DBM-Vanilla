@@ -13,4 +13,47 @@ mod:SetEncounterID(3188)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
+	"SPELL_CAST_START 1231264 1231095",
+	"SPELL_CAST_SUCCESS 1236306 1231383"
 )
+
+-- Blades of Light: Dodge this
+local timerBlades		= mod:NewVarTimer("v28-31", 1231264)
+local specWarnBlades	= mod:NewSpecialWarningDodge(1231264, "Melee", nil, nil, 4, 2)
+
+-- Divine Avatar, why does this have two spell IDs?
+local warnAvatar = mod:NewSpellAnnounce(1236306)
+
+-- Peeled Secrets, interrupt this
+local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, "HasInterrupt", nil, nil, 1, 2)
+
+-- Volcanic unrest, seems hard to avoid but is avoidable
+mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodicDamage = 1236157}
+
+local berserkTimer = mod:NewBerserkTimer(300)
+
+-- TODO: probably needs some nameplate timers, but I gotta get a feeling for how this boss works first
+
+function mod:OnCombatStart(delay)
+	berserkTimer:Start(300 - delay)
+	timerBlades:Start()
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpell(1231264) then
+		timerBlades:Start()
+		specWarnBlades:Show()
+		specWarnBlades:Play("watchfeet")
+	elseif args:IsSpell(1231095) then
+		-- TODO: target filtering since this is a council fight
+		specWarnSecrets:Show(args.sourceName)
+		specWarnSecrets:Play("kickcast")
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(1236306, 1231383) then
+		warnAvatar:Show()
+	end
+end
+

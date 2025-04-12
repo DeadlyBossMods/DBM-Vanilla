@@ -1576,6 +1576,10 @@ L = DBM:GetModLocalization("Solistrasza")
 
 L = DBM:GetModLocalization("Beatrix")
 
+L:SetMiscLocalization{
+	OtherPlayer = "another player" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+}
+
 
 L = DBM:GetModLocalization("RebornCouncil")
 
@@ -1587,6 +1591,14 @@ L = DBM:GetModLocalization("LillianVoss")
 
 
 L = DBM:GetModLocalization("Beastmaster")
+
+L:SetOptionLocalization({
+	TimerMark = "Show timer for next Enervate/Enkindle marks (with count)",
+})
+
+L:SetTimerLocalization({
+	TimerMark	= "Mark %d",
+})
 
 
 L = DBM:GetModLocalization("Mason")

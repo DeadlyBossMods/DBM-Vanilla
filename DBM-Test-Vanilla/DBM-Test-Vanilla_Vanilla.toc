@@ -10,13 +10,14 @@
 
 # Scarlet Enclave
 Season of Discovery/ScarletEnclave/Balnazzar.lua
-Season of Discovery/ScarletEnclave/Solistrasza.lua
 Season of Discovery/ScarletEnclave/Beatrix.lua
-Season of Discovery/ScarletEnclave/RebornCouncil.lua
-Season of Discovery/ScarletEnclave/Caldoran.lua
-Season of Discovery/ScarletEnclave/LillianVoss.lua
+Season of Discovery/ScarletEnclave/Solistrasza.lua
 Season of Discovery/ScarletEnclave/Beastmaster.lua
 Season of Discovery/ScarletEnclave/Mason.lua
+Season of Discovery/ScarletEnclave/RebornCouncil.lua
+Season of Discovery/ScarletEnclave/LillianVoss.lua
+Season of Discovery/ScarletEnclave/Caldoran.lua
+Season of Discovery/ScarletEnclave/Trash-Synthetic.lua
 
 # Nax
 Season of Discovery/Naxxramas/AnubRekhan.lua
