@@ -11,13 +11,26 @@ mod:SetZone(2856)
 mod:SetEncounterID(3187)
 
 mod:RegisterCombat("combat")
+mod:SetWipeTime(30)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1236174 1232389 1236162 1236182 1232390",
-	"SPELL_AURA_REFRESH 1232389"
+	"SPELL_AURA_REFRESH 1232389",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
--- This fight is full of dispelable debuffs that stack up in bad ways
+local startTimer = mod:NewCombatTimer(194)
+
+-- Froggers
+local timerFroggers = mod:NewCastTimer(30, 1232690)
+local warnFroggers = mod:NewSoonAnnounce(1232690)
+local specWarnFroggers = mod:NewSpecialWarningDodge(1232690)
+
+-- Cannons
+local timerCannons = mod:NewCastTimer(15, 24933)
+local specWarnCannons = mod:NewSpecialWarningDodge(24933)
+
+-- This fight is full of dispellable debuffs that stack up in bad ways
 -- Probably also to be filtered to dispellers in final version, but for now let's show them all
 local warnSheep = mod:NewSpellAnnounce(1236174)
 local warnHolyFire = mod:NewTargetNoFilterAnnounce(1236162)
@@ -37,6 +50,40 @@ local berserkTimer = mod:NewBerserkTimer(413)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(413 - delay)
+	startTimer:Start(194 - delay)
+end
+
+local selfSync = false -- TODO: remove this hack once we're sure combat deteciton works
+function mod:CHAT_MSG_MONSTER_YELL(msg, source)
+	if msg and msg:match(L.YellFroggers1) then
+		selfSync = true
+		self:SendSync("Froggers1")
+	elseif msg and msg:match(L.YellFroggers2) then
+		selfSync = true
+		self:SendSync("Froggers2")
+	elseif source and source:match(L.CannonMistress) then -- First yell seems unreliable? trigger only on NPC for now
+		selfSync = true
+		self:SendSync("Cannons2")
+	end
+end
+
+function mod:OnSync(msg)
+	if not self:IsInCombat() and not selfSync then return end -- I don't trust combat detection yet, it's a bit buggy in general in this fight
+	if msg == "Froggers1" and self:AntiSpam(30, "Froggers") then
+		timerFroggers:Start(36)
+		warnFroggers:Show()
+		specWarnFroggers:Schedule(6)
+		specWarnFroggers:ScheduleVoice(6, "watchstep")
+	elseif msg == "Froggers2" and self:AntiSpam(25, "Froggers") then
+		timerFroggers:Start(20)
+		warnFroggers:Show()
+		specWarnFroggers:Schedule(6)
+		specWarnFroggers:ScheduleVoice(6, "watchstep")
+	elseif msg == "Cannons2" and self:AntiSpam(30, "Cannons") then
+		timerCannons:Start()
+		specWarnCannons:Show()
+	end
+	selfSync = false
 end
 
 function mod:SPELL_AURA_APPLIED(args)
