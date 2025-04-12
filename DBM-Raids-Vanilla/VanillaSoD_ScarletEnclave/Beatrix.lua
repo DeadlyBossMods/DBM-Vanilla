@@ -24,7 +24,7 @@ local startTimer = mod:NewCombatTimer(194)
 -- Froggers
 local timerFroggers = mod:NewCastTimer(30, 1232690)
 local warnFroggers = mod:NewSoonAnnounce(1232690)
-local specWarnFroggers = mod:NewSpecialWarningDodge(1232690)
+local specWarnFroggers = mod:NewSpecialWarningDodgeLoc(1232690, nil, nil, nil, 2, 8)
 
 -- Cannons
 local timerCannons = mod:NewCastTimer(15, 24933)
@@ -72,12 +72,12 @@ function mod:OnSync(msg)
 	if msg == "Froggers1" and self:AntiSpam(30, "Froggers") then
 		timerFroggers:Start(36)
 		warnFroggers:Show()
-		specWarnFroggers:Schedule(6)
+		specWarnFroggers:Schedule(6, L.Footmen)
 		specWarnFroggers:ScheduleVoice(6, "watchstep")
 	elseif msg == "Froggers2" and self:AntiSpam(25, "Froggers") then
 		timerFroggers:Start(20)
 		warnFroggers:Show()
-		specWarnFroggers:Schedule(6)
+		specWarnFroggers:Schedule(6, L.Horses)
 		specWarnFroggers:ScheduleVoice(6, "watchstep")
 	elseif msg == "Cannons2" and self:AntiSpam(30, "Cannons") then
 		timerCannons:Start()
