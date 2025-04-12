@@ -15,7 +15,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1231844 1231836 1231777",
 	"SPELL_AURA_APPLIED_DOSE 1231836",
-	"SPELL_CAST_START 1231636"
+	"SPELL_DAMAGE 1231645",
+	"SPELL_MISSED 1231645"
 )
 
 local warnMc = mod:NewTargetNoFilterAnnounce(1231844)
@@ -26,7 +27,10 @@ local warnSilenceYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
 
 local warnCarrionYou = mod:NewSpecialWarningYou(1231836, nil, nil, nil, 2, 2)
 
-local specWarnGather = mod:NewSpecialWarningMoveTo(1231636, nil, nil, nil, 2, 2)
+-- Prey on the weak was changed, apparently it now is cast just once on pull and stays active. Seems to tick every 6 seconds, but sometimes 5? (Maybe related to phases)
+-- Warning disabled by default because it got nerfed so hard you can basically ignore it, but the timer is kinda cool if you really wanna optimize it. (Doubt anyone will bother, might disable by default later if it confuses people)
+local timerPrey = mod:NewTargetTimer(6, 1231645)
+local specWarnPrey = mod:NewSpecialWarningMoveTo(1231636, false, nil, 2, 2, 2)
 
 local berserkTimer = mod:NewBerserkTimer(480)
 
@@ -58,12 +62,24 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	end
 end
-
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(1231636) then -- Spell seems rare
-		specWarnGather:Show(L.OtherPlayer)
-		specWarnGather:Play("gather")
+function mod:PreyLoop(guessCount)
+	if guessCount == 0 then
+		self:UnscheduleMethod("PreyLoop")
+		timerPrey:Stop(L.Tick)
+		timerPrey:Start(6, L.Tick)
+		self:ScheduleMethod(6.1, "PreyLoop", 1)
+	elseif guessCount <= 6 then
+		timerPrey:Start(5.9, L.Tick)
+		self:ScheduleMethod(6, "PreyLoop", guessCount + 1)
 	end
 end
+
+function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
+	if spellId == 1231645 and destGUID == UnitGUID("player") and self:AntiSpam(4.5, "Prey") then
+		self:PreyLoop(0)
+		specWarnPrey:Show()
+	end
+end
+mod.SPELL_MISSED = mod.SPELL_DAMAGE

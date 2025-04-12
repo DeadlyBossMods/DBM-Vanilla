@@ -1571,7 +1571,8 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("Balnazzar")
 
 L:SetMiscLocalization{
-	OtherPlayer = "another player" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+	OtherPlayer = "another player", -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+	Tick = "Tick"
 }
 
 L = DBM:GetModLocalization("Solistrasza")
