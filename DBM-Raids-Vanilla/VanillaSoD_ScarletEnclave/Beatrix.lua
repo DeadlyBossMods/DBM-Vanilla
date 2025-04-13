@@ -9,7 +9,7 @@ mod:SetRevision("@file-date-integer@")
 
 mod:SetZone(2856)
 mod:SetEncounterID(3187)
-
+mod:SetCreatureID(240812)
 mod:RegisterCombat("combat")
 mod:SetWipeTime(30)
 

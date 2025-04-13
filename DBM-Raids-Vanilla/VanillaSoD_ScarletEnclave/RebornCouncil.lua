@@ -10,6 +10,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetZone(2856)
 mod:SetEncounterID(3188)
 
+mod:SetCreatureID(240795, 240809, 240810)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
@@ -34,9 +35,15 @@ local berserkTimer = mod:NewBerserkTimer(300)
 
 -- TODO: probably needs some nameplate timers, but I gotta get a feeling for how this boss works first
 
+mod:AddInfoFrameOption()
+
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(300 - delay)
 	timerBlades:Start()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Show(10, "bosshealth", self)
+		self.bossHealthUpdateTime = 0.5
+	end
 end
 
 function mod:SPELL_CAST_START(args)
