@@ -26,7 +26,7 @@ local specWarnBlades	= mod:NewSpecialWarningDodge(1231264, "Melee", nil, nil, 4,
 local warnAvatar = mod:NewSpellAnnounce(1236306)
 
 -- Peeled Secrets, interrupt this
-local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, "HasInterrupt", nil, nil, 1, 2)
+local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, true, nil, nil, 1, 2)
 
 -- Volcanic unrest, seems hard to avoid but is avoidable
 mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodicDamage = 1236157}
@@ -52,9 +52,10 @@ function mod:SPELL_CAST_START(args)
 		specWarnBlades:Show()
 		specWarnBlades:Play("watchfeet")
 	elseif args:IsSpell(1231095) then
-		-- TODO: target filtering since this is a council fight
-		specWarnSecrets:Show(args.sourceName)
-		specWarnSecrets:Play("kickcast")
+		if self:CheckInterruptFilter(args.sourceGUID, nil, true) then
+			specWarnSecrets:Show(args.sourceName)
+			specWarnSecrets:Play("kickcast")
+		end
 	end
 end
 
