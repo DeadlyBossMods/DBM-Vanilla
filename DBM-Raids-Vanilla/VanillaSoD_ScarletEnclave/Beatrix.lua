@@ -19,7 +19,7 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
-local startTimer = mod:NewCombatTimer(194)
+local startTimer = mod:NewCombatTimer(185)
 
 -- Froggers
 local timerFroggers = mod:NewCastTimer(30, 1232690)
@@ -44,13 +44,12 @@ local specWarnRosesThorns = mod:NewSpecialWarningSpell(1232390, "Healer", nil, n
 -- Probably a special warning if you are targeted (as you are tanking) TBD
 local warnBlade = mod:NewTargetNoFilterAnnounce(1232389)
 
--- Probably wrong because it's an odd time, the question is: when does the enrage timer start and how can we detect that?
--- Maybe when she joins the fight? Then it would be ~4 minutes
-local berserkTimer = mod:NewBerserkTimer(413)
+-- Odd time, but confirmed by multiple logs, ~5 minutes after she joins the fight, probably some RP during phase transition
+local berserkTimer = mod:NewBerserkTimer(493)
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(413 - delay)
-	startTimer:Start(194 - delay)
+	berserkTimer:Start(493 - delay)
+	startTimer:Start(185 - delay)
 end
 
 local selfSync = false -- TODO: remove this hack once we're sure combat deteciton works
