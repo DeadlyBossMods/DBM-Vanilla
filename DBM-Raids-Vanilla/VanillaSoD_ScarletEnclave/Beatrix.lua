@@ -9,15 +9,28 @@ mod:SetRevision("@file-date-integer@")
 
 mod:SetZone(2856)
 mod:SetEncounterID(3187)
-
+mod:SetCreatureID(240812)
 mod:RegisterCombat("combat")
+mod:SetWipeTime(30)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1236174 1232389 1236162 1236182 1232390",
-	"SPELL_AURA_REFRESH 1232389"
+	"SPELL_AURA_REFRESH 1232389",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
--- This fight is full of dispelable debuffs that stack up in bad ways
+local startTimer = mod:NewCombatTimer(185)
+
+-- Froggers
+local timerFroggers = mod:NewCastTimer(30, 1232690)
+local warnFroggers = mod:NewSoonAnnounce(1232690)
+local specWarnFroggers = mod:NewSpecialWarningDodgeLoc(1232690, nil, nil, nil, 2, 8)
+
+-- Cannons
+local timerCannons = mod:NewCastTimer(15, 24933)
+local specWarnCannons = mod:NewSpecialWarningDodge(24933)
+
+-- This fight is full of dispellable debuffs that stack up in bad ways
 -- Probably also to be filtered to dispellers in final version, but for now let's show them all
 local warnSheep = mod:NewSpellAnnounce(1236174)
 local warnHolyFire = mod:NewTargetNoFilterAnnounce(1236162)
@@ -31,12 +44,45 @@ local specWarnRosesThorns = mod:NewSpecialWarningSpell(1232390, "Healer", nil, n
 -- Probably a special warning if you are targeted (as you are tanking) TBD
 local warnBlade = mod:NewTargetNoFilterAnnounce(1232389)
 
--- Probably wrong because it's an odd time, the question is: when does the enrage timer start and how can we detect that?
--- Maybe when she joins the fight? Then it would be ~4 minutes
-local berserkTimer = mod:NewBerserkTimer(413)
+-- Odd time, but confirmed by multiple logs, ~5 minutes after she joins the fight, probably some RP during phase transition
+local berserkTimer = mod:NewBerserkTimer(493)
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(413 - delay)
+	berserkTimer:Start(493 - delay)
+	startTimer:Start(185 - delay)
+end
+
+local selfSync = false -- TODO: remove this hack once we're sure combat deteciton works
+function mod:CHAT_MSG_MONSTER_YELL(msg, source)
+	if msg and msg:match(L.YellFroggers1) then
+		selfSync = true
+		self:SendSync("Froggers1")
+	elseif msg and msg:match(L.YellFroggers2) then
+		selfSync = true
+		self:SendSync("Froggers2")
+	elseif source and source:match(L.CannonMistress) then -- First yell seems unreliable? trigger only on NPC for now
+		selfSync = true
+		self:SendSync("Cannons2")
+	end
+end
+
+function mod:OnSync(msg)
+	if not self:IsInCombat() and not selfSync then return end -- I don't trust combat detection yet, it's a bit buggy in general in this fight
+	if msg == "Froggers1" and self:AntiSpam(30, "Froggers") then
+		timerFroggers:Start(36)
+		warnFroggers:Show()
+		specWarnFroggers:Schedule(6, L.Footmen)
+		specWarnFroggers:ScheduleVoice(6, "watchstep")
+	elseif msg == "Froggers2" and self:AntiSpam(25, "Froggers") then
+		timerFroggers:Start(20)
+		warnFroggers:Show()
+		specWarnFroggers:Schedule(6, L.Horses)
+		specWarnFroggers:ScheduleVoice(6, "watchstep")
+	elseif msg == "Cannons2" and self:AntiSpam(30, "Cannons") then
+		timerCannons:Start()
+		specWarnCannons:Show()
+	end
+	selfSync = false
 end
 
 function mod:SPELL_AURA_APPLIED(args)

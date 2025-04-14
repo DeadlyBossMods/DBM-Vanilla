@@ -9,13 +9,13 @@ mod:SetRevision("@file-date-integer@")
 
 mod:SetZone(2856)
 mod:SetEncounterID(3190)
-
+mod:SetCreatureID(243021)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 1233883 1232192",
+	"SPELL_AURA_APPLIED 1233883 1232192 1233901",
 	"SPELL_AURA_APPLIED_DOSE 1233883 1232192",
-	"SPELL_AURA_REMOVED 1233883",
+	"SPELL_AURA_REMOVED 1233883 1233901",
 	"SPELL_CAST_START 1233847"
 )
 
@@ -33,6 +33,11 @@ local timerDebilitate = mod:NewVarTimer("v17-21", 1232192)
 
 -- Enrage timer seems very short
 local berserkTimer = mod:NewBerserkTimer(180)
+
+-- Poison, like Grobbulus
+local warnPoison		= mod:NewTargetNoFilterAnnounce(1233901)
+local specWarnPoison	= mod:NewSpecialWarningYou(1233901, nil, nil, nil, 1, 2)
+local yellPoison		= mod:NewYell(1233901)
 
 mod:NewGtfo{antiSpam = 5, spell = 1234708, spellAura = 1234708, spellPeriodicDamage = 1234708}
 
@@ -67,6 +72,13 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam(2, "Debilitate") then
 			timerDebilitate:Start()
 		end
+	elseif args:IsSpell(1233901) then -- Looks like up to 5 targets at the moment --> no icon
+		if args:IsPlayer() then
+			specWarnPoison:Show()
+			specWarnPoison:Play("runout")
+			yellPoison:Show()
+		end
+		warnPoison:CombinedShow(0.1, args.destName)
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
@@ -74,6 +86,8 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(1233883) and args:IsPlayer() then
 		specWarnMove:Play("safenow")
+	elseif args:IsSpell(1233901) and args:IsPlayer() then
+		specWarnPoison:Play("safenow")
 	end
 end
 

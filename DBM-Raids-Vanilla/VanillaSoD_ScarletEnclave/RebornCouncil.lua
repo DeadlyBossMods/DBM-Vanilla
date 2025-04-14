@@ -10,6 +10,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetZone(2856)
 mod:SetEncounterID(3188)
 
+mod:SetCreatureID(240795, 240809, 240810)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
@@ -25,18 +26,24 @@ local specWarnBlades	= mod:NewSpecialWarningDodge(1231264, "Melee", nil, nil, 4,
 local warnAvatar = mod:NewSpellAnnounce(1236306)
 
 -- Peeled Secrets, interrupt this
-local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, "HasInterrupt", nil, nil, 1, 2)
+local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, true, nil, nil, 1, 2)
 
 -- Volcanic unrest, seems hard to avoid but is avoidable
 mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodicDamage = 1236157}
 
-local berserkTimer = mod:NewBerserkTimer(300)
+local berserkTimer = mod:NewBerserkTimer(330)
 
 -- TODO: probably needs some nameplate timers, but I gotta get a feeling for how this boss works first
 
+mod:AddInfoFrameOption()
+
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(300 - delay)
+	berserkTimer:Start(330 - delay)
 	timerBlades:Start()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Show(10, "bosshealth", self)
+		self.bossHealthUpdateTime = 0.5
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -45,9 +52,10 @@ function mod:SPELL_CAST_START(args)
 		specWarnBlades:Show()
 		specWarnBlades:Play("watchfeet")
 	elseif args:IsSpell(1231095) then
-		-- TODO: target filtering since this is a council fight
-		specWarnSecrets:Show(args.sourceName)
-		specWarnSecrets:Play("kickcast")
+		if self:CheckInterruptFilter(args.sourceGUID, nil, true) then
+			specWarnSecrets:Show(args.sourceName)
+			specWarnSecrets:Play("kickcast")
+		end
 	end
 end
 
