@@ -1553,6 +1553,10 @@ L:SetGeneralLocalization({
 
 L = DBM:GetModLocalization("Balnazzar")
 
+L:SetMiscLocalization{
+	OtherPlayer = "다른 사람", -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+	Tick = "틱"
+}
 
 L = DBM:GetModLocalization("Solistrasza")
 
@@ -1560,7 +1564,11 @@ L = DBM:GetModLocalization("Solistrasza")
 L = DBM:GetModLocalization("Beatrix")
 
 L:SetMiscLocalization{
-	OtherPlayer = "다른 사람" -- Use with AUTO_SPEC_WARN_TEXTS.moveto ("$spell - move to >%%s<")
+	YellFroggers1 = "적진을 무너뜨려라",
+	YellFroggers2 = "창을 준비하라",
+	CannonMistress = "Cannon Mistress Lind", -- TODO: can we automatically get the localized name?
+	Footmen = "보병",
+	Horses = "기병"
 }
 
 
@@ -1586,11 +1594,6 @@ L:SetTimerLocalization({
 
 L = DBM:GetModLocalization("Mason")
 
-
-L = DBM:GetModLocalization("ScarletDatamine")
-L:SetGeneralLocalization{
-	name = "데이터 수집된 스킬 패턴"
-}
 
 L = DBM:GetModLocalization("SE_Trash")
 L:SetGeneralLocalization{
