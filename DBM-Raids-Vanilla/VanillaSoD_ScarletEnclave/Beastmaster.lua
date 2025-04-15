@@ -73,6 +73,6 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(1230242, 1230200) and self:AntiSpam(5, "Mark") then
 		self.vb.markCount = self.vb.markCount + 1
-		timerMark:Start(self.vb.markCount)
+		timerMark:Start(nil, self.vb.markCount)
 	end
 end
