@@ -1584,6 +1584,7 @@ L:SetMiscLocalization{
 	YellFroggers1 = "break their ranks",
 	YellFroggers2 = "Ready your lances",
 	CannonMistress = "Cannon Mistress Lind", -- TODO: can we automatically get the localized name?
+	YellPhase2 = "We stand united! Let our enemies tremble before our might!",
 	Footmen = "Footmen",
 	Horses = "Horses"
 }
