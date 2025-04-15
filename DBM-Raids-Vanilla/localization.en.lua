@@ -1621,3 +1621,12 @@ L = DBM:GetModLocalization("SE_Trash")
 L:SetGeneralLocalization{
 	name = "Scarlet Enclave Trash"
 }
+
+L:SetOptionLocalization{
+	FlightTimer = "Show timers for Gryphon flights",
+}
+
+L:SetMiscLocalization{
+	CentralTower = "Central Tower",
+	Prison = "Prison",
+}
