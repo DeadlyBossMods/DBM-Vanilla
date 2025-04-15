@@ -15,10 +15,15 @@ mod:RegisterEvents(
 	"SPELL_DAMAGE 1232703",
 	"SPELL_MISSED 1232703",
 	"DAMAGE_SHIELD 1232703",
-	"DAMAGE_SHIELD_MISSED 1232703"
+	"DAMAGE_SHIELD_MISSED 1232703",
+	"GOSSIP_SHOW",
+	"UNIT_ENTERING_VEHICLE player"
 )
 
--- Not sure which event is needed to find reflects
+local flightTimer = mod:NewIntermissionTimer(0, nil, "%s", true, "FlightTimer", nil, "136106")
+flightTimer.startLarge = true
+
+-- Damage reflect, can be interrupted
 local specWarnShieldInterrupt	= mod:NewSpecialWarningInterrupt(1232703, nil, nil, nil, 1, 2)
 local specWarnShield			= mod:NewSpecialWarningReflect(1232703, nil, nil, nil, 1, 2)
 
@@ -57,3 +62,46 @@ end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
 mod.DAMAGE_SHIELD = mod.SPELL_DAMAGE
 mod.DAMAGE_SHIELD_MISSED = mod.SPELL_DAMAGE
+
+local lastGossipOptions, lastGossipSelected
+function mod:GOSSIP_SHOW(...)
+	lastGossipOptions = C_GossipInfo.GetOptions()
+end
+
+function mod:UNIT_ENTERING_VEHICLE(uId)
+	if UnitIsUnit(uId, "player") then
+		if lastGossipSelected then
+			if lastGossipSelected == 133549 then
+				flightTimer:Start(18.23, L.CentralTower)
+			elseif lastGossipSelected == 133775 then
+				flightTimer:Start(12.4, L.Prison) -- 11.17 flight time, but you drop from somewhat high in the air, this is until you hit the ground
+			end
+		end
+		lastGossipSelected = nil
+	end
+end
+
+local function gossipHookByIndex(index)
+	if lastGossipOptions and lastGossipOptions[index] and lastGossipOptions[index] then
+		lastGossipSelected = lastGossipOptions[index].gossipOptionID
+	end
+end
+
+local function gossipHookByOptionId(optionId)
+	lastGossipSelected = optionId
+end
+
+local function gossipHookByOrderIndex(orderIndex)
+	if lastGossipOptions then
+		for _, v in ipairs(lastGossipOptions) do
+			if v.orderIndex == orderIndex then
+				lastGossipSelected = v.gossipOptionID
+				return
+			end
+		end
+	end
+end
+
+hooksecurefunc("SelectGossipOption", gossipHookByIndex)
+hooksecurefunc(C_GossipInfo, "SelectOption", gossipHookByOptionId)
+hooksecurefunc(C_GossipInfo, "SelectOptionByIndex", gossipHookByOrderIndex)
