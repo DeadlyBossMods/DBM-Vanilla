@@ -1612,6 +1612,10 @@ L:SetTimerLocalization({
 
 L = DBM:GetModLocalization("Mason")
 
+L:SetMiscLocalization{
+	Cannons1 = "Fire!",
+	Cannons2 = "Fire at will!",
+}
 
 L = DBM:GetModLocalization("SE_Trash")
 L:SetGeneralLocalization{
