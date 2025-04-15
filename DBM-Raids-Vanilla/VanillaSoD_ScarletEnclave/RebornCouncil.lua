@@ -46,6 +46,11 @@ function mod:OnCombatStart(delay)
 	end
 end
 
+function mod:OnCombatEnd()
+	DBM.InfoFrame:Hide()
+end
+
+
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1231264) then
 		timerBlades:Start()
