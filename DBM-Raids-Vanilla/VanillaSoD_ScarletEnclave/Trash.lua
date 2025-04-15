@@ -11,7 +11,7 @@ mod.isTrashMod = true
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 1232703",
-	"SPELL_CAST_START 1232703",
+	"SPELL_CAST_START 1232703 1232678",
 	"SPELL_DAMAGE 1232703",
 	"SPELL_MISSED 1232703",
 	"DAMAGE_SHIELD 1232703",
@@ -27,6 +27,9 @@ flightTimer.startLarge = true
 local specWarnShieldInterrupt	= mod:NewSpecialWarningInterrupt(1232703, nil, nil, nil, 1, 2)
 local specWarnShield			= mod:NewSpecialWarningReflect(1232703, nil, nil, nil, 1, 2)
 
+-- Whirlwind, important for melees
+local specWarnWhirlwind			= mod:NewSpecialWarningDodge(1232678, "Melee", nil, nil, 1, 8)
+local timerWhirlwindCast		= mod:NewCastNPTimer(2, 1232678)
 
 -- Consecration
 mod:NewGtfo{antiSpam = 5, spell = 1233069, spellAura = 1233069, spellPeriodicDamage = 1233069}
@@ -50,6 +53,10 @@ function mod:SPELL_CAST_START(args)
 			specWarnShieldInterrupt:Show(args.sourceName)
 			specWarnShieldInterrupt:Play("kickcast")
 		end
+	elseif args:IsSpell(1232678) then
+		specWarnWhirlwind:Show()
+		specWarnWhirlwind:Play("whirlwind")
+		timerWhirlwindCast:Start(args.sourceGUID)
 	end
 end
 
