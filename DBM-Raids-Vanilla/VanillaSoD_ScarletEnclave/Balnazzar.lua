@@ -36,7 +36,7 @@ local specWarnPrey = mod:NewSpecialWarningMoveTo(1231636, false, nil, 2, 2, 2)
 
 -- Adds casting fear, this got stealth-nerfed from 1s cast time to 2.5s
 local warnFear		= mod:NewSpecialWarningInterrupt(1231885, nil, nil, nil, 1, 2)
-local timerFearCast	= mod:NewCastNPTimer(2.5, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+local timerFearCast	= mod:NewCastNPTimer(2.5, 1397, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON) -- Different spell ID to not confuse NP timers
 local timerFear		= mod:NewNextNPTimer(11.4, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
 local berserkTimer = mod:NewBerserkTimer(480)
@@ -68,14 +68,14 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnMc:CombinedShow(0.1, args.destName) -- Looks like Combined is not necessary, but maybe on higher difficulties?
 	elseif args:IsSpell(1231836) then
 		local amount = args.amount or 1
-		if args:IsPlayer() then -- Affects *a lot* of players
-			if self:AntiSpam(amount >= 5 and 2 or 8, "Carrion") then -- If you have 5 stacks: where are you standing?!
+		if args:IsPlayer() then
+			if amount >= 2 and self:AntiSpam(amount >= 5 and 2 or 8, "Carrion") then -- If you have 5 stacks: where are you standing?!
 				warnCarrionYou:Show()
 				warnCarrionYou:Play("scatter")
 			end
 		end
-	elseif args:IsSpell(1231777) then -- Silence, pretty much always active, so very generous antispam
-		if args:IsPlayer() and self:AntiSpam(30, "Silence") then
+	elseif args:IsSpell(1231777) then -- Silence, pretty much always active if you stand in the wrong area, so very generous antispam for those who don't care
+		if args:IsPlayer() and self:AntiSpam(20, "Silence") then
 			warnSilenceYou:Show()
 			warnSilenceYou:Play("findshelter")
 		end
@@ -98,7 +98,7 @@ end
 function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
 	if spellId == 1231645 and destGUID == UnitGUID("player") and self:AntiSpam(4.5, "Prey") then
 		self:PreyLoop(0)
-		specWarnPrey:Show()
+		specWarnPrey:Show(L.OtherPlayer)
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
