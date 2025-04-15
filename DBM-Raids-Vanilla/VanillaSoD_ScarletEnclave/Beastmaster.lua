@@ -44,6 +44,10 @@ function mod:OnCombatStart(delay)
 	end
 end
 
+function mod:OnCombatEnd()
+	DBM.InfoFrame:Hide()
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1230242) then
 		local amount = args.amount or 1

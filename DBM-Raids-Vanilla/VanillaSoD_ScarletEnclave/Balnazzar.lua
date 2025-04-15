@@ -16,12 +16,14 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1231844 1231836 1231777",
 	"SPELL_AURA_APPLIED_DOSE 1231836",
 	"SPELL_DAMAGE 1231645",
-	"SPELL_MISSED 1231645"
+	"SPELL_MISSED 1231645",
+	"SPELL_CAST_START 1231885"
 )
 
 local warnMc = mod:NewTargetNoFilterAnnounce(1231844)
 local warnMcYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
 local timerMc = mod:NewNextTimer(10, 1231844)
+local yellMc = mod:NewYell(1231844)
 
 local warnSilenceYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
 
@@ -32,10 +34,26 @@ local warnCarrionYou = mod:NewSpecialWarningYou(1231836, nil, nil, nil, 2, 2)
 local timerPrey = mod:NewTargetTimer(6, 1231645)
 local specWarnPrey = mod:NewSpecialWarningMoveTo(1231636, false, nil, 2, 2, 2)
 
+-- Adds casting fear, this got stealth-nerfed from 1s cast time to 2.5s
+local warnFear		= mod:NewSpecialWarningInterrupt(1231885, nil, nil, nil, 1, 2)
+local timerFearCast	= mod:NewCastNPTimer(2.5, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+local timerFear		= mod:NewNextNPTimer(11.4, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+
 local berserkTimer = mod:NewBerserkTimer(480)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(480 - delay)
+end
+
+function mod:SPELL_CAST_START(args)
+	if args:IsSpell(1231885) then
+		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+			warnFear:Show(args.sourceName)
+			warnFear:Play("kickcast")
+		end
+		timerFearCast:Start(args.sourceGUID)
+		timerFear:Schedule(2.6, -2.6, args.sourceGUID)
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -44,6 +62,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		if args:IsPlayer() and self:AntiSpam(5, "MCYou") then
 			warnMcYou:Show()
 			warnMcYou:Play("targetyou")
+			yellMc:Show()
 		end
 		timerMc:Start()
 		warnMc:CombinedShow(0.1, args.destName) -- Looks like Combined is not necessary, but maybe on higher difficulties?
