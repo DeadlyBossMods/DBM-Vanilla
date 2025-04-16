@@ -11,13 +11,14 @@ mod.isTrashMod = true
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 1232703",
-	"SPELL_CAST_START 1232703 1232678",
+	"SPELL_CAST_START 1232703",
 	"SPELL_DAMAGE 1232703",
 	"SPELL_MISSED 1232703",
 	"DAMAGE_SHIELD 1232703",
 	"DAMAGE_SHIELD_MISSED 1232703",
 	"GOSSIP_SHOW",
-	"UNIT_ENTERING_VEHICLE player"
+	"UNIT_ENTERING_VEHICLE player",
+	"UNIT_SPELLCAST_START_UNFILTERED"
 )
 
 local flightTimer = mod:NewIntermissionTimer(0, nil, "%s", true, "FlightTimer", nil, "136106")
@@ -28,7 +29,7 @@ local specWarnShieldInterrupt	= mod:NewSpecialWarningInterrupt(1232703, nil, nil
 local specWarnShield			= mod:NewSpecialWarningReflect(1232703, nil, nil, nil, 1, 2)
 
 -- Whirlwind, important for melees
-local specWarnWhirlwind			= mod:NewSpecialWarningDodge(1232678, "Melee", nil, nil, 1, 8)
+local specWarnWhirlwind			= mod:NewSpecialWarningDodge(1232678, nil, nil, 2, 1, 8)
 local timerWhirlwindCast		= mod:NewCastNPTimer(2, 1232678)
 
 -- Consecration
@@ -53,10 +54,15 @@ function mod:SPELL_CAST_START(args)
 			specWarnShieldInterrupt:Show(args.sourceName)
 			specWarnShieldInterrupt:Play("kickcast")
 		end
-	elseif args:IsSpell(1232678) then
+	end
+end
+
+-- Using UNIT_ events to filter this on nameplate range (which is just 20 yard)
+function mod:UNIT_SPELLCAST_START_UNFILTERED(uId, _, spellId)
+	if spellId == 1232678 and uId:match("^nameplate") and self:AntiSpam(3, "Whirlwind") then
 		specWarnWhirlwind:Show()
 		specWarnWhirlwind:Play("whirlwind")
-		timerWhirlwindCast:Start(args.sourceGUID)
+		timerWhirlwindCast:Start(nil, UnitGUID(uId))
 	end
 end
 
