@@ -78,10 +78,11 @@ end
 function mod:UNIT_ENTERING_VEHICLE(uId)
 	if UnitIsUnit(uId, "player") then
 		if lastGossipSelected then
+			-- flight times are until you hit the ground
 			if lastGossipSelected == 133549 then
-				flightTimer:Start(18.23, L.CentralTower)
+				flightTimer:Start(19.2, L.CentralTower)
 			elseif lastGossipSelected == 133775 then
-				flightTimer:Start(12.4, L.Prison) -- 11.17 flight time, but you drop from somewhat high in the air, this is until you hit the ground
+				flightTimer:Start(12.8, L.Prison) -- 11.17 flight time, but you drop from somewhat high in the air
 			end
 		end
 		lastGossipSelected = nil
