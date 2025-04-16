@@ -15,6 +15,7 @@ local bossMod = private:GetPrototype("DBMMod")
 ---@class GtfoBlockConfig
 ---@field spell number|string: Main spell ID used for option and events
 ---@field spellAura number|string|false?: Override spell ID for SPELL_AURA_APPLIED
+---@field spellAuraDose number|true?: Use SPELL_AURA_APPLIED_DOSE, not used by default. Set to true to use same spell ID as Aura
 ---@field spellDamage number|string|false?: Override spell ID for SPELL_DAMAGE/MISSED
 ---@field spellPeriodicDamage number|string|false?: Override spell ID for SPELL_PERIOD_DAMAGE/MISSED
 ---@field voice string|false?: Voice pack to play, default: "watchfeet"
@@ -52,6 +53,10 @@ function bossMod:NewGtfo(config)
 	end
 	if config.spellAura ~= false then
 		self:RegisterEvent("SPELL_AURA_APPLIED", config.spellAura or config.spell, handler)
+	end
+	if config.spellAuraDose then
+		local spellId = type(config.spellAuraDose) == "number" and config.spellAuraDose or config.spellAura or config.spell --[[@as number]]
+		self:RegisterEvent("SPELL_AURA_APPLIED_DOSE", spellId, handler)
 	end
 	if config.spellPeriodicDamage ~= false then
 		self:RegisterRawEvent("SPELL_PERIODIC_DAMAGE", config.spellPeriodicDamage or config.spellDamage or config.spell, rawHandler)

@@ -39,7 +39,7 @@ local berserkTimer = mod:NewBerserkTimer(360)
 
 local hpWarnShown1, hpWarnShown2, hpWarnShown3
 
-mod:NewGtfo{antiSpam = 3, spell = 1228509}
+mod:NewGtfo{antiSpam = 2.5, spell = 1228509, spellDamage = false, spellPeriodicDamage = false, spellAuraDose = true}
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(360 - delay)
