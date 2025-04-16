@@ -39,22 +39,12 @@ local timerStomp			= mod:NewCDNPTimer(21, 1228295)
 
 mod.vb.markCount = 0
 
-mod:AddInfoFrameOption()
-
 local berserkTimer = mod:NewBerserkTimer(360)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(360 - delay)
 	timerAperture:Start("v4-7") -- basically pretty much immediately after pulling
 	self.vb.markCount = 0
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Show(10, "bosshealth", self)
-		self.bossHealthUpdateTime = 0.5
-	end
-end
-
-function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
