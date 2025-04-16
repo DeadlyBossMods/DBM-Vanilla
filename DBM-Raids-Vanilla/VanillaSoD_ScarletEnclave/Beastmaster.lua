@@ -19,7 +19,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1230242 1230200",
 	"SPELL_AURA_APPLIED_DOSE 1230242 1230200",
 	"SPELL_CAST_SUCCESS 1230242 1230200",
-	"SPELL_CAST_START 1230105"
+	"SPELL_CAST_START 1230105 1230099 1228295"
 )
 
 -- Two main spells seem to be Enkindle and Enervate, both stack and you probably gotta avoid too high stacks
@@ -28,9 +28,14 @@ mod:RegisterEventsInCombat(
 
 local specWarnEnkindleStack = mod:NewSpecialWarningStack(1230242, nil, 2, nil, nil, 1, 6)
 local specWarnEnervateStack = mod:NewSpecialWarningStack(1230200, nil, 2, nil, nil, 1, 6)
-local timerMark				= mod:NewTimer(15.9, "TimerMark", 1230200, nil, nil, 2)
+local timerMark				= mod:NewTimer(16.2, "TimerMark", 1230200, nil, nil, 2)
 
 local specWarnAperture		= mod:NewSpecialWarningDodge(1230105, nil, nil, nil, 2, 2)
+local timerAperture			= mod:NewVarTimer("v17.4-24.5", 1230105) -- this one sometimes (<10% has huge outliers raning from 27-38 seconds, not clue why and how)
+
+-- Simple CD abilities
+local timerRendingSlash		= mod:NewCDNPTimer(13.8, 1230099)
+local timerStomp			= mod:NewCDNPTimer(21, 1228295)
 
 mod.vb.markCount = 0
 
@@ -40,6 +45,7 @@ local berserkTimer = mod:NewBerserkTimer(360)
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(360 - delay)
+	timerAperture:Start("v4-7") -- basically pretty much immediately after pulling
 	self.vb.markCount = 0
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", self)
@@ -84,5 +90,10 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1230105) then
 		specWarnAperture:Show()
 		specWarnAperture:Play("watchfeet")
+		timerAperture:Start()
+	elseif args:IsSpell(1230099) then
+		timerRendingSlash:Start(nil, args.sourceGUID)
+	elseif args:IsSpell(1228295) then
+		timerStomp:Start(nil, args.sourceGUID)
 	end
 end
