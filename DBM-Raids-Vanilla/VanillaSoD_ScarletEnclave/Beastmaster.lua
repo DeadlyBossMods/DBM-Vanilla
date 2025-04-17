@@ -47,11 +47,15 @@ function mod:OnCombatStart(delay)
 	self.vb.markCount = 0
 end
 
+local function isTank()
+	return DBM:IsTanking("player", DBM:GetUnitIdFromCID(241906), nil, true) or DBM:IsTanking("player", DBM:GetUnitIdFromCID(240794), nil, true)
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1230242) then
 		local amount = args.amount or 1
 		if args:IsPlayer() then
-			if amount >= 2 then
+			if not isTank() or amount >= 2 then
 				specWarnEnkindleStack:Show(amount)
 				specWarnEnkindleStack:Play("stackhigh")
 			end
@@ -59,7 +63,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(1230200) then
 		local amount = args.amount or 1
 		if args:IsPlayer() then
-			if amount >= 2 then
+			if not isTank() or amount >= 2 then
 				specWarnEnervateStack:Show(amount)
 				specWarnEnervateStack:Play("stackhigh")
 			end
