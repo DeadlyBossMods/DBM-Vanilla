@@ -18,6 +18,7 @@
 		"SCENARIO_STAGE",
 		"DBMRaidsVanilla_AllSavedVars",
 		"UNKNOWN",
-		"RAID"
+		"RAID",
+		"UnitDebuff"
 	]
 }

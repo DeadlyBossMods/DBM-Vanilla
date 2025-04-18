@@ -94,8 +94,8 @@ function mod:UNIT_AURA()
 	if self.vb.phase ~=2 or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
 	local charge
 	local i = 1
-	while C_Spell.UnitDebuff("player", i) do
-		local _, icon, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = C_Spell.UnitDebuff("player", i)
+	while UnitDebuff("player", i) do
+		local _, icon, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = UnitDebuff("player", i)
 		if icon == "Interface\\Icons\\Spell_ChargeNegative" or icon == 135768 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
 			charge = L.Charge1
