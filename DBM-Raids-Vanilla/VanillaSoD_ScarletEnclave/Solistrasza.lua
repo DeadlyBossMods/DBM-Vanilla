@@ -101,7 +101,6 @@ function mod:SPELL_AURA_APPLIED(args)
 				specWarnBreathStack:Play("stackhigh")
 			end
 		elseif not DBM:UnitDebuff("player", 1231993) then
-			specWarnBreathStack:Show(amount)
 			specWarnBreathStack:Play("tauntboss")
 		end
 	end
