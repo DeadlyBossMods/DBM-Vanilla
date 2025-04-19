@@ -45,13 +45,15 @@ local specWarnRosesThorns = mod:NewSpecialWarningSpell(1232390, "Healer", nil, n
 -- Probably a special warning if you are targeted (as you are tanking) TBD
 local warnBlade = mod:NewTargetNoFilterAnnounce(1232389)
 
--- Odd time, but confirmed by multiple logs, ~5 minutes after she joins the fight, probably some RP during phase transition
-local berserkTimer = mod:NewBerserkTimer(493)
+-- Hotfix just says that's it 10 minutes now, I'm just gonna assume it refers to time from ENCOUNTER_START, in the past the enrage was clearly not triggered by this.
+-- It's impossible to find a log triggering this because there are so many broken logs on warcraftlogs for this fight (also, 10 minutes, how do you even...?)
+local berserkTimer = mod:NewBerserkTimer(600)
 
 local didSeeBossNP = false
 function mod:OnCombatStart(delay)
 	startTimer:Start(120 - delay)
-	self.vb.phase = 1
+	berserkTimer:Start(600 - delay)
+	self:SetStage(1)
 	didSeeBossNP = false
 end
 
@@ -59,7 +61,6 @@ end
 function mod:NAME_PLATE_UNIT_ADDED(uId) -- Fallback if the yell trigger for phase 2 doesn't work
 	if not didSeeBossNP and self:GetUnitCreatureId(uId) == 240812 then
 		didSeeBossNP = true
-		berserkTimer:Start(300)
 		startTimer:Stop()
 		-- not setting phase here as the yell trigger below should be more precise, this is juat a fallback
 	end
@@ -99,11 +100,8 @@ function mod:OnSync(msg)
 		timerCannons:Start()
 		specWarnCannons:Show()
 	elseif msg == "Phase2" and self.vb.phase == 1 then
-		self.vb.phase = 2
 		self:SetStage(2)
 		startTimer:Stop()
-		berserkTimer:Cancel()
-		berserkTimer:Start(300)
 	end
 	selfSync = false
 end
