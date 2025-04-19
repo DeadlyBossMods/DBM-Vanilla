@@ -17,12 +17,14 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1233883 1232192 1233901 1233849",
 	"SPELL_AURA_APPLIED_DOSE 1233883 1232192",
 	"SPELL_AURA_REMOVED 1233883 1233901 1233849",
-	"SPELL_CAST_START 1233847"
+	"SPELL_CAST_START 1233847",
+	"SPELL_CAST_SUCCESS 1234540"
 )
 
 local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2)
 
 -- Ignite goes on everyone and does a ton of damage, TODO: timer/trigger is unclear, sometimes happens after 15 sec, sometimes only after minutes
+local warnIgnite = mod:NewSpellAnnounce(1234540)
 
 -- Scarlet Grasp seems to be on a consistent timer
 -- Long cast time of 4 sec, so using a timer that indicates actual cast instead of start (similar to Harbinger in Karazhan)
@@ -153,5 +155,11 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1233847) then
 		timerScarletGrasp:Schedule(4, -4)
 		warnScarletGrasp:Show()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(1234540) then
+		warnIgnite:Show()
 	end
 end
