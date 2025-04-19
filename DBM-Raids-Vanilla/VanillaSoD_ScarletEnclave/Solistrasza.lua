@@ -14,23 +14,30 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 1232018 1232333",
-	"SPELL_CAST_START 1228044 1227696 1232032",
+	"SPELL_CAST_START 1228044 1227696 1232032 1227520",
 	"SPELL_AURA_APPLIED 1231993",
 	"SPELL_AURA_APPLIED_DOSE 1231993"
 )
 
 mod:SetUsedIcons(6, 7, 8)
 
+-- Blistering Vent and Crimson Flare happen at the same time, Crimson Flare is the relevant one but it looks impossible to track the target
+-- Timing seems mostly regular, but probably related to phases, so may be off
+local timerFlare		= mod:NewCDTimer(37, 1232032)
+local warnFlare			= mod:NewSpecialWarningDodge(1232032)
+local warnFlareSoon		= mod:NewSoonAnnounce(1232032)
+local timerFlareCast	= mod:NewCastTimer(10, 1232032) -- 3 sec cast, then channeling for 7 sec
+
 -- Adds: Lightforged Whelps, seem to show up in groups of 3, explode on death, detectable cause they cast 1232333 on spawn
-local warnAdds		= mod:NewSpecialWarningAdds(1232333)
+local warnAdds			= mod:NewSpecialWarningAdds(1232333)
+local timerAddExplode	= mod:NewCastNPTimer(30, 1232333)
 
 -- Cremation: Hotfixed, can no longer be interrupted
-local timerCremation = mod:NewVarTimer("v30-45", 1228044)
-local specWarnCremation = mod:NewSpecialWarningDodge(1228044, true, nil, 2, 1, 2)
+local timerCremation	= mod:NewVarTimer("v30-45", 1228044)
+local specWarnCremation	= mod:NewSpecialWarningDodge(1228044, true, nil, 2, 1, 2)
 
--- Lightforge: no clue
-
--- Hallowed Dive: 3 different spells, looks like 1227696 happens first, timer seems random, looks like you need to dodge this, details TBD
+-- Hallowed Dive: 3 different spells, looks like 1227696 happens first, timer seems random, dodge this, but not super important
+-- This might mess with other timers, as it's a somewhat long animation
 local warnHallowedDive = mod:NewSpellAnnounce(1227696)
 
 -- Tarnished Breath: Tank swap mechanic, 10% damage per stack, so probably swap at 1 already, or at most 2
@@ -39,6 +46,10 @@ local warnBreathStack		= mod:NewStackAnnounce(1231993, 2)
 local specWarnBreathStack	= mod:NewSpecialWarningStack(1231993, "Tank", 2, nil, nil, 1, 6)
 local yellBreathStack		= mod:NewCountYell(1231993)
 
+
+local warnPhase2 = mod:NewPhaseAnnounce(2)
+local warnPhase3 = mod:NewPhaseAnnounce(3)
+
 mod:AddSetIconOption("SetIconOnAdds", 1232333, true, 5, {6, 7, 8})
 
 mod:NewGtfo{antiSpam = 3, spell = 1232097, spellAura = 1232097, spellPeriodicDamage = false, spellDamage = false}
@@ -46,21 +57,19 @@ mod:NewGtfo{antiSpam = 3, spell = 1228063, spellAura = 1228063, spellPeriodicDam
 
 
 local berserkTimer = mod:NewBerserkTimer(480)
+
 local addIcon = 8
 
 function mod:OnCombatStart(delay)
 	addIcon = 8
 	timerFlare:Start(45 - delay)
+	warnFlareSoon:Schedule(38 - delay) -- target selection happens ~here
 	berserkTimer:Start(480 - delay)
+	self:SetStage(1)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(1232018) then
-		warnVentSoon:Cancel()
-		timerVent:Start()
-		warnVent:Show()
-		warnVentSoon:Schedule(29)
-	elseif args:IsSpell(1232333) then
+	if args:IsSpell(1232333) then
 		if self:AntiSpam(10, "Adds") then
 			warnAdds:Show()
 		end
@@ -81,7 +90,23 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(1227696) then
 		warnHallowedDive:Show()
 	elseif args:IsSpell(1232032) then
-		timerCrimsonFlare:Start()
+		local flareTime = self.vb.phase == 1 and 45 or 37
+		timerFlareCast:Start()
+		timerFlare:Start(flareTime)
+		warnFlare:Show()
+		warnFlareSoon:Cancel()
+		warnFlareSoon:Schedule(flareTime - 7)
+	elseif args:IsSpell(1227520) then
+		self:SetStage(0)
+		if self.vb.phase == 2 then
+			warnPhase2:Show()
+			timerFlare:Cancel()
+			timerFlare:Start(37)
+			warnFlareSoon:Cancel()
+			warnFlareSoon:Schedule(30)
+		elseif self.vb.phase == 3 then
+			warnPhase3:Show()
+		end
 	end
 end
 
