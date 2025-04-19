@@ -30,7 +30,8 @@ local specWarnShield			= mod:NewSpecialWarningReflect(1232703, nil, nil, nil, 1,
 
 -- Whirlwind, important for melees
 local specWarnWhirlwind			= mod:NewSpecialWarningDodge(1232678, nil, nil, 2, 1, 8)
-local timerWhirlwindCast		= mod:NewCastNPTimer(2, 1232678)
+local timerWhirlwindCast		= mod:NewCastNPTimer(6, 1232678) -- 2 sec cast, 4 sec active, just stay away the whole time
+
 
 -- Consecration
 mod:NewGtfo{antiSpam = 5, spell = 1233069, spellAura = 1233069, spellPeriodicDamage = 1233069}
