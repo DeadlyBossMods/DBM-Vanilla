@@ -41,6 +41,7 @@ local warnHallowedDive = mod:NewSpellAnnounce(1227696)
 -- Don't make the main warning tank only, there are too many tank specs in SoD that aren't handled by this (Warlock, Shaman, Rogue)
 local warnBreathStack		= mod:NewStackAnnounce(1231993, 2)
 local specWarnBreathStack	= mod:NewSpecialWarningStack(1231993, "Tank", 2, nil, nil, 1, 6)
+local yellBreathStack		= mod:NewCountYell(1231993)
 
 -- Crimson Flare
 local timerCrimsonFlare		= mod:NewCastTimer(10, 1232032) -- 3 sec cast, then channeling for 7 sec
@@ -88,6 +89,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		local uId = DBM:GetRaidUnitId(args.destName)
 		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then
 			warnBreathStack:Show(args.destName, amount)
+			if args:IsPlayer() then
+				yellBreathStack:Show(amount)
+			end
 		end
 		if args:IsPlayer() then
 			if amount >= 2 then
