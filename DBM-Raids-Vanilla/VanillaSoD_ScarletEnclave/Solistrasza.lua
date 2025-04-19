@@ -19,11 +19,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED_DOSE 1231993"
 )
 
--- Blistering Vent
--- DoT on everyone, timing seems mostly regular, but I'm missing some phase info, so will be off sometimes
-local timerVent		= mod:NewCDTimer(32, 1232018)
-local warnVent		= mod:NewSpellAnnounce(1232018)
-local warnVentSoon	= mod:NewSoonAnnounce(1232018)
+mod:SetUsedIcons(6, 7, 8)
 
 -- Adds: Lightforged Whelps, seem to show up in groups of 3, explode on death, detectable cause they cast 1232333 on spawn
 local warnAdds		= mod:NewSpecialWarningAdds(1232333)
@@ -43,18 +39,18 @@ local warnBreathStack		= mod:NewStackAnnounce(1231993, 2)
 local specWarnBreathStack	= mod:NewSpecialWarningStack(1231993, "Tank", 2, nil, nil, 1, 6)
 local yellBreathStack		= mod:NewCountYell(1231993)
 
--- Crimson Flare
-local timerCrimsonFlare		= mod:NewCastTimer(10, 1232032) -- 3 sec cast, then channeling for 7 sec
+mod:AddSetIconOption("SetIconOnAdds", 1232333, true, 5, {6, 7, 8})
 
 mod:NewGtfo{antiSpam = 3, spell = 1232097, spellAura = 1232097, spellPeriodicDamage = false, spellDamage = false}
 mod:NewGtfo{antiSpam = 3, spell = 1228063, spellAura = 1228063, spellPeriodicDamage = false, spellDamage = false}
 
 
 local berserkTimer = mod:NewBerserkTimer(480)
+local addIcon = 8
 
 function mod:OnCombatStart(delay)
-	timerVent:Start(45 - delay)
-	warnVentSoon:Schedule(42 - delay)
+	addIcon = 8
+	timerFlare:Start(45 - delay)
 	berserkTimer:Start(480 - delay)
 end
 
@@ -67,6 +63,12 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(1232333) then
 		if self:AntiSpam(10, "Adds") then
 			warnAdds:Show()
+		end
+		timerAddExplode:Start(nil, args.sourceGUID)
+		if self.Options.SetIconOnAdds then
+			self:ScanForMobs(args.destGUID, 2, addIcon, 1, nil, 5, "SetIconOnAdds")
+			addIcon = addIcon - 1
+			self:Schedule(3, function() addIcon = 8 end)
 		end
 	end
 end
