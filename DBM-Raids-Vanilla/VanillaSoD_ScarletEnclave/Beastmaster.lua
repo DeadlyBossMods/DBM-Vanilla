@@ -31,6 +31,7 @@ local specWarnEnkindleStack2	= mod:NewSpecialWarningStack(1230242, nil, 2, nil, 
 local specWarnEnervateStack1	= mod:NewSpecialWarningStack(1230200, nil, 1, nil, nil, 1, 6)
 local specWarnEnervateStack2	= mod:NewSpecialWarningStack(1230200, nil, 2, nil, nil, 1, 6)
 local timerMark					= mod:NewTimer(16.2, "TimerMark", 1230200, nil, nil, 2)
+local warnMark					= mod:NewAnnounce("WarnMark", 3, 1230200, false)
 
 local specWarnAperture		= mod:NewSpecialWarningDodge(1230105, nil, nil, nil, 2, 2)
 local timerAperture			= mod:NewVarTimer("v17.4-24.5", 1230105) -- this one sometimes (<10% has huge outliers raning from 27-38 seconds, not clue why and how)
@@ -80,6 +81,7 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(1230242, 1230200) and self:AntiSpam(5, "Mark") then
+		warnMark:Show(self.vb.markCount)
 		self.vb.markCount = self.vb.markCount + 1
 		timerMark:Start(nil, self.vb.markCount)
 	end

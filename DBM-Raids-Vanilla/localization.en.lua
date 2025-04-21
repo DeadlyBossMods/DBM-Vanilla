@@ -1603,10 +1603,15 @@ L = DBM:GetModLocalization("Beastmaster")
 
 L:SetOptionLocalization({
 	TimerMark = "Show timer for next Enervate/Enkindle marks (with count)",
+	WarnMark = "Show warning for enervate/Enkindle marks (with count)"
 })
 
 L:SetTimerLocalization({
 	TimerMark	= "Mark %d",
+})
+
+L:SetWarningLocalization{{
+	WarnMark = "Mark %d"
 })
 
 
