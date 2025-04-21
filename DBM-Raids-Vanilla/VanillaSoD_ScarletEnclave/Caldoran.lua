@@ -80,6 +80,7 @@ function mod:OnCombatStart(delay)
 	p4WarnShown = false
 	berserkTimer:Start(710 - delay)
 	timerFlare:Start()
+	self:SetStage(1)
 	-- timerWakeP1:Start() -- TODO: inaccurate on pull
 	-- timerExecutionSentence:Start() -- TODO: figure out start timer
 end

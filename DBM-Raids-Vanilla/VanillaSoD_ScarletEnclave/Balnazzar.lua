@@ -17,7 +17,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED_DOSE 1231836",
 	"SPELL_DAMAGE 1231645",
 	"SPELL_MISSED 1231645",
-	"SPELL_CAST_START 1231885"
+	"SPELL_CAST_START 1231885",
+	"UNIT_HEALTH"
 )
 
 local warnMc = mod:NewTargetNoFilterAnnounce(1231844)
@@ -36,13 +37,21 @@ local specWarnPrey = mod:NewSpecialWarningMoveTo(1231636, false, nil, 2, 2, 2)
 
 -- Adds casting fear, this got stealth-nerfed from 1s cast time to 2.5s
 local warnFear		= mod:NewSpecialWarningInterrupt(1231885, nil, nil, nil, 1, 2)
-local timerFearCast	= mod:NewCastNPTimer(2.5, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+local timerFearCast	= mod:NewCastNPTimer(2.5, 1397, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON) -- Different spell ID to not confuse NP timers
 local timerFear		= mod:NewNextNPTimer(11.4, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
-local berserkTimer = mod:NewBerserkTimer(480)
+local warnPhase2Soon = mod:NewPrePhaseAnnounce(2)
+local warnPhase3Soon = mod:NewPrePhaseAnnounce(3)
+
+local berserkTimer = mod:NewBerserkTimer(600)
+
+local p2WarnShown, p3WarnShown
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(480 - delay)
+	berserkTimer:Start(600 - delay)
+	p2WarnShown = false
+	p3WarnShown = false
+	self:SetStage(1)
 end
 
 function mod:SPELL_CAST_START(args)
@@ -58,24 +67,24 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1231844) then
-		-- MC: Don't fully understand it, why does it give you a 6 sec pre-warning? with the other debuff? what should you do?
+		-- MC: Don't fully understand it, why does it give you a 6 sec pre-warning? looks like you can LIP it, but since it's 6 sec no extra delay warning for "useitem" is needed
 		if args:IsPlayer() and self:AntiSpam(5, "MCYou") then
 			warnMcYou:Show()
 			warnMcYou:Play("targetyou")
 			yellMc:Show()
 		end
 		timerMc:Start()
-		warnMc:CombinedShow(0.1, args.destName) -- Looks like Combined is not necessary, but maybe on higher difficulties?
+		warnMc:CombinedShow(0.1, args.destName)
 	elseif args:IsSpell(1231836) then
 		local amount = args.amount or 1
-		if args:IsPlayer() then -- Affects *a lot* of players
-			if self:AntiSpam(amount >= 5 and 2 or 8, "Carrion") then -- If you have 5 stacks: where are you standing?!
+		if args:IsPlayer() then
+			if amount >= 2 and self:AntiSpam(amount >= 5 and 2 or 8, "Carrion") then -- If you have 5 stacks: where are you standing?!
 				warnCarrionYou:Show()
 				warnCarrionYou:Play("scatter")
 			end
 		end
-	elseif args:IsSpell(1231777) then -- Silence, pretty much always active, so very generous antispam
-		if args:IsPlayer() and self:AntiSpam(30, "Silence") then
+	elseif args:IsSpell(1231777) then -- Silence, pretty much always active if you stand in the wrong area, so very generous antispam for those who don't care
+		if args:IsPlayer() and self:AntiSpam(20, "Silence") then
 			warnSilenceYou:Show()
 			warnSilenceYou:Play("findshelter")
 		end
@@ -96,9 +105,25 @@ function mod:PreyLoop(guessCount)
 end
 
 function mod:SPELL_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId)
-	if spellId == 1231645 and destGUID == UnitGUID("player") and self:AntiSpam(4.5, "Prey") then
+	if spellId == 1231645 and destGUID == UnitGUID("player") then
 		self:PreyLoop(0)
-		specWarnPrey:Show()
+		if self:AntiSpam(8, "Prey") then -- Only warn every other tick to not spam people who might do this intentionally too much
+			specWarnPrey:Show(L.OtherPlayer)
+		end
 	end
 end
 mod.SPELL_MISSED = mod.SPELL_DAMAGE
+
+function mod:UNIT_HEALTH(uId)
+	if self:GetUnitCreatureId(uId) == 240811 then
+		local hp = UnitHealth(uId) / UnitHealthMax(uId)
+		if hp >= 0.7 and hp <= 0.75 and not p2WarnShown then -- TODO: need to actually detect the phase transition, but not too important
+			p2WarnShown = true
+			warnPhase2Soon:Show()
+		elseif hp <= 0.45 and hp >= 0.4 and not p3WarnShown then
+			p3WarnShown = true
+			warnPhase3Soon:Show()
+		end
+	end
+end
+

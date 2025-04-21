@@ -18,6 +18,8 @@
 		"SCENARIO_STAGE",
 		"DBMRaidsVanilla_AllSavedVars",
 		"UNKNOWN",
-		"RAID"
+		"RAID",
+		"UnitDebuff",
+		"LOCALIZED_CLASS_NAMES_MALE"
 	]
 }

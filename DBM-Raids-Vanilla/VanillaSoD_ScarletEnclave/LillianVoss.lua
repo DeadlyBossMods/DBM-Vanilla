@@ -17,12 +17,14 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1233883 1232192 1233901 1233849",
 	"SPELL_AURA_APPLIED_DOSE 1233883 1232192",
 	"SPELL_AURA_REMOVED 1233883 1233901 1233849",
-	"SPELL_CAST_START 1233847"
+	"SPELL_CAST_START 1233847",
+	"SPELL_CAST_SUCCESS 1234540"
 )
 
 local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2)
 
 -- Ignite goes on everyone and does a ton of damage, TODO: timer/trigger is unclear, sometimes happens after 15 sec, sometimes only after minutes
+local warnIgnite = mod:NewSpellAnnounce(1234540)
 
 -- Scarlet Grasp seems to be on a consistent timer
 -- Long cast time of 4 sec, so using a timer that indicates actual cast instead of start (similar to Harbinger in Karazhan)
@@ -45,36 +47,36 @@ local yellPoisonFades	= mod:NewIconFadesYell(1233901)
 
 
 -- Unstable Concoction, 7 sec bomb
-local timerConcotion		= mod:NewNextTimer(30.5, 1233849)
-local timerConcotionFades	= mod:NewBuffFadesTimer(7, 1233849)
-local warnConcotion			= mod:NewTargetNoFilterAnnounce(1233849)
-local specWarnConcotion		= mod:NewSpecialWarningYou(1233849, nil, nil, 1, 2)
-local yellConcotion			= mod:NewIconTargetYell(1233849)
-local yellConcotionFades	= mod:NewIconFadesYell(1233849)
+local timerconcoction		= mod:NewNextTimer(30.5, 1233849)
+local timerconcoctionFades	= mod:NewBuffFadesTimer(7, 1233849)
+local warnconcoction		= mod:NewTargetNoFilterAnnounce(1233849)
+local specWarnconcoction	= mod:NewSpecialWarningYou(1233849, nil, nil, 1, 2)
+local yellconcoction		= mod:NewIconTargetYell(1233849)
+local yellconcoctionFades	= mod:NewIconFadesYell(1233849)
 
-mod:AddSetIconOption("SetIconOnPoisonTarget", 1233901, true, 0, {8, 7, 6, 5, 4})
-mod:AddSetIconOption("SetIconOnConcotionTarget", 1233849, true, 0, {1, 2, 3})
+mod:AddSetIconOption("SetIconOnPoisonTarget", 1233901, true, 0, {8, 7, 6, 5, 4}) -- these shouldn't happen at the same time, so the overlap should be okay, worst case it's 1 missing icon
+mod:AddSetIconOption("SetIconOnConcoctionTarget", 1233849, true, 0, {1, 2, 3, 4})
 
 
 mod:NewGtfo{antiSpam = 5, spell = 1234708, spellAura = 1234708, spellPeriodicDamage = 1234708}
 
 local poisonTargetIcon = 8
-local concotionTargetIcon = 3
+local concoctionTargetIcon = 4
 
 local function resetPoisonTargetIcon()
 	poisonTargetIcon = 8
 end
 
-local function resetConcotionTargetIcon()
-	concotionTargetIcon = 3
+local function resetconcoctionTargetIcon()
+	concoctionTargetIcon = 4
 end
 
 function mod:OnCombatStart(delay)
 	berserkTimer:Start(180 - delay)
 	timerScarletGrasp:Start(34.75 - delay)
-	timerConcotion:Start(30.5 - delay)
+	timerconcoction:Start(30.5 - delay)
 	resetPoisonTargetIcon()
-	resetConcotionTargetIcon()
+	resetconcoctionTargetIcon()
 end
 
 
@@ -119,18 +121,18 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(1233849) then
 		if args:IsPlayer() then
-			specWarnConcotion:Show()
-			specWarnConcotion:Play("runout")
-			yellConcotion:Show(8)
-			yellConcotionFades:Countdown(7, 4, 8)
+			specWarnconcoction:Show()
+			specWarnconcoction:Play("runout")
+			yellconcoction:Show(8)
+			yellconcoctionFades:Countdown(7, 4, 8)
 		end
-		timerConcotionFades:Start()
-		timerConcotion:Start()
-		warnConcotion:CombinedShow(0.1, args.destName)
-		if self.Options.SetIconOnConcotionTarget then -- TODO: can someone get both bombs at the same time? then the icon resetting logic is messed up
-			self:SetIcon(args.destName, concotionTargetIcon, 7)
-			concotionTargetIcon = concotionTargetIcon - 1
-			self:Schedule(2, resetConcotionTargetIcon)
+		timerconcoctionFades:Start()
+		timerconcoction:Start()
+		warnconcoction:CombinedShow(0.1, args.destName)
+		if self.Options.SetIconOnConcoctionTarget then -- TODO: can someone get both bombs at the same time? then the icon resetting logic is messed up
+			self:SetIcon(args.destName, concoctionTargetIcon, 7)
+			concoctionTargetIcon = concoctionTargetIcon - 1
+			self:Schedule(2, resetconcoctionTargetIcon)
 		end
 	end
 end
@@ -145,7 +147,7 @@ function mod:SPELL_AURA_REMOVED(args)
 		end
 		yellPoison:Cancel()
 	elseif args:IsSpell(1233849) and args:IsPlayer() and not UnitIsDeadOrGhost("player") then
-		specWarnConcotion:Play("safenow")
+		specWarnconcoction:Play("safenow")
 	end
 end
 
@@ -153,5 +155,11 @@ function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1233847) then
 		timerScarletGrasp:Schedule(4, -4)
 		warnScarletGrasp:Show()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(1234540) then
+		warnIgnite:Show()
 	end
 end
