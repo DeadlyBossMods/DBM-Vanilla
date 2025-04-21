@@ -1610,7 +1610,7 @@ L:SetTimerLocalization({
 	TimerMark	= "Mark %d",
 })
 
-L:SetWarningLocalization{{
+L:SetWarningLocalization({
 	WarnMark = "Mark %d"
 })
 
