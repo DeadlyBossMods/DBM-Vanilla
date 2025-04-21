@@ -15,7 +15,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 1231592 1229005",
 	"SPELL_AURA_APPLIED_DOSE 1229005",
-	"SPELL_CAST_START 1234347",
+	"SPELL_AURA_REMOVED 1231585",
+	"SPELL_CAST_START 1234347 1231585",
 	"UNIT_HEALTH",
 	"CHAT_MSG_MONSTER_YELL"
 )
@@ -33,6 +34,7 @@ local specWarnCannons = mod:NewSpecialWarningDodge(1228376, nil, nil, nil, 2, 2)
 local specWarnIgnite = mod:NewSpecialWarningInterrupt(1234347, "HasInterrupt", nil, nil, 1, 2)
 local timerIgniteCast = mod:NewCastNPTimer(1, 1234347)
 
+local warnPhase2	= mod:NewPhaseAnnounce(2)
 local warnPhase2Soon = mod:NewPrePhaseAnnounce(2)
 
 local berserkTimer = mod:NewBerserkTimer(360)
@@ -71,6 +73,16 @@ function mod:SPELL_CAST_START(args)
 			specWarnIgnite:Play("kickcast")
 		end
 		timerIgniteCast:Start(args.sourceGUID)
+	elseif args:IsSpell(1231585) then
+		warnPhase2:Show()
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(1231585) then
+		if not timerCannons:IsStarted() then
+			timerCannons:Start()
+		end
 	end
 end
 
