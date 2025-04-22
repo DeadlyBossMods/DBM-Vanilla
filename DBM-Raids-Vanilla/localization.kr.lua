@@ -1566,7 +1566,8 @@ L = DBM:GetModLocalization("Beatrix")
 L:SetMiscLocalization{
 	YellFroggers1 = "적진을 무너뜨려라",
 	YellFroggers2 = "창을 준비하라",
-	CannonMistress = "Cannon Mistress Lind", -- TODO: can we automatically get the localized name?
+	CannonMistress = "포반장 린드", -- TODO: can we automatically get the localized name?
+	YellPhase2 = "하나 되어 맞서라! 우리의 힘 앞에 적은 전율하리라!",
 	Footmen = "보병",
 	Horses = "기병"
 }
@@ -1585,17 +1586,35 @@ L = DBM:GetModLocalization("Beastmaster")
 
 L:SetOptionLocalization({
 	TimerMark = "다음 무기력/점화 징표 타이머 바 보기 (횟수 포함)",
+	WarnMark = "무기력/점화 징표 경고 보기 (횟수 포함)"
 })
 
 L:SetTimerLocalization({
 	TimerMark	= "징표 %d",
 })
 
+L:SetWarningLocalization({
+	WarnMark = "징표 %d"
+})
+
 
 L = DBM:GetModLocalization("Mason")
 
+L:SetMiscLocalization{
+	Cannons1 = "공격!",
+	Cannons2 = "공격 개시!",
+}
 
 L = DBM:GetModLocalization("SE_Trash")
 L:SetGeneralLocalization{
 	name = "붉은십자군 초소 일반몹"
+}
+
+L:SetOptionLocalization{
+	FlightTimer = "그리핀 비행 타이머 바 보기",
+}
+
+L:SetMiscLocalization{
+	CentralTower = "중앙 탑",
+	Prison = "감옥",
 }
