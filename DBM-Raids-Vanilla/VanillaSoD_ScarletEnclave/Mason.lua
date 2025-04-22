@@ -37,14 +37,14 @@ local timerIgniteCast = mod:NewCastNPTimer(1, 1234347)
 local warnPhase2	= mod:NewPhaseAnnounce(2)
 local warnPhase2Soon = mod:NewPrePhaseAnnounce(2)
 
-local berserkTimer = mod:NewBerserkTimer(360)
+local berserkTimer = mod:NewBerserkTimer(420)
 
 local hpWarnShown1, hpWarnShown2, hpWarnShown3
 
 mod:NewGtfo{antiSpam = 2.5, spell = 1228509, spellDamage = false, spellPeriodicDamage = false, spellAuraDose = true}
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(360 - delay)
+	berserkTimer:Start(-delay)
 	timerCannons:Start(30 - delay)
 	hpWarnShown1, hpWarnShown2, hpWarnShown3 = false, false, false
 end

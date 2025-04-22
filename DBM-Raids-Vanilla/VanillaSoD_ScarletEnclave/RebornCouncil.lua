@@ -31,14 +31,14 @@ local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, true, nil, nil, 
 -- Volcanic unrest, seems hard to avoid but is avoidable
 mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodicDamage = 1236157}
 
-local berserkTimer = mod:NewBerserkTimer(330)
+local berserkTimer = mod:NewBerserkTimer(420)
 
 -- TODO: probably needs some nameplate timers, but I gotta get a feeling for how this boss works first
 
 mod:AddInfoFrameOption()
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(330 - delay)
+	berserkTimer:Start(-delay)
 	timerBlades:Start()
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", self)
