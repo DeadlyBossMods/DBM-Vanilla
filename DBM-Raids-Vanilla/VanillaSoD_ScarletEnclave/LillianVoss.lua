@@ -35,8 +35,7 @@ local warnScarletGrasp = mod:NewSpecialWarningSoon(1233847)
 local warnDebilitateStacks = mod:NewTargetCountAnnounce(1232192)
 local timerDebilitate = mod:NewVarTimer("v17-21", 1232192)
 
--- Enrage timer seems very short, but confirmed correct through multiple logs
-local berserkTimer = mod:NewBerserkTimer(180)
+local berserkTimer = mod:NewBerserkTimer(240)
 
 -- Poison, like Grobbulus, unfortunately the timer seems to be quite random with times between 40 and 80 seconds :/
 local timerPoisonFades	= mod:NewBuffFadesTimer(8, 1233901)
@@ -72,7 +71,7 @@ local function resetconcoctionTargetIcon()
 end
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(180 - delay)
+	berserkTimer:Start(-delay)
 	timerScarletGrasp:Start(34.75 - delay)
 	timerconcoction:Start(30.5 - delay)
 	resetPoisonTargetIcon()
