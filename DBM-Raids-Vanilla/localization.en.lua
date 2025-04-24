@@ -1634,4 +1634,5 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	CentralTower = "Central Tower",
 	Prison = "Prison",
+	Cathedral = "Cathedral"
 }
