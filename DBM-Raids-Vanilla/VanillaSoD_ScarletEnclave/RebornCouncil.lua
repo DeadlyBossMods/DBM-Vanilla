@@ -33,7 +33,7 @@ local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, true, nil, nil, 
 -- Volcanic unrest, seems hard to avoid but is avoidable (by hugging the wall in certain spots)
 mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodicDamage = 1236157}
 
-local berserkTimer = mod:NewBerserkTimer(420)
+local berserkTimer = mod:NewBerserkTimer(600)
 
 -- Whirlwind
 local specialWarningWWSoon = mod:NewSpecialWarningSoon(1231312, "Melee", nil, nil, 2, 2)

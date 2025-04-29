@@ -66,9 +66,7 @@ local specWarnFlame = mod:NewSpecialWarningInterrupt(1234347, nil, nil, nil, 1, 
 -- Judge Unworthy: cast by boss (rare, later phases only) and interruptible
 local specWarnJudge = mod:NewSpecialWarningInterrupt(1234347, nil, nil, nil, 1, 2)
 
--- Not sure if this Enrage is even working as intended, kill logs suggest people killing him a minute after enrage (and the boss still being active with Enrage, but barely doing damage)
--- Also, the enrage buff timer varies between 11:36 and 11:52 in logs. Maybe only p3 enrages? Or an enrage timer per phase?
-local berserkTimer = mod:NewBerserkTimer(710)
+local berserkTimer = mod:NewBerserkTimer(360)
 
 mod:NewGtfo{spell = 1230809, spellDamage = false, spellPeriodicDamage = false}
 mod:NewGtfo{spell = 1229397, spellDamage = false, spellPeriodicDamage = false}
@@ -78,7 +76,6 @@ local p4WarnShown = false
 function mod:OnCombatStart(delay)
 	p2WarnShown = false
 	p4WarnShown = false
-	berserkTimer:Start(710 - delay)
 	timerFlare:Start()
 	self:SetStage(1)
 	-- timerWakeP1:Start() -- TODO: inaccurate on pull
@@ -122,6 +119,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(1230137, 1230125) then
 		if self:AntiSpam(10, "Phase2") then
+			berserkTimer:Start()
 			warnPhase2:Show()
 			self:SetStage(2)
 			timerExecutionSentence:Stop()

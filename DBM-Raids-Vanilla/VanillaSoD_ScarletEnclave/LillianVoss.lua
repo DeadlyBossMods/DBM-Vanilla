@@ -35,7 +35,7 @@ local warnScarletGrasp = mod:NewSpecialWarningSoon(1233847)
 local warnDebilitateStacks = mod:NewTargetCountAnnounce(1232192)
 local timerDebilitate = mod:NewVarTimer("v17-21", 1232192)
 
-local berserkTimer = mod:NewBerserkTimer(240)
+local berserkTimer = mod:NewBerserkTimer(600)
 
 -- Poison, like Grobbulus, unfortunately the timer seems to be quite random with times between 40 and 80 seconds :/
 local timerPoisonFades	= mod:NewBuffFadesTimer(8, 1233901)

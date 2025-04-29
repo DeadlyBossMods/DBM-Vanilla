@@ -56,7 +56,7 @@ mod:NewGtfo{antiSpam = 3, spell = 1232097, spellAura = 1232097, spellPeriodicDam
 mod:NewGtfo{antiSpam = 3, spell = 1228063, spellAura = 1228063, spellPeriodicDamage = false, spellDamage = false}
 
 
-local berserkTimer = mod:NewBerserkTimer(480)
+local berserkTimer = mod:NewBerserkTimer(600)
 
 local addIcon = 8
 
@@ -64,7 +64,7 @@ function mod:OnCombatStart(delay)
 	addIcon = 8
 	timerFlare:Start(45 - delay)
 	warnFlareSoon:Schedule(38 - delay) -- target selection happens ~here
-	berserkTimer:Start(480 - delay)
+	berserkTimer:Start(-delay)
 	self:SetStage(1)
 end
 
