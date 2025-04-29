@@ -1620,7 +1620,7 @@ L = DBM:GetModLocalization("Mason")
 
 L:SetMiscLocalization{
 	Cannons1 = "Fire!",
-	Cannons2 = "Fire at will!",
+	Cannons2 = "Fire at will!"
 }
 
 L = DBM:GetModLocalization("SE_Trash")
@@ -1635,4 +1635,5 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	CentralTower = "Центральная башня",
 	Prison = "Тюрьма",
+	Cathedral = "Собор"
 }
