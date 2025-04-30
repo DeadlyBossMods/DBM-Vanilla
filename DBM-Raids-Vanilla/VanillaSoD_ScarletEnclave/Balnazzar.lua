@@ -48,7 +48,7 @@ local berserkTimer = mod:NewBerserkTimer(600)
 local p2WarnShown, p3WarnShown
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(600 - delay)
+	berserkTimer:Start(-delay)
 	p2WarnShown = false
 	p3WarnShown = false
 	self:SetStage(1)

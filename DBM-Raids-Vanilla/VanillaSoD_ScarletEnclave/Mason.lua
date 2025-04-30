@@ -37,7 +37,7 @@ local timerIgniteCast = mod:NewCastNPTimer(1, 1234347)
 local warnPhase2	= mod:NewPhaseAnnounce(2)
 local warnPhase2Soon = mod:NewPrePhaseAnnounce(2)
 
-local berserkTimer = mod:NewBerserkTimer(420)
+local berserkTimer = mod:NewBerserkTimer(600)
 
 local hpWarnShown1, hpWarnShown2, hpWarnShown3
 

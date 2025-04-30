@@ -52,7 +52,7 @@ local berserkTimer = mod:NewBerserkTimer(600)
 local didSeeBossNP = false
 function mod:OnCombatStart(delay)
 	startTimer:Start(120 - delay)
-	berserkTimer:Start(600 - delay)
+	berserkTimer:Start(-delay)
 	self:SetStage(1)
 	didSeeBossNP = false
 end

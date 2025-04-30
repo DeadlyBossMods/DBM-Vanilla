@@ -42,10 +42,10 @@ local timerStomp			= mod:NewCDNPTimer(21, 1228295)
 
 mod.vb.markCount = 0
 
-local berserkTimer = mod:NewBerserkTimer(360)
+local berserkTimer = mod:NewBerserkTimer(600)
 
 function mod:OnCombatStart(delay)
-	berserkTimer:Start(360 - delay)
+	berserkTimer:Start(-delay)
 	timerAperture:Start("v4-7") -- basically pretty much immediately after pulling
 	timerMark:Start("v15.8-16.2", 1)
 	self.vb.markCount = 1
