@@ -49,7 +49,7 @@ local yellPoisonFades	= mod:NewIconFadesYell(1233901)
 local timerconcoction		= mod:NewNextTimer(30.5, 1233849)
 local timerconcoctionFades	= mod:NewBuffFadesTimer(7, 1233849)
 local warnconcoction		= mod:NewTargetNoFilterAnnounce(1233849)
-local specWarnconcoction	= mod:NewSpecialWarningYou(1233849, nil, nil, 1, 2)
+local specWarnconcoction	= mod:NewSpecialWarningYou(1233849, nil, nil, nil, 1, 2)
 local yellconcoction		= mod:NewIconTargetYell(1233849)
 local yellconcoctionFades	= mod:NewIconFadesYell(1233849)
 
@@ -80,7 +80,7 @@ end
 
 
 function mod:KeepMovingYou(amount)
-	if self:AntiSpam(amount >= 4 and 1 or amount >= 3 and 3 or 8, "KeepmovingHigh") then
+	if self:AntiSpam(amount >= 4 and 1 or amount >= 2 and 2 or 3, "KeepmovingHigh") then
 		specWarnMove:Show()
 		if amount >= 3 then
 			specWarnMove:Play("stackhigh")
