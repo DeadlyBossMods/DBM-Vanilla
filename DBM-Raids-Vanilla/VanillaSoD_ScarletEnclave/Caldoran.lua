@@ -93,7 +93,7 @@ function mod:OnCombatStart(delay)
 	timerFlare:Start()
 	self:SetStage(1)
 	-- timerWakeP1:Start() -- TODO: inaccurate on pull
-	-- timerExecutionSentence:Start() -- TODO: figure out start timer
+	timerExecutionSentence:Start("v32-48") -- terribly inaccurate, but it's either ~29-32 seconds or 40-48, never anything in between
 end
 
 function mod:SPELL_CAST_START(args)
