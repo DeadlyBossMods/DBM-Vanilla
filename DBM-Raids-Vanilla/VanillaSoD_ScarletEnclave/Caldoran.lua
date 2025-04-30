@@ -98,7 +98,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1229226) then
-		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+		if self:CheckInterruptFilter(args.sourceGUID, true, true) then -- 1 sec cast, you're not gonna interrupt it unless you are targeting it
 			specWarnFlame:Show(args.sourceName)
 			specWarnFlame:Play("kickcast")
 		end
@@ -110,7 +110,12 @@ function mod:SPELL_CAST_START(args)
 		end
 		castNpJudge:Start(args.sourceGUID)
 	elseif args:IsSpell(1229114) then
-		if self:CheckInterruptFilter(args.sourceGUID, false, false) and self:AntiSpam(5, "Interrupt") then -- don't check for CD or can interrupt, can use stun etc here
+		-- don't check for CD or can interrupt, can use stun etc here
+		-- always show warning if you are targeting the add casting it, but heavily anti-spam it if you aren't
+		-- multiple adds cast this at the same time and repeat it pretty soon after an interrupt
+		local interruptFilterTarget = self:CheckInterruptFilter(args.sourceGUID, true, false)
+		local interruptFilter = self:CheckInterruptFilter(args.sourceGUID, false, false)
+		if interruptFilter and (interruptFilterTarget or self:AntiSpam(20, "Interrupt")) then
 			specWarnDevotedOffering:Show(args.sourceName)
 			specWarnDevotedOffering:Play("kickcast")
 		end
