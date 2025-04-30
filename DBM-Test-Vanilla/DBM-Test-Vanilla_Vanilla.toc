@@ -11,6 +11,7 @@
 # Scarlet Enclave
 Season of Discovery/ScarletEnclave/Balnazzar.lua
 Season of Discovery/ScarletEnclave/Beatrix.lua
+Season of Discovery/ScarletEnclave/Beatrix-Synthetic.lua
 Season of Discovery/ScarletEnclave/Solistrasza.lua
 Season of Discovery/ScarletEnclave/Beastmaster.lua
 Season of Discovery/ScarletEnclave/Mason.lua
