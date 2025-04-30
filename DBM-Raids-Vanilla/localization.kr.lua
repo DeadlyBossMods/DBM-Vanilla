@@ -1617,4 +1617,5 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	CentralTower = "중앙 탑",
 	Prison = "감옥",
+	Cathedral = "대성당"
 }
