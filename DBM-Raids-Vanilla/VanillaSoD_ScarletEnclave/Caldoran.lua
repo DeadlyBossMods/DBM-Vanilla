@@ -10,6 +10,7 @@ mod:SetRevision("@file-date-integer@")
 mod:SetZone(2856)
 mod:SetEncounterID(3189)
 mod:SetCreatureID(241006)
+mod:DisableRegenDetection()
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
@@ -40,7 +41,8 @@ local warnQuietus = mod:NewCastAnnounce(1231651)
 
 -- Blinding Flare
 local timerFlare = mod:NewVarTimer("v29-34", 1229714)
-local warnFlare = mod:NewCastAnnounce(1229714)
+local timerFlareCast = mod:NewCastTimer(3, 1229714)
+local warnFlare = mod:NewSpecialWarningCast(1229714, nil, nil, nil, 2, 8)
 
 -- Conflagration: timer seems very random and cast often, nothing for now
 local warnConflag = mod:NewTargetNoFilterAnnounce(1229272)
@@ -91,7 +93,10 @@ function mod:SPELL_CAST_START(args)
 		specWarnJudge:Play("kickcast")
 	elseif args:IsSpell(1229714) then
 		timerFlare:Start()
+		timerFlareCast:Start()
 		warnFlare:Show()
+		warnFlare:Play("turnaway")
+		warnFlare:Schedule(3, "safenow")
 	elseif args:IsSpell(1230697) then
 		warnCessation:Show()
 	elseif args:IsSpell(1231651) then
