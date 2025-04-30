@@ -42,7 +42,7 @@ local warnQuietus = mod:NewCastAnnounce(1231651)
 -- Blinding Flare
 local timerFlare = mod:NewVarTimer("v29-34", 1229714)
 local timerFlareCast = mod:NewCastTimer(3, 1229714)
-local warnFlare = mod:NewSpecialWarningCast(1229714, nil, nil, nil, 2, 8)
+local warnFlare = mod:NewSpecialWarningSpell(1229714, nil, nil, nil, 2, 8)
 
 -- Conflagration: timer seems very random and cast often, nothing for now
 local warnConflag = mod:NewTargetNoFilterAnnounce(1229272)
@@ -96,7 +96,7 @@ function mod:SPELL_CAST_START(args)
 		timerFlareCast:Start()
 		warnFlare:Show()
 		warnFlare:Play("turnaway")
-		warnFlare:Schedule(3, "safenow")
+		warnFlare:ScheduleVoice(3, "safenow")
 	elseif args:IsSpell(1230697) then
 		warnCessation:Show()
 	elseif args:IsSpell(1231651) then
