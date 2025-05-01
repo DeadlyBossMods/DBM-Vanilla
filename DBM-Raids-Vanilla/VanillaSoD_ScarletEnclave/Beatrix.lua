@@ -31,6 +31,10 @@ local specWarnFroggers = mod:NewSpecialWarningDodgeLoc(1232690, nil, nil, nil, 2
 local timerCannons = mod:NewCastTimer(15, 24933)
 local specWarnCannons = mod:NewSpecialWarningDodge(24933)
 
+-- Meteor
+local timerMeteor = mod:NewCastTimer(19.2, 1231946)
+local specWarnMeteor = mod:NewSpecialWarningSoak(1231946, nil, nil, nil, 2, 12)
+
 -- This fight is full of dispellable debuffs that stack up in bad ways
 -- Currently just showing for dispellers, but do we maybe want some logic for warning if a tank gets certain stacks too high?
 local warnSheep = mod:NewSpellAnnounce(1236174, nil, nil, "MagicDispeller", 2)
@@ -81,6 +85,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg, source)
 	elseif msg == L.YellPhase2 then
 		selfSync = true
 		self:SendSync("Phase2")
+	elseif msg and msg:match(L.YellMeteor) then
+		selfSync = true
+		self:SendSync("Meteor")
 	end
 end
 
@@ -102,6 +109,10 @@ function mod:OnSync(msg)
 	elseif msg == "Phase2" and self.vb.phase == 1 then
 		self:SetStage(2)
 		startTimer:Stop()
+	elseif msg == "Meteor" and self:AntiSpam(20, "Meteor") then
+		timerMeteor:Start()
+		specWarnMeteor:Show()
+		specWarnMeteor:Play("helpsoak")
 	end
 	selfSync = false
 end

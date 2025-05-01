@@ -12,7 +12,6 @@ mod.isTrashModBossFightAllowed = true -- ENCOUNTER_END is somewhat unreliable in
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 1232703",
-	"SPELL_CAST_START 1232703",
 	"SPELL_CAST_SUCCESS 1227435",
 	"SPELL_DAMAGE 1232703",
 	"SPELL_MISSED 1232703",
@@ -27,8 +26,7 @@ mod:RegisterEvents(
 local flightTimer = mod:NewIntermissionTimer(0, nil, "%s", true, "FlightTimer", nil, "136106")
 flightTimer.startLarge = true
 
--- Damage reflect, can be interrupted
-local specWarnShieldInterrupt	= mod:NewSpecialWarningInterrupt(1232703, nil, nil, nil, 1, 2)
+-- Damage reflect
 local specWarnShield			= mod:NewSpecialWarningReflect(1232703, nil, nil, nil, 1, 2)
 
 -- Whirlwind, important for melees
@@ -61,15 +59,6 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1232703) and args.destGUID == UnitGUID("target") and DBM:IsMelee("player") then
 		self:WarnReflect(args.destName)
-	end
-end
-
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(1232703) then
-		if self:CheckInterruptFilter(args.sourceGUID, nil, true) then
-			specWarnShieldInterrupt:Show(args.sourceName)
-			specWarnShieldInterrupt:Play("kickcast")
-		end
 	end
 end
 
