@@ -32,7 +32,10 @@ local timerScarletGrasp = mod:NewNextTimer(30.75, 1233847)
 local warnScarletGrasp = mod:NewSpecialWarningSoon(1233847)
 
 -- Debilitate has multiple casts and IDs, but 1232192 is the debuff that stacks
-local warnDebilitateStacks = mod:NewTargetCountAnnounce(1232192)
+local warnDebilitate		= mod:NewTargetNoFilterAnnounce(1232192)
+local yellDebilitate		= mod:NewYell(1232192)
+local specWarnDebilitate	= mod:NewSpecialWarningTaunt(1232192, nil, nil, nil, 1, 2)
+
 local timerDebilitate = mod:NewVarTimer("v17-21", 1232192)
 
 local berserkTimer = mod:NewBerserkTimer(600)
@@ -90,19 +93,21 @@ function mod:KeepMovingYou(amount)
 	end
 end
 
-function mod:DelayedDebilitate(target, amount)
-	warnDebilitateStacks:Show(amount, target)
-end
-
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1233883) and args:IsPlayer() then
 		self:KeepMovingYou(args.amount or 1)
-	elseif args:IsSpell(1232192) then -- Only show warning once as multiple stacks are applied right after each other
-		local amount = args.amount or 1
-		self:UnscheduleMethod("DelayedDebilitate", args.destName)
-		self:ScheduleMethod(0.2, "DelayedDebilitate", args.destName, amount)
-		if self:AntiSpam(2, "Debilitate") then
+	elseif args:IsSpell(1232192) then
+		-- This one works in an odd way: it triggers with 20k stacks (corresponding to the 20k heal it absorbs) on SPELL_AURA_APPLIED
+		-- And less than a second later there's an SPELL_AURA_APPLIED_DOSE with 2 stacks... anyhow, just announce the target with a special warn for tanks to taunt
+		if self:AntiSpam(2, "Debilitate", args.destName) then
+			warnDebilitate:Show(args.destName)
 			timerDebilitate:Start()
+			if args:IsPlayer() then
+				yellDebilitate:Show()
+			elseif self:IsTank() or not DBM.Options.FilterTankSpec then
+				specWarnDebilitate:Show(args.sourceName)
+				specWarnDebilitate:Play("tauntboss")
+			end
 		end
 	elseif args:IsSpell(1233901) then
 		if args:IsPlayer() then
