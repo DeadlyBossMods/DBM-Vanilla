@@ -64,9 +64,11 @@ end
 
 -- Using UNIT_ events to filter this on nameplate range (which is just 20 yard)
 function mod:UNIT_SPELLCAST_START_UNFILTERED(uId, _, spellId)
-	if spellId == 1232678 and uId:match("^nameplate") and self:AntiSpam(3, "Whirlwind") then
-		specWarnWhirlwind:Show()
-		specWarnWhirlwind:Play("whirlwind")
+	if spellId == 1232678 and uId:match("^nameplate") then
+		if self:AntiSpam(3, "Whirlwind") then
+			specWarnWhirlwind:Show()
+			specWarnWhirlwind:Play("whirlwind")
+		end
 		timerWhirlwindCast:Start(nil, UnitGUID(uId))
 	end
 end
