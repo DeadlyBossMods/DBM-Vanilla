@@ -65,7 +65,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(1231587) then
 		local amount = args.amount or 1
-		timerBossStackCount:Start(amount + 1)
+		timerBossStackCount:Start(nil, amount + 1)
 	end
 end
 
