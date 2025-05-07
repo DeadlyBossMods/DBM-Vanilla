@@ -141,12 +141,16 @@ function mod:SPELL_CAST_START(args)
 		timerWake2:Start()
 	elseif args:IsSpell(1230271) then
 		timerDyingLightCast:Start(20, 3)
-		warnPhase3:Schedule(20)
-		timerExecutionSentence:Schedule(20)
+		warnPhase3:Show()
+		timerFlare:Stop()
+		timerWake1:Stop()
 		self:SetStage(3)
 	elseif args:IsSpell(1231027) then
 		warnPhase4:Show()
 		self:SetStage(4)
+		timerWake2:Stop()
+		timerQuietus:Stop()
+		timerExecutionSentence:Stop()
 	end
 end
 
