@@ -13,8 +13,8 @@ mod:SetCreatureID(241021)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 1231592 1229005",
-	"SPELL_AURA_APPLIED_DOSE 1229005",
+	"SPELL_AURA_APPLIED 1231592 1229005 1231587",
+	"SPELL_AURA_APPLIED_DOSE 1229005 1231587",
 	"SPELL_AURA_REMOVED 1231585",
 	"SPELL_CAST_START 1234347 1231585",
 	"UNIT_HEALTH",
@@ -29,6 +29,8 @@ local warnDrown = mod:NewSpecialWarningDispel(1231592, "RemoveCurse", nil, nil, 
 
 local timerCannons = mod:NewNextTimer(30.5, 1228376)
 local specWarnCannons = mod:NewSpecialWarningDodge(1228376, nil, nil, nil, 2, 2)
+
+local timerBossStackCount = mod:NewNextCountTimer(3, 1231587)
 
 -- Ignite Flesh (cast by adds) can be interrupted, but it's hard because 1 sec cast time
 local specWarnIgnite = mod:NewSpecialWarningInterrupt(1234347, "HasInterrupt", nil, nil, 1, 2)
@@ -61,6 +63,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then
 			warnMortalWoundStack:Show(args.destName, amount)
 		end
+	elseif args:IsSpell(1231587) then
+		local amount = args.amount or 1
+		timerBossStackCount:Start(nil, amount + 1)
 	end
 end
 

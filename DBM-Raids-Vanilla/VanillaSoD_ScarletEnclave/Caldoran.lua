@@ -141,19 +141,24 @@ function mod:SPELL_CAST_START(args)
 		timerWake2:Start()
 	elseif args:IsSpell(1230271) then
 		timerDyingLightCast:Start(20, 3)
-		warnPhase3:Schedule(20)
-		timerExecutionSentence:Schedule(20)
+		warnPhase3:Show()
+		timerFlare:Stop()
+		timerWake1:Stop()
 		self:SetStage(3)
+		-- The phase actually only starts once you "engage" him again outside which is a bit annoying to detect
+		self:RegisterShortTermEvents("SWING_DAMAGE", "SWING_MISSED")
 	elseif args:IsSpell(1231027) then
 		warnPhase4:Show()
 		self:SetStage(4)
+		timerWake2:Stop()
+		timerQuietus:Stop()
+		timerExecutionSentence:Stop()
 	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(1230137, 1230125) then
 		if self:AntiSpam(10, "Phase2") then
-			berserkTimer:Start()
 			warnPhase2:Show()
 			self:SetStage(2)
 			timerExecutionSentence:Stop()
@@ -162,6 +167,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 		end
 	end
 end
+
+function mod:SWING_DAMAGE(srcGuid)
+	if DBM:GetCIDFromGUID(srcGuid) == 241006 then
+		berserkTimer:Start()
+		self:UnregisterShortTermEvents()
+	end
+end
+mod.SWING_MISSED = mod.SWING_DAMAGE
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1229272) and DBM:GetCIDFromGUID(args.sourceGUID) == 241006 then
