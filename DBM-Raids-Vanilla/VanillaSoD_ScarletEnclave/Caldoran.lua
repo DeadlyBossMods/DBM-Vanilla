@@ -103,6 +103,10 @@ function mod:OnCombatStart(delay)
 	timerExecutionSentence:Start("v32-48") -- terribly inaccurate, but it's either ~29-32 seconds or 40-48, never anything in between
 end
 
+function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
+end
+
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(1229226) then
 		if self:CheckInterruptFilter(args.sourceGUID, true, true) then -- 1 sec cast, you're not gonna interrupt it unless you are targeting it
