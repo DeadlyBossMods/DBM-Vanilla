@@ -12,6 +12,7 @@ mod.isTrashModBossFightAllowed = true -- ENCOUNTER_END is somewhat unreliable in
 
 mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 1232703 28547 1233069",
+	"SPELL_AURA_REMOVED 1232703",
 	"SPELL_CAST_SUCCESS 1227435",
 	"SPELL_DAMAGE 1232703",
 	"SPELL_MISSED 1232703",
@@ -66,10 +67,19 @@ function mod:WarnReflect(name)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(1232703) and args.destGUID == UnitGUID("target") and DBM:IsMelee("player") then
-		self:WarnReflect(args.destName)
+	if args:IsSpell(1232703) then
+		if args.destGUID == UnitGUID("target") and DBM:IsMelee("player") then
+			self:WarnReflect(args.destName)
+		end
+		DBM.Nameplate:Show(true, args.destGUID, nil, 136104, nil, DBM:IsMelee("player"))
 	elseif args:IsSpell(28547, 1233069) and args:IsPlayer() then
 		self:ShowGtfo(args.spellName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(1232703) then
+		DBM.Nameplate:Hide(true, args.destGUID, nil, 136104)
 	end
 end
 
