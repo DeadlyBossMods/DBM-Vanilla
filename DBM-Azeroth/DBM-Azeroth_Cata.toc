@@ -1,5 +1,5 @@
-## Interface: 30405
-## X-Min-Interface: 30400
+## Interface: 40402
+## X-Min-Interface: 40400
 ## Category: DBM
 
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0World Bosses (Vanilla)|r
