@@ -14,17 +14,17 @@
 ## RequiredDeps: DBM-Core
 ## SavedVariables: DBMRaidsVanilla_AllSavedVars
 ## SavedVariablesPerCharacter: DBMRaidsVanilla_SavedStats
-## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhornF
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2856
 ## X-DBM-Mod-Name: Raids (Vanilla)
-## X-DVM-Mod-Name-esES: Bandas (Clásico)
-## X-DVM-Mod-Name-esMX: Bandas (Clásico)
-## X-DVM-Mod-Name-ptBR: Raides (Clássico)
-## X-DVM-Mod-Name-frFR: Raids (Classique)
+## X-DBM-Mod-Name-esES: Bandas (Clásico)
+## X-DBM-Mod-Name-esMX: Bandas (Clásico)
+## X-DBM-Mod-Name-ptBR: Raides (Clássico)
+## X-DBM-Mod-Name-frFR: Raids (Classique)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
 ## X-DBM-Mod-Sort: 1101
