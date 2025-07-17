@@ -14,7 +14,7 @@
 ## RequiredDeps: DBM-Core
 ## SavedVariables: DBMRaidsVanilla_AllSavedVars
 ## SavedVariablesPerCharacter: DBMRaidsVanilla_SavedStats
-## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhornF
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
 ## X-DBM-Mod: 1
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
