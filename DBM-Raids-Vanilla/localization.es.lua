@@ -422,7 +422,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s reutilización",
 	TimerBreath		= "%s lanzamiento",
-	TimerVulnCD		= "Reutilización de Vulnerabilidad",
+	TimerVulnCD		= "Reutilización de vulnerabilidad",
 	TimerAllBreaths = "Lluvia de aliento"
 }
 L:SetOptionLocalization{
@@ -430,7 +430,7 @@ L:SetOptionLocalization{
 	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
 	TimerBreathCD		= "Mostrar reutilización de aliento",
 	TimerBreath			= "Mostrar lanzamiento de aliento",
-	TimerVulnCD			= "Mostrar reutilización de Vulnerabilidad",
+	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
 	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
