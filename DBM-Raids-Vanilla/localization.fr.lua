@@ -52,13 +52,13 @@ L:SetGeneralLocalization{
 	name 		= "Buru Grandgosier"
 }
 L:SetWarningLocalization{
-	WarnPursue		= "Poursuivre >%s<",
-	SpecWarnPursue	= "Te poursuivre",
+	WarnPursue		= "Pourchasse sur >%s<",
+	SpecWarnPursue	= "Buru vous pourchasse",
 	WarnDismember	= "%s sur >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Afficher une annonce pour les cibles de poursuite",
-	SpecWarnPursue	= "Afficher une annonce spéciale lorsque vous êtes poursuivi",
+	WarnPursue		= "Afficher une annonce pour les cibles de la poursuite de Buru",
+	SpecWarnPursue	= "Afficher une annonce spéciale quand le boss vous pourchasse",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
