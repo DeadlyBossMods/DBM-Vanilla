@@ -650,7 +650,7 @@ L:SetGeneralLocalization{
 
 L:SetOptionLocalization{
 	YellHeartCleared	= "Кричать, когда Сердце Пепла/Пепел будет удалено.",
-	WarnBossPower		= "Показывать предупреждения, когда энергия босса достигает 50%, 75%, 90% и 100%"
+	WarnBossPower		= "Показывать предупреждение, когда энергия босса достигает 50%, 75%, 90% и 100%"
 }
 
 L:SetWarningLocalization{
@@ -811,8 +811,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerWhelps				= "Отсчет времени до дракончиков Ониксии",
-	WarnWhelpsSoon			= "Предупреждать заранее о дракончиках Ониксии",
+	TimerWhelps				= "Отсчет времени до появления дракончиков Ониксии",
+	WarnWhelpsSoon			= "Заранее предупреждать о дракончиках Ониксии",
 	SoundWTF3				= "Воспроизвести забавные звуки из легендарного классического рейда Ониксии"
 }
 
@@ -834,7 +834,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Отсчет времени до 'Арахнофобия' (достижение)"
+	ArachnophobiaTimer	= "Отсчет времени до \"Арахнофобия\" (достижение)"
 })
 
 L:SetMiscLocalization({
@@ -858,8 +858,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Показывать предупреждение, когда Объятие Вдовы исчезает",
-	WarningEmbraceExpired	= "Показывать предупреждение, когда Объятие Вдовы закончится"
+	WarningEmbraceExpire	= "Заранее предупреждать, когда $spell:28732 исчезнет",
+	WarningEmbraceExpired	= "Показывать предупреждение, когда $spell:28732 исчезнет"
 })
 
 L:SetMiscLocalization({
@@ -887,7 +887,7 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 	WarningSpidersSoon	= "Показывать предупреждение перед следующим призывом Паученышей Мексны",
 	WarningSpidersNow	= "Показывать предупреждение для призыва Паученышей Мексны",
-	TimerSpider			= "Отсчет времени до Паученышей Мексны"
+	TimerSpider			= "Отсчет времени до появления Паученышей Мексны"
 })
 
 L:SetMiscLocalization({
@@ -1119,7 +1119,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Показывать предупреждение перед следующими знаком",
-	SpecialWarningMarkOnPlayer	= "Показывать спецпредупреждение, когда больше 4-х знаков на Вас",
+	SpecialWarningMarkOnPlayer	= "Показывать спецпредупреждение, когда на Вас больше 4-х знаков",
 	timerMark					= "Отсчет времени до следующего знака Всадника (со счетчиком)"
 })
 
@@ -1149,7 +1149,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningAirPhaseSoon	= "Предупреждать о приближении Воздушной фазы",
+	WarningAirPhaseSoon	= "Показывать предупреждение о приближении Воздушной фазы",
 	WarningAirPhaseNow	= "Показывать предупреждение о Воздушной фазе",
 	WarningLanded		= "Показывать предупреждение о Наземной фазе",
 	TimerAir			= "Отсчет времени до Воздушной фазы",
@@ -1604,8 +1604,8 @@ L = DBM:GetModLocalization("LillianVoss")
 L = DBM:GetModLocalization("Beastmaster")
 
 L:SetOptionLocalization({
-	TimerMark = "Отсчет времени до следующих меток Озарение/Воспламенение (со счётчиком)",
-	WarnMark = "Показывать предупреждение для меток Озарение/Воспламенение (с количеством)"
+	TimerMark = "Отсчет времени до следующих меток $spell:1230200 и $spell:1230242 (с подсчетом)",
+	WarnMark = "Показывать предупреждение для меток $spell:1230200 и $spell:1230242 (с подсчетом)"
 })
 
 L:SetTimerLocalization({
