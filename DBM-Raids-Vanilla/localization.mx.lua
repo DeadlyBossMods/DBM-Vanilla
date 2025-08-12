@@ -58,7 +58,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Mostrar anuncio para los objetivos de la persecución de Buru",
-	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga el jefe",
+	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
@@ -545,22 +545,22 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "Vulnerabilidad: %s"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s TdR",
+	TimerBreathCD	= "%s reutilización",
 	TimerBreath		= "%s lanzamiento",
-	TimerVulnCD		= "TdR de Vulnerabilidad",
+	TimerVulnCD		= "Reutilización de vulnerabilidad",
 	TimerAllBreaths = "Lluvia de aliento"
 }
 L:SetOptionLocalization{
 	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance uno de sus alientos",
 	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
-	TimerBreathCD		= "Mostrar TdR de aliento",
+	TimerBreathCD		= "Mostrar reutilización de aliento",
 	TimerBreath			= "Mostrar lanzamiento de aliento",
-	TimerVulnCD			= "Mostrar TdR de Vulnerabilidad",
+	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
 	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
-	Breath1	= "Primer aliento",
-	Breath2	= "Segundo aliento",
+	Breath1		= "Primer aliento",
+	Breath2		= "Segundo aliento",
 	VulnEmote	= "%s se estremece mientras su piel empieza a brillar.",
 	Vuln		= "Vulnerabilidad",
 	Fire		= "Fuego",
@@ -580,7 +580,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restante",
+	WarnAddsLeft		= "%d restantes",
 	WarnClassCall		= "Llamada de %s",
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
@@ -589,7 +589,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Mostrar temporizador para la duración de las llamadas en cada clase",
-	WarnAddsLeft		= "Mostrar anuncio para las muertes restantes hasta Fase 2",
+	WarnAddsLeft		= "Mostrar anuncio para las muertes restantes hasta fase 2",
 	WarnClassCall		= "Mostrar anuncio para las llamadas de clase",
 	specwarnClassCall	= "Mostrar anuncio especial cuando se ve afectado por la llamada de clase"
 }
