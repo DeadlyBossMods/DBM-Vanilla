@@ -354,7 +354,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Ebonroc")
 
 L:SetGeneralLocalization{
-	name = "Ebonorroca"
+	name = "Ebanorroca"
 }
 
 ----------------
@@ -369,7 +369,7 @@ L:SetGeneralLocalization{
 --  Ebonroc and Flamegor  --
 ----------------
 L:SetGeneralLocalization{
-	name = "Ebonorroca y Flamagor"
+	name = "Ebanorroca y Flamagor"
 }
 
 L:SetTimerLocalization{
@@ -380,7 +380,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Ebonroc		= "Ebonorroca",
+	Ebonroc		= "Ebanorroca",
 	Flamegor	= "Flamagor"
 }
 -----------------------
@@ -1412,5 +1412,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
