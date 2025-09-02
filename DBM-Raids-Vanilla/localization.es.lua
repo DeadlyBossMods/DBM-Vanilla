@@ -312,7 +312,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
-	YellPull	= "¡Tenemos intrusos en El Criadero! ¡Haced sonar la alarma! ¡Proteged los huevos a toda costa!"
+	YellPull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 -------------------
 --  Vaelastrasz  --
@@ -336,7 +336,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-    Pull    = "¡Ninguno de los vuestros debería estar aquí! ¡Os habéis condenado vosotros mismos!"
+    Pull    = "¡Nadie de vuestra raza debería estar aquí! ¡Os aniquilaré!"
 }
 
 ---------------
@@ -1412,4 +1412,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
