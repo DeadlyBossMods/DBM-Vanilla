@@ -423,20 +423,20 @@ L:SetTimerLocalization{
 	TimerBreathCD	= "%s reutilización",
 	TimerBreath		= "%s lanzamiento",
 	TimerVulnCD		= "Reutilización de vulnerabilidad",
-	TimerAllBreaths = "Lluvia de aliento"
+	TimerAllBreaths = "Lluvia de respiración"
 }
 L:SetOptionLocalization{
-	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance uno de sus alientos",
-	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
-	TimerBreathCD		= "Mostrar reutilización de aliento",
-	TimerBreath			= "Mostrar lanzamiento de aliento",
+	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus respiraciones",
+	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de las respiraciones",
+	TimerBreathCD		= "Mostrar reutilización de respiración",
+	TimerBreath			= "Mostrar lanzamiento de respiración",
 	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
-	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
+	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de respiración"
 }
 L:SetMiscLocalization{
-	Breath1		= "Primer aliento",
-	Breath2		= "Segundo aliento",
-	VulnEmote	= "%s se estremece mientras su piel empieza a brillar.",
+	Breath1		= "Primera respiración",
+	Breath2		= "Segunda respiración",
+	VulnEmote	= "se estremece mientras su piel empieza a brillar.",
 	Vuln		= "Vulnerabilidad",
 	Fire		= "Fuego",
 	Nature		= "Naturaleza",
@@ -470,8 +470,8 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "¡Que comiencen los juegos!",
-	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cubre de Roca Negra!",
-	YellP3		= "¡Imposible! ¡Erguíos, mis esbirros! ¡Servid a vuestro maestro una vez más!",
+	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cumbre de Roca Negra!",
+	YellP3		= "¡Imposible! ¡Levantaos, esbirros! ¡Servid a vuestro maestro una vez más!",
 	YellShaman	= "¡Chamanes, mostradme lo que pueden hacer vuestros tótems!",
 	YellPaladin	= "Paladines... He oído que tenéis muchas vidas. Demostrádmelo.",
 	YellDruid	= "Los druidas y vuestro estúpido poder de cambiar de forma. ¡Veámoslo en acción!",
@@ -480,7 +480,7 @@ L:SetMiscLocalization{
 	YellRogue	= "¿Pícaros? ¡Dejad de esconderos y enfrentaos a mí!",
 	YellWarlock	= "Brujos... No deberíais estar jugando con magia que no comprendéis. ¿Veis lo que pasa?",
 	YellHunter	= "¡Cazadores y vuestras molestas cerbatanas!",
-	YellMage	= "¡Magos también? Deberíais tener más cuidado cuando jugáis con la magia...",
+	YellMage	= "¿Magos también? Deberíais tener más cuidado cuando jugáis con la magia...",
 	YellDK		= "¡Caballeros de la Muerte... venid aquí!",
 	YellMonk	= "Monjes, ¿no os mareáis con tanta vuelta?",
 	YellDH		= "¿Cazadores de demonios? Qué raro eso de taparos los ojos así. ¿No os cuesta ver lo que tenéis alrededor?"--Demon Hunter call; I know this hasn't been implemented yet in DBM, but I added it just in case.
@@ -1412,6 +1412,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
