@@ -494,7 +494,7 @@ L:SetGeneralLocalization{
 --  Ebonroc and Flamegor  --
 ----------------
 L:SetGeneralLocalization{
-	name = "Ebonorroca y Flamagor"
+	name = "Ebanorroca y Flamagor"
 }
 
 L:SetTimerLocalization{
@@ -505,7 +505,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Ebonroc		= "Ebonorroca",
+	Ebonroc		= "Ebanorroca",
 	Flamegor	= "Flamagor"
 }
 -----------------------
