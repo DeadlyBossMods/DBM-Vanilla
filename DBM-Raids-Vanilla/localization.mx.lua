@@ -740,7 +740,7 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Mostrar temporizador para cuando Ragnaros regrese a la superficie"
 }
 L:SetMiscLocalization{
-	Submerge	= "¡AVANCEN, MIS SIRVIENTES! ¡DEFIENDAN A SU MAESTRO!",
+	Submerge	= "¡ACÉRQUENSE, SIRVIENTES MÍOS! ¡DEFIENDAN A SU AMO!",
 	Pull		= "¡Crías imprudentes! ¡Se han precipitado hasta su propia muerte! ¡Ahora miren, el maestro se agita!"
 }
 
