@@ -586,7 +586,12 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Mayordomo Executus"
 }
-
+L:SetTimerLocalization{
+	timerShieldCD		= "Próximo escudo"
+}
+L:SetOptionLocalization{
+	timerShieldCD		= "Mostrar temporizador para el próximo Escudo de daño/reflejo"
+}
 ----------------
 --  Ragnaros  --
 ----------------
@@ -1420,6 +1425,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
