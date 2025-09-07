@@ -238,7 +238,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnPursue		= "Mostrar anuncio para objetivos de la persecución de Buru",
-	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga el jefe",
+	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
@@ -312,7 +312,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
-	YellPull	= "¡Tenemos intrusos en El Criadero! ¡Haced sonar la alarma! ¡Proteged los huevos a toda costa!"
+	YellPull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 -------------------
 --  Vaelastrasz  --
@@ -324,7 +324,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Event				= "¡Demasiado tarde, amigos! Ahora estoy poseído por la corrupción de Nefarius... No puedo... controlarme."
+	Event				= "¡Demasiado tarde, amigos! Ahora estoy poseído por la corrupción de Nefarius. No puedo... controlarme."
 }
 -----------------
 --  Broodlord  --
@@ -336,7 +336,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-    Pull    = "¡Ninguno de los vuestros debería estar aquí! ¡Os habéis condenado vosotros mismos!"
+    Pull    = "¡Nadie de vuestra raza debería estar aquí! ¡Os aniquilaré!"
 }
 
 ---------------
@@ -354,7 +354,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Ebonroc")
 
 L:SetGeneralLocalization{
-	name = "Ebonorroca"
+	name = "Ebanorroca"
 }
 
 ----------------
@@ -369,7 +369,7 @@ L:SetGeneralLocalization{
 --  Ebonroc and Flamegor  --
 ----------------
 L:SetGeneralLocalization{
-	name = "Ebonorroca y Flamagor"
+	name = "Ebanorroca y Flamagor"
 }
 
 L:SetTimerLocalization{
@@ -380,7 +380,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Ebonroc		= "Ebonorroca",
+	Ebonroc		= "Ebanorroca",
 	Flamegor	= "Flamagor"
 }
 -----------------------
@@ -420,23 +420,23 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "Vulnerabilidad: %s"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s TdR",
+	TimerBreathCD	= "%s reutilización",
 	TimerBreath		= "%s lanzamiento",
-	TimerVulnCD		= "TdR de Vulnerabilidad",
-	TimerAllBreaths = "Lluvia de aliento"
+	TimerVulnCD		= "Reutilización de vulnerabilidad",
+	TimerAllBreaths = "Lluvia de respiración"
 }
 L:SetOptionLocalization{
-	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance uno de sus alientos",
-	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
-	TimerBreathCD		= "Mostrar TdR de aliento",
-	TimerBreath			= "Mostrar lanzamiento de aliento",
-	TimerVulnCD			= "Mostrar TdR de Vulnerabilidad",
-	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
+	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus respiraciones",
+	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de las respiraciones",
+	TimerBreathCD		= "Mostrar reutilización de respiración",
+	TimerBreath			= "Mostrar lanzamiento de respiración",
+	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
+	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de respiración"
 }
 L:SetMiscLocalization{
-	Breath1	= "Primer aliento",
-	Breath2	= "Segundo aliento",
-	VulnEmote	= "%s se estremece mientras su piel empieza a brillar.",
+	Breath1		= "Primera respiración",
+	Breath2		= "Segunda respiración",
+	VulnEmote	= "se estremece mientras su piel empieza a brillar.",
 	Vuln		= "Vulnerabilidad",
 	Fire		= "Fuego",
 	Nature		= "Naturaleza",
@@ -455,7 +455,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restante",
+	WarnAddsLeft		= "%d restantes",
 	WarnClassCall		= "Llamada de %s",
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
@@ -464,13 +464,14 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Mostrar temporizador para la duración de las llamadas en cada clase",
-	WarnAddsLeft		= "Mostrar anuncios para las muertes restantes hasta Fase 2",
+	WarnAddsLeft		= "Mostrar anuncios para las muertes restantes hasta fase 2",
 	WarnClassCall		= "Mostrar anuncio para las llamadas de clase",
 	specwarnClassCall	= "Mostrar anuncio especial cuando se ve afectado por la llamada de clase"
 }
 L:SetMiscLocalization{
-	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cubre de Roca Negra!",
-	YellP3		= "¡Imposible! ¡Erguíos, mis esbirros! ¡Servid a vuestro maestro una vez más!",
+	YellP1		= "¡Que comiencen los juegos!",
+	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cumbre de Roca Negra!",
+	YellP3		= "¡Imposible! ¡Levantaos, esbirros! ¡Servid a vuestro maestro una vez más!",
 	YellShaman	= "¡Chamanes, mostradme lo que pueden hacer vuestros tótems!",
 	YellPaladin	= "Paladines... He oído que tenéis muchas vidas. Demostrádmelo.",
 	YellDruid	= "Los druidas y vuestro estúpido poder de cambiar de forma. ¡Veámoslo en acción!",
@@ -479,7 +480,7 @@ L:SetMiscLocalization{
 	YellRogue	= "¿Pícaros? ¡Dejad de esconderos y enfrentaos a mí!",
 	YellWarlock	= "Brujos... No deberíais estar jugando con magia que no comprendéis. ¿Veis lo que pasa?",
 	YellHunter	= "¡Cazadores y vuestras molestas cerbatanas!",
-	YellMage	= "¡Magos también? Deberíais tener más cuidado cuando jugáis con la magia...",
+	YellMage	= "¿Magos también? Deberíais tener más cuidado cuando jugáis con la magia...",
 	YellDK		= "¡Caballeros de la Muerte... venid aquí!",
 	YellMonk	= "Monjes, ¿no os mareáis con tanta vuelta?",
 	YellDH		= "¿Cazadores de demonios? Qué raro eso de taparos los ojos así. ¿No os cuesta ver lo que tenéis alrededor?"--Demon Hunter call; I know this hasn't been implemented yet in DBM, but I added it just in case.
@@ -585,7 +586,12 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Mayordomo Executus"
 }
-
+L:SetTimerLocalization{
+	timerShieldCD		= "Próximo escudo"
+}
+L:SetOptionLocalization{
+	timerShieldCD		= "Mostrar temporizador para el próximo Escudo de daño/reflejo"
+}
 ----------------
 --  Ragnaros  --
 ----------------
@@ -609,7 +615,7 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Mostrar temporizador para cuando Ragnaros regrese a la superficie"
 }
 L:SetMiscLocalization{
-	Submerge	= "¡AVANZAD, MIS SIRVIENTES! ¡DEFENDED A VUESTRO MAESTRO!",
+	Submerge	= "¡SIERVOS, A MÍ! ¡DEFENDED A VUESTRO MAESTRO!",
 	Pull		= "¡Crías imprudentes! ¡Os habéis precipitado hasta vuestra propia muerte! ¡Ahora mirad, el maestro se agita!"
 }
 
@@ -629,6 +635,14 @@ L:SetOptionLocalization{
 
 L:SetWarningLocalization{
 	WarnBossPower		= "Energía del jefe al %d%%"
+}
+-----------------
+--  MC: Trash  --
+-----------------
+L = DBM:GetModLocalization("MCTrash")
+
+L:SetGeneralLocalization{
+	name = "NM: Bichos"
 }
 -------------------
 --  Venoxis  --
@@ -681,8 +695,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PriestDied	= "%s muere.",
-	YellPhase2	= "Shirvallah, ¡lléname de tu IRA!",
-	YellKill	= "¡Estoy libre de Hakkar! ¡Por fin tengo paz!",
+	YellPhase2	= "Shirvallah, ¡lléname de IRA!",
+	YellKill	= "¡Hakkar ya no me controla! ¡Por fin, algo de paz!",
 	Thekal		= "Sumo Sacerdote Thekal",
 	Zath		= "Integrista Zath",
 	LorKhan		= "Integrista Lor'Khan"
@@ -1411,3 +1425,12 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
+
+
+
+
+
+
+
+

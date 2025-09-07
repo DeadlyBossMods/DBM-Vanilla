@@ -52,7 +52,7 @@ L:SetGeneralLocalization{
 	name 		= "Buru, o Banqueteador"
 }
 L:SetWarningLocalization{
-	WarnPursue		= "Perseguir em >%s<",
+	WarnPursue		= "Perseguindo >%s<",
 	SpecWarnPursue	= "Perseguindo você",
 	WarnDismember	= "%s em >%s< (%s)"
 }
