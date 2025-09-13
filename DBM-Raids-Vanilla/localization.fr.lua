@@ -197,7 +197,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
-	name = "Empereurs Jumeaux"
+	name = "Empereurs jumeaux"
 }
 L:SetMiscLocalization{
 	Veklor = "Empereur Vek'lor",
@@ -513,7 +513,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Gardes Griffemort"--FIXME
+	name = "Gardes Griffemort"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnérabilité : %s"
@@ -577,7 +577,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restants",
+	WarnAddsLeft		= "%d |4restant:restants",
 	WarnClassCall		= "L'appel de %s",
 	specwarnClassCall	= "Votre appel de classe !"
 }
