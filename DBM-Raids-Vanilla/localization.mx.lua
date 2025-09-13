@@ -515,7 +515,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Guardias Garramortal"--FIXME
+	name = "Guardias Garramortal"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidad: %s"
@@ -580,7 +580,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restantes",
+	WarnAddsLeft		= "%d |4restante:restantes",
 	WarnClassCall		= "Llamada de %s",
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
