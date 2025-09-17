@@ -237,12 +237,12 @@ L:SetWarningLocalization{
 	WarnDismember	= "%s en >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Mostrar anuncio para objetivos de la persecución de Buru",
+	WarnPursue		= "Mostrar anuncio para los objetivos de la persecución de Buru",
 	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "fija su mirada en"
+	PursueEmote 	= "mira a"
 }
 
 -------------
@@ -1425,6 +1425,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
