@@ -130,7 +130,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "A Família de Insetos"
+	name = "Realeza Silítidea"
 }
 L:SetMiscLocalization{
 	Yauj = "Princesa Yauj",
