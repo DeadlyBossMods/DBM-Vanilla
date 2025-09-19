@@ -130,7 +130,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "Trio d'insectes"
+	name = "Famille royale silithide"
 }
 L:SetMiscLocalization{
 	Yauj = "Princesse Yauj",
@@ -166,7 +166,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "Gel : %d/3",
-	WarnShatter	= "Briser : %d/3"
+	WarnShatter	= "Bris : %d/3"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Afficher une annonce pour le Gel",
