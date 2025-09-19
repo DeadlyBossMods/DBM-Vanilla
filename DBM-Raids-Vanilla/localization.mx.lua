@@ -1086,7 +1086,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name = "Los Cuatro Jinetes"
+	name = "Los cuatro jinetes"
 })
 
 L:SetOptionLocalization({
