@@ -173,12 +173,12 @@ L:SetOptionLocalization{
 	WarnShatter	= "Afficher une annonce pour le Bris"
 }
 L:SetMiscLocalization{
-	Slow	= "commence à ralentir !",
-	Freezing= "est gelé !",
-	Frozen	= "est congelé !",
-	Phase4 	= "commence à se briser !",
-	Phase5 	= "semble prêt à se briser !",
-	Phase6 	= "explose !",
+	Slow	= "commence à ralentir",
+	Freezing= "est gelé",
+	Frozen	= "est congelé",
+	Phase4 	= "commence à se briser",
+	Phase5 	= "semble prêt à se briser",
+	Phase6 	= "explose",
 
 	FrostHitsPerSecond = "Coups de givre par seconde",
 	MeleeHitsPerSecond = "Coups au corps à corps par seconde",
