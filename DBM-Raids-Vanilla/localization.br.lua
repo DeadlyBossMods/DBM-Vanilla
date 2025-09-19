@@ -173,12 +173,12 @@ L:SetOptionLocalization{
 	WarnShatter	= "Exibir anúncio para estilhaço"
 }
 L:SetMiscLocalization{
-	Slow	= "começa a ficar lento!",
-	Freezing= "está congelando!",
-	Frozen	= "está totalmente congelado!",
-	Phase4 	= "começa a rachar!",
-	Phase5 	= "parece estar a ponto de se estilhaçar!",
-	Phase6 	= "explode!",
+	Slow	= "começa a ficar lento",
+	Freezing= "está congelando",
+	Frozen	= "está totalmente congelado",
+	Phase4 	= "começa a rachar",
+	Phase5 	= "parece estar a ponto de se estilhaçar",
+	Phase6 	= "explode",
 
 	FrostHitsPerSecond = "Golpes de gelo por segundo",
 	MeleeHitsPerSecond = "Golpes corpo a corpo por segundo",
