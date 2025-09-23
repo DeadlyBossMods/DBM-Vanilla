@@ -62,7 +62,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " vê o"
+	PursueEmote 	= " vê o "
 }
 
 -------------
@@ -130,7 +130,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "A Família de Insetos"
+	name = "Realeza Silítidea"
 }
 L:SetMiscLocalization{
 	Yauj = "Princesa Yauj",
@@ -166,19 +166,19 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "Congelamento: %d/3",
-	WarnShatter	= "Estilhaçar: %d/3"
+	WarnShatter	= "Estilhaçamento: %d/3"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Exibir anúncio para congelamento",
-	WarnShatter	= "Exibir anúncio para estilhaço"
+	WarnShatter	= "Exibir anúncio para estilhaçamento"
 }
 L:SetMiscLocalization{
-	Slow	= "começa a ficar lento!",
-	Freezing= "está congelando!",
-	Frozen	= "está totalmente congelado!",
-	Phase4 	= "começa a rachar!",
-	Phase5 	= "parece estar a ponto de se estilhaçar!",
-	Phase6 	= "explode!",
+	Slow		= "começa a ficar lento",
+	Freezing	= "está congelando",
+	Frozen		= "está totalmente congelado",
+	Phase4 		= "começa a rachar",
+	Phase5 		= "parece estar a ponto de se estilhaçar",
+	Phase6 		= "explode",
 
 	FrostHitsPerSecond = "Golpes de gelo por segundo",
 	MeleeHitsPerSecond = "Golpes corpo a corpo por segundo",
@@ -512,7 +512,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Guarda Garra da Morte"--FIXME
+	name = "Guarda Garra da Morte"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidade: %s"
@@ -577,7 +577,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restante",
+	WarnAddsLeft		= "%d |4restante:restantes",
 	WarnClassCall		= "Chamada de %s",
 	specwarnClassCall	= "Chamada da sua classe!"
 }
