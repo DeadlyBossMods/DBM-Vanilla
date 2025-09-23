@@ -59,12 +59,12 @@ L:SetOptionLocalization{
 	WarnShatter	= "Mostrar anuncio para hacerse añicos"
 }
 L:SetMiscLocalization{
-	Slow	= "comienza a ir más despacio!",
-	Freezing= "se está congelando!",
-	Frozen	= "no se puede mover!",
-	Phase4 	= "comienza a desmoronarse!",
-	Phase5 	= "parece a punto de hacerse añicos!",
-	Phase6 	= "explota!",--Might want to double check this, since no further messages appeared after the previous one.
+	Slow	= "comienza a ir más despacio",
+	Freezing= "se está congelando",
+	Frozen	= "no se puede mover",
+	Phase4 	= "comienza a desmoronarse",
+	Phase5 	= "parece a punto de hacerse añicos",
+	Phase6 	= "explota",--Might want to double check this, since no further messages appeared after the previous one.
 
 	FrostHitsPerSecond = "Golpes de escarcha por segundo",
 	MeleeHitsPerSecond = "Golpes cuerpo a cuerpo por segundo"
@@ -83,7 +83,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
-	name = "Los Emperadores Gemelos"
+	name = "Emperadores Gemelos"
 }
 L:SetMiscLocalization{
 	Veklor = "Emperor Vek'lor",
@@ -237,12 +237,12 @@ L:SetWarningLocalization{
 	WarnDismember	= "%s en >%s< (%s)"
 }
 L:SetOptionLocalization{
-	WarnPursue		= "Mostrar anuncio para objetivos de la persecución de Buru",
+	WarnPursue		= "Mostrar anuncio para los objetivos de la persecución de Buru",
 	SpecWarnPursue	= "Mostrar anuncio especial cuando te persiga",
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "fija su mirada en"
+	PursueEmote 	= " mira a "
 }
 
 -------------
@@ -390,7 +390,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Guardias Garramortal"--FIXME
+	name = "Guardias Garramortal"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidad: %s"
@@ -455,7 +455,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restantes",
+	WarnAddsLeft		= "%d |4restante:restantes",
 	WarnClassCall		= "Llamada de %s",
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
@@ -1425,6 +1425,11 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
+
+
+
+
 
 
 
