@@ -805,6 +805,10 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
+L:SetOptionLocalization({
+	ArachnophobiaTimer	= "Exibir temporizador para Aracnofobia (conquista)"
+})
+
 L:SetWarningLocalization({
 	SpecialLocust		= "Nuvem de Gafanhotos",
 	WarningLocustFaded	= "Nuvem de Gafanhotos terminou"
@@ -818,8 +822,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	ArachnophobiaTimer	= "Conquista: Aracnofobia",
-	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!",
-	Pull2				= "Solo un bocado..."
+	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", -- this is spanish have to check portuguese
+	Pull2				= "Solo un bocado..." -- spanish not portuguese
 })
 
 -------------------------
@@ -842,7 +846,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull
+	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull (spanish)
 })
 
 -------------
@@ -860,7 +864,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Próximos proles"
+	TimerSpider	= "Seguintes proles"
 })
 
 L:SetOptionLocalization({
@@ -900,7 +904,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "¡Muere, intruso!"
+	Pull				= "¡Muere, intruso!" -- spanish
 })
 
 ----------------------
@@ -924,11 +928,11 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 	WarningTeleportNow	= "Exibir anúncio para Teleporte",
 	WarningTeleportSoon	= "Exibir anúncio antecipado para Teleporte",
-	TimerTeleport		= "Exibir anúncio para Teleporte"
+	TimerTeleport		= "Exibir cronômetro para Teleporte"
 })
 
 L:SetMiscLocalization({
-	Pull				= "Ahora me perteneces."
+	Pull				= "Ahora me perteneces." -- spanish
 })
 
 -------------
@@ -946,8 +950,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHealSoon		= "Exibir anúncio antecipado para janela de cura de 3 segundos",
-	WarningHealNow		= "Exibir anúncio antecipado para janela de cura"
+	WarningHealSoon		= "Exibir anúncio antecipado para a janela de cura",
+	WarningHealNow		= "Exibir anúncio para a janela de cura"
 })
 
 ---------------
@@ -1016,7 +1020,7 @@ L:SetOptionLocalization({
 
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polaridade alterada para %s",
-	WarningChargeNotChanged	= "Sua polaridade não mudou"
+	WarningChargeNotChanged	= "Polaridade não se alterou"
 })
 
 --------------------------
@@ -1030,7 +1034,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1 = "¡No tengáis piedad!",
-	Yell2 = "¡El tiempo de practicar ha pasado! ¡Quiero ver lo que habéis aprendido!",
+	Yell2 = "¡El tiempo de practicar ha pasado! ¡Quiero ver lo que habéis aprendido!", -- All these are spanish
 	Yell3 = "¡Poned en práctica lo que os he enseñado!",
 	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
 })
@@ -1040,7 +1044,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Barreira de ossos termina em 5 s"
+	WarningShieldWallSoon	= "Muralha de Escudos termina em 5 s"
 })
 
 --------------------------
@@ -1075,12 +1079,13 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Tú mismo has buscado tu final.",
+	yell			= "Tú mismo has buscado tu final.", -- spanish
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
 	Trainee			= "Aprendiz",
 	Knight			= "Cavaleiro",
+	Horse			= "Cavalo Espectral",
 	Rider			= "Cavalgante"
 })
 
@@ -1095,7 +1100,9 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Exibir anúncio antecipado para marcas",
-	SpecialWarningMarkOnPlayer	= "Exibir anúncio especial quando você for afetado por mais de quatro marcas"
+	SpecialWarningMarkOnPlayer	= "Exibir anúncio especial quando você for afetado por mais de quatro marcas",
+	timerMark 					= "Exibir cronômetro para a próxima marca dos cavaleiros (com contador)",
+
 })
 
 L:SetTimerLocalization({
@@ -1133,7 +1140,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	EmoteBreath			= "%s respira hondo.",
+	EmoteBreath			= "%s respira hondo.", -- spanish
 	WarningYellIceblock	= "Eu sou um bloco de gelo!"
 })
 
@@ -1161,13 +1168,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2			= "Exibir cronômetro para mudar para a Fase 2",
-	specwarnP2Soon		= "Exibir anúncio especial 10 s antes de mudar para a Fase 2",
+	TimerPhase2			= "Exibir cronômetro para mudar para a fase 2",
+	specwarnP2Soon		= "Exibir anúncio especial 10 s antes de mudar para a fase 2",
 	warnAddsSoon		= "Exibir anúncio antecipado para quando os Guardiões da Coroa de Gelo aparecerem"
 })
 
 L:SetMiscLocalization({
-	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!"
+	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!" -- spanish
 })
 
 L:SetWarningLocalization({
