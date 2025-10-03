@@ -1097,7 +1097,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Mostrar anuncio anticipado para las marcas",
 	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas",
-	timerMark					= "Mostrar temporizador para la siguiente marca de los jinetes (con contador)",
+	timerMark					= "Mostrar temporizador para la siguiente marca de los jinetes (con contador)"
 })
 
 L:SetTimerLocalization({
