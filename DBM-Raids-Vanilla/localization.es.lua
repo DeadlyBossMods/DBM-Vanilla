@@ -1078,7 +1078,7 @@ L:SetMiscLocalization({
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
-	Trainee			= "Alumnos",
+	Trainee			= "Aprendices",
 	Knight			= "Caballeros",
 	Horse			= "Caballo espectral",
 	Rider			= "Jinetes"
@@ -1437,6 +1437,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
