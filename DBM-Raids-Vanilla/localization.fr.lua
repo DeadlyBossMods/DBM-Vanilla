@@ -805,6 +805,10 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
+L:SetOptionLocalization({
+	ArachnophobiaTimer	= "Afficher le chronomètre pour Arachnophobie (haut fait)"
+})
+
 L:SetMiscLocalization({
 	ArachnophobiaTimer	= "Arachnophobia",
 	Pull1				= "Oui, courez ! Faites circulez le sang !",
@@ -935,8 +939,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHealSoon		= "Afficher une annonce \"Soins dans 3 sec\" ",
-	WarningHealNow		= "Afficher une annonce \"SOIGNEZ MAINTENANT\" "
+	WarningHealSoon		= "Afficher une pré-annonce pour la fenêtre de soins",
+	WarningHealNow		= "Afficher une annonce pour la fenêtre de soins",
 })
 
 -----------------
@@ -1026,11 +1030,11 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Afficher une annonce du Mur de Bouclier"
+	WarningShieldWallSoon	= "Afficher une annonce pour $spell:29061"
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Mur de Bouclier expire dans 5 sec"
+	WarningShieldWallSoon	= "Mur protecteur expire dans 5 sec"
 })
 
 --------------
@@ -1053,7 +1057,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerWave			= "Vague #%d",
+	TimerWave			= "Vague %d",
 	TimerPhase2			= "Phase 2"
 })
 
@@ -1072,6 +1076,7 @@ L:SetMiscLocalization({
 	WarningWave3		= "%d %s, %d %s et %d %s",
 	Trainee				= "Recrues",
 	Knight				= "Chevaliers",
+	Horse				= "Cheval spectral",
 	Rider				= "Cavaliers"
 })
 
@@ -1085,9 +1090,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerMark					= "Afficher un chronomètre des marques",
 	WarningMarkSoon				= "Afficher une pré-annonce des marques",
-	SpecialWarningMarkOnPlayer	= "Afficher une annonce spéciale quand vous avez plus de 4 marques sur vous"
+	SpecialWarningMarkOnPlayer	= "Afficher une annonce spéciale quand vous avez plus de 4 marques sur vous",
+	timerMark 					= "Afficher un chronomètre pour la prochaine marque des cavaliers (avec compteur)",
+
 })
 
 L:SetTimerLocalization({
