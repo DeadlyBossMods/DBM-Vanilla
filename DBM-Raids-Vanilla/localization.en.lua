@@ -1132,7 +1132,7 @@ L:SetWarningLocalization({
 
 L:SetMiscLocalization({
 	Korthazz	= "Thane Korth'azz",
-	Rivendare	= "Baron Rivendare",
+	Mograine	= "Highlord Mograine",
 	Blaumeux	= "Lady Blaumeux",
 	Zeliek		= "Sir Zeliek"
 })
@@ -1637,3 +1637,4 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
