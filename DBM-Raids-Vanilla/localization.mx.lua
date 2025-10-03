@@ -1109,8 +1109,8 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	Korthazz	= "Señor feudal Korth'azz",
-	Rivendare	= "Barón Osahendido",
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Alto señor Mograine",
 	Blaumeux	= "Lady Blaumeux",
 	Zeliek		= "Sir Zeliek"
 })
