@@ -642,7 +642,7 @@ L:SetWarningLocalization{
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "NM: Bichos"
+	name = "Bichos"
 }
 -------------------
 --  Venoxis  --
@@ -1175,7 +1175,15 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "Fase 2"
 })
+-----------------
+--  Naxx Trash --
+-----------------
 
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "Bichos"
+})
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1425,6 +1433,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
