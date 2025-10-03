@@ -99,7 +99,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ20 : Ennemis communs"
+	name = "Ennemis communs"
 }
 L:SetTimerLocalization{
 	TimerExplosion = "Fantômes explosifs"
@@ -277,7 +277,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ40 : Ennemis communs"
+	name = "Ennemis communs"
 }
 L:SetTimerLocalization{
 	TimerExplosion = "Fantômes explosifs"
@@ -762,7 +762,7 @@ L:SetWarningLocalization{
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "CM : Ennemis communs"
+	name = "Ennemis communs"
 }
 
 --------------
@@ -1170,7 +1170,15 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2				= "Phase 2",
 })
+-----------------
+--  Naxx Trash --
+-----------------
 
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "Ennemis communs"
+})
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
