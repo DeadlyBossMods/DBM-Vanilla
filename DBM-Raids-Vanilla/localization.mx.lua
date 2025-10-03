@@ -1182,7 +1182,7 @@ L:SetTimerLocalization({
 L = DBM:GetModLocalization("NaxxTrash")
 
 L:SetGeneralLocalization({
-	name = "Trash"
+	name = "Bichos"
 })
 
 ---------------------------
