@@ -809,6 +809,10 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
+L:SetOptionLocalization({
+	ArachnophobiaTimer	= "Mostrar temporizador para Arachnophobia (logro)"
+})
+
 L:SetMiscLocalization({
 	ArachnophobiaTimer	= "Logro: Aracnofobia",
 	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!",
@@ -920,7 +924,7 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 	WarningTeleportNow	= "Mostrar anuncio para Teletransporte",
 	WarningTeleportSoon	= "Mostrar anuncio anticipado para Teletransporte",
-	TimerTeleport		= "Mostrar anuncio para Teletransporte"
+	TimerTeleport		= "Mostrar temporizador para Teletransporte"
 })
 
 L:SetMiscLocalization({
@@ -937,13 +941,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningHealSoon	= "Sanación posible en 3 s",
-	WarningHealNow	= "¡Sanad ahora!"
+	WarningHealSoon	= "Curación posible en 3 s",
+	WarningHealNow	= "¡Curad ahora!"
 })
 
 L:SetOptionLocalization({
-	WarningHealSoon		= "Mostrar anuncio anticipado para la franja de sanación",
-	WarningHealNow		= "Mostrar anuncio para la franja de sanación"
+	WarningHealSoon		= "Mostrar anuncio anticipado para el periodo de curación",
+	WarningHealNow		= "Mostrar anuncio para el periodo de curación"
 })
 
 ---------------
@@ -1009,7 +1013,6 @@ L:SetOptionLocalization({
 	ArrowsRightLeft			= "Mostrar flechas de izquierda y derecha (estrategia de cuatro grupos; muestra la flecha izquierda si cambia la polaridad, y la derecha si no cambia)",
 	ArrowsInverse			= "Mostrar flechas de izquierda y derecha inversas (estrategia de cuatro grupos; muestra la flecha derecha si cambia la polaridad, y la izquierda si no cambia)"
 })
-
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polaridad cambiada a %s",
 	WarningChargeNotChanged	= "Tu polaridad no ha cambiado"
@@ -1025,9 +1028,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "¡No tengáis piedad!",
-	Yell2 = "¡El tiempo de practicar ha pasado! ¡Quiero ver lo que habéis aprendido!",
-	Yell3 = "¡Poned en práctica lo que os he enseñado!",
+	Yell1 = "¡No tengan piedad!",
+	Yell2 = "¡Se ha acabado el tiempo de práctica! ¡Quiero ver lo que han aprendido!",
+	Yell3 = "¡Hagan lo que les enseñé!",
 	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
 })
 
@@ -1036,7 +1039,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Barrera de huesos termina en 5 s"
+	WarningShieldWallSoon	= "Muro de escudo termina en 5 s"
 })
 
 --------------------------
@@ -1050,7 +1053,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerWave			= "Mostrar temporizador para la siguiente oleada de esbirros",
-	TimerPhase2			= "Mostrar temporizador para el cambio a Fase 2",
+	TimerPhase2			= "Mostrar temporizador para el cambio a fase 2",
 	WarningWaveSoon		= "Mostrar anuncio anticipado para la siguiente oleada de esbirros",
 	WarningWaveSpawned	= "Mostrar anuncio cuando comience una oleada de esbirros",
 	WarningRiderDown	= "Mostrar anuncio cuando muera un Jinete inflexible",
@@ -1075,9 +1078,10 @@ L:SetMiscLocalization({
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
-	Trainee			= "practicantes",
-	Knight			= "caballeros",
-	Rider			= "jinetes"
+	Trainee			= "Alumnos",
+	Knight			= "Caballeros",
+	Horse			= "Caballo espectral",
+	Rider			= "Jinetes"
 })
 
 ------------------------
@@ -1091,7 +1095,8 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Mostrar anuncio anticipado para las marcas",
-	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas"
+	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas",
+	timerMark					= "Mostrar temporizador para la siguiente marca de los jinetes (con contador)"
 })
 
 L:SetTimerLocalization({
@@ -1126,7 +1131,6 @@ L:SetOptionLocalization({
 	TimerLanding		= "Mostrar temporizador para el cambio a fase en tierra",
 	TimerIceBlast		= "Mostrar temporizador para $spell:28524",
 	WarningDeepBreath	= "Mostrar anuncio especial para $spell:28524",
-	WarningIceblock		= "Gritar cuando te afecte $spell:28522"
 })
 
 L:SetMiscLocalization({
@@ -1158,8 +1162,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2			= "Mostrar temporizador para el cambio a Fase 2",
-	specwarnP2Soon		= "Mostrar anuncio especial 10 s antes del cambio a Fase 2",
+	TimerPhase2			= "Mostrar temporizador para el cambio a fase 2",
+	specwarnP2Soon		= "Mostrar anuncio especial 10 s antes del cambio a fase 2",
 	warnAddsSoon		= "Mostrar anuncio anticipado para cuando aparezcan los Guardianes de Corona de Hielo"
 })
 
@@ -1433,6 +1437,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
