@@ -99,7 +99,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ20: Bichos"
+	name = "Bichos"
 }
 
 L:SetTimerLocalization{
@@ -279,7 +279,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ40: Bichos"
+	name = "Bichos"
 }
 
 L:SetTimerLocalization{
