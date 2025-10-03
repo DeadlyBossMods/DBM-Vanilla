@@ -1108,8 +1108,8 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	Korthazz	= "Señor feudal Korth'azz",
-	Rivendare	= "Barón Osahendido",
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Alto Señor Mograine",
 	Blaumeux	= "Lady Blaumeux",
 	Zeliek		= "Sir Zeliek"
 })
@@ -1437,6 +1437,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
