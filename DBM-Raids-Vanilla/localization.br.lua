@@ -806,7 +806,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Exibir temporizador para Aracnofobia (conquista)"
+	ArachnophobiaTimer	= "Exibir chronômetro para Aracnofobia (conquista)"
 })
 
 L:SetWarningLocalization({
