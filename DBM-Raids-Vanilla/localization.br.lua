@@ -99,7 +99,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ20: Lixo"
+	name = "Lixo"
 }
 L:SetTimerLocalization{
 	TimerExplosion = "Fantasmas explosivos"
@@ -277,7 +277,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ40: Lixo"
+	name = "Lixo"
 }
 L:SetTimerLocalization{
 	TimerExplosion = "Fantasmas explosivos"
@@ -762,7 +762,7 @@ L:SetWarningLocalization{
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "ND: Lixo"
+	name = "Lixo"
 }
 
 --------------
@@ -1178,7 +1178,15 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "Fase 2"
 })
+-----------------
+--  Naxx Trash --
+-----------------
 
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "Lixo"
+})
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
