@@ -810,6 +810,10 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
+L:SetOptionLocalization({
+	ArachnophobiaTimer	= "Mostrar temporizador para Arachnophobia (logro)"
+})
+
 L:SetMiscLocalization({
 	ArachnophobiaTimer	= "Logro: Aracnofobia",
 	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!",
@@ -921,7 +925,7 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 	WarningTeleportNow	= "Mostrar anuncio para Teletransporte",
 	WarningTeleportSoon	= "Mostrar anuncio anticipado para Teletransporte",
-	TimerTeleport		= "Mostrar anuncio para Teletransporte"
+	TimerTeleport		= "Mostrar temporizador para Teletransporte"
 })
 
 L:SetMiscLocalization({
@@ -943,8 +947,8 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningHealSoon		= "Mostrar anuncio anticipado para la franja de sanación",
-	WarningHealNow		= "Mostrar anuncio para la franja de sanación"
+	WarningHealSoon		= "Mostrar anuncio anticipado para el periodo de sanación",
+	WarningHealNow		= "Mostrar anuncio para el periodo de sanación"
 })
 
 ---------------
@@ -1036,7 +1040,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Barrera de huesos termina en 5 s"
+	WarningShieldWallSoon	= "Muro de escudo termina en 5 s"
 })
 
 --------------------------
@@ -1050,7 +1054,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerWave			= "Mostrar temporizador para la siguiente oleada de esbirros",
-	TimerPhase2			= "Mostrar temporizador para el cambio a Fase 2",
+	TimerPhase2			= "Mostrar temporizador para el cambio a fase 2",
 	WarningWaveSoon		= "Mostrar anuncio anticipado para la siguiente oleada de esbirros",
 	WarningWaveSpawned	= "Mostrar anuncio cuando comience una oleada de esbirros",
 	WarningRiderDown	= "Mostrar anuncio cuando muera un Jinete inflexible",
@@ -1075,9 +1079,10 @@ L:SetMiscLocalization({
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
-	Trainee			= "practicantes",
-	Knight			= "caballeros",
-	Rider			= "jinetes"
+	Trainee			= "Alumnos",
+	Knight			= "Caballeros",
+	Horse			= "Caballo espectral",
+	Rider			= "Jinetes"
 })
 
 ------------------------
@@ -1091,7 +1096,8 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Mostrar anuncio anticipado para las marcas",
-	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas"
+	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas",
+	timerMark					= "Mostrar temporizador para la siguiente marca de los jinetes (con contador)",
 })
 
 L:SetTimerLocalization({
@@ -1120,7 +1126,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningAirPhaseSoon	= "Mostrar anuncio anticipado para el cambio a fase aérea",
-	WarningAirPhaseNow	= "Mostrar anuncio para  el cambio a fase aérea",
+	WarningAirPhaseNow	= "Mostrar anuncio para el cambio a fase aérea",
 	WarningLanded		= "Mostrar anuncio para el cambio a fase en tierra",
 	TimerAir			= "Mostrar temporizador para el cambio a fase aérea",
 	TimerLanding		= "Mostrar temporizador para el cambio a fase en tierra",
@@ -1157,8 +1163,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2			= "Mostrar temporizador para el cambio a Fase 2",
-	specwarnP2Soon		= "Mostrar anuncio especial 10 s antes del cambio a Fase 2",
+	TimerPhase2			= "Mostrar temporizador para el cambio a fase 2",
+	specwarnP2Soon		= "Mostrar anuncio especial 10 s antes del cambio a fase 2",
 	warnAddsSoon		= "Mostrar anuncio anticipado para cuando aparezcan los Guardianes de Corona de Hielo"
 })
 
