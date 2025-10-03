@@ -767,7 +767,7 @@ L:SetWarningLocalization{
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "NM: Bichos"
+	name = "Bichos"
 }
 
 --------------
