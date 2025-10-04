@@ -824,7 +824,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Abrazo de la viuda expirando en 5 s",
+	WarningEmbraceExpire	= "Abrazo de la viuda expirando en 5 segundos",
 	WarningEmbraceExpired	= "Abrazo de la viuda ha expirado"
 })
 
@@ -847,7 +847,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Arañitas de Maexxna en 5 s",
+	WarningSpidersSoon	= "Arañitas de Maexxna en 5 segundos",
 	WarningSpidersNow	= "Arañitas de Maexxna"
 })
 
@@ -905,7 +905,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "Teletransporte",
-	WarningTeleportSoon	= "Teletransporte en %d s"
+	WarningTeleportSoon	= "Teletransporte en %d segundos"
 })
 
 L:SetTimerLocalization({
@@ -932,7 +932,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningHealSoon	= "Curación posible en 3 s",
+	WarningHealSoon	= "Curación posible en 3 segundos",
 	WarningHealNow	= "¡Curad ahora!"
 })
 
@@ -1030,7 +1030,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Muro de escudo termina en 5 s"
+	WarningShieldWallSoon	= "Muro de escudo termina en 5 segundos"
 })
 
 --------------------------
@@ -1057,7 +1057,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon		= "Oleada %d: %s en 3 s",
+	WarningWaveSoon		= "Oleada %d: %s en 3 segundos",
 	WarningWaveSpawned	= "Oleada %d: %s",
 	WarningRiderDown	= "Jinete muerto",
 	WarningKnightDown	= "Caballero muerto",
@@ -1094,7 +1094,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon				= "Marca %d en 3 s",
+	WarningMarkSoon				= "Marca %d en 3 segundos",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
@@ -1421,6 +1421,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
