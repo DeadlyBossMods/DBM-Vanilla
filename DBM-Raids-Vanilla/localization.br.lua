@@ -854,7 +854,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Prole de Maexxna em 5 s",
+	WarningSpidersSoon	= "Prole de Maexxna em 5 segundos",
 	WarningSpidersNow	= "Proles de Maexxna"
 })
 
@@ -1035,7 +1035,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Muralha de Escudos termina em 5 s"
+	WarningShieldWallSoon	= "Muralha de Escudos termina em 5 segundos"
 })
 
 --------------------------
