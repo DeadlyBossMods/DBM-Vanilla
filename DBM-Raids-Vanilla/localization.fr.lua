@@ -805,12 +805,7 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Afficher le chronomètre pour Arachnophobie (haut fait)"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobia",
 	Pull1				= "Oui, courez ! Faites circulez le sang !",
 	Pull2				= "Rien qu'une petite bouchée…"
 })
@@ -861,10 +856,6 @@ L:SetOptionLocalization({
 	TimerSpider			= "Afficher un chronomètre pour l'arrivée des araignées"
 })
 
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobia"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------
@@ -881,7 +872,7 @@ L:SetWarningLocalization({
 
 L:SetTimerLocalization({
 	TimerTeleport			= "Téléportation",
-	TimerTeleportBack		= "Retour de TP"
+	TimerTeleportBack		= "Retour de Téléportation"
 })
 
 L:SetOptionLocalization({
@@ -935,7 +926,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningHealSoon		= "Soins possibles dans 3 sec",
-	WarningHealNow		= "SOIGNEZ MAINTENANT !"
+	WarningHealNow		= "Soignez maintenant !"
 })
 
 L:SetOptionLocalization({
@@ -1103,13 +1094,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marque %d dans 3 sec",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz					= "Thane Korth'azz",
-	Mograine					= "Généralissime Mograine",
-	Blaumeux					= "Dame Blaumeux",
-	Zeliek						= "Sire Zeliek"
 })
 
 -----------------
