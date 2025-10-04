@@ -809,12 +809,7 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Mostrar temporizador para Arachnophobia (logro)"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Logro: Aracnofobia",
 	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!",
 	Pull2				= "Solo un bocado..."
 })
@@ -864,10 +859,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "Mostrar anuncio anticipado para cuando aparezcan Arañitas de Maexxna",
 	WarningSpidersNow	= "Mostrar anuncio cuando aparezcan Arañitas de Maexxna",
 	TimerSpider			= "Mostrar temporizador para las siguientes Arañitas de Maexxna"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Logro: Aracnofobia"
 })
 
 -----------------------
@@ -1105,13 +1096,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marca %d en 3 s",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "Thane Korth'azz",
-	Mograine	= "Alto Señor Mograine",
-	Blaumeux	= "Lady Blaumeux",
-	Zeliek		= "Sir Zeliek"
 })
 
 ---------------
@@ -1437,6 +1421,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
