@@ -1145,7 +1145,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	TimerPhase2				= "Afficher un chronomètre pour la phase 2",
 	specwarnP2Soon 			= "Afficher une annonce spéciale 10 secondes avant l'arrivée de Kel'Thuzad",
-	warnAddsSoon			= "Afficher une pré-annonce pour les Gardien de la Couronne de glace"
+	warnAddsSoon			= "Afficher une pré-annonce pour les Gardiens de la Couronne de glace"
 })
 
 L:SetMiscLocalization({
