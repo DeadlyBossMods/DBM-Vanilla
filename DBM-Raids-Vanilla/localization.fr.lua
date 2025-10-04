@@ -1106,31 +1106,29 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningAirPhaseSoon		= "Afficher une pré-annonce de la phase en vol",
-	WarningAirPhaseNow		= "Afficher une annonce de la phase en vol",
+	WarningAirPhaseSoon		= "Afficher une pré-annonce pour la phase en vol",
+	WarningAirPhaseNow		= "Afficher une annonce pour la phase en vol",
 	WarningLanded		    = "Afficher une annonce pour la phase au sol",
-	TimerAir			    = "Afficher un chronomètre de la phase en vol",
-	TimerLanding		   	= "Afficher un chronomètre de l'atterrissage",
-	TimerIceBlast		   	= "Afficher un chronomètre du Souffle de givre",
-	WarningDeepBreath		= "Afficher une annonce spéciale pour le Souffle de givre",
-	WarningIceblock			= "Crie dans un glaçon"
+	TimerAir			    = "Afficher un chronomètre pour la phase en vol",
+	TimerLanding		   	= "Afficher un chronomètre pour la phase au sol",
+	TimerIceBlast		   	= "Afficher un chronomètre pour le $spell:28524",
+	WarningDeepBreath		= "Afficher une annonce spéciale pour le $spell:28524",
 })
 
 L:SetMiscLocalization({
 	EmoteBreath			    = "prend une grande inspiration",
-	WarningYellIceblock		= "Je suis un bloc de glace !"
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon		= "Envol dans 10 sec",
-	WarningAirPhaseNow		= "Dans les airs",
-	WarningLanded		    = "Atterrissage de Sapphiron",
-	WarningDeepBreath	  	= "Souffle de givre !"
+	WarningAirPhaseSoon		= "Phase en vol dans 10 sec",
+	WarningAirPhaseNow		= "Phase en vol",
+	WarningLanded		    = "Phase au sol",
+	WarningDeepBreath	  	= "Souffle de givre"
 })
 
 L:SetTimerLocalization({
-	TimerAir		   		  = "Envol",
-	TimerLanding			  = "Atterrissage dans",
+	TimerAir		   		  = "Phase en vol",
+	TimerLanding			  = "Phase au sol",
 	TimerIceBlast			  = "Souffle de givre"
 })
 
@@ -1146,7 +1144,8 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2				= "Afficher un chronomètre pour la phase 2",
-	specwarnP2Soon 			= "Afficher un chronomètre pour prévenir 10 secondes avant l'arrivée de Kel'Thuzad"
+	specwarnP2Soon 			= "Afficher une annonce spéciale 10 secondes avant l'arrivée de Kel'Thuzad",
+	warnAddsSoon			= "Afficher une pré-annonce pour les Gardien de la Couronne de glace"
 })
 
 L:SetMiscLocalization({
@@ -1154,7 +1153,8 @@ L:SetMiscLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon  		= "Kel'Thuzad sera actif dans 10 secondes"
+	specwarnP2Soon  		= "Phase 2 dans 10 secondes",
+	warnAddsSoon			= "Les Gardiens de la Couronne de glacen arrivent bientôt"
 })
 
 L:SetTimerLocalization({
