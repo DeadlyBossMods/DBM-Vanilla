@@ -1109,22 +1109,21 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningAirPhaseSoon	= "Mostrar anuncio anticipado para el cambio a fase aérea",
-	WarningAirPhaseNow	= "Mostrar anuncio para el cambio a fase aérea",
-	WarningLanded		= "Mostrar anuncio para el cambio a fase en tierra",
-	TimerAir			= "Mostrar temporizador para el cambio a fase aérea",
-	TimerLanding		= "Mostrar temporizador para el cambio a fase en tierra",
+	WarningAirPhaseSoon	= "Mostrar anuncio anticipado para la fase aérea",
+	WarningAirPhaseNow	= "Mostrar anuncio para la fase aérea",
+	WarningLanded		= "Mostrar anuncio para la fase en tierra",
+	TimerAir			= "Mostrar temporizador para la fase aérea",
+	TimerLanding		= "Mostrar temporizador para la fase en tierra",
 	TimerIceBlast		= "Mostrar temporizador para $spell:28524",
 	WarningDeepBreath	= "Mostrar anuncio especial para $spell:28524",
 })
 
 L:SetMiscLocalization({
 	EmoteBreath			= "%s respira hondo.",
-	WarningYellIceblock	= "¡Soy un bloque de hielo!"
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "Fase aérea en 10 s",
+	WarningAirPhaseSoon	= "Fase aérea en 10 segundos",
 	WarningAirPhaseNow	= "Fase aérea",
 	WarningLanded		= "Fase en tierra",
 	WarningDeepBreath	= "Aliento de Escarcha"
@@ -1147,8 +1146,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2			= "Mostrar temporizador para el cambio a fase 2",
-	specwarnP2Soon		= "Mostrar anuncio especial 10 s antes del cambio a fase 2",
+	TimerPhase2			= "Mostrar temporizador para fase 2",
+	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2",
 	warnAddsSoon		= "Mostrar anuncio anticipado para cuando aparezcan los Guardianes de Corona de Hielo"
 })
 
@@ -1157,7 +1156,7 @@ L:SetMiscLocalization({
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Fase 2 en 10 s",
+	specwarnP2Soon	= "Fase 2 en 10 segundos",
 	warnAddsSoon	= "Guardianes de Corona de Hielo en breve"
 })
 
