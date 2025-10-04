@@ -991,8 +991,7 @@ L:SetMiscLocalization({
 L:SetOptionLocalization({
 	WarningChargeChanged	= "Afficher une annonce spéciale quand votre polarité a changé",
 	WarningChargeNotChanged	= "Afficher une annonce spéciale quand votre polarité n'a pas changé",
-	TimerShiftCast			= "Afficher un chronomètre pour le cast du changement de polarité",
-	AirowsEnabled			= "Afficher les flèches pendant $spell:28089",
+	AirowsEnabled			= "Afficher les flèches pendant le $spell:28089",
 	Never					= "Jamais",
 	TwoCamp					= "Afficher les flèches (stratégie normale de \"2 camps\" pour traverser)",
 	ArrowsRightLeft			= "Afficher les flèches droite / gauche pour la stratégie \"4 camps\" (affiche la flèche gauche si la polarité a changé, et la flèche droite sinon)",
@@ -1021,7 +1020,7 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Afficher une annonce pour $spell:29061"
+	WarningShieldWallSoon	= "Afficher une annonce pour le $spell:29061"
 })
 
 L:SetWarningLocalization({
