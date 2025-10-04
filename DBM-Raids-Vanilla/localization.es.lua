@@ -872,7 +872,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "Teletransporte",
-	WarningTeleportSoon	= "Teletransporte en 20 s"
+	WarningTeleportSoon	= "Teletransporte en 20 segundos"
 })
 
 L:SetTimerLocalization({
@@ -1421,6 +1421,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
