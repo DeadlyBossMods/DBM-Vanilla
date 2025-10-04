@@ -805,10 +805,6 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Exibir chronômetro para Aracnofobia (conquista)"
-})
-
 L:SetWarningLocalization({
 	SpecialLocust		= "Nuvem de Gafanhotos",
 	WarningLocustFaded	= "Nuvem de Gafanhotos terminou"
@@ -821,7 +817,6 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Conquista: Aracnofobia",
 	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", -- this is spanish have to check portuguese
 	Pull2				= "Solo un bocado..." -- spanish not portuguese
 })
@@ -871,10 +866,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "Exibir anúncio antecipado para quando os Proles de Maexxna aparecerem",
 	WarningSpidersNow	= "Exibir anúncio quando Proles de Maexxna aparecerem",
 	TimerSpider			= "Exibir cronômetro para os seguintes Proles de Maexxna"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Conquista: Aracnofobia"
 })
 
 -----------------------
@@ -1111,13 +1102,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marca %d em 3 s",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "Thane Korth'azz",
-	Mograine	= "Grão-lorde Mograine",
-	Blaumeux	= "Lady Blaumeux",
-	Zeliek		= "Sir Zeliek"
 })
 
 ---------------
