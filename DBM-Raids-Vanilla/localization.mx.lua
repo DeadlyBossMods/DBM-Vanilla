@@ -825,7 +825,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Abrazo de la viuda expirando en 5 s",
+	WarningEmbraceExpire	= "Abrazo de la viuda expirando en 5 segundos",
 	WarningEmbraceExpired	= "Abrazo de la viuda ha expirado"
 })
 
@@ -848,7 +848,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Arañitas de Maexxna en 5 s",
+	WarningSpidersSoon	= "Arañitas de Maexxna en 5 segundos",
 	WarningSpidersNow	= "Arañitas de Maexxna"
 })
 
@@ -933,7 +933,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningHealSoon	= "Sanación posible en 3 s",
+	WarningHealSoon	= "Sanación posible en 3 segundos",
 	WarningHealNow	= "¡Sanan ahora!"
 })
 
@@ -1031,7 +1031,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Muro de escudo termina en 5 s"
+	WarningShieldWallSoon	= "Muro de escudo termina en 5 segundos"
 })
 
 --------------------------
@@ -1058,7 +1058,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon		= "Oleada %d: %s en 3 s",
+	WarningWaveSoon		= "Oleada %d: %s en 3 segundos",
 	WarningWaveSpawned	= "Oleada %d: %s",
 	WarningRiderDown	= "Jinete muerto",
 	WarningKnightDown	= "Caballero muerto",
@@ -1095,7 +1095,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon				= "Marca %d en 3 s",
+	WarningMarkSoon				= "Marca %d en 3 segundos",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
