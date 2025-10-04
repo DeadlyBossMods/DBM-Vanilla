@@ -831,7 +831,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Abraço da Viúva expirando em 5 s",
+	WarningEmbraceExpire	= "Abraço da Viúva expirando em 5 segundos",
 	WarningEmbraceExpired	= "Abraço da Viúva expirou"
 })
 
@@ -909,7 +909,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "Teleporte",
-	WarningTeleportSoon	= "Teleporte em %d s"
+	WarningTeleportSoon	= "Teleporte em %d segundos"
 })
 
 L:SetTimerLocalization({
@@ -936,7 +936,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningHealSoon	= "Cura possível em 3 s",
+	WarningHealSoon	= "Cura possível em 3 segundos",
 	WarningHealNow	= "Cure agora!"
 })
 
@@ -1062,7 +1062,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon		= "Onda %d: %s em 3 s",
+	WarningWaveSoon		= "Onda %d: %s em 3 segundos",
 	WarningWaveSpawned	= "Onda %d: %s",
 	WarningRiderDown	= "Cavalgante morto",
 	WarningKnightDown	= "Cavaleiro morto",
@@ -1100,7 +1100,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon				= "Marca %d em 3 s",
+	WarningMarkSoon				= "Marca %d em 3 segundos",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
