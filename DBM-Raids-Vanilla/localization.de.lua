@@ -761,12 +761,7 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Zeige Timer für Erfolg 'Arachnophobie'"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobie",
 	Pull1				= "Rennt! Das bringt das Blut in Wallung!",
 	Pull2				= "Nur einmal kosten..."
 })
@@ -816,10 +811,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "Zeige Vorwarnung für Maexxnaspinnlinge",
 	WarningSpidersNow	= "Zeige Warnung für Maexxnaspinnlinge",
 	TimerSpider			= "Zeige Zeit bis nächste Maexxnaspinnlinge erscheinen"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobie"
 })
 
 ------------------------------
@@ -1030,6 +1021,7 @@ L:SetMiscLocalization({
 	WarningWave3	= "%d %s, %d %s und %d %s",
 	Trainee			= "Lehrlinge",
 	Knight			= "Ritter",
+	Horse			= "Spektrales Pferd",
 	Rider			= "Reiter"
 })
 
@@ -1044,7 +1036,8 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Zeige Vorwarnung für Mal",
-	SpecialWarningMarkOnPlayer	= "Spezialwarnung, wenn sich ein Mal mehr als 4-mal auf dir stapelt"
+	SpecialWarningMarkOnPlayer	= "Spezialwarnung, wenn sich ein Mal mehr als 4-mal auf dir stapelt",
+	timerMark 					= "Zeige Timer für das nächste Mal des Pferdemanns (mit Zähler)"
 })
 
 L:SetTimerLocalization({
@@ -1053,13 +1046,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mal %d in 3 Sekunden",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "Than Korth'azz",
-	Rivendare	= "Baron Totenschwur",
-	Blaumeux	= "Lady Blaumeux",
-	Zeliek		= "Sir Zeliek"
 })
 
 -----------------
@@ -1427,3 +1413,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
