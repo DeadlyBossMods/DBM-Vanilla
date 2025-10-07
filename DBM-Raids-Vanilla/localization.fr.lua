@@ -62,7 +62,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= "pose ses yeux sur"
+	PursueEmote 	= " pose ses yeux sur "
 }
 
 -------------
@@ -130,7 +130,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "Trio d'insectes"
+	name = "Famille royale silithide"
 }
 L:SetMiscLocalization{
 	Yauj = "Princesse Yauj",
@@ -166,19 +166,19 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "Gel : %d/3",
-	WarnShatter	= "Briser : %d/3"
+	WarnShatter	= "Bris : %d/3"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Afficher une annonce pour le Gel",
 	WarnShatter	= "Afficher une annonce pour le Bris"
 }
 L:SetMiscLocalization{
-	Slow	= "commence à ralentir !",
-	Freezing= "est gelé !",
-	Frozen	= "est congelé !",
-	Phase4 	= "commence à se briser !",
-	Phase5 	= "semble prêt à se briser !",
-	Phase6 	= "explose !",
+	Slow	= "commence à ralentir",
+	Freezing= "est gelé",
+	Frozen	= "est congelé",
+	Phase4 	= "commence à se briser",
+	Phase5 	= "semble prêt à se briser",
+	Phase6 	= "explose",
 
 	FrostHitsPerSecond = "Coups de givre par seconde",
 	MeleeHitsPerSecond = "Coups au corps à corps par seconde",
@@ -197,7 +197,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
-	name = "Empereurs Jumeaux"
+	name = "Empereurs jumeaux"
 }
 L:SetMiscLocalization{
 	Veklor = "Empereur Vek'lor",
@@ -513,7 +513,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Gardes Griffemort"--FIXME
+	name = "Gardes Griffemort"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnérabilité : %s"
@@ -577,7 +577,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d restants",
+	WarnAddsLeft		= "%d |4restant:restants",
 	WarnClassCall		= "L'appel de %s",
 	specwarnClassCall	= "Votre appel de classe !"
 }
@@ -1081,7 +1081,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name = "Les Quatre Cavaliers"
+	name = "Les quatre cavaliers"
 })
 
 L:SetOptionLocalization({
