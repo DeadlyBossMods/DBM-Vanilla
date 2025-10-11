@@ -577,7 +577,7 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d |4restante:restantes",
+	WarnAddsLeft		= "%d |4restante:restantes;",
 	WarnClassCall		= "Chamada de %s",
 	specwarnClassCall	= "Chamada da sua classe!"
 }
