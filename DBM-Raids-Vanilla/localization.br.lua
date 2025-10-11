@@ -805,17 +805,6 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetWarningLocalization({
-	SpecialLocust		= "Nuvem de Gafanhotos",
-	WarningLocustFaded	= "Nuvem de Gafanhotos terminou"
-})
-
-L:SetOptionLocalization({
-	SpecialLocust		= "Exibir anúncio especial para $spell:28785",
-	WarningLocustFaded	= "Exibir anúncio quando terminar $spell:28785",
-	ArachnophobiaTimer	= "Exibir cronômetro para a conquista 'Aracnofobia'"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", -- this is spanish have to check portuguese
 	Pull2				= "Solo un bocado..." -- spanish not portuguese
