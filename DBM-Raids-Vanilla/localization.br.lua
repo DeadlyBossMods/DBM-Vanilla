@@ -879,7 +879,7 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 	WarningTeleportNow	= "Exibir anúncio para Teleporte",
 	WarningTeleportSoon	= "Exibir anúncio antecipado para Teleporte",
-	TimerTeleport		= "Exibir cronômetro para o próximo Teleporte: Sacada",
+	TimerTeleport		= "Exibir cronômetro para Teleporte: Sacada",
 	TimerTeleportBack	= "Exibir cronômetro para Teleporte: Chão"
 })
 
@@ -901,7 +901,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "Teleporte",
-	WarningTeleportSoon	= "Teleporte em %d segundos"
+	WarningTeleportSoon	= "Teleporte em %d |4segundo:segundos;"
 })
 
 L:SetTimerLocalization({
