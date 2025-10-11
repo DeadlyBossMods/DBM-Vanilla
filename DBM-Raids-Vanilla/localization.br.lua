@@ -884,7 +884,10 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "¡Muere, intruso!" -- spanish
+	Pull				= "Die, trespasser!",
+	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!",
+	Adds				= "summons forth Skeletal Warriors!",
+	AddsTwo				= "raises more skeletons!"
 })
 
 ----------------------
@@ -947,8 +950,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "¡Remendejo quiere jugar!",
-	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!"
+	yell1 = "Retalhoso quer brincar!",
+	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!" -- spanish
 })
 
 ---------------
@@ -1015,7 +1018,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell1 = "¡No tengáis piedad!",
 	Yell2 = "¡El tiempo de practicar ha pasado! ¡Quiero ver lo que habéis aprendido!", -- All these are spanish
-	Yell3 = "¡Poned en práctica lo que os he enseñado!",
+	Yell3 = "Façam como eu ensinei!",
 	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
 })
 
