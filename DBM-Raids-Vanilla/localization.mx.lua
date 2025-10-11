@@ -884,13 +884,13 @@ L:SetTimerLocalization({
 L:SetOptionLocalization({
 	WarningTeleportNow	= "Mostrar anuncio para Teletransporte",
 	WarningTeleportSoon	= "Mostrar anuncio anticipado para Teletransporte",
-	TimerTeleport		= "Mostrar temporizador para el siguiente Teletransporte: Balcón",
+	TimerTeleport		= "Mostrar temporizador para Teletransporte: Balcón",
 	TimerTeleportBack	= "Mostrar temporizador para Teletransporte: Suelo"
 })
 
 L:SetMiscLocalization({
 	Pull				= "¡Muere, intruso!",
-	AddsYell			= "¡Levantaos, soldados míos! ¡Levantaos y luchad una vez más!",
+	AddsYell			= "¡Levántense, soldados míos! ¡Levántense y luchen una vez más!",
 	Adds				= "invoca a guerreros esqueletos!",
 	AddsTwo				= "alza más esqueletos!"
 })
