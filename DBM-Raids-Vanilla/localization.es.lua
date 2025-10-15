@@ -933,7 +933,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningHealSoon	= "Curación posible en 3 segundos",
-	WarningHealNow	= "¡Curad ahora!"
+	WarningHealNow	= "¡Cura ahora!"
 })
 
 L:SetOptionLocalization({
@@ -1420,6 +1420,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
