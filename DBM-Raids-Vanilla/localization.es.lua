@@ -847,8 +847,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Arañitas de Maexxna en 5 segundos",
-	WarningSpidersNow	= "Arañitas de Maexxna"
+	WarningSpidersSoon	= "Arañitas Maexxna en 5 segundos",
+	WarningSpidersNow	= "Arañitas Maexxna"
 })
 
 L:SetTimerLocalization({
@@ -856,9 +856,9 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon	= "Mostrar anuncio anticipado para cuando aparezcan Arañitas de Maexxna",
-	WarningSpidersNow	= "Mostrar anuncio cuando aparezcan Arañitas de Maexxna",
-	TimerSpider			= "Mostrar temporizador para las siguientes Arañitas de Maexxna"
+	WarningSpidersSoon	= "Mostrar anuncio anticipado para cuando aparezcan Arañitas Maexxna",
+	WarningSpidersNow	= "Mostrar anuncio cuando aparezcan Arañitas Maexxna",
+	TimerSpider			= "Mostrar temporizador para las siguientes Arañitas Maexxna"
 })
 
 -----------------------
@@ -1420,6 +1420,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
