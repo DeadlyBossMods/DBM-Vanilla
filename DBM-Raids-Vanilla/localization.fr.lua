@@ -842,18 +842,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Araignées dans 5 sec",
-	WarningSpidersNow	= "Arrivée des araignées!"
+	WarningSpidersSoon	= "Jeunes araignées de Maexxna dans 5 sec",
+	WarningSpidersNow	= "Jeunes araignées de Maexxna"
 })
 
 L:SetTimerLocalization({
-	TimerSpider			= "Araignées"
+	TimerSpider			= "Arrivée des jeunes araignées de Maexxna"
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon	= "Afficher une pré-annonce pour les araignées",
-	WarningSpidersNow	= "Afficher une annonce pour les araignées",
-	TimerSpider			= "Afficher un chronomètre pour l'arrivée des araignées"
+	WarningSpidersSoon	= "Afficher une pré-annonce pour les Jeunes araignées de Maexxna",
+	WarningSpidersNow	= "Afficher une annonce pour les Jeunes araignées de Maexxna",
+	TimerSpider			= "Afficher un chronomètre pour l'arrivée des Jeunes araignées de Maexxna"
 })
 
 ------------------------------
