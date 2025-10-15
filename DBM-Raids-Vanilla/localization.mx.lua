@@ -811,7 +811,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corren! ¡Así la sangre circula más rápido!",
+	Pull1				= "¡Eso, corran! ¡Así la sangre circula más rápido!",
 	Pull2				= "Solo un bocado..."
 })
 
