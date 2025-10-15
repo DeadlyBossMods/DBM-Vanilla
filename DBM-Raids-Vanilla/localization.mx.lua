@@ -811,7 +811,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!",
+	Pull1				= "¡Eso, corren! ¡Así la sangre circula más rápido!",
 	Pull2				= "Solo un bocado..."
 })
 
@@ -934,7 +934,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningHealSoon	= "Sanación posible en 3 segundos",
-	WarningHealNow	= "¡Sanan ahora!"
+	WarningHealNow	= "¡Sana ahora!"
 })
 
 L:SetOptionLocalization({
