@@ -843,7 +843,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon	= "Prole de Maexxna em 5 segundos",
+	WarningSpidersSoon	= "Proles de Maexxna em 5 segundos",
 	WarningSpidersNow	= "Proles de Maexxna"
 })
 
