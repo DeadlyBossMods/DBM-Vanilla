@@ -833,12 +833,7 @@ L:SetGeneralLocalization({
 	name = "Ануб'Рекан"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Отсчет времени до \"Арахнофобия\" (достижение)"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Арахнофобия",
 	Pull1				= "Бегите, бегите! Я люблю горячую кровь!",
 	Pull2				= "Посмотрим, какие вы на вкус!"
 })
@@ -888,10 +883,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "Показывать предупреждение перед следующим призывом Паученышей Мексны",
 	WarningSpidersNow	= "Показывать предупреждение для призыва Паученышей Мексны",
 	TimerSpider			= "Отсчет времени до появления Паученышей Мексны"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Арахнофобия"
 })
 
 ------------------------------
@@ -1105,6 +1096,7 @@ L:SetMiscLocalization({
 	WarningWave3	= "%d %s, %d %s и %d %s",
 	Trainee			= "Ученика",
 	Knight			= "Рыцаря",
+	Horse			= "Призрачного коня",
 	Rider			= "Всадника"
 })
 
@@ -1130,13 +1122,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Метка %d через 3 сек.",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "Тан Кортазз",
-	Rivendare	= "Барон Ривендер",
-	Blaumeux	= "Леди Бломе",
-	Zeliek		= "Сэр Зелиек"
 })
 
 -----------------
