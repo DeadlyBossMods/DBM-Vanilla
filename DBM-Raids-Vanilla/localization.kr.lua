@@ -702,9 +702,6 @@ L:SetMiscLocalization({
 	PriestDied	= "%s 죽었습니다.",
 	YellPhase2	= "시르밸라시여, 분노를 채워 주소서!",
 	YellKill	= "학카르의 구속이 끝났다! 이젠 평안히 잠들리라!",
-	Thekal		= "대사제 데칼",
-	Zath		= "광신도 자스",
-	LorKhan		= "광신도 로르칸"
 })
 
 -------------------
@@ -1601,6 +1598,7 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
 
 
