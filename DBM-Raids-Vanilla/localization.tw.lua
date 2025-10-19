@@ -954,6 +954,7 @@ L:SetMiscLocalization({
 	WarningWave3	= "%d %s, %d %s 和 %d %s",
 	Trainee			= "受訓員",
 	Knight			= "死亡騎士",
+	Horse			= "鬼靈坐騎",
 	Rider			= "騎兵"
 })
 
@@ -1282,4 +1283,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
