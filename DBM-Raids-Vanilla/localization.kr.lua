@@ -897,8 +897,6 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull				= "죽어라, 침입자들아!",
 	AddsYell			= "일어나라, 병사들이여! 다시 일어나 싸워라!",
---	Adds				= "summons forth Skeletal Warriors!",
---	AddsTwo				= "raises more skeletons!"
 })
 
 --------------------------
@@ -1603,4 +1601,5 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
