@@ -866,7 +866,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation !",
+	WarningTeleportNow		= "Téléportation",
 	WarningTeleportSoon		= "Téléportation dans 20 sec"
 })
 
