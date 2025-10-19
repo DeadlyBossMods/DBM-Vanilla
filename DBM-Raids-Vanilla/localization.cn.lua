@@ -784,8 +784,6 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull				= "我要没收你的生命!", --TBD
 	AddsYell			= "起来吧，我的战士们！起来，再为主人尽忠一次！",
-	Adds				= "召唤出骷髅战士！",
-	AddsTwo				= "召唤出更多的骷髅！"
 })
 --------------------------
 --  Heigan the Unclean  --
@@ -1308,5 +1306,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
