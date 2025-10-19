@@ -970,13 +970,14 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell				= "你们这些蠢货已经主动步入了陷阱。",
+	yell					= "你们这些蠢货已经主动步入了陷阱。",
 	WarningWave1			= "%d %s",
 	WarningWave2			= "%d %s 和 %d %s",
 	WarningWave3			= "%d %s, %d %s 和 %d %s",
-	Trainee				= "学徒",
-	Knight				= "死亡骑士",
-	Rider				= "骑兵"
+	Trainee					= "学徒",
+	Knight					= "死亡骑士",
+	Horse					= "鬼灵战马",
+	Rider					= "骑兵"
 })
 
 ---------------------
@@ -1307,4 +1308,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
