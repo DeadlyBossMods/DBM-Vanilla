@@ -778,7 +778,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "Die, trespasser!",
-	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
+	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
 --------------------------
@@ -1286,6 +1286,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
