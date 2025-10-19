@@ -884,7 +884,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "Mourez, intrus !",
-	AddsYell			= "Levez-vous, soldats ! Levez-vous et combattez une fois encore !",
+	AddsYell			= "Levez-vous, soldats ! Levez-vous et combattez une fois encore !"
 })
 --------------------------
 --  Heigan the Unclean  --
