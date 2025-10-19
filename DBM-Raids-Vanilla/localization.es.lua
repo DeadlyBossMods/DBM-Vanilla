@@ -889,7 +889,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "¡Muere, intruso!",
-	AddsYell			= "¡Levantaos, soldados míos! ¡Levantaos y luchad una vez más!",
+	AddsYell			= "¡Levantaos, soldados míos! ¡Levantaos y luchad una vez más!"
 })
 
 ----------------------
@@ -1418,5 +1418,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
