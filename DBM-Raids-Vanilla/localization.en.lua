@@ -911,8 +911,6 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull				= "Die, trespasser!",
 	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
-	Adds				= "summons forth Skeletal Warriors!",
-	AddsTwo				= "raises more skeletons!"
 })
 
 --------------------------
@@ -1621,5 +1619,6 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
