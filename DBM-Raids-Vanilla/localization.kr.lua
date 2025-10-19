@@ -816,13 +816,7 @@ L:SetGeneralLocalization({
 	name = "아눕레칸"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "거미의 공포 타이머 바 보기 (업적)"
-})
-
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "거미의 공포",
 	Pull1				= "그래, 도망쳐! 더 신선한 피가 솟구칠 테니!",
 	Pull2				= "어디 맛 좀 볼까..."
 })
@@ -872,10 +866,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "맥스나의 새끼 거미 사전 경고 보기",
 	WarningSpidersNow	= "맥스나의 새끼 거미 알림 보기",
 	TimerSpider			= "다음 맥스나의 새끼 거미 타이머 바 보기"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "거미의 공포"
 })
 
 ------------------------------
@@ -1113,13 +1103,6 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3초 후 %d번 징표",
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "영주 코스아즈",
-	Rivendare	= "남작 리븐데어",
-	Blaumeux	= "여군주 블라미우스",
-	Zeliek		= "젤리에크 경"
 })
 
 -----------------
@@ -1620,3 +1603,4 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
