@@ -910,7 +910,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "Die, trespasser!",
-	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
+	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
 --------------------------
@@ -1619,6 +1619,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
