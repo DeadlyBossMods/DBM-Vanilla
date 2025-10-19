@@ -841,8 +841,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "Sterbt, Eindringling!",
-	Adds				= "summons forth Skeletal Warriors!",--translate (trigger)
-	AddsTwo				= "raises more skeletons!"--translate (trigger)
+	AddsYell			= "Erhebt euch, Soldaten! Erhebt euch und kämpft erneut!"
 })
 
 --------------------------
@@ -1413,4 +1412,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
