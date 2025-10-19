@@ -593,11 +593,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PriestDied	= "%s死了。",
-	YellPhase2	= "西瓦尔拉，让我感受你的愤怒吧！", --TBD
-	YellKill	= "哈卡再也不能束缚我了！我终于可以安息了！", --TBD
-	Thekal		= "高阶祭司塞卡尔",
-	Zath		= "狂热者扎斯",
-	LorKhan		= "狂热者洛卡恩"
+	YellPhase2	= "西瓦尔拉，让我感受你的愤怒吧！",
+	YellKill	= "哈卡再也不能束缚我了！我终于可以安息了！"
 })
 
 -------------------
@@ -1306,6 +1303,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
