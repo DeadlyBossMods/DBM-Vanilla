@@ -885,9 +885,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "Die, trespasser!",
-	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!",
-	Adds				= "summons forth Skeletal Warriors!",
-	AddsTwo				= "raises more skeletons!"
+	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!"
 })
 
 ----------------------
