@@ -699,12 +699,7 @@ L:SetGeneralLocalization({
 	name = "阿努比瑞克漢"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "為蜘蛛恐懼症(成就)顯示計時器"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "蜘蛛恐懼症",
 	Pull1				= "對，跑吧!那樣傷口出血就更多了!",
 	Pull2				= "一些小點心..."
 })
@@ -753,10 +748,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "為梅克絲娜之子顯示預先警告",
 	WarningSpidersNow	= "為梅克絲娜之子顯示警告",
 	TimerSpider			= "為下一次梅克絲娜之子顯示計時器"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "蜘蛛恐懼症"
 })
 
 ------------------------------
@@ -986,13 +977,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon			= "3秒後印記 %d",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "寇斯艾茲族長",
-	Rivendare	= "瑞文戴爾男爵",
-	Blaumeux	= "布洛莫斯女士",
-	Zeliek		= "札里克爵士"
 })
 
 -----------------
@@ -1298,3 +1282,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
