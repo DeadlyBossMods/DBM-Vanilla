@@ -646,10 +646,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	PriestDied	= "%s stirbt.",
 	YellPhase2	= "Shirvallah, erfülle mich mit deinem Zorn!",
-	YellKill	= "Hakkar kontrolliert mich nicht länger! Endlich Frieden!",
-	Thekal		= "Hohepriester Thekal",
-	Zath		= "Zelot Zath",
-	LorKhan		= "Zelot Lor'Khan"
+	YellKill	= "Hakkar kontrolliert mich nicht länger! Endlich Frieden!"
 })
 
 -------------------
@@ -1412,5 +1409,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
