@@ -200,7 +200,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Buru")
 
 L:SetGeneralLocalization{
-	name 		= "『暴食者』布魯"
+	name 		= "吞咽者布魯"
 }
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追擊了",
@@ -221,7 +221,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ayamiss")
 
 L:SetGeneralLocalization{
-	name 		= "『狩獵者』阿亞米斯"
+	name 		= "狩獵者阿亞米斯"
 }
 
 --------------
@@ -230,7 +230,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Ossirian")
 
 L:SetGeneralLocalization{
-	name 		= "『無疤者』奧斯里安"
+	name 		= "無疤者奧斯里安"
 }
 L:SetWarningLocalization{
 	WarnVulnerable	= "%s"
@@ -489,7 +489,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Golemagg")
 
 L:SetGeneralLocalization{
-	name = "『焚化者』古雷曼格"
+	name = "焚化者古雷曼格"
 }
 
 -----------------
@@ -756,7 +756,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("NothVanilla")
 
 L:SetGeneralLocalization({
-	name = "『瘟疫使者』諾斯"
+	name = "瘟疫者諾斯"
 })
 
 L:SetWarningLocalization({
@@ -777,6 +777,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull				= "Die, trespasser!",
+	AddsYell			= "Rise, my soldiers! Rise and fight once more!",
 })
 
 --------------------------
@@ -785,7 +787,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
-	name = "『不潔者』海根"
+	name = "骯髒者海根"
 })
 
 L:SetWarningLocalization({
@@ -804,6 +806,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull				= "You are mine now."
 })
 
 ---------------
@@ -922,7 +925,7 @@ L:SetWarningLocalization({
 L = DBM:GetModLocalization("GothikVanilla")
 
 L:SetGeneralLocalization({
-	name = "『收割者』高希"
+	name = "收割者高希"
 })
 
 L:SetOptionLocalization({
@@ -1283,5 +1286,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
