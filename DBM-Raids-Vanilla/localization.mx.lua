@@ -890,9 +890,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull				= "¡Muere, intruso!",
-	AddsYell			= "¡Levántense, soldados míos! ¡Levántense y luchen una vez más!",
-	Adds				= "invoca a guerreros esqueletos!",
-	AddsTwo				= "alza más esqueletos!"
+	AddsYell			= "¡Levántense, soldados míos! ¡Levántense y luchen una vez más!"
 })
 
 ----------------------
