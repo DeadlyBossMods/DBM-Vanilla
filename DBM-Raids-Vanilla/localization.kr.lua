@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "벌레 무리"
 }
-L:SetMiscLocalization{
-	Yauj	= "공주 야우즈",
-	Vem		= "벰",
-	Kri		= "군주 크리"
-}
 
 -------------
 -- Sartura --
@@ -1598,6 +1593,7 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
 
 
