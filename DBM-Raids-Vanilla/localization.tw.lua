@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "異種蠍皇族"
 }
-L:SetMiscLocalization{
-	Yauj = "亞爾基公主",
-	Vem = "維姆",
-	Kri = "克里領主"
-}
 
 -------------
 -- Sartura --
@@ -1283,6 +1278,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
