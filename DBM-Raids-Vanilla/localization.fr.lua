@@ -132,11 +132,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Famille royale silithide"
 }
-L:SetMiscLocalization{
-	Yauj = "Princesse Yauj",
-	Vem = "Vem",
-	Kri = "Seigneur Kri"
-}
 
 -------------
 -- Sartura --
