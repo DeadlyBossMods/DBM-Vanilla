@@ -19,11 +19,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Семейство жуков"
 }
-L:SetMiscLocalization{
-	Yauj = "Принцесса Яудж",
-	Vem = "Вем",
-	Kri = "Лорд Кри"
-}
 
 -------------
 -- Sartura --
@@ -1569,10 +1564,10 @@ L = DBM:GetModLocalization("Beatrix")
 L:SetMiscLocalization{
 	YellFroggers1 = "break their ranks",
 	YellFroggers2 = "Ready your lances",
-	CannonMistress = "Cannon Mistress Lind", -- TODO: can we automatically get the localized name?
-	YellPhase2 = "We stand united! Let our enemies tremble before our might!",
-	Footmen = "Footmen",
-	Horses = "Horses"
+	CannonMistress = "Офицер артиллерии Линд",
+	YellPhase2 = "Наша сила в единстве! Враги дрогнут перед нашим натиском!",
+	Footmen = "Лакей",
+	Horses = "Лошади"
 }
 
 L = DBM:GetModLocalization("RebornCouncil")
@@ -1599,8 +1594,8 @@ L:SetWarningLocalization({
 L = DBM:GetModLocalization("Mason")
 
 L:SetMiscLocalization{
-	Cannons1 = "Fire!",
-	Cannons2 = "Fire at will!"
+	Cannons1 = "Огонь!",
+	Cannons2 = "Пли!"
 }
 
 L = DBM:GetModLocalization("SE_Trash")
@@ -1617,5 +1612,3 @@ L:SetMiscLocalization{
 	Prison = "Тюрьма",
 	Cathedral = "Собор"
 }
-
-
