@@ -775,8 +775,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerWhelps				= "Exibir cronômetro para os seguintes Dragonetes Onyxiano",
-	WarnWhelpsSoon			= "Exibir anúncio antecipado para os seguintes Dragonetes Onyxiano",
+	TimerWhelps				= "Exibir cronômetro para os próximos Dragonetes Onyxiano",
+	WarnWhelpsSoon			= "Exibir anúncio antecipado para os próximos Dragonetes Onyxiano",
 	SoundWTF3				= "Reproduzir sons engraçados de um lendário raide clássico de Onyxia"
 }
 
@@ -840,13 +840,13 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Seguintes proles"
+	TimerSpider	= "Próximas proles"
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon	= "Exibir anúncio antecipado para quando os Proles de Maexxna aparecerem",
-	WarningSpidersNow	= "Exibir anúncio quando Proles de Maexxna aparecerem",
-	TimerSpider			= "Exibir cronômetro para os seguintes Proles de Maexxna"
+	WarningSpidersSoon	= "Exibir anúncio antecipado para quando as Proles de Maexxna aparecerem",
+	WarningSpidersNow	= "Exibir anúncio quando as Proles de Maexxna aparecerem",
+	TimerSpider			= "Exibir cronômetro para as próximas Proles de Maexxna"
 })
 
 -----------------------
