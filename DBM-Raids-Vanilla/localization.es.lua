@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Realeza silítida"
 }
-L:SetMiscLocalization{
-	Yauj = "Princesa Yauj",
-	Vem = "Vem",
-	Kri = "Lord Kri"
-}
 
 -------------
 -- Sartura --
@@ -1415,6 +1410,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
