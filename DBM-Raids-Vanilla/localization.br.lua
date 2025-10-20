@@ -168,11 +168,11 @@ L:SetOptionLocalization{
 	WarnShatter	= "Exibir anúncio para estilhaçamento"
 }
 L:SetMiscLocalization{
-	Slow		= "começa a ficar lento!",
-	Freezing	= "está congelando!",
-	Frozen		= "está totalmente congelado!",
-	Phase4 		= "começa a rachar!",
-	Phase5 		= "parece estar a ponto de se estilhaçar!",
+	Slow		= "começa a ficar lento",
+	Freezing	= "está congelando",
+	Frozen		= "está totalmente congelado",
+	Phase4 		= "começa a rachar",
+	Phase5 		= "parece estar a ponto de se estilhaçar",
 	Phase6 		= "explode",
 
 	FrostHitsPerSecond = "Golpes de gelo por segundo",
