@@ -17,11 +17,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Bug Trio"
 }
-L:SetMiscLocalization{
-	Yauj = "Princess Yauj",
-	Vem = "Vem",
-	Kri = "Lord Kri"
-}
 
 -------------
 -- Sartura --
@@ -1616,6 +1611,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
