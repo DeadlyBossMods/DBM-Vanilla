@@ -13,7 +13,7 @@ mod:SetEncounterID(1107)
 mod:SetModelID(15931)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2)
+mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28785 28783",--54021
