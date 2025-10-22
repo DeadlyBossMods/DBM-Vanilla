@@ -834,7 +834,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Sterbt, Eindringling!",
-	Pull2				= "Ehre unserem Meister!",	
+	Pull2				= "Ehre unserem Meister!",
 	AddsYell			= "Erhebt euch, Soldaten! Erhebt euch und kämpft erneut!"
 })
 
@@ -1407,6 +1407,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
