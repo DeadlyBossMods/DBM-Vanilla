@@ -798,8 +798,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", -- this is spanish have to check portuguese
-	Pull2				= "Solo un bocado..." -- spanish not portuguese
+	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", --this is spanish have to check portuguese
+	Pull2				= "Solo un bocado..." --spanish not portuguese
+	Pull3				= "There is no way out." --needs translation
 })
 
 -------------------------
@@ -876,7 +877,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Die, trespasser!",
+	Pull1				= "Die, trespasser!",
+	Pull2				= "Glory to the master!",
 	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!"
 })
 
@@ -905,7 +907,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Ahora me perteneces." -- spanish
+	Pull1				= "Ahora me perteneces.", -- spanish
+	Pull2				= "I see you..."
 })
 
 -------------
