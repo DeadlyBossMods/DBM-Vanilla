@@ -13,7 +13,7 @@ mod:SetEncounterID(1117)
 mod:SetModelID(16590)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Pull)
+mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29213 29212 29208",--54835 Add in wrath
