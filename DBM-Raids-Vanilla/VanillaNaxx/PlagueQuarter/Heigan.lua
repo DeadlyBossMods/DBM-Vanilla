@@ -13,7 +13,7 @@ mod:SetEncounterID(1112)
 mod:SetModelID(16309)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Pull)
+mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2)
 
 local warnTeleportSoon	= mod:NewAnnounce("WarningTeleportSoon", 2, "135736")
 local warnTeleportNow	= mod:NewAnnounce("WarningTeleportNow", 3, "135736")
