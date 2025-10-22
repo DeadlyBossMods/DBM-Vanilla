@@ -864,7 +864,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Ihr gehört mir...",
-	Pull2				= "I see you..." -- needs translation	
+	Pull2				= "I see you..." --needs translation
 })
 
 ---------------
@@ -1407,6 +1407,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
