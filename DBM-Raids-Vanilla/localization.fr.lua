@@ -698,7 +698,7 @@ L:SetGeneralLocalization{
 	name = "Chambellan Executus"
 }
 L:SetTimerLocalization{
-	timerShieldCD		= "Bouclier suivant"
+	timerShieldCD		= "Bouclier"
 }
 L:SetOptionLocalization{
 	timerShieldCD		= "Afficher un chronomètre pour le prochain bouclier de dégâts / Renvoi de la magie"
@@ -840,7 +840,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider			= "Arrivée des jeunes araignées de Maexxna"
+	TimerSpider			= "Jeunes araignées"
 })
 
 L:SetOptionLocalization({
