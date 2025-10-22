@@ -102,10 +102,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "¡C'Thun está débil!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Próximo Tentáculo ocular",
-	TimerClawTentacle		= "Próximo Tentáculo Garral",
-	TimerGiantEyeTentacle	= "Próximo Tentáculo ocular gigante",
-	TimerGiantClawTentacle	= "Próximo Tentáculo garral gigante",
+	TimerEyeTentacle		= "Tentáculo ocular",
+	TimerClawTentacle		= "Tentáculo Garral",
+	TimerGiantEyeTentacle	= "Tentáculo ocular gigante",
+	TimerGiantClawTentacle	= "Tentáculo garral gigante",
 	TimerWeakened			= "Debilidad termina"
 }
 L:SetOptionLocalization{
@@ -582,7 +582,7 @@ L:SetGeneralLocalization{
 	name = "Mayordomo Executus"
 }
 L:SetTimerLocalization{
-	timerShieldCD		= "Próximo escudo"
+	timerShieldCD		= "Escudo"
 }
 L:SetOptionLocalization{
 	timerShieldCD		= "Mostrar temporizador para el próximo Escudo de daño/reflejo"
@@ -845,7 +845,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Próximas arañitas"
+	TimerSpider	= "Arañitas"
 })
 
 L:SetOptionLocalization({
@@ -1413,6 +1413,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
