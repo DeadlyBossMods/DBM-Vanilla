@@ -693,7 +693,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "對，跑吧!那樣傷口出血就更多了!",
-	Pull2				= "一些小點心..."
+	Pull2				= "一些小點心...",
+	Pull3 				= "There is no way out." --needs translation
 })
 
 ----------------------------
@@ -769,7 +770,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Die, trespasser!",
+	Pull1				= "Die, trespasser!", --needs translation
+	Pull2 				= "Glory to the master!",
 	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
@@ -798,7 +800,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "You are mine now."
+	Pull1				= "You are mine now.", --needs translation
+	Pull2				= "I see you..."
 })
 
 ---------------
@@ -1278,6 +1281,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
