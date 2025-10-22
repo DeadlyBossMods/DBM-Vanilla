@@ -774,7 +774,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "我要没收你的生命!", --TBD
+	Pull1				= "死吧，入侵者！",
+	Pull2				= "荣耀归于我主！",
 	AddsYell			= "起来吧，我的战士们！起来，再为主人尽忠一次！"
 })
 --------------------------
@@ -802,7 +803,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "你是我的了。"
+	Pull1				= "你是我的了。",
+	Pull2				= "我看到你了……"
 })
 
 ---------------
@@ -1298,6 +1300,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
