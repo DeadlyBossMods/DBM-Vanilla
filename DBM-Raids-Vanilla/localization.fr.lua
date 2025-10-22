@@ -799,7 +799,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Oui, courez ! Faites circulez le sang !",
-	Pull2				= "Rien qu'une petite bouchée…"
+	Pull2				= "Rien qu'une petite bouchée…",
+	Pull3				= "Nulle part pour s'enfuir."
 })
 
 ----------------------------
@@ -875,7 +876,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Mourez, intrus !",
+	Pull1				= "Mourez, intrus !",
+	Pull2				= "Gloire au maître !",
 	AddsYell			= "Levez-vous, soldats ! Levez-vous et combattez une fois encore !"
 })
 --------------------------
@@ -903,10 +905,11 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Vous êtes à moi, maintenant."
+	Pull1				= "Vous êtes à moi, maintenant.",
+	Pull2				= "Je vous vois…"
 })
 ----------------
---  Lolotheb  --
+--  Loatheb  --
 ----------------
 L = DBM:GetModLocalization("LoathebVanilla")
 
