@@ -755,7 +755,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Rennt! Das bringt das Blut in Wallung!",
-	Pull2				= "Nur einmal kosten..."
+	Pull2				= "Nur einmal kosten...",
+	Pull3				= "Es gibt kein Entkommen."
 })
 
 ----------------------------
@@ -832,7 +833,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Sterbt, Eindringling!",
+	Pull1				= "Sterbt, Eindringling!",
+	Pull2				= "Ehre unserem Meister!",	
 	AddsYell			= "Erhebt euch, Soldaten! Erhebt euch und kämpft erneut!"
 })
 
@@ -861,7 +863,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Ihr gehört mir..."
+	Pull1				= "Ihr gehört mir...",
+	Pull2				= "I see you..." -- needs translation	
 })
 
 ---------------
@@ -1404,6 +1407,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
