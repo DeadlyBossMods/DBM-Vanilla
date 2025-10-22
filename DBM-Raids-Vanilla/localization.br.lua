@@ -215,10 +215,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "C'Thun enfraquece!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Próximo Tentóculo",
-	TimerClawTentacle		= "Próximo Tentáculo de Garra",
-	TimerGiantEyeTentacle	= "Próximo Tentóculo Gigante",
-	TimerGiantClawTentacle	= "Próximo Tentáculo de Garra Gigante",
+	TimerEyeTentacle		= "Tentóculo",
+	TimerClawTentacle		= "Tentáculo de Garra",
+	TimerGiantEyeTentacle	= "Tentóculo Gigante",
+	TimerGiantClawTentacle	= "Tentáculo de Garra Gigante",
 	TimerWeakened			= "Enfraquece acaba"
 }
 L:SetOptionLocalization{
@@ -698,7 +698,7 @@ L:SetGeneralLocalization{
 	name = "Senescal Executus"
 }
 L:SetTimerLocalization{
-	timerShieldCD		= "Próximo escudo"
+	timerShieldCD		= "Escudo"
 }
 L:SetOptionLocalization{
 	timerShieldCD		= "Exibir cronômetro para o próximo escudo de dano/reflexão"
@@ -841,7 +841,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Próximas proles"
+	TimerSpider	= "Proles"
 })
 
 L:SetOptionLocalization({
