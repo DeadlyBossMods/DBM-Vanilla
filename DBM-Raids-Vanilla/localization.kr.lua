@@ -810,7 +810,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "그래, 도망쳐! 더 신선한 피가 솟구칠 테니!",
-	Pull2				= "어디 맛 좀 볼까..."
+	Pull2				= "어디 맛 좀 볼까...",
+	Pull3				= "나가는 길은 없다."
 })
 
 ----------------------------
@@ -887,7 +888,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "죽어라, 침입자들아!",
+	Pull1				= "죽어라, 침입자들아!",
+	Pull2				= "주인님께 영광을!",
 	AddsYell			= "일어나라, 병사들이여! 다시 일어나 싸워라!"
 })
 
@@ -916,7 +918,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "이제 넌 내 것이다."
+	Pull1				= "이제 넌 내 것이다.",
+	Pull2				= "네가 보인다..."
 })
 
 ---------------
@@ -1593,6 +1596,7 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
 
 
