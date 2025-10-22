@@ -110,7 +110,7 @@ BWL\Broodlord.lua
 BWL\Firemaw.lua
 BWL\Ebonroc.lua
 BWL\Flamegor.lua
-BWL\Ebonroc_and_Flamegor.lua
+# BWL\Ebonroc_and_Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
 
