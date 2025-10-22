@@ -799,7 +799,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", --this is spanish have to check portuguese
-	Pull2				= "Solo un bocado..." --spanish not portuguese
+	Pull2				= "Solo un bocado...", --spanish not portuguese
 	Pull3				= "There is no way out." --needs translation
 })
 
