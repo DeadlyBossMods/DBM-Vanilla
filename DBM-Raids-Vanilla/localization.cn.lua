@@ -1007,16 +1007,11 @@ L:SetOptionLocalization({
 	WarningAirPhaseSoon		= "为空中阶段显示提前警报",
 	WarningAirPhaseNow		= "提示空中阶段",
 	WarningLanded			= "提示地上阶段",
-	TimerAir			= "为空中阶段显示计时条",
+	TimerAir				= "为空中阶段显示计时条",
 	TimerLanding			= "为降落显示计时条",
 	TimerIceBlast			= "为冰霜吐息显示计时条",
 	WarningDeepBreath		= "为冰霜吐息显示特别警报",
 	WarningIceblock			= "当你中了冰箱时大喊"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s深深地吸了一口气。",
-	WarningYellIceblock		= "我是冰块！"
 })
 
 L:SetWarningLocalization({
@@ -1027,7 +1022,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerAir			= "空中阶段",
+	TimerAir				= "空中阶段",
 	TimerLanding			= "降落",
 	TimerIceBlast			= "冰霜吐息"
 })
@@ -1300,6 +1295,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
