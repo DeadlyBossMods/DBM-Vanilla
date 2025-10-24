@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Adel der Silithiden"
 }
-L:SetMiscLocalization{
-	Yauj = "Prinzessin Yauj",
-	Vem = "Vem",
-	Kri = "Lord Kri"
-}
 
 -------------
 -- Sartura --
@@ -646,10 +641,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	PriestDied	= "%s stirbt.",
 	YellPhase2	= "Shirvallah, erfülle mich mit deinem Zorn!",
-	YellKill	= "Hakkar kontrolliert mich nicht länger! Endlich Frieden!",
-	Thekal		= "Hohepriester Thekal",
-	Zath		= "Zelot Zath",
-	LorKhan		= "Zelot Lor'Khan"
+	YellKill	= "Hakkar kontrolliert mich nicht länger! Endlich Frieden!"
 })
 
 -------------------
@@ -763,7 +755,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Rennt! Das bringt das Blut in Wallung!",
-	Pull2				= "Nur einmal kosten..."
+	Pull2				= "Nur einmal kosten...",
+	Pull3				= "Es gibt kein Entkommen."
 })
 
 ----------------------------
@@ -840,9 +833,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Sterbt, Eindringling!",
-	Adds				= "summons forth Skeletal Warriors!",--translate (trigger)
-	AddsTwo				= "raises more skeletons!"--translate (trigger)
+	Pull1				= "Sterbt, Eindringling!",
+	Pull2				= "Ehre unserem Meister!",
+	AddsYell			= "Erhebt euch, Soldaten! Erhebt euch und kämpft erneut!"
 })
 
 --------------------------
@@ -870,7 +863,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Ihr gehört mir..."
+	Pull1				= "Ihr gehört mir...",
+	Pull2				= "I see you..." --needs translation
 })
 
 ---------------
@@ -940,8 +934,6 @@ L:SetMiscLocalization({
 	Yell	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
 	Emote2	= "Teslaspule überlädt!",
-	Boss1	= "Feugen",
-	Boss2	= "Stalagg",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
@@ -1065,10 +1057,6 @@ L:SetOptionLocalization({
 	TimerLanding		= "Zeige Zeit bis nächste Bodenphase",
 	TimerIceBlast		= "Zeige Zeit bis $spell:28524",
 	WarningDeepBreath	= "Spezialwarnung für $spell:28524"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s holt tief Luft."
 })
 
 L:SetWarningLocalization({
@@ -1413,4 +1401,12 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
+
+
+
+
+
+
+
 
