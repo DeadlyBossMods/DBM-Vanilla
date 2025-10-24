@@ -1003,8 +1003,6 @@ L:SetMiscLocalization({
 	Yell	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
 	Emote2	= "Tesla Coil overloads!",
-	Boss1	= "Feugen",
-	Boss2	= "Stalagg",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })
@@ -1614,6 +1612,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
