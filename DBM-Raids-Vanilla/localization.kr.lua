@@ -989,8 +989,6 @@ L:SetMiscLocalization({
 	Yell	= "스탈라그, 박살낸다!",
 	Emote	= "%s 과부하 상태가 됩니다.",
 	Emote2	= "테슬라 코일이 과부하 상태가 됩니다.",
-	Boss1	= "퓨진",
-	Boss2	= "스탈라그",
 	Charge1	= "음전하",
 	Charge2	= "양전하"
 })
@@ -1115,10 +1113,6 @@ L:SetOptionLocalization({
 	TimerLanding			= "착지 중 타이머 바 보기",
 	TimerIceBlast			= "냉기 숨결 타이머 바 보기",
 	WarningDeepBreath		= "냉기 숨결 특수 알림 보기"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath				= "숨을 깊게 들이마십니다."
 })
 
 L:SetWarningLocalization({
@@ -1596,6 +1590,7 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
 
 
