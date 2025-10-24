@@ -840,7 +840,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider			= "Jeunes araignées"
+	TimerSpider			= "Arrivée des Jeunes araignées"
 })
 
 L:SetOptionLocalization({
@@ -975,8 +975,6 @@ L:SetMiscLocalization({
 	Yell					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
 	Emote2					= "Bobine de Tesla entre en surcharge !",
-	Boss1 					= "Feugen",
-	Boss2 					= "Stalagg",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })
@@ -1108,7 +1106,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	EmoteBreath			    = "prend une grande inspiration",
+	EmoteBreath			    = "% prend une grande inspiration...",
 })
 
 L:SetWarningLocalization({
