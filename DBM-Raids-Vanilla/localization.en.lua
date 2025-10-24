@@ -1131,10 +1131,6 @@ L:SetOptionLocalization({
 	WarningDeepBreath	= "Show special warning for Frost Breath"
 })
 
-L:SetMiscLocalization({
-	EmoteBreath			= "%s takes in a deep breath..."
-})
-
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Air phase in 10 seconds",
 	WarningAirPhaseNow	= "Air phase",
@@ -1612,6 +1608,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
