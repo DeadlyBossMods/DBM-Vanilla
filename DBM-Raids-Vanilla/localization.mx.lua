@@ -1110,7 +1110,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	EmoteBreath			= "%s toma aliento...",
+	EmoteBreath			= "%s toma aliento..."
 })
 
 L:SetWarningLocalization({
