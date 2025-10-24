@@ -1006,8 +1006,6 @@ L:SetMiscLocalization({
 	Yell	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
 	Emote2	= "Катушка Теслы теряет связь!",
-	Boss1	= "Фойген",
-	Boss2	= "Сталагг",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
@@ -1134,10 +1132,6 @@ L:SetOptionLocalization({
 	TimerLanding		= "Отсчет времени до приземления",
 	TimerIceBlast		= "Отсчет времени до Ледяного дыхания",
 	WarningDeepBreath	= "Показывать спецпредупреждение для $spell:29318"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s делает глубокий вдох."
 })
 
 L:SetWarningLocalization({
