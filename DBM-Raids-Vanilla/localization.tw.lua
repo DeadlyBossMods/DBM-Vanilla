@@ -871,8 +871,6 @@ L:SetMiscLocalization({
 	Yell	= "斯塔拉格要碾碎你!",
 	Emote	= "%s超過負荷!",
 	Emote2	= "泰斯拉線圈超過負荷!",
-	Boss1 	= "伏晨",
-	Boss2 	= "斯塔拉格",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -995,10 +993,6 @@ L:SetOptionLocalization({
 	TimerLanding		= "為降落顯示計時器",
 	TimerIceBlast		= "為冰息術顯示計時器",
 	WarningDeepBreath	= "為冰息術顯示特別警告"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s深深地吸了一口氣。",
 })
 
 L:SetWarningLocalization({
@@ -1281,6 +1275,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
