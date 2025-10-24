@@ -1059,10 +1059,6 @@ L:SetOptionLocalization({
 	WarningDeepBreath	= "Spezialwarnung für $spell:28524"
 })
 
-L:SetMiscLocalization({
-	EmoteBreath			= "%s holt tief Luft."
-})
-
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Luftphase in 10 Sek",
 	WarningAirPhaseNow	= "Luftphase",
@@ -1405,6 +1401,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
