@@ -978,8 +978,6 @@ L:SetMiscLocalization({
 	Yell	= "¡Stalagg aplasta!",
 	Emote	= "¡%s se sobrecarga!",
 	Emote2	= "¡Espiral Tesla se sobrecarga!",
-	Boss1	= "Feugen",
-	Boss2	= "Stalagg",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1109,7 +1107,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	EmoteBreath			= "%s respira hondo.", -- spanish
+	EmoteBreath			= "%s respira fundo..."
 })
 
 L:SetWarningLocalization({
