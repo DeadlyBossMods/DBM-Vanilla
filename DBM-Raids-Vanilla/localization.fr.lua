@@ -1105,10 +1105,6 @@ L:SetOptionLocalization({
 	WarningDeepBreath		= "Afficher une annonce spéciale pour le $spell:28524",
 })
 
-L:SetMiscLocalization({
-	EmoteBreath			    = "% prend une grande inspiration...",
-})
-
 L:SetWarningLocalization({
 	WarningAirPhaseSoon		= "Phase en vol dans 10 sec",
 	WarningAirPhaseNow		= "Phase en vol",
