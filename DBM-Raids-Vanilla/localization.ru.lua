@@ -19,11 +19,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Семейство жуков"
 }
-L:SetMiscLocalization{
-	Yauj = "Принцесса Яудж",
-	Vem = "Вем",
-	Kri = "Лорд Кри"
-}
 
 -------------
 -- Sartura --
@@ -718,10 +713,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	PriestDied	= "%s умирает.",
 	YellPhase2	= "Ширвалла, наполни меня своим ГНЕВОМ!",
-	YellKill	= "Хаккар больше не властен надо мной! Наконец-то я обрел покой!",
-	Thekal		= "Верховный жрец Текал",
-	Zath		= "Ревнитель Зат",
-	LorKhan		= "Ревнитель Лор'Кхан"
+	YellKill	= "Хаккар больше не властен надо мной! Наконец-то я обрел покой!"
 })
 
 -------------------
@@ -833,14 +825,10 @@ L:SetGeneralLocalization({
 	name = "Ануб'Рекан"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Отсчет времени до \"Арахнофобия\" (достижение)"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Арахнофобия",
 	Pull1				= "Бегите, бегите! Я люблю горячую кровь!",
-	Pull2				= "Посмотрим, какие вы на вкус!"
+	Pull2				= "Посмотрим, какие вы на вкус!",
+	Pull3				= "Выхода нет."
 })
 
 ----------------------------
@@ -890,10 +878,6 @@ L:SetOptionLocalization({
 	TimerSpider			= "Отсчет времени до появления Паученышей Мексны"
 })
 
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Арахнофобия"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------
@@ -921,10 +905,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Смерть чужакам!",
-	AddsYell			= "Восстаньте, мои воины! Восстаньте и сразитесь вновь!",
-	Adds				= "призывает скелетов-воинов!",
-	AddsTwo				= "поднимает новых скелетов!"
+	Pull1				= "Смерть чужакам!",
+	Pull2				= "Слава господину!",
+	AddsYell			= "Восстаньте, мои воины! Восстаньте и сразитесь вновь!"
 })
 
 --------------------------
@@ -952,7 +935,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Теперь вы принадлежите мне!"
+	Pull1				= "Теперь вы принадлежите мне!",
+	Pull2				= "Я вижу вас..."
 })
 
 ---------------
@@ -1022,8 +1006,6 @@ L:SetMiscLocalization({
 	Yell	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
 	Emote2	= "Катушка Теслы теряет связь!",
-	Boss1	= "Фойген",
-	Boss2	= "Сталагг",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
@@ -1105,6 +1087,7 @@ L:SetMiscLocalization({
 	WarningWave3	= "%d %s, %d %s и %d %s",
 	Trainee			= "Ученика",
 	Knight			= "Рыцаря",
+	Horse			= "Призрачного коня",
 	Rider			= "Всадника"
 })
 
@@ -1132,13 +1115,6 @@ L:SetWarningLocalization({
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
-L:SetMiscLocalization({
-	Korthazz	= "Тан Кортазз",
-	Rivendare	= "Барон Ривендер",
-	Blaumeux	= "Леди Бломе",
-	Zeliek		= "Сэр Зелиек"
-})
-
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1156,10 +1132,6 @@ L:SetOptionLocalization({
 	TimerLanding		= "Отсчет времени до приземления",
 	TimerIceBlast		= "Отсчет времени до Ледяного дыхания",
 	WarningDeepBreath	= "Показывать спецпредупреждение для $spell:29318"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s делает глубокий вдох."
 })
 
 L:SetWarningLocalization({
@@ -1589,10 +1561,10 @@ L = DBM:GetModLocalization("Beatrix")
 L:SetMiscLocalization{
 	YellFroggers1 = "break their ranks",
 	YellFroggers2 = "Ready your lances",
-	CannonMistress = "Cannon Mistress Lind", -- TODO: can we automatically get the localized name?
-	YellPhase2 = "We stand united! Let our enemies tremble before our might!",
-	Footmen = "Footmen",
-	Horses = "Horses"
+	CannonMistress = "Офицер артиллерии Линд",
+	YellPhase2 = "Наша сила в единстве! Враги дрогнут перед нашим натиском!",
+	Footmen = "Лакей",
+	Horses = "Лошади"
 }
 
 L = DBM:GetModLocalization("RebornCouncil")
@@ -1619,8 +1591,8 @@ L:SetWarningLocalization({
 L = DBM:GetModLocalization("Mason")
 
 L:SetMiscLocalization{
-	Cannons1 = "Fire!",
-	Cannons2 = "Fire at will!"
+	Cannons1 = "Огонь!",
+	Cannons2 = "Пли!"
 }
 
 L = DBM:GetModLocalization("SE_Trash")
