@@ -886,8 +886,6 @@ L:SetMiscLocalization({
 	Yell				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
 	Emote2				= "电磁圈超载了！",
-	Boss1 				= "费尔根",
-	Boss2 				= "斯塔拉格",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })
@@ -1295,6 +1293,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
