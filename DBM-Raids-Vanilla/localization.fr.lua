@@ -132,11 +132,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Famille royale silithide"
 }
-L:SetMiscLocalization{
-	Yauj = "Princesse Yauj",
-	Vem = "Vem",
-	Kri = "Seigneur Kri"
-}
 
 -------------
 -- Sartura --
@@ -345,10 +340,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	PriestDied	= "%s meurt.",
 	YellPhase2	= "Shirvallah, que ta RAGE m’envahisse !",
-	YellKill	= "Hakkar ne me domine plus ! Je connais enfin la paix !",
-	Thekal		= "Grand prêtre Thekal",
-	Zath		= "Zélote Zath",
-	LorKhan		= "Zélote Lor'Khan"
+	YellKill	= "Hakkar ne me domine plus ! Je connais enfin la paix !"
 })
 
 -------------------
@@ -706,7 +698,7 @@ L:SetGeneralLocalization{
 	name = "Chambellan Executus"
 }
 L:SetTimerLocalization{
-	timerShieldCD		= "Bouclier suivant"
+	timerShieldCD		= "Bouclier"
 }
 L:SetOptionLocalization{
 	timerShieldCD		= "Afficher un chronomètre pour le prochain bouclier de dégâts / Renvoi de la magie"
@@ -807,7 +799,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Oui, courez ! Faites circulez le sang !",
-	Pull2				= "Rien qu'une petite bouchée…"
+	Pull2				= "Rien qu'une petite bouchée…",
+	Pull3				= "Nulle part pour s'enfuir."
 })
 
 ----------------------------
@@ -847,7 +840,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider			= "Arrivée des jeunes araignées de Maexxna"
+	TimerSpider			= "Arrivée des Jeunes araignées"
 })
 
 L:SetOptionLocalization({
@@ -866,7 +859,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation !",
+	WarningTeleportNow		= "Téléportation",
 	WarningTeleportSoon		= "Téléportation dans 20 sec"
 })
 
@@ -883,10 +876,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Mourez, intrus !",
-	AddsYell			= "Levez-vous, soldats ! Levez-vous et combattez une fois encore !",
-	Adds				= "invoque des guerriers squelettes !",
-	AddsTwo				= "lève encore d'autres squelettes !"
+	Pull1				= "Mourez, intrus !",
+	Pull2				= "Gloire au maître !",
+	AddsYell			= "Levez-vous, soldats ! Levez-vous et combattez une fois encore !"
 })
 --------------------------
 --  Heigan the Unclean  --
@@ -913,10 +905,11 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Vous êtes à moi, maintenant."
+	Pull1				= "Vous êtes à moi, maintenant.",
+	Pull2				= "Je vous vois…"
 })
 ----------------
---  Lolotheb  --
+--  Loatheb  --
 ----------------
 L = DBM:GetModLocalization("LoathebVanilla")
 
@@ -982,8 +975,6 @@ L:SetMiscLocalization({
 	Yell					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
 	Emote2					= "Bobine de Tesla entre en surcharge !",
-	Boss1 					= "Feugen",
-	Boss2 					= "Stalagg",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })
@@ -1112,10 +1103,6 @@ L:SetOptionLocalization({
 	TimerLanding		   	= "Afficher un chronomètre pour la phase au sol",
 	TimerIceBlast		   	= "Afficher un chronomètre pour le $spell:28524",
 	WarningDeepBreath		= "Afficher une annonce spéciale pour le $spell:28524",
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			    = "prend une grande inspiration",
 })
 
 L:SetWarningLocalization({
