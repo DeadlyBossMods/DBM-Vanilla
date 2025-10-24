@@ -1132,7 +1132,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	EmoteBreath			= "%s takes a deep breath."
+	EmoteBreath			= "%s takes in a deep breath..."
 })
 
 L:SetWarningLocalization({
@@ -1612,6 +1612,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
