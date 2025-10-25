@@ -132,11 +132,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Realeza Silítidea"
 }
-L:SetMiscLocalization{
-	Yauj = "Princesa Yauj",
-	Vem = "Veim",
-	Kri = "Lorde Kri"
-}
 
 -------------
 -- Sartura --
@@ -220,10 +215,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "C'Thun enfraquece!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Próximo Tentóculo",
-	TimerClawTentacle		= "Próximo Tentáculo de Garra",
-	TimerGiantEyeTentacle	= "Próximo Tentóculo Gigante",
-	TimerGiantClawTentacle	= "Próximo Tentáculo de Garra Gigante",
+	TimerEyeTentacle		= "Tentóculo",
+	TimerClawTentacle		= "Tentáculo de Garra",
+	TimerGiantEyeTentacle	= "Tentóculo Gigante",
+	TimerGiantClawTentacle	= "Tentáculo de Garra Gigante",
 	TimerWeakened			= "Enfraquece acaba"
 }
 L:SetOptionLocalization{
@@ -345,10 +340,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	PriestDied	= "%s morre.",
 	YellPhase2	= "Shirvallah! Me preenche com a tua fúria!",
-	YellKill	= "Não sou mais prisioneiro de Hakkar! Enfim, paz!",
-	Thekal		= "Sumo Sacerdote Thekal",
-	Zath		= "Zelote Zath",
-	LorKhan		= "Zelote Lor'Khan"
+	YellKill	= "Não sou mais prisioneiro de Hakkar! Enfim, paz!"
 })
 
 -------------------
@@ -706,7 +698,7 @@ L:SetGeneralLocalization{
 	name = "Senescal Executus"
 }
 L:SetTimerLocalization{
-	timerShieldCD		= "Próximo escudo"
+	timerShieldCD		= "Escudo"
 }
 L:SetOptionLocalization{
 	timerShieldCD		= "Exibir cronômetro para o próximo escudo de dano/reflexão"
@@ -783,8 +775,8 @@ L:SetTimerLocalization{
 }
 
 L:SetOptionLocalization{
-	TimerWhelps				= "Exibir cronômetro para os seguintes Dragonetes Onyxiano",
-	WarnWhelpsSoon			= "Exibir anúncio antecipado para os seguintes Dragonetes Onyxiano",
+	TimerWhelps				= "Exibir cronômetro para os próximos Dragonetes Onyxiano",
+	WarnWhelpsSoon			= "Exibir anúncio antecipado para os próximos Dragonetes Onyxiano",
 	SoundWTF3				= "Reproduzir sons engraçados de um lendário raide clássico de Onyxia"
 }
 
@@ -806,12 +798,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", -- this is spanish have to check portuguese
-	Pull2				= "Solo un bocado..." -- spanish not portuguese
+	Pull1				= "Yes, run! It makes the blood pump faster!",
+	Pull2				= "Just a little taste...",
+	Pull3				= "There is no way out."
 })
 
 -------------------------
--- Gran Viuda Faerlina --
+-- Grand Widow Faerlina --
 -------------------------
 L = DBM:GetModLocalization("FaerlinaVanilla")
 
@@ -826,11 +819,11 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningEmbraceExpire	= "Exibir anúncio antecipado quando expirar Abraço da Viúva",
-	WarningEmbraceExpired	= "Exibir anúncio quando expirar Abraço da Viúvaex"
+	WarningEmbraceExpired	= "Exibir anúncio quando expirar Abraço da Viúva"
 })
 
 L:SetMiscLocalization({
-	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull (spanish)
+	Pull					= "Kneel before me, worm!"--Not actually pull trigger, but often said on pull
 })
 
 -------------
@@ -848,17 +841,17 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Seguintes proles"
+	TimerSpider	= "Proles"
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon	= "Exibir anúncio antecipado para quando os Proles de Maexxna aparecerem",
-	WarningSpidersNow	= "Exibir anúncio quando Proles de Maexxna aparecerem",
-	TimerSpider			= "Exibir cronômetro para os seguintes Proles de Maexxna"
+	WarningSpidersSoon	= "Exibir anúncio antecipado para quando as Proles de Maexxna aparecerem",
+	WarningSpidersNow	= "Exibir anúncio quando as Proles de Maexxna aparecerem",
+	TimerSpider			= "Exibir cronômetro para as próximas Proles de Maexxna"
 })
 
 -----------------------
--- Noth el Pesteador --
+-- Noth the Plaguebringer --
 -----------------------
 L = DBM:GetModLocalization("NothVanilla")
 
@@ -884,10 +877,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Die, trespasser!",
-	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!",
-	Adds				= "summons forth Skeletal Warriors!",
-	AddsTwo				= "raises more skeletons!"
+	Pull1				= "Die, trespasser!",
+	Pull2				= "Glory to the master!",
+	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!"
 })
 
 ----------------------
@@ -915,7 +907,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "Ahora me perteneces." -- spanish
+	Pull1				= "You are mine now.",
+	Pull2				= "I see you..."
 })
 
 -------------
@@ -950,8 +943,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "Retalhoso quer brincar!",
-	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!" -- spanish
+	yell1 			= "Retalhoso quer brincar!",
+	yell2			= "Kel'thuzad make Patchwerk his avatar of war!"
 })
 
 ---------------
@@ -985,8 +978,6 @@ L:SetMiscLocalization({
 	Yell	= "¡Stalagg aplasta!",
 	Emote	= "¡%s se sobrecarga!",
 	Emote2	= "¡Espiral Tesla se sobrecarga!",
-	Boss1	= "Feugen",
-	Boss2	= "Stalagg",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1016,10 +1007,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "¡No tengáis piedad!",
-	Yell2 = "¡El tiempo de practicar ha pasado! ¡Quiero ver lo que habéis aprendido!", -- All these are spanish
-	Yell3 = "Façam como eu ensinei!",
-	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
+	Yell1 = "Show them no mercy!",
+	Yell2 = "The time for practice is over! Show me what you have learned!",
+	Yell3 = "Do as I taught you!",
+	Yell4 = "Sweep the leg... Do you have a problem with that?"
 })
 
 L:SetOptionLocalization({
@@ -1031,7 +1022,7 @@ L:SetWarningLocalization({
 })
 
 --------------------------
--- Gothik el Cosechador --
+-- Gothik the Harvester --
 --------------------------
 L = DBM:GetModLocalization("GothikVanilla")
 
@@ -1062,7 +1053,7 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Tú mismo has buscado tu final.", -- spanish
+	yell			= "Foolishly you have sought your own demise.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
@@ -1115,10 +1106,6 @@ L:SetOptionLocalization({
 	WarningDeepBreath	= "Exibir anúncio especial para $spell:28524",
 })
 
-L:SetMiscLocalization({
-	EmoteBreath			= "%s respira hondo.", -- spanish
-})
-
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Fase aérea em 10 segundos",
 	WarningAirPhaseNow	= "Fase aérea",
@@ -1149,7 +1136,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!" -- spanish
+	Yell = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
