@@ -819,7 +819,7 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningEmbraceExpire	= "Exibir anúncio antecipado quando expirar Abraço da Viúva",
-	WarningEmbraceExpired	= "Exibir anúncio quando expirar Abraço da Viúvaex"
+	WarningEmbraceExpired	= "Exibir anúncio quando expirar Abraço da Viúva"
 })
 
 L:SetMiscLocalization({
@@ -943,7 +943,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "Retalhoso quer brincar!",
+	yell1 			= "Retalhoso quer brincar!",
 	yell2			= "Kel'thuzad make Patchwerk his avatar of war!"
 })
 
