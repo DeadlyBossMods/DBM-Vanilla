@@ -830,12 +830,7 @@ L:SetGeneralLocalization({
 	name = "Anub'Rekhan"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "Show timer for Arachnophobia (achievement)"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobia",
 	Pull1				= "Yes, run! It makes the blood pump faster!",
 	Pull2				= "Just a little taste..."
 })
@@ -885,10 +880,6 @@ L:SetOptionLocalization({
 	WarningSpidersSoon	= "Show pre-warning for Maexxna Spiderlings",
 	WarningSpidersNow	= "Show warning for Maexxna Spiderlings",
 	TimerSpider			= "Show timer for next Maexxna Spiderlings"
-})
-
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "Arachnophobia"
 })
 
 ------------------------------
@@ -1128,13 +1119,6 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
-})
-
-L:SetMiscLocalization({
-	Korthazz	= "Thane Korth'azz",
-	Rivendare	= "Baron Rivendare",
-	Blaumeux	= "Lady Blaumeux",
-	Zeliek		= "Sir Zeliek"
 })
 
 -----------------
@@ -1637,3 +1621,5 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
+
