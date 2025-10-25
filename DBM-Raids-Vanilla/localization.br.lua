@@ -798,13 +798,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corred! ¡Así la sangre circula más rápido!", --this is spanish have to check portuguese
-	Pull2				= "Solo un bocado...", --spanish not portuguese
-	Pull3				= "There is no way out." --needs translation
+	Pull1				= "Yes, run! It makes the blood pump faster!",
+	Pull2				= "Just a little taste...",
+	Pull3				= "There is no way out."
 })
 
 -------------------------
--- Gran Viuda Faerlina --
+-- Grand Widow Faerlina --
 -------------------------
 L = DBM:GetModLocalization("FaerlinaVanilla")
 
@@ -823,7 +823,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull (spanish)
+	Pull					= "Kneel before me, worm!"--Not actually pull trigger, but often said on pull
 })
 
 -------------
@@ -851,7 +851,7 @@ L:SetOptionLocalization({
 })
 
 -----------------------
--- Noth el Pesteador --
+-- Noth the Plaguebringer --
 -----------------------
 L = DBM:GetModLocalization("NothVanilla")
 
@@ -907,7 +907,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Ahora me perteneces.", -- spanish
+	Pull1				= "You are mine now.",
 	Pull2				= "I see you..."
 })
 
@@ -944,7 +944,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	yell1 = "Retalhoso quer brincar!",
-	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!" -- spanish
+	yell2			= "Kel'thuzad make Patchwerk his avatar of war!"
 })
 
 ---------------
@@ -1007,10 +1007,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "¡No tengáis piedad!",
-	Yell2 = "¡El tiempo de practicar ha pasado! ¡Quiero ver lo que habéis aprendido!", -- All these are spanish
-	Yell3 = "Façam como eu ensinei!",
-	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
+	Yell1 = "Show them no mercy!",
+	Yell2 = "The time for practice is over! Show me what you have learned!",
+	Yell3 = "Do as I taught you!",
+	Yell4 = "Sweep the leg... Do you have a problem with that?"
 })
 
 L:SetOptionLocalization({
@@ -1022,7 +1022,7 @@ L:SetWarningLocalization({
 })
 
 --------------------------
--- Gothik el Cosechador --
+-- Gothik the Harvester --
 --------------------------
 L = DBM:GetModLocalization("GothikVanilla")
 
@@ -1053,7 +1053,7 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Tú mismo has buscado tu final.", -- spanish
+	yell			= "Foolishly you have sought your own demise.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
@@ -1136,7 +1136,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!" -- spanish
+	Yell = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
