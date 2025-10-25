@@ -1139,7 +1139,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!"
+	Yell = "¡Lacayos, servidores, soldados de la fría oscuridad! ¡Obedezcan el llamado de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
