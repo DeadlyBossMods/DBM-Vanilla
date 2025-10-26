@@ -238,7 +238,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "Estómago",
-	Eye			= "Ojo de C'Thun",
 	FleshTent	= "Tentáculo de carne",
 	Weakened 	= "está débil!",
 	NotValid	= "AQ40 parcialmente limpiado. Quedan %s jefes opcionales."
@@ -252,9 +251,8 @@ L:SetGeneralLocalization{
 	name = "Ouro"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Ouro se sumerge",
-	WarnEmerge			= "Ouro regresa",
-	SpecWarnEye			= "Mira hacia otro lado"
+	WarnSubmerge		= "Sumersión",
+	WarnEmerge			= "Emersión",
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Sumersión",
