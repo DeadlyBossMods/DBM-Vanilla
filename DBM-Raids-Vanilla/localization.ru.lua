@@ -122,7 +122,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "Желудок",
-	Eye			= "Око К'Туна",
 	FleshTent	= "Мясистое щупальце",
 	Weakened 	= "weaken",
 	NotValid	= "AQ40 частично очищен. Осталось %s дополнительных боссов."
@@ -137,8 +136,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Закапывание",
-	WarnEmerge			= "Появление",
-	SpecWarnEye			= "Отвернитесь",
+	WarnEmerge			= "Появление"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Закапывание",
