@@ -173,7 +173,7 @@ L:SetMiscLocalization{
 	Frozen	= "est congelé",
 	Phase4 	= "commence à se briser",
 	Phase5 	= "semble prêt à se briser",
-	Phase6 	= "explose",
+	Phase6 	= "explose"
 
 	FrostHitsPerSecond = "Coups de givre par seconde",
 	MeleeHitsPerSecond = "Coups au corps à corps par seconde",
@@ -215,10 +215,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "C'Thun est affaibli !"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Prochain Tentacule oculaire",
-	TimerClawTentacle		= "Prochain Tentacule griffu",
-	TimerGiantEyeTentacle	= "Prochain Tentacule oculaire géant",
-	TimerGiantClawTentacle	= "Prochain Tentacule griffu géant",
+	TimerEyeTentacle		= "Tentacule oculaire",
+	TimerClawTentacle		= "Tentacule griffu",
+	TimerGiantEyeTentacle	= "Tentacule oculaire géant",
+	TimerGiantClawTentacle	= "Tentacule griffu géant",
 	TimerWeakened			= "L'affaiblissement terminé"
 }
 L:SetOptionLocalization{
