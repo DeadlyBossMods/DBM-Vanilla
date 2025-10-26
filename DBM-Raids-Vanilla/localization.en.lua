@@ -135,7 +135,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submerge",
-	WarnEmerge			= "Emerge",
+	WarnEmerge			= "Emerge"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submerge",
@@ -1606,6 +1606,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
