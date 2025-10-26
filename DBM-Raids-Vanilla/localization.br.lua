@@ -249,8 +249,8 @@ L:SetGeneralLocalization{
 	name = "Ouroboros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submersão",
-	WarnEmerge			= "Emersão",
+	WarnSubmerge		= "Ouroboros se submergiu",
+	WarnEmerge			= "Ouroboros emergiu",
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersão",
