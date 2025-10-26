@@ -121,7 +121,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "Stomach",
-	Eye			= "Eye of C'Thun",
 	FleshTent	= "Flesh Tentacle",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "weaken",
 	NotValid	= "AQ40 partially cleared. %s optional bosses remain."
@@ -137,7 +136,6 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submerge",
 	WarnEmerge			= "Emerge",
-	SpecWarnEye			= "Look away",
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submerge",
@@ -1608,6 +1606,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
