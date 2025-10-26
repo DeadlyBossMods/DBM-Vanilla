@@ -120,7 +120,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "克苏恩的胃",
-	Eye			= "克苏恩之眼",
 	FleshTent	= "血肉触须",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "削弱了",
     NotValid	= "AQ40 击杀信息： %s 首领未击杀。"
@@ -1293,6 +1292,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
