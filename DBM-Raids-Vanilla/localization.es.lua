@@ -138,7 +138,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Ouro se sumerge",
-	WarnEmerge			= "Ouro regresa",
+	WarnEmerge			= "Ouro regresa"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Sumersión",
@@ -1405,6 +1405,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
