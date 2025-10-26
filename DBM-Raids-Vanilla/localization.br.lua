@@ -250,7 +250,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submersão",
-	WarnEmerge			= "Emersão",
+	WarnEmerge			= "Emersão"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersão",
