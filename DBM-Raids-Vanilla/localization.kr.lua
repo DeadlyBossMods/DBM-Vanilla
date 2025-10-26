@@ -121,7 +121,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "뱃속",
-	Eye			= "쑨의 눈",
 	FleshTent	= "식인 촉수",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "약해집니다!",
 	NotValid	= "안퀴40 레이드를 일부만 클리어 했습니다. 더 잡을 수 있는 보스가 %s마리 남아있습니다."
@@ -136,8 +135,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnEmerge			= "등장",
-	SpecWarnEye			= "고개 돌리세요",
+	WarnEmerge			= "등장"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "잠수",
@@ -1590,6 +1588,7 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
 
 
