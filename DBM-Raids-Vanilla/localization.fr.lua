@@ -236,7 +236,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "Estomac",
-	Eye			= "Œil de C'Thun",
 	FleshTent	= "Tentacule de chair",
 	Weakened 	= "est affaibli !",
 	NotValid	= "AQ40 partiellement effacé. %s bosses optionnels restent."
@@ -252,7 +251,6 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnSubmerge		= "Ouro a submergé",
 	WarnEmerge			= "Ouro a émergé",
-	SpecWarnEye			= "Détournez le regard"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersion",
