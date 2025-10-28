@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "벌레 무리"
 }
-L:SetMiscLocalization{
-	Yauj	= "공주 야우즈",
-	Vem		= "벰",
-	Kri		= "군주 크리"
-}
 
 -------------
 -- Sartura --
@@ -126,7 +121,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "뱃속",
-	Eye			= "쑨의 눈",
 	FleshTent	= "식인 촉수",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "약해집니다!",
 	NotValid	= "안퀴40 레이드를 일부만 클리어 했습니다. 더 잡을 수 있는 보스가 %s마리 남아있습니다."
@@ -141,8 +135,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnEmerge			= "등장",
-	SpecWarnEye			= "고개 돌리세요",
+	WarnEmerge			= "등장"
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "잠수",
@@ -702,9 +695,6 @@ L:SetMiscLocalization({
 	PriestDied	= "%s 죽었습니다.",
 	YellPhase2	= "시르밸라시여, 분노를 채워 주소서!",
 	YellKill	= "학카르의 구속이 끝났다! 이젠 평안히 잠들리라!",
-	Thekal		= "대사제 데칼",
-	Zath		= "광신도 자스",
-	LorKhan		= "광신도 로르칸"
 })
 
 -------------------
@@ -816,15 +806,10 @@ L:SetGeneralLocalization({
 	name = "아눕레칸"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "거미의 공포 타이머 바 보기 (업적)"
-})
-
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "거미의 공포",
 	Pull1				= "그래, 도망쳐! 더 신선한 피가 솟구칠 테니!",
-	Pull2				= "어디 맛 좀 볼까..."
+	Pull2				= "어디 맛 좀 볼까...",
+	Pull3				= "나가는 길은 없다."
 })
 
 ----------------------------
@@ -874,10 +859,6 @@ L:SetOptionLocalization({
 	TimerSpider			= "다음 맥스나의 새끼 거미 타이머 바 보기"
 })
 
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "거미의 공포"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------
@@ -905,10 +886,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "죽어라, 침입자들아!",
-	AddsYell			= "일어나라, 병사들이여! 다시 일어나 싸워라!",
---	Adds				= "summons forth Skeletal Warriors!",
---	AddsTwo				= "raises more skeletons!"
+	Pull1				= "죽어라, 침입자들아!",
+	Pull2				= "주인님께 영광을!",
+	AddsYell			= "일어나라, 병사들이여! 다시 일어나 싸워라!"
 })
 
 --------------------------
@@ -936,7 +916,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "이제 넌 내 것이다."
+	Pull1				= "이제 넌 내 것이다.",
+	Pull2				= "네가 보인다..."
 })
 
 ---------------
@@ -1006,8 +987,6 @@ L:SetMiscLocalization({
 	Yell	= "스탈라그, 박살낸다!",
 	Emote	= "%s 과부하 상태가 됩니다.",
 	Emote2	= "테슬라 코일이 과부하 상태가 됩니다.",
-	Boss1	= "퓨진",
-	Boss2	= "스탈라그",
 	Charge1	= "음전하",
 	Charge2	= "양전하"
 })
@@ -1115,13 +1094,6 @@ L:SetWarningLocalization({
 	WarningMarkSoon				= "3초 후 %d번 징표",
 })
 
-L:SetMiscLocalization({
-	Korthazz	= "영주 코스아즈",
-	Rivendare	= "남작 리븐데어",
-	Blaumeux	= "여군주 블라미우스",
-	Zeliek		= "젤리에크 경"
-})
-
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1139,10 +1111,6 @@ L:SetOptionLocalization({
 	TimerLanding			= "착지 중 타이머 바 보기",
 	TimerIceBlast			= "냉기 숨결 타이머 바 보기",
 	WarningDeepBreath		= "냉기 숨결 특수 알림 보기"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath				= "숨을 깊게 들이마십니다."
 })
 
 L:SetWarningLocalization({
@@ -1174,7 +1142,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "어둠의 문지기와 하수인, 그리고 병사들이여! 나 켈투자드가 부르니 명을 받들라!"
+	Yell = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!"
 })
 
 L:SetWarningLocalization({
@@ -1620,3 +1588,12 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
+
+
+
+
+
+
+
+
