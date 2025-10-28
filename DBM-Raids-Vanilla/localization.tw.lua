@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "異種蠍皇族"
 }
-L:SetMiscLocalization{
-	Yauj = "亞爾基公主",
-	Vem = "維姆",
-	Kri = "克里領主"
-}
 
 -------------
 -- Sartura --
@@ -124,7 +119,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "克蘇恩的胃",
-	Eye			= "克蘇恩之眼",
 	FleshTent	= "血肉觸鬚",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "變弱了",
 	NotValid	= "AQ40 擊殺信息： %s 首領未擊殺。"
@@ -200,7 +194,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Buru")
 
 L:SetGeneralLocalization{
-	name 		= "『暴食者』布魯"
+	name 		= "吞咽者布魯"
 }
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追擊了",
@@ -221,7 +215,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Ayamiss")
 
 L:SetGeneralLocalization{
-	name 		= "『狩獵者』阿亞米斯"
+	name 		= "狩獵者阿亞米斯"
 }
 
 --------------
@@ -230,7 +224,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Ossirian")
 
 L:SetGeneralLocalization{
-	name 		= "『無疤者』奧斯里安"
+	name 		= "無疤者奧斯里安"
 }
 L:SetWarningLocalization{
 	WarnVulnerable	= "%s"
@@ -489,7 +483,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Golemagg")
 
 L:SetGeneralLocalization{
-	name = "『焚化者』古雷曼格"
+	name = "焚化者古雷曼格"
 }
 
 -----------------
@@ -589,10 +583,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	PriestDied	= "%s死了。",
 	YellPhase2	= "希瓦拉爾，給我憤怒的力量吧！",
-	YellKill	= "哈卡再也不能束縛我了！我終於可以安息了！",
-	Thekal		= "高階祭司塞卡爾",
-	Zath		= "狂熱者札斯",
-	LorKhan		= "狂熱者洛卡恩"
+	YellKill	= "哈卡再也不能束縛我了！我終於可以安息了！"
 })
 
 -------------------
@@ -699,14 +690,10 @@ L:SetGeneralLocalization({
 	name = "阿努比瑞克漢"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer	= "為蜘蛛恐懼症(成就)顯示計時器"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer	= "蜘蛛恐懼症",
 	Pull1				= "對，跑吧!那樣傷口出血就更多了!",
-	Pull2				= "一些小點心..."
+	Pull2				= "一些小點心...",
+	Pull3 				= "There is no way out." --needs translation
 })
 
 ----------------------------
@@ -755,17 +742,13 @@ L:SetOptionLocalization({
 	TimerSpider			= "為下一次梅克絲娜之子顯示計時器"
 })
 
-L:SetMiscLocalization({
-	ArachnophobiaTimer	= "蜘蛛恐懼症"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------
 L = DBM:GetModLocalization("NothVanilla")
 
 L:SetGeneralLocalization({
-	name = "『瘟疫使者』諾斯"
+	name = "瘟疫者諾斯"
 })
 
 L:SetWarningLocalization({
@@ -786,6 +769,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull1				= "Die, trespasser!", --needs translation
+	Pull2 				= "Glory to the master!",
+	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
 --------------------------
@@ -794,7 +780,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
-	name = "『不潔者』海根"
+	name = "骯髒者海根"
 })
 
 L:SetWarningLocalization({
@@ -813,6 +799,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull1				= "You are mine now.", --needs translation
+	Pull2				= "I see you..."
 })
 
 ---------------
@@ -882,8 +870,6 @@ L:SetMiscLocalization({
 	Yell	= "斯塔拉格要碾碎你!",
 	Emote	= "%s超過負荷!",
 	Emote2	= "泰斯拉線圈超過負荷!",
-	Boss1 	= "伏晨",
-	Boss2 	= "斯塔拉格",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -931,7 +917,7 @@ L:SetWarningLocalization({
 L = DBM:GetModLocalization("GothikVanilla")
 
 L:SetGeneralLocalization({
-	name = "『收割者』高希"
+	name = "收割者高希"
 })
 
 L:SetOptionLocalization({
@@ -963,6 +949,7 @@ L:SetMiscLocalization({
 	WarningWave3	= "%d %s, %d %s 和 %d %s",
 	Trainee			= "受訓員",
 	Knight			= "死亡騎士",
+	Horse			= "鬼靈坐騎",
 	Rider			= "騎兵"
 })
 
@@ -988,13 +975,6 @@ L:SetWarningLocalization({
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
-L:SetMiscLocalization({
-	Korthazz	= "寇斯艾茲族長",
-	Rivendare	= "瑞文戴爾男爵",
-	Blaumeux	= "布洛莫斯女士",
-	Zeliek		= "札里克爵士"
-})
-
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1012,10 +992,6 @@ L:SetOptionLocalization({
 	TimerLanding		= "為降落顯示計時器",
 	TimerIceBlast		= "為冰息術顯示計時器",
 	WarningDeepBreath	= "為冰息術顯示特別警告"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s深深地吸了一口氣。",
 })
 
 L:SetWarningLocalization({
@@ -1298,3 +1274,12 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
+
+
+
+
+
+
+
+
