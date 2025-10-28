@@ -18,11 +18,6 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "异种蝎皇族"
 }
-L:SetMiscLocalization{
-	Yauj = "亚尔基公主",
-	Vem = "维姆",
-	Kri = "克里勋爵"
-}
 
 -------------
 -- Sartura --
@@ -125,7 +120,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "克苏恩的胃",
-	Eye			= "克苏恩之眼",
 	FleshTent	= "血肉触须",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "削弱了",
     NotValid	= "AQ40 击杀信息： %s 首领未击杀。"
@@ -593,11 +587,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PriestDied	= "%s死了。",
-	YellPhase2	= "西瓦尔拉，让我感受你的愤怒吧！", --TBD
-	YellKill	= "哈卡再也不能束缚我了！我终于可以安息了！", --TBD
-	Thekal		= "高阶祭司塞卡尔",
-	Zath		= "狂热者扎斯",
-	LorKhan		= "狂热者洛卡恩"
+	YellPhase2	= "西瓦尔拉，让我感受你的愤怒吧！",
+	YellKill	= "哈卡再也不能束缚我了！我终于可以安息了！"
 })
 
 -------------------
@@ -703,12 +694,7 @@ L:SetGeneralLocalization({
 	name 				= "阿努布雷坎"
 })
 
-L:SetOptionLocalization({
-	ArachnophobiaTimer		= "为蜘蛛克星(成就)显示计时条"
-})
-
 L:SetMiscLocalization({
-	ArachnophobiaTimer		= "蜘蛛克星",
 	Pull1					= "对，跑吧！那样伤口出血就更多了！",
 	Pull2					= "一些小点心……",
 	Pull3					= "你们逃不掉的。"
@@ -760,10 +746,6 @@ L:SetOptionLocalization({
 	TimerSpider				= "为下一次迈克斯纳之子显示计时条"
 })
 
-L:SetMiscLocalization({
-	ArachnophobiaTimer		= "蜘蛛克星"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------
@@ -791,10 +773,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "我要没收你的生命!", --TBD
-	AddsYell			= "起来吧，我的战士们！起来，再为主人尽忠一次！",
-	Adds				= "召唤出骷髅战士！",
-	AddsTwo				= "召唤出更多的骷髅！"
+	Pull1				= "死吧，入侵者！",
+	Pull2				= "荣耀归于我主！",
+	AddsYell			= "起来吧，我的战士们！起来，再为主人尽忠一次！"
 })
 --------------------------
 --  Heigan the Unclean  --
@@ -821,7 +802,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull				= "你是我的了。"
+	Pull1				= "你是我的了。",
+	Pull2				= "我看到你了……"
 })
 
 ---------------
@@ -903,8 +885,6 @@ L:SetMiscLocalization({
 	Yell				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
 	Emote2				= "电磁圈超载了！",
-	Boss1 				= "费尔根",
-	Boss2 				= "斯塔拉格",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })
@@ -979,13 +959,14 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell				= "你们这些蠢货已经主动步入了陷阱。",
+	yell					= "你们这些蠢货已经主动步入了陷阱。",
 	WarningWave1			= "%d %s",
 	WarningWave2			= "%d %s 和 %d %s",
 	WarningWave3			= "%d %s, %d %s 和 %d %s",
-	Trainee				= "学徒",
-	Knight				= "死亡骑士",
-	Rider				= "骑兵"
+	Trainee					= "学徒",
+	Knight					= "死亡骑士",
+	Horse					= "鬼灵战马",
+	Rider					= "骑兵"
 })
 
 ---------------------
@@ -1010,13 +991,6 @@ L:SetWarningLocalization({
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
-L:SetMiscLocalization({
-	Korthazz			= "库尔塔兹领主",
-	Rivendare			= "大领主莫格莱尼",
-	Blaumeux			= "女公爵布劳缪克丝",
-	Zeliek				= "瑟里耶克爵士"
-})
-
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1030,16 +1004,11 @@ L:SetOptionLocalization({
 	WarningAirPhaseSoon		= "为空中阶段显示提前警报",
 	WarningAirPhaseNow		= "提示空中阶段",
 	WarningLanded			= "提示地上阶段",
-	TimerAir			= "为空中阶段显示计时条",
+	TimerAir				= "为空中阶段显示计时条",
 	TimerLanding			= "为降落显示计时条",
 	TimerIceBlast			= "为冰霜吐息显示计时条",
 	WarningDeepBreath		= "为冰霜吐息显示特别警报",
 	WarningIceblock			= "当你中了冰箱时大喊"
-})
-
-L:SetMiscLocalization({
-	EmoteBreath			= "%s深深地吸了一口气。",
-	WarningYellIceblock		= "我是冰块！"
 })
 
 L:SetWarningLocalization({
@@ -1050,7 +1019,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerAir			= "空中阶段",
+	TimerAir				= "空中阶段",
 	TimerLanding			= "降落",
 	TimerIceBlast			= "冰霜吐息"
 })
@@ -1323,3 +1292,13 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
+
+
+
+
+
+
+
+
+
