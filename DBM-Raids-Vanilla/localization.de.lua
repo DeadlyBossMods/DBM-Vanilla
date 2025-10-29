@@ -1029,7 +1029,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	timerMark	= "Mal %d",
+	timerMark	= "Mal %d"
 })
 
 L:SetWarningLocalization({
@@ -1398,5 +1398,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
