@@ -821,7 +821,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Kneel before me, worm!"--Not actually pull trigger, but often said on pull
+	Pull1					= "Kneel before me, worm!", --Not actually pull trigger, but often said on pull
+	Pull2 					= "You cannot hide from me!"
 })
 
 -------------
@@ -877,6 +878,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Die, trespasser!",
 	Pull2				= "Glory to the master!",
+	Pull3 				= "Your life is forfeit!",
 	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!"
 })
 
@@ -1078,6 +1080,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "Marca %d",
 })
 
 L:SetWarningLocalization({
