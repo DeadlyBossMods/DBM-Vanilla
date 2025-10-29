@@ -77,10 +77,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "双子皇帝"
 }
-L:SetMiscLocalization{
-	Veklor = "维克洛尔大帝",
-	Veknil = "维克尼拉斯大帝"
-}
 
 ------------
 -- C'Thun --
@@ -720,7 +716,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "跪下求饶吧，懦夫！"--Not actually pull trigger, but often said on pull
+	Pull1					= "跪下求饶吧，懦夫！",
+	Pull2					= "休想从我面前逃掉！"
 })
 ---------------
 --  Maexxna  --
@@ -775,6 +772,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "死吧，入侵者！",
 	Pull2				= "荣耀归于我主！",
+	Pull3				= "我要没收你的生命！",
 	AddsYell			= "起来吧，我的战士们！起来，再为主人尽忠一次！"
 })
 --------------------------
@@ -959,7 +957,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell					= "你们这些蠢货已经主动步入了陷阱。",
 	WarningWave1			= "%d %s",
 	WarningWave2			= "%d %s 和 %d %s",
 	WarningWave3			= "%d %s, %d %s 和 %d %s",
@@ -984,6 +981,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "印记 %d",
 })
 
 L:SetWarningLocalization({
@@ -1292,6 +1290,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
