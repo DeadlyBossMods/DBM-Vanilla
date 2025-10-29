@@ -80,10 +80,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Emperadores Gemelos"
 }
-L:SetMiscLocalization{
-	Veklor = "Emperor Vek'lor",
-	Veknil = "Emperor Vek'nilash"
-}
 
 ------------
 -- C'Thun --
@@ -1407,6 +1403,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
