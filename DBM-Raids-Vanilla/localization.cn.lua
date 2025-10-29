@@ -981,7 +981,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	timerMark	= "印记 %d",
+	timerMark	= "印记 %d"
 })
 
 L:SetWarningLocalization({
@@ -1290,6 +1290,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
