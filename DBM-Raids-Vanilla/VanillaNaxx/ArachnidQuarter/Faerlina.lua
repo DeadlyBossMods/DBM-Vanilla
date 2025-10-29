@@ -13,7 +13,7 @@ mod:SetEncounterID(1110)
 mod:SetModelID(15940)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Pull)
+mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 28798 28732 28794",--54100, 54097, 54099
