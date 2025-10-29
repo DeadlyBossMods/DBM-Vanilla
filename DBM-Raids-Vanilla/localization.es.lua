@@ -1077,7 +1077,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	timerMark	= "Marca %d",
+	timerMark	= "Marca %d"
 })
 
 L:SetWarningLocalization({
@@ -1403,6 +1403,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
