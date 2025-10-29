@@ -1084,7 +1084,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	timerMark	= "%d번 징표",
+	timerMark	= "%d번 징표"
 })
 
 L:SetWarningLocalization({
@@ -1585,6 +1585,7 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
 
 
