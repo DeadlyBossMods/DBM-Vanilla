@@ -194,10 +194,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Empereurs jumeaux"
 }
-L:SetMiscLocalization{
-	Veklor = "Empereur Vek'lor",
-	Veknil = "Empereur Vek'nilash"
-}
 
 ------------
 -- C'Thun --
