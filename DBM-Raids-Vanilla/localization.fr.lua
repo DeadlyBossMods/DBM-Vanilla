@@ -817,7 +817,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "À genoux, vermisseau !", --Not actually pull trigger, but often said on pull
+	Pull1					= "À genoux, vermisseau !",
 	Pull2					= "Vous ne pouvez pas m'échapper !"
 })
 ---------------
