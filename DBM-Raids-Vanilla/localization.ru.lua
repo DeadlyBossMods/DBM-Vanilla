@@ -845,7 +845,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "На колени предо мной, червь!",
+	Pull1					= "На колени предо мной, червь!",
 	Pull2					= "Тебе не скрыться от меня!"
 })
 
