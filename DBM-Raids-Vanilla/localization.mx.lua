@@ -822,7 +822,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "¡Arrodíllate ante mí, sabandija!", --Not actually pull trigger, but often said on pull
+	Pull1					= "¡Arrodíllate ante mí, sabandija!",
 	Pull2					= "¡No puedes esconderte de mí!"
 })
 
