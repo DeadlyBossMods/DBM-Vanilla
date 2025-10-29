@@ -77,10 +77,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "雙子帝王"
 }
-L:SetMiscLocalization{
-	Veklor = "維克洛爾大帝",
-	Veknil = "維克尼拉斯大帝"
-}
 
 ------------
 -- C'Thun --
@@ -716,6 +712,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull1					= "Kneel before me, worm!",
+	Pull2					= "You cannot hide from me!"
 })
 
 ---------------
@@ -769,8 +767,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Die, trespasser!", --needs translation
+	Pull1				= "Die, trespasser!",
 	Pull2 				= "Glory to the master!",
+	Pull3				= "Your life is forfeit!",
 	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
@@ -799,7 +798,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "You are mine now.", --needs translation
+	Pull1				= "You are mine now.",
 	Pull2				= "I see you..."
 })
 
@@ -943,7 +942,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "你們這些蠢貨已經主動步入了陷阱。",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s 和 %d %s",
 	WarningWave3	= "%d %s, %d %s 和 %d %s",
@@ -968,6 +966,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "印記 %d"
 })
 
 L:SetWarningLocalization({
@@ -1274,6 +1273,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
