@@ -1057,7 +1057,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Tú mismo has buscado tu final.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
