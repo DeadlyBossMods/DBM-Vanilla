@@ -80,10 +80,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Императоры-близнецы"
 }
-L:SetMiscLocalization{
-	Veklor = "Император Век'лор",
-	Veknil = "Император Век'нилаш"
-}
 
 ------------
 -- C'Thun --
@@ -849,7 +845,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Склонитесь передо мной, черви!"
+	Pull1					= "На колени предо мной, червь!",
+	Pull2					= "Тебе не скрыться от меня!"
 })
 
 ---------------
@@ -903,8 +900,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Смерть чужакам!",
+	Pull1				= "Умри, преступник!",
 	Pull2				= "Слава господину!",
+	Pull3				= "Жизнь – плата за твои проступки.",
 	AddsYell			= "Восстаньте, мои воины! Восстаньте и сразитесь вновь!"
 })
 
@@ -1079,7 +1077,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Глупо было искать свою смерть.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s и %d %s",
 	WarningWave3	= "%d %s, %d %s и %d %s",
