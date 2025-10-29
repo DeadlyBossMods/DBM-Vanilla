@@ -77,10 +77,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Zwillingsimperatoren"
 }
-L:SetMiscLocalization{
-	Veklor = "Imperator Vek'lor",
-	Veknil = "Imperator Vek'nilash"
-}
 
 ------------
 -- C'Thun --
@@ -778,7 +774,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Kniet nieder, Wurm!"
+	Pull1					= "Kniet nieder, Wurm!",
+	Pull2					= "Ihr könnt euch nicht vor mir verstecken!"
 })
 
 ---------------
@@ -834,6 +831,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Sterbt, Eindringling!",
 	Pull2				= "Ehre unserem Meister!",
+	Pull3				= "Euer Leben ist verwirkt!",
 	AddsYell			= "Erhebt euch, Soldaten! Erhebt euch und kämpft erneut!"
 })
 
@@ -1006,7 +1004,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Ihr Narren habt euren eigenen Untergang heraufbeschworen.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s und %d %s",
 	WarningWave3	= "%d %s, %d %s und %d %s",
@@ -1400,3 +1397,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
