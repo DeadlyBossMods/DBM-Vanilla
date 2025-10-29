@@ -1074,7 +1074,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Foolishly you have sought your own demise.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s and %d %s",
 	WarningWave3	= "%d %s, %d %s and %d %s",
@@ -1604,6 +1603,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
