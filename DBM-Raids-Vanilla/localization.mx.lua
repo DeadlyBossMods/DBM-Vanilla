@@ -1078,7 +1078,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	timerMark	= "Marca %d",
+	timerMark	= "Marca %d"
 })
 
 L:SetWarningLocalization({
