@@ -898,6 +898,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Die, trespasser!",
 	Pull2				= "Glory to the master!",
+	Pull3				= "Your life is forfeit!",
 	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
@@ -1602,5 +1603,6 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
