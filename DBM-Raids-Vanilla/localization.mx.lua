@@ -801,7 +801,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corran! ¡Así la sangre circula más rápido!",
+	Pull1				= "Eso… ¡Corran! ¡Así la sangre circula más rápido!",
 	Pull2				= "Solo un bocado...",
 	Pull3				= "No hay salida."
 })
@@ -826,7 +826,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull
+	Pull1					= "¡Arrodíllate ante mí, sabandija!", --Not actually pull trigger, but often said on pull
+	Pull2					= "¡No puedes esconderte de mí!"
 })
 
 -------------
@@ -882,6 +883,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "¡Muere, intruso!",
 	Pull2				= "¡Gloria al amo!",
+	Pull3				= "¡No tienes derecho a vivir!",
 	AddsYell			= "¡Levántense, soldados míos! ¡Levántense y luchen una vez más!"
 })
 
@@ -1081,6 +1083,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "Marca %d",
 })
 
 L:SetWarningLocalization({
