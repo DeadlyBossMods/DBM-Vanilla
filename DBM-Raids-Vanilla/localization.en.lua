@@ -1088,7 +1088,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name = "Four Horsemen"
+	name = "The Four Horsemen"
 })
 
 L:SetOptionLocalization({
@@ -1602,4 +1602,5 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
