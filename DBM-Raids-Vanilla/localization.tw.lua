@@ -54,11 +54,11 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始減速!",
+	Slow	= "開始減速！",
 	Freezing= "凍住了",
-	Frozen	= "變成冰凍的固體!",
-	Phase4 	= "開始爆裂!",
-	Phase5 	= "看來準備好毀滅了!",
+	Frozen	= "變成冰凍的固體！",
+	Phase4 	= "開始爆裂！",
+	Phase5 	= "看來準備好毀滅了！",
 	Phase6 	= "Explodes."
 }
 -------------
@@ -167,12 +167,12 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Wave12		= "它們來了。盡量別被它們幹掉，新兵。",
-	Wave3		= "我們懲罰的時刻就在眼前!讓黑暗支配敵人的內心吧!",
-	Wave4		= "我們不需在被禁堵的門與石牆後等待了!我們的復仇將不再被否認!巨龍將在我們的憤怒之前顫抖!",
-	Wave5		= "恐懼是給敵人的!恐懼與死亡!",
-	Wave6		= "鹿盔將為了活命而啜泣、乞求，就像他的兒子一樣!一千年的不公將在今日結束!",
-	Wave7		= "范達爾!你的時候到了!躲進翡翠夢境祈禱我們永遠不會找到你吧!",
-	Wave8		= "厚顏無恥的笨蛋!我要親手殺了你!"
+	Wave3		= "我們懲罰的時刻就在眼前！讓黑暗支配敵人的內心吧！",
+	Wave4		= "我們不需在被禁堵的門與石牆後等待了！我們的復仇將不再被否認！巨龍將在我們的憤怒之前顫抖！",
+	Wave5		= "恐懼是給敵人的！恐懼與死亡！",
+	Wave6		= "鹿盔將為了活命而啜泣、乞求，就像他的兒子一樣！一千年的不公將在今日結束！",
+	Wave7		= "范達爾！你的時候到了！躲進翡翠夢境祈禱我們永遠不會找到你吧！",
+	Wave8		= "厚顏無恥的笨蛋！我要親手殺了你！"
 }
 
 ----------
@@ -195,7 +195,7 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追擊了",
 	SpecWarnPursue	= "你被追擊了",
-	WarnDismember	= ">%2$s<中了%1$s(%s)"
+	WarnDismember	= ">%s<中了%s(%s)"
 }
 L:SetOptionLocalization{
 	WarnPursue		= "提示被追擊的目標",
@@ -258,7 +258,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "在寶珠的控制力消失之前逃走。",
-	YellPull 	= "入侵者闖入孵化室了!警報!不惜一切代價保護蛋!"
+	YellPull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
 -------------------
 --  Vaelastrasz  --
@@ -270,7 +270,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Event	= "太遲了，朋友! 奈法利斯的腐化已經掌握了我...我已經無法...控制我自己了。"
+	Event	= "太遲了，朋友！奈法利斯的腐化掌控了我…我已經無法…控制自己了。"
 }
 -----------------
 --  Broodlord  --
@@ -282,7 +282,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull	= "你怎麼進來的?你們這種生物不能進來!我要毀滅你們!"
+	Pull	= "你們根本不應該在這裡出現！我要殺掉你們！"
 }
 
 ---------------
@@ -395,17 +395,18 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "特別警告：當你中了職業點名時"
 }
 L:SetMiscLocalization{
-	YellP2		= "幹得好，我的手下。凡人的勇氣開始消退!現在，現在讓我們看看他們如何應對黑石之王的力量!!!",
-	YellP3		= "不可能!出現吧，我的僕人!再次為我的主人服務!",
+	YellP1		= "Let the games begin!",
+	YellP2		= "幹得好，我的手下。凡人的勇氣開始消退！現在，現在讓我們看看他們如何應對黑石之王的力量！！！",
+	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
 	YellShaman	= "薩滿，讓我看看",
-	YellPaladin	= "聖騎士...聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
-	YellDruid	= "德魯伊和你們愚蠢的變身術。讓我們看看什麼會發生吧!",
-	YellPriest	= "牧師!如果你要繼續這麼治療的話，那我們來玩點有趣的東西!",
-	YellWarrior	= "戰士，我知道你的力量不只如此!讓我們來見識一下吧!",
-	YellRogue	= "盜賊?不要躲了，面對我吧!",
-	YellWarlock	= "術士，不要隨便去玩那些你不理解的法術。看看會發生什麼吧?",
-	YellHunter	= "獵人和你那討厭的豌豆射擊!",
-	YellMage	= "還有法師?你應該小心使用你的魔法...",
+	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
+	YellDruid	= "德魯伊和你們愚蠢的變形。讓我們看看什麼會發生吧！",
+	YellPriest	= "牧師！如果你要繼續這麼治療的話，那我們來玩點有趣的東西！",
+	YellWarrior	= "戰士，我知道你應該比較抗打！讓我們來見識一下吧！",
+	YellRogue	= "盜賊？不要躲了，面對我吧！",
+	YellWarlock	= "術士，不要隨便去玩那些你不理解的法術。看看會發生什麼吧？",
+	YellHunter	= "獵人和你那討厭的豌豆射擊！",
+	YellMage	= "還有法師？你應該小心使用你的魔法……",
 	YellDK		= "死亡騎士們...來這。",
 	YellMonk	= "武僧"
 }
@@ -514,8 +515,8 @@ L:SetOptionLocalization{
 	TimerEmerge			= "為現身顯示計時器"
 }
 L:SetMiscLocalization{
-	Submerge	= "出現吧，我的奴僕! 保衛你們的主人!",
-	Pull		= "你這個莽撞的傢伙!你簡直是自尋死路!看吧，你驚動了主人!"
+	Submerge	= "出現吧，我的奴僕！ 保衛你們的主人！",
+	Pull		= "你這個莽撞的傢伙！你簡直是自尋死路！看吧，你驚動了主人！"
 }
 
 -----------------
@@ -897,7 +898,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1 = "絕不留情！",
-	Yell2 = "練習時間到此為止!都拿出真本事來！",
+	Yell2 = "練習時間到此為止！都拿出真本事來！",
 	Yell3 = "照我教你的做！",
 	Yell4 = "絆腿……有什麼問題嗎？"
 })
@@ -1273,6 +1274,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
