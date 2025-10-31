@@ -849,18 +849,6 @@ L:SetGeneralLocalization({
 	name 				= "格罗布鲁斯"
 })
 
-L:SetOptionLocalization({
-	SpecialWarningInjection		= "当你中了变异注射时显示特别警报",
-	SetIconOnInjectionTarget	= "设定标记给中了变异注射的玩家"
-})
-
-L:SetWarningLocalization({
-	SpecialWarningInjection		= "你中了变异注射 - 快跑开"
-})
-
-L:SetTimerLocalization({
-})
-
 -------------
 --  Gluth  --
 -------------
@@ -1290,6 +1278,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
