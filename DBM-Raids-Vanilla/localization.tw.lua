@@ -25,7 +25,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
-	name = "戰地衛士沙爾圖拉"
+	name = "沙爾圖拉"
 }
 
 --------------
@@ -34,7 +34,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Fankriss")
 
 L:SetGeneralLocalization{
-	name = "不屈的范克里斯"
+	name = "頑強的范克里斯"
 }
 
 --------------
@@ -278,7 +278,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Broodlord")
 
 L:SetGeneralLocalization{
-	name	= "幼龍領主勒西雷爾"
+	name	= "勒西雷爾"
 }
 
 L:SetMiscLocalization{
@@ -319,7 +319,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "龍人護衛"--FIXME
+	name = "龍人護衛"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s弱點"
@@ -519,7 +519,7 @@ L:SetMiscLocalization{
 }
 
 -----------------
---  The Molten Core (Placeholder?_  --
+--  The Molten Core   --
 -----------------
 L = DBM:GetModLocalization("MoltenCore")
 
@@ -687,9 +687,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "對，跑吧!那樣傷口出血就更多了!",
-	Pull2				= "一些小點心...",
-	Pull3 				= "There is no way out." --needs translation
+	Pull1				= "對，跑吧！那樣傷口出血就更多了！",
+	Pull2				= "一些小點心……",
+	Pull3 				= "你們逃不掉的。"
 })
 
 ----------------------------
@@ -712,8 +712,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "Kneel before me, worm!",
-	Pull2					= "You cannot hide from me!"
+	Pull1					= "跪下求饒吧，懦夫！",
+	Pull2					= "休想從我面前逃掉！"
 })
 
 ---------------
@@ -767,10 +767,10 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Die, trespasser!",
-	Pull2 				= "Glory to the master!",
-	Pull3				= "Your life is forfeit!",
-	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
+	Pull1				= "死吧，入侵者！",
+	Pull2 				= "榮耀歸於我主！",
+	Pull3				= "我要沒收你的生命！",
+	AddsYell			= "起來吧，我的戰士們！起來，再為主人盡忠一次！"
 })
 
 --------------------------
@@ -798,8 +798,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "You are mine now.",
-	Pull2				= "I see you..."
+	Pull1				= "你是我的了。",
+	Pull2				= "我看到你了……"
 })
 
 ---------------
@@ -808,7 +808,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("LoathebVanilla")
 
 L:SetGeneralLocalization({
-	name = "憎恨者"
+	name = "洛斯伯"
 })
 
 L:SetWarningLocalization({
@@ -834,8 +834,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "縫補者要跟你玩!",
-	yell2 = "科爾蘇加德讓縫補者成為戰爭的化身!"
+	yell1 = "縫補者要跟你玩！",
+	yell2 = "縫補者是科爾蘇加德的戰神！"
 })
 
 -----------------
@@ -866,9 +866,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "斯塔拉格要碾碎你!",
-	Emote	= "%s超過負荷!",
-	Emote2	= "泰斯拉線圈超過負荷!",
+	Yell	= "斯塔拉格要碾碎你！",
+	Emote	= "%s超過負荷！",
+	Emote2	= "泰斯拉線圈超過負荷！",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -896,10 +896,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "絕不留情!",
-	Yell2 = "練習時間到此為止!都拿出真本事來!",
-	Yell3 = "照我教你的做!",
-	Yell4 = "絆腿……有什麼問題嗎?"
+	Yell1 = "絕不留情！",
+	Yell2 = "練習時間到此為止!都拿出真本事來！",
+	Yell3 = "照我教你的做！",
+	Yell4 = "絆腿……有什麼問題嗎？"
 })
 
 L:SetOptionLocalization({
@@ -1023,7 +1023,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們!聽從科爾蘇加德的召喚!"
+	Yell = "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！"
 })
 
 L:SetWarningLocalization({
@@ -1273,6 +1273,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
