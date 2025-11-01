@@ -230,12 +230,7 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "無疤者奧斯里安"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
+
 L:SetOptionLocalization{
 	WarnVulnerable	= "提示虛弱",
 	TimerVulnerable	= "為虛弱顯示計時器"
@@ -1300,6 +1295,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
