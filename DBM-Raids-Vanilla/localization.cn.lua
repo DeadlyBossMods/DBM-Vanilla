@@ -405,6 +405,7 @@ L:SetOptionLocalization{
 	WarnPhase			= "提示阶段转换"
 }
 L:SetMiscLocalization{
+	YellP1 		= "Let the games begin!",
 	YellP2		= "干得好，我的手下。凡人的勇气开始消退！现在，现在让我们看看他们如何应对黑石之王的力量！！！",
 	YellP3		= "不可能！出现吧，我的仆人！再次为我的主人服务！",
 	YellShaman	= "萨满，让我看看",
@@ -1301,6 +1302,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
