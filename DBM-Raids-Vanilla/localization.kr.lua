@@ -79,10 +79,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "쌍둥이 제왕"
 }
-L:SetMiscLocalization{
-	Veklor = "제왕 베클로어",
-	Veknil = "제왕 베크닐라쉬"
-}
 
 ------------
 -- C'Thun --
@@ -832,7 +828,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "내 앞에 무릎을 꿇어라, 벌레들아!"
+	Pull1					= "내 앞에 무릎을 꿇어라, 벌레들아!",
+	Pull2					= "나에게서 도망칠 수는 없다!"
 })
 
 ---------------
@@ -888,6 +885,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "죽어라, 침입자들아!",
 	Pull2				= "주인님께 영광을!",
+	Pull3				= "너희 생명은 끝이다!",
 	AddsYell			= "일어나라, 병사들이여! 다시 일어나 싸워라!"
 })
 
@@ -1062,7 +1060,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "어리석은 것들, 스스로 죽음을 자초하다니!",
 	WarningWave2	= "%d %s, %d %s",
 	WarningWave3	= "%d %s, %d %s, %d %s",
 	Trainee			= "수련생",
@@ -1087,7 +1084,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	timerMark	= "%d번 징표",
+	timerMark	= "%d번 징표"
 })
 
 L:SetWarningLocalization({
@@ -1588,6 +1585,8 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
+
 
 
 
