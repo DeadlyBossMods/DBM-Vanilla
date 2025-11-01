@@ -82,12 +82,7 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "Ossirian l'Intouché"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
+
 L:SetOptionLocalization{
 	WarnVulnerable	= "Afficher une annonce pour les sensibilités",
 	TimerVulnerable	= "Afficher un chronomètre pour les sensibilités"
