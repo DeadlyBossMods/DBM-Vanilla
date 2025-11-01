@@ -361,6 +361,8 @@ L:SetGeneralLocalization{
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
 L:SetGeneralLocalization{
 	name = "Ebanorroca y Flamagor"
 }
