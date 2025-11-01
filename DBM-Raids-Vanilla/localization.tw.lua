@@ -25,7 +25,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
-	name = "戰地衛士沙爾圖拉"
+	name = "沙爾圖拉"
 }
 
 --------------
@@ -34,7 +34,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Fankriss")
 
 L:SetGeneralLocalization{
-	name = "不屈的范克里斯"
+	name = "頑強的范克里斯"
 }
 
 --------------
@@ -54,11 +54,11 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始減速!",
+	Slow	= "開始減速！",
 	Freezing= "凍住了",
-	Frozen	= "變成冰凍的固體!",
-	Phase4 	= "開始爆裂!",
-	Phase5 	= "看來準備好毀滅了!",
+	Frozen	= "變成冰凍的固體！",
+	Phase4 	= "開始爆裂！",
+	Phase5 	= "看來準備好毀滅了！",
 	Phase6 	= "Explodes."
 }
 -------------
@@ -76,10 +76,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
 	name = "雙子帝王"
-}
-L:SetMiscLocalization{
-	Veklor = "維克洛爾大帝",
-	Veknil = "維克尼拉斯大帝"
 }
 
 ------------
@@ -145,7 +141,14 @@ L:SetOptionLocalization{
 	WarnEmerge			= "為現身顯示警告",
 	TimerEmerge			= "為現身顯示計時器"
 }
+----------------
+-- AQ40 Trash --
+----------------
+L = DBM:GetModLocalization("AQ40Trash")
 
+L:SetGeneralLocalization{
+	name = "小怪"
+}
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -171,12 +174,13 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Wave12		= "它們來了。盡量別被它們幹掉，新兵。",
-	Wave3		= "我們懲罰的時刻就在眼前!讓黑暗支配敵人的內心吧!",
-	Wave4		= "我們不需在被禁堵的門與石牆後等待了!我們的復仇將不再被否認!巨龍將在我們的憤怒之前顫抖!",
-	Wave5		= "恐懼是給敵人的!恐懼與死亡!",
-	Wave6		= "鹿盔將為了活命而啜泣、乞求，就像他的兒子一樣!一千年的不公將在今日結束!",
-	Wave7		= "范達爾!你的時候到了!躲進翡翠夢境祈禱我們永遠不會找到你吧!",
-	Wave8		= "厚顏無恥的笨蛋!我要親手殺了你!"
+	Wave12Alt	= "記得嗎，拉賈克斯，上次我說會殺了你？",
+	Wave3		= "我們懲罰的時刻就在眼前！讓黑暗支配敵人的內心吧！",
+	Wave4		= "我們不需在被禁堵的門與石牆後等待了！我們的復仇將不再被否認！巨龍將在我們的憤怒之前顫抖！",
+	Wave5		= "恐懼是給敵人的！恐懼與死亡！",
+	Wave6		= "鹿盔將為了活命而啜泣、乞求，就像他的兒子一樣！一千年的不公將在今日結束！",
+	Wave7		= "范達爾！你的時候到了！躲進翡翠夢境祈禱我們永遠不會找到你吧！",
+	Wave8		= "厚顏無恥的笨蛋！我要親手殺了你！"
 }
 
 ----------
@@ -199,7 +203,7 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追擊了",
 	SpecWarnPursue	= "你被追擊了",
-	WarnDismember	= ">%2$s<中了%1$s(%s)"
+	WarnDismember	= ">%s<中了%s(%s)"
 }
 L:SetOptionLocalization{
 	WarnPursue		= "提示被追擊的目標",
@@ -243,7 +247,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ20：全程計時"
+	name = "小怪"
 }
 
 -----------------
@@ -262,7 +266,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "在寶珠的控制力消失之前逃走。",
-	YellPull 	= "入侵者闖入孵化室了!警報!不惜一切代價保護蛋!"
+	YellPull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
 -------------------
 --  Vaelastrasz  --
@@ -274,7 +278,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Event	= "太遲了，朋友! 奈法利斯的腐化已經掌握了我...我已經無法...控制我自己了。"
+	Event	= "太遲了，朋友！奈法利斯的腐化掌控了我…我已經無法…控制自己了。"
 }
 -----------------
 --  Broodlord  --
@@ -282,11 +286,11 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Broodlord")
 
 L:SetGeneralLocalization{
-	name	= "幼龍領主勒西雷爾"
+	name	= "勒西雷爾"
 }
 
 L:SetMiscLocalization{
-	Pull	= "你怎麼進來的?你們這種生物不能進來!我要毀滅你們!"
+	Pull	= "你們根本不應該在這裡出現！我要殺掉你們！"
 }
 
 ---------------
@@ -323,7 +327,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "龍人護衛"--FIXME
+	name = "龍人護衛"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s弱點"
@@ -399,17 +403,18 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "特別警告：當你中了職業點名時"
 }
 L:SetMiscLocalization{
-	YellP2		= "幹得好，我的手下。凡人的勇氣開始消退!現在，現在讓我們看看他們如何應對黑石之王的力量!!!",
-	YellP3		= "不可能!出現吧，我的僕人!再次為我的主人服務!",
+	YellP1		= "Let the games begin!",
+	YellP2		= "幹得好，我的手下。凡人的勇氣開始消退！現在，現在讓我們看看他們如何應對黑石之王的力量！！！",
+	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
 	YellShaman	= "薩滿，讓我看看",
-	YellPaladin	= "聖騎士...聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
-	YellDruid	= "德魯伊和你們愚蠢的變身術。讓我們看看什麼會發生吧!",
-	YellPriest	= "牧師!如果你要繼續這麼治療的話，那我們來玩點有趣的東西!",
-	YellWarrior	= "戰士，我知道你的力量不只如此!讓我們來見識一下吧!",
-	YellRogue	= "盜賊?不要躲了，面對我吧!",
-	YellWarlock	= "術士，不要隨便去玩那些你不理解的法術。看看會發生什麼吧?",
-	YellHunter	= "獵人和你那討厭的豌豆射擊!",
-	YellMage	= "還有法師?你應該小心使用你的魔法...",
+	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
+	YellDruid	= "德魯伊和你們愚蠢的變形。讓我們看看什麼會發生吧！",
+	YellPriest	= "牧師！如果你要繼續這麼治療的話，那我們來玩點有趣的東西！",
+	YellWarrior	= "戰士，我知道你應該比較抗打！讓我們來見識一下吧！",
+	YellRogue	= "盜賊？不要躲了，面對我吧！",
+	YellWarlock	= "術士，不要隨便去玩那些你不理解的法術。看看會發生什麼吧？",
+	YellHunter	= "獵人和你那討厭的豌豆射擊！",
+	YellMage	= "還有法師？你應該小心使用你的魔法……",
 	YellDK		= "死亡騎士們...來這。",
 	YellMonk	= "武僧"
 }
@@ -518,19 +523,26 @@ L:SetOptionLocalization{
 	TimerEmerge			= "為現身顯示計時器"
 }
 L:SetMiscLocalization{
-	Submerge	= "出現吧，我的奴僕! 保衛你們的主人!",
-	Pull		= "你這個莽撞的傢伙!你簡直是自尋死路!看吧，你驚動了主人!"
+	Submerge	= "出現吧，我的奴僕！ 保衛你們的主人！",
+	Pull		= "你這個莽撞的傢伙！你簡直是自尋死路！看吧，你驚動了主人！"
 }
 
 -----------------
---  The Molten Core (Placeholder?_  --
+--  The Molten Core   --
 -----------------
 L = DBM:GetModLocalization("MoltenCore")
 
 L:SetGeneralLocalization{
 	name = "熔火之心"
 }
+-----------------
+--  MC: Trash  --
+-----------------
+L = DBM:GetModLocalization("MCTrash")
 
+L:SetGeneralLocalization{
+	name = "小怪"
+}
 -------------------
 --  Venoxis  --
 -------------------
@@ -691,9 +703,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "對，跑吧!那樣傷口出血就更多了!",
-	Pull2				= "一些小點心...",
-	Pull3 				= "There is no way out." --needs translation
+	Pull1				= "對，跑吧！那樣傷口出血就更多了！",
+	Pull2				= "一些小點心……",
+	Pull3 				= "你們逃不掉的。"
 })
 
 ----------------------------
@@ -716,6 +728,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
+	Pull1					= "跪下求饒吧，懦夫！",
+	Pull2					= "休想從我面前逃掉！"
 })
 
 ---------------
@@ -769,9 +783,10 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Die, trespasser!", --needs translation
-	Pull2 				= "Glory to the master!",
-	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
+	Pull1				= "死吧，入侵者！",
+	Pull2 				= "榮耀歸於我主！",
+	Pull3				= "我要沒收你的生命！",
+	AddsYell			= "起來吧，我的戰士們！起來，再為主人盡忠一次！"
 })
 
 --------------------------
@@ -799,8 +814,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "You are mine now.", --needs translation
-	Pull2				= "I see you..."
+	Pull1				= "你是我的了。",
+	Pull2				= "我看到你了……"
 })
 
 ---------------
@@ -809,7 +824,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("LoathebVanilla")
 
 L:SetGeneralLocalization({
-	name = "憎恨者"
+	name = "洛斯伯"
 })
 
 L:SetWarningLocalization({
@@ -835,8 +850,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "縫補者要跟你玩!",
-	yell2 = "科爾蘇加德讓縫補者成為戰爭的化身!"
+	yell1 = "縫補者要跟你玩！",
+	yell2 = "縫補者是科爾蘇加德的戰神！"
 })
 
 -----------------
@@ -867,9 +882,9 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "斯塔拉格要碾碎你!",
-	Emote	= "%s超過負荷!",
-	Emote2	= "泰斯拉線圈超過負荷!",
+	Yell	= "斯塔拉格要碾碎你！",
+	Emote	= "%s超過負荷！",
+	Emote2	= "泰斯拉線圈超過負荷！",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -897,10 +912,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "絕不留情!",
-	Yell2 = "練習時間到此為止!都拿出真本事來!",
-	Yell3 = "照我教你的做!",
-	Yell4 = "絆腿……有什麼問題嗎?"
+	Yell1 = "絕不留情！",
+	Yell2 = "練習時間到此為止！都拿出真本事來！",
+	Yell3 = "照我教你的做！",
+	Yell4 = "絆腿……有什麼問題嗎？"
 })
 
 L:SetOptionLocalization({
@@ -943,7 +958,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "你們這些蠢貨已經主動步入了陷阱。",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s 和 %d %s",
 	WarningWave3	= "%d %s, %d %s 和 %d %s",
@@ -968,10 +982,11 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "印記%d"
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon			= "3秒後印記 %d",
+	WarningMarkSoon			= "3秒後印記%d",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
@@ -1024,7 +1039,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們!聽從科爾蘇加德的召喚!"
+	Yell = "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！"
 })
 
 L:SetWarningLocalization({
@@ -1035,6 +1050,17 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "第二階段"
 })
+
+-----------------
+--  Naxx Trash --
+-----------------
+
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "小怪"
+})
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1274,6 +1300,11 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
+
+
+
+
 
 
 
