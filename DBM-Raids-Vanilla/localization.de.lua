@@ -892,9 +892,6 @@ L:SetGeneralLocalization({
 	name = "Flickwerk"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	yell1			= "Flickwerk spielen möchte!",
 	yell2			= "Kel’thuzad macht Flickwerk zu seinem Abgesandten von Krieg!"
@@ -1398,6 +1395,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
