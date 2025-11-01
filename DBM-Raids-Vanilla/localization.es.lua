@@ -259,7 +259,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnVulnerable	= "Mostrar anuncio para debilidades",
-	TimerVulnerable	= "Mostrar temporizador para la duración de las debilidades"
+	TimerVulnerable	= "Mostrar temporizador para debilidades"
 }
 
 ----------------
@@ -1405,6 +1405,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
