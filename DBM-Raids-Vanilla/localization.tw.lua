@@ -141,7 +141,14 @@ L:SetOptionLocalization{
 	WarnEmerge			= "為現身顯示警告",
 	TimerEmerge			= "為現身顯示計時器"
 }
+----------------
+-- AQ40 Trash --
+----------------
+L = DBM:GetModLocalization("AQ40Trash")
 
+L:SetGeneralLocalization{
+	name = "小怪"
+}
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -167,6 +174,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Wave12		= "它們來了。盡量別被它們幹掉，新兵。",
+	Wave12Alt	= "記得嗎，拉賈克斯，上次我說會殺了你？",
 	Wave3		= "我們懲罰的時刻就在眼前！讓黑暗支配敵人的內心吧！",
 	Wave4		= "我們不需在被禁堵的門與石牆後等待了！我們的復仇將不再被否認！巨龍將在我們的憤怒之前顫抖！",
 	Wave5		= "恐懼是給敵人的！恐懼與死亡！",
@@ -239,7 +247,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "AQ20：全程計時"
+	name = "小怪"
 }
 
 -----------------
@@ -527,7 +535,14 @@ L = DBM:GetModLocalization("MoltenCore")
 L:SetGeneralLocalization{
 	name = "熔火之心"
 }
+-----------------
+--  MC: Trash  --
+-----------------
+L = DBM:GetModLocalization("MCTrash")
 
+L:SetGeneralLocalization{
+	name = "小怪"
+}
 -------------------
 --  Venoxis  --
 -------------------
@@ -1035,6 +1050,17 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "第二階段"
 })
+
+-----------------
+--  Naxx Trash --
+-----------------
+
+L = DBM:GetModLocalization("NaxxTrash")
+
+L:SetGeneralLocalization({
+	name = "小怪"
+})
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1274,6 +1300,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
