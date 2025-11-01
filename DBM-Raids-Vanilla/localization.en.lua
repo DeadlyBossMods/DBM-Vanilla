@@ -15,7 +15,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "Bug Trio"
+	name = "Silithid Royalty"
 }
 
 -------------
@@ -78,10 +78,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 
 L:SetGeneralLocalization{
 	name = "Twin Emperors"
-}
-L:SetMiscLocalization{
-	Veklor = "Emperor Vek'lor",
-	Veknil = "Emperor Vek'nilash"
 }
 
 ------------
@@ -846,7 +842,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Kneel before me, worm!"--Not actually pull trigger, but often said on pull
+	Pull1					= "Kneel before me, worm!", --Not actually pull trigger, but often said on pull
+	Pull2					= "You cannot hide from me!"
 })
 
 ---------------
@@ -902,6 +899,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Die, trespasser!",
 	Pull2				= "Glory to the master!",
+	Pull3				= "Your life is forfeit!",
 	AddsYell			= "Rise, my soldiers! Rise and fight once more!"
 })
 
@@ -1076,7 +1074,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Foolishly you have sought your own demise.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s and %d %s",
 	WarningWave3	= "%d %s, %d %s and %d %s",
@@ -1092,7 +1089,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name = "Four Horsemen"
+	name = "The Four Horsemen"
 })
 
 L:SetOptionLocalization({
@@ -1606,3 +1603,8 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
+
+
+
+
