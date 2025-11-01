@@ -175,7 +175,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Wave12		= "它们来了。尽量别被它们干掉，新兵。",
-	Wave12Alt = "记得吗，拉贾克斯，上次我说会杀了你？",
+	Wave12Alt 	= "记得吗，拉贾克斯，上次我说会杀了你？",
 	Wave3		= "我们惩罚的时刻就在眼前！让黑暗支配敌人的内心吧！",
 	Wave4		= "我们不需在被禁堵的门与石墙后等待了！我们的复仇将不再被否认！巨龙将在我们的愤怒之前颤抖！",
 	Wave5		= "恐惧是给敌人的！恐惧与死亡！",
@@ -1301,6 +1301,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
