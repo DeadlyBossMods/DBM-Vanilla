@@ -18,16 +18,30 @@ mod:SetZone(509)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
+	"SPELL_CAST_SUCCESS 25195",
 	"SPELL_AURA_APPLIED 25176 25189 25177 25178 25180 25181 25183",
 	"SPELL_AURA_REMOVED 25189"
 )
 
-local warnSupreme		= mod:NewSpellAnnounce(25176, 3)
-local warnCyclone		= mod:NewTargetAnnounce(25189, 4)
-local warnVulnerable	= mod:NewAnnounce("WarnVulnerable", 3, "132866")
+local warnSupreme			= mod:NewSpellAnnounce(25176, 3)
+local warnCyclone			= mod:NewTargetAnnounce(25189, 4)
+local warnVulnerable		= mod:NewAnnounce("WarnVulnerable", 3, "132866")
+local warnCurseOfTongues	= mod:NewSpellAnnounce(25195, 2)
 
-local timerCyclone		= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
-local timerVulnerable	= mod:NewTimer(45, "TimerVulnerable", "132866", nil, nil, 6)
+local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
+local timerVulnerable		= mod:NewTimer(45, "TimerVulnerable", "132866", nil, nil, 6)
+local timerCurseOfTongues	= mod:NewVarTimer("v21-51", 25195, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+
+function mod:OnCombatStart(delay)
+	timerCurseOfTongues:Start(32.3 - delay)
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(25195) then
+		warnCurseOfTongues:Show()
+		timerCurseOfTongues:Start()
+	end
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(25176) then
