@@ -408,14 +408,14 @@ L:SetMiscLocalization{
 	YellP2		= "干得好，我的手下。凡人的勇气开始消退！现在，现在让我们看看他们如何应对黑石之王的力量！！！",
 	YellP3		= "不可能！出现吧，我的仆人！再次为我的主人服务！",
 	YellShaman	= "萨满，让我看看",
-	YellPaladin	= "圣骑士...听说你有无数条命。让我看看到底是怎么样的吧。",
-	YellDruid	= "德鲁伊和你们愚蠢的变身术。让我们看看什么会发生吧！",
-	YellPriest	= "牧师！如果你要继续像那样治疗，我们还不如让它看起来更有趣！",
-	YellWarrior	= "战士，我知道你的力量不只如此！让我们来见识一下吧！",
-	YellRogue	= "潜行者?不要躲了，面对我吧！",
-	YellWarlock	= "术士，不要随便去玩那些你不理解的法术。看看会发生什么吧?",
-	YellHunter	= "猎人和你那讨厌的豌豆射击！",
-	YellMage	= "还有法师?你应该小心使用你的魔法...",
+	YellPaladin	= "圣骑士……听说你们有无数条命。让我看看到底是怎么样的吧。",
+	YellDruid	= "德鲁伊和你们愚蠢的变形法术。让我们看看有什么事情会发生吧！",
+	YellPriest	= "牧师们！如果你们要继续这么治疗的话，那我们就来玩点有趣的东西吧！",
+	YellWarrior	= "战士们，我知道你们应该更凶猛一些！让我们来见识一下吧！",
+	YellRogue	= "潜行者？不要躲躲藏藏了，勇敢地面对我吧！",
+	YellWarlock	= "术士们，不要随便去尝试那些你们根本不理解的法术。看到后果了吧？",
+	YellHunter	= "猎人们，还有你们那些讨厌的玩具枪！",
+	YellMage	= "你们也是法师？小心别玩火自焚……",
 	YellDK		= "死亡骑士士们...来这。",
 	YellMonk	= "武僧???...又是什么???"
 }
@@ -1301,6 +1301,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
