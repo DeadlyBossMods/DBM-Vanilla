@@ -195,10 +195,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Emperadores Gemelos"
 }
-L:SetMiscLocalization{
-	Veklor = "Emperador Vek'lor",
-	Veknil = "Emperador Vek'nilash"
-}
 
 ------------
 -- C'Thun --
@@ -483,6 +479,8 @@ L:SetGeneralLocalization{
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
 L:SetGeneralLocalization{
 	name = "Ebanorroca y Flamagor"
 }
@@ -801,7 +799,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "¡Eso, corran! ¡Así la sangre circula más rápido!",
+	Pull1				= "Eso… ¡Corran! ¡Así la sangre circula más rápido!",
 	Pull2				= "Solo un bocado...",
 	Pull3				= "No hay salida."
 })
@@ -826,7 +824,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull
+	Pull1					= "¡Arrodíllate ante mí, sabandija!",
+	Pull2					= "¡No puedes esconderte de mí!"
 })
 
 -------------
@@ -882,6 +881,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "¡Muere, intruso!",
 	Pull2				= "¡Gloria al amo!",
+	Pull3				= "¡No tienes derecho a vivir!",
 	AddsYell			= "¡Levántense, soldados míos! ¡Levántense y luchen una vez más!"
 })
 
@@ -1055,7 +1055,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Tú mismo has buscado tu final.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
@@ -1081,6 +1080,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "Marca %d"
 })
 
 L:SetWarningLocalization({
@@ -1137,7 +1137,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "¡Lacayos, servidores, soldados de la fría oscuridad! ¡Obedezcan el llamado de Kel'Thuzad!"
+	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({

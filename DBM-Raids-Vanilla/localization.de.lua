@@ -77,10 +77,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Zwillingsimperatoren"
 }
-L:SetMiscLocalization{
-	Veklor = "Imperator Vek'lor",
-	Veknil = "Imperator Vek'nilash"
-}
 
 ------------
 -- C'Thun --
@@ -736,7 +732,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-   Breath = "%s atmet tief ein...",
+	Breath = "%s atmet tief ein...",
 	YellPull = "Was für ein Zufall. Normalerweise muss ich meinen Unterschlupf verlassen, um etwas zu essen.",
 	YellP2 = "Diese sinnlose Anstrengung langweilt mich. Ich werde Euch alle von oben verbrennen!",
 	YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!",
@@ -778,7 +774,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "Kniet nieder, Wurm!"
+	Pull1					= "Kniet nieder, Wurm!",
+	Pull2					= "Ihr könnt euch nicht vor mir verstecken!"
 })
 
 ---------------
@@ -834,6 +831,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Sterbt, Eindringling!",
 	Pull2				= "Ehre unserem Meister!",
+	Pull3				= "Euer Leben ist verwirkt!",
 	AddsYell			= "Erhebt euch, Soldaten! Erhebt euch und kämpft erneut!"
 })
 
@@ -892,9 +890,6 @@ L = DBM:GetModLocalization("PatchwerkVanilla")
 
 L:SetGeneralLocalization({
 	name = "Flickwerk"
-})
-
-L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
@@ -1006,7 +1001,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Ihr Narren habt euren eigenen Untergang heraufbeschworen.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s und %d %s",
 	WarningWave3	= "%d %s, %d %s und %d %s",
@@ -1032,6 +1026,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "Mal %d"
 })
 
 L:SetWarningLocalization({
@@ -1400,3 +1395,9 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
+
+
+
+
+

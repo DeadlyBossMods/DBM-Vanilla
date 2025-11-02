@@ -194,10 +194,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Empereurs jumeaux"
 }
-L:SetMiscLocalization{
-	Veklor = "Empereur Vek'lor",
-	Veknil = "Empereur Vek'nilash"
-}
 
 ------------
 -- C'Thun --
@@ -480,6 +476,8 @@ L:SetGeneralLocalization{
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
 L:SetGeneralLocalization{
 	name = "Rochébène et Flamegor"
 }
@@ -821,7 +819,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "À genoux, vermisseau !"--Not actually pull trigger, but often said on pull
+	Pull1					= "À genoux, vermisseau !",
+	Pull2					= "Vous ne pouvez pas m'échapper !"
 })
 ---------------
 --  Maexxna  --
@@ -876,6 +875,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Mourez, intrus !",
 	Pull2				= "Gloire au maître !",
+	Pull3				= "Vos vies ne valent plus rien !",
 	AddsYell			= "Levez-vous, soldats ! Levez-vous et combattez une fois encore !"
 })
 --------------------------
@@ -1049,7 +1049,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell				= "Dans votre folie, vous avez provoqué votre propre mort.",
 	WarningWave1		= "%d %s",
 	WarningWave2		= "%d %s et %d %s",
 	WarningWave3		= "%d %s, %d %s et %d %s",

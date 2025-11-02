@@ -80,10 +80,6 @@ L = DBM:GetModLocalization("TwinEmpsAQ")
 L:SetGeneralLocalization{
 	name = "Emperadores Gemelos"
 }
-L:SetMiscLocalization{
-	Veklor = "Emperor Vek'lor",
-	Veknil = "Emperor Vek'nilash"
-}
 
 ------------
 -- C'Thun --
@@ -361,6 +357,8 @@ L:SetGeneralLocalization{
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
 L:SetGeneralLocalization{
 	name = "Ebanorroca y Flamagor"
 }
@@ -825,7 +823,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull					= "¡Arrodíllate ante mí, sabandija!"--Not actually pull trigger, but often said on pull
+	Pull1					= "¡Arrodíllate ante mí, sabandija!",
+	Pull2 					= "¡No puedes esconderte de mí!"
 })
 
 -------------
@@ -881,6 +880,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "¡Muere, intruso!",
 	Pull2				= "¡Gloria al amo!",
+	Pull3 				= "¡No tienes derecho a vivir!",
 	AddsYell			= "¡Levantaos, soldados míos! ¡Levantaos y luchad una vez más!"
 })
 
@@ -1054,7 +1054,6 @@ L:SetWarningLocalization({
 })
 
 L:SetMiscLocalization({
-	yell			= "Tú mismo has buscado tu final.",
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
@@ -1080,6 +1079,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
+	timerMark	= "Marca %d"
 })
 
 L:SetWarningLocalization({
@@ -1405,6 +1405,12 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
+
+
+
+
+
 
 
 

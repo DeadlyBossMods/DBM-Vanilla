@@ -32,12 +32,7 @@ local timerTaunt		= mod:NewCDTimer(60, 29060, nil, nil, nil, 5, nil, DBM_COMMON_
 local timerShieldWall	= mod:NewBuffFadesTimer(20, 29061, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 function mod:OnCombatStart(delay)
-	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		-- This might also bee true for Era, old comment mentioned 22-26, but I'm pretty sure these fights were mostly unchanged on SoD
-		timerShout:Start("v25-26.34")
-	else
-		timerShout:Start("v22-26")
-	end
+	timerShout:Start("v25-27.3")
 	warnShoutSoon:Schedule(19 - delay)
 end
 
@@ -45,7 +40,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29107) then
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
 			-- Might be the same as the initial pull on SoD
-			timerShout:Start("v25.4-26.34")
+			timerShout:Start("v25.4-27.3")
 		else
 			timerShout:Start()
 		end
