@@ -842,8 +842,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "Kneel before me, worm!", --Not actually pull trigger, but often said on pull
-	Pull2					= "You cannot hide from me!"
+	Pull1					= "Kneel before me, worm!",
+	Pull2					= "You cannot hide from me!",
+	Pull3					= "Slay them in the master's name!"
 })
 
 ---------------
@@ -1603,6 +1604,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
