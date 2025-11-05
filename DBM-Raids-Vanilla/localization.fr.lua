@@ -1090,7 +1090,7 @@ L:SetWarningLocalization({
 L = DBM:GetModLocalization("SapphironVanilla")
 
 L:SetGeneralLocalization({
-	name = "Sapphiron"
+	name = "Saphiron"
 })
 
 L:SetOptionLocalization({
