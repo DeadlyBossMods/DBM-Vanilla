@@ -775,7 +775,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "Kniet nieder, Wurm!",
-	Pull2					= "Ihr könnt euch nicht vor mir verstecken!"
+	Pull2					= "Ihr könnt euch nicht vor mir verstecken!",
+	Pull3					= "Tötet sie im Namen des Meisters!"
 })
 
 ---------------
@@ -1395,6 +1396,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
