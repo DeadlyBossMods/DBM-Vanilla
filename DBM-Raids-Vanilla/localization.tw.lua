@@ -729,7 +729,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "跪下求饒吧，懦夫！",
-	Pull2					= "休想從我面前逃掉！"
+	Pull2					= "休想從我面前逃掉！",
+	Pull3					= "以主人之名，殺了他們！"
 })
 
 ---------------
@@ -1300,6 +1301,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
