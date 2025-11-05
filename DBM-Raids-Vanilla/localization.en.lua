@@ -229,7 +229,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " sets eyes on "
+	PursueEmote 	= "sets eyes on"
 }
 
 -------------
@@ -1604,6 +1604,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
