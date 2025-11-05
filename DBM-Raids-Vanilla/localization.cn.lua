@@ -16,7 +16,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "异种蝎皇族"
+	name = "安其拉三宝"
 }
 
 -------------
@@ -733,7 +733,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "跪下求饶吧，懦夫！",
-	Pull2					= "休想从我面前逃掉！"
+	Pull2					= "休想从我面前逃掉！",
+	Pull3					= "以主人之名，杀了他们！"
 })
 ---------------
 --  Maexxna  --
@@ -1302,6 +1303,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
