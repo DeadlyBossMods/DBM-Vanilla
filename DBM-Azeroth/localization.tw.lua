@@ -5,7 +5,7 @@ local L
 L = DBM:GetModLocalization("KazzakClassicVanilla")
 
 L:SetGeneralLocalization{
-	name = "卡札克領主"
+	name = "卡札克"
 }
 
 L:SetMiscLocalization({
@@ -16,7 +16,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("AzuregosVanilla")
 
 L:SetGeneralLocalization{
-	name = "艾索雷苟斯"
+	name = "艾索雷葛斯"
 }
 
 L:SetMiscLocalization({
