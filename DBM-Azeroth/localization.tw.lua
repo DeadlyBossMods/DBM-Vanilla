@@ -31,7 +31,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "和平不過是短暫的夢想!讓夢魘統治整個世界吧！"
+	Pull		= "和平不過是短暫的夢想！讓夢魘統治整個世界吧！"
 })
 
 -- Ysondre
@@ -42,7 +42,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "生命的希冀已被切斷!夢遊者要展開報復！"
+	Pull		= "生命的希冀已被切斷！夢遊者要展開報復！"
 })
 
 -- Lethon
@@ -64,5 +64,5 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "希望是靈魂染上的疾病!這片土地應該枯竭，從此死氣騰騰！"
+	Pull		= "希望是靈魂染上的疾病！這片土地應該枯竭，從此死氣騰騰！"
 })
