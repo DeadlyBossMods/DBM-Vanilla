@@ -364,8 +364,6 @@ L:SetGeneralLocalization{
 	name = "Seigneur sanglant Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Seigneur sanglant Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "je vous ai à l'œil"
 }
 
@@ -376,12 +374,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Frontière de la folie"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
 }
 
 -------------------
