@@ -169,10 +169,10 @@ L:SetOptionLocalization{
 	WarnShatter	= "Mostrar anuncio para hacerse añicos"
 }
 L:SetMiscLocalization{
-	Slow	= "comienza a remitir",
-	Freezing= "se queda inmóvil",
-	Frozen	= "está", --Chatlog showed quote as ¡Viscidus está ! 2025/11/06
-	Phase4 	= "empieza a desmoronarse",
+	Slow	= "comienza a ir más despacio",
+	Freezing= "se está congelando",
+	Frozen	= "no se puede mover",
+	Phase4 	= "comienza a desmoronarse",
 	Phase5 	= "parece a punto de hacerse añicos",
 	Phase6 	= "explota",
 
