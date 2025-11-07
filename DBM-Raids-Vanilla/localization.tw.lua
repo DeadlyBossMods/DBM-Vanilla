@@ -625,8 +625,6 @@ L:SetGeneralLocalization{
 	name = "血領主曼多基爾"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "血領主曼多基爾",
-	Ohgan		= "奧根",
 	GazeYell	= "我正在監視你"
 }
 
@@ -637,12 +635,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "瘋狂之緣"
-}
-L:SetMiscLocalization{
-	Hazzarah = "哈劄拉爾",
-	Renataki = "雷納塔基",
-	Wushoolay = "烏蘇雷",
-	Grilek = "格裏雷克"
 }
 
 -------------------
@@ -1301,6 +1293,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
