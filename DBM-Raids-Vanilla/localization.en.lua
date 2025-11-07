@@ -734,8 +734,6 @@ L:SetGeneralLocalization{
 	name = "Bloodlord Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Bloodlord Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "I'm watching you"
 }
 
@@ -1604,6 +1602,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
