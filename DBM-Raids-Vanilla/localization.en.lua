@@ -745,12 +745,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 L:SetGeneralLocalization{
 	name = "Edge of Madness"
 }
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
-}
 
 -------------------
 --  Gahz'ranka  --
@@ -1602,6 +1596,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
