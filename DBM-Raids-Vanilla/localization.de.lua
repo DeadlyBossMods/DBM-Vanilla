@@ -666,8 +666,6 @@ L:SetGeneralLocalization{
 	name = "Blutfürst Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Blutfürst Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "Ich behalte Euch im Auge"
 }
 
@@ -678,12 +676,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Rand des Wahnsinns"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
 }
 
 -------------------
@@ -1396,6 +1388,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
