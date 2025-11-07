@@ -1008,7 +1008,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell1 = "Não há compaixão nesta luta!",
 	Yell2 = "The time for practice is over! Show me what you have learned!",
-	Yell3 = "Do as I taught you!",
+	Yell3 = "Façam como eu ensinei!",
 	Yell4 = "Sweep the leg... Do you have a problem with that?"
 })
 
