@@ -738,8 +738,6 @@ L:SetGeneralLocalization{
 	name = "Мандокир Повелитель Крови"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Мандокир Повелитель Крови",
-	Ohgan		= "Охган",
 	GazeYell	= "Я за тобой слежу"
 }
 
@@ -750,12 +748,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Грань Безумия"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Хазза'рах",
-	Renataki = "Ренатаки",
-	Wushoolay = "Вушулай",
-	Grilek = "Гри'лек"
 }
 
 -------------------
