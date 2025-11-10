@@ -403,8 +403,8 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "特別警告：當你中了職業點名時"
 }
 L:SetMiscLocalization{
-	YellP1		= "Let the games begin!",
-	YellP2		= "幹得好，我的手下。凡人的勇氣開始消退！現在，現在讓我們看看他們如何應對黑石之王的力量！！！",
+	YellP1		= "讓賽事開始吧！",
+	YellP2		= "幹得好，手下們。凡人的勇氣開始消退了！現在，我們就來看看他們怎麼面對黑石之王的力量吧！",
 	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
 	YellShaman	= "薩滿，讓我看看",
 	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
@@ -1293,6 +1293,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
