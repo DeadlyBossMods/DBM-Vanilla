@@ -1127,7 +1127,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
+	Yell = "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
