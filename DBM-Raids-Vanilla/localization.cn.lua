@@ -1033,8 +1033,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	TimerPhase2			= "为第二阶段显示计时条",
 	specwarnP2Soon		= "为克尔苏加德攻击前10秒显示特别警报",
-	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报",
-	ShowRange			= "当第二阶段开始时显示距离监视框"
+	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报"
 })
 
 L:SetMiscLocalization({
@@ -1296,6 +1295,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
