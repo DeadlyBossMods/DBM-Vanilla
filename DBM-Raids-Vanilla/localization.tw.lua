@@ -54,12 +54,15 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始減速！",
-	Freezing= "凍住了",
-	Frozen	= "變成冰凍的固體！",
+	Slow	= "開始變慢了！",
+	Freezing= "開始結冰了！",
+	Frozen	= "被牢牢凍住了！",
 	Phase4 	= "開始爆裂！",
-	Phase5 	= "看來準備好毀滅了！",
-	Phase6 	= "Explodes."
+	Phase5 	= "看來準備粉碎了！",
+	Phase6 	= "Explodes.",
+
+	FrostHitsPerSecond = "冰霜每秒命中次數",
+	MeleeHitsPerSecond = "近戰每秒命中次數"
 }
 -------------
 -- Huhuran --
@@ -89,26 +92,26 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnEyeTentacle			= "眼球觸鬚",
 	WarnClawTentacle2		= "利爪觸鬚",
-	WarnGiantEyeTentacle	= "巨型眼球觸鬚",
+	WarnGiantEyeTentacle	= "巨人眼球觸鬚",
 	WarnGiantClawTentacle	= "巨型利爪觸鬚",
-	WarnWeakened			= "克蘇恩變得虛弱了"
+	SpecWarnWeakened		= "克蘇恩變弱了！"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "下一次眼球觸鬚",
-	TimerClawTentacle		= "下一次利爪觸鬚",
-	TimerGiantEyeTentacle	= "下一次巨型眼球觸鬚",
-	TimerGiantClawTentacle	= "下一次巨型利爪觸鬚",
+	TimerEyeTentacle		= "眼球觸鬚",
+	TimerClawTentacle		= "利爪觸鬚",
+	TimerGiantEyeTentacle	= "巨人眼球觸鬚",
+	TimerGiantClawTentacle	= "巨型利爪觸鬚",
 	TimerWeakened			= "虛弱結束"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "為眼球觸鬚顯示警告",
 	WarnClawTentacle2		= "為利爪觸鬚顯示警告",
-	WarnGiantEyeTentacle	= "為巨型眼球觸鬚顯示警告",
+	WarnGiantEyeTentacle	= "為巨人眼球觸鬚顯示警告",
 	WarnGiantClawTentacle	= "為巨型利爪觸鬚顯示警告",
 	SpecWarnWeakened		= "當首領虛弱時顯示特別警告",
 	TimerEyeTentacle		= "為下一次眼球觸鬚顯示計時器",
 	TimerClawTentacle		= "為下一次利爪觸鬚顯示計時器",
-	TimerGiantEyeTentacle	= "為下一次巨型眼球觸鬚顯示計時器",
+	TimerGiantEyeTentacle	= "為下一次巨人眼球觸鬚顯示計時器",
 	TimerGiantClawTentacle	= "為下一次巨型利爪觸鬚顯示計時器",
 	TimerWeakened			= "為首領虛弱時間顯示計時器",
 	RangeFrame				= "顯示距離框架(10碼)"
@@ -403,8 +406,8 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "特別警告：當你中了職業點名時"
 }
 L:SetMiscLocalization{
-	YellP1		= "Let the games begin!",
-	YellP2		= "幹得好，我的手下。凡人的勇氣開始消退！現在，現在讓我們看看他們如何應對黑石之王的力量！！！",
+	YellP1		= "讓賽事開始吧！",
+	YellP2		= "幹得好，手下們。凡人的勇氣開始消退了！現在，我們就來看看他們怎麼面對黑石之王的力量吧！",
 	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
 	YellShaman	= "薩滿，讓我看看",
 	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
@@ -625,8 +628,6 @@ L:SetGeneralLocalization{
 	name = "血領主曼多基爾"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "血領主曼多基爾",
-	Ohgan		= "奧根",
 	GazeYell	= "我正在監視你"
 }
 
@@ -637,12 +638,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "瘋狂之緣"
-}
-L:SetMiscLocalization{
-	Hazzarah = "哈劄拉爾",
-	Renataki = "雷納塔基",
-	Wushoolay = "烏蘇雷",
-	Grilek = "格裏雷克"
 }
 
 -------------------
@@ -729,7 +724,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "跪下求饒吧，懦夫！",
-	Pull2					= "休想從我面前逃掉！"
+	Pull2					= "休想從我面前逃掉！",
+	Pull3					= "以主人之名，殺了他們！"
 })
 
 ---------------
@@ -1300,6 +1296,12 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
+
+
+
+
+
 
 
 
