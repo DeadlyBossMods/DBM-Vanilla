@@ -229,7 +229,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " sets eyes on "
+	PursueEmote 	= "sets eyes on"
 }
 
 -------------
@@ -734,8 +734,6 @@ L:SetGeneralLocalization{
 	name = "Bloodlord Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Bloodlord Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "I'm watching you"
 }
 
@@ -746,12 +744,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Edge of Madness"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
 }
 
 -------------------
@@ -842,8 +834,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "Kneel before me, worm!", --Not actually pull trigger, but often said on pull
-	Pull2					= "You cannot hide from me!"
+	Pull1					= "Kneel before me, worm!",
+	Pull2					= "You cannot hide from me!",
+	Pull3					= "Slay them in the master's name!"
 })
 
 ---------------
@@ -1603,6 +1596,10 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
+
+
+
 
 
 
