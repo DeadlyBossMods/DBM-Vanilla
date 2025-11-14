@@ -97,10 +97,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "克苏恩的力量被削弱了！"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "下一次眼球触须",
-	TimerClawTentacle		= "下一次利爪触须",
-	TimerGiantEyeTentacle	= "下一次巨眼触须",
-	TimerGiantClawTentacle	= "下一次巨钩触须",
+	TimerEyeTentacle		= "眼球触须",
+	TimerClawTentacle		= "利爪触须",
+	TimerGiantEyeTentacle	= "巨眼触须",
+	TimerGiantClawTentacle	= "巨钩触须",
 	TimerWeakened			= "虚弱结束"
 }
 L:SetOptionLocalization{
@@ -1298,6 +1298,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
