@@ -54,11 +54,11 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始減速！",
-	Freezing= "凍住了",
-	Frozen	= "變成冰凍的固體！",
+	Slow	= "開始變慢了！",
+	Freezing= "開始結冰了！",
+	Frozen	= "被牢牢凍住了！",
 	Phase4 	= "開始爆裂！",
-	Phase5 	= "看來準備好毀滅了！",
+	Phase5 	= "看來準備粉碎了！",
 	Phase6 	= "Explodes.",
 
 	FrostHitsPerSecond = "冰霜每秒命中次數",
@@ -94,13 +94,13 @@ L:SetWarningLocalization{
 	WarnClawTentacle2		= "利爪觸鬚",
 	WarnGiantEyeTentacle	= "巨型眼球觸鬚",
 	WarnGiantClawTentacle	= "巨型利爪觸鬚",
-	WarnWeakened			= "克蘇恩變得虛弱了"
+	SpecWarnWeakened		= "克蘇恩變弱了！"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "下一次眼球觸鬚",
-	TimerClawTentacle		= "下一次利爪觸鬚",
-	TimerGiantEyeTentacle	= "下一次巨型眼球觸鬚",
-	TimerGiantClawTentacle	= "下一次巨型利爪觸鬚",
+	TimerEyeTentacle		= "眼球觸鬚",
+	TimerClawTentacle		= "利爪觸鬚",
+	TimerGiantEyeTentacle	= "巨型眼球觸鬚",
+	TimerGiantClawTentacle	= "巨型利爪觸鬚",
 	TimerWeakened			= "虛弱結束"
 }
 L:SetOptionLocalization{
@@ -1296,6 +1296,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
