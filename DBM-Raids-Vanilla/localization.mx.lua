@@ -62,7 +62,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " mira a "
+	PursueEmote 	= "mira a"
 }
 
 -------------
@@ -90,7 +90,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnVulnerable	= "Mostrar anuncio para debilidades",
-	TimerVulnerable	= "Mostrar temporizador para la duración de las debilidades"
+	TimerVulnerable	= "Mostrar temporizador para debilidades"
 }
 
 ----------------
@@ -367,8 +367,6 @@ L:SetGeneralLocalization{
 	name = "Señor sangriento Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Señor sangriento Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "Te estoy vigilando"
 }
 
@@ -379,12 +377,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Cabo de la Locura"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
 }
 
 -------------------
