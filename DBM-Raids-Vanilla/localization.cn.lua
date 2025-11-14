@@ -16,7 +16,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "异种蝎皇族"
+	name = "安其拉三宝"
 }
 
 -------------
@@ -59,7 +59,10 @@ L:SetMiscLocalization{
 	Frozen	= "变成冰冻的固体！",
 	Phase4 	= "开始爆裂！",
 	Phase5 	= "看來准备好毁灭了！",
-	Phase6 	= "爆炸。"
+	Phase6 	= "爆炸。",
+
+	FrostHitsPerSecond = "冰霜每秒命中次数",
+	MeleeHitsPerSecond = "近战每秒命中次数"
 }
 -------------
 -- Huhuran --
@@ -94,10 +97,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "克苏恩的力量被削弱了！"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "下一次眼球触须",
-	TimerClawTentacle		= "下一次利爪触须",
-	TimerGiantEyeTentacle	= "下一次巨眼触须",
-	TimerGiantClawTentacle	= "下一次巨钩触须",
+	TimerEyeTentacle		= "眼球触须",
+	TimerClawTentacle		= "利爪触须",
+	TimerGiantEyeTentacle	= "巨眼触须",
+	TimerGiantClawTentacle	= "巨钩触须",
 	TimerWeakened			= "虚弱结束"
 }
 L:SetOptionLocalization{
@@ -630,8 +633,7 @@ L:SetGeneralLocalization{
 	name = "血领主曼多基尔"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "血领主曼多基尔",
-	Ohgan		= "奥根"
+	GazeYell	= "我正在看着你"
 }
 
 -------------------
@@ -641,12 +643,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "疯狂之缘"
-}
-L:SetMiscLocalization{
-	Hazzarah = "哈札拉尔",
-	Renataki = "雷纳塔基",
-	Wushoolay = "乌苏雷",
-	Grilek = "格里雷克"
 }
 
 -------------------
@@ -733,7 +729,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "跪下求饶吧，懦夫！",
-	Pull2					= "休想从我面前逃掉！"
+	Pull2					= "休想从我面前逃掉！",
+	Pull3					= "以主人之名，杀了他们！"
 })
 ---------------
 --  Maexxna  --
@@ -1039,8 +1036,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	TimerPhase2			= "为第二阶段显示计时条",
 	specwarnP2Soon		= "为克尔苏加德攻击前10秒显示特别警报",
-	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报",
-	ShowRange			= "当第二阶段开始时显示距离监视框"
+	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报"
 })
 
 L:SetMiscLocalization({
@@ -1302,6 +1298,11 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
+
+
+
+
 
 
 
