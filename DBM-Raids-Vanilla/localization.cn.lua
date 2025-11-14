@@ -59,7 +59,10 @@ L:SetMiscLocalization{
 	Frozen	= "变成冰冻的固体！",
 	Phase4 	= "开始爆裂！",
 	Phase5 	= "看來准备好毁灭了！",
-	Phase6 	= "爆炸。"
+	Phase6 	= "爆炸。",
+
+	FrostHitsPerSecond = "冰霜每秒命中次数",
+	MeleeHitsPerSecond = "近战每秒命中次数"
 }
 -------------
 -- Huhuran --
@@ -1295,6 +1298,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
