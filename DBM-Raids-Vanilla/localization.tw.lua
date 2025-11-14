@@ -92,26 +92,26 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnEyeTentacle			= "眼球觸鬚",
 	WarnClawTentacle2		= "利爪觸鬚",
-	WarnGiantEyeTentacle	= "巨型眼球觸鬚",
+	WarnGiantEyeTentacle	= "巨人眼球觸鬚",
 	WarnGiantClawTentacle	= "巨型利爪觸鬚",
 	SpecWarnWeakened		= "克蘇恩變弱了！"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle		= "眼球觸鬚",
 	TimerClawTentacle		= "利爪觸鬚",
-	TimerGiantEyeTentacle	= "巨型眼球觸鬚",
+	TimerGiantEyeTentacle	= "巨人眼球觸鬚",
 	TimerGiantClawTentacle	= "巨型利爪觸鬚",
 	TimerWeakened			= "虛弱結束"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "為眼球觸鬚顯示警告",
 	WarnClawTentacle2		= "為利爪觸鬚顯示警告",
-	WarnGiantEyeTentacle	= "為巨型眼球觸鬚顯示警告",
+	WarnGiantEyeTentacle	= "為巨人眼球觸鬚顯示警告",
 	WarnGiantClawTentacle	= "為巨型利爪觸鬚顯示警告",
 	SpecWarnWeakened		= "當首領虛弱時顯示特別警告",
 	TimerEyeTentacle		= "為下一次眼球觸鬚顯示計時器",
 	TimerClawTentacle		= "為下一次利爪觸鬚顯示計時器",
-	TimerGiantEyeTentacle	= "為下一次巨型眼球觸鬚顯示計時器",
+	TimerGiantEyeTentacle	= "為下一次巨人眼球觸鬚顯示計時器",
 	TimerGiantClawTentacle	= "為下一次巨型利爪觸鬚顯示計時器",
 	TimerWeakened			= "為首領虛弱時間顯示計時器",
 	RangeFrame				= "顯示距離框架(10碼)"
@@ -1296,6 +1296,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
