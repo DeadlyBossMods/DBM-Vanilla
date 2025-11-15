@@ -973,7 +973,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name 				= "四骑士"
+	name 				= "天启四骑士"
 })
 
 L:SetOptionLocalization({
@@ -1298,6 +1298,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
