@@ -372,8 +372,8 @@ L:SetOptionLocalization{
 	TimerVulnCD		= "顯示弱點冷卻"
 }
 L:SetMiscLocalization{
-	Breath1	= "第一次吐息",
-	Breath2	= "第二次吐息",
+	Breath1		= "第一次吐息",
+	Breath2		= "第二次吐息",
 	VulnEmote	= "%s因皮膚閃著微光而驚訝退縮。",
 	Fire		= "火焰",
 	Nature		= "自然",
@@ -1296,6 +1296,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
