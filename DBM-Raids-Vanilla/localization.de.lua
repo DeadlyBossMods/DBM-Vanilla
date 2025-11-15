@@ -417,6 +417,7 @@ L:SetOptionLocalization{
 	specwarnClassCall = "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
 }
 L:SetMiscLocalization{
+	YellP1		= "Lasst die Spiele beginnen!",
 	YellP2		= "Sehr gut, meine Diener. Der Mut der Sterblichen scheint zu schwinden! Nun lasst uns sehen, wie sie sich gegen den wahren Herrscher des Schwarzfels behaupten werden!",
 	YellP3		= "Unmöglich! Erhebt Euch, meine Diener! Kämpft erneut für Euren Meister!",
 	YellShaman	= "Schamane, zeigt mir was eure Totems können!",
@@ -1388,6 +1389,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
