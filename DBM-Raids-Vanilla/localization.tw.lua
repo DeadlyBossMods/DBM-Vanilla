@@ -176,7 +176,7 @@ L:SetOptionLocalization{
 	WarnWave	= "為下一次波進攻顯示提示"
 }
 L:SetMiscLocalization{
-	Wave12		= "它們來了。盡量別被它們幹掉，新兵。",
+	Wave12		= "它們來了。儘量別被它們幹掉，新兵。",
 	Wave12Alt	= "記得嗎，拉賈克斯，上次我說會殺了你？",
 	Wave3		= "我們懲罰的時刻就在眼前！讓黑暗支配敵人的內心吧！",
 	Wave4		= "我們不需在被禁堵的門與石牆後等待了！我們的復仇將不再被否認！巨龍將在我們的憤怒之前顫抖！",
@@ -1296,6 +1296,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
 
