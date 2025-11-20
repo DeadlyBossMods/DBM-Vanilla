@@ -1394,15 +1394,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
-
-
-
-
-
-
-
-
-
-
-
-
