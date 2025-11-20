@@ -59,7 +59,10 @@ L:SetMiscLocalization{
 	Frozen	= "ist tiefgefroren",
 	Phase4 	= "geht die Puste aus",
 	Phase5 	= "ist kurz davor, zu zerspringen",
-	Phase6 	= "Explodes." --translate (trigger)
+	Phase6 	= "Explodes.",
+
+	FrostHitsPerSecond   = "Frost-Treffer pro Sekunde",
+	MeleeHitsPerSecond   = "Nahkampftreffer pro Sekunde"
 }
 -------------
 -- Huhuran --
@@ -1390,6 +1393,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
 
 
 
