@@ -897,7 +897,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Vous êtes à moi, maintenant.",
-	Pull2				= "Je vous vois…"
+	Pull2				= "Je vous vois…",
+	Pull3				= "Tu es… le suivant."
 })
 ----------------
 --  Loatheb  --
