@@ -812,7 +812,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "Ajoelhe-se perante a mim, verme!",
-	Pull2 					= "You cannot hide from me!",
+	Pull2 					= "Vocês não podem se esconder de mim!",
 	Pull3 					= "Slay them in the master's name!"
 })
 
@@ -868,7 +868,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Morte aos intrusos!",
-	Pull2				= "Glory to the master!",
+	Pull2				= "Glória ao mestre!",
 	Pull3 				= "Sua vida foi confiscada.",
 	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!"
 })
@@ -999,7 +999,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1 = "Não há compaixão nesta luta!",
-	Yell2 = "The time for practice is over! Show me what you have learned!",
+	Yell2 = "Acabou o treinamento! Agora é pra valer!",
 	Yell3 = "Façam como eu ensinei!",
 	Yell4 = "Sweep the leg... Do you have a problem with that?"
 })
@@ -1047,10 +1047,10 @@ L:SetMiscLocalization({
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
-	Trainee			= "Aprendiz",
-	Knight			= "Cavaleiro",
+	Trainee			= "Aprendizes",
+	Knight			= "Cavaleiros",
 	Horse			= "Cavalo Espectral",
-	Rider			= "Cavalgante"
+	Rider			= "Cavalgantes"
 })
 
 ------------------------
