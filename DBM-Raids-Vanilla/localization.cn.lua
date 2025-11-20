@@ -730,7 +730,8 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1					= "跪下求饶吧，懦夫！",
 	Pull2					= "休想从我面前逃掉！",
-	Pull3					= "以主人之名，杀了他们！"
+	Pull3					= "以主人之名，杀了他们！",
+	Pull4					= "逃啊！有本事就逃啊！"
 })
 ---------------
 --  Maexxna  --
@@ -1299,6 +1300,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
