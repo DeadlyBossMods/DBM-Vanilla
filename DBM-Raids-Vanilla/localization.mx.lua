@@ -817,7 +817,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "¡Arrodíllate ante mí, sabandija!",
-	Pull2					= "¡No puedes esconderte de mí!"
+	Pull2					= "¡No puedes esconderte de mí!",
+	Pull3					= "Slay them in the master's name!"
 })
 
 -------------
@@ -903,7 +904,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Ahora me perteneces.",
-	Pull2				= "Te veo..."
+	Pull2				= "Te veo...",
+	Pull3				= "Eres... mi próxima víctima."
 })
 
 -------------
