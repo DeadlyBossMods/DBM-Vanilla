@@ -899,7 +899,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Vocês agora são meus.",
-	Pull2				= "Eu vejo você..."
+	Pull2				= "Eu vejo você...",
+	Pull3				= "You... are next."
 })
 
 -------------
