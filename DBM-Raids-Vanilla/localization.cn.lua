@@ -814,7 +814,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "你是我的了。",
-	Pull2				= "我看到你了……"
+	Pull2				= "我看到你了……",
+	Pull3				= "你……就是下一個。"
 })
 
 ---------------
@@ -1298,6 +1299,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
