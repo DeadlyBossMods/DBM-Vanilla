@@ -817,7 +817,8 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1					= "¡Arrodíllate ante mí, sabandija!",
 	Pull2 					= "¡No puedes esconderte de mí!",
-	Pull3					= "¡Matadlos en nombre del maestro!"
+	Pull3					= "¡Matadlos en nombre del maestro!",
+	Pull4					= "Run while you still can!"
 })
 
 -------------
@@ -1399,6 +1400,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
