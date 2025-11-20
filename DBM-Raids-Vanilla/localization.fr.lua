@@ -813,7 +813,8 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1					= "À genoux, vermisseau !",
 	Pull2					= "Vous ne pouvez pas m'échapper !",
-	Pull3					= "Tuez-les au nom du maître !"
+	Pull3					= "Tuez-les au nom du maître !",
+	Pull4					= "Fuyez tant que vous le pouvez !"
 })
 ---------------
 --  Maexxna  --
