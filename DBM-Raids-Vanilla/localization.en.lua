@@ -922,7 +922,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "You are mine now.",
-	Pull2				= "I see you..."
+	Pull2				= "I see you...",
+	Pull3				= "You... are next."
 })
 
 ---------------
@@ -1596,6 +1597,7 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
+
 
 
 
