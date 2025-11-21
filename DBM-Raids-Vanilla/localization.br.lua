@@ -62,7 +62,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " vê o "
+	PursueEmote 	= "vê o"
 }
 
 -------------
@@ -364,8 +364,6 @@ L:SetGeneralLocalization{
 	name = "Sangrelorde Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Sangrelorde Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "Estou do olho em você"
 }
 
@@ -376,12 +374,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Beira da Loucura"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Vuxulai",
-	Grilek = "Gri'lek"
 }
 
 -------------------
@@ -795,7 +787,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Sim, corram! Assim o sangue corre mais rápido!",
-	Pull2				= "Just a little taste...",
+	Pull2				= "Só um gostinho...",
 	Pull3				= "There is no way out."
 })
 
@@ -820,7 +812,9 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "Ajoelhe-se perante a mim, verme!",
-	Pull2 					= "You cannot hide from me!"
+	Pull2 					= "Vocês não podem se esconder de mim!",
+	Pull3 					= "Slay them in the master's name!",
+	Pull4					= "Run while you still can!"
 })
 
 -------------
@@ -875,8 +869,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Morte aos intrusos!",
-	Pull2				= "Glory to the master!",
-	Pull3 				= "Your life is forfeit!",
+	Pull2				= "Glória ao mestre!",
+	Pull3 				= "Sua vida foi confiscada.",
 	AddsYell			= "Ergam-se, meus soldados! Ergam-se e lutem uma vez mais!"
 })
 
@@ -905,8 +899,9 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "You are mine now.",
-	Pull2				= "Eu vejo você..."
+	Pull1				= "Vocês agora são meus.",
+	Pull2				= "Eu vejo você...",
+	Pull3				= "You... are next."
 })
 
 -------------
@@ -1006,8 +1001,8 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1 = "Não há compaixão nesta luta!",
-	Yell2 = "The time for practice is over! Show me what you have learned!",
-	Yell3 = "Do as I taught you!",
+	Yell2 = "Acabou o treinamento! Agora é pra valer!",
+	Yell3 = "Façam como eu ensinei!",
 	Yell4 = "Sweep the leg... Do you have a problem with that?"
 })
 
@@ -1054,10 +1049,10 @@ L:SetMiscLocalization({
 	WarningWave1	= "%d %s",
 	WarningWave2	= "%d %s y %d %s",
 	WarningWave3	= "%d %s, %d %s y %d %s",
-	Trainee			= "Aprendiz",
-	Knight			= "Cavaleiro",
+	Trainee			= "Aprendizes",
+	Knight			= "Cavaleiros",
 	Horse			= "Cavalo Espectral",
-	Rider			= "Cavalgante"
+	Rider			= "Cavalgantes"
 })
 
 ------------------------
@@ -1134,7 +1129,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
+	Yell = "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
