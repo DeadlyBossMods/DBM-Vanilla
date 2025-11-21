@@ -16,7 +16,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "벌레 무리"
+	name = "실리시드 왕실"
 }
 
 -------------
@@ -1585,13 +1585,6 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
-
-
-
-
-
-
-
 
 
 
