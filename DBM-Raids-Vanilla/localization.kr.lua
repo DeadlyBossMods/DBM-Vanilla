@@ -91,27 +91,27 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnEyeTentacle			= "눈 달린 촉수",
 	WarnClawTentacle2		= "갈고리 촉수",
-	WarnGiantEyeTentacle		= "눈 달린 거대한 촉수",
-	WarnGiantClawTentacle		= "거대한 발톱 촉수",
+	WarnGiantEyeTentacle	= "눈 달린 거대한 촉수",
+	WarnGiantClawTentacle	= "거대한 발톱 촉수",
 	SpecWarnWeakened		= "쑨 약화됨!"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle		= "눈 달린 촉수",
 	TimerClawTentacle		= "갈고리 촉수",
-	TimerGiantEyeTentacle		= "눈 달린 거대한 촉수",
-	TimerGiantClawTentacle		= "거대한 발톱 촉수",
+	TimerGiantEyeTentacle	= "눈 달린 거대한 촉수",
+	TimerGiantClawTentacle	= "거대한 발톱 촉수",
 	TimerWeakened			= "쑨 약화 종료"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "눈 달린 촉수 알림 보기",
 	WarnClawTentacle2		= "갈고리 촉수 알림 보기",
-	WarnGiantEyeTentacle		= "눈 달린 거대한 촉수 알림 보기",
-	WarnGiantClawTentacle		= "거대한 발톱 촉수 알림 보기",
+	WarnGiantEyeTentacle	= "눈 달린 거대한 촉수 알림 보기",
+	WarnGiantClawTentacle	= "거대한 발톱 촉수 알림 보기",
 	SpecWarnWeakened		= "보스 약화시 특수 알림 보기",
 	TimerEyeTentacle		= "다음 눈 달린 촉수 타이머 바 보기",
 	TimerClawTentacle		= "다음 갈고리 촉수 타이머 바 보기",
-	TimerGiantEyeTentacle		= "다음 눈 달린 거대한 촉수 타이머 바 보기",
-	TimerGiantClawTentacle		= "다음 거대한 발톱 촉수 타이머 바 보기",
+	TimerGiantEyeTentacle	= "다음 눈 달린 거대한 촉수 타이머 바 보기",
+	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수 타이머 바 보기",
 	TimerWeakened			= "보스 약화 지속 시간 타이머 바 보기",
 	RangeFrame				= "거리 창 보기 (10m)"
 }
@@ -1581,4 +1581,5 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
 
