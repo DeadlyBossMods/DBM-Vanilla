@@ -403,7 +403,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "为点名持续时间显示计时器",
-	WarnAddsLeft		= "通报杀死的龙兽数量，直到进入第2阶段",
+	WarnAddsLeft		= "通报杀死的龙兽数量，直到进入第二阶段",
 	WarnClassCall		= "提示职业点名",
 	specwarnClassCall	= "警报：当你的职业被点名时显示警报。",
 	WarnPhase			= "提示阶段转换"
@@ -951,7 +951,7 @@ L:SetOptionLocalization({
 
 L:SetTimerLocalization({
 	TimerWave				= "第 %d 波",
-	TimerPhase2				= "第2阶段"
+	TimerPhase2				= "第二阶段"
 })
 
 L:SetWarningLocalization({
@@ -1303,3 +1303,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
