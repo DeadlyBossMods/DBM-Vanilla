@@ -278,12 +278,13 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Vaelastrasz")
 
 L:SetGeneralLocalization{
-	name	= "堕落的瓦拉斯塔茲"
+	name	= "堕落的瓦拉斯塔兹"
 }
 
 L:SetMiscLocalization{
 	Event	= "太晚了，朋友们！奈法利安的堕落力量已经生效……我无法……控制自己。"
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -366,11 +367,11 @@ L:SetTimerLocalization{
 	TimerVulnCD		= "易伤切换"
 }
 L:SetOptionLocalization{
-	WarnBreath		= "为克洛玛古斯其中一个吐息显示警告",
+	WarnBreath			= "为克洛玛古斯其中一个吐息显示警告",
 	WarnVulnerableNew	= "为易伤显示警告",
-	TimerBreathCD	= "显示吐息冷却",
-	TimerBreath		= "显示吐息施法",
-	TimerVulnCD		= "显示易伤周期"
+	TimerBreathCD		= "显示吐息冷却",
+	TimerBreath			= "显示吐息施法",
+	TimerVulnCD			= "显示易伤周期"
 }
 L:SetMiscLocalization{
 	Breath1		= "第一次吐息",
@@ -540,6 +541,7 @@ L = DBM:GetModLocalization("MoltenCore")
 L:SetGeneralLocalization{
 	name = "熔火之心"
 }
+
 -----------------
 --  MC: Trash  --
 -----------------
@@ -547,6 +549,7 @@ L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
 	name = "小怪"
+
 }
 -------------------
 --  Venoxis  --
@@ -748,7 +751,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider				= "下一次 迈克斯纳之子"
+	TimerSpider				= "下一次迈克斯纳之子"
 })
 
 L:SetOptionLocalization({
@@ -763,12 +766,12 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("NothVanilla")
 
 L:SetGeneralLocalization({
-	name 					= "药剂师诺斯"
+	name 					= "瘟疫使者诺斯"
 })
 
 L:SetWarningLocalization({
 	WarningTeleportNow		= "传送",
-	WarningTeleportSoon		= "20秒后 传送"
+	WarningTeleportSoon		= "20秒后传送"
 })
 
 L:SetTimerLocalization({
@@ -893,10 +896,10 @@ L:SetMiscLocalization({
 L:SetOptionLocalization({
 	WarningChargeChanged		= "当你的极性改变时显示特别警报",
 	WarningChargeNotChanged		= "当你的极性没有改变时显示特别警报",
-	AirowsEnabled			= "显示箭头 $spell:28089",
-	TwoCamp					= "显示箭头 (正常 \"两边\" 站位打法)",
-	ArrowsRightLeft			= "显示左/右箭头 给 \"四角\" 站位打法 (如果极性改变显示左箭头, 没变显示右箭头)",
-	ArrowsInverse			= "显示反转的 \"四角\" 站位打法 (如果极性改变显示右箭头, 没变显示左箭头)"
+	AirowsEnabled				= "显示箭头 $spell:28089",
+	TwoCamp						= "显示箭头 (正常 \"两边\" 站位打法)",
+	ArrowsRightLeft				= "显示左/右箭头 给 \"四角\" 站位打法 (如果极性改变显示左箭头, 没变显示右箭头)",
+	ArrowsInverse				= "显示反转的 \"四角\" 站位打法 (如果极性改变显示右箭头, 没变显示左箭头)"
 })
 
 L:SetWarningLocalization({
@@ -917,7 +920,7 @@ L:SetMiscLocalization({
 	Yell1 				= "仁慈无用！",
 	Yell2 				= "练习时间到此为止！都拿出真本事来！",
 	Yell3 				= "按我教导的去做！",
-	Yell4 				= "绊腿……有什么问题吗？"
+	Yell4 				= "绊腿……有什么问题么？"
 })
 
 L:SetOptionLocalization({
@@ -938,8 +941,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerWave			= "为下一波小怪显示计时条",
-	TimerPhase2			= "为第二阶段显示计时条",
+	TimerWave				= "为下一波小怪显示计时条",
+	TimerPhase2				= "为第二阶段显示计时条",
 	WarningWaveSoon			= "为小怪出现显示提前警报",
 	WarningWaveSpawned		= "为小怪出现显示警报",
 	WarningRiderDown		= "当冷酷的骑兵死亡时显示警报",
@@ -947,8 +950,8 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerWave			= "第 %d 波",
-	TimerPhase2			= "第2阶段"
+	TimerWave				= "第 %d 波",
+	TimerPhase2				= "第2阶段"
 })
 
 L:SetWarningLocalization({
@@ -979,7 +982,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningMarkSoon			= "为印记显示提前警报",
+	WarningMarkSoon				= "为印记显示提前警报",
 	SpecialWarningMarkOnPlayer	= "当你印记叠加多于四层时显示特别警报"
 })
 
@@ -988,7 +991,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon			= "3秒后印记%d",
+	WarningMarkSoon				= "3秒后印记%d",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
@@ -1300,6 +1303,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
