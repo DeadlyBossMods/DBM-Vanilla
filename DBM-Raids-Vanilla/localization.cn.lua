@@ -269,8 +269,8 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "为第一次小怪重生显示计时器"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "失去能量，停止运作！",
-	YellPull 	= "入侵者闯入孵化室了！警报！不惜一切代价保护蛋！"
+	Phase2Emote	= "在宝珠的控制力消失的瞬间，奈法利安的部队逃走了。",
+	YellPull 	= "入侵者闯进了孵化间！我们要不惜一切代价保护龙蛋！"
 }
 -------------------
 --  Vaelastrasz  --
@@ -1303,4 +1303,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
