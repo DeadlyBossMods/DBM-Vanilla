@@ -23,7 +23,7 @@ L:SetMiscLocalization({
 	Pull		= "Este lugar está bajo mi protección. Los misterios arcanos no serán mancillados."
 })
 
--- Taerar (Ashenvale)
+-- Taerar
 L = DBM:GetModLocalization("TaerarVanilla")
 
 L:SetGeneralLocalization{
@@ -34,7 +34,7 @@ L:SetMiscLocalization({
 	Pull		= "¡La paz no es más que un sueño fugaz! ¡Que reine la PESADILLA!"
 })
 
--- Ysondre (Feralas)
+-- Ysondre
 L = DBM:GetModLocalization("YsondreVanilla")
 
 L:SetGeneralLocalization{
@@ -45,7 +45,7 @@ L:SetMiscLocalization({
 	Pull		= "¡Los hilos de la VIDA se han roto! ¡Tenemos que vengar a los Soñadores!"
 })
 
--- Lethon (Hinterlands)
+-- Lethon
 L = DBM:GetModLocalization("LethonVanilla")
 
 L:SetGeneralLocalization{
@@ -53,10 +53,10 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Puedo sentir la SOMBRA en sus corazones. ¡No puede haber descanso para los malos!" --Does not have one :\
+	Pull		= "Puedo sentir la SOMBRA en sus corazones. ¡No puede haber descanso para los malos!"
 })
 
--- Emeriss (Duskwood)
+-- Emeriss
 L = DBM:GetModLocalization("EmerissVanilla")
 
 L:SetGeneralLocalization{
