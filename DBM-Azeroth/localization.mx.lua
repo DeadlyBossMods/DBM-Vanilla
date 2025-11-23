@@ -1,7 +1,6 @@
 if GetLocale() ~= "esMX" then return end
 local L
 
--- Lord Kazzak (Badlands)
 L = DBM:GetModLocalization("KazzakClassicVanilla")
 
 L:SetGeneralLocalization{
@@ -12,7 +11,6 @@ L:SetMiscLocalization({
 	Pull		= "¡Por la Legión! ¡Por Kil'Jaeden!"
 })
 
--- Azuregos (Azshara)
 L = DBM:GetModLocalization("AzuregosVanilla")
 
 L:SetGeneralLocalization{
@@ -23,7 +21,6 @@ L:SetMiscLocalization({
 	Pull		= "Este lugar está bajo mi protección. Los misterios arcanos no serán mancillados."
 })
 
--- Taerar (Ashenvale)
 L = DBM:GetModLocalization("TaerarVanilla")
 
 L:SetGeneralLocalization{
@@ -34,7 +31,6 @@ L:SetMiscLocalization({
 	Pull		= "¡La paz no es más que un sueño fugaz! ¡Que reine la PESADILLA!"
 })
 
--- Ysondre (Feralas)
 L = DBM:GetModLocalization("YsondreVanilla")
 
 L:SetGeneralLocalization{
@@ -45,7 +41,6 @@ L:SetMiscLocalization({
 	Pull		= "¡Los hilos de la VIDA se han roto! ¡Tenemos que vengar a los Soñadores!"
 })
 
--- Lethon (Hinterlands)
 L = DBM:GetModLocalization("LethonVanilla")
 
 L:SetGeneralLocalization{
@@ -53,10 +48,9 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "Puedo sentir la SOMBRA en sus corazones. ¡No puede haber descanso para los malos!" --Does not have one :\
+	Pull		= "Puedo sentir la SOMBRA en sus corazones. ¡No puede haber descanso para los malos!"
 })
 
--- Emeriss (Duskwood)
 L = DBM:GetModLocalization("EmerissVanilla")
 
 L:SetGeneralLocalization{
