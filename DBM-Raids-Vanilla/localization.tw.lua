@@ -54,13 +54,13 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始變慢了！",
-	Freezing= "開始結冰了！",
-	Frozen	= "被牢牢凍住了！",
-	Phase4 	= "開始爆裂！",
-	Phase5 	= "看來準備粉碎了！",
+	Slow	= "維希度斯開始變慢了！",
+	Freezing= "維希度斯開始結冰了！",
+	Frozen	= "維希度斯被牢牢凍住了！",
+	Phase4 	= "維希度斯開始爆裂！",
+	Phase5 	= "維希度斯看來準備粉碎了！",
 	Phase6 	= "Explodes.",
-
+	
 	FrostHitsPerSecond = "冰霜每秒命中次數",
 	MeleeHitsPerSecond = "近戰每秒命中次數"
 }
@@ -1298,5 +1298,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
-
-
