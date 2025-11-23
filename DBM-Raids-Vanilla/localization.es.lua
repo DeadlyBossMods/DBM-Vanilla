@@ -54,11 +54,11 @@ L:SetOptionLocalization{
 	WarnShatter	= "Mostrar anuncio para hacerse añicos"
 }
 L:SetMiscLocalization{
-	Slow	= "comienza a remitir",
-	Freezing= "se queda inmóvil",
-	Frozen	= "está", --Chatlog showed quote as ¡Viscidus está ! 2025/11/06
-	Phase4 	= "empieza a desmoronarse",
-	Phase5 	= "parece a punto de hacerse añicos",
+	Slow	= "comienza a remitir!",
+	Freezing= "se queda inmóvil!",
+	Frozen	= "está !", --Chatlog showed quote as ¡Viscidus está ! 2025/11/06
+	Phase4 	= "empieza a desmoronarse!",
+	Phase5 	= "parece a punto de hacerse añicos!",
 	Phase6 	= "explota",
 
 	FrostHitsPerSecond = "Golpes de escarcha por segundo",
@@ -1400,6 +1400,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
 
