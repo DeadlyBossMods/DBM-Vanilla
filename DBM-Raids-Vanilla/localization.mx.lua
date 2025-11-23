@@ -414,7 +414,7 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Mostrar temporizador para cuando aparezcan los primeros esbirros"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "Tropas de Nefarian huyen mientras se consume el poder del orbe.",
+	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
 	YellPull	= "¡Los invasores han penetrado en El Criadero! ¡Activa la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 -------------------
