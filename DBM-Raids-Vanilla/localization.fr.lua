@@ -62,7 +62,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " pose ses yeux sur "
+	PursueEmote 	= "pose ses yeux sur"
 }
 
 -------------
@@ -364,8 +364,6 @@ L:SetGeneralLocalization{
 	name = "Seigneur sanglant Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Seigneur sanglant Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "je vous ai à l'œil"
 }
 
@@ -376,12 +374,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Frontière de la folie"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
 }
 
 -------------------
@@ -820,7 +812,9 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "À genoux, vermisseau !",
-	Pull2					= "Vous ne pouvez pas m'échapper !"
+	Pull2					= "Vous ne pouvez pas m'échapper !",
+	Pull3					= "Tuez-les au nom du maître !",
+	Pull4					= "Fuyez tant que vous le pouvez !"
 })
 ---------------
 --  Maexxna  --
@@ -904,7 +898,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Vous êtes à moi, maintenant.",
-	Pull2				= "Je vous vois…"
+	Pull2				= "Je vous vois…",
+	Pull3				= "Tu es… le suivant."
 })
 ----------------
 --  Loatheb  --
@@ -1089,7 +1084,7 @@ L:SetWarningLocalization({
 L = DBM:GetModLocalization("SapphironVanilla")
 
 L:SetGeneralLocalization({
-	name = "Sapphiron"
+	name = "Saphiron"
 })
 
 L:SetOptionLocalization({
