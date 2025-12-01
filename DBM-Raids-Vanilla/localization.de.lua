@@ -59,7 +59,10 @@ L:SetMiscLocalization{
 	Frozen	= "ist tiefgefroren",
 	Phase4 	= "geht die Puste aus",
 	Phase5 	= "ist kurz davor, zu zerspringen",
-	Phase6 	= "Explodes." --translate (trigger)
+	Phase6 	= "Explodes.",
+
+	FrostHitsPerSecond   = "Frost-Treffer pro Sekunde",
+	MeleeHitsPerSecond   = "Nahkampftreffer pro Sekunde"
 }
 -------------
 -- Huhuran --
@@ -417,6 +420,7 @@ L:SetOptionLocalization{
 	specwarnClassCall = "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
 }
 L:SetMiscLocalization{
+	YellP1		= "Lasst die Spiele beginnen!",
 	YellP2		= "Sehr gut, meine Diener. Der Mut der Sterblichen scheint zu schwinden! Nun lasst uns sehen, wie sie sich gegen den wahren Herrscher des Schwarzfels behaupten werden!",
 	YellP3		= "Unmöglich! Erhebt Euch, meine Diener! Kämpft erneut für Euren Meister!",
 	YellShaman	= "Schamane, zeigt mir was eure Totems können!",
@@ -666,8 +670,6 @@ L:SetGeneralLocalization{
 	name = "Blutfürst Mandokir"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "Blutfürst Mandokir",
-	Ohgan		= "Ohgan",
 	GazeYell	= "Ich behalte Euch im Auge"
 }
 
@@ -678,12 +680,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "Rand des Wahnsinns"
-}
-L:SetMiscLocalization{
-	Hazzarah = "Hazza'rah",
-	Renataki = "Renataki",
-	Wushoolay = "Wushoolay",
-	Grilek = "Gri'lek"
 }
 
 -------------------
@@ -775,7 +771,9 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "Kniet nieder, Wurm!",
-	Pull2					= "Ihr könnt euch nicht vor mir verstecken!"
+	Pull2					= "Ihr könnt euch nicht vor mir verstecken!",
+	Pull3					= "Tötet sie im Namen des Meisters!",
+	Pull4					= "Flieht, solange ihr noch könnt."
 })
 
 ---------------
@@ -861,7 +859,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Ihr gehört mir...",
-	Pull2				= "I see you..." --needs translation
+	Pull2				= "Ihr entgeht mir nicht...",
+	Pull3				= "Ihr seid.... als nächstes dran."
 })
 
 ---------------
@@ -1395,9 +1394,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
-
-
-
-
-
-
