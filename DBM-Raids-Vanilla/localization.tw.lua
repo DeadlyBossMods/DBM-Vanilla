@@ -60,7 +60,7 @@ L:SetMiscLocalization{
 	Phase4 	= "開始爆裂！",
 	Phase5 	= "看來準備粉碎了！",
 	Phase6 	= "Explodes.",
-	
+
 	FrostHitsPerSecond = "冰霜每秒命中次數",
 	MeleeHitsPerSecond = "近戰每秒命中次數"
 }
@@ -1298,4 +1298,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
