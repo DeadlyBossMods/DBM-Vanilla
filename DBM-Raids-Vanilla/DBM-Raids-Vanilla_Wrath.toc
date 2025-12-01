@@ -1,4 +1,4 @@
-## Interface: 30405
+## Interface: 30405, 38000
 ## X-Min-Interface-Wrath: 30401
 ## Category: DBM
 
@@ -105,3 +105,4 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
+
