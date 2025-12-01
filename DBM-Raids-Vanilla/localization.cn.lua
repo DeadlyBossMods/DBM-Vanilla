@@ -16,7 +16,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "异种蝎皇族"
+	name = "安其拉三宝"
 }
 
 -------------
@@ -54,12 +54,15 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎状态"
 }
 L:SetMiscLocalization{
-	Slow	= "开始减速！",
-	Freezing= "冻住了",
-	Frozen	= "变成冰冻的固体！",
-	Phase4 	= "开始爆裂！",
-	Phase5 	= "看來准备好毁灭了！",
-	Phase6 	= "爆炸。"
+	Slow		= "的速度慢下来了！",
+	Freezing	= "冻结了！",
+	Frozen		= "变成了坚硬的固体！",
+	Phase4 		= "开始出现裂缝！",
+	Phase5 		= "看起来就要碎裂了！",
+	Phase6 		= "爆炸。",
+
+	FrostHitsPerSecond = "冰霜每秒命中次数",
+	MeleeHitsPerSecond = "近战每秒命中次数"
 }
 -------------
 -- Huhuran --
@@ -94,10 +97,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "克苏恩的力量被削弱了！"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "下一次眼球触须",
-	TimerClawTentacle		= "下一次利爪触须",
-	TimerGiantEyeTentacle	= "下一次巨眼触须",
-	TimerGiantClawTentacle	= "下一次巨钩触须",
+	TimerEyeTentacle		= "眼球触须",
+	TimerClawTentacle		= "利爪触须",
+	TimerGiantEyeTentacle	= "巨眼触须",
+	TimerGiantClawTentacle	= "巨钩触须",
 	TimerWeakened			= "虚弱结束"
 }
 L:SetOptionLocalization{
@@ -175,13 +178,13 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Wave12		= "它们来了。尽量别被它们干掉，新兵。",
-	Wave12Alt 	= "记得吗，拉贾克斯，上次我说会杀了你？",
-	Wave3		= "我们惩罚的时刻就在眼前！让黑暗支配敌人的内心吧！",
-	Wave4		= "我们不需在被禁堵的门与石墙后等待了！我们的复仇将不再被否认！巨龙将在我们的愤怒之前颤抖！",
-	Wave5		= "恐惧是给敌人的！恐惧与死亡！",
-	Wave6		= "鹿盔将为了活命而啜泣、乞求，就像他的儿子一样！一千年的不公将在今日结束！",
-	Wave7		= "范达尔！你的时候到了！躲进翡翠梦境祈祷我们永远不会找到你吧！",
-	Wave8		= "厚颜无耻的笨蛋！我要亲手杀了你！"
+	Wave12Alt 	= "拉贾克斯，还记得我说过要杀光其它虫子之后再干掉你么？",
+	Wave3		= "我们复仇的时刻到了！让敌人的内心被黑暗吞噬吧！",
+	Wave4		= "我们不用再呆在这座石墙里面了！我们很快就能报仇了！在我们的怒火面前，就连那些龙也会战栗！",
+	Wave5		= "让敌人胆战心惊吧！让他们在恐惧中死去！",
+	Wave6		= "鹿盔将会呜咽着哀求我饶他一命，就像他那懦弱的儿子一样！一千年来的屈辱会在今天洗清！",
+	Wave7		= "范达尔！你的死期到了！藏到翡翠梦境里去吧，祈祷我们永远都找不到你！",
+	Wave8		= "无礼的蠢货！我会亲自要了你们的命！"
 }
 
 ----------
@@ -199,7 +202,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Buru")
 
 L:SetGeneralLocalization{
-	name 		= "暴食者布鲁"
+	name 		= "吞咽者布鲁"
 }
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追击了",
@@ -266,8 +269,8 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "为第一次小怪重生显示计时器"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "失去能量，停止运作！",
-	YellPull 	= "入侵者闯入孵化室了！警报！不惜一切代价保护蛋！"
+	Phase2Emote	= "在宝珠的控制力消失的瞬间，奈法利安的部队逃走了。",
+	YellPull 	= "入侵者闯进了孵化间！我们要不惜一切代价保护龙蛋！"
 }
 -------------------
 --  Vaelastrasz  --
@@ -275,12 +278,13 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("Vaelastrasz")
 
 L:SetGeneralLocalization{
-	name	= "堕落的瓦拉斯塔茲"
+	name	= "堕落的瓦拉斯塔兹"
 }
 
 L:SetMiscLocalization{
 	Event	= "太晚了，朋友们！奈法利安的堕落力量已经生效……我无法……控制自己。"
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -291,7 +295,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull	= "你怎么进来的?你们这种生物不能进来！我要毁灭你们！"
+	Pull	= "你怎么进来的？你们这种生物不能进来！我要毁灭你们！"
 }
 
 ---------------
@@ -328,7 +332,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "龙人护卫"--FIXME
+	name = "龙人护卫"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s易伤"
@@ -363,15 +367,15 @@ L:SetTimerLocalization{
 	TimerVulnCD		= "易伤切换"
 }
 L:SetOptionLocalization{
-	WarnBreath		= "为克洛玛古斯其中一个吐息显示警告",
+	WarnBreath			= "为克洛玛古斯其中一个吐息显示警告",
 	WarnVulnerableNew	= "为易伤显示警告",
-	TimerBreathCD	= "显示吐息冷却",
-	TimerBreath		= "显示吐息施法",
-	TimerVulnCD		= "显示易伤周期"
+	TimerBreathCD		= "显示吐息冷却",
+	TimerBreath			= "显示吐息施法",
+	TimerVulnCD			= "显示易伤周期"
 }
 L:SetMiscLocalization{
-	Breath1	= "第一次吐息",
-	Breath2	= "第二次吐息",
+	Breath1		= "第一次吐息",
+	Breath2		= "第二次吐息",
 	VulnEmote	= "%s的皮肤闪着微光，它畏缩了。",
 	Fire		= "火焰",
 	Nature		= "自然",
@@ -399,16 +403,16 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "为点名持续时间显示计时器",
-	WarnAddsLeft		= "通报杀死的龙兽数量，直到进入第2阶段",
+	WarnAddsLeft		= "通报杀死的龙兽数量，直到进入第二阶段",
 	WarnClassCall		= "提示职业点名",
 	specwarnClassCall	= "警报：当你的职业被点名时显示警报。",
 	WarnPhase			= "提示阶段转换"
 }
 L:SetMiscLocalization{
-	YellP1 		= "Let the games begin!",
-	YellP2		= "干得好，我的手下。凡人的勇气开始消退！现在，现在让我们看看他们如何应对黑石之王的力量！！！",
-	YellP3		= "不可能！出现吧，我的仆人！再次为我的主人服务！",
-	YellShaman	= "萨满，让我看看",
+	YellP1 		= "比赛开始！",
+	YellP2		= "干得好，我的手下。凡人的勇气开始消退了！现在，让我们看看他们如何应对黑石塔的真正主人的力量！！！",
+	YellP3		= "不可能！出现吧，我的仆人！再次为你们的主人效力！",
+	YellShaman	= "萨满祭司，让我看看你们的图腾到底是干什么用的！",
 	YellPaladin	= "圣骑士……听说你们有无数条命。让我看看到底是怎么样的吧。",
 	YellDruid	= "德鲁伊和你们愚蠢的变形法术。让我们看看有什么事情会发生吧！",
 	YellPriest	= "牧师们！如果你们要继续这么治疗的话，那我们就来玩点有趣的东西吧！",
@@ -537,6 +541,7 @@ L = DBM:GetModLocalization("MoltenCore")
 L:SetGeneralLocalization{
 	name = "熔火之心"
 }
+
 -----------------
 --  MC: Trash  --
 -----------------
@@ -544,6 +549,7 @@ L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
 	name = "小怪"
+
 }
 -------------------
 --  Venoxis  --
@@ -630,8 +636,7 @@ L:SetGeneralLocalization{
 	name = "血领主曼多基尔"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "血领主曼多基尔",
-	Ohgan		= "奥根"
+	GazeYell	= "我正在看着你"
 }
 
 -------------------
@@ -641,12 +646,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "疯狂之缘"
-}
-L:SetMiscLocalization{
-	Hazzarah = "哈札拉尔",
-	Renataki = "雷纳塔基",
-	Wushoolay = "乌苏雷",
-	Grilek = "格里雷克"
 }
 
 -------------------
@@ -733,7 +732,9 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "跪下求饶吧，懦夫！",
-	Pull2					= "休想从我面前逃掉！"
+	Pull2					= "休想从我面前逃掉！",
+	Pull3					= "以主人之名，杀了他们！",
+	Pull4					= "逃啊！有本事就逃啊！"
 })
 ---------------
 --  Maexxna  --
@@ -750,7 +751,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider				= "下一次 迈克斯纳之子"
+	TimerSpider				= "下一次迈克斯纳之子"
 })
 
 L:SetOptionLocalization({
@@ -765,12 +766,12 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("NothVanilla")
 
 L:SetGeneralLocalization({
-	name 					= "药剂师诺斯"
+	name 					= "瘟疫使者诺斯"
 })
 
 L:SetWarningLocalization({
 	WarningTeleportNow		= "传送",
-	WarningTeleportSoon		= "20秒后 传送"
+	WarningTeleportSoon		= "20秒后传送"
 })
 
 L:SetTimerLocalization({
@@ -817,7 +818,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "你是我的了。",
-	Pull2				= "我看到你了……"
+	Pull2				= "我看到你了……",
+	Pull3				= "你……就是下一个。"
 })
 
 ---------------
@@ -894,10 +896,10 @@ L:SetMiscLocalization({
 L:SetOptionLocalization({
 	WarningChargeChanged		= "当你的极性改变时显示特别警报",
 	WarningChargeNotChanged		= "当你的极性没有改变时显示特别警报",
-	AirowsEnabled			= "显示箭头 $spell:28089",
-	TwoCamp					= "显示箭头 (正常 \"两边\" 站位打法)",
-	ArrowsRightLeft			= "显示左/右箭头 给 \"四角\" 站位打法 (如果极性改变显示左箭头, 没变显示右箭头)",
-	ArrowsInverse			= "显示反转的 \"四角\" 站位打法 (如果极性改变显示右箭头, 没变显示左箭头)"
+	AirowsEnabled				= "显示箭头 $spell:28089",
+	TwoCamp						= "显示箭头 (正常 \"两边\" 站位打法)",
+	ArrowsRightLeft				= "显示左/右箭头 给 \"四角\" 站位打法 (如果极性改变显示左箭头, 没变显示右箭头)",
+	ArrowsInverse				= "显示反转的 \"四角\" 站位打法 (如果极性改变显示右箭头, 没变显示左箭头)"
 })
 
 L:SetWarningLocalization({
@@ -918,7 +920,7 @@ L:SetMiscLocalization({
 	Yell1 				= "仁慈无用！",
 	Yell2 				= "练习时间到此为止！都拿出真本事来！",
 	Yell3 				= "按我教导的去做！",
-	Yell4 				= "绊腿……有什么问题吗？"
+	Yell4 				= "绊腿……有什么问题么？"
 })
 
 L:SetOptionLocalization({
@@ -939,8 +941,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerWave			= "为下一波小怪显示计时条",
-	TimerPhase2			= "为第二阶段显示计时条",
+	TimerWave				= "为下一波小怪显示计时条",
+	TimerPhase2				= "为第二阶段显示计时条",
 	WarningWaveSoon			= "为小怪出现显示提前警报",
 	WarningWaveSpawned		= "为小怪出现显示警报",
 	WarningRiderDown		= "当冷酷的骑兵死亡时显示警报",
@@ -948,8 +950,8 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerWave			= "第 %d 波",
-	TimerPhase2			= "第2阶段"
+	TimerWave				= "第 %d 波",
+	TimerPhase2				= "第二阶段"
 })
 
 L:SetWarningLocalization({
@@ -976,11 +978,11 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name 				= "四骑士"
+	name 				= "天启四骑士"
 })
 
 L:SetOptionLocalization({
-	WarningMarkSoon			= "为印记显示提前警报",
+	WarningMarkSoon				= "为印记显示提前警报",
 	SpecialWarningMarkOnPlayer	= "当你印记叠加多于四层时显示特别警报"
 })
 
@@ -989,7 +991,7 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon			= "3秒后印记%d",
+	WarningMarkSoon				= "3秒后印记%d",
 	SpecialWarningMarkOnPlayer	= "%s: %s"
 })
 
@@ -1039,8 +1041,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	TimerPhase2			= "为第二阶段显示计时条",
 	specwarnP2Soon		= "为克尔苏加德攻击前10秒显示特别警报",
-	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报",
-	ShowRange			= "当第二阶段开始时显示距离监视框"
+	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报"
 })
 
 L:SetMiscLocalization({
@@ -1302,21 +1303,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
