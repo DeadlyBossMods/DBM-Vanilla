@@ -9,7 +9,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "为了军团！为了基尔加德！"
+	Pull		= "为了军团！为了基尔加丹！"
 })
 
 -- Azuregos (Azshara)
@@ -20,7 +20,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "我保护着这个地方。神秘的秘法不能受到亵渎。"
+	Pull		= "我保护着这个地方。神秘的奥术不能受到亵渎。"
 })
 
 -- Taerar
