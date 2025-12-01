@@ -405,10 +405,10 @@ L:SetOptionLocalization{
 	WarnPhase			= "提示阶段转换"
 }
 L:SetMiscLocalization{
-	YellP1 		= "Let the games begin!",
+	YellP1 		= "比赛开始！",
 	YellP2		= "干得好，我的手下。凡人的勇气开始消退！现在，现在让我们看看他们如何应对黑石之王的力量！！！",
-	YellP3		= "不可能！出现吧，我的仆人！再次为我的主人服务！",
-	YellShaman	= "萨满，让我看看",
+	YellP3		= "不可能！出现吧，我的仆人！再次为你们的主人效力！",
+	YellShaman	= "萨满祭司，让我看看你们的图腾到底是干什么用的！",
 	YellPaladin	= "圣骑士……听说你们有无数条命。让我看看到底是怎么样的吧。",
 	YellDruid	= "德鲁伊和你们愚蠢的变形法术。让我们看看有什么事情会发生吧！",
 	YellPriest	= "牧师们！如果你们要继续这么治疗的话，那我们就来玩点有趣的东西吧！",
@@ -1302,6 +1302,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
