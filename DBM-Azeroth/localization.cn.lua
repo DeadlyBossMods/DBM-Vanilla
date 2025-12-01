@@ -9,7 +9,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "为了军团!为了基尔加德！"
+	Pull		= "为了军团！为了基尔加丹！"
 })
 
 -- Azuregos (Azshara)
@@ -20,10 +20,10 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "我保护着这个地方。神秘的秘法不能受到亵渎。"
+	Pull		= "我保护着这个地方。神秘的奥术不能受到亵渎。"
 })
 
--- Taerar (Ashenvale)
+-- Taerar
 L = DBM:GetModLocalization("TaerarVanilla")
 
 L:SetGeneralLocalization{
@@ -31,7 +31,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "和平不过是短暂的梦想!让梦魇统治整个世界吧！"
+	Pull		= "和平不过是短暂的梦想！让梦魇统治整个世界吧！"
 })
 
 -- Ysondre (Feralas)
@@ -42,10 +42,10 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "生命的希冀已被切断!梦游者要展开报复！"
+	Pull		= "生命的希冀已被切断！梦游者要展开报复！"
 })
 
--- Lethon (Hinterlands)
+-- Lethon
 L = DBM:GetModLocalization("LethonVanilla")
 
 L:SetGeneralLocalization{
@@ -56,7 +56,7 @@ L:SetMiscLocalization({
 	Pull		= "我能感受到你内心的阴影。邪恶的侵蚀永远不会停止！"
 })
 
--- Emeriss (Duskwood)
+-- Emeriss
 L = DBM:GetModLocalization("EmerissVanilla")
 
 L:SetGeneralLocalization{
@@ -64,5 +64,5 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization({
-	Pull		= "希望是灵魂染上的疾病!这片土地应该枯竭，从此死气腾腾！"
+	Pull		= "希望是灵魂染上的疾病！这片土地应该枯竭，从此死气腾腾！"
 })

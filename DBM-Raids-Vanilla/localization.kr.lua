@@ -16,7 +16,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("ThreeBugs")
 
 L:SetGeneralLocalization{
-	name = "벌레 무리"
+	name = "실리시드 왕실"
 }
 
 -------------
@@ -91,27 +91,27 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnEyeTentacle			= "눈 달린 촉수",
 	WarnClawTentacle2		= "갈고리 촉수",
-	WarnGiantEyeTentacle		= "눈 달린 거대한 촉수",
-	WarnGiantClawTentacle		= "거대한 발톱 촉수",
+	WarnGiantEyeTentacle	= "눈 달린 거대한 촉수",
+	WarnGiantClawTentacle	= "거대한 발톱 촉수",
 	SpecWarnWeakened		= "쑨 약화됨!"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle		= "눈 달린 촉수",
 	TimerClawTentacle		= "갈고리 촉수",
-	TimerGiantEyeTentacle		= "눈 달린 거대한 촉수",
-	TimerGiantClawTentacle		= "거대한 발톱 촉수",
+	TimerGiantEyeTentacle	= "눈 달린 거대한 촉수",
+	TimerGiantClawTentacle	= "거대한 발톱 촉수",
 	TimerWeakened			= "쑨 약화 종료"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "눈 달린 촉수 알림 보기",
 	WarnClawTentacle2		= "갈고리 촉수 알림 보기",
-	WarnGiantEyeTentacle		= "눈 달린 거대한 촉수 알림 보기",
-	WarnGiantClawTentacle		= "거대한 발톱 촉수 알림 보기",
+	WarnGiantEyeTentacle	= "눈 달린 거대한 촉수 알림 보기",
+	WarnGiantClawTentacle	= "거대한 발톱 촉수 알림 보기",
 	SpecWarnWeakened		= "보스 약화시 특수 알림 보기",
 	TimerEyeTentacle		= "다음 눈 달린 촉수 타이머 바 보기",
 	TimerClawTentacle		= "다음 갈고리 촉수 타이머 바 보기",
-	TimerGiantEyeTentacle		= "다음 눈 달린 거대한 촉수 타이머 바 보기",
-	TimerGiantClawTentacle		= "다음 거대한 발톱 촉수 타이머 바 보기",
+	TimerGiantEyeTentacle	= "다음 눈 달린 거대한 촉수 타이머 바 보기",
+	TimerGiantClawTentacle	= "다음 거대한 발톱 촉수 타이머 바 보기",
 	TimerWeakened			= "보스 약화 지속 시간 타이머 바 보기",
 	RangeFrame				= "거리 창 보기 (10m)"
 }
@@ -192,6 +192,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Wave12		= "그들이 오고 있다. 자신의 몸을 지키도록 하라!",
+	Wave12Alt 	= "내가 너는 꼭 마지막에 해치우겠다고 말했던 걸 기억하나, 라작스?",
 	Wave3		= "응보의 날이 다가왔다! 암흑이 적들의 마음을 지배하리라!",
 	Wave4		= "더는 돌벽과 성문 뒤에서 기다릴 수 없다! 복수의 기회를 놓칠 수 없다. 우리가 분노를 터뜨리는 날 용족은 두려움에 떨리라.",
 	Wave5		= "적에게 공포와 죽음의 향연을!",
@@ -720,8 +721,6 @@ L:SetGeneralLocalization{
 	name = "혈군주 만도키르"
 }
 L:SetMiscLocalization{
-	Bloodlord 	= "혈군주 만도키르",
-	Ohgan		= "오간",
 	GazeYell	= "널 지켜보고 있겠다!"
 }
 
@@ -732,12 +731,6 @@ L = DBM:GetModLocalization("EdgeOfMadness")
 
 L:SetGeneralLocalization{
 	name = "광란의 경계"
-}
-L:SetMiscLocalization{
-	Hazzarah = "하자라",
-	Renataki = "레나타키",
-	Wushoolay = "우슐레이",
-	Grilek = "그리렉"
 }
 
 -------------------
@@ -829,7 +822,9 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1					= "내 앞에 무릎을 꿇어라, 벌레들아!",
-	Pull2					= "나에게서 도망칠 수는 없다!"
+	Pull2					= "나에게서 도망칠 수는 없다!",
+	Pull3 					= "주인님의 이름으로 처단하라!",
+	Pull4 					= "두 발이 성할 때 도망쳐라!"
 })
 
 ---------------
@@ -915,7 +910,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "이제 넌 내 것이다.",
-	Pull2				= "네가 보인다..."
+	Pull2				= "네가 보인다...",
+	Pull3 				= "다음은... 너다."
 })
 
 ---------------
@@ -1585,14 +1581,3 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
-
-
-
-
-
-
-
-
-
-
-

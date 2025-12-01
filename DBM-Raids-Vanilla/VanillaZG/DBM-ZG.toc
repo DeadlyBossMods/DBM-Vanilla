@@ -1,4 +1,4 @@
-## Interface: 20504
+## Interface: 20505
 ## Interface-Wrath: 30403
 ## X-Min-Interface: 20501
 ## X-Min-Interface-Wrath: 30400
