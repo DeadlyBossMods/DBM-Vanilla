@@ -119,7 +119,7 @@ L:SetOptionLocalization{
 	RangeFrame				= "Mostrar marco de distancia (10 m)"
 }
 L:SetMiscLocalization{
-	Stomach		= "Estómago de C'Thun",
+	Stomach		= "Estómago",
 	FleshTent	= "Tentáculo de carne",
 	Weakened 	= "está débil!",
 	NotValid	= "AQ40 parcialmente limpiado. Quedan %s jefes opcionales."
@@ -815,7 +815,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "¡Arrodíllate ante mí, sabandija!",
+	Pull1					= "¡Arrodíllate ante mí, gusano!",
 	Pull2 					= "¡No puedes esconderte de mí!",
 	Pull3					= "¡Matadlos en nombre del maestro!",
 	Pull4					= "Run while you still can!"
@@ -1400,3 +1400,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
