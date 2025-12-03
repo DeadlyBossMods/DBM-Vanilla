@@ -744,7 +744,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "下一次梅克絲娜之子"
+	TimerSpider	= "梅克絲娜之子"
 })
 
 L:SetOptionLocalization({
@@ -1298,5 +1298,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
 
 
