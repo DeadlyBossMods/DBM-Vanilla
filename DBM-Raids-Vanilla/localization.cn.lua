@@ -746,7 +746,7 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon		= "迈克斯纳的小蜘蛛 5秒后出现",
+	WarningSpidersSoon		= "迈克斯纳的小蜘蛛5秒后出现",
 	WarningSpidersNow		= "迈克斯纳的小蜘蛛出现了"
 })
 
@@ -1303,6 +1303,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
