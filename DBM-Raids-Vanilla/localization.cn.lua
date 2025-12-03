@@ -746,18 +746,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon		= "迈克斯纳之子 5秒后出现",
-	WarningSpidersNow		= "迈克斯纳之子出现了"
+	WarningSpidersSoon		= "迈克斯纳的小蜘蛛 5秒后出现",
+	WarningSpidersNow		= "迈克斯纳的小蜘蛛出现了"
 })
 
 L:SetTimerLocalization({
-	TimerSpider				= "下一次迈克斯纳之子"
+	TimerSpider				= "迈克斯纳的小蜘蛛"
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon		= "为迈克斯纳之子显示提前警报",
-	WarningSpidersNow		= "为迈克斯纳之子显示警报",
-	TimerSpider				= "为下一次迈克斯纳之子显示计时条"
+	WarningSpidersSoon		= "迈克斯纳的小蜘蛛显示提前警报",
+	WarningSpidersNow		= "迈克斯纳的小蜘蛛显示警报",
+	TimerSpider				= "为下一次迈克斯纳的小蜘蛛显示计时条"
 })
 
 ------------------------------
@@ -1303,6 +1303,7 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
 
 
