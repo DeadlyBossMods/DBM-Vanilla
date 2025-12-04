@@ -755,17 +755,17 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "Les Jeunes dragonnets onyxien arrivent bientôt"
+	WarnWhelpsSoon			= "Les Jeunes dragonnets onyxien arrivent bientôt"
 }
 
 L:SetTimerLocalization{
-	TimerWhelps = "Jeunes dragonnets onyxien"
+	TimerWhelps 			= "Jeunes dragonnets onyxien"
 }
 
 L:SetOptionLocalization{
 	TimerWhelps				= "Afficher un chronomètre pour l'arrivée des Jeunes dragonnets onyxien",
 	WarnWhelpsSoon			= "Afficher une annonce avant l'arrivée des Jeunes dragonnets onyxien",
-	SoundWTF3				= "Joue des sons amusants du légendaire raid classic d'Onyxia"
+	SoundWTF3				= "Joue des sons amusants du légendaire raid classique d'Onyxia"
 }
 
 L:SetMiscLocalization{
