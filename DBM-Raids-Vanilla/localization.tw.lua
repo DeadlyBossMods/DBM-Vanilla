@@ -668,16 +668,16 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "奧妮克希亞幼龍即將出現"
+	WarnWhelpsSoon		= "奧妮克希亞雛龍即將出現"
 }
 
 L:SetTimerLocalization{
-	TimerWhelps 		= "奧妮克希亞幼龍"
+	TimerWhelps 		= "奧妮克希亞雛龍"
 }
 
 L:SetOptionLocalization{
-	TimerWhelps		= "為奧妮克希亞幼龍顯示計時器",
-	WarnWhelpsSoon	= "為奧妮克希亞幼龍顯示預先警告",
+	TimerWhelps		= "為奧妮克希亞雛龍顯示計時器",
+	WarnWhelpsSoon	= "為奧妮克希亞雛龍顯示預先警告",
 	SoundWTF3		= "為經典傳奇式奧妮克希亞副本播放一些有趣的音效"
 }
 
@@ -1298,3 +1298,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
