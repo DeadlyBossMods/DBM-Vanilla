@@ -676,7 +676,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "奥妮克希亚雏龙 即将出现"
+	WarnWhelpsSoon		= "奥妮克希亚雏龙即将出现"
 }
 
 L:SetTimerLocalization{
@@ -1303,3 +1303,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
