@@ -759,7 +759,7 @@ L:SetWarningLocalization{
 }
 
 L:SetTimerLocalization{
-	TimerWhelps = "Arrivée des Jeunes dragonnets onyxien"
+	TimerWhelps = "Jeunes dragonnets onyxien"
 }
 
 L:SetOptionLocalization{
@@ -831,7 +831,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider			= "Arrivée des Jeunes araignées"
+	TimerSpider			= "Jeunes araignées"
 })
 
 L:SetOptionLocalization({
