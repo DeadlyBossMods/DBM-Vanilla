@@ -36,6 +36,7 @@ L = DBM:GetModLocalization("Fankriss")
 L:SetGeneralLocalization{
 	name = "불굴의 판크리스"
 }
+
 --------------
 -- Viscidus --
 --------------
@@ -63,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "초당 냉기 공격 횟수",
 	MeleeHitsPerSecond = "초당 물리 공격 횟수",
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -71,6 +73,7 @@ L = DBM:GetModLocalization("Huhuran")
 L:SetGeneralLocalization{
 	name = "공주 후후란"
 }
+
 ---------------
 -- Twin Emps --
 ---------------
@@ -115,12 +118,14 @@ L:SetOptionLocalization{
 	TimerWeakened			= "보스 약화 지속 시간 타이머 바 보기",
 	RangeFrame				= "거리 창 보기 (10m)"
 }
+
 L:SetMiscLocalization{
 	Stomach		= "뱃속",
 	FleshTent	= "식인 촉수",--Localized so it shows on frame in users language, not senders
 	Weakened 	= "약해집니다!",
 	NotValid	= "안퀴40 레이드를 일부만 클리어 했습니다. 더 잡을 수 있는 보스가 %s마리 남아있습니다."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -176,6 +181,7 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "쿠린낙스"
 }
+
 ------------
 -- Rajaxx --
 ------------
@@ -275,6 +281,7 @@ L:SetOptionLocalization{
 	SpecWarnExplosion = "폭발하는 유령이 여러마리 등장시 특수 경고 보기 ($spell:1214871)",
 	TimerExplosion = "폭발하는 유령이 여러마리 등장시 타이머 바 보기 ($spell:1214871)"
 }
+
 -----------------
 --  Razorgore  --
 -----------------
@@ -293,6 +300,7 @@ L:SetMiscLocalization{
 	Phase2Emote	= "지배의 수정구가 힘을 잃고 작동을 멈춥니다!",
 	YellPull 	= "침입자들이 들어왔다! 어떤 희생이 있더라도 알을 반드시 수호하라!"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -305,6 +313,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Event	= "너무 늦었어! 네파리우스의 타락이 뿌리를 내려... 난... 나 자신을 통제할 수가 없어."
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -1581,4 +1590,3 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
-
