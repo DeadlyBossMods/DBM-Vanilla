@@ -62,7 +62,7 @@ L:SetMiscLocalization{
 	Phase6 	= "폭발",
 
 	FrostHitsPerSecond = "초당 냉기 공격 횟수",
-	MeleeHitsPerSecond = "초당 물리 공격 횟수",
+	MeleeHitsPerSecond = "초당 물리 공격 횟수"
 }
 
 -------------
@@ -121,7 +121,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Stomach		= "뱃속",
-	FleshTent	= "식인 촉수",--Localized so it shows on frame in users language, not senders
+	FleshTent	= "식인 촉수", --Localized so it shows on frame in users language, not senders
 	Weakened 	= "약해집니다!",
 	NotValid	= "안퀴40 레이드를 일부만 클리어 했습니다. 더 잡을 수 있는 보스가 %s마리 남아있습니다."
 }
@@ -851,7 +851,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider		= "다음 맥스나의 새끼 거미"
+	TimerSpider		= "맥스나의 새끼 거미"
 })
 
 L:SetOptionLocalization({
@@ -1590,3 +1590,4 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
