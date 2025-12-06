@@ -460,7 +460,7 @@ L:SetOptionLocalization{
 	specwarnClassCall	= "직업 지목 대상일 때 특수 알림 보기"
 }
 L:SetMiscLocalization{
-	YellP1		= "게임을 시작하자!",
+	YellP1		= "흐흐흐흐... 게임을 시작하자!",
 	YellP2		= "잘했다! 적들의 사기가 떨어지고 있다! 검은바위 첨탑의 군주에게 도전한 대가를 치르게 해주자!",
 	YellP3		= "말도 안 돼! 일어나라! 다시 한 번 너희 주인을 섬겨라!",
 	YellShaman	= "주술사, 네 놈의 토템이 얼마나 쓸모 있는지 한번 보자!",
@@ -1590,3 +1590,4 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
