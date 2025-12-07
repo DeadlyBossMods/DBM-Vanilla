@@ -119,7 +119,7 @@ L:SetOptionLocalization{
 	RangeFrame				= "Zeige Abstandsfenster (10m)"
 }
 L:SetMiscLocalization{
-	Stomach		= "Magen von C'Thun",
+	Stomach		= "Magen",
 	FleshTent	= "Fleischtentakel",
 	Weakened 	= "C'Thun ist geschwächt!",
 	NotValid	= "AQ40 teilweise gelöscht. % s optionale Bosse bleiben erhalten."
@@ -1396,3 +1396,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
