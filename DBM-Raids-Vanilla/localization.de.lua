@@ -97,10 +97,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "C'Thun ist geschwächt!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Nächstes Augententakel",
-	TimerClawTentacle		= "Nächstes Klauententakel",
-	TimerGiantEyeTentacle	= "Nächstes Riesiges Augententakel",
-	TimerGiantClawTentacle	= "Nächstes Riesiges Klauententakel",
+	TimerEyeTentacle		= "Augententakel",
+	TimerClawTentacle		= "Klauententakel",
+	TimerGiantEyeTentacle	= "Riesiges Augententakel",
+	TimerGiantClawTentacle	= "Riesiges Klauententakel",
 	TimerWeakened			= "Schwäche endet"
 }
 L:SetOptionLocalization{
@@ -714,11 +714,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "Welpen erscheinen bald"
+	WarnWhelpsSoon			= "Welpen erscheinen bald"
 }
 
 L:SetTimerLocalization{
-	TimerWhelps	= "Welpen erscheinen"
+	TimerWhelps				= "Welpen"
 }
 
 L:SetOptionLocalization{
@@ -791,7 +791,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Nächste Maexxnaspinnlinge"
+	TimerSpider	= "Maexxnaspinnlinge"
 })
 
 L:SetOptionLocalization({
@@ -1394,3 +1394,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
