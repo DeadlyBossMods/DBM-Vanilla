@@ -64,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond   = "Frost-Treffer pro Sekunde",
 	MeleeHitsPerSecond   = "Nahkampftreffer pro Sekunde"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -72,6 +73,7 @@ L = DBM:GetModLocalization("Huhuran")
 L:SetGeneralLocalization{
 	name = "Prinzessin Huhuran"
 }
+
 ---------------
 -- Twin Emps --
 ---------------
@@ -122,6 +124,7 @@ L:SetMiscLocalization{
 	Weakened 	= "C'Thun ist geschwächt!",
 	NotValid	= "AQ40 teilweise gelöscht. % s optionale Bosse bleiben erhalten."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -263,6 +266,7 @@ L:SetMiscLocalization{
 	Phase2Emote	= "flieht während die kontrollierenden Kräfte der Kugel schwinden.",
 	YellPull 	= "Eindringlinge sind in die Brutstätte vorgestoßen! Schlagt Alarm! Beschützt die Eier um jeden Preis!"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -1141,7 +1145,6 @@ L:SetTimerLocalization({
 	AffixTimer	= "Affix"
 })
 
-
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1294,7 +1297,6 @@ L:SetMiscLocalization{
 	Chicken		= "Huhn"
 }
 
-
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1320,8 +1322,6 @@ L = DBM:GetModLocalization("STTrashSoD")
 L:SetGeneralLocalization{
 	name = "Tempel Trash"
 }
-
-
 
 ---------------------------
 --  Atal'alarion  --
@@ -1378,6 +1378,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "Jammal'an und Ogom"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1386,6 +1387,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "Morphaz und Hazzas"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
@@ -1394,4 +1396,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
-
