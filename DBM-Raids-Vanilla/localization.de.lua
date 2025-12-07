@@ -121,8 +121,8 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Stomach		= "Magen",
 	FleshTent	= "Fleischtentakel",
-	Weakened 	= "C'Thun ist geschwächt!",
-	NotValid	= "AQ40 teilweise gelöscht. % s optionale Bosse bleiben erhalten."
+	Weakened 	= "ist geschwächt!",
+	NotValid	= "AQ40 teilweise gelöscht. %s optionale Bosse bleiben erhalten."
 }
 
 ----------------
