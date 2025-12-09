@@ -64,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond   = "Frost-Treffer pro Sekunde",
 	MeleeHitsPerSecond   = "Nahkampftreffer pro Sekunde"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -72,6 +73,7 @@ L = DBM:GetModLocalization("Huhuran")
 L:SetGeneralLocalization{
 	name = "Prinzessin Huhuran"
 }
+
 ---------------
 -- Twin Emps --
 ---------------
@@ -97,10 +99,10 @@ L:SetWarningLocalization{
 	SpecWarnWeakened		= "C'Thun ist geschwächt!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Nächstes Augententakel",
-	TimerClawTentacle		= "Nächstes Klauententakel",
-	TimerGiantEyeTentacle	= "Nächstes Riesiges Augententakel",
-	TimerGiantClawTentacle	= "Nächstes Riesiges Klauententakel",
+	TimerEyeTentacle		= "Augententakel",
+	TimerClawTentacle		= "Klauententakel",
+	TimerGiantEyeTentacle	= "Riesiges Augententakel",
+	TimerGiantClawTentacle	= "Riesiges Klauententakel",
 	TimerWeakened			= "Schwäche endet"
 }
 L:SetOptionLocalization{
@@ -117,11 +119,12 @@ L:SetOptionLocalization{
 	RangeFrame				= "Zeige Abstandsfenster (10m)"
 }
 L:SetMiscLocalization{
-	Stomach		= "Magen von C'Thun",
+	Stomach		= "Magen",
 	FleshTent	= "Fleischtentakel",
-	Weakened 	= "C'Thun ist geschwächt!",
-	NotValid	= "AQ40 teilweise gelöscht. % s optionale Bosse bleiben erhalten."
+	Weakened 	= "ist geschwächt!",
+	NotValid	= "AQ40 teilweise gelöscht. %s optionale Bosse bleiben erhalten."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -263,6 +266,7 @@ L:SetMiscLocalization{
 	Phase2Emote	= "flieht während die kontrollierenden Kräfte der Kugel schwinden.",
 	YellPull 	= "Eindringlinge sind in die Brutstätte vorgestoßen! Schlagt Alarm! Beschützt die Eier um jeden Preis!"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -714,11 +718,11 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "Welpen erscheinen bald"
+	WarnWhelpsSoon			= "Welpen erscheinen bald"
 }
 
 L:SetTimerLocalization{
-	TimerWhelps	= "Welpen erscheinen"
+	TimerWhelps				= "Welpen"
 }
 
 L:SetOptionLocalization{
@@ -791,7 +795,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "Nächste Maexxnaspinnlinge"
+	TimerSpider	= "Maexxnaspinnlinge"
 })
 
 L:SetOptionLocalization({
@@ -1141,7 +1145,6 @@ L:SetTimerLocalization({
 	AffixTimer	= "Affix"
 })
 
-
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1294,7 +1297,6 @@ L:SetMiscLocalization{
 	Chicken		= "Huhn"
 }
 
-
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1320,8 +1322,6 @@ L = DBM:GetModLocalization("STTrashSoD")
 L:SetGeneralLocalization{
 	name = "Tempel Trash"
 }
-
-
 
 ---------------------------
 --  Atal'alarion  --
@@ -1378,6 +1378,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "Jammal'an und Ogom"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1386,6 +1387,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "Morphaz und Hazzas"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
