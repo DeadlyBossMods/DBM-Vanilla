@@ -119,7 +119,7 @@ L:SetOptionLocalization{
 	RangeFrame				= "Mostrar marco de distancia (10 m)"
 }
 L:SetMiscLocalization{
-	Stomach		= "Estómago de C'Thun",
+	Stomach		= "Estómago",
 	FleshTent	= "Tentáculo de carne",
 	Weakened 	= "está débil!",
 	NotValid	= "AQ40 parcialmente limpiado. Quedan %s jefes opcionales."
@@ -815,7 +815,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "¡Arrodíllate ante mí, sabandija!",
+	Pull1					= "¡Arrodíllate ante mí, gusano!",
 	Pull2 					= "¡No puedes esconderte de mí!",
 	Pull3					= "¡Matadlos en nombre del maestro!",
 	Pull4					= "Run while you still can!"
@@ -1006,7 +1006,7 @@ L:SetMiscLocalization({
 	Yell1 = "¡No muestres misericordia!",
 	Yell2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
 	Yell3 = "¡Poned en práctica lo que os he enseñado!",
-	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
+	Yell4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
 })
 
 L:SetOptionLocalization({
