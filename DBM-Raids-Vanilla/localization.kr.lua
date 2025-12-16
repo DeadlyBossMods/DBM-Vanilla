@@ -96,7 +96,7 @@ L:SetWarningLocalization{
 	WarnClawTentacle2		= "갈고리 촉수",
 	WarnGiantEyeTentacle	= "눈 달린 거대한 촉수",
 	WarnGiantClawTentacle	= "거대한 발톱 촉수",
-	SpecWarnWeakened		= "쑨 약화됨!"
+	SpecWarnWeakened		= "쑨이 약해집니다!"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle		= "눈 달린 촉수",
@@ -1590,3 +1590,4 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
+
