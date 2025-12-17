@@ -907,7 +907,7 @@ L:SetMiscLocalization({
 	Pull2				= "Te veo...",
 	Pull3				= "Estás... estás cerca."
 })
- 
+
 -------------
 -- Loatheb --
 -------------
@@ -1400,3 +1400,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
