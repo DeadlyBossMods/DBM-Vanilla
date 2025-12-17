@@ -818,7 +818,7 @@ L:SetMiscLocalization({
 	Pull1					= "¡Arrodíllate ante mí, gusano!",
 	Pull2 					= "¡No puedes esconderte de mí!",
 	Pull3					= "¡Matadlos en nombre del maestro!",
-	Pull4					= "Run while you still can!"
+	Pull4					= "¡Corred mientras podáis!"
 })
 
 -------------
@@ -905,9 +905,9 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Ahora sois míos.",
 	Pull2				= "Te veo...",
-	Pull3				= "You... are next."
+	Pull3				= "Estás... estás cerca."
 })
-
+ 
 -------------
 -- Loatheb --
 -------------
