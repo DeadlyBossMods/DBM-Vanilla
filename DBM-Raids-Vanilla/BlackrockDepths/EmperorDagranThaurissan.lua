@@ -1,7 +1,7 @@
 local mod	= DBM:NewMod(2670, "DBM-Raids-Vanilla", 5, 1301)
 local L		= mod:GetLocalizedStrings()
 
-mod.statTypes = "lfr,normal,heroic"
+mod.statTypes = "lfr"
 
 mod:SetRevision("@file-date-integer@")
 mod:SetCreatureID(226305, 226314)
