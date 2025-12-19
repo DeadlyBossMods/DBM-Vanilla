@@ -56,7 +56,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Slow	= "comienza a remitir!",
 	Freezing= "se queda inmóvil!",
-	Frozen	= "está !", --Chatlog showed quote as ¡Viscidus está ! 2025/11/06
+	Frozen	= "está !", -- ¡Viscidus está ! is obviously a mistake but that is the correct emote from chatlog and transcriptor
 	Phase4 	= "empieza a desmoronarse!",
 	Phase5 	= "parece a punto de hacerse añicos!",
 	Phase6 	= "explota",
@@ -505,7 +505,7 @@ SpecWarnBothBombs			= "Mostrar anuncio especial si las bombas azul y verde está
 SpecWarnBothBombsYou		= "Mostrar anuncio especial si las bombas azul y verde están en ti",
 TimerBombs					= "Mostrar temporizador para las bombas de prueba azul y verde"
 }
-	
+
 ----------------
 --  Lucifron  --
 ----------------
@@ -1415,3 +1415,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
