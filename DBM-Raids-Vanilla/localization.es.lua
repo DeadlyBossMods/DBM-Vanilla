@@ -64,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "Golpes de escarcha por segundo",
 	MeleeHitsPerSecond = "Golpes cuerpo a cuerpo por segundo"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -124,6 +125,7 @@ L:SetMiscLocalization{
 	Weakened 	= "está débil!",
 	NotValid	= "AQ40 parcialmente limpiado. Quedan %s jefes opcionales."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -170,6 +172,7 @@ L:SetOptionLocalization{
 	SpecWarnExplosion 	= "Mostrar anuncio especial cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)",
 	TimerExplosion 		= "Mostrar temporizador para cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)"
 }
+
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -178,6 +181,7 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "Kurinnaxx"
 }
+
 ------------
 -- Rajaxx --
 ------------
@@ -303,6 +307,7 @@ L:SetMiscLocalization{
 	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
 	YellPull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -315,6 +320,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Event				= "¡Demasiado tarde, amigos! Ahora estoy poseído por la corrupción de Nefarius. No puedo... controlarme."
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -354,6 +360,7 @@ L = DBM:GetModLocalization("Flamegor")
 L:SetGeneralLocalization{
 	name = "Flamagor"
 }
+
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
@@ -374,6 +381,7 @@ L:SetMiscLocalization{
 	Ebonroc		= "Ebanorroca",
 	Flamegor	= "Flamagor"
 }
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------
@@ -497,6 +505,7 @@ SpecWarnBothBombs			= "Mostrar anuncio especial si las bombas azul y verde está
 SpecWarnBothBombsYou		= "Mostrar anuncio especial si las bombas azul y verde están en ti",
 TimerBombs					= "Mostrar temporizador para las bombas de prueba azul y verde"
 }
+	
 ----------------
 --  Lucifron  --
 ----------------
@@ -583,6 +592,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	timerShieldCD		= "Mostrar temporizador para el próximo Escudo de daño/reflejo"
 }
+
 ----------------
 --  Ragnaros  --
 ----------------
@@ -627,6 +637,7 @@ L:SetOptionLocalization{
 L:SetWarningLocalization{
 	WarnBossPower		= "Energía del jefe al %d%%"
 }
+
 -----------------
 --  MC: Trash  --
 -----------------
@@ -635,6 +646,7 @@ L = DBM:GetModLocalization("MCTrash")
 L:SetGeneralLocalization{
 	name = "Bichos"
 }
+
 -------------------
 --  Venoxis  --
 -------------------
@@ -749,6 +761,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Ghosts = "Fantasmas"
 }
+
 --------------
 --  Onyxia  --
 --------------
@@ -1142,6 +1155,7 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "Fase 2"
 })
+
 -----------------
 --  Naxx Trash --
 -----------------
@@ -1151,6 +1165,7 @@ L = DBM:GetModLocalization("NaxxTrash")
 L:SetGeneralLocalization({
 	name = "Bichos"
 })
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1400,4 +1415,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
-
