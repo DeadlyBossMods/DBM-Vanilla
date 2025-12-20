@@ -297,7 +297,7 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "첫번째 쫄 등장 타이머 바 보기"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "지배의 수정구가 힘을 잃고 작동을 멈춥니다!",
+	Phase2Emote	= "수정 구슬에서 통제력이 빠져나가자",
 	YellPull 	= "침입자들이 들어왔다! 어떤 희생이 있더라도 알을 반드시 수호하라!"
 }
 
@@ -417,17 +417,17 @@ L:SetTimerLocalization{
 	TimerAllBreaths	= "연발 숨결"
 }
 L:SetOptionLocalization{
-	WarnBreath		= "크로마구스가 숨결 시전 시 알림 보기",
+	WarnBreath			= "크로마구스가 숨결 시전 시 알림 보기",
 	WarnVulnerableNew	= "주문 속성 약화 알림 보기",
-	TimerBreathCD	= "숨결 쿨타임 타이머 바 보기",
-	TimerBreath		= "숨결 시전 타이머 바 보기",
-	TimerVulnCD		= "약화 쿨타임 보기",
-	TimerAllBreaths = "연발 숨결 타이머 바 보기"
+	TimerBreathCD		= "숨결 쿨타임 타이머 바 보기",
+	TimerBreath			= "숨결 시전 타이머 바 보기",
+	TimerVulnCD			= "약화 쿨타임 보기",
+	TimerAllBreaths 	= "연발 숨결 타이머 바 보기"
 }
 L:SetMiscLocalization{
-	Breath1	= "1번 숨결",
-	Breath2	= "2번 숨결",
-	VulnEmote	= "%s 주춤하면서 물러나면서 가죽이 빛납니다.",
+	Breath1		= "1번 숨결",
+	Breath2		= "2번 숨결",
+	VulnEmote	= "주춤하면서 물러나면서 가죽이 빛납니다.",
 	Vuln		= "약화 속성",
 	Fire		= "화염",
 	Nature		= "자연",
@@ -1590,4 +1590,3 @@ L:SetMiscLocalization{
 	Prison = "감옥",
 	Cathedral = "대성당"
 }
-
