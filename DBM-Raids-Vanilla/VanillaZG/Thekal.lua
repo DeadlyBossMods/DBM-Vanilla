@@ -94,7 +94,7 @@ function mod:SPELL_SUMMON(args)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if (msg == L.PriestDied or msg:find(L.PriestDied)) then -- Starts timer before ressurection of adds.
+	if msg == L.PriestDied or msg:find(L.PriestDied) then -- Starts timer before ressurection of adds.
 		self:SendSync("PriestDied")
 	end
 end
