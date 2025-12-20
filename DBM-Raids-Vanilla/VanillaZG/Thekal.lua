@@ -100,7 +100,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if (msg == L.YellPhase2 or msg:find(L.Phase2)) and self.vb.phase < 2 then -- Bossfight (tank and spank)
+	if (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self.vb.phase < 2 then -- Bossfight (tank and spank)
 		self:SendSync("YellPhase2")
 	end
 end
