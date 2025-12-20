@@ -697,7 +697,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PriestDied	= "muere.",
+	PriestDied	= "%s muere.",
 	YellPhase2	= "Shirvallah, ¡lléname de IRA!",
 	YellKill	= "¡Hakkar ya no me controla! ¡Por fin, algo de paz!"
 })
@@ -1415,5 +1415,6 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
 
