@@ -56,7 +56,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Slow	= "comienza a remitir!",
 	Freezing= "se queda inmóvil!",
-	Frozen	= "está !", --Chatlog showed quote as ¡Viscidus está ! 2025/11/06
+	Frozen	= "está !", -- ¡Viscidus está ! is obviously a mistake but that is the correct emote from chatlog and transcriptor
 	Phase4 	= "empieza a desmoronarse!",
 	Phase5 	= "parece a punto de hacerse añicos!",
 	Phase6 	= "explota",
@@ -64,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "Golpes de escarcha por segundo",
 	MeleeHitsPerSecond = "Golpes cuerpo a cuerpo por segundo"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -119,11 +120,12 @@ L:SetOptionLocalization{
 	RangeFrame				= "Mostrar marco de distancia (10 m)"
 }
 L:SetMiscLocalization{
-	Stomach		= "Estómago de C'Thun",
+	Stomach		= "Estómago",
 	FleshTent	= "Tentáculo de carne",
 	Weakened 	= "está débil!",
 	NotValid	= "AQ40 parcialmente limpiado. Quedan %s jefes opcionales."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -170,6 +172,7 @@ L:SetOptionLocalization{
 	SpecWarnExplosion 	= "Mostrar anuncio especial cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)",
 	TimerExplosion 		= "Mostrar temporizador para cuando aparezcan múltiples fantasmas explosivos ($spell:1214871)"
 }
+
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -178,6 +181,7 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "Kurinnaxx"
 }
+
 ------------
 -- Rajaxx --
 ------------
@@ -195,7 +199,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Wave12		= "Ahí vienen. Intenta que no te maten,",--Followed by 'chico' or 'chica'
 	Wave12Alt	= "Rajaxx, ¿recuerdas que te dije que serías el último en morir?",
-	Wave3		= "¡Se acerca la hora de imponer nuestro castigo!	¡Que la oscuridad reine en los corazones de nuestros enemigos!",
+	Wave3		= "¡Se acerca la hora de imponer nuestro castigo!\r\n ¡Que la oscuridad reine en los corazones de nuestros enemigos!",
 	Wave4		= "¡No nos quedaremos esperando por más tiempo tras puertas con barrotes ni muros de piedra! ¡Ya no nos negarán nuestra venganza! ¡Hasta los propios dragones temblarán antes nuestra ira!",
 	Wave5		= "¡El miedo es para el enemigo! ¡El miedo y la muerte!",
 	Wave6		= "¡Corzocelada lloriqueará y suplicará por su vida, al igual que hizo el mocoso de su cría! ¡Hoy se pondrá fin a mil años de injusticia!",
@@ -303,6 +307,7 @@ L:SetMiscLocalization{
 	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
 	YellPull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -315,6 +320,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Event				= "¡Demasiado tarde, amigos! Ahora estoy poseído por la corrupción de Nefarius. No puedo... controlarme."
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -354,6 +360,7 @@ L = DBM:GetModLocalization("Flamegor")
 L:SetGeneralLocalization{
 	name = "Flamagor"
 }
+
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
@@ -374,6 +381,7 @@ L:SetMiscLocalization{
 	Ebonroc		= "Ebanorroca",
 	Flamegor	= "Flamagor"
 }
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------
@@ -497,6 +505,7 @@ SpecWarnBothBombs			= "Mostrar anuncio especial si las bombas azul y verde está
 SpecWarnBothBombsYou		= "Mostrar anuncio especial si las bombas azul y verde están en ti",
 TimerBombs					= "Mostrar temporizador para las bombas de prueba azul y verde"
 }
+
 ----------------
 --  Lucifron  --
 ----------------
@@ -583,6 +592,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	timerShieldCD		= "Mostrar temporizador para el próximo Escudo de daño/reflejo"
 }
+
 ----------------
 --  Ragnaros  --
 ----------------
@@ -627,6 +637,7 @@ L:SetOptionLocalization{
 L:SetWarningLocalization{
 	WarnBossPower		= "Energía del jefe al %d%%"
 }
+
 -----------------
 --  MC: Trash  --
 -----------------
@@ -635,6 +646,7 @@ L = DBM:GetModLocalization("MCTrash")
 L:SetGeneralLocalization{
 	name = "Bichos"
 }
+
 -------------------
 --  Venoxis  --
 -------------------
@@ -749,6 +761,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Ghosts = "Fantasmas"
 }
+
 --------------
 --  Onyxia  --
 --------------
@@ -815,10 +828,10 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1					= "¡Arrodíllate ante mí, sabandija!",
+	Pull1					= "¡Arrodíllate ante mí, gusano!",
 	Pull2 					= "¡No puedes esconderte de mí!",
 	Pull3					= "¡Matadlos en nombre del maestro!",
-	Pull4					= "Run while you still can!"
+	Pull4					= "¡Corred mientras podáis!"
 })
 
 -------------
@@ -905,7 +918,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Ahora sois míos.",
 	Pull2				= "Te veo...",
-	Pull3				= "You... are next."
+	Pull3				= "Estás... estás cerca."
 })
 
 -------------
@@ -1006,7 +1019,7 @@ L:SetMiscLocalization({
 	Yell1 = "¡No muestres misericordia!",
 	Yell2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
 	Yell3 = "¡Poned en práctica lo que os he enseñado!",
-	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
+	Yell4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
 })
 
 L:SetOptionLocalization({
@@ -1142,6 +1155,7 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2	= "Fase 2"
 })
+
 -----------------
 --  Naxx Trash --
 -----------------
@@ -1151,6 +1165,7 @@ L = DBM:GetModLocalization("NaxxTrash")
 L:SetGeneralLocalization({
 	name = "Bichos"
 })
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
