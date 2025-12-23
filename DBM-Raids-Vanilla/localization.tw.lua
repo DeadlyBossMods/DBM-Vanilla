@@ -46,8 +46,8 @@ L:SetGeneralLocalization{
 	name = "維希度斯"
 }
 L:SetWarningLocalization{
-	WarnFreeze	= "冰凍:%d/3",
-	WarnShatter	= "打碎:%d/3"
+	WarnFreeze	= "冰凍：%d/3",
+	WarnShatter	= "打碎：%d/3"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "提示冰凍狀態",
@@ -64,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "冰霜每秒命中次數",
 	MeleeHitsPerSecond = "近戰每秒命中次數"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -72,6 +73,7 @@ L = DBM:GetModLocalization("Huhuran")
 L:SetGeneralLocalization{
 	name = "哈霍蘭公主"
 }
+
 ---------------
 -- Twin Emps --
 ---------------
@@ -118,10 +120,11 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "克蘇恩的胃",
-	FleshTent	= "血肉觸鬚",--Localized so it shows on frame in users language, not senders
+	FleshTent	= "血肉觸鬚", --Localized so it shows on frame in users language, not senders
 	Weakened 	= "變弱了",
-	NotValid	= "AQ40 擊殺信息： %s 首領未擊殺。"
+	NotValid	= "AQ40 擊殺信息：%s首領未擊殺。"
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -144,6 +147,7 @@ L:SetOptionLocalization{
 	WarnEmerge			= "為現身顯示警告",
 	TimerEmerge			= "為現身顯示計時器"
 }
+
 ----------------
 -- AQ40 Trash --
 ----------------
@@ -152,6 +156,7 @@ L = DBM:GetModLocalization("AQ40Trash")
 L:SetGeneralLocalization{
 	name = "小怪"
 }
+
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -268,9 +273,10 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "為第一次小怪重生顯示計時器"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "奈法利安的部隊在寶珠的控制力消失之前逃走。",
+	Phase2Emote	= "在寶珠的控制力消失之前逃走。",
 	YellPull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -283,6 +289,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Event	= "太遲了，朋友！奈法利斯的腐化掌控了我…我已經無法…控制自己了。"
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -409,7 +416,7 @@ L:SetMiscLocalization{
 	YellP1		= "讓賽事開始吧！",
 	YellP2		= "幹得好，手下們。凡人的勇氣開始消退了！現在，我們就來看看他們怎麼面對黑石之王的力量吧！",
 	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
-	YellShaman	= "薩滿，讓我看看",
+	YellShaman	= "薩滿，讓我看看你圖騰到底是什麼用處的！",
 	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
 	YellDruid	= "德魯伊和你們愚蠢的變形。讓我們看看什麼會發生吧！",
 	YellPriest	= "牧師！如果你要繼續這麼治療的話，那我們來玩點有趣的東西！",
@@ -538,6 +545,7 @@ L = DBM:GetModLocalization("MoltenCore")
 L:SetGeneralLocalization{
 	name = "熔火之心"
 }
+
 -----------------
 --  MC: Trash  --
 -----------------
@@ -546,6 +554,7 @@ L = DBM:GetModLocalization("MCTrash")
 L:SetGeneralLocalization{
 	name = "小怪"
 }
+
 -------------------
 --  Venoxis  --
 -------------------
@@ -668,16 +677,16 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "奧妮克希亞幼龍即將出現"
+	WarnWhelpsSoon		= "奧妮克希亞雛龍即將出現"
 }
 
 L:SetTimerLocalization{
-	TimerWhelps 		= "奧妮克希亞幼龍"
+	TimerWhelps 		= "奧妮克希亞雛龍"
 }
 
 L:SetOptionLocalization{
-	TimerWhelps		= "為奧妮克希亞幼龍顯示計時器",
-	WarnWhelpsSoon	= "為奧妮克希亞幼龍顯示預先警告",
+	TimerWhelps		= "為奧妮克希亞雛龍顯示計時器",
+	WarnWhelpsSoon	= "為奧妮克希亞雛龍顯示預先警告",
 	SoundWTF3		= "為經典傳奇式奧妮克希亞副本播放一些有趣的音效"
 }
 
@@ -744,7 +753,7 @@ L:SetWarningLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerSpider	= "下一次梅克絲娜之子"
+	TimerSpider	= "梅克絲娜之子"
 })
 
 L:SetOptionLocalization({
@@ -797,7 +806,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow	= "傳送",
-	WarningTeleportSoon	= "%d秒後 傳送"
+	WarningTeleportSoon	= "%d秒後傳送"
 })
 
 L:SetTimerLocalization({
@@ -948,8 +957,8 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon		= "3秒後第%d波: %s",
-	WarningWaveSpawned	= "第%d波: %s出現了",
+	WarningWaveSoon		= "3秒後第%d波：%s",
+	WarningWaveSpawned	= "第%d波：%s出現了",
 	WarningRiderDown	= "騎兵已死亡",
 	WarningKnightDown	= "死亡騎士已死亡",
 	WarningPhase2		= "第二階段"
@@ -985,7 +994,7 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon			= "3秒後印記%d",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s：%s"
 })
 
 -----------------
@@ -1008,7 +1017,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "10秒後 空中階段",
+	WarningAirPhaseSoon	= "10秒後空中階段",
 	WarningAirPhaseNow	= "空中階段",
 	WarningLanded		= "薩菲隆降落了",
 	WarningDeepBreath	= "冰息術"
@@ -1298,5 +1307,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
-
 
