@@ -611,6 +611,7 @@ SpecWarnBothBombs			= "Mostrar anuncio especial si las bombas azul y verde está
 SpecWarnBothBombsYou		= "Mostrar anuncio especial si las bombas azul y verde están en ti",
 TimerBombs					= "Mostrar temporizador para las bombas de prueba azul y verde"
 }
+
 ----------------
 --  Lucifron  --
 ----------------
@@ -819,7 +820,7 @@ L:SetMiscLocalization({
 	Pull1					= "¡Arrodíllate ante mí, sabandija!",
 	Pull2					= "¡No puedes esconderte de mí!",
 	Pull3					= "¡Mátalos en el nombre del amo!",
-	Pull4					= "Run while you still can!"
+	Pull4					= "¡Corran mientras puedan!"
 })
 
 -------------
