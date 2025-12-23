@@ -46,8 +46,8 @@ L:SetGeneralLocalization{
 	name = "维希度斯"
 }
 L:SetWarningLocalization{
-	WarnFreeze	= "冰冻:%d/3",
-	WarnShatter	= "打碎:%d/3"
+	WarnFreeze	= "冰冻：%d/3",
+	WarnShatter	= "打碎：%d/3"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "提示冰冻状态",
@@ -64,6 +64,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "冰霜每秒命中次数",
 	MeleeHitsPerSecond = "近战每秒命中次数"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -72,6 +73,7 @@ L = DBM:GetModLocalization("Huhuran")
 L:SetGeneralLocalization{
 	name = "哈霍兰公主"
 }
+
 ---------------
 -- Twin Emps --
 ---------------
@@ -119,10 +121,11 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Stomach		= "克苏恩的胃",
-	FleshTent	= "血肉触须",--Localized so it shows on frame in users language, not senders
+	FleshTent	= "血肉触须", --Localized so it shows on frame in users language, not senders
 	Weakened 	= "削弱了",
-    NotValid	= "AQ40 击杀信息： %s 首领未击杀。"
+    NotValid	= "AQ40 击杀信息：%s首领未击杀。"
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -269,7 +272,7 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "为第一次小怪重生显示计时器"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "在宝珠的控制力消失的瞬间，奈法利安的部队逃走了。",
+	Phase2Emote	= "在宝珠的控制力消失的瞬间",
 	YellPull 	= "入侵者闯进了孵化间！我们要不惜一切代价保护龙蛋！"
 }
 -------------------
@@ -534,7 +537,7 @@ L:SetMiscLocalization{
 }
 
 -----------------
---  The Molten Core (Placeholder?_  --
+--  The Molten Core  --
 -----------------
 L = DBM:GetModLocalization("MoltenCore")
 
@@ -676,7 +679,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetWarningLocalization{
-	WarnWhelpsSoon		= "奥妮克希亚雏龙 即将出现"
+	WarnWhelpsSoon		= "奥妮克希亚雏龙即将出现"
 }
 
 L:SetTimerLocalization{
@@ -736,6 +739,7 @@ L:SetMiscLocalization({
 	Pull3					= "以主人之名，杀了他们！",
 	Pull4					= "逃啊！有本事就逃啊！"
 })
+
 ---------------
 --  Maexxna  --
 ---------------
@@ -746,18 +750,18 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningSpidersSoon		= "迈克斯纳之子 5秒后出现",
-	WarningSpidersNow		= "迈克斯纳之子出现了"
+	WarningSpidersSoon		= "迈克斯纳的小蜘蛛5秒后出现",
+	WarningSpidersNow		= "迈克斯纳的小蜘蛛出现了"
 })
 
 L:SetTimerLocalization({
-	TimerSpider				= "下一次迈克斯纳之子"
+	TimerSpider				= "迈克斯纳的小蜘蛛"
 })
 
 L:SetOptionLocalization({
-	WarningSpidersSoon		= "为迈克斯纳之子显示提前警报",
-	WarningSpidersNow		= "为迈克斯纳之子显示警报",
-	TimerSpider				= "为下一次迈克斯纳之子显示计时条"
+	WarningSpidersSoon		= "迈克斯纳的小蜘蛛显示提前警报",
+	WarningSpidersNow		= "迈克斯纳的小蜘蛛显示警报",
+	TimerSpider				= "为下一次迈克斯纳的小蜘蛛显示计时条"
 })
 
 ------------------------------
@@ -792,6 +796,7 @@ L:SetMiscLocalization({
 	Pull3				= "我要没收你的生命！",
 	AddsYell			= "起来吧，我的战士们！起来，再为主人尽忠一次！"
 })
+
 --------------------------
 --  Heigan the Unclean  --
 --------------------------
@@ -803,7 +808,7 @@ L:SetGeneralLocalization({
 
 L:SetWarningLocalization({
 	WarningTeleportNow		= "传送",
-	WarningTeleportSoon		= "%d秒后 传送"
+	WarningTeleportSoon		= "%d秒后传送"
 })
 
 L:SetTimerLocalization({
@@ -928,7 +933,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningShieldWallSoon		= "5秒后 盾墙结束"
+	WarningShieldWallSoon		= "5秒后盾墙结束"
 })
 
 ----------------------------
@@ -950,7 +955,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerWave				= "第 %d 波",
+	TimerWave				= "第%d波",
 	TimerPhase2				= "第二阶段"
 })
 
@@ -992,7 +997,7 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3秒后印记%d",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s：%s"
 })
 
 -----------------
@@ -1016,7 +1021,7 @@ L:SetOptionLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon		= "10秒后 空中阶段",
+	WarningAirPhaseSoon		= "10秒后空中阶段",
 	WarningAirPhaseNow		= "空中阶段",
 	WarningLanded			= "萨菲隆降落了",
 	WarningDeepBreath		= "冰霜吐息"
@@ -1056,6 +1061,7 @@ L:SetWarningLocalization({
 L:SetTimerLocalization({
 	TimerPhase2			= "第二阶段"
 })
+
 -----------------
 --  Naxx Trash --
 -----------------
@@ -1065,6 +1071,7 @@ L = DBM:GetModLocalization("NaxxTrash")
 L:SetGeneralLocalization({
 	name = "小怪"
 })
+
 ---------------------------
 --  Season of Discovery  --
 ---------------------------
@@ -1303,7 +1310,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
-
-
-
 
