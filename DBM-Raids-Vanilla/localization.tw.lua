@@ -857,8 +857,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "縫補者要跟你玩！",
-	yell2 = "縫補者是科爾蘇加德的戰神！"
+	Pull1 = "縫補者要跟你玩！",
+	Pull2 = "縫補者是科爾蘇加德的戰神！"
 })
 
 -----------------
@@ -919,10 +919,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "絕不留情！",
-	Yell2 = "練習時間到此為止！都拿出真本事來！",
-	Yell3 = "照我教你的做！",
-	Yell4 = "絆腿……有什麼問題嗎？"
+	Pull1 = "絕不留情！",
+	Pull2 = "練習時間到此為止！都拿出真本事來！",
+	Pull3 = "照我教你的做！",
+	Pull4 = "絆腿……有什麼問題嗎？"
 })
 
 L:SetOptionLocalization({
@@ -1307,4 +1307,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
-
