@@ -1267,6 +1267,7 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 L:SetGeneralLocalization({
 	name = "阿塔萊防衛者"
 })
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
@@ -1275,6 +1276,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "德姆塞卡爾與編織者"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1283,6 +1285,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "哈卡的化身"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1291,6 +1294,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "迦瑪蘭與奧戈姆"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1299,6 +1303,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "摩弗拉斯與哈札斯"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
