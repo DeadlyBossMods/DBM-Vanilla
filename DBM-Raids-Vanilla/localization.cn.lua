@@ -110,7 +110,6 @@ L:SetOptionLocalization{
 	WarnClawTentacle2		= "为利爪触须显示警告",
 	WarnGiantEyeTentacle	= "为巨眼触须显示警告",
 	WarnGiantClawTentacle	= "为巨钩触须显示警告",
-	WarnWeakened			= "当首领虚弱時显示警告",
 	SpecWarnWeakened		= "当首领虚弱時显示特別警告",
 	TimerEyeTentacle		= "为下一次眼球触须显示计时器",
 	TimerClawTentacle		= "为下一次利爪触须显示计时器",
@@ -1310,4 +1309,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
+
 
