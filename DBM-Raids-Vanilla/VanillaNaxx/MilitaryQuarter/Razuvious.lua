@@ -7,7 +7,7 @@ mod:SetEncounterID(1113)
 mod:SetModelID(16582)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Yell1, L.Yell2, L.Yell3, L.Yell4)
+mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3, L.Pull4)
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
