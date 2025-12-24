@@ -896,8 +896,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1			= "Flickwerk spielen möchte!",
-	yell2			= "Kel’thuzad macht Flickwerk zu seinem Abgesandten von Krieg!"
+	Pull1			= "Flickwerk spielen möchte!",
+	Pull2			= "Kel’thuzad macht Flickwerk zu seinem Abgesandten von Krieg!"
 })
 
 -----------------
@@ -958,10 +958,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "Lasst keine Gnade walten!",
-	Yell2 = "Die Zeit des Übens ist vorbei! Zeigt mir, was ihr gelernt habt!",
-	Yell3 = "Befolgt meine Befehle!",
-	Yell4 = "Streckt sie nieder... oder habt ihr ein Problem damit?"
+	Pull1 = "Lasst keine Gnade walten!",
+	Pull2 = "Die Zeit des Übens ist vorbei! Zeigt mir, was ihr gelernt habt!",
+	Pull3 = "Befolgt meine Befehle!",
+	Pull4 = "Streckt sie nieder... oder habt ihr ein Problem damit?"
 })
 
 L:SetOptionLocalization({
@@ -1396,3 +1396,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
+
