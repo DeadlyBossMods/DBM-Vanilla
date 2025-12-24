@@ -1014,10 +1014,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "¡No muestres misericordia!",
-	Yell2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
-	Yell3 = "¡Poned en práctica lo que os he enseñado!",
-	Yell4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
+	Pull1 = "¡No muestres misericordia!",
+	Pull2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
+	Pull3 = "¡Poned en práctica lo que os he enseñado!",
+	Pull4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
 })
 
 L:SetOptionLocalization({
@@ -1420,3 +1420,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
