@@ -95,7 +95,6 @@ L:SetWarningLocalization{
 	WarnClawTentacle2		= "Tentáculo Garral",
 	WarnGiantEyeTentacle	= "Tentáculo ocular gigante",
 	WarnGiantClawTentacle	= "Tentáculo garral gigante",
-	WarnWeakened			= "C'Thun débil",
 	SpecWarnWeakened		= "¡C'Thun está débil!"
 }
 L:SetTimerLocalization{
@@ -110,7 +109,6 @@ L:SetOptionLocalization{
 	WarnClawTentacle2		= "Mostrar anuncio cuando aparezca un Tentáculo Garral",
 	WarnGiantEyeTentacle	= "Mostrar anuncio cuando aparezca un Tentáculo ocular gigante",
 	WarnGiantClawTentacle	= "Mostrar anuncio cuando aparezca un Tentáculo garral gigante",
-	WarnWeakened			= "Mostrar anuncio cuando C'Thun se vuelva débil",
 	SpecWarnWeakened		= "Mostrar anuncio especial cuando C'Thun se vuelva débil",
 	TimerEyeTentacle		= "Mostrar temporizador para el próximo Tentáculo ocular",
 	TimerClawTentacle		= "Mostrar temporizador para el próximo Tentáculo Garral",
@@ -1282,6 +1280,7 @@ L:SetMiscLocalization({
 	FirstPull = "Aún quedan conductos de ventilación que expulsan material radiactivo por toda Gnomeregan.",
 	Pull = "¡Oh, no! Unos temblores como estos solo pueden significar una cosa..."
 })
+
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------
@@ -1315,6 +1314,7 @@ L:SetMiscLocalization{
 	Squirrel	= "Ardilla",
 	Chicken		= "Pollo"
 }
+
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1375,6 +1375,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	SetIconsOnGhosts = "Colocar iconos en jefes fantasmas"
 })
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
@@ -1383,6 +1384,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "Guadañasueños y Sastrón"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1391,6 +1393,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "Avatar de Hakkar"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1399,6 +1402,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "Jammal'an y Ogom"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1407,6 +1411,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "Morphaz y Hazzas"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
