@@ -921,10 +921,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 				= "仁慈无用！",
-	Yell2 				= "练习时间到此为止！都拿出真本事来！",
-	Yell3 				= "按我教导的去做！",
-	Yell4 				= "绊腿……有什么问题么？"
+	Pull1 				= "仁慈无用！",
+	Pull2 				= "练习时间到此为止！都拿出真本事来！",
+	Pull3 				= "按我教导的去做！",
+	Pull4 				= "绊腿……有什么问题么？"
 })
 
 L:SetOptionLocalization({
