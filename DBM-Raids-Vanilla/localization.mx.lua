@@ -24,7 +24,7 @@ L:SetOptionLocalization{
 	WarnWave	= "Mostrar anuncio anticipado para la siguiente oleada"
 }
 L:SetMiscLocalization{
-	Wave12		= "Ahí vienen. Intenta que no te maten,",--Followed by 'chico' or 'chica'
+	Wave12		= "Ahí vienen. Intenta que no te maten,", --Followed by 'chico' or 'chica'
 	Wave12Alt	= "Rajaxx, ¿recuerdas que te dije que serías el último en morir?",
 	Wave3		= "¡La hora de las recompensas está próxima! ¡Que la oscuridad reine en el corazón de nuestros enemigos!",
 	Wave4		= "¡No volveremos a esperar detrás de rejas y muros de piedra! ¡Nunca más podrán negarnos nuestra venganza! ¡Hasta los dragones temblarán frente a nuestra ira!",
@@ -1004,10 +1004,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "¡No tengan piedad!",
-	Yell2 = "¡Se ha acabado el tiempo de práctica! ¡Quiero ver lo que han aprendido!",
-	Yell3 = "¡Hagan lo que les enseñé!",
-	Yell4 = "Un barrido con pierna... ¿Tienes algún problema?"
+	Pull1 = "¡No tengan piedad!",
+	Pull2 = "¡Se ha acabado el tiempo de práctica! ¡Quiero ver lo que han aprendido!",
+	Pull3 = "¡Hagan lo que les enseñé!",
+	Pull4 = "Un barrido con pierna... ¿Tienes algún problema?"
 })
 
 L:SetOptionLocalization({
