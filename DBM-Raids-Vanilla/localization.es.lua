@@ -951,8 +951,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "¡Remendejo quiere jugar!",
-	yell2 = "¡Kel'Thuzad convertir a Remendejo en su avatar de guerra!"
+	Pull1 = "¡Remendejo quiere jugar!",
+	Pull2 = "¡Kel'Thuzad convertir a Remendejo en su avatar de guerra!"
 })
 
 ---------------
@@ -1420,4 +1420,5 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Sombra de Eranikus"
 })
+
 
