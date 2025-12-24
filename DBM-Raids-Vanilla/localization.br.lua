@@ -1000,10 +1000,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "Não há compaixão nesta luta!",
-	Yell2 = "Acabou o treinamento! Agora é pra valer!",
-	Yell3 = "Façam como eu ensinei!",
-	Yell4 = "Sweep the leg... Do you have a problem with that?"
+	Pull1 = "Não há compaixão nesta luta!",
+	Pull2 = "Acabou o treinamento! Agora é pra valer!",
+	Pull3 = "Façam como eu ensinei!",
+	Pull4 = "Sweep the leg... Do you have a problem with that?"
 })
 
 L:SetOptionLocalization({
