@@ -1600,4 +1600,3 @@ L:SetMiscLocalization{
 	Prison = "Тюрьма",
 	Cathedral = "Собор"
 }
-
