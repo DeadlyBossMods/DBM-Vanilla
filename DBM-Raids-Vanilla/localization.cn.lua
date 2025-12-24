@@ -858,8 +858,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 				= "帕奇维克要跟你玩！",
-	yell2 				= "帕奇维克是克尔苏加德的战神！"
+	Pull1 				= "帕奇维克要跟你玩！",
+	Pull2 				= "帕奇维克是克尔苏加德的战神！"
 })
 
 -----------------
