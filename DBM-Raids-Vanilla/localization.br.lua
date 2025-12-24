@@ -788,7 +788,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Sim, corram! Assim o sangue corre mais rápido!",
 	Pull2				= "Só um gostinho...",
-	Pull3				= "There is no way out."
+	Pull3				= "Não há escapatória."
 })
 
 -------------------------
@@ -814,7 +814,7 @@ L:SetMiscLocalization({
 	Pull1					= "Ajoelhe-se perante a mim, verme!",
 	Pull2 					= "Vocês não podem se esconder de mim!",
 	Pull3 					= "Slay them in the master's name!",
-	Pull4					= "Run while you still can!"
+	Pull4					= "Fujam enquanto podem!"
 })
 
 -------------
