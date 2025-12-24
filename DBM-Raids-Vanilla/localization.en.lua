@@ -959,8 +959,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1			= "Patchwerk want to play!",
-	yell2			= "Kel'thuzad make Patchwerk his avatar of war!"
+	Pull1			= "Patchwerk want to play!",
+	Pull2			= "Kel'thuzad make Patchwerk his avatar of war!"
 })
 
 -----------------
@@ -1023,10 +1023,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "Show them no mercy!",
-	Yell2 = "The time for practice is over! Show me what you have learned!",
-	Yell3 = "Do as I taught you!",
-	Yell4 = "Sweep the leg... Do you have a problem with that?"
+	Pull1 = "Show them no mercy!",
+	Pull2 = "The time for practice is over! Show me what you have learned!",
+	Pull3 = "Do as I taught you!",
+	Pull4 = "Sweep the leg... Do you have a problem with that?"
 })
 
 L:SetOptionLocalization({
@@ -1450,6 +1450,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "Dreamscythe and Weaver"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1458,6 +1459,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "Avatar of Hakkar"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1466,6 +1468,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "Jammal'an and Ogom"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1474,6 +1477,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "Morphaz and Hazzas"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
