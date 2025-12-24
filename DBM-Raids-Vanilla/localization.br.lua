@@ -936,8 +936,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 			= "Retalhoso quer brincar!",
-	yell2			= "Retalhoso virou avatar de guerra do Kel'Thuzad!"
+	Pull1 			= "Retalhoso quer brincar!",
+	Pull2			= "Retalhoso virou avatar de guerra do Kel'Thuzad!"
 })
 
 ---------------
