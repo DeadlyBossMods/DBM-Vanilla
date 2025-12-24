@@ -941,8 +941,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "¡Remendejo quiere jugar!",
-	yell2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!"
+	Pull1 = "¡Remendejo quiere jugar!",
+	Pull2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!"
 })
 
 ---------------
