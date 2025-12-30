@@ -698,7 +698,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	PriestDied	= "%s 죽었습니다.",
+	PriestDied	= "%s|1이;가; 죽습니다.",
 	YellPhase2	= "시르밸라시여, 분노를 채워 주소서!",
 	YellKill	= "학카르의 구속이 끝났다! 이젠 평안히 잠들리라!",
 })
@@ -955,8 +955,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1			= "패치워크랑 놀아줘!",
-	yell2			= "켈투자드님이 패치워크 싸움꾼으로 만들었다."
+	Pull1			= "패치워크랑 놀아줘!",
+	Pull2			= "켈투자드님이 패치워크 싸움꾼으로 만들었다."
 })
 
 -----------------
@@ -1019,10 +1019,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "절대 봐주지 마라!",
-	Yell2 = "훈련은 끝났다! 배운 걸 보여줘라!",
-	Yell3 = "훈련받은 대로 해!",
-	Yell4 = "다리를 후려 차라! 무슨 문제 있나?"
+	Pull1 = "절대 봐주지 마라!",
+	Pull2 = "훈련은 끝났다! 배운 걸 보여줘라!",
+	Pull3 = "훈련받은 대로 해!",
+	Pull4 = "다리를 후려 차라! 무슨 문제 있나?"
 })
 
 L:SetOptionLocalization({
