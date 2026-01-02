@@ -546,7 +546,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "Гарр (Classic)"
+	name = "Гарр"
 }
 
 --------------
@@ -606,7 +606,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "Рагнарос (Classic)"
+	name = "Рагнарос"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Погружение",
@@ -625,8 +625,8 @@ L:SetOptionLocalization{
 	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
 }
 L:SetMiscLocalization{
-	Submerge	= "ПРИДИТЕ, МОИ СЛУГИ! ЗАЩИТИТЕ СВОЕГО ХОЗЯИНА!",
-	Pull		= "Нахальные щенки! Вы сами обрекли себя на смерть! Узрите же Повелителя в гневе!"
+	Submerge	= "ПРИДИТЕ, СЛУГИ МОИ! ЗАЩИТИТЕ СВОЕГО ГОСПОДИНА!",
+	Pull		= "Наглые щенки! Вы опрометью ринулись навстречу смерти! Узрите же явление господина!"
 }
 
 ----------------------
