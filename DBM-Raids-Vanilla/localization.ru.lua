@@ -90,18 +90,18 @@ L:SetGeneralLocalization{
 	name = "К'Тун"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle 	= "Появляются Глазные отростки!",
-	WarnClawTentacle2	= "Появляется Когтещупальце!",
+	WarnEyeTentacle 		= "Появляются Глазные отростки!",
+	WarnClawTentacle2		= "Появляется Когтещупальце!",
 	WarnGiantEyeTentacle	= "Появляется гигантский Глазной отросток!",
 	WarnGiantClawTentacle	= "Появляется гигантское Когтещупальце!",
-	WarnWeakened 		= "К'Тун ослаблен! Бейте его!"
+	SpecWarnWeakened		= "К'Тун ослаблен! Бейте его!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle	= "Глазные отростки",
+	TimerEyeTentacle		= "Глазные отростки",
 	TimerGiantEyeTentacle	= "Гигантский Глазной отросток",
-	TimerClawTentacle	= "Когтещупальце",
+	TimerClawTentacle		= "Когтещупальце",
 	TimerGiantClawTentacle	= "Гигантское Когтещупальце",
-	TimerWeakened		= "К'Тун ослаблен"
+	TimerWeakened			= "К'Тун ослаблен"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Показывать предупреждение для Глазных отростков",
@@ -119,7 +119,7 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Stomach		= "Желудок",
 	FleshTent	= "Мясистое щупальце",
-	Weakened 	= "weaken",
+	Weakened 	= "ослаблен",
 	NotValid	= "AQ40 частично очищен. Осталось %s дополнительных боссов."
 }
 ----------------
