@@ -721,7 +721,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Submerge	= "¡ACÉRQUENSE, SIRVIENTES MÍOS! ¡DEFIENDAN A SU AMO!",
-	Pull		= "¡Crías imprudentes! ¡Se han precipitado hasta su propia muerte! ¡Ahora miren, el maestro se agita!|n" --transcriptor has the |n "<4469.08 21:58:12> [CHAT_MSG_MONSTER_YELL] ¡Crías imprudentes! ¡Se han precipitado hasta su propia muerte! ¡Ahora miren, el maestro se agita!|n#Mayordomo Executus###Magitaco##0#0##0#13031#nil#0#false#false#false#false",
+	Pull		= "¡Crías imprudentes! ¡Se han precipitado hasta su propia muerte! ¡Ahora miren, el maestro se agita!"
 }
 
 -----------------
