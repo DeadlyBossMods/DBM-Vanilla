@@ -721,7 +721,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Submerge	= "¡ACÉRQUENSE, SIRVIENTES MÍOS! ¡DEFIENDAN A SU AMO!",
-	Pull		= "¡Crías imprudentes! ¡Se han precipitado hasta su propia muerte! ¡Ahora miren, el maestro se agita!|n"
+	Pull		= "¡Crías imprudentes! ¡Se han precipitado hasta su propia muerte! ¡Ahora miren, el maestro se agita!|n" -- the |n is intentional found in transcriptor
 }
 
 -----------------
