@@ -1019,7 +1019,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("HorsemenVanilla")
 
 L:SetGeneralLocalization({
-	name = "Die vier Reiter"
+	name = "Die Vier Reiter"
 })
 
 L:SetOptionLocalization({
@@ -1396,4 +1396,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
-
