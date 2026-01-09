@@ -28,7 +28,7 @@ mod:SetHotfixNoticeRev(20200904000000)--2020, September, 4th
 mod:SetMinSyncRevision(20200904000000)--2020, September, 4th
 mod:SetZone(469)
 
-mod:RegisterCombat("yell", L.YellPull)
+mod:RegisterCombat("yell", L.Pull)
 mod:SetWipeTime(180)--guesswork
 
 mod:RegisterEventsInCombat(
@@ -148,3 +148,4 @@ end
 
 --Possible auto gossip for Vael using ID 29549, 30850
 --Possible auto gossip for engaging nef (retial only) 28595, 28897, 29020
+
