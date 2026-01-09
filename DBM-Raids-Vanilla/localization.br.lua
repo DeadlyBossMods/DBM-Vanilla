@@ -412,7 +412,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "fogem à medida que o poder do orbe é drenado.",
-	YellPull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
+	Pull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
 }
 -------------------
 --  Vaelastrasz  --
