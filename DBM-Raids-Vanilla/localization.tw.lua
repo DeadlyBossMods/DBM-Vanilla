@@ -274,7 +274,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "在寶珠的控制力消失之前逃走。",
-	YellPull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
+	Pull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
 
 -------------------
@@ -1312,3 +1312,4 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
+
