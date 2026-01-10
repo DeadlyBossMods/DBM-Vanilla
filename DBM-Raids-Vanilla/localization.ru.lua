@@ -37,6 +37,7 @@ L = DBM:GetModLocalization("Fankriss")
 L:SetGeneralLocalization{
 	name = "Фанкрисс Непреклонный"
 }
+
 --------------
 -- Viscidus --
 --------------
@@ -55,10 +56,10 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Slow	= "начинает замедляться",
-	Freezing= "замерзает",
-	Frozen	= "заморожен",
-	Phase4 	= "начинает трескаться",
-	Phase5 	= "выглядит готовым разлететься вдребезги",
+	Freezing= "замораживается",
+	Frozen	= "застывает",
+	Phase4 	= "начинает раскалываться",
+	Phase5 	= "едва держится",
 	Phase6 	= "Взрывается.",
 
 	FrostHitsPerSecond = "Попадания в заморозке в секунду",
@@ -94,7 +95,7 @@ L:SetWarningLocalization{
 	WarnClawTentacle2		= "Появляется Когтещупальце!",
 	WarnGiantEyeTentacle	= "Появляется гигантский Глазной отросток!",
 	WarnGiantClawTentacle	= "Появляется гигантское Когтещупальце!",
-	SpecWarnWeakened		= "К'Тун ослаблен! Бейте его!"
+	SpecWarnWeakened		= "К'Тун ослаблен!"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle		= "Глазные отростки",
@@ -122,6 +123,7 @@ L:SetMiscLocalization{
 	Weakened 	= "ослаблен",
 	NotValid	= "AQ40 частично очищен. Осталось %s дополнительных боссов."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -1600,4 +1602,3 @@ L:SetMiscLocalization{
 	Prison = "Тюрьма",
 	Cathedral = "Собор"
 }
-
