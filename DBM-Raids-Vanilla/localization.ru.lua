@@ -37,6 +37,7 @@ L = DBM:GetModLocalization("Fankriss")
 L:SetGeneralLocalization{
 	name = "Фанкрисс Непреклонный"
 }
+
 --------------
 -- Viscidus --
 --------------
@@ -55,10 +56,10 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Slow	= "начинает замедляться",
-	Freezing= "замерзает",
-	Frozen	= "заморожен",
-	Phase4 	= "начинает трескаться",
-	Phase5 	= "выглядит готовым разлететься вдребезги",
+	Freezing= "замораживается",
+	Frozen	= "застывает",
+	Phase4 	= "начинает раскалываться",
+	Phase5 	= "едва держится",
 	Phase6 	= "Взрывается.",
 
 	FrostHitsPerSecond = "Попадания в заморозке в секунду",
@@ -90,18 +91,18 @@ L:SetGeneralLocalization{
 	name = "К'Тун"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle 	= "Появляются Глазные отростки!",
-	WarnClawTentacle2	= "Появляется Когтещупальце!",
+	WarnEyeTentacle 		= "Появляются Глазные отростки!",
+	WarnClawTentacle2		= "Появляется Когтещупальце!",
 	WarnGiantEyeTentacle	= "Появляется гигантский Глазной отросток!",
 	WarnGiantClawTentacle	= "Появляется гигантское Когтещупальце!",
-	WarnWeakened 		= "К'Тун ослаблен! Бейте его!"
+	SpecWarnWeakened		= "К'Тун ослаблен!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle	= "Глазные отростки",
+	TimerEyeTentacle		= "Глазные отростки",
 	TimerGiantEyeTentacle	= "Гигантский Глазной отросток",
-	TimerClawTentacle	= "Когтещупальце",
+	TimerClawTentacle		= "Когтещупальце",
 	TimerGiantClawTentacle	= "Гигантское Когтещупальце",
-	TimerWeakened		= "К'Тун ослаблен"
+	TimerWeakened			= "К'Тун ослаблен"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Показывать предупреждение для Глазных отростков",
@@ -119,9 +120,10 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	Stomach		= "Желудок",
 	FleshTent	= "Мясистое щупальце",
-	Weakened 	= "weaken",
+	Weakened 	= "ослаблен",
 	NotValid	= "AQ40 частично очищен. Осталось %s дополнительных боссов."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -231,7 +233,7 @@ L:SetOptionLocalization{
 	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
-	PursueEmote 	= " смотрит на "
+	PursueEmote 	= "смотрит на"
 }
 
 -------------
@@ -301,7 +303,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "убегает, как только сила сферы пошла на спад.",
-	YellPull 	= "Враги в инкубаторе! Бейте тревогу! Защищайте яйца любой ценой!\r\n"
+	Pull 	= "Нападение на инкубатор! Поднимайте тревогу! Все на защиту кладки!"
 }
 
 -------------------
@@ -326,7 +328,7 @@ L:SetGeneralLocalization{
 }
 
 L:SetMiscLocalization{
-	Pull	= "Таких, как вы, здесь быть не должно! Смерть грозит лишь вам!"
+	Pull	= "Вас не должно быть здесь! Вы сами обрекли себя на смерть!"
 }
 
 ---------------
@@ -464,17 +466,17 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Ну что ж, поиграем!",
-	YellP2		= "Браво, слуги мои! Смертные утрачивают мужество! Поглядим же, как они справятся с истинным Повелителем Черной горы!!!",
+	YellP2		= "Отлично, слуги мои! Смертные уже не столь дерзки! Посмотрим, как они справятся с истинным Повелителем Пика Черной горы!!!",
 	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
 	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",
-	YellPaladin	= "Паладины... Я слышал, у вас несколько жизней. Докажите.",
-	YellDruid	= "Друиды и их дурацкие превращения... Ну что ж, поглядим!",
+	YellPaladin	= "Паладины… Я слышал, у вас несколько жизней. Докажите.",
+	YellDruid	= "Друиды и их дурацкие превращения… Ну что ж, поглядим!",
 	YellPriest	= "Жрецы! Если вы собираетесь продолжать так лечить, то давайте хоть немного разнообразим процесс!",
 	YellWarrior	= "Воины! Я знаю, вы можете бить сильнее! Ну-ка, покажите!",
 	YellRogue	= "Разбойники? Хватит прятаться, покажитесь!",
 	YellWarlock	= "Чернокнижники, ну не беритесь вы за волшебство, которого сами не понимаете! Видите, что получилось?",
 	YellHunter	= "Охотники со своими жалкими пугачами!",
-	YellMage	= "И маги тоже? Осторожнее надо быть, когда играешь с магией...",
+	YellMage	= "И маги тоже? Осторожнее надо быть, когда играешь с магией…",
 	YellDK		= "Рыцари смерти! Сюда!",
 	YellMonk	= "Скажите, монахи, а голова у вас от этого катания не кружится?",
 	YellDH		= "Demon hunters? How odd, covering your eyes like that. Doesn't it make it hard to see the world around you?"
@@ -546,7 +548,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
-	name = "Гарр (Classic)"
+	name = "Гарр"
 }
 
 --------------
@@ -606,7 +608,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("Ragnaros-Classic")
 
 L:SetGeneralLocalization{
-	name = "Рагнарос (Classic)"
+	name = "Рагнарос"
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Погружение",
@@ -625,8 +627,8 @@ L:SetOptionLocalization{
 	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
 }
 L:SetMiscLocalization{
-	Submerge	= "ПРИДИТЕ, МОИ СЛУГИ! ЗАЩИТИТЕ СВОЕГО ХОЗЯИНА!",
-	Pull		= "Нахальные щенки! Вы сами обрекли себя на смерть! Узрите же Повелителя в гневе!"
+	Submerge	= "ПРИДИТЕ, СЛУГИ МОИ! ЗАЩИТИТЕ СВОЕГО ГОСПОДИНА!",
+	Pull		= "Наглые щенки! Вы опрометью ринулись навстречу смерти! Узрите же явление господина!"
 }
 
 ----------------------
@@ -963,8 +965,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1			= "Лоскутик хочет поиграть!",
-	yell2			= "Кел'Тузад объявил Лоскутика воплощением войны!"
+	Pull1			= "Лоскутик хочет поиграть!",
+	Pull2			= "Кел'Тузад объявил Лоскутика воплощением войны!"
 })
 
 -----------------
@@ -1027,10 +1029,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "Покажите мне, на что способны!",
-	Yell2 = "Обучение окончено! Покажите мне, что вы усвоили!",
-	Yell3 = "Вспомните, чему я вас учил!",
-	Yell4 = "Выше ногу! Или у тебя с этим проблемы?"
+	Pull1 = "Покажите мне, на что способны!",
+	Pull2 = "Обучение окончено! Покажите мне, что вы усвоили!",
+	Pull3 = "Вспомните, чему я вас учил!",
+	Pull4 = "Выше ногу! Или у тебя с этим проблемы?"
 })
 
 L:SetOptionLocalization({
