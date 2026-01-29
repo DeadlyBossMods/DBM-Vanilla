@@ -211,4 +211,3 @@ function mod:OnSync(msg)
 		timerCombatStart:Update(73, 83)
 	end
 end
-
