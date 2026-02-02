@@ -9,6 +9,7 @@ L = DBM:GetModLocalization("Kurinnaxx")
 L:SetGeneralLocalization{
 	name 		= "Kurinnaxx"
 }
+
 ------------
 -- Rajaxx --
 ------------
@@ -236,6 +237,7 @@ L:SetMiscLocalization{
 	Weakened 	= "est affaibli !",
 	NotValid	= "AQ40 partiellement effacé. %s bosses optionnels restent."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -396,6 +398,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Ghosts = "Fantômes"
 }
+
 -----------------
 --  Razorgore  --
 -----------------
@@ -412,8 +415,9 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "s'enfuit car le contrôle de l'orbe s'affaiblit.",
-	YellPull = "La chambre des œufs est envahie ! Sonnez l'alarme ! Protégez les œufs à tout prix !"
+	Pull = "La chambre des œufs est envahie ! Sonnez l'alarme ! Protégez les œufs à tout prix !"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -426,6 +430,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Event				= "Trop tard, mes amis ! La corruption de Nefarius s'empare de moi… Je ne peux plus… me contrôler."
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -465,6 +470,7 @@ L = DBM:GetModLocalization("Flamegor")
 L:SetGeneralLocalization{
 	name = "Flamegor"
 }
+
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
@@ -605,6 +611,7 @@ SpecWarnBothBombs			= "Afficher une annonce spéciale si les bombes bleue et ver
 SpecWarnBothBombsYou		= "Afficher une annonce spéciale si les bombes bleue et verte sont sur vous",
 TimerBombs					= "Afficher un chronomètre pour les bombes d'épreuve bleue et verte"
 }
+
 ----------------
 --  Lucifron  --
 ----------------
@@ -933,8 +940,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 		     	= "R'cousu veut jouer !",
-	yell2 		     	= "R'cousu avatar de guerre pour Kel'Thuzad !"
+	Pull1 		     	= "R'cousu veut jouer !",
+	Pull2 		     	= "R'cousu avatar de guerre pour Kel'Thuzad !"
 })
 
 -----------------
@@ -997,10 +1004,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 					= "Pas de quartier !",
-	Yell2 					= "Les cours sont terminés ! Montrez-moi ce que vous avez appris !",
-	Yell3 					= "Faites ce que vous ai appris !",
-	Yell4 					= "Frappe-le à la jambe… Ça te pose un problème ?"
+	Pull1 					= "Pas de quartier !",
+	Pull2 					= "Les cours sont terminés ! Montrez-moi ce que vous avez appris !",
+	Pull3 					= "Faites ce que vous ai appris !",
+	Pull4 					= "Frappe-le à la jambe… Ça te pose un problème ?"
 })
 
 L:SetOptionLocalization({
