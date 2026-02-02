@@ -412,7 +412,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "fogem à medida que o poder do orbe é drenado.",
-	YellPull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
+	Pull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
 }
 -------------------
 --  Vaelastrasz  --
@@ -788,7 +788,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Sim, corram! Assim o sangue corre mais rápido!",
 	Pull2				= "Só um gostinho...",
-	Pull3				= "There is no way out."
+	Pull3				= "Não há escapatória."
 })
 
 -------------------------
@@ -814,7 +814,7 @@ L:SetMiscLocalization({
 	Pull1					= "Ajoelhe-se perante a mim, verme!",
 	Pull2 					= "Vocês não podem se esconder de mim!",
 	Pull3 					= "Slay them in the master's name!",
-	Pull4					= "Run while you still can!"
+	Pull4					= "Fujam enquanto podem!"
 })
 
 -------------
@@ -936,8 +936,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 			= "Retalhoso quer brincar!",
-	yell2			= "Retalhoso virou avatar de guerra do Kel'Thuzad!"
+	Pull1 			= "Retalhoso quer brincar!",
+	Pull2			= "Retalhoso virou avatar de guerra do Kel'Thuzad!"
 })
 
 ---------------
@@ -1000,10 +1000,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "Não há compaixão nesta luta!",
-	Yell2 = "Acabou o treinamento! Agora é pra valer!",
-	Yell3 = "Façam como eu ensinei!",
-	Yell4 = "Sweep the leg... Do you have a problem with that?"
+	Pull1 = "Não há compaixão nesta luta!",
+	Pull2 = "Acabou o treinamento! Agora é pra valer!",
+	Pull3 = "Façam como eu ensinei!",
+	Pull4 = "Sweep the leg... Do you have a problem with that?"
 })
 
 L:SetOptionLocalization({
