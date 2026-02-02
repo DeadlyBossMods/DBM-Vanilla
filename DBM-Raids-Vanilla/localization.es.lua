@@ -95,7 +95,6 @@ L:SetWarningLocalization{
 	WarnClawTentacle2		= "Tentáculo Garral",
 	WarnGiantEyeTentacle	= "Tentáculo ocular gigante",
 	WarnGiantClawTentacle	= "Tentáculo garral gigante",
-	WarnWeakened			= "C'Thun débil",
 	SpecWarnWeakened		= "¡C'Thun está débil!"
 }
 L:SetTimerLocalization{
@@ -110,7 +109,6 @@ L:SetOptionLocalization{
 	WarnClawTentacle2		= "Mostrar anuncio cuando aparezca un Tentáculo Garral",
 	WarnGiantEyeTentacle	= "Mostrar anuncio cuando aparezca un Tentáculo ocular gigante",
 	WarnGiantClawTentacle	= "Mostrar anuncio cuando aparezca un Tentáculo garral gigante",
-	WarnWeakened			= "Mostrar anuncio cuando C'Thun se vuelva débil",
 	SpecWarnWeakened		= "Mostrar anuncio especial cuando C'Thun se vuelva débil",
 	TimerEyeTentacle		= "Mostrar temporizador para el próximo Tentáculo ocular",
 	TimerClawTentacle		= "Mostrar temporizador para el próximo Tentáculo Garral",
@@ -304,8 +302,8 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Mostrar temporizador para cuando aparezcan los primeros esbirros"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
-	YellPull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
+	Phase2Emote	= "huye mientras se consume el poder del orbe.",
+	Pull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 
 -------------------
@@ -474,7 +472,7 @@ L:SetMiscLocalization{
 	YellShaman	= "¡Chamanes, mostradme lo que pueden hacer vuestros tótems!",
 	YellPaladin	= "Paladines... He oído que tenéis muchas vidas. Demostrádmelo.",
 	YellDruid	= "Los druidas y vuestro estúpido poder de cambiar de forma. ¡Veámoslo en acción!",
-	YellPriest	= "¡Sacerdotes! Si vais a seguir curando de esa forma, ¡podríamos hacerlo más interesante!",
+	YellPriest	= "¡Sacerdotes! Si vais a seguir curando de esa forma, ¡podíamos hacerlo más interesante!",
 	YellWarrior	= "¡Vamos guerreros, sé que podéis golpear más fuerte que eso! ¡Veámoslo!",
 	YellRogue	= "¿Pícaros? ¡Dejad de esconderos y enfrentaos a mí!",
 	YellWarlock	= "Brujos... No deberíais estar jugando con magia que no comprendéis. ¿Veis lo que pasa?",
@@ -566,7 +564,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
-	name = "Presagista Sulfuron"
+	name = "Sulfuron Presagista"
 }
 
 ----------------
@@ -953,8 +951,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "¡Remendejo quiere jugar!",
-	yell2 = "¡Kel'Thuzad convertir a Remendejo en su avatar de guerra!"
+	Pull1 = "¡Remendejo quiere jugar!",
+	Pull2 = "¡Kel'Thuzad convertir a Remendejo en su avatar de guerra!"
 })
 
 ---------------
@@ -1016,10 +1014,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "¡No muestres misericordia!",
-	Yell2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
-	Yell3 = "¡Poned en práctica lo que os he enseñado!",
-	Yell4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
+	Pull1 = "¡No muestres misericordia!",
+	Pull2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
+	Pull3 = "¡Poned en práctica lo que os he enseñado!",
+	Pull4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
 })
 
 L:SetOptionLocalization({
@@ -1282,6 +1280,7 @@ L:SetMiscLocalization({
 	FirstPull = "Aún quedan conductos de ventilación que expulsan material radiactivo por toda Gnomeregan.",
 	Pull = "¡Oh, no! Unos temblores como estos solo pueden significar una cosa..."
 })
+
 ----------------------------
 --  Electrocutioner 6000  --
 ----------------------------
@@ -1315,6 +1314,7 @@ L:SetMiscLocalization{
 	Squirrel	= "Ardilla",
 	Chicken		= "Pollo"
 }
+
 -----------------------------
 --  Mekgineer Thermaplugg  --
 -----------------------------
@@ -1375,6 +1375,7 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	SetIconsOnGhosts = "Colocar iconos en jefes fantasmas"
 })
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
@@ -1383,6 +1384,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "Guadañasueños y Sastrón"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1391,6 +1393,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "Avatar de Hakkar"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1399,6 +1402,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "Jammal'an y Ogom"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1407,6 +1411,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "Morphaz y Hazzas"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
