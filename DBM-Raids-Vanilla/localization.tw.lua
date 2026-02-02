@@ -274,7 +274,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "在寶珠的控制力消失之前逃走。",
-	YellPull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
+	Pull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
 
 -------------------
@@ -857,8 +857,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 = "縫補者要跟你玩！",
-	yell2 = "縫補者是科爾蘇加德的戰神！"
+	Pull1 = "縫補者要跟你玩！",
+	Pull2 = "縫補者是科爾蘇加德的戰神！"
 })
 
 -----------------
@@ -919,10 +919,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 = "絕不留情！",
-	Yell2 = "練習時間到此為止！都拿出真本事來！",
-	Yell3 = "照我教你的做！",
-	Yell4 = "絆腿……有什麼問題嗎？"
+	Pull1 = "絕不留情！",
+	Pull2 = "練習時間到此為止！都拿出真本事來！",
+	Pull3 = "照我教你的做！",
+	Pull4 = "絆腿……有什麼問題嗎？"
 })
 
 L:SetOptionLocalization({
@@ -1267,6 +1267,7 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 L:SetGeneralLocalization({
 	name = "阿塔萊防衛者"
 })
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
@@ -1275,6 +1276,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "德姆塞卡爾與編織者"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1283,6 +1285,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "哈卡的化身"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1291,6 +1294,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "迦瑪蘭與奧戈姆"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1299,6 +1303,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "摩弗拉斯與哈札斯"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
