@@ -457,7 +457,7 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "Llamada de %s termina"
+	TimerClassCall		= "Llamada de %s"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Mostrar temporizador para la duración de las llamadas en cada clase",
