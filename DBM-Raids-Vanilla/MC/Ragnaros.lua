@@ -96,15 +96,15 @@ function mod:OnCombatEnd(wipe)
 			if thisTime and thisTime > 0 then
 				if not firstBossMod.Options.FastestClear2 then
 					--First clear, just show current clear time
-					DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format("MC", DBM:strFromTime(thisTime)))
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(409), DBM:strFromTime(thisTime)))
 					firstBossMod.Options.FastestClear2 = thisTime
 				elseif (firstBossMod.Options.FastestClear2 > thisTime) then
 					--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
-					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format("MC", DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear2)))
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(409), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear2)))
 					firstBossMod.Options.FastestClear2 = thisTime
 				else
 					--Just show this clear time, and current record time (that you did NOT beat)
-					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format("MC", DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear2)))
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(409), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear2)))
 				end
 			end
 			firstBossMod.vb.firstEngageTime = nil
@@ -155,9 +155,9 @@ function mod:UNIT_DIED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Submerge then
+	if msg == L.Submerge or msg:find(L.Submerge) then
 		self:SendSync("Submerge")
-	elseif msg == L.Pull and self:AntiSpam(5, 4) then
+	elseif (msg == L.Pull or msg:find(L.Pull)) and self:AntiSpam(5, 4) then
 		self:SendSync("SummonRag")
 	end
 end
