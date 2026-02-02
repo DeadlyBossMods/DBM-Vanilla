@@ -110,7 +110,6 @@ L:SetOptionLocalization{
 	WarnClawTentacle2		= "为利爪触须显示警告",
 	WarnGiantEyeTentacle	= "为巨眼触须显示警告",
 	WarnGiantClawTentacle	= "为巨钩触须显示警告",
-	WarnWeakened			= "当首领虚弱時显示警告",
 	SpecWarnWeakened		= "当首领虚弱時显示特別警告",
 	TimerEyeTentacle		= "为下一次眼球触须显示计时器",
 	TimerClawTentacle		= "为下一次利爪触须显示计时器",
@@ -273,8 +272,9 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	Phase2Emote	= "在宝珠的控制力消失的瞬间",
-	YellPull 	= "入侵者闯进了孵化间！我们要不惜一切代价保护龙蛋！"
+	Pull 	= "入侵者闯进了孵化间！我们要不惜一切代价保护龙蛋！"
 }
+
 -------------------
 --  Vaelastrasz  --
 -------------------
@@ -859,8 +859,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	yell1 				= "帕奇维克要跟你玩！",
-	yell2 				= "帕奇维克是克尔苏加德的战神！"
+	Pull1 				= "帕奇维克要跟你玩！",
+	Pull2 				= "帕奇维克是克尔苏加德的战神！"
 })
 
 -----------------
@@ -922,10 +922,10 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1 				= "仁慈无用！",
-	Yell2 				= "练习时间到此为止！都拿出真本事来！",
-	Yell3 				= "按我教导的去做！",
-	Yell4 				= "绊腿……有什么问题么？"
+	Pull1 				= "仁慈无用！",
+	Pull2 				= "练习时间到此为止！都拿出真本事来！",
+	Pull3 				= "按我教导的去做！",
+	Pull4 				= "绊腿……有什么问题么？"
 })
 
 L:SetOptionLocalization({
@@ -1270,6 +1270,7 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 L:SetGeneralLocalization({
 	name = "阿塔莱防御者"
 })
+
 ---------------------------
 --  Dreamscythe and Weaver  --
 ---------------------------
@@ -1278,6 +1279,7 @@ L = DBM:GetModLocalization("DreamscytheAndWeaverSoD")
 L:SetGeneralLocalization({
 	name = "德姆塞卡尔与德拉维沃尔"
 })
+
 ---------------------------
 --  Avatar of Hakkar  --
 ---------------------------
@@ -1286,6 +1288,7 @@ L = DBM:GetModLocalization("AvatarofHakkarSoD")
 L:SetGeneralLocalization({
 	name = "哈卡的化身"
 })
+
 ---------------------------
 --  Jammal'an and Ogom  --
 ---------------------------
@@ -1294,6 +1297,7 @@ L = DBM:GetModLocalization("JammalanAndOgomSoD")
 L:SetGeneralLocalization({
 	name = "迦玛兰和奥戈姆"
 })
+
 ---------------------------
 --  Morphaz and Hazzas  --
 ---------------------------
@@ -1302,6 +1306,7 @@ L = DBM:GetModLocalization("MorphazandHazzasSoD")
 L:SetGeneralLocalization({
 	name = "摩弗拉斯和哈扎斯"
 })
+
 ---------------------------
 --  Shade of Eranikus  --
 ---------------------------
