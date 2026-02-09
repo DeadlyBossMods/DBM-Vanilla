@@ -565,7 +565,7 @@ L:SetTimerLocalization{
 	TimerClassCall		= "Chamada acaba"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Exibir cronômetro para duração da chamada em cada classe",
+	TimerClassCall		= "Exibir cronômetro para duração da chamada",
 	WarnAddsLeft		= "Exibir anúncio para as mortes restantes até a Fase 2",
 	WarnClassCall		= "Exibir anúncio para chamadas de classe",
 	specwarnClassCall	= "Exibir anúncio especial quando for afetado por chamada em classe"
