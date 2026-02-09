@@ -567,10 +567,10 @@ L:SetTimerLocalization{
 	TimerClassCall		= "Llamada termina"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Mostrar temporizador para la duración de las llamadas",
+	TimerClassCall		= "Mostrar temporizador para la duración de la llamada de clase",
 	WarnAddsLeft		= "Mostrar anuncio para las muertes restantes hasta fase 2",
 	WarnClassCall		= "Mostrar anuncio para las llamadas de clase",
-	specwarnClassCall	= "Mostrar anuncio especial cuando se ve afectado por la llamada de clase"
+	specwarnClassCall	= "Mostrar anuncio especial cuando estás afectado por la llamada de clase"
 }
 L:SetMiscLocalization{
 	YellP1		= "¡Que comiencen los juegos!",
