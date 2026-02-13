@@ -901,7 +901,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1				= "Vocês agora são meus.",
 	Pull2				= "Eu vejo você...",
-	Pull3				= "You... are next."
+	Pull3				= "Sua vez... vai chegar."
 })
 
 -------------
@@ -1047,8 +1047,8 @@ L:SetWarningLocalization({
 
 L:SetMiscLocalization({
 	WarningWave1	= "%d %s",
-	WarningWave2	= "%d %s y %d %s",
-	WarningWave3	= "%d %s, %d %s y %d %s",
+	WarningWave2	= "%d %s e %d %s",
+	WarningWave3	= "%d %s, %d %s e %d %s",
 	Trainee			= "Aprendizes",
 	Knight			= "Cavaleiros",
 	Horse			= "Cavalo Espectral",
