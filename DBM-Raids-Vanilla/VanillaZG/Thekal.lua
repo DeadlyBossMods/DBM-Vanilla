@@ -107,12 +107,12 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == L.PriestDied or msg:find(L.PriestDied) then
+	if msg == "PriestDied" then
 		if self:AntiSpam(20, 2) then
 			warnSimulKill:Show()
 			timerSimulKill:Start()
 		end
-	elseif (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self.vb.phase < 2 then
+	elseif msg == "YellPhase2" and self.vb.phase < 2 then
 		DBM.InfoFrame:Hide()
 		self:SetStage(2)
 		warnPhase2:Show()
