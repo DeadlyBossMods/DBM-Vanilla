@@ -899,7 +899,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
-	Emote2				= "电磁圈超载了！",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })

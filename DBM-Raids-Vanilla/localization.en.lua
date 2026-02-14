@@ -993,7 +993,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
-	Emote2	= "Tesla Coil overloads!",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })
