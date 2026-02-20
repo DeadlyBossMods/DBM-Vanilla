@@ -1002,7 +1002,7 @@ L:SetMiscLocalization({
 	Pull1 = "Não há compaixão nesta luta!",
 	Pull2 = "Acabou o treinamento! Agora é pra valer!",
 	Pull3 = "Façam como eu ensinei!",
-	Pull4 = "Sweep the leg... Do you have a problem with that?"
+	Pull4 = "Chutem entre as pernas... Ou vão ficar de frescura?!"
 })
 
 L:SetOptionLocalization({
