@@ -545,6 +545,12 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Majordomus Exekutus"
 }
+L:SetTimerLocalization{
+	timerShieldCD		= "Schild"
+}
+L:SetOptionLocalization{
+	timerShieldCD		= "Zeige Zeit bis nächstes Schaden-/Reflexionsschild"
+}
 
 ----------------
 --  Ragnaros  --
@@ -590,7 +596,6 @@ L:SetOptionLocalization{
 L:SetWarningLocalization{
 	WarnBossPower		= "Energie bei %d%%"
 }
-
 
 -------------------
 --  Venoxis  --
@@ -930,7 +935,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
-	Emote2	= "Teslaspule überlädt!",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })

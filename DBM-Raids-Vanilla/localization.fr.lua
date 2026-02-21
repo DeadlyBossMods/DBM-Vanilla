@@ -568,10 +568,10 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "Votre appel de classe !"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "L'appel de %s termine"
+	TimerClassCall		= "L'appel termine"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Afficher un chronomètre pour la durée de l'appel en classe",
+	TimerClassCall		= "Afficher un chronomètre pour la durée de l'appel de classe",
 	WarnAddsLeft		= "Afficher une annonce pour les éliminations restantes jusqu'au déclenchement de la phase 2",
 	WarnClassCall		= "Afficher une annonce pour les appels de classe",
 	specwarnClassCall	= "Afficher une annonce spéciale lorsque vous êtes affecté par un appel de classe"
@@ -974,7 +974,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
-	Emote2					= "Bobine de Tesla entre en surcharge !",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })

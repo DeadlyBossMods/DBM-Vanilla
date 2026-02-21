@@ -508,6 +508,12 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "管理者埃克索图斯"
 }
+L:SetTimerLocalization{
+	timerShieldCD		= "护盾"
+}
+L:SetOptionLocalization{
+	timerShieldCD		= "为下一次伤害/魔法反射护盾显示计时器"
+}
 
 ----------------
 --  Ragnaros  --
@@ -893,7 +899,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
-	Emote2				= "电磁圈超载了！",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })

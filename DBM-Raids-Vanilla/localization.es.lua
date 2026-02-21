@@ -457,13 +457,13 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "Llamada de %s termina"
+	TimerClassCall		= "Llamada termina"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Mostrar temporizador para la duración de las llamadas en cada clase",
+	TimerClassCall		= "Mostrar temporizador para la duración de la llamada de clase",
 	WarnAddsLeft		= "Mostrar anuncios para las muertes restantes hasta fase 2",
 	WarnClassCall		= "Mostrar anuncio para las llamadas de clase",
-	specwarnClassCall	= "Mostrar anuncio especial cuando se ve afectado por la llamada de clase"
+	specwarnClassCall	= "Mostrar anuncio especial cuando estás afectado por la llamada de clase"
 }
 L:SetMiscLocalization{
 	YellP1		= "¡Que comiencen los juegos!",
@@ -985,7 +985,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "¡Stalagg machacarte!",
 	Emote	= "¡%s se sobrecarga!",
-	Emote2	= "¡Espiral tesla se sobrecarga!",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })

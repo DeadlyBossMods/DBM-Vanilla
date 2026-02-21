@@ -989,7 +989,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "스탈라그, 박살낸다!",
 	Emote	= "%s 과부하 상태가 됩니다.",
-	Emote2	= "테슬라 코일이 과부하 상태가 됩니다.",
 	Charge1	= "음전하",
 	Charge2	= "양전하"
 })
