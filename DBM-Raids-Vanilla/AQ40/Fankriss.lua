@@ -21,18 +21,19 @@ mod:RegisterEventsInCombat(
 	"SPELL_SUMMON 518 25832 25831"
 )
 
-local warnWound			= mod:NewStackAnnounce(25646, 3, nil, "Tank", 2)
-local warnWorm			= mod:NewSpellAnnounce(25831, 3, 30732)
+local warnWound				= mod:NewStackAnnounce(25646, 3, nil, "Tank", 2)
+local warnWorm				= mod:NewSpellAnnounce(25831, 3, 30732)
 
-local specWarnWound		= mod:NewSpecialWarningStack(25646, nil, 5, nil, nil, 1, 6)
-local specWarnWoundTaunt= mod:NewSpecialWarningTaunt(25646, nil, nil, nil, 1, 2)
+local specWarnWound			= mod:NewSpecialWarningStack(25646, nil, 5, nil, nil, 1, 6)
+local specWarnWoundTaunt	= mod:NewSpecialWarningTaunt(25646, nil, nil, nil, 1, 2)
 
-local timerWound		= mod:NewTargetTimer(20, 25646, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerWound			= mod:NewTargetTimer(20, 25646, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerEntangle			= mod:NewTargetTimer(8, 720, nil, nil, nil, 5)
 
 function mod:OnCombatStart(delay)
 	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
-			"SPELL_AURA_APPLIED 25646",
+			"SPELL_AURA_APPLIED 25646 720 731 1121",
 			"SPELL_AURA_APPLIED_DOSE 25646",
 			"SPELL_AURA_REMOVED 25646"
 		)
@@ -44,7 +45,9 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(25646) then
+	if args:IsSpell(720, 731, 1121) then
+		timerEntangle:Start(args.destName)
+	elseif args:IsSpell(25646) then
 		local amount = args.amount or 1
 		timerWound:Show(args.destName)
 		if amount >= 5 then
