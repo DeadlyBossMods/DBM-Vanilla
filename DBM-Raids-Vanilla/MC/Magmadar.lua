@@ -48,6 +48,10 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 --	timerCoreHound		= mod:NewCDTimer(30, 364727, nil, nil, nil, 1)
 end
 
+function mod:OnCombatStart()
+	timerPanicCD:Start("v6.5-9.7")
+end
+
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(19451) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn19451dispel then

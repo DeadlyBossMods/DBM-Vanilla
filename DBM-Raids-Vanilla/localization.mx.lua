@@ -142,6 +142,9 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "Guardia de batalla Sartura"
 }
+L:SetWarningLocalization({
+    WarnGuardDied = "Guardias restantes: %d/%d" -- NPC ID 15984
+})
 
 --------------
 -- Fankriss --
@@ -526,7 +529,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s reutilización",
 	TimerBreath		= "%s lanzamiento",
-	TimerVulnCD		= "Reutilización de vulnerabilidad",
+	TimerVulnCD		= "Vulnerabilidad",
 	TimerAllBreaths = "Lluvia de aliento"
 }
 L:SetOptionLocalization{

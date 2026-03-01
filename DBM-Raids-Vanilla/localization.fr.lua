@@ -531,7 +531,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s recharge",
 	TimerBreath		= "%s incantation",
-	TimerVulnCD		= "Recharge de Vulnérabilité",
+	TimerVulnCD		= "Vulnérabilité",
 	TimerAllBreaths = "Salve de souffle"
 }
 L:SetOptionLocalization{

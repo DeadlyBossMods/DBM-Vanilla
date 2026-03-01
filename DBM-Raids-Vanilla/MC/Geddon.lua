@@ -81,7 +81,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart(delay)
-	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first
+	timerIgniteManaCD:Start("v6.3-21")
 	timerBombCD:Start(11-delay)
 end
 
