@@ -18,7 +18,8 @@ mod:SetZone(531)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 26083 8269"
+	"SPELL_CAST_SUCCESS 26083 8269",
+	"UNIT_DIED"
 )
 
 mod:NewGtfo{spell = 26084, spellAura = false, spellPeriodicDamage = false}
