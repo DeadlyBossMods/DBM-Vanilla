@@ -60,7 +60,7 @@ local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 
 
 local timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 local timerBurst					= mod:NewNextTimer(30, 1215202)
-local timerSpecWarnExplosion		= mod:NewTimer(7, 25698)
+local timerSpecWarnExplosion		= mod:NewCastTimer(7, 25698)
 local timerCauseInsanity			= mod:NewTargetTimer(10, 26079, nil, nil, nil, 5)
 local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
