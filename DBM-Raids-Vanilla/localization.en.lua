@@ -27,7 +27,7 @@ L:SetGeneralLocalization{
 	name = "Battleguard Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Guards remaining: %d/%d" -- NPC ID 15984
+    WarnGuardDied = "Guards remaining: %d/3" -- NPC ID 15984
 })
 
 --------------
