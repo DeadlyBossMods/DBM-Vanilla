@@ -26,6 +26,9 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "Battleguard Sartura"
 }
+L:SetWarningLocalization({
+    WarnGuardDied = "Guards remaining: %d/%d" -- NPC ID 15984
+})
 
 --------------
 -- Fankriss --
@@ -89,26 +92,26 @@ L:SetGeneralLocalization{
 	name = "C'Thun"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle			= "Eye Tentacles",
+	WarnEyeTentacle			= "Eye Tentacle",
 	WarnClawTentacle2		= "Claw Tentacle",
 	WarnGiantEyeTentacle	= "Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Giant Claw Tentacle",
 	SpecWarnWeakened		= "C'Thun Weakened!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Eye Tentacles",
+	TimerEyeTentacle		= "Eye Tentacle",
 	TimerClawTentacle		= "Claw Tentacle",
 	TimerGiantEyeTentacle	= "Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Giant Claw Tentacle",
 	TimerWeakened			= "Weaken ends"
 }
 L:SetOptionLocalization{
-	WarnEyeTentacle			= "Show warning for Eye Tentacles",
+	WarnEyeTentacle			= "Show warning for Eye Tentacle",
 	WarnClawTentacle2		= "Show warning for Claw Tentacle",
 	WarnGiantEyeTentacle	= "Show warning for Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Show warning for Giant Claw Tentacle",
 	SpecWarnWeakened		= "Show special warning when boss weaken",
-	TimerEyeTentacle		= "Show timer for next Eye Tentacles",
+	TimerEyeTentacle		= "Show timer for next Eye Tentacle",
 	TimerClawTentacle		= "Show timer for next Claw Tentacle",
 	TimerGiantEyeTentacle	= "Show timer for next Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Show timer for next Giant Claw Tentacle",

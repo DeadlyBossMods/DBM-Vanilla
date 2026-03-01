@@ -210,14 +210,15 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23308, 23309, 23313, 23314, 23187, 23189, 23315, 23316, 23310, 23312) then
 		warnBreath:Show(args.spellName)
+		warnBreath:UpdateIcon(args.spellId, args.spellName)
 		timerBreath:Start(2, args.spellName)
-		timerBreath:UpdateIcon(args.spellId)
+		timerBreath:UpdateIcon(args.spellId, args.spellName)
 		-- Is part of a volley or regular breath? This is bit messy to reconstruct :/
 		local nextBreathOffset = math.abs(GetTime() - nextBreath)
 		local nextVolleyOffset = math.abs(GetTime() - nextVolley)
 		if (nextBreathOffset < nextVolleyOffset and volleyCount == 0) or not self:IsBwlBlackEssenceEnabled() then -- Regular breath
 			timerBreathCD:Start(60, args.spellName)
-			timerBreathCD:UpdateIcon(args.spellId)
+			timerBreathCD:UpdateIcon(args.spellId, args.spellName)
 			nextBreath = GetTime() + 30
 			specWarnBreathSoon:Schedule(57)
 		else -- part of a volley

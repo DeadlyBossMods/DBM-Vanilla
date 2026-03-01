@@ -60,6 +60,8 @@ local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 
 
 local timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 local timerBurst					= mod:NewNextTimer(30, 1215202)
+local timerSpecWarnExplosion		= mod:NewTimer(7, 25698)
+local timerCauseInsanity			= mod:NewTargetTimer(10, 26079, nil, nil, nil, 5)
 local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
 local yellPlague                    = mod:NewYell(26556)
@@ -117,8 +119,10 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(25698) and not self:IsTrivial() then
 		specWarnExplode:Show()
 		specWarnExplode:Play("justrun")
+		timerSpecWarnExplosion:Start()
 	elseif args:IsSpell(26079) then
 		warnCauseInsanity:CombinedShow(0.75, args.destName)
+		timerCauseInsanity:Start(args.destName)
 	elseif args:IsSpell(1215202) then
 		self:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
 	elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then

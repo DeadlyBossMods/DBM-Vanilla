@@ -41,7 +41,7 @@ mod:RegisterEventsInCombat(
 	"UNIT_HEALTH"
 )
 
-local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "136116")
+local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
 local warnPhase				= mod:NewPhaseChangeAnnounce()
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
@@ -53,7 +53,7 @@ local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
 local timerPhase			= mod:NewStageTimer(15)
-local timerClassCall		= mod:NewTimer(30, "TimerClassCall", "136116", nil, nil, 5)
+local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
 local timerFearNext			= mod:NewVarTimer("v26.7-42.5", 22686, nil, nil, nil, 2)--26-42.5
 
 mod.vb.addLeft = 42
@@ -173,7 +173,20 @@ end
 
 do
 	local playerClass = UnitClass("player")
-
+	local classIcons = {
+			["DEATHKNIGHT"] = "135771",
+			["DRUID"]       = "625999",
+			["HUNTER"]      = "626000",
+			["MAGE"]        = "626001",
+			["MONK"]        = "626002",
+			["PALADIN"]     = "626003",
+			["PRIEST"]      = "626004",
+			["ROGUE"]       = "626005",
+			["SHAMAN"]      = "626006",
+			["WARLOCK"]     = "626007",
+			["WARRIOR"]     = "626008",
+			["DEMONHUNTER"] = "1260827",
+		}
 	function mod:OnSync(msg, arg, sender)
 		if msg == "Phase" and sender then
 			local phase = tonumber(arg) or 0
@@ -197,8 +210,10 @@ do
 				specwarnClassCall:Play("targetyou")
 			else
 				warnClassCall:Show(className)
+				warnClassCall:UpdateIcon(classIcons[arg], className)
 			end
 			timerClassCall:Start(30, className)
+			timerClassCall:UpdateIcon(classIcons[arg], className)
 		end
 	end
 end

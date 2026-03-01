@@ -27,12 +27,16 @@ mod:NewGtfo{spell = 26084, spellAura = false, spellPeriodicDamage = false}
 local warnEnrageSoon	= mod:NewSoonAnnounce(8269, 2)
 local warnEnrage		= mod:NewSpellAnnounce(8269, 4)
 local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
+local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 2, "133572")
 
 local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, nil, nil, 2, 4, 2)
+local addsGuidCheck = {}
 
 mod.vb.prewarn_enrage = false
 
 function mod:OnCombatStart(delay)
+	table.wipe(addsGuidCheck)
+	self.vb.guardsRemaining = 3
 	self.vb.prewarn_enrage = false
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
@@ -62,4 +66,17 @@ function mod:UNIT_HEALTH(uId)
 		self.vb.prewarn_enrage = true
 		self:UnregisterShortTermEvents()
 	end
+end
+
+function mod:UNIT_DIED(args)
+    local guid = args.destGUID
+    local cid = self:GetCIDFromGUID(guid)
+
+    if cid == 15984 then -- Sartura's Royal Guard
+        if not addsGuidCheck[guid] then
+            addsGuidCheck[guid] = true
+            self.vb.guardsRemaining = self.vb.guardsRemaining - 1
+            warnGuardDied:Show(self.vb.guardsRemaining, 3)
+        end
+    end
 end
