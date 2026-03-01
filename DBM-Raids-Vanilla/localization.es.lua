@@ -27,6 +27,12 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "Guardia de batalla Sartura"
 }
+L:SetWarningLocalization({
+    WarnGuardDied = "Guardias Real de Sartura restantes: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Guardias Real de Sartura restantes"
+}
 
 --------------
 -- Fankriss --

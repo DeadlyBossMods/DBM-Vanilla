@@ -27,6 +27,12 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "沙尔图拉"
 }
+L:SetWarningLocalization({
+    WarnGuardDied = "沙尔图拉的皇家卫兵剩余：%d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+    WarnGuardDied = "提示沙尔图拉的皇家卫兵剩余"
+}
 
 --------------
 -- Fankriss --

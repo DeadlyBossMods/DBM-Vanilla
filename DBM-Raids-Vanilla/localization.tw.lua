@@ -27,6 +27,12 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "沙爾圖拉"
 }
+L:SetWarningLocalization({
+    WarnGuardDied = "沙爾圖拉皇家衛士剩餘：%d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+    WarnGuardDied = "提示沙爾圖拉皇家衛士剩餘"
+}
 
 --------------
 -- Fankriss --
@@ -1317,4 +1323,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
-

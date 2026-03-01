@@ -27,6 +27,12 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "Schlachtwache Sartura"
 }
+L:SetWarningLocalization({
+    WarnGuardDied = "Verbleibende Sarturas Königswache: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+    WarnGuardDied = "Verkünde verbleibende Sarturas Königswache"
+}
 
 --------------
 -- Fankriss --
@@ -1400,4 +1406,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
-
