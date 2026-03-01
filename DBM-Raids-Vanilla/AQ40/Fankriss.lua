@@ -33,7 +33,7 @@ local timerEntangle			= mod:NewTargetTimer(8, 720, nil, nil, nil, 5)
 function mod:OnCombatStart(delay)
 	if not self:IsTrivial() then
 		self:RegisterShortTermEvents(
-			"SPELL_AURA_APPLIED 25646 720 731 1121",
+			"SPELL_AURA_APPLIED 720 731 1121 25646",
 			"SPELL_AURA_APPLIED_DOSE 25646",
 			"SPELL_AURA_REMOVED 25646"
 		)
