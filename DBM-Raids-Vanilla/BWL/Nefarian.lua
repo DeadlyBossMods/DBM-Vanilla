@@ -209,7 +209,7 @@ do
 				specwarnClassCall:Show()
 				specwarnClassCall:Play("targetyou")
 			else
-				warnClassCall:UpdateIcon(classIcons[arg], className)
+				warnClassCall:UpdateIcon(classIcons[arg])
 				warnClassCall:Show(className)
 			end
 			timerClassCall:Start(30, className)
