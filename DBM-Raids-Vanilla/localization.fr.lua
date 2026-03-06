@@ -1104,21 +1104,21 @@ L:SetOptionLocalization({
 	WarningLanded		    = "Afficher une annonce pour la phase au sol",
 	TimerAir			    = "Afficher un chronomètre pour la phase en vol",
 	TimerLanding		   	= "Afficher un chronomètre pour la phase au sol",
-	TimerIceBlast		   	= "Afficher un chronomètre pour le $spell:28524",
-	WarningDeepBreath		= "Afficher une annonce spéciale pour le $spell:28524",
+	TimerFrostBreath		= "Afficher un chronomètre pour $spell:28524",
+	WarningFrostBreath		= "Afficher une annonce spéciale pour $spell:28524",
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon		= "Phase en vol dans 10 sec",
 	WarningAirPhaseNow		= "Phase en vol",
 	WarningLanded		    = "Phase au sol",
-	WarningDeepBreath	  	= "Souffle de givre"
+	WarningFrostBreath	  	= "Souffle de givre"
 })
 
 L:SetTimerLocalization({
-	TimerAir		   		  = "Phase en vol",
-	TimerLanding			  = "Phase au sol",
-	TimerIceBlast			  = "Souffle de givre"
+	TimerAir		   		= "Phase en vol",
+	TimerLanding			= "Phase au sol",
+	TimerFrostBreath		= "Souffle de givre"
 })
 
 ------------------

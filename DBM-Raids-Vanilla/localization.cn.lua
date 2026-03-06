@@ -1026,8 +1026,8 @@ L:SetOptionLocalization({
 	WarningLanded			= "提示地上阶段",
 	TimerAir				= "为空中阶段显示计时条",
 	TimerLanding			= "为降落显示计时条",
-	TimerIceBlast			= "为冰霜吐息显示计时条",
-	WarningDeepBreath		= "为冰霜吐息显示特别警报",
+	TimerFrostBreath		= "为$spell:28524显示计时条",
+	WarningFrostBreath		= "为$spell:28524显示特别警报",
 	WarningIceblock			= "当你中了冰箱时大喊"
 })
 
@@ -1035,13 +1035,13 @@ L:SetWarningLocalization({
 	WarningAirPhaseSoon		= "10秒后空中阶段",
 	WarningAirPhaseNow		= "空中阶段",
 	WarningLanded			= "萨菲隆降落了",
-	WarningDeepBreath		= "冰霜吐息"
+	WarningFrostBreath		= "冰霜吐息"
 })
 
 L:SetTimerLocalization({
 	TimerAir				= "空中阶段",
 	TimerLanding			= "降落",
-	TimerIceBlast			= "冰霜吐息"
+	TimerFrostBreath		= "冰霜吐息"
 })
 
 ------------------
