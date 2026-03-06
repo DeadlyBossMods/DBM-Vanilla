@@ -819,7 +819,7 @@ L:SetOptionLocalization({
 L:SetMiscLocalization({
 	Pull1					= "Ajoelhe-se perante a mim, verme!",
 	Pull2 					= "Vocês não podem se esconder de mim!",
-	Pull3 					= "Slay them in the master's name!",
+	Pull3 					= "Matem-nos em nome do mestre!",
 	Pull4					= "Fujam enquanto podem!"
 })
 
