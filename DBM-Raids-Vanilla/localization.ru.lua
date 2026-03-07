@@ -19,6 +19,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Семейство жуков"
 }
+L:SetMiscLocalization{
+	Yauj = "Принцесса Яудж",
+	Vem = "Вем",
+	Kri = "Лорд Кри"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s умирает (Осталось %d убийств)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Announce bugs remaining"
+}
 
 -------------
 -- Sartura --
@@ -27,6 +38,12 @@ L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
 	name = "Боевой страж Сартура"
+}
+L:SetWarningLocalization({
+    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
 }
 
 --------------

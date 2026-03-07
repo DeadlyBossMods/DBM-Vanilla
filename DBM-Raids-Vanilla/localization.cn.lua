@@ -18,6 +18,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "安其拉三宝"
 }
+L:SetMiscLocalization{
+	Yauj = "亚尔基公主",
+	Vem = "维姆",
+	Kri = "克里勋爵"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s死了（剩餘%d隻）"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "提示安其拉三宝虫剩余"
+}
 
 -------------
 -- Sartura --
@@ -122,7 +133,7 @@ L:SetOptionLocalization{
 	TimerGiantEyeTentacle	= "为下一次巨眼触须显示计时器",
 	TimerGiantClawTentacle	= "为下一次巨钩触须显示计时器",
 	TimerWeakened			= "为首领虚弱時间显示计时器",
-	RangeFrame				= "显示距离框架(10码)"
+	RangeFrame				= "显示距离框架（10码）"
 }
 L:SetMiscLocalization{
 	Stomach		= "克苏恩的胃",

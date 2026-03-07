@@ -17,6 +17,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Silithid Royalty"
 }
+L:SetMiscLocalization{
+	Yauj = "Princess Yauj",
+	Vem = "Vem",
+	Kri = "Lord Kri"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s dies (%d remaining)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Announce bugs remaining"
+}
 
 -------------
 -- Sartura --

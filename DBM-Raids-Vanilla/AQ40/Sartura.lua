@@ -45,6 +45,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
+	table.wipe(addsGuidCheck)
 	self:UnregisterShortTermEvents()
 end
 

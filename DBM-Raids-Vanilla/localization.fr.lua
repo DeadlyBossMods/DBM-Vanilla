@@ -133,6 +133,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Famille royale silithide"
 }
+L:SetMiscLocalization{
+	Yauj = "Princesse Yauj",
+	Vem = "Vem",
+	Kri = "Seigneur Kri"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s meurt (%d |4restant:restants;)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Afficher une announce pour les insectes restants"
+}
 
 -------------
 -- Sartura --
@@ -334,7 +345,7 @@ L:SetTimerLocalization({
 })
 
 L:SetOptionLocalization({
-	WarnSimulKill	= "Annoncez le premier serviteur mort",
+	WarnSimulKill	= "Afficher une announce pour le premier serviteur mort",
 	TimerSimulKill	= "Afficher un chronomètre pour la résurrection des prêtres"
 })
 

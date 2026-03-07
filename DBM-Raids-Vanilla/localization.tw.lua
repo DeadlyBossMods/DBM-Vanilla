@@ -18,6 +18,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "異種蠍皇族"
 }
+L:SetMiscLocalization{
+	Yauj = "亞爾基公主",
+	Vem = "維姆",
+	Kri = "克里勳爵"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s死了（剩下%d擊殺）"
+})
+L:SetOptionLocalization{
+    WarnBugDied = "提示異種蠍皇族蟲剩餘"
+}
 
 -------------
 -- Sartura --

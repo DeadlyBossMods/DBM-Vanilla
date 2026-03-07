@@ -18,6 +18,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "실리시드 왕실"
 }
+L:SetMiscLocalization{
+	Yauj	= "공주 야우즈",
+	Vem		= "벰",
+	Kri		= "군주 크리"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s|1이;가; 죽습니다 (%d킬 남음)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Announce bugs remaining"
+}
 
 -------------
 -- Sartura --
@@ -26,6 +37,12 @@ L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
 	name = "전투감시병 살투라"
+}
+L:SetWarningLocalization({
+    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
 }
 
 --------------

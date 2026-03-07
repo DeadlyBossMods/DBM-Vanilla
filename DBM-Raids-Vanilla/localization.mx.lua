@@ -133,6 +133,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Realeza silítida"
 }
+L:SetMiscLocalization{
+	Yauj = "Princesa Yauj",
+	Vem = "Vem",
+	Kri = "Lord Kri"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s muere (%d |4restante:restantes;)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Mostrar anuncio para insectos restantes"
+}
 
 -------------
 -- Sartura --
