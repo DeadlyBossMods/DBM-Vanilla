@@ -23,6 +23,8 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
+mod:AddInfoFrameOption()
+
 local warnFear			= mod:NewSpellAnnounce(26580, 2)
 local warnToxicVolley	= mod:NewSpellAnnounce(25812, 2, nil, false)
 local warnHeal			= mod:NewCastAnnounce(25807, 3)
