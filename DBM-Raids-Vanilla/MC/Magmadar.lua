@@ -49,7 +49,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerPanicCD:Start("v6.5-9.7")
+	timerPanicCD:Start("v6.5-12.9")
 end
 
 function mod:SPELL_AURA_APPLIED(args)

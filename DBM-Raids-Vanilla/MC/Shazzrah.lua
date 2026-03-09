@@ -53,7 +53,7 @@ end
 
 function mod:OnCombatStart(delay)
 	timerCurseCD:Start(6-delay)--6-10
-	timerCounterSpellCD:Start(9.6-delay)
+	timerCounterSpellCD:Start("v9.6-11.3")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerReflectMagicCD:Start(16.1-delay)
 		timerGateCD:Start(22.6-delay)--22.6-?

@@ -428,8 +428,8 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "%s 약화"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s 쿨타임",
-	TimerBreath		= "%s 시전",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
 	TimerVulnCD		= "약화 쿨타임",
 	TimerAllBreaths	= "연발 숨결"
 }

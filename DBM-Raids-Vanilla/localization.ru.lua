@@ -433,8 +433,8 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "Уязвимость к %s"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s восстановление",
-	TimerBreath		= "Применение %s",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
 	TimerVulnCD		= "Восстановление уязвимости",
 	TimerAllBreaths = "Дыхательный град"
 }

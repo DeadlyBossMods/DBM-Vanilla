@@ -426,9 +426,9 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "%s Vulnerability"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s CD",
-	TimerBreath		= "%s cast",
-	TimerVulnCD		= "Vulnerability CD",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
+	TimerVulnCD		= "Vulnerability",
 	TimerAllBreaths = "Breath Volley"
 }
 L:SetOptionLocalization{

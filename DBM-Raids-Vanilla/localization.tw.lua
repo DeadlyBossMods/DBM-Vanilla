@@ -384,8 +384,8 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "%s弱點"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s冷卻",
-	TimerBreath		= "%s施放",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
 	TimerVulnCD		= "弱點冷卻"
 }
 L:SetOptionLocalization{
