@@ -29,7 +29,6 @@ mod:SetWipeTime(20) -- ENCOUNTER_START triggers when you pull the lever, but it 
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23308 23309 23313 23314 23187 23189 23315 23316 23310 23312",
-	"SPELL_CAST_SUCCESS 467883 468594",
 	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537 22277 22278 22279 22280 22281",
 	"SPELL_AURA_REMOVED 23155 23169 23153 23154 23170 23128",
 	"UNIT_HEALTH",
@@ -48,12 +47,6 @@ local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
 local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, nil, "WarnVulnerableNew")
 
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-local warnRollOverSoon	= mod:NewSoonAnnounce(468199)
-local warnRollOver		= mod:NewSpellAnnounce(468199)
-local warnFetch			= mod:NewSpellAnnounce(467884)
-end
-
 local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
 local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
@@ -64,9 +57,13 @@ local timerAllBreaths	= mod:NewTimer(80, "TimerAllBreaths", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
 local timerVuln			= mod:NewTimer("v16.2-25.5", "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
 
+local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-local timerFetch		= mod:NewCDTimer(40, 467884)
-local timerRollOver		= mod:NewBuffActiveTimer(16, 468199)
+	warnRollOverSoon	= mod:NewSoonAnnounce(468199)
+	warnRollOver		= mod:NewSpellAnnounce(468199)
+	warnFetch			= mod:NewSpellAnnounce(467884)
+	timerFetch			= mod:NewCDTimer(40, 467884)
+	timerRollOver		= mod:NewBuffActiveTimer(16, 468199)
 end
 
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
@@ -192,9 +189,15 @@ function mod:OnCombatStart(delay)
 		timerAllBreaths:Start(40-delay)
 		specWarnBreathSoon:Schedule(37-delay)
 	end
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		self:RegisterShortTermEvents(
+			"SPELL_CAST_SUCCESS 467883 468594"
+		)
+	end
 end
 
 function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 	if self.Options.NPAuraOnVulnerable  then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)--isGUID, unit, spellId, texture, force, isHostile, isFriendly
 	end
@@ -337,7 +340,7 @@ function mod:UNIT_HEALTH(uId)
 	if health <= 0.25 and self.vb.phase == 1 then
 		warnPhase2Soon:Show()
 		self:SetStage(1.5)
-	elseif health <= 0.65 and health >= 0.6 and self:IsBwlBlackEssenceEnabled() and not rolloverWarnShown then
+	elseif warnRollOverSoon and health <= 0.65 and health >= 0.6 and self:IsBwlBlackEssenceEnabled() and not rolloverWarnShown then
 		warnRollOverSoon:Show()
 		rolloverWarnShown = true
 	end
