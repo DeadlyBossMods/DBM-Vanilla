@@ -43,8 +43,11 @@ local specWarnWingBuffet	= mod:NewSpecialWarningSpell(23339, "Tank")
 local timerWingBuffet		= mod:NewCDTimer(31, 23339, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v14-21", 22539, nil, false)--14-21
 
-local specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2)
-local yellStaticHigh		= mod:NewCountYell(366305)
+local specWarnStatic, yellStaticHigh
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2)
+	yellStaticHigh		= mod:NewCountYell(366305)
+end
 
 function mod:OnCombatStart(delay)
 	timerShadowFlameCD:Start(18-delay)
