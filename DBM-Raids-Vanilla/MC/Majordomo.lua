@@ -56,11 +56,11 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextFlare		= mod:NewNextTimer(30, 461056, nil, nil, nil, 2)
 end
 
-function mod:OnCombatStart(delay)
-	timerTeleportCD:Start(19.4-delay)
-	timerShieldCD:Start(string.format("v%s-%s", 27.8-delay, 30-delay))--27-30
+function mod:OnCombatStart()
+	timerTeleportCD:Start("v16.2-21")
+	timerShieldCD:Start(string.format("v%s-%s", 27.8, 30))--27-30
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerNextFlare:Start(16-delay)
+		timerNextFlare:Start(16)
 	end
 end
 

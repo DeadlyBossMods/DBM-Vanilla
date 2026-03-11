@@ -33,14 +33,14 @@ mod:RegisterEventsInCombat(
 local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)
 
-local timerAntiMagicPulseCD	= mod:NewVarTimer("v15.7-21", 19492, nil, nil, nil, 2)--15.7-21 variation
+local timerAntiMagicPulse	= mod:NewVarTimer("v15.7-21", 19492, nil, nil, nil, 2)--15.7-21 variation
 local timerMagmakinCD		= mod:NewCDTimer(4.8, 20506, nil, nil, nil, 1)--5-6.5 variation, SoD: 4.8-5.0
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerMagmakinCD:Start(4.9-delay)
+		timerMagmakinCD:Start(4.9)
 	end
-	timerAntiMagicPulseCD:Start(10-delay)
+	timerAntiMagicPulse:Start("v11.1-16.2")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -52,7 +52,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19492) then
 		warnAntiMagicPulse:Show()
-		timerAntiMagicPulseCD:Start()
+		timerAntiMagicPulse:Start()
 	elseif args:IsSpell(20506) then
 		timerMagmakinCD:Start()
 	end
