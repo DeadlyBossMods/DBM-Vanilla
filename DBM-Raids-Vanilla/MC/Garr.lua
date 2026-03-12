@@ -26,14 +26,11 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 19492 20506"
 )
 
---[[
-(ability.id = 20506 or ability.id = 19492) and type = "cast"
---]]
 --TODO, add https://www.wowhead.com/classic/spell=19496/magma-shackles ?
 local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)
 
-local timerAntiMagicPulse	= mod:NewVarTimer("v15.7-21", 19492, nil, nil, nil, 2)--15.7-21 variation
+local timerAntiMagicPulse	= mod:NewVarTimer("v15.7-21", 19492, nil, nil, nil, 2)
 local timerMagmakinCD		= mod:NewCDTimer(4.8, 20506, nil, nil, nil, 1)--5-6.5 variation, SoD: 4.8-5.0
 
 function mod:OnCombatStart()

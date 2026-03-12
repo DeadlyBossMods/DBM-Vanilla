@@ -35,13 +35,13 @@ local specWarnGTFO		= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8)
 
 --"Toxic Volley-25812-npc:15511 = pull:11.8, 13.6, 16.8, 34.1, 14.8, 7.3, 8.3, 12.1, 15.8, 9.7, 19.6, 9.8", -- [12]
 --If users ask for a toxic volley timer, unless classic is different than retail (which i doubt), 7-34 second variable timer is not acceptable
-local timerFearCD		= mod:NewCDTimer(20.5, 26580, nil, nil, nil, 2)--Really important variable timer. Need the varation though
+local timerFear		= mod:NewVarTimer("v20.3-24.3", 26580, nil, false)
 local bugsGuidCheck = {}
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	table.wipe(bugsGuidCheck)
 	self.vb.bugsRemaining = 3
-	timerFearCD:Start(10-delay)
+	timerFear:Start("v10.2-17.8")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:UnscheduleMethod("UnregisterShortTermEvents")
 		self:RegisterShortTermEvents(
@@ -70,7 +70,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(26580) and args:IsSrcTypeHostile() and self:AntiSpam(3, 1) then
 		warnFear:Show()
-		timerFearCD:Start()
+		timerFear:Start()
 	elseif args:IsSpell(25812) then
 		warnToxicVolley:Show()
 	end
@@ -118,7 +118,7 @@ function mod:UNIT_DIED(args)
             warnBugDied:Show(L.Kri, self.vb.bugsRemaining)
 
         elseif cid == 15543 then -- Princess Yauj
-			timerFearCD:Stop()
+			timerFear:Stop()
             self.vb.bugsRemaining = self.vb.bugsRemaining - 1
             warnBugDied:Show(L.Yauj, self.vb.bugsRemaining)
 
