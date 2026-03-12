@@ -201,7 +201,13 @@ do
 		end
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" and sender then
-			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
+    		local className = LOCALIZED_CLASS_NAMES_MALE[arg]
+    		local classColor = RAID_CLASS_COLORS[arg]
+			local classNameColored = className
+    		if classColor then
+        		classNameColored = "|c" .. classColor.colorStr .. className .. "|r"
+    		end
+
 			if arg == "SHAMAN" then
 				specwarnClassCall:Play("attacktotem")
 			end
@@ -210,7 +216,7 @@ do
 				specwarnClassCall:Play("targetyou")
 			else
 				warnClassCall:UpdateIcon(classIcons[arg])
-				warnClassCall:Show(className)
+				warnClassCall:Show(classNameColored) -- Only color the warnClassCall message
 			end
 			timerClassCall:Start(30, className)
 			timerClassCall:UpdateIcon(classIcons[arg], className)
