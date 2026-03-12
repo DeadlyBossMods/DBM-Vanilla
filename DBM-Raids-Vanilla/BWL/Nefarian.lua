@@ -54,7 +54,7 @@ local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, 
 
 local timerPhase			= mod:NewStageTimer(15)
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
-local timerFearNext			= mod:NewVarTimer("v26.7-63.1", 22686, nil, nil, nil, 2)
+local timerFear				= mod:NewVarTimer("v26.7-63.1", 22686, nil, nil, nil, 2)
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
@@ -99,7 +99,7 @@ function mod:SPELL_CAST_START(args)
 		warnShadowFlame:Show()
 	elseif args:IsSpell(22686) then
 		warnFear:Show()
-		timerFearNext:Start()
+		timerFear:Start()
 	end
 end
 
@@ -193,7 +193,7 @@ do
 			if phase == 2 then
 				self:SetStage(2)
 				timerPhase:Start(15)--15 til encounter start fires, not til actual land?
-				--timerFearNext:Start(46.6)
+				timerFear:Start()
 			elseif phase == 3 then
 				self:SetStage(3)
 			end
