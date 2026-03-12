@@ -201,13 +201,12 @@ do
 		end
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" and sender then
-    		local className = LOCALIZED_CLASS_NAMES_MALE[arg]
-    		local classColor = RAID_CLASS_COLORS[arg]
+			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
+			local classColor = RAID_CLASS_COLORS[arg]
 			local classNameColored = className
-    		if classColor then
-        		classNameColored = "|c" .. classColor.colorStr .. className .. "|r"
-    		end
-
+			if classColor then
+				classNameColored = "|c" .. classColor.colorStr .. className .. "|r"
+			end
 			if arg == "SHAMAN" then
 				specwarnClassCall:Play("attacktotem")
 			end
