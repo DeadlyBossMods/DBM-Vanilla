@@ -60,6 +60,8 @@ local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 
 
 local timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 local timerBurst					= mod:NewNextTimer(30, 1215202)
+local timerSpecWarnExplosion		= mod:NewCastTimer(6, 25698) -- Duration is 7s but it expires after 6s
+local timerCauseInsanity			= mod:NewTargetTimer(10, 26079, nil, nil, nil, 5)
 local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
 local yellPlague                    = mod:NewYell(26556)
@@ -117,8 +119,10 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(25698) and not self:IsTrivial() then
 		specWarnExplode:Show()
 		specWarnExplode:Play("justrun")
+		timerSpecWarnExplosion:Start()
 	elseif args:IsSpell(26079) then
 		warnCauseInsanity:CombinedShow(0.75, args.destName)
+		timerCauseInsanity:Start(args.destName)
 	elseif args:IsSpell(1215202) then
 		self:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
 	elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then
@@ -236,15 +240,15 @@ do
 						if thisTime and thisTime > 0 then
 							if not self.Options.FastestClear3 then
 								--First clear, just show current clear time
-								DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format("AQ40", DBM:strFromTime(thisTime)))
+								DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(531), DBM:strFromTime(thisTime)))
 								self.Options.FastestClear3 = thisTime
 							elseif (self.Options.FastestClear3 > thisTime) then
 								--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
-								DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format("AQ40", DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
+								DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
 								self.Options.FastestClear3 = thisTime
 							else
 								--Just show this clear time, and current record time (that you did NOT beat)
-								DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format("AQ40", DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
+								DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
 							end
 						end
 						self.vb.firstEngageTime = nil

@@ -51,14 +51,14 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerReflectMagicCD			= mod:NewCDTimer(22.6, 460856, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 end
 
-function mod:OnCombatStart(delay)
-	timerCurseCD:Start(6-delay)--6-10
-	timerCounterSpellCD:Start(9.6-delay)
+function mod:OnCombatStart()
+	timerCurseCD:Start("v6.5-12.9")
+	timerCounterSpellCD:Start("v9.7-13.0")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerReflectMagicCD:Start(16.1-delay)
-		timerGateCD:Start(22.6-delay)--22.6-?
+		timerReflectMagicCD:Start(16.1)
+		timerGateCD:Start(22.6)--22.6-?
 	else
-		timerGateCD:Start(30-delay)--30-31
+		timerGateCD:Start("v30-31.7")
 	end
 end
 

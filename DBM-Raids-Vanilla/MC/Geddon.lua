@@ -50,7 +50,7 @@ local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, ni
 
 local timerInfernoCD	= mod:NewVarTimer("v21-27.9", 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
 local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerIgniteManaCD	= mod:NewVarTimer("v27-33", 19659, nil, nil, nil, 2)--27-33
+local timerIgniteMana	= mod:NewVarTimer("v27-33", 19659, nil, nil, nil, 2)--27-33
 local timerBombCD		= mod:NewVarTimer("v11.7-21", 20475, nil, nil, nil, 3)
 local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, nil, nil, nil, nil, nil, nil, true)
@@ -81,8 +81,8 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart(delay)
-	--timerIgniteManaCD:Start(7-delay)--7-19, too much variation for first
-	timerBombCD:Start(11-delay)
+	timerIgniteMana:Start("v6.3-21")
+	timerBombCD:Start("v11.3-21")
 end
 
 function mod:OnCombatEnd()
@@ -140,7 +140,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerInferno:Start()
 		timerInfernoCD:Start()
 	elseif args:IsSpell(19659) then
-		timerIgniteManaCD:Start()
+		timerIgniteMana:Start()
 	elseif args:IsSpell(20478, 461121) then
 		specWarnArma:Show()
 		timerArmageddon:Start(nil, args.sourceGUID)

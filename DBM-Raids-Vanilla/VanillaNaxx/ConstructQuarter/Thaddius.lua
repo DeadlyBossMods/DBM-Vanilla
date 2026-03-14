@@ -133,7 +133,7 @@ function mod:UNIT_AURA()
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.Emote or msg == L.Emote2 then
+	if msg == L.Emote or msg:find(L.Emote) then
 		down = down + 1
 		if down >= 2 then
 			self:UnscheduleMethod("TankThrow")

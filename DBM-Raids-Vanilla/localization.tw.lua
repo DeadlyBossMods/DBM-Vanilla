@@ -18,6 +18,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "異種蠍皇族"
 }
+L:SetMiscLocalization{
+	Yauj = "亞爾基公主",
+	Vem = "維姆",
+	Kri = "克里勳爵"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s死了（剩下%d擊殺）"
+})
+L:SetOptionLocalization{
+    WarnBugDied = "提示異種蠍皇族蟲剩餘"
+}
 
 -------------
 -- Sartura --
@@ -26,6 +37,12 @@ L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
 	name = "沙爾圖拉"
+}
+L:SetWarningLocalization({
+    WarnGuardDied = "沙爾圖拉皇家衛士剩餘：%d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+    WarnGuardDied = "提示沙爾圖拉皇家衛士剩餘"
 }
 
 --------------
@@ -367,8 +384,8 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "%s弱點"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s冷卻",
-	TimerBreath		= "%s施放",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
 	TimerVulnCD		= "弱點冷卻"
 }
 L:SetOptionLocalization{
@@ -508,6 +525,12 @@ L = DBM:GetModLocalization("Majordomo")
 
 L:SetGeneralLocalization{
 	name = "管理者埃克索圖斯"
+}
+L:SetTimerLocalization{
+    timerShieldCD = "護盾"
+}
+L:SetOptionLocalization{
+    timerShieldCD = "為下一次傷害/魔法反射護盾顯示計時器"
 }
 
 ----------------
@@ -891,7 +914,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "斯塔拉格要碾碎你！",
 	Emote	= "%s超過負荷！",
-	Emote2	= "泰斯拉線圈超過負荷！",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -1012,21 +1034,21 @@ L:SetOptionLocalization({
 	WarningLanded		= "提示地上階段",
 	TimerAir			= "為空中階段顯示計時器",
 	TimerLanding		= "為降落顯示計時器",
-	TimerIceBlast		= "為冰息術顯示計時器",
-	WarningDeepBreath	= "為冰息術顯示特別警告"
+	TimerFrostBreath	= "為$spell:28524顯示計時器",
+	WarningFrostBreath	= "為$spell:28524顯示特別警告"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "10秒後空中階段",
 	WarningAirPhaseNow	= "空中階段",
 	WarningLanded		= "薩菲隆降落了",
-	WarningDeepBreath	= "冰息術"
+	WarningFrostBreath	= "冰息術"
 })
 
 L:SetTimerLocalization({
-	TimerAir		= "空中階段",
-	TimerLanding	= "降落",
-	TimerIceBlast	= "冰息術"
+	TimerAir			= "空中階段",
+	TimerLanding		= "降落",
+	TimerFrostBreath	= "冰息術"
 })
 
 ------------------
@@ -1312,4 +1334,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "伊蘭尼庫斯的陰影"
 })
-

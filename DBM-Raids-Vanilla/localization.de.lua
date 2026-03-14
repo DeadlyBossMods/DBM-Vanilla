@@ -18,6 +18,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Adel der Silithiden"
 }
+L:SetMiscLocalization{
+	Yauj = "Prinzessin Yauj",
+	Vem = "Vem",
+	Kri = "Lord Kri"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s stirbt (%d ausstehende Tötungen)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Verkünde verbleibende drei Bugs"
+}
 
 -------------
 -- Sartura --
@@ -26,6 +37,12 @@ L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
 	name = "Schlachtwache Sartura"
+}
+L:SetWarningLocalization({
+    WarnGuardDied = "Verbleibende Sarturas Königswache: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+    WarnGuardDied = "Verkünde verbleibende Sarturas Königswache"
 }
 
 --------------
@@ -377,9 +394,9 @@ L:SetWarningLocalization{
 	WarnVulnerable = "Verwundbarkeit: %s"
 }
 L:SetTimerLocalization{
-	TimerBreathCD = "Abklingzeit der %s",
-	TimerBreath = "%s Zauber",
-	TimerVulnCD = "Abklingzeit der Verwundbarkeit"
+	TimerBreathCD = "%s",
+	TimerBreath = "%s",
+	TimerVulnCD = "Verwundbarkeit"
 }
 L:SetOptionLocalization{
 	WarnBreath = "Zeige Warnung, wenn Chromaggus einen seiner Atem wirkt",
@@ -545,6 +562,12 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Majordomus Exekutus"
 }
+L:SetTimerLocalization{
+	timerShieldCD		= "Schild"
+}
+L:SetOptionLocalization{
+	timerShieldCD		= "Zeige Zeit bis nächstes Schaden-/Reflexionsschild"
+}
 
 ----------------
 --  Ragnaros  --
@@ -590,7 +613,6 @@ L:SetOptionLocalization{
 L:SetWarningLocalization{
 	WarnBossPower		= "Energie bei %d%%"
 }
-
 
 -------------------
 --  Venoxis  --
@@ -930,7 +952,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
-	Emote2	= "Teslaspule überlädt!",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
@@ -1052,21 +1073,21 @@ L:SetOptionLocalization({
 	WarningLanded		= "Zeige Warnung, wenn Saphiron landet",
 	TimerAir			= "Zeige Zeit bis nächste Luftphase",
 	TimerLanding		= "Zeige Zeit bis nächste Bodenphase",
-	TimerIceBlast		= "Zeige Zeit bis $spell:28524",
-	WarningDeepBreath	= "Spezialwarnung für $spell:28524"
+	TimerFrostBreath	= "Zeige Zeit bis $spell:28524",
+	WarningFrostBreath	= "Spezialwarnung für $spell:28524"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Luftphase in 10 Sek",
 	WarningAirPhaseNow	= "Luftphase",
 	WarningLanded		= "Bodenphase",
-	WarningDeepBreath	= "Frostatem"
+	WarningFrostBreath	= "Frostatem"
 })
 
 L:SetTimerLocalization({
-	TimerAir		= "Nächste Luftphase",
-	TimerLanding	= "Nächste Bodenphase",
-	TimerIceBlast	= "Frostatem"
+	TimerAir			= "Luftphase",
+	TimerLanding		= "Bodenphase",
+	TimerFrostBreath	= "Frostatem"
 })
 
 ------------------
@@ -1396,4 +1417,3 @@ L = DBM:GetModLocalization("ShadeofEranikusSoD")
 L:SetGeneralLocalization({
 	name = "Eranikus' Schemen"
 })
-

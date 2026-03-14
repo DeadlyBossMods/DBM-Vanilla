@@ -23,19 +23,25 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
+mod:AddInfoFrameOption()
+
 local warnFear			= mod:NewSpellAnnounce(26580, 2)
 local warnToxicVolley	= mod:NewSpellAnnounce(25812, 2, nil, false)
 local warnHeal			= mod:NewCastAnnounce(25807, 3)
+local warnBugDied		= mod:NewAnnounce("WarnBugDied", 2, "133570")
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(25807, "HasInterrupt", nil, nil, 1, 2)
 local specWarnGTFO		= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8)
 
+local timerFear			= mod:NewVarTimer("v20.3-24.3", 26580, nil, nil, nil, 2)
 --"Toxic Volley-25812-npc:15511 = pull:11.8, 13.6, 16.8, 34.1, 14.8, 7.3, 8.3, 12.1, 15.8, 9.7, 19.6, 9.8", -- [12]
 --If users ask for a toxic volley timer, unless classic is different than retail (which i doubt), 7-34 second variable timer is not acceptable
-local timerFearCD		= mod:NewCDTimer(20.5, 26580, nil, nil, nil, 2)--Really important variable timer. Need the varation though
+local bugsGuidCheck = {}
 
-function mod:OnCombatStart(delay)
-	timerFearCD:Start(10-delay)
+function mod:OnCombatStart()
+	table.wipe(bugsGuidCheck)
+	self.vb.bugsRemaining = 3
+	timerFear:Start("v10.2-17.8")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:UnscheduleMethod("UnregisterShortTermEvents")
 		self:RegisterShortTermEvents(
@@ -44,17 +50,27 @@ function mod:OnCombatStart(delay)
 			"SPELL_PERIODIC_MISSED 25786 25989"
 		)
 	end
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Show(10, "bosshealth", {
+			[15511] = true,
+			[15543] = true,
+			[15544] = true,
+		})
+		self.bossHealthUpdateTime = 0.5
+	end
 end
 
 function mod:OnCombatEnd()
 	-- Poison cloud stays around after the boss dies
+	table.wipe(bugsGuidCheck)
 	self:ScheduleMethod(60, "UnregisterShortTermEvents")
+	DBM.InfoFrame:Hide()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(26580) and args:IsSrcTypeHostile() and self:AntiSpam(3, 1) then
 		warnFear:Show()
-		timerFearCD:Start()
+		timerFear:Start()
 	elseif args:IsSpell(25812) then
 		warnToxicVolley:Show()
 	end
@@ -91,8 +107,24 @@ do
 end
 
 function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 15543 then
-		timerFearCD:Stop()
-	end
+    local guid = args.destGUID
+    local cid = self:GetCIDFromGUID(guid)
+
+    if not bugsGuidCheck[guid] then
+        bugsGuidCheck[guid] = true
+
+        if cid == 15511 then -- Lord Kri
+            self.vb.bugsRemaining = self.vb.bugsRemaining - 1
+            warnBugDied:Show(L.Kri, self.vb.bugsRemaining)
+
+        elseif cid == 15543 then -- Princess Yauj
+			timerFear:Stop()
+            self.vb.bugsRemaining = self.vb.bugsRemaining - 1
+            warnBugDied:Show(L.Yauj, self.vb.bugsRemaining)
+
+        elseif cid == 15544 then -- Vem
+            self.vb.bugsRemaining = self.vb.bugsRemaining - 1
+            warnBugDied:Show(L.Vem, self.vb.bugsRemaining)
+        end
+    end
 end

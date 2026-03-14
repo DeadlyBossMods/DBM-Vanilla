@@ -19,6 +19,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Семейство жуков"
 }
+L:SetMiscLocalization{
+	Yauj = "Принцесса Яудж",
+	Vem = "Вем",
+	Kri = "Лорд Кри"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s умирает (Осталось %d убийств)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Announce bugs remaining"
+}
 
 -------------
 -- Sartura --
@@ -27,6 +38,12 @@ L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
 	name = "Боевой страж Сартура"
+}
+L:SetWarningLocalization({
+    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
 }
 
 --------------
@@ -416,8 +433,8 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "Уязвимость к %s"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s восстановление",
-	TimerBreath		= "Применение %s",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
 	TimerVulnCD		= "Восстановление уязвимости",
 	TimerAllBreaths = "Дыхательный град"
 }
@@ -709,8 +726,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PriestDied	= "%s умирает.",
-	YellPhase2	= "Ширвалла, наполни меня своим ГНЕВОМ!",
-	YellKill	= "Хаккар больше не властен надо мной! Наконец-то я обрел покой!"
+	YellPhase2	= "Ширвалла, наполни меня", -- своей ЯРОСТЬЮ! or своим ГНЕВОМ!
+	YellKill	= "Хаккар больше не властен надо мной!" -- Наконец-то я обрел покой! or Наконец-то я обрету покой!
 })
 
 -------------------
@@ -999,7 +1016,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
-	Emote2	= "Катушка Теслы теряет связь!",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
@@ -1123,21 +1139,21 @@ L:SetOptionLocalization({
 	WarningLanded		= "Показывать предупреждение о Наземной фазе",
 	TimerAir			= "Отсчет времени до Воздушной фазы",
 	TimerLanding		= "Отсчет времени до приземления",
-	TimerIceBlast		= "Отсчет времени до Ледяного дыхания",
-	WarningDeepBreath	= "Показывать спецпредупреждение для $spell:29318"
+	TimerFrostBreath	= "Отсчет времени до Ледяного дыхания",
+	WarningFrostBreath	= "Показывать спецпредупреждение для $spell:29318"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Воздушная фаза через 10 сек.",
 	WarningAirPhaseNow	= "Воздушная фаза",
 	WarningLanded		= "Сапфирон приземляется",
-	WarningDeepBreath	= "Ледяное дыхание"
+	WarningFrostBreath	= "Ледяное дыхание"
 })
 
 L:SetTimerLocalization({
-	TimerAir		= "Воздушная фаза",
-	TimerLanding	= "Приземление",
-	TimerIceBlast	= "Ледяное дыхание"
+	TimerAir			= "Воздушная фаза",
+	TimerLanding		= "Приземление",
+	TimerFrostBreath	= "Ледяное дыхание"
 })
 
 ------------------
