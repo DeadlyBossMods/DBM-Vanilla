@@ -33,9 +33,9 @@ local warnBugDied		= mod:NewAnnounce("WarnBugDied", 2, "133570")
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(25807, "HasInterrupt", nil, nil, 1, 2)
 local specWarnGTFO		= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8)
 
+local timerFear			= mod:NewVarTimer("v20.3-24.3", 26580, nil, nil, nil, 2)
 --"Toxic Volley-25812-npc:15511 = pull:11.8, 13.6, 16.8, 34.1, 14.8, 7.3, 8.3, 12.1, 15.8, 9.7, 19.6, 9.8", -- [12]
 --If users ask for a toxic volley timer, unless classic is different than retail (which i doubt), 7-34 second variable timer is not acceptable
-local timerFear		= mod:NewVarTimer("v20.3-24.3", 26580, nil, false)
 local bugsGuidCheck = {}
 
 function mod:OnCombatStart()
