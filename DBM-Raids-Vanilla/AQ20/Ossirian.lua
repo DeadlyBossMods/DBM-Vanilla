@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("Ossirian", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15339)
 mod:SetEncounterID(723)
 mod:SetModelID(15432)

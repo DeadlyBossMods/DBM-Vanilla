@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("Huhuran", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15509)
 mod:SetEncounterID(714)
 mod:SetModelID(15739)

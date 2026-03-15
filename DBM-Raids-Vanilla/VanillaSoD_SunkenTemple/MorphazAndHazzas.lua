@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("MorphazandHazzasSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(221942, 221943)--Morphaz, Hazzas
 mod:SetEncounterID(2958)
 mod:SetBossHPInfoToHighest()

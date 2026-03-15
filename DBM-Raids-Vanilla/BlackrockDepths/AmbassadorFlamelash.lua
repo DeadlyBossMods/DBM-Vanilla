@@ -4,6 +4,7 @@ local L		= mod:GetLocalizedStrings()
 mod.statTypes = "lfr"
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(226302)
 mod:SetEncounterID(3047)
 mod:SetHotfixNoticeRev(20241029000000)

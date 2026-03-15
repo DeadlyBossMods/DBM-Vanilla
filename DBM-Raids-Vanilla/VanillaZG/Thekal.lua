@@ -13,6 +13,7 @@ local mod = DBM:NewMod("Thekal", "DBM-Raids-Vanilla", catID)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(14509, 11348, 11347)
 mod:SetEncounterID(789)
 mod:SetBossHPInfoToHighest()

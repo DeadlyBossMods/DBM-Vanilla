@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("MechanicalMenagerieSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(218245, 218244, 218243, 218242)--https://www.wowhead.com/classic/npc=218344/explosive-egg
 mod:SetEncounterID(2935)
 mod:SetBossHPInfoToHighest()

@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Garr-Classic", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228432 or 12057)--, 12099
 mod:SetEncounterID(666)
 mod:SetModelID(12110)

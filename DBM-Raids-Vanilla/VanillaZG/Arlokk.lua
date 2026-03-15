@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Arlokk", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(14515)
 mod:SetEncounterID(791)
 mod:SetZone(309)

@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("Ayamiss", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15369)
 mod:SetEncounterID(722)
 mod:SetModelID(15431)
