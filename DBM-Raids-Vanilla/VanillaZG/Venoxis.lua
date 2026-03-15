@@ -49,8 +49,6 @@ function mod:OnCombatStart(delay)
 	self.vb.prewarn_Phase2 = false
 end
 
-function mod:OnCombatEnd()
-end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23861) then

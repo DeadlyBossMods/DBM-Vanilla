@@ -105,8 +105,6 @@ function mod:OnCombatStart(delay)
 	warnPhase2:ScheduleVoice(phase1Duration - delay, "ptwo")
 end
 
-function mod:OnCombatEnd()
-end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then

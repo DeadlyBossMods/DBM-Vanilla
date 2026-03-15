@@ -123,8 +123,6 @@ function mod:OnCombatStart(delay)
 	end, 0.2)
 end
 
-function mod:OnCombatEnd()
-end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(28522) and args:IsDestTypePlayer() then

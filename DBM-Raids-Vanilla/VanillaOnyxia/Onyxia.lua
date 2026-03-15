@@ -77,8 +77,6 @@ function mod:OnCombatStart(delay)
 	end
 end
 
-function mod:OnCombatEnd()
-end
 
 --[[
 --70, 60,
