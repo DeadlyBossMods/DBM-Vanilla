@@ -33,7 +33,6 @@ mod:RegisterEvents(
 	"NAME_PLATE_UNIT_ADDED"
 )
 
-mod:AddRangeFrameOption(10, 22997)
 mod:AddNamePlateOption("ThunderclapNameplate", 8732)
 
 -- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
@@ -71,9 +70,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
 			yellPlague:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
@@ -123,11 +119,6 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(22997) then
-		if args:IsPlayer() and self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
-	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

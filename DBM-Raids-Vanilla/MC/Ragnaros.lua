@@ -70,7 +70,6 @@ mod.vb.submergeHealthPrewarnShown = false
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("MCTrash")
 
-mod:AddRangeFrameOption("18", nil, "-Melee")
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
@@ -80,15 +79,9 @@ function mod:OnCombatStart(delay)
 	self.vb.submergeHealthPrewarnShown = false
 	timerWrathRag:Start((DBM:IsSeasonal("SeasonOfDiscovery") and 26 or 26.7) - delay)
 	timerSubmerge:Start(180-delay)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(18)
-	end
 end
 
 function mod:OnCombatEnd(wipe)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if not wipe then
 		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
 		if firstBossMod.vb.firstEngageTime then
