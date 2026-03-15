@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Majordomo", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:SetCreatureID(228437, 228836, 228837)
 else

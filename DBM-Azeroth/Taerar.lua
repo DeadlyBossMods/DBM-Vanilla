@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("TaerarVanilla", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:SetCreatureID(235197)
 	mod:SetEncounterID(3113)--Sod Encounter ID

@@ -14,6 +14,7 @@ local mod	= DBM:NewMod("Flamegor", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(11981)
 mod:SetEncounterID(615)
 if not mod:IsClassic() then

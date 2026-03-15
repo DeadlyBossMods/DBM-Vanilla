@@ -3,6 +3,7 @@ local mod	= DBM:NewMod("MoltenCore", "DBM-Raids-Vanilla", 6)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(227939)
 mod:SetEncounterID(3018)
 mod:RegisterCombat("combat")

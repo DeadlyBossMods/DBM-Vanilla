@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Geddon", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228433 or 12056)
 mod:SetEncounterID(668)
 mod:SetModelID(12129)

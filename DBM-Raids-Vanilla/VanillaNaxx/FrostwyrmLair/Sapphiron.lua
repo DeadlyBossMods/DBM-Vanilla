@@ -8,6 +8,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15989)
 mod:SetEncounterID(1119)
 --mod:SetModelID(16033)--Scales incorrectly

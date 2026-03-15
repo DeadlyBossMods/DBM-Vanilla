@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("TwinEmpsAQ", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15276, 15275)
 mod:SetEncounterID(715)
 if not mod:IsClassic() then
