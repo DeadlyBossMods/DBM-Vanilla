@@ -4,6 +4,7 @@ local mod	= DBM:NewMod("AtalalarionSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(218624)
 mod:SetEncounterID(2952)
 --mod:SetUsedIcons(8)

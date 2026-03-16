@@ -4,6 +4,7 @@ local mod	= DBM:NewMod("ShadeofEranikusSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(218571)
 mod:SetEncounterID(2959)
 mod:SetUsedIcons(8, 7)

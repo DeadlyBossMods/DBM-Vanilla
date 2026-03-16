@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Hakkar", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(14834)
 mod:SetEncounterID(793)
 mod:SetHotfixNoticeRev(20200419000000)--2020, 04, 19
@@ -23,7 +24,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 24324 24686 24687 24688 24689 24690",
 	"SPELL_AURA_APPLIED 24327 24328 24686 24687 24689 24690 468408 468012 468491",
-	"SPELL_AURA_REMOVED 24328 24689"
+	"SPELL_AURA_REMOVED 24689"
 )
 
 --TODO, get a buff check for starting initial hard mode timers
@@ -78,7 +79,6 @@ local enrageTimer				= mod:NewBerserkTimer(585)
 -- Spawn of Mar'li just randomly show up with no SPELL_SUMMON or anything, there's an emote 20 seconds later but that's too late
 -- One other aspect is also somehow missing entirely from the log, so just repeating the timer on a 20 second loop as a fallback
 
-mod:AddRangeFrameOption(10, 24328)
 
 local function IsHardMode(self)
 	-- SoD: 1832497 hp
@@ -152,9 +152,6 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	self:UnscheduleMethod("AspectTimer")
 end
 
@@ -186,9 +183,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnBlood:Show()
 			specWarnBlood:Play("runout")
 			yellBlood:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		else
 			warnBlood:Show(args.destName)
 		end
@@ -218,13 +212,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(24328) then
-		if args:IsPlayer() then
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Hide()
-			end
-		end
-	elseif args:IsSpell(24689) and args:IsDestTypeHostile() then
+	if args:IsSpell(24689) and args:IsDestTypeHostile() then
 		timerAspectOfThekal:Stop()
 	end
 end

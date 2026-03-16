@@ -4,6 +4,7 @@ local mod	= DBM:NewMod("TwilightLordKelrisSoD", "DBM-Raids-Vanilla", 10)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(209678)
 mod:SetEncounterID(2825)--2766 is likely 5 man version in instance type 201
 mod:SetHotfixNoticeRev(20231201000000)

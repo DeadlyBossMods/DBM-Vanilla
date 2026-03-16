@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("CThun", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15589, 15727)
 mod:SetEncounterID(717)
 mod:SetHotfixNoticeRev(20200823000000)--2020, 8, 23
@@ -47,7 +48,6 @@ local timerClawTentacle			= mod:NewTimer(8, "TimerClawTentacle", 26391, nil, nil
 local timerGiantClawTentacle	= mod:NewTimer(60, "TimerGiantClawTentacle", 26391, nil, nil, 1)
 local timerWeakened				= mod:NewTimer(45, "TimerWeakened", 28598)
 
-mod:AddRangeFrameOption("10")
 mod:AddSetIconOption("SetIconOnEyeBeam", 26134, true, 0, {1})
 mod:AddInfoFrameOption(26476, true)
 
@@ -104,16 +104,10 @@ function mod:OnCombatStart(delay)
 	timerEyeTentacle:Start(45-delay)
 	timerDarkGlareCD:Start(48-delay)
 	self:ScheduleMethod(48-delay, "DarkGlare")
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(10)
-	end
 end
 
 function mod:OnCombatEnd(wipe, isSecondRun)
 	table.wipe(diedTentacles)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end

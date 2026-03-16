@@ -4,6 +4,7 @@ local mod	= DBM:NewMod("ElectrocutionerSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(220072)
 mod:SetEncounterID(2927)
 mod:SetUsedIcons(8)

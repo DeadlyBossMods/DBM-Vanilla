@@ -4,6 +4,7 @@ local mod	= DBM:NewMod("GrubbisSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(217280)--217956 Chomper, 217216 Grubbis Controller
 mod:SetEncounterID(2925)
 mod:SetHotfixNoticeRev(20240212000000)
