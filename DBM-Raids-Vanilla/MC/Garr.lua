@@ -60,6 +60,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnAntiMagicPulse:Show()
 		timerAntiMagicPulse:Start()
 	elseif args:IsSpell(20506) then
+		warnMagmakin:Show()
 		timerMagmakinCD:Start()
 	end
 end
