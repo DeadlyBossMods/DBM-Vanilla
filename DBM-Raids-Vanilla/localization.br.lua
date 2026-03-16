@@ -244,7 +244,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "Exibir cronômetro para o próximo Tentáculo de Garra",
 	TimerGiantEyeTentacle	= "Exibir cronômetro para o próximo Tentóculo Gigante",
 	TimerGiantClawTentacle	= "Exibir cronômetro para o próximo Tentáculo de Garra Gigante",
-	TimerWeakened			= "Exibir cronômetro para duração mais fraca do chefe"
+	TimerWeakened			= "Exibir cronômetro para duração da fraqueza de C’Thun"
 }
 L:SetMiscLocalization{
 	Stomach		= "Estômago",
