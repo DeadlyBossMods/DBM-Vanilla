@@ -39,22 +39,23 @@ mod:RegisterEventsInCombat(
 --[[
 (ability.id = 19695 or ability.id = 19659 or ability.id = 20478 or ability.id = 461090 or ability.id = 461105 or ability.id = 462402 or ability.id = 461110 or ability.id = 461121) and type = "cast"
 --]]
+local warnIgnite		= mod:NewSpellAnnounce(19659, 3)
 local warnInferno		= mod:NewSpellAnnounce(19695, 3)
 local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
 local specWarnArma		= mod:NewSpecialWarningSpell(20478)
 
+local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2)
+local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2)
 local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)
 local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
-local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2)
-local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2)
 
-local timerInfernoCD	= mod:NewVarTimer("v21-27.9", 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
-local timerInferno		= mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerIgniteMana	= mod:NewVarTimer("v27-33", 19659, nil, nil, nil, 2)--27-33
-local timerBombCD		= mod:NewVarTimer("v11.7-21", 20475, nil, nil, nil, 3)
-local timerBomb			= mod:NewTargetTimer(8, 20475, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerArmageddon	= mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, nil, nil, nil, nil, nil, nil, true)
+local timerIgniteMana    = mod:NewVarTimer("v25.9-46.3", 19659, nil, nil, nil, 2)--27-33
+local timerInfernoCD     = mod:NewVarTimer("v21-38.7", 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
+local timerInferno       = mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+local timerBombCD        = mod:NewVarTimer("v11.3-32.6", 20475, nil, nil, nil, 3)
+local timerBomb          = mod:NewTargetTimer(8, 20475, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+local timerArmageddon    = mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, nil, nil, nil, nil, nil, nil, true)
 
 mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8, 7, 6}) -- up to 3 bombs on heat level 3 (TODO: confirm)
 
@@ -82,8 +83,9 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart(delay)
-	timerIgniteMana:Start("v6.3-21")
-	timerBombCD:Start("v11.3-21")
+	timerIgniteMana:Start("v6.2-29.8")
+	timerInfernoCD:Start("v11.2-35.6")
+	timerBombCD:Start("v11.3-33.1")
 end
 
 function mod:OnCombatEnd()
