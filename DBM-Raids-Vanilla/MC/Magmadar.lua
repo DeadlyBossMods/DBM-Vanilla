@@ -38,8 +38,8 @@ local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|R
 
 local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 
-local timerPanic		= mod:NewVarTimer("v30-40", 19408)--30-40
-local timerFrenzyCD		= mod:NewCDTimer(17.8, 19451, nil, nil, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerPanic		= mod:NewVarTimer("v31-66.4", 19408)
+local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, nil, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 local warnCoreHound--timerCoreHound
@@ -49,7 +49,8 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerPanic:Start("v6.5-12.9")
+	timerPanic:Start("v5.9-11.4")
+	timerFrenzyCD:Start("v6.3-11.3")
 end
 
 function mod:SPELL_AURA_APPLIED(args)

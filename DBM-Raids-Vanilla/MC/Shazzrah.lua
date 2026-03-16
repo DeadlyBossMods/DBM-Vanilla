@@ -34,15 +34,15 @@ or (ability.id = 19713 or ability.id = 19715 or ability.id = 23138 or ability.id
 --]]
 local warnCurse					= mod:NewSpellAnnounce(19713, 4)
 local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, false, 2)
-local warnCntrSpell				= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
+local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
 
 local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, false, nil, 2, 1, 2)
 local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2)--aggro wipe, needs fresh taunt
 
-local timerCurseCD				= mod:NewVarTimer("v18-25.5", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerDeadenMagic			= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerGateCD				= mod:NewVarTimer("v41.3-50", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--41-50
-local timerCounterSpellCD		= mod:NewVarTimer("v15-19", 19715, nil, "SpellCaster", nil, 3)--15-19
+local timerCurse           		= mod:NewVarTimer("v20.7-27.5", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerDeadenMagic       	= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerCounterSpell    		= mod:NewVarTimer("v15.4-22.2", 19715, nil, "SpellCaster", nil, 3)--15-19
+local timerGate            		= mod:NewVarTimer("v42.2-48.6", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--41-50
 
 local specWarnReflectMagic, specWarnReflectMagicDispel, timerReflectMagicCD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -52,13 +52,13 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerCurseCD:Start("v6.5-12.9")
-	timerCounterSpellCD:Start("v9.7-13.0")
+	timerCurse:Start("v5.8-14.5")
+	timerCounterSpell:Start("v8.1-14.6")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerReflectMagicCD:Start(16.1)
-		timerGateCD:Start(22.6)--22.6-?
+		timerGate:Start(22.6)--22.6-?
 	else
-		timerGateCD:Start("v30-31.7")
+		timerGate:Start("v28.5-34.3")
 	end
 end
 
@@ -97,13 +97,13 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19713, 461343) then
 		warnCurse:Show()
-		timerCurseCD:Start()
+		timerCurse:Start()
 	elseif args:IsSpell(19715) then
-		warnCntrSpell:Show()
-		timerCounterSpellCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 9.6 or "v15-19")
+		warnCounterSpell:Show()
+		timerCounterSpell:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 9.6 or "v15-19")
 	elseif args:IsSpell(23138) then
 		specWarnGate:Show(args.sourceName)
 		specWarnGate:Play("tauntboss")
-		timerGateCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 25.8 or "v41.3-50")
+		timerGate:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 25.8 or "v41.3-50")
 	end
 end
