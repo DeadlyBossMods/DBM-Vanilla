@@ -34,9 +34,9 @@ local warnMagmaShackles		= mod:NewSpellAnnounce(19496, 2)
 local timerAntiMagicPulse	= mod:NewVarTimer("v16.1-21.1", 19492, nil, nil, nil, 2)
 local timerMagmaShackles	= mod:NewVarTimer("v10.9-16.2", 19496, nil, nil, nil, 2)
 
-local warnMamakin, timerMagmakinCD
+local warnMagmakin, timerMagmakinCD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-local warnMamakin 		= mod:NewSpellAnnounce(20506, 2)
+local warnMagmakin 		= mod:NewSpellAnnounce(20506, 2)
 local timerMagmakinCD 	= mod:NewCDTimer(4.8, 20506, nil, nil, nil, 1)--5-6.5 variation, SoD: 4.8-5.0
 end
 
