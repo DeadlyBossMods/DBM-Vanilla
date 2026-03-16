@@ -131,8 +131,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "Отсчет времени до следующего Когтещупальца",
 	TimerGiantEyeTentacle	= "Отсчет времени до следующих Гигантских Глазных отростков",
 	TimerGiantClawTentacle	= "Отсчет времени до следующего Гигантского Когтещупальца",
-	TimerWeakened			= "Отсчет времени продолжительности ослабления босса",
-	RangeFrame				= "Показывать окно дистанции (10 м.)"
+	TimerWeakened			= "Отсчет времени продолжительности ослабления босса"
 }
 L:SetMiscLocalization{
 	Stomach		= "Желудок",

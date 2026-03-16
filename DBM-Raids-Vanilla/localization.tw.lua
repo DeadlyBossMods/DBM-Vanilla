@@ -132,8 +132,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "為下一次利爪觸鬚顯示計時器",
 	TimerGiantEyeTentacle	= "為下一次巨人眼球觸鬚顯示計時器",
 	TimerGiantClawTentacle	= "為下一次巨型利爪觸鬚顯示計時器",
-	TimerWeakened			= "為首領虛弱時間顯示計時器",
-	RangeFrame				= "顯示距離框架(10碼)"
+	TimerWeakened			= "為首領虛弱時間顯示計時器"
 }
 L:SetMiscLocalization{
 	Stomach		= "克蘇恩的胃",

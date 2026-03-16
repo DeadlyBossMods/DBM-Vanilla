@@ -131,8 +131,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "Mostrar temporizador para el próximo Tentáculo Garral",
 	TimerGiantEyeTentacle	= "Mostrar temporizador para el próximo Tentáculo ocular gigante",
 	TimerGiantClawTentacle	= "Mostrar temporizador para el próximo Tentáculo garral gigante",
-	TimerWeakened			= "Mostrar temporizador para la duración de la debilidad de C'Thun",
-	RangeFrame				= "Mostrar marco de distancia (10 m)"
+	TimerWeakened			= "Mostrar temporizador para la duración de la debilidad de C'Thun"
 }
 L:SetMiscLocalization{
 	Stomach		= "Estómago",

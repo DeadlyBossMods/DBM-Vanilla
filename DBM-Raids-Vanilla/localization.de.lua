@@ -132,8 +132,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "Zeige Zeit bis die nächsten Klauententakel erscheinen",
 	TimerGiantEyeTentacle	= "Zeige Zeit bis die nächsten Riesiges Augententakel erscheinen",
 	TimerGiantClawTentacle	= "Zeige Zeit bis die nächsten Riesiges Klauententakel erscheinen",
-	TimerWeakened			= "Dauer der Schwäche von C'Thun anzeigen",
-	RangeFrame				= "Zeige Abstandsfenster (10m)"
+	TimerWeakened			= "Dauer der Schwäche von C'Thun anzeigen"
 }
 L:SetMiscLocalization{
 	Stomach		= "Magen",

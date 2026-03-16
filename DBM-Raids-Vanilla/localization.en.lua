@@ -128,8 +128,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "Show timer for next Claw Tentacle",
 	TimerGiantEyeTentacle	= "Show timer for next Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Show timer for next Giant Claw Tentacle",
-	TimerWeakened			= "Show timer for boss weaken duration",
-	RangeFrame				= "Show range frame (10)"
+	TimerWeakened			= "Show timer for boss weaken duration"
 }
 L:SetMiscLocalization{
 	Stomach		= "Stomach",

@@ -132,8 +132,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "为下一次利爪触须显示计时器",
 	TimerGiantEyeTentacle	= "为下一次巨眼触须显示计时器",
 	TimerGiantClawTentacle	= "为下一次巨钩触须显示计时器",
-	TimerWeakened			= "为首领虚弱時间显示计时器",
-	RangeFrame				= "显示距离框架（10码）"
+	TimerWeakened			= "为首领虚弱時间显示计时器"
 }
 L:SetMiscLocalization{
 	Stomach		= "克苏恩的胃",
@@ -584,9 +583,6 @@ L = DBM:GetModLocalization("Venoxis")
 
 L:SetGeneralLocalization{
 	name = "高阶祭司温诺希斯"
-}
-L:SetOptionLocalization{
-	RangeFrame		= "显示范围框"
 }
 
 -------------------
