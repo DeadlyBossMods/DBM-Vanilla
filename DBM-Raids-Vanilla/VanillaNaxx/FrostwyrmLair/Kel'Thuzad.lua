@@ -78,7 +78,6 @@ local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil,
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
 mod:AddSetIconOption("SetIconOnFrostTomb2", 27808, false, 0, {1, 2, 3, 4, 5, 6, 7, 8})
-mod:AddRangeFrameOption(10, 27819)
 
 mod.vb.warnedAdds = false
 mod.vb.MCIcon1 = 1
@@ -95,14 +94,6 @@ local function AnnounceBlastTargets(self)
 	timerfrostBlast:Start(3.5)
 end
 
-local function RangeToggle(show)
-	if show then
-		DBM.RangeCheck:Show(10)
-	else
-		DBM.RangeCheck:Hide()
-	end
-end
-
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
 	table.wipe(frostBlastTargets)
@@ -113,16 +104,8 @@ function mod:OnCombatStart(delay)
 	timerPhase2:Start()
 	warnPhase2:Schedule(phase1Duration - delay)
 	warnPhase2:ScheduleVoice(phase1Duration - delay, "ptwo")
-	if self.Options.RangeFrame then
-		self:Schedule(phase1Duration - delay, RangeToggle, true)
-	end
 end
 
-function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
-end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then
@@ -208,14 +191,10 @@ end
 --Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
 function mod:UNIT_TARGETABLE_CHANGED()
 	if self.vb.phase == 1 then
-		self:Unschedule(RangeToggle)
 		warnPhase2:Cancel()
 		warnPhase2:CancelVoice()
 		self:SetStage(2)
 		warnPhase2:Show()
 		warnPhase2:Play("ptwo")
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(10)
-		end
 	end
 end
