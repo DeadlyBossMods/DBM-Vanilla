@@ -46,7 +46,6 @@ local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CO
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-mod:AddRangeFrameOption("18", nil, "-Melee")
 
 mod.vb.prewarn_berserk = false
 local StingTargets = {}

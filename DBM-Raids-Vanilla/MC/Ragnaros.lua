@@ -71,7 +71,6 @@ mod.vb.submergeHealthPrewarnShown = false
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("MCTrash")
 
-mod:AddRangeFrameOption("18", nil, "-Melee")
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)

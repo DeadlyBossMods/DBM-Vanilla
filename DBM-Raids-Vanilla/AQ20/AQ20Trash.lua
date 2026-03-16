@@ -34,7 +34,6 @@ mod:RegisterEvents(
 	"NAME_PLATE_UNIT_ADDED"
 )
 
-mod:AddRangeFrameOption(10, 22997)
 mod:AddNamePlateOption("ThunderclapNameplate", 8732)
 
 -- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
