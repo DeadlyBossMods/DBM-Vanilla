@@ -59,6 +59,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19492) then
 		warnAntiMagicPulse:Show()
 		timerAntiMagicPulse:Start()
+	elseif args:IsSpell(19496) then
+		warnMagmaShackles:Show()
+		timerMagmaShackles:Start()
 	elseif args:IsSpell(20506) then
 		warnMagmakin:Show()
 		timerMagmakinCD:Start()

@@ -76,7 +76,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19408, 461125) then
 		warnPanic:Show()
 		timerPanic:Start()
-	elseif args:IsSpell(19451) and DBM:IsSeasonal("SeasonOfDiscovery") then--Timer is chaotic in regular classic but in SoD it's consistent 17.8-21~
+	elseif args:IsSpell(19451) then
 		timerFrenzyCD:Start()
 	end
 end
