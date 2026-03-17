@@ -39,6 +39,8 @@ local timerFear			= mod:NewVarTimer("v20.3-24.3", 26580, nil, nil, nil, 2)
 --If users ask for a toxic volley timer, unless classic is different than retail (which i doubt), 7-34 second variable timer is not acceptable
 local bugsGuidCheck = {}
 
+mod.vb.bugsRemaining = 3
+
 function mod:OnCombatStart()
 	table.wipe(bugsGuidCheck)
 	self.vb.bugsRemaining = 3

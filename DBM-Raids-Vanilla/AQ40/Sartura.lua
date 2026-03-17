@@ -35,6 +35,7 @@ local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, nil, nil, 2, 4, 2)
 local addsGuidCheck = {}
 
 mod.vb.prewarn_enrage = false
+mod.vb.guardsRemaining = 3
 
 function mod:OnCombatStart(delay)
 	table.wipe(addsGuidCheck)
