@@ -56,15 +56,6 @@ function mod:OnCombatStart(delay)
 	timerEnrageCD:Start(8.1-delay)
 	timerPoisonCD:Start(11-delay)
 	timerStingCD:Start(20-delay)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(18)
-	end
-end
-
-function mod:OnCombatEnd(wipe)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 local function warnStingTargets()

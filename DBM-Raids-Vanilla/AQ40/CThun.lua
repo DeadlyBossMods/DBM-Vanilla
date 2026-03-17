@@ -104,16 +104,10 @@ function mod:OnCombatStart(delay)
 	timerEyeTentacle:Start(45-delay)
 	timerDarkGlareCD:Start(48-delay)
 	self:ScheduleMethod(48-delay, "DarkGlare")
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(10)
-	end
 end
 
 function mod:OnCombatEnd(wipe, isSecondRun)
 	table.wipe(diedTentacles)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
