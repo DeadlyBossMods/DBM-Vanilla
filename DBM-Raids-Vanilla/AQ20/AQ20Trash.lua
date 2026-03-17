@@ -119,14 +119,6 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _
 	end
 end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(22997) then
-		if args:IsPlayer() and self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
-	end
-end
-
 function mod:SPELL_CAST_SUCCESS(args)
 	-- 26586 (Birth) is used by a lot, here it indicates that Eye Tentacles (ghosts that don't look like Eye Tentacles at all) spawned that explode if they walk into you
 	if args:IsSpell(26586) and (DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528) then
