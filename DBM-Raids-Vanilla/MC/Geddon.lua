@@ -50,8 +50,8 @@ local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)
 local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 
-local timerIgniteMana    = mod:NewVarTimer("v25.9-46.3", 19659, nil, nil, nil, 2)--27-33
-local timerInfernoCD     = mod:NewVarTimer("v21-38.7", 19695, nil, nil, nil, 2)--21-27.9 (24-30 on sod?)
+local timerIgniteMana    = mod:NewVarTimer("v25.9-46.3", 19659, nil, nil, nil, 2)
+local timerInfernoCD     = mod:NewVarTimer("v21-38.7", 19695, nil, nil, nil, 2) --(24-30 on sod?)
 local timerInferno       = mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerBombCD        = mod:NewVarTimer("v11.3-32.6", 20475, nil, nil, nil, 3)
 local timerBomb          = mod:NewTargetTimer(8, 20475, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)

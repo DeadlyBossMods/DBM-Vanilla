@@ -29,7 +29,7 @@ local specWarnWound			= mod:NewSpecialWarningStack(25646, nil, 5, nil, nil, 1, 6
 local specWarnWoundTaunt	= mod:NewSpecialWarningTaunt(25646, nil, nil, nil, 1, 2)
 
 local timerWound			= mod:NewTargetTimer(20, 25646, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerEntangle			= mod:NewTargetTimer(8, 720, nil, nil, nil, 5)
+local timerEntangle			= mod:NewTargetTimer(8, 720, nil, nil, nil, 3)
 
 function mod:OnCombatStart(delay)
 	if not self:IsTrivial() then
