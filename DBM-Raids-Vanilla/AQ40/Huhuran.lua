@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("Huhuran", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15509)
 mod:SetEncounterID(714)
 mod:SetModelID(15739)
@@ -21,7 +22,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050 1215757 1215752 1215753 1215755 1215885",
 	"SPELL_AURA_APPLIED_DOSE 26050 1215757",
 	"SPELL_AURA_REMOVED 26180 26053 26050 1215757 1215752 1215753 26051 1215755",
-	"SPELL_CAST_SUCCESS 26053 1215752 1215755",
+	"SPELL_CAST_SUCCESS 26053 1215752",
 	"UNIT_HEALTH"
 )
 
@@ -45,7 +46,6 @@ local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_CO
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-mod:AddRangeFrameOption("18", nil, "-Melee")
 
 mod.vb.prewarn_berserk = false
 local StingTargets = {}
@@ -56,15 +56,9 @@ function mod:OnCombatStart(delay)
 	timerEnrageCD:Start(8.1-delay)
 	timerPoisonCD:Start(11-delay)
 	timerStingCD:Start(20-delay)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(18)
-	end
 end
 
 function mod:OnCombatEnd(wipe)
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 local function warnStingTargets()

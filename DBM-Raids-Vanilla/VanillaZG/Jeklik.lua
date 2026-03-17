@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Jeklik", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(14517)
 mod:SetEncounterID(785)
 mod:SetZone(309)

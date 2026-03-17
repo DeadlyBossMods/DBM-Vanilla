@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Golemagg", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228435 or 11988)--, 11672
 mod:SetEncounterID(670)
 if not mod:IsClassic() then

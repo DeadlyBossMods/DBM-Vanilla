@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Magmadar", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228430 or 11982)
 mod:SetEncounterID(664)
 mod:SetModelID(10193)

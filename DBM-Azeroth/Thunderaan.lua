@@ -4,6 +4,7 @@ local mod	= DBM:NewMod("Thunderaan", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(231494)
 mod:SetEncounterID(3079)
 

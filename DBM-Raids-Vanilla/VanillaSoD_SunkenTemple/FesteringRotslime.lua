@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("FesteringRotslimeSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(218819)--Drum 222542, Slab 222543, Mask 222544, Candle 222545
 mod:SetEncounterID(2953)
 --mod:SetUsedIcons(8)

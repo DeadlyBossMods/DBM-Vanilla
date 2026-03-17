@@ -4,6 +4,7 @@ local L		= mod:GetLocalizedStrings()
 mod.statTypes = "lfr"
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(230219, 230219, 230217, 230218)--Golem Lord 226306, Arcanotron 230219, Magmatron 230216, Toxitron 230217, Electron 230218
 mod:SetEncounterID(3046)
 --mod:SetUsedIcons(8, 7, 6)

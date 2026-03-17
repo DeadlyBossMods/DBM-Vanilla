@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("EmerissVanilla", "DBM-Azeroth")
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:SetCreatureID(234880)

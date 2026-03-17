@@ -19,6 +19,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(13020)
 mod:SetEncounterID(611)
 if not mod:IsClassic() then

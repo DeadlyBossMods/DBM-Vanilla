@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("OnyxiaVanilla", "DBM-Raids-Vanilla", 7)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(10184)
 mod:SetEncounterID(1084)
 mod:SetModelID(8570)
@@ -21,7 +22,7 @@ mod:RegisterEvents(
 --https://classic.wowhead.com/spell=17646/summon-onyxia-whelp
 --TODO, if blizzard makes classic wrath and this mod is used as foundation, remove the deep breath emote trigger (because pet added in wrath breaks it)
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 17086 18351 18564 18576 18584 18596 18609 18617 18435 18431 18500 18392",
+	"SPELL_CAST_START 17086 18435 18431 18500 18392",
 	"SPELL_CAST_SUCCESS 19633",
 	"SPELL_DAMAGE 15847",-- 68867
 	"UNIT_DIED",
@@ -59,7 +60,6 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 mod:AddBoolOption("SoundWTF3", true, "sound")
-mod:AddRangeFrameOption(8, 18392)
 mod:AddSetIconOption("SetIconOnFireball", 18392, true, 0, {8})
 
 mod.vb.warned_preP2 = false
@@ -78,11 +78,6 @@ function mod:OnCombatStart(delay)
 	end
 end
 
-function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
-end
 
 --[[
 --70, 60,
@@ -212,9 +207,6 @@ function mod:OnSync(msg, guid, sender)
 		--timerNextDeepBreath:Start(67)
 		timerNextFlameBreath:Cancel()
 		--self:ScheduleMethod(5, "Whelps")
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Show(8)
-		end
 		if self.Options.SoundWTF3 then
 			self:Unschedule(DBM.PlaySoundFile, DBM)
 			DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\i-dont-see-enough-dots.ogg")
@@ -236,9 +228,6 @@ function mod:OnSync(msg, guid, sender)
 		--timerNextDeepBreath:Stop()
 		--timerBigAddCD:Stop()
 		--warnWhelpsSoon:Cancel()
-		if self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
 		if self.Options.SoundWTF3 then
 			self:Unschedule(DBM.PlaySoundFile, DBM)
 			self:Schedule(15, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\dps-very-very-slowly.ogg")

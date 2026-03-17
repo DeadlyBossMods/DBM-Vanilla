@@ -13,6 +13,7 @@ local mod	= DBM:NewMod("Venoxis", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(14507)
 mod:SetEncounterID(784)
 mod:SetHotfixNoticeRev(20200724000000)--2020, 7, 24
@@ -42,22 +43,13 @@ local timerCloud		= mod:NewBuffActiveTimer(10, 23861, nil, nil, nil, 3)
 local timerRenew		= mod:NewTargetTimer(15, 23895, nil, "MagicDispeller", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerFire			= mod:NewTargetTimer(8, 23860, nil, "RemoveMagic|Healer", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 
-mod:AddRangeFrameOption("10")
 
 mod.vb.prewarn_Phase2 = false
 
 function mod:OnCombatStart(delay)
 	self.vb.prewarn_Phase2 = false
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Show(10)
-	end
 end
 
-function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
-end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23861) then

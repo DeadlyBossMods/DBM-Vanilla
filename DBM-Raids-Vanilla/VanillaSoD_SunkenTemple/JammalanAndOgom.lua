@@ -2,6 +2,7 @@ local mod	= DBM:NewMod("JammalanAndOgomSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(218721, 218718)--Jammal'an, Ogom
 mod:SetEncounterID(2957)
 mod:SetBossHPInfoToHighest()

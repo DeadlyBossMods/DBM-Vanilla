@@ -8,6 +8,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:DisableHardcodedOptions()
 mod:SetCreatureID(15989)
 mod:SetEncounterID(1119)
 --mod:SetModelID(16033)--Scales incorrectly
@@ -59,7 +60,6 @@ local yellBombFades		= mod:NewShortFadesYell(1219729)
 local berserkTimer		= mod:NewBerserkTimer(900)
 
 mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})
-mod:AddRangeFrameOption(10, 28522)
 
 local noTargetTime = 0
 mod.vb.isFlying = false
@@ -68,9 +68,6 @@ local UnitAffectingCombat = UnitAffectingCombat
 
 local function resetIsFlying(self)
 	self.vb.isFlying = false
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
 end
 
 local airPhaseTimer = 66 -- TODO: maybe slightly shorter on non-mythic? but at most a few seconds, doesn't matter because the cast resets it
@@ -123,18 +120,10 @@ function mod:OnCombatStart(delay)
 			timerAirPhase:Cancel()
 			warnAirPhaseNow:Show()
 			timerLanding:Start()--28.5 (seems mostly right)
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		end
 	end, 0.2)
 end
 
-function mod:OnCombatEnd()
-	if self.Options.RangeFrame then
-		DBM.RangeCheck:Hide()
-	end
-end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(28522) and args:IsDestTypePlayer() then
