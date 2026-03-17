@@ -36,7 +36,7 @@ function mod:OnCombatStart(delay)
 		self:RegisterShortTermEvents(
 			"SPELL_AURA_APPLIED 720 731 1121 25646",
 			"SPELL_AURA_APPLIED_DOSE 25646",
-			"SPELL_AURA_REMOVED 25646"
+			"SPELL_AURA_REMOVED 720 731 1121 25646"
 		)
 	end
 end
@@ -71,6 +71,8 @@ mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(25646) then
 		timerWound:Stop(args.destName)
+	elseif args:IsSpell(720, 731, 1121) then
+		timerEntangle:Stop(args.destName)
 	end
 end
 

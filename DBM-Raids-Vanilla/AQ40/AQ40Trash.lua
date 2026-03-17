@@ -22,7 +22,7 @@ mod.isTrashModBossFightAllowed = true
 mod:RegisterEvents(
 	"ENCOUNTER_END",
 	"SPELL_AURA_APPLIED 26556 25698 26079 1215202 1215421 24573 2855",
-	"SPELL_AURA_REMOVED 26556",
+	"SPELL_AURA_REMOVED 26556 26079",
 	"SPELL_CAST_SUCCESS 26586 26073",
 	"SPELL_CAST_START 26069 26070 26071 26072",
 	"SPELL_DAMAGE 26555 26558 26554 25779 26546 24340 8732",
@@ -106,9 +106,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
 			yellPlague:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
@@ -149,10 +146,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(26556) then
-		if args:IsPlayer() and self.Options.RangeFrame then
-			DBM.RangeCheck:Hide()
-		end
+	if args:IsSpell(26079) then
+		timerCauseInsanity:Stop(args.destName)
 	end
 end
 
