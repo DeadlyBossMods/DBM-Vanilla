@@ -71,9 +71,6 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
 			yellPlague:Yell()
-			if self.Options.RangeFrame then
-				DBM.RangeCheck:Show(10)
-			end
 		elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
 			specWarnPlague:Show()
 			specWarnPlague:Play("runout")
