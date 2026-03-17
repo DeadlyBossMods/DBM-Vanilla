@@ -31,11 +31,11 @@ local warnDecimateNow	= mod:NewSpellAnnounce(28374, 3)
 local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 6)
 
 local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerRoar			= mod:NewVarTimer("v17.8-24.2", 29685, nil, nil, nil, 2)
+local timerRoarCD		= mod:NewVarTimer("v17.8-24.2", 29685, nil, nil, nil, 2)
 local enrageTimer		= mod:NewBerserkTimer(420)
 
 function mod:OnCombatStart()
-	timerRoar:Start()
+	timerRoarCD:Start()
 	enrageTimer:Start(420)
 	--warnDecimateSoon:Schedule(100 - delay)
 end
@@ -43,7 +43,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29685) then
 		warnRoar:Show()
-		timerRoar:Start()
+		timerRoarCD:Start()
 	end
 end
 

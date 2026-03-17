@@ -39,7 +39,7 @@ local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|R
 
 local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 
-local timerPanic		= mod:NewVarTimer("v30.9-66.2", 19408, nil, nil, 2)
+local timerPanicCD		= mod:NewVarTimer("v30.9-66.2", 19408, nil, nil, 2)
 local timerFrenzyCD		= mod:NewVarTimer("v15.7-21.2", 19451, nil, nil, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
@@ -50,7 +50,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerPanic:Start("v5.3-11.4")
+	timerPanicCD:Start("v5.3-11.4")
 	timerFrenzyCD:Start("v6.1-11.6")
 end
 
@@ -75,7 +75,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19408, 461125) then
 		warnPanic:Show()
-		timerPanic:Start()
+		timerPanicCD:Start()
 	elseif args:IsSpell(19451) then
 		timerFrenzyCD:Start()
 	end

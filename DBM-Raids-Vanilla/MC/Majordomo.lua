@@ -38,7 +38,7 @@ local warnDamageShield		= mod:NewSpellAnnounce(21075, 2)
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
 
-local timerTeleport        = mod:NewVarTimer("v25.8-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
+local timerTeleportCD      = mod:NewVarTimer("v25.8-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
 local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerShieldCD        = mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
@@ -53,7 +53,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerTeleport:Start("v15.7-21.1")
+	timerTeleportCD:Start("v15.7-21.1")
 	timerShieldCD:Start(string.format("v%s-%s", 27.8, 30))--27-30
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextFlare:Start(16)
@@ -87,7 +87,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerShieldCD:Start(30)
 	elseif args:IsSpell(20534) then
 		warnTeleport:Show(args.destName)
-		timerTeleport:Start()
+		timerTeleportCD:Start()
 	elseif args:IsSpell(461056) then
 		-- Next cast is always 30 seconds after *success*, if the cast fails (e.g., mage ice block) then it just tries again ~immediately
 		timerNextFlare:Start()

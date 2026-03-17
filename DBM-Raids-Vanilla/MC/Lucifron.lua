@@ -40,8 +40,8 @@ local warnMC		= mod:NewTargetNoFilterAnnounce(20604, 4)
 local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2)
 local yellMC		= mod:NewYell(20604)
 
-local timerDoom		= mod:NewVarTimer("v20.7-25.9", 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerCurse	= mod:NewVarTimer("v20.5-26.2", 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerDoomCD	= mod:NewVarTimer("v20.7-25.9", 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerCurseCD	= mod:NewVarTimer("v20.5-26.2", 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 
 mod:AddSetIconOption("SetIconOnMC", 20604, true, 0, {1, 2})
 
@@ -49,8 +49,8 @@ mod.vb.lastIcon = 1
 
 function mod:OnCombatStart()
 	self.vb.lastIcon = 1
-	timerDoom:Start("v5.4-12.7")
-	timerCurse:Start("v10.9-16.9")
+	timerDoomCD:Start("v5.4-12.7")
+	timerCurseCD:Start("v10.9-16.9")
 end
 
 function mod:MCTarget(targetname)
@@ -94,10 +94,10 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19702, 460931) then
 		warnDoom:Show()
-		--timerDoom:Start()
-		timerDoom:Start(DBM:IsSeasonal("SeasonOfDiscovery") and "v16-21" or "v20-25")
+		--timerDoomCD:Start()
+		timerDoomCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and "v16-21" or "v20-25")
 	elseif args:IsSpell(19703, 460932) then
 		warnCurse:Show()
-		timerCurse:Start()
+		timerCurseCD:Start()
 	end
 end

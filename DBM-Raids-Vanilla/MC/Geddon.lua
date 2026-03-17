@@ -50,7 +50,7 @@ local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)
 local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 
-local timerIgniteMana    = mod:NewVarTimer("v25.6-40.2", 19659, nil, nil, nil, 2)
+local timerIgniteManaCD  = mod:NewVarTimer("v25.6-40.2", 19659, nil, nil, nil, 2)
 local timerInfernoCD     = mod:NewVarTimer("v20.7-32.1", 19695, nil, nil, nil, 2) --(24-30 on sod?)
 local timerInferno       = mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerBombCD        = mod:NewVarTimer("v11-24", 20475, nil, nil, nil, 3)
@@ -83,7 +83,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart(delay)
-	timerIgniteMana:Start("v5.6-22.5")
+	timerIgniteManaCD:Start("v5.6-22.5")
 	timerInfernoCD:Start("v10.4-28.8")
 	timerBombCD:Start("v11.3-30.2")
 end
@@ -143,7 +143,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerInferno:Start()
 		timerInfernoCD:Start()
 	elseif args:IsSpell(19659) then
-		timerIgniteMana:Start()
+		timerIgniteManaCD:Start()
 	elseif args:IsSpell(20478, 461121) then
 		specWarnArma:Show()
 		timerArmageddon:Start(nil, args.sourceGUID)
