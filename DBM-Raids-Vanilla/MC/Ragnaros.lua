@@ -79,7 +79,7 @@ function mod:OnCombatStart()
 	self.vb.ragnarosEmerged = true
 	self.vb.submergeHealthPrewarnShown = false
 	timerSubmerge:Start()
-	if DBM:IsSeasonal("SeasonOfDiscovery") then		
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerWrathRag:Start(26)
 	else
 	timerWrathRag:Start("v25.5-30.8")

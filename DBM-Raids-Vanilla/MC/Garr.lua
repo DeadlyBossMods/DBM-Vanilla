@@ -31,8 +31,8 @@ local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)
 local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnMagmaShackles		= mod:NewSpellAnnounce(19496, 2)
 
-local timerAntiMagicPulse	= mod:NewVarTimer("v16.1-21.1", 19492, nil, nil, nil, 2)
-local timerMagmaShackles	= mod:NewVarTimer("v10.9-16.2", 19496, nil, nil, nil, 2)
+local timerAntiMagicPulse	= mod:NewVarTimer("v15.8-21.3", 19492, nil, nil, nil, 2)
+local timerMagmaShackles	= mod:NewVarTimer("v10.4-16.6", 19496, nil, nil, nil, 2)
 
 local warnMagmakin, timerMagmakinCD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -45,8 +45,8 @@ function mod:OnCombatStart()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerMagmakinCD:Start(4.9)
 	end
-	timerAntiMagicPulse:Start("v11-16.2")
-	timerMagmaShackles:Start("v5.6-11.3")
+	timerAntiMagicPulse:Start("v10.7-16.2")
+	timerMagmaShackles:Start("v5.3-11.3")
 end
 
 function mod:SPELL_AURA_APPLIED(args)

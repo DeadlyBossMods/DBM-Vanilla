@@ -53,7 +53,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerTeleport:Start("v15.8-21.1")
+	timerTeleport:Start("v15.7-21.1")
 	timerShieldCD:Start(string.format("v%s-%s", 27.8, 30))--27-30
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextFlare:Start(16)
