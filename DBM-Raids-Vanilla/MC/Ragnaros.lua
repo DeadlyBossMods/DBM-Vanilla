@@ -119,6 +119,7 @@ local function emerged(self)
 	timerWrathRag:Start(26)
 	else
 	timerWrathRag:Start("v25.5-31.9")
+	end
 	if DBM:GetModifierLevel() ~= 1 then -- No second submerge on SoD heat level 1 (non-SoD always returns 0 here)
 		timerSubmerge:Start(180)
 	end
