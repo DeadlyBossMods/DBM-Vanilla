@@ -38,12 +38,12 @@ local warnFist		= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
 
 local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8)
 
-local timerCurse	= mod:NewVarTimer("v25.5-35.3", 19716, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON..DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD	= mod:NewVarTimer("v25.4-35.4", 19716, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON..DBM_COMMON_L.CURSE_ICON)
 local timerRoF		= mod:NewCDTimer(4.8, 19717, nil, false, nil, 3)
 --local timerFist	= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 
 function mod:OnCombatStart()
-	timerCurse:Start("v5.8-14.7")
+	timerCurseCD:Start("v4.9-15.4")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:RegisterShortTermEvents(
 			"SPELL_PERIODIC_DAMAGE 19717",
@@ -59,7 +59,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19716, 461232) and args:IsSrcTypeHostile() then
 		warnCurse:Show()
-		timerCurse:Start()
+		timerCurseCD:Start()
 	--Classic Era and retail version (this ID on SoD fires on players getting hit by it for some reason, so we MUST ignore it)
 	elseif args:IsSpell(19717) and args:IsSrcTypeHostile() and not DBM:IsSeasonal("SeasonOfDiscovery") then
 		warnRainFire:Show()
