@@ -436,19 +436,19 @@ L:SetTimerLocalization{
 	TimerBreathCD	= "%s",
 	TimerBreath		= "%s",
 	TimerVulnCD		= "Vulnerabilidad",
-	TimerAllBreaths = "Lluvia de respiración"
+	TimerAllBreaths = "Lluvia de aliento"
 }
 L:SetOptionLocalization{
-	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus respiraciones",
-	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de las respiraciones",
-	TimerBreathCD		= "Mostrar reutilización de respiración",
-	TimerBreath			= "Mostrar lanzamiento de respiración",
+	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus alientos",
+	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
+	TimerBreathCD		= "Mostrar reutilización de aliento",
+	TimerBreath			= "Mostrar lanzamiento de aliento",
 	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
-	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de respiración"
+	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
-	Breath1		= "Primera respiración",
-	Breath2		= "Segunda respiración",
+	Breath1		= "Primer aliento",
+	Breath2		= "Segundo aliento",
 	VulnEmote	= "se estremece mientras su piel empieza a brillar.",
 	Vuln		= "Vulnerabilidad",
 	Fire		= "Fuego",

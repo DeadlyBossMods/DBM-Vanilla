@@ -55,7 +55,7 @@ local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, 
 
 local timerPhase			= mod:NewStageTimer(15)
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
-local timerFear				= mod:NewVarTimer("v26.7-63.1", 22686, nil, nil, nil, 2)
+local timerFear				= mod:NewVarTimer("v22.6-85.6", 22686, nil, nil, nil, 2)
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}

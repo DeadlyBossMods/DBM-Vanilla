@@ -53,7 +53,7 @@ local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, 
 local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
-local timerBreathCD		= mod:NewTimer(60, "TimerBreathCD", 23316, nil, nil, 3)
+local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
 local timerAllBreaths	= mod:NewTimer(80, "TimerAllBreaths", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
 local timerVuln			= mod:NewTimer("v16.2-25.5", "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
@@ -169,16 +169,16 @@ end
 
 local nextBreath, nextVolley, volleyCount = 0, 0, 0
 local rolloverWarnShown
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self:SetStage(1)
 	rolloverWarnShown = false
-	nextBreath = GetTime() + 30 - delay
-	nextVolley = GetTime() + 40 - delay
+	nextBreath = GetTime() + 30
+	nextVolley = GetTime() + 40
 	volleyCount = 0
-	timerBreathCD:Start(string.format("v%s-%s", 30-delay, 36-delay), L.Breath1)
-	timerBreathCD:Start(string.format("v%s-%s", 60-delay, 66-delay), L.Breath2)--60
-	specWarnBreathSoon:Schedule(27-delay) -- +2 sec casting time == you got 5 seconds to run
-	specWarnBreathSoon:Schedule(57-delay)
+	timerBreathCD:Start(string.format("v%s-%s", 24.4, 35.9), L.Breath1)
+	timerBreathCD:Start(string.format("v%s-%s", 57.5, 68.6), L.Breath2)
+	specWarnBreathSoon:Schedule(27) -- +2 sec casting time == you got 5 seconds to run
+	specWarnBreathSoon:Schedule(57)
 	mydebuffs = 0
 	if self.Options.NPAuraOnVulnerable then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
@@ -186,9 +186,9 @@ function mod:OnCombatStart(delay)
 	checkTargetVulnerabilities(self)
 	--Is it intended to start the mythic breath volley timer in ADDITION to regular breath timers above?
 	if self:IsBwlBlackEssenceEnabled() then
-		timerFetch:Start(20.9-delay)
-		timerAllBreaths:Start(40-delay)
-		specWarnBreathSoon:Schedule(37-delay)
+		timerFetch:Start(20.9)
+		timerAllBreaths:Start(40)
+		specWarnBreathSoon:Schedule(37)
 	end
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		self:RegisterShortTermEvents(
@@ -227,7 +227,7 @@ function mod:SPELL_CAST_START(args)
 		local nextBreathOffset = math.abs(GetTime() - nextBreath)
 		local nextVolleyOffset = math.abs(GetTime() - nextVolley)
 		if (nextBreathOffset < nextVolleyOffset and volleyCount == 0) or not self:IsBwlBlackEssenceEnabled() then -- Regular breath
-			timerBreathCD:Start(60, args.spellName)
+			timerBreathCD:Start(61.5, args.spellName)
 			timerBreathCD:UpdateIcon(args.spellId, args.spellName)
 			nextBreath = GetTime() + 30
 			specWarnBreathSoon:Schedule(57)
