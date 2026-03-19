@@ -35,11 +35,11 @@ local specWarnStrike		= mod:NewSpecialWarningDefensive(26613, nil, nil, nil, 1, 
 local specWarnExplodeBug	= mod:NewSpecialWarningMove(804, nil, nil, nil, 1, 2)
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(26607, nil, nil, nil, 1, 2)
 
-local timerTeleport			= DBM:IsSeasonal("SeasonOfDiscovery")
+local timerTeleportCD		= DBM:IsSeasonal("SeasonOfDiscovery")
 	and mod:NewCDTimer(29.2, 800, nil, nil, nil, 6, nil, nil, true, 1, 4)
 	or mod:NewVarTimer("v29.2-40.2", 800, nil, nil, nil, 6, nil, nil, true, 1, 4)--29.2-40.2
-local timerExplodeBugCD		= mod:NewVarTimer("v4.9-9", 804, nil, false, nil, 1)--4.9-9
-local timerMutateBugCD		= mod:NewVarTimer("v11-16", 802, nil, false, nil, 1)--11-16
+local timerExplodeBugCD		= mod:NewVarTimer("v4.5-32.3", 804, nil, false, nil, 1)--4.9-9
+local timerMutateBugCD		= mod:NewVarTimer("v10.9-27.1", 802, nil, false, nil, 1)--11-16
 --local timerStrikeCD			= mod:NewCDTimer(9.7, 26613, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--9.7-42.6
 
 local berserkTimer			= mod:NewBerserkTimer(900)
@@ -50,9 +50,9 @@ function mod:OnCombatStart(delay)
 	--timerStrikeCD:Start(14.2-delay)
 	berserkTimer:Start()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerTeleport:Start(31 - delay)
+		timerTeleportCD:Start(31 - delay)
 	else
-		timerTeleport:Start() --fixme: -delay for variable timers?
+		timerTeleportCD:Start() --fixme: -delay for variable timers?
 	end
 	if self.Options.NPAuraOnMutateBug then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
@@ -69,7 +69,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(799, 800) and not DBM:IsSeasonal("SeasonOfDiscovery") and self:AntiSpam(5, 1) then
 		warnTeleport:Show()
-		timerTeleport:Start()
+		timerTeleportCD:Start()
 	elseif args:IsSpell(26613) and not self:IsTrivial() then
 		if args:IsPlayer() then
 			specWarnStrike:Show()
@@ -116,6 +116,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(1217333) and self:AntiSpam(5, 1) then -- SoD teleport
 		-- https://sod.warcraftlogs.com/reports/BGT3zQYnb82wfAkM#fight=48&type=casts&options=1026&hostility=1&source=165&ability=1217333&view=events
 		warnTeleport:Show()
-		timerTeleport:Start(35.5)
+		timerTeleportCD:Start(35.5)
 	end
 end
