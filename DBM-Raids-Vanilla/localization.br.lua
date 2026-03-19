@@ -541,19 +541,19 @@ L:SetTimerLocalization{
 	TimerBreathCD	= "%s",
 	TimerBreath		= "%s",
 	TimerVulnCD		= "Vulnerabilidade",
-	TimerAllBreaths = "Salva da respiração"
+	TimerAllBreaths = "Salva do sopro"
 }
 L:SetOptionLocalization{
-	WarnBreath			= "Exibir anúncio quando Cromaggus lançar uma das suas respirações",
-	WarnVulnerableNew	= "Exibir cronômetro para recarga da respiração",
-	TimerBreathCD		= "Exibir recarga da respiração",
-	TimerBreath			= "Exibir lançamento da respiração",
+	WarnBreath			= "Exibir anúncio quando Cromaggus lançar um dos seus sopros",
+	WarnVulnerableNew	= "Exibir cronômetro para recarga do sopro",
+	TimerBreathCD		= "Exibir recarga do sopro",
+	TimerBreath			= "Exibir lançamento do sopro",
 	TimerVulnCD			= "Exibir recarga de Vulnerabilidade",
-	TimerAllBreaths 	= "Exibir cronômetro para Salva da respiração"
+	TimerAllBreaths 	= "Exibir cronômetro para Salva do sopro"
 }
 L:SetMiscLocalization{
-	Breath1		= "Primeira respiração",
-	Breath2		= "Segunda respiração",
+	Breath1		= "Primeiro sopro",
+	Breath2		= "Segundo sopro",
 	VulnEmote	= "%s tem espasmos à medida que sua pele começa a brilhar.",
 	Vuln		= "Vulnerabilidade",
 	Fire		= "Fogo",
