@@ -37,7 +37,7 @@ local warnShatter				= mod:NewAnnounce("WarnShatter", 2, 12982)
 
 local specWarnGTFO				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
 
-local timerPoisonBoltVolleyCD	= mod:NewCDCountTimer(11, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
+local timerPoisonBoltVolleyCD	= mod:NewCDCountTimer(11.3, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
 
 mod.vb.volleyCount = 0
 mod.vb.freezeState = 0
@@ -92,9 +92,9 @@ local function resetHitCounts()
 	table.wipe(frostHitTimes)
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.volleyCount = 0
-	timerPoisonBoltVolleyCD:Start(-delay, 1)
+	timerPoisonBoltVolleyCD:Start(nil, 1)
 	self.vb.freezeState = 0
 	resetHitCounts()
 	if self.Options.InfoFrame then
@@ -114,7 +114,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(25991) then
 		self.vb.volleyCount = self.vb.volleyCount + 1
 		warnPoisonBoltVolley:Show(self.vb.volleyCount)
-		timerPoisonBoltVolleyCD:Start(11, self.vb.volleyCount+1)
+		timerPoisonBoltVolleyCD:Start(11.3, self.vb.volleyCount+1)
 	elseif args:IsSpell(25896) and self:AntiSpam(8, "Respawn") then -- All surviging globs cast this, trigger only on the first one to avoid accidental late resets
 		DBM:Debug("Viscidus respawned, frostHits=" .. tostring(frostHits) .. ", meleeHits=" .. tostring(meleeHits))
 		resetHitCounts()

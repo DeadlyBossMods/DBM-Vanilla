@@ -18,6 +18,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Realeza silítida"
 }
+L:SetMiscLocalization{
+	Yauj = "Princesa Yauj",
+	Vem = "Vem",
+	Kri = "Lord Kri"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s muere (%d |4restante:restantes;)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Mostrar anuncio para insectos restantes"
+}
 
 -------------
 -- Sartura --
@@ -26,6 +37,12 @@ L = DBM:GetModLocalization("Sartura")
 
 L:SetGeneralLocalization{
 	name = "Guardia de batalla Sartura"
+}
+L:SetWarningLocalization({
+    WarnGuardDied = "Guardias Real de Sartura restantes: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Guardias Real de Sartura restantes"
 }
 
 --------------
@@ -114,8 +131,7 @@ L:SetOptionLocalization{
 	TimerClawTentacle		= "Mostrar temporizador para el próximo Tentáculo Garral",
 	TimerGiantEyeTentacle	= "Mostrar temporizador para el próximo Tentáculo ocular gigante",
 	TimerGiantClawTentacle	= "Mostrar temporizador para el próximo Tentáculo garral gigante",
-	TimerWeakened			= "Mostrar temporizador para la duración de la debilidad de C'Thun",
-	RangeFrame				= "Mostrar marco de distancia (10 m)"
+	TimerWeakened			= "Mostrar temporizador para la duración de la debilidad de C'Thun"
 }
 L:SetMiscLocalization{
 	Stomach		= "Estómago",
@@ -417,22 +433,22 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "Vulnerabilidad: %s"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s reutilización",
-	TimerBreath		= "%s lanzamiento",
-	TimerVulnCD		= "Reutilización de vulnerabilidad",
-	TimerAllBreaths = "Lluvia de respiración"
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
+	TimerVulnCD		= "Vulnerabilidad",
+	TimerAllBreaths = "Lluvia de aliento"
 }
 L:SetOptionLocalization{
-	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus respiraciones",
-	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de las respiraciones",
-	TimerBreathCD		= "Mostrar reutilización de respiración",
-	TimerBreath			= "Mostrar lanzamiento de respiración",
+	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus alientos",
+	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
+	TimerBreathCD		= "Mostrar reutilización de aliento",
+	TimerBreath			= "Mostrar lanzamiento de aliento",
 	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
-	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de respiración"
+	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
-	Breath1		= "Primera respiración",
-	Breath2		= "Segunda respiración",
+	Breath1		= "Primer aliento",
+	Breath2		= "Segundo aliento",
 	VulnEmote	= "se estremece mientras su piel empieza a brillar.",
 	Vuln		= "Vulnerabilidad",
 	Fire		= "Fuego",
@@ -457,13 +473,13 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "Llamada de %s termina"
+	TimerClassCall		= "Llamada termina"
 }
 L:SetOptionLocalization{
-	TimerClassCall		= "Mostrar temporizador para la duración de las llamadas en cada clase",
-	WarnAddsLeft		= "Mostrar anuncios para las muertes restantes hasta fase 2",
+	TimerClassCall		= "Mostrar temporizador para la duración de la llamada de clase",
+	WarnAddsLeft		= "Mostrar anuncio para las muertes restantes hasta fase 2",
 	WarnClassCall		= "Mostrar anuncio para las llamadas de clase",
-	specwarnClassCall	= "Mostrar anuncio especial cuando se ve afectado por la llamada de clase"
+	specwarnClassCall	= "Mostrar anuncio especial cuando estás afectado por la llamada de clase"
 }
 L:SetMiscLocalization{
 	YellP1		= "¡Que comiencen los juegos!",
@@ -985,7 +1001,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "¡Stalagg machacarte!",
 	Emote	= "¡%s se sobrecarga!",
-	Emote2	= "¡Espiral tesla se sobrecarga!",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1108,21 +1123,21 @@ L:SetOptionLocalization({
 	WarningLanded		= "Mostrar anuncio para la fase en tierra",
 	TimerAir			= "Mostrar temporizador para la fase aérea",
 	TimerLanding		= "Mostrar temporizador para la fase en tierra",
-	TimerIceBlast		= "Mostrar temporizador para $spell:28524",
-	WarningDeepBreath	= "Mostrar anuncio especial para $spell:28524",
+	TimerFrostBreath	= "Mostrar temporizador para $spell:28524",
+	WarningFrostBreath	= "Mostrar anuncio especial para $spell:28524",
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Fase aérea en 10 segundos",
 	WarningAirPhaseNow	= "Fase aérea",
 	WarningLanded		= "Fase en tierra",
-	WarningDeepBreath	= "Aliento de Escarcha"
+	WarningFrostBreath	= "Aliento de Escarcha"
 })
 
 L:SetTimerLocalization({
-	TimerAir		= "Fase aérea",
-	TimerLanding	= "Fase en tierra",
-	TimerIceBlast	= "Aliento de Escarcha"
+	TimerAir			= "Fase aérea",
+	TimerLanding		= "Fase en tierra",
+	TimerFrostBreath	= "Aliento de Escarcha"
 })
 
 ----------------

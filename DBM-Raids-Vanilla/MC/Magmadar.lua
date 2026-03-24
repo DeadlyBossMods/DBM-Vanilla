@@ -39,14 +39,19 @@ local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|R
 
 local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 
-local timerPanicCD		= mod:NewVarTimer("v30-40", 19408)--30-40
-local timerFrenzyCD		= mod:NewCDTimer(17.8, 19451, nil, nil, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerPanicCD		= mod:NewVarTimer("v37.3-66.4", 19408, nil, nil, 2)
+local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, nil, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 local warnCoreHound--timerCoreHound
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnCoreHound		= mod:NewSpellAnnounce(364727, 2)
 --	timerCoreHound		= mod:NewCDTimer(30, 364727, nil, nil, nil, 1)
+end
+
+function mod:OnCombatStart()
+	timerPanicCD:Start("v6.2-11.3")
+	timerFrenzyCD:Start("v6.4-11.3")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -71,7 +76,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19408, 461125) then
 		warnPanic:Show()
 		timerPanicCD:Start()
-	elseif args:IsSpell(19451) and DBM:IsSeasonal("SeasonOfDiscovery") then--Timer is chaotic in regular classic but in SoD it's consistent 17.8-21~
+	elseif args:IsSpell(19451) then
 		timerFrenzyCD:Start()
 	end
 end

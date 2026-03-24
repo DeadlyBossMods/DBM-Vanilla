@@ -50,7 +50,7 @@ local specWarnAdrenalineOut	= mod:NewSpecialWarningMoveAway(18173, nil, nil, nil
 local yellAdrenaline		= mod:NewYell(18173, nil, true, 2)
 local yellAdrenalineFades	= mod:NewShortFadesYell(18173)
 
-local timerAdrenalineCD		= mod:NewCDTimer(15.7, 18173, nil, nil, nil, 3)
+local timerAdrenalineCD		= mod:NewVarTimer("v15.7-17.9", 18173, nil, nil, nil, 3)
 local timerAdrenaline		= mod:NewTargetTimer(20, 18173, nil, nil, nil, 3)
 local timerCombatStart		= mod:NewCombatTimer(43.5)
 
@@ -58,10 +58,10 @@ mod:AddSetIconOption("SetIconOnDebuffTarget2", 18173, true, 0, {8, 7, 6})
 
 mod.vb.debuffIcon = 8
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.debuffIcon = 8
 	if not DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerAdrenalineCD:Start(15.7-delay)
+		timerAdrenalineCD:Start()
 	end
 end
 

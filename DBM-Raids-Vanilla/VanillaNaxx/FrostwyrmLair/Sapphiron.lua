@@ -43,13 +43,13 @@ local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\Add
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 
 local warnBlizzard		= mod:NewSpecialWarningGTFO(28547, nil, nil, nil, 1, 8)
-local warnDeepBreath	= mod:NewSpecialWarning("WarningDeepBreath", nil, nil, nil, 1, 2)
+local warnFrostBreath	= mod:NewSpecialWarning("WarningFrostBreath", nil, nil, nil, 1, 2)
 local yellIceBlock		= mod:NewYell(28522)
 
 local timerDrainLife	= mod:NewCDTimer(22, 28542, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAirPhase		= mod:NewTimer(66, "TimerAir", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)--80?
 local timerLanding		= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 36 or 28.5, "TimerLanding", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
-local timerIceBlast		= mod:NewTimer(7, "TimerIceBlast", 15876, nil, nil, 2, DBM_COMMON_L.DEADLY_ICON)
+local timerFrostBreath	= mod:NewTimer(7, "TimerFrostBreath", 15876, nil, nil, 2, DBM_COMMON_L.DEADLY_ICON) -- Using the icon for spell 15876 Ice Blast because Frost Breath icon is the default Samwise icon
 
 local timerBomb			= mod:NewNextTimer(30.75, 1219729)
 local specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
@@ -159,11 +159,11 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(28524) and args:IsSrcTypeHostile() then -- Frost Breath
-		timerIceBlast:Start()
+		timerFrostBreath:Start()
 		timerLanding:Update(16.3, 28.5)--Probably not even needed, if base timer is more accurate
 		self:Schedule(12.2, Landing, self)
-		warnDeepBreath:Show()
-		warnDeepBreath:Play("findshelter")
+		warnFrostBreath:Show()
+		warnFrostBreath:Play("findshelter")
 		timerBomb:Start(14.9) -- TODO: confirm this
 	end
 end

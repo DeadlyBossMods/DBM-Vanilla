@@ -17,6 +17,17 @@ L = DBM:GetModLocalization("ThreeBugs")
 L:SetGeneralLocalization{
 	name = "Silithid Royalty"
 }
+L:SetMiscLocalization{
+	Yauj = "Princess Yauj",
+	Vem = "Vem",
+	Kri = "Lord Kri"
+}
+L:SetWarningLocalization({
+    WarnBugDied = "%s dies (%d remaining)"
+})
+L:SetOptionLocalization{
+	WarnBugDied = "Announce bugs remaining"
+}
 
 -------------
 -- Sartura --
@@ -26,7 +37,12 @@ L = DBM:GetModLocalization("Sartura")
 L:SetGeneralLocalization{
 	name = "Battleguard Sartura"
 }
-
+L:SetWarningLocalization({
+    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
+}
 --------------
 -- Fankriss --
 --------------
@@ -89,31 +105,30 @@ L:SetGeneralLocalization{
 	name = "C'Thun"
 }
 L:SetWarningLocalization{
-	WarnEyeTentacle			= "Eye Tentacles",
+	WarnEyeTentacle			= "Eye Tentacle",
 	WarnClawTentacle2		= "Claw Tentacle",
 	WarnGiantEyeTentacle	= "Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Giant Claw Tentacle",
 	SpecWarnWeakened		= "C'Thun Weakened!"
 }
 L:SetTimerLocalization{
-	TimerEyeTentacle		= "Eye Tentacles",
+	TimerEyeTentacle		= "Eye Tentacle",
 	TimerClawTentacle		= "Claw Tentacle",
 	TimerGiantEyeTentacle	= "Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Giant Claw Tentacle",
 	TimerWeakened			= "Weaken ends"
 }
 L:SetOptionLocalization{
-	WarnEyeTentacle			= "Show warning for Eye Tentacles",
+	WarnEyeTentacle			= "Show warning for Eye Tentacle",
 	WarnClawTentacle2		= "Show warning for Claw Tentacle",
 	WarnGiantEyeTentacle	= "Show warning for Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Show warning for Giant Claw Tentacle",
 	SpecWarnWeakened		= "Show special warning when boss weaken",
-	TimerEyeTentacle		= "Show timer for next Eye Tentacles",
+	TimerEyeTentacle		= "Show timer for next Eye Tentacle",
 	TimerClawTentacle		= "Show timer for next Claw Tentacle",
 	TimerGiantEyeTentacle	= "Show timer for next Giant Eye Tentacle",
 	TimerGiantClawTentacle	= "Show timer for next Giant Claw Tentacle",
-	TimerWeakened			= "Show timer for boss weaken duration",
-	RangeFrame				= "Show range frame (10)"
+	TimerWeakened			= "Show timer for boss weaken duration"
 }
 L:SetMiscLocalization{
 	Stomach		= "Stomach",
@@ -410,9 +425,9 @@ L:SetWarningLocalization{
 	WarnVulnerable	= "%s Vulnerability"
 }
 L:SetTimerLocalization{
-	TimerBreathCD	= "%s CD",
-	TimerBreath		= "%s cast",
-	TimerVulnCD		= "Vulnerability CD",
+	TimerBreathCD	= "%s",
+	TimerBreath		= "%s",
+	TimerVulnCD		= "Vulnerability",
 	TimerAllBreaths = "Breath Volley"
 }
 L:SetOptionLocalization{
@@ -993,7 +1008,6 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
-	Emote2	= "Tesla Coil overloads!",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })
@@ -1117,21 +1131,21 @@ L:SetOptionLocalization({
 	WarningLanded		= "Announce ground phase",
 	TimerAir			= "Show timer for air phase",
 	TimerLanding		= "Show timer for landing",
-	TimerIceBlast		= "Show timer for Frost Breath",
-	WarningDeepBreath	= "Show special warning for Frost Breath"
+	TimerFrostBreath	= "Show timer for $spell:28524",
+	WarningFrostBreath	= "Show special warning for $spell:28524"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Air phase in 10 seconds",
 	WarningAirPhaseNow	= "Air phase",
 	WarningLanded		= "Sapphiron landed",
-	WarningDeepBreath	= "Frost Breath"
+	WarningFrostBreath	= "Frost Breath"
 })
 
 L:SetTimerLocalization({
-	TimerAir		= "Air phase",
-	TimerLanding	= "Landing",
-	TimerIceBlast	= "Frost Breath"
+	TimerAir			= "Air phase",
+	TimerLanding		= "Landing",
+	TimerFrostBreath	= "Frost Breath"
 })
 
 ------------------
@@ -1602,4 +1616,3 @@ L:SetMiscLocalization{
 	Prison = "Prison",
 	Cathedral = "Cathedral"
 }
-

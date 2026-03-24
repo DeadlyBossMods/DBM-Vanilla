@@ -25,7 +25,6 @@ mod:RegisterEvents(
 	"SPELL_AURA_APPLIED 22997 25698 26079 1215202 1215421 2855",
 	"SPELL_PERIODIC_DAMAGE 1215421",
 	"SPELL_CAST_SUCCESS 26586",
-	"SPELL_AURA_REMOVED 22997",
 	"SPELL_SUMMON 17430 17431",
 	"SPELL_MISSED",
 	"UNIT_DIED",
@@ -117,9 +116,6 @@ function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _
 	elseif spellId == 25779 then
 		aq40Trash:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
 	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

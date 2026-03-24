@@ -42,7 +42,7 @@ mod:RegisterEventsInCombat(
 	"UNIT_HEALTH"
 )
 
-local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "136116")
+local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
 local warnPhase				= mod:NewPhaseChangeAnnounce()
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
@@ -54,8 +54,8 @@ local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
 local timerPhase			= mod:NewStageTimer(15)
-local timerClassCall		= mod:NewTimer(30, "TimerClassCall", "136116", nil, nil, 5)
-local timerFearNext			= mod:NewVarTimer("v26.7-42.5", 22686, nil, nil, nil, 2)--26-42.5
+local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
+local timerFear				= mod:NewVarTimer("v22.6-85.6", 22686, nil, nil, nil, 2)
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
@@ -100,7 +100,7 @@ function mod:SPELL_CAST_START(args)
 		warnShadowFlame:Show()
 	elseif args:IsSpell(22686) then
 		warnFear:Show()
-		timerFearNext:Start()
+		timerFear:Start()
 	end
 end
 
@@ -174,14 +174,27 @@ end
 
 do
 	local playerClass = UnitClass("player")
-
+	local classIcons = {
+			["DEATHKNIGHT"] = "135771",
+			["DRUID"]       = "625999",
+			["HUNTER"]      = "626000",
+			["MAGE"]        = "626001",
+			["MONK"]        = "626002",
+			["PALADIN"]     = "626003",
+			["PRIEST"]      = "626004",
+			["ROGUE"]       = "626005",
+			["SHAMAN"]      = "626006",
+			["WARLOCK"]     = "626007",
+			["WARRIOR"]     = "626008",
+			["DEMONHUNTER"] = "1260827",
+		}
 	function mod:OnSync(msg, arg, sender)
 		if msg == "Phase" and sender then
 			local phase = tonumber(arg) or 0
 			if phase == 2 then
 				self:SetStage(2)
 				timerPhase:Start(15)--15 til encounter start fires, not til actual land?
-				--timerFearNext:Start(46.6)
+				timerFear:Start()
 			elseif phase == 3 then
 				self:SetStage(3)
 			end
@@ -190,6 +203,11 @@ do
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" and sender then
 			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
+			local classColor = RAID_CLASS_COLORS[arg]
+			local classNameColored = className
+			if classColor then
+				classNameColored = "|c" .. classColor.colorStr .. className .. "|r"
+			end
 			if arg == "SHAMAN" then
 				specwarnClassCall:Play("attacktotem")
 			end
@@ -197,9 +215,11 @@ do
 				specwarnClassCall:Show()
 				specwarnClassCall:Play("targetyou")
 			else
-				warnClassCall:Show(className)
+				warnClassCall:UpdateIcon(classIcons[arg])
+				warnClassCall:Show(classNameColored) -- Only color the warnClassCall message
 			end
 			timerClassCall:Start(30, className)
+			timerClassCall:UpdateIcon(classIcons[arg], className)
 		end
 	end
 end
