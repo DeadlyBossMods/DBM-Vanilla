@@ -27,7 +27,7 @@ L:SetWarningLocalization({
     WarnBugDied = "%s|1이;가; 죽습니다 (%d킬 남음)"
 })
 L:SetOptionLocalization{
-	WarnBugDied = "Announce bugs remaining"
+	WarnBugDied = "남아있는 넴드 알림"
 }
 
 -------------
@@ -39,10 +39,10 @@ L:SetGeneralLocalization{
 	name = "전투감시병 살투라"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+    WarnGuardDied = "살투라의 근위병: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
-	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
+	WarnGuardDied = "살투라의 근위병 남은 수 알림"
 }
 
 --------------
