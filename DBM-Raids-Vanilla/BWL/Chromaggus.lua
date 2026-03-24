@@ -70,11 +70,10 @@ end
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
 mod:AddInfoFrameOption(22277, true)
 
+mod.vb.breathCount = 0
 local mydebuffs = 0
-
 local lastVulnName = nil
 local bossGuid = ""
-
 
 --Constants
 -- https://wow.gamepedia.com/COMBAT_LOG_EVENT
@@ -170,6 +169,7 @@ end
 local nextBreath, nextVolley, volleyCount = 0, 0, 0
 local rolloverWarnShown
 function mod:OnCombatStart()
+	self.vb.breathCount = 0
 	self:SetStage(1)
 	rolloverWarnShown = false
 	nextBreath = GetTime() + 30
@@ -219,8 +219,15 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23308, 23309, 23313, 23314, 23187, 23189, 23315, 23316, 23310, 23312) then
+		self.vb.breathCount = self.vb.breathCount + 1
 		warnBreath:UpdateIcon(args.spellId)
 		warnBreath:Show(args.spellName)
+		--Stop variance bars manually so they don't keep counting
+		if self.vb.breathCount == 1 then
+			timerBreath:Stop(L.Breath1)
+		elseif self.vb.breathCount == 2 then
+			timerBreath:Stop(L.Breath2)
+		end
 		timerBreath:Start(2, args.spellName)
 		timerBreath:UpdateIcon(args.spellId, args.spellName)
 		-- Is part of a volley or regular breath? This is bit messy to reconstruct :/
