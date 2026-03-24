@@ -40,10 +40,10 @@ local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
 local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, false, nil, 2, 1, 2)
 local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2)--aggro wipe, needs fresh taunt
 
-local timerCurseCD           	= mod:NewVarTimer("v20-27.6", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD           	= mod:NewVarTimer("v21-26.4", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerDeadenMagic       	= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerCounterSpellCD    	= mod:NewVarTimer("v15.3-22.2", 19715, nil, "SpellCaster", nil, 3)--15-19
-local timerGateCD            	= mod:NewVarTimer("v42.1-48.6", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--41-50
+local timerCounterSpellCD    	= mod:NewVarTimer("v15.7-21.1", 19715, nil, "SpellCaster", nil, 3)
+local timerGateCD            	= mod:NewVarTimer("v42.1-48.6", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 local specWarnReflectMagic, specWarnReflectMagicDispel, timerReflectMagicCD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -53,13 +53,13 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerCurseCD:Start("v4.8-14.6")
-	timerCounterSpellCD:Start("v8-15.1")
+	timerCurseCD:Start("v6.1-13")
+	timerCounterSpellCD:Start("v8.1-14.5")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerReflectMagicCD:Start(16.1)
 		timerGateCD:Start(22.6)--22.6-?
 	else
-		timerGateCD:Start("v30.1-34.3")
+		timerGateCD:Start("v30.3-34.1")
 	end
 end
 

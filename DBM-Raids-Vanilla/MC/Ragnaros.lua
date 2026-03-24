@@ -55,7 +55,7 @@ end
 -- "Wrath of Ragnaros-20566-npc:228438-000024194D = pull:30.6, 27.5, 27.5, 35.6, 139.2, 27.5, 34.0, 30.8, 27.5, 31.3",
 -- "Wrath of Ragnaros-20566-npc:228438-0000241D6F = pull:26.0, 27.5, 27.5, 30.8, 32.4, 34.2, 127.8, 27.5, 25.9, 29.1, 30.9, 26.6",
 -- "Wrath of Ragnaros-20566-npc:228438-00002421C6 = pull:27.6, 29.2, 32.3, 102.0, 29.1, 25.9, 34.0",
-local timerWrathRag		= mod:NewVarTimer("v24.7-35.6", 20566, nil, nil, nil, 2) --(26-34 in SoD?)
+local timerWrathRag		= mod:NewVarTimer("v25.9-34.7", 20566, nil, nil, nil, 2) --(26-34 in SoD?)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(90, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil, nil, nil, nil, 1, 3)--Custom for now, so it can use 3 sec count instead of 5
@@ -82,7 +82,7 @@ function mod:OnCombatStart()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerWrathRag:Start(26)
 	else
-	timerWrathRag:Start("v25.5-31.9")
+	timerWrathRag:Start("v25.9-33.8")
 	end
 end
 

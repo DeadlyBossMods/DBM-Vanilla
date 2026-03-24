@@ -40,9 +40,9 @@ local warnMC		= mod:NewTargetNoFilterAnnounce(20604, 4)
 local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2)
 local yellMC		= mod:NewYell(20604)
 
-local timerDoomCD	= mod:NewVarTimer("v20.7-27.5", 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerCurseCD	= mod:NewVarTimer("v20.4-27.4", 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerMC		= mod:NewTargetTimer(15, 20604, nil, nil, nil, 3)
+local timerDoomCD	= mod:NewVarTimer("v21-27", 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerCurseCD	= mod:NewVarTimer("v21-25.9", 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerMC		= mod:NewTargetTimer(15, 20604, nil, false, nil, 3)
 
 mod:AddSetIconOption("SetIconOnMC", 20604, true, 0, {1, 2})
 
@@ -50,8 +50,8 @@ mod.vb.lastIcon = 1
 
 function mod:OnCombatStart()
 	self.vb.lastIcon = 1
-	timerDoomCD:Start("v5.2-13.3")
-	timerCurseCD:Start("v10.9-18.1")
+	timerDoomCD:Start("v5.7-11.8")
+	timerCurseCD:Start("v11.2-16.3")
 end
 
 function mod:MCTarget(targetname)
