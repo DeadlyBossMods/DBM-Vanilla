@@ -24,24 +24,29 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 15732",
-	"SPELL_CAST_SUCCESS 19492 20506"
+	"SPELL_CAST_SUCCESS 19492 19496 20506"
 )
 
---[[
-(ability.id = 20506 or ability.id = 19492) and type = "cast"
---]]
---TODO, add https://www.wowhead.com/classic/spell=19496/magma-shackles ?
-local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
 local warnImmolate			= mod:NewTargetNoFilterAnnounce(15732, 2, nil, false, 3)
+local warnAntiMagicPulse	= mod:NewSpellAnnounce(19492, 2)
+local warnMagmaShackles		= mod:NewSpellAnnounce(19496, 2)
 
-local timerAntiMagicPulseCD	= mod:NewVarTimer("v15.7-21", 19492, nil, nil, nil, 2)--15.7-21 variation
-local timerMagmakinCD		= mod:NewCDTimer(4.8, 20506, nil, nil, nil, 1)--5-6.5 variation, SoD: 4.8-5.0
+local timerAntiMagicPulse	= mod:NewVarTimer("v16.2-21.1", 19492, nil, nil, nil, 2)
+local timerMagmaShackles	= mod:NewVarTimer("v11.3-16.2", 19496, nil, nil, nil, 2)
 
-function mod:OnCombatStart(delay)
+local warnMagmakin, timerMagmakinCD
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnMagmakin 		= mod:NewSpellAnnounce(20506, 2)
+	timerMagmakinCD 	= mod:NewCDTimer(4.8, 20506, nil, nil, nil, 1)--5-6.5 variation, SoD: 4.8-5.0
+end
+
+
+function mod:OnCombatStart()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerMagmakinCD:Start(4.9-delay)
+		timerMagmakinCD:Start(4.9)
 	end
-	timerAntiMagicPulseCD:Start(10-delay)
+	timerAntiMagicPulse:Start("v11.2-16.2")
+	timerMagmaShackles:Start("v5.9-11.3")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -53,8 +58,12 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19492) then
 		warnAntiMagicPulse:Show()
-		timerAntiMagicPulseCD:Start()
+		timerAntiMagicPulse:Start()
+	elseif args:IsSpell(19496) then
+		warnMagmaShackles:Show()
+		timerMagmaShackles:Start()
 	elseif args:IsSpell(20506) then
+		warnMagmakin:Show()
 		timerMagmakinCD:Start()
 	end
 end

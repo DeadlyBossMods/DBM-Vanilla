@@ -40,18 +40,18 @@ local warnMC		= mod:NewTargetNoFilterAnnounce(20604, 4)
 local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2)
 local yellMC		= mod:NewYell(20604)
 
-local timerCurseCD	= mod:NewVarTimer("v20.5-28", 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)--20-25 (22.6-28 on sod?)
-local timerDoomCD	= mod:NewVarTimer(20, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--20-25 (16-21 on sod)
---local timerDoom		= mod:NewCastTimer(10, 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerDoomCD	= mod:NewVarTimer("v21-27", 19702, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerCurseCD	= mod:NewVarTimer("v21-25.9", 19703, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerMC		= mod:NewTargetTimer(15, 20604, nil, false, nil, 3)
 
 mod:AddSetIconOption("SetIconOnMC", 20604, true, 0, {1, 2})
 
 mod.vb.lastIcon = 1
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.lastIcon = 1
-	timerDoomCD:Start(6.5-delay)--6.5-8
-	timerCurseCD:Start(12-delay)--12-15
+	timerDoomCD:Start("v5.7-11.8")
+	timerCurseCD:Start("v11.2-16.3")
 end
 
 function mod:MCTarget(targetname)
@@ -81,11 +81,13 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(20604) then
 		self:MCTarget(args.destName)
+		timerMC:Start(args.destName)
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(20604) and args:IsDestTypePlayer() then
+		timerMC:Stop(args.destName)
 		if self.Options.SetIconOnMC then
 			self:SetIcon(args.destName, 0)
 		end
@@ -95,8 +97,11 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(19702, 460931) then
 		warnDoom:Show()
-		--timerDoom:Start()
-		timerDoomCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and "v16-21" or "v20-25")
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			timerDoomCD:Start("v16-21")
+		else
+			timerDoomCD:Start()
+		end
 	elseif args:IsSpell(19703, 460932) then
 		warnCurse:Show()
 		timerCurseCD:Start()

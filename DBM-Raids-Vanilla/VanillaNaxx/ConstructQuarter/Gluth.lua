@@ -31,12 +31,12 @@ local warnDecimateNow	= mod:NewSpellAnnounce(28374, 3)
 local specWarnEnrage	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 6)
 
 local timerEnrage		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerRoarCD		= mod:NewVarTimer("v19.4-22.5", 29685, nil, nil, nil, 2)--19.4-22.5
+local timerRoarCD		= mod:NewVarTimer("v17.8-24.2", 29685, nil, nil, nil, 2)
 local enrageTimer		= mod:NewBerserkTimer(420)
 
-function mod:OnCombatStart(delay)
-	timerRoarCD:Start(19.4 - delay)
-	enrageTimer:Start(420 - delay)
+function mod:OnCombatStart()
+	timerRoarCD:Start()
+	enrageTimer:Start(420)
 	--warnDecimateSoon:Schedule(100 - delay)
 end
 

@@ -32,21 +32,16 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 20619 21075 20534 461056"
 )
 
---[[
-(ability.id = 461056 or ability.id = 364908) and type = "begincast"
-or (ability.id = 20619 or ability.id = 21075 or ability.id = 20534) and type = "cast"
---]]
---TODO, add https://www.wowhead.com/classic/spell=364895/fireball-volley ?
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
 local warnDamageShield		= mod:NewSpellAnnounce(21075, 2)
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
 
-local timerMagicReflect		= mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerDamageShield		= mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerTeleportCD		= mod:NewVarTimer("v25-30", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--25-30
-local timerShieldCD			= mod:NewTimer(30.3, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
+local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerShieldCD        = mod:NewTimer(30.7, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 -- New in SoD
 -- https://sod.warcraftlogs.com/reports/6RBYhaHdc17x94J8#fight=64&type=casts&by=ability&view=events&hostility=1
@@ -57,11 +52,11 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextFlare		= mod:NewNextTimer(30, 461056, nil, nil, nil, 2)
 end
 
-function mod:OnCombatStart(delay)
-	timerTeleportCD:Start(19.4-delay)
-	timerShieldCD:Start(string.format("v%s-%s", 27.8-delay, 30-delay))--27-30
+function mod:OnCombatStart()
+	timerTeleportCD:Start("v15.8-21.1")
+	timerShieldCD:Start(string.format("v%s-%s", 25.6, 30.7))
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerNextFlare:Start(16-delay)
+		timerNextFlare:Start(16)
 	end
 end
 

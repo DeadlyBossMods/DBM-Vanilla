@@ -35,15 +35,15 @@ or (ability.id = 19713 or ability.id = 19715 or ability.id = 23138 or ability.id
 --]]
 local warnCurse					= mod:NewSpellAnnounce(19713, 4)
 local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, false, 2)
-local warnCntrSpell				= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
+local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
 
 local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, false, nil, 2, 1, 2)
 local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2)--aggro wipe, needs fresh taunt
 
-local timerCurseCD				= mod:NewVarTimer("v18-25.5", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerDeadenMagic			= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerGateCD				= mod:NewVarTimer("v41.3-50", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--41-50
-local timerCounterSpellCD		= mod:NewVarTimer("v15-19", 19715, nil, "SpellCaster", nil, 3)--15-19
+local timerCurseCD           	= mod:NewVarTimer("v21-26.4", 19713, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerDeadenMagic       	= mod:NewBuffActiveTimer(30, 19714, nil, false, 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerCounterSpellCD    	= mod:NewVarTimer("v15.7-21.1", 19715, nil, "SpellCaster", nil, 3)
+local timerGateCD            	= mod:NewVarTimer("v42.1-48.6", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 local specWarnReflectMagic, specWarnReflectMagicDispel, timerReflectMagicCD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -52,14 +52,14 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerReflectMagicCD			= mod:NewCDTimer(22.6, 460856, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 end
 
-function mod:OnCombatStart(delay)
-	timerCurseCD:Start(6-delay)--6-10
-	timerCounterSpellCD:Start(9.6-delay)
+function mod:OnCombatStart()
+	timerCurseCD:Start("v6.1-13")
+	timerCounterSpellCD:Start("v8.1-14.5")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerReflectMagicCD:Start(16.1-delay)
-		timerGateCD:Start(22.6-delay)--22.6-?
+		timerReflectMagicCD:Start(16.1)
+		timerGateCD:Start(22.6)--22.6-?
 	else
-		timerGateCD:Start(30-delay)--30-31
+		timerGateCD:Start("v30.3-34.1")
 	end
 end
 
@@ -100,7 +100,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnCurse:Show()
 		timerCurseCD:Start()
 	elseif args:IsSpell(19715) then
-		warnCntrSpell:Show()
+		warnCounterSpell:Show()
 		timerCounterSpellCD:Start(DBM:IsSeasonal("SeasonOfDiscovery") and 9.6 or "v15-19")
 	elseif args:IsSpell(23138) then
 		specWarnGate:Show(args.sourceName)

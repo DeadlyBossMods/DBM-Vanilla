@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050 1215757 1215752 1215753 1215755 1215885",
 	"SPELL_AURA_APPLIED_DOSE 26050 1215757",
 	"SPELL_AURA_REMOVED 26180 26053 26050 1215757 1215752 1215753 26051 1215755",
-	"SPELL_CAST_SUCCESS 26053 1215752",
+	"SPELL_CAST_SUCCESS 26053 1215752 1215755",
 	"UNIT_HEALTH"
 )
 
@@ -56,9 +56,6 @@ function mod:OnCombatStart(delay)
 	timerEnrageCD:Start(8.1-delay)
 	timerPoisonCD:Start(11-delay)
 	timerStingCD:Start(20-delay)
-end
-
-function mod:OnCombatEnd(wipe)
 end
 
 local function warnStingTargets()

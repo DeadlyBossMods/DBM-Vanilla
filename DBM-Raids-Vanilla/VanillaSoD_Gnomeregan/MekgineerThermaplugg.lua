@@ -1,3 +1,5 @@
+if not DBM:IsSeasonal("SeasonOfDiscovery") then return end
+
 local mod	= DBM:NewMod("ThermapluggSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
