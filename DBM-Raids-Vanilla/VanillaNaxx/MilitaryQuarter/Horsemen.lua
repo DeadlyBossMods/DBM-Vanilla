@@ -139,19 +139,19 @@ function mod:UNIT_DIED(args)
 
         if cid == 16062 then -- Highlord Mograine
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
-            warnBugDied:Show(L.Mograine, self.vb.horsemenRemaining)
+            warnHorsemanDied:Show(L.Mograine, self.vb.horsemenRemaining)
 
         elseif cid == 16063 then -- Sir Zeliek
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
-            warnBugDied:Show(L.Zeliek, self.vb.horsemenRemaining)
+            warnHorsemanDied:Show(L.Zeliek, self.vb.horsemenRemaining)
 
         elseif cid == 16064 then -- Thane Korth'azz
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
-            warnBugDied:Show(L.Korthazz, self.vb.horsemenRemaining)
+            warnHorsemanDied:Show(L.Korthazz, self.vb.horsemenRemaining)
 
 		elseif cid == 16065 then -- Lady Blaumeux
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
-            warnBugDied:Show(L.Blaumeux, self.vb.horsemenRemaining)
+            warnHorsemanDied:Show(L.Blaumeux, self.vb.horsemenRemaining)
         end
     end
 end
