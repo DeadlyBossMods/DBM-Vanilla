@@ -53,11 +53,11 @@ local timerFrostBreath	= mod:NewTimer(7, "TimerFrostBreath", 15876, nil, nil, 2,
 
 local timerBomb, specWarnBomb, specWarnBombSoak, yellBomb, yellBombFades
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-local timerBomb			= mod:NewNextTimer(30.75, 1219729)
-local specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
-local specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12)
-local yellBomb			= mod:NewYell(1219729)
-local yellBombFades		= mod:NewShortFadesYell(1219729)
+	timerBomb			= mod:NewNextTimer(30.75, 1219729)
+	specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
+	specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12)
+	yellBomb			= mod:NewYell(1219729)
+	yellBombFades		= mod:NewShortFadesYell(1219729)
 mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})
 end
 
