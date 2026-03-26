@@ -52,6 +52,7 @@ function mod:OnCombatStart(delay)
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[11347] = true,
 			[11348] = true,
+			[14509] = true,
 		})
 		self.bossHealthUpdateTime = 0.5
 	end
