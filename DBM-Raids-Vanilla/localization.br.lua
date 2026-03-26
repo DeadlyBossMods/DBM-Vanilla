@@ -153,7 +153,7 @@ L:SetGeneralLocalization{
 	name = "Guarda de Batalha Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Guardas Real de Sartura restantes: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Guarda Real de Sartura: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
     WarnGuardDied = "Exibir anúncio para Guardas Real de Sartura restantes"
@@ -514,7 +514,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidade: %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Exibir anúncio de vulnerabilidade de feitiços"
+	WarnVulnerable		= "Exibir anúncio para vulnerabilidades de feitiço"
 }
 L:SetMiscLocalization{
 	Fire		= "Fogo",
@@ -545,10 +545,10 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath			= "Exibir anúncio quando Cromaggus lançar um dos seus sopros",
-	WarnVulnerableNew	= "Exibir cronômetro para recarga do sopro",
-	TimerBreathCD		= "Exibir recarga do sopro",
+	WarnVulnerableNew	= "Exibir anúncio para vulnerabilidades de feitiço",
+	TimerBreathCD		= "Exibir cronômetro para a recarga do sopro",
 	TimerBreath			= "Exibir lançamento do sopro",
-	TimerVulnCD			= "Exibir recarga de Vulnerabilidade",
+	TimerVulnCD			= "Exibir cronômetro para a recarga de vulnerabilidade",
 	TimerAllBreaths 	= "Exibir cronômetro para Salva do sopro"
 }
 L:SetMiscLocalization{
@@ -1071,7 +1071,7 @@ L:SetMiscLocalization({
 })
 
 ------------------------
--- Os Quatro Cavaleiros --
+-- The Four Horsemen --
 ------------------------
 L = DBM:GetModLocalization("HorsemenVanilla")
 
@@ -1083,7 +1083,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Exibir anúncio antecipado para marcas",
 	SpecialWarningMarkOnPlayer	= "Exibir anúncio especial quando você for afetado por mais de quatro marcas",
 	timerMark 					= "Exibir cronômetro para a próxima marca dos cavaleiros (com contador)",
-
+	WarnHorsemanDied			= "Exibir anúncio para cavaleiros restantes"
 })
 
 L:SetTimerLocalization({
@@ -1092,9 +1092,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marca %d em 3 segundos",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s morre (%d |4restante:restantes;)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Grão-lorde Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
+})
 ---------------
 -- Sapphiron --
 ---------------

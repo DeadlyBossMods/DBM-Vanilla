@@ -38,7 +38,7 @@ L:SetGeneralLocalization{
 	name = "Battleguard Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Sartura's Royal Guard: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
 	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
@@ -1105,6 +1105,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Show pre-warning for Mark",
 	SpecialWarningMarkOnPlayer	= "Show special warning when you are affected by more than 4 marks",
 	timerMark					= "Show timer for next horseman's Mark (with count)",
+	WarnHorsemanDied			= "Announce horsemen remaining"
 })
 
 L:SetTimerLocalization({
@@ -1113,7 +1114,15 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s dies (%d remaining)"
+})
+
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Highlord Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
 })
 
 -----------------

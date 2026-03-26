@@ -1101,6 +1101,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "징표 사전 경고 보기",
 	SpecialWarningMarkOnPlayer	= "징표가 4개 이상 걸리면 특수 알림 보기",
 	timerMark					= "다음 기사의 징표 타이머 바 보기 (횟수 포함)",
+	WarnHorsemanDied			= "남아있는 넴드 알림"
 })
 
 L:SetTimerLocalization({
@@ -1109,8 +1110,15 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3초 후 %d번 징표",
+	WarnHorsemanDied 			= "%s|1이;가; 죽습니다 (%d킬 남음)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "영주 코스아즈",
+	Mograine	= "대영주 모그레인",
+	Blaumeux	= "여군주 블라미우스",
+	Zeliek		= "젤리에크 경"
+})
 -----------------
 --  Sapphiron  --
 -----------------

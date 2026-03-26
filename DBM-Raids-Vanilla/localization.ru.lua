@@ -40,7 +40,7 @@ L:SetGeneralLocalization{
 	name = "Боевой страж Сартура"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Королевский страж Сартуры: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
 	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
@@ -1111,7 +1111,8 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Показывать предупреждение перед следующими знаком",
 	SpecialWarningMarkOnPlayer	= "Показывать спецпредупреждение, когда на Вас больше 4-х знаков",
-	timerMark					= "Отсчет времени до следующего знака Всадника (со счетчиком)"
+	timerMark					= "Отсчет времени до следующего знака Всадника (со счетчиком)",
+	WarnHorsemanDied			= "Announce horsemen remaining"
 })
 
 L:SetTimerLocalization({
@@ -1120,9 +1121,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Метка %d через 3 сек.",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s умирает (Осталось %d убийств)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Тан Кортазз",
+	Mograine	= "Верховный лорд Могрейн",
+	Blaumeux	= "Леди Бломе",
+	Zeliek		= "Сэр Зелиек"
+})
 -----------------
 --  Sapphiron  --
 -----------------
