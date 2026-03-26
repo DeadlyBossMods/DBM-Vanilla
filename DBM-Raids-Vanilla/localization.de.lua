@@ -1045,7 +1045,8 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Zeige Vorwarnung für Mal",
 	SpecialWarningMarkOnPlayer	= "Spezialwarnung, wenn sich ein Mal mehr als 4-mal auf dir stapelt",
-	timerMark 					= "Zeige Timer für das nächste Mal des Pferdemanns (mit Zähler)"
+	timerMark 					= "Zeige Timer für das nächste Mal des Pferdemanns (mit Zähler)",
+	WarnHorsemanDied			= "Verkünde verbleibende vier Reiter"
 })
 
 L:SetTimerLocalization({
@@ -1054,9 +1055,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mal %d in 3 Sekunden",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s stirbt (%d ausstehende Tötungen)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Hochlord Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sire Zeliek"
+})
 -----------------
 --  Sapphiron  --
 -----------------

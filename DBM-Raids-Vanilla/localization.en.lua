@@ -1105,6 +1105,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Show pre-warning for Mark",
 	SpecialWarningMarkOnPlayer	= "Show special warning when you are affected by more than 4 marks",
 	timerMark					= "Show timer for next horseman's Mark (with count)",
+	WarnHorsemanDied			= "Announce horsemen remaining"
 })
 
 L:SetTimerLocalization({
@@ -1113,7 +1114,15 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s dies (%d remaining)"
+})
+
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Highlord Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
 })
 
 -----------------

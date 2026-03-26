@@ -1006,7 +1006,9 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "为印记显示提前警报",
-	SpecialWarningMarkOnPlayer	= "当你印记叠加多于四层时显示特别警报"
+	SpecialWarningMarkOnPlayer	= "当你印记叠加多于四层时显示特别警报",
+	timerMark					= "为下一个印记显示计时器（含层数）",
+	WarnHorsemanDied			= "提示天启四骑士剩余"
 })
 
 L:SetTimerLocalization({
@@ -1015,9 +1017,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3秒后印记%d",
-	SpecialWarningMarkOnPlayer	= "%s：%s"
+	SpecialWarningMarkOnPlayer	= "%s：%s",
+	WarnHorsemanDied 			= "%s死了（剩餘%d隻）"
 })
 
+L:SetMiscLocalization({
+	Korthazz			= "库尔塔兹领主",
+	Mograine			= "大领主莫格莱尼",
+	Blaumeux			= "女公爵布劳缪克丝",
+	Zeliek				= "瑟里耶克爵士"
+})
 -----------------
 --  Sapphiron  --
 -----------------

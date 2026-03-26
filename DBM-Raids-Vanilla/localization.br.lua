@@ -1071,7 +1071,7 @@ L:SetMiscLocalization({
 })
 
 ------------------------
--- Os Quatro Cavaleiros --
+-- The Four Horsemen --
 ------------------------
 L = DBM:GetModLocalization("HorsemenVanilla")
 
@@ -1083,7 +1083,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Exibir anúncio antecipado para marcas",
 	SpecialWarningMarkOnPlayer	= "Exibir anúncio especial quando você for afetado por mais de quatro marcas",
 	timerMark 					= "Exibir cronômetro para a próxima marca dos cavaleiros (com contador)",
-
+	WarnHorsemanDied			= "Exibir anúncio para cavaleiros restantes"
 })
 
 L:SetTimerLocalization({
@@ -1092,9 +1092,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marca %d em 3 segundos",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s morre (%d |4restante:restantes;)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Grão-lorde Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
+})
 ---------------
 -- Sapphiron --
 ---------------

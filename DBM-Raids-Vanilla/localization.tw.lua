@@ -1006,18 +1006,30 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "為印記顯示預先警告",
-	SpecialWarningMarkOnPlayer	= "當你印記堆疊多於四層時顯示特別警告"
+	SpecialWarningMarkOnPlayer	= "當你印記堆疊多於四層時顯示特別警告",
+	timerMark					= "為下一個印記顯示計時器（含層數）",
+	WarnHorsemanDied			= "提示天啟四騎士剩餘"
 })
 
+L:SetOptionLocalization{
+    WarnBugDied = "提示異種蠍皇族蟲剩餘"
+}
 L:SetTimerLocalization({
 	timerMark	= "印記%d"
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon			= "3秒後印記%d",
-	SpecialWarningMarkOnPlayer	= "%s：%s"
+	WarningMarkSoon				= "3秒後印記%d",
+	SpecialWarningMarkOnPlayer	= "%s：%s",
+	WarnHorsemanDied 			= "%s死了（剩下%d擊殺）"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "寇斯艾茲族長",
+	Mograine	= "莫格萊尼公爵",
+	Blaumeux	= "布洛莫斯爵士",
+	Zeliek		= "札里克爵士"
+})
 -----------------
 --  Sapphiron  --
 -----------------

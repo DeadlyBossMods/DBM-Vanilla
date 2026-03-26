@@ -1085,7 +1085,7 @@ L:SetMiscLocalization({
 })
 
 ------------------------
--- Los Cuatro Jinetes --
+-- The Four Horsemen --
 ------------------------
 L = DBM:GetModLocalization("HorsemenVanilla")
 
@@ -1096,7 +1096,8 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Mostrar anuncio anticipado para las marcas",
 	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas",
-	timerMark					= "Mostrar temporizador para la próxima marca de los jinetes (con contador)"
+	timerMark					= "Mostrar temporizador para la próxima marca de los jinetes (con contador)",
+	WarnHorsemanDied			= "Mostrar anuncio para jinetes restantes"
 })
 
 L:SetTimerLocalization({
@@ -1105,9 +1106,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marca %d en 3 segundos",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s muere (%d |4restante:restantes;)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Alto Señor Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
+})
 ---------------
 -- Sapphiron --
 ---------------
