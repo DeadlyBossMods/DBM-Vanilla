@@ -516,7 +516,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidad: %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Mostrar anuncio de vulnerabilidades de hechizo"
+	WarnVulnerable		= "Mostrar anuncio para vulnerabilidades de hechizo"
 }
 L:SetMiscLocalization{
 	Fire		= "Fuego",
