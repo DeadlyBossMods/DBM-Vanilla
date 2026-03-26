@@ -38,13 +38,13 @@ local warnShadow		= mod:NewTargetNoFilterAnnounce(23340, 4, nil, "Tank|Healer")
 local specWarnShadowYou	= mod:NewSpecialWarningYou(23340, nil, nil, nil, 1, 2)
 local specWarnShadow	= mod:NewSpecialWarningTaunt(23340, nil, nil, nil, 1, 2)
 
-local timerWingBuffetCD	= mod:NewVarTimer("v31-36", 23339, nil, nil, nil, 2)
-local timerShadowFlameCD= mod:NewVarTimer("v12.5-25.2", 22539, nil, false)--14-21
+local timerWingBuffetCD	= mod:NewVarTimer("v31.1-36", 23339, nil, nil, nil, 2)
+local timerShadowFlameCD= mod:NewVarTimer("v12.9-23.4", 22539, nil, false)--14-21
 local timerShadow		= mod:NewTargetTimer(8, 23340, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 function mod:OnCombatStart()
-	timerShadowFlameCD:Start("v10.7-22.6")
-	timerWingBuffetCD:Start("v30-35.5")
+	timerShadowFlameCD:Start("v11.3-21.1")
+	timerWingBuffetCD:Start("v30.2-35.6")
 end
 
 function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
