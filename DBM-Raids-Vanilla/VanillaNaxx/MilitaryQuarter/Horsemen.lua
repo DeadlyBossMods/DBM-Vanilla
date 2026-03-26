@@ -148,7 +148,7 @@ function mod:UNIT_DIED(args)
         elseif cid == 16064 then -- Thane Korth'azz
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
             warnBugDied:Show(L.Korthazz, self.vb.horsemenRemaining)
-		
+
 		elseif cid == 16065 then -- Lady Blaumeux
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
             warnBugDied:Show(L.Blaumeux, self.vb.horsemenRemaining)
