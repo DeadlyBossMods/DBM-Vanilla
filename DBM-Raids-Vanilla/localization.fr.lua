@@ -154,7 +154,7 @@ L:SetGeneralLocalization{
 	name = "Garde de guerre Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Gardes royal de Sartura restants : %d/3" -- NPC ID 15984
+    WarnGuardDied = "Garde royal de Sartura : %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
     WarnGuardDied = "Afficher une annonce pour les Gardes royal de Sartura restants"
