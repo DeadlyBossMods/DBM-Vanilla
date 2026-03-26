@@ -28,7 +28,7 @@ L:SetWarningLocalization({
     WarnBugDied = "%s умирает (Осталось %d убийств)"
 })
 L:SetOptionLocalization{
-	WarnBugDied = "Announce bugs remaining"
+	WarnBugDied = "Показывать предупреждение об оставшихся жуках"
 }
 
 -------------
@@ -43,7 +43,7 @@ L:SetWarningLocalization({
     WarnGuardDied = "Королевский страж Сартуры: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
-	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
+	WarnGuardDied = "Показывать предупреждение об оставшемся Королевском страже Сартуры"
 }
 
 --------------
@@ -945,8 +945,8 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Теперь вы принадлежите мне!",
-	Pull2				= "Я вижу вас...",
-	Pull3 				= "Пришло ваше время..."
+	Pull2				= "Я вижу вас…",
+	Pull3 				= "Пришло ваше время…"
 })
 
 ---------------
@@ -1112,7 +1112,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Показывать предупреждение перед следующими знаком",
 	SpecialWarningMarkOnPlayer	= "Показывать спецпредупреждение, когда на Вас больше 4-х знаков",
 	timerMark					= "Отсчет времени до следующего знака Всадника (со счетчиком)",
-	WarnHorsemanDied			= "Announce horsemen remaining"
+	WarnHorsemanDied			= "Показывать предупреждение об оставшихся Всадниках"
 })
 
 L:SetTimerLocalization({
@@ -1210,7 +1210,7 @@ L:SetGeneralLocalization({
 L = DBM:GetModLocalization("SoD_NaxxHardmode")
 
 L:SetGeneralLocalization({
-	name = "Сезон открытий Хардмод"
+	name = "Сезон открытий - сложный режим"
 })
 
 L:SetOptionLocalization({
@@ -1328,7 +1328,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "Показывать предупреждение о том, сколько осталось Жриц прилива из Непроглядной Пучины" --Жрица прилива из Непроглядной Пучины
+	warnPriestRemaining	= "Показывать предупреждение о том, сколько осталось Жриц прилива из Непроглядной Пучины"
 })
 
 ------------------
