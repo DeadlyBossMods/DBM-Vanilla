@@ -51,15 +51,17 @@ local timerAirPhase		= mod:NewTimer(66, "TimerAir", "Interface\\AddOns\\DBM-Core
 local timerLanding		= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 36 or 28.5, "TimerLanding", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerFrostBreath	= mod:NewTimer(7, "TimerFrostBreath", 15876, nil, nil, 2, DBM_COMMON_L.DEADLY_ICON) -- Using the icon for spell 15876 Ice Blast because Frost Breath icon is the default Samwise icon
 
+local timerBomb, specWarnBomb, specWarnBombSoak, yellBomb, yellBombFades
+if DBM:IsSeasonal("SeasonOfDiscovery") then
 local timerBomb			= mod:NewNextTimer(30.75, 1219729)
 local specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
 local specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12)
 local yellBomb			= mod:NewYell(1219729)
 local yellBombFades		= mod:NewShortFadesYell(1219729)
+mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})
+end
 
 local berserkTimer		= mod:NewBerserkTimer(900)
-
-mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})
 
 local noTargetTime = 0
 mod.vb.isFlying = false
