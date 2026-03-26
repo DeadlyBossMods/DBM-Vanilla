@@ -409,7 +409,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidad: %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Mostrar anuncio de vulnerabilidades de hechizo"
+	WarnVulnerable		= "Mostrar anuncio para vulnerabilidades de hechizo"
 }
 L:SetMiscLocalization{
 	Fire		= "Fuego",
@@ -440,10 +440,10 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance una de sus alientos",
-	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
-	TimerBreathCD		= "Mostrar reutilización de aliento",
+	WarnVulnerableNew	= "Mostrar anuncio para vulnerabilidades de hechizo",
+	TimerBreathCD		= "Mostrar temporizador para el tiempo de reutilización de aliento",
 	TimerBreath			= "Mostrar lanzamiento de aliento",
-	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
+	TimerVulnCD			= "Mostrar temporizador para el tiempo de reutilización de vulnerabilidad",
 	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{

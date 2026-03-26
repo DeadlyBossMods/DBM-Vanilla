@@ -514,7 +514,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidade: %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Exibir anúncio de vulnerabilidade de feitiços"
+	WarnVulnerable		= "Exibir anúncio para vulnerabilidades de feitiço"
 }
 L:SetMiscLocalization{
 	Fire		= "Fogo",
@@ -545,10 +545,10 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath			= "Exibir anúncio quando Cromaggus lançar um dos seus sopros",
-	WarnVulnerableNew	= "Exibir cronômetro para recarga do sopro",
-	TimerBreathCD		= "Exibir recarga do sopro",
+	WarnVulnerableNew	= "Exibir anúncio para vulnerabilidades de feitiço",
+	TimerBreathCD		= "Exibir cronômetro para a recarga do sopro",
 	TimerBreath			= "Exibir lançamento do sopro",
-	TimerVulnCD			= "Exibir recarga de Vulnerabilidade",
+	TimerVulnCD			= "Exibir cronômetro para a recarga de vulnerabilidade",
 	TimerAllBreaths 	= "Exibir cronômetro para Salva do sopro"
 }
 L:SetMiscLocalization{
