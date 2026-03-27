@@ -15,7 +15,7 @@ mod:SetEncounterID(1120)
 mod:SetModelID(16137)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Yell1P1)
+mod:RegisterCombat("combat_yell", L.Yell1P1, LYell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
