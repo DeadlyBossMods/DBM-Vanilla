@@ -168,7 +168,9 @@ function mod:SPELL_CAST_START(args)
 		self:Schedule(12.2, Landing, self)
 		warnFrostBreath:Show()
 		warnFrostBreath:Play("findshelter")
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerBomb:Start(14.9) -- TODO: confirm this
+		end
 	end
 end
 
