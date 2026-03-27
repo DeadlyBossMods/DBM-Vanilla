@@ -8,7 +8,7 @@ mod:SetZone(533)
 
 mod:RegisterEvents(
 	"SPELL_CAST_SUCCESS 19134",
-	"SPELL_SUMMON 28294",
+	"SPELL_SUMMON 28294"
 )
 
 local specWarnLightningTotem		= mod:NewSpecialWarningSwitch(28294, nil, nil, nil, 1, 2)
