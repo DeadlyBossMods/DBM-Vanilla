@@ -1005,6 +1005,9 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "스탈라그, 박살낸다!",
 	Emote	= "%s 과부하 상태가 됩니다.",
+	Yell1P2 = "잡아... 먹어주마...",
+	Yell2P2 = "박살을 내주겠다!",
+	Yell3P2 = "죽여주마...",
 	Charge1	= "음전하",
 	Charge2	= "양전하"
 })

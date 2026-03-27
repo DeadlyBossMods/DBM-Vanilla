@@ -989,6 +989,9 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
+	Yell1P2 				= "Manger… tes… os…",
+	Yell2P2 				= "Casser… toi !",
+	Yell3P2 				= "Tuer…",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })

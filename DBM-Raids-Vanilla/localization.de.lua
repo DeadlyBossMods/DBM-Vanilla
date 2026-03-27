@@ -951,6 +951,9 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
+	Yell1P2 = "Eure... Knochen... zermalmen...",
+	Yell2P2 = "Euch... zerquetschen!",
+	Yell3P2 = "Töten...",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })

@@ -1015,6 +1015,9 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
+	Yell1P2 = "Я сожру… ваши… кости…",
+	Yell2P2 = "Растерзаю!!!",
+	Yell3P2 = "Убью…",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
