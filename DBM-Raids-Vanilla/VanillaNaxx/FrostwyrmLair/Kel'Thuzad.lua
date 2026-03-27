@@ -204,7 +204,7 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellP1 or msg:find(L.YellP1) then
 		self:SendSync("Phase", 1)
-	if msg == L.YellP3 or msg:find(L.YellP3) then
+	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
 end

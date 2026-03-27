@@ -200,7 +200,6 @@ do
 				timerFear:Start()
 			end
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
-			end
 		end
 	end
 		if not self:IsInCombat() then return end
