@@ -224,7 +224,6 @@ function mod:OnSync(msg, arg, sender)
 				warnPhase3:Show()
 				warnPhase3:Play("pthree")
 			end
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
 	end
 end
