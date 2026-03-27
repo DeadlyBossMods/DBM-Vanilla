@@ -1008,7 +1008,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Stalagg crush you!",
+	Yell1P1	= "Feed you to master!",
+	Yell2P1	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
 	Yell1P2 = "Eat... your... bones...",
 	Yell2P2 = "Break... you!!",

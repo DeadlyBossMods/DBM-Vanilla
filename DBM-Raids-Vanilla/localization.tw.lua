@@ -913,7 +913,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "斯塔拉格要碾碎你！",
+	Yell1P1	= "主人要吃了你！",
+	Yell2P1	= "斯塔拉格要碾碎你！",
 	Emote	= "%s超過負荷！",
 	Yell1P2 = "咬碎……你的……骨頭……",
 	Yell2P2 = "打…碎…你……",
