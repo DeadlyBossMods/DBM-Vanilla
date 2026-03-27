@@ -466,7 +466,7 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerClassCall		= "%s call ends",
-	TimerPhase2	= "Phase 2"
+	TimerPhase2			= "Phase 2"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Show timer for class call duration",
