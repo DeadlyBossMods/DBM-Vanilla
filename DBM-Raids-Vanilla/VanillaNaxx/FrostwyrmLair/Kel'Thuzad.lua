@@ -28,6 +28,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 28410",
 	"SPELL_CAST_SUCCESS 27810 27819 27808",
 	"UNIT_HEALTH mouseover target",
+	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_TARGETABLE_CHANGED"
 )
 
@@ -50,6 +51,7 @@ ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
 local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "134321")
+local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
@@ -196,5 +198,34 @@ function mod:UNIT_TARGETABLE_CHANGED()
 		self:SetStage(2)
 		warnPhase2:Show()
 		warnPhase2:Play("ptwo")
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Yell or msg:find(L.Yell) then
+		self:SendSync("Phase", 1)
+	if msg == L.YellP3 or msg:find(L.YellP3) then
+		self:SendSync("Phase", 3)
+	end
+end
+
+function mod:OnSync(msg, arg, sender)
+	if msg == "Phase" and sender then
+		local phase = tonumber(arg) or 0
+		if phase == 1 then
+			self:SetStage(1)
+			warnPhase1:Show()
+			warnPhase1:Play("pone")
+		elseif phase == 2 then
+			self:SetStage(2)
+			warnPhase2:Show()
+			warnPhase2:Play("ptwo")
+		elseif phase == 3 then
+			self:SetStage(3)
+			warnPhase3:Show()
+			warnPhase3:Play("pthree")
+			end
+		end
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
 end
