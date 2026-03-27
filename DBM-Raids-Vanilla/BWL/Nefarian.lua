@@ -210,7 +210,6 @@ do
 				warnPhase3:Show()
 				warnPhase3:Play("pthree")
 			end
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
 	end
 		if not self:IsInCombat() then return end
