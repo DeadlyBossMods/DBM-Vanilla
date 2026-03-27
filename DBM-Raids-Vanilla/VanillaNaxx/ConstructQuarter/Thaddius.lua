@@ -30,16 +30,17 @@ local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
-local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnPhase				= mod:NewPhaseAnnounce()
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
 local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false)
 local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
-local enrageTimer			= mod:NewBerserkTimer(300)
+local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-34", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)--25.9-34
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerPhase2			= mod:NewTimer(5, "TimerPhase2", "136116", nil, nil, 6)
 
 mod:AddInfoFrameOption()
 
@@ -49,13 +50,14 @@ local currentCharge
 local down = 0
 local lastShift = 0
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self:SetStage(1)
 	currentCharge = nil
 	down = 0
-	self:ScheduleMethod(40.6 - delay, "TankThrow")
-	timerThrow:Start(20.6-delay)
-	warnThrowSoon:Schedule(37.6 - delay)
+	self:ScheduleMethod(40.6, "TankThrow")
+	timerThrow:Start(20.6)
+	warnThrowSoon:Schedule(37.6)
+	warnPhase:Show(1)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[15929] = true,
@@ -140,9 +142,9 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 		if down >= 2 then
 			self:UnscheduleMethod("TankThrow")
 			warnPhase2Soon:Show()
-			timerThrow:Cancel()
 			warnThrowSoon:Cancel()
-			enrageTimer:Start()
+			timerThrow:Stop()
+			timerPhase2:Start()
 		end
 	end
 end
@@ -158,6 +160,7 @@ function mod:OnSync(msg, arg, sender)
 		local phase = tonumber(arg) or 0
 		if phase == 2 then
 			self:SetStage(2)
+			timerEnrage:Start()
 			if self.Options.InfoFrame then
 			DBM.InfoFrame:Hide()
 			end

@@ -53,9 +53,9 @@ local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1,
 local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
-local timerPhase			= mod:NewStageTimer(15)
+local timerPhase2			= mod:NewTimer(15, "TimerPhase2", "136116", nil, nil, 6)
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
-local timerFear				= mod:NewVarTimer("v22.6-85.6", 22686, nil, nil, nil, 2)
+local timerFear				= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
@@ -165,6 +165,8 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("ClassCall", "MONK")
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
+	elseif msg == L.YellP1 or msg:find(L.YellP1) then
+		self:SendSync("Phase", 1)
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
 		self:SendSync("Phase", 2)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
@@ -191,9 +193,11 @@ do
 	function mod:OnSync(msg, arg, sender)
 		if msg == "Phase" and sender then
 			local phase = tonumber(arg) or 0
-			if phase == 2 then
+			if phase == 1 then
+				self:SetStage(1)
+			elseif phase == 2 then
 				self:SetStage(2)
-				timerPhase:Start(15)--15 til encounter start fires, not til actual land?
+				timerPhase2:Start()
 				timerFear:Start()
 			elseif phase == 3 then
 				self:SetStage(3)
