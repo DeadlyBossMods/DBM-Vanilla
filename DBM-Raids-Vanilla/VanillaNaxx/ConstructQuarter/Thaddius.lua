@@ -20,6 +20,7 @@ mod:RegisterCombat("combat_yell", L.Yell)
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
 	"CHAT_MSG_MONSTER_EMOTE",
+	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_AURA player"
 )
 
@@ -28,6 +29,8 @@ local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
+local warnPhase2			= mod:NewPhaseAnnounce(2)
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
 local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false)
@@ -81,13 +84,11 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(28089) then
-		self:SetStage(2)
 		timerNextShift:Start()
 		timerShiftCast:Start()
 		warnShiftCasting:Show()
 		warnShiftSoon:Schedule(20)
 		lastShift = GetTime()
-		DBM.InfoFrame:Hide()
 	end
 end
 
@@ -138,9 +139,28 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 		down = down + 1
 		if down >= 2 then
 			self:UnscheduleMethod("TankThrow")
+			warnPhase2Soon:Show()
 			timerThrow:Cancel()
 			warnThrowSoon:Cancel()
 			enrageTimer:Start()
+		end
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg = L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
+		self:SendSync("Phase", 2)
+	end
+end
+
+function mod:OnSync(msg, arg, sender)
+	if msg == "Phase" and sender then
+		local phase = tonumber(arg) or 0
+		if phase == 2 then
+			self:SetStage(2)
+			if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+			end
 		end
 	end
 end
