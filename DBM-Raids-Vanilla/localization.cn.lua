@@ -418,10 +418,12 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "你的职业被点名！"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "点名%s结束"
+	TimerClassCall		= "点名%s结束",
+	TimerPhase2			= "第二阶段"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "为点名持续时间显示计时器",
+	TimerPhase2			= "为第二阶段显示计时条",
 	WarnAddsLeft		= "通报杀死的龙兽数量，直到进入第二阶段",
 	WarnClassCall		= "提示职业点名",
 	specwarnClassCall	= "警报：当你的职业被点名时显示警报。",
@@ -931,6 +933,10 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged		= "极性变为%s",
 	WarningChargeNotChanged		= "极性没有改变"
+})
+
+L:SetTimerLocalization({
+	TimerPhase2			= "第二阶段"
 })
 
 ----------------------------
