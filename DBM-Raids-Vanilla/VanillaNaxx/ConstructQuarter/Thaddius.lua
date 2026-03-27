@@ -29,8 +29,8 @@ local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
+local warnPhase				= mod:NewPhaseChangeAnnounce()
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
-local warnPhase				= mod:NewPhaseAnnounce()
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
 local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false)
@@ -57,7 +57,6 @@ function mod:OnCombatStart()
 	self:ScheduleMethod(40.6, "TankThrow")
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
-	warnPhase:Show(1)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[15929] = true,
@@ -150,6 +149,8 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Yell or msg:find(L.Yell) then
+		self:SendSync("Phase", 1)
 	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
 		self:SendSync("Phase", 2)
 	end
@@ -158,13 +159,16 @@ end
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase == 2 then
+		if phase == 1 then
+			self:SetStage(1)
+		elseif phase == 2 then
 			self:SetStage(2)
 			timerEnrage:Start()
 			if self.Options.InfoFrame then
 			DBM.InfoFrame:Hide()
 			end
 		end
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
 end
 
