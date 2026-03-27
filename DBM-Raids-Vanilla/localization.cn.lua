@@ -418,7 +418,7 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "你的职业被点名！"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "点名%s结束",
+	TimerClassCall		= "点名%s结束"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "为点名持续时间显示计时器",

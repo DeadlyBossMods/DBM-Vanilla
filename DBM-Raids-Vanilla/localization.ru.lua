@@ -472,7 +472,7 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "Классовый зов на тебе!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s зов заканчивается",
+	TimerClassCall		= "%s зов заканчивается"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Показывать таймер классовых вызовов",
