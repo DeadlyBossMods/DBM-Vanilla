@@ -1088,7 +1088,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！"
+	YellP1			= "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！",
+	YellP3			= "主人，我需要幫助！"
 })
 
 L:SetWarningLocalization({

@@ -1160,7 +1160,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!"
+	YellP1 			= "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!",
+	YellP3 			= "Meu senhor, preciso de ajuda!"
 })
 
 L:SetWarningLocalization({

@@ -1166,7 +1166,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !"
+	YellP1 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !",
+	YellP3					= "Maître, j'ai besoin d'aide !"
 })
 
 L:SetWarningLocalization({

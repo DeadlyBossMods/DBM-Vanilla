@@ -1177,7 +1177,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!"
+	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!",
+	YellP3 = "주인님, 도와주소서!"
 })
 
 L:SetWarningLocalization({

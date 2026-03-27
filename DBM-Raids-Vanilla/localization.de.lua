@@ -1124,7 +1124,8 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
+	YellP3 			= "Meister, helft mir!"
 })
 
 L:SetWarningLocalization({
