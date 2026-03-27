@@ -432,11 +432,9 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerClassCall 	= "%s Ruf endet",
-	TimerPhase2		= "Phase 2"
 }
 L:SetOptionLocalization{
 	TimerClassCall 		= "Dauer der Klassenrufe anzeigen",
-	TimerPhase2			= "Zeige Zeit bis Phase 2",
 	WarnAddsLeft 		= "Kündige verbleibend Tötungen an bis 2 Phase ausgelöst ist.",
 	WarnClassCall 		= "Verkünde Klassenrufe",
 	specwarnClassCall 	= "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
@@ -962,7 +960,6 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2				= "Zeige Zeit bis Phase 2",
 	WarningChargeChanged	= "Spezialwarnung, wenn deine Polarität gewechselt hat",
 	WarningChargeNotChanged	= "Spezialwarnung, wenn deine Polarität nicht gewechselt hat",
 	AirowsEnabled			= "Zeige Pfeile (normale \"2-Camps\"-Strategie)",
@@ -973,10 +970,6 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polarität geändert zu %s",
 	WarningChargeNotChanged	= "Polarität hat sich nicht geändert"
-})
-
-L:SetTimerLocalization({
-	TimerPhase2	= "Phase 2"
 })
 
 ----------------------------

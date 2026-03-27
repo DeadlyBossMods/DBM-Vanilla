@@ -466,11 +466,9 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerClassCall		= "%s call ends",
-	TimerPhase2			= "Phase 2"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Show timer for class call duration",
-	TimerPhase2			= "Show timer for Phase 2",
 	WarnAddsLeft		= "Announce kills remaining until Phase 2 is triggered",
 	WarnClassCall		= "Announce class calls",
 	specwarnClassCall	= "Show Special warning when you are affected by class call"
@@ -1019,7 +1017,6 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2				= "Show timer for Phase 2",
 	WarningChargeChanged	= "Show special warning when your polarity changed",
 	WarningChargeNotChanged	= "Show special warning when your polarity did not change",
 	AirowsEnabled			= "Show arrows during $spell:28089",
@@ -1032,10 +1029,6 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polarity changed to %s",
 	WarningChargeNotChanged	= "Polarity did not change"
-})
-
-L:SetTimerLocalization({
-	TimerPhase2	= "Phase 2"
 })
 
 ----------------------------

@@ -468,11 +468,9 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerClassCall		= "%s 지목 종료",
-	TimerPhase2			= "2단계"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "직업 지목 지속 시간 타이머 바 보기",
-	TimerPhase2			= "2단계 타이머 바 보기",
 	WarnAddsLeft		= "2단계 전환까지 남은 쫄 킬 수 알림",
 	WarnClassCall		= "직업 지목 알림 보기",
 	specwarnClassCall	= "직업 지목 대상일 때 특수 알림 보기"
@@ -1016,7 +1014,6 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2				= "2단계 타이머 바 보기",
 	WarningChargeChanged	= "극성이 바뀔때 특수 알림 보기",
 	WarningChargeNotChanged	= "극성이 바뀌지 않으면 특수 알림 보기",
 	AirowsEnabled			= "$spell:28089 동안 화살표 보기",
@@ -1029,10 +1026,6 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "극성 변경: %s",
 	WarningChargeNotChanged	= "극성 변경 안됨"
-})
-
-L:SetTimerLocalization({
-	TimerPhase2			= "2단계"
 })
 
 ----------------------------
