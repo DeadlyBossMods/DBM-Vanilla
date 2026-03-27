@@ -473,7 +473,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	TimerClassCall		= "직업 지목 지속 시간 타이머 바 보기",
 	TimerPhase2			= "2단계 타이머 바 보기",
-	WarnAddsLeft		= "2페이즈 전환까지 남은 쫄 킬 수 알림",
+	WarnAddsLeft		= "2단계 전환까지 남은 쫄 킬 수 알림",
 	WarnClassCall		= "직업 지목 알림 보기",
 	specwarnClassCall	= "직업 지목 대상일 때 특수 알림 보기"
 }

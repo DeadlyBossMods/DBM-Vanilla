@@ -471,7 +471,7 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	TimerClassCall		= "Show timer for class call duration",
 	TimerPhase2			= "Show timer for Phase 2",
-	WarnAddsLeft		= "Announce kills remaining until Stage 2 is triggered",
+	WarnAddsLeft		= "Announce kills remaining until Phase 2 is triggered",
 	WarnClassCall		= "Announce class calls",
 	specwarnClassCall	= "Show Special warning when you are affected by class call"
 }
