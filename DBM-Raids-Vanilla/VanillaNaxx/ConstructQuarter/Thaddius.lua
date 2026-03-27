@@ -1,6 +1,7 @@
 -- this file uses the texture Textures/arrow.tga. This image was created by Everaldo Coelho and is licensed under the GNU Lesser General Public License. See Textures/lgpl.txt.
 local mod	= DBM:NewMod("ThaddiusVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
@@ -29,7 +30,8 @@ local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
-local warnPhase				= mod:NewPhaseChangeAnnounce()
+local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
@@ -40,7 +42,7 @@ local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-34", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)--25.9-34
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerPhase2			= mod:NewTimer(5, "TimerPhase2", "136116", nil, nil, 6)
+local timerIntermission		= mod:NewIntermissionTimer(5, nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
@@ -143,7 +145,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 			warnPhase2Soon:Show()
 			warnThrowSoon:Cancel()
 			timerThrow:Stop()
-			timerPhase2:Start()
+			timerIntermission:Start()
 		end
 	end
 end
@@ -161,13 +163,15 @@ function mod:OnSync(msg, arg, sender)
 		local phase = tonumber(arg) or 0
 		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
 			self:SetStage(phase)
-			if phase == 2 then
+			if phase == 1 then
+				warnPhase1:Show()
+			elseif phase == 2 then
+				warnPhase2:Show()
 				timerEnrage:Start()
 				if self.Options.InfoFrame then
 					DBM.InfoFrame:Hide()
 				end
 			end
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
 	end
 end

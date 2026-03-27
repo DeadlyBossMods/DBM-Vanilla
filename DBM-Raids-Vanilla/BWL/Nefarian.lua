@@ -11,6 +11,7 @@ else--retail or cataclysm classic and later
 end
 local mod	= DBM:NewMod("Nefarian-Classic","DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
@@ -44,7 +45,9 @@ mod:RegisterEventsInCombat(
 
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
-local warnPhase				= mod:NewPhaseChangeAnnounce()
+local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFear				= mod:NewCastAnnounce(22686, 2)
@@ -53,7 +56,7 @@ local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1,
 local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
-local timerPhase2			= mod:NewTimer(15, "TimerPhase2", "136116", nil, nil, 6)
+local timerIntermission		= mod:NewIntermissionTimer(15, nil, CL.INTERMISSION, true, nil, nil, "136106")
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
 local timerFear				= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
 
@@ -195,9 +198,17 @@ do
 		local phase = tonumber(arg) or 0
 		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
 			self:SetStage(phase)
-			if phase == 2 then
-				timerPhase2:Start()
+			if phase == 1 then
+				warnPhase1:Show()
+				warnPhase1:Play("pone")
+			elseif phase == 2 then
+				warnPhase2:Show()
+				warnPhase2:Play("ptwo")
+				timerIntermission:Start()
 				timerFear:Start()
+			elseif phase == 3 then
+				warnPhase3:Show()
+				warnPhase3:Play("pthree")
 			end
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
