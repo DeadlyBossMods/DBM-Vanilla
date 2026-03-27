@@ -191,19 +191,18 @@ do
 			["DEMONHUNTER"] = "1260827",
 		}
 	function mod:OnSync(msg, arg, sender)
-		if msg == "Phase" and sender then
-			local phase = tonumber(arg) or 0
-			if phase == 1 then
-				self:SetStage(1)
-			elseif phase == 2 then
-				self:SetStage(2)
+	if msg == "Phase" and sender then
+		local phase = tonumber(arg) or 0
+		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
+			self:SetStage(phase)
+			if phase == 2 then
 				timerPhase2:Start()
 				timerFear:Start()
-			elseif phase == 3 then
-				self:SetStage(3)
 			end
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
+			end
 		end
+	end
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" and sender then
 			local className = LOCALIZED_CLASS_NAMES_MALE[arg]

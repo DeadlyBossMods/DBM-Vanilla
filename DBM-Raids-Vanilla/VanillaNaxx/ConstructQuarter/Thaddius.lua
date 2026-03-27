@@ -15,7 +15,7 @@ mod:SetEncounterID(1120)
 mod:SetModelID(16137)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Yell)
+mod:RegisterCombat("combat_yell", L.Yell1P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
@@ -149,7 +149,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell or msg:find(L.Yell) then
+	if msg == L.Yell1P1 or msg:find(L.Yell1P1) or L.Yell2P1 or msg:find(L.Yell2P1) then
 		self:SendSync("Phase", 1)
 	elseif msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
 		self:SendSync("Phase", 2)
@@ -159,16 +159,16 @@ end
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase == 1 then
-			self:SetStage(1)
-		elseif phase == 2 then
-			self:SetStage(2)
-			timerEnrage:Start()
-			if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
+		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
+			self:SetStage(phase)
+			if phase == 2 then
+				timerEnrage:Start()
+				if self.Options.InfoFrame then
+					DBM.InfoFrame:Hide()
+				end
 			end
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
 end
 

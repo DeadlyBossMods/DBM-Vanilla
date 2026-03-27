@@ -212,20 +212,19 @@ end
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase == 1 then
-			self:SetStage(1)
-			warnPhase1:Show()
-			warnPhase1:Play("pone")
-		elseif phase == 2 then
-			self:SetStage(2)
-			warnPhase2:Show()
-			warnPhase2:Play("ptwo")
-		elseif phase == 3 then
-			self:SetStage(3)
-			warnPhase3:Show()
-			warnPhase3:Play("pthree")
+		if phase > 0 and self:GetStage() ~= phase then  -- only proceed if stage is different
+			self:SetStage(phase)
+			if phase == 1 then
+				warnPhase1:Show()
+				warnPhase1:Play("pone")
+			elseif phase == 2 then
+				warnPhase2:Show()
+				warnPhase2:Play("ptwo")
+			elseif phase == 3 then
+				warnPhase3:Show()
+				warnPhase3:Play("pthree")
 			end
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 	end
 end
