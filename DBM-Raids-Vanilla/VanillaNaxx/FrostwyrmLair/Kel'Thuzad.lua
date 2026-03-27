@@ -20,7 +20,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:DisableBossDeathKill() -- He actually dies at end of P2 in on SoD Mythic and gets resurrected
 	mod:RegisterCombat("combat")
 else
-	mod:RegisterCombat("combat_yell", L.Yell)
+	mod:RegisterCombat("combat_yell", L.YellP1)
 end
 
 mod:RegisterEventsInCombat(
@@ -202,7 +202,7 @@ function mod:UNIT_TARGETABLE_CHANGED()
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell or msg:find(L.Yell) then
+	if msg == L.YellP1 or msg:find(L.YellP1) then
 		self:SendSync("Phase", 1)
 	if msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
