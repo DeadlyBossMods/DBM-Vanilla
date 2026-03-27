@@ -431,7 +431,7 @@ L:SetWarningLocalization{
 	specwarnClassCall 	= "Klassenruf auf Dir!"
 }
 L:SetTimerLocalization{
-	TimerClassCall 	= "%s Ruf endet",
+	TimerClassCall 	= "%s Ruf endet"
 }
 L:SetOptionLocalization{
 	TimerClassCall 		= "Dauer der Klassenrufe anzeigen",

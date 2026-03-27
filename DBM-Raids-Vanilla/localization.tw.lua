@@ -420,7 +420,7 @@ L:SetWarningLocalization{
 	specwarnClassCall    = "你中了職業點名！"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s點名結束",
+	TimerClassCall		= "%s點名結束"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "為職業點名持續時間顯示計時器",

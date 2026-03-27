@@ -467,7 +467,7 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "당신이 직업 지목 대상입니다!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s 지목 종료",
+	TimerClassCall		= "%s 지목 종료"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "직업 지목 지속 시간 타이머 바 보기",
