@@ -7,14 +7,22 @@ mod.isTrashMod = true
 mod:SetZone(533)
 
 mod:RegisterEvents(
-	"SPELL_SUMMON 28294"
+	"SPELL_CAST_SUCCESS 19134",
+	"SPELL_SUMMON 28294",
 )
 
 local specWarnLightningTotem		= mod:NewSpecialWarningSwitch(28294, nil, nil, nil, 1, 2)
+local warnFear						= mod:NewSpellAnnounce(19134, 2)
 
 function mod:SPELL_SUMMON(args)
 	if args:IsSpell(28294) then -- Happens ~1 time per trash pack, no antispam in case you pull two packs and both summon shortly after each other
 		specWarnLightningTotem:Show()
 		specWarnLightningTotem:Play("attacktotem")
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if args:IsSpell(19134) then
+		warnFear:Show()
 	end
 end

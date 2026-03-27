@@ -79,7 +79,9 @@ local function Landing()
 	warnAirPhaseSoon:Schedule(airPhaseTimer - 10)
 	warnLanded:Show()
 	timerAirPhase:Start(airPhaseTimer)
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:Schedule(airPhaseTimer + 1, timerBomb.Stop, timerBomb)
+	end
 end
 
 function mod:OnCombatStart(delay)
@@ -91,10 +93,10 @@ function mod:OnCombatStart(delay)
 	local initialAirPhaseTimer = isMythic and 39.66 or DBM:IsSeasonal("SeasonOfDiscovery") and 31 or 48.5
 	warnAirPhaseSoon:Schedule(initialAirPhaseTimer - 10 - delay)
 	timerAirPhase:Start(initialAirPhaseTimer - delay)
-	self:Schedule(initialAirPhaseTimer + 1 - delay, timerBomb.Stop, timerBomb)
 	berserkTimer:Start(900-delay)
 	if DBM:IsSeasonal("SeasonOfDiscovery") then -- FIXME: should filter for mythic, but I don't trust the current detection logic
 		timerBomb:Start(30.75 - delay)
+		self:Schedule(initialAirPhaseTimer + 1 - delay, timerBomb.Stop, timerBomb)
 	end
 	self:RegisterOnUpdateHandler(function(self, elapsed)
 		if not self:IsInCombat() then return end
