@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri		= "군주 크리"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s|1이;가; 죽습니다 (%d킬 남음)"
+    WarnBugDied = "%s|1이;가; 파괴됩니다! (%d마리 남음)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "남아있는 넴드 알림"
@@ -462,7 +462,7 @@ L:SetGeneralLocalization{
 	name = "네파리안"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d킬 남음",
+	WarnAddsLeft		= "%d마리 남음",
 	WarnClassCall		= "%s 지목",
 	specwarnClassCall	= "당신이 직업 지목 대상입니다!"
 }
@@ -1114,7 +1114,7 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3초 후 %d번 징표",
-	WarnHorsemanDied 			= "%s|1이;가; 죽습니다 (%d킬 남음)"
+	WarnHorsemanDied 			= "%s|1을;를; 처치했습니다 (%d마리 남음)"
 })
 
 L:SetMiscLocalization({

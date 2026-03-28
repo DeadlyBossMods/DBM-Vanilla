@@ -23,7 +23,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s dies (%d remaining)"
+    WarnBugDied = "%s is devoured! (%d remaining)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
