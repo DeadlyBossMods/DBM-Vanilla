@@ -34,11 +34,11 @@ local warnImpale			= mod:NewTargetNoFilterAnnounce(28783, 3)
 local specialWarningLocust	= mod:NewSpecialWarningSpell(28785, nil, nil, nil, 2, 2)
 local yellImpale			= mod:NewYell(28783)
 
-local timerLocustIn			= mod:NewVarTimer("v81.2-104.3", 28785, nil, nil, nil, 6)
-local timerLocustFade 		= mod:NewBuffActiveTimer(23, 28785, nil, nil, nil, 6)
+local timerLocustIn			= mod:NewVarTimer("v81.3-104.5", 28785, nil, nil, nil, 2)
+local timerLocustFade 		= mod:NewBuffActiveTimer(23, 28785, nil, nil, nil, 2)
 
 function mod:OnCombatStart()
-	timerLocustIn:Start("v80.8-113")
+	timerLocustIn:Start("v77.3-109.3")
 	warningLocustSoon:Schedule(75)
 end
 
@@ -55,7 +55,7 @@ function mod:SPELL_CAST_START(args)
 		specialWarningLocust:Show()
 		specialWarningLocust:Play("aesoon")
 		timerLocustIn:Stop()
-		timerLocustFade:Start(23)
+		timerLocustFade:Start()
 	elseif args:IsSpell(28783) then -- Impale
 		self:BossTargetScanner(args.sourceGUID, "ImpaleTarget", 0.1, 6)
 	end
