@@ -61,9 +61,9 @@ else
 	warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
 end
 
-local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, nil, nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)-- initial 11.3 then 12.92-12.99
-local timerDoom				= mod:NewNextTimer(29, 29204, nil, nil, nil, 2)-- initial 130 then 29.1-32.4
-local timerRemoveCurseCD	= mod:NewNextTimer(30.8, 30281, nil, nil, nil, 5)
+local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, nil, nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)
+local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
+local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, nil, nil, 5)
 
 mod:AddInfoFrameOption(29184, "Tank|Healer")
 mod:AddDropdownOption(CL.SORTING, {CL.ALPHABETICAL, CL.DURATION}, CL.DURATION, "misc", nil, 29184)
@@ -107,16 +107,16 @@ do
 	end
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.doomCounter = 0
 	self.vb.sporeCounter = 0
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextAura:Start(10) -- TODO: exact timer unclear? seen as early as 11, but also not too important
 	end
-	timerRemoveCurseCD:Start(3 - delay)
-	timerSpore:Start(11.3 - delay, 1)
-	warnSporeSoon:Schedule(self.vb.sporeTimer - 5 - delay)
-	timerDoom:Start(121.4 - delay, self.vb.doomCounter + 1)
+	timerRemoveCurseCD:Start("v0.5-8.2")
+	timerSpore:Start(11.3, 1)
+	warnSporeSoon:Schedule(self.vb.sporeTimer - 5)
+	timerDoom:Start(121.3, self.vb.doomCounter + 1)
 
 	local startTime = GetTime()
 	table.wipe(hadCorrupted)

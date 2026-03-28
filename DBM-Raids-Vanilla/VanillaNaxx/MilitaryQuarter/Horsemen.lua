@@ -46,9 +46,9 @@ local specWarnVoidZone			= mod:NewSpecialWarningYou(28863, nil, nil, nil, 1, 2)
 local yellVoidZone				= mod:NewYell(28863)
 
 local timerMarkCD				= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 13 or 12.9, "timerMark", 28835, nil, nil, 2)-- 12.9
-local timerMeteorCD				= mod:NewVarTimer("v12.9-14.6", 28884, nil, nil, nil, 3)-- 12.9-14.6
-local timerVoidZoneCD			= mod:NewVarTimer("v12.9-16", 28863, nil, nil, nil, 3)-- 12.9-16
-local timerHolyWrathCD			= mod:NewVarTimer("v11.3-14.5", 28883, nil, nil, nil, 3)-- 11.3-14.5
+local timerMeteorCD				= mod:NewVarTimer("v11.3-16.2", 28884, nil, nil, nil, 3)
+local timerVoidZoneCD			= mod:NewVarTimer("v11.3-16.2", 28863, nil, nil, nil, 3)
+local timerHolyWrathCD			= mod:NewVarTimer("v11.3-16.2", 28883, nil, nil, nil, 3)
 local timerBoneBarrier			= mod:NewTargetTimer(20, 29061, nil, nil, nil, 5)
 
 local horsemenGuidCheck = {}
@@ -60,10 +60,10 @@ function mod:OnCombatStart()
 	table.wipe(horsemenGuidCheck)
 	self.vb.markCount = 0
 	self.vb.horsemenRemaining = 4
-	timerVoidZoneCD:Start("v14.5-16.1")--14.5-16.1
-	timerMarkCD:Start(20.9, 1)-- 20.98-21.44
-	timerMeteorCD:Start(20.9)
-	timerHolyWrathCD:Start(20.9)
+	timerVoidZoneCD:Start("v11.3-21")
+	timerMarkCD:Start(21)
+	timerMeteorCD:Start(21)
+	timerHolyWrathCD:Start(21)
 	warnMarkSoon:Schedule(16)
 	if self.Options.InfoFrame then
 		local bosses = {
