@@ -118,7 +118,6 @@ function mod:UNIT_DIED(args)
         bugsGuidCheck[guid] = true
 
         if cid == 15511 then -- Lord Kri
-			timerToxicVolleyCD:Stop()
             self.vb.bugsRemaining = self.vb.bugsRemaining - 1
             warnBugDied:Show(L.Kri, self.vb.bugsRemaining)
 
