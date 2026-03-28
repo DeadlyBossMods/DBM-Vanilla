@@ -33,6 +33,7 @@ local warnEyeTentacle			= mod:NewAnnounce("WarnEyeTentacle", 2, 126)
 local warnClawTentacle			= mod:NewAnnounce("WarnClawTentacle2", 2, 26391, false)
 local warnGiantEyeTentacle		= mod:NewAnnounce("WarnGiantEyeTentacle", 3, 126)
 local warnGiantClawTentacle		= mod:NewAnnounce("WarnGiantClawTentacle", 3, 26391)
+local warnPhase1				= mod:NewPhaseAnnounce(1)
 local warnPhase2				= mod:NewPhaseAnnounce(2)
 
 local specWarnDarkGlare			= mod:NewSpecialWarningDodge(26029, nil, nil, nil, 3, 2)
@@ -95,15 +96,16 @@ do
 	end
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	table.wipe(playersInStomach)
 	table.wipe(fleshTentacles)
 	table.wipe(diedTentacles)
 	self:SetStage(1)
-	timerClawTentacle:Start(9-delay) -- Combatlog told me, the first Claw Tentacle spawn in 00:00:09, but need more test.
-	timerEyeTentacle:Start(45-delay)
-	timerDarkGlareCD:Start(48-delay)
-	self:ScheduleMethod(48-delay, "DarkGlare")
+	warnPhase1:Show()
+	timerClawTentacle:Start(9) -- Combatlog told me, the first Claw Tentacle spawn in 00:00:09, but need more test.
+	timerEyeTentacle:Start(45)
+	timerDarkGlareCD:Start(48)
+	self:ScheduleMethod(48, "DarkGlare")
 end
 
 function mod:OnCombatEnd(wipe, isSecondRun)

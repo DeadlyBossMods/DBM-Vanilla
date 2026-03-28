@@ -39,10 +39,10 @@ local specWarnFrenzy	= mod:NewSpecialWarningDispel(26051, "RemoveEnrage", nil, n
 
 
 local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
-local timerStingCD		= mod:NewCDTimer(25, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
-local timerPoisonCD		= mod:NewCDTimer(11, 26053, nil, nil, nil, 3)
+local timerStingCD		= mod:NewVarTimer("v25.9-59.2", 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
+local timerPoisonCD		= mod:NewVarTimer("v11.3-37.6", 26053, nil, nil, nil, 3)
 local timerPoison		= mod:NewBuffFadesTimer(8, 26053)
-local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)--Off by default do to ridiculous variation
+local timerEnrageCD		= mod:NewVarTimer("v11.3-25.9", 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
@@ -50,12 +50,12 @@ local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_CO
 mod.vb.prewarn_berserk = false
 local StingTargets = {}
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.prewarn_berserk = false
 	table.wipe(StingTargets)
-	timerEnrageCD:Start(8.1-delay)
-	timerPoisonCD:Start(11-delay)
-	timerStingCD:Start(20-delay)
+	timerStingCD:Start("v6.8-43.7")
+	timerPoisonCD:Start("v11.3-38.8")
+	timerEnrageCD:Start("v6.5-25.9")
 end
 
 local function warnStingTargets()

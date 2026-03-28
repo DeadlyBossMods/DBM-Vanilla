@@ -34,12 +34,12 @@ local warnImpale			= mod:NewTargetNoFilterAnnounce(28783, 3)
 local specialWarningLocust	= mod:NewSpecialWarningSpell(28785, nil, nil, nil, 2, 2)
 local yellImpale			= mod:NewYell(28783)
 
-local timerLocustIn			= mod:NewCDTimer(80, 28785, nil, nil, nil, 6)-- 80-104
+local timerLocustIn			= mod:NewVarTimer("v81.2-104.3", 28785, nil, nil, nil, 6)
 local timerLocustFade 		= mod:NewBuffActiveTimer(23, 28785, nil, nil, nil, 6)
 
-function mod:OnCombatStart(delay)
-	timerLocustIn:Start(80 - delay)--80-100
-	warningLocustSoon:Schedule(75 - delay)
+function mod:OnCombatStart()
+	timerLocustIn:Start("v80.8-113")
+	warningLocustSoon:Schedule(75)
 end
 
 function mod:ImpaleTarget(targetname, uId)

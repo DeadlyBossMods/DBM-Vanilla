@@ -45,9 +45,9 @@ mod:RegisterEventsInCombat(
 
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
-local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
-local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
-local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase1			= mod:NewPhaseAnnounce(1)
+local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnPhase3			= mod:NewPhaseAnnounce(3)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
@@ -201,21 +201,18 @@ do
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()
-				warnPhase1:Play("pone")
 			elseif phase == 2 then
 				warnPhase2Soon:Show()
 				timerIntermission:Start()
 				self:ScheduleMethod(15, "OnIntermissionEnd")
 			elseif phase == 3 then
 				warnPhase3:Show()
-				warnPhase3:Play("pthree")
 			end
 		end
 	end
 
 	function mod:OnIntermissionEnd()
 		warnPhase2:Show()
-		warnPhase2:Play("ptwo")
 		timerFear:Start()
 	end
 
