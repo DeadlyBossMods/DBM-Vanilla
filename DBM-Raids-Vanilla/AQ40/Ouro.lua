@@ -40,7 +40,7 @@ local timerBlastCD		= mod:NewVarTimer("v22.1-38.9", 26102, nil, nil, nil, 2)
 local timerSweepCD		= mod:NewVarTimer("v20.6-22.6", 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 local timerNextEye
-if DBM:IsSeasonal("SeasonOfDiscovery") then		
+if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextEye = mod:NewNextTimer(30, 1215744)
 end
 
