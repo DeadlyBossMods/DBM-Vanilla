@@ -212,13 +212,13 @@ do
 			end
 		end
 	end
-	
+
 	function mod:OnIntermissionEnd()
 		warnPhase2:Show()
 		warnPhase2:Play("ptwo")
 		timerFear:Start()
 	end
-	
+
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" and sender then
 			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
