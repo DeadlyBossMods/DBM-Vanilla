@@ -202,12 +202,10 @@ do
 			if phase == 1 then
 				warnPhase1:Show()
 			elseif phase == 2 then
-				self:SetStage(2)
 				warnPhase2Soon:Show()
 				timerIntermission:Start()
 				self:ScheduleMethod(15, "OnIntermissionEnd")
 			elseif phase == 3 then
-				self:SetStage(3)
 				warnPhase3:Show()
 			end
 		end

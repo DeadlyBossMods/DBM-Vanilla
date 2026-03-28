@@ -166,7 +166,6 @@ function mod:OnSync(msg, arg, sender)
 			if phase == 1 then
 				warnPhase1:Show()
 			elseif phase == 2 then
-				self:SetStage(2)
 				warnPhase2:Show()
 				timerEnrage:Start()
 				if self.Options.InfoFrame then
