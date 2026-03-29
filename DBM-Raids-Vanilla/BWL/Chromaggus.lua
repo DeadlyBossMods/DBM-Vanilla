@@ -30,6 +30,7 @@ mod:SetWipeTime(20) -- ENCOUNTER_START triggers when you pull the lever, but it 
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23308 23309 23313 23314 23187 23189 23315 23316 23310 23312",
+	"SPELL_CAST_SUCCESS 23128"
 	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537 22277 22278 22279 22280 22281",
 	"SPELL_AURA_REMOVED 23155 23169 23153 23154 23170 23128",
 	"UNIT_HEALTH",
@@ -54,7 +55,8 @@ local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
-local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD		= mod:NewVarTimer("v16.1-17.8", 23128, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, nil, nil, nil, nil, true)
 
 local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver, timerAllBreaths
@@ -177,6 +179,7 @@ function mod:OnCombatStart()
 	volleyCount = 0
 	timerBreathCD:Start(string.format("v%s-%s", 27, 37.2), L.Breath1)
 	timerBreathCD:Start(string.format("v%s-%s", 57.3, 68.1), L.Breath2)
+	timerFrenzyCD:Start("v12.5-22.5")
 	specWarnBreathSoon:Schedule(27) -- +2 sec casting time == you got 5 seconds to run
 	specWarnBreathSoon:Schedule(57)
 	mydebuffs = 0
@@ -214,6 +217,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(468594) then
 		timerRollOver:Start()
 		warnRollOver:Show()
+	elseif args:IsSpell(23128)
+		timerFrenzyCD:Start()
 	end
 end
 

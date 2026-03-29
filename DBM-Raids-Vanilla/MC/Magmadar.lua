@@ -35,13 +35,13 @@ mod:RegisterEventsInCombat(
 --]]
 --TODO, core hound summon not in combat log, so need transcriptor to add alert/timer for that
 local warnPanic			= mod:NewSpellAnnounce(19408, 2)
-local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Healer|Tank|RemoveEnrage")
+local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil , "Tank|RemoveEnrage|Healer")
 
 local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 
 local timerPanicCD		= mod:NewVarTimer("v37.3-66.4", 19408, nil, nil, 2)
-local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, false, nil, 3, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, nil, nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 local warnCoreHound--timerCoreHound
 if DBM:IsSeasonal("SeasonOfDiscovery") then
