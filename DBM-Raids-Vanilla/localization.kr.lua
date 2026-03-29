@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri		= "군주 크리"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s|1을;를; 잡았습니다! (%d마리 남음)"
+    WarnBugDied = "%s|1을;를; 잡았습니다 (%d마리 남음)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "남아있는 보스 알림"
