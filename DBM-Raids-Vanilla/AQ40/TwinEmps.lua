@@ -37,10 +37,10 @@ local specWarnGTFO			= mod:NewSpecialWarningGTFO(26607, nil, nil, nil, 1, 2)
 
 local timerTeleportCD		= DBM:IsSeasonal("SeasonOfDiscovery")
 	and mod:NewCDTimer(29.2, 800, nil, nil, nil, 6, nil, nil, true, 1, 4)
-	or mod:NewVarTimer("v29.2-40.2", 800, nil, nil, nil, 6, nil, nil, true, 1, 4)--29.2-40.2
+	or mod:NewVarTimer("v29.1-40.5", 800, nil, nil, nil, 6, nil, nil, true, 1, 4)
 local timerExplodeBugCD		= mod:NewVarTimer("v4.5-32.3", 804, nil, false, nil, 1)
 local timerMutateBugCD		= mod:NewVarTimer("v10.9-27.1", 802, nil, false, nil, 1)
---local timerStrikeCD			= mod:NewCDTimer(9.7, 26613, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--9.7-42.6
+local timerStrikeCD			= mod:NewVarTimer("v9.7-37.3", 26613, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 local berserkTimer			= mod:NewBerserkTimer(900)
 
@@ -48,11 +48,8 @@ mod:AddNamePlateOption("NPAuraOnMutateBug", 802)
 
 function mod:OnCombatStart()
 	berserkTimer:Start()
-	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerTeleportCD:Start(31)
-	else
-		timerTeleportCD:Start() --fixme: -delay for variable timers?
-	end
+	timerTeleportCD:Start(30.8)
+	timerStrikeCD:Start("v11.2-43.8")
 	if self.Options.NPAuraOnMutateBug then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
 	end
@@ -64,7 +61,6 @@ function mod:OnCombatEnd()
 	end
 end
 
---Teleport-pull:30.6, 35.2, 37.8, 40.1, 36.5, 36.6, 37.7, 31.9, 31.7, 38.8, 32.9, 30.4, 40.2, 30.6, 37.6, 35.4, 32.9, 34.2, 35.3, 36.5, 30.4, 29.2, 34.3, 32.8, 40.0, 35.4, 36.5, 35.3
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(799, 800) and not DBM:IsSeasonal("SeasonOfDiscovery") and self:AntiSpam(5, 1) then
 		warnTeleport:Show()
@@ -110,10 +106,9 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerMutateBugCD:Start()
 	elseif args:IsSpell(804) then
 		timerExplodeBugCD:Start()
---	elseif args:IsSpell(26613) then
-		--timerStrikeCD:Start()
-	elseif args:IsSpell(1217333) and self:AntiSpam(5, 1) then -- SoD teleport
-		-- https://sod.warcraftlogs.com/reports/BGT3zQYnb82wfAkM#fight=48&type=casts&options=1026&hostility=1&source=165&ability=1217333&view=events
+	elseif args:IsSpell(26613) then
+		timerStrikeCD:Start()
+	elseif args:IsSpell(1217333) and self:AntiSpam(5, 1) then
 		warnTeleport:Show()
 		timerTeleportCD:Start(35.5)
 	end

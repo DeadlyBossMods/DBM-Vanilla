@@ -55,7 +55,7 @@ local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
-local timerVuln			= mod:NewTimer("v16.2-25.5", "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
+local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, nil, nil, nil, nil, true)
 
 local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver, timerAllBreaths
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -129,7 +129,7 @@ local function updateVulnerability(self, spellId)
 
 	timerVuln:SetColor(info[2])
 	timerVuln:UpdateIcon(info[3])
-	timerVuln:UpdateName(name)
+	timerVuln:UpdateName(L.WarnVulnerable:format(name))
 	if not lastVulnName or lastVulnName ~= name then
 		---@diagnostic disable-next-line: inject-field
 		warnVuln.icon = info[3]
