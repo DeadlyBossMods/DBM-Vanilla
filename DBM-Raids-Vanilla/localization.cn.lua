@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri = "克里勋爵"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s被吞噬了！（剩餘%d隻）"
+    WarnBugDied = "%s死了（剩餘%d隻）"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "提示安其拉三宝虫剩余"

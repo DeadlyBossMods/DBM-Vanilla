@@ -25,7 +25,7 @@ L:SetMiscLocalization{
 	Kri = "Лорд Кри"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s подвергается мучениям! (Осталось %d убийств)"
+    WarnBugDied = "%s умирает (Осталось %d убийств)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
