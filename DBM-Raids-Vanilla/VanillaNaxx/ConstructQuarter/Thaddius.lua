@@ -53,7 +53,6 @@ local down = 0
 local lastShift = 0
 
 function mod:OnCombatStart()
-	self:SetStage(1)
 	currentCharge = nil
 	down = 0
 	self:ScheduleMethod(40.6, "TankThrow")
@@ -146,6 +145,9 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 			warnThrowSoon:Cancel()
 			timerThrow:Stop()
 			timerIntermission:Start()
+			if self.Options.InfoFrame then
+				DBM.InfoFrame:Hide()
+			end
 		end
 	end
 end
@@ -168,9 +170,6 @@ function mod:OnSync(msg, arg, sender)
 			elseif phase == 2 then
 				warnPhase2:Show()
 				timerEnrage:Start()
-				if self.Options.InfoFrame then
-					DBM.InfoFrame:Hide()
-				end
 			end
 		end
 	end

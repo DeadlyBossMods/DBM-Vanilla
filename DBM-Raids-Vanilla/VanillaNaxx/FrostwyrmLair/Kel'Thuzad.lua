@@ -26,7 +26,7 @@ end
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
 	"SPELL_AURA_REMOVED 28410",
-	"SPELL_CAST_SUCCESS 27810 27819 27808",
+	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
 	"UNIT_HEALTH mouseover target",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_TARGETABLE_CHANGED"
@@ -66,15 +66,12 @@ local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
 local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
--- Frost blast is a mess on SoD, consider removing it completely
--- 	"Frost Blast-27808-npc:15990-00002CE928 = pull:265.1, 116.6, 40.1, 31.5, 58.2",
--- 	"Frost Blast-27808-npc:15990-00002D1657 = pull:290.0, 30.3, 52.2, 36.4",
-
---Fissure timer is 13-30 or something pretty wide, so no timer
-local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50 (still true in vanilla, kind of shitty variation too)
-local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-46", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
+local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, nil, nil, 2)
+local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, nil, nil, 2)
+local timerManaBombCD		= mod:NewVarTimer("v20.6-41.3", 27819, nil, nil, nil, 3)
+local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--Probably should also be made a var timer with good variance data
+local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
 local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
@@ -96,21 +93,21 @@ local function AnnounceBlastTargets(self)
 	timerfrostBlast:Start(3.5)
 end
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
+function mod:OnCombatStart()
 	table.wipe(frostBlastTargets)
 	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
-	specwarnP2Soon:Schedule(phase1Duration - 10 - delay)
+	specwarnP2Soon:Schedule(phase1Duration - 10)
 	timerPhase2:Start()
-	warnPhase2:Schedule(phase1Duration - delay)
-	warnPhase2:ScheduleVoice(phase1Duration - delay, "ptwo")
+	warnPhase2:Schedule(phase1Duration)
+	warnPhase2:ScheduleVoice(phase1Duration, "ptwo")
 end
 
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then
+		timerFissureCD:Start()
 		if args.destName then
 			if args:IsPlayer() then
 				specWarnFissureYou:Show()
@@ -123,9 +120,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnFissure:Show(DBM_COMMON_L.UNKNOWN)
 		end
 	elseif args:IsSpell(27819) then
-		timerManaBomb:Start()
+		timerManaBombCD:Start()
 	elseif args:IsSpell(27808) then
 		timerFrostBlastCD:Start()
+	elseif args:IsSpell(28408) then
+		timerMCCD:Start()
+	elseif args:IsSpell(28479) then
+		timerFrostboltCD:Start()
 	end
 end
 
@@ -155,7 +156,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam() then
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
-			timerMCCD:Start(60)--60 seconds?
 		end
 		if self.Options.SetIconOnMC2 then
 			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
@@ -216,7 +216,6 @@ function mod:OnSync(msg, arg, sender)
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()
-				warnPhase1:Play("pone")
 			elseif phase == 2 then
 				warnPhase2:Show()
 				warnPhase2:Play("ptwo")
