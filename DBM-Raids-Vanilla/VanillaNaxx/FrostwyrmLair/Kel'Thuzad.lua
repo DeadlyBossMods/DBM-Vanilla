@@ -94,7 +94,6 @@ local function AnnounceBlastTargets(self)
 end
 
 function mod:OnCombatStart()
-	self:SendSync("Phase", 1)
 	table.wipe(frostBlastTargets)
 	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
@@ -217,6 +216,11 @@ function mod:OnSync(msg, arg, sender)
 			elseif phase == 2 then
 				warnPhase2:Show()
 				warnPhase2:Play("ptwo")
+				timerFissureCD:Start("v10.4-38.4")
+				timerFrostboltCD:Start("v15.3-85.9")
+				timerManaBombCD:Start("v20.2-46.5")
+				timerFrostBlastCD:Start("v30.3-92.7")
+				timerMCCD:Start("v21.8-103.4")
 			elseif phase == 3 then
 				warnPhase3:Show()
 				warnPhase3:Play("pthree")
