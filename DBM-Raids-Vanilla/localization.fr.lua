@@ -154,7 +154,7 @@ L:SetGeneralLocalization{
 	name = "Garde de guerre Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Gardes royal de Sartura restants : %d/3" -- NPC ID 15984
+    WarnGuardDied = "Garde royal de Sartura : %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
     WarnGuardDied = "Afficher une annonce pour les Gardes royal de Sartura restants"
@@ -520,7 +520,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnérabilité : %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Afficher un annonce pour les vulnérabilités des sorts"
+	WarnVulnerable		= "Afficher une annonce pour les vulnérabilités des sorts"
 }
 L:SetMiscLocalization{
 	Fire		= "Feu",
@@ -552,9 +552,9 @@ L:SetTimerLocalization{
 L:SetOptionLocalization{
 	WarnBreath			= "Afficher une annonce lorsque Chromaggus incante un de ses souffles",
 	WarnVulnerableNew	= "Afficher une annonce pour les vulnérabilités des sorts",
-	TimerBreathCD		= "Afficher le temps de recharge du souffle",
+	TimerBreathCD		= "Afficher un chronomètre pour le recharge du souffle",
 	TimerBreath			= "Afficher l'incantation du souffle",
-	TimerVulnCD			= "Afficher le temps de recharge de la vulnérabilité",
+	TimerVulnCD			= "Afficher un chronomètre pour le recharge de la vulnérabilité",
 	TimerAllBreaths 	= "Afficher un chronomètre pour Salve de souffle"
 }
 L:SetMiscLocalization{
@@ -585,6 +585,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerClassCall		= "L'appel termine"
 }
+
 L:SetOptionLocalization{
 	TimerClassCall		= "Afficher un chronomètre pour la durée de l'appel de classe",
 	WarnAddsLeft		= "Afficher une annonce pour les éliminations restantes jusqu'au déclenchement de la phase 2",
@@ -987,8 +988,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell					= "Stalagg écraser toi !",
+	Yell1P1					= "À manger pour maître !",
+	Yell2P1					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
+	Yell1P2 				= "Manger… tes… os…",
+	Yell2P2 				= "Casser… toi !",
+	Yell3P2 				= "Tuer…",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })
@@ -1075,7 +1080,7 @@ L:SetMiscLocalization({
 })
 
 ----------------
---  Horsemen  --
+--  The Four Horsemen  --
 ----------------
 L = DBM:GetModLocalization("HorsemenVanilla")
 
@@ -1087,7 +1092,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Afficher une pré-annonce des marques",
 	SpecialWarningMarkOnPlayer	= "Afficher une annonce spéciale quand vous avez plus de 4 marques sur vous",
 	timerMark 					= "Afficher un chronomètre pour la prochaine marque des cavaliers (avec compteur)",
-
+	WarnHorsemanDied			= "Afficher une announce pour les cavaliers restants"
 })
 
 L:SetTimerLocalization({
@@ -1096,9 +1101,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marque %d dans 3 sec",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s meurt (%d |4restant:restants;)"
 })
 
+L:SetMiscLocalization({
+	Korthazz					= "Thane Korth'azz",
+	Mograine					= "Généralissime Mograine",
+	Blaumeux					= "Dame Blaumeux",
+	Zeliek						= "Sire Zeliek"
+})
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1148,7 +1160,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !"
+	YellP1 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !",
 })
 
 L:SetWarningLocalization({

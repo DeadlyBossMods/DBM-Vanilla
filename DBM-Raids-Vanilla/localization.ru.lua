@@ -25,7 +25,7 @@ L:SetMiscLocalization{
 	Kri = "Лорд Кри"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s умирает (Осталось %d убийств)"
+    WarnBugDied = "%s подвергается мучениям! (Осталось %d убийств)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -40,7 +40,7 @@ L:SetGeneralLocalization{
 	name = "Боевой страж Сартура"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Королевский страж Сартуры: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
 	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
@@ -1013,8 +1013,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Сталагг сокрушит вас!",
+	Yell1P1	= "На корм хозяину!",
+	Yell2P1	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
+	Yell1P2 = "Я сожру… ваши… кости…",
+	Yell2P2 = "Растерзаю!!!",
+	Yell3P2 = "Убью…",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
@@ -1111,7 +1115,8 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Показывать предупреждение перед следующими знаком",
 	SpecialWarningMarkOnPlayer	= "Показывать спецпредупреждение, когда на Вас больше 4-х знаков",
-	timerMark					= "Отсчет времени до следующего знака Всадника (со счетчиком)"
+	timerMark					= "Отсчет времени до следующего знака Всадника (со счетчиком)",
+	WarnHorsemanDied			= "Announce horsemen remaining"
 })
 
 L:SetTimerLocalization({
@@ -1120,9 +1125,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Метка %d через 3 сек.",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s умирает (Осталось %d убийств)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Тан Кортазз",
+	Mograine	= "Верховный лорд Могрейн",
+	Blaumeux	= "Леди Бломе",
+	Zeliek		= "Сэр Зелиек"
+})
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1172,7 +1184,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Соратники, слуги, солдаты холодной тьмы! Повинуйтесь зову Кел'Тузада!"
+	YellP1			= "Соратники, слуги, солдаты холодной тьмы! Повинуйтесь зову Кел'Тузада!",
 })
 
 L:SetWarningLocalization({

@@ -224,9 +224,9 @@ function mod:SPELL_CAST_START(args)
 		warnBreath:Show(args.spellName)
 		--Stop variance bars manually so they don't keep counting
 		if self.vb.breathCount == 1 then
-			timerBreath:Stop(L.Breath1)
+			timerBreathCD:Stop(L.Breath1)
 		elseif self.vb.breathCount == 2 then
-			timerBreath:Stop(L.Breath2)
+			timerBreathCD:Stop(L.Breath2)
 		end
 		timerBreath:Start(2, args.spellName)
 		timerBreath:UpdateIcon(args.spellId, args.spellName)

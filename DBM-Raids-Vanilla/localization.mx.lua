@@ -139,7 +139,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s muere (%d |4restante:restantes;)"
+    WarnBugDied = "¡Devoran a %s! (%d |4restante:restantes;)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Mostrar anuncio para insectos restantes"
@@ -154,7 +154,7 @@ L:SetGeneralLocalization{
 	name = "Guardia de batalla Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Guardias Real de Sartura restantes: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Guardia Real de Sartura: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
 	WarnGuardDied = "Mostrar anuncio para Guardias Real de Sartura restantes"
@@ -516,7 +516,7 @@ L:SetWarningLocalization{
 	WarnVulnerable		= "Vulnerabilidad: %s"
 }
 L:SetOptionLocalization{
-	WarnVulnerable		= "Mostrar anuncio de vulnerabilidades de hechizo"
+	WarnVulnerable		= "Mostrar anuncio para vulnerabilidades de hechizo"
 }
 L:SetMiscLocalization{
 	Fire		= "Fuego",
@@ -547,10 +547,10 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath			= "Mostrar anuncio cuando Chromaggus lance uno de sus alientos",
-	WarnVulnerableNew	= "Mostrar temporizador para el tiempo de reutilización de los alientos",
-	TimerBreathCD		= "Mostrar reutilización de aliento",
+	WarnVulnerableNew	= "Mostrar anuncio para vulnerabilidades de hechizo",
+	TimerBreathCD		= "Mostrar temporizador para el tiempo de reutilización de aliento",
 	TimerBreath			= "Mostrar lanzamiento de aliento",
-	TimerVulnCD			= "Mostrar reutilización de vulnerabilidad",
+	TimerVulnCD			= "Mostrar temporizador para el tiempo de reutilización de vulnerabilidad",
 	TimerAllBreaths 	= "Mostrar temporizador para Lluvia de aliento"
 }
 L:SetMiscLocalization{
@@ -989,8 +989,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "¡Stalagg aplasta!",
+	Yell1P1 = "¡Comida para el amo!",
+	Yell2P1	= "¡Stalagg aplasta!",
 	Emote	= "¡%s se sobrecarga!",
+	Yell1P2 = "Comer... sus... huesos...",
+	Yell2P2 = "¡¡Yo Destrozarlos!!",
+	Yell3P2 = "Matar...",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1075,7 +1079,7 @@ L:SetMiscLocalization({
 })
 
 ------------------------
--- Los Cuatro Jinetes --
+-- The Four Horsemen --
 ------------------------
 L = DBM:GetModLocalization("HorsemenVanilla")
 
@@ -1086,7 +1090,8 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Mostrar anuncio anticipado para las marcas",
 	SpecialWarningMarkOnPlayer	= "Mostrar anuncio especial cuando estés afectado por más de cuatro marcas",
-	timerMark					= "Mostrar temporizador para la próxima marca de los jinetes (con contador)"
+	timerMark					= "Mostrar temporizador para la próxima marca de los jinetes (con contador)",
+	WarnHorsemanDied			= "Mostrar anuncio para jinetes restantes"
 })
 
 L:SetTimerLocalization({
@@ -1095,9 +1100,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Marca %d en 3 segundos",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s muere (%d |4restante:restantes;)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Señor feudal Korth'azz",
+	Mograine	= "Alto señor Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
+})
 ---------------
 -- Sapphiron --
 ---------------
@@ -1147,7 +1159,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!"
+	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!",
 })
 
 L:SetWarningLocalization({

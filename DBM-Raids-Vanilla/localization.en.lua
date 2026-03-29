@@ -23,7 +23,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s dies (%d remaining)"
+    WarnBugDied = "%s is devoured! (%d remaining)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -38,7 +38,7 @@ L:SetGeneralLocalization{
 	name = "Battleguard Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Sartura's Royal Guards remaining: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Sartura's Royal Guard: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
 	WarnGuardDied = "Announce Sartura's Royal Guards remaining"
@@ -469,7 +469,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Show timer for class call duration",
-	WarnAddsLeft		= "Announce kills remaining until Stage 2 is triggered",
+	WarnAddsLeft		= "Announce kills remaining until Phase 2 is triggered",
 	WarnClassCall		= "Announce class calls",
 	specwarnClassCall	= "Show Special warning when you are affected by class call"
 }
@@ -1006,8 +1006,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Stalagg crush you!",
+	Yell1P1	= "Feed you to master!",
+	Yell2P1	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
+	Yell1P2 = "Eat... your... bones...",
+	Yell2P2 = "Break... you!!",
+	Yell3P2 = "Kill...",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })
@@ -1105,6 +1109,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "Show pre-warning for Mark",
 	SpecialWarningMarkOnPlayer	= "Show special warning when you are affected by more than 4 marks",
 	timerMark					= "Show timer for next horseman's Mark (with count)",
+	WarnHorsemanDied			= "Announce horsemen remaining"
 })
 
 L:SetTimerLocalization({
@@ -1113,7 +1118,15 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s dies (%d remaining)"
+})
+
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Highlord Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sir Zeliek"
 })
 
 -----------------
@@ -1165,7 +1178,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
+	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
 })
 
 L:SetWarningLocalization({
