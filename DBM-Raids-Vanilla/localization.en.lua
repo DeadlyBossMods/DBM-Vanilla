@@ -1009,9 +1009,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Feed you to master!",
 	Yell2P1	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
-	Yell1P2 = "Eat... your... bones...",
-	Yell2P2 = "Break... you!!",
-	Yell3P2 = "Kill...",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })

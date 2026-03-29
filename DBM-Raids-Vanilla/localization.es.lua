@@ -1002,9 +1002,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "¡Eres pasto del maestro!",
 	Yell2P1	= "¡Stalagg machacarte!",
 	Emote	= "¡%s se sobrecarga!",
-	Yell1P2 = "Comer... tus... huesos...",
-	Yell2P2 = "¡¡Despedazarte!!",
-	Yell3P2 = "Matar...",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
