@@ -1170,7 +1170,6 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!",
-	YellP3 			= "¡Maestro, necesito ayuda!"
 })
 
 L:SetWarningLocalization({
