@@ -94,6 +94,7 @@ local function AnnounceBlastTargets(self)
 end
 
 function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
 	table.wipe(frostBlastTargets)
 	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
@@ -183,10 +184,9 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:UNIT_HEALTH(uId)
-	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.48 then
-		self.vb.warnedAdds = true
-		warnAddsSoon:Show()
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.YellP1 or msg:find(L.YellP1) then
+		self:SendSync("Phase", 1)
 	end
 end
 
@@ -195,16 +195,14 @@ function mod:UNIT_TARGETABLE_CHANGED()
 	if self.vb.phase == 1 then
 		warnPhase2:Cancel()
 		warnPhase2:CancelVoice()
-		self:SetStage(2)
-		warnPhase2:Show()
-		warnPhase2:Play("ptwo")
+		self:SendSync("Phase", 2)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellP1 or msg:find(L.YellP1) then
-		self:SendSync("Phase", 1)
-	elseif msg == L.YellP3 or msg:find(L.YellP3) then
+function mod:UNIT_HEALTH(uId)
+	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
+		self.vb.warnedAdds = true
+		warnAddsSoon:Show()
 		self:SendSync("Phase", 3)
 	end
 end
