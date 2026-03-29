@@ -57,7 +57,7 @@ local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzyCD		= mod:NewVarTimer("v16.1-17.8", 23128, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, nil, nil, nil, nil, true)
+local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, "Healer|SpellCaster", nil, nil, nil, true)
 
 local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver, timerAllBreaths
 if DBM:IsSeasonal("SeasonOfDiscovery") then
