@@ -1150,17 +1150,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Exibir cronômetro para a fase 2",
-	specwarnP2Soon		= "Exibir anúncio especial 10 segundos antes de mudar para a fase 2",
-	warnAddsSoon		= "Exibir anúncio antecipado para quando os Guardiões da Coroa de Gelo aparecerem"
+	specwarnP2Soon		= "Exibir anúncio especial 10 segundos antes de mudar para a fase 2"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!",
+	YellP1 			= "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Fase 2 em 10 segundos",
-	warnAddsSoon	= "Guardiões da Coroa de Gelo em breve"
+	specwarnP2Soon	= "Fase 2 em 10 segundos"
 })
 
 L:SetTimerLocalization({

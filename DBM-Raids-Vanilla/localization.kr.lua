@@ -1166,17 +1166,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "2단계 타이머 바 보기",
-	specwarnP2Soon		= "켈투자드 전투 개시 10초 전에 특수 알림 보기",
-	warnAddsSoon		= "얼음왕관의 수호자 사전 경고 보기"
+	specwarnP2Soon		= "켈투자드 전투 개시 10초 전에 특수 알림 보기"
 })
 
 L:SetMiscLocalization({
-	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!",
+	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon		= "10초 후 켈투자드 전투 개시",
-	warnAddsSoon		= "곧 얼음왕관의 수호자 등장"
+	specwarnP2Soon		= "10초 후 켈투자드 전투 개시"
 })
 
 L:SetTimerLocalization({
