@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri		= "군주 크리"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s|1이;가; 죽습니다 (%d킬 남음)"
+    WarnBugDied = "%s|1이;가; 파괴됩니다! (%d마리 남음)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "남아있는 넴드 알림"
@@ -462,7 +462,7 @@ L:SetGeneralLocalization{
 	name = "네파리안"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft		= "%d킬 남음",
+	WarnAddsLeft		= "%d마리 남음",
 	WarnClassCall		= "%s 지목",
 	specwarnClassCall	= "당신이 직업 지목 대상입니다!"
 }
@@ -471,7 +471,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "직업 지목 지속 시간 타이머 바 보기",
-	WarnAddsLeft		= "2페이즈 전환까지 남은 쫄 킬 수 알림",
+	WarnAddsLeft		= "2단계 전환까지 남은 쫄 킬 수 알림",
 	WarnClassCall		= "직업 지목 알림 보기",
 	specwarnClassCall	= "직업 지목 대상일 때 특수 알림 보기"
 }
@@ -1003,8 +1003,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "스탈라그, 박살낸다!",
+	Yell1P1	= "너 주인님께 바칠 거야!",
+	Yell2P1	= "스탈라그, 박살낸다!",
 	Emote	= "%s 과부하 상태가 됩니다.",
+	Yell1P2 = "잡아... 먹어주마...",
+	Yell2P2 = "박살을 내주겠다!",
+	Yell3P2 = "죽여주마...",
 	Charge1	= "음전하",
 	Charge2	= "양전하"
 })
@@ -1110,7 +1114,7 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3초 후 %d번 징표",
-	WarnHorsemanDied 			= "%s|1이;가; 죽습니다 (%d킬 남음)"
+	WarnHorsemanDied 			= "%s|1을;를; 처치했습니다 (%d마리 남음)"
 })
 
 L:SetMiscLocalization({
@@ -1167,7 +1171,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!"
+	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!",
 })
 
 L:SetWarningLocalization({

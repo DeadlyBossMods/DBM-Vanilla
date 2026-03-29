@@ -426,18 +426,18 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft = "%d ausstehende Tötungen",
-	WarnClassCall = "%s Ruf",
-	specwarnClassCall = "Klassenruf auf Dir!"
+	WarnAddsLeft 		= "%d ausstehende Tötungen",
+	WarnClassCall 		= "%s Ruf",
+	specwarnClassCall 	= "Klassenruf auf Dir!"
 }
 L:SetTimerLocalization{
-	TimerClassCall = "%s Ruf endet"
+	TimerClassCall 	= "%s Ruf endet"
 }
 L:SetOptionLocalization{
-	TimerClassCall = "Dauer der Klassenrufe anzeigen",
-	WarnAddsLeft = "Kündige verbleibend Tötungen an bis 2 Phase ausgelöst ist.",
-	WarnClassCall = "Verkünde Klassenrufe",
-	specwarnClassCall = "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
+	TimerClassCall 		= "Dauer der Klassenrufe anzeigen",
+	WarnAddsLeft 		= "Kündige verbleibend Tötungen an bis 2 Phase ausgelöst ist.",
+	WarnClassCall 		= "Verkünde Klassenrufe",
+	specwarnClassCall 	= "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
 }
 L:SetMiscLocalization{
 	YellP1		= "Lasst die Spiele beginnen!",
@@ -949,8 +949,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Stalagg zerquetschen!",
+	Yell1P1	= "Verfüttere euch an Meister!",
+	Yell2P1	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
+	Yell1P2 = "Eure... Knochen... zermalmen...",
+	Yell2P2 = "Euch... zerquetschen!",
+	Yell3P2 = "Töten...",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
@@ -1114,7 +1118,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
 })
 
 L:SetWarningLocalization({

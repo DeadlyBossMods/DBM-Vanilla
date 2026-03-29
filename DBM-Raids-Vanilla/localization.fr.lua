@@ -585,6 +585,7 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerClassCall		= "L'appel termine"
 }
+
 L:SetOptionLocalization{
 	TimerClassCall		= "Afficher un chronomètre pour la durée de l'appel de classe",
 	WarnAddsLeft		= "Afficher une annonce pour les éliminations restantes jusqu'au déclenchement de la phase 2",
@@ -987,8 +988,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell					= "Stalagg écraser toi !",
+	Yell1P1					= "À manger pour maître !",
+	Yell2P1					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
+	Yell1P2 				= "Manger… tes… os…",
+	Yell2P2 				= "Casser… toi !",
+	Yell3P2 				= "Tuer…",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })
@@ -1155,7 +1160,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !"
+	YellP1 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !",
 })
 
 L:SetWarningLocalization({

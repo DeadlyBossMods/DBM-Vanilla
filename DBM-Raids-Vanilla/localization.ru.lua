@@ -25,7 +25,7 @@ L:SetMiscLocalization{
 	Kri = "Лорд Кри"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s умирает (Осталось %d убийств)"
+    WarnBugDied = "%s подвергается мучениям! (Осталось %d убийств)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -1013,8 +1013,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Сталагг сокрушит вас!",
+	Yell1P1	= "На корм хозяину!",
+	Yell2P1	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
+	Yell1P2 = "Я сожру… ваши… кости…",
+	Yell2P2 = "Растерзаю!!!",
+	Yell3P2 = "Убью…",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
@@ -1180,7 +1184,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Соратники, слуги, солдаты холодной тьмы! Повинуйтесь зову Кел'Тузада!"
+	YellP1			= "Соратники, слуги, солдаты холодной тьмы! Повинуйтесь зову Кел'Тузада!",
 })
 
 L:SetWarningLocalization({

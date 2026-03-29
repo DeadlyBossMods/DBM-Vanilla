@@ -582,7 +582,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Exibir cronômetro para a duração da chamada de classe",
-	WarnAddsLeft		= "Exibir anúncio para as mortes restantes até a Fase 2",
+	WarnAddsLeft		= "Exibir anúncio para as mortes restantes até a fase 2",
 	WarnClassCall		= "Exibir anúncio para as chamadas de classe",
 	specwarnClassCall	= "Exibir anúncio especial quando você for afetado pela chamada de classe"
 }
@@ -984,8 +984,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Stalagg esmaga você!",
+	Yell1P1	= "Vou te dar de comer pro mestre!",
+	Yell2P1 = "Stalagg esmaga você!",
 	Emote	= "%s se sobrecarrega!",
+	Yell1P2 = "Comer... seus... osso...",
+	--Yell2P2 = "Break... you!!",
+	Yell3P2 = "Matar... Vocês...!",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1151,7 +1155,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!"
+	YellP1 			= "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!",
 })
 
 L:SetWarningLocalization({

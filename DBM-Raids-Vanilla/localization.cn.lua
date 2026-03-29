@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri = "克里勋爵"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s死了（剩餘%d隻）"
+    WarnBugDied = "%s被吞噬了！（剩餘%d隻）"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "提示安其拉三宝虫剩余"
@@ -910,8 +910,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell				= "斯塔拉格要碾碎你！",
+	Yell1P1				= "主人要吃了你！",
+	Yell2P1				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
+	Yell1P2 			= "咬碎……你的……骨头……",
+	Yell2P2 			= "打……烂……你！",
+	Yell3P2 			= "杀……",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })
@@ -1077,7 +1081,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell 				= "仆从们，侍卫们，隶属于黑暗与寒冷的战士们！听从克尔苏加德的召唤！"
+	YellP1 				= "仆从们，侍卫们，隶属于黑暗与寒冷的战士们！听从克尔苏加德的召唤！",
 })
 
 L:SetWarningLocalization({
