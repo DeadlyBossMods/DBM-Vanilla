@@ -21,7 +21,7 @@ mod:SetZone(531)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 25991 25896 25896",
+	"SPELL_CAST_SUCCESS 25991 25896",
 	"SPELL_AURA_APPLIED 25989",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"SPELL_DAMAGE",
