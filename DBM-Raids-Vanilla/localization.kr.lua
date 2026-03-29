@@ -24,10 +24,10 @@ L:SetMiscLocalization{
 	Kri		= "군주 크리"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s|1이;가; 파괴됩니다! (%d마리 남음)"
+    WarnBugDied = "%s|1을;를; 잡았습니다! (%d마리 남음)"
 })
 L:SetOptionLocalization{
-	WarnBugDied = "남아있는 넴드 알림"
+	WarnBugDied = "남아있는 보스 알림"
 }
 
 -------------
@@ -60,7 +60,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Viscidus")
 
 L:SetGeneralLocalization{
-	name = "비시두스"
+	name = "비시디우스"
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "빙결 : %d/3",
@@ -471,7 +471,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "직업 지목 지속 시간 타이머 바 보기",
-	WarnAddsLeft		= "2단계 전환까지 남은 쫄 킬 수 알림",
+	WarnAddsLeft		= "2단계 전환까지 남은 쫄 알림",
 	WarnClassCall		= "직업 지목 알림 보기",
 	specwarnClassCall	= "직업 지목 대상일 때 특수 알림 보기"
 }
@@ -1105,7 +1105,7 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "징표 사전 경고 보기",
 	SpecialWarningMarkOnPlayer	= "징표가 4개 이상 걸리면 특수 알림 보기",
 	timerMark					= "다음 기사의 징표 타이머 바 보기 (횟수 포함)",
-	WarnHorsemanDied			= "남아있는 넴드 알림"
+	WarnHorsemanDied			= "남아있는 보스 알림"
 })
 
 L:SetTimerLocalization({
@@ -1114,7 +1114,7 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3초 후 %d번 징표",
-	WarnHorsemanDied 			= "%s|1을;를; 처치했습니다 (%d마리 남음)"
+	WarnHorsemanDied 			= "%s|1을;를; 잡았습니다 (%d마리 남음)"
 })
 
 L:SetMiscLocalization({
@@ -1315,11 +1315,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnPriestRemaining		= "여사제 남은 수: %s"
+	warnPriestRemaining		= "여사제 %s마리 남음"
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "검은심연의 바다여사제 남은 숫자 보기"
+	warnPriestRemaining	= "검은심연의 바다여사제 남은 수 보기"
 })
 
 ------------------
