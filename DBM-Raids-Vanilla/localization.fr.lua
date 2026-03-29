@@ -991,9 +991,6 @@ L:SetMiscLocalization({
 	Yell1P1					= "À manger pour maître !",
 	Yell2P1					= "Stalagg écraser toi !",
 	Emote					= "%s entre en surcharge !",
-	Yell1P2 				= "Manger… tes… os…",
-	Yell2P2 				= "Casser… toi !",
-	Yell3P2 				= "Tuer…",
 	Charge1 				= "négative",
 	Charge2 				= "positive"
 })
@@ -1155,21 +1152,19 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2				= "Afficher un chronomètre pour la phase 2",
-	specwarnP2Soon 			= "Afficher une annonce spéciale 10 secondes avant le passage à la phase 2",
-	warnAddsSoon			= "Afficher une pré-annonce pour les Gardiens de la Couronne de glace"
+	specwarnP2Soon 			= "Afficher une annonce spéciale 10 secondes avant le passage à la phase 2"
 })
 
 L:SetMiscLocalization({
-	YellP1 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !",
+	YellP1 					= "Serviteurs, valets et soldats des ténèbres glaciales ! Répondez à l'appel de Kel'Thuzad !"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon  		= "Phase 2 dans 10 secondes",
-	warnAddsSoon			= "Les Gardiens de la Couronne de glacen arrivent bientôt"
+	specwarnP2Soon  		= "Phase 2 dans 10 secondes"
 })
 
 L:SetTimerLocalization({
-	TimerPhase2				= "Phase 2",
+	TimerPhase2				= "Phase 2"
 })
 -----------------
 --  Naxx Trash --

@@ -1006,9 +1006,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "너 주인님께 바칠 거야!",
 	Yell2P1	= "스탈라그, 박살낸다!",
 	Emote	= "%s 과부하 상태가 됩니다.",
-	Yell1P2 = "잡아... 먹어주마...",
-	Yell2P2 = "박살을 내주겠다!",
-	Yell3P2 = "죽여주마...",
 	Charge1	= "음전하",
 	Charge2	= "양전하"
 })
@@ -1166,17 +1163,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "2단계 타이머 바 보기",
-	specwarnP2Soon		= "켈투자드 전투 개시 10초 전에 특수 알림 보기",
-	warnAddsSoon		= "얼음왕관의 수호자 사전 경고 보기"
+	specwarnP2Soon		= "켈투자드 전투 개시 10초 전에 특수 알림 보기"
 })
 
 L:SetMiscLocalization({
-	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!",
+	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon		= "10초 후 켈투자드 전투 개시",
-	warnAddsSoon		= "곧 얼음왕관의 수호자 등장"
+	specwarnP2Soon		= "10초 후 켈투자드 전투 개시"
 })
 
 L:SetTimerLocalization({

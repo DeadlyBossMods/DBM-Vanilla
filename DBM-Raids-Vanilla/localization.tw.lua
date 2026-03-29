@@ -914,9 +914,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "主人要吃了你！",
 	Yell2P1	= "斯塔拉格要碾碎你！",
 	Emote	= "%s超過負荷！",
-	Yell1P2 = "咬碎……你的……骨頭……",
-	Yell2P2 = "打…碎…你……",
-	Yell3P2 = "殺……",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -1012,12 +1009,9 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "為印記顯示預先警告",
 	SpecialWarningMarkOnPlayer	= "當你印記堆疊多於四層時顯示特別警告",
 	timerMark					= "為下一個印記顯示計時器（含層數）",
-	WarnHorsemanDied			= "提示天啟四騎士剩餘"
+	WarnHorsemanDied			= "提示四騎士剩餘"
 })
 
-L:SetOptionLocalization{
-    WarnBugDied = "提示異種蠍皇族蟲剩餘"
-}
 L:SetTimerLocalization({
 	timerMark	= "印記%d"
 })
@@ -1078,17 +1072,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "為第二階段顯示計時器",
-	specwarnP2Soon		= "為科爾蘇加德攻擊前10秒顯示特別警告",
-	warnAddsSoon		= "為寒冰皇冠守護者顯示預先警告"
+	specwarnP2Soon		= "為科爾蘇加德攻擊前10秒顯示特別警告"
 })
 
 L:SetMiscLocalization({
-	YellP1			= "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！",
+	YellP1			= "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "10秒後科爾蘇加德開始攻擊",
-	warnAddsSoon	= "寒冰皇冠守護者即將出現"
+	specwarnP2Soon	= "10秒後科爾蘇加德開始攻擊"
 })
 
 L:SetTimerLocalization({

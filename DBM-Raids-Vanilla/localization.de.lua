@@ -952,9 +952,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Verfüttere euch an Meister!",
 	Yell2P1	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
-	Yell1P2 = "Eure... Knochen... zermalmen...",
-	Yell2P2 = "Euch... zerquetschen!",
-	Yell3P2 = "Töten...",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
@@ -1113,17 +1110,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Zeige Zeit bis Phase 2",
-	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift",
-	warnAddsSoon		= "Zeige Vorwarnung für Wächter von Eiskrone"
+	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an",
-	warnAddsSoon	= "Wächter von Eiskrone bald"
+	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an"
 })
 
 L:SetTimerLocalization({

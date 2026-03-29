@@ -139,7 +139,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "¡Devoran a %s! (%d |4restante:restantes;)"
+    WarnBugDied = "%s muere (%d |4restante:restantes;)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Mostrar anuncio para insectos restantes"
@@ -992,9 +992,6 @@ L:SetMiscLocalization({
 	Yell1P1 = "¡Comida para el amo!",
 	Yell2P1	= "¡Stalagg aplasta!",
 	Emote	= "¡%s se sobrecarga!",
-	Yell1P2 = "Comer... sus... huesos...",
-	Yell2P2 = "¡¡Yo Destrozarlos!!",
-	Yell3P2 = "Matar...",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1154,17 +1151,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Mostrar temporizador para fase 2",
-	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2",
-	warnAddsSoon		= "Mostrar anuncio anticipado para cuando aparezcan los Guardianes de Corona de Hielo"
+	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!",
+	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Fase 2 en 10 segundos",
-	warnAddsSoon	= "Guardianes de Corona de Hielo en breve"
+	specwarnP2Soon	= "Fase 2 en 10 segundos"
 })
 
 L:SetTimerLocalization({

@@ -23,7 +23,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s is devoured! (%d remaining)"
+    WarnBugDied = "%s died (%d remaining)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -1009,9 +1009,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Feed you to master!",
 	Yell2P1	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
-	Yell1P2 = "Eat... your... bones...",
-	Yell2P2 = "Break... you!!",
-	Yell3P2 = "Kill...",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })
@@ -1119,7 +1116,7 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
 	SpecialWarningMarkOnPlayer	= "%s: %s",
-	WarnHorsemanDied 			= "%s dies (%d remaining)"
+	WarnHorsemanDied 			= "%s died (%d remaining)"
 })
 
 L:SetMiscLocalization({
@@ -1173,17 +1170,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Show timer for Phase 2",
-	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages",
-	warnAddsSoon		= "Show pre-warning for Guardians of Icecrown"
+	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
+	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds",
-	warnAddsSoon	= "Guardians of Icecrown incoming soon"
+	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds"
 })
 
 L:SetTimerLocalization({

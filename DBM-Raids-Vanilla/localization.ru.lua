@@ -25,7 +25,7 @@ L:SetMiscLocalization{
 	Kri = "Лорд Кри"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s подвергается мучениям! (Осталось %d убийств)"
+    WarnBugDied = "%s умирает (Осталось %d убийств)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -1016,9 +1016,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "На корм хозяину!",
 	Yell2P1	= "Сталагг сокрушит вас!",
 	Emote	= "Катушка Теслы перезагружается!",
-	Yell1P2 = "Я сожру… ваши… кости…",
-	Yell2P2 = "Растерзаю!!!",
-	Yell3P2 = "Убью…",
 	Charge1 = "отрицательную",
 	Charge2 = "положительную"
 })
@@ -1179,23 +1176,20 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Отсчет времени до 2-й фазы",
-	specwarnP2Soon		= "Показывать спецпредупреждение за 10 сек. до вступления Кел'Тузада в бой",
-	warnAddsSoon		= "Заранее предупреждать о Стражах Ледяной Короны"
+	specwarnP2Soon		= "Показывать спецпредупреждение за 10 сек. до вступления Кел'Тузада в бой"
 })
 
 L:SetMiscLocalization({
-	YellP1			= "Соратники, слуги, солдаты холодной тьмы! Повинуйтесь зову Кел'Тузада!",
+	YellP1			= "Соратники, слуги, солдаты холодной тьмы! Повинуйтесь зову Кел'Тузада!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Кел'Тузад вступает в бой через 10 сек.",
-	warnAddsSoon	= "Скоро прибытие Стражей Ледяной Короны"
+	specwarnP2Soon	= "Кел'Тузад вступает в бой через 10 сек."
 })
 
 L:SetTimerLocalization({
 	TimerPhase2	= "2-я фаза"
 })
-
 
 -----------------
 --  Naxx Trash --
