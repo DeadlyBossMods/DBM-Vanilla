@@ -952,9 +952,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Verfüttere euch an Meister!",
 	Yell2P1	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
-	Yell1P2 = "Eure... Knochen... zermalmen...",
-	Yell2P2 = "Euch... zerquetschen!",
-	Yell3P2 = "Töten...",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
