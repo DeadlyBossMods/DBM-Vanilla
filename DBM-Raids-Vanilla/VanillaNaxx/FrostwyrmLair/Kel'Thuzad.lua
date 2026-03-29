@@ -50,10 +50,10 @@ local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or 229.9
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
-local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "134321")
 local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
 local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
@@ -78,7 +78,6 @@ mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
 mod:AddSetIconOption("SetIconOnFrostTomb2", 27808, false, 0, {1, 2, 3, 4, 5, 6, 7, 8})
 
-mod.vb.warnedAdds = false
 mod.vb.MCIcon1 = 1
 mod.vb.MCIcon2 = 5
 local frostBlastTargets = {}
@@ -95,7 +94,6 @@ end
 
 function mod:OnCombatStart()
 	table.wipe(frostBlastTargets)
-	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
 	specwarnP2Soon:Schedule(phase1Duration - 10)
@@ -191,7 +189,7 @@ end
 
 --Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
 function mod:UNIT_TARGETABLE_CHANGED()
-	if self.vb.phase == 1 then
+	if self.vb.phase < 2 then
 		warnPhase2:Cancel()
 		warnPhase2:CancelVoice()
 		self:SendSync("Phase", 2)
@@ -199,9 +197,10 @@ function mod:UNIT_TARGETABLE_CHANGED()
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
-		self.vb.warnedAdds = true
-		warnAddsSoon:Show()
+	if self.vb.phase < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+		self:SetStage(2.5)
+		warnPhase3Soon:Show()
+	if self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
 		self:SendSync("Phase", 3)
 	end
 end

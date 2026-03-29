@@ -155,7 +155,11 @@ end
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.Yell1P1 or msg:find(L.Yell1P1) or msg == L.Yell2P1 or msg:find(L.Yell2P1) then
 		self:SendSync("Phase", 1)
-	elseif msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
+	end
+end
+
+function mod:UNIT_TARGETABLE_CHANGED()
+	if self.vb.phase < 2 then
 		self:SendSync("Phase", 2)
 	end
 end

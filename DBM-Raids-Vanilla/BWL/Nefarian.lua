@@ -171,10 +171,16 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	elseif msg == L.YellP1 or msg:find(L.YellP1) then
 		self:SendSync("Phase", 1)
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
-		self:SendSync("Phase", 2)
+		warnPhase2Soon:Show()
+		timerIntermission:Start()
+		self:ScheduleMethod(15, "OnIntermissionEnd")
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
+end
+
+function mod:OnIntermissionEnd()
+	self:SendSync("Phase", 2)
 end
 
 do
@@ -201,18 +207,11 @@ do
 			if phase == 1 then
 				warnPhase1:Show()
 			elseif phase == 2 then
-				warnPhase2Soon:Show()
-				timerIntermission:Start()
-				self:ScheduleMethod(15, "OnIntermissionEnd")
+				warnPhase2:Show()
 			elseif phase == 3 then
 				warnPhase3:Show()
 			end
 		end
-	end
-
-	function mod:OnIntermissionEnd()
-		warnPhase2:Show()
-		timerFear:Start()
 	end
 
 		if not self:IsInCombat() then return end
