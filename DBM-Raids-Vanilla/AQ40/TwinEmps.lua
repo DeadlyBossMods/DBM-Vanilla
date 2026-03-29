@@ -23,7 +23,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 799 800 26613 26607 804",
 	"SPELL_AURA_REMOVED 804",
-	"SPELL_CAST_SUCCESS 802 804 1217333"--26613
+	"SPELL_CAST_SUCCESS 802 804 26613 1217333"
 )
 
 --Add warning for classic to actually swap for strike? boss taunt immune though.
