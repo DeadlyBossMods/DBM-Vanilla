@@ -200,7 +200,7 @@ function mod:UNIT_HEALTH(uId)
 	if self.vb.phase < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
-	if self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
+	elseif self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
 		self:SendSync("Phase", 3)
 	end
 end
