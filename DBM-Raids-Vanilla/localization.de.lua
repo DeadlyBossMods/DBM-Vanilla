@@ -1113,17 +1113,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Zeige Zeit bis Phase 2",
-	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift",
-	warnAddsSoon		= "Zeige Vorwarnung für Wächter von Eiskrone"
+	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an",
-	warnAddsSoon	= "Wächter von Eiskrone bald"
+	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an"
 })
 
 L:SetTimerLocalization({
