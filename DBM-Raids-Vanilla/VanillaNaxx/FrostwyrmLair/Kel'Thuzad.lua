@@ -20,14 +20,15 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:DisableBossDeathKill() -- He actually dies at end of P2 in on SoD Mythic and gets resurrected
 	mod:RegisterCombat("combat")
 else
-	mod:RegisterCombat("combat_yell", L.Yell)
+	mod:RegisterCombat("combat_yell", L.YellP1)
 end
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
 	"SPELL_AURA_REMOVED 28410",
-	"SPELL_CAST_SUCCESS 27810 27819 27808",
+	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
 	"UNIT_HEALTH mouseover target",
+	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_TARGETABLE_CHANGED"
 )
 
@@ -49,9 +50,10 @@ local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or 229.9
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
-local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "134321")
+local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
 local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
@@ -64,22 +66,18 @@ local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
 local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
--- Frost blast is a mess on SoD, consider removing it completely
--- 	"Frost Blast-27808-npc:15990-00002CE928 = pull:265.1, 116.6, 40.1, 31.5, 58.2",
--- 	"Frost Blast-27808-npc:15990-00002D1657 = pull:290.0, 30.3, 52.2, 36.4",
-
---Fissure timer is 13-30 or something pretty wide, so no timer
-local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50 (still true in vanilla, kind of shitty variation too)
-local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-46", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
+local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, nil, nil, 2)
+local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, nil, nil, 2)
+local timerManaBombCD		= mod:NewVarTimer("v20.6-41.3", 27819, nil, nil, nil, 3)
+local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--Probably should also be made a var timer with good variance data
+local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
 local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
 mod:AddSetIconOption("SetIconOnFrostTomb2", 27808, false, 0, {1, 2, 3, 4, 5, 6, 7, 8})
 
-mod.vb.warnedAdds = false
 mod.vb.MCIcon1 = 1
 mod.vb.MCIcon2 = 5
 local frostBlastTargets = {}
@@ -94,21 +92,20 @@ local function AnnounceBlastTargets(self)
 	timerfrostBlast:Start(3.5)
 end
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
+function mod:OnCombatStart()
 	table.wipe(frostBlastTargets)
-	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
-	specwarnP2Soon:Schedule(phase1Duration - 10 - delay)
+	specwarnP2Soon:Schedule(phase1Duration - 10)
 	timerPhase2:Start()
-	warnPhase2:Schedule(phase1Duration - delay)
-	warnPhase2:ScheduleVoice(phase1Duration - delay, "ptwo")
+	warnPhase2:Schedule(phase1Duration)
+	warnPhase2:ScheduleVoice(phase1Duration, "ptwo")
 end
 
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then
+		timerFissureCD:Start()
 		if args.destName then
 			if args:IsPlayer() then
 				specWarnFissureYou:Show()
@@ -121,9 +118,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnFissure:Show(DBM_COMMON_L.UNKNOWN)
 		end
 	elseif args:IsSpell(27819) then
-		timerManaBomb:Start()
+		timerManaBombCD:Start()
 	elseif args:IsSpell(27808) then
 		timerFrostBlastCD:Start()
+	elseif args:IsSpell(28408) then
+		timerMCCD:Start()
+	elseif args:IsSpell(28479) then
+		timerFrostboltCD:Start()
 	end
 end
 
@@ -153,7 +154,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		if self:AntiSpam() then
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
-			timerMCCD:Start(60)--60 seconds?
 		end
 		if self.Options.SetIconOnMC2 then
 			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
@@ -181,20 +181,49 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:UNIT_HEALTH(uId)
-	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.48 then
-		self.vb.warnedAdds = true
-		warnAddsSoon:Show()
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.YellP1 or msg:find(L.YellP1) then
+		self:SendSync("Phase", 1)
 	end
 end
 
 --Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
 function mod:UNIT_TARGETABLE_CHANGED()
-	if self.vb.phase == 1 then
+	if self.vb.phase < 2 then
 		warnPhase2:Cancel()
 		warnPhase2:CancelVoice()
-		self:SetStage(2)
-		warnPhase2:Show()
-		warnPhase2:Play("ptwo")
+		self:SendSync("Phase", 2)
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	if self.vb.phase < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+		self:SetStage(2.5)
+		warnPhase3Soon:Show()
+	elseif self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
+		self:SendSync("Phase", 3)
+	end
+end
+
+function mod:OnSync(msg, arg, sender)
+	if msg == "Phase" and sender then
+		local phase = tonumber(arg) or 0
+		if phase > 0 and self:GetStage() ~= phase then  -- only proceed if stage is different
+			self:SetStage(phase)
+			if phase == 1 then
+				warnPhase1:Show()
+			elseif phase == 2 then
+				warnPhase2:Show()
+				warnPhase2:Play("ptwo")
+				timerFissureCD:Start("v10.4-38.4")
+				timerFrostboltCD:Start("v15.3-85.9")
+				timerManaBombCD:Start("v20.2-46.5")
+				timerFrostBlastCD:Start("v30.3-92.7")
+				timerMCCD:Start("v21.8-103.4")
+			elseif phase == 3 then
+				warnPhase3:Show()
+				warnPhase3:Play("pthree")
+			end
+		end
 	end
 end

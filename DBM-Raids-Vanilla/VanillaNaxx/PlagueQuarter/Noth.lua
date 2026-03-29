@@ -38,7 +38,7 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
-local timerCurseCD		= mod:NewCDTimer(51, 29213, nil, nil, nil, 5, nil, DBM_COMMON_L.CURSE_ICON)-- 51-116
+local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
 
 mod.vb.teleCount = 0
@@ -96,15 +96,15 @@ function mod:BackInRoom()
 	self:ScheduleMethod(timer, "Balcony")
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.teleCount = 0
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
-	timerAddsCD:Start(12-delay)--12
-	timerCurseCD:Start(9.5-delay)
-	timerTeleport:Start(90.8-delay)
-	warnTeleportSoon:Schedule(70.8-delay)
-	self:ScheduleMethod(90.8-delay, "Balcony")
+	timerAddsCD:Start(12)
+	timerCurseCD:Start("v6.4-26.8")
+	timerTeleport:Start(90.8)
+	warnTeleportSoon:Schedule(70.8)
+	self:ScheduleMethod(90.8, "Balcony")
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

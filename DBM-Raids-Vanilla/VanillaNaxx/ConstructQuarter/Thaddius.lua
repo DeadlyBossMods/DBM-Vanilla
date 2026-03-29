@@ -1,6 +1,7 @@
 -- this file uses the texture Textures/arrow.tga. This image was created by Everaldo Coelho and is licensed under the GNU Lesser General Public License. See Textures/lgpl.txt.
 local mod	= DBM:NewMod("ThaddiusVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
@@ -15,12 +16,14 @@ mod:SetEncounterID(1120)
 mod:SetModelID(16137)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Yell)
+mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
 	"CHAT_MSG_MONSTER_EMOTE",
-	"UNIT_AURA player"
+	"CHAT_MSG_MONSTER_YELL",
+	"UNIT_AURA player",
+	"UNIT_TARGETABLE_CHANGED"
 )
 
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
@@ -28,15 +31,19 @@ local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
+local warnPhase1			= mod:NewPhaseAnnounce(1)
+local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
 local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false)
 local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
-local enrageTimer			= mod:NewBerserkTimer(300)
-local timerNextShift		= mod:NewVarTimer("v25.9-34", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)--25.9-34
+local timerEnrage			= mod:NewBerserkTimer(300)
+local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerIntermission		= mod:NewIntermissionTimer(5, nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
@@ -46,13 +53,12 @@ local currentCharge
 local down = 0
 local lastShift = 0
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
+function mod:OnCombatStart()
 	currentCharge = nil
 	down = 0
-	self:ScheduleMethod(40.6 - delay, "TankThrow")
-	timerThrow:Start(20.6-delay)
-	warnThrowSoon:Schedule(37.6 - delay)
+	self:ScheduleMethod(40.6, "TankThrow")
+	timerThrow:Start(20.6)
+	warnThrowSoon:Schedule(37.6)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[15929] = true,
@@ -81,13 +87,11 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(28089) then
-		self:SetStage(2)
 		timerNextShift:Start()
 		timerShiftCast:Start()
 		warnShiftCasting:Show()
 		warnShiftSoon:Schedule(20)
 		lastShift = GetTime()
-		DBM.InfoFrame:Hide()
 	end
 end
 
@@ -138,9 +142,40 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 		down = down + 1
 		if down >= 2 then
 			self:UnscheduleMethod("TankThrow")
-			timerThrow:Cancel()
+			warnPhase2Soon:Show()
 			warnThrowSoon:Cancel()
-			enrageTimer:Start()
+			timerThrow:Stop()
+			timerIntermission:Start()
+			if self.Options.InfoFrame then
+				DBM.InfoFrame:Hide()
+			end
+		end
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Yell1P1 or msg:find(L.Yell1P1) or msg == L.Yell2P1 or msg:find(L.Yell2P1) then
+		self:SendSync("Phase", 1)
+	end
+end
+
+function mod:UNIT_TARGETABLE_CHANGED()
+	if self.vb.phase < 2 then
+		self:SendSync("Phase", 2)
+	end
+end
+
+function mod:OnSync(msg, arg, sender)
+	if msg == "Phase" and sender then
+		local phase = tonumber(arg) or 0
+		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
+			self:SetStage(phase)
+			if phase == 1 then
+				warnPhase1:Show()
+			elseif phase == 2 then
+				warnPhase2:Show()
+				timerEnrage:Start()
+			end
 		end
 	end
 end

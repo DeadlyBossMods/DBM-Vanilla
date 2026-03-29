@@ -21,7 +21,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 28832 28833 28834 28835 28863 28883 28884 1226218 1226219 1226220 1226221",
 	"SPELL_AURA_APPLIED 29061",
 	"SPELL_AURA_REMOVED 29061",
-	"SPELL_AURA_APPLIED_DOSE 28832 28833 28834 28835"
+	"SPELL_AURA_APPLIED_DOSE 28832 28833 28834 28835",
+	"UNIT_DIED"
 )
 
 -- SoD uses new spell IDs for all marks, holy bolt, shadow bolt and unyielding pain. Only marks are relevant here
@@ -38,26 +39,32 @@ local warnMeteor				= mod:NewSpellAnnounce(28884, 4)
 local warnVoidZone				= mod:NewTargetNoFilterAnnounce(28863, 3)--Only warns for nearby targets, to reduce spam
 local warnHolyWrath				= mod:NewTargetNoFilterAnnounce(28883, 3, nil, false)
 local warnBoneBarrier			= mod:NewTargetNoFilterAnnounce(29061, 2)
+local warnHorsemanDied			= mod:NewAnnounce("WarnHorsemanDied", 2, "132264")
 
 local specWarnMarkOnPlayer		= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer", nil, nil, nil, 1, 6)
 local specWarnVoidZone			= mod:NewSpecialWarningYou(28863, nil, nil, nil, 1, 2)
 local yellVoidZone				= mod:NewYell(28863)
 
 local timerMarkCD				= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 13 or 12.9, "timerMark", 28835, nil, nil, 2)-- 12.9
-local timerMeteorCD				= mod:NewVarTimer("v12.9-14.6", 28884, nil, nil, nil, 3)-- 12.9-14.6
-local timerVoidZoneCD			= mod:NewVarTimer("v12.9-16", 28863, nil, nil, nil, 3)-- 12.9-16
-local timerHolyWrathCD			= mod:NewVarTimer("v11.3-14.5", 28883, nil, nil, nil, 3)-- 11.3-14.5
+local timerMeteorCD				= mod:NewVarTimer("v11.3-16.2", 28884, nil, nil, nil, 3)
+local timerVoidZoneCD			= mod:NewVarTimer("v11.3-16.2", 28863, nil, nil, nil, 3)
+local timerHolyWrathCD			= mod:NewVarTimer("v11.3-16.2", 28883, nil, nil, nil, 3)
 local timerBoneBarrier			= mod:NewTargetTimer(20, 29061, nil, nil, nil, 5)
 
-mod.vb.markCount = 0
+local horsemenGuidCheck = {}
 
-function mod:OnCombatStart(delay)
+mod.vb.markCount = 0
+mod.vb.horsemenRemaining = 4
+
+function mod:OnCombatStart()
+	table.wipe(horsemenGuidCheck)
 	self.vb.markCount = 0
-	timerVoidZoneCD:Start("v14.5-16.1")--14.5-16.1
-	timerMarkCD:Start(20.9 - delay, 1)-- 20.98-21.44
-	timerMeteorCD:Start(20.9 - delay)
-	timerHolyWrathCD:Start(20.9 - delay)
-	warnMarkSoon:Schedule(16 - delay)
+	self.vb.horsemenRemaining = 4
+	timerVoidZoneCD:Start("v11.3-21")
+	timerMarkCD:Start(21)
+	timerMeteorCD:Start(21)
+	timerHolyWrathCD:Start(21)
+	warnMarkSoon:Schedule(16)
 	if self.Options.InfoFrame then
 		local bosses = {
 			[16062] = true,
@@ -71,6 +78,7 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
+	table.wipe(horsemenGuidCheck)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
@@ -120,4 +128,30 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(29061) then
 		timerBoneBarrier:Stop(args.destName)
 	end
+end
+
+function mod:UNIT_DIED(args)
+    local guid = args.destGUID
+    local cid = self:GetCIDFromGUID(guid)
+
+    if not horsemenGuidCheck[guid] then
+        horsemenGuidCheck[guid] = true
+
+        if cid == 16062 then -- Highlord Mograine
+            self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
+            warnHorsemanDied:Show(L.Mograine, self.vb.horsemenRemaining)
+
+        elseif cid == 16063 then -- Sir Zeliek
+            self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
+            warnHorsemanDied:Show(L.Zeliek, self.vb.horsemenRemaining)
+
+        elseif cid == 16064 then -- Thane Korth'azz
+            self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
+            warnHorsemanDied:Show(L.Korthazz, self.vb.horsemenRemaining)
+
+		elseif cid == 16065 then -- Lady Blaumeux
+            self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
+            warnHorsemanDied:Show(L.Blaumeux, self.vb.horsemenRemaining)
+        end
+    end
 end

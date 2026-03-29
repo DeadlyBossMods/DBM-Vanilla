@@ -31,10 +31,10 @@ local warnCurseOfTongues	= mod:NewSpellAnnounce(25195, 2)
 
 local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
 local timerVulnerable		= mod:NewTimer(45, "TimerVulnerable", "132866", nil, nil, 6)
-local timerCurseOfTongues	= mod:NewVarTimer("v21-51", 25195, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseOfTongues	= mod:NewVarTimer("v21-43.8", 25195, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 
 function mod:OnCombatStart(delay)
-	timerCurseOfTongues:Start(32.3 - delay)
+	timerCurseOfTongues:Start("v17.8-50.2")
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
