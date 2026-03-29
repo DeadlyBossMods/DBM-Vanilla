@@ -217,7 +217,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(468594) then
 		timerRollOver:Start()
 		warnRollOver:Show()
-	elseif args:IsSpell(23128)
+	elseif args:IsSpell(23128) then
 		timerFrenzyCD:Start()
 	end
 end
