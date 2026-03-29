@@ -38,7 +38,7 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
-local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, nil, nil, 5, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
 
 mod.vb.teleCount = 0
