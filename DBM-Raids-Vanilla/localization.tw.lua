@@ -71,12 +71,12 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始變慢了！",
-	Freezing= "開始結冰了！",
-	Frozen	= "被牢牢凍住了！",
-	Phase4 	= "開始爆裂！",
-	Phase5 	= "看來準備粉碎了！",
-	Phase6 	= "Explodes.",
+	Slow		= "開始變慢了！",
+	Freezing	= "開始結冰了！",
+	Frozen		= "被牢牢凍住了！",
+	Phase4 		= "開始爆裂！",
+	Phase5 		= "看來準備粉碎了！",
+	--Phase6 		= "Explodes.",
 
 	FrostHitsPerSecond = "冰霜每秒命中次數",
 	MeleeHitsPerSecond = "近戰每秒命中次數"
