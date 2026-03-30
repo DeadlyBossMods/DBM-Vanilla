@@ -41,7 +41,7 @@ local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, n
 local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerShieldCD        = mod:NewTimer(30.7, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
+local timerShieldCD        = mod:NewTimer(30.8, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 -- New in SoD
 -- https://sod.warcraftlogs.com/reports/6RBYhaHdc17x94J8#fight=64&type=casts&by=ability&view=events&hostility=1
@@ -54,7 +54,7 @@ end
 
 function mod:OnCombatStart()
 	timerTeleportCD:Start("v15.8-21.1")
-	timerShieldCD:Start(string.format("v%s-%s", 25.6, 30.7))
+	timerShieldCD:Start(string.format("v%s-%s", 25.6, 30.8))
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextFlare:Start(16)
 	end
@@ -75,7 +75,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnMagicReflect:Show(BOSS)--Always a threat to casters
 		specWarnMagicReflect:Play("stopattack")
 		timerMagicReflect:Start()
-		timerShieldCD:Start(30)
+		timerShieldCD:Start()
 	elseif args:IsSpell(21075) then
 		if self.Options.SpecWarn21075reflect and (self:IsEvent() or not self:IsTrivial()) then--Not a threat to high level melee
 			specWarnDamageShield:Show(BOSS)
@@ -84,7 +84,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnDamageShield:Show()
 		end
 		timerDamageShield:Start()
-		timerShieldCD:Start(30)
+		timerShieldCD:Start()
 	elseif args:IsSpell(20534) then
 		warnTeleport:Show(args.destName)
 		timerTeleportCD:Start()
