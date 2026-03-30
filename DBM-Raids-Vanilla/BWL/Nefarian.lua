@@ -134,13 +134,6 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self.vb.phase < 2.5 then
-		warnPhase3Soon:Show()
-		self:SetStage(2.5)
-	end
-end
-
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellDK or msg:find(L.YellDK) then
 		self:SendSync("ClassCall", "DEATHKNIGHT")
@@ -171,16 +164,24 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	elseif msg == L.YellP1 or msg:find(L.YellP1) then
 		self:SendSync("Phase", 1)
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
+		self:SetStage(1.5)
 		warnPhase2Soon:Show()
 		timerIntermission:Start()
-		self:ScheduleMethod(15, "OnIntermissionEnd")
+		self:Schedule(15, function()
+    		if self:GetStage() == 1.5 then
+        		self:SendSync("Phase", 2)
+    		end
+		end)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
 end
 
-function mod:OnIntermissionEnd()
-	self:SendSync("Phase", 2)
+function mod:UNIT_HEALTH(uId)
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self.vb.phase < 2.5 then
+		self:SetStage(2.5)
+		warnPhase3Soon:Show()
+	end
 end
 
 do
@@ -208,6 +209,7 @@ do
 				warnPhase1:Show()
 			elseif phase == 2 then
 				warnPhase2:Show()
+				timerFear:Start()
 			elseif phase == 3 then
 				warnPhase3:Show()
 			end
