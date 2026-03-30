@@ -45,6 +45,7 @@ local warnBlue			= mod:NewSpellAnnounce(23153, 2, nil, false)
 local warnBlack			= mod:NewSpellAnnounce(23154, 2, nil, false)
 local warnFrenzy		= mod:NewSpellAnnounce(23128, 3, nil, "Tank|RemoveEnrage|Healer", 4)
 local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2, 1)
+local warnPhase1		= mod:NewPhaseAnnounce(1)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
 local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, nil, "WarnVulnerableNew")
@@ -172,6 +173,7 @@ local nextBreath, nextVolley, volleyCount = 0, 0, 0
 local rolloverWarnShown
 function mod:OnCombatStart()
 	self.vb.breathCount = 0
+	warnPhase1 = Show()
 	self:SetStage(1)
 	rolloverWarnShown = false
 	nextBreath = GetTime() + 30
