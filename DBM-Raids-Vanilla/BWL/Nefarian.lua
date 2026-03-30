@@ -168,10 +168,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		warnPhase2Soon:Show()
 		timerIntermission:Start()
 		self:Schedule(15, function()
-    		if self:GetStage() == 1.5 then
-        		self:SendSync("Phase", 2)
-    		end
-		end)
+		if self:GetStage() == 1.5 then
+			self:SendSync("Phase", 2)
+		end
+	end)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
