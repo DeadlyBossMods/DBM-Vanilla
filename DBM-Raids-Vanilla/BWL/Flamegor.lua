@@ -41,7 +41,7 @@ local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, 
 local timerWingBuffet		= mod:NewVarTimer("v31.1-36.1", 23339, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v12.9-23", 22539, nil, false)
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", 4, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerFrenzyCD			= mod:NewVarTimer("v8.3-11.3", 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD			= mod:NewVarTimer("v8.3-11.3", 23342, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
 function mod:OnCombatStart()
 	timerShadowFlameCD:Start("v11.2-21.1")

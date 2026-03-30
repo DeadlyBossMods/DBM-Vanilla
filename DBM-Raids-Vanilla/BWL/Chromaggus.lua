@@ -57,7 +57,7 @@ local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerFrenzyCD		= mod:NewVarTimer("v16.1-17.8", 23128, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD		= mod:NewVarTimer("v16.1-17.8", 23128, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, "Healer|SpellCaster", nil, nil, nil, true)
 
 local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver, timerAllBreaths
@@ -132,7 +132,7 @@ local function updateVulnerability(self, spellId)
 
 	timerVuln:SetColor(info[2])
 	timerVuln:UpdateIcon(info[3])
-	timerVuln:UpdateName(L.WarnVulnerable:format(name))
+	timerVuln:UpdateName(warnVuln.text:format(name))
 	if not lastVulnName or lastVulnName ~= name then
 		---@diagnostic disable-next-line: inject-field
 		warnVuln.icon = info[3]
@@ -173,7 +173,7 @@ local nextBreath, nextVolley, volleyCount = 0, 0, 0
 local rolloverWarnShown
 function mod:OnCombatStart()
 	self.vb.breathCount = 0
-	warnPhase1 = Show()
+	warnPhase1:Show()
 	self:SetStage(1)
 	rolloverWarnShown = false
 	nextBreath = GetTime() + 30

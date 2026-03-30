@@ -42,7 +42,7 @@ local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_
 local timerStingCD		= mod:NewVarTimer("v25.9-59.2", 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
 local timerPoisonCD		= mod:NewVarTimer("v11.3-37.6", 26053, nil, nil, nil, 3)
 local timerPoison		= mod:NewBuffFadesTimer(8, 26053)
-local timerEnrageCD		= mod:NewVarTimer("v11.3-25.9", 26051, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerEnrageCD		= mod:NewVarTimer("v11.3-25.9", 26051, nil, "RemoveEnrage", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
