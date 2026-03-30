@@ -32,7 +32,7 @@ mod:RegisterEventsInCombat(
 (ability.id = 19716 or ability.id = 19717 or ability.id = 461232) and type = "cast"
  or ability.id = 365100 and type = "summon"
 --]]
-local warnCurse		= mod:NewSpellAnnounce(19716, 3)
+local warnCurse		= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
 local warnRainFire	= mod:NewSpellAnnounce(19717, 2, nil, false)
 local warnFist		= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
 

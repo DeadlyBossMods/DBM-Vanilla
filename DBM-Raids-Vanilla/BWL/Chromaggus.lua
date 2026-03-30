@@ -48,7 +48,7 @@ local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2, 1)
 local warnPhase1		= mod:NewPhaseAnnounce(1)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
-local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, nil, "WarnVulnerableNew")
+local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, "SpellCaster", "WarnVulnerableNew")
 
 local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
@@ -58,7 +58,7 @@ local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzyCD		= mod:NewVarTimer("v16.1-17.8", 23128, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, "Healer|SpellCaster", nil, nil, nil, true)
+local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, "SpellCaster", nil, nil, nil, true)
 
 local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver, timerAllBreaths
 if DBM:IsSeasonal("SeasonOfDiscovery") then

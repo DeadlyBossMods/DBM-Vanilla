@@ -39,7 +39,7 @@ mod:RegisterEventsInCombat(
 --[[
 (ability.id = 19695 or ability.id = 19659 or ability.id = 20478 or ability.id = 461090 or ability.id = 461105 or ability.id = 462402 or ability.id = 461110 or ability.id = 461121) and type = "cast"
 --]]
-local warnIgnite		= mod:NewSpellAnnounce(19659, 3)
+local warnIgnite		= mod:NewSpellAnnounce(19659, 3, nil, "-Melee")
 local warnInferno		= mod:NewSpellAnnounce(19695, 3)
 local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
 local specWarnArma		= mod:NewSpecialWarningSpell(20478)
@@ -50,7 +50,7 @@ local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)
 local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 
-local timerIgniteManaCD  = mod:NewVarTimer("v25.9-44", 19659, nil, "MagicDispeller", nil, 2)
+local timerIgniteManaCD  = mod:NewVarTimer("v25.9-44", 19659, nil, "RemoveMagic", nil, 2)
 local timerInfernoCD     = mod:NewVarTimer("v21-37.2", 19695, nil, nil, nil, 2)
 local timerInferno       = mod:NewBuffActiveTimer(8, 19695, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerBombCD        = mod:NewVarTimer("v11.3-30.1", 20475, nil, nil, nil, 3)
