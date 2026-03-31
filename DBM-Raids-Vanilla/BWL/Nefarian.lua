@@ -102,6 +102,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(22539) then
 		warnShadowFlame:Show()
+		timerShadowFlameCD:Start()
 	elseif args:IsSpell(22686) then
 		warnFear:Show()
 		timerFear:Start()
