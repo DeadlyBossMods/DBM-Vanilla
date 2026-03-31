@@ -26,15 +26,16 @@ mod:RegisterEventsInCombat(
 
 mod:AddInfoFrameOption()
 
-local warnFear			= mod:NewSpellAnnounce(26580, 2)
-local warnToxicVolley	= mod:NewSpellAnnounce(25812, 2, nil, false)
-local warnHeal			= mod:NewCastAnnounce(25807, 3)
-local warnBugDied		= mod:NewAnnounce("WarnBugDied", 2, "133570")
+local warnFear				= mod:NewSpellAnnounce(26580, 2)
+local warnToxicVolley		= mod:NewSpellAnnounce(25812, 2, nil, "RemovePoison")
+local warnHeal				= mod:NewCastAnnounce(25807, 3)
+local warnBugDied			= mod:NewAnnounce("WarnBugDied", 2, "133570")
 
-local specWarnHeal		= mod:NewSpecialWarningInterrupt(25807, "HasInterrupt", nil, nil, 1, 2)
-local specWarnGTFO		= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8)
+local specWarnHeal			= mod:NewSpecialWarningInterrupt(25807, "HasInterrupt", nil, nil, 1, 2)
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8)
 
-local timerFearCD		= mod:NewVarTimer("v20.3-29.4", 26580, nil, nil, nil, 2)
+local timerFearCD			= mod:NewVarTimer("v20.3-29.4", 26580, nil, nil, nil, 2)
+local timerToxicVolleyCD 	= mod:NewVarTimer("v8.1-32.5", 25812, nil, "RemovePoison", nil, 2, nil, DBM_COMMON_L.POISON_ICON)
 
 local bugsGuidCheck = {}
 
@@ -44,6 +45,7 @@ function mod:OnCombatStart()
 	table.wipe(bugsGuidCheck)
 	self.vb.bugsRemaining = 3
 	timerFearCD:Start("v10.6-18.4")
+	timerToxicVolleyCD:Start("v8.1-33.9")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:UnscheduleMethod("UnregisterShortTermEvents")
 		self:RegisterShortTermEvents(
@@ -118,6 +120,7 @@ function mod:UNIT_DIED(args)
         bugsGuidCheck[guid] = true
 
         if cid == 15511 then -- Lord Kri
+			timerToxicVolleyCD:Stop()
             self.vb.bugsRemaining = self.vb.bugsRemaining - 1
             warnBugDied:Show(L.Kri, self.vb.bugsRemaining)
 

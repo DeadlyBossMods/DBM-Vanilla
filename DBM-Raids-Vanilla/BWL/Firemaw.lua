@@ -36,12 +36,12 @@ mod:RegisterEventsInCombat(
 )
 
 --(ability.id = 23339 or ability.id = 22539) and type = "begincast" or ability.id = 23341 and type = "cast"
-local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
+local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, "Tank")
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFlameBuffet		= mod:NewStackAnnounce(23341, 3)
 local specWarnWingBuffet	= mod:NewSpecialWarningSpell(23339, "Tank")
 
-local timerWingBuffetCD		= mod:NewVarTimer("v31.6-42.1", 23339, nil, nil, nil, 2)
+local timerWingBuffetCD		= mod:NewVarTimer("v31.6-42.1", 23339, nil, "Tank", nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v13-25.9", 22539, nil, false)
 
 local specWarnStatic, yellStaticHigh

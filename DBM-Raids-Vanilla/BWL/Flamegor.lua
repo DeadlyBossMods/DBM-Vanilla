@@ -32,13 +32,13 @@ mod:RegisterEventsInCombat(
 )
 
 --(ability.id = 23339 or ability.id = 22539) and type = "begincast" or ability.id = 23342 and type = "cast"
-local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
+local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, "Tank")
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Healer", 4)
 
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6)
 
-local timerWingBuffet		= mod:NewVarTimer("v31.1-36.1", 23339, nil, nil, nil, 2)
+local timerWingBuffet		= mod:NewVarTimer("v31.1-36.1", 23339, nil, "Tank", nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v12.9-23", 22539, nil, false)
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", 4, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzyCD			= mod:NewVarTimer("v8.3-11.3", 23342, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)

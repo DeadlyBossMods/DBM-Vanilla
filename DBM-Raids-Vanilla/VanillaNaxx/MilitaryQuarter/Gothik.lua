@@ -33,6 +33,7 @@ local warnPhase2		= mod:NewPhaseAnnounce(2, 3)
 
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
+
 local timerTeleport, warnTeleport
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnTeleport		= mod:NewSoonAnnounce(1222332, 3)

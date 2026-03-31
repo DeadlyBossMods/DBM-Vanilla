@@ -31,15 +31,15 @@ mod:RegisterEventsInCombat(
 )
 
 --(ability.id = 23339 or ability.id = 22539) and type = "begincast"
-local warnWingBuffet	= mod:NewCastAnnounce(23339, 2)
+local warnWingBuffet	= mod:NewCastAnnounce(23339, 2, nil, "Tank")
 local warnShadowFlame	= mod:NewCastAnnounce(22539, 2)
 local warnShadow		= mod:NewTargetNoFilterAnnounce(23340, 4, nil, "Tank|Healer")
 
 local specWarnShadowYou	= mod:NewSpecialWarningYou(23340, nil, nil, nil, 1, 2)
 local specWarnShadow	= mod:NewSpecialWarningTaunt(23340, nil, nil, nil, 1, 2)
 
-local timerWingBuffetCD	= mod:NewVarTimer("v31.1-36", 23339, nil, nil, nil, 2)
-local timerShadowFlameCD= mod:NewVarTimer("v12.9-23.4", 22539, nil, false)--14-21
+local timerWingBuffetCD	= mod:NewVarTimer("v31.1-36", 23339, nil, "Tank", nil, 2)
+local timerShadowFlameCD= mod:NewVarTimer("v12.9-23.4", 22539, nil, false)
 local timerShadow		= mod:NewTargetTimer(8, 23340, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 function mod:OnCombatStart()

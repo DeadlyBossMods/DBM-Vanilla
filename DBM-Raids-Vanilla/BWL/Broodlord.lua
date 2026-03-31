@@ -47,8 +47,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	 specWarnCharge = mod:NewSpecialWarningYou(367369, nil, nil, nil, 3, 2)
 end
 
-local timerMortal		= mod:NewTargetTimer(5, 24573, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
-
+local timerMortal		= mod:NewTargetTimer(5, 24573, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 
 -- Polyfill because I don't feel like this justifies a forced core update
 local function isBlackEssenceEnabled()
@@ -58,7 +57,6 @@ local function isBlackEssenceEnabled()
 		return DBM:UnitDebuff("player", 467047) ~= nil
 	end
 end
-
 
 function mod:OnCombatStart(delay)
 	self.vb.teleportPrewarnShown = false
