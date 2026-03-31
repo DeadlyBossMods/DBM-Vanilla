@@ -142,6 +142,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 		down = down + 1
 		if down >= 2 then
 			self:UnscheduleMethod("TankThrow")
+			self:SetStage(1.5)
 			warnPhase2Soon:Show()
 			warnThrowSoon:Cancel()
 			timerThrow:Stop()
@@ -160,8 +161,9 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_TARGETABLE_CHANGED()
-	if self.vb.phase < 2 then
+	if self.vb.phase == 1.5 then
 		self:SendSync("Phase", 2)
+		timerIntermission:Stop()
 	end
 end
 

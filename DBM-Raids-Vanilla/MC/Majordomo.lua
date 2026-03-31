@@ -41,7 +41,7 @@ local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, n
 local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerShieldCD        = mod:NewTimer(30.8, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
+local timerShieldCD        = mod:NewTimer(30.7, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 -- New in SoD
 -- https://sod.warcraftlogs.com/reports/6RBYhaHdc17x94J8#fight=64&type=casts&by=ability&view=events&hostility=1
@@ -54,7 +54,7 @@ end
 
 function mod:OnCombatStart()
 	timerTeleportCD:Start("v15.8-21.1")
-	timerShieldCD:Start(string.format("v%s-%s", 25.6, 30.8))
+	timerShieldCD:Start(string.format("v%s-%s", 25.6, 30.7))
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextFlare:Start(16)
 	end
