@@ -32,19 +32,29 @@ mod:RegisterEventsInCombat(
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
-local warnPoisonBoltVolley = mod:NewCountAnnounce(25991, 3)
-local warnFreeze = mod:NewAnnounce("WarnFreeze", 2, 16350)
-local warnShatter = mod:NewAnnounce("WarnShatter", 2, 12982)
+local warnPoisonBoltVolley 		= mod:NewCountAnnounce(25991, 3)
+local warnFreeze 				= mod:NewAnnounce("WarnFreeze", 2, 16350)
+local warnShatter 				= mod:NewAnnounce("WarnShatter", 2, 12982)
 
-local specWarnGTFO = mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
+local specWarnGTFO 				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
 
-local timerPoisonBoltVolleyCD = mod:NewCDCountTimer(11.3, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
-local timerRejoin = mod:NewNextTimer(15, 25896, "132107", nil, nil, 6)
+local timerPoisonBoltVolleyCD 	= mod:NewCDCountTimer(11.3, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
+local timerRejoin 				= mod:NewNextTimer(15, 25896, "132107", nil, nil, 6)
 
 mod.vb.volleyCount = 0
 mod.vb.freezeState = 0
 
 mod:AddInfoFrameOption(nil, true)
+
+-- Failure case for not getting enough melee hits, only 11.7 seconds? Doesn't seem like a lot?
+-- This does not seem to be consistent across attempts, so no timer for now
+-- "<238.72 21:44:46> [CHAT_MSG_MONSTER_EMOTE] %s is frozen solid!#Viscidus###Viscidus##0#0##0#5362#nil#0#false#false#false#false",
+-- "<243.88 21:44:51> [CHAT_MSG_MONSTER_EMOTE] %s begins to crack!#Viscidus###Viscidus##0#0##0#5364#nil#0#false#false#false#false",
+-- "<247.55 21:44:55> [CHAT_MSG_MONSTER_EMOTE] %s looks ready to shatter!#Viscidus###Viscidus##0#0##0#5365#nil#0#false#false#false#false",
+-- "<250.46 21:44:58> [CLEU] SWING_MISSED#Creature-0-5251-531-20035-15299-000059DDD3#Viscidus#Player-5827-027104E6#Paszeko#DODGE#false#nil#nil#nil#nil#nil#nil",
+
+-- TODO: "Viscidus Frost Weakness" (25926 and 1215736), seems to happen after he respawns (only UCS events), but well after he is targetable.
+-- It might be useless or it might be the relevant trigger for counting frost attacks? Let's see how wrong our count is
 
 local meleeHits = 0
 local frostHits = 0
@@ -109,7 +119,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self.vb.volleyCount = self.vb.volleyCount + 1
 		warnPoisonBoltVolley:Show(self.vb.volleyCount)
 		timerPoisonBoltVolleyCD:Start(11.3, self.vb.volleyCount+1)
-	elseif args:IsSpell(25896) and self:AntiSpam(8, "Respawn") then
+	elseif args:IsSpell(25896) and self:AntiSpam(8, "Respawn") then -- All surviging globs cast this, trigger only on the first one to avoid accidental late resets
 		DBM:Debug("Viscidus respawned, frostHits=" .. tostring(frostHits) .. ", meleeHits=" .. tostring(meleeHits))
 		resetHitCounts()
 		self.vb.freezeState = 0
@@ -198,6 +208,7 @@ function mod:OnSync(msg, count, sender)
 			self.vb.freezeState = 1
 		end
 	elseif msg == "FrostWeakness" and self:AntiSpam(3, "FrostWeaknessSync") then
+		-- Just to gather logs because there are two different Frost Weakness spells he uses, maybe they differ in required hits/time or something
 		DBM:Debug("USC for viscidus frost weakness " .. tostring(count))
 	end
 end
