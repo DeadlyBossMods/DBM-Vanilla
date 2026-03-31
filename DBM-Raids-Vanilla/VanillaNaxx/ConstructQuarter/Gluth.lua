@@ -28,7 +28,7 @@ local warnFrenzy		= mod:NewTargetNoFilterAnnounce(28371, 3, nil , "Tank|RemoveEn
 local warnRoar			= mod:NewSpellAnnounce(29685, 2)
 local warnDecimate		= mod:NewSpellAnnounce(28374, 3)
 
-local specWarnFrenzy	= mod:NewSpecialWarningDispel(28371, "RemoveEnrage", nil, nil, 1, 6)
+local specwarnFrenzy	= mod:NewSpecialWarningDispel(28371, "RemoveEnrage", nil, nil, 1, 6)
 
 local timerFrenzy		= mod:NewBuffActiveTimer(8, 28371, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerFrenzyCD		= mod:NewVarTimer("v8.1-11.4", 28371, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
