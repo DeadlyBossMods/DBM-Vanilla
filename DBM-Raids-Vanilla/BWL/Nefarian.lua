@@ -59,7 +59,7 @@ local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, 
 
 local timerIntermission		= mod:NewIntermissionTimer(15, nil, CL.INTERMISSION, true, nil, nil, "136106")
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
-local timerFear				= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
+local timerFearCD			= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v8.1-37.2", 22539, nil, false)
 
 mod.vb.addLeft = 42
@@ -105,7 +105,7 @@ function mod:SPELL_CAST_START(args)
 		timerShadowFlameCD:Start()
 	elseif args:IsSpell(22686) then
 		warnFear:Show()
-		timerFear:Start()
+		timerFearCD:Start()
 	end
 end
 
@@ -211,7 +211,8 @@ do
 				warnPhase1:Show()
 			elseif phase == 2 then
 				warnPhase2:Show()
-				timerFear:Start()
+				timerIntermission:Stop()
+				timerFearCD:Start()
 				timerShadowFlameCD:Start()
 			elseif phase == 3 then
 				warnPhase3:Show()

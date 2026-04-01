@@ -27,18 +27,16 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 23952"
 )
 
---TODO, why is screech called screech when spellID is for psychic scream, is it wrong spellId/name?
---TODO, sonic Burst should probably be a target announce
-local warnSonicBurst	= mod:NewSpellAnnounce(23918, 3)
-local warnScreech		= mod:NewSpellAnnounce(22884, 3)
+local warnSonicBurst	= mod:NewTargetAnnounce(23918, 3)
+local warnScream		= mod:NewSpellAnnounce(22884, 3)
 local warnPain			= mod:NewTargetNoFilterAnnounce(23952, 2, nil, "RemoveMagic|Healer")
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(23954, "HasInterrupt", nil, nil, 1, 2)
 
 local timerSonicBurst	= mod:NewBuffActiveTimer(10, 23918, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerScreech		= mod:NewBuffActiveTimer(4, 22884, nil, nil, nil, 3)
+local timerScream		= mod:NewBuffActiveTimer(4, 22884, nil, nil, nil, 3)
 local timerPain			= mod:NewTargetTimer(18, 23952, nil, "RemoveMagic|Healer", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerHealCD		= mod:NewNextTimer(20, 23954, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+local timerHealCD		= mod:NewNextTimer(20, 23954, nil, "HasInterrupt", nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23954) and args:IsSrcTypeHostile() then
@@ -55,8 +53,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerSonicBurst:Start()
 		warnSonicBurst:Show()
 	elseif args:IsSpell(22884) and args:IsSrcTypeHostile() then
-		timerScreech:Start()
-		warnScreech:Show()
+		timerScream:Start()
+		warnScream:Show()
 	end
 end
 

@@ -32,19 +32,30 @@ mod:RegisterEventsInCombat(
 	"UNIT_TARGETABLE_CHANGED"
 )
 
--- New spell ID found in logs on SoD
--- 364341 (Survivor of the Damned) cast on kill, ID looks like SoM, seems irrelevant
-
 -- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
--- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
--- People reported that the phase time changed on Era as well, so the diff is just the trigger
+-- On Era, there is no ENCOUNTER_START trigger, but the time between the first yell and IsEncounterInProgress is not consistent and has variance that I have seen range from 229-240.1 seconds
 
+-- SoD
 -- "<127.94 22:09:41> [ENCOUNTER_START] 1114#Kel'Thuzad#186#40",
 -- "<128.16 22:09:41> [CHAT_MSG_MONSTER_YELL] Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!#Kel'Thuzad###Sephyx##0#0##0#5535#nil#0#false#false#false#false",
 -- "<342.09 22:13:15> [CHAT_MSG_MONSTER_YELL] The end is upon you!#Kel'Thuzad###World Trigger##0#0##0#5661#nil#0#false#false#false#false",
 -- "<358.05 22:13:31> [CLEU] SWING_DAMAGE#Creature-0-5252-533-11218-15990-000051CFAB#Kel'Thuzad#Player-5827-0271EB0C#Ironjoke#3824#-1#nil#nil#false#false#nil#nil",
 -- "<358.05 22:13:31> [IsEncounterInProgress()] true",
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or 229.9
+
+-- Era
+-- "<5710.33 20:15:21> [CHAT_MSG_MONSTER_YELL] ¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!#Kel'Thuzad###Shikaakaa##0#0##0#2037#nil#0#false#false#false#false",
+-- "<5908.19 20:18:39> [CHAT_MSG_MONSTER_EMOTE] se enfurece.#Abominación imparable#####0#0##0#2066#nil#0#false#false#false#false",
+-- "<5930.04 20:19:00> [DBM_Announce]  |T136116:12:12|t Fase 2 en 10 segundos |T136116:12:12|t #136116#nil#nil#KelThuzadVanilla#true#nil",
+-- "<5930.26 20:19:01> [CHAT_MSG_MONSTER_YELL] ¡Exhalad el último suspiro de vida!#Kel'Thuzad###Activador del mundo##0#0##0#2070#nil#0#false#false#false#false",
+-- "<5940.04 20:19:10> [DBM_Announce] Fase 2#136116#stage#2#KelThuzadVanilla#false#nil",
+-- "<5945.83 20:19:16> [IsEncounterInProgress()] true",
+
+-- "<175.01 19:53:47> [CHAT_MSG_MONSTER_YELL] Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!#Kel'Thuzad###Doljin##0#0##0#2274#nil#0#false#false#false#false",
+-- "<394.91 19:57:26> [DBM_Announce]  |T136116:12:12|t Fase 2 em 10 segundos |T136116:12:12|t #136116#nil#nil#KelThuzadVanilla#true#nil",
+-- "<399.83 19:57:31> [CHAT_MSG_MONSTER_YELL] Supliquem por misericórdia!#Kel'Thuzad###Portal de Mundo##0#0##0#2311#nil#0#false#false#false#false",
+-- "<404.91 19:57:36> [DBM_Announce] Fase 2#136116#stage#2#KelThuzadVanilla#false#nil",
+-- "<415.13 19:57:47> [IsEncounterInProgress()] true",
+local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or "v229-240.1"
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
@@ -53,13 +64,13 @@ ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
 local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
 local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
 local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
 local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
 
-local specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
 local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, nil, nil, nil, 1, 2)
 local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2)
 local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
@@ -73,6 +84,11 @@ local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") a
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
 local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
+
+local specwarnP2Soon
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
+end
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
@@ -96,10 +112,13 @@ function mod:OnCombatStart()
 	table.wipe(frostBlastTargets)
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
-	specwarnP2Soon:Schedule(phase1Duration - 10)
-	timerPhase2:Start()
-	warnPhase2:Schedule(phase1Duration)
-	warnPhase2:ScheduleVoice(phase1Duration, "ptwo")
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		specwarnP2Soon:Schedule(phase1Duration - 10)
+		warnPhase2:Schedule(phase1Duration)
+		warnPhase2:ScheduleVoice(phase1Duration, "ptwo")
+	else
+		warnPhase2Soon:Schedule(220)
+	end
 end
 
 
@@ -212,6 +231,7 @@ function mod:OnSync(msg, arg, sender)
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()
+				timerPhase2:Start()
 			elseif phase == 2 then
 				warnPhase2:Show()
 				warnPhase2:Play("ptwo")
