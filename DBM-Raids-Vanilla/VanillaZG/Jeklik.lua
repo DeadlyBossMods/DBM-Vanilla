@@ -27,7 +27,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 23952"
 )
 
-local warnSonicBurst	= mod:NewTargetAnnounce(23918, 3)
+local warnSonicBurst	= mod:NewSpellAnnounce(23918, 3)
 local warnScream		= mod:NewSpellAnnounce(22884, 3)
 local warnPain			= mod:NewTargetNoFilterAnnounce(23952, 2, nil, "RemoveMagic|Healer")
 
