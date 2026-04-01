@@ -114,9 +114,9 @@ function mod:OnCombatStart()
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		specwarnP2Soon:Schedule(phase1Duration - 10)
-		warnPhase2:Schedule(phase1Duration)
-		warnPhase2:ScheduleVoice(phase1Duration, "ptwo")
+		specwarnP2Soon:Schedule(phase1DurationSoD - 10)
+		warnPhase2:Schedule(phase1DurationSoD)
+		warnPhase2:ScheduleVoice(phase1DurationSoD, "ptwo")
 	else
 		warnPhase2Soon:Schedule(220)
 	end
