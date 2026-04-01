@@ -55,7 +55,8 @@ mod:RegisterEventsInCombat(
 -- "<399.83 19:57:31> [CHAT_MSG_MONSTER_YELL] Supliquem por misericórdia!#Kel'Thuzad###Portal de Mundo##0#0##0#2311#nil#0#false#false#false#false",
 -- "<404.91 19:57:36> [DBM_Announce] Fase 2#136116#stage#2#KelThuzadVanilla#false#nil",
 -- "<415.13 19:57:47> [IsEncounterInProgress()] true",
---local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or "v229-240.1"
+local phase1DurationSoD = 230.1
+local phase1DurationEra = "v229-240.1"
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
@@ -83,14 +84,11 @@ local timerManaBombCD		= mod:NewVarTimer("v20.6-41.3", 27819, nil, nil, nil, 3)
 local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
-local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
+local timerPhase2			= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and phase1DurationSoD or phase1DurationEra, "TimerPhase2", "136116", nil, nil, 6)
 
-local specwarnP2Soon, phase1Duration
+local specwarnP2Soon
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
-phase1Duration		= 230.1
-else
-phase1Duration		= "v229-240.1"
 end
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
