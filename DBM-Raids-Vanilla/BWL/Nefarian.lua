@@ -174,10 +174,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-self:RegisterOnUpdateHandler(function()
-    if self:IsEncounterInProgress() and self:GetStage() == 1.5 then
-        self:SendSync("Phase", 2)
-        self:UnregisterOnUpdateHandler()
+mod:RegisterOnUpdateHandler(function()
+    if mod:IsEncounterInProgress() and mod:GetStage() == 1.5 then
+        mod:SendSync("Phase", 2)
+        mod:UnregisterOnUpdateHandler() -- stop checking after it fires
     end
 end)
 
