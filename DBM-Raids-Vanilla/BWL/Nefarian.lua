@@ -41,7 +41,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 22539 22686",
 	"SPELL_AURA_APPLIED 22687 22667",
 	"UNIT_DIED",
-	"UNIT_HEALTH",
+	"UNIT_HEALTH"
 )
 
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
