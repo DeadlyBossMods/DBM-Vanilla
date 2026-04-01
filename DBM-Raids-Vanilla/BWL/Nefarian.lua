@@ -57,7 +57,7 @@ local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1,
 local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
-local timerIntermission		= mod:NewIntermissionTimer(15, nil, CL.INTERMISSION, true, nil, nil, "136106")
+local timerIntermission		= mod:NewIntermissionTimer("v15.7-17.3", nil, CL.INTERMISSION, true, nil, nil, "136106")
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
 local timerFearCD			= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v8.1-37.2", 22539, nil, false)
@@ -169,15 +169,17 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SetStage(1.5)
 		warnPhase2Soon:Show()
 		timerIntermission:Start()
-		self:Schedule(15, function()
-		if self:GetStage() == 1.5 then
-			self:SendSync("Phase", 2)
-		end
-	end)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
 end
+
+self:RegisterOnUpdateHandler(function()
+    if self:IsEncounterInProgress() and self:GetStage() == 1.5 then
+        self:SendSync("Phase", 2)
+        self:UnregisterOnUpdateHandler()
+    end
+end)
 
 function mod:UNIT_HEALTH(uId)
 	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self.vb.phase < 2.5 then
