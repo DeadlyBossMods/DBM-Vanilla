@@ -227,10 +227,10 @@ mod:RegisterOnUpdateHandler(function()
 end, 0.2)
 
 function mod:UNIT_HEALTH(uId)
-	if self:GetStage() < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+	if self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
-	elseif self:GetStage() < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
+	elseif self:GetStage(3, 1) and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
 		self:SendSync("Phase", 3)
 	end
 end
@@ -238,7 +238,7 @@ end
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase > 0 and self:GetStage() ~= phase then  -- only proceed if stage is different
+		if phase > 0 and self:GetStage(phase, 3) then  -- only proceed if stage is different
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()

@@ -104,7 +104,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self:GetStage() < 2 then -- Bossfight (tank and spank)
+	if (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self:GetStage(2, 1) then -- Bossfight (tank and spank)
 		self:SendSync("YellPhase2")
 	end
 end
@@ -116,7 +116,7 @@ function mod:OnSync(msg)
 			warnSimulKill:Show()
 			timerSimulKill:Start()
 		end
-	elseif msg == "YellPhase2" and self:GetStage() < 2 then
+	elseif msg == "YellPhase2" and self:GetStage(2, 1) then
 		DBM.InfoFrame:Hide()
 		self:SetStage(2)
 		warnPhase2:Show()

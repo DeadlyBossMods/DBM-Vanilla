@@ -73,7 +73,7 @@ end
 function mod:BossHealthUpdate()
 	self:GetBossHP(15929)
 	self:GetBossHP(15930)
-	if self:GetStage() ~= 2 then
+	if self:GetStage(2, 3) then
 		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
 	end
 end
@@ -96,7 +96,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:UNIT_AURA()
-	if self:GetStage() ~=2 or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
+	if self:GetStage(2, 3) or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
 	local charge
 	local i = 1
 	while UnitDebuff("player", i) do
@@ -171,7 +171,7 @@ end, 0.2)
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
+		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()
@@ -185,7 +185,7 @@ function mod:OnSync(msg, arg, sender)
 end
 
 function mod:TankThrow()
-	if not self:IsInCombat() or self:GetStage() == 2 then
+	if not self:IsInCombat() or self:GetStage(2) then
 		return
 	end
 	timerThrow:Start()

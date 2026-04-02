@@ -100,7 +100,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(23040) and self:GetStage() < 2 then
+	if args:IsSpell(23040) and self:GetStage(2, 1) then
 		warnPhase2:Show()
 		self:SetStage(2)
 	elseif args:IsSpell(19873) then
@@ -126,7 +126,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if (msg == L.Phase2Emote or msg:find(L.Phase2Emote)) and self:GetStage() < 2 then
+	if (msg == L.Phase2Emote or msg:find(L.Phase2Emote)) and self:GetStage(2, 1) then
 		self:SendSync("Phase2")
 	end
 end
@@ -134,7 +134,7 @@ end
 function mod:UNIT_DIED(args)
 	local cid = self:GetCIDFromGUID(args.destGUID)
 	if cid == 12435 then--Only trigger kill for unit_died if he dies in phase 2 with everyone alive, otherwise it's an auto wipe.
-		if DBM:NumRealAlivePlayers() > 0 and self:GetStage() == 2 then
+		if DBM:NumRealAlivePlayers() > 0 and self:GetStage(2) then
 			DBM:EndCombat(self)
 		else
 			DBM:EndCombat(self, true)--Pass wipe arg end combat
@@ -143,7 +143,7 @@ function mod:UNIT_DIED(args)
 end
 
 function mod:OnSync(msg)
-	if msg == "Phase2" and self:GetStage() < 2 then
+	if msg == "Phase2" and self:GetStage(2, 1) then
 		warnPhase2:Show()
 		self:SetStage(2)
 	end

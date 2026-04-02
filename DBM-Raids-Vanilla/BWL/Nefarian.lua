@@ -183,7 +183,7 @@ mod:RegisterOnUpdateHandler(function()
 end, 0.2)
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage() < 2.5 then
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage(2.5, 1) then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
 	end
@@ -208,7 +208,7 @@ do
 	function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase > 0 and self:GetStage() ~= phase then  -- only if stage changed
+		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()

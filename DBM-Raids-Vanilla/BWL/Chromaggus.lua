@@ -320,7 +320,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		timerFrenzy:Start()
 	elseif args:IsSpell(23537) and args:IsDestTypeHostile() then
-		if self:GetStage() < 2 then
+		if self:GetStage(2, 1) then
 			self:SetStage(2)
 			warnPhase2:Show()
 		end
@@ -352,7 +352,7 @@ function mod:UNIT_HEALTH(uId)
 		return
 	end
 	local health = UnitHealth(uId) / UnitHealthMax(uId)
-	if health <= 0.25 and self:GetStage() == 1 then
+	if health <= 0.25 and self:GetStage(1) then
 		warnPhase2Soon:Show()
 		self:SetStage(1.5)
 	elseif warnRollOverSoon and health <= 0.65 and health >= 0.6 and self:IsBwlBlackEssenceEnabled() and not rolloverWarnShown then

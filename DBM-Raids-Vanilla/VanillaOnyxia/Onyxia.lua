@@ -173,10 +173,10 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if self:GetStage() < 1.5 and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
+	if self:GetStage(1.5, 1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
 		self:SetStage(1.5)
 		warnPhase2Soon:Show()
-	elseif self:GetStage() < 2.5 and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+	elseif self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
 		if self.Options.SoundWTF3 then
@@ -188,7 +188,7 @@ end
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
 		local phase = tonumber(arg) or 0
-		if phase > 0 and self:GetStage() ~= phase then
+		if phase > 0 and self:GetStage(phase, 3) then
 			self:SetStage(phase)
 			if phase == 1 then
 				warnPhase1:Show()
