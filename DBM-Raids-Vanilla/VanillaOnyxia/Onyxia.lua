@@ -17,7 +17,7 @@ mod:RegisterEvents(
 )
 
 --[[
-(ability.id = 17086 or ability.id = 18351 or ability.id = 18500 or ability.id = 18564 or ability.id = 18576 or ability.id = 18584 or ability.id = 18596 or ability.id = 18609 or ability.id = 18617 or ability.id = 18435 or ability.id = 18431) and type = "begincast"
+(ability.id = 17086 or ability.id = 18351 or ability.id = 18500 or ability.id = 18564 or ability.id = 18576 or ability.id = 17086 or ability.id = 18596 or ability.id = 18609 or ability.id = 18617 or ability.id = 18435 or ability.id = 18431) and type = "begincast"
 --]]
 --https://classic.wowhead.com/spell=17646/summon-onyxia-whelp
 --TODO, if blizzard makes classic wrath and this mod is used as foundation, remove the deep breath emote trigger (because pet added in wrath breaks it)
@@ -36,20 +36,20 @@ mod:RegisterEventsInCombat(
 local warnFireball			= mod:NewTargetNoFilterAnnounce(18392, 2, nil, false)
 local warnWingBuffet		= mod:NewSpellAnnounce(18500, 2, nil, "Tank", 1)
 local warnKnockAway			= mod:NewTargetNoFilterAnnounce(19633, 2, nil, false)
-local warnPhase1			= mod:NewPhaseAnnounce(1)	
+local warnPhase1			= mod:NewPhaseAnnounce(1)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 local warnPhase3			= mod:NewPhaseAnnounce(3)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 
 local specWarnBellowingRoar		= mod:NewSpecialWarningSpell(18431, nil, nil, nil, 2, 2)
-local specWarnBreath			= mod:NewSpecialWarningSpell(18584, nil, nil, nil, 2, 2)
+local specWarnBreath			= mod:NewSpecialWarningSpell(17086, nil, nil, nil, 2, 2)
 local yellFireball				= mod:NewYell(18392)
 --local specWarnBlastNova		= mod:NewSpecialWarningRun(68958, "Melee", nil, nil, 4, 2)
 --local specWarnAdds			= mod:NewSpecialWarningAdds(68959, "-Healer", nil, nil, 1, 2)
 
 local timerFlameBreathCD	= mod:NewVarTimer("v9.7-35.6", 18435, nil, "Tank|Healer", 3, 5)
-local timerBreath			= mod:NewCastTimer(5, 18584, nil, nil, nil, 3)
+local timerBreath			= mod:NewCastTimer(5, 17086, nil, nil, nil, 3)
 local timerRoarCD			= mod:NewVarTimer("v9.7-58.3", 18431, nil, nil, nil, 2)
 local timerWingBuffetCD		= mod:NewVarTimer("v17.8-32.4", 18500, nil, "Tank", nil, 2)
 
@@ -59,7 +59,7 @@ local timerWingBuffetCD		= mod:NewVarTimer("v17.8-32.4", 18500, nil, "Tank", nil
 -- First Deep Breath is on a fixed timer in SoD
 local specWarnBreathSoon
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnBreathSoon = mod:NewSpecialWarningSoon(18584, nil, nil, nil, 2, 2)
+	specWarnBreathSoon = mod:NewSpecialWarningSoon(17086, nil, nil, nil, 2, 2)
 end
 
 mod:AddBoolOption("SoundWTF3", true, "sound")
