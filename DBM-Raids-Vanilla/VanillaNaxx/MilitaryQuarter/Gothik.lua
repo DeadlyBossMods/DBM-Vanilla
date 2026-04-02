@@ -29,6 +29,7 @@ local warnWaveNow		= mod:NewAnnounce("WarningWaveSpawned", 3, nil, false)
 local warnWaveSoon		= mod:NewAnnounce("WarningWaveSoon", 2)
 local warnRiderDown		= mod:NewAnnounce("WarningRiderDown", 4)
 local warnKnightDown	= mod:NewAnnounce("WarningKnightDown", 2)
+local warnPhase1		= mod:NewPhaseAnnounce(1)
 local warnPhase2		= mod:NewPhaseAnnounce(2, 3)
 
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
@@ -151,8 +152,9 @@ function mod:Teleport()
 	self:ScheduleMethod(20, "Teleport")
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.wave = 0
+	warnPhase1:Show()
 	timerPhase2:Start()
 	warnPhase2:Schedule(270)
 	timerWave:Start(27, self.vb.wave + 1)
