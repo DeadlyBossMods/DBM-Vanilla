@@ -41,6 +41,7 @@ mod:RegisterEventsInCombat(
 )
 
 --ability.id = 22425 and type = "begincast" or (ability.id = 23040 or ability.id = 19873) and type = "cast"
+local warnPhase1			= mod:NewPhaseAnnounce(1)
 local warnPhase2			= mod:NewPhaseAnnounce(2)
 local warnFireballVolley	= mod:NewCastAnnounce(22425, 3)
 local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
@@ -72,6 +73,7 @@ end
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
+	warnPhase1:Show()
 	timerAddsSpawn:Start()
 	self.vb.eggsLeft = 30
 	if not self.vb.firstEngageTime then

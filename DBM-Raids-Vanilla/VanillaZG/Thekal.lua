@@ -36,6 +36,7 @@ mod:AddInfoFrameOption()
 local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1, 24173)
 local warnBlind			= mod:NewTargetAnnounce(21060, 2)
 local warnGouge			= mod:NewTargetAnnounce(12540, 2)
+local warnPhase1		= mod:NewPhaseAnnounce(1)
 local warnPhase2		= mod:NewPhaseAnnounce(2)
 local warnAdds			= mod:NewSpellAnnounce(24183, 3)
 
@@ -48,6 +49,7 @@ local timerGouge		= mod:NewTargetTimer(4, 12540, nil, nil, nil, 3)
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
+	warnPhase1:Show()
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[11347] = true,
