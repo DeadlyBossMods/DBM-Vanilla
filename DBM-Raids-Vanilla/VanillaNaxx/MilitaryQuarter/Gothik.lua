@@ -154,7 +154,7 @@ end
 
 function mod:OnCombatStart()
 	self.vb.wave = 0
-	warnPhase1:Show()
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	timerPhase2:Start()
 	warnPhase2:Schedule(270)
 	timerWave:Start(27, self.vb.wave + 1)

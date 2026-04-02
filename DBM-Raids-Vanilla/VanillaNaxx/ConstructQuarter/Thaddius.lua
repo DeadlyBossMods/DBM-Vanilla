@@ -31,8 +31,7 @@ local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
-local warnPhase1			= mod:NewPhaseAnnounce(1)
-local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
@@ -173,12 +172,11 @@ function mod:OnSync(msg, arg, sender)
 		local phase = tonumber(arg) or 0
 		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
-			if phase == 1 then
-				warnPhase1:Show()
-			elseif phase == 2 then
-				warnPhase2:Show()
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+			if phase == 2 then
 				timerEnrage:Start()
 				timerIntermission:Stop()
+				warnPhase:play("ptwo")
 			end
 		end
 	end

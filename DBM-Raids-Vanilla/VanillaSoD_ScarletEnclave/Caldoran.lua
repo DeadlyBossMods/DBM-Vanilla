@@ -171,7 +171,7 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(1230137, 1230125) then
 		if self:AntiSpam(10, "Phase2") then
-			warnPhase2:Show()
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 			self:SetStage(2)
 			timerExecutionSentence:Stop()
 			timerWake1:Stop()

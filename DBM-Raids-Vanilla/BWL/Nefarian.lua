@@ -46,9 +46,7 @@ mod:RegisterEventsInCombat(
 
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
-local warnPhase1			= mod:NewPhaseAnnounce(1)
-local warnPhase2			= mod:NewPhaseAnnounce(2)
-local warnPhase3			= mod:NewPhaseAnnounce(3)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
@@ -210,15 +208,14 @@ do
 		local phase = tonumber(arg) or 0
 		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
-			if phase == 1 then
-				warnPhase1:Show()
-			elseif phase == 2 then
-				warnPhase2:Show()
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+			if phase == 2 then
+				warnPhase:play("ptwo")
 				timerIntermission:Stop()
 				timerFearCD:Start()
 				timerShadowFlameCD:Start()
 			elseif phase == 3 then
-				warnPhase3:Show()
+				warnPhase:play("pthree")
 			end
 		end
 	end

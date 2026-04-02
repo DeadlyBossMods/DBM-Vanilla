@@ -42,8 +42,7 @@ mod:RegisterEventsInCombat(
 )
 
 --ability.id = 22425 and type = "begincast" or (ability.id = 23040 or ability.id = 19873) and type = "cast"
-local warnPhase1			= mod:NewPhaseAnnounce(1)
-local warnPhase2			= mod:NewPhaseAnnounce(2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
 local warnFireballVolley	= mod:NewCastAnnounce(22425, 3)
 local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
 local warnEggsLeft			= mod:NewCountAnnounce(19873, 1) ---@type Announce -- string as count in :Show() is unusual but valid
@@ -100,8 +99,8 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23040) and self:GetStage(2, 1) then
-		warnPhase2:Show()
 		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	elseif args:IsSpell(19873) then
 		self.vb.eggsLeft = self.vb.eggsLeft - 1
 		if self:IsRetail() then
@@ -152,10 +151,9 @@ function mod:OnSync(msg, arg, sender)
 		local phase = tonumber(arg) or 0
 		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
-			if phase == 1 then
-				warnPhase1:Show()
-			elseif phase == 2 then
-				warnPhase2:Show()
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+			if phase == 2 then
+				warnPhase:play("ptwo")
 			end
 		end
 	end

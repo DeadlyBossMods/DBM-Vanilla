@@ -36,8 +36,7 @@ mod:AddInfoFrameOption()
 local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1, 24173)
 local warnBlind			= mod:NewTargetAnnounce(21060, 2)
 local warnGouge			= mod:NewTargetAnnounce(12540, 2)
-local warnPhase1		= mod:NewPhaseAnnounce(1)
-local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
 local warnAdds			= mod:NewSpellAnnounce(24183, 3)
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(24208, "HasInterrupt", nil, nil, 1, 2)
@@ -49,7 +48,7 @@ local timerGouge		= mod:NewTargetTimer(4, 12540, nil, nil, nil, 3)
 
 function mod:OnCombatStart(delay)
 	self:SetStage(1)
-	warnPhase1:Show()
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[11347] = true,
@@ -119,7 +118,8 @@ function mod:OnSync(msg)
 	elseif msg == "YellPhase2" and self:GetStage(2, 1) then
 		DBM.InfoFrame:Hide()
 		self:SetStage(2)
-		warnPhase2:Show()
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		warnPhase:play("ptwo")
 		timerSimulKill:Stop()
 	end
 end

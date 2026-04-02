@@ -80,7 +80,7 @@ function mod:SPELL_CAST_START(args)
 		end
 		timerIgniteCast:Start(args.sourceGUID)
 	elseif args:IsSpell(1231585) then
-		warnPhase2:Show()
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end
 

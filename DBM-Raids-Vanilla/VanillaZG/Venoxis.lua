@@ -95,6 +95,6 @@ end
 function mod:UNIT_HEALTH(uId)
 	if not self.vb.prewarn_Phase2 and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.53 then
 		self.vb.prewarn_Phase2 = true
-		prewarnPhase2:Show()
+		prewarnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end

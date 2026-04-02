@@ -45,8 +45,7 @@ local warnBlue			= mod:NewSpellAnnounce(23153, 2, nil, "RemoveMagic")
 local warnBlack			= mod:NewSpellAnnounce(23154, 2, nil, "RemoveCurse")
 local warnFrenzy		= mod:NewSpellAnnounce(23128, 3, nil, "Tank|RemoveEnrage|Healer", 4)
 local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
-local warnPhase1		= mod:NewPhaseAnnounce(1)
-local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
 local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, "SpellCaster", "WarnVulnerableNew")
 
@@ -173,7 +172,7 @@ local nextBreath, nextVolley, volleyCount = 0, 0, 0
 local rolloverWarnShown
 function mod:OnCombatStart()
 	self.vb.breathCount = 0
-	warnPhase1:Show()
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	self:SetStage(1)
 	rolloverWarnShown = false
 	nextBreath = GetTime() + 30
@@ -322,7 +321,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(23537) and args:IsDestTypeHostile() then
 		if self:GetStage(2, 1) then
 			self:SetStage(2)
-			warnPhase2:Show()
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 		end
 	elseif args:IsSpell(22277, 22278, 22279, 22280, 22281) then
 		bossGuid = args.destGUID

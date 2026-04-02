@@ -62,9 +62,7 @@ local phase1DurationEra = "v229-240.1"
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
-local warnPhase1			= mod:NewPhaseAnnounce(1, 3, nil, nil, nil, nil, nil, 2)
-local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
-local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
@@ -115,8 +113,8 @@ function mod:OnCombatStart()
 	self.vb.MCIcon2 = 5
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		specwarnP2Soon:Schedule(phase1DurationSoD - 10)
-		warnPhase2:Schedule(phase1DurationSoD)
-		warnPhase2:ScheduleVoice(phase1DurationSoD, "ptwo")
+		warnPhase:Schedule(phase1DurationSoD)
+		warnPhase:ScheduleVoice(phase1DurationSoD, "ptwo")
 	else
 		warnPhase2Soon:Schedule(220)
 	end
@@ -188,7 +186,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnChainsTargets:CombinedShow(1, args.destName)
 	elseif args:IsSpell(1222430) then -- SoD Mythic extra phase
 		self:SetStage(3)
-		warnPhase3:Show()
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(3))
 		warnPhase3:Play("pthree")
 	end
 end
@@ -216,7 +214,7 @@ end
 	--end
 --end
 mod:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and mod:GetStage() < 2 then
+    if IsEncounterInProgress() and mod:GetStage(2, 1) then
         mod:SendSync("Phase", 2)
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
 			warnPhase2:Cancel()
@@ -240,12 +238,11 @@ function mod:OnSync(msg, arg, sender)
 		local phase = tonumber(arg) or 0
 		if phase > 0 and self:GetStage(phase, 3) then  -- only proceed if stage is different
 			self:SetStage(phase)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 1 then
-				warnPhase1:Show()
 				timerPhase2:Start()
 			elseif phase == 2 then
 				timerPhase2:Stop()
-				warnPhase2:Show()
 				warnPhase2:Play("ptwo")
 				timerFissureCD:Start("v10.4-38.4")
 				timerFrostboltCD:Start("v15.3-85.9")
@@ -253,7 +250,6 @@ function mod:OnSync(msg, arg, sender)
 				timerFrostBlastCD:Start("v30.3-92.7")
 				timerMCCD:Start("v21.8-103.4")
 			elseif phase == 3 then
-				warnPhase3:Show()
 				warnPhase3:Play("pthree")
 			end
 		end
