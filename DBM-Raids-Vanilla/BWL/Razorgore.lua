@@ -37,6 +37,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 23040 19873",
 	"SPELL_AURA_APPLIED 23023",
 	"CHAT_MSG_MONSTER_EMOTE",
+	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
 )
 
@@ -71,9 +72,7 @@ local function isBlackEssenceEnabled()
 	end
 end
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
-	warnPhase1:Show()
+function mod:OnCombatStart()
 	timerAddsSpawn:Start()
 	self.vb.eggsLeft = 30
 	if not self.vb.firstEngageTime then
@@ -125,9 +124,15 @@ function mod:SPELL_AURA_APPLIED(args)
 	end
 end
 
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Pull or msg:find(L.Pull) then
+		self:SendSync("Phase", 1)
+	end
+end
+
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if (msg == L.Phase2Emote or msg:find(L.Phase2Emote)) and self:GetStage(2, 1) then
-		self:SendSync("Phase2")
+		self:SendSync("Phase", 2)
 	end
 end
 
@@ -142,12 +147,17 @@ function mod:UNIT_DIED(args)
 	end
 end
 
-function mod:OnSync(msg)
-	if msg == "Phase2" and self:GetStage(2, 1) then
-		warnPhase2:Show()
-		self:SetStage(2)
+function mod:OnSync(msg, arg, sender)
+	if msg == "Phase" and sender then
+		local phase = tonumber(arg) or 0
+		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
+			self:SetStage(phase)
+			if phase == 1 then
+				warnPhase1:Show()
+			elseif phase == 2 then
+				warnPhase2:Show()
+			end
+		end
 	end
-end
-
 --Possible auto gossip for Vael using ID 29549, 30850
 --Possible auto gossip for engaging nef (retial only) 28595, 28897, 29020
