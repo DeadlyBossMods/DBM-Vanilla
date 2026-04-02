@@ -30,7 +30,7 @@ local warnWaveSoon		= mod:NewAnnounce("WarningWaveSoon", 2)
 local warnRiderDown		= mod:NewAnnounce("WarningRiderDown", 4)
 local warnKnightDown	= mod:NewAnnounce("WarningKnightDown", 2)
 local warnPhase1		= mod:NewPhaseAnnounce(1)
-local warnPhase2		= mod:NewPhaseAnnounce(2, 3)
+local warnPhase2		= mod:NewPhaseAnnounce(2)
 
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
