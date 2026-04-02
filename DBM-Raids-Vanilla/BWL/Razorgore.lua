@@ -157,5 +157,6 @@ function mod:OnSync(msg, arg, sender)
 			end
 		end
 	end
+end
 --Possible auto gossip for Vael using ID 29549, 30850
 --Possible auto gossip for engaging nef (retial only) 28595, 28897, 29020
