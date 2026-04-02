@@ -22,8 +22,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_AURA player",
-	"UNIT_TARGETABLE_CHANGED"
+	--"UNIT_TARGETABLE_CHANGED",
+	"UNIT_AURA player"
 )
 
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
@@ -73,7 +73,7 @@ end
 function mod:BossHealthUpdate()
 	self:GetBossHP(15929)
 	self:GetBossHP(15930)
-	if self.vb.phase ~= 2 then
+	if self:GetStage() ~= 2 then
 		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
 	end
 end
@@ -96,7 +96,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:UNIT_AURA()
-	if self.vb.phase ~=2 or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
+	if self:GetStage() ~=2 or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
 	local charge
 	local i = 1
 	while UnitDebuff("player", i) do
@@ -165,7 +165,7 @@ mod:RegisterOnUpdateHandler(function()
         mod:SendSync("Phase", 2)
         mod:UnregisterOnUpdateHandler()
     end
-end)
+end, 0.2)
 
 
 function mod:OnSync(msg, arg, sender)
@@ -185,7 +185,7 @@ function mod:OnSync(msg, arg, sender)
 end
 
 function mod:TankThrow()
-	if not self:IsInCombat() or self.vb.phase == 2 then
+	if not self:IsInCombat() or self:GetStage() == 2 then
 		return
 	end
 	timerThrow:Start()

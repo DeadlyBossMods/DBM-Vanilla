@@ -28,8 +28,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 28410",
 	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
 	"UNIT_HEALTH mouseover target",
-	"CHAT_MSG_MONSTER_YELL",
-	"UNIT_TARGETABLE_CHANGED"
+	--"UNIT_TARGETABLE_CHANGED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 -- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
@@ -209,14 +209,14 @@ end
 
 --Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
 --function mod:UNIT_TARGETABLE_CHANGED()
-	--if self.vb.phase < 2 then
+	--if GetStage() < 2 then
 		--warnPhase2:Cancel()
 		--warnPhase2:CancelVoice()
 		--self:SendSync("Phase", 2)
 	--end
 --end
 mod:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and self.vb.phase < 2 then
+    if IsEncounterInProgress() and mod:GetStage() < 2 then
         mod:SendSync("Phase", 2)
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
 			warnPhase2:Cancel()
@@ -224,13 +224,13 @@ mod:RegisterOnUpdateHandler(function()
 		end
         mod:UnregisterOnUpdateHandler()
     end
-end)
+end, 0.2)
 
 function mod:UNIT_HEALTH(uId)
-	if self.vb.phase < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+	if self:GetStage() < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
-	elseif self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
+	elseif self:GetStage() < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
 		self:SendSync("Phase", 3)
 	end
 end

@@ -180,10 +180,10 @@ mod:RegisterOnUpdateHandler(function()
         mod:SendSync("Phase", 2)
         mod:UnregisterOnUpdateHandler()
     end
-end)
+end, 0.2)
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self.vb.phase < 2.5 then
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage() < 2.5 then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
 	end
