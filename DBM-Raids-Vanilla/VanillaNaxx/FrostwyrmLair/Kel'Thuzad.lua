@@ -62,7 +62,7 @@ local phase1DurationEra = "v229-240.1"
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
-local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)

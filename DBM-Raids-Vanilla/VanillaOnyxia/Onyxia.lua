@@ -36,7 +36,7 @@ mod:RegisterEventsInCombat(
 local warnFireball			= mod:NewTargetNoFilterAnnounce(18392, 2, nil, false)
 local warnWingBuffet		= mod:NewSpellAnnounce(18500, 2, nil, "Tank", 1)
 local warnKnockAway			= mod:NewTargetNoFilterAnnounce(19633, 2, nil, false)
-local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 

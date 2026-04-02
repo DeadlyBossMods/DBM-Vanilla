@@ -36,7 +36,7 @@ mod:AddInfoFrameOption()
 local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1, 24173)
 local warnBlind			= mod:NewTargetAnnounce(21060, 2)
 local warnGouge			= mod:NewTargetAnnounce(12540, 2)
-local warnPhase 		= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnAdds			= mod:NewSpellAnnounce(24183, 3)
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(24208, "HasInterrupt", nil, nil, 1, 2)

@@ -31,7 +31,7 @@ local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
-local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
 local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")

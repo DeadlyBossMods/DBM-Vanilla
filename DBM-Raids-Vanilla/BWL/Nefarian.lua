@@ -46,7 +46,7 @@ mod:RegisterEventsInCombat(
 
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
-local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)

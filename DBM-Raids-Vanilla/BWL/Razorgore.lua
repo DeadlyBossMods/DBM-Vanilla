@@ -42,7 +42,7 @@ mod:RegisterEventsInCombat(
 )
 
 --ability.id = 22425 and type = "begincast" or (ability.id = 23040 or ability.id = 19873) and type = "cast"
-local warnPhase 			= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnFireballVolley	= mod:NewCastAnnounce(22425, 3)
 local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
 local warnEggsLeft			= mod:NewCountAnnounce(19873, 1) ---@type Announce -- string as count in :Show() is unusual but valid
