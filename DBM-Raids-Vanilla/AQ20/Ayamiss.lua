@@ -30,7 +30,7 @@ local timerParalyze	= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)
 
 function mod:OnCombatStart()
 	self:SetStage(1)
-	warnPhase1:Start()
+	warnPhase1:Show()
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
