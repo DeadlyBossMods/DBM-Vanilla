@@ -22,7 +22,7 @@ mod:RegisterEvents(
 --https://classic.wowhead.com/spell=17646/summon-onyxia-whelp
 --TODO, if blizzard makes classic wrath and this mod is used as foundation, remove the deep breath emote trigger (because pet added in wrath breaks it)
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 17086 18351 18392 18435 18431 18500 18564 18576 18609 18617 21131"
+	"SPELL_CAST_START 17086 18351 18392 18435 18431 18500 18564 18576 18609 18617 21131",
 	"SPELL_CAST_SUCCESS 19633",
 	"SPELL_DAMAGE 15847",
 	"UNIT_DIED",
