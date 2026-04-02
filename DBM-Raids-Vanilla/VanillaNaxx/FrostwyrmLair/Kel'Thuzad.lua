@@ -208,19 +208,29 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 --Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
-function mod:UNIT_TARGETABLE_CHANGED()
-	if self.vb.phase < 2 then
-		warnPhase2:Cancel()
-		warnPhase2:CancelVoice()
-		self:SendSync("Phase", 2)
-	end
-end
+--function mod:UNIT_TARGETABLE_CHANGED()
+	--if self.vb.phase < 2 then
+		--warnPhase2:Cancel()
+		--warnPhase2:CancelVoice()
+		--self:SendSync("Phase", 2)
+	--end
+--end
+mod:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and self.vb.phase < 2 then
+        mod:SendSync("Phase", 2)
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			warnPhase2:Cancel()
+			warnPhase2:CancelVoice()
+		end
+        mod:UnregisterOnUpdateHandler()
+    end
+end)
 
 function mod:UNIT_HEALTH(uId)
 	if self.vb.phase < 2.5 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
 		self:SetStage(2.5)
 		warnPhase3Soon:Show()
-	elseif self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
+	elseif self.vb.phase < 3 and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") and  then
 		self:SendSync("Phase", 3)
 	end
 end
@@ -234,6 +244,7 @@ function mod:OnSync(msg, arg, sender)
 				warnPhase1:Show()
 				timerPhase2:Start()
 			elseif phase == 2 then
+				timerPhase2:Stop()
 				warnPhase2:Show()
 				warnPhase2:Play("ptwo")
 				timerFissureCD:Start("v10.4-38.4")

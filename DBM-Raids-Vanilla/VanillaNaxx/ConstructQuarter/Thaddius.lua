@@ -43,7 +43,7 @@ local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerIntermission		= mod:NewIntermissionTimer(4.7, nil, CL.INTERMISSION, true, nil, nil, "136106")
+local timerIntermission		= mod:NewIntermissionTimer("v4.6-4.8", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
@@ -137,6 +137,12 @@ function mod:UNIT_AURA()
 	end
 end
 
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Yell1P1 or msg:find(L.Yell1P1) or msg == L.Yell2P1 or msg:find(L.Yell2P1) then
+		self:SendSync("Phase", 1)
+	end
+end
+
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.Emote or msg:find(L.Emote) then
 		down = down + 1
@@ -154,18 +160,13 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell1P1 or msg:find(L.Yell1P1) or msg == L.Yell2P1 or msg:find(L.Yell2P1) then
-		self:SendSync("Phase", 1)
-	end
-end
+mod:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and mod:GetStage() == 1.5 then
+        mod:SendSync("Phase", 2)
+        mod:UnregisterOnUpdateHandler()
+    end
+end)
 
-function mod:UNIT_TARGETABLE_CHANGED()
-	if self.vb.phase == 1.5 then
-		self:SendSync("Phase", 2)
-		timerIntermission:Stop()
-	end
-end
 
 function mod:OnSync(msg, arg, sender)
 	if msg == "Phase" and sender then
@@ -177,6 +178,7 @@ function mod:OnSync(msg, arg, sender)
 			elseif phase == 2 then
 				warnPhase2:Show()
 				timerEnrage:Start()
+				timerIntermission:Stop()
 			end
 		end
 	end
