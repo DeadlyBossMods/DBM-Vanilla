@@ -33,7 +33,7 @@ local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
 local timerVulnerable		= mod:NewTimer(45, "TimerVulnerable", "132866", nil, nil, 6)
 local timerCurseOfTongues	= mod:NewVarTimer("v21-43.8", 25195, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	timerCurseOfTongues:Start("v17.8-50.2")
 end
 

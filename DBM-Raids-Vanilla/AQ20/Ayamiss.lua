@@ -22,14 +22,15 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 25725",
 	"SPELL_AURA_REMOVED 25725"
 )
-
+local warnPhase1	= mod:NewPhaseAnnounce(1)
 local warnPhase2	= mod:NewPhaseAnnounce(2)
 local warnParalyze	= mod:NewTargetAnnounce(25725, 3)
 
 local timerParalyze	= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self:SetStage(1)
+	warnPhase1:Start()
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
