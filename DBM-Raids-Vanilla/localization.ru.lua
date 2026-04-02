@@ -331,7 +331,7 @@ L:SetGeneralLocalization{
 	name = "Валестраз Порочный"
 }
 L:SetMiscLocalization{
-	Event	= "Слишком поздно, друзья!"
+	Event	= "Слишком поздно, друзья"
 }
 
 -----------------
