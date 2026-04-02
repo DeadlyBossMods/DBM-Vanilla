@@ -270,7 +270,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Razorgore")
 
 L:SetGeneralLocalization{
-	name = "Feuerkralle der Ungezähmte"
+	name = "Razorgore der Ungezähmte"
 }
 L:SetTimerLocalization{
 	TimerAddsSpawn	= "Adds erscheinen"
@@ -390,7 +390,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnBreath = "%s",
-	WarnVulnerable = "Verwundbarkeit: %s"
+	WarnVulnerable = "%sverwundbarkeit"
 }
 L:SetTimerLocalization{
 	TimerBreathCD = "%s",
