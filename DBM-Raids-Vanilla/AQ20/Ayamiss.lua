@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 25725",
 	"SPELL_AURA_REMOVED 25725"
 )
-local warnPhase 	= mod:NewPhaseChangeAnnounce(nil, nil, nil, nil, nil, nil, 2)
+local warnPhase 	= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnParalyze	= mod:NewTargetAnnounce(25725, 3)
 
 local timerParalyze	= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)

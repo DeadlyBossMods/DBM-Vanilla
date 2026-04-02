@@ -187,7 +187,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(1222430) then -- SoD Mythic extra phase
 		self:SetStage(3)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(3))
-		warnPhase3:Play("pthree")
+		warnPhase:Play("pthree")
 	end
 end
 
@@ -217,8 +217,8 @@ mod:RegisterOnUpdateHandler(function()
     if IsEncounterInProgress() and mod:GetStage(2, 1) then
         mod:SendSync("Phase", 2)
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
-			warnPhase2:Cancel()
-			warnPhase2:CancelVoice()
+			warnPhase:Cancel()
+			warnPhase:CancelVoice()
 		end
         mod:UnregisterOnUpdateHandler()
     end
@@ -243,14 +243,14 @@ function mod:OnSync(msg, arg, sender)
 				timerPhase2:Start()
 			elseif phase == 2 then
 				timerPhase2:Stop()
-				warnPhase2:Play("ptwo")
+				warnPhase:Play("ptwo")
 				timerFissureCD:Start("v10.4-38.4")
 				timerFrostboltCD:Start("v15.3-85.9")
 				timerManaBombCD:Start("v20.2-46.5")
 				timerFrostBlastCD:Start("v30.3-92.7")
 				timerMCCD:Start("v21.8-103.4")
 			elseif phase == 3 then
-				warnPhase3:Play("pthree")
+				warnPhase:Play("pthree")
 			end
 		end
 	end

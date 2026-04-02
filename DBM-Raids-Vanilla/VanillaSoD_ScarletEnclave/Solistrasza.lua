@@ -100,7 +100,7 @@ function mod:SPELL_CAST_START(args)
 	elseif args:IsSpell(1227520) then
 		self:SetStage(0)
 		if self.vb.phase == 2 then
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+			warnPhase2:Show()
 			timerFlare:Cancel()
 			timerFlare:Start(37)
 			warnFlareSoon:Cancel()

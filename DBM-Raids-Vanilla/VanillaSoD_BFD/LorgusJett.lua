@@ -137,7 +137,7 @@ function mod:UNIT_DIED(args)
 			if cid == 207367 then--Last add dying
 				if self:GetStage(1) then
 					self:SetStage(2)
-					warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+					warnPhase2:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 					warnPhase2:Play("ptwo")
 					timerBlackfathomMurlocCD:Stop()
 					timerWindfuryTotemCD:Start(6.3)
