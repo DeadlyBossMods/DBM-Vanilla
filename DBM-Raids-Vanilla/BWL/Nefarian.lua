@@ -210,12 +210,12 @@ do
 			self:SetStage(phase)
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 2 then
-				warnPhase:play("ptwo")
+				warnPhase:Play("ptwo")
 				timerIntermission:Stop()
 				timerFearCD:Start()
 				timerShadowFlameCD:Start()
 			elseif phase == 3 then
-				warnPhase:play("pthree")
+				warnPhase:Play("pthree")
 			end
 		end
 	end

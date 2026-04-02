@@ -176,7 +176,7 @@ function mod:OnSync(msg, arg, sender)
 			if phase == 2 then
 				timerEnrage:Start()
 				timerIntermission:Stop()
-				warnPhase:play("ptwo")
+				warnPhase:Play("ptwo")
 			end
 		end
 	end

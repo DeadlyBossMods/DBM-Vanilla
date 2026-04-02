@@ -190,7 +190,7 @@ function mod:OnSync(msg, arg, sender)
 			self:SetStage(phase)
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 2 then
-				warnPhase:play("ptwo")
+				warnPhase:Play("ptwo")
 				timerWingBuffetCD:Stop()
 				timerFlameBreathCD:Stop()
 				--self.vb.whelpsCount = 0
@@ -211,7 +211,7 @@ function mod:OnSync(msg, arg, sender)
 					specWarnBreathSoon:Schedule(25)
 				end
 			elseif phase == 3 then
-				warnPhase:play("pthree")
+				warnPhase:Play("pthree")
 				--self:UnscheduleMethod("Whelps")
 				--timerWhelps:Stop()
 				--timerNextDeepBreath:Stop()

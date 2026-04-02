@@ -153,7 +153,7 @@ function mod:OnSync(msg, arg, sender)
 			self:SetStage(phase)
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 2 then
-				warnPhase:play("ptwo")
+				warnPhase:Play("ptwo")
 			end
 		end
 	end

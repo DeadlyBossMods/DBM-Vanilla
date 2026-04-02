@@ -119,7 +119,7 @@ function mod:OnSync(msg)
 		DBM.InfoFrame:Hide()
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-		warnPhase:play("ptwo")
+		warnPhase:Play("ptwo")
 		timerSimulKill:Stop()
 	end
 end
