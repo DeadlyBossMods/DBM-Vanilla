@@ -952,9 +952,6 @@ L:SetGeneralLocalization({
 	name = "Le Recousu"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 		     	= "R'cousu veut jouer !",
 	Pull2 		     	= "R'cousu avatar de guerre pour Kel'Thuzad !"

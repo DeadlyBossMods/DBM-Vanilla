@@ -967,9 +967,6 @@ L:SetGeneralLocalization({
 	name = "패치워크"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1			= "패치워크랑 놀아줘!",
 	Pull2			= "켈투자드님이 패치워크 싸움꾼으로 만들었다."

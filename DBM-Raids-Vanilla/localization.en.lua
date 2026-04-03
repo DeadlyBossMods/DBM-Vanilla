@@ -970,9 +970,6 @@ L:SetGeneralLocalization({
 	name = "Patchwerk"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1			= "Patchwerk want to play!",
 	Pull2			= "Kel'thuzad make Patchwerk his avatar of war!"

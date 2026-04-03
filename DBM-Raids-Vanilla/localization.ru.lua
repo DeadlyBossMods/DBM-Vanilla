@@ -977,9 +977,6 @@ L:SetGeneralLocalization({
 	name = "Лоскутик"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1			= "Лоскутик хочет поиграть!",
 	Pull2			= "Кел'Тузад объявил Лоскутика воплощением войны!"
