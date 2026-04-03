@@ -21,7 +21,6 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
 	"CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_AURA player"
 )
 
