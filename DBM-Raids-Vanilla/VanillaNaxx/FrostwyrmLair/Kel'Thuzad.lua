@@ -104,7 +104,6 @@ local function AnnounceBlastTargets(self)
 end
 
 function mod:OnCombatStart()
-	self:UnregisterOnUpdateHandler()
 	self:RegisterOnUpdateHandler(function()
     if IsEncounterInProgress() and self:GetStage(2, 1) then
         self:SendSync("Phase", 2)

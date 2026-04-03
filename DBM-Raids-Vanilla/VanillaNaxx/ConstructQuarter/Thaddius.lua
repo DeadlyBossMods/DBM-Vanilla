@@ -58,7 +58,6 @@ function mod:OnCombatStart()
 	self:ScheduleMethod(40.6, "TankThrow")
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
-	self:UnregisterOnUpdateHandler()
 	self:RegisterOnUpdateHandler(function()
     if IsEncounterInProgress() and self:GetStage(1.5) then
         self:SendSync("Phase", 2)
