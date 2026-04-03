@@ -68,9 +68,16 @@ local firstBossMod = DBM:GetModByName("Razorgore")
 function mod:OnCombatStart(delay, yellTriggered)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 42
+	self:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and mod:GetStage(1.5) then
+        self:SendSync("Phase", 2)
+        self:UnregisterOnUpdateHandler()
+    end
+end, 0.2)
 end
 
 function mod:OnCombatEnd(wipe)
+	self:UnregisterOnUpdateHandler()
 	if not wipe then
 		local sodTrialMod = DBM:GetModByName("SoDBWLTrials")
 		if sodTrialMod then
@@ -172,13 +179,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("Phase", 3)
 	end
 end
-
-mod:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and mod:GetStage() == 1.5 then
-        mod:SendSync("Phase", 2)
-        mod:UnregisterOnUpdateHandler()
-    end
-end, 0.2)
 
 function mod:UNIT_HEALTH(uId)
 	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage(2.5, 1) then

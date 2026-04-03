@@ -58,6 +58,13 @@ function mod:OnCombatStart()
 	self:ScheduleMethod(40.6, "TankThrow")
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
+	self:UnregisterOnUpdateHandler()
+	self:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and self:GetStage(1.5) then
+        self:SendSync("Phase", 2)
+        self:UnregisterOnUpdateHandler()
+    end
+end, 0.2)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[15929] = true,
@@ -79,6 +86,7 @@ end
 
 
 function mod:OnCombatEnd(wipe, isSecondRun)
+	self:UnregisterOnUpdateHandler()
 	if wipe and not isSecondRun then
 		DBM:AddMsg("Arrow Options can be changed for this encounter. Mod supports 3 different strats. Choose one that matches your strat")
 	end
@@ -158,14 +166,6 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 		end
 	end
 end
-
-mod:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and mod:GetStage() == 1.5 then
-        mod:SendSync("Phase", 2)
-        mod:UnregisterOnUpdateHandler()
-    end
-end, 0.2)
-
 
 function mod:OnSync(msg, arg)
 	if msg == "Phase" then
