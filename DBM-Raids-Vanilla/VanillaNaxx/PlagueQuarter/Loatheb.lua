@@ -57,7 +57,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerAura				= mod:NewBuffActiveTimer(17, 1225419, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 	timerNextAura			= mod:NewVarTimer("v20.1-21.5", 1225419)
 else
-	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184)
+	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184, "Healer")
 	warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
 end
 
