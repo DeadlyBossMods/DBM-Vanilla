@@ -33,6 +33,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
+local warnDamageShield		= mod:NewSpellAnnounce(21075, 2, nil, "Melee")
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
