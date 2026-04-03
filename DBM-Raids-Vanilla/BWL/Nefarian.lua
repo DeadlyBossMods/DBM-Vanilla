@@ -203,10 +203,11 @@ do
 			["WARRIOR"]     = "626008",
 			["DEMONHUNTER"] = "1260827",
 		}
-	function mod:OnSync(msg, arg, sender)
-	if msg == "Phase" and sender then
-		local phase = tonumber(arg) or 0
-		if phase > 0 and self:GetStage(phase, 3) then  -- only if stage changed
+	function mod:OnSync(msg, arg)
+	if msg == "Phase" then
+		local phase = tonumber(arg)
+		if not phase then return end
+		if self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 2 then

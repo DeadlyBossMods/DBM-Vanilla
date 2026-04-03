@@ -104,6 +104,7 @@ local function AnnounceBlastTargets(self)
 end
 
 function mod:OnCombatStart()
+	self:UnregisterOnUpdateHandler()
 	self:RegisterOnUpdateHandler(function()
     if IsEncounterInProgress() and self:GetStage(2, 1) then
         self:SendSync("Phase", 2)
@@ -177,8 +178,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnMana:Show(args.destName)
 		end
-	elseif args:IsSpell(28410) then -- Chains of Kel'Thuzad
-		if self:AntiSpam() then
+	elseif args:IsSpell(28410) and self:AntiSpam(5, 1) then -- Chains of Kel'Thuzad
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
 		end
@@ -232,10 +232,11 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:OnSync(msg, arg, sender)
-	if msg == "Phase" and sender then
-		local phase = tonumber(arg) or 0
-		if phase > 0 and self:GetStage(phase, 3) then  -- only proceed if stage is different
+function mod:OnSync(msg, arg)
+	if msg == "Phase" then
+		local phase = tonumber(arg)
+		if not phase then return end
+		if self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 1 then
