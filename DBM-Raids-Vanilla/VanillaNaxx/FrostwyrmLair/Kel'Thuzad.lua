@@ -28,7 +28,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 28410",
 	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
 	"UNIT_HEALTH mouseover target",
-	--"UNIT_TARGETABLE_CHANGED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
@@ -104,6 +103,7 @@ local function AnnounceBlastTargets(self)
 end
 
 function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
 	self:RegisterOnUpdateHandler(function()
     if IsEncounterInProgress() and self:GetStage(2, 1) then
         self:SendSync("Phase", 2)
@@ -205,21 +205,6 @@ function mod:SPELL_AURA_REMOVED(args)
 		end
 	end
 end
-
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellP1 or msg:find(L.YellP1) then
-		self:SendSync("Phase", 1)
-	end
-end
-
---Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
---function mod:UNIT_TARGETABLE_CHANGED()
-	--if GetStage() < 2 then
-		--warnPhase2:Cancel()
-		--warnPhase2:CancelVoice()
-		--self:SendSync("Phase", 2)
-	--end
---end
 
 function mod:UNIT_HEALTH(uId)
 	if self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then

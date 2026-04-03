@@ -66,6 +66,7 @@ mod:AddSetIconOption("SetIconOnFireball", 18392, true, 0, {8})
 --mod.vb.whelpsCount = 0
 
 function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
 	timerFlameBreathCD:Start("v11.3-28.5")
 	timerWingBuffetCD:Start("v11.3-24.5")
 	if self.Options.SoundWTF3 then
@@ -161,9 +162,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellP1 or msg:find(L.YellP1) then
-		self:SendSync("Phase", 1)
-	elseif msg == L.YellP2 or msg:find(L.YellP2) then
+	if msg == L.YellP2 or msg:find(L.YellP2) then
 		self:SendSync("Phase", 2)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
@@ -185,7 +184,7 @@ end
 
 function mod:OnSync(msg, arg)
 	if msg == "Phase" then
-		local phase = tonumber(arg) or 0
+		local phase = tonumber(arg)
 		if not phase then return end
 		if self:GetStage(phase, 3) then
 			self:SetStage(phase)

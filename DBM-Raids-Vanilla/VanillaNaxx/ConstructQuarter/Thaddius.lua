@@ -22,7 +22,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL",
-	--"UNIT_TARGETABLE_CHANGED",
 	"UNIT_AURA player"
 )
 
@@ -53,6 +52,7 @@ local down = 0
 local lastShift = 0
 
 function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
 	currentCharge = nil
 	down = 0
 	self:ScheduleMethod(40.6, "TankThrow")
@@ -140,12 +140,6 @@ function mod:UNIT_AURA()
 			end
 		end
 		currentCharge = charge
-	end
-end
-
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell1P1 or msg:find(L.Yell1P1) or msg == L.Yell2P1 or msg:find(L.Yell2P1) then
-		self:SendSync("Phase", 1)
 	end
 end
 

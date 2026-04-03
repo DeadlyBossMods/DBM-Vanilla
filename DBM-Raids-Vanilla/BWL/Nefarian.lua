@@ -66,6 +66,7 @@ local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("Razorgore")
 
 function mod:OnCombatStart(delay, yellTriggered)
+	self:SendSync("Phase", 1)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 42
 	self:RegisterOnUpdateHandler(function()
@@ -73,7 +74,7 @@ function mod:OnCombatStart(delay, yellTriggered)
         self:SendSync("Phase", 2)
         self:UnregisterOnUpdateHandler()
     end
-end, 0.2)
+	end, 0.2)
 end
 
 function mod:OnCombatEnd(wipe)
@@ -169,8 +170,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("ClassCall", "MONK")
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
-	elseif msg == L.YellP1 or msg:find(L.YellP1) then
-		self:SendSync("Phase", 1)
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
 		self:SetStage(1.5)
 		warnPhase2Soon:Show()
