@@ -222,7 +222,7 @@ do
 	end
 
 		if not self:IsInCombat() then return end
-		if msg == "ClassCall" and sender then
+		if msg == "ClassCall" then
 			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
 			local classColor = RAID_CLASS_COLORS[arg]
 			local classNameColored = className
