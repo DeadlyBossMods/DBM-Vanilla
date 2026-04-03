@@ -38,7 +38,7 @@ local warnMarkSoon				= mod:NewAnnounce("WarningMarkSoon", 1, 28835, false)
 local warnMeteor				= mod:NewSpellAnnounce(28884, 4)
 local warnVoidZone				= mod:NewTargetNoFilterAnnounce(28863, 3)--Only warns for nearby targets, to reduce spam
 local warnHolyWrath				= mod:NewTargetNoFilterAnnounce(28883, 3, nil, false)
-local warnBoneBarrier			= mod:NewTargetNoFilterAnnounce(29061, 2)
+local warnBoneBarrier			= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 local warnHorsemanDied			= mod:NewAnnounce("WarnHorsemanDied", 2, "132264")
 
 local specWarnMarkOnPlayer		= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer", nil, nil, nil, 1, 6)
