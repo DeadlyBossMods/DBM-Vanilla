@@ -72,45 +72,26 @@ local mobNames = {}
 
 local updateInfoFrame
 do
-	local ipairs, pairs, tostring = ipairs, pairs, tostring
-	local mfloor, mmax = math.floor, math.max
-	local tinsert, tsort, twipe = table.insert, table.sort, table.wipe
-
-	local lines, sortedLines, corruptKeys = {}, {}, {}
-
+	local tostring, twipe = tostring, table.wipe
+	local lines, sortedLines = {}, {}
 	local function addLine(key, value)
+		-- sort by insertion order
 		lines[key] = value
 		sortedLines[#sortedLines + 1] = key
 	end
-
 	updateInfoFrame = function()
 		twipe(lines)
 		twipe(sortedLines)
-		twipe(corruptKeys)
-
-		local now = GetTime()
-
-		for name in pairs(hadCorrupted) do
-			tinsert(corruptKeys, name)
+		for name, cid in pairs(liveMobNames) do
+			if mobCounts[cid] then
+				addLine(tostring(cid) .. '*' .. (mobNames[cid] or name), tostring(mobCounts[cid]))
+			end
 		end
-
-		if mod.Options.CorruptedSorting == CL.DURATION then
-			tsort(corruptKeys, function(a, b)
-				local durA = mmax((hadCorrupted[a] or 0) - now, 0)
-				local durB = mmax((hadCorrupted[b] or 0) - now, 0)
-				if durA == durB then
-					return a < b
-				end
-				return durA > durB
-			end)
-		else
-			tsort(corruptKeys)
+		for name, cid in pairs(undeadMobNames) do
+			if mobCounts[cid] then
+				addLine(tostring(cid) .. '*' .. (mobNames[cid] or name), tostring(mobCounts[cid]))
+			end
 		end
-
-		for _, name in ipairs(corruptKeys) do
-			addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - now, 0))))
-		end
-
 		return lines, sortedLines
 	end
 end
