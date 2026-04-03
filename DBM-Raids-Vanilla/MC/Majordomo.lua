@@ -33,14 +33,13 @@ mod:RegisterEventsInCombat(
 )
 
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
-local warnDamageShield		= mod:NewSpellAnnounce(21075, 2)
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
 
 local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, "-Melee", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, "Melee", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerShieldCD        = mod:NewTimer(30.7, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 -- New in SoD
