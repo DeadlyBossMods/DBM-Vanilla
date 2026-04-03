@@ -76,7 +76,6 @@ local hadCorrupted	= {}
 local updateInfoFrame
 do
 	local ipairs, pairs, tostring = ipairs, pairs, tostring
-	local GetTime = GetTime
 	local mfloor, mmax = math.floor, math.max
 	local tinsert, tsort = table.insert, table.sort
 	local twipe = table.wipe or wipe
