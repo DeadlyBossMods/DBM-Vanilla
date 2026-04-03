@@ -73,40 +73,57 @@ mod.vb.sporeTimer	= 12.9
 mod.vb.sporeCounter = 0
 local hadCorrupted	= {}
 
-local lastUpdate = 0
-updateInfoFrame = function()
-    local now = GetTime()
-    if now - lastUpdate < 0.1 then
-        return lines, sortedLines -- throttle updates
-    end
-    lastUpdate = now
+local updateInfoFrame
+do
+	local ipairs, pairs, tostring = ipairs, pairs, tostring
+	local GetTime = GetTime
+	local mfloor, mmax = math.floor, math.max
+	local tinsert, tsort = table.insert, table.sort
+	local twipe = table.wipe or wipe
 
-    twipe(lines)
-    twipe(sortedLines)
-    twipe(corruptKeys)
+	local lines, sortedLines, corruptKeys = {}, {}, {}
 
-    for name in pairs(hadCorrupted) do
-        tinsert(corruptKeys, name)
-    end
+	local lastUpdate = 0
 
-    if mod.Options.CorruptedSorting == CL.DURATION then
-        tsort(corruptKeys, function(a, b)
-            local durA = mmax((hadCorrupted[a] or 0) - now, 0)
-            local durB = mmax((hadCorrupted[b] or 0) - now, 0)
-            if durA == durB then
-                return a < b
-            end
-            return durA > durB
-        end)
-    else
-        tsort(corruptKeys)
-    end
+	local function addLine(key, value)
+		lines[key] = value
+		sortedLines[#sortedLines + 1] = key
+	end
 
-    for _, name in ipairs(corruptKeys) do
-        addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - now, 0))))
-    end
+	updateInfoFrame = function()
+		local now = GetTime()
+		if now - lastUpdate < 0.1 then
+			return lines, sortedLines -- throttle
+		end
+		lastUpdate = now
 
-    return lines, sortedLines
+		twipe(lines)
+		twipe(sortedLines)
+		twipe(corruptKeys)
+
+		for name in pairs(hadCorrupted) do
+			tinsert(corruptKeys, name)
+		end
+
+		if mod.Options.CorruptedSorting == CL.DURATION then
+			tsort(corruptKeys, function(a, b)
+				local durA = mmax((hadCorrupted[a] or 0) - now, 0)
+				local durB = mmax((hadCorrupted[b] or 0) - now, 0)
+				if durA == durB then
+					return a < b
+				end
+				return durA > durB
+			end)
+		else
+			tsort(corruptKeys)
+		end
+
+		for _, name in ipairs(corruptKeys) do
+			addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - now, 0))))
+		end
+
+		return lines, sortedLines
+	end
 end
 
 function mod:OnCombatStart()
