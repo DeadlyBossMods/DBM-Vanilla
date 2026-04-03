@@ -142,14 +142,17 @@ function mod:UNIT_DIED(args)
             warnHorsemanDied:Show(L.Mograine, self.vb.horsemenRemaining)
 
         elseif cid == 16063 then -- Sir Zeliek
+			timerHolyWrathCD:Stop()
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
             warnHorsemanDied:Show(L.Zeliek, self.vb.horsemenRemaining)
 
         elseif cid == 16064 then -- Thane Korth'azz
+			timerMeteorCD:Stop()
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
             warnHorsemanDied:Show(L.Korthazz, self.vb.horsemenRemaining)
 
 		elseif cid == 16065 then -- Lady Blaumeux
+			timerVoidZoneCD:Stop()
             self.vb.horsemenRemaining = self.vb.horsemenRemaining - 1
             warnHorsemanDied:Show(L.Blaumeux, self.vb.horsemenRemaining)
         end

@@ -32,9 +32,6 @@ mod:RegisterEventsInCombat(
 	"CHAT_MSG_MONSTER_YELL"
 )
 
--- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
--- On Era, there is no ENCOUNTER_START trigger, but the time between the first yell and IsEncounterInProgress is not consistent and has variance that I have seen range from 229-240.1 seconds
-
 -- SoD
 -- "<127.94 22:09:41> [ENCOUNTER_START] 1114#Kel'Thuzad#186#40",
 -- "<128.16 22:09:41> [CHAT_MSG_MONSTER_YELL] Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!#Kel'Thuzad###Sephyx##0#0##0#5535#nil#0#false#false#false#false",
@@ -42,21 +39,20 @@ mod:RegisterEventsInCombat(
 -- "<358.05 22:13:31> [CLEU] SWING_DAMAGE#Creature-0-5252-533-11218-15990-000051CFAB#Kel'Thuzad#Player-5827-0271EB0C#Ironjoke#3824#-1#nil#nil#false#false#nil#nil",
 -- "<358.05 22:13:31> [IsEncounterInProgress()] true",
 
--- Era
--- "<5710.33 20:15:21> [CHAT_MSG_MONSTER_YELL] ¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!#Kel'Thuzad###Shikaakaa##0#0##0#2037#nil#0#false#false#false#false",
--- "<5908.19 20:18:39> [CHAT_MSG_MONSTER_EMOTE] se enfurece.#Abominación imparable#####0#0##0#2066#nil#0#false#false#false#false",
--- "<5930.04 20:19:00> [DBM_Announce]  |T136116:12:12|t Fase 2 en 10 segundos |T136116:12:12|t #136116#nil#nil#KelThuzadVanilla#true#nil",
--- "<5930.26 20:19:01> [CHAT_MSG_MONSTER_YELL] ¡Exhalad el último suspiro de vida!#Kel'Thuzad###Activador del mundo##0#0##0#2070#nil#0#false#false#false#false",
--- "<5940.04 20:19:10> [DBM_Announce] Fase 2#136116#stage#2#KelThuzadVanilla#false#nil",
--- "<5945.83 20:19:16> [IsEncounterInProgress()] true",
+-- Era (229.18 seconds)
+-- "<194.30 19:50:31> [ENCOUNTER_START] 1114#Kel'Thuzad#9#40",
+-- "<194.48 19:50:32> [CHAT_MSG_MONSTER_YELL] ¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!#Kel'Thuzad###Gorbash##0#0##0#604#nil#0#false#false#false#false",
+-- "<408.30 19:54:05> [CHAT_MSG_MONSTER_YELL] ¡Exhalad el último suspiro de vida!#Kel'Thuzad###Activador del mundo##0#0##0#640#nil#0#false#false#false#false",
+-- "<423.48 19:54:21> [IsEncounterInProgress()] true",
 
--- "<175.01 19:53:47> [CHAT_MSG_MONSTER_YELL] Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!#Kel'Thuzad###Doljin##0#0##0#2274#nil#0#false#false#false#false",
--- "<394.91 19:57:26> [DBM_Announce]  |T136116:12:12|t Fase 2 em 10 segundos |T136116:12:12|t #136116#nil#nil#KelThuzadVanilla#true#nil",
--- "<399.83 19:57:31> [CHAT_MSG_MONSTER_YELL] Supliquem por misericórdia!#Kel'Thuzad###Portal de Mundo##0#0##0#2311#nil#0#false#false#false#false",
--- "<404.91 19:57:36> [DBM_Announce] Fase 2#136116#stage#2#KelThuzadVanilla#false#nil",
--- "<415.13 19:57:47> [IsEncounterInProgress()] true",
+-- Era (242.26 seconds)
+-- "<519.20 20:37:32> [ENCOUNTER_START] 1114#Kel'Thuzad#9#40",
+-- "<519.40 20:37:32> [CHAT_MSG_MONSTER_YELL] Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!#Kel'Thuzad###Fervor##0#0##0#2853#nil#0#false#false#false#false","
+-- "<745.76 20:41:19> [CHAT_MSG_MONSTER_YELL] O fim está próximo!#Kel'Thuzad###Portal de Mundo##0#0##0#2898#nil#0#false#false#false#false",
+-- "<761.46 20:41:34> [IsEncounterInProgress()] true",
+
 local phase1DurationSoD = 230.1
-local phase1DurationEra = "v229-240.1"
+local phase1DurationEra = "v229.2-242.3"
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
@@ -108,6 +104,16 @@ local function AnnounceBlastTargets(self)
 end
 
 function mod:OnCombatStart()
+	self:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and self:GetStage(2, 1) then
+        self:SendSync("Phase", 2)
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			warnPhase:Cancel()
+			warnPhase:CancelVoice()
+		end
+        self:UnregisterOnUpdateHandler()
+    end
+end, 0.2)
 	table.wipe(frostBlastTargets)
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
@@ -120,6 +126,9 @@ function mod:OnCombatStart()
 	end
 end
 
+function mod:OnCombatEnd()
+	self:UnregisterOnUpdateHandler()
+end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then
@@ -213,16 +222,6 @@ end
 		--self:SendSync("Phase", 2)
 	--end
 --end
-mod:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and mod:GetStage(2, 1) then
-        mod:SendSync("Phase", 2)
-		if DBM:IsSeasonal("SeasonOfDiscovery") then
-			warnPhase:Cancel()
-			warnPhase:CancelVoice()
-		end
-        mod:UnregisterOnUpdateHandler()
-    end
-end, 0.2)
 
 function mod:UNIT_HEALTH(uId)
 	if self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then

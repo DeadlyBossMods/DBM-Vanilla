@@ -22,7 +22,7 @@ function mod:SPELL_SUMMON(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19134) then
+	if args:IsSpell(19134) and self:AntiSpam(3, 1) then
 		warnFear:Show()
 	end
 end
