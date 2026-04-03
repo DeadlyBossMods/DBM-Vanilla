@@ -953,9 +953,6 @@ L:SetGeneralLocalization({
 	name = "Remendejo"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 = "¡Remendejo quiere jugar!",
 	Pull2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!"

@@ -874,9 +874,6 @@ L:SetGeneralLocalization({
 	name 				= "帕奇维克"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 				= "帕奇维克要跟你玩！",
 	Pull2 				= "帕奇维克是克尔苏加德的战神！"
