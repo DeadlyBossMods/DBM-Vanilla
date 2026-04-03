@@ -73,38 +73,40 @@ mod.vb.sporeTimer	= 12.9
 mod.vb.sporeCounter = 0
 local hadCorrupted	= {}
 
-local updateInfoFrame
-do
-	local ipairs, pairs, tostring = ipairs, pairs, tostring
-	local mfloor, mmax, tinsert, tsort, twipe = math.floor, math.max, table.insert, table.sort, table.wipe
-	local lines, sortedLines, corruptKeys, durToName = {}, {}, {}, {}
-	local function addLine(key, value)
-		-- sort by insertion order
-		lines[key] = value
-		sortedLines[#sortedLines + 1] = key
-	end
-	updateInfoFrame = function()
-		twipe(lines)
-		twipe(sortedLines)
-		twipe(corruptKeys)
+local lastUpdate = 0
+updateInfoFrame = function()
+    local now = GetTime()
+    if now - lastUpdate < 0.1 then
+        return lines, sortedLines -- throttle updates
+    end
+    lastUpdate = now
 
-		local refreshTime = GetTime()
+    twipe(lines)
+    twipe(sortedLines)
+    twipe(corruptKeys)
 
-		for name, _ in pairs(hadCorrupted) do
-			tinsert(corruptKeys, name)
-		end
-		if mod.Options.CorruptedSorting == CL.DURATION then
-			tsort(corruptKeys, function (a, b) return (hadCorrupted[a] or refreshTime) > (hadCorrupted[b] or refreshTime) end)
-		else
-			tsort(corruptKeys)
-		end
+    for name in pairs(hadCorrupted) do
+        tinsert(corruptKeys, name)
+    end
 
-		for _, name in ipairs(corruptKeys) do
-			addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - refreshTime, 0))))
-		end
+    if mod.Options.CorruptedSorting == CL.DURATION then
+        tsort(corruptKeys, function(a, b)
+            local durA = mmax((hadCorrupted[a] or 0) - now, 0)
+            local durB = mmax((hadCorrupted[b] or 0) - now, 0)
+            if durA == durB then
+                return a < b
+            end
+            return durA > durB
+        end)
+    else
+        tsort(corruptKeys)
+    end
 
-		return lines, sortedLines
-	end
+    for _, name in ipairs(corruptKeys) do
+        addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - now, 0))))
+    end
+
+    return lines, sortedLines
 end
 
 function mod:OnCombatStart()
