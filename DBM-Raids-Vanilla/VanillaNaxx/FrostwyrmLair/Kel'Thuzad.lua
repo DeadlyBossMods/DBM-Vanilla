@@ -181,7 +181,6 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(28410) and self:AntiSpam(5, 1) then -- Chains of Kel'Thuzad
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
-		end
 		if self.Options.SetIconOnMC2 then
 			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
 			if group % 2 == 1 then
