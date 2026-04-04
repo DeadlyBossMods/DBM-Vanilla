@@ -48,10 +48,10 @@ mod:AddInfoFrameOption()
 mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
 
 local currentCharge
-local down = 0
+--local down = 0
 local lastShift = 0
-self.vb.StalaggDied = false
-self.vb.FeugenDied = false
+mod.vb.StalaggDied = false
+mod.vb.FeugenDied = false
 
 function mod:OnCombatStart()
 	self:SendSync("Phase", 1)
