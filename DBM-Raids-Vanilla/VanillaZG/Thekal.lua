@@ -60,7 +60,9 @@ function mod:OnCombatStart(delay)
 end
 
 function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -116,10 +118,12 @@ function mod:OnSync(msg)
 			timerSimulKill:Start()
 		end
 	elseif msg == "YellPhase2" and self:GetStage(2, 1) then
-		DBM.InfoFrame:Hide()
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 		warnPhase:Play("ptwo")
 		timerSimulKill:Stop()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end
 	end
 end
