@@ -70,7 +70,7 @@ function mod:OnCombatStart(delay, yellTriggered)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 42
 	self:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and mod:GetStage(1.5) then
+    if IsEncounterInProgress() and self:GetStage(1.5) then
         self:SendSync("Phase", 2)
         self:UnregisterOnUpdateHandler()
     end
