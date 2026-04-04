@@ -104,7 +104,7 @@ end
 function mod:OnCombatStart()
 	self:SendSync("Phase", 1)
 	self:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and self:GetStage(2, 1) then
+    if IsEncounterInProgress() and self:GetStage(1) then
         self:SendSync("Phase", 2)
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
 			warnPhase:Cancel()
