@@ -10,11 +10,7 @@ mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
 mod:SetZone(249)
 
-mod:RegisterCombat("combat")
-
-mod:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL"
-)
+mod:RegisterCombat("combat_yell", L.YellPull)
 
 --[[
 (ability.id = 17086 or ability.id = 18351 or ability.id = 18500 or ability.id = 18564 or ability.id = 18576 or ability.id = 18584 or ability.id = 18596 or ability.id = 18609 or ability.id = 18617 or ability.id = 18435 or ability.id = 18431) and type = "begincast"
@@ -22,14 +18,15 @@ mod:RegisterEvents(
 --https://classic.wowhead.com/spell=17646/summon-onyxia-whelp
 --TODO, if blizzard makes classic wrath and this mod is used as foundation, remove the deep breath emote trigger (because pet added in wrath breaks it)
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 17086 18435 18431 18500 18392",
+	"SPELL_CAST_START 17086 18435 18431 18500 18392 17086 18351 18564 18576 18584 18596 18609 18617",
 	"SPELL_CAST_SUCCESS 19633",
 	"SPELL_DAMAGE 15847",-- 68867
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"UNIT_HEALTH",
-	"LOADING_SCREEN_DISABLED"
+	"LOADING_SCREEN_DISABLED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 --Todo, adds stuff (if they exist) with classic IDs
@@ -103,7 +100,7 @@ function mod:FireballTarget(targetname, uId)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(17086) and args:IsSrcTypeHostile() and self:AntiSpam(8, 1) then
+	if args:IsSpell(17086, 18351, 18564, 18576, 18584, 18596, 18609, 18617) and args:IsSrcTypeHostile() and self:AntiSpam(8, 1) then
 		specWarnBreath:Show()
 		specWarnBreath:Play("breathsoon")
 		timerBreath:Start()
@@ -166,9 +163,7 @@ end
 mod.CHAT_MSG_MONSTER_EMOTE = mod.CHAT_MSG_RAID_BOSS_EMOTE -- todo: check if this is necessary
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellPull and not self:IsInCombat() then
-		DBM:StartCombat(self, 0)
-	elseif msg == L.YellP2 or msg:find(L.YellP2) then
+	if msg == L.YellP2 or msg:find(L.YellP2) then
 		self:SendSync("Phase2")
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase3")
