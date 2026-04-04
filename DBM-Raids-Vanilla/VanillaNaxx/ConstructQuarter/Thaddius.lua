@@ -20,7 +20,7 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
-	"CHAT_MSG_MONSTER_EMOTE",
+	--"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_AURA player",
 	"UNIT_HEALTH"
 )
@@ -58,7 +58,7 @@ function mod:OnCombatStart()
 	self.vb.StalaggDied = false
 	self.vb.FeugenDied = false
 	currentCharge = nil
-	down = 0
+	--down = 0
 	self:ScheduleMethod(40.6, "TankThrow")
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
