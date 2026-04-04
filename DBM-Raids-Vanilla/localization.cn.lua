@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri = "克里勋爵"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s死了（剩餘%d隻）"
+    WarnBugDied = "%s被吞噬了！（剩餘%d隻）"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "提示安其拉三宝虫剩余"
@@ -39,7 +39,7 @@ L:SetGeneralLocalization{
 	name = "沙尔图拉"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "沙尔图拉的皇家卫兵剩余：%d/3" -- NPC ID 15984
+    WarnGuardDied = "沙尔图拉的皇家卫兵：%d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
     WarnGuardDied = "提示沙尔图拉的皇家卫兵剩余"
@@ -387,7 +387,7 @@ L:SetTimerLocalization{
 }
 L:SetOptionLocalization{
 	WarnBreath			= "为克洛玛古斯其中一个吐息显示警告",
-	WarnVulnerableNew	= "为易伤显示警告",
+	WarnVulnerableNew	= "为法术易伤显示提示",
 	TimerBreathCD		= "显示吐息冷却",
 	TimerBreath			= "显示吐息施法",
 	TimerVulnCD			= "显示易伤周期"
@@ -910,8 +910,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell				= "斯塔拉格要碾碎你！",
+	Yell1P1				= "主人要吃了你！",
+	Yell2P1				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
+	Yell1P2 			= "咬碎……你的……骨头……",
+	Yell2P2 			= "打……烂……你！",
+	Yell3P2 			= "杀……",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })
@@ -1006,7 +1010,9 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "为印记显示提前警报",
-	SpecialWarningMarkOnPlayer	= "当你印记叠加多于四层时显示特别警报"
+	SpecialWarningMarkOnPlayer	= "当你印记叠加多于四层时显示特别警报",
+	timerMark					= "为下一个印记显示计时器（含层数）",
+	WarnHorsemanDied			= "提示天启四骑士剩余"
 })
 
 L:SetTimerLocalization({
@@ -1015,9 +1021,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3秒后印记%d",
-	SpecialWarningMarkOnPlayer	= "%s：%s"
+	SpecialWarningMarkOnPlayer	= "%s：%s",
+	WarnHorsemanDied 			= "%s死了（剩餘%d隻）"
 })
 
+L:SetMiscLocalization({
+	Korthazz			= "库尔塔兹领主",
+	Mograine			= "大领主莫格莱尼",
+	Blaumeux			= "女公爵布劳缪克丝",
+	Zeliek				= "瑟里耶克爵士"
+})
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1068,7 +1081,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell 				= "仆从们，侍卫们，隶属于黑暗与寒冷的战士们！听从克尔苏加德的召唤！"
+	YellP1 				= "仆从们，侍卫们，隶属于黑暗与寒冷的战士们！听从克尔苏加德的召唤！",
 })
 
 L:SetWarningLocalization({

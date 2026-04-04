@@ -39,7 +39,7 @@ L:SetGeneralLocalization{
 	name = "沙爾圖拉"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "沙爾圖拉皇家衛士剩餘：%d/3" -- NPC ID 15984
+    WarnGuardDied = "沙爾圖拉皇家衛士：%d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
     WarnGuardDied = "提示沙爾圖拉皇家衛士剩餘"
@@ -911,8 +911,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "斯塔拉格要碾碎你！",
+	Yell1P1	= "主人要吃了你！",
+	Yell2P1	= "斯塔拉格要碾碎你！",
 	Emote	= "%s超過負荷！",
+	Yell1P2 = "咬碎……你的……骨頭……",
+	Yell2P2 = "打…碎…你……",
+	Yell3P2 = "殺……",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -1006,18 +1010,30 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	WarningMarkSoon				= "為印記顯示預先警告",
-	SpecialWarningMarkOnPlayer	= "當你印記堆疊多於四層時顯示特別警告"
+	SpecialWarningMarkOnPlayer	= "當你印記堆疊多於四層時顯示特別警告",
+	timerMark					= "為下一個印記顯示計時器（含層數）",
+	WarnHorsemanDied			= "提示天啟四騎士剩餘"
 })
 
+L:SetOptionLocalization{
+    WarnBugDied = "提示異種蠍皇族蟲剩餘"
+}
 L:SetTimerLocalization({
 	timerMark	= "印記%d"
 })
 
 L:SetWarningLocalization({
-	WarningMarkSoon			= "3秒後印記%d",
-	SpecialWarningMarkOnPlayer	= "%s：%s"
+	WarningMarkSoon				= "3秒後印記%d",
+	SpecialWarningMarkOnPlayer	= "%s：%s",
+	WarnHorsemanDied 			= "%s死了（剩下%d擊殺）"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "寇斯艾茲族長",
+	Mograine	= "莫格萊尼公爵",
+	Blaumeux	= "布洛莫斯爵士",
+	Zeliek		= "札里克爵士"
+})
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1067,7 +1083,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！"
+	YellP1			= "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！",
 })
 
 L:SetWarningLocalization({

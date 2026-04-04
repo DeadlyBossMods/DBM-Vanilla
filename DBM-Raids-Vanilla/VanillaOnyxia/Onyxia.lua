@@ -10,11 +10,7 @@ mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
 mod:SetZone(249)
 
-mod:RegisterCombat("combat")
-
-mod:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL"
-)
+mod:RegisterCombat("combat_yell", L.YellPull)
 
 --[[
 (ability.id = 17086 or ability.id = 18351 or ability.id = 18500 or ability.id = 18564 or ability.id = 18576 or ability.id = 17086 or ability.id = 18596 or ability.id = 18609 or ability.id = 18617 or ability.id = 18435 or ability.id = 18431) and type = "begincast"
@@ -28,7 +24,8 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_HEALTH",
-	"LOADING_SCREEN_DISABLED"
+	"LOADING_SCREEN_DISABLED",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 --Todo, adds stuff (if they exist) with classic IDs

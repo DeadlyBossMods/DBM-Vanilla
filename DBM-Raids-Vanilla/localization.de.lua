@@ -39,7 +39,7 @@ L:SetGeneralLocalization{
 	name = "Schlachtwache Sartura"
 }
 L:SetWarningLocalization({
-    WarnGuardDied = "Verbleibende Sarturas Königswache: %d/3" -- NPC ID 15984
+    WarnGuardDied = "Sarturas Königswache: %d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
     WarnGuardDied = "Verkünde verbleibende Sarturas Königswache"
@@ -426,18 +426,18 @@ L:SetGeneralLocalization{
 	name = "Nefarian"
 }
 L:SetWarningLocalization{
-	WarnAddsLeft = "%d ausstehende Tötungen",
-	WarnClassCall = "%s Ruf",
-	specwarnClassCall = "Klassenruf auf Dir!"
+	WarnAddsLeft 		= "%d ausstehende Tötungen",
+	WarnClassCall 		= "%s Ruf",
+	specwarnClassCall 	= "Klassenruf auf Dir!"
 }
 L:SetTimerLocalization{
-	TimerClassCall = "%s Ruf endet"
+	TimerClassCall 	= "%s Ruf endet"
 }
 L:SetOptionLocalization{
-	TimerClassCall = "Dauer der Klassenrufe anzeigen",
-	WarnAddsLeft = "Kündige verbleibend Tötungen an bis 2 Phase ausgelöst ist.",
-	WarnClassCall = "Verkünde Klassenrufe",
-	specwarnClassCall = "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
+	TimerClassCall 		= "Dauer der Klassenrufe anzeigen",
+	WarnAddsLeft 		= "Kündige verbleibend Tötungen an bis 2 Phase ausgelöst ist.",
+	WarnClassCall 		= "Verkünde Klassenrufe",
+	specwarnClassCall 	= "Zeige besondere Warnung wenn Du von einem Klassenruf betroffen bist"
 }
 L:SetMiscLocalization{
 	YellP1		= "Lasst die Spiele beginnen!",
@@ -949,8 +949,12 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell	= "Stalagg zerquetschen!",
+	Yell1P1	= "Verfüttere euch an Meister!",
+	Yell2P1	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
+	Yell1P2 = "Eure... Knochen... zermalmen...",
+	Yell2P2 = "Euch... zerquetschen!",
+	Yell3P2 = "Töten...",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
@@ -1045,7 +1049,8 @@ L:SetGeneralLocalization({
 L:SetOptionLocalization({
 	WarningMarkSoon				= "Zeige Vorwarnung für Mal",
 	SpecialWarningMarkOnPlayer	= "Spezialwarnung, wenn sich ein Mal mehr als 4-mal auf dir stapelt",
-	timerMark 					= "Zeige Timer für das nächste Mal des Pferdemanns (mit Zähler)"
+	timerMark 					= "Zeige Timer für das nächste Mal des Pferdemanns (mit Zähler)",
+	WarnHorsemanDied			= "Verkünde verbleibende vier Reiter"
 })
 
 L:SetTimerLocalization({
@@ -1054,9 +1059,16 @@ L:SetTimerLocalization({
 
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mal %d in 3 Sekunden",
-	SpecialWarningMarkOnPlayer	= "%s: %s"
+	SpecialWarningMarkOnPlayer	= "%s: %s",
+	WarnHorsemanDied 			= "%s stirbt (%d ausstehende Tötungen)"
 })
 
+L:SetMiscLocalization({
+	Korthazz	= "Thane Korth'azz",
+	Mograine	= "Hochlord Mograine",
+	Blaumeux	= "Lady Blaumeux",
+	Zeliek		= "Sire Zeliek"
+})
 -----------------
 --  Sapphiron  --
 -----------------
@@ -1106,7 +1118,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell = "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
 })
 
 L:SetWarningLocalization({
