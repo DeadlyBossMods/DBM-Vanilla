@@ -176,14 +176,9 @@ end
 
 function mod:UNIT_HEALTH(uId)
 	local cid = self:GetUnitCreatureId(uId)
-	if not cid or not self:GetStage(1) then return end
+	if not cid or UnitHealthMax(uId) == 0 or not self:GetStage(1) then return end
 
-	local hp = UnitHealth(uId)
-	local maxHp = UnitHealthMax(uId)
-	if maxHp == 0 then return end
-
-	local isDead = hp == 0
-
+	local isDead = UnitIsDead(uId)
 	if cid == 15929 then
 		if isDead ~= self.vb.StalaggDied then
 			self.vb.StalaggDied = isDead
