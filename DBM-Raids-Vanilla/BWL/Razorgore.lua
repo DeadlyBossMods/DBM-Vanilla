@@ -29,7 +29,7 @@ mod:SetHotfixNoticeRev(20200904000000)--2020, September, 4th
 mod:SetMinSyncRevision(20200904000000)--2020, September, 4th
 mod:SetZone(469)
 
-mod:RegisterCombat("yell", L.Pull)
+mod:RegisterCombat("combat_yell", L.Pull)
 mod:SetWipeTime(180)--guesswork
 
 mod:RegisterEventsInCombat(
@@ -37,7 +37,6 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 23040 19873",
 	"SPELL_AURA_APPLIED 23023",
 	"CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED"
 )
 
@@ -72,6 +71,7 @@ local function isBlackEssenceEnabled()
 end
 
 function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
 	timerAddsSpawn:Start()
 	self.vb.eggsLeft = 30
 	if not self.vb.firstEngageTime then
@@ -120,12 +120,6 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(23023) and args:IsDestTypePlayer() then
 		warnConflagration:CombinedShow(0.3, args.destName)
-	end
-end
-
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Pull or msg:find(L.Pull) then
-		self:SendSync("Phase", 1)
 	end
 end
 
