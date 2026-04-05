@@ -20,7 +20,7 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
-	"CHAT_MSG_MONSTER_EMOTE",
+	--"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_AURA player"
 )
 
@@ -40,24 +40,35 @@ local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerIntermission		= mod:NewIntermissionTimer(16, nil, CL.INTERMISSION, true, nil, nil, "136106")
+local timerIntermission		= mod:NewIntermissionTimer("v4.8-4.9", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
 mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
 
 local currentCharge
-local down = 0
+--local down = 0
 local lastShift = 0
 
 function mod:OnCombatStart()
 	self:SendSync("Phase", 1)
 	currentCharge = nil
-	down = 0
+	--down = 0
 	self:ScheduleMethod(40.6, "TankThrow")
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
 	self:RegisterOnUpdateHandler(function()
+	if not IsEncounterInProgress() and self:GetStage(1) then
+		self:UnscheduleMethod("TankThrow")
+		self:SetStage(1.5)
+		warnPhase2Soon:Show()
+		warnThrowSoon:Cancel()
+		timerThrow:Stop()
+		timerIntermission:Start()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end
+	end
 	if IsEncounterInProgress() and self:GetStage(1.5) then
         self:SendSync("Phase", 2)
         self:UnregisterOnUpdateHandler()
@@ -142,24 +153,22 @@ function mod:UNIT_AURA()
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.Died or msg:find(L.Died) then
-		down = down + 1
-	elseif msg == L.Revive or msg:find(L.Revive) then
-		down = down - 1
-	end
-	if down >= 2 then
-		self:UnscheduleMethod("TankThrow")
-		self:SetStage(1.5)
-		warnPhase2Soon:Show()
-		warnThrowSoon:Cancel()
-		timerThrow:Stop()
-		timerIntermission:Start()
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
-		end
-	end
-end
+--function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	--if msg == L.Emote or msg:find(L.Emote) then
+		--down = down + 1
+	--end
+	--if down >= 2 then
+		--self:UnscheduleMethod("TankThrow")
+		--self:SetStage(1.5)
+		--warnPhase2Soon:Show()
+		--warnThrowSoon:Cancel()
+		--timerThrow:Stop()
+		--timerIntermission:Start()
+		--if self.Options.InfoFrame then
+			--DBM.InfoFrame:Hide()
+		--end
+	--end
+--end
 
 function mod:OnSync(msg, arg)
 	if msg == "Phase" then
