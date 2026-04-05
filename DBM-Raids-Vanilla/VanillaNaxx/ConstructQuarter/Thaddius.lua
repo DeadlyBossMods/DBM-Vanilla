@@ -149,16 +149,15 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	elseif msg == L.Revive or msg:find(L.Revive) then
 		down = down - 1
 	end
-		if down >= 2 then
-			self:UnscheduleMethod("TankThrow")
-			self:SetStage(1.5)
-			warnPhase2Soon:Show()
-			warnThrowSoon:Cancel()
-			timerThrow:Stop()
-			timerIntermission:Start()
-			if self.Options.InfoFrame then
-				DBM.InfoFrame:Hide()
-			end
+	if down >= 2 then
+		self:UnscheduleMethod("TankThrow")
+		self:SetStage(1.5)
+		warnPhase2Soon:Show()
+		warnThrowSoon:Cancel()
+		timerThrow:Stop()
+		timerIntermission:Start()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
 		end
 	end
 end
