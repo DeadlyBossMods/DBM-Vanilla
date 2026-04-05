@@ -580,10 +580,12 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "¡Llamada de tu clase!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "Llamada termina"
+	TimerClassCall		= "Llamada termina",
+	TimerPhase2			= "Fase 2",
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Mostrar temporizador para la duración de la llamada de clase",
+	TimerPhase2			= "Mostrar temporizador para fase 2",
 	WarnAddsLeft		= "Mostrar anuncio para las muertes restantes hasta fase 2",
 	WarnClassCall		= "Mostrar anuncio para las llamadas de clase",
 	specwarnClassCall	= "Mostrar anuncio especial cuando estás afectado por la llamada de clase"
@@ -1000,6 +1002,7 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
+	TimerPhase2				= "Mostrar temporizador para fase 2",
 	WarningChargeChanged	= "Mostrar anuncio especial cuando tu polaridad cambie",
 	WarningChargeNotChanged	= "Mostrar anuncio especial cuando tu polaridad no cambie",
 	AirowsEnabled			= "Mostrar flechas durante $spell:28089",
@@ -1011,6 +1014,10 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polaridad cambiada a %s",
 	WarningChargeNotChanged	= "Polaridad no ha cambiado"
+})
+
+L:SetTimerLocalization({
+	TimerPhase2	= "Fase 2"
 })
 
 --------------------------

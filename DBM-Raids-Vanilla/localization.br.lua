@@ -578,11 +578,13 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "Chamada da sua classe!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "Chamada acaba"
+	TimerClassCall		= "Chamada acaba",
+	TimerPhase2			= "Fase 2"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Exibir cronômetro para a duração da chamada de classe",
-	WarnAddsLeft		= "Exibir anúncio para as mortes restantes até a fase 2",
+	TimerPhase2			= "Exibir cronômetro para a fase 2",
+	WarnAddsLeft		= "Exibir anúncio para as mortes restantes até a Fase 2",
 	WarnClassCall		= "Exibir anúncio para as chamadas de classe",
 	specwarnClassCall	= "Exibir anúncio especial quando você for afetado pela chamada de classe"
 }
@@ -995,6 +997,7 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
+	TimerPhase2				= "Exibir cronômetro para a fase 2",
 	WarningChargeChanged	= "Exibir anúncio especial quando sua polaridade mudar",
 	WarningChargeNotChanged	= "Exibir anúncio especial quando sua polaridade não mudar",
 	AirowsEnabled			= "Exibir setas durante $spell:28089",
@@ -1009,6 +1012,9 @@ L:SetWarningLocalization({
 	WarningChargeNotChanged	= "Polaridade não se alterou"
 })
 
+L:SetTimerLocalization({
+	TimerPhase2	= "Fase 2"
+})
 --------------------------
 -- Instructor Razuvious --
 --------------------------

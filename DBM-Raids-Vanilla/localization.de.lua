@@ -960,6 +960,7 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
+	TimerPhase2				= "Zeige Zeit bis Phase 2",
 	WarningChargeChanged	= "Spezialwarnung, wenn deine Polarität gewechselt hat",
 	WarningChargeNotChanged	= "Spezialwarnung, wenn deine Polarität nicht gewechselt hat",
 	AirowsEnabled			= "Zeige Pfeile (normale \"2-Camps\"-Strategie)",
@@ -970,6 +971,10 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polarität geändert zu %s",
 	WarningChargeNotChanged	= "Polarität hat sich nicht geändert"
+})
+
+L:SetTimerLocalization({
+	TimerPhase2	= "Phase 2"
 })
 
 ----------------------------

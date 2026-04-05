@@ -472,10 +472,12 @@ L:SetWarningLocalization{
 	specwarnClassCall	= "Классовый зов на тебе!"
 }
 L:SetTimerLocalization{
-	TimerClassCall		= "%s зов заканчивается"
+	TimerClassCall		= "%s зов заканчивается",
+	TimerPhase2			= "2-я фаза"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "Показывать таймер классовых вызовов",
+	TimerPhase2			= "Отсчет времени до 2-й фазы",
 	WarnAddsLeft		= "Объявлять количество убийств, оставшихся до начала 2-й фазы",
 	WarnClassCall		= "Объявлять классовый вызов",
 	specwarnClassCall	= "Показывать спецпредупреждение, когда Вы подвержены классовому зову"
@@ -1024,6 +1026,7 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
+	TimerPhase2				= "Отсчет времени до 2-й фазы",
 	WarningChargeChanged	= "Показывать спецпредупреждение, когда Ваша полярность изменена",
 	WarningChargeNotChanged	= "Показывать спецпредупреждение, когда Ваша полярность не изменена",
 	AirowsEnabled			= "Показывать стрелки во время $spell:28089",
@@ -1036,6 +1039,10 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Полярность изменена на %s",
 	WarningChargeNotChanged	= "Полярность не изменена"
+})
+
+L:SetTimerLocalization({
+	TimerPhase2	= "2-я фаза"
 })
 
 ----------------------------
