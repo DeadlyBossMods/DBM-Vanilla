@@ -421,11 +421,9 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerClassCall		= "%s點名結束",
-	TimerPhase2			= "第二階段"
 }
 L:SetOptionLocalization{
 	TimerClassCall		= "為職業點名持續時間顯示計時器",
-	TimerPhase2			= "為第二階段顯示計時器",
 	WarnAddsLeft		= "提示離第二階段開始剩多少擊殺",
 	WarnClassCall		= "提示職業點名",
 	specwarnClassCall	= "特別警告：當你中了職業點名時"
@@ -924,7 +922,6 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2				= "為第二階段顯示計時器",
 	WarningChargeChanged	= "當你的極性改變時顯示特別警告",
 	WarningChargeNotChanged	= "當你的極性沒有改變時顯示特別警告",
 	AirowsEnabled			= "顯示箭頭 (正常 \"二邊\" 站位打法)",
@@ -937,9 +934,6 @@ L:SetWarningLocalization({
 	WarningChargeNotChanged	= "極性沒有改變"
 })
 
-L:SetTimerLocalization({
-	TimerPhase2	= "第二階段"
-})
 ----------------------------
 --  Instructor Razuvious  --
 ----------------------------

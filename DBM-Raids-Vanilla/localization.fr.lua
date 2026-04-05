@@ -584,12 +584,10 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerClassCall		= "L'appel termine",
-	TimerPhase2				= "Afficher un chronomètre pour la phase 2",
 }
 
 L:SetOptionLocalization{
 	TimerClassCall		= "Afficher un chronomètre pour la durée de l'appel de classe",
-	TimerPhase2			= "Afficher un chronomètre pour la phase 2",
 	WarnAddsLeft		= "Afficher une annonce pour les éliminations restantes jusqu'au déclenchement de la phase 2",
 	WarnClassCall		= "Afficher une annonce pour les appels de classe",
 	specwarnClassCall	= "Afficher une annonce spéciale lorsque vous êtes affecté par un appel de classe"
@@ -1001,7 +999,6 @@ L:SetMiscLocalization({
 })
 
 L:SetOptionLocalization({
-	TimerPhase2				= "Afficher un chronomètre pour la phase 2",
 	WarningChargeChanged	= "Afficher une annonce spéciale quand votre polarité a changé",
 	WarningChargeNotChanged	= "Afficher une annonce spéciale quand votre polarité n'a pas changé",
 	AirowsEnabled			= "Afficher les flèches pendant le $spell:28089",
@@ -1014,10 +1011,6 @@ L:SetOptionLocalization({
 L:SetWarningLocalization({
 	WarningChargeChanged	= "Polarité changée : %s",
 	WarningChargeNotChanged	= "Même polarité"
-})
-
-L:SetTimerLocalization({
-	TimerPhase2				= "Phase 2",
 })
 
 -----------------
