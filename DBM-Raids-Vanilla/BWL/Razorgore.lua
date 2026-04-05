@@ -56,7 +56,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnDrakeSpawn = mod:NewAnnounce(CL.BIG_ADD, 3)
 end
 
-mod:AddSpeedClearOption("BWL", true)
+mod:AddSpeedClearOption(GetRealZoneText(469), true)
 
 mod.vb.eggsLeft = 30
 mod.vb.firstEngageTime = nil

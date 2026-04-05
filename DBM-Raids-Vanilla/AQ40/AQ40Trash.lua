@@ -68,7 +68,7 @@ local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 local yellPlague                    = mod:NewYell(26556)
 local yellBurst						= mod:NewIconTargetYell(1215202)
 
-mod:AddSpeedClearOption("AQ40", true)
+mod:AddSpeedClearOption(GetRealZoneText(531), true)
 mod:AddInfoFrameOption(nil, true)
 
 --Speed Clear variables
