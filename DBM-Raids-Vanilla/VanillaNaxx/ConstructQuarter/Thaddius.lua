@@ -20,9 +20,8 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
-	--"CHAT_MSG_MONSTER_EMOTE",
-	"UNIT_AURA player",
-	"UNIT_HEALTH"
+	"CHAT_MSG_MONSTER_EMOTE",
+	"UNIT_AURA player"
 )
 
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
