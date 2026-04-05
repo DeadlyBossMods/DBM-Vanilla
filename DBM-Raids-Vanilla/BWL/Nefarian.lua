@@ -184,42 +184,43 @@ end
 do
 	local playerClass = UnitClass("player")
 	local classIcons = {
-			["DEATHKNIGHT"] = "135771",
-			["DRUID"]       = "625999",
-			["HUNTER"]      = "626000",
-			["MAGE"]        = "626001",
-			["MONK"]        = "626002",
-			["PALADIN"]     = "626003",
-			["PRIEST"]      = "626004",
-			["ROGUE"]       = "626005",
-			["SHAMAN"]      = "626006",
-			["WARLOCK"]     = "626007",
-			["WARRIOR"]     = "626008",
-			["DEMONHUNTER"] = "1260827",
-		}
+		["DEATHKNIGHT"] = "135771",
+		["DRUID"]       = "625999",
+		["HUNTER"]      = "626000",
+		["MAGE"]        = "626001",
+		["MONK"]        = "626002",
+		["PALADIN"]     = "626003",
+		["PRIEST"]      = "626004",
+		["ROGUE"]       = "626005",
+		["SHAMAN"]      = "626006",
+		["WARLOCK"]     = "626007",
+		["WARRIOR"]     = "626008",
+		["DEMONHUNTER"] = "1260827",
+	}
+
 	function mod:OnSync(msg, arg)
-	if msg == "Phase" then
-		local phase = tonumber(arg)
-		if not phase then return end
-		if self:GetStage(phase, 3) then
-			self:SetStage(phase)
-		if phase % 1 == 0 then
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
-		end
-			if phase == 1.5 then
-				warnPhase2Soon:Show()
-				timerIntermission:Start() 
-			elseif phase == 2 then
-				warnPhase:Play("ptwo")
-				timerIntermission:Stop()
-				timerFearCD:Start()
-				timerShadowFlameCD:Start()
-			elseif phase == 3 then
-				warnPhase:Play("pthree")
+		if msg == "Phase" then
+			local phase = tonumber(arg)
+			if not phase then return end
+			if self:GetStage(phase, 3) then
+				self:SetStage(phase)
+				if phase % 1 == 0 then
+					warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+				end
+
+				if phase == 1.5 then
+					warnPhase2Soon:Show()
+					timerIntermission:Start()
+				elseif phase == 2 then
+					warnPhase:Play("ptwo")
+					timerIntermission:Stop()
+					timerFearCD:Start()
+					timerShadowFlameCD:Start()
+				elseif phase == 3 then
+					warnPhase:Play("pthree")
+				end
 			end
 		end
-	end
-end
 
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" then
@@ -237,7 +238,7 @@ end
 				specwarnClassCall:Play("targetyou")
 			else
 				warnClassCall:UpdateIcon(classIcons[arg])
-				warnClassCall:Show(classNameColored) -- Only color the warnClassCall message
+				warnClassCall:Show(classNameColored)
 			end
 			timerClassCall:Start(30, className)
 			timerClassCall:UpdateIcon(classIcons[arg], className)
