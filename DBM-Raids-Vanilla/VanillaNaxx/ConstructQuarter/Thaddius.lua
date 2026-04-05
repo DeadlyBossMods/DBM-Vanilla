@@ -41,39 +41,25 @@ local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerIntermission		= mod:NewIntermissionTimer("v4.8-4.9", nil, CL.INTERMISSION, true, nil, nil, "136106")
+local timerIntermission		= mod:NewIntermissionTimer(16, nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
 mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
 
 local currentCharge
---local down = 0
+local down = 0
 local lastShift = 0
-mod.vb.StalaggDied = false
-mod.vb.FeugenDied = false
 
 function mod:OnCombatStart()
 	self:SendSync("Phase", 1)
-	self.vb.StalaggDied = false
-	self.vb.FeugenDied = false
 	currentCharge = nil
-	--down = 0
+	down = 0
 	self:ScheduleMethod(40.6, "TankThrow")
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
 	self:RegisterOnUpdateHandler(function()
-	if not IsEncounterInProgress() and self:GetStage(1) then
-		self:UnscheduleMethod("TankThrow")
-		self:SetStage(1.5)
-		warnPhase2Soon:Show()
-		warnThrowSoon:Cancel()
-		timerThrow:Stop()
-		timerIntermission:Start()
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
-		end
-	elseif IsEncounterInProgress() and self:GetStage(1.5) then
+	if IsEncounterInProgress() and self:GetStage(1.5) then
         self:SendSync("Phase", 2)
         self:UnregisterOnUpdateHandler()
 	end
@@ -157,47 +143,22 @@ function mod:UNIT_AURA()
 	end
 end
 
---function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	--if msg == L.Emote or msg:find(L.Emote) then
-		--down = down + 1
-		--if down >= 2 then
-			--self:UnscheduleMethod("TankThrow")
-			--self:SetStage(1.5)
-			--warnPhase2Soon:Show()
-			--warnThrowSoon:Cancel()
-			--timerThrow:Stop()
-			--timerIntermission:Start()
-			--if self.Options.InfoFrame then
-				--DBM.InfoFrame:Hide()
-			--end
-		--end
-	--end
---end
-
-function mod:UNIT_HEALTH(uId)
-	local cid = self:GetUnitCreatureId(uId)
-	if not cid or UnitHealthMax(uId) == 0 or not self:GetStage(1) then return end
-
-	local isDead = UnitIsDead(uId)
-	if cid == 15929 then
-		if isDead ~= self.vb.StalaggDied then
-			self.vb.StalaggDied = isDead
-		end
-	elseif cid == 15930 then
-		if isDead ~= self.vb.FeugenDied then
-			self.vb.FeugenDied = isDead
-		end
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	if msg == L.Died or msg:find(L.Died) then
+		down = down + 1
+	elseif msg == L.Revive or msg:find(L.Revive) then
+		down = down - 1
 	end
-
-	if self.vb.StalaggDied and self.vb.FeugenDied then
-		self:SetStage(1.5)
-		self:UnscheduleMethod("TankThrow")
-		warnPhase2Soon:Show()
-		warnThrowSoon:Cancel()
-		timerThrow:Stop()
-		timerIntermission:Start(16.1)
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
+		if down >= 2 then
+			self:UnscheduleMethod("TankThrow")
+			self:SetStage(1.5)
+			warnPhase2Soon:Show()
+			warnThrowSoon:Cancel()
+			timerThrow:Stop()
+			timerIntermission:Start()
+			if self.Options.InfoFrame then
+				DBM.InfoFrame:Hide()
+			end
 		end
 	end
 end
