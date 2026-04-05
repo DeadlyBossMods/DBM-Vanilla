@@ -786,7 +786,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Breath = "%s respira fundo...",
-	YellPull = "Que sorte. Geralmente costumo sair de minha caverna para poder me alimentar.",
+	YellP1 = "Que sorte. Geralmente costumo sair de minha caverna para poder me alimentar.",
 	YellP2 = "Este esforço inútil me aborrece. Vou atear fogo em todos vocês do alto!",
 	YellP3 = "Parece que vocês vão precisar de outra lição, mortais!",
 	SoDWarning = "Bem-vindo a %s. O DBM tocará alguns sons divertidos de uma raide clássica lendária durante a luta. Você pode desativar isso na interface do DBM: digite /dbm e navegue até o mod Onyxia em Raides -> Clássico."
@@ -948,9 +948,6 @@ L:SetGeneralLocalization({
 	name = "Retalhoso"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 			= "Retalhoso quer brincar!",
 	Pull2			= "Retalhoso virou avatar de guerra do Kel'Thuzad!"
@@ -987,9 +984,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Vou te dar de comer pro mestre!",
 	Yell2P1 = "Stalagg esmaga você!",
 	Emote	= "%s se sobrecarrega!",
-	Yell1P2 = "Comer... seus... osso...",
-	--Yell2P2 = "Break... you!!",
-	Yell3P2 = "Matar... Vocês...!",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1044,7 +1038,7 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerWave			= "Exibir cronômetro para a próxima onda de lacaios",
-	TimerPhase2			= "Exibir cronômetro para mudar para a Fase 2",
+	TimerPhase2			= "Exibir cronômetro para a fase 2",
 	WarningWaveSoon		= "Exibir anúncio antecipado para a próxima onda de lacaios",
 	WarningWaveSpawned	= "Exibir anúncio quando uma onda de lacaios começar",
 	WarningRiderDown	= "Exibir anúncio quando um Cavalgante Implacável morrer",
@@ -1150,17 +1144,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Exibir cronômetro para a fase 2",
-	specwarnP2Soon		= "Exibir anúncio especial 10 segundos antes de mudar para a fase 2",
-	warnAddsSoon		= "Exibir anúncio antecipado para quando os Guardiões da Coroa de Gelo aparecerem"
+	specwarnP2Soon		= "Exibir anúncio especial 10 segundos antes de mudar para a fase 2"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!",
+	YellP1 			= "Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Fase 2 em 10 segundos",
-	warnAddsSoon	= "Guardiões da Coroa de Gelo em breve"
+	specwarnP2Soon	= "Fase 2 em 10 segundos"
 })
 
 L:SetTimerLocalization({

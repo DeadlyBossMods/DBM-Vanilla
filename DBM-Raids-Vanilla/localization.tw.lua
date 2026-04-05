@@ -71,12 +71,12 @@ L:SetOptionLocalization{
 	WarnShatter	= "提示打碎狀態"
 }
 L:SetMiscLocalization{
-	Slow	= "開始變慢了！",
-	Freezing= "開始結冰了！",
-	Frozen	= "被牢牢凍住了！",
-	Phase4 	= "開始爆裂！",
-	Phase5 	= "看來準備粉碎了！",
-	Phase6 	= "Explodes.",
+	Slow		= "開始變慢了！",
+	Freezing	= "開始結冰了！",
+	Frozen		= "被牢牢凍住了！",
+	Phase4 		= "開始爆裂！",
+	Phase5 		= "看來準備粉碎了！",
+	--Phase6 		= "Explodes.",
 
 	FrostHitsPerSecond = "冰霜每秒命中次數",
 	MeleeHitsPerSecond = "近戰每秒命中次數"
@@ -714,7 +714,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Breath 		= "%s深深地吸了一口氣",
-	YellPull 	= "真是幸運。通常我為了覓食就必須離開窩。",
+	YellP1 		= "真是幸運。通常我為了覓食就必須離開窩。",
 	YellP2 		= "這毫無意義的行動讓我很厭煩。我會從上空把你們都燒成灰！",
 	YellP3 		= "看起來需要再給你一次教訓，凡人！"
 }
@@ -875,9 +875,6 @@ L:SetGeneralLocalization({
 	name = "縫補者"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 = "縫補者要跟你玩！",
 	Pull2 = "縫補者是科爾蘇加德的戰神！"
@@ -914,9 +911,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "主人要吃了你！",
 	Yell2P1	= "斯塔拉格要碾碎你！",
 	Emote	= "%s超過負荷！",
-	Yell1P2 = "咬碎……你的……骨頭……",
-	Yell2P2 = "打…碎…你……",
-	Yell3P2 = "殺……",
 	Charge1 = "負極",
 	Charge2 = "正極"
 })
@@ -1012,12 +1006,9 @@ L:SetOptionLocalization({
 	WarningMarkSoon				= "為印記顯示預先警告",
 	SpecialWarningMarkOnPlayer	= "當你印記堆疊多於四層時顯示特別警告",
 	timerMark					= "為下一個印記顯示計時器（含層數）",
-	WarnHorsemanDied			= "提示天啟四騎士剩餘"
+	WarnHorsemanDied			= "提示四騎士剩餘"
 })
 
-L:SetOptionLocalization{
-    WarnBugDied = "提示異種蠍皇族蟲剩餘"
-}
 L:SetTimerLocalization({
 	timerMark	= "印記%d"
 })
@@ -1078,17 +1069,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "為第二階段顯示計時器",
-	specwarnP2Soon		= "為科爾蘇加德攻擊前10秒顯示特別警告",
-	warnAddsSoon		= "為寒冰皇冠守護者顯示預先警告"
+	specwarnP2Soon		= "為科爾蘇加德攻擊前10秒顯示特別警告"
 })
 
 L:SetMiscLocalization({
-	YellP1			= "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！",
+	YellP1			= "僕從們，侍衛們，隸屬於黑暗與寒冷的戰士們！聽從科爾蘇加德的召喚！"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "10秒後科爾蘇加德開始攻擊",
-	warnAddsSoon	= "寒冰皇冠守護者即將出現"
+	specwarnP2Soon	= "10秒後科爾蘇加德開始攻擊"
 })
 
 L:SetTimerLocalization({

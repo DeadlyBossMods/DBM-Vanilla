@@ -139,7 +139,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "¡Devoran a %s! (%d |4restante:restantes;)"
+    WarnBugDied = "%s muere (%d |4restante:restantes;)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Mostrar anuncio para insectos restantes"
@@ -791,7 +791,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Breath = "%s toma aliento...",
-	YellPull = "Qué casualidad. Generalmente, debo salir de mi guarida para poder comer.",
+	YellP1 = "Qué casualidad. Generalmente, debo salir de mi guarida para poder comer.",
 	YellP2 = "Este ejercicio sin sentido me aburre. ¡Los incineraré a todos desde arriba!",
 	YellP3 = "¡Parece ser que van a necesitar otra lección, mortales!",
 	SoDWarning = "Bienvenido a %s. DBM reproducirá algunos sonidos divertidos de una banda clásica legendaria durante la pelea. Puedes desactivar esto en la interfaz de usuario de DBM: escribe /dbm y navega hasta el módulo de Onyxia en Bandas -> Clásico."
@@ -953,9 +953,6 @@ L:SetGeneralLocalization({
 	name = "Remendejo"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 = "¡Remendejo quiere jugar!",
 	Pull2 = "¡Remendejo es la encarnación de guerra de Kel'Thuzad!"
@@ -992,9 +989,6 @@ L:SetMiscLocalization({
 	Yell1P1 = "¡Comida para el amo!",
 	Yell2P1	= "¡Stalagg aplasta!",
 	Emote	= "¡%s se sobrecarga!",
-	Yell1P2 = "Comer... sus... huesos...",
-	Yell2P2 = "¡¡Yo Destrozarlos!!",
-	Yell3P2 = "Matar...",
 	Charge1 = "negativo",
 	Charge2 = "positivo"
 })
@@ -1154,17 +1148,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Mostrar temporizador para fase 2",
-	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2",
-	warnAddsSoon		= "Mostrar anuncio anticipado para cuando aparezcan los Guardianes de Corona de Hielo"
+	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!",
+	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Fase 2 en 10 segundos",
-	warnAddsSoon	= "Guardianes de Corona de Hielo en breve"
+	specwarnP2Soon	= "Fase 2 en 10 segundos"
 })
 
 L:SetTimerLocalization({

@@ -24,7 +24,7 @@ L:SetMiscLocalization{
 	Kri = "克里勋爵"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s被吞噬了！（剩餘%d隻）"
+    WarnBugDied = "%s死了（剩餘%d隻）"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "提示安其拉三宝虫剩余"
@@ -713,7 +713,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Breath 			= "%s深深地吸了一口气",
-	YellPull 		= "真是走运。通常我必须离开窝才能找到食物。",
+	YellP1 			= "真是走运。通常我必须离开窝才能找到食物。",
 	YellP2 			= "这毫无意义的行动让我很厌烦。我会从上空把你们都烧成灰！",
 	YellP3 			= "看起来需要再给你一次教训，凡人！"
 }
@@ -874,9 +874,6 @@ L:SetGeneralLocalization({
 	name 				= "帕奇维克"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1 				= "帕奇维克要跟你玩！",
 	Pull2 				= "帕奇维克是克尔苏加德的战神！"
@@ -913,9 +910,6 @@ L:SetMiscLocalization({
 	Yell1P1				= "主人要吃了你！",
 	Yell2P1				= "斯塔拉格要碾碎你！",
 	Emote				= "%s超载了！",
-	Yell1P2 			= "咬碎……你的……骨头……",
-	Yell2P2 			= "打……烂……你！",
-	Yell3P2 			= "杀……",
 	Charge1 			= "负极",
 	Charge2 			= "正极"
 })
@@ -1076,17 +1070,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "为第二阶段显示计时条",
-	specwarnP2Soon		= "为克尔苏加德攻击前10秒显示特别警报",
-	warnAddsSoon		= "为寒冰皇冠卫士显示提前警报"
+	specwarnP2Soon		= "为克尔苏加德攻击前10秒显示特别警报"
 })
 
 L:SetMiscLocalization({
-	YellP1 				= "仆从们，侍卫们，隶属于黑暗与寒冷的战士们！听从克尔苏加德的召唤！",
+	YellP1 				= "仆从们，侍卫们，隶属于黑暗与寒冷的战士们！听从克尔苏加德的召唤！"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon			= "10秒后克尔苏加德开始攻击",
-	warnAddsSoon			= "寒冰皇冠卫士即将出现"
+	specwarnP2Soon			= "10秒后克尔苏加德开始攻击"
 })
 
 L:SetTimerLocalization({

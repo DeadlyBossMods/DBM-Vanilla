@@ -23,7 +23,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s is devoured! (%d remaining)"
+    WarnBugDied = "%s died (%d remaining)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -808,7 +808,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Breath = "%s takes in a deep breath...",
-	YellPull = "How fortuitous. Usually, I must leave my lair in order to feed.",
+	YellP1 = "How fortuitous. Usually, I must leave my lair in order to feed.",
 	YellP2 = "This meaningless exertion bores me. I'll incinerate you all from above!",
 	YellP3 = "It seems you'll need another lesson, mortals!",
 	SoDWarning = "Welcome to %s. DBM will play some fun sounds from a legendary classic raid during the fight. You can disable this in the DBM UI: type /dbm and navigate to the Onyxia mod under Raids -> Classic.",
@@ -970,9 +970,6 @@ L:SetGeneralLocalization({
 	name = "Patchwerk"
 })
 
-L:SetOptionLocalization({
-})
-
 L:SetMiscLocalization({
 	Pull1			= "Patchwerk want to play!",
 	Pull2			= "Kel'thuzad make Patchwerk his avatar of war!"
@@ -1009,9 +1006,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Feed you to master!",
 	Yell2P1	= "Stalagg crush you!",
 	Emote	= "%s overloads!",
-	Yell1P2 = "Eat... your... bones...",
-	Yell2P2 = "Break... you!!",
-	Yell3P2 = "Kill...",
 	Charge1 = "negative",
 	Charge2 = "positive"
 })
@@ -1119,7 +1113,7 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
 	SpecialWarningMarkOnPlayer	= "%s: %s",
-	WarnHorsemanDied 			= "%s dies (%d remaining)"
+	WarnHorsemanDied 			= "%s died (%d remaining)"
 })
 
 L:SetMiscLocalization({
@@ -1173,17 +1167,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Show timer for Phase 2",
-	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages",
-	warnAddsSoon		= "Show pre-warning for Guardians of Icecrown"
+	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
+	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds",
-	warnAddsSoon	= "Guardians of Icecrown incoming soon"
+	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds"
 })
 
 L:SetTimerLocalization({

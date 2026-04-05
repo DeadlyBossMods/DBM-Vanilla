@@ -270,7 +270,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Razorgore")
 
 L:SetGeneralLocalization{
-	name = "Feuerkralle der Ungezähmte"
+	name = "Razorgore der Ungezähmte"
 }
 L:SetTimerLocalization{
 	TimerAddsSpawn	= "Adds erscheinen"
@@ -390,7 +390,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnBreath = "%s",
-	WarnVulnerable = "Verwundbarkeit: %s"
+	WarnVulnerable = "%sverwundbarkeit"
 }
 L:SetTimerLocalization{
 	TimerBreathCD = "%s",
@@ -754,7 +754,7 @@ L:SetOptionLocalization{
 
 L:SetMiscLocalization{
 	Breath = "%s atmet tief ein...",
-	YellPull = "Was für ein Zufall. Normalerweise muss ich meinen Unterschlupf verlassen, um etwas zu essen.",
+	YellP1 = "Was für ein Zufall. Normalerweise muss ich meinen Unterschlupf verlassen, um etwas zu essen.",
 	YellP2 = "Diese sinnlose Anstrengung langweilt mich. Ich werde Euch alle von oben verbrennen!",
 	YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!",
 	SoDWarning = "Willkommen in %s. DBM wird während dem Kampf einige witzige Sounds aus einem legendären Classic Raid spielen. Wer keinen Spaß versteht kann das im DBM UI deaktivieren: /dbm eingeben und die Einstellungen für Onyxia unter Raids -> Classic öffnen.",
@@ -952,9 +952,6 @@ L:SetMiscLocalization({
 	Yell1P1	= "Verfüttere euch an Meister!",
 	Yell2P1	= "Stalagg zerquetschen!",
 	Emote	= "%s überlädt!",
-	Yell1P2 = "Eure... Knochen... zermalmen...",
-	Yell2P2 = "Euch... zerquetschen!",
-	Yell3P2 = "Töten...",
 	Charge1 = "negativ",
 	Charge2 = "positiv"
 })
@@ -1113,17 +1110,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Zeige Zeit bis Phase 2",
-	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift",
-	warnAddsSoon		= "Zeige Vorwarnung für Wächter von Eiskrone"
+	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an",
-	warnAddsSoon	= "Wächter von Eiskrone bald"
+	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an"
 })
 
 L:SetTimerLocalization({
