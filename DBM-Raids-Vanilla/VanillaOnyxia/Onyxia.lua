@@ -13,17 +13,16 @@ mod:SetZone(249)
 mod:RegisterCombat("combat_yell", L.YellPull)
 
 --[[
-(ability.id = 17086 or ability.id = 18351 or ability.id = 18500 or ability.id = 18564 or ability.id = 18576 or ability.id = 18584 or ability.id = 18596 or ability.id = 18609 or ability.id = 18617 or ability.id = 18435 or ability.id = 18431) and type = "begincast"
+(ability.id = 17086 or ability.id = 18351 or ability.id = 18500 or ability.id = 18564 or ability.id = 18576 or ability.id = 17086 or ability.id = 18596 or ability.id = 18609 or ability.id = 18617 or ability.id = 18435 or ability.id = 18431) and type = "begincast"
 --]]
 --https://classic.wowhead.com/spell=17646/summon-onyxia-whelp
 --TODO, if blizzard makes classic wrath and this mod is used as foundation, remove the deep breath emote trigger (because pet added in wrath breaks it)
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 17086 18435 18431 18500 18392 17086 18351 18564 18576 18584 18596 18609 18617",
+	"SPELL_CAST_START 17086 18351 18392 18435 18431 18500 18564 18584 18576 18596 18609 18617 21131",
 	"SPELL_CAST_SUCCESS 19633",
-	"SPELL_DAMAGE 15847",-- 68867
+	"SPELL_DAMAGE 15847",
 	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_RAID_BOSS_EMOTE",
 	"UNIT_HEALTH",
 	"LOADING_SCREEN_DISABLED",
 	"CHAT_MSG_MONSTER_YELL"
@@ -34,40 +33,39 @@ mod:RegisterEventsInCombat(
 local warnFireball			= mod:NewTargetNoFilterAnnounce(18392, 2, nil, false)
 local warnWingBuffet		= mod:NewSpellAnnounce(18500, 2, nil, "Tank", 1)
 local warnKnockAway			= mod:NewTargetNoFilterAnnounce(19633, 2, nil, false)
-local warnPhase2			= mod:NewPhaseAnnounce(2)
-local warnPhase3			= mod:NewPhaseAnnounce(3)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 
 local specWarnBellowingRoar		= mod:NewSpecialWarningSpell(18431, nil, nil, nil, 2, 2)
-local specWarnBreath			= mod:NewSpecialWarningSpell(18584, nil, nil, nil, 2, 2)
+local specWarnBreath			= mod:NewSpecialWarningSpell(17086, nil, nil, nil, 2, 2)
 local yellFireball				= mod:NewYell(18392)
 --local specWarnBlastNova		= mod:NewSpecialWarningRun(68958, "Melee", nil, nil, 4, 2)
 --local specWarnAdds			= mod:NewSpecialWarningAdds(68959, "-Healer", nil, nil, 1, 2)
 
-local timerNextFlameBreath	= mod:NewVarTimer("v13.3-20", 18435, nil, "Tank|Healer", 3, 5)--13.3-20 Breath she does on ground in frontal cone.
-local timerBreath			= mod:NewCastTimer(5, 18584, nil, nil, nil, 3)
+local timerFlameBreathCD	= mod:NewVarTimer("v9.7-35.6", 18435, nil, "Tank|Healer", 3, 5)
+local timerBreath			= mod:NewCastTimer(5, 17086, nil, nil, nil, 3)
+local timerRoarCD			= mod:NewVarTimer("v9.7-58.3", 18431, nil, nil, nil, 2)
+local timerWingBuffetCD		= mod:NewVarTimer("v17.8-32.4", 18500, nil, "Tank", nil, 2)
+
 --local timerWhelps			= mod:NewTimer(105, "TimerWhelps", 10697, nil, nil, 1)
 --local timerBigAddCD			= mod:NewAddsTimer(44.9, 68959, nil, "-Healer")
 
 -- First Deep Breath is on a fixed timer in SoD
 local specWarnBreathSoon
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnBreathSoon = mod:NewSpecialWarningSoon(18584, nil, nil, nil, 2, 2)
+	specWarnBreathSoon = mod:NewSpecialWarningSoon(17086, nil, nil, nil, 2, 2)
 end
 
 mod:AddBoolOption("SoundWTF3", true, "sound")
 mod:AddSetIconOption("SetIconOnFireball", 18392, true, 0, {8})
 
-mod.vb.warned_preP2 = false
-mod.vb.warned_preP3 = false
 --mod.vb.whelpsCount = 0
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
-	--self.vb.whelpsCount = 0
-    self.vb.warned_preP2 = false
-	self.vb.warned_preP3 = false
+function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
+	timerFlameBreathCD:Start("v11.3-28.5")
+	timerWingBuffetCD:Start("v11.3-24.5")
 	if self.Options.SoundWTF3 then
 		DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\dps-very-very-slowly.ogg")
 		self:Schedule(20, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\hit-it-like-you-mean-it.ogg")
@@ -100,26 +98,25 @@ function mod:FireballTarget(targetname, uId)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(17086, 18351, 18564, 18576, 18584, 18596, 18609, 18617) and args:IsSrcTypeHostile() and self:AntiSpam(8, 1) then
-		specWarnBreath:Show()
-		specWarnBreath:Play("breathsoon")
+	if args:IsSpell(17086, 18351, 18564, 18576, 18584, 18596, 18609, 18617, 21131) and args:IsSrcTypeHostile() then
 		timerBreath:Start()
-		--timerNextDeepBreath:Start()
-	elseif args:IsSpell(18435) and args:IsSrcTypeHostile() then -- Flame Breath (Ground phases)
-		timerNextFlameBreath:Start()
+		if self:AntiSpam(8, 1) then
+			specWarnBreath:Show()
+			specWarnBreath:Play("breathsoon")
+		end
+	elseif args:IsSpell(18435) and args:IsSrcTypeHostile() then
+		timerFlameBreathCD:Start()
 	elseif args:IsSpell(18431) and args:IsSrcTypeHostile() then
-		self:SendSync("Fear")
+		timerRoarCD:Start()
 		if self:AntiSpam(3, 3) then
 			specWarnBellowingRoar:Show()
 			specWarnBellowingRoar:Play("fearsoon")
 		end
 	elseif args:IsSpell(18500) and args:IsSrcTypeHostile() then
 		warnWingBuffet:Show()
-	elseif args:IsSpell(18392) and args:IsSrcTypeHostile() then
-		self:SendSync("Fireball", args.sourceGUID)
-		if self:AntiSpam(3, 2) then
-			self:BossTargetScanner(args.sourceGUID, "FireballTarget", 0.3, 6)
-		end
+		timerWingBuffetCD:Start()
+	elseif args:IsSpell(18392) and args:IsSrcTypeHostile() and self:AntiSpam(3, 2) then
+		self:BossTargetScanner(args.sourceGUID, "FireballTarget", 0.3, 6)
 	end
 end
 
@@ -155,27 +152,26 @@ end
 -- "<267.59 23:01:09> [CHAT_MSG_MONSTER_EMOTE] %s takes in a deep breath...#Onyxia#####0#0##0#1914#nil#0#false#false#false#false",
 -- +29.12s
 
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg)
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	if msg == L.Breath or msg:find(L.Breath) then
 		self:SendSync("Breath")
 	end
 end
-mod.CHAT_MSG_MONSTER_EMOTE = mod.CHAT_MSG_RAID_BOSS_EMOTE -- todo: check if this is necessary
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellP2 or msg:find(L.YellP2) then
-		self:SendSync("Phase2")
+		self:SendSync("Phase", 2)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
-		self:SendSync("Phase3")
+		self:SendSync("Phase", 3)
 	end
 end
 
 function mod:UNIT_HEALTH(uId)
-	if self.vb.phase == 1 and not self.vb.warned_preP2 and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
-		self.vb.warned_preP2 = true
+	if self:GetStage(1.5, 1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
+		self:SetStage(1.5)
 		warnPhase2Soon:Show()
-	elseif self.vb.phase == 2 and not self.vb.warned_preP3 and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
-		self.vb.warned_preP3 = true
+	elseif self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+		self:SetStage(2.5)
 		warnPhase3Soon:Show()
 		if self.Options.SoundWTF3 then
 			self:Unschedule(DBM.PlaySoundFile, DBM)
@@ -183,9 +179,50 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:OnSync(msg, guid, sender)
-	if not self:IsInCombat() then return end
-	if msg == "Breath" and self:AntiSpam(8, 1) then
+function mod:OnSync(msg, arg)
+	if msg == "Phase" then
+		local phase = tonumber(arg)
+		if not phase then return end
+		if self:GetStage(phase, 3) then
+			self:SetStage(phase)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+			if phase == 2 then
+				warnPhase:Play("ptwo")
+				timerWingBuffetCD:Stop()
+				timerFlameBreathCD:Stop()
+				--self.vb.whelpsCount = 0
+				--timerBigAddCD:Start(65)
+				--timerNextDeepBreath:Start(67)
+				--self:ScheduleMethod(5, "Whelps")
+				if self.Options.SoundWTF3 then
+					self:Unschedule(DBM.PlaySoundFile, DBM)
+					DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\i-dont-see-enough-dots.ogg")
+					self:Schedule(10, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\throw-more-dots.ogg")
+					self:Schedule(18, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\whelps-left-side-even-side-handle-it.ogg")
+				end
+				if DBM:IsSeasonal("SeasonOfDiscovery") then
+					-- Starts casting 29.1 seconds after phase change (small diff likely due to rp walk), 5 sec cast time
+					timerBreath:Start(29.1 + 5)
+					-- This is likely going to be the only Deep Breath that happens and the only one where we have an exact timing, so make sure everyone is as prepared as possible
+					-- with an extra special warning before the cast even starts
+					specWarnBreathSoon:Schedule(25)
+				end
+			elseif phase == 3 then
+				warnPhase:Play("pthree")
+				--self:UnscheduleMethod("Whelps")
+				--timerWhelps:Stop()
+				--timerNextDeepBreath:Stop()
+				--timerBigAddCD:Stop()
+				--warnWhelpsSoon:Cancel()
+				if self.Options.SoundWTF3 then
+					self:Unschedule(DBM.PlaySoundFile, DBM)
+					self:Schedule(15, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\dps-very-very-slowly.ogg")
+					self:Schedule(35, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\hit-it-like-you-mean-it.ogg")
+					self:Schedule(45, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\now-hit-it-very-hard-and-fast.ogg")
+				end
+			end
+		end
+	elseif msg == "Breath" and self:AntiSpam(8, 4) then
 		specWarnBreath:Show()
 		specWarnBreath:Play("breathsoon")
 		if timerBreath:IsStarted() then
@@ -193,47 +230,6 @@ function mod:OnSync(msg, guid, sender)
 		else
 			timerBreath:Start()
 		end
-		--timerNextDeepBreath:Start()
-	elseif msg == "Phase2" then
-		self:SetStage(2)
-		self.vb.whelpsCount = 0
-		warnPhase2:Show()
-		--timerBigAddCD:Start(65)
-		--timerNextDeepBreath:Start(67)
-		timerNextFlameBreath:Cancel()
-		--self:ScheduleMethod(5, "Whelps")
-		if self.Options.SoundWTF3 then
-			self:Unschedule(DBM.PlaySoundFile, DBM)
-			DBM:PlaySoundFile("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\i-dont-see-enough-dots.ogg")
-			self:Schedule(10, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\throw-more-dots.ogg")
-			self:Schedule(18, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\whelps-left-side-even-side-handle-it.ogg")
-		end
-		if DBM:IsSeasonal("SeasonOfDiscovery") then
-			-- Starts casting 29.1 seconds after phase change (small diff likely due to rp walk), 5 sec cast time
-			timerBreath:Start(29.1 + 5)
-			-- This is likely going to be the only Deep Breath that happens and the only one where we have an exact timing, so make sure everyone is as prepared as possible
-			-- with an extra special warning before the cast even starts
-			specWarnBreathSoon:Schedule(25)
-		end
-	elseif msg == "Phase3" then
-		self:SetStage(3)
-		warnPhase3:Show()
-		--self:UnscheduleMethod("Whelps")
-		--timerWhelps:Stop()
-		--timerNextDeepBreath:Stop()
-		--timerBigAddCD:Stop()
-		--warnWhelpsSoon:Cancel()
-		if self.Options.SoundWTF3 then
-			self:Unschedule(DBM.PlaySoundFile, DBM)
-			self:Schedule(15, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\dps-very-very-slowly.ogg")
-			self:Schedule(35, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\hit-it-like-you-mean-it.ogg")
-			self:Schedule(45, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\now-hit-it-very-hard-and-fast.ogg")
-		end
-	elseif msg == "Fireball" and sender and self:AntiSpam(3, 2) then
-		self:BossTargetScanner(guid, "FireballTarget", 0.3, 6)
-	elseif msg == "Fear" and self:AntiSpam(3, 3) then
-		specWarnBellowingRoar:Show()
-		specWarnBellowingRoar:Play("fearsoon")
 	end
 end
 

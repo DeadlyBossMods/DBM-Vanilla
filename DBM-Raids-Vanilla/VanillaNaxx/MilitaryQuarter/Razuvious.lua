@@ -28,9 +28,9 @@ local warnShoutNow		= mod:NewSpellAnnounce(29107, 1, 6673)
 local warnShoutSoon		= mod:NewSoonAnnounce(29107, 3, 6673)
 local warnShieldWall	= mod:NewAnnounce("WarningShieldWallSoon", 3, 29061)
 
-local timerShout		= mod:NewVarTimer("v25.8-26.3", 29107, nil, nil, nil, 2, 6673)
-local timerTaunt		= mod:NewCDTimer(60, 29060, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerShieldWall	= mod:NewBuffFadesTimer(20, 29061, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerShout		= mod:NewCDTimer(25.9, 29107, nil, nil, nil, 2, 6673, DBM_COMMON_L.DEADLY_ICON)
+local timerTaunt		= mod:NewCDTimer(60, 29060, nil, false, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerShieldWall	= mod:NewBuffFadesTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 function mod:OnCombatStart()
 	timerShout:Start()

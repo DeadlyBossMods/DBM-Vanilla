@@ -20,66 +20,73 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:DisableBossDeathKill() -- He actually dies at end of P2 in on SoD Mythic and gets resurrected
 	mod:RegisterCombat("combat")
 else
-	mod:RegisterCombat("combat_yell", L.Yell)
+	mod:RegisterCombat("combat_yell", L.YellP1)
 end
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
 	"SPELL_AURA_REMOVED 28410",
-	"SPELL_CAST_SUCCESS 27810 27819 27808",
-	"UNIT_HEALTH mouseover target",
-	"UNIT_TARGETABLE_CHANGED"
+	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
+	"UNIT_HEALTH mouseover target"
 )
 
--- New spell ID found in logs on SoD
--- 364341 (Survivor of the Damned) cast on kill, ID looks like SoM, seems irrelevant
-
--- On SoD ENCOUNTER_START triggers shortly before the yell and is the better trigger. Phase 1 is shorter on SoD
--- Not sure about Era, still using old logic there until we can confirm that ENCOUTNER_START works the same way.
--- People reported that the phase time changed on Era as well, so the diff is just the trigger
-
+-- SoD
 -- "<127.94 22:09:41> [ENCOUNTER_START] 1114#Kel'Thuzad#186#40",
 -- "<128.16 22:09:41> [CHAT_MSG_MONSTER_YELL] Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!#Kel'Thuzad###Sephyx##0#0##0#5535#nil#0#false#false#false#false",
 -- "<342.09 22:13:15> [CHAT_MSG_MONSTER_YELL] The end is upon you!#Kel'Thuzad###World Trigger##0#0##0#5661#nil#0#false#false#false#false",
 -- "<358.05 22:13:31> [CLEU] SWING_DAMAGE#Creature-0-5252-533-11218-15990-000051CFAB#Kel'Thuzad#Player-5827-0271EB0C#Ironjoke#3824#-1#nil#nil#false#false#nil#nil",
 -- "<358.05 22:13:31> [IsEncounterInProgress()] true",
-local phase1Duration = DBM:IsSeasonal("SeasonOfDiscovery") and 230.1 or 229.9
+
+-- Era (229.18 seconds)
+-- "<194.30 19:50:31> [ENCOUNTER_START] 1114#Kel'Thuzad#9#40",
+-- "<194.48 19:50:32> [CHAT_MSG_MONSTER_YELL] ¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedeced la llamada de Kel'Thuzad!#Kel'Thuzad###Gorbash##0#0##0#604#nil#0#false#false#false#false",
+-- "<408.30 19:54:05> [CHAT_MSG_MONSTER_YELL] ¡Exhalad el último suspiro de vida!#Kel'Thuzad###Activador del mundo##0#0##0#640#nil#0#false#false#false#false",
+-- "<423.48 19:54:21> [IsEncounterInProgress()] true",
+
+-- Era (242.26 seconds)
+-- "<519.20 20:37:32> [ENCOUNTER_START] 1114#Kel'Thuzad#9#40",
+-- "<519.40 20:37:32> [CHAT_MSG_MONSTER_YELL] Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!#Kel'Thuzad###Fervor##0#0##0#2853#nil#0#false#false#false#false","
+-- "<745.76 20:41:19> [CHAT_MSG_MONSTER_YELL] O fim está próximo!#Kel'Thuzad###Portal de Mundo##0#0##0#2898#nil#0#false#false#false#false",
+-- "<761.46 20:41:34> [IsEncounterInProgress()] true",
+
+local phase1DurationSoD = 230.1
+local phase1DurationEra = "v229.2-242.3"
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
-local warnAddsSoon			= mod:NewAnnounce("warnAddsSoon", 1, "134321")
-local warnPhase2			= mod:NewPhaseAnnounce(2, 3, nil, nil, nil, nil, nil, 2)
-local warnPhase3			= mod:NewPhaseAnnounce(3, 3, nil, nil, nil, nil, nil, 2)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
+local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
 local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
 local warnMana				= mod:NewTargetAnnounce(27819, 2)
 local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
 
-local specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
 local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, nil, nil, nil, 1, 2)
 local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2)
 local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
 local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
--- Frost blast is a mess on SoD, consider removing it completely
--- 	"Frost Blast-27808-npc:15990-00002CE928 = pull:265.1, 116.6, 40.1, 31.5, 58.2",
--- 	"Frost Blast-27808-npc:15990-00002D1657 = pull:290.0, 30.3, 52.2, 36.4",
-
---Fissure timer is 13-30 or something pretty wide, so no timer
-local timerManaBomb			= mod:NewCDTimer(20, 27819, nil, nil, nil, 3)--20-50 (still true in vanilla, kind of shitty variation too)
-local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-46", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--33-46
+local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, nil, nil, 2)
+local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, nil, nil, 2)
+local timerManaBombCD		= mod:NewVarTimer("v20.6-41.3", 27819, nil, nil, nil, 3)
+local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerMCCD				= mod:NewCDTimer(90, 28410, nil, nil, nil, 3)--Probably should also be made a var timer with good variance data
-local timerPhase2			= mod:NewTimer(phase1Duration, "TimerPhase2", "136116", nil, nil, 6)
+local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
+local timerPhase2			= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and phase1DurationSoD or phase1DurationEra, "TimerPhase2", "136116", nil, nil, 6)
+
+local specwarnP2Soon
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+specwarnP2Soon		= mod:NewSpecialWarning("specwarnP2Soon")
+end
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
 mod:AddSetIconOption("SetIconOnFrostTomb2", 27808, false, 0, {1, 2, 3, 4, 5, 6, 7, 8})
 
-mod.vb.warnedAdds = false
 mod.vb.MCIcon1 = 1
 mod.vb.MCIcon2 = 5
 local frostBlastTargets = {}
@@ -94,21 +101,37 @@ local function AnnounceBlastTargets(self)
 	timerfrostBlast:Start(3.5)
 end
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
+function mod:OnCombatStart()
+	self:SendSync("Phase", 1)
+	self:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and self:GetStage(1) then
+        self:SendSync("Phase", 2)
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			warnPhase:Cancel()
+			warnPhase:CancelVoice()
+		end
+        self:UnregisterOnUpdateHandler()
+    end
+end, 0.2)
 	table.wipe(frostBlastTargets)
-	self.vb.warnedAdds = false
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
-	specwarnP2Soon:Schedule(phase1Duration - 10 - delay)
-	timerPhase2:Start()
-	warnPhase2:Schedule(phase1Duration - delay)
-	warnPhase2:ScheduleVoice(phase1Duration - delay, "ptwo")
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		specwarnP2Soon:Schedule(phase1DurationSoD - 10)
+		warnPhase:Schedule(phase1DurationSoD)
+		warnPhase:ScheduleVoice(phase1DurationSoD, "ptwo")
+	else
+		warnPhase2Soon:Schedule(220)
+	end
 end
 
+function mod:OnCombatEnd()
+	self:UnregisterOnUpdateHandler()
+end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then
+		timerFissureCD:Start()
 		if args.destName then
 			if args:IsPlayer() then
 				specWarnFissureYou:Show()
@@ -121,9 +144,13 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnFissure:Show(DBM_COMMON_L.UNKNOWN)
 		end
 	elseif args:IsSpell(27819) then
-		timerManaBomb:Start()
+		timerManaBombCD:Start()
 	elseif args:IsSpell(27808) then
 		timerFrostBlastCD:Start()
+	elseif args:IsSpell(28408) then
+		timerMCCD:Start()
+	elseif args:IsSpell(28479) then
+		timerFrostboltCD:Start()
 	end
 end
 
@@ -149,12 +176,9 @@ function mod:SPELL_AURA_APPLIED(args)
 		else
 			warnMana:Show(args.destName)
 		end
-	elseif args:IsSpell(28410) then -- Chains of Kel'Thuzad
-		if self:AntiSpam() then
+	elseif args:IsSpell(28410) and self:AntiSpam(5, 1) then -- Chains of Kel'Thuzad
 			self.vb.MCIcon1 = 1
 			self.vb.MCIcon2 = 5
-			timerMCCD:Start(60)--60 seconds?
-		end
 		if self.Options.SetIconOnMC2 then
 			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
 			if group % 2 == 1 then
@@ -168,8 +192,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnChainsTargets:CombinedShow(1, args.destName)
 	elseif args:IsSpell(1222430) then -- SoD Mythic extra phase
 		self:SetStage(3)
-		warnPhase3:Show()
-		warnPhase3:Play("pthree")
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(3))
+		warnPhase:Play("pthree")
 	end
 end
 
@@ -182,19 +206,34 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not self.vb.warnedAdds and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.48 then
-		self.vb.warnedAdds = true
-		warnAddsSoon:Show()
+	if self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+		self:SetStage(2.5)
+		warnPhase3Soon:Show()
+	elseif self:GetStage(3, 1) and self:GetUnitCreatureId(uId) == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
+		self:SendSync("Phase", 3)
 	end
 end
 
---Classic probably won't have UNIT_TARGETABLE_CHANGED, so backups are in place
-function mod:UNIT_TARGETABLE_CHANGED()
-	if self.vb.phase == 1 then
-		warnPhase2:Cancel()
-		warnPhase2:CancelVoice()
-		self:SetStage(2)
-		warnPhase2:Show()
-		warnPhase2:Play("ptwo")
+function mod:OnSync(msg, arg)
+	if msg == "Phase" then
+		local phase = tonumber(arg)
+		if not phase then return end
+		if self:GetStage(phase, 3) then  -- only if stage changed
+			self:SetStage(phase)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+			if phase == 1 then
+				timerPhase2:Start()
+			elseif phase == 2 then
+				timerPhase2:Stop()
+				warnPhase:Play("ptwo")
+				timerFissureCD:Start("v10.4-38.4")
+				timerFrostboltCD:Start("v15.3-85.9")
+				timerManaBombCD:Start("v20.2-46.5")
+				timerFrostBlastCD:Start("v30.3-92.7")
+				timerMCCD:Start("v21.8-103.4")
+			elseif phase == 3 then
+				warnPhase:Play("pthree")
+			end
+		end
 	end
 end

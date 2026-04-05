@@ -36,24 +36,28 @@ local specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2)
 
 local timerSubmerge		= mod:NewTimer(30, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(30, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerSweepCD		= mod:NewNextTimer(20.5, 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerBlastCD		= mod:NewNextTimer(22.6, 26102, nil, nil, nil, 2)
-local timerNextEye		= mod:NewNextTimer(30, 1215744)
+local timerBlastCD		= mod:NewVarTimer("v22.1-38.9", 26102, nil, nil, nil, 2)
+local timerSweepCD		= mod:NewVarTimer("v20.6-22.6", 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
+
+local timerNextEye
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	timerNextEye = mod:NewNextTimer(30, 1215744)
+end
 
 mod.vb.prewarn_enrage = false
 mod.vb.enraged = false
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.prewarn_enrage = false
 	self.vb.enraged = false
-	timerSweepCD:Start(22-delay)--22-25
-	timerBlastCD:Start(20-delay)--20-26
-	timerSubmerge:Start(184-delay)
+	timerBlastCD:Start("v22.1-28.3")
+	timerSweepCD:Start("v24.1-27.4")
+	timerSubmerge:Start(184)
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
 	if DBM:UnitDebuff("player", 1213261) then
-		self:BlindingAdmiration(delay)
+		self:BlindingAdmiration()
 	end
 end
 

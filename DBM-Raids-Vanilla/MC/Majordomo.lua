@@ -33,14 +33,14 @@ mod:RegisterEventsInCombat(
 )
 
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
-local warnDamageShield		= mod:NewSpellAnnounce(21075, 2)
+local warnDamageShield		= mod:NewSpellAnnounce(21075, 2, nil, "Melee")
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
 
 local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, "-Melee", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerDamageShield    = mod:NewBuffActiveTimer(10, 21075, nil, "Melee", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerShieldCD        = mod:NewTimer(30.7, "timerShieldCD", nil, nil, nil, 6, DBM_COMMON_L.DAMAGE_ICON)
 
 -- New in SoD
@@ -75,7 +75,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		specWarnMagicReflect:Show(BOSS)--Always a threat to casters
 		specWarnMagicReflect:Play("stopattack")
 		timerMagicReflect:Start()
-		timerShieldCD:Start(30)
+		timerShieldCD:Start()
 	elseif args:IsSpell(21075) then
 		if self.Options.SpecWarn21075reflect and (self:IsEvent() or not self:IsTrivial()) then--Not a threat to high level melee
 			specWarnDamageShield:Show(BOSS)
@@ -84,7 +84,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnDamageShield:Show()
 		end
 		timerDamageShield:Start()
-		timerShieldCD:Start(30)
+		timerShieldCD:Start()
 	elseif args:IsSpell(20534) then
 		warnTeleport:Show(args.destName)
 		timerTeleportCD:Start()

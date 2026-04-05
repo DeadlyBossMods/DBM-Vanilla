@@ -9,8 +9,10 @@ elseif isBCC or isClassic then
 else--retail or cataclysm classic and later
 	catID = 3
 end
+-- luacheck: globals DBM
 local mod	= DBM:NewMod("Nefarian-Classic","DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
@@ -44,7 +46,8 @@ mod:RegisterEventsInCombat(
 
 local WarnAddsLeft			= mod:NewAnnounce("WarnAddsLeft", 2, "134154")
 local warnClassCall			= mod:NewAnnounce("WarnClassCall", 3, "136116")
-local warnPhase				= mod:NewPhaseChangeAnnounce()
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFear				= mod:NewCastAnnounce(22686, 2)
@@ -53,21 +56,29 @@ local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1,
 local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
 
-local timerPhase			= mod:NewStageTimer(15)
+local timerIntermission		= mod:NewIntermissionTimer("v15.7-17.3", nil, CL.INTERMISSION, true, nil, nil, "136106")
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
-local timerFear				= mod:NewVarTimer("v22.6-85.6", 22686, nil, nil, nil, 2)
+local timerFearCD			= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
+local timerShadowFlameCD	= mod:NewVarTimer("v8.1-37.2", 22539, nil, false)
 
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("Razorgore")
 
 function mod:OnCombatStart(delay, yellTriggered)
+	self:SendSync("Phase", 1)
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 42
-	self:SetStage(1)
+	self:RegisterOnUpdateHandler(function()
+    if IsEncounterInProgress() and self:GetStage(1.5) then
+        self:SendSync("Phase", 2)
+        self:UnregisterOnUpdateHandler()
+    end
+	end, 0.2)
 end
 
 function mod:OnCombatEnd(wipe)
+	self:UnregisterOnUpdateHandler()
 	if not wipe then
 		local sodTrialMod = DBM:GetModByName("SoDBWLTrials")
 		if sodTrialMod then
@@ -98,9 +109,10 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(22539) then
 		warnShadowFlame:Show()
+		timerShadowFlameCD:Start()
 	elseif args:IsSpell(22686) then
 		warnFear:Show()
-		timerFear:Start()
+		timerFearCD:Start()
 	end
 end
 
@@ -128,13 +140,6 @@ function mod:UNIT_DIED(args)
 				WarnAddsLeft:Show(self.vb.addLeft)
 			end
 		end
-	end
-end
-
-function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self.vb.phase < 2.5 then
-		warnPhase3Soon:Show()
-		self:SetStage(2.5)
 	end
 end
 
@@ -166,9 +171,18 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
-		self:SendSync("Phase", 2)
+		self:SetStage(1.5)
+		warnPhase2Soon:Show()
+		timerIntermission:Start()
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
+	end
+end
+
+function mod:UNIT_HEALTH(uId)
+	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage(2.5, 1) then
+		self:SetStage(2.5)
+		warnPhase3Soon:Show()
 	end
 end
 
@@ -188,20 +202,26 @@ do
 			["WARRIOR"]     = "626008",
 			["DEMONHUNTER"] = "1260827",
 		}
-	function mod:OnSync(msg, arg, sender)
-		if msg == "Phase" and sender then
-			local phase = tonumber(arg) or 0
+	function mod:OnSync(msg, arg)
+	if msg == "Phase" then
+		local phase = tonumber(arg)
+		if not phase then return end
+		if self:GetStage(phase, 3) then  -- only if stage changed
+			self:SetStage(phase)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			if phase == 2 then
-				self:SetStage(2)
-				timerPhase:Start(15)--15 til encounter start fires, not til actual land?
-				timerFear:Start()
+				warnPhase:Play("ptwo")
+				timerIntermission:Stop()
+				timerFearCD:Start()
+				timerShadowFlameCD:Start()
 			elseif phase == 3 then
-				self:SetStage(3)
+				warnPhase:Play("pthree")
 			end
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(arg))
 		end
+	end
+
 		if not self:IsInCombat() then return end
-		if msg == "ClassCall" and sender then
+		if msg == "ClassCall" then
 			local className = LOCALIZED_CLASS_NAMES_MALE[arg]
 			local classColor = RAID_CLASS_COLORS[arg]
 			local classNameColored = className

@@ -36,13 +36,13 @@ mod:RegisterEventsInCombat(
 )
 
 --(ability.id = 23339 or ability.id = 22539) and type = "begincast" or ability.id = 23341 and type = "cast"
-local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
+local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, "Tank")
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 local warnFlameBuffet		= mod:NewStackAnnounce(23341, 3)
 local specWarnWingBuffet	= mod:NewSpecialWarningSpell(23339, "Tank")
 
-local timerWingBuffetCD		= mod:NewVarTimer("v31-40.9", 23339, nil, nil, nil, 2)
-local timerShadowFlameCD	= mod:NewVarTimer("v12.5-28.2", 22539, nil, false)
+local timerWingBuffetCD		= mod:NewVarTimer("v31.6-42.1", 23339, nil, "Tank", nil, 2)
+local timerShadowFlameCD	= mod:NewVarTimer("v13-25.9", 22539, nil, false)
 
 local specWarnStatic, yellStaticHigh
 if DBM:IsSeasonal("SeasonOfDiscovery") then
@@ -51,8 +51,8 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 function mod:OnCombatStart()
-	timerShadowFlameCD:Start("v11.3-26.6")
-	timerWingBuffetCD:Start("v30-38.9")
+	timerShadowFlameCD:Start("v11.3-24.3")
+	timerWingBuffetCD:Start("v30.6-40.4")
 end
 
 function mod:SPELL_CAST_START(args)

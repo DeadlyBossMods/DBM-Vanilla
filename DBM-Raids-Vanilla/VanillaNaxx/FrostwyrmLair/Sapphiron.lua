@@ -46,20 +46,22 @@ local warnBlizzard		= mod:NewSpecialWarningGTFO(28547, nil, nil, nil, 1, 8)
 local warnFrostBreath	= mod:NewSpecialWarning("WarningFrostBreath", nil, nil, nil, 1, 2)
 local yellIceBlock		= mod:NewYell(28522)
 
-local timerDrainLife	= mod:NewCDTimer(22, 28542, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerDrainLife	= mod:NewVarTimer("v21.1-27.5", 28542, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAirPhase		= mod:NewTimer(66, "TimerAir", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)--80?
 local timerLanding		= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 36 or 28.5, "TimerLanding", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerFrostBreath	= mod:NewTimer(7, "TimerFrostBreath", 15876, nil, nil, 2, DBM_COMMON_L.DEADLY_ICON) -- Using the icon for spell 15876 Ice Blast because Frost Breath icon is the default Samwise icon
 
-local timerBomb			= mod:NewNextTimer(30.75, 1219729)
-local specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
-local specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12)
-local yellBomb			= mod:NewYell(1219729)
-local yellBombFades		= mod:NewShortFadesYell(1219729)
+local timerBomb, specWarnBomb, specWarnBombSoak, yellBomb, yellBombFades
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	timerBomb			= mod:NewNextTimer(30.75, 1219729)
+	specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
+	specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12)
+	yellBomb			= mod:NewYell(1219729)
+	yellBombFades		= mod:NewShortFadesYell(1219729)
+mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})
+end
 
 local berserkTimer		= mod:NewBerserkTimer(900)
-
-mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})
 
 local noTargetTime = 0
 mod.vb.isFlying = false
@@ -77,7 +79,9 @@ local function Landing()
 	warnAirPhaseSoon:Schedule(airPhaseTimer - 10)
 	warnLanded:Show()
 	timerAirPhase:Start(airPhaseTimer)
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod:Schedule(airPhaseTimer + 1, timerBomb.Stop, timerBomb)
+	end
 end
 
 function mod:OnCombatStart(delay)
@@ -89,10 +93,10 @@ function mod:OnCombatStart(delay)
 	local initialAirPhaseTimer = isMythic and 39.66 or DBM:IsSeasonal("SeasonOfDiscovery") and 31 or 48.5
 	warnAirPhaseSoon:Schedule(initialAirPhaseTimer - 10 - delay)
 	timerAirPhase:Start(initialAirPhaseTimer - delay)
-	self:Schedule(initialAirPhaseTimer + 1 - delay, timerBomb.Stop, timerBomb)
 	berserkTimer:Start(900-delay)
 	if DBM:IsSeasonal("SeasonOfDiscovery") then -- FIXME: should filter for mythic, but I don't trust the current detection logic
 		timerBomb:Start(30.75 - delay)
+		self:Schedule(initialAirPhaseTimer + 1 - delay, timerBomb.Stop, timerBomb)
 	end
 	self:RegisterOnUpdateHandler(function(self, elapsed)
 		if not self:IsInCombat() then return end
@@ -164,7 +168,9 @@ function mod:SPELL_CAST_START(args)
 		self:Schedule(12.2, Landing, self)
 		warnFrostBreath:Show()
 		warnFrostBreath:Play("findshelter")
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerBomb:Start(14.9) -- TODO: confirm this
+		end
 	end
 end
 

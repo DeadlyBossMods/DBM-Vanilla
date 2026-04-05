@@ -1,5 +1,6 @@
 local mod	= DBM:NewMod("LoathebVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
@@ -47,28 +48,25 @@ local warnSporeNow			= mod:NewCountAnnounce(29234, 2, "134530")
 local warnSporeSoon			= mod:NewSoonAnnounce(29234, 1, "134530")
 local warnDoomNow			= mod:NewCountAnnounce(29204, 3)
 local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3)
-local warnHealSoon, warnHealNow
+-- SoD
+-- TODO: remove alerts from non-SoD clients to fix UI, but I real want to handle that better in Core rather than special-casing it in all the mods
+local warnHealSoon, warnHealNow, timerAura, timerNextAura
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 1225419, nil, nil, nil, 1225419)
 	warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, 2, 8, nil, 1225419, 1225419) -- keep name like a warning, not special warning to use same logic/locales as era above
+	timerAura				= mod:NewBuffActiveTimer(17, 1225419, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+	timerNextAura			= mod:NewVarTimer("v20.1-21.5", 1225419)
 else
-	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184)
+	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184, "Healer")
 	warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
 end
 
-local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, nil, nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)-- initial 11.3 then 12.92-12.99
-local timerDoom				= mod:NewNextTimer(29, 29204, nil, nil, nil, 2)-- initial 130 then 29.1-32.4
-local timerRemoveCurseCD	= mod:NewNextTimer(30.8, 30281, nil, nil, nil, 5)
-
--- SoD
--- TODO: remove alerts from non-SoD clients to fix UI, but I real want to handle that better in Core rather than special-casing it in all the mods
-local timerAura				= mod:NewBuffActiveTimer(17, 1225419, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerNextAura			= mod:NewVarTimer("v20.1-21.5", 1225419)
-
-
+local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, nil, nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)
+local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
+local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, nil, nil, 5)
 
 mod:AddInfoFrameOption(29184, "Tank|Healer")
-mod:AddDropdownOption("CorruptedSorting", {"Alphabetical", "Duration"}, "Alphabetical", "misc", nil, 29184)
+mod:AddDropdownOption(CL.SORTING, {CL.ALPHABETICAL, CL.DURATION}, CL.DURATION, "misc", nil, 29184)
 
 mod.vb.doomCounter	= 0
 mod.vb.sporeTimer	= 12.9
@@ -78,47 +76,65 @@ local hadCorrupted	= {}
 local updateInfoFrame
 do
 	local ipairs, pairs, tostring = ipairs, pairs, tostring
-	local mfloor, mmax, tinsert, tsort, twipe = math.floor, math.max, table.insert, table.sort, table.wipe
-	local lines, sortedLines, corruptKeys, durToName = {}, {}, {}, {}
+	local mfloor, mmax = math.floor, math.max
+	local tinsert, tsort = table.insert, table.sort
+	local twipe = table.wipe or wipe
+
+	local lines, sortedLines, corruptKeys = {}, {}, {}
+
+	local lastUpdate = 0
+
 	local function addLine(key, value)
-		-- sort by insertion order
 		lines[key] = value
 		sortedLines[#sortedLines + 1] = key
 	end
+
 	updateInfoFrame = function()
+		local now = GetTime()
+		if now - lastUpdate < 0.1 then
+			return lines, sortedLines -- throttle
+		end
+		lastUpdate = now
+
 		twipe(lines)
 		twipe(sortedLines)
 		twipe(corruptKeys)
 
-		local refreshTime = GetTime()
-
-		for name, _ in pairs(hadCorrupted) do
+		for name in pairs(hadCorrupted) do
 			tinsert(corruptKeys, name)
 		end
-		if mod.Options.CorruptedSorting == "Duration" then
-			tsort(corruptKeys, function (a, b) return (hadCorrupted[a] or refreshTime) > (hadCorrupted[b] or refreshTime) end)
+
+		if mod.Options.CorruptedSorting == CL.DURATION then
+			tsort(corruptKeys, function(a, b)
+				local durA = mmax((hadCorrupted[a] or 0) - now, 0)
+				local durB = mmax((hadCorrupted[b] or 0) - now, 0)
+				if durA == durB then
+					return a < b
+				end
+				return durA > durB
+			end)
 		else
 			tsort(corruptKeys)
 		end
 
 		for _, name in ipairs(corruptKeys) do
-			addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - refreshTime, 0))))
+			addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - now, 0))))
 		end
 
 		return lines, sortedLines
 	end
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.doomCounter = 0
 	self.vb.sporeCounter = 0
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerNextAura:Start(10) -- TODO: exact timer unclear? seen as early as 11, but also not too important
 	end
-	timerRemoveCurseCD:Start(3 - delay)
-	timerSpore:Start(11.3 - delay, 1)
-	warnSporeSoon:Schedule(self.vb.sporeTimer - 5 - delay)
-	timerDoom:Start(121.4 - delay, self.vb.doomCounter + 1)
+	timerRemoveCurseCD:Start("v0.5-8.2")
+	timerSpore:Start(11.3, 1)
+	warnSporeSoon:Schedule(self.vb.sporeTimer - 5)
+	timerDoom:Start(121.3, self.vb.doomCounter + 1)
 
 	local startTime = GetTime()
 	table.wipe(hadCorrupted)

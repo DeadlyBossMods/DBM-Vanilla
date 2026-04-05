@@ -32,8 +32,8 @@ local warnStoneform		= mod:NewSpellAnnounce(25685, 3)
 local timerStoneform	= mod:NewNextTimer(90, 25685, nil, nil, nil, 6)
 local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685, nil, nil, nil, 6)
 
-function mod:OnCombatStart(delay)
-	timerStoneform:Start(90-delay)
+function mod:OnCombatStart()
+	timerStoneform:Start()
 end
 
 function mod:SPELL_AURA_APPLIED(args)

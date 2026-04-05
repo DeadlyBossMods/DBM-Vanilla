@@ -18,6 +18,6 @@ mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2)
 
 local enrageTimer	= mod:NewBerserkTimer(360)
 
-function mod:OnCombatStart(delay)
-	enrageTimer:Start(360 - delay)
+function mod:OnCombatStart()
+	enrageTimer:Start(360)
 end

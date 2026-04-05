@@ -50,7 +50,7 @@ local specWarnAdrenalineOut	= mod:NewSpecialWarningMoveAway(18173, nil, nil, nil
 local yellAdrenaline		= mod:NewYell(18173, nil, true, 2)
 local yellAdrenalineFades	= mod:NewShortFadesYell(18173)
 
-local timerAdrenalineCD		= mod:NewVarTimer("v15.7-17.9", 18173, nil, nil, nil, 3)
+local timerAdrenalineCD		= mod:NewVarTimer("v16.1-17.8", 18173, nil, nil, nil, 3)
 local timerAdrenaline		= mod:NewTargetTimer(20, 18173, nil, nil, nil, 3)
 local timerCombatStart		= mod:NewCombatTimer(43.5)
 

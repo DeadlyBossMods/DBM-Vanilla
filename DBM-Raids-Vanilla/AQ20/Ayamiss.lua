@@ -22,14 +22,14 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 25725",
 	"SPELL_AURA_REMOVED 25725"
 )
-
-local warnPhase2	= mod:NewPhaseAnnounce(2)
+local warnPhase 	= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnParalyze	= mod:NewTargetAnnounce(25725, 3)
 
 local timerParalyze	= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self:SetStage(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
@@ -56,6 +56,6 @@ function mod:UNIT_HEALTH(uId)
 	if self:GetStage(1) and self:GetUnitCreatureId(uId) == 15369 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
 		self:UnregisterShortTermEvents()
 		self:SetStage(2)
-		warnPhase2:Show()
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end

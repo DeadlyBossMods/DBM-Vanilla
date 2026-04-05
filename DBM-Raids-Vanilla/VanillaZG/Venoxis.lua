@@ -34,7 +34,7 @@ local warnSerpent		= mod:NewTargetNoFilterAnnounce(23865, 2)
 local warnCloud			= mod:NewSpellAnnounce(23861)
 local warnRenew			= mod:NewTargetNoFilterAnnounce(23895, 3)
 local warnFire			= mod:NewTargetNoFilterAnnounce(23860, 2, nil, "RemoveMagic|Healer")
-local prewarnPhase2		= mod:NewPrePhaseAnnounce(2, 2)
+local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
 
 local specWarnHolyFire	= mod:NewSpecialWarningInterrupt(23860, "HasInterrupt", nil, nil, 1, 2)
 local specWarnRenew		= mod:NewSpecialWarningDispel(23895, "MagicDispeller", nil, nil, 1, 2)
@@ -95,6 +95,6 @@ end
 function mod:UNIT_HEALTH(uId)
 	if not self.vb.prewarn_Phase2 and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.53 then
 		self.vb.prewarn_Phase2 = true
-		prewarnPhase2:Show()
+		warnPhase2Soon:Show()
 	end
 end

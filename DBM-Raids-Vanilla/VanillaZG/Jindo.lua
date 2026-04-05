@@ -38,6 +38,11 @@ local specWarnDelusion		= mod:NewSpecialWarningTargetChange(24306, nil, nil, nil
 
 local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic|Healer", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 5, nil, DBM_COMMON_L.CURSE_ICON)
+local timerBrainTotemCD		= mod:NewVarTimer("v11.3-26.2", 24262, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+
+function mod:OnCombatStart()
+	timerBrainTotemCD:Start("v11.3-30.9")
+end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(24306) then
@@ -77,5 +82,6 @@ function mod:SPELL_SUMMON(args)
 	elseif args:IsSpell(24262) then
 		specWarnBrainTotem:Show()
 		specWarnBrainTotem:Play("attacktotem")
+		timerBrainTotemCD:Start()
 	end
 end
