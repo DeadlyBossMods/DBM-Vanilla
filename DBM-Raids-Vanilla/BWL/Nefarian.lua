@@ -27,19 +27,16 @@ mod:SetEncounterID(617)
 if not mod:IsClassic() then
 	mod:SetModelID(11380)
 end
-mod:RegisterCombat("combat_yell", L.YellP1)--ENCOUNTER_START appears to fire when he lands, so start of phase 2, ignoring all of phase 1
+mod:RegisterCombat("combat_yell", L.YellP1)
 mod:SetWipeTime(50)--guesswork
 mod:SetHotfixNoticeRev(20200310000000)--2020, Mar, 10th
 mod:SetMinSyncRevision(20200310000000)--2020, Mar, 10th
 mod:SetZone(469)
 
-mod:RegisterEvents(
-	"CHAT_MSG_MONSTER_YELL"
-)
-
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 22539 22686",
 	"SPELL_AURA_APPLIED 22687 22667",
+	"CHAT_MSG_MONSTER_YELL"
 	"UNIT_DIED",
 	"UNIT_HEALTH"
 )
@@ -171,9 +168,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
 	elseif msg == L.YellP2 or msg:find(L.YellP2) then
-		self:SetStage(1.5)
-		warnPhase2Soon:Show()
-		timerIntermission:Start()
+		self:SendSync("Phase", 1.5)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
@@ -206,10 +201,15 @@ do
 	if msg == "Phase" then
 		local phase = tonumber(arg)
 		if not phase then return end
-		if self:GetStage(phase, 3) then  -- only if stage changed
+		if self:GetStage(phase, 3) then
 			self:SetStage(phase)
+		if phase % 1 == 0 then
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
-			if phase == 2 then
+		end
+			if phase == 1.5 then
+				warnPhase2Soon:Show()
+				timerIntermission:Start() 
+			elseif phase == 2 then
 				warnPhase:Play("ptwo")
 				timerIntermission:Stop()
 				timerFearCD:Start()
@@ -219,6 +219,7 @@ do
 			end
 		end
 	end
+end
 
 		if not self:IsInCombat() then return end
 		if msg == "ClassCall" then
