@@ -51,8 +51,8 @@ local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802)
 local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802)
 
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
-local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
+local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2)
+local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2)
 local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
 local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
