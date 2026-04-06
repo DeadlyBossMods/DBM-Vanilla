@@ -31,7 +31,7 @@ mod:RegisterEvents(
 --TODO, keep warlocks alive longer to pull more portal timer data
 --"Demon Portal-22372-npc:12459-0000BDADC5 = pull:54.5, 32.7",
 local warnVuln					= mod:NewAnnounce("WarnVulnerable", 1, nil, false)
-local warnEnrage				= mod:NewTargetNoFilterAnnounce(22428, 2, nil, "Tank|Healers|RemoveEnrage")
+local warnEnrage				= mod:NewTargetNoFilterAnnounce(22428, 2, nil, "Tank|RemoveEnrage|Healer")
 local warnFlamestrike			= mod:NewSpellAnnounce(22275, 2)
 local warnRainofFire			= mod:NewSpellAnnounce(19717, 2)
 local warnBroodBronze			= mod:NewTargetNoFilterAnnounce(22291, 2, nil, "Melee")
