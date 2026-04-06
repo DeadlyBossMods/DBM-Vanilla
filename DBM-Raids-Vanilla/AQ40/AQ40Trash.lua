@@ -73,7 +73,7 @@ timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks goo
 timerBurst					= mod:NewNextTimer(30, 1215202)
 end
 
-mod:AddSpeedClearOption(GetRealZoneText(531), true)
+mod:AddSpeedClearOption(tostring(GetRealZoneText(531)), true)
 mod:AddInfoFrameOption(nil, true)
 
 --Speed Clear variables

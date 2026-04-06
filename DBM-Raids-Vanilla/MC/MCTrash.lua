@@ -54,7 +54,7 @@ local timerFireBlossomCD			= mod:NewCDNPTimer(11.1, 19636, nil, nil, nil, 2)--11
 local timerPyroclastBarrageCD		= mod:NewCDNPTimer(8.3, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--8.3-20.7
 local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
 
-mod:AddSpeedClearOption(GetRealZoneText(409), true)
+mod:AddSpeedClearOption(tostring(GetRealZoneText(409)), true)
 
 --Speed Clear variables
 mod.vb.firstEngageTime = nil
