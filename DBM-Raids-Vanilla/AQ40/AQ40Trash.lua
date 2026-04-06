@@ -63,12 +63,12 @@ local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
 local yellPlague                    = mod:NewYell(26556)
 
-local warnExplosion, yellBurst, specWarnBurst, timerExplosion, timerBurst
+local warnExplosion, yellBurst, specWarnBurst, specWarnExplosion, timerExplosion, timerBurst
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 warnExplosion				= mod:NewAnnounce("WarnExplosion", 3, nil, false)
-specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
-specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
 yellBurst					= mod:NewIconTargetYell(1215202)
+specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
+specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 timerBurst					= mod:NewNextTimer(30, 1215202)
 end
