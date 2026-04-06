@@ -35,7 +35,8 @@ mod:SetZone(469)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 22539 22686",
-	"SPELL_AURA_APPLIED 22687 22667",
+	"SPELL_AURA_APPLIED 22667 22687",
+	"SPELL_AURA_REMOVED 22667",
 	"CHAT_MSG_MONSTER_YELL",
 	"UNIT_DIED",
 	"UNIT_HEALTH"
@@ -57,6 +58,7 @@ local timerIntermission		= mod:NewIntermissionTimer("v12.9-14.9", nil, CL.INTERM
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
 local timerFearCD			= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v8.1-37.2", 22539, nil, false)
+local timerShadowCommand	= mod:NewTargetTimer(15, 22667, nil, nil, nil, 3)
 
 mod.vb.triggerEncounterStart = false
 mod.vb.addLeft = 42
@@ -74,7 +76,7 @@ function mod:OnCombatStart(delay, yellTriggered)
 	elseif not IsEncounterInProgress() and self:GetStage(1) then
         self:SendSync("Phase", 1.5)
 	elseif IsEncounterInProgress() and self:GetStage(1.5) then
-		self:SendSync("Phase", 2) 
+		self:SendSync("Phase", 2)
         self:UnregisterOnUpdateHandler()
     end
 	end, 0.2)
@@ -128,6 +130,13 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(22667) then
 		specwarnShadowCommand:Show(args.destName)
 		specwarnShadowCommand:Play("findmc")
+		timerShadowCommand:Start(args.destName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(22667) then
+		timerShadowCommand:Stop(args.destName)
 	end
 end
 
