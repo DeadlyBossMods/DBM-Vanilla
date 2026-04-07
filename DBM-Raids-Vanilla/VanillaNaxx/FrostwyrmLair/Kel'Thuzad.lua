@@ -70,11 +70,11 @@ local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
 local yellManaBomb			= mod:NewShortYell(27819)
 local yellFissure			= mod:NewYell(27810)
 
-local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, nil, nil, 2)
-local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, nil, nil, 2)
+local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, false, nil, 2)
+local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, false, nil, 2)
 local timerManaBombCD		= mod:NewVarTimer("v20.6-41.3", 27819, nil, nil, nil, 3)
 local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
-local timerfrostBlast		= mod:NewBuffActiveTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+local timerfrostBlast		= mod:NewBuffActiveTimer(5, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
 local timerPhase2			= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and phase1DurationSoD or phase1DurationEra, "TimerPhase2", "136116", nil, nil, 6)
 
@@ -98,7 +98,7 @@ local function AnnounceBlastTargets(self)
 			frostBlastTargets[i] = nil
 		end
 	end
-	timerfrostBlast:Start(3.5)
+	timerfrostBlast:Start()
 end
 
 function mod:OnCombatStart()
