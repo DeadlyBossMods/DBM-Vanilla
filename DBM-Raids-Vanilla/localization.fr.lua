@@ -191,9 +191,10 @@ L:SetMiscLocalization{
 	Phase4 	= "commence à se briser",
 	Phase5 	= "semble prêt à se briser",
 	Phase6 	= "explose",
-
-	FrostHitsPerSecond = "Coups de givre par seconde",
-	MeleeHitsPerSecond = "Coups au corps à corps par seconde",
+	FrostHits	= "Coups de givre",
+	MeleeHits	= "Coups en mêlée",
+	FrostHitsPerSecond	= "Coups de givre par seconde",
+	MeleeHitsPerSecond	= "Coups en mêlée par seconde"
 }
 -------------
 -- Huhuran --

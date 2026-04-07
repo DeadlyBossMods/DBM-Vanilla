@@ -77,9 +77,10 @@ L:SetMiscLocalization{
 	Phase4 		= "분해되기 시작합니다!",
 	Phase5 		= "부서질 것 같습니다!",
 	Phase6 		= "폭발",
-
-	FrostHitsPerSecond = "초당 냉기 공격 횟수",
-	MeleeHitsPerSecond = "초당 물리 공격 횟수"
+	FrostHits	= "냉기 적중",
+	MeleeHits	= "근접 적중",
+	FrostHitsPerSecond	= "초당 냉기 적중",
+	MeleeHitsPerSecond	= "초당 근접 적중"
 }
 
 -------------

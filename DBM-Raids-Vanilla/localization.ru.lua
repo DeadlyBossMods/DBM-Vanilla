@@ -78,9 +78,10 @@ L:SetMiscLocalization{
 	Phase4 	= "начинает раскалываться",
 	Phase5 	= "едва держится",
 	Phase6 	= "Взрывается.",
-
-	FrostHitsPerSecond = "Попадания в заморозке в секунду",
-	MeleeHitsPerSecond = "Попадания в ближнем бою в секунду"
+	FrostHits	= "Удары льда",
+	MeleeHits	= "Ближние удары",
+	FrostHitsPerSecond	= "Удары льда в секунду",
+	MeleeHitsPerSecond	= "Ближние удары в секунду"
 }
 -------------
 -- Huhuran --

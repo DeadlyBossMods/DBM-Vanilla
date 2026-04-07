@@ -77,9 +77,10 @@ L:SetMiscLocalization{
 	Phase4 		= "開始爆裂！",
 	Phase5 		= "看來準備粉碎了！",
 	--Phase6 		= "Explodes.",
-
-	FrostHitsPerSecond = "冰霜每秒命中次數",
-	MeleeHitsPerSecond = "近戰每秒命中次數"
+	FrostHits	= "冰霜命中",
+	MeleeHits	= "近戰命中",
+	FrostHitsPerSecond	= "冰霜每秒命中次數",
+	MeleeHitsPerSecond	= "近戰每秒命中次數"
 }
 
 -------------
