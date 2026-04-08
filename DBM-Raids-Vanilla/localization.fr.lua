@@ -1057,8 +1057,8 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon		= "Vague %d: %s dans 3 sec",
-	WarningWaveSpawned	= "Vague %d: %s arrivée",
+	WarningWaveSoon		= "Vague %d : %s dans 3 sec",
+	WarningWaveSpawned	= "Vague %d : %s arrivée",
 	WarningRiderDown	= "Cavalier mort",
 	WarningKnightDown	= "Chevalier mort",
 	WarningPhase2		= "Phase 2"
