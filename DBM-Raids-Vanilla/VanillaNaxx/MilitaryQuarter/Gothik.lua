@@ -44,6 +44,7 @@ mod:AddInfoFrameOption(nil, true)
 
 mod.vb.wave = 0
 local mobCounts = {}
+local totalWaves = 18
 
 local liveMobIds = {
 	[16124] = L.Trainee,
@@ -139,7 +140,7 @@ function mod:NextWave()
 	end
 	local next = wavesClassic[self.vb.wave].next
 	if next then
-		timerWave:Start(next, self.vb.wave + 1)
+		timerWave:Start(next, self.vb.wave + 1 .. "/" .. totalWaves)
 		warnWaveSoon:Schedule(next - 3, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 		self:ScheduleMethod(next, "NextWave")
 	end
@@ -156,7 +157,7 @@ function mod:OnCombatStart()
 	warnPhase:Show(1)
 	timerPhase2:Start()
 	warnPhase:Schedule(2, 270)
-	timerWave:Start(27, self.vb.wave + 1)
+	timerWave:Start(27, self.vb.wave + 1 .. "/" .. totalWaves)
 	warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 	self:ScheduleMethod(27, "NextWave")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
