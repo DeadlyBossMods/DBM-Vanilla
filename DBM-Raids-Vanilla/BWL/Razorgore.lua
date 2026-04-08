@@ -124,7 +124,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if (msg == L.Phase2Emote or msg:find(L.Phase2Emote)) and self:GetStage(2, 1) then
+	if (msg == L.Phase2Emote or msg:find(L.Phase2Emote)) and self:GetStage(1) then
 		self:SendSync("Phase", 2)
 	end
 end
