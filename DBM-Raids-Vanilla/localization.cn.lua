@@ -977,8 +977,8 @@ L:SetTimerLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningWaveSoon			= "3秒后 第%d波: %s",
-	WarningWaveSpawned		= "第%d波: %s 出现了",
+	WarningWaveSoon			= "3秒后第%d波：%s",
+	WarningWaveSpawned		= "第%d波：%s出现了",
 	WarningRiderDown		= "骑兵已死亡",
 	WarningKnightDown		= "死亡骑士已死亡",
 	WarningPhase2			= "第二阶段"
