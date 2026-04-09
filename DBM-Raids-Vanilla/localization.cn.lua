@@ -910,9 +910,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell1P1				= "主人要吃了你！",
 	Yell2P1				= "斯塔拉格要碾碎你！",
-	Emote				= "%s超载了！",
-	Charge1 			= "负极",
-	Charge2 			= "正极"
+	Emote				= "%s超载了！"
 })
 
 L:SetOptionLocalization({

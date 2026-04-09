@@ -989,9 +989,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell1P1 = "¡Comida para el amo!",
 	Yell2P1	= "¡Stalagg aplasta!",
-	Emote	= "¡%s se sobrecarga!",
-	Charge1 = "negativo",
-	Charge2 = "positivo"
+	Emote	= "¡%s se sobrecarga!"
 })
 
 L:SetOptionLocalization({
