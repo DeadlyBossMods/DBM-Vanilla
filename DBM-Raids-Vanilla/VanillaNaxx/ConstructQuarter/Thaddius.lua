@@ -59,17 +59,8 @@ function mod:OnCombatStart()
 	warnThrowSoon:Schedule(37.6)
 	self:RegisterOnUpdateHandler(function()
 	if not IsEncounterInProgress() and self:GetStage(1) then
-		self:UnscheduleMethod("TankThrow")
-		self:SetStage(1.5)
-		warnPhase2Soon:Show()
-		warnThrowSoon:Cancel()
-		timerThrow:Stop()
-		timerIntermission:Start()
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
-		end
-	end
-	if IsEncounterInProgress() and self:GetStage(1.5) then
+		self:SendSync("Phase", 1.5)
+	elseif IsEncounterInProgress() and self:GetStage(1.5) then
         self:SendSync("Phase", 2)
         self:UnregisterOnUpdateHandler()
 	end
@@ -176,8 +167,19 @@ function mod:OnSync(msg, arg)
 		if not phase then return end
 		if self:GetStage(phase, 3) then  -- only if stage changed
 			self:SetStage(phase)
+			if phase % 1 == 0 then
 			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
-			if phase == 2 then
+			end
+			if phase == 1.5 then
+				self:UnscheduleMethod("TankThrow")
+				warnPhase2Soon:Show()
+				warnThrowSoon:Cancel()
+				timerThrow:Stop()
+				timerIntermission:Start()
+				if self.Options.InfoFrame then
+					DBM.InfoFrame:Hide()
+				end
+			elseif phase == 2 then
 				timerEnrage:Start()
 				timerIntermission:Stop()
 				warnPhase:Play("ptwo")
