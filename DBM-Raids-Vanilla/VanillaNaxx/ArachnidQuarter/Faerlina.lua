@@ -51,7 +51,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5) then
 		warnEmbraceExpire:Cancel()
-		warnEmbraceExpired:Cancel()
 		timerEnrageCD:Stop()
 		if self.vb.enraged then
 			timerEnrageCD:Start()
