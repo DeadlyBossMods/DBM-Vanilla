@@ -476,9 +476,8 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Let the games begin!",
-	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",
-	YellP3		= "Impossible! Rise my minions!  Serve your master once more!",
-	YellShaman	= "Shamans, show me",
+	YellP3		= "Impossible! Rise my minions! Serve your master once more!",
+	YellShaman	= "Shamans, show me what your totems can do!",
 	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",
 	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",
 	YellPriest	= "Priests! If you're going to keep healing like that, we might as well make it a little more interesting!",

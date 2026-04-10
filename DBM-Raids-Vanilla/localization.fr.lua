@@ -595,7 +595,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
     YellP1			= "Que les jeux commencent !",
-    YellP2			= "Beau travail ! Le courage des mortels commence à faiblir ! Voyons maintenant s'ils peuvent lutter contre le véritable seigneur du pic Blackrock !",
     YellP3			= "C'est impossible ! Relevez-vous, serviteurs ! Servez une nouvelle fois votre maître !",
     YellShaman		= "Chamans, montrez-moi ce que vos totems peuvent faire !",
     YellPaladin		= "Les paladins... J'en entendu dire que vous aviez de nombreuses vies... Montrez-moi.",
