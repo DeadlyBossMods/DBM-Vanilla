@@ -49,7 +49,7 @@ local timerMarkCD				= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 13 o
 local timerMeteorCD				= mod:NewVarTimer("v11.3-16.2", 28884, nil, nil, nil, 3)
 local timerVoidZoneCD			= mod:NewVarTimer("v11.3-16.2", 28863, nil, nil, nil, 3)
 local timerHolyWrathCD			= mod:NewVarTimer("v11.3-16.2", 28883, nil, nil, nil, 3)
-local timerBoneBarrier			= mod:NewTargetTimer(20, 29061, nil, "Dps", nil, 5)
+local timerBoneBarrier			= mod:NewBuffFadesTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 
 local horsemenGuidCheck = {}
 

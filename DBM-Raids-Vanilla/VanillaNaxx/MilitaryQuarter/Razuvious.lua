@@ -30,7 +30,7 @@ local warnShieldWall	= mod:NewAnnounce("WarningShieldWallSoon", 3, 29061)
 
 local timerShout		= mod:NewCDTimer(25.9, 29107, nil, nil, nil, 2, 6673, DBM_COMMON_L.DEADLY_ICON)
 local timerTaunt		= mod:NewCDTimer(60, 29060, nil, false, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerShieldWall	= mod:NewBuffFadesTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerShieldWall	= mod:NewBuffFadesTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 
 function mod:OnCombatStart()
 	timerShout:Start()
