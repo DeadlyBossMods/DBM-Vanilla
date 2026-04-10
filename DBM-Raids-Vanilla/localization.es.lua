@@ -831,11 +831,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Abrazo de la viuda expirando en 5 segundos"
+	WarningEmbraceExpire	= "Abrazo de la viuda se desvanece en 5 segundos"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Mostrar anuncio anticipado para cuando expire Abrazo de la viuda"
+	WarningEmbraceExpire	= "Mostrar anuncio anticipado para cuando $spell:28732 se desvanezca"
 })
 
 L:SetMiscLocalization({

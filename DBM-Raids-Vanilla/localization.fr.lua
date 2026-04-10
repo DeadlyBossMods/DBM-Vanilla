@@ -823,11 +823,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Fin du baisé de la veuve dans 5 sec"
+	WarningEmbraceExpire	= "Etreinte de la veuve se dissipe dans 5 sec"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Afficher une annonce de fin du baisé de la veuve"
+	WarningEmbraceExpire	= "AAfficher une pré-annonce lorsque $spell:28732 se dissipe"
 })
 
 L:SetMiscLocalization({
