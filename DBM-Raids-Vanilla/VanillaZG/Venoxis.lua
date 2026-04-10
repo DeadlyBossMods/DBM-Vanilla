@@ -24,7 +24,8 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23860",
-	"SPELL_CAST_SUCCESS 23849 23861",
+	"SPELL_CAST_SUCCESS 23861",
+	"UNIT_SPELLCAST_SUCCEEDED 23849"
 	"SPELL_AURA_APPLIED 23895 23860 23865",
 	"SPELL_AURA_REMOVED 23895 23860",
 	"UNIT_HEALTH mouseover target"
@@ -57,7 +58,11 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23861) then
 		warnCloud:Show()
 		timerCloud:Start()
-	elseif args:IsSpell(23849) then
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(args)
+	if args:IsSpell(23849) then
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end
