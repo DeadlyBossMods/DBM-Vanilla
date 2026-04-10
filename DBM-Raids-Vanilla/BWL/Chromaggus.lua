@@ -315,7 +315,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFrenzy:Show(args.destName)
 			specWarnFrenzy:Play("enrage")
 		else
-			warnFrenzy:Show()
+			warnFrenzy:Show(args.destName)
 		end
 		timerFrenzy:Start()
 	elseif args:IsSpell(23537) and args:IsDestTypeHostile() then

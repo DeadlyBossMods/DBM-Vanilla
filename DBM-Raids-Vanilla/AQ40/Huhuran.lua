@@ -89,7 +89,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFrenzy:Show(args.destName)
 			specWarnFrenzy:Play("trannow")
 		else
-			warnFrenzy:Show()
+			warnFrenzy:Show(args.destName)
 		end
 	elseif args:IsSpell(26068, 1215885) then
 		warnBerserk:Show()

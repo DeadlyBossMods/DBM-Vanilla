@@ -65,7 +65,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 			specWarnFrenzy:Show(args.sourceName)
 			specWarnFrenzy:Play("enrage")
 		else
-			warnFrenzy:Show()
+			warnFrenzy:Show(args.destName)
 		end
 		timerFrenzyCD:Start()
 	end
