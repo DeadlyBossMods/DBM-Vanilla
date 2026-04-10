@@ -104,7 +104,7 @@ do
 			tinsert(corruptKeys, name)
 		end
 
-		if mod.Options.CorruptedSorting == CL.DURATION then
+		if tostring(mod.Options.CorruptedSorting) == tostring(CL.DURATION) then
 			tsort(corruptKeys, function(a, b)
 				local durA = mmax((hadCorrupted[a] or 0) - now, 0)
 				local durB = mmax((hadCorrupted[b] or 0) - now, 0)
