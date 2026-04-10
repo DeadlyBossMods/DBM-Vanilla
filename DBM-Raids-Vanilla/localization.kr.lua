@@ -835,13 +835,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "5초 후 귀부인의 은총 종료",
-	WarningEmbraceExpired	= "귀부인의 은총 종료"
+	WarningEmbraceExpire	= "5초 후 귀부인의 은총 종료"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "귀부인의 은총 종료 사전 경고 보기",
-	WarningEmbraceExpired	= "귀부인의 은총 종료 알림 보기"
+	WarningEmbraceExpire	= "귀부인의 은총 종료 사전 경고 보기"
 })
 
 L:SetMiscLocalization({

@@ -838,13 +838,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Widow's Embrace ends in 5 seconds",
-	WarningEmbraceExpired	= "Widow's Embrace faded"
+	WarningEmbraceExpire	= "Widow's Embrace ends in 5 seconds"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Show pre-warning for Widow's Embrace fade",
-	WarningEmbraceExpired	= "Show warning for Widow's Embrace fade"
+	WarningEmbraceExpire	= "Show pre-warning for Widow's Embrace fade"
 })
 
 L:SetMiscLocalization({

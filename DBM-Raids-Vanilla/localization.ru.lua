@@ -845,13 +845,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Объятие Вдовы через 5 сек.",
-	WarningEmbraceExpired	= "Объятие Вдовы исчезает"
+	WarningEmbraceExpire	= "Объятие Вдовы через 5 сек."
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Заранее предупреждать, когда $spell:28732 исчезнет",
-	WarningEmbraceExpired	= "Показывать предупреждение, когда $spell:28732 исчезнет"
+	WarningEmbraceExpire	= "Заранее предупреждать, когда $spell:28732 исчезнет"
 })
 
 L:SetMiscLocalization({

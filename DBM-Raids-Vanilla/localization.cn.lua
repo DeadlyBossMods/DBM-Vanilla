@@ -742,13 +742,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire		= "黑女巫的拥抱5秒后结束",
-	WarningEmbraceExpired		= "黑女巫的拥抱结束"
+	WarningEmbraceExpire		= "黑女巫的拥抱5秒后结束"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire		= "为黑女巫的拥抱结束显示提前警报",
-	WarningEmbraceExpired		= "为黑女巫的拥抱结束显示警报"
+	WarningEmbraceExpire		= "为黑女巫的拥抱结束显示提前警报"
 })
 
 L:SetMiscLocalization({
