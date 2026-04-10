@@ -25,7 +25,6 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23860",
 	"SPELL_CAST_SUCCESS 23861",
-	"UNIT_SPELLCAST_SUCCEEDED 23849",
 	"SPELL_AURA_APPLIED 23895 23860 23865",
 	"SPELL_AURA_REMOVED 23895 23860",
 	"UNIT_HEALTH mouseover target"
@@ -50,6 +49,7 @@ mod.vb.prewarn_Phase2 = false
 
 function mod:OnCombatStart(delay)
 	self.vb.prewarn_Phase2 = false
+	self:SetStage(1)
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 end
 
@@ -58,12 +58,6 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23861) then
 		warnCloud:Show()
 		timerCloud:Start()
-	end
-end
-
-function mod:UNIT_SPELLCAST_SUCCEEDED(args)
-	if args:IsSpell(23849) then
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end
 
@@ -105,5 +99,8 @@ function mod:UNIT_HEALTH(uId)
 	if not self.vb.prewarn_Phase2 and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 then
 		self.vb.prewarn_Phase2 = true
 		warnPhase2Soon:Show()
+	elseif self:GetStage(1) and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.50 then
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end

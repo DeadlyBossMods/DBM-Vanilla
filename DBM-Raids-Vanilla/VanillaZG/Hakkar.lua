@@ -57,7 +57,6 @@ local timerNextAspect, timerSilenced
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextAspect				= mod:NewNextSpecialTimer(20, 24687)
 	timerSilenced				= mod:NewBuffFadesTimer(10, 468012)
-	timerAspectOfThekal			= mod:NewBuffActiveTimer(8, 24689, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
 else
 	timerAspectOfMarli			= mod:NewTargetTimer(6, 24686, nil, nil, nil, 5)
 	timerAspectOfMarliCD		= mod:NewCDTimer(16, 24686, nil, nil, nil, 2)--16-20
@@ -69,7 +68,7 @@ else
 	timerAspectOfArlokk			= mod:NewTargetTimer(2, 24690, nil, nil, nil, 2)
 	timerAspectOfArlokkCD		= mod:NewNextTimer(30, 24690, nil, nil, nil, 2)--Needs more data to verify it's a next timer, rest aren't
 end
-local timerInsanity				= mod:NewTargetTimer(10, 24327, nil, nil, nil, 5)
+local timerInsanity				= mod:NewTargetTimer(10, 24327, nil, nil, nil, 3)
 local timerInsanityCD			= mod:NewCDTimer(21, 24327, nil, nil, nil, 3)
 
 local enrageTimer				= mod:NewBerserkTimer(585)
