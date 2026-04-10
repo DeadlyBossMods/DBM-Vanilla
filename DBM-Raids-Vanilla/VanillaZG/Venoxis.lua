@@ -32,7 +32,7 @@ mod:RegisterEventsInCombat(
 
 local warnSerpent		= mod:NewTargetNoFilterAnnounce(23865, 2)
 local warnCloud			= mod:NewSpellAnnounce(23861)
-local warnRenew			= mod:NewTargetNoFilterAnnounce(23895, 3)
+local warnRenew			= mod:NewTargetNoFilterAnnounce(23895, 3, nil, "MagicDispeller")
 local warnFire			= mod:NewTargetNoFilterAnnounce(23860, 2, nil, "RemoveMagic|Healer")
 local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
 

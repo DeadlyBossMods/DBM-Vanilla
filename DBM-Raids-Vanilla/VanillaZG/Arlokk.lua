@@ -26,11 +26,11 @@ mod:RegisterEventsInCombat(
 )
 
 local warnMark		= mod:NewTargetNoFilterAnnounce(24210, 3)
-local warnPain		= mod:NewTargetNoFilterAnnounce(24212, 2, nil, "RemoveMagic|Healer")
+local warnPain		= mod:NewTargetNoFilterAnnounce(24212, 2, nil, "RemoveMagic")
 
 local specWarnMark	= mod:NewSpecialWarningYou(24210, nil, nil, nil, 1, 2)
 
-local timerPain		= mod:NewTargetTimer(18, 24212, nil, "RemoveMagic|Healer", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerPain		= mod:NewTargetTimer(18, 24212, nil, "RemoveMagic", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(24210) then
