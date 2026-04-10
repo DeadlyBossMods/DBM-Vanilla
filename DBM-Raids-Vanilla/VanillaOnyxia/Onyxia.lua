@@ -18,11 +18,10 @@ mod:RegisterCombat("combat_yell", L.YellPull)
 --https://classic.wowhead.com/spell=17646/summon-onyxia-whelp
 --TODO, if blizzard makes classic wrath and this mod is used as foundation, remove the deep breath emote trigger (because pet added in wrath breaks it)
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 17086 18351 18392 18435 18431 18500 18564 18584 18576 18596 18609 18617 21131",
+	"SPELL_CAST_START 17086 18351 18392 18435 18431 18500 18564 18584 18576 18596 18609 18617",
 	"SPELL_CAST_SUCCESS 19633",
 	"SPELL_DAMAGE 15847",
 	"UNIT_DIED",
-	"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_HEALTH",
 	"LOADING_SCREEN_DISABLED",
 	"CHAT_MSG_MONSTER_YELL"
@@ -98,7 +97,7 @@ function mod:FireballTarget(targetname, uId)
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(17086, 18351, 18564, 18576, 18584, 18596, 18609, 18617, 21131) and args:IsSrcTypeHostile() then
+	if args:IsSpell(17086, 18351, 18564, 18576, 18584, 18596, 18609, 18617) and args:IsSrcTypeHostile() then
 		timerBreath:Start()
 		if self:AntiSpam(8, 1) then
 			specWarnBreath:Show()
@@ -151,12 +150,6 @@ end
 -- "<238.47 23:00:39> [CHAT_MSG_MONSTER_YELL] This meaningless exertion bores me. I'll incinerate you all from above!#Onyxia#####0#0##0#1891#nil#0#false#false#false#false",
 -- "<267.59 23:01:09> [CHAT_MSG_MONSTER_EMOTE] %s takes in a deep breath...#Onyxia#####0#0##0#1914#nil#0#false#false#false#false",
 -- +29.12s
-
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.Breath or msg:find(L.Breath) then
-		self:SendSync("Breath")
-	end
-end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.YellP2 or msg:find(L.YellP2) then
@@ -221,14 +214,6 @@ function mod:OnSync(msg, arg)
 					self:Schedule(45, DBM.PlaySoundFile, DBM, "Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaOnyxia\\sounds\\now-hit-it-very-hard-and-fast.ogg")
 				end
 			end
-		end
-	elseif msg == "Breath" and self:AntiSpam(8, 4) then
-		specWarnBreath:Show()
-		specWarnBreath:Play("breathsoon")
-		if timerBreath:IsStarted() then
-			timerBreath:Update(29.1, 29.1 + 5)
-		else
-			timerBreath:Start()
 		end
 	end
 end

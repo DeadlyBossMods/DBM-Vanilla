@@ -61,10 +61,10 @@ function mod:OnCombatStart()
 	self.vb.markCount = 0
 	self.vb.horsemenRemaining = 4
 	timerVoidZoneCD:Start("v11.3-21")
-	timerMarkCD:Start(21)
+	timerMarkCD:Start(21, self.vb.markCount + 1)
 	timerMeteorCD:Start(21)
 	timerHolyWrathCD:Start(21)
-	warnMarkSoon:Schedule(16)
+	warnMarkSoon:Schedule(16, self.vb.markCount + 1)
 	if self.Options.InfoFrame then
 		local bosses = {
 			[16062] = true,
