@@ -1002,8 +1002,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1P1	= "너 주인님께 바칠 거야!",
-	Yell2P1	= "스탈라그, 박살낸다!",
-	Emote	= "%s|1이;가; 과부하 상태가 됩니다."
+	Yell2P1	= "스탈라그, 박살낸다!"
 })
 
 L:SetOptionLocalization({
