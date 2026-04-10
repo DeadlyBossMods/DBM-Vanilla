@@ -182,8 +182,6 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("ClassCall", "MONK")
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
---	elseif msg == L.YellP2 or msg:find(L.YellP2) then
---		self:SendSync("Phase", 1.5)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
