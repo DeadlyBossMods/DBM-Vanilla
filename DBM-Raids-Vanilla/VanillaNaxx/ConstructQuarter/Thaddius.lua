@@ -20,7 +20,6 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
-	--"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_AURA player"
 )
 
@@ -143,23 +142,6 @@ function mod:UNIT_AURA()
 		currentCharge = charge
 	end
 end
-
---function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	--if msg == L.Emote or msg:find(L.Emote) then
-		--down = down + 1
-	--end
-	--if down >= 2 then
-		--self:UnscheduleMethod("TankThrow")
-		--self:SetStage(1.5)
-		--warnPhase2Soon:Show()
-		--warnThrowSoon:Cancel()
-		--timerThrow:Stop()
-		--timerIntermission:Start()
-		--if self.Options.InfoFrame then
-			--DBM.InfoFrame:Hide()
-		--end
-	--end
---end
 
 function mod:OnSync(msg, arg)
 	if msg == "Phase" then
