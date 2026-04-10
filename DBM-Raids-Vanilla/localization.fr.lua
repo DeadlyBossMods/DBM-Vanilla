@@ -1019,14 +1019,6 @@ L:SetMiscLocalization({
 	Pull4 					= "Frappe-le à la jambe… Ça te pose un problème ?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Afficher une annonce pour le $spell:29061"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Mur protecteur expire dans 5 sec"
-})
-
 --------------
 --  Gothik  --
 --------------

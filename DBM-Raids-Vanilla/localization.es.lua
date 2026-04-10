@@ -1029,14 +1029,6 @@ L:SetMiscLocalization({
 	Pull4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Mostrar anuncio anticipado para cuando termine $spell:29061"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Muro de escudo termina en 5 segundos"
-})
-
 --------------------------
 -- Gothik el Cosechador --
 --------------------------

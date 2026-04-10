@@ -1015,14 +1015,6 @@ L:SetMiscLocalization({
 	Pull4 = "Chutem entre as pernas... Ou vão ficar de frescura?!"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Exibir anúncio antecipado quando terminar $spell:29061"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Muralha de Escudos termina em 5 segundos"
-})
-
 --------------------------
 -- Gothik the Harvester --
 --------------------------

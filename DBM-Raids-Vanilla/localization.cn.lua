@@ -940,14 +940,6 @@ L:SetMiscLocalization({
 	Pull4 				= "绊腿……有什么问题么？"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon		= "为盾墙结束显示提前警报"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon		= "5秒后盾墙结束"
-})
-
 ----------------------------
 --  Gothik the Harvester  --
 ----------------------------

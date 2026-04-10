@@ -1037,14 +1037,6 @@ L:SetMiscLocalization({
 	Pull4 = "Sweep the leg... Do you have a problem with that?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Show pre-warning for Shield Wall ending"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Shield Wall ends in 5 seconds"
-})
-
 ----------------------------
 --  Gothik the Harvester  --
 ----------------------------

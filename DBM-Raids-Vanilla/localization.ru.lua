@@ -1044,14 +1044,6 @@ L:SetMiscLocalization({
 	Pull4 = "Выше ногу! Или у тебя с этим проблемы?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Показывать предупреждение о скором окончании Глухой обороны"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Глухая оборона закончится через 5 сек."
-})
-
 ----------------------------
 --  Gothik the Harvester  --
 ----------------------------

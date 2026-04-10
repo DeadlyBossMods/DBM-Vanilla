@@ -981,14 +981,6 @@ L:SetMiscLocalization({
 	Pull4 = "Streckt sie nieder... oder habt ihr ein Problem damit?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Zeige Vorwarnung, wenn $spell:29061 endet"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Knochenbarriere endet in 5 Sekunden"
-})
-
 ----------------------------
 --  Gothik the Harvester  --
 ----------------------------

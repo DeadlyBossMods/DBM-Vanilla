@@ -1034,14 +1034,6 @@ L:SetMiscLocalization({
 	Pull4 = "다리를 후려 차라! 무슨 문제 있나?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "뼈 보호막 종료 사전 경고 보기"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "5초 후 뼈 보호막 종료"
-})
-
 ----------------------------
 --  Gothik the Harvester  --
 ----------------------------
