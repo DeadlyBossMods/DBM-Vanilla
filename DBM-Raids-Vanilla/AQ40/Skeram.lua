@@ -64,14 +64,15 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.MCIcon = self.vb.MCIcon - 1
 		self:Unschedule(resetMcIcon)
 		self:Schedule(3, resetMcIcon, self)
+		timerMindControl:Start(args.destName)
+		warnMindControl:CombinedShow(0.3, args.destName)
 	end
-	warnMindControl:CombinedShow(0.3, args.destName)
-	timerMindControl:Start()
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(785) and self.Options.SetIconOnMC then
 		self:SetIcon(args.destName, 0)
+		timerMindControl:Stop(args.destName)
 	end
 end
 
