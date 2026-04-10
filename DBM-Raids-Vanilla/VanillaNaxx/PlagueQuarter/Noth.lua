@@ -17,10 +17,8 @@ mod:SetZone(533)
 mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3)
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 29213 29212 29208",--54835 Add in wrath
+	"SPELL_CAST_SUCCESS 29213 29212 29208",
 	"CHAT_MSG_MONSTER_YELL"
---	"CHAT_MSG_RAID_BOSS_EMOTE",
---	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --TODO, determine if old way is required or if new way is still functional
@@ -126,26 +124,9 @@ end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 	if msg == L.AddsYell or msg:find(L.AddsYell) then
-		self:SendSync("Adds")--Syncing to help unlocalized clients
+		self:SendSync("Adds")
 	end
 end
-
---[[
---These events don't happen in classic, added in wrath
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
-	if msg == L.Adds or msg:find(L.Adds) then
-		self:SendSync("Adds")--Syncing to help unlocalized clients
-	elseif msg == L.AddsTwo or msg:find(L.AddsTwo) then
-		self:SendSync("AddsTwo")--Syncing to help unlocalized clients
-	end
-end
-
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 29231 and self:AntiSpam() then--Teleport Return
-		self:SendSync("Teleport")
-	end
-end
---]]
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
@@ -170,24 +151,5 @@ function mod:OnSync(msg)
 				end
 			end
 		end
-	--Below here can't be used in Classic
-	--[[elseif msg == "AddsTwo" then--Boss away
-		self.vb.addsCount = self.vb.addsCount + 1
-		specWarnAdds:Show()
-		specWarnAdds:Play("killmob")
-		--He won't do anymore adds when teleported way on 4th and later teleport
-		--He'll never do more than 2 waves
-		if self.vb.teleCount < 4 and self.vb.addsCount == 1 then
-			if self.vb.teleCount == 3 then
-				timerAddsCD:Start(60)--2 big waves, 60 seconds apart
-			elseif self.vb.teleCount == 2 then--2 medium waves 46 seconds apart
-				timerAddsCD:Start(46)
-			else--2 smaller waves 30 seconds apart
-				timerAddsCD:Start(30)
-			end
-		end
-	elseif msg == "Teleport" then--Boss away
-		self:UnscheduleMethod("BackInRoom")
-		self:BackInRoom()--]]
 	end
 end

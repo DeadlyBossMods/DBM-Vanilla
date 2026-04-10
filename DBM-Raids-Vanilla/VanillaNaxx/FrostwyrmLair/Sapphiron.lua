@@ -20,9 +20,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 28522 28547 1219729 1219732",
 	"SPELL_CAST_START 28524",
-	"SPELL_CAST_SUCCESS 28542"--55665 Wrath spellId
+	"SPELL_CAST_SUCCESS 28542"
 )
-
 
 --[[
 ability.id = 28524 and type = "begincast"
@@ -30,7 +29,7 @@ ability.id = 28524 and type = "begincast"
 --]]
 --TODO, air phase and landing better detection from transcriptor, timer adjustments
 local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 2)
-local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 1)
+local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 1, nil, "RemoveCurse")
 local warnIceBlock
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
