@@ -140,7 +140,8 @@ function mod:NextWave()
 	end
 	local next = wavesClassic[self.vb.wave].next
 	if next then
-		timerWave:Start(next, self.vb.wave + 1 .. "/" .. totalWaves)
+		timerWave:Start(next)
+		timerWave:UpdateName(self.vb.wave + 1 .. "/" .. totalWaves)
 		warnWaveSoon:Schedule(next - 3, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 		self:ScheduleMethod(next, "NextWave")
 	end
@@ -154,10 +155,13 @@ end
 
 function mod:OnCombatStart()
 	self.vb.wave = 0
-	warnPhase:Show(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	timerPhase2:Start()
-	warnPhase:Schedule(2, 270)
-	timerWave:Start(27, self.vb.wave + 1 .. "/" .. totalWaves)
+	self:Schedule(270, function()
+    warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+	end)
+	timerWave:Start(27)
+	timerWave:UpdateName(self.vb.wave + 1 .. "/" .. totalWaves)
 	warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 	self:ScheduleMethod(27, "NextWave")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
