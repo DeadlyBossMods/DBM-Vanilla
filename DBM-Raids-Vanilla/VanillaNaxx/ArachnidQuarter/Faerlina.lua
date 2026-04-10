@@ -69,6 +69,7 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5) then
 		warnEmbraceExpired:Show()
+	end
 end
 
 function mod:UNIT_DIED(args)
