@@ -24,7 +24,7 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23860",
-	"SPELL_CAST_SUCCESS 23861",
+	"SPELL_CAST_SUCCESS 23849 23861",
 	"SPELL_AURA_APPLIED 23895 23860 23865",
 	"SPELL_AURA_REMOVED 23895 23860",
 	"UNIT_HEALTH mouseover target"
@@ -35,6 +35,7 @@ local warnCloud			= mod:NewSpellAnnounce(23861)
 local warnRenew			= mod:NewTargetNoFilterAnnounce(23895, 3, nil, "MagicDispeller")
 local warnFire			= mod:NewTargetNoFilterAnnounce(23860, 2, nil, "RemoveMagic|Healer")
 local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
 local specWarnHolyFire	= mod:NewSpecialWarningInterrupt(23860, "HasInterrupt", nil, nil, 1, 2)
 local specWarnRenew		= mod:NewSpecialWarningDispel(23895, "MagicDispeller", nil, nil, 1, 2)
@@ -48,6 +49,7 @@ mod.vb.prewarn_Phase2 = false
 
 function mod:OnCombatStart(delay)
 	self.vb.prewarn_Phase2 = false
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 end
 
 
@@ -55,6 +57,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(23861) then
 		warnCloud:Show()
 		timerCloud:Start()
+	elseif args:IsSpell(23849) then
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
 end
 
