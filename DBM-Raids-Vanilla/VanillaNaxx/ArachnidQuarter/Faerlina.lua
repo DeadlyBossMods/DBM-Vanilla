@@ -17,13 +17,14 @@ mod:SetZone(533)
 mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3, L.Pull4)
 
 mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 28798 28732 28794",--54100, 54097, 54099
+	"SPELL_AURA_APPLIED 28798 28732 28794",
+	"SPELL_AURA_REMOVED 28732"
 	"UNIT_DIED"
 )
 
 local warnEmbraceActive		= mod:NewSpellAnnounce(28732, 1)
 local warnEmbraceExpire		= mod:NewAnnounce("WarningEmbraceExpire", 2, 28732)
-local warnEmbraceExpired	= mod:NewAnnounce("WarningEmbraceExpired", 3, 28732)
+local warnEmbraceExpired	= mod:NewFadesAnnounce(28732, 3)
 local warnEnrage			= mod:NewSpellAnnounce(28131, 4)
 
 local specWarnEnrage		= mod:NewSpecialWarningDefensive(28131, nil, nil, nil, 3, 2)
@@ -58,12 +59,16 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerEmbrace:Start()
 		warnEmbraceActive:Show()
 		warnEmbraceExpire:Schedule(25)
-		warnEmbraceExpired:Schedule(30)
 		self.vb.enraged = false
 	elseif args:IsSpell(28794) and args:IsPlayer() then--Rain of Fire
 		specWarnGTFO:Show(args.spellName)
 		specWarnGTFO:Play("watchfeet")
 	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5) then
+		warnEmbraceExpired:Show()
 end
 
 function mod:UNIT_DIED(args)
