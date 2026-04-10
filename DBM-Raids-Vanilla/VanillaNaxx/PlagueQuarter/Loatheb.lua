@@ -84,11 +84,6 @@ do
 
 	local lastUpdate = 0
 
-	local function addLine(key, value)
-		lines[key] = value
-		sortedLines[#sortedLines + 1] = key
-	end
-
 	updateInfoFrame = function()
 		local now = GetTime()
 		if now - lastUpdate < 0.1 then
@@ -117,8 +112,10 @@ do
 			tsort(corruptKeys)
 		end
 
-		for _, name in ipairs(corruptKeys) do
-			addLine(name, tostring(mfloor(mmax(hadCorrupted[name] - now, 0))))
+		for i = 1, #corruptKeys do
+		local name = corruptKeys[i]
+		sortedLines[i] = name
+		lines[name] = mfloor(mmax(hadCorrupted[name] - now, 0))
 		end
 
 		return lines, sortedLines
