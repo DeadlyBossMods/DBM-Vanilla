@@ -39,14 +39,6 @@ local timerMortal	= mod:NewTargetTimer(5, 16856, nil, "Tank|Healer", 2, 5, nil, 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(24314) then
 		timerGaze:Start(args.destName)
-		if self:AntiSpam(3, args.destName) then
-			if args:IsPlayer() then
-				specWarnGaze:Show()
-				specWarnGaze:Play("stopcast")
-			else
-				warnGaze:Show(args.destName)
-			end
-		end
 	elseif args:IsSpell(24318) and args:IsDestTypeHostile() then
 		warnFrenzy:Show(args.destName)
 	elseif args:IsSpell(16856) and args:IsDestTypePlayer() then
