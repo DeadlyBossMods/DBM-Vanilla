@@ -43,14 +43,14 @@ mod:RegisterEventsInCombat(
 -- "<408.30 19:54:05> [CHAT_MSG_MONSTER_YELL] ¡Exhalad el último suspiro de vida!#Kel'Thuzad###Activador del mundo##0#0##0#640#nil#0#false#false#false#false",
 -- "<423.48 19:54:21> [IsEncounterInProgress()] true",
 
--- Era (242.26 seconds)
--- "<519.20 20:37:32> [ENCOUNTER_START] 1114#Kel'Thuzad#9#40",
--- "<519.40 20:37:32> [CHAT_MSG_MONSTER_YELL] Lacaios, serviçais, soldados das gélidas trevas! Atendam ao chamado de Kel'Thuzad!#Kel'Thuzad###Fervor##0#0##0#2853#nil#0#false#false#false#false","
--- "<745.76 20:41:19> [CHAT_MSG_MONSTER_YELL] O fim está próximo!#Kel'Thuzad###Portal de Mundo##0#0##0#2898#nil#0#false#false#false#false",
--- "<761.46 20:41:34> [IsEncounterInProgress()] true",
+-- Era (242.78 seconds)
+-- "<1390.08 20:57:31> [ENCOUNTER_START] 1114#Kel'Thuzad#9#40",
+-- "<1390.27 20:57:32> [CHAT_MSG_MONSTER_YELL] ¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!#Kel'Thuzad###Wari##0#0##0#2828#nil#0#false#false#false#false",
+-- "<1617.31 21:01:19> [CHAT_MSG_MONSTER_YELL] ¡Grita antes de tu último suspiro!#Kel'Thuzad###Activador de mundo##0#0##0#2867#nil#0#false#false#false#false",
+-- "<1632.86 21:01:34> [IsEncounterInProgress()] true",
 
 local phase1DurationSoD = 230.1
-local phase1DurationEra = "v229.2-242.3"
+local phase1DurationEra = "v229.2-242.8"
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
