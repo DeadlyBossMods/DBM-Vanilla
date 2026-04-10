@@ -26,7 +26,7 @@ mod:RegisterEventsInCombat(
 or (ability.id = 464379 or ability.id = 470330) and type = "begincast"
 --]]
 local warnMagmaInfusion						= mod:NewCountAnnounce(470164, 2)
-local warnMagmaSweep						= mod:NewCountAnnounce(464379, 3, nil, nil, nil ,nil, nil, 17)
+local warnMagmaSweep						= mod:NewCountAnnounce(464379, 3, nil, nil, nil, nil, nil, 17)
 local warnSummonFirestarters				= mod:NewCountAnnounce(470244, 3)
 local warnExplosiveDemise					= mod:NewCastAnnounce(470330, 4)
 local warnAnchorsRemaining					= mod:NewAddsLeftAnnounce(464771, 2)

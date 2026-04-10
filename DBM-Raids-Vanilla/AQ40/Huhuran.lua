@@ -29,7 +29,7 @@ mod:RegisterEventsInCombat(
 local warnSting			= mod:NewTargetAnnounce(26180, 2)
 local warnAcid			= mod:NewStackAnnounce(26050, 3, nil, "Tank", 2)
 local warnPoison		= mod:NewSpellAnnounce(26053, 3)
-local warnFrenzy		= mod:NewTargetNoFilterAnnounce(26051, 3, nil , "Tank|RemoveEnrage|Healer")
+local warnFrenzy		= mod:NewTargetNoFilterAnnounce(26051, 3, nil, "Tank|RemoveEnrage|Healer")
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 local warnBerserk		= mod:NewSpellAnnounce(26068, 2)
 
