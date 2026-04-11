@@ -26,12 +26,20 @@ mod:RegisterEventsInCombat(
 
 local warnSupreme			= mod:NewSpellAnnounce(25176, 3)
 local warnCyclone			= mod:NewTargetAnnounce(25189, 4)
-local warnVulnerable		= mod:NewAnnounce("WarnVulnerable", 3, "132866")
+local warnFireWeakness		= mod:NewSpellAnnounce(25177, 3, nil , "CasterDps")
+local warnFrostWeakness		= mod:NewSpellAnnounce(25178, 3, nil , "CasterDps")
+local warnNatureWeakness	= mod:NewSpellAnnounce(25180, 3, nil , "CasterDps")
+local warnArcaneWeakeness	= mod:NewSpellAnnounce(25181, 3, nil , "CasterDps")
+local warnShadowWeakness	= mod:NewSpellAnnounce(25183, 3, nil , "CasterDps")
 local warnCurseOfTongues	= mod:NewSpellAnnounce(25195, 2)
 
 local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
-local timerVulnerable		= mod:NewTimer(45, "TimerVulnerable", "132866", nil, nil, 6)
-local timerCurseOfTongues	= mod:NewVarTimer("v21-43.8", 25195, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerFireWeakness		= mod:NewBuffActiveTimer(45, 25177, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerFrostWeakness	= mod:NewBuffActiveTimer(45, 25178, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerNatureWeakness	= mod:NewBuffActiveTimer(45, 25180, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerArcaneWeakness	= mod:NewBuffActiveTimer(45, 25180, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerShadowWeakness	= mod:NewBuffActiveTimer(45, 25183, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerCurseOfTongues	= mod:NewVarTimer("v21-43.7", 25195, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 
 function mod:OnCombatStart()
 	timerCurseOfTongues:Start("v17.8-50.2")
@@ -50,9 +58,21 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(25189) then
 		warnCyclone:Show(args.destName)
 		timerCyclone:Start(args.destName)
-	elseif args:IsSpell(25177, 25178, 25180, 25181, 25183) then
-		warnVulnerable:Show(args.spellName)
-		timerVulnerable:Show(args.spellName)
+	elseif args:IsSpell(25177) then
+		warnFireWeakness:Show()
+		timerFireWeakness:Start()
+	elseif args:IsSpell(25178) then
+		warnFrostWeakness:Show()
+		timerFrostWeakness:Start()
+	elseif args:IsSpell(25180) then
+		warnNatureWeakness:Show()
+		timerNatureWeakness:Start()
+	elseif args:IsSpell(25181) then	
+		warnArcaneWeakness:Show()
+		timerArcaneWeakness:Start()
+	elseif args:IsSpell(25183) then	
+		warnShadowWeakness:Show()
+		timerShadowWeakness:Start()
 	end
 end
 
