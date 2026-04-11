@@ -956,7 +956,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "3초 힐 가능 사전 경고 보기",
-	WarningHealNow		= "3초 힐 가능 알림 보기"
+	WarningHealNow		= "3초 힐 가능 알림 보기",
+	Sorting				= "정렬",
+	Alphabetical		= "이름",
+	Duration			= "지속시간"
 })
 
 -----------------

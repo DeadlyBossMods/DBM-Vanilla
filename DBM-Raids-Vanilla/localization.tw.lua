@@ -864,7 +864,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "為3秒後可以治療顯示預先警告",
-	WarningHealNow		= "為現在治療顯示警告"
+	WarningHealNow		= "為現在治療顯示警告",
+	Sorting				= "排序",
+	Alphabetical		= "字母順序",
+	Duration			= "持續時間"
 })
 
 -----------------

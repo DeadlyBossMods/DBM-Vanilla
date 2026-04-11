@@ -952,7 +952,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Mostrar anuncio anticipado para el periodo de curación",
-	WarningHealNow		= "Mostrar anuncio para el periodo de curación"
+	WarningHealNow		= "Mostrar anuncio para el periodo de curación",
+	Sorting				= "Ordenación",
+	Alphabetical		= "Alfabético",
+	Duration			= "Duración"
 })
 
 ---------------

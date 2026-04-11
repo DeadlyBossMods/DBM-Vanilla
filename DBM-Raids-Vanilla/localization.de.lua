@@ -905,7 +905,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Zeige Vorwarnung für 3-Sekunden-Heilfenster",
-	WarningHealNow		= "Zeige Warnung für 3-Sekunden-Heilfenster"
+	WarningHealNow		= "Zeige Warnung für 3-Sekunden-Heilfenster",
+	Sorting				= "Sortierung",
+	Alphabetical		= "Alphabetisch",
+	Duration			= "Dauer"
 })
 
 -----------------
