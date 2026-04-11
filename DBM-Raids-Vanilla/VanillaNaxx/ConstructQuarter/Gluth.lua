@@ -24,7 +24,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, is it really nessesarly to use SPELL_DAMAGE here?
-local warnFrenzy		= mod:NewTargetNoFilterAnnounce(28371, 3, nil, "Tank|RemoveEnrage|Healer", 2)
+local warnFrenzy		= mod:NewSpellAnnounce(28371, 3, nil, "Tank|RemoveEnrage|Healer", 2)
 local warnRoar			= mod:NewSpellAnnounce(29685, 2)
 local warnDecimate		= mod:NewSpellAnnounce(28374, 3)
 

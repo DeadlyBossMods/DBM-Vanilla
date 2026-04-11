@@ -35,7 +35,7 @@ mod:RegisterEventsInCombat(
 --]]
 --TODO, core hound summon not in combat log, so need transcriptor to add alert/timer for that
 local warnPanic			= mod:NewSpellAnnounce(19408, 2)
-local warnFrenzy		= mod:NewTargetNoFilterAnnounce(19451, 3, nil, "Tank|RemoveEnrage|Healer")
+local warnFrenzy		= mod:NewSpellAnnounce(19451, 3, nil, "Tank|RemoveEnrage|Healer")
 
 local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
 

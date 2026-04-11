@@ -27,7 +27,7 @@ mod:RegisterEventsInCombat(
 
 local warnWound			= mod:NewStackAnnounce(25646, 2, nil, "Tank")
 local warnSandTrap		= mod:NewTargetNoFilterAnnounce(25656, 3)
-local warnFrenzy		= mod:NewTargetNoFilterAnnounce(26527, 3)
+local warnFrenzy		= mod:NewSpellAnnounce(26527, 3)
 
 local specWarnSandTrap	= mod:NewSpecialWarningYou(25656, nil, nil, nil, 1, 2)
 local yellSandTrap		= mod:NewYell(25656)

@@ -27,7 +27,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, actual timer for abilities. Tank swap for mortal?
-local warnFrenzy	= mod:NewTargetNoFilterAnnounce(24318, 3, nil, "Tank|Healer", 2)
+local warnFrenzy	= mod:NewSpellAnnounce(24318, 3, nil, "Tank|Healer", 2)
 local warnGaze		= mod:NewTargetNoFilterAnnounce(24314, 4)
 local warnMortal	= mod:NewTargetNoFilterAnnounce(16856, 2, nil, "Tank|Healer", 2)
 
