@@ -23,7 +23,6 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(--An exception to not use incombat events, cause boss might not engage until after his waves
 	"SPELL_AURA_APPLIED 25471",
 	"SPELL_CAST_SUCCESS 26550 25599",
-	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
