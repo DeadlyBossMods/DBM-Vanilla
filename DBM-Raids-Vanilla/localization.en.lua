@@ -66,7 +66,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Announce Freeze status",
-	WarnShatter	= "Announce Shatter status"
+	WarnShatter	= "Announce Shatter status",
+	TimerRejoin = "Show timer for $spell:25896"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "Rejoin Viscidus"
 }
 L:SetMiscLocalization{
 	Slow	= "begins to slow",
@@ -80,6 +84,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "Frost hits per second",
 	MeleeHitsPerSecond = "Melee hits per second"
 }
+
 -------------
 -- Huhuran --
 -------------

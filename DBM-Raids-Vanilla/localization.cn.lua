@@ -68,7 +68,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "提示冰冻状态",
-	WarnShatter	= "提示打碎状态"
+	WarnShatter	= "提示打碎状态",
+	TimerRejoin = "为維希度斯重返显示计时条"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "維希度斯重返"
 }
 L:SetMiscLocalization{
 	Slow		= "的速度慢下来了！",

@@ -68,7 +68,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "빙결 상태 알림",
-	WarnShatter	= "분해 상태 알림"
+	WarnShatter	= "분해 상태 알림",
+	TimerRejoin = "$spell:25896 타이머 바 보기"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "비시디우스 재결합"
 }
 L:SetMiscLocalization{
 	Slow		= "느려지기 시작했습니다!",

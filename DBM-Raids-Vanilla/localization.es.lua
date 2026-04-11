@@ -68,7 +68,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Mostrar anuncio para congelación",
-	WarnShatter	= "Mostrar anuncio para hacerse añicos"
+	WarnShatter	= "Mostrar anuncio para hacerse añicos",
+	TimerRejoin = "Mostrar temporizador para $spell:25896"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "Viscidus refundido"
 }
 L:SetMiscLocalization{
 	Slow	= "comienza a remitir!",

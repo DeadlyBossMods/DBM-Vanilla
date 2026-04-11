@@ -182,7 +182,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Exibir anúncio para congelamento",
-	WarnShatter	= "Exibir anúncio para estilhaçamento"
+	WarnShatter	= "Exibir anúncio para estilhaçamento",
+	TimerRejoin = "Exibir cronômetro para $spell:25896"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "Reunir-se a Viscidus"
 }
 L:SetMiscLocalization{
 	Slow		= "começa a ficar lento",
@@ -196,6 +200,7 @@ L:SetMiscLocalization{
 	FrostHitsPerSecond = "Golpes de gelo por segundo",
 	MeleeHitsPerSecond = "Golpes corpo a corpo por segundo"
 }
+
 -------------
 -- Huhuran --
 -------------

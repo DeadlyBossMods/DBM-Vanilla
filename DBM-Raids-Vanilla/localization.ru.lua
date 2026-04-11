@@ -69,7 +69,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Показывать предупреждение о состоянии заморозки",
-	WarnShatter	= "Показывать предупреждение о состоянии разрушения"
+	WarnShatter	= "Показывать предупреждение о состоянии разрушения",
+	TimerRejoin = "Отсчет времени до $spell:25896"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "Присоединение к Нечистотону"
 }
 L:SetMiscLocalization{
 	Slow	= "начинает замедляться",
