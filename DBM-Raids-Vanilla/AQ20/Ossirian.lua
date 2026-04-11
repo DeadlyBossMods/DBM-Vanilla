@@ -67,7 +67,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(25180) then
 		warnNatureWeakness:Show()
 		timerNatureWeakness:Start()
-	elseif args:IsSpell(25181) then	
+	elseif args:IsSpell(25181) then
 		warnArcaneWeakness:Show()
 		timerArcaneWeakness:Start()
 	elseif args:IsSpell(25183) then	
