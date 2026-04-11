@@ -275,10 +275,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "무적의 오시리안"
 }
-L:SetOptionLocalization{
-	WarnVulnerable	= "약화 알림",
-	TimerVulnerable	= "약화 타이머 바 보기"
-}
 
 ----------------
 -- AQ20 Trash --

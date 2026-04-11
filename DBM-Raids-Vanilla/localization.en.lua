@@ -270,16 +270,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "Ossirian the Unscarred"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "Announce weaknesses",
-	TimerVulnerable	= "Show timer for weaknesses"
-}
 
 ----------------
 -- AQ20 Trash --

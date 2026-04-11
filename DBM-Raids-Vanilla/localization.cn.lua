@@ -257,16 +257,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "无疤者奥斯里安"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "提示虛弱",
-	TimerVulnerable	= "为虛弱显示计时器"
-}
 
 ----------------
 -- AQ20 Trash --

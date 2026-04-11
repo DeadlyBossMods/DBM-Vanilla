@@ -249,16 +249,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "Ossirian der Narbenlose"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "Verkünde Schwächen",
-	TimerVulnerable	= "Dauer der Schwächen anzeigen"
-}
 
 ----------------
 -- AQ20 Trash --
