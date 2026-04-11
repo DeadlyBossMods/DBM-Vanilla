@@ -66,7 +66,7 @@ local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
 local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, nil, nil, 5)
 
 mod:AddInfoFrameOption(29184, "Tank|Healer")
-mod:AddDropdownOption("CorruptedSorting", {"Alphabetical", "Duration"}, "Duration", "misc", nil, 29184)
+mod:AddDropdownOption("Sorting", {"Alphabetical", "Duration"}, "Duration", "misc", nil, 29184)
 
 mod.vb.doomCounter	= 0
 mod.vb.sporeTimer	= 12.9
@@ -99,7 +99,7 @@ do
 			tinsert(corruptKeys, name)
 		end
 
-		if mod.Options.CorruptedSorting == CL.DURATION then
+		if mod.Options.Sorting == "Duration" then
 			tsort(corruptKeys, function(a, b)
 				local durA = mmax((hadCorrupted[a] or 0) - now, 0)
 				local durB = mmax((hadCorrupted[b] or 0) - now, 0)
