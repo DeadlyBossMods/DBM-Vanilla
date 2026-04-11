@@ -23,6 +23,7 @@ mod:RegisterCombat("combat")
 mod:RegisterEvents(--An exception to not use incombat events, cause boss might not engage until after his waves
 	"SPELL_AURA_APPLIED 25471",
 	"SPELL_CAST_SUCCESS 26550 25599",
+	"UNIT_DIED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
@@ -72,17 +73,34 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)--some of these yells have line breaks th
 		self:SendSync("Pull")
 	elseif msg == L.Wave12 or msg:find(L.Wave12) then -- Actual first waves
 		self:SendSync("Wave", "1, 2")
-	elseif msg == L.Wave3 or msg:find(L.Wave3) then
+	--elseif msg == L.Wave3 or msg:find(L.Wave3) then
+		--self:SendSync("Wave", 3)
+	--elseif msg == L.Wave4 or msg:find(L.Wave4) then
+		--self:SendSync("Wave", 4)
+	--elseif msg == L.Wave5 or msg:find(L.Wave5) then
+		--self:SendSync("Wave", 5)
+	--elseif msg == L.Wave6 or msg:find(L.Wave6) then
+		--self:SendSync("Wave", 6)
+	--elseif msg == L.Wave7 or msg:find(L.Wave7) then
+		--self:SendSync("Wave", 7)
+	--elseif msg == L.Wave8 or msg:find(L.Wave8) then
+		--self:SendSync("Wave", 8)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 15392 then -- Captain Tuubid
 		self:SendSync("Wave", 3)
-	elseif msg == L.Wave4 or msg:find(L.Wave4) then
+	elseif cid == 15389 then -- Captain Drenn
 		self:SendSync("Wave", 4)
-	elseif msg == L.Wave5 or msg:find(L.Wave5) then
+	elseif cid == 15390 then -- Captain Xurrem
 		self:SendSync("Wave", 5)
-	elseif msg == L.Wave6 or msg:find(L.Wave6) then
+	elseif cid == 15386 then -- Captain Yeggeth
 		self:SendSync("Wave", 6)
-	elseif msg == L.Wave7 or msg:find(L.Wave7) then
+	elseif cid == 15388 then -- Captain Pakkon
 		self:SendSync("Wave", 7)
-	elseif msg == L.Wave8 or msg:find(L.Wave8) then
+	elseif cid == 15385 then -- Captain Zerran
 		self:SendSync("Wave", 8)
 	end
 end
