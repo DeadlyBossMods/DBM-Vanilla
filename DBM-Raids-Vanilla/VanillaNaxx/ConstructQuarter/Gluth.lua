@@ -54,10 +54,10 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(28371) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn19451dispel then
-			specwarnFrenzy:Show(args.destName)
+			specwarnFrenzy:Show()
 			specwarnFrenzy:Play("enrage")
 		else
-			warnFrenzy:Show(args.destName)
+			warnFrenzy:Show()
 		end
 		timerFrenzy:Start()
 	end

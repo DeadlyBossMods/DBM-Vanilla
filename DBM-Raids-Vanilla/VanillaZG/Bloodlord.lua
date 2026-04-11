@@ -40,7 +40,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(24314) then
 		timerGaze:Start(args.destName)
 	elseif args:IsSpell(24318) and args:IsDestTypeHostile() then
-		warnFrenzy:Show(args.destName)
+		warnFrenzy:Show()
 	elseif args:IsSpell(16856) and args:IsDestTypePlayer() then
 		warnMortal:Show(args.destName)
 		timerMortal:Start(args.destName)

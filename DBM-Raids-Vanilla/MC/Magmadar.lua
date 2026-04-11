@@ -60,7 +60,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			specWarnFrenzy:Show(args.destName)
 			specWarnFrenzy:Play("enrage")
 		else
-			warnFrenzy:Show(args.destName)
+			warnFrenzy:Show()
 		end
 		timerFrenzy:Start()
 	end

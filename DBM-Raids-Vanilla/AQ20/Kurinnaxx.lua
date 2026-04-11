@@ -72,7 +72,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnWound:Show(args.destName, amount)
 		end
 	elseif args:IsSpell(26527) then
-		warnFrenzy:Show(args.destName)
+		warnFrenzy:Show()
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
