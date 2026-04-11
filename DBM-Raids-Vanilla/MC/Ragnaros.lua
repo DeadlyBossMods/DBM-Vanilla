@@ -157,14 +157,11 @@ function mod:UNIT_DIED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Submerge or msg:find(L.Submerge) then
-		self:SendSync("Submerge")
-	elseif (msg == L.Pull or msg:find(L.Pull)) and self:AntiSpam(5, 4) then
+	if (msg == L.Pull or msg:find(L.Pull)) and self:AntiSpam(5, 4) then
 		self:SendSync("SummonRag")
 	end
 end
 
---TBC+ only, no UNIT events in classic
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 20567 then--Ragnaros Submerge Visual
 		self:SendSync("Submerge")
