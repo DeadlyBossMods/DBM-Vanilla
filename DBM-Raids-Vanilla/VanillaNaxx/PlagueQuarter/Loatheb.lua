@@ -66,7 +66,7 @@ local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
 local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, nil, nil, 5)
 
 mod:AddInfoFrameOption(29184, "Tank|Healer")
-mod:AddDropdownOption("CorruptedSorting", {CL.ALPHABETICAL, CL.DURATION}, CL.DURATION, "misc", nil, 29184)
+mod:AddDropdownOption("CorruptedSorting", {"Alphabetical", "Duration"}, "Duration", "misc", nil, 29184)
 
 mod.vb.doomCounter	= 0
 mod.vb.sporeTimer	= 12.9
