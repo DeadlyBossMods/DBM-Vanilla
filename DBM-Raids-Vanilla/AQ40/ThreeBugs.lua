@@ -79,6 +79,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerFearCD:Start()
 	elseif args:IsSpell(25812) then
 		warnToxicVolley:Show()
+		timerToxicVolleyCD:Start()
 	end
 end
 

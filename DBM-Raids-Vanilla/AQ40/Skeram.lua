@@ -40,7 +40,7 @@ local warnSummon		= mod:NewSpellAnnounce(747, 3)
 local warnSummonSoon	= mod:NewSoonAnnounce(747, 2)
 local specWarnAoE		= mod:NewSpecialWarningInterrupt(26192, "HasInterrupt", nil, nil, 1, 2)
 
-local timerMindControl	= mod:NewBuffActiveTimer(20, 785, nil, nil, nil, 3)
+local timerMindControl	= mod:NewTargetTimer(20, 785, nil, nil, nil, 3)
 
 mod:AddSetIconOption("SetIconOnMC", 785, true, 0, {4, 5, 6, 7, 8})
 
