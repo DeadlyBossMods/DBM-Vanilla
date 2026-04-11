@@ -73,34 +73,17 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)--some of these yells have line breaks th
 		self:SendSync("Pull")
 	elseif msg == L.Wave12 or msg:find(L.Wave12) then -- Actual first waves
 		self:SendSync("Wave", "1, 2")
-	--elseif msg == L.Wave3 or msg:find(L.Wave3) then
-		--self:SendSync("Wave", 3)
-	--elseif msg == L.Wave4 or msg:find(L.Wave4) then
-		--self:SendSync("Wave", 4)
-	--elseif msg == L.Wave5 or msg:find(L.Wave5) then
-		--self:SendSync("Wave", 5)
-	--elseif msg == L.Wave6 or msg:find(L.Wave6) then
-		--self:SendSync("Wave", 6)
-	--elseif msg == L.Wave7 or msg:find(L.Wave7) then
-		--self:SendSync("Wave", 7)
-	--elseif msg == L.Wave8 or msg:find(L.Wave8) then
-		--self:SendSync("Wave", 8)
-	end
-end
-
-function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 15392 then -- Captain Tuubid
+	elseif msg == L.Wave3 or msg:find(L.Wave3) then
 		self:SendSync("Wave", 3)
-	elseif cid == 15389 then -- Captain Drenn
+	elseif msg == L.Wave4 or msg:find(L.Wave4) then
 		self:SendSync("Wave", 4)
-	elseif cid == 15390 then -- Captain Xurrem
+	elseif msg == L.Wave5 or msg:find(L.Wave5) then
 		self:SendSync("Wave", 5)
-	elseif cid == 15386 then -- Captain Yeggeth
+	elseif msg == L.Wave6 or msg:find(L.Wave6) then
 		self:SendSync("Wave", 6)
-	elseif cid == 15388 then -- Captain Pakkon
+	elseif msg == L.Wave7 or msg:find(L.Wave7) then
 		self:SendSync("Wave", 7)
-	elseif cid == 15385 then -- Captain Zerran
+	elseif msg == L.Wave8 or msg:find(L.Wave8) then
 		self:SendSync("Wave", 8)
 	end
 end
