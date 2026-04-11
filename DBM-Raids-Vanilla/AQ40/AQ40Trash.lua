@@ -47,8 +47,8 @@ local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
 
 -- Not sure if both can happen in AQ40
-local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802)
-local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802)
+local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802, "Dps")
+local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802, "Dps")
 
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
 local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2)
@@ -73,7 +73,7 @@ timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks goo
 timerBurst					= mod:NewNextTimer(30, 1215202)
 end
 
-mod:AddSpeedClearOption(tostring(GetRealZoneText(531)), true)
+mod:AddSpeedClearOption("AQ40", true)
 mod:AddInfoFrameOption(nil, true)
 
 --Speed Clear variables
