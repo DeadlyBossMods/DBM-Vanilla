@@ -595,7 +595,6 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Zeige Zeit bis Auftauchen"
 }
 L:SetMiscLocalization{
-	Submerge	= "KOMMT HERBEI, MEINE DIENER! VERTEIDIGT EUREN HERRN!",
 	Pull		= "Unverschämte Welpen! Ihr seid sehenden Auges dem Tod in die Arme gelaufen! Seht her, der Meister regt sich!"
 }
 

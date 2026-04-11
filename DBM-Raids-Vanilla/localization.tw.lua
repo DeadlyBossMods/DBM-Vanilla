@@ -559,7 +559,6 @@ L:SetOptionLocalization{
 	TimerEmerge			= "為現身顯示計時器"
 }
 L:SetMiscLocalization{
-	Submerge	= "出現吧，我的奴僕！ 保衛你們的主人！",
 	Pull		= "你這個莽撞的傢伙！你簡直是自尋死路！看吧，你驚動了主人！"
 }
 
