@@ -436,7 +436,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Lasst die Spiele beginnen!",
-	YellP3		= "Unmöglich! Erhebt euch meine Diener! Kämpft erneut für Euren Meister!",
 	YellShaman	= "Schamane, zeigt mir was eure Totems können!",
 	YellPaladin	= "Paladine... ich habe gehört, dass Ihr viele Leben habt. Zeigt es mir.",
 	YellDruid	= "Druiden und ihre lächerliche Gestaltwandlung. Zeigt mal was Ihr könnt!",

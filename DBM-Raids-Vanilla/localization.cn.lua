@@ -424,7 +424,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1 		= "比赛开始！",
-	YellP3		= "不可能！出现吧，我的仆人！再次为你们的主人效力！",
 	YellShaman	= "萨满祭司，让我看看你们的图腾到底是干什么用的！",
 	YellPaladin	= "圣骑士……听说你们有无数条命。让我看看到底是怎么样的吧。",
 	YellDruid	= "德鲁伊和你们愚蠢的变形法术。让我们看看有什么事情会发生吧！",

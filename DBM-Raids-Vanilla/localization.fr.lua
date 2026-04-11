@@ -589,7 +589,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
     YellP1			= "Que les jeux commencent !",
-    YellP3			= "C'est impossible ! Relevez-vous, serviteurs ! Servez une nouvelle fois votre maître !",
     YellShaman		= "Chamans, montrez-moi ce que vos totems peuvent faire !",
     YellPaladin		= "Les paladins... J'en entendu dire que vous aviez de nombreuses vies... Montrez-moi.",
     YellDruid		= "Les druides et leur stupides changements de forme. Voyons ce qu'ils donnent en vrai...",
