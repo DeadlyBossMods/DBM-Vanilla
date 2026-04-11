@@ -1,6 +1,5 @@
 local mod	= DBM:NewMod("LoathebVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
-local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
