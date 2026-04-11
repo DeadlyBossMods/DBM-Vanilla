@@ -37,7 +37,7 @@ local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
 local timerFireWeakness		= mod:NewBuffActiveTimer(45, 25177, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerFrostWeakness	= mod:NewBuffActiveTimer(45, 25178, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerNatureWeakness	= mod:NewBuffActiveTimer(45, 25180, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerArcaneWeakness	= mod:NewBuffActiveTimer(45, 25180, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerArcaneWeakness	= mod:NewBuffActiveTimer(45, 25181, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerShadowWeakness	= mod:NewBuffActiveTimer(45, 25183, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerCurseOfTongues	= mod:NewVarTimer("v21-43.7", 25195, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 
