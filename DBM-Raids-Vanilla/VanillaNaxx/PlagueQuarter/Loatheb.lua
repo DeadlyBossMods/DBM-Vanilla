@@ -70,55 +70,66 @@ mod:AddDropdownOption("Sorting", {"Alphabetical", "Duration"}, "Duration", "misc
 mod.vb.doomCounter	= 0
 mod.vb.sporeTimer	= 12.9
 mod.vb.sporeCounter = 0
-local hadCorrupted	= {}
+local hadCorrupted = {}
 
 local updateInfoFrame
 do
-	local ipairs, pairs, tostring = ipairs, pairs, tostring
-	local mfloor, mmax = math.floor, math.max
-	local tinsert, tsort = table.insert, table.sort
-	local twipe = table.wipe or wipe
+    -- Localize globals for high-frequency execution
+    local mfloor, mmax = math.floor, math.max
+    local tinsert, tsort = table.insert, table.sort
+    local twipe = table.wipe or wipe -- Standard WoW 'wipe' fallback
+    local GetTime = GetTime
 
-	local lines, sortedLines, corruptKeys = {}, {}, {}
+    -- Pre-allocate tables to reuse memory and avoid GC pressure
+    local lines, sortedLines, corruptKeys = {}, {}, {}
+    
+    -- Using an internal helper for consistent insertion
+    local function addLine(name, value)
+        lines[name] = value
+        sortedLines[#sortedLines + 1] = name
+    end
 
-	local lastUpdate = 0
+    updateInfoFrame = function()
+        twipe(lines)
+        twipe(sortedLines)
+        twipe(corruptKeys)
 
-	updateInfoFrame = function()
-		local now = GetTime()
-		if now - lastUpdate < 0.1 then
-			return lines, sortedLines -- throttle
-		end
-		lastUpdate = now
+        local now = GetTime()
 
-		twipe(lines)
-		twipe(sortedLines)
-		twipe(corruptKeys)
+        -- 1. Collect names
+        for name in pairs(hadCorrupted) do
+            corruptKeys[#corruptKeys + 1] = name
+        end
 
-		for name in pairs(hadCorrupted) do
-			tinsert(corruptKeys, name)
-		end
+        -- 2. Sort Logic
+        -- We extract the sort check once to avoid checking the table inside the loop
+        local sortMode = mod.Options and mod.Options.Sorting
+        
+        if sortMode == "Duration" then
+            tsort(corruptKeys, function(a, b)
+                local timeA = hadCorrupted[a] or 0
+                local timeB = hadCorrupted[b] or 0
+                if timeA ~= timeB then
+                    return timeA > timeB
+                end
+                return a < b -- Alphabetical fallback for visual stability
+            end)
+        else
+            tsort(corruptKeys)
+        end
 
-		if mod.Options.Sorting == "Duration" then
-			tsort(corruptKeys, function(a, b)
-				local durA = mmax((hadCorrupted[a] or 0) - now, 0)
-				local durB = mmax((hadCorrupted[b] or 0) - now, 0)
-				if durA == durB then
-					return a < b
-				end
-				return durA > durB
-			end)
-		else
-			tsort(corruptKeys)
-		end
+        -- 3. Data Processing
+        for i = 1, #corruptKeys do
+            local name = corruptKeys[i]
+            -- Calculate remaining time; mmax prevents negative numbers
+            local remaining = mfloor(mmax((hadCorrupted[name] or now) - now, 0))
+            
+            -- We pass the number to addLine (or use tostring if your UI requires it)
+            addLine(name, tostring(remaining))
+        end
 
-		for i = 1, #corruptKeys do
-		local name = corruptKeys[i]
-		sortedLines[i] = name
-		lines[name] = mfloor(mmax(hadCorrupted[name] - now, 0))
-		end
-
-		return lines, sortedLines
-	end
+        return lines, sortedLines
+    end
 end
 
 function mod:OnCombatStart()
