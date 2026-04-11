@@ -27,6 +27,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 21060 12540",
 	"SPELL_AURA_REMOVED 21060 12540",
 	"SPELL_SUMMON 24183",
+	"UNIT_SPELLCAST_SUCCEEDED"
 	"CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL"
 )
@@ -104,10 +105,22 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self:GetStage(1) then -- Bossfight (tank and spank)
-		self:SendSync("YellPhase2")
-	end
+--function mod:CHAT_MSG_MONSTER_YELL(msg)
+	--if (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self:GetStage(1) then -- Bossfight (tank and spank)
+		--self:SendSync("YellPhase2")
+	--end
+--end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+   if spellId == 24169 then
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		warnPhase:Play("ptwo")
+		timerSimulKill:Stop()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end
+   end
 end
 
 function mod:OnSync(msg)
@@ -117,13 +130,13 @@ function mod:OnSync(msg)
 			warnSimulKill:Show()
 			timerSimulKill:Start()
 		end
-	elseif msg == "YellPhase2" and self:GetStage(1) then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-		warnPhase:Play("ptwo")
-		timerSimulKill:Stop()
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
-		end
+	--elseif msg == "YellPhase2" and self:GetStage(1) then
+		--self:SetStage(2)
+		--warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		--warnPhase:Play("ptwo")
+		--timerSimulKill:Stop()
+		--if self.Options.InfoFrame then
+			--DBM.InfoFrame:Hide()
+		--end
 	end
 end

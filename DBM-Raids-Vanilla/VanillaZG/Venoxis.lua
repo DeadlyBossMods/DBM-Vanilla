@@ -27,6 +27,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 23861",
 	"SPELL_AURA_APPLIED 23895 23860 23865",
 	"SPELL_AURA_REMOVED 23895 23860",
+	"UNIT_SPELLCAST_SUCCEEDED"
 	"UNIT_HEALTH mouseover target"
 )
 
@@ -99,8 +100,15 @@ function mod:UNIT_HEALTH(uId)
 	if not self.vb.prewarn_Phase2 and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 then
 		self.vb.prewarn_Phase2 = true
 		warnPhase2Soon:Show()
-	elseif self:GetStage(1) and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.50 then
+	--elseif self:GetStage(1) and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.50 then
+		--self:SetStage(2)
+		--warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+   if spellId == 23849 then
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-	end
+   end
 end
