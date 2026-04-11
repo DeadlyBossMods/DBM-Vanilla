@@ -182,7 +182,7 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Afficher une annonce pour le Gel",
-	WarnShatter	= "Afficher une annonce pour le Bris"
+	WarnShatter	= "Afficher une annonce pour le Bris",
 	TimerRejoin = "Afficher un chronomètre pour $spell:25896"
 }
 L:SetTimerLocalization{
