@@ -31,7 +31,7 @@ local warnFrostWeakness		= mod:NewSpellAnnounce(25178, 3, nil , "CasterDps")
 local warnNatureWeakness	= mod:NewSpellAnnounce(25180, 3, nil , "CasterDps")
 local warnArcaneWeakeness	= mod:NewSpellAnnounce(25181, 3, nil , "CasterDps")
 local warnShadowWeakness	= mod:NewSpellAnnounce(25183, 3, nil , "CasterDps")
-local warnCurseOfTongues	= mod:NewSpellAnnounce(25195, 2)
+local warnCurseOfTongues	= mod:NewSpellAnnounce(25195, 2, nil, "SpellCaster")
 
 local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
 local timerFireWeakness		= mod:NewBuffActiveTimer(45, 25177, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
@@ -39,7 +39,7 @@ local timerFrostWeakness	= mod:NewBuffActiveTimer(45, 25178, nil, "CasterDps", n
 local timerNatureWeakness	= mod:NewBuffActiveTimer(45, 25180, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerArcaneWeakness	= mod:NewBuffActiveTimer(45, 25181, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerShadowWeakness	= mod:NewBuffActiveTimer(45, 25183, nil, "CasterDps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerCurseOfTongues	= mod:NewVarTimer("v21-43.7", 25195, nil, nil, nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseOfTongues	= mod:NewVarTimer("v21-43.7", 25195, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 
 function mod:OnCombatStart()
 	timerCurseOfTongues:Start("v17.8-50.2")
