@@ -61,11 +61,18 @@ function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 16803 then--Deathknight Understudy
 		timerTaunt:Stop(args.destGUID)
 		timerShieldWall:Stop(args.destGUID)
+		timerMindExhaustionCD:Stop(args.destGUID)
 	end
 end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
    if spellId == 29051 then
-		timerMindExhaustionCD:Start()
+		self:SendSync("MindExhaustion")
    end
+end
+
+function mod:OnSync(event)
+	if event == "MindExhaustion" then
+		timerMindExhaustionCD:Start()
+	end
 end
