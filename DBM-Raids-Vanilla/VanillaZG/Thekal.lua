@@ -20,7 +20,7 @@ mod:SetBossHPInfoToHighest()
 mod:SetZone(309)
 
 mod:RegisterCombat("combat")
-mod:RegisterKill("yell", L.YellKill)
+--mod:RegisterKill("yell", L.YellKill)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 24208",
@@ -47,8 +47,7 @@ local timerBlind		= mod:NewTargetTimer(10, 21060, nil, nil, nil, 3)
 local timerGouge		= mod:NewTargetTimer(4, 12540, nil, nil, nil, 3)
 
 
-function mod:OnCombatStart(delay)
-	self:SetStage(1)
+function mod:OnCombatStart()
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
@@ -113,13 +112,7 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
    if spellId == 24169 then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-		warnPhase:Play("ptwo")
-		timerSimulKill:Stop()
-		if self.Options.InfoFrame then
-			DBM.InfoFrame:Hide()
-		end
+		self:SendSync("Phase2")
    end
 end
 
@@ -130,13 +123,12 @@ function mod:OnSync(msg)
 			warnSimulKill:Show()
 			timerSimulKill:Start()
 		end
-	--elseif msg == "YellPhase2" and self:GetStage(1) then
-		--self:SetStage(2)
-		--warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-		--warnPhase:Play("ptwo")
-		--timerSimulKill:Stop()
-		--if self.Options.InfoFrame then
-			--DBM.InfoFrame:Hide()
-		--end
+	elseif msg == "Phase2" then
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		warnPhase:Play("ptwo")
+		timerSimulKill:Stop()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end
 	end
 end
