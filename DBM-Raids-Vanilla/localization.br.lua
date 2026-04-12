@@ -726,6 +726,7 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Exibir cronômetro para emersão",
 }
 L:SetMiscLocalization{
+	Submerge	= "VENHAM, MEUS SERVOS! DEFENDAM SEU SENHOR!",
 	Pull		= "Vermes abusados! Vocês se precipitaram para suas mortes! Vejam agora, o amo se agita!"
 }
 

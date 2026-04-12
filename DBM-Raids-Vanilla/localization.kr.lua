@@ -633,6 +633,7 @@ L:SetOptionLocalization{
 	TimerEmerge			= "등장 타이머 바 보기"
 }
 L:SetMiscLocalization{
+	Submerge	= "나의 종들아! 어서 나와 주인을 돕거라!",
 	Pull		= "건방진 젖먹이! 죽고 싶어 안달이구나! 자, 보아라. 주인님께서 일어나신다!"
 }
 

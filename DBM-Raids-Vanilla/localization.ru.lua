@@ -637,6 +637,7 @@ L:SetOptionLocalization{
 	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
 }
 L:SetMiscLocalization{
+	Submerge	= "ПРИДИТЕ, СЛУГИ МОИ! ЗАЩИТИТЕ СВОЕГО ГОСПОДИНА!",
 	Pull		= "Наглые щенки! Вы опрометью ринулись навстречу смерти! Узрите же явление господина!"
 }
 

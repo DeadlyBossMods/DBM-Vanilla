@@ -732,6 +732,7 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Afficher un chronomètre pour émergé",
 }
 L:SetMiscLocalization{
+	Submerge	= "VENEZ, MES SERVITEURS ! DÉFENDEZ VOTRE MAÎTRE !",
 	Pull		= "Impudents imbéciles ! Vous vous êtes précipités vers votre propre mort ! Voyez, à présent, le Maître remue !"
 }
 
