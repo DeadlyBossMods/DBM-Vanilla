@@ -182,14 +182,14 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("ClassCall", "MONK")
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
+	elseif msg == L.YellP3 or msg:find(L.YellP3) then
+		self:SendSync("Phase", 3)
 	end
 end
 
 function mod:UNIT_HEALTH(uId)
 	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage(2) then
 		self:SendSync("Phase", 2.5)
-	elseif UnitHealth(uId) / UnitHealthMax(uId) <= 0.20 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage(2.5) then
-		self:SendSync("Phase", 3)
 	end
 end
 
