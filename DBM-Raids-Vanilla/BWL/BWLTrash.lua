@@ -23,21 +23,24 @@ mod:RegisterEvents(
 	"PLAYER_TARGET_CHANGED",
 	"SPELL_CAST_START 22458",
 	"SPELL_CAST_SUCCESS 22275 19717",
-	"SPELL_AURA_APPLIED 22277 22278 22279 22280 22281 22428 19717 22275",
+	"SPELL_AURA_APPLIED 22277 22278 22279 22280 22281 22291 22428 19717 22275",
+	"SPELL_AURA_REMOVED 22291",
 	"UNIT_DIED"
 )
 
 --TODO, keep warlocks alive longer to pull more portal timer data
 --"Demon Portal-22372-npc:12459-0000BDADC5 = pull:54.5, 32.7",
 local warnVuln					= mod:NewAnnounce("WarnVulnerable", 1, nil, false)
-local warnEnrage				= mod:NewTargetNoFilterAnnounce(22428, 2, nil, "Tank|Healers|RemoveEnrage")
+local warnEnrage				= mod:NewTargetNoFilterAnnounce(22428, 2, nil, "Tank|RemoveEnrage|Healer")
 local warnFlamestrike			= mod:NewSpellAnnounce(22275, 2)
 local warnRainofFire			= mod:NewSpellAnnounce(19717, 2)
+local warnBroodBronze			= mod:NewTargetNoFilterAnnounce(22291, 2, nil, "Melee")
 
 local specWarnHealingCircle		= mod:NewSpecialWarningInterrupt(22458, nil, nil, nil, 1, 2)
 local specWarnGTFO				= mod:NewSpecialWarningGTFO(22428, nil, nil, nil, 1, 8)
 
 local timerFlameStrikeCD		= mod:NewCDNPTimer(8.1, 22275, nil, nil, nil, 3)--8.1-10.9, often it can be 10.9 repeating
+local timerBroodBronze			= mod:NewTargetTimer(5, 22291, nil, "Melee", nil, 3)
 
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
 
@@ -127,12 +130,21 @@ function mod:SPELL_AURA_APPLIED(args)
 		--"Enrage-22428-npc:12464-0000BDADC5 = pull:181.3, 17.0, 14.5, 15.8, 13.4, 22.0, 14.6, 16.9",
 		--"Enrage-22428-npc:12464-00013DADC5 = pull:180.2, 13.3, 18.2, 12.1, 19.4, 13.4, 17.0, 16.9",
 		warnEnrage:Show(args.destName)
+	elseif args:IsSpell(22291) then
+		warnBroodBronze:CombinedShow(0.75, args.destName)
+		timerBroodBronze:Start(args.destName)
 	elseif args:IsSpell(19717, 22275) then
 		if args:IsPlayer() and self:AntiSpam(3, 1) then
 			specWarnGTFO:UpdateKey(args.spellId)
 			specWarnGTFO:Show(args.spellName)
 			specWarnGTFO:Play("watchfeet")
 		end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(22291) then
+		timerBroodBronze:Stop(args.destName)
 	end
 end
 

@@ -17,10 +17,8 @@ mod:SetZone(533)
 mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3)
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 29213 29212 29208",--54835 Add in wrath
+	"SPELL_CAST_SUCCESS 29213 29212 29208",
 	"CHAT_MSG_MONSTER_YELL"
---	"CHAT_MSG_RAID_BOSS_EMOTE",
---	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --TODO, determine if old way is required or if new way is still functional
@@ -38,7 +36,7 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
-local timerCurseCD		= mod:NewCDTimer(51, 29213, nil, nil, nil, 5, nil, DBM_COMMON_L.CURSE_ICON)-- 51-116
+local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
 
 mod.vb.teleCount = 0
@@ -96,15 +94,15 @@ function mod:BackInRoom()
 	self:ScheduleMethod(timer, "Balcony")
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.teleCount = 0
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
-	timerAddsCD:Start(12-delay)--12
-	timerCurseCD:Start(9.5-delay)
-	timerTeleport:Start(90.8-delay)
-	warnTeleportSoon:Schedule(70.8-delay)
-	self:ScheduleMethod(90.8-delay, "Balcony")
+	timerAddsCD:Start(12)
+	timerCurseCD:Start("v6.4-26.8")
+	timerTeleport:Start(90.8)
+	warnTeleportSoon:Schedule(70.8)
+	self:ScheduleMethod(90.8, "Balcony")
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -126,26 +124,9 @@ end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
 	if msg == L.AddsYell or msg:find(L.AddsYell) then
-		self:SendSync("Adds")--Syncing to help unlocalized clients
+		self:SendSync("Adds")
 	end
 end
-
---[[
---These events don't happen in classic, added in wrath
-function mod:CHAT_MSG_RAID_BOSS_EMOTE(msg, npc, _, _, target)
-	if msg == L.Adds or msg:find(L.Adds) then
-		self:SendSync("Adds")--Syncing to help unlocalized clients
-	elseif msg == L.AddsTwo or msg:find(L.AddsTwo) then
-		self:SendSync("AddsTwo")--Syncing to help unlocalized clients
-	end
-end
-
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 29231 and self:AntiSpam() then--Teleport Return
-		self:SendSync("Teleport")
-	end
-end
---]]
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
@@ -170,24 +151,5 @@ function mod:OnSync(msg)
 				end
 			end
 		end
-	--Below here can't be used in Classic
-	--[[elseif msg == "AddsTwo" then--Boss away
-		self.vb.addsCount = self.vb.addsCount + 1
-		specWarnAdds:Show()
-		specWarnAdds:Play("killmob")
-		--He won't do anymore adds when teleported way on 4th and later teleport
-		--He'll never do more than 2 waves
-		if self.vb.teleCount < 4 and self.vb.addsCount == 1 then
-			if self.vb.teleCount == 3 then
-				timerAddsCD:Start(60)--2 big waves, 60 seconds apart
-			elseif self.vb.teleCount == 2 then--2 medium waves 46 seconds apart
-				timerAddsCD:Start(46)
-			else--2 smaller waves 30 seconds apart
-				timerAddsCD:Start(30)
-			end
-		end
-	elseif msg == "Teleport" then--Boss away
-		self:UnscheduleMethod("BackInRoom")
-		self:BackInRoom()--]]
 	end
 end

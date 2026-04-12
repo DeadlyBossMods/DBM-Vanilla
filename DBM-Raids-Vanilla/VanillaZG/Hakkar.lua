@@ -57,7 +57,6 @@ local timerNextAspect, timerSilenced
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextAspect				= mod:NewNextSpecialTimer(20, 24687)
 	timerSilenced				= mod:NewBuffFadesTimer(10, 468012)
-	timerAspectOfThekal			= mod:NewBuffActiveTimer(8, 24689, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
 else
 	timerAspectOfMarli			= mod:NewTargetTimer(6, 24686, nil, nil, nil, 5)
 	timerAspectOfMarliCD		= mod:NewCDTimer(16, 24686, nil, nil, nil, 2)--16-20
@@ -69,8 +68,8 @@ else
 	timerAspectOfArlokk			= mod:NewTargetTimer(2, 24690, nil, nil, nil, 2)
 	timerAspectOfArlokkCD		= mod:NewNextTimer(30, 24690, nil, nil, nil, 2)--Needs more data to verify it's a next timer, rest aren't
 end
-local timerInsanity				= mod:NewTargetTimer(10, 24327, nil, nil, nil, 5)
-local timerInsanityCD			= mod:NewCDTimer(20, 24327, nil, nil, nil, 3)
+local timerInsanity				= mod:NewTargetTimer(10, 24327, nil, nil, nil, 3)
+local timerInsanityCD			= mod:NewCDTimer(21, 24327, nil, nil, nil, 3)
 
 local enrageTimer				= mod:NewBerserkTimer(585)
 
@@ -131,10 +130,11 @@ function mod:AspectTimer(delay)
 	self:ScheduleMethod(22 - delay, "AspectTimer", 2)
 end
 
-function mod:OnCombatStart(delay)
-	enrageTimer:Start(585-delay)
-	warnSiphonSoon:Schedule(80-delay)
-	timerSiphon:Start(90-delay)
+function mod:OnCombatStart()
+	enrageTimer:Start(585)
+	warnSiphonSoon:Schedule(80)
+	timerSiphon:Start(90)
+	timerInsanityCD:Start()
 	--Hard Mode Timers
 	--This just checks for Hakkar's health which is higher on hard mode
 	--Can't just start these on all normal mode pulls
@@ -142,11 +142,11 @@ function mod:OnCombatStart(delay)
 		if timerNextAspect then
 			self:AspectTimer()
 		else
-			timerAspectOfMarliCD:Start(10-delay)
-			timerAspectOfThekalCD:Start(10-delay)
-			timerAspectOfVenoxisCD:Start(14-delay)
-			timerAspectOfJeklikCD:Start(21-delay)
-			timerAspectOfArlokkCD:Start(30-delay)
+			timerAspectOfMarliCD:Start(10)
+			timerAspectOfThekalCD:Start(10)
+			timerAspectOfVenoxisCD:Start(14)
+			timerAspectOfJeklikCD:Start(21)
+			timerAspectOfArlokkCD:Start(30)
 		end
 	end
 end

@@ -29,10 +29,11 @@ local warnWaveNow		= mod:NewAnnounce("WarningWaveSpawned", 3, nil, false)
 local warnWaveSoon		= mod:NewAnnounce("WarningWaveSoon", 2)
 local warnRiderDown		= mod:NewAnnounce("WarningRiderDown", 4)
 local warnKnightDown	= mod:NewAnnounce("WarningKnightDown", 2)
-local warnPhase2		= mod:NewPhaseAnnounce(2, 3)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
+
 local timerTeleport, warnTeleport
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnTeleport		= mod:NewSoonAnnounce(1222332, 3)
@@ -43,6 +44,7 @@ mod:AddInfoFrameOption(nil, true)
 
 mod.vb.wave = 0
 local mobCounts = {}
+local totalWaves = 18
 
 local liveMobIds = {
 	[16124] = L.Trainee,
@@ -138,7 +140,8 @@ function mod:NextWave()
 	end
 	local next = wavesClassic[self.vb.wave].next
 	if next then
-		timerWave:Start(next, self.vb.wave + 1)
+		timerWave:Start(next)
+		timerWave:UpdateName(self.vb.wave + 1 .. "/" .. totalWaves)
 		warnWaveSoon:Schedule(next - 3, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 		self:ScheduleMethod(next, "NextWave")
 	end
@@ -150,11 +153,15 @@ function mod:Teleport()
 	self:ScheduleMethod(20, "Teleport")
 end
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.wave = 0
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	timerPhase2:Start()
-	warnPhase2:Schedule(270)
-	timerWave:Start(27, self.vb.wave + 1)
+	self:Schedule(270, function()
+    warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+	end)
+	timerWave:Start(27)
+	timerWave:UpdateName(self.vb.wave + 1 .. "/" .. totalWaves)
 	warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 	self:ScheduleMethod(27, "NextWave")
 	if DBM:IsSeasonal("SeasonOfDiscovery") then

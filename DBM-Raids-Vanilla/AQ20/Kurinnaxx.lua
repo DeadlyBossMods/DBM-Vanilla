@@ -27,7 +27,7 @@ mod:RegisterEventsInCombat(
 
 local warnWound			= mod:NewStackAnnounce(25646, 2, nil, "Tank")
 local warnSandTrap		= mod:NewTargetNoFilterAnnounce(25656, 3)
-local warnFrenzy		= mod:NewTargetNoFilterAnnounce(26527, 3)
+local warnFrenzy		= mod:NewSpellAnnounce(26527, 3)
 
 local specWarnSandTrap	= mod:NewSpecialWarningYou(25656, nil, nil, nil, 1, 2)
 local yellSandTrap		= mod:NewYell(25656)
@@ -37,8 +37,8 @@ local specWarnWoundTaunt= mod:NewSpecialWarningTaunt(25646, nil, nil, nil, 1, 2)
 local timerWound		= mod:NewTargetTimer(15, 25646, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerSandTrapCD	= mod:NewCDTimer(8, 25656, nil, nil, nil, 3)
 
-function mod:OnCombatStart(delay)
-	timerSandTrapCD:Start(8-delay)
+function mod:OnCombatStart()
+	timerSandTrapCD:Start()
 end
 
 function mod:SPELL_CREATE(args)
@@ -72,7 +72,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnWound:Show(args.destName, amount)
 		end
 	elseif args:IsSpell(26527) then
-		warnFrenzy:Show(args.destName)
+		warnFrenzy:Show()
 	end
 end
 mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED

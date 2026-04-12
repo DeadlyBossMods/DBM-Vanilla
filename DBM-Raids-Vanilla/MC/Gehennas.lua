@@ -32,13 +32,13 @@ mod:RegisterEventsInCombat(
 (ability.id = 19716 or ability.id = 19717 or ability.id = 461232) and type = "cast"
  or ability.id = 365100 and type = "summon"
 --]]
-local warnCurse		= mod:NewSpellAnnounce(19716, 3)
+local warnCurse		= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
 local warnRainFire	= mod:NewSpellAnnounce(19717, 2, nil, false)
 local warnFist		= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
 
 local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8)
 
-local timerCurseCD	= mod:NewVarTimer("v25.9-35.6", 19716, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON..DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD	= mod:NewVarTimer("v25.9-35.6", 19716, nil, "RemoveCurse|Healer", nil, 3, nil, DBM_COMMON_L.HEALER_ICON..DBM_COMMON_L.CURSE_ICON)
 local timerRoF		= mod:NewCDTimer(4.8, 19717, nil, false, nil, 3)
 --local timerFist	= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 

@@ -17,20 +17,22 @@ else
 end
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 29107 29060 29061",--55543
+	"SPELL_CAST_SUCCESS 29107 29060 29061",
+	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_DIED"
 )
 
 -- New spell ID found in logs on SoD
 -- 1225423 (Disarm) cast by Understudies, TBD if we want to do something with that
 
-local warnShoutNow		= mod:NewSpellAnnounce(29107, 1, 6673)
-local warnShoutSoon		= mod:NewSoonAnnounce(29107, 3, 6673)
-local warnShieldWall	= mod:NewAnnounce("WarningShieldWallSoon", 3, 29061)
+local warnShoutNow			= mod:NewSpellAnnounce(29107, 1, 6673)
+local warnShoutSoon			= mod:NewSoonAnnounce(29107, 3, 6673)
+local warnShieldWall		= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 
-local timerShout		= mod:NewVarTimer("v25.8-26.3", 29107, nil, nil, nil, 2, 6673)
-local timerTaunt		= mod:NewCDTimer(60, 29060, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerShieldWall	= mod:NewBuffFadesTimer(20, 29061, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerShout			= mod:NewCDTimer(25.9, 29107, nil, nil, nil, 2, 6673, DBM_COMMON_L.DEADLY_ICON)
+local timerTaunt			= mod:NewCDTimer(60, 29060, nil, false, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, nil, nil, 5)
 
 function mod:OnCombatStart()
 	timerShout:Start()
@@ -59,5 +61,18 @@ function mod:UNIT_DIED(args)
 	if self:GetCIDFromGUID(args.destGUID) == 16803 then--Deathknight Understudy
 		timerTaunt:Stop(args.destGUID)
 		timerShieldWall:Stop(args.destGUID)
+		timerMindExhaustionCD:Stop(args.destGUID)
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+   if spellId == 29051 then
+		self:SendSync("MindExhaustion")
+   end
+end
+
+function mod:OnSync(event)
+	if event == "MindExhaustion" then
+		timerMindExhaustionCD:Start()
 	end
 end

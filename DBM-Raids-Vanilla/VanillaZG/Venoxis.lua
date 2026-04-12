@@ -27,14 +27,16 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 23861",
 	"SPELL_AURA_APPLIED 23895 23860 23865",
 	"SPELL_AURA_REMOVED 23895 23860",
+	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_HEALTH mouseover target"
 )
 
 local warnSerpent		= mod:NewTargetNoFilterAnnounce(23865, 2)
 local warnCloud			= mod:NewSpellAnnounce(23861)
-local warnRenew			= mod:NewTargetNoFilterAnnounce(23895, 3)
+local warnRenew			= mod:NewTargetNoFilterAnnounce(23895, 3, nil, "MagicDispeller")
 local warnFire			= mod:NewTargetNoFilterAnnounce(23860, 2, nil, "RemoveMagic|Healer")
-local prewarnPhase2		= mod:NewPrePhaseAnnounce(2, 2)
+local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
 local specWarnHolyFire	= mod:NewSpecialWarningInterrupt(23860, "HasInterrupt", nil, nil, 1, 2)
 local specWarnRenew		= mod:NewSpecialWarningDispel(23895, "MagicDispeller", nil, nil, 1, 2)
@@ -48,6 +50,8 @@ mod.vb.prewarn_Phase2 = false
 
 function mod:OnCombatStart(delay)
 	self.vb.prewarn_Phase2 = false
+	self:SetStage(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 end
 
 
@@ -93,8 +97,18 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if not self.vb.prewarn_Phase2 and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.53 then
+	if not self.vb.prewarn_Phase2 and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.55 then
 		self.vb.prewarn_Phase2 = true
-		prewarnPhase2:Show()
+		warnPhase2Soon:Show()
+	--elseif self:GetStage(1) and self:GetUnitCreatureId(uId) == 14507 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.50 then
+		--self:SetStage(2)
+		--warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+   if spellId == 23849 then
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+   end
 end

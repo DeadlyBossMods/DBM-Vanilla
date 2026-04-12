@@ -22,14 +22,14 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 26180 26053 26051 26068 26050 1215757 1215752 1215753 1215755 1215885",
 	"SPELL_AURA_APPLIED_DOSE 26050 1215757",
 	"SPELL_AURA_REMOVED 26180 26053 26050 1215757 1215752 1215753 26051 1215755",
-	"SPELL_CAST_SUCCESS 26053 1215752 1215755",
+	"SPELL_CAST_SUCCESS 26051 26053 1215752 1215755",
 	"UNIT_HEALTH"
 )
 
 local warnSting			= mod:NewTargetAnnounce(26180, 2)
 local warnAcid			= mod:NewStackAnnounce(26050, 3, nil, "Tank", 2)
 local warnPoison		= mod:NewSpellAnnounce(26053, 3)
-local warnEnrage		= mod:NewSpellAnnounce(26051, 2, nil, "Tank|Healer", 2)
+local warnFrenzy		= mod:NewSpellAnnounce(26051, 3, nil, "Tank|RemoveEnrage|Healer")
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 local warnBerserk		= mod:NewSpellAnnounce(26068, 2)
 
@@ -39,23 +39,23 @@ local specWarnFrenzy	= mod:NewSpecialWarningDispel(26051, "RemoveEnrage", nil, n
 
 
 local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
-local timerStingCD		= mod:NewCDTimer(25, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
-local timerPoisonCD		= mod:NewCDTimer(11, 26053, nil, nil, nil, 3)
+local timerStingCD		= mod:NewVarTimer("v25.9-59.2", 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)
+local timerPoisonCD		= mod:NewVarTimer("v11.3-37.6", 26053, nil, nil, nil, 3)
 local timerPoison		= mod:NewBuffFadesTimer(8, 26053)
-local timerEnrageCD		= mod:NewCDTimer(11.8, 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)--Off by default do to ridiculous variation
-local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, false, 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
+local timerEnrageCD		= mod:NewVarTimer("v11.3-25.9", 26051, nil, "RemoveEnrage", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerEnrage		= mod:NewBuffActiveTimer(8, 26051, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 local timerAcid			= mod:NewTargetTimer(30, 26050, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
 
 mod.vb.prewarn_berserk = false
 local StingTargets = {}
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.prewarn_berserk = false
 	table.wipe(StingTargets)
-	timerEnrageCD:Start(8.1-delay)
-	timerPoisonCD:Start(11-delay)
-	timerStingCD:Start(20-delay)
+	timerStingCD:Start("v6.8-43.7")
+	timerPoisonCD:Start("v11.3-38.8")
+	timerEnrageCD:Start("v6.5-25.9")
 end
 
 local function warnStingTargets()
@@ -65,7 +65,9 @@ local function warnStingTargets()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(26053, 1215752) then
+	if args:IsSpell(26051) then
+		timerEnrageCD:Start()
+	elseif args:IsSpell(26053, 1215752) then
 		warnPoison:Show()
 		timerPoisonCD:Start()
 	end
@@ -83,12 +85,11 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerPoison:Start()
 	elseif args:IsSpell(26051, 1215755) then
 		timerEnrage:Start()
-		timerEnrageCD:Start()
 		if self.Options.SpecWarn26051dispel then
 			specWarnFrenzy:Show(args.destName)
 			specWarnFrenzy:Play("trannow")
 		else
-			warnEnrage:Show()
+			warnFrenzy:Show()
 		end
 	elseif args:IsSpell(26068, 1215885) then
 		warnBerserk:Show()

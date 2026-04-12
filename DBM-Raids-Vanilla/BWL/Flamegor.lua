@@ -32,22 +32,24 @@ mod:RegisterEventsInCombat(
 )
 
 --(ability.id = 23339 or ability.id = 22539) and type = "begincast" or ability.id = 23342 and type = "cast"
-local warnWingBuffet		= mod:NewCastAnnounce(23339, 2)
+local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, "Tank")
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
-local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Healer", 4)
+local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Healer")
 
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6)
 
-local timerWingBuffet		= mod:NewVarTimer("v31-35.6", 23339, nil, nil, nil, 2)
-local timerShadowFlameCD	= mod:NewVarTimer("v12.3-24.3", 22539, nil, false)--14-21
+local timerWingBuffet		= mod:NewVarTimer("v31.1-36.1", 23339, nil, "Tank", nil, 2)
+local timerShadowFlameCD	= mod:NewVarTimer("v12.9-23", 22539, nil, false)
 local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", 4, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD			= mod:NewVarTimer("v8.3-11.3", 23342, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
-function mod:OnCombatStart(delay)
-	timerShadowFlameCD:Start("v10.1-22.7")
-	timerWingBuffet:Start("v30-34")
+function mod:OnCombatStart()
+	timerShadowFlameCD:Start("v11.2-21.1")
+	timerWingBuffet:Start("v30.3-35.4")
+	timerFrenzyCD:Start()
 end
 
-function mod:SPELL_CAST_START(args)--did not see ebon use any of these abilities
+function mod:SPELL_CAST_START(args)
 	if args:IsSpell(23339) then
 		warnWingBuffet:Show()
 		timerWingBuffet:Start()
@@ -65,16 +67,17 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			warnFrenzy:Show()
 		end
+		timerFrenzyCD:Start()
 	end
 end
 
-function mod:SPELL_AURA_APPLIED(args)--did not see ebon use any of these abilities
+function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(23342) then
 		timerFrenzy:Start()
 	end
 end
 
-function mod:SPELL_AURA_REMOVED(args)--did not see ebon use any of these abilities
+function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(23342) then
 		timerFrenzy:Stop()
 	end

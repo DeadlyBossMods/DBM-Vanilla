@@ -40,7 +40,7 @@ local warnConeofFire				= mod:NewSpellAnnounce(19630, 3, nil, "Healer", 2)
 local warnInciteFlames				= mod:NewSpellAnnounce(19635, 2, nil, "RemoveMagic")
 local warnFireBlossom				= mod:NewSpellAnnounce(19636, 2)
 local warnPyroclastBarrage			= mod:NewSpellAnnounce(19641, 2)
-local warnKnockDown					= mod:NewSpellAnnounce(20276, 2, nil, "Tank|Healer")
+local warnKnockDown					= mod:NewSpellAnnounce(20276, 2, nil, "Tank")
 
 local timerSmashCD					= mod:NewCDNPTimer(7.2, 18944, nil, nil, nil, 2)--7.2-9.9
 local timerKnockAwayCD				= mod:NewCDNPTimer(10.7, 18945, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--10.7-14.8
@@ -52,7 +52,7 @@ local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 3)--13
 local timerInciteFlamesCD			= mod:NewCDNPTimer(12.1, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)--12.1-18.2
 local timerFireBlossomCD			= mod:NewCDNPTimer(11.1, 19636, nil, nil, nil, 2)--11.1-19.6
 local timerPyroclastBarrageCD		= mod:NewCDNPTimer(8.3, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--8.3-20.7
-local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
+local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
 
 mod:AddSpeedClearOption("MC", true)
 

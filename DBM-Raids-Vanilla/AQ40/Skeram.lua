@@ -38,9 +38,9 @@ local warnMindControl	= mod:NewTargetNoFilterAnnounce(785, 4)
 local warnTeleport		= mod:NewSpellAnnounce(20449, 3)
 local warnSummon		= mod:NewSpellAnnounce(747, 3)
 local warnSummonSoon	= mod:NewSoonAnnounce(747, 2)
-
-local timerMindControl	= mod:NewBuffActiveTimer(20, 785, nil, nil, nil, 3)
 local specWarnAoE		= mod:NewSpecialWarningInterrupt(26192, "HasInterrupt", nil, nil, 1, 2)
+
+local timerMindControl	= mod:NewTargetTimer(20, 785, nil, nil, nil, 3)
 
 mod:AddSetIconOption("SetIconOnMC", 785, true, 0, {4, 5, 6, 7, 8})
 
@@ -64,14 +64,15 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.MCIcon = self.vb.MCIcon - 1
 		self:Unschedule(resetMcIcon)
 		self:Schedule(3, resetMcIcon, self)
+		timerMindControl:Start(args.destName)
+		warnMindControl:CombinedShow(0.3, args.destName)
 	end
-	warnMindControl:CombinedShow(0.3, args.destName)
-	timerMindControl:Start()
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(785) and self.Options.SetIconOnMC then
 		self:SetIcon(args.destName, 0)
+		timerMindControl:Stop(args.destName)
 	end
 end
 
