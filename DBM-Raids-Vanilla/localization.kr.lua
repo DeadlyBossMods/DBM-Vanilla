@@ -63,23 +63,28 @@ L:SetGeneralLocalization{
 	name = "비시디우스"
 }
 L:SetWarningLocalization{
-	WarnFreeze	= "빙결 : %d/3",
-	WarnShatter	= "분해 : %d/3"
+	WarnFreeze	= "빙결: %d/3",
+	WarnShatter	= "분해: %d/3"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "빙결 상태 알림",
-	WarnShatter	= "분해 상태 알림"
+	WarnShatter	= "분해 상태 알림",
+	TimerRejoin = "$spell:25896 타이머 바 보기"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "비시디우스 재결합"
 }
 L:SetMiscLocalization{
-	Slow	= "느려지기 시작했습니다!",
-	Freezing= "얼어붙고 있습니다!",
-	Frozen	= "단단하게 얼었습니다!",
-	Phase4 	= "분해되기 시작합니다!",
-	Phase5 	= "부서질 것 같습니다!",
-	Phase6 	= "폭발",
-
-	FrostHitsPerSecond = "초당 냉기 공격 횟수",
-	MeleeHitsPerSecond = "초당 물리 공격 횟수"
+	Slow		= "느려지기 시작했습니다!",
+	Freezing	= "얼어붙고 있습니다!",
+	Frozen		= "단단하게 얼었습니다!",
+	Phase4 		= "분해되기 시작합니다!",
+	Phase5 		= "부서질 것 같습니다!",
+	Phase6 		= "폭발",
+	FrostHits	= "냉기 적중",
+	MeleeHits	= "근접 적중",
+	FrostHitsPerSecond	= "초당 냉기 적중",
+	MeleeHitsPerSecond	= "초당 근접 적중"
 }
 
 -------------
@@ -269,10 +274,6 @@ L = DBM:GetModLocalization("Ossirian")
 
 L:SetGeneralLocalization{
 	name 		= "무적의 오시리안"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "약화 알림",
-	TimerVulnerable	= "약화 타이머 바 보기"
 }
 
 ----------------
@@ -477,7 +478,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "흐흐흐흐... 게임을 시작하자!",
-	YellP2		= "잘했다! 적들의 사기가 떨어지고 있다! 검은바위 첨탑의 군주에게 도전한 대가를 치르게 해주자!",
 	YellP3		= "말도 안 돼! 일어나라! 다시 한 번 너희 주인을 섬겨라!",
 	YellShaman	= "주술사, 네 놈의 토템이 얼마나 쓸모 있는지 한번 보자!",
 	YellPaladin	= "성기사여... 네 목숨은 여러 개라고 하던데 어디 한번 보여 다오.",
@@ -804,8 +804,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Breath 		= "%s 숨을 깊게 들이쉽니다.",
-	YellPull 	= "오늘은 운이 아주 좋군. 평소엔 먹이를 찾으려면 둥지에서 나가야 하는데 말이야.",
+	YellP1 		= "오늘은 운이 아주 좋군. 평소엔 먹이를 찾으려면 둥지에서 나가야 하는데 말이야.",
 	YellP2 		= "쓸데없이 힘을 쓰는 것도 지루하군. 네 녀석들 머리 위에서 모조리 불살라 주마!",
 	YellP3 		= "혼이 더 나야 정신을 차리겠구나!",
 	SoDWarning	= "%s에 오신 것을 환영합니다. 이 전투동안 DBM은 옛 전설적인 레이드에서 가져온 재미있는 효과음을 재생할 것입니다. DBM UI에서 이 옵션을 끌 수 있습니다: /dbm 입력 후 공격대 -> 오리지널 메뉴에서 오닉시아 모듈을 찾아가세요.",
@@ -836,13 +835,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "5초 후 귀부인의 은총 종료",
-	WarningEmbraceExpired	= "귀부인의 은총 종료"
+	WarningEmbraceExpire	= "5초 후 귀부인의 은총 종료"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "귀부인의 은총 종료 사전 경고 보기",
-	WarningEmbraceExpired	= "귀부인의 은총 종료 알림 보기"
+	WarningEmbraceExpire	= "귀부인의 은총 종료 사전 경고 보기"
 })
 
 L:SetMiscLocalization({
@@ -955,7 +952,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "3초 힐 가능 사전 경고 보기",
-	WarningHealNow		= "3초 힐 가능 알림 보기"
+	WarningHealNow		= "3초 힐 가능 알림 보기",
+	Sorting				= "정렬",
+	Alphabetical		= "이름",
+	Duration			= "지속시간"
 })
 
 -----------------
@@ -965,9 +965,6 @@ L = DBM:GetModLocalization("PatchwerkVanilla")
 
 L:SetGeneralLocalization({
 	name = "패치워크"
-})
-
-L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
@@ -1004,13 +1001,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1P1	= "너 주인님께 바칠 거야!",
-	Yell2P1	= "스탈라그, 박살낸다!",
-	Emote	= "%s 과부하 상태가 됩니다.",
-	Yell1P2 = "잡아... 먹어주마...",
-	Yell2P2 = "박살을 내주겠다!",
-	Yell3P2 = "죽여주마...",
-	Charge1	= "음전하",
-	Charge2	= "양전하"
+	Yell2P1	= "스탈라그, 박살낸다!"
 })
 
 L:SetOptionLocalization({
@@ -1042,14 +1033,6 @@ L:SetMiscLocalization({
 	Pull2 = "훈련은 끝났다! 배운 걸 보여줘라!",
 	Pull3 = "훈련받은 대로 해!",
 	Pull4 = "다리를 후려 차라! 무슨 문제 있나?"
-})
-
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "뼈 보호막 종료 사전 경고 보기"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "5초 후 뼈 보호막 종료"
 })
 
 ----------------------------
@@ -1166,17 +1149,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "2단계 타이머 바 보기",
-	specwarnP2Soon		= "켈투자드 전투 개시 10초 전에 특수 알림 보기",
-	warnAddsSoon		= "얼음왕관의 수호자 사전 경고 보기"
+	specwarnP2Soon		= "켈투자드 전투 개시 10초 전에 특수 알림 보기"
 })
 
 L:SetMiscLocalization({
-	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!",
+	YellP1 = "어둠의 문지기와 하수인, 그리고 병사들이여, 나 켈투자드가 부르니 명을 받들라!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon		= "10초 후 켈투자드 전투 개시",
-	warnAddsSoon		= "곧 얼음왕관의 수호자 등장"
+	specwarnP2Soon		= "10초 후 켈투자드 전투 개시"
 })
 
 L:SetTimerLocalization({

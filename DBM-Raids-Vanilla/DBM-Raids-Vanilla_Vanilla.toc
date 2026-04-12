@@ -9,6 +9,8 @@
 ## Title-ptBR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raides (Clássico)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010团队副本（经典）|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010團隊副本（經典）|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -27,6 +29,8 @@
 ## X-DBM-Mod-Name-frFR: Raids (Classique)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
+## X-DBM-Mod-name-zhCN: 团队副本（经典）
+## X-DBM-Mod-name-zhTW: 團隊副本（經典）
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2835, 2856
 ## X-DBM-Mod-MinCoreRevision: 20230521000000

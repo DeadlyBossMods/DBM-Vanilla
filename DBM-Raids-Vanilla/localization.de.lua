@@ -68,7 +68,11 @@ L:SetWarningLocalization{
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Verkünde Einfrieren Status",
-	WarnShatter	= "Verkünde Zerspringen Status"
+	WarnShatter	= "Verkünde Zerspringen Status",
+	TimerRejoin = "Zeige Zeit bis $spell:25896"
+}
+L:SetTimerLocalization{
+	TimerRejoin	= "Wieder mit Viscidus vereinen"
 }
 L:SetMiscLocalization{
 	Slow	= "wird langsamer",
@@ -76,9 +80,10 @@ L:SetMiscLocalization{
 	Frozen	= "ist tiefgefroren",
 	Phase4 	= "geht die Puste aus",
 	Phase5 	= "ist kurz davor, zu zerspringen",
-	Phase6 	= "Explodes.",
-
-	FrostHitsPerSecond   = "Frost-Treffer pro Sekunde",
+	--Phase6 	= "Explodes.",
+	FrostHits = "Frosttreffer",
+	MeleeHits = "Nahkampftreffer",
+	FrostHitsPerSecond   = "Frosttreffer pro Sekunde",
 	MeleeHitsPerSecond   = "Nahkampftreffer pro Sekunde"
 }
 
@@ -244,16 +249,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "Ossirian der Narbenlose"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "Verkünde Schwächen",
-	TimerVulnerable	= "Dauer der Schwächen anzeigen"
-}
 
 ----------------
 -- AQ20 Trash --
@@ -270,7 +265,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("Razorgore")
 
 L:SetGeneralLocalization{
-	name = "Feuerkralle der Ungezähmte"
+	name = "Razorgore der Ungezähmte"
 }
 L:SetTimerLocalization{
 	TimerAddsSpawn	= "Adds erscheinen"
@@ -390,7 +385,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnBreath = "%s",
-	WarnVulnerable = "Verwundbarkeit: %s"
+	WarnVulnerable = "%sverwundbarkeit"
 }
 L:SetTimerLocalization{
 	TimerBreathCD = "%s",
@@ -441,19 +436,18 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Lasst die Spiele beginnen!",
-	YellP2		= "Sehr gut, meine Diener. Der Mut der Sterblichen scheint zu schwinden! Nun lasst uns sehen, wie sie sich gegen den wahren Herrscher des Schwarzfels behaupten werden!",
-	YellP3		= "Unmöglich! Erhebt Euch, meine Diener! Kämpft erneut für Euren Meister!",
+	YellP3		= "Unmöglich! Erhebt euch meine Diener! Kämpft erneut für Euren Meister!",
 	YellShaman	= "Schamane, zeigt mir was eure Totems können!",
 	YellPaladin	= "Paladine... ich habe gehört, dass Ihr viele Leben habt. Zeigt es mir.",
 	YellDruid	= "Druiden und ihre lächerliche Gestaltwandlung. Zeigt mal was Ihr könnt!",
 	YellPriest	= "Priester! Wenn Ihr weiterhin so heilt, können wir es auch gerne etwas interessanter gestalten!",
 	YellWarrior	= "Krieger, Ich bin mir sicher, dass ihr kräftiger als das zuschlagen könnt!",
 	YellRogue	= "Schurken? Kommt aus den Schatten und zeigt Euch!",
-	YellWarlock	= "Hexenmeister, Ihr solltet nicht mit Magie spielen, die Ihr nicht versteht. Seht Ihr was ich meine?",--needs to be verified (wowhead-captured translation)
+	YellWarlock	= "Hexenmeister, Ihr solltet nicht mit Magie spielen, die Ihr nicht versteht. Seht Ihr was ich meine?",
 	YellHunter	= "Jäger und ihre lästigen Knallbüchsen!",
 	YellMage	= "Auch Magier? Ihr solltet vorsichtiger sein, wenn Ihr mit Magie spielt...",
 	YellDK		= "Todesritter... kommt hierher!",
-	YellMonk	= "Mönche, macht Euch dieses Herumrollen denn nicht schwindlig?"--needs to be verified (wowhead-captured translation)
+	YellMonk	= "Mönche, macht Euch dieses Herumrollen denn nicht schwindlig?"
 }
 
 L = DBM:GetModLocalization("SoDBWLTrials")
@@ -753,8 +747,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Breath = "%s atmet tief ein...",
-	YellPull = "Was für ein Zufall. Normalerweise muss ich meinen Unterschlupf verlassen, um etwas zu essen.",
+	YellP1 = "Was für ein Zufall. Normalerweise muss ich meinen Unterschlupf verlassen, um etwas zu essen.",
 	YellP2 = "Diese sinnlose Anstrengung langweilt mich. Ich werde Euch alle von oben verbrennen!",
 	YellP3 = "Mir scheint, dass Ihr noch eine Lektion braucht, sterbliche Wesen!",
 	SoDWarning = "Willkommen in %s. DBM wird während dem Kampf einige witzige Sounds aus einem legendären Classic Raid spielen. Wer keinen Spaß versteht kann das im DBM UI deaktivieren: /dbm eingeben und die Einstellungen für Onyxia unter Raids -> Classic öffnen.",
@@ -785,13 +778,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Umarmung endet in 5 Sek",
-	WarningEmbraceExpired	= "Umarmung Ende"
+	WarningEmbraceExpire	= "Umarmung endet in 5 Sek"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Zeige Vorwarnung für das Ende von $spell:28732",
-	WarningEmbraceExpired	= "Zeige Warnung, wenn $spell:28732 endet"
+	WarningEmbraceExpire	= "Zeige Vorwarnung für das Ende von $spell:28732"
 })
 
 L:SetMiscLocalization({
@@ -904,7 +895,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Zeige Vorwarnung für 3-Sekunden-Heilfenster",
-	WarningHealNow		= "Zeige Warnung für 3-Sekunden-Heilfenster"
+	WarningHealNow		= "Zeige Warnung für 3-Sekunden-Heilfenster",
+	Sorting				= "Sortierung",
+	Alphabetical		= "Alphabetisch",
+	Duration			= "Dauer"
 })
 
 -----------------
@@ -950,13 +944,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1P1	= "Verfüttere euch an Meister!",
-	Yell2P1	= "Stalagg zerquetschen!",
-	Emote	= "%s überlädt!",
-	Yell1P2 = "Eure... Knochen... zermalmen...",
-	Yell2P2 = "Euch... zerquetschen!",
-	Yell3P2 = "Töten...",
-	Charge1 = "negativ",
-	Charge2 = "positiv"
+	Yell2P1	= "Stalagg zerquetschen!"
 })
 
 L:SetOptionLocalization({
@@ -986,14 +974,6 @@ L:SetMiscLocalization({
 	Pull2 = "Die Zeit des Übens ist vorbei! Zeigt mir, was ihr gelernt habt!",
 	Pull3 = "Befolgt meine Befehle!",
 	Pull4 = "Streckt sie nieder... oder habt ihr ein Problem damit?"
-})
-
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Zeige Vorwarnung, wenn $spell:29061 endet"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Knochenbarriere endet in 5 Sekunden"
 })
 
 ----------------------------
@@ -1113,17 +1093,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Zeige Zeit bis Phase 2",
-	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift",
-	warnAddsSoon		= "Zeige Vorwarnung für Wächter von Eiskrone"
+	specwarnP2Soon		= "Spezialwarnung 10 Sekunden bevor Kel'Thuzad angreift"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!",
+	YellP1 			= "Diener, Jünger, Soldaten der eisigen Finsternis! Folgt dem Ruf von Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an",
-	warnAddsSoon	= "Wächter von Eiskrone bald"
+	specwarnP2Soon	= "Kel'Thuzad greift in 10 Sekunden an"
 })
 
 L:SetTimerLocalization({
