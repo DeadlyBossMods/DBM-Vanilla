@@ -188,7 +188,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 and self:GetUnitCreatureId(uId) == 11583 and self:GetStage(2) then
+	if self:GetStage(2) and self:GetUnitCreatureId(uId) == 11583 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
 		self:SendSync("Phase", 2.5)
 	end
 end
