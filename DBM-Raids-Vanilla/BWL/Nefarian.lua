@@ -65,7 +65,7 @@ mod.vb.addLeft = 42
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("Razorgore")
 
-function mod:OnCombatStart(delay, yellTriggered)
+function mod:OnCombatStart()
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 42
 	self.vb.triggerEncounterStart = false
