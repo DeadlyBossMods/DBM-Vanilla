@@ -478,6 +478,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "흐흐흐흐... 게임을 시작하자!",
+	YellP3		= "말도 안 돼! 일어나라! 다시 한 번 너희 주인을 섬겨라!",
 	YellShaman	= "주술사, 네 놈의 토템이 얼마나 쓸모 있는지 한번 보자!",
 	YellPaladin	= "성기사여... 네 목숨은 여러 개라고 하던데 어디 한번 보여 다오.",
 	YellDruid	= "드루이드 녀석, 그 바보 같은 변신을 했다고 내가 모를 줄 알았더냐? 받아라!",
