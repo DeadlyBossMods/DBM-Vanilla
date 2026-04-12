@@ -151,24 +151,23 @@ end
 -- "<267.59 23:01:09> [CHAT_MSG_MONSTER_EMOTE] %s takes in a deep breath...#Onyxia#####0#0##0#1914#nil#0#false#false#false#false",
 -- +29.12s
 
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.YellP2 or msg:find(L.YellP2) then
-		self:SendSync("Phase", 2)
-	elseif msg == L.YellP3 or msg:find(L.YellP3) then
-		self:SendSync("Phase", 3)
-	end
-end
+--function mod:CHAT_MSG_MONSTER_YELL(msg)
+	--if msg == L.YellP2 or msg:find(L.YellP2) then
+		--self:SendSync("Phase", 2)
+	--elseif msg == L.YellP3 or msg:find(L.YellP3) then
+		--self:SendSync("Phase", 3)
+	--end
+--end
 
 function mod:UNIT_HEALTH(uId)
-	if self:GetStage(1.5, 1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
-		self:SetStage(1.5)
-		warnPhase2Soon:Show()
-	elseif self:GetStage(2.5, 1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
-		self:SetStage(2.5)
-		warnPhase3Soon:Show()
-		if self.Options.SoundWTF3 then
-			self:Unschedule(DBM.PlaySoundFile, DBM)
-		end
+	if self:GetStage(1) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
+		self:SendSync("Phase", 1.5)
+	elseif self:GetStage(1.5) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.65
+		self:SendSync("Phase", 2)
+	elseif self:GetStage(2) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+		self:SendSync("Phase", 2.5)
+	elseif self:GetStage(2.5) and self:GetUnitCreatureId(uId) == 10184 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 then
+		self:SendSync("Phase", 3)
 	end
 end
 
@@ -178,8 +177,12 @@ function mod:OnSync(msg, arg)
 		if not phase then return end
 		if self:GetStage(phase, 3) then
 			self:SetStage(phase)
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
-			if phase == 2 then
+			if phase % 1 == 0 then
+				warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+			end
+			if phase == 1.5 then
+				warnPhase2Soon:Show()
+			elseif phase == 2 then
 				warnPhase:Play("ptwo")
 				timerWingBuffetCD:Stop()
 				timerFlameBreathCD:Stop()
@@ -199,6 +202,11 @@ function mod:OnSync(msg, arg)
 					-- This is likely going to be the only Deep Breath that happens and the only one where we have an exact timing, so make sure everyone is as prepared as possible
 					-- with an extra special warning before the cast even starts
 					specWarnBreathSoon:Schedule(25)
+				end
+			elseif phase == 2.5 then
+				warnPhase3Soon:Show()
+				if self.Options.SoundWTF3 then
+					self:Unschedule(DBM.PlaySoundFile, DBM)
 				end
 			elseif phase == 3 then
 				warnPhase:Play("pthree")
