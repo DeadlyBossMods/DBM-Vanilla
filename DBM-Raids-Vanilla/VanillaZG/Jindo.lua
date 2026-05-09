@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 )
 
 local warnDelusion			= mod:NewTargetNoFilterAnnounce(24306, 2, nil, "RemoveCurse")
-local warnHex				= mod:NewTargetNoFilterAnnounce(17172, 2, nil, "RemoveMagic|Healer")
+local warnHex				= mod:NewTargetNoFilterAnnounce(17172, 2, nil, "RemoveMagic")
 local warnBrainWash			= mod:NewTargetNoFilterAnnounce(24261, 4)
 local warnBanish			= mod:NewTargetNoFilterAnnounce(24466, 2)
 
