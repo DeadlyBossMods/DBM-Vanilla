@@ -43,7 +43,7 @@ mod.vb.vanished = false
 
 function mod:OnCombatStart()
 	self.vb.vanished = false
-	timerVanishCD:Start("v30-36")
+	timerVanishCD:Start("v33.9-34.4")
 end
 
 function mod:SPELL_AURA_APPLIED(args)
