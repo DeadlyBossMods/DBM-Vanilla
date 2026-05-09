@@ -36,8 +36,8 @@ local specWarnHealingWard	= mod:NewSpecialWarningSwitch(24309, "Dps", nil, nil, 
 local specWarnBrainTotem	= mod:NewSpecialWarningSwitch(24262, "Dps", nil, nil, 1, 2)
 local specWarnDelusion		= mod:NewSpecialWarningTargetChange(24306, nil, nil, nil, 1, 2)
 
-local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic|Healer", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 5, nil, DBM_COMMON_L.CURSE_ICON)
+local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic|Healer", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerBrainTotemCD		= mod:NewVarTimer("v11.3-26.2", 24262, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 
 function mod:OnCombatStart()
