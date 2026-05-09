@@ -87,3 +87,5 @@ function mod:SWING_DAMAGE(srcGuid, _, _, _, destGuid)
 		timerVanishCD:Start()
 	end
 end
+
+mod.SWING_MISSED = mod.SWING_DAMAGE

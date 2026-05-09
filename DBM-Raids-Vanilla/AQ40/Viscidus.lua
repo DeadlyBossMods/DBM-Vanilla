@@ -179,10 +179,8 @@ function mod:SWING_DAMAGE(srcGuid, _, _, _, destGuid)
 		meleeHits = meleeHits + 1
 		DBM:Debug("meleeHits=" .. meleeHits)
 		meleeHitTimes[#meleeHitTimes + 1] = GetTime()
-	elseif DBM:GetCIDFromGUID(srcGuid) == 15299 then
-		if self.vb.freezeState == 1 then
-			self:Unfreeze()
-		end
+	elseif DBM:GetCIDFromGUID(srcGuid) == 15299 and self.vb.freezeState == 1 then
+		self:Unfreeze()
 	end
 end
 
