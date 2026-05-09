@@ -80,7 +80,7 @@ function mod:OnSync(event)
     end
 end
 
-function mod:SWING_DAMAGE(srcGuid, _, _, _, destGuid)
+function mod:SWING_DAMAGE(srcGuid)
 	if self.vb.vanished and DBM:GetCIDFromGUID(srcGuid) == 14515 then
 		self.vb.vanished = false
 		timerVanish:Stop()
