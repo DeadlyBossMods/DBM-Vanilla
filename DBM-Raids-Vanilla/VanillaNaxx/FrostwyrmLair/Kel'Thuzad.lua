@@ -73,6 +73,7 @@ local yellManaBomb			= mod:NewShortYell(27819, nil, "ManaUser")
 local yellFissure			= mod:NewYell(27810)
 
 local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, false, nil, 2)
+local timerFrostbolt		= mod:NewCastNPTimer(2, 28478, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, false, nil, 2)
 local timerManaBombCD		= mod:NewVarTimer("v20.2-50.9", 27819, nil, "ManaUser", nil, 3)
 local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
@@ -147,6 +148,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(28478) and args:IsSrcTypeHostile() then
+		timerFrostbolt:Start(nil, args.sourceGUID)
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnFrostbolt:Show(args.sourceName)
 			specWarnFrostbolt:Play("kickcast")
