@@ -146,9 +146,11 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if self:CheckInterruptFilter(args.sourceGUID, true, true) then
-		specWarnFrostbolt:Show(args.sourceName)
-		specWarnFrostbolt:Play("kickcast")
+	if args:IsSpell(28479) and args:IsSrcTypeHostile() then
+		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+			specWarnFrostbolt:Show(args.sourceName)
+			specWarnFrostbolt:Play("kickcast")
+		end
 	end
 end
 
