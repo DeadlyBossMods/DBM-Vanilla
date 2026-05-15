@@ -147,8 +147,8 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if self:CheckInterruptFilter(args.sourceGUID, true, true) then
-			specWarnFrostbolt:Show(args.sourceName)
-			specWarnFrostbolt:Play("kickcast")
+		specWarnFrostbolt:Show(args.sourceName)
+		specWarnFrostbolt:Play("kickcast")
 	end
 end
 
