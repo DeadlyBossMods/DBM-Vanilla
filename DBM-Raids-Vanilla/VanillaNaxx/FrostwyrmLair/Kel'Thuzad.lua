@@ -27,7 +27,7 @@ end
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
 	"SPELL_AURA_REMOVED 28410",
-	"SPELL_CAST_START 28479",
+	"SPELL_CAST_START 28478",
 	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479"
 )
 
@@ -68,7 +68,7 @@ local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
 local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, "ManaUser", nil, nil, 1, 2)
 local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2)
 local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2)
-local specWarnFrostbolt		= mod:NewSpecialWarningInterrupt(28479, "HasInterrupt", nil, nil, 1, 2)
+local specWarnFrostbolt		= mod:NewSpecialWarningInterrupt(28478, "HasInterrupt", nil, nil, 1, 2)
 local yellManaBomb			= mod:NewShortYell(27819, nil, "ManaUser")
 local yellFissure			= mod:NewYell(27810)
 
@@ -146,7 +146,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:SPELL_CAST_START(args)
-	if args:IsSpell(28479) and args:IsSrcTypeHostile() then
+	if args:IsSpell(28478) and args:IsSrcTypeHostile() then
 		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
 			specWarnFrostbolt:Show(args.sourceName)
 			specWarnFrostbolt:Play("kickcast")
