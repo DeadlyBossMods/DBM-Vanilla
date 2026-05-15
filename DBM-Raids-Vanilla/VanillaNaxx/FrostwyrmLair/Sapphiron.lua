@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 ability.id = 28524 and type = "begincast"
  or (ability.id = 28542 or ability.id = 28560) and type = "cast"
 --]]
-local airPhaseTimer = "v62.7-69.1"
+local airPhaseTimer = "v54.3-69.1"
 
 local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 2)
 local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 1, nil, "RemoveCurse")
