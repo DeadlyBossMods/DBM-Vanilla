@@ -147,7 +147,7 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(28478) and args:IsSrcTypeHostile() then
-		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnFrostbolt:Show(args.sourceName)
 			specWarnFrostbolt:Play("kickcast")
 		end
