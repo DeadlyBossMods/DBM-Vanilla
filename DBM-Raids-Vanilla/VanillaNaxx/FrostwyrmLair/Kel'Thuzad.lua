@@ -77,7 +77,7 @@ local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, false, nil, 
 local timerManaBombCD		= mod:NewVarTimer("v20.2-50.9", 27819, nil, "ManaUser", nil, 3)
 local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v33.5-75.3", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerfrostBlast		= mod:NewBuffActiveTimer(5, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerMCCD				= mod:NewVarTimer("v63.1-130", 28410, nil, nil, nil, 3)
+local timerMCCD				= mod:NewVarTimer("v63.1-145.4", 28410, nil, nil, nil, 3)
 local timerPhase2			= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and phase1DurationSoD or phase1DurationEra, "TimerPhase2", "136116", nil, nil, 6)
 
 local specwarnP2Soon
