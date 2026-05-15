@@ -49,10 +49,10 @@ mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "
 
 local currentCharge
 local lastShift = 0
-local down = 0
+--local down = 0
 
 function mod:OnCombatStart()
-	down = 0
+	--down = 0
 	self:SetStage(1)
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	currentCharge = nil
