@@ -41,7 +41,7 @@ local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerIntermission		= mod:NewIntermissionTimer("v4.6-4.8", nil, CL.INTERMISSION, true, nil, nil, "136106")
+local timerIntermission		= mod:NewIntermissionTimer("v3.2-4.8", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
@@ -60,7 +60,15 @@ function mod:OnCombatStart()
 	timerThrow:Start(20.6)
 	warnThrowSoon:Schedule(37.6)
 	self:RegisterOnUpdateHandler(function()
-	if IsEncounterInProgress() and self:GetStage(1.5) then
+	if not IsEncounterInProgress() and self:GetStage(1) then
+		self:SetStage(1.5)
+		self:UnscheduleMethod("TankThrow")
+		warnPhase2Soon:Show()
+		warnThrowSoon:Cancel()
+		timerThrow:Stop()
+		timerIntermission:Start()
+		DBM.InfoFrame:Hide()
+	elseif IsEncounterInProgress() and self:GetStage(1.5) then
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
         timerEnrage:Start()
@@ -150,20 +158,20 @@ function mod:UNIT_AURA()
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if self:GetStage(1) and (msg == L.Emote or msg:find(L.Emote)) then
-		down = down + 1
-		if down >= 2 then
-			self:SetStage(1.5)
-			self:UnscheduleMethod("TankThrow")
-			warnPhase2Soon:Show()
-			warnThrowSoon:Cancel()
-			timerThrow:Stop()
-			timerIntermission:Start()
-			DBM.InfoFrame:Hide()
-		end
-	end
-end
+--function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	--if self:GetStage(1) and (msg == L.Emote or msg:find(L.Emote)) then
+		--down = down + 1
+		--if down >= 2 then
+			--self:SetStage(1.5)
+			--self:UnscheduleMethod("TankThrow")
+			--warnPhase2Soon:Show()
+			--warnThrowSoon:Cancel()
+			--timerThrow:Stop()
+			--timerIntermission:Start()
+			--DBM.InfoFrame:Hide()
+		--end
+	--end
+--end
 
 function mod:TankThrow()
 	if not self:IsInCombat() or self:GetStage(2) then
