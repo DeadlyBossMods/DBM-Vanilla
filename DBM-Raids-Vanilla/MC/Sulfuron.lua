@@ -80,7 +80,7 @@ end
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(19775) and args:IsSrcTypeHostile() then--Only show warning/timer for your own target.
 		timerHeal:Start(nil, args.sourceGUID)
-		if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
 			specWarnHeal:Show(args.sourceName)
 			specWarnHeal:Play("kickcast")
 		end
