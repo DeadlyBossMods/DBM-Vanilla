@@ -27,6 +27,7 @@ end
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
 	"SPELL_AURA_REMOVED 28410",
+	"SPELL_CAST_START 28479",
 	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479"
 )
 
@@ -142,6 +143,13 @@ end
 function mod:OnCombatEnd()
 	self:UnregisterOnUpdateHandler()
 	self:UnregisterShortTermEvents()
+end
+
+function mod:SPELL_CAST_START(args)
+	if self:CheckInterruptFilter(args.sourceGUID, true, true) then
+			specWarnFrostbolt:Show(args.sourceName)
+			specWarnFrostbolt:Play("kickcast")
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
