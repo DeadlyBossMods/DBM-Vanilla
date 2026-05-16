@@ -45,7 +45,7 @@ function mod:OnCombatStart()
 	table.wipe(bugsGuidCheck)
 	self.vb.bugsRemaining = 3
 	timerFearCD:Start("v10.6-18.4")
-	timerToxicVolleyCD:Start("v8.1-33.9")
+	timerToxicVolleyCD:Start("v8.1-37.2")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:UnscheduleMethod("UnregisterShortTermEvents")
 		self:RegisterShortTermEvents(
