@@ -35,7 +35,7 @@ local specWarnHeal			= mod:NewSpecialWarningInterrupt(25807, "HasInterrupt", nil
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8)
 
 local timerFearCD			= mod:NewVarTimer("v20.3-29.4", 26580, nil, nil, nil, 2)
-local timerToxicVolleyCD 	= mod:NewVarTimer("v8.1-32.5", 25812, nil, "RemovePoison", nil, 2, nil, DBM_COMMON_L.POISON_ICON)
+local timerToxicVolleyCD 	= mod:NewVarTimer("v8.1-35.1", 25812, nil, "RemovePoison", nil, 2, nil, DBM_COMMON_L.POISON_ICON)
 
 local bugsGuidCheck = {}
 
@@ -45,7 +45,7 @@ function mod:OnCombatStart()
 	table.wipe(bugsGuidCheck)
 	self.vb.bugsRemaining = 3
 	timerFearCD:Start("v10.6-18.4")
-	timerToxicVolleyCD:Start("v8.1-37.2")
+	timerToxicVolleyCD:Start("v8.1-42.6")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:UnscheduleMethod("UnregisterShortTermEvents")
 		self:RegisterShortTermEvents(
