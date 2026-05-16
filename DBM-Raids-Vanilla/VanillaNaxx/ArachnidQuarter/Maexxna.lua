@@ -35,7 +35,7 @@ local yellWebWrap		= mod:NewYell(28622)
 
 local timerWebSpray		= mod:NewNextTimer(40.5, 29484, nil, nil, nil, 2)
 local timerWebWrap		= mod:NewVarTimer("v39.6-40.9", 28622, nil, "RangedDps|Healer", nil, 3)
-local timerSpider		= mod:NewTimer(30, "TimerSpider", 17332, nil, nil, 1)
+local timerSpider		= mod:NewTimer(30.7, "TimerSpider", 17332, nil, nil, 1)
 
 mod.vb.warnEnrageSoon = false
 
@@ -44,8 +44,8 @@ function mod:OnCombatStart()
 	warnWebSpraySoon:Schedule(35.5)
 	timerWebSpray:Start()
 	timerWebWrap:Start("v18.2-20.1")
-	warnSpidersSoon:Schedule(25)
-	warnSpidersNow:Schedule(30)
+	warnSpidersSoon:Schedule(25.7)
+	warnSpidersNow:Schedule(30.7)
 	timerSpider:Start()
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
