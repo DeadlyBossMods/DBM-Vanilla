@@ -44,7 +44,7 @@ local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\Add
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 
 local warnBlizzard		= mod:NewSpecialWarningGTFO(28547, nil, nil, nil, 1, 8)
-local warnFrostBreath	= mod:NewSpecialWarningSpell(28524, nil, nil, nil, 3, 2)
+local warnFrostBreath	= mod:NewSpecialWarningSpell(28524, nil, nil, nil, 3, 2, nil, "135833")
 local yellIceBlock		= mod:NewYell(28522)
 
 local timerDrainLife	= mod:NewVarTimer("v21.1-27.5", 28542, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
