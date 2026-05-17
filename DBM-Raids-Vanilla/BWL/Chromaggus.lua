@@ -187,7 +187,7 @@ function mod:OnCombatStart()
 	specWarnBreathSoon:Schedule(27) -- +2 sec casting time == you got 5 seconds to run
 	specWarnBreathSoon:ScheduleVoice(27, "breathsoon")
 	specWarnBreathSoon:Schedule(57)
-	specWarnBreathSoon:ScheduleVoice(27, "breathsoon")
+	specWarnBreathSoon:ScheduleVoice(57, "breathsoon")
 	mydebuffs = 0
 	if self.Options.NPAuraOnVulnerable then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
