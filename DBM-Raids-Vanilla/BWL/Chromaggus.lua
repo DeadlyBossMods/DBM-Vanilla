@@ -51,7 +51,7 @@ local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, "SpellCaster", "War
 
 local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
-local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087, nil, nil, nil, 3)
+local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087, nil, nil, nil, 3, 12)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
@@ -185,7 +185,9 @@ function mod:OnCombatStart()
 	timerBreathCD:Start(string.format("v%s-%s", 57.3, 68.1), L.Breath2)
 	timerFrenzyCD:Start("v12.5-22.5")
 	specWarnBreathSoon:Schedule(27) -- +2 sec casting time == you got 5 seconds to run
+	specWarnBreathSoon:ScheduleVoice(27, "breaklos")
 	specWarnBreathSoon:Schedule(57)
+	specWarnBreathSoon:ScheduleVoice(57, "breaklos")
 	mydebuffs = 0
 	if self.Options.NPAuraOnVulnerable then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
@@ -196,6 +198,7 @@ function mod:OnCombatStart()
 		timerFetch:Start(20.9)
 		timerAllBreaths:Start(40)
 		specWarnBreathSoon:Schedule(37)
+		specWarnBreathSoon:ScheduleVoice(37, "breaklos")
 	end
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		self:RegisterShortTermEvents(
@@ -247,6 +250,7 @@ function mod:SPELL_CAST_START(args)
 			timerBreathCD:UpdateIcon(args.spellId, args.spellName)
 			nextBreath = GetTime() + 30
 			specWarnBreathSoon:Schedule(57)
+			specWarnBreathSoon:ScheduleVoice(57, "breaklos")
 		else -- part of a volley
 			if volleyCount == 0 then
 				nextVolley = GetTime() + 80
