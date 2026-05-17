@@ -49,9 +49,9 @@ mod:AddSetIconOption("SetIconOnGreenBombTarget", 466435, true, 0, {4})
 
 mod:AddOptionLine(L.GreenAndBlue)
 -- Combined Blue/Green on the same person (happens way more often than random chance!)
--- FIXME: bug in core makes spell ID required and doesn't accept string, need to add support for the rename system here
-local yellBoth			= mod:NewShortYell(CL.BOMBS, "{rt8}{rt8}{rt8} " .. (CL.AND or "&") .. " {rt6}{rt6}{rt6}")
-local yellBothFades		= mod:NewFadesYell(CL.BOMBS, "{rt8} " .. (CL.AND or "&") .. " {rt6}: %d")
+-- FIXME: These yells need to be put into a valid format
+--local yellBoth			= mod:NewShortYell(CL.BOMBS, "{rt8}{rt8}{rt8} " .. (CL.AND or "&") .. " {rt6}{rt6}{rt6}")
+--local yellBothFades		= mod:NewFadesYell(CL.BOMBS, "{rt8} " .. (CL.AND or "&") .. " {rt6}: %d")
 local specWarnBoth		= mod:NewSpecialWarning("SpecWarnBothBombs", nil, "SpecWarnBothBombs", nil, 2, 2)
 local specWarnBothYou	= mod:NewSpecialWarning("SpecWarnBothBombsYou", nil, "SpecWarnBothBombsYou", nil, 3, 2)
 
@@ -75,9 +75,9 @@ function mod:Bombs()
 		if blueTarget == UnitName("player") then -- You got both, you do not want to run out 'cause you would die
 			specWarnBothYou:Show()
 			specWarnBothYou:Play("gather") -- Just use gather, more clear than "bomb on you" without the "run"
-			yellBoth:Yell()
-			yellBoth:Schedule(2) -- Doesn't hurt to repeat the "long" message for the special case
-			yellBothFades:Countdown(8, 4)
+--			yellBoth:Yell()
+--			yellBoth:Schedule(2) -- Doesn't hurt to repeat the "long" message for the special case
+--			yellBothFades:Countdown(8, 4)
 		else
 			specWarnBoth:Show(blueTarget)
 			specWarnBoth:Play("helpsoak")
