@@ -44,13 +44,13 @@ local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\Add
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 
 local warnBlizzard		= mod:NewSpecialWarningGTFO(28547, nil, nil, nil, 1, 8)
-local warnFrostBreath	= mod:NewSpecialWarning("WarningFrostBreath", nil, nil, nil, 3, 2, nil, 15876)
+local warnFrostBreath	= mod:NewSpecialWarningSpell(28524, nil, nil, nil, 3, 2)
 local yellIceBlock		= mod:NewYell(28522)
 
 local timerDrainLife	= mod:NewVarTimer("v21.1-27.5", 28542, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAirPhase		= mod:NewTimer(airPhaseTimer, "TimerAir", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
 local timerLanding		= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 36 or 28.5, "TimerLanding", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
-local timerFrostBreath 	= mod:NewTimer(7, "TimerFrostBreath", 15876, nil, nil, 2, DBM_COMMON_L.DEADLY_ICON, true, 1, 5) -- Using the icon for spell 15876 Ice Blast because Frost Breath icon is the default Samwise icon
+local timerFrostBreath 	= mod:NewCastTimer(7, 28524, nil, nil, nil, 2, "135833", DBM_COMMON_L.DEADLY_ICON, true, 1, 5) -- Using the icon for Frost Breath for later expansions since Era default is Samwise icon
 
 local timerBomb, specWarnBomb, specWarnBombSoak, yellBomb, yellBombFades
 if DBM:IsSeasonal("SeasonOfDiscovery") then
