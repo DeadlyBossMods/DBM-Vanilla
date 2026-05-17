@@ -3,12 +3,15 @@
 ## Category: DBM
 
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Schlachtzüge (Classic)|r
 ## Title-esES:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
 ## Title-esMX:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
-## Title-frFR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Classique)|r
+## Title-frFR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Classic)|r
 ## Title-ptBR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raides (Clássico)|r
 ## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
 ## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010团队副本（经典旧世）|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010團隊副本（經典舊世）|r
 ## Author: MysticalOS
 ## LoadOnDemand: 1
 ## RequiredDeps: DBM-Core
@@ -21,12 +24,15 @@
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 309
 ## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DBM-Mod-Name-deDE: Schlachtzüge (Classic)
 ## X-DBM-Mod-Name-esES: Bandas (Clásico)
 ## X-DBM-Mod-Name-esMX: Bandas (Clásico)
 ## X-DBM-Mod-Name-ptBR: Raides (Clássico)
-## X-DBM-Mod-Name-frFR: Raids (Classique)
+## X-DBM-Mod-Name-frFR: Raids (Classic)
 ## X-DBM-Mod-Name-koKR: 공격대 (클래식)
 ## X-DBM-Mod-Name-ruRU: Рейды (классический)
+## X-DBM-Mod-name-zhCN: 团队副本（经典旧世）
+## X-DBM-Mod-name-zhTW: 團隊副本（經典舊世）
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 531, 509, 309, 469, 409
 ## X-DBM-Mod-MinCoreRevision: 20230521000000

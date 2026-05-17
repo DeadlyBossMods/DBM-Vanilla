@@ -82,16 +82,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "Osirio el Sinmarcas"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "Mostrar anuncio para debilidades",
-	TimerVulnerable	= "Mostrar temporizador para debilidades"
-}
 
 ----------------
 -- AQ20 Trash --
@@ -139,7 +129,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "¡Devoran a %s! (%d |4restante:restantes;)"
+    WarnBugDied = "%s muere (%d |4restante:restantes;)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Mostrar anuncio para insectos restantes"
@@ -179,7 +169,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "Congelación: %d/3",
-	WarnShatter	= "Hacerse añicos: %d/3"
+	WarnShatter	= "Hacerse añicos: %d/2"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Mostrar anuncio para congelación",
@@ -191,10 +181,9 @@ L:SetMiscLocalization{
 	Frozen	= "no se puede mover",
 	Phase4 	= "comienza a desmoronarse",
 	Phase5 	= "parece a punto de hacerse añicos",
-	Phase6 	= "explota",
-
+	FrostHits = "Golpes de escarcha",
 	FrostHitsPerSecond = "Golpes de escarcha por segundo",
-	MeleeHitsPerSecond = "Golpes cuerpo a cuerpo por segundo",
+	MeleeHitsPerSecond = "Golpes cuerpo a cuerpo por segundo"
 }
 -------------
 -- Huhuran --
@@ -351,8 +340,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PriestDied	= "%s muere.",
-	YellPhase2	= "Shirvallah, ¡lléname de FURIA!",
-	YellKill	= "¡Hakkar no me controla! ¡Por fin algo de paz!"
+	YellPhase2	= "Shirvallah, ¡lléname de FURIA!"
 })
 
 -------------------
@@ -429,7 +417,6 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Mostrar temporizador para cuando aparezcan los primeros esbirros"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "huyen mientras se consume el poder del orbe.",
 	Pull	= "¡Los invasores han penetrado en El Criadero! ¡Activa la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
 -------------------
@@ -590,7 +577,6 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "¡Que comiencen los juegos!",
-	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cubre de Roca Negra!",
 	YellP3		= "¡Imposible! ¡Levántense, mis esbirros! ¡Sirvan a su amo una vez más!",
 	YellShaman	= "¡Chamanes, muéstrenme lo que pueden hacer sus tótems!",
 	YellPaladin	= "Paladines... He oído que tienen muchas vidas. Demuéstrenmelo.",
@@ -790,8 +776,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Breath = "%s toma aliento...",
-	YellPull = "Qué casualidad. Generalmente, debo salir de mi guarida para poder comer.",
+	YellP1 = "Qué casualidad. Generalmente, debo salir de mi guarida para poder comer.",
 	YellP2 = "Este ejercicio sin sentido me aburre. ¡Los incineraré a todos desde arriba!",
 	YellP3 = "¡Parece ser que van a necesitar otra lección, mortales!",
 	SoDWarning = "Bienvenido a %s. DBM reproducirá algunos sonidos divertidos de una banda clásica legendaria durante la pelea. Puedes desactivar esto en la interfaz de usuario de DBM: escribe /dbm y navega hasta el módulo de Onyxia en Bandas -> Clásico."
@@ -822,13 +807,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Abrazo de la viuda expirando en 5 segundos",
-	WarningEmbraceExpired	= "Abrazo de la viuda ha expirado"
+	WarningEmbraceExpire	= "Abrazo de la viuda se desvanece en 5 segundos"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Mostrar anuncio anticipado para cuando expire Abrazo de la viuda",
-	WarningEmbraceExpired	= "Mostrar anuncio cuando expire Abrazo de la viuda"
+	WarningEmbraceExpire	= "Mostrar anuncio anticipado para cuando $spell:28732 se desvanezca"
 })
 
 L:SetMiscLocalization({
@@ -941,7 +924,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Mostrar anuncio anticipado para el periodo de sanación",
-	WarningHealNow		= "Mostrar anuncio para el periodo de sanación"
+	WarningHealNow		= "Mostrar anuncio para el periodo de sanación",
+	Sorting				= "Ordenación",
+	Alphabetical		= "Alfabético",
+	Duration			= "Duración"
 })
 
 ---------------
@@ -951,9 +937,6 @@ L = DBM:GetModLocalization("PatchwerkVanilla")
 
 L:SetGeneralLocalization({
 	name = "Remendejo"
-})
-
-L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
@@ -991,12 +974,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Yell1P1 = "¡Comida para el amo!",
 	Yell2P1	= "¡Stalagg aplasta!",
-	Emote	= "¡%s se sobrecarga!",
-	Yell1P2 = "Comer... sus... huesos...",
-	Yell2P2 = "¡¡Yo Destrozarlos!!",
-	Yell3P2 = "Matar...",
-	Charge1 = "negativo",
-	Charge2 = "positivo"
+	Emote	= "¡%s se sobrecarga!"
 })
 
 L:SetOptionLocalization({
@@ -1029,14 +1007,6 @@ L:SetMiscLocalization({
 	Pull4 = "Un barrido con pierna... ¿Tienes algún problema?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Mostrar anuncio anticipado para cuando termine $spell:29061"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Muro de escudo termina en 5 segundos"
-})
-
 --------------------------
 -- Gothik el Cosechador --
 --------------------------
@@ -1056,7 +1026,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerWave	= "Oleada %d",
+	TimerWave	= "Oleada %d/18",
 	TimerPhase2	= "Fase 2"
 })
 
@@ -1124,22 +1094,18 @@ L:SetOptionLocalization({
 	WarningAirPhaseNow	= "Mostrar anuncio para la fase aérea",
 	WarningLanded		= "Mostrar anuncio para la fase en tierra",
 	TimerAir			= "Mostrar temporizador para la fase aérea",
-	TimerLanding		= "Mostrar temporizador para la fase en tierra",
-	TimerFrostBreath	= "Mostrar temporizador para $spell:28524",
-	WarningFrostBreath	= "Mostrar anuncio especial para $spell:28524",
+	TimerLanding		= "Mostrar temporizador para la fase en tierra"
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "Fase aérea en 10 segundos",
+	WarningAirPhaseSoon	= "Fase aérea en breve",
 	WarningAirPhaseNow	= "Fase aérea",
-	WarningLanded		= "Fase en tierra",
-	WarningFrostBreath	= "Aliento de Escarcha"
+	WarningLanded		= "Fase en tierra"
 })
 
 L:SetTimerLocalization({
 	TimerAir			= "Fase aérea",
-	TimerLanding		= "Fase en tierra",
-	TimerFrostBreath	= "Aliento de Escarcha"
+	TimerLanding		= "Fase en tierra"
 })
 
 ----------------
@@ -1154,17 +1120,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Mostrar temporizador para fase 2",
-	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2",
-	warnAddsSoon		= "Mostrar anuncio anticipado para cuando aparezcan los Guardianes de Corona de Hielo"
+	specwarnP2Soon		= "Mostrar anuncio especial 10 segundos antes del cambio a fase 2"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!",
+	YellP1 			= "¡Esbirros, sirvientes, soldados de la fría oscuridad! ¡Obedezcan la llamada de Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Fase 2 en 10 segundos",
-	warnAddsSoon	= "Guardianes de Corona de Hielo en breve"
+	specwarnP2Soon	= "Fase 2 en 10 segundos"
 })
 
 L:SetTimerLocalization({
