@@ -37,7 +37,7 @@ local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 
 local specWarnBellowingRoar		= mod:NewSpecialWarningSpell(18431, nil, nil, nil, 2, 2)
-local specWarnBreath			= mod:NewSpecialWarningSpell(17086, nil, nil, nil, 2, 2)
+local specWarnBreath			= mod:NewSpecialWarningSpell(17086, nil, nil, nil, 3, 2)
 local yellFireball				= mod:NewYell(18392)
 --local specWarnBlastNova		= mod:NewSpecialWarningRun(68958, "Melee", nil, nil, 4, 2)
 --local specWarnAdds			= mod:NewSpecialWarningAdds(68959, "-Healer", nil, nil, 1, 2)

@@ -51,7 +51,7 @@ local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, "SpellCaster", "War
 
 local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
-local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
+local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087, nil, nil, nil, 3)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
 local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
