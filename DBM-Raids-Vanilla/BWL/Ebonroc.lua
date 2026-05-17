@@ -36,7 +36,7 @@ local warnShadowFlame	= mod:NewCastAnnounce(22539, 2, nil, nil, "Tank|Healer")
 local warnShadow		= mod:NewTargetNoFilterAnnounce(23340, 4, nil, "Tank|Healer")
 
 local specWarnShadowYou	= mod:NewSpecialWarningYou(23340, "Tank", nil, nil, 1, 2)
-local specWarnShadow	= mod:NewSpecialWarningTaunt(23340, "Tank", nil, nil, 1, 2)
+local specWarnShadow	= mod:NewSpecialWarningTaunt(23340, "Tank", nil, nil, 3, 2)
 
 local timerWingBuffetCD	= mod:NewVarTimer("v31.1-36", 23339, nil, "Tank", nil, 2)
 local timerShadowFlameCD= mod:NewVarTimer("v12.9-23.4", 22539, nil, false)

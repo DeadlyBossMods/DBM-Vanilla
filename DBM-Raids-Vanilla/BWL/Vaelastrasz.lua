@@ -45,7 +45,7 @@ mod:RegisterEventsInCombat(
 local warnBreath			= mod:NewCastAnnounce(23461, 2, nil, nil, "Tank", 2)
 local warnAdrenaline		= mod:NewTargetNoFilterAnnounce(18173, 2)
 
-local specWarnAdrenaline	= mod:NewSpecialWarningYou(18173, nil, nil, nil, 1, 2)
+local specWarnAdrenaline	= mod:NewSpecialWarningYou(18173, nil, nil, nil, 4, 2)
 local specWarnAdrenalineOut	= mod:NewSpecialWarningMoveAway(18173, nil, nil, nil, 1, 2)
 local yellAdrenaline		= mod:NewYell(18173, nil, true, 2)
 local yellAdrenalineFades	= mod:NewShortFadesYell(18173)
