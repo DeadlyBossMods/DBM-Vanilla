@@ -33,7 +33,7 @@ mod:RegisterEventsInCombat(
 ability.id = 461343 and type = "begincast"
 or (ability.id = 19713 or ability.id = 19715 or ability.id = 23138 or ability.id = 19714) and type = "cast"
 --]]
-local warnCurse					= mod:NewSpellAnnounce(19713, 4)
+local warnCurse					= mod:NewSpellAnnounce(19713, 3)
 local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, "CasterDps", 2)
 local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
 

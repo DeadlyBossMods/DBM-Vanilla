@@ -26,7 +26,7 @@ mod:RegisterEventsInCombat(
 -- New spell ID found in logs on SoD
 -- 1225423 (Disarm) cast by Understudies, TBD if we want to do something with that
 local isPriest 				= select(2, UnitClass("player")) == "PRIEST"
-local warnShoutNow			= mod:NewSpellAnnounce(29107, 1, 6673)
+local warnShoutNow			= mod:NewSpellAnnounce(29107, 4, 6673)
 local warnShoutSoon			= mod:NewSoonAnnounce(29107, 3, 6673, "ManaUser")
 local warnShieldWall		= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 

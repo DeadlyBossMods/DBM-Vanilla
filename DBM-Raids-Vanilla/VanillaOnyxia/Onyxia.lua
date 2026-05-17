@@ -43,7 +43,7 @@ local yellFireball				= mod:NewYell(18392)
 --local specWarnAdds			= mod:NewSpecialWarningAdds(68959, "-Healer", nil, nil, 1, 2)
 
 local timerFlameBreathCD	= mod:NewVarTimer("v9.7-35.6", 18435, nil, "Tank|Healer", 3, 5)
-local timerBreath			= mod:NewCastTimer(5, 17086, nil, nil, nil, 3)
+local timerBreath			= mod:NewCastTimer(5, 17086, nil, nil, nil, 2)
 local timerRoarCD			= mod:NewVarTimer("v9.7-58.3", 18431, nil, nil, nil, 2)
 local timerWingBuffetCD		= mod:NewVarTimer("v17.8-32.4", 18500, nil, "Tank", nil, 2)
 

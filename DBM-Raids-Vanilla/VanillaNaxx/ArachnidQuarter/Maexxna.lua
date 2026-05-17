@@ -23,8 +23,8 @@ mod:RegisterEventsInCombat(
 )
 
 local warnWebWrap		= mod:NewTargetAnnounce(28622, 2, nil, "RangedDps|Healer")
-local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 3)
-local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 1)
+local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 4)
+local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 3)
 local warnSpidersSoon	= mod:NewAnnounce("WarningSpidersSoon", 2, 17332)
 local warnSpidersNow	= mod:NewAnnounce("WarningSpidersNow", 4, 17332)
 local warnEnrage 		= mod:NewSpellAnnounce(28747, 4)
