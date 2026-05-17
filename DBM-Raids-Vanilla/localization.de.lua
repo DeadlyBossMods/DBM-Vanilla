@@ -1065,22 +1065,18 @@ L:SetOptionLocalization({
 	WarningAirPhaseNow	= "Zeige Warnung, wenn Saphiron abhebt",
 	WarningLanded		= "Zeige Warnung, wenn Saphiron landet",
 	TimerAir			= "Zeige Zeit bis nächste Luftphase",
-	TimerLanding		= "Zeige Zeit bis nächste Bodenphase",
-	TimerFrostBreath	= "Zeige Zeit bis $spell:28524",
-	WarningFrostBreath	= "Spezialwarnung für $spell:28524"
+	TimerLanding		= "Zeige Zeit bis nächste Bodenphase"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Luftphase bald",
 	WarningAirPhaseNow	= "Luftphase",
-	WarningLanded		= "Bodenphase",
-	WarningFrostBreath	= "Frostatem"
+	WarningLanded		= "Bodenphase"
 })
 
 L:SetTimerLocalization({
 	TimerAir			= "Luftphase",
-	TimerLanding		= "Bodenphase",
-	TimerFrostBreath	= "Frostatem"
+	TimerLanding		= "Bodenphase"
 })
 
 ------------------

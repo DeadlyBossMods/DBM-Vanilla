@@ -1092,21 +1092,17 @@ L:SetOptionLocalization({
 	WarningLanded		= "Exibir anúncio para a fase em terra",
 	TimerAir			= "Exibir cronômetro para a fase aérea",
 	TimerLanding		= "Exibir cronômetro para a fase em terra",
-	TimerFrostBreath	= "Exibir cronômetro para $spell:28524",
-	WarningFrostBreath	= "Exibir anúncio especial para $spell:28524",
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Fase aérea em breve",
 	WarningAirPhaseNow	= "Fase aérea",
-	WarningLanded		= "Fase em terra",
-	WarningFrostBreath	= "Sopro Gélido"
+	WarningLanded		= "Fase em terra"
 })
 
 L:SetTimerLocalization({
 	TimerAir			= "Fase aérea",
-	TimerLanding		= "Fase em terra",
-	TimerFrostBreath	= "Sopro Gélido"
+	TimerLanding		= "Fase em terra"
 })
 
 ----------------

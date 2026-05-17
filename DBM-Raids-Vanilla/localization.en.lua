@@ -1114,22 +1114,18 @@ L:SetOptionLocalization({
 	WarningAirPhaseNow	= "Announce air phase",
 	WarningLanded		= "Announce ground phase",
 	TimerAir			= "Show timer for air phase",
-	TimerLanding		= "Show timer for landing",
-	TimerFrostBreath	= "Show timer for $spell:28524",
-	WarningFrostBreath	= "Show special warning for $spell:28524"
+	TimerLanding		= "Show timer for landing"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Air phase soon",
 	WarningAirPhaseNow	= "Air phase",
-	WarningLanded		= "Sapphiron landed",
-	WarningFrostBreath	= "Frost Breath"
+	WarningLanded		= "Sapphiron landed"
 })
 
 L:SetTimerLocalization({
 	TimerAir			= "Air phase",
-	TimerLanding		= "Landing",
-	TimerFrostBreath	= "Frost Breath"
+	TimerLanding		= "Landing"
 })
 
 ------------------

@@ -1113,22 +1113,18 @@ L:SetOptionLocalization({
 	WarningAirPhaseNow		= "비행 단계 알림 보기",
 	WarningLanded			= "지상 단계 알림 보기",
 	TimerAir				= "비행 단계 타이머 바 보기",
-	TimerLanding			= "착지 중 타이머 바 보기",
-	TimerFrostBreath		= "$spell:28524 타이머 바 보기",
-	WarningFrostBreath		= "$spell:28524 특수 알림 보기"
+	TimerLanding			= "착지 중 타이머 바 보기"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon		= "비행 단계 곧 시작",
 	WarningAirPhaseNow		= "비행 단계",
-	WarningLanded			= "사피론 내려옴",
-	WarningFrostBreath		= "냉기 숨결"
+	WarningLanded			= "사피론 내려옴"
 })
 
 L:SetTimerLocalization({
 	TimerAir				= "비행 단계",
-	TimerLanding			= "착지 중",
-	TimerFrostBreath		= "냉기 숨결"
+	TimerLanding			= "착지 중"
 })
 
 ------------------

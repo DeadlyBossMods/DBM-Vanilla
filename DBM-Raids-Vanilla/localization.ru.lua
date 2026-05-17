@@ -1119,22 +1119,18 @@ L:SetOptionLocalization({
 	WarningAirPhaseNow	= "Показывать предупреждение о Воздушной фазе",
 	WarningLanded		= "Показывать предупреждение о Наземной фазе",
 	TimerAir			= "Отсчет времени до Воздушной фазы",
-	TimerLanding		= "Отсчет времени до приземления",
-	TimerFrostBreath	= "Отсчет времени до Ледяного дыхания",
-	WarningFrostBreath	= "Показывать спецпредупреждение для $spell:29318"
+	TimerLanding		= "Отсчет времени до приземления"
 })
 
 L:SetWarningLocalization({
 	WarningAirPhaseSoon	= "Воздушная фаза скоро начнётся",
 	WarningAirPhaseNow	= "Воздушная фаза",
-	WarningLanded		= "Сапфирон приземляется",
-	WarningFrostBreath	= "Ледяное дыхание"
+	WarningLanded		= "Сапфирон приземляется"
 })
 
 L:SetTimerLocalization({
 	TimerAir			= "Воздушная фаза",
-	TimerLanding		= "Приземление",
-	TimerFrostBreath	= "Ледяное дыхание"
+	TimerLanding		= "Приземление"
 })
 
 ------------------
