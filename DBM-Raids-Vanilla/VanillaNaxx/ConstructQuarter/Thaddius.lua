@@ -26,7 +26,7 @@ mod:RegisterEventsInCombat(
 )
 
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
-local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
+local warnShiftSoon			= mod:NewSoonAnnounce(28089, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
@@ -117,16 +117,19 @@ end
 function mod:UNIT_AURA()
 	if self:GetStage(2, 3) or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
 	local charge
+	local chargeIcon
 	local i = 1
 	while UnitDebuff("player", i) do
 		local _, icon, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = UnitDebuff("player", i)
 		if icon == "Interface\\Icons\\Spell_ChargeNegative" or icon == 135768 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
 			charge = CL.NEGATIVE
+			chargeIcon = icon
 			yellShift:Yell(7, "- -")
 		elseif icon == "Interface\\Icons\\Spell_ChargePositive" or icon == 135769 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
 			charge = CL.POSITIVE
+			chargeIcon = icon
 			yellShift:Yell(6, "+ +")
 		end
 		i = i + 1
@@ -135,6 +138,7 @@ function mod:UNIT_AURA()
 		lastShift = 0
 		--Did not Change
 		if charge == currentCharge then
+			warnChargeNotChanged:UpdateIcon(chargeIcon)
 			warnChargeNotChanged:Show()
 			warnChargeNotChanged:Play("dontmove")
 			if self.Options.AirowsEnabled == "ArrowsInverse" then
@@ -144,6 +148,7 @@ function mod:UNIT_AURA()
 			end
 		--Changed
 		else
+			warnChargeChanged:UpdateIcon(chargeIcon)
 			warnChargeChanged:Show(charge)
 			warnChargeChanged:Play("stilldanger")
 			if self.Options.AirowsEnabled == "ArrowsInverse" then
