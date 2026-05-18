@@ -1,6 +1,7 @@
 -- this file uses the texture Textures/arrow.tga. This image was created by Everaldo Coelho and is licensed under the GNU Lesser General Public License. See Textures/lgpl.txt.
 local mod	= DBM:NewMod("ThaddiusVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
+local CL	= DBM_COMMON_L
 
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
@@ -9,50 +10,73 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15928)
 mod:SetEncounterID(1120)
 mod:SetModelID(16137)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Yell)
+mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
-	"CHAT_MSG_MONSTER_EMOTE",
+	--"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_AURA player"
 )
 
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
-local warnShiftSoon			= mod:NewSoonAnnounce(28089, 5, 3)
+local warnShiftSoon			= mod:NewSoonAnnounce(28089, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 2)
 local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
+local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
-local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged")
-local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false)
+local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged", nil, nil, nil, 3, 2, nil, nil, 28089)
+local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false, nil, nil, 1, 12, nil, nil, 28089)
 local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
-local enrageTimer			= mod:NewBerserkTimer(300)
-local timerNextShift		= mod:NewVarTimer("v25.9-34", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)--25.9-34
+local timerEnrage			= mod:NewBerserkTimer(300)
+local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerIntermission		= mod:NewIntermissionTimer("v3.2-4.8", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
 mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
 
 local currentCharge
-local down = 0
 local lastShift = 0
+--local down = 0
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
+	--down = 0
 	self:SetStage(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	currentCharge = nil
-	down = 0
-	self:ScheduleMethod(40.6 - delay, "TankThrow")
-	timerThrow:Start(20.6-delay)
-	warnThrowSoon:Schedule(37.6 - delay)
+	self:ScheduleMethod(40.6, "TankThrow")
+	timerThrow:Start(20.6)
+	warnThrowSoon:Schedule(37.6)
+	self:RegisterOnUpdateHandler(function()
+	if not IsEncounterInProgress() and self:GetStage(1) then
+		self:SetStage(1.5)
+		self:UnscheduleMethod("TankThrow")
+		warnPhase2Soon:Show()
+		warnThrowSoon:Cancel()
+		timerThrow:Stop()
+		timerIntermission:Start()
+		DBM.InfoFrame:Hide()
+	elseif IsEncounterInProgress() and self:GetStage(1.5) then
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+        timerEnrage:Start()
+		timerIntermission:Stop()
+		warnPhase:Play("ptwo")
+        self:UnregisterOnUpdateHandler()
+	end
+    end, 0.2)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[15929] = true,
@@ -67,13 +91,14 @@ end
 function mod:BossHealthUpdate()
 	self:GetBossHP(15929)
 	self:GetBossHP(15930)
-	if self.vb.phase ~= 2 then
+	if self:GetStage(2, 3) then
 		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
 	end
 end
 
 
 function mod:OnCombatEnd(wipe, isSecondRun)
+	self:UnregisterOnUpdateHandler()
 	if wipe and not isSecondRun then
 		DBM:AddMsg("Arrow Options can be changed for this encounter. Mod supports 3 different strats. Choose one that matches your strat")
 	end
@@ -81,29 +106,30 @@ end
 
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(28089) then
-		self:SetStage(2)
 		timerNextShift:Start()
 		timerShiftCast:Start()
 		warnShiftCasting:Show()
 		warnShiftSoon:Schedule(20)
 		lastShift = GetTime()
-		DBM.InfoFrame:Hide()
 	end
 end
 
 function mod:UNIT_AURA()
-	if self.vb.phase ~=2 or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
+	if self:GetStage(2, 3) or (GetTime() - lastShift) > 5 or (GetTime() - lastShift) < 3 then return end
 	local charge
+	local chargeIcon
 	local i = 1
 	while UnitDebuff("player", i) do
 		local _, icon, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = UnitDebuff("player", i)
 		if icon == "Interface\\Icons\\Spell_ChargeNegative" or icon == 135768 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
-			charge = L.Charge1
+			charge = CL.NEGATIVE
+			chargeIcon = icon
 			yellShift:Yell(7, "- -")
 		elseif icon == "Interface\\Icons\\Spell_ChargePositive" or icon == 135769 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
-			charge = L.Charge2
+			charge = CL.POSITIVE
+			chargeIcon = icon
 			yellShift:Yell(6, "+ +")
 		end
 		i = i + 1
@@ -112,7 +138,9 @@ function mod:UNIT_AURA()
 		lastShift = 0
 		--Did not Change
 		if charge == currentCharge then
+			warnChargeNotChanged:UpdateIcon(chargeIcon)
 			warnChargeNotChanged:Show()
+			warnChargeNotChanged:Play("dontmove")
 			if self.Options.AirowsEnabled == "ArrowsInverse" then
 				self:ShowLeftArrow()
 			elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
@@ -120,7 +148,9 @@ function mod:UNIT_AURA()
 			end
 		--Changed
 		else
+			warnChargeChanged:UpdateIcon(chargeIcon)
 			warnChargeChanged:Show(charge)
+			warnChargeChanged:Play("stilldanger")
 			if self.Options.AirowsEnabled == "ArrowsInverse" then
 				self:ShowRightArrow()
 			elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
@@ -133,20 +163,23 @@ function mod:UNIT_AURA()
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.Emote or msg:find(L.Emote) then
-		down = down + 1
-		if down >= 2 then
-			self:UnscheduleMethod("TankThrow")
-			timerThrow:Cancel()
-			warnThrowSoon:Cancel()
-			enrageTimer:Start()
-		end
-	end
-end
+--function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+	--if self:GetStage(1) and (msg == L.Emote or msg:find(L.Emote)) then
+		--down = down + 1
+		--if down >= 2 then
+			--self:SetStage(1.5)
+			--self:UnscheduleMethod("TankThrow")
+			--warnPhase2Soon:Show()
+			--warnThrowSoon:Cancel()
+			--timerThrow:Stop()
+			--timerIntermission:Start()
+			--DBM.InfoFrame:Hide()
+		--end
+	--end
+--end
 
 function mod:TankThrow()
-	if not self:IsInCombat() or self.vb.phase == 2 then
+	if not self:IsInCombat() or self:GetStage(2) then
 		return
 	end
 	timerThrow:Start()

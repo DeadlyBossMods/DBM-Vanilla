@@ -3,27 +3,29 @@ local isBCC = WOW_PROJECT_ID == (WOW_PROJECT_BURNING_CRUSADE_CLASSIC or 5)
 local catID
 if isBCC or isClassic then
 	catID = 2
-else--retail or wrath classic and later
+else -- retail or wrath classic and later
 	catID = 1
 end
-local mod	= DBM:NewMod("Viscidus", "DBM-Raids-Vanilla", catID)
-local L		= mod:GetLocalizedStrings()
+
+local mod = DBM:NewMod("Viscidus", "DBM-Raids-Vanilla", catID)
+local L = mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15299)
 mod:SetEncounterID(713)
 mod:SetModelID(15686)
-mod:SetHotfixNoticeRev(20200828000000)--2020, 8, 28
-mod:SetMinSyncRevision(20200828000000)--2020, 8, 28
+mod:SetHotfixNoticeRev(20200828000000) -- 2020, 8, 28
+mod:SetMinSyncRevision(20200828000000) -- 2020, 8, 28
 mod:SetZone(531)
 
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 25991 25896 25896",
+	"SPELL_CAST_SUCCESS 25991 25896",
 	"SPELL_AURA_APPLIED 25989",
 	"CHAT_MSG_MONSTER_EMOTE",
+	"RANGE_DAMAGE",
 	"SPELL_DAMAGE",
 	"SPELL_PERIODIC_DAMAGE",
 	"SWING_DAMAGE",
@@ -31,13 +33,14 @@ mod:RegisterEventsInCombat(
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
-local warnPoisonBoltVolley		= mod:NewCountAnnounce(25991, 3)
-local warnFreeze				= mod:NewAnnounce("WarnFreeze", 2, 16350)
-local warnShatter				= mod:NewAnnounce("WarnShatter", 2, 12982)
+local warnPoisonBoltVolley 		= mod:NewCountAnnounce(25991, 3)
+local warnFreeze 				= mod:NewAnnounce("WarnFreeze", 2, 16350)
+local warnShatter 				= mod:NewAnnounce("WarnShatter", 2, 12982)
 
-local specWarnGTFO				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
+local specWarnGTFO 				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
 
-local timerPoisonBoltVolleyCD	= mod:NewCDCountTimer(11.3, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
+local timerPoisonBoltVolleyCD 	= mod:NewCDCountTimer(11.3, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
+local timerRejoin				= mod:NewNextTimer(16.5, 25896, nil, nil, nil, 6, 355365) -- Using icon for Spirit of Zandalar
 
 mod.vb.volleyCount = 0
 mod.vb.freezeState = 0
@@ -60,11 +63,11 @@ local meleeHitTimes = {}
 local frostHitTimes = {}
 local lastFreeze = 0
 
-local function getHitsPerSecond(times, treshold1, treshold2)
-	if #times >= treshold1 then
-		return (treshold1 - 1) / (times[#times] - times[#times - treshold1 + 1])
-	elseif #times >= treshold2 then
-		return (treshold2 - 1) / (times[#times] - times[#times - treshold2 + 1])
+local function getHitsPerSecond(times, threshold1, threshold2)
+	if #times >= threshold1 then
+		return (threshold1 - 1) / (times[#times] - times[#times - threshold1 + 1])
+	elseif #times >= threshold2 then
+		return (threshold2 - 1) / (times[#times] - times[#times - threshold2 + 1])
 	else
 		return 0
 	end
@@ -75,7 +78,9 @@ local function updateInfoFrame()
 	table.wipe(lines)
 	table.wipe(sortedLines)
 	if mod.vb.freezeState == 0 then
-		sortedLines[1] = L.FrostHitsPerSecond
+		sortedLines[1] = L.FrostHits
+		sortedLines[2] = L.FrostHitsPerSecond
+		lines[L.FrostHits] = frostHits .. "/200"
 		lines[L.FrostHitsPerSecond] = ("%.1f"):format(getHitsPerSecond(frostHitTimes, 7, 15))
 	elseif mod.vb.freezeState == 1 then
 		sortedLines[1] = L.MeleeHitsPerSecond
@@ -83,7 +88,6 @@ local function updateInfoFrame()
 	end
 	return lines, sortedLines
 end
-
 
 local function resetHitCounts()
 	meleeHits = 0
@@ -94,7 +98,7 @@ end
 
 function mod:OnCombatStart()
 	self.vb.volleyCount = 0
-	timerPoisonBoltVolleyCD:Start(nil, 1)
+	timerPoisonBoltVolleyCD:Start("v11.3-12.9", 1)
 	self.vb.freezeState = 0
 	resetHitCounts()
 	if self.Options.InfoFrame then
@@ -109,7 +113,6 @@ function mod:OnCombatEnd()
 	resetHitCounts()
 end
 
-
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(25991) then
 		self.vb.volleyCount = self.vb.volleyCount + 1
@@ -119,6 +122,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 		DBM:Debug("Viscidus respawned, frostHits=" .. tostring(frostHits) .. ", meleeHits=" .. tostring(meleeHits))
 		resetHitCounts()
 		self.vb.freezeState = 0
+		timerRejoin:Stop()
 	end
 end
 
@@ -130,18 +134,18 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	if msg == L.Phase4 or msg:find(L.Phase4) then
-		self:SendSync("Shatter", 1)
-	elseif msg == L.Phase5 or msg:find(L.Phase5) then
-		self:SendSync("Shatter", 2)
-	elseif msg == L.Phase6 or msg:find(L.Phase6) then -- Missing in Classic :(
-		self:SendSync("Shatter", 3)
-	elseif msg == L.Slow or msg:find(L.Slow) then
+	if msg == L.Slow or msg:find(L.Slow) then
 		self:SendSync("Freeze", 1)
 	elseif msg == L.Freezing or msg:find(L.Freezing) then
 		self:SendSync("Freeze", 2)
 	elseif msg == L.Frozen or msg:find(L.Frozen) then
 		self:SendSync("Freeze", 3)
+	elseif msg == L.Phase4 or msg:find(L.Phase4) then
+		self:SendSync("Shatter", 1)
+	elseif msg == L.Phase5 or msg:find(L.Phase5) then
+		self:SendSync("Shatter", 2)
+	--elseif msg == L.Phase6 or msg:find(L.Phase6) then -- Phase 6 doesn't exist in classic, and no evidence that it exists in retail either from watching videos spanning Cataclysm in 2010 until TWW in 2023
+		--self:SendSync("Shatter", 3)
 	end
 end
 
@@ -153,15 +157,15 @@ end
 
 function mod:SPELL_DAMAGE(_, _, _, _, destGuid, _, _, _, _, _, _, _, _, school)
 	school = school or 0
-	if DBM:GetCIDFromGUID(destGuid) == 15299 and bit.band(school, 0x10) ~= 0 then
+	if DBM:GetCIDFromGUID(destGuid) == 15299 and bit.band(school, 16) ~= 0 then
 		frostHits = frostHits + 1
 		DBM:Debug("frostHits=" .. frostHits)
 		frostHitTimes[#frostHitTimes + 1] = GetTime()
 	end
 end
 mod.SPELL_PERIODIC_DAMAGE = mod.SPELL_DAMAGE
+mod.RANGE_DAMAGE = mod.SPELL_DAMAGE
 
--- Failure case of not shattering him in time
 function mod:Unfreeze()
 	if GetTime() - lastFreeze > 5 then
 		DBM:Debug("Viscidus unfroze (failed shatter), frostHits=" .. tostring(frostHits) .. ", meleeHits=" .. tostring(meleeHits))
@@ -175,26 +179,19 @@ function mod:SWING_DAMAGE(srcGuid, _, _, _, destGuid)
 		meleeHits = meleeHits + 1
 		DBM:Debug("meleeHits=" .. meleeHits)
 		meleeHitTimes[#meleeHitTimes + 1] = GetTime()
-	elseif DBM:GetCIDFromGUID(srcGuid) == 15299 then
-		if self.vb.freezeState == 1 then
-			self:Unfreeze()
-		end
+	elseif DBM:GetCIDFromGUID(srcGuid) == 15299 and self.vb.freezeState == 1 then
+		self:Unfreeze()
 	end
 end
 
 function mod:SWING_MISSED(srcGuid)
-	if DBM:GetCIDFromGUID(srcGuid) == 15299 then
-		if self.vb.freezeState == 1 then
-			self:Unfreeze()
-		end
+	if DBM:GetCIDFromGUID(srcGuid) == 15299 and self.vb.freezeState == 1 then
+		self:Unfreeze()
 	end
 end
 
 function mod:OnSync(msg, count, sender)
-	if msg == "Shatter" and sender then
-		count = tonumber(count)
-		warnShatter:Show(count)
-	elseif msg == "Freeze" and sender then
+	if msg == "Freeze" and sender then
 		count = tonumber(count)
 		warnFreeze:Show(count)
 		if count == 3 then
@@ -203,6 +200,13 @@ function mod:OnSync(msg, count, sender)
 			resetHitCounts()
 			lastFreeze = GetTime()
 			self.vb.freezeState = 1
+		end
+	elseif msg == "Shatter" and sender then
+		count = tonumber(count)
+		warnShatter:Show(count)
+		if count == 2 then
+			timerRejoin:Start()
+			DBM:Debug("Viscidus shattered, meleeHits=" .. tostring(meleeHits) .. ", frostHits=" .. tostring(frostHits))
 		end
 	elseif msg == "FrostWeakness" and self:AntiSpam(3, "FrostWeaknessSync") then
 		-- Just to gather logs because there are two different Frost Weakness spells he uses, maybe they differ in required hits/time or something

@@ -19,6 +19,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(14020)
 mod:SetEncounterID(616)
@@ -30,46 +31,48 @@ mod:SetWipeTime(20) -- ENCOUNTER_START triggers when you pull the lever, but it 
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 23308 23309 23313 23314 23187 23189 23315 23316 23310 23312",
+	"SPELL_CAST_SUCCESS 23128",
 	"SPELL_AURA_APPLIED 23155 23169 23153 23154 23170 23128 23537 22277 22278 22279 22280 22281",
 	"SPELL_AURA_REMOVED 23155 23169 23153 23154 23170 23128",
-	"UNIT_HEALTH",
 	"CHAT_MSG_MONSTER_EMOTE"
 )
 
 --(ability.id = 23309 or ability.id = 23313 or ability.id = 23189 or ability.id = 23315 or ability.id = 23312 or ability.id = 23314) and type = "begincast"
 local warnBreath		= mod:NewAnnounce("WarnBreath", 2, 23316)
 local warnRed			= mod:NewSpellAnnounce(23155, 2, nil, false)
-local warnGreen			= mod:NewSpellAnnounce(23169, 2, nil, false)
-local warnBlue			= mod:NewSpellAnnounce(23153, 2, nil, false)
-local warnBlack			= mod:NewSpellAnnounce(23154, 2, nil, false)
-local warnFrenzy		= mod:NewSpellAnnounce(23128, 3, nil, "Tank|RemoveEnrage|Healer", 4)
-local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2, 1)
-local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnGreen			= mod:NewSpellAnnounce(23169, 2, nil, "RemovePoison")
+local warnBlue			= mod:NewSpellAnnounce(23153, 2, nil, "RemoveMagic")
+local warnBlack			= mod:NewSpellAnnounce(23154, 2, nil, "RemoveCurse")
+local warnFrenzy		= mod:NewSpellAnnounce(23128, 3, nil, "Tank|RemoveEnrage|Healer")
+local warnEnrage 		= mod:NewSpellAnnounce(23537, 4)
+local warnEnrageSoon	= mod:NewSoonAnnounce(23537, 2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
-local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, nil, "WarnVulnerableNew")
+local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, "SpellCaster", "WarnVulnerableNew")
 
 local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
 local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
-local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087)
+local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087, nil, nil, nil, 3, 2)
 
-local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 3)
-local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 3)
-local timerAllBreaths	= mod:NewTimer(80, "TimerAllBreaths", 23316, nil, nil, 3)
-local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
-local timerVuln			= mod:NewTimer("v16.2-25.5", "TimerVulnCD", nil, nil, nil, nil, nil, true) -- seen 16.94 - 25.53, avg 21.8; extreme outliers are somewhat rare, so going for 19.5
+local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 2)
+local timerBreathCD		= mod:NewTimer(61.5, "TimerBreathCD", 23316, nil, nil, 2)
+local timerFrenzy		= mod:NewBuffActiveTimer(8, 23128, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerFrenzyCD		= mod:NewVarTimer("v16.1-17.8", 23128, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+local timerVuln			= mod:NewTimer("v16.2-25.9", "TimerVulnCD", nil, "SpellCaster", nil, nil, nil, true)
 
-local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver
+local warnRollOverSoon, warnRollOver, warnFetch, timerFetch, timerRollOver, timerAllBreaths
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnRollOverSoon	= mod:NewSoonAnnounce(468199)
 	warnRollOver		= mod:NewSpellAnnounce(468199)
 	warnFetch			= mod:NewSpellAnnounce(467884)
 	timerFetch			= mod:NewCDTimer(40, 467884)
 	timerRollOver		= mod:NewBuffActiveTimer(16, 468199)
+	timerAllBreaths		= mod:NewTimer(80, "TimerAllBreaths", 23316, nil, nil, 3)
 end
 
 mod:AddNamePlateOption("NPAuraOnVulnerable", 22277)
-mod:AddInfoFrameOption(22277, true)
+mod:AddInfoFrameOption(22277, false)
 
+mod.vb.warnEnrageSoon = false
 mod.vb.breathCount = 0
 local mydebuffs = 0
 local lastVulnName = nil
@@ -129,7 +132,7 @@ local function updateVulnerability(self, spellId)
 
 	timerVuln:SetColor(info[2])
 	timerVuln:UpdateIcon(info[3])
-	timerVuln:UpdateName(name)
+	timerVuln:UpdateName(warnVuln.text:format(name))
 	if not lastVulnName or lastVulnName ~= name then
 		---@diagnostic disable-next-line: inject-field
 		warnVuln.icon = info[3]
@@ -170,15 +173,21 @@ local nextBreath, nextVolley, volleyCount = 0, 0, 0
 local rolloverWarnShown
 function mod:OnCombatStart()
 	self.vb.breathCount = 0
-	self:SetStage(1)
+	self.vb.warnEnrageSoon = false
 	rolloverWarnShown = false
+	self:RegisterShortTermEvents(
+		"UNIT_HEALTH"
+	)
 	nextBreath = GetTime() + 30
 	nextVolley = GetTime() + 40
 	volleyCount = 0
-	timerBreathCD:Start(string.format("v%s-%s", 24.4, 35.9), L.Breath1)
-	timerBreathCD:Start(string.format("v%s-%s", 57.5, 68.6), L.Breath2)
+	timerBreathCD:Start(string.format("v%s-%s", 27, 37.2), L.Breath1)
+	timerBreathCD:Start(string.format("v%s-%s", 57.3, 68.1), L.Breath2)
+	timerFrenzyCD:Start("v12.5-22.5")
 	specWarnBreathSoon:Schedule(27) -- +2 sec casting time == you got 5 seconds to run
+	specWarnBreathSoon:ScheduleVoice(27, "breathsoon")
 	specWarnBreathSoon:Schedule(57)
+	specWarnBreathSoon:ScheduleVoice(57, "breathsoon")
 	mydebuffs = 0
 	if self.Options.NPAuraOnVulnerable then
 		DBM:FireEvent("BossMod_EnableHostileNameplates")
@@ -189,6 +198,7 @@ function mod:OnCombatStart()
 		timerFetch:Start(20.9)
 		timerAllBreaths:Start(40)
 		specWarnBreathSoon:Schedule(37)
+		specWarnBreathSoon:ScheduleVoice(37, "breathsoon")
 	end
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		self:RegisterShortTermEvents(
@@ -214,6 +224,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	elseif args:IsSpell(468594) then
 		timerRollOver:Start()
 		warnRollOver:Show()
+	elseif args:IsSpell(23128) then
+		timerFrenzyCD:Start()
 	end
 end
 
@@ -238,6 +250,7 @@ function mod:SPELL_CAST_START(args)
 			timerBreathCD:UpdateIcon(args.spellId, args.spellName)
 			nextBreath = GetTime() + 30
 			specWarnBreathSoon:Schedule(57)
+			specWarnBreathSoon:ScheduleVoice(57, "breathsoon")
 		else -- part of a volley
 			if volleyCount == 0 then
 				nextVolley = GetTime() + 80
@@ -312,11 +325,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnFrenzy:Show()
 		end
 		timerFrenzy:Start()
-	elseif args:IsSpell(23537) and args:IsDestTypeHostile() then
-		if self.vb.phase < 2 then
-			self:SetStage(2)
-			warnPhase2:Show()
-		end
+	elseif args:IsSpell(23537) then
+		warnEnrage:Show()
 	elseif args:IsSpell(22277, 22278, 22279, 22280, 22281) then
 		bossGuid = args.destGUID
 		timerVuln:Start()
@@ -341,16 +351,12 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if self:GetUnitCreatureId(uId) ~= 14020 then
-		return
-	end
-	local health = UnitHealth(uId) / UnitHealthMax(uId)
-	if health <= 0.25 and self.vb.phase == 1 then
-		warnPhase2Soon:Show()
-		self:SetStage(1.5)
-	elseif warnRollOverSoon and health <= 0.65 and health >= 0.6 and self:IsBwlBlackEssenceEnabled() and not rolloverWarnShown then
+	if self:GetUnitCreatureId(uId) == 14020 and warnRollOverSoon and UnitHealth(uId) / UnitHealthMax(uId) <= 0.65 and UnitHealth(uId) / UnitHealthMax(uId) >= 0.6 and self:IsBwlBlackEssenceEnabled() and not rolloverWarnShown then
 		warnRollOverSoon:Show()
 		rolloverWarnShown = true
+	elseif self:GetUnitCreatureId(uId) == 14020 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
+		self:SendSync("EnrageSoon")
+		self:UnregisterShortTermEvents()
 	end
 end
 
@@ -367,5 +373,8 @@ function mod:OnSync(msg)
 			timerVuln:Start()
 			checkTargetVulnerabilities(self)
 		end
+	elseif msg == "EnrageSoon" and not self.vb.warnEnrageSoon then
+		self.vb.warnEnrageSoon = true
+		warnEnrageSoon:Show()
 	end
 end
