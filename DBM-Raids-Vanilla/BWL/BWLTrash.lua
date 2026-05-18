@@ -21,7 +21,6 @@ mod:RegisterZoneCombat(469)
 
 mod:RegisterEvents(
 	"PLAYER_TARGET_CHANGED",
-	"SPELL_CAST_START 22458",
 	"SPELL_CAST_SUCCESS 22275 19717",
 	"SPELL_AURA_APPLIED 22277 22278 22279 22280 22281 22291 22428 19717 22275",
 	"SPELL_AURA_REMOVED 22291",
@@ -36,7 +35,6 @@ local warnFlamestrike			= mod:NewSpellAnnounce(22275, 2)
 local warnRainofFire			= mod:NewSpellAnnounce(19717, 2)
 local warnBroodBronze			= mod:NewTargetNoFilterAnnounce(22291, 2, nil, "Melee")
 
-local specWarnHealingCircle		= mod:NewSpecialWarningInterrupt(22458, nil, nil, nil, 1, 2)
 local specWarnGTFO				= mod:NewSpecialWarningGTFO(22428, nil, nil, nil, 1, 8)
 
 local timerFlameStrikeCD		= mod:NewCDNPTimer(8.1, 22275, nil, nil, nil, 2)--8.1-10.9, often it can be 10.9 repeating
@@ -81,13 +79,6 @@ local function updateNameplate(guid, texture)
 	if not shownNameplates[guid] then
 		shownNameplates[guid] = true
 		DBM.Nameplate:Show(true, guid, 22277, texture)
-	end
-end
-
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(22458) and self:CheckInterruptFilter(args.sourceGUID, nil, true) then
-		specWarnHealingCircle:Show(args.sourceName)
-		specWarnHealingCircle:Play("kickcast")
 	end
 end
 
