@@ -158,6 +158,14 @@ function mod:SPELL_CAST_START(args)
 	end
 end
 
+function mod:SPELL_INTERRUPT(args)
+	if not self.Options.Enabled then return end
+	if type(args.extraSpellId) ~= "number" then return end
+	if args.extraSpellId == 28478 then
+		timerFrostbolt:Stop(args.destGUID)
+	end
+end
+
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(27810) then
 		timerFissureCD:Start()
