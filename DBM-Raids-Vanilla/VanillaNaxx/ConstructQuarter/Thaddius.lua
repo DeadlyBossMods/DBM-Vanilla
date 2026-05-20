@@ -124,12 +124,12 @@ function mod:UNIT_AURA()
 		if icon == "Interface\\Icons\\Spell_ChargeNegative" or icon == 135768 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
 			charge = CL.NEGATIVE
-			chargeIcon = icon
+			chargeIcon = tostring(icon)
 			yellShift:Yell(7, "- -")
 		elseif icon == "Interface\\Icons\\Spell_ChargePositive" or icon == 135769 then--Not sure if classic will return data ID or path, so include both
 			if (count2 or count) > 1 then return end
 			charge = CL.POSITIVE
-			chargeIcon = icon
+			chargeIcon = tostring(icon)
 			yellShift:Yell(6, "+ +")
 		end
 		i = i + 1
