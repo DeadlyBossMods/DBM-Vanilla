@@ -39,7 +39,7 @@ local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSI
 
 local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
-local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 5)
+local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerIntermission		= mod:NewIntermissionTimer("v3.2-4.8", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
