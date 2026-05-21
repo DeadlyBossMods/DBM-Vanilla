@@ -57,7 +57,7 @@ local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
 local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
 
-local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698) -- Duration is 7s but it expires after 6s
+local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698, nil, nil, nil, 2) -- Duration is 7s but it expires after 6s
 local timerCauseInsanity			= mod:NewTargetTimer(10, 26079, nil, nil, nil, 3)
 local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 

@@ -32,7 +32,7 @@ mod:RegisterEventsInCombat(
 --[[
 (ability.id = 24324 or ability.id = 24686 or ability.id = 24687 or ability.id = 24688 or ability.id = 24689 or ability.id = 24690) and type = "cast"
 --]]
-local warnSiphonSoon			= mod:NewSoonAnnounce(24324)
+local warnSiphonSoon			= mod:NewSoonAnnounce(24324, 3)
 local warnInsanity				= mod:NewTargetNoFilterAnnounce(24327, 4)
 local warnBlood					= mod:NewTargetAnnounce(24328, 2)--Not excempt from filter since it could be spammy
 local warnAspectOfMarli			= mod:NewTargetNoFilterAnnounce(24686, 2)
