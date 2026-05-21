@@ -34,11 +34,6 @@ mod:RegisterEvents(
 	"NAME_PLATE_UNIT_ADDED"
 )
 
-
--- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
--- This is a problem out of combat often enough
-local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
-
 --TODO, meteor those big guys use, maybe some other stuff
 --local specWarnPrimalRampage			= mod:NewSpecialWarningDodge(198379, "Melee", nil, nil, 1, 2)
 
@@ -63,11 +58,14 @@ local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
 local yellPlague                    = mod:NewYell(26556)
 
-local warnExplosion, yellBurst, specWarnBurst, specWarnExplosion, timerExplosion, timerBurst
+local warnExplosion, yellBurst, specWarnBurst, specWarnExplosion, timerExplosion, timerBurst, specWarnGTFO
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 warnExplosion				= mod:NewAnnounce("WarnExplosion", 3, nil, false)
 yellBurst					= mod:NewIconTargetYell(1215202)
 specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
+-- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
+-- This is a problem out of combat often enough
+specWarnGTFO 				= mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
 specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 timerBurst					= mod:NewNextTimer(30, 1215202)

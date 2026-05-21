@@ -35,7 +35,7 @@ local warnFlamestrike			= mod:NewSpellAnnounce(22275, 2)
 local warnRainofFire			= mod:NewSpellAnnounce(19717, 2)
 local warnBroodBronze			= mod:NewTargetNoFilterAnnounce(22291, 2, nil, "Melee")
 
-local specWarnGTFO				= mod:NewSpecialWarningGTFO(22428, nil, nil, nil, 1, 8)
+local specWarnGTFO				= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8)
 
 local timerFlameStrikeCD		= mod:NewCDNPTimer(8.1, 22275, nil, nil, nil, 2)--8.1-10.9, often it can be 10.9 repeating
 local timerBroodBronze			= mod:NewTargetTimer(5, 22291, nil, "Melee", nil, 3)
