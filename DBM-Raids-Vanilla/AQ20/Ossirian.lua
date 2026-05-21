@@ -26,11 +26,11 @@ mod:RegisterEventsInCombat(
 
 local warnSupreme			= mod:NewSpellAnnounce(25176, 3)
 local warnCyclone			= mod:NewTargetAnnounce(25189, 4)
-local warnFireWeakness		= mod:NewSpellAnnounce(25177, 3, nil , "CasterDps")
-local warnFrostWeakness		= mod:NewSpellAnnounce(25178, 3, nil , "CasterDps")
-local warnNatureWeakness	= mod:NewSpellAnnounce(25180, 3, nil , "CasterDps")
-local warnArcaneWeakness	= mod:NewSpellAnnounce(25181, 3, nil , "CasterDps")
-local warnShadowWeakness	= mod:NewSpellAnnounce(25183, 3, nil , "CasterDps")
+local warnFireWeakness		= mod:NewSpellAnnounce(25177, 1, nil , "CasterDps")
+local warnFrostWeakness		= mod:NewSpellAnnounce(25178, 1, nil , "CasterDps")
+local warnNatureWeakness	= mod:NewSpellAnnounce(25180, 1, nil , "CasterDps")
+local warnArcaneWeakness	= mod:NewSpellAnnounce(25181, 1, nil , "CasterDps")
+local warnShadowWeakness	= mod:NewSpellAnnounce(25183, 1, nil , "CasterDps")
 local warnCurseOfTongues	= mod:NewSpellAnnounce(25195, 2, nil, "SpellCaster")
 
 local timerCyclone			= mod:NewTargetTimer(10, 25189, nil, nil, nil, 3)
