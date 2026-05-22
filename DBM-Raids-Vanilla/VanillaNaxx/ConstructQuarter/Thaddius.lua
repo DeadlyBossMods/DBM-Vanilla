@@ -21,7 +21,6 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 28089",
-	--"CHAT_MSG_MONSTER_EMOTE",
 	"UNIT_AURA player"
 )
 
@@ -49,10 +48,8 @@ mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "
 
 local currentCharge
 local lastShift = 0
---local down = 0
 
 function mod:OnCombatStart()
-	--down = 0
 	self:SetStage(1)
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	currentCharge = nil
@@ -162,21 +159,6 @@ function mod:UNIT_AURA()
 		currentCharge = charge
 	end
 end
-
---function mod:CHAT_MSG_MONSTER_EMOTE(msg)
-	--if self:GetStage(1) and (msg == L.Emote or msg:find(L.Emote)) then
-		--down = down + 1
-		--if down >= 2 then
-			--self:SetStage(1.5)
-			--self:UnscheduleMethod("TankThrow")
-			--warnPhase2Soon:Show()
-			--warnThrowSoon:Cancel()
-			--timerThrow:Stop()
-			--timerIntermission:Start()
-			--DBM.InfoFrame:Hide()
-		--end
-	--end
---end
 
 function mod:TankThrow()
 	if not self:IsInCombat() or self:GetStage(2) then

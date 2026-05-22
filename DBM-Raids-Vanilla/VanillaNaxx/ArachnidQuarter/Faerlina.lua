@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 	"UNIT_DIED"
 )
 
-local warnEmbraceActive		= mod:NewSpellAnnounce(28732, 1)
+local warnEmbraceActive		= mod:NewSpellAnnounce(28732, 2)
 local warnEmbraceExpire		= mod:NewAnnounce("WarningEmbraceExpire", 2, 28732)
 local warnEmbraceExpired	= mod:NewFadesAnnounce(28732, 3)
 local warnEnrage			= mod:NewSpellAnnounce(28131, 4)
