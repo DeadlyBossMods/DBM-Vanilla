@@ -28,8 +28,8 @@ mod:RegisterEventsInCombat(
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
 local warnShiftSoon			= mod:NewSoonAnnounce(28089, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
-local warnThrow				= mod:NewSpellAnnounce(28338, 2)
-local warnThrowSoon			= mod:NewSoonAnnounce(28338, 1)
+local warnThrow				= mod:NewSpellAnnounce(28338, 3)
+local warnThrowSoon			= mod:NewSoonAnnounce(28338, 2)
 local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
