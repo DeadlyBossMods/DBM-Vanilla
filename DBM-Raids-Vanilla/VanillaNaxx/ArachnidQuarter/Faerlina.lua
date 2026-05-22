@@ -30,7 +30,7 @@ local warnEnrage			= mod:NewSpellAnnounce(28131, 4)
 local specWarnEnrage		= mod:NewSpecialWarningDefensive(28131, nil, nil, nil, 3, 2)
 local specWarnGTFO			= mod:NewSpecialWarningGTFO(28794, nil, nil, nil, 1, 8)
 
-local timerEmbrace			= mod:NewBuffActiveTimer(30, 28732, nil, nil, nil, 7)
+local timerEmbrace			= mod:NewBuffActiveTimer(30, 28732)
 local timerEnrageCD			= mod:NewVarTimer("v56-76", 28131, nil, "RemoveEnrage", nil, 6, nil, DBM_COMMON_L.ENRAGE_ICON)-- 56-76
 
 mod.vb.enraged = false
