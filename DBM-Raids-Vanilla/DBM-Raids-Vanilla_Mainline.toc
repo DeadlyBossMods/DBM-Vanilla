@@ -35,7 +35,7 @@
 ## X-DBM-Mod-name-zhTW: 團隊副本（經典舊世）
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 531, 509, 469, 409, 2792
-## X-DBM-Mod-MinCoreRevision: 20230521000000
+## X-DBM-Mod-MinCoreRevision: 20260522000000
 ## X-DBM-Mod-MinExpansion: 0
 ## X-Curse-Project-ID: 16442
 ## X-Wago-ID: 7x61xpN1
