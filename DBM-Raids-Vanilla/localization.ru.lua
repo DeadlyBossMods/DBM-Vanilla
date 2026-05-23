@@ -854,21 +854,6 @@ L:SetGeneralLocalization({
 	name = "Мексна"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Паученыши Мексны через 5 сек.",
-	WarningSpidersNow	= "В паутине появляются паучата"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "Паученыши Мексны"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Показывать предупреждение перед следующим призывом Паученышей Мексны",
-	WarningSpidersNow	= "Показывать предупреждение для призыва Паученышей Мексны",
-	TimerSpider			= "Отсчет времени до появления Паученышей Мексны"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------

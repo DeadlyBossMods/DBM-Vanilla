@@ -751,21 +751,6 @@ L:SetGeneralLocalization({
 	name 					= "迈克斯纳"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon		= "迈克斯纳的小蜘蛛5秒后出现",
-	WarningSpidersNow		= "迈克斯纳的小蜘蛛出现了"
-})
-
-L:SetTimerLocalization({
-	TimerSpider				= "迈克斯纳的小蜘蛛"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon		= "迈克斯纳的小蜘蛛显示提前警报",
-	WarningSpidersNow		= "迈克斯纳的小蜘蛛显示警报",
-	TimerSpider				= "为下一次迈克斯纳的小蜘蛛显示计时条"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------

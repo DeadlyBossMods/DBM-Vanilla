@@ -66,7 +66,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
 	if not self.vb.vanished and spellId == 24223 then
 		self:SendSync("Vanish")
 	end

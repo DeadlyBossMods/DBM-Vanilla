@@ -826,21 +826,6 @@ L:SetGeneralLocalization({
 	name = "Maexxna"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Proles de Maexxna em 5 segundos",
-	WarningSpidersNow	= "Proles de Maexxna"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "Proles"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Exibir anúncio antecipado para quando as Proles de Maexxna aparecerem",
-	WarningSpidersNow	= "Exibir anúncio quando as Proles de Maexxna aparecerem",
-	TimerSpider			= "Exibir cronômetro para as próximas Proles de Maexxna"
-})
-
 -----------------------
 -- Noth the Plaguebringer --
 -----------------------

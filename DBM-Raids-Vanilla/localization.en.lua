@@ -848,21 +848,6 @@ L:SetGeneralLocalization({
 	name = "Maexxna"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Maexxna Spiderlings in 5 seconds",
-	WarningSpidersNow	= "Maexxna Spiderlings spawned"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "Next Maexxna Spiderlings"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Show pre-warning for Maexxna Spiderlings",
-	WarningSpidersNow	= "Show warning for Maexxna Spiderlings",
-	TimerSpider			= "Show timer for next Maexxna Spiderlings"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------

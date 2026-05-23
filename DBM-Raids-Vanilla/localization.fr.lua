@@ -813,7 +813,7 @@ L:SetWarningLocalization({
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "AAfficher une pré-annonce lorsque $spell:28732 se dissipe"
+	WarningEmbraceExpire	= "Afficher une pré-annonce lorsque $spell:28732 se dissipe"
 })
 
 L:SetMiscLocalization({
@@ -829,21 +829,6 @@ L = DBM:GetModLocalization("MaexxnaVanilla")
 
 L:SetGeneralLocalization({
 	name = "Maexxna"
-})
-
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Jeunes araignées de Maexxna dans 5 sec",
-	WarningSpidersNow	= "Jeunes araignées de Maexxna"
-})
-
-L:SetTimerLocalization({
-	TimerSpider			= "Jeunes araignées"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Afficher une pré-annonce pour les Jeunes araignées de Maexxna",
-	WarningSpidersNow	= "Afficher une annonce pour les Jeunes araignées de Maexxna",
-	TimerSpider			= "Afficher un chronomètre pour l'arrivée des Jeunes araignées de Maexxna"
 })
 
 ------------------------------

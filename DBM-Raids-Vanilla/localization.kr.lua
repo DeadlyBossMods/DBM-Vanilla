@@ -850,21 +850,6 @@ L:SetGeneralLocalization({
 	name = "맥스나"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "5초 후 맥스나의 새끼 거미",
-	WarningSpidersNow	= "맥스나의 새끼 거미 등장"
-})
-
-L:SetTimerLocalization({
-	TimerSpider		= "맥스나의 새끼 거미"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "맥스나의 새끼 거미 사전 경고 보기",
-	WarningSpidersNow	= "맥스나의 새끼 거미 알림 보기",
-	TimerSpider			= "다음 맥스나의 새끼 거미 타이머 바 보기"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------

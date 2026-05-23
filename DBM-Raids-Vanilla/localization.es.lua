@@ -840,21 +840,6 @@ L:SetGeneralLocalization({
 	name = "Maexxna"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Arañitas Maexxna en 5 segundos",
-	WarningSpidersNow	= "Arañitas Maexxna"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "Arañitas"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Mostrar anuncio anticipado para cuando aparezcan Arañitas Maexxna",
-	WarningSpidersNow	= "Mostrar anuncio cuando aparezcan Arañitas Maexxna",
-	TimerSpider			= "Mostrar temporizador para las próximas Arañitas Maexxna"
-})
-
 -----------------------
 -- Noth el Pesteador --
 -----------------------
