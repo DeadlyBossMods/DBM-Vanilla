@@ -23,7 +23,7 @@ L:SetMiscLocalization{
 	Kri = "Lord Kri"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s is devoured! (%d remaining)"
+    WarnBugDied = "%s died (%d remaining)"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "Announce bugs remaining"
@@ -62,7 +62,7 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnFreeze	= "Freeze: %d/3",
-	WarnShatter	= "Shatter: %d/3"
+	WarnShatter	= "Shatter: %d/2"
 }
 L:SetOptionLocalization{
 	WarnFreeze	= "Announce Freeze status",
@@ -74,11 +74,11 @@ L:SetMiscLocalization{
 	Frozen	= "is frozen solid",
 	Phase4 	= "begins to crack",
 	Phase5 	= "looks ready to shatter",
-	Phase6 	= "Explodes.",
-
+	FrostHits = "Frost hits",
 	FrostHitsPerSecond = "Frost hits per second",
-	MeleeHitsPerSecond = "Melee hits per second",
+	MeleeHitsPerSecond = "Melee hits per second"
 }
+
 -------------
 -- Huhuran --
 -------------
@@ -109,7 +109,7 @@ L:SetWarningLocalization{
 	WarnClawTentacle2		= "Claw Tentacle",
 	WarnGiantEyeTentacle	= "Giant Eye Tentacle",
 	WarnGiantClawTentacle	= "Giant Claw Tentacle",
-	SpecWarnWeakened		= "C'Thun Weakened!"
+	SpecWarnWeakened		= "C'Thun is weakened!"
 }
 L:SetTimerLocalization{
 	TimerEyeTentacle		= "Eye Tentacle",
@@ -264,16 +264,6 @@ L = DBM:GetModLocalization("Ossirian")
 L:SetGeneralLocalization{
 	name 		= "Ossirian the Unscarred"
 }
-L:SetWarningLocalization{
-	WarnVulnerable	= "%s"
-}
-L:SetTimerLocalization{
-	TimerVulnerable	= "%s"
-}
-L:SetOptionLocalization{
-	WarnVulnerable	= "Announce weaknesses",
-	TimerVulnerable	= "Show timer for weaknesses"
-}
 
 ----------------
 -- AQ20 Trash --
@@ -312,7 +302,6 @@ L:SetOptionLocalization{
 	TimerAddsSpawn	= "Show timer for first adds spawning"
 }
 L:SetMiscLocalization{
-	Phase2Emote	= "flee as the controlling power of the orb is drained.",
 	Pull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
 }
 -------------------
@@ -475,9 +464,8 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Let the games begin!",
-	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",
-	YellP3		= "Impossible! Rise my minions!  Serve your master once more!",
-	YellShaman	= "Shamans, show me",
+	YellP3		= "Impossible! Rise my minions! Serve your master once more!",
+	YellShaman	= "Shamans, show me what your totems can do!",
 	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",
 	YellDruid	= "Druids and your silly shapeshifting. Lets see it in action!",
 	YellPriest	= "Priests! If you're going to keep healing like that, we might as well make it a little more interesting!",
@@ -718,8 +706,7 @@ L:SetOptionLocalization({
 
 L:SetMiscLocalization({
 	PriestDied	= "%s dies.",
-	YellPhase2	= "Shirvallah, fill me with your RAGE!",
-	YellKill	= "Hakkar binds me no more!  Peace at last!"
+	YellPhase2	= "Shirvallah, fill me with your RAGE!"
 })
 
 -------------------
@@ -807,8 +794,7 @@ L:SetOptionLocalization{
 }
 
 L:SetMiscLocalization{
-	Breath = "%s takes in a deep breath...",
-	YellPull = "How fortuitous. Usually, I must leave my lair in order to feed.",
+	YellP1 = "How fortuitous. Usually, I must leave my lair in order to feed.",
 	YellP2 = "This meaningless exertion bores me. I'll incinerate you all from above!",
 	YellP3 = "It seems you'll need another lesson, mortals!",
 	SoDWarning = "Welcome to %s. DBM will play some fun sounds from a legendary classic raid during the fight. You can disable this in the DBM UI: type /dbm and navigate to the Onyxia mod under Raids -> Classic.",
@@ -839,13 +825,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	WarningEmbraceExpire	= "Widow's Embrace ends in 5 seconds",
-	WarningEmbraceExpired	= "Widow's Embrace faded"
+	WarningEmbraceExpire	= "Widow's Embrace ends in 5 seconds"
 })
 
 L:SetOptionLocalization({
-	WarningEmbraceExpire	= "Show pre-warning for Widow's Embrace fade",
-	WarningEmbraceExpired	= "Show warning for Widow's Embrace fade"
+	WarningEmbraceExpire	= "Show pre-warning for Widow's Embrace fade"
 })
 
 L:SetMiscLocalization({
@@ -958,7 +942,10 @@ L:SetWarningLocalization({
 
 L:SetOptionLocalization({
 	WarningHealSoon		= "Show pre-warning for 3-second healing window",
-	WarningHealNow		= "Show warning for 3-second healing window"
+	WarningHealNow		= "Show warning for 3-second healing window",
+	Sorting				= "Sorting",
+	Alphabetical		= "Alphabetical",
+	Duration			= "Duration"
 })
 
 -----------------
@@ -968,9 +955,6 @@ L = DBM:GetModLocalization("PatchwerkVanilla")
 
 L:SetGeneralLocalization({
 	name = "Patchwerk"
-})
-
-L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
@@ -1007,13 +991,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Yell1P1	= "Feed you to master!",
-	Yell2P1	= "Stalagg crush you!",
-	Emote	= "%s overloads!",
-	Yell1P2 = "Eat... your... bones...",
-	Yell2P2 = "Break... you!!",
-	Yell3P2 = "Kill...",
-	Charge1 = "negative",
-	Charge2 = "positive"
+	Yell2P1	= "Stalagg crush you!"
 })
 
 L:SetOptionLocalization({
@@ -1047,14 +1025,6 @@ L:SetMiscLocalization({
 	Pull4 = "Sweep the leg... Do you have a problem with that?"
 })
 
-L:SetOptionLocalization({
-	WarningShieldWallSoon	= "Show pre-warning for Shield Wall ending"
-})
-
-L:SetWarningLocalization({
-	WarningShieldWallSoon	= "Shield Wall ends in 5 seconds"
-})
-
 ----------------------------
 --  Gothik the Harvester  --
 ----------------------------
@@ -1074,7 +1044,7 @@ L:SetOptionLocalization({
 })
 
 L:SetTimerLocalization({
-	TimerWave	= "Wave %d",
+	TimerWave	= "Wave %d/18",
 	TimerPhase2	= "Phase 2"
 })
 
@@ -1119,7 +1089,7 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "Mark %d in 3 seconds",
 	SpecialWarningMarkOnPlayer	= "%s: %s",
-	WarnHorsemanDied 			= "%s dies (%d remaining)"
+	WarnHorsemanDied 			= "%s died (%d remaining)"
 })
 
 L:SetMiscLocalization({
@@ -1143,22 +1113,18 @@ L:SetOptionLocalization({
 	WarningAirPhaseNow	= "Announce air phase",
 	WarningLanded		= "Announce ground phase",
 	TimerAir			= "Show timer for air phase",
-	TimerLanding		= "Show timer for landing",
-	TimerFrostBreath	= "Show timer for $spell:28524",
-	WarningFrostBreath	= "Show special warning for $spell:28524"
+	TimerLanding		= "Show timer for landing"
 })
 
 L:SetWarningLocalization({
-	WarningAirPhaseSoon	= "Air phase in 10 seconds",
+	WarningAirPhaseSoon	= "Air phase soon",
 	WarningAirPhaseNow	= "Air phase",
-	WarningLanded		= "Sapphiron landed",
-	WarningFrostBreath	= "Frost Breath"
+	WarningLanded		= "Sapphiron landed"
 })
 
 L:SetTimerLocalization({
 	TimerAir			= "Air phase",
-	TimerLanding		= "Landing",
-	TimerFrostBreath	= "Frost Breath"
+	TimerLanding		= "Landing"
 })
 
 ------------------
@@ -1173,17 +1139,15 @@ L:SetGeneralLocalization({
 
 L:SetOptionLocalization({
 	TimerPhase2			= "Show timer for Phase 2",
-	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages",
-	warnAddsSoon		= "Show pre-warning for Guardians of Icecrown"
+	specwarnP2Soon		= "Show special warning 10 seconds before Kel'Thuzad engages"
 })
 
 L:SetMiscLocalization({
-	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!",
+	YellP1 			= "Minions, servants, soldiers of the cold dark! Obey the call of Kel'Thuzad!"
 })
 
 L:SetWarningLocalization({
-	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds",
-	warnAddsSoon	= "Guardians of Icecrown incoming soon"
+	specwarnP2Soon	= "Kel'Thuzad engages in 10 Seconds"
 })
 
 L:SetTimerLocalization({
