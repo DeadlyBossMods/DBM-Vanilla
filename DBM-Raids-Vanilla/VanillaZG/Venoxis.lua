@@ -17,7 +17,7 @@ mod:DisableHardcodedOptions()
 mod:SetCreatureID(14507)
 mod:SetEncounterID(784)
 mod:SetHotfixNoticeRev(20200724000000)--2020, 7, 24
-mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
+mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:SetZone(309)
 
 mod:RegisterCombat("combat")

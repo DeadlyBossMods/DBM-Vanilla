@@ -26,7 +26,7 @@ mod:SetEncounterID(610)--BOSS_KILL is valid, but ENCOUNTER_END is not
 mod:DisableEEKillDetection()--So disable only EE
 mod:SetModelID(10115)
 mod:SetHotfixNoticeRev(20200904000000)--2020, September, 4th
-mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
+mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:SetZone(469)
 
 mod:RegisterCombat("combat_yell", L.Pull)

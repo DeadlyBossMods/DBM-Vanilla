@@ -8,7 +8,7 @@ mod:SetEncounterID(1084)
 mod:SetModelID(8570)
 mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
-mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
+mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:SetZone(249)
 
 mod:RegisterCombat("combat_yell", L.YellP1)

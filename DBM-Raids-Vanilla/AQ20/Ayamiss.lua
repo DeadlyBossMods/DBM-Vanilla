@@ -10,7 +10,7 @@ local mod	= DBM:NewMod("Ayamiss", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
+mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15369)
 mod:SetEncounterID(722)
