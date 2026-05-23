@@ -54,8 +54,8 @@ mod:AddTimerLine(DBM_COMMON_L.BOTH)
 local warnWingBuffet		= mod:NewSpellAnnounce(368941, 2)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2)
 
-local specWarnStop			= mod:NewSpecialWarningSpell(467732, nil, nil, nil, 2, 2)
-local specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2)
+local specWarnStop			= mod:NewSpecialWarningSpell(467732, nil, nil, nil, 2, 2, nil, nil, "stopmove")
+local specWarnGo			= mod:NewSpecialWarningSpell(467764, nil, nil, nil, 2, 2, nil, nil, "justrun")
 
 local timerWingBuffet		= mod:NewNextTimer(25.9, 368941, nil, nil, nil, 2)
 local specWarnWingBuffet	= mod:NewSpecialWarningSoon(368941, "Tank")
@@ -68,9 +68,9 @@ local timerGo				= mod:NewCDTimer(20, 467764, nil, nil, nil, 5)
 mod:AddTimerLine(L.Ebonroc)
 local warnShadow			= mod:NewTargetNoFilterAnnounce(23340, 4, nil, "Tank|Healer", 2)
 
-local specWarnShadowYou		= mod:NewSpecialWarningYou(23340, nil, nil, nil, 1, 2)
-local specWarnShadow		= mod:NewSpecialWarningTaunt(23340, nil, nil, nil, 1, 2)
-local specWarnBrandofShadow	= mod:NewSpecialWarningStack(368515, nil, 4, nil, nil, 1, 6)
+local specWarnShadowYou		= mod:NewSpecialWarningYou(23340, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnShadow		= mod:NewSpecialWarningTaunt(23340, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnBrandofShadow	= mod:NewSpecialWarningStack(368515, nil, 4, nil, nil, 1, 6, nil, nil, "stackhigh")
 
 local timerShadowCD			= mod:NewVarTimer("v16.2-26", 23340, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerShadow			= mod:NewTargetTimer(8, 23340, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -79,8 +79,8 @@ local timerShadow			= mod:NewTargetTimer(8, 23340, nil, "Tank|Healer", 3, 5, nil
 mod:AddTimerLine(L.Flamegore)
 local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Healer", 5)
 
-local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6)
-local specWarnBrandofFlame	= mod:NewSpecialWarningStack(368521, nil, 4, nil, nil, 1, 6)
+local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
+local specWarnBrandofFlame	= mod:NewSpecialWarningStack(368521, nil, 4, nil, nil, 1, 6, nil, nil, "stackhigh")
 
 local timerFrenzyCD			= mod:NewVarTimer("v16.2-26", 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)local timerFrenzy	 		= mod:NewBuffActiveTimer(10, 23342, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 

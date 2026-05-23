@@ -37,7 +37,7 @@ mod:AddNamePlateOption("ThunderclapNameplate", 8732)
 
 -- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
 -- This is a problem out of combat often enough
-local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
+local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 
 --local eventsRegistered = false
@@ -47,11 +47,11 @@ local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
 local warnAdd1						= mod:NewSpellAnnounce(17430, 2, 802, "Dps")
 local warnAdd2						= mod:NewSpellAnnounce(17431, 2, 802, "Dps")
 
-local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2)
+local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellPlague                    = mod:NewYell(22997)
-local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
-local specWarnShadowFrostReflect    = mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2)
-local specWarnFireArcaneReflect     = mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2)
+local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2, nil, nil, "justrun")
+local specWarnShadowFrostReflect    = mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
+local specWarnFireArcaneReflect     = mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
 
 local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698, nil, nil, nil, 2) -- Duration is 7s but it expires after 6s
 

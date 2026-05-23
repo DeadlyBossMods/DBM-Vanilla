@@ -31,8 +31,8 @@ local timerGreenBomb	= mod:NewNextTimer(47.36, 466435)
 
 mod:AddOptionLine(L.BlueTrial)
 -- Blue Trial
-local specWarnBlueTrial = mod:NewSpecialWarningTarget(466357, false, nil, L.BlueBomb, 2, 2) -- Somewhat spammy and mostly not actionable because you are already stacked
-local specWarnBlueYou	= mod:NewSpecialWarningYou(466357, nil, nil, L.BlueBomb, 3, 2)
+local specWarnBlueTrial = mod:NewSpecialWarningTarget(466357, false, nil, L.BlueBomb, 2, 2, nil, nil, "helpsoak") -- Somewhat spammy and mostly not actionable because you are already stacked
+local specWarnBlueYou	= mod:NewSpecialWarningYou(466357, nil, nil, L.BlueBomb, 3, 2, nil, nil, "gather")
 local warnBlueTrial		= mod:NewTargetNoFilterAnnounce(466357, nil, nil, nil, nil, nil, L.BlueBomb)
 local yellBlueTrial     = mod:NewIconTargetYell(466357, nil, nil, nil, "YELL")
 local yellBlueFades     = mod:NewIconFadesYell(466357, nil, nil, nil, "YELL")
@@ -42,9 +42,9 @@ mod:AddOptionLine(L.GreenTrial)
 -- Green Trial
 local yellGreenTrial      = mod:NewIconTargetYell(466435)
 local yellGreenTrialFades = mod:NewIconFadesYell(466435)
-local specWarnGreenTrial  = mod:NewSpecialWarningMoveAway(466435, nil, nil, L.GreenBomb, 3, 2)
+local specWarnGreenTrial  = mod:NewSpecialWarningMoveAway(466435, nil, nil, L.GreenBomb, 3, 2, nil, nil, "runout")
 local warnGreenTrial      = mod:NewTargetNoFilterAnnounce(466435, 4, nil, nil, nil, nil, L.GreenBomb)
-local specWarnGTFO        = mod:NewSpecialWarningGTFO(466448, nil, nil, nil, 1, 8)
+local specWarnGTFO        = mod:NewSpecialWarningGTFO(466448, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 mod:AddSetIconOption("SetIconOnGreenBombTarget", 466435, true, 0, {4})
 
 mod:AddOptionLine(L.GreenAndBlue)
@@ -52,8 +52,8 @@ mod:AddOptionLine(L.GreenAndBlue)
 -- FIXME: These yells need to be put into a valid format
 --local yellBoth			= mod:NewShortYell(CL.BOMBS, "{rt8}{rt8}{rt8} " .. (CL.AND or "&") .. " {rt6}{rt6}{rt6}")
 --local yellBothFades		= mod:NewFadesYell(CL.BOMBS, "{rt8} " .. (CL.AND or "&") .. " {rt6}: %d")
-local specWarnBoth		= mod:NewSpecialWarning("SpecWarnBothBombs", nil, "SpecWarnBothBombs", nil, 2, 2)
-local specWarnBothYou	= mod:NewSpecialWarning("SpecWarnBothBombsYou", nil, "SpecWarnBothBombsYou", nil, 3, 2)
+local specWarnBoth		= mod:NewSpecialWarning("SpecWarnBothBombs", nil, "SpecWarnBothBombs", nil, 2, 2, nil, nil, nil, nil, "helpsoak")
+local specWarnBothYou	= mod:NewSpecialWarning("SpecWarnBothBombsYou", nil, "SpecWarnBothBombsYou", nil, 3, 2, nil, nil, nil, nil, "gather")
 
 
 local function gtfo(self, spellName)

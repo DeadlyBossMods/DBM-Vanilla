@@ -46,11 +46,11 @@ local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802, "Dps")
 local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802, "Dps")
 
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2)
-local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2)
-local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
-local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
-local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
+local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
+local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
+local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2, nil, nil, "findshelter")
+local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2, nil, nil, "runout")
+local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2, nil, nil, "justrun")
 
 local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698, nil, nil, nil, 2) -- Duration is 7s but it expires after 6s
 local timerCauseInsanity			= mod:NewTargetTimer(10, 26079, nil, nil, nil, 3)
@@ -65,7 +65,7 @@ yellBurst					= mod:NewIconTargetYell(1215202)
 specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
 -- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
 -- This is a problem out of combat often enough
-specWarnGTFO 				= mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
+specWarnGTFO 				= mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
 timerBurst					= mod:NewNextTimer(30, 1215202)

@@ -51,7 +51,7 @@ local warnBossPower		= mod:NewAnnounce("WarnBossPower", 2, 29166)
 -- only have limited data, but might be on a 35 second cooldown and happen first at about 20 second after pull
 local timerHearts		= mod:NewCDTimer(35, 460898)
 local warnHearts		= mod:NewTargetNoFilterAnnounce(460898, 4)
-local specWarnHeart		= mod:NewSpecialWarningMoveTo(460898, nil, nil, nil, 3, 2)
+local specWarnHeart		= mod:NewSpecialWarningMoveTo(460898, nil, nil, nil, 3, 2, nil, nil, "bombyou")
 local yellHeart			= mod:NewIconTargetYell(460898, nil, nil, nil, "YELL")
 local yellHeartCleared	= mod:NewYell(460898, DBM_COMMON_L.CLEAR, true, "YellHeartCleared", "YELL")
 

@@ -39,15 +39,15 @@ local warnCurseofTongues			= mod:NewTargetNoFilterAnnounce(444046, 3, nil, "Remo
 local warnDrainBlood				= mod:NewCountAnnounce(444132, 3)--Cast
 local warnSkeletal					= mod:NewTargetNoFilterAnnounce(444165, 3, nil, false, 2)--Drain Blood Targets
 
-local specWarnSpiritChains			= mod:NewSpecialWarningMoveAway(443975, nil, nil, nil, 1, 2)
+local specWarnSpiritChains			= mod:NewSpecialWarningMoveAway(443975, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local yellSpiritChains				= mod:NewYell(443975)
-local specWarnFrightsomeHowl		= mod:NewSpecialWarningInterrupt(443990, nil, nil, nil, 1, 2)
-local specWarnCorruptedBlood		= mod:NewSpecialWarningMoveAway(444253, nil, nil, nil, 1, 2)
+local specWarnFrightsomeHowl		= mod:NewSpecialWarningInterrupt(443990, nil, nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnCorruptedBlood		= mod:NewSpecialWarningMoveAway(444253, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local yellCorruptedBlood			= mod:NewYell(444253)
-local specWarnCurseofTongues		= mod:NewSpecialWarningYou(444046, false, nil, nil, 1, 2)
-local specWarnDrainBlood			= mod:NewSpecialWarningMoveTo(444132, nil, nil, nil, 1, 2)
-local specWarnSkeletal				= mod:NewSpecialWarningYou(444165, false, nil, nil, 1, 2)
-local specWarnGTFO					= mod:NewSpecialWarningGTFO(443953, nil, nil, nil, 1, 8)
+local specWarnCurseofTongues		= mod:NewSpecialWarningYou(444046, false, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnDrainBlood			= mod:NewSpecialWarningMoveTo(444132, nil, nil, nil, 1, 2, nil, nil, "movetotank")
+local specWarnSkeletal				= mod:NewSpecialWarningYou(444165, false, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(443953, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 
 local timerBubblingBloodCD			= mod:NewCDTimer(9.7, 443940, nil, nil, nil, 3)

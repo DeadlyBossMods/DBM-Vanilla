@@ -32,8 +32,8 @@ ability.id = 432062 and type = "begincast"
 local warnTheClaw					= mod:NewTargetNoFilterAnnounce(432062, 3)
 local warnOffBalance				= mod:NewCountAnnounce(431839, 3, nil, nil, DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.stack:format(431839))--Player
 
-local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2)
-local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
+local specWarnGnomereganSmash		= mod:NewSpecialWarningDodge(432423, nil, nil, nil, 3, 2, nil, nil, "shockwave")
+local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellTheClaw					= mod:NewYell(432062)
 
 local timerGnomereganSmashCD		= mod:NewCDTimer(11.3, 432423, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)

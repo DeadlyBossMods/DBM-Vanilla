@@ -22,7 +22,7 @@ mod:RegisterEventsInCombat(
 local warningMark				= mod:NewTargetNoFilterAnnounce(21056, 4)
 local warningShadowBoltVolley	= mod:NewSpellAnnounce(21341, 2)
 
-local specWarnMark				= mod:NewSpecialWarningYou(21056, nil, nil, nil, 1, 2)--No Yell on purpose, outdoor chat restrictions and all
+local specWarnMark				= mod:NewSpecialWarningYou(21056, nil, nil, nil, 1, 2, nil, nil, "targetyou")--No Yell on purpose, outdoor chat restrictions and all
 
 local enrageTimer				= mod:NewBerserkTimer(180)
 

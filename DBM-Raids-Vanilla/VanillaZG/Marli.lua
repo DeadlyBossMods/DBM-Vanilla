@@ -33,7 +33,7 @@ local warnDrain			= mod:NewTargetNoFilterAnnounce(24300, 2, nil, "RemoveMagic|He
 local warnCorrosive		= mod:NewTargetNoFilterAnnounce(24111, 2, nil, "RemovePoison")
 local warnEnlarge		= mod:NewTargetNoFilterAnnounce(24109, 3)
 
-local specWarnEnlarge	= mod:NewSpecialWarningDispel(24109, "MagicDispeller", nil, nil, 1, 2)
+local specWarnEnlarge	= mod:NewSpecialWarningDispel(24109, "MagicDispeller", nil, nil, 1, 2, nil, nil, "dispelboss")
 
 local timerDrain		= mod:NewTargetTimer(7, 24300, nil, "RemoveMagic|Healer", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerCorrosive	= mod:NewTargetTimer(30, 24111, nil, "RemovePoison", nil, 5, nil, DBM_COMMON_L.POISON_ICON)

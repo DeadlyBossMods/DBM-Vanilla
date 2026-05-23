@@ -22,10 +22,10 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 1234540"
 )
 
-local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2)
+local specWarnMove		= mod:NewSpecialWarningYou(1233883, nil, nil, nil, 2, 2, nil, nil, "keepmove")
 
 -- Ignite goes on everyone and does a ton of damage, TODO: timer/trigger is unclear, sometimes happens after 15 sec, sometimes only after minutes
-local specWarnIgnite = mod:NewSpecialWarningSpell(1234540, nil, nil, nil, 1, 2)
+local specWarnIgnite = mod:NewSpecialWarningSpell(1234540, nil, nil, nil, 1, 2, nil, nil, "scatter")
 
 -- Scarlet Grasp seems to be on a consistent timer
 -- Long cast time of 4 sec, so using a timer that indicates actual cast instead of start (similar to Harbinger in Karazhan)
@@ -35,7 +35,7 @@ local warnScarletGrasp = mod:NewSpecialWarningSoon(1233847)
 -- Debilitate has multiple casts and IDs, but 1232192 is the debuff that stacks
 local warnDebilitate		= mod:NewTargetNoFilterAnnounce(1232192)
 local yellDebilitate		= mod:NewYell(1232192)
-local specWarnDebilitate	= mod:NewSpecialWarningTaunt(1232192, nil, nil, nil, 1, 2)
+local specWarnDebilitate	= mod:NewSpecialWarningTaunt(1232192, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerDebilitate = mod:NewVarTimer("v17-21", 1232192)
 
@@ -44,7 +44,7 @@ local berserkTimer = mod:NewBerserkTimer(600)
 -- Poison, like Grobbulus, unfortunately the timer seems to be quite random with times between 40 and 80 seconds :/
 local timerPoisonFades	= mod:NewBuffFadesTimer(8, 1233901)
 local warnPoison		= mod:NewTargetNoFilterAnnounce(1233901)
-local specWarnPoison	= mod:NewSpecialWarningYou(1233901, nil, nil, nil, 1, 2)
+local specWarnPoison	= mod:NewSpecialWarningYou(1233901, nil, nil, nil, 1, 2, nil, nil, "safenow")
 local yellPoison		= mod:NewIconTargetYell(1233901)
 local yellPoisonFades	= mod:NewIconFadesYell(1233901)
 
@@ -53,7 +53,7 @@ local yellPoisonFades	= mod:NewIconFadesYell(1233901)
 local timerconcoction		= mod:NewNextTimer(30.5, 1233849)
 local timerconcoctionFades	= mod:NewBuffFadesTimer(7, 1233849)
 local warnconcoction		= mod:NewTargetNoFilterAnnounce(1233849)
-local specWarnconcoction	= mod:NewSpecialWarningYou(1233849, nil, nil, nil, 1, 2)
+local specWarnconcoction	= mod:NewSpecialWarningYou(1233849, nil, nil, nil, 1, 2, nil, nil, "safenow")
 local yellconcoction		= mod:NewIconTargetYell(1233849)
 local yellconcoctionFades	= mod:NewIconFadesYell(1233849)
 

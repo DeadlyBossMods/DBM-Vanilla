@@ -31,9 +31,9 @@ local warnStrike			= mod:NewTargetAnnounce(26613, 3, nil, "Tank|Healer")
 local warnTeleport			= mod:NewSpellAnnounce(800, 3)
 local warnMutateBug			= mod:NewSpellAnnounce(802, 2, nil, false)
 
-local specWarnStrike		= mod:NewSpecialWarningDefensive(26613, "Tank", nil, nil, 1, 2)
-local specWarnExplodeBug	= mod:NewSpecialWarningMove(804, nil, nil, nil, 1, 2)
-local specWarnGTFO			= mod:NewSpecialWarningGTFO(26607, nil, nil, nil, 1, 2)
+local specWarnStrike		= mod:NewSpecialWarningDefensive(26613, "Tank", nil, nil, 1, 2, nil, nil, "defensive")
+local specWarnExplodeBug	= mod:NewSpecialWarningMove(804, nil, nil, nil, 1, 2, nil, nil, "runaway")
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(26607, nil, nil, nil, 1, 2, nil, nil, "watchfeet")
 
 local timerTeleportCD		= DBM:IsSeasonal("SeasonOfDiscovery")
 	and mod:NewCDTimer(29.2, 800, nil, nil, nil, 6, nil, nil, true, 1, 4)

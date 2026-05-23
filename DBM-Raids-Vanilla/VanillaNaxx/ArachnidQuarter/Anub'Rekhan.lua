@@ -31,7 +31,7 @@ local warningLocustSoon		= mod:NewSoonAnnounce(28785, 2)
 local warningLocustFaded	= mod:NewFadesAnnounce(28785, 1)
 local warnImpale			= mod:NewTargetNoFilterAnnounce(28783, 3)
 
-local specialWarningLocust	= mod:NewSpecialWarningSpell(28785, nil, nil, nil, 2, 2)
+local specialWarningLocust	= mod:NewSpecialWarningSpell(28785, nil, nil, nil, 2, 2, nil, nil, "aesoon")
 local yellImpale			= mod:NewYell(28783)
 
 local timerLocustCD			= mod:NewVarTimer("v81.3-104.5", 28785, nil, nil, nil, 2)

@@ -36,7 +36,7 @@ local warnFire			= mod:NewTargetNoFilterAnnounce(23860, 2, nil, "RemoveMagic|Hea
 local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
 local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
-local specWarnRenew		= mod:NewSpecialWarningDispel(23895, "MagicDispeller", nil, nil, 1, 2)
+local specWarnRenew		= mod:NewSpecialWarningDispel(23895, "MagicDispeller", nil, nil, 1, 2, nil, nil, "dispelboss")
 
 local timerCloud		= mod:NewBuffActiveTimer(10, 23861, nil, nil, nil, 3)
 local timerRenew		= mod:NewTargetTimer(15, 23895, nil, "MagicDispeller", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)

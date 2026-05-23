@@ -37,7 +37,7 @@ local warnDoom		= mod:NewSpellAnnounce(19702, 2)
 local warnCurse		= mod:NewSpellAnnounce(19703, 3)
 local warnMC		= mod:NewTargetNoFilterAnnounce(20604, 4)
 
-local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2)
+local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellMC		= mod:NewYell(20604)
 
 local timerDoomCD	= mod:NewVarTimer("v21-27", 19702, nil, "RemoveMagic", nil, 2, nil, DBM_COMMON_L.MAGIC_ICON)

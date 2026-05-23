@@ -27,14 +27,14 @@ mod:RegisterEventsInCombat(
 -- Lots of people get it, so likely everyone needs to switch. Is 2 a good treshold? Probably
 -- Using "Mark" terminology as people just did Naxx and are used to that from 4HM
 
-local specWarnEnkindleStack1	= mod:NewSpecialWarningStack(1230242, nil, 1, nil, nil, 1, 6)
-local specWarnEnkindleStack2	= mod:NewSpecialWarningStack(1230242, nil, 2, nil, nil, 1, 6)
-local specWarnEnervateStack1	= mod:NewSpecialWarningStack(1230200, nil, 1, nil, nil, 1, 6)
-local specWarnEnervateStack2	= mod:NewSpecialWarningStack(1230200, nil, 2, nil, nil, 1, 6)
+local specWarnEnkindleStack1	= mod:NewSpecialWarningStack(1230242, nil, 1, nil, nil, 1, 6, nil, nil, "swapsoon")
+local specWarnEnkindleStack2	= mod:NewSpecialWarningStack(1230242, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnEnervateStack1	= mod:NewSpecialWarningStack(1230200, nil, 1, nil, nil, 1, 6, nil, nil, "swapsoon")
+local specWarnEnervateStack2	= mod:NewSpecialWarningStack(1230200, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
 local timerMark					= mod:NewTimer(16.2, "TimerMark", 1230200, nil, nil, 2)
 local warnMark					= mod:NewAnnounce("WarnMark", 3, 1230200, false)
 
-local specWarnAperture		= mod:NewSpecialWarningDodge(1230105, nil, nil, nil, 2, 2)
+local specWarnAperture		= mod:NewSpecialWarningDodge(1230105, nil, nil, nil, 2, 2, nil, nil, "watchfeet")
 local timerAperture			= mod:NewVarTimer("v17.4-24.5", 1230105) -- this one sometimes (<10% has huge outliers raning from 27-38 seconds, not clue why and how)
 
 -- Simple CD abilities

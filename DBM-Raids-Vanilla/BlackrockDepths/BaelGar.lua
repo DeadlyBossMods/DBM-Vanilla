@@ -34,9 +34,9 @@ mod:RegisterEventsInCombat(
 --TODO, auto mark spawns of bael'Gar with https://www.wowhead.com/ptr-2/spell=462966/spawn-of-baelgar ?
 local warnMoltenFurnaceOver					= mod:NewEndAnnounce(462969, 1, nil, nil, nil, nil, nil, 2)
 
-local specWarnRockFall						= mod:NewSpecialWarningDodgeCount(463890, nil, nil, nil, 2, 2)
-local specWarnMoltenFurnace					= mod:NewSpecialWarningMoveTo(462969, nil, nil, nil, 2, 2)
-local specWarnShatter						= mod:NewSpecialWarningCount(462972, nil, nil, nil, 2, 2)
+local specWarnRockFall						= mod:NewSpecialWarningDodgeCount(463890, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnMoltenFurnace					= mod:NewSpecialWarningMoveTo(462969, nil, nil, nil, 2, 2, nil, nil, "findshelter")
+local specWarnShatter						= mod:NewSpecialWarningCount(462972, nil, nil, nil, 2, 2, nil, nil, "aesoon")
 --local yellHoneyMarinade					= mod:NewShortYell(438025)
 --local yellHoneyMarinadeFades				= mod:NewShortFadesYell(438025)
 

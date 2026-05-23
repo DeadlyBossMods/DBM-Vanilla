@@ -37,7 +37,7 @@ local warnPoisonBoltVolley 		= mod:NewCountAnnounce(25991, 3)
 local warnFreeze 				= mod:NewAnnounce("WarnFreeze", 2, 16350)
 local warnShatter 				= mod:NewAnnounce("WarnShatter", 2, 12982)
 
-local specWarnGTFO 				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8)
+local specWarnGTFO 				= mod:NewSpecialWarningGTFO(25989, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 local timerPoisonBoltVolleyCD 	= mod:NewCDCountTimer(11.3, 25991, nil, nil, nil, 2, nil, DBM_COMMON_L.POISON_ICON)
 local timerRejoin				= mod:NewNextTimer(16.5, 25896, nil, nil, nil, 6, 355365) -- Using icon for Spirit of Zandalar

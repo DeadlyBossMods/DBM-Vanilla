@@ -35,8 +35,8 @@ mod:RegisterEventsInCombat(
 local warnTeleport			= mod:NewTargetNoFilterAnnounce(20534)
 local warnDamageShield		= mod:NewSpellAnnounce(21075, 2, nil, "Melee")
 
-local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2)
-local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2)
+local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2, nil, nil, "stopattack")
+local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2, nil, nil, "stopattack")
 
 local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, "-Melee", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
@@ -47,8 +47,8 @@ local timerShieldCD        = mod:NewTimer(30.7, "timerShieldCD", nil, nil, nil, 
 -- https://sod.warcraftlogs.com/reports/6RBYhaHdc17x94J8#fight=64&type=casts&by=ability&view=events&hostility=1
 local specWarnFlare, specWarnDarkMending, timerNextFlare
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnFlare		= mod:NewSpecialWarningSpell(461056, nil, nil, nil, 2, 2)
-	specWarnDarkMending	= mod:NewSpecialWarningInterrupt(364908, "HasInterrupt", nil, nil, 1, 2)
+	specWarnFlare		= mod:NewSpecialWarningSpell(461056, nil, nil, nil, 2, 2, nil, nil, "findshelter")
+	specWarnDarkMending	= mod:NewSpecialWarningInterrupt(364908, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 	timerNextFlare		= mod:NewNextTimer(30, 461056, nil, nil, nil, 2)
 end
 

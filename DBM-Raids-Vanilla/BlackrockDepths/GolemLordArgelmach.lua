@@ -44,16 +44,16 @@ mod:RegisterEventsInCombat(
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30783))
 --local warnPossessed							= mod:NewTargetNoFilterAnnounce(464939, 2)
 
-local specWarnChainLightning				= mod:NewSpecialWarningInterrupt(463821, nil, nil, nil, 1, 2)
-local specWarnGTFO							= mod:NewSpecialWarningGTFO(464473, nil, nil, nil, 1, 8)
+local specWarnChainLightning				= mod:NewSpecialWarningInterrupt(463821, nil, nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnGTFO							= mod:NewSpecialWarningGTFO(464473, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 mod:AddNamePlateOption("NPOnOverdrive", 463852)
 --Arcanotron Mk. II
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30785))
 local warnArcaneOvercharge					= mod:NewCountAnnounce(470014, 3)--Fallback if not opted into special warning
 
-local specWarnArcaneOvercharge				= mod:NewSpecialWarningCount(470014, "Tank", nil, nil, 1, 2)--Tank default, per journal
-local specWarnPowerGeneratorSoak			= mod:NewSpecialWarningSoakCount(470073, "Dps", nil, nil, 2, 2)
+local specWarnArcaneOvercharge				= mod:NewSpecialWarningCount(470014, "Tank", nil, nil, 1, 2, nil, nil, "catchballs")--Tank default, per journal
+local specWarnPowerGeneratorSoak			= mod:NewSpecialWarningSoakCount(470073, "Dps", nil, nil, 2, 2, nil, nil, "helpsoak")
 
 local timerArcaneOverchargeCD				= mod:NewCDCountTimer(51.0, 470014, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Set to tank only by default?
 local timerPowerGeneratorSoakCD				= mod:NewCDCountTimer(22, 470073, nil, nil, nil, 5)
@@ -62,8 +62,8 @@ local timerPowerGeneratorSoakCD				= mod:NewCDCountTimer(22, 470073, nil, nil, n
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30787))
 local warnMeltArmor							= mod:NewStackAnnounce(470655, 2)
 
-local specWarnFlamethrower					= mod:NewSpecialWarningCount(467919, nil, nil, nil, 1, 2)--Not a dodge warning on purpose because you don't always want to dodge it
-local specWarnIncineration					= mod:NewSpecialWarningCount(463823, nil, nil, nil, 2, 2)
+local specWarnFlamethrower					= mod:NewSpecialWarningCount(467919, nil, nil, nil, 1, 2, nil, nil, "frontal")--Not a dodge warning on purpose because you don't always want to dodge it
+local specWarnIncineration					= mod:NewSpecialWarningCount(463823, nil, nil, nil, 2, 2, nil, nil, "aesoon")
 
 local timerFlamethrowerCD					= mod:NewCDCountTimer(21.8, 467919, nil, nil, nil, 3)
 local timerIncinerationCD					= mod:NewCDCountTimer(22, 463823, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
@@ -72,7 +72,7 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30789))
 local warnPoisonMist						= mod:NewCountAnnounce(463837, 2)
 local warnChemicalBomb						= mod:NewCountAnnounce(463829, 2, nil, "Tank", 2)--Really only tanks need to know new puddles up to clear them with magmatron
 
-local specWarnPoisonMist					= mod:NewSpecialWarningMoveTo(463837, "-Tank", nil, nil, 1, 2)
+local specWarnPoisonMist					= mod:NewSpecialWarningMoveTo(463837, "-Tank", nil, nil, 1, 2, nil, nil, "movetoflamethrower")
 
 local timerChemicalBombCD					= mod:NewCDCountTimer(7, 463829, nil, "Tank", 2, 3)
 local timerPoisonMistCD						= mod:NewCDCountTimer(22, 463837, nil, nil, nil, 2, nil, DBM_COMMON_L.HEALER_ICON)
@@ -82,9 +82,9 @@ local warnLiveWire							= mod:NewTargetCountAnnounce(467926, 2)
 local warnLethalAttraction					= mod:NewCountAnnounce(463847, 2)
 local warnLethalAttractionOver				= mod:NewFadesAnnounce(463847, 1)
 
-local specWarnLiveWire						= mod:NewSpecialWarningMoveAway(467926, nil, nil, nil, 1, 2)
+local specWarnLiveWire						= mod:NewSpecialWarningMoveAway(467926, nil, nil, nil, 1, 2, nil, nil, "scatter")
 local yellLiveWire							= mod:NewShortYell(467926)
-local specWarnLethalAttraction				= mod:NewSpecialWarningMoveTo(463847, nil, nil, nil, 1, 2)
+local specWarnLethalAttraction				= mod:NewSpecialWarningMoveTo(463847, nil, nil, nil, 1, 2, nil, nil, "linegather")
 local yellLethalAttraction					= mod:NewIconRepeatYell(463847, DBM_CORE_L.AUTO_YELL_ANNOUNCE_TEXT.shortyell)
 
 local timerLiveWireCD						= mod:NewCDCountTimer(34, 467926, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)

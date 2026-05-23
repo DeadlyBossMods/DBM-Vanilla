@@ -26,9 +26,9 @@ mod:RegisterEventsInCombat(
 local WarnDismember				= mod:NewStackAnnounce(96, 3, nil, "Tank", 2)
 local warnPursue				= mod:NewAnnounce("WarnPursue", 3, 62374)
 
-local specWarnDismember			= mod:NewSpecialWarningStack(96, "Tank", 5, nil, nil, 1, 6)
-local specWarnDismemberTaunt	= mod:NewSpecialWarningTaunt(96, "Tank", nil, nil, 1, 2)
-local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 4, 2)
+local specWarnDismember			= mod:NewSpecialWarningStack(96, "Tank", 5, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnDismemberTaunt	= mod:NewSpecialWarningTaunt(96, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 4, 2, nil, nil, nil, nil, "justrun")
 
 local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 

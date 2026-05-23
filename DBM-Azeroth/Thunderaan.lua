@@ -40,9 +40,9 @@ local timerWindsActive   = mod:NewBuffActiveTimer(7.5, 466774) -- yes, that's ca
 local warnWinds          = mod:NewCastAnnounce(466774, nil, nil, nil, false, 2)
 local warnAdd            = mod:NewAnnounce("AddIncoming", 3, 25681) -- Icon: Summon Mana Fiend
 
-local specWarnGTFO       = mod:NewSpecialWarningGTFO(470866, nil, nil, nil, 1, 8)
-local specWarnHeal       = mod:NewSpecialWarningInterrupt(11642, "HasInterrupt", nil, nil, 1, 2)
-local specWarnLightning  = mod:NewSpecialWarningYou(465700, nil, nil, nil, 1, 2)
+local specWarnGTFO       = mod:NewSpecialWarningGTFO(470866, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
+local specWarnHeal       = mod:NewSpecialWarningInterrupt(11642, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnLightning  = mod:NewSpecialWarningYou(465700, nil, nil, nil, 1, 2, nil, nil, "runout")
 
 local yellLightning      = mod:NewYell(465700)
 local yellLightningFades = mod:NewShortFadesYell(465700)

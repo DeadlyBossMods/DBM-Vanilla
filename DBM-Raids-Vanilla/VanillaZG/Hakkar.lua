@@ -39,7 +39,7 @@ local warnAspectOfMarli			= mod:NewTargetNoFilterAnnounce(24686, 2)
 local warnAspectOfThekal		= mod:NewSpellAnnounce(24689, 3, nil, "Tank|RemoveEnrage|Healer", 4)
 local warnAspectOfArlokk		= mod:NewTargetNoFilterAnnounce(24690, 3)
 
-local specWarnAspectOfThekal	= mod:NewSpecialWarningDispel(24689, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnAspectOfThekal	= mod:NewSpecialWarningDispel(24689, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
 
 local timerSiphon				= mod:NewNextTimer(90, 24324, nil, nil, nil, 2)
 local timerAspectOfMarli

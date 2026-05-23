@@ -29,10 +29,10 @@ local warnWound			= mod:NewStackAnnounce(25646, 2, nil, "Tank")
 local warnSandTrap		= mod:NewTargetNoFilterAnnounce(25656, 3)
 local warnFrenzy		= mod:NewSpellAnnounce(26527, 3)
 
-local specWarnSandTrap	= mod:NewSpecialWarningYou(25656, nil, nil, nil, 1, 2)
+local specWarnSandTrap	= mod:NewSpecialWarningYou(25656, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellSandTrap		= mod:NewYell(25656)
-local specWarnWound		= mod:NewSpecialWarningStack(25646, "Tank", 5, nil, nil, 1, 6)
-local specWarnWoundTaunt= mod:NewSpecialWarningTaunt(25646, "Tank", nil, nil, 1, 2)
+local specWarnWound		= mod:NewSpecialWarningStack(25646, "Tank", 5, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnWoundTaunt= mod:NewSpecialWarningTaunt(25646, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerWound		= mod:NewTargetTimer(15, 25646, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerSandTrapCD	= mod:NewCDTimer(8, 25656, nil, nil, nil, 3)

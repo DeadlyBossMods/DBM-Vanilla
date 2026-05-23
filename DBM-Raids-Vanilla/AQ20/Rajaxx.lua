@@ -32,7 +32,7 @@ local warnOrder			= mod:NewTargetAnnounce(25471)
 local warnCloud			= mod:NewSpellAnnounce(26550)
 local warnThundercrash	= mod:NewSpellAnnounce(25599)
 
-local specWarnOrder		= mod:NewSpecialWarningYou(25471, nil, nil, nil, 1, 2)
+local specWarnOrder		= mod:NewSpecialWarningYou(25471, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellOrder			= mod:NewYell(25471)
 
 local timerOrder		= mod:NewTargetTimer(10, 25471, nil, nil, nil, 3)

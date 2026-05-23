@@ -27,8 +27,8 @@ local warnEmbraceExpire		= mod:NewAnnounce("WarningEmbraceExpire", 2, 28732)
 local warnEmbraceExpired	= mod:NewFadesAnnounce(28732, 3)
 local warnEnrage			= mod:NewSpellAnnounce(28131, 4)
 
-local specWarnEnrage		= mod:NewSpecialWarningDefensive(28131, nil, nil, nil, 3, 2)
-local specWarnGTFO			= mod:NewSpecialWarningGTFO(28794, nil, nil, nil, 1, 8)
+local specWarnEnrage		= mod:NewSpecialWarningDefensive(28131, nil, nil, nil, 3, 2, nil, nil, "defensive")
+local specWarnGTFO			= mod:NewSpecialWarningGTFO(28794, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 local timerEmbrace			= mod:NewBuffActiveTimer(30, 28732)
 local timerEnrageCD			= mod:NewVarTimer("v56-76", 28131, nil, "RemoveEnrage", nil, 6, nil, DBM_COMMON_L.ENRAGE_ICON)-- 56-76

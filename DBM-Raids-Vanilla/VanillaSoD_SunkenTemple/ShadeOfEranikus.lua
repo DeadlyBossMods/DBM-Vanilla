@@ -35,13 +35,13 @@ mod:RegisterEventsInCombat(
 local warnLethargicPoison			= mod:NewTargetNoFilterAnnounce(437390, 3, nil, "RemovePoison")
 local warnThrash					= mod:NewSpellAnnounce(3391, 4, nil, "Tank|Healer")
 
-local specWarnCorrosiveBreath		= mod:NewSpecialWarningDefensive(437353, nil, nil, nil, 1, 2)
-local specWarnCorrosiveBreathTaunt	= mod:NewSpecialWarningTaunt(437353, nil, nil, nil, 1, 2)
-local specWarnBellowingRoar			= mod:NewSpecialWarningInterruptCount(445498, nil, nil, nil, 1, 2)
+local specWarnCorrosiveBreath		= mod:NewSpecialWarningDefensive(437353, nil, nil, nil, 1, 2, nil, nil, "defensive")
+local specWarnCorrosiveBreathTaunt	= mod:NewSpecialWarningTaunt(437353, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnBellowingRoar			= mod:NewSpecialWarningInterruptCount(445498, nil, nil, nil, 1, 2, nil, nil, "kickcast")
 local specWarnWakingNightmare		= mod:NewSpecialWarningMoveTo(437398, nil, nil, nil, 3)
-local specWarnDeepSlumber			= mod:NewSpecialWarningDodgeCount(437301, nil, nil, nil, 2, 2)
-local specWarnLethargicPoisonAdd	= mod:NewSpecialWarningInterruptCount(437425, nil, nil, nil, 1, 2)
-local specWarnGTFO					= mod:NewSpecialWarningGTFO(445575, nil, nil, nil, 1, 8)
+local specWarnDeepSlumber			= mod:NewSpecialWarningDodgeCount(437301, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+local specWarnLethargicPoisonAdd	= mod:NewSpecialWarningInterruptCount(437425, nil, nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnGTFO					= mod:NewSpecialWarningGTFO(445575, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 --local timerThrashCD				= mod:NewCDTimer(16.1, 3391, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--16-49, seems to be filler GCD of boss so used in spell gaps
 local timerCorrosiveBreathCD		= mod:NewCDTimer(19.1, 437353, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--19.1 except when spell queued

@@ -23,13 +23,13 @@ mod:RegisterEventsInCombat(
 
 -- Blades of Light: Dodge this
 local timerBlades		= mod:NewCDNPTimer(27, 1231264)
-local specWarnBlades	= mod:NewSpecialWarningDodge(1231264, false, nil, 2, 4, 2)
+local specWarnBlades	= mod:NewSpecialWarningDodge(1231264, false, nil, 2, 4, 2, nil, nil, "watchfeet")
 
 -- Divine Avatar, why does this have two spell IDs?
 local warnAvatar = mod:NewSpellAnnounce(1236306)
 
 -- Peeled Secrets, interrupt this
-local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, true, nil, nil, 1, 2)
+local specWarnSecrets = mod:NewSpecialWarningInterrupt(1231095, true, nil, nil, 1, 2, nil, nil, "kickcast")
 
 -- Volcanic unrest, seems hard to avoid but is avoidable (by hugging the wall in certain spots)
 mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodicDamage = 1236157}
@@ -37,13 +37,13 @@ mod:NewGtfo{antiSpam = 10, spell = 1236157, spellDamage = 1236157, spellPeriodic
 local berserkTimer = mod:NewBerserkTimer(600)
 
 -- Whirlwind
-local specialWarningWWSoon = mod:NewSpecialWarningSoon(1231312, "Melee", nil, nil, 2, 2)
+local specialWarningWWSoon = mod:NewSpecialWarningSoon(1231312, "Melee", nil, nil, 2, 2, nil, nil, "watchstep")
 
 -- Slow
 local timerSlow = mod:NewCDNPTimer(30, 1236220) -- 30 to 50 seconds :/
 
 -- Tank debuff
-local specWarnRendFlesh = mod:NewSpecialWarningStack(1236125, nil, 2, nil, nil, 1, 6)
+local specWarnRendFlesh = mod:NewSpecialWarningStack(1236125, nil, 2, nil, nil, 1, 6, nil, nil, "stackhigh")
 
 
 mod:AddInfoFrameOption()

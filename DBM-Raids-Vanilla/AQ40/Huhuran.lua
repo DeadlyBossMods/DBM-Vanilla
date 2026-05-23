@@ -33,9 +33,9 @@ local warnFrenzy		= mod:NewSpellAnnounce(26051, 3, nil, "Tank|RemoveEnrage|Heale
 local warnBerserk		= mod:NewSpellAnnounce(26068, 3)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26068, 2)
 
-local specWarnAcid		= mod:NewSpecialWarningStack(26050, "Tank", 10, nil, nil, 1, 6)
-local specWarnAcidTaunt	= mod:NewSpecialWarningTaunt(26050, "Tank", nil, nil, 1, 2)
-local specWarnFrenzy	= mod:NewSpecialWarningDispel(26051, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnAcid		= mod:NewSpecialWarningStack(26050, "Tank", 10, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnAcidTaunt	= mod:NewSpecialWarningTaunt(26050, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnFrenzy	= mod:NewSpecialWarningDispel(26051, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "trannow")
 
 
 local timerSting		= mod:NewBuffFadesTimer(12, 26180, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON..DBM_COMMON_L.DEADLY_ICON)

@@ -37,8 +37,8 @@ local warnCurse					= mod:NewSpellAnnounce(19713, 3)
 local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, "CasterDps", 2)
 local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
 
-local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, "MagicDispeller", nil, 2, 1, 2)
-local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2)--aggro wipe, needs fresh taunt
+local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, "MagicDispeller", nil, 2, 1, 2, nil, nil, "dispelboss")
+local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")--aggro wipe, needs fresh taunt
 
 local timerCurseCD           	= mod:NewVarTimer("v21-26.4", 19713, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerDeadenMagic       	= mod:NewBuffActiveTimer(30, 19714, nil, "MagicDispeller", 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
@@ -47,8 +47,8 @@ local timerGateCD            	= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscover
 
 local specWarnReflectMagic, specWarnReflectMagicDispel, timerReflectMagicCD
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnReflectMagic		= mod:NewSpecialWarningCast(460856, "SpellCaster", nil, nil, 1, 2)
-	specWarnReflectMagicDispel	= mod:NewSpecialWarningDispel(460856, false, nil, 2, 1, 2)
+	specWarnReflectMagic		= mod:NewSpecialWarningCast(460856, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopcast")
+	specWarnReflectMagicDispel	= mod:NewSpecialWarningDispel(460856, false, nil, 2, 1, 2, nil, nil, "dispelboss")
 	timerReflectMagicCD			= mod:NewCDTimer(22.6, 460856, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 end
 

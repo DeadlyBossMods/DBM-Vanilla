@@ -32,7 +32,7 @@ local warnEnrage		= mod:NewSpellAnnounce(8269, 4)
 local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
 local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 2, "133572")
 
-local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, nil, nil, 2, 4, 2)
+local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, nil, nil, 2, 4, 2, nil, nil, "justrun")
 local addsGuidCheck = {}
 
 mod.vb.prewarn_enrage = false

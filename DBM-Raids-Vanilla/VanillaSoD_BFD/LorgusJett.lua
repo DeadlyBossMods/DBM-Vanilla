@@ -37,8 +37,8 @@ local warnBlackfathomMurloc			= mod:NewSpellAnnounce(419649, 2)
 local warnWindfuryTotem				= mod:NewSpellAnnounce(414691, 2)
 local warnMoltenFuryTotem			= mod:NewSpellAnnounce(419636, 2)
 
-local specWarnLightningShield		= mod:NewSpecialWarningSwitch(414763, nil, nil, nil, 1, 2)
-local specWarnHeal					= mod:NewSpecialWarningInterrupt(407568, "HasInterrupt", nil, nil, 1, 2)
+local specWarnLightningShield		= mod:NewSpecialWarningSwitch(414763, nil, nil, nil, 1, 2, nil, nil, "attacktotem")
+local specWarnHeal					= mod:NewSpecialWarningInterrupt(407568, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerTriplePunctureCD			= mod:NewCDNPTimer(10.9, 407794, nil, nil, nil, 5)
 local timerHealCD					= mod:NewCDNPTimer(10.9, 22883, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)--10.9+

@@ -56,7 +56,7 @@ local timerCombatStart	= mod:NewTimer(83, "timerCombatStart", "132349", nil, nil
 
 local specWarnGTFO, warnPhase2Soon
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnGTFO		= mod:NewSpecialWarningGTFO(461062, nil, nil, nil, 1, 8)
+	specWarnGTFO		= mod:NewSpecialWarningGTFO(461062, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 end
 

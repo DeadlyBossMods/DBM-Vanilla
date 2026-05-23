@@ -32,10 +32,10 @@ mod:RegisterEventsInCombat(
 --TODO, possibly non emphasized warning for https://www.wowhead.com/ptr-2/spell=463500/blowback target that announces to tanks and healers
 local warnConsumptiveFlames					= mod:NewTargetNoFilterAnnounce(463503, 3, nil, "Healer")
 
-local specWarnSummonFlameGeyser				= mod:NewSpecialWarningSwitchCount(463486, "Dps", nil, nil, 1, 2)
-local specWarnScorchingWind					= mod:NewSpecialWarningCount(463495, nil, nil, nil, 2, 13)
-local specWarnDyingFlare					= mod:NewSpecialWarningSoak(463472, nil, nil, nil, 2, 2)
-local specWarnGTFO							= mod:NewSpecialWarningGTFO(463492, nil, nil, nil, 1, 8)
+local specWarnSummonFlameGeyser				= mod:NewSpecialWarningSwitchCount(463486, "Dps", nil, nil, 1, 2, nil, nil, "killmob")
+local specWarnScorchingWind					= mod:NewSpecialWarningCount(463495, nil, nil, nil, 2, 13, nil, nil, "pushbackincoming")
+local specWarnDyingFlare					= mod:NewSpecialWarningSoak(463472, nil, nil, nil, 2, 2, nil, nil, "helpsoak")
+local specWarnGTFO							= mod:NewSpecialWarningGTFO(463492, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 local timerConsumptiveFlamesCD				= mod:NewCDCountTimer(30, 463503, nil, nil, nil, 3, nil, DBM_COMMON_L.HEALER_ICON)
 local timerSummonFlameGeyserCD				= mod:NewCDCountTimer(60, 463486, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)

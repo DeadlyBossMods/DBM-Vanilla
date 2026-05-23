@@ -50,7 +50,7 @@ local warnDarkIronBombs						= mod:NewCountAnnounce(466265, 2)
 local warnMoleMachine						= mod:NewCountAnnounce(467758, 2)
 local warnStage2							= mod:NewPhaseAnnounce(2, nil, nil, nil, nil, nil, nil, 2)
 
-local specWarnFireburstGrenade				= mod:NewSpecialWarningMoveTo(467415, nil, nil, nil, 1, 12)
+local specWarnFireburstGrenade				= mod:NewSpecialWarningMoveTo(467415, nil, nil, nil, 1, 12, nil, nil, "breaklos")
 --local yellHoneyMarinade					= mod:NewShortYell(438025)
 --local yellHoneyMarinadeFades				= mod:NewShortFadesYell(438025)
 
@@ -67,8 +67,8 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30836))
 local warnTorchDropped						= mod:NewCountAnnounce(467607, 1)
 local warnTorchCarried						= mod:NewTargetNoFilterAnnounce(467607, 2)
 
-local specWarnKeepersFlameDispel			= mod:NewSpecialWarningDispel(464417, "RemoveMagic", nil, nil, 1, 2)
-local specWarnRingsOfFire					= mod:NewSpecialWarningDodge(467464, nil, nil, nil, 2, 2)
+local specWarnKeepersFlameDispel			= mod:NewSpecialWarningDispel(464417, "RemoveMagic", nil, nil, 1, 2, nil, nil, "dispelboss")
+local specWarnRingsOfFire					= mod:NewSpecialWarningDodge(467464, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 local timerKeepersFlameCD					= mod:NewCDPNPTimer(7, 464417, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerRingsOfFireCD					= mod:NewCDPNPTimer(23, 467464, nil, nil, nil, 3)
@@ -81,8 +81,8 @@ local timerShatterArmorCDNP					= mod:NewCDNPTimer(16.7, 466107, nil, "Tank|Heal
 --Anvilrage Medic
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30830))
 
-local specWarnHeal							= mod:NewSpecialWarningInterruptCount(466096, "HasInterrupt", nil, nil, 1, 2)
-local specWarnMindBlast						= mod:NewSpecialWarningInterrupt(466086, "HasInterrupt", nil, nil, 1, 2)
+local specWarnHeal							= mod:NewSpecialWarningInterruptCount(466096, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnMindBlast						= mod:NewSpecialWarningInterrupt(466086, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 --local timerHealCD							= mod:NewCDPNPTimer(33, 466096, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 --local timerMindBlastCD					= mod:NewCDNPTimer(33, 466086, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
@@ -92,8 +92,8 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30832))
 local warnShadowstep						= mod:NewYouAnnounce(466254, 2)
 local warnFixate							= mod:NewTargetAnnounce(466258, 2)
 
-local specWarnCripplingDispel				= mod:NewSpecialWarningDispel(466111, "RemovePoison", nil, nil, 1, 2)
-local specWarnFixate						= mod:NewSpecialWarningYou(466258, nil, nil, nil, 1, 2)
+local specWarnCripplingDispel				= mod:NewSpecialWarningDispel(466111, "RemovePoison", nil, nil, 1, 2, nil, nil, "helpdispel")
+local specWarnFixate						= mod:NewSpecialWarningYou(466258, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 
 local timerCripplingPoisonCD				= mod:NewCDNPTimer(10.6, 466111, nil, nil, nil, 3, nil, DBM_COMMON_L.POISON_ICON)
 local timerShadowstepCD						= mod:NewCDNPTimer(10.9, 466254, nil, nil, nil, 3)
@@ -103,13 +103,13 @@ mod:AddNamePlateOption("NPOnFixate", 466258)
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30777))
 --local warnMortar							= mod:NewSpellAnnounce(467505, 2)
 
-local warnSpecWarnMortar					= mod:NewSpecialWarningDodge(467505, nil, nil, nil, 2, 2)
+local warnSpecWarnMortar					= mod:NewSpecialWarningDodge(467505, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 --local timerArtilleryBarrageCD				= mod:NewCDNPTimer(33, 467424, nil, nil, nil, 3)
 --local timerMortarCD						= mod:NewCDNPTimer(33, 467505, nil, nil, nil, 3)
 --Anvilrage Dragoon
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30829))
-local specWarnFiringLine					= mod:NewSpecialWarningDodge(469943, nil, nil, nil, 2, 2)
+local specWarnFiringLine					= mod:NewSpecialWarningDodge(469943, nil, nil, nil, 2, 2, nil, nil, "farfromline")
 
 --local timerFiringLineCD					= mod:NewCDNPTimer(33, 469943, nil, nil, nil, 3)
 

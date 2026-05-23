@@ -37,7 +37,7 @@ mod:RegisterEventsInCombat(
 local warnPanic			= mod:NewSpellAnnounce(19408, 2)
 local warnFrenzy		= mod:NewSpellAnnounce(19451, 3, nil, "Tank|RemoveEnrage|Healer")
 
-local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2)
+local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2, nil, nil, "enrage")
 
 local timerPanicCD		= mod:NewVarTimer("v37.3-66.4", 19408, nil, nil, nil, 2)
 local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)

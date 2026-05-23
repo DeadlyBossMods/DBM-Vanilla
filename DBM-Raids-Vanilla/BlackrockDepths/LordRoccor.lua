@@ -36,10 +36,10 @@ local warnRoilingMagma						= mod:NewCountAnnounce(462351, 3)
 local warnCrystallize						= mod:NewCountAnnounce(463674, 2)
 local warnSlagArmorStack					= mod:NewStackAnnounce(400279, 2, nil, "Tank|Healer")
 
-local specWarnEruption						= mod:NewSpecialWarningSwitchCount(462319, nil, nil, nil, 1, 17)
-local specWarnVolcanicUpheaval				= mod:NewSpecialWarningCount(462317, nil, nil, nil, 2, 2)
+local specWarnEruption						= mod:NewSpecialWarningSwitchCount(462319, nil, nil, nil, 1, 17, nil, nil, "runovermobs")
+local specWarnVolcanicUpheaval				= mod:NewSpecialWarningCount(462317, nil, nil, nil, 2, 2, nil, nil, "aesoon")
 --local specWarnLivingMagma					= mod:NewSpecialWarningStack(462348, nil, 12, nil, nil, 1, 6)
-local specWarnGTFO							= mod:NewSpecialWarningGTFO(462352, nil, nil, nil, 1, 8)
+local specWarnGTFO							= mod:NewSpecialWarningGTFO(462352, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 local timerRoilingMagmaCD					= mod:NewCDCountTimer(19.4, 462351, nil, nil, nil, 3)--13.3(19.4)-41.3
 local timerCrystallizeCD					= mod:NewCDCountTimer(64.3, 463674, nil, nil, nil, 1)--40.1(64.3)-96.1

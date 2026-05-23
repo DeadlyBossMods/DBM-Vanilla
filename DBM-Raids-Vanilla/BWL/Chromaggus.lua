@@ -49,8 +49,8 @@ local warnEnrageSoon	= mod:NewSoonAnnounce(23537, 2)
 local warnMutation		= mod:NewCountAnnounce(23174, 4) ---@type Announce -- string as count in :Show() is unusual but valid
 local warnVuln			= mod:NewAnnounce("WarnVulnerable", 1, nil, "SpellCaster", "WarnVulnerableNew")
 
-local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8)
-local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnBronze		= mod:NewSpecialWarningYou(23170, nil, nil, nil, 1, 8, nil, nil, "useitem")
+local specWarnFrenzy		= mod:NewSpecialWarningDispel(23128, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
 local specWarnBreathSoon	= mod:NewSpecialWarningSoon(17087, nil, nil, nil, 3, 2)
 
 local timerBreath		= mod:NewTimer(2, "TimerBreath", 23316, nil, nil, 2)

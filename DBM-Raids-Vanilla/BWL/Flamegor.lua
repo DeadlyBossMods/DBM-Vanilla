@@ -36,7 +36,7 @@ local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, nil, "Tank")
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2, nil, nil, "Tank|Healer")
 local warnFrenzy			= mod:NewSpellAnnounce(23342, 3, nil, "Tank|RemoveEnrage|Healer")
 
-local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6)
+local specWarnFrenzy		= mod:NewSpecialWarningDispel(23342, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
 
 local timerWingBuffet		= mod:NewVarTimer("v31.1-36.1", 23339, nil, "Tank", nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v12.9-23", 22539, nil, false)

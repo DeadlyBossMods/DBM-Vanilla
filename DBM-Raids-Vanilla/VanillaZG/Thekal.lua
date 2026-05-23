@@ -38,7 +38,7 @@ local warnGouge			= mod:NewTargetAnnounce(12540, 2)
 local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnAdds			= mod:NewSpellAnnounce(24183, 3)
 
-local specWarnHeal		= mod:NewSpecialWarningInterrupt(24208, "HasInterrupt", nil, nil, 1, 2)
+local specWarnHeal		= mod:NewSpecialWarningInterrupt(24208, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerSimulKill	= mod:NewTimer(15, "TimerSimulKill", 24173, nil, nil, 6)
 local timerBlind		= mod:NewTargetTimer(10, 21060, nil, nil, nil, 3)

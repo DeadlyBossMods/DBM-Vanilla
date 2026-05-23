@@ -29,7 +29,7 @@ local warnSleep					= mod:NewTargetNoFilterAnnounce(423135, 2)--No consistent ti
 local warnShadowCrash			= mod:NewSpellAnnounce(426069, 3)
 local warnDreamEater			= mod:NewTargetNoFilterAnnounce(425460, 2)--Not sure what it does, so don't know what else to do with it yet
 
-local specWarnShadowyChains		= mod:NewSpecialWarningInterrupt(425265, "HasInterrupt", nil, nil, 1, 2)
+local specWarnShadowyChains		= mod:NewSpecialWarningInterrupt(425265, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerShadowyChainsCD		= mod:NewCDTimer(11.3, 425265, nil, nil, nil, 4)--Remove interrupt icon since timer is used for stage 2 as well, CD affected by spell lockouts, so if shadow school locked out from pain kick, delayed
 --local timerSleepCD				= mod:NewCDTimer(40, 423135, nil, nil, nil, 3)

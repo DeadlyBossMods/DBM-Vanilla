@@ -38,7 +38,7 @@ local warnMindControl	= mod:NewTargetNoFilterAnnounce(785, 4)
 local warnTeleport		= mod:NewSpellAnnounce(20449, 3)
 local warnSummon		= mod:NewSpellAnnounce(747, 3, "136056") -- 136056 Mirror image icon
 local warnSummonSoon	= mod:NewSoonAnnounce(747, 2, "136056")
-local specWarnAoE		= mod:NewSpecialWarningInterrupt(26192, "HasInterrupt", nil, nil, 1, 2)
+local specWarnAoE		= mod:NewSpecialWarningInterrupt(26192, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerMindControl	= mod:NewTargetTimer(20, 785, nil, nil, nil, 3)
 

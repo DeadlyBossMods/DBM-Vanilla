@@ -46,7 +46,7 @@ local timerShadowFlameCD	= mod:NewVarTimer("v13-25.9", 22539, nil, false)
 
 local specWarnStatic, yellStaticHigh
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2)
+	specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2, nil, nil, "runout")
 	yellStaticHigh		= mod:NewCountYell(366305)
 end
 

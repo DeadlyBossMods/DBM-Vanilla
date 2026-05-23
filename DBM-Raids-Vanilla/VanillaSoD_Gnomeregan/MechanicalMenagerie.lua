@@ -50,7 +50,7 @@ local timerSelfRepair				= mod:NewCastSourceTimer(20, 440073, nil, nil, nil, 5, 
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
 local warnCluck						= mod:NewSpellAnnounce(436570, 3)
 
-local specWarnExplosiveEgg			= mod:NewSpecialWarningSwitch(436692, "Ranged", nil, nil, 1, 2)
+local specWarnExplosiveEgg			= mod:NewSpecialWarningSwitch(436692, "Ranged", nil, nil, 1, 2, nil, nil, "targetchange")
 
 local timerExplosiveEggCD			= mod:NewCDTimer(21, 436692, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)--21-39 (pretty gross, but consistent min window)
 
@@ -58,8 +58,8 @@ mod:AddSetIconOption("SetIconOnEgg", 436692, true, 5, {8})
 --STX-25/NB
 local warnWidgetFortress			= mod:NewCastAnnounce(436836, 4)
 
-local specWarnWidgetVolley			= mod:NewSpecialWarningInterrupt(436833, "HasInterrupt", nil, nil, 1, 2)
-local specWarnWidgetFortress		= mod:NewSpecialWarningMove(436836, "Tank", nil, nil, 1, 2)
+local specWarnWidgetVolley			= mod:NewSpecialWarningInterrupt(436833, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnWidgetFortress		= mod:NewSpecialWarningMove(436836, "Tank", nil, nil, 1, 2, nil, nil, "moveboss")
 --local yellDepthCharge				= mod:NewYell(404806)
 
 --local timerWidgetFortressCD		= mod:NewCDTimer(6.5, 436836, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--50-89 so no timer for now
@@ -67,13 +67,13 @@ local specWarnWidgetFortress		= mod:NewSpecialWarningMove(436836, "Tank", nil, n
 local warnBinaryBleat				= mod:NewTargetNoFilterAnnounce(436828, 3, nil, false)--off by default optioanl announce for anyone who gets silenced for 10 seconds. ALso, no timer since 11-21 variation
 local warnFrayedOver				= mod:NewFadesAnnounce(436825, 1, nil, nil, 27564)
 
-local specWarnFrayedWiring			= mod:NewSpecialWarningReflect(436825, nil, 27564, nil, 1, 2)--Short name "Reflection"
+local specWarnFrayedWiring			= mod:NewSpecialWarningReflect(436825, nil, 27564, nil, 1, 2, nil, nil, "stopattack")--Short name "Reflection"
 
 mod:AddNamePlateOption("NPAuraOnFrayed", 436825)
 --STX-04/BD
 local warnOverheat						= mod:NewCastAnnounce(436741, 1, 3)
 
-local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, 18351, nil, 2, 2)--Short name "Breath"
+local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, 18351, nil, 2, 2, nil, nil, "breathsoon")--Short name "Breath"
 
 local timerOverheat						= mod:NewBuffActiveTimer(15, 436741, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerSprocketfireBreathCD			= mod:NewCDTimer(21, 436816, 18351, nil, nil, 3)--21-26, first timer that's not too radically variable and we can include

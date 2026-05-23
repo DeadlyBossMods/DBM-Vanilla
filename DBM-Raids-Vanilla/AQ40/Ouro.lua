@@ -32,7 +32,7 @@ local warnSweep			= mod:NewSpellAnnounce(26103, 2, nil, "Tank", 2)
 local warnBerserk		= mod:NewSpellAnnounce(26615, 3)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26615, 2)
 
-local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2)
+local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2, nil, nil, "stunsoon")
 
 local timerSubmerge		= mod:NewTimer(30, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(30, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
@@ -42,7 +42,7 @@ local timerSweepCD		= mod:NewVarTimer("v20.6-22.6", 26103, nil, "Tank", 2, 5, ni
 local timerNextEye, specWarnEye
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextEye 	= mod:NewNextTimer(30, 1215744)
-	specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2)
+	specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2, nil, nil, nil, nil, "safenow")
 end
 
 mod.vb.prewarn_berserk = false

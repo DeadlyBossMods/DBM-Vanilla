@@ -33,7 +33,7 @@ local warnMark		= mod:NewTargetNoFilterAnnounce(24210, 3)
 local warnPain		= mod:NewTargetNoFilterAnnounce(24212, 2, nil, "RemoveMagic")
 local warnVanish	= mod:NewSpellAnnounce(24223,2)
 
-local specWarnMark	= mod:NewSpecialWarningYou(24210, nil, nil, nil, 1, 2)
+local specWarnMark	= mod:NewSpecialWarningYou(24210, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 
 local timerPain		= mod:NewTargetTimer(18, 24212, nil, "RemoveMagic", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerVanish	= mod:NewBuffActiveTimer("v43.7-61.5", 24223, nil, nil, nil, 6)

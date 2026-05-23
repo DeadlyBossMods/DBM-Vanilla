@@ -46,7 +46,7 @@ mod:RegisterEventsInCombat(
 --]]
 --General
 --mod:AddNamePlateOption("NPOnHoney", 443983)
-local specWarnGTFO							= mod:NewSpecialWarningGTFO(464350, nil, nil, nil, 1, 8)
+local specWarnGTFO							= mod:NewSpecialWarningGTFO(464350, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 local berserkTimer							= mod:NewBerserkTimer(600)
 mod:AddSetIconOption("SetIconOnCorp", 464371, true, 5, {1, 2, 3})
@@ -70,7 +70,7 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30769))
 local warnRend								= mod:NewTargetNoFilterAnnounce(464358, 2, nil, false)
 local warnRecklessness						= mod:NewTargetNoFilterAnnounce(464361, 3, nil, "Tank|Healer")
 
-local specWarnRampage						= mod:NewSpecialWarningDefensive(464359, nil, nil, nil, 1, 2)
+local specWarnRampage						= mod:NewSpecialWarningDefensive(464359, nil, nil, nil, 1, 2, nil, nil, "defensive")
 
 local timerRendCD							= mod:NewCDTimer(17, 464358, nil, false, nil, 3)
 local timerRampageCD						= mod:NewCDTimer(17, 464359, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -78,9 +78,9 @@ local timerRecklessnessCD					= mod:NewCDTimer(36.5, 464361, nil, "Tank|Healer",
 --Doom'rel
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30767))
 
-local specWarnShadowBoltVolley				= mod:NewSpecialWarningInterrupt(464331, false, nil, nil, 1, 2)
-local specWarnBanish						= mod:NewSpecialWarningDispel(464333, "RemoveMagic", nil, nil, 1, 2)
-local specWarnSummonFelguard				= mod:NewSpecialWarningInterruptCount(464334, "HasInterrupt", nil, nil, 1, 2)
+local specWarnShadowBoltVolley				= mod:NewSpecialWarningInterrupt(464331, false, nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnBanish						= mod:NewSpecialWarningDispel(464333, "RemoveMagic", nil, nil, 1, 2, nil, nil, "dispelnow")
+local specWarnSummonFelguard				= mod:NewSpecialWarningInterruptCount(464334, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerShadowBoltVolleyCD				= mod:NewCDTimer(6, 464331, nil, false, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)--Spammed except when reset by phasing
 local timerBanishCD							= mod:NewCDTimer(4.9, 464333, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)--4.9-12.2
@@ -90,7 +90,7 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30768))
 local warnFanofKnives						= mod:NewSpellAnnounce(464353, 2)
 local warnSmokeBomb							= mod:NewSpellAnnounce(469628, 2)
 
-local specWarnSmokeBomb						= mod:NewSpecialWarningMove(469628, nil, nil, nil, 1, 2)--Move is for 464356 on a boss
+local specWarnSmokeBomb						= mod:NewSpecialWarningMove(469628, nil, nil, nil, 1, 2, nil, nil, "moveboss")--Move is for 464356 on a boss
 
 local timerFanofKnivesCD					= mod:NewCDTimer(10.9, 464353, nil, nil, nil, 3)
 local timerSmokeBombCD						= mod:NewCDTimer(33, 469628, nil, nil, nil, 5)
@@ -98,10 +98,10 @@ local timerSmokeBombCD						= mod:NewCDTimer(33, 469628, nil, nil, nil, 5)
 --Hate'rel
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30770))
 
-local specWarnMagmaBolt						= mod:NewSpecialWarningInterrupt(464363, "HasInterrupt", nil, nil, 1, 2)
-local specWarnMagmaBurn						= mod:NewSpecialWarningDispel(464362, "RemoveMagic", nil, nil, 1, 2)
-local specWarnSummonFireElemental			= mod:NewSpecialWarningSwitch(469636, nil, nil, nil, 1, 2)
-local specWarnFireNova						= mod:NewSpecialWarningInterruptCount(464367, "HasInterrupt", nil, nil, 1, 2)
+local specWarnMagmaBolt						= mod:NewSpecialWarningInterrupt(464363, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnMagmaBurn						= mod:NewSpecialWarningDispel(464362, "RemoveMagic", nil, nil, 1, 2, nil, nil, "dispelnow")
+local specWarnSummonFireElemental			= mod:NewSpecialWarningSwitch(469636, nil, nil, nil, 1, 2, nil, nil, "killmob")
+local specWarnFireNova						= mod:NewSpecialWarningInterruptCount(464367, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 --local timerMagmaBoltCD					= mod:NewAITimer(33, 464363, nil, "HasInterrupt", nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 local timerSummonFireElementalCD			= mod:NewCDTimer(33, 469636, nil, nil, nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)
@@ -112,10 +112,10 @@ mod:AddSetIconOption("SetIconOnFireElemental", 469636, true, 5, {4})
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30771))
 local warnBlizzard							= mod:NewTargetAnnounce(464337, 2)
 
-local specWarnBlizzard						= mod:NewSpecialWarningMoveAway(464337, nil, nil, nil, 1, 2)
+local specWarnBlizzard						= mod:NewSpecialWarningMoveAway(464337, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellBlizzard							= mod:NewYell(464337)
 local yellBlizzardFades						= mod:NewShortFadesYell(464337)
-local specWarnBitterCold					= mod:NewSpecialWarningMoveAway(464341, nil, nil, nil, 3, 2)
+local specWarnBitterCold					= mod:NewSpecialWarningMoveAway(464341, nil, nil, nil, 3, 2, nil, nil, "scatter")
 local yellBitterCold						= mod:NewYell(464341, nil, false)
 local yellBitterColdFades					= mod:NewShortFadesYell(464341, nil, false)
 
@@ -126,9 +126,9 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30772))
 local warnTerrify							= mod:NewCastAnnounce(469711, 3)
 local warnMindTorrent						= mod:NewTargetNoFilterAnnounce(469722, 4)
 
-local specWarnRespite						= mod:NewSpecialWarningSwitchCustom(464344, "Dps", nil, nil, 1, 2)
-local specWarnTerrifyDispel					= mod:NewSpecialWarningDispel(469711, "RemoveMagic", nil, nil, 1, 2)
-local specWarnMindTorrent					= mod:NewSpecialWarningMoveTo(469722, nil, nil, nil, 1, 2)
+local specWarnRespite						= mod:NewSpecialWarningSwitchCustom(464344, "Dps", nil, nil, 1, 2, nil, nil, "attackshield")
+local specWarnTerrifyDispel					= mod:NewSpecialWarningDispel(469711, "RemoveMagic", nil, nil, 1, 2, nil, nil, "dispelnow")
+local specWarnMindTorrent					= mod:NewSpecialWarningMoveTo(469722, nil, nil, nil, 1, 2, nil, nil, "gathershare")
 local yellMindTorrent						= mod:NewYell(469722, DBM_COMMON_L.GROUPSOAK, nil, nil, "YELL")
 
 local timerRespiteCD						= mod:NewCDTimer(11.6, 464344, nil, "Dps", nil, 1, nil, DBM_COMMON_L.DAMAGE_ICON)

@@ -34,7 +34,7 @@ local warnFrenzy	= mod:NewSpellAnnounce(8269)
 local warnVanish	= mod:NewSpellAnnounce(24699)
 local warnCloud		= mod:NewSpellAnnounce(24683)
 
-local specWarnKite	= mod:NewSpecialWarningMove(24646, true, nil, nil, 1, 2)
+local specWarnKite	= mod:NewSpecialWarningMove(24646, true, nil, nil, 1, 2, nil, nil, "keepmove")
 
 local timerSleep	= mod:NewBuffActiveTimer(6, 24664, nil, nil, nil, 3)
 local timerCloud	= mod:NewBuffActiveTimer(15, 24683, nil, nil, nil, 3)

@@ -28,7 +28,7 @@ mod:RegisterEventsInCombat(
 --local warnCorrosion				= mod:NewStackAnnounce(427625, 2, nil, "Tank|Healer")
 local warnStaticArc					= mod:NewCountAnnounce(433251, 3)
 
-local specWarnMagneticPulse			= mod:NewSpecialWarningMoveAway(433359, nil, nil, nil, 1, 2)
+local specWarnMagneticPulse			= mod:NewSpecialWarningMoveAway(433359, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellMagneticPulse				= mod:NewYell(433359)
 local specWarnDiscombobulation		= mod:NewSpecialWarningSpell(433398, nil, nil, nil, 2, 2)
 

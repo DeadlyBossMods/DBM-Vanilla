@@ -35,9 +35,9 @@ local warnGiantEyeTentacle		= mod:NewAnnounce("WarnGiantEyeTentacle", 3, 126)
 local warnGiantClawTentacle		= mod:NewAnnounce("WarnGiantClawTentacle", 3, 26391)
 local warnPhase 				= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 
-local specWarnDarkGlare			= mod:NewSpecialWarningDodge(26029, nil, nil, nil, 3, 2)
-local specWarnWeakened			= mod:NewSpecialWarning("SpecWarnWeakened", nil, nil, nil, 2, 2, nil, "132212")
-local specWarnEyeBeam			= mod:NewSpecialWarningYou(26134, nil, nil, nil, 1, 2)
+local specWarnDarkGlare			= mod:NewSpecialWarningDodge(26029, nil, nil, nil, 3, 2, nil, nil, "laserrun")
+local specWarnWeakened			= mod:NewSpecialWarning("SpecWarnWeakened", nil, nil, nil, 2, 2, nil, "132212", nil, nil, "targetchange")
+local specWarnEyeBeam			= mod:NewSpecialWarningYou(26134, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellEyeBeam				= mod:NewYell(26134)
 
 local timerDarkGlareCD			= mod:NewNextTimer(86, 26029)

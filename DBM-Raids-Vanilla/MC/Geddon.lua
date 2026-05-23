@@ -45,8 +45,8 @@ local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
 
 local specWarnArma		= mod:NewSpecialWarningSpell(20478)
 local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2)
-local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2)
-local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2)
+local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2, nil, nil, "aesoon")
+local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2, nil, nil, "bombyou")
 local yellBomb			= mod:NewYell(20475)
 local yellBombFades		= mod:NewShortFadesYell(20475)
 

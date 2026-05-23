@@ -32,7 +32,7 @@ local warnTeleportSoon	= mod:NewAnnounce("WarningTeleportSoon", 1, "135736")
 local warnCurse			= mod:NewSpellAnnounce(29213, 2)
 local warnBlink			= mod:NewSpellAnnounce(29208, 3)
 
-local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2)
+local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2, nil, nil, "killmob")
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)

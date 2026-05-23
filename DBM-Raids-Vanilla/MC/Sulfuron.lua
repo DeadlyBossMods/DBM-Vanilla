@@ -37,14 +37,14 @@ local warnInspire		= mod:NewTargetNoFilterAnnounce(19779, 2, nil, "Tank|Healer")
 local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
 local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
 
-local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2)
+local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerHeal			= mod:NewCastNPTimer(2, 19775, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 
 local specWarnGTFO
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnGTFO		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8)
+	specWarnGTFO		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 end
 
 function mod:SPELL_AURA_APPLIED(args)

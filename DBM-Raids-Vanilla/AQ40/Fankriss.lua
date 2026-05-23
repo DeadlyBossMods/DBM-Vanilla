@@ -25,8 +25,8 @@ mod:RegisterEventsInCombat(
 local warnWound				= mod:NewStackAnnounce(25646, 3, nil, "Tank", 2)
 local warnWorm				= mod:NewSpellAnnounce(25831, 3, "133973") -- Using the icon added in TBC for this spell since Era icon is default Samwise
 
-local specWarnWound			= mod:NewSpecialWarningStack(25646, "Tank", 5, nil, nil, 1, 6)
-local specWarnWoundTaunt	= mod:NewSpecialWarningTaunt(25646, "Tank", nil, nil, 1, 2)
+local specWarnWound			= mod:NewSpecialWarningStack(25646, "Tank", 5, nil, nil, 1, 6, nil, nil, "stackhigh")
+local specWarnWoundTaunt	= mod:NewSpecialWarningTaunt(25646, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
 
 local timerWound			= mod:NewTargetTimer(20, 25646, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerEntangle			= mod:NewTargetTimer(8, 720, nil, nil, nil, 3)

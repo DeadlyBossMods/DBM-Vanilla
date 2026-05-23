@@ -23,7 +23,7 @@ mod:RegisterEventsInCombat(
 --ability.id = 404806 and type = "cast" or ability.id = 413664 and (type = "applybuff" or type = "removebuff")
 local warningDepthCharge		= mod:NewTargetNoFilterAnnounce(404806, 4)
 
-local specWarnDepthCharge		= mod:NewSpecialWarningMoveTo(404806, nil, nil, nil, 3, 2)
+local specWarnDepthCharge		= mod:NewSpecialWarningMoveTo(404806, nil, nil, nil, 3, 2, nil, nil, "bombyou")
 local yellDepthCharge			= mod:NewYell(404806)
 local yellDepthChargeFades		= mod:NewShortFadesYell(404806)
 

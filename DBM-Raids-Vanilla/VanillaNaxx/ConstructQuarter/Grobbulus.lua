@@ -26,7 +26,7 @@ mod:RegisterEventsInCombat(
 local warnInjection		= mod:NewTargetNoFilterAnnounce(28169, 2)
 local warnCloud			= mod:NewSpellAnnounce(28240, 2)
 
-local specWarnInjection	= mod:NewSpecialWarningYou(28169, nil, nil, nil, 1, 2)
+local specWarnInjection	= mod:NewSpecialWarningYou(28169, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellInjection		= mod:NewYell(28169, nil, false)
 
 local timerInjection	= mod:NewTargetTimer(10, 28169, nil, nil, nil, 3)

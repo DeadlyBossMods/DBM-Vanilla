@@ -48,7 +48,7 @@ local warnEnrage				= mod:NewTargetNoFilterAnnounce(3019, 3, nil, "RemoveMagic")
 local warnIrradiatedCloud		= mod:NewSpellAnnounce(434168, 3)--Spawn
 local warnIrradiatedCloudTarget	= mod:NewTargetAnnounce(434168, 3)
 
-local specWarnIrradiatedCloud	= mod:NewSpecialWarningYou(434168, nil, nil, nil, 1, 2)--Clouds fixate on players
+local specWarnIrradiatedCloud	= mod:NewSpecialWarningYou(434168, nil, nil, nil, 1, 2, nil, nil, "targetyou")--Clouds fixate on players
 local yellrradiatedCloud		= mod:NewYell(434168)
 --local specWarnGTFO				= mod:NewSpecialWarningGTFO(438732, nil, nil, nil, 1, 8)
 
@@ -58,10 +58,10 @@ local warnToxicVigorOver		= mod:NewFadesAnnounce(434941, 1)
 local warnTroggRage				= mod:NewTargetNoFilterAnnounce(436074, 4)
 local warnTroggRageOver			= mod:NewFadesAnnounce(436074, 1)
 
-local specWarnGrubbisMad		= mod:NewSpecialWarningCount(436027, nil, nil, nil, 2, 2)
-local specWarnRadiation			= mod:NewSpecialWarningDodge(436059, nil, nil, nil, 2, 2)
-local specWarnPetrify			= mod:NewSpecialWarningInterrupt(436100, "HasInterrupt", nil, nil, 1, 2)
-local specWarnAdds				= mod:NewSpecialWarningAdds(435832, "-Healer", nil, nil, 1, 2)
+local specWarnGrubbisMad		= mod:NewSpecialWarningCount(436027, nil, nil, nil, 2, 2, nil, nil, "aesoon")
+local specWarnRadiation			= mod:NewSpecialWarningDodge(436059, nil, nil, nil, 2, 2, nil, nil, "shockwave")
+local specWarnPetrify			= mod:NewSpecialWarningInterrupt(436100, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnAdds				= mod:NewSpecialWarningAdds(435832, "-Healer", nil, nil, 1, 2, nil, nil, "killmob")
 
 --local timerAdds				= mod:NewAddsCustomTimer(30, 435832)--next wave based on previous wave defeat, so maybe mob death counting then starting timer for next wave on all dead?
 local timerGrubbisMad			= mod:NewBuffActiveTimer(5, 436027, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)--also no CD timer, far too variable. i think it does have a CD, but it also has many conditions that disable it?

@@ -41,8 +41,8 @@ local warnHolyWrath				= mod:NewTargetNoFilterAnnounce(28883, 3, nil, false)
 local warnBoneBarrier			= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 local warnHorsemanDied			= mod:NewAnnounce("WarnHorsemanDied", 2, "132264")
 
-local specWarnMarkOnPlayer		= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer", nil, nil, nil, 1, 6)
-local specWarnVoidZone			= mod:NewSpecialWarningYou(28863, nil, nil, nil, 1, 2)
+local specWarnMarkOnPlayer		= mod:NewSpecialWarning("SpecialWarningMarkOnPlayer", nil, nil, nil, 1, 6, nil, nil, nil, nil, "stackhigh")
+local specWarnVoidZone			= mod:NewSpecialWarningYou(28863, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellVoidZone				= mod:NewYell(28863)
 
 local timerMarkCD				= mod:NewTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 13 or 12.9, "timerMark", 28835, nil, nil, 2)

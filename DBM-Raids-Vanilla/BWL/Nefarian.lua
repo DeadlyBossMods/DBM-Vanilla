@@ -49,9 +49,9 @@ local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
 local warnShadowFlame		= mod:NewCastAnnounce(22539, 2, nil, nil, "Tank|Healer")
 local warnFear				= mod:NewCastAnnounce(22686, 2)
 
-local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2)
-local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2)
-local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2)
+local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1, 2, nil, nil, "findmc")
+local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2, nil, nil, "dispelnow")
+local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2, nil, nil, nil, nil, "targetyou")
 
 local timerIntermission		= mod:NewIntermissionTimer("v12.9-14.9", nil, CL.INTERMISSION, true, nil, nil, "136106")
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)

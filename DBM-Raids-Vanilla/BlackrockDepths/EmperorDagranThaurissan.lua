@@ -44,9 +44,9 @@ local warnCallGuard							= mod:NewSpellAnnounce(465077, 2, nil, nil, nil, nil, 
 local warnCallAmbassador					= mod:NewSpellAnnounce(465079, 2)
 local warnIronBrandStack					= mod:NewStackAnnounce(465070, 2, nil, "Tank")
 
-local specWarnCallAmbassador				= mod:NewSpecialWarningSwitch(465079, "Ranged", nil, nil, 1, 2)
-local specWarnIronBrandtaunt				= mod:NewSpecialWarningTaunt(465070, nil, nil, nil, 1, 2)
-local specWarnHandofThaurissan				= mod:NewSpecialWarningYou(466447, nil, nil, nil, 1, 2)
+local specWarnCallAmbassador				= mod:NewSpecialWarningSwitch(465079, "Ranged", nil, nil, 1, 2, nil, nil, "killmob")
+local specWarnIronBrandtaunt				= mod:NewSpecialWarningTaunt(465070, nil, nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnHandofThaurissan				= mod:NewSpecialWarningYou(466447, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local yellHandofThaurissan					= mod:NewShortYell(466447)
 --local yellHandofThaurissanFades			= mod:NewShortFadesYell(466447)
 
@@ -64,7 +64,7 @@ local timerShrapnalCD						= mod:NewCDNPTimer(12.1, 465089, nil, nil, nil, 5)
 mod:AddTimerLine(DBM:EJ_GetSectionInfo(30908))
 local warnMomentofTwilight					= mod:NewCastAnnounce(466371, 4)
 
-local specWarnPyroblast						= mod:NewSpecialWarningInterruptCount(465091, "HasInterrupt", nil, nil, 1, 2)
+local specWarnPyroblast						= mod:NewSpecialWarningInterruptCount(465091, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
 local timerMomentofTwilight					= mod:NewCastNPTimer(5, 466371, nil, nil, nil, 2)
 --Princess Moira Bronzebeard
@@ -73,11 +73,11 @@ local warnNemesis							= mod:NewSpellAnnounce(466504, 2)
 local warnNecrosis							= mod:NewSpellAnnounce(470599, 2)
 local warnRadiantInfusion					= mod:NewSpellAnnounce(470605, 2, nil, nil, nil, nil, nil, 17)
 
-local specWarnMindBlast						= mod:NewSpecialWarningInterrupt(465086, "HasInterrupt", nil, nil, 1, 2)
-local specWarnNecrosis						= mod:NewSpecialWarningMoveAway(470600, nil, nil, nil, 1, 2)
+local specWarnMindBlast						= mod:NewSpecialWarningInterrupt(465086, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnNecrosis						= mod:NewSpecialWarningMoveAway(470600, nil, nil, nil, 1, 2, nil, nil, "range5")
 local yellNecrosis							= mod:NewYell(470600)
-local specWarnLingeringNecrosis				= mod:NewSpecialWarningYou(470603, nil, nil, nil, 1, 2)
-local specWarnMindShatteringScreams			= mod:NewSpecialWarningDodge(470609, nil, nil, nil, 2, 2)
+local specWarnLingeringNecrosis				= mod:NewSpecialWarningYou(470603, nil, nil, nil, 1, 2, nil, nil, "targetyou")
+local specWarnMindShatteringScreams			= mod:NewSpecialWarningDodge(470609, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 local timerNemesisCD						= mod:NewCDTimer(9.6, 466504, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 --local timerNecrosisCD						= mod:NewCDTimer(30, 470599, nil, nil, nil, 3)--Possibly health based
@@ -88,11 +88,11 @@ mod:AddTimerLine(DBM:EJ_GetSectionInfo(30906))
 local specWarnVolcanicBlast					= mod:NewSpecialWarningYou(465225, nil, nil, nil, 1, 2)
 local yellVolcanicBlast						= mod:NewYell(465225, nil, nil, nil, "YELL")
 local yellVolcanicBlastFades				= mod:NewShortFadesYell(465225, nil, nil, nil, "YELL")
-local specWarnVolcanicBlastSoak				= mod:NewSpecialWarningMoveTo(465225, nil, nil, nil, 1, 2)
+local specWarnVolcanicBlastSoak				= mod:NewSpecialWarningMoveTo(465225, nil, nil, nil, 1, 2, nil, nil, "helpsoak")
 local specWarnVolcanicVolley				= mod:NewSpecialWarningCount(470649, nil, nil, nil, 2, 2)
 local specWarnSummonFireguard				= mod:NewSpecialWarningSwitchCount(465100, "Dps", nil, nil, 1, 2)
-local specWarnFireNova						= mod:NewSpecialWarningInterrupt(465093, "HasInterrupt", nil, nil, 1, 2)
-local specWarnFieryDemise					= mod:NewSpecialWarningSoak(465268, nil, nil, nil, 2, 2)
+local specWarnFireNova						= mod:NewSpecialWarningInterrupt(465093, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local specWarnFieryDemise					= mod:NewSpecialWarningSoak(465268, nil, nil, nil, 2, 2, nil, nil, "helpsoak")
 
 local timerVolcanicBlastCD					= mod:NewCDCountTimer(26.1, 465225, nil, nil, nil, 3)
 local timerVolcanicVolleyCD					= mod:NewCDCountTimer(15, 470649, nil, nil, nil, 2)

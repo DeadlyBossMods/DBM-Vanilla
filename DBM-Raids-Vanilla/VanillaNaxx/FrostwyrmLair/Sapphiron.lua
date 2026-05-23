@@ -43,8 +43,8 @@ local warnAirPhaseSoon	= mod:NewAnnounce("WarningAirPhaseSoon", 3, "Interface\\A
 local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 
-local warnBlizzard		= mod:NewSpecialWarningGTFO(28547, nil, nil, nil, 1, 8)
-local warnFrostBreath	= mod:NewSpecialWarningSpell(28524, nil, nil, nil, 3, 2, nil, "135833")
+local warnBlizzard		= mod:NewSpecialWarningGTFO(28547, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
+local warnFrostBreath	= mod:NewSpecialWarningSpell(28524, nil, nil, nil, 3, 2, nil, "135833", "findshelter")
 local yellIceBlock		= mod:NewYell(28522)
 
 local timerDrainLife	= mod:NewVarTimer("v21.1-27.5", 28542, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
@@ -55,8 +55,8 @@ local timerFrostBreath 	= mod:NewCastTimer(7, 28524, nil, nil, nil, 2, "135833",
 local timerBomb, specWarnBomb, specWarnBombSoak, yellBomb, yellBombFades
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerBomb			= mod:NewNextTimer(30.75, 1219729)
-	specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12)
-	specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12)
+	specWarnBomb		= mod:NewSpecialWarningYou(1219729, nil, nil, nil, 3, 12, nil, nil, "bombyou")
+	specWarnBombSoak	= mod:NewSpecialWarningSoak(1219729, nil, nil, nil, 2, 12, nil, nil, "helpsoak")
 	yellBomb			= mod:NewYell(1219729)
 	yellBombFades		= mod:NewShortFadesYell(1219729)
 mod:AddSetIconOption("SetIconOnBombTarget", 1219729, true, 0, {3, 6})

@@ -32,9 +32,9 @@ local warnHex				= mod:NewTargetNoFilterAnnounce(17172, 2, nil, "RemoveMagic")
 local warnBrainWash			= mod:NewTargetNoFilterAnnounce(24261, 4)
 local warnBanish			= mod:NewTargetNoFilterAnnounce(24466, 2)
 
-local specWarnHealingWard	= mod:NewSpecialWarningSwitch(24309, "Dps", nil, nil, 1, 2)
-local specWarnBrainTotem	= mod:NewSpecialWarningSwitch(24262, "Dps", nil, nil, 1, 2)
-local specWarnDelusion		= mod:NewSpecialWarningTargetChange(24306, nil, nil, nil, 1, 2)
+local specWarnHealingWard	= mod:NewSpecialWarningSwitch(24309, "Dps", nil, nil, 1, 2, nil, nil, "attacktotem")
+local specWarnBrainTotem	= mod:NewSpecialWarningSwitch(24262, "Dps", nil, nil, 1, 2, nil, nil, "attacktotem")
+local specWarnDelusion		= mod:NewSpecialWarningTargetChange(24306, nil, nil, nil, 1, 2, nil, nil, "targetchange")
 
 local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)

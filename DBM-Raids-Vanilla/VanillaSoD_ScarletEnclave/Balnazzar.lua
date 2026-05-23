@@ -23,13 +23,13 @@ mod:RegisterEventsInCombat(
 )
 
 local warnMc = mod:NewTargetNoFilterAnnounce(1231844)
-local warnMcYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
+local warnMcYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2, nil, nil, "targetyou")
 local timerMc = mod:NewNextTimer(10, 1231844)
 local yellMc = mod:NewYell(1231844)
 
-local warnSilenceYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2)
+local warnSilenceYou = mod:NewSpecialWarningMove(1231844, nil, nil, nil, 2, 2, nil, nil, "findshelter")
 
-local warnCarrionYou = mod:NewSpecialWarningYou(1231836, nil, nil, nil, 2, 2)
+local warnCarrionYou = mod:NewSpecialWarningYou(1231836, nil, nil, nil, 2, 2, nil, nil, "scatter")
 
 -- Prey on the weak was changed, apparently it now is cast just once on pull and stays active. Seems to tick every 6 seconds, but sometimes 5? (Maybe related to phases)
 -- Warning disabled by default because it got nerfed so hard you can basically ignore it, but the timer is kinda cool if you really wanna optimize it. (Doubt anyone will bother, might disable by default later if it confuses people)
@@ -37,7 +37,7 @@ local timerPrey = mod:NewTargetTimer(6, 1231645)
 local specWarnPrey = mod:NewSpecialWarningMoveTo(1231636, false, nil, 2, 2, 2)
 
 -- Adds casting fear, this got stealth-nerfed from 1s cast time to 2.5s
-local warnFear		= mod:NewSpecialWarningInterrupt(1231885, nil, nil, nil, 1, 2)
+local warnFear		= mod:NewSpecialWarningInterrupt(1231885, nil, nil, nil, 1, 2, nil, nil, "kickcast")
 local timerFearCast	= mod:NewCastNPTimer(2.5, 1397, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON) -- Different spell ID to not confuse NP timers
 local timerFear		= mod:NewNextNPTimer(11.4, 1231885, nil, nil, nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 

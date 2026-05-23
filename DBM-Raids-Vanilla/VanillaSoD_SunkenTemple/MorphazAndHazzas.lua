@@ -34,7 +34,7 @@ local warnDreamersLament			= mod:NewCountAnnounce(446468, 3)
 local warnCorruptedBreath			= mod:NewStackAnnounce(446487, 2, nil, "Tank|Healer")
 local warnAnimateFlame				= mod:NewSpellAnnounce(446661, 3)
 
-local specWarnBackfire				= mod:NewSpecialWarningCount(446489, nil, nil, nil, 2, 2)
+local specWarnBackfire				= mod:NewSpecialWarningCount(446489, nil, nil, nil, 2, 2, nil, nil, "carefly")
 --local specWarnTheClaw				= mod:NewSpecialWarningYou(432062, nil, nil, nil, 1, 2)
 --local yellTheClaw					= mod:NewYell(432062)
 
