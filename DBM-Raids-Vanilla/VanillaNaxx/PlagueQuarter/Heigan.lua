@@ -35,6 +35,6 @@ function mod:BackInRoom(time)
 	self:ScheduleMethod(time, "DancePhase")
 end
 
-function mod:OnCombatStart(delay)
-	self:BackInRoom(90 - delay)
+function mod:OnCombatStart()
+	self:BackInRoom(90)
 end

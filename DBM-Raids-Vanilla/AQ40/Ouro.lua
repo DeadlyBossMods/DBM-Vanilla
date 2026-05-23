@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("Ouro", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15517)
 mod:SetEncounterID(716)
@@ -32,28 +33,32 @@ local warnBerserk		= mod:NewSpellAnnounce(26615, 3)
 local warnBerserkSoon	= mod:NewSoonAnnounce(26615, 2)
 
 local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2)
-local specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2)
 
 local timerSubmerge		= mod:NewTimer(30, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
 local timerEmerge		= mod:NewTimer(30, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerSweepCD		= mod:NewNextTimer(20.5, 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerBlastCD		= mod:NewNextTimer(22.6, 26102, nil, nil, nil, 2)
-local timerNextEye		= mod:NewNextTimer(30, 1215744)
+local timerBlastCD		= mod:NewVarTimer("v22.1-38.9", 26102, nil, nil, nil, 2)
+local timerSweepCD		= mod:NewVarTimer("v20.6-22.6", 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-mod.vb.prewarn_enrage = false
-mod.vb.enraged = false
+local timerNextEye, specWarnEye
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+	timerNextEye 	= mod:NewNextTimer(30, 1215744)
+	specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2)
+end
 
-function mod:OnCombatStart(delay)
-	self.vb.prewarn_enrage = false
-	self.vb.enraged = false
-	timerSweepCD:Start(22-delay)--22-25
-	timerBlastCD:Start(20-delay)--20-26
-	timerSubmerge:Start(184-delay)
+mod.vb.prewarn_berserk = false
+mod.vb.berserked = false
+
+function mod:OnCombatStart()
+	self.vb.prewarn_berserk = false
+	self.vb.berserked = false
+	timerBlastCD:Start("v22.1-28.3")
+	timerSweepCD:Start("v24.1-27.4")
+	timerSubmerge:Start(184)
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
 	if DBM:UnitDebuff("player", 1213261) then
-		self:BlindingAdmiration(delay)
+		self:BlindingAdmiration()
 	end
 end
 
@@ -70,7 +75,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(26615) and args:IsDestTypeHostile() then
-		self.vb.Berserked = true
+		self.vb.berserked = true
 		warnBerserk:Show()
 		timerSubmerge:Stop()
 	end
@@ -88,7 +93,7 @@ function mod:SPELL_CAST_START(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(26058) and self:AntiSpam(3) and not self.vb.Berserked then
+	if args:IsSpell(26058) and self:AntiSpam(3) and not self.vb.berserked then
 		timerBlastCD:Stop()
 		timerSweepCD:Stop()
 		timerSubmerge:Stop()
@@ -99,10 +104,17 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.23 and self:GetUnitCreatureId(uId) == 15517 and not self.vb.prewarn_enrage then
-		self.vb.prewarn_enrage = true
-		warnBerserkSoon:Show()
+	if self:GetUnitCreatureId(uId) == 15517 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
+		self:SendSync("BerserkSoon")
 		self:UnregisterShortTermEvents()
+	end
+end
+
+function mod:OnSync(msg)
+	if not self:IsInCombat() then return end
+	if msg == "BerserkSoon" and not self.vb.prewarn_berserk then
+		self.vb.prewarn_berserk = true
+		warnBerserkSoon:Show()
 	end
 end
 

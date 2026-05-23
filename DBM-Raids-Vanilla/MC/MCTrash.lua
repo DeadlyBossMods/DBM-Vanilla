@@ -21,38 +21,36 @@ mod:SetZone(409)
 mod:RegisterZoneCombat(409)
 
 mod:RegisterEvents(
---	"SPELL_CAST_START",
-	"SPELL_CAST_SUCCESS 19392 19196 19272 18945 20276 19129 19641 19636 19635 18944 19630",
---	"SPELL_AURA_APPLIED",
---	"SPELL_AURA_APPLIED_DOSE",
---	"SPELL_AURA_REMOVED",
+	"SPELL_CAST_SUCCESS 19392 19196 19272 18945 20276 19129 19365 19641 19636 19635 18944 19630",
+	"SPELL_AURA_APPLIED 19393",
 	"UNIT_DIED"
---	"GOSSIP_SHOW"
 )
 
 local warnSmash						= mod:NewSpellAnnounce(18944, 2, nil, false, 2)
-local warnKnockAway					= mod:NewSpellAnnounce(18945, 2, nil, "Tank|Healer")
+local warnKnockAway					= mod:NewSpellAnnounce(18945, 2, nil, "Tank")
 local warnMassiveTremor				= mod:NewSpellAnnounce(19129, 3, nil, false, 2)
 local warnSurge						= mod:NewSpellAnnounce(19196, 2, nil, "Tank|Healer", 2)
 local warnLavaBreath				= mod:NewSpellAnnounce(19272, 2, nil, false, 2)
 local warnSummonLavaSpawn			= mod:NewSpellAnnounce(19392, 3)
+local warnSoulBurn					= mod:NewTargetNoFilterAnnounce(19393, 3, nil, "RemoveMagic")
+local warnAncientDread				= mod:NewSpellAnnounce(19365, 3, nil, "RemoveMagic")
 local warnConeofFire				= mod:NewSpellAnnounce(19630, 3, nil, "Healer", 2)
 local warnInciteFlames				= mod:NewSpellAnnounce(19635, 2, nil, "RemoveMagic")
 local warnFireBlossom				= mod:NewSpellAnnounce(19636, 2)
 local warnPyroclastBarrage			= mod:NewSpellAnnounce(19641, 2)
-local warnKnockDown					= mod:NewSpellAnnounce(20276, 2, nil, "Tank|Healer")
+local warnKnockDown					= mod:NewSpellAnnounce(20276, 2, nil, "Tank")
 
-local timerSmashCD					= mod:NewCDNPTimer(7.2, 18944, nil, nil, nil, 2)--7.2-9.9
+local timerSmashCD					= mod:NewCDNPTimer(7.2, 18944, nil, "Melee", nil, 2)--7.2-9.9
 local timerKnockAwayCD				= mod:NewCDNPTimer(10.7, 18945, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--10.7-14.8
-local timerMassiveTremorCD			= mod:NewCDNPTimer(13.3, 19129, nil, nil, nil, 2)--13.3-17.0
-local timerSurgeCD					= mod:NewCDNPTimer(7.1, 19196, nil, nil, nil, 3)--7.1-14.5
-local timerLavaBreathCD				= mod:NewCDNPTimer(10.9, 19272, nil, nil, nil, 3)--10.9-19.4
+local timerMassiveTremorCD			= mod:NewCDNPTimer(13.3, 19129, nil, "Melee", nil, 2)--13.3-17.0
+local timerSurgeCD					= mod:NewCDNPTimer(7.1, 19196, nil, nil, nil, 2)--7.1-14.5
+local timerLavaBreathCD				= mod:NewCDNPTimer(10.9, 19272, nil, nil, nil, 2)--10.9-19.4
 local timerSummonLavaSpawnCD		= mod:NewCDNPTimer(16.8, 19392, nil, nil, nil, 1)--16.8-19.5
-local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 3)--13.5-15.9
+local timerConeofFireCD				= mod:NewCDNPTimer(13.5, 19630, nil, nil, nil, 2)--13.5-15.9
 local timerInciteFlamesCD			= mod:NewCDNPTimer(12.1, 19635, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)--12.1-18.2
 local timerFireBlossomCD			= mod:NewCDNPTimer(11.1, 19636, nil, nil, nil, 2)--11.1-19.6
 local timerPyroclastBarrageCD		= mod:NewCDNPTimer(8.3, 19641, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)--8.3-20.7
-local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
+local timerKnockDownCD				= mod:NewCDNPTimer(7.2, 20276, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--7.2+
 
 mod:AddSpeedClearOption("MC", true)
 
@@ -104,23 +102,27 @@ function mod:SPELL_CAST_SUCCESS(args)
 			warnMassiveTremor:Show()
 		end
 		timerMassiveTremorCD:Start(nil, args.sourceGUID)
+	elseif spellId == 19365 then
+		if self:AntiSpam(3, 7) then
+			warnAncientDread:Show()
+		end
 	elseif spellId == 19641 then
 		--"Pyroclast Barrage-19641-npc:12076-00013C078B = pull:28.9, 9.8, 10.8, 12.3, 18.3, 12.1",
 		--"Pyroclast Barrage-19641-npc:12076-0001BC078B = pull:33.7, 18.3, 11.0, 20.7, 10.9",
-		if self:AntiSpam(3, 7) then
+		if self:AntiSpam(3, 8) then
 			warnPyroclastBarrage:Show()
 		end
 		timerPyroclastBarrageCD:Start(nil, args.sourceGUID)
 	elseif spellId == 19636 then
 		--"Fire Blossom-19636-npc:11666-00003C078B = pull:145.8, 19.5",
 		--"Fire Blossom-19636-npc:11666-00013C078B = pull:37.5, 19.6, 13.2, 13.4",
-		if self:AntiSpam(3, 8) then
+		if self:AntiSpam(3, 9) then
 			warnFireBlossom:Show()
 		end
 		timerFireBlossomCD:Start(nil, args.sourceGUID)
 	elseif spellId == 19635 then
 		--"Incite Flames-19635-npc:11666-00013C078B = pull:32.5, 18.2, 17.1, 17.0",
-		if self:AntiSpam(3, 9) then
+		if self:AntiSpam(3, 10) then
 			warnInciteFlames:Show()
 		end
 		timerInciteFlamesCD:Start(nil, args.sourceGUID)
@@ -128,16 +130,22 @@ function mod:SPELL_CAST_SUCCESS(args)
 		--"Smash-18944-npc:11658-0003BC078A = pull:113.3, 9.9, 7.2",
 		--"Smash-18944-npc:11658-0006BC078A = pull:67.0, 9.6, 8.7, 9.7, 7.4",
 		--"Smash-18944-npc:11658-00073C078A = pull:68.1, 7.5, 9.7, 8.4, 8.7",
-		if self:AntiSpam(3, 10) then
+		if self:AntiSpam(3, 11) then
 			warnSmash:Show()
 		end
 		timerSmashCD:Start(nil, args.sourceGUID)
 	elseif spellId == 19630 then
 		--"Cone of Fire-19630-npc:11667-00013C078B = pull:32.5, 15.9, 13.5, 15.8",
-		if self:AntiSpam(3, 11) then
+		if self:AntiSpam(3, 12) then
 			warnConeofFire:Show()
 		end
 		timerConeofFireCD:Start(nil, args.sourceGUID)
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(19393) and self:AntiSpam(3, 13) then
+		warnSoulBurn:Show(args.destName)
 	end
 end
 

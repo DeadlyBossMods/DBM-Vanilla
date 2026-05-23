@@ -25,7 +25,7 @@ mod:SetEncounterID(612)
 mod:SetModelID(14308)
 mod:SetZone(469)
 
-mod:RegisterCombat("combat_yell", L.Pull)--L.Pull is backup for classic, since classic probably won't have ENCOUNTER_START to rely on and player regen never works for this boss
+mod:RegisterCombat("combat_yell", L.Pull)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 23331 18670",
@@ -36,7 +36,7 @@ mod:RegisterEventsInCombat(
 
 --(ability.id = 18670 or ability.id = 23331 or ability.id = 24573) and type = "cast"
 local warnBlastWave		= mod:NewSpellAnnounce(23331, 2)
-local warnKnockAway		= mod:NewSpellAnnounce(18670, 3)
+local warnKnockAway		= mod:NewSpellAnnounce(18670, 3, nil, "Melee")
 local warnMortal		= mod:NewTargetNoFilterAnnounce(24573, 2, nil, "Tank|Healer", 3)
 
 local warnPhase2Soon, yellCharge, warnCharge, specWarnCharge
@@ -47,8 +47,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	 specWarnCharge = mod:NewSpecialWarningYou(367369, nil, nil, nil, 3, 2)
 end
 
-local timerMortal		= mod:NewTargetTimer(5, 24573, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON)
-
+local timerMortal		= mod:NewTargetTimer(5, 24573, nil, "Tank|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 
 -- Polyfill because I don't feel like this justifies a forced core update
 local function isBlackEssenceEnabled()
@@ -59,8 +58,7 @@ local function isBlackEssenceEnabled()
 	end
 end
 
-
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self.vb.teleportPrewarnShown = false
 end
 

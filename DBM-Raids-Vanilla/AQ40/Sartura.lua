@@ -10,6 +10,7 @@ local mod	= DBM:NewMod("Sartura", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+mod:SetMinSyncRevision(20260419000000) -- 2026, April 19th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15516)
 mod:SetEncounterID(711)
@@ -37,7 +38,7 @@ local addsGuidCheck = {}
 mod.vb.prewarn_enrage = false
 mod.vb.guardsRemaining = 3
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	table.wipe(addsGuidCheck)
 	self.vb.guardsRemaining = 3
 	self.vb.prewarn_enrage = false
@@ -65,10 +66,17 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 and self:GetUnitCreatureId(uId) == 15516 and not self.vb.prewarn_enrage then
-		warnEnrageSoon:Show()
-		self.vb.prewarn_enrage = true
+	if self:GetUnitCreatureId(uId) == 15516 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.35 then
+		self:SendSync("EnrageSoon")
 		self:UnregisterShortTermEvents()
+	end
+end
+
+function mod:OnSync(msg)
+	if not self:IsInCombat() then return end
+	if msg == "EnrageSoon" and not self.vb.prewarn_enrage then
+		self.vb.prewarn_enrage = true
+		warnEnrageSoon:Show()
 	end
 end
 

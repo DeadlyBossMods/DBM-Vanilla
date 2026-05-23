@@ -20,7 +20,6 @@ mod:SetBossHPInfoToHighest()
 mod:SetZone(309)
 
 mod:RegisterCombat("combat")
-mod:RegisterKill("yell", L.YellKill)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 24208",
@@ -36,29 +35,33 @@ mod:AddInfoFrameOption()
 local warnSimulKill		= mod:NewAnnounce("WarnSimulKill", 1, 24173)
 local warnBlind			= mod:NewTargetAnnounce(21060, 2)
 local warnGouge			= mod:NewTargetAnnounce(12540, 2)
-local warnPhase2		= mod:NewPhaseAnnounce(2)
+local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnAdds			= mod:NewSpellAnnounce(24183, 3)
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(24208, "HasInterrupt", nil, nil, 1, 2)
 
-local timerSimulKill	= mod:NewTimer(15, "TimerSimulKill", 24173)
+local timerSimulKill	= mod:NewTimer(15, "TimerSimulKill", 24173, nil, nil, 6)
 local timerBlind		= mod:NewTargetTimer(10, 21060, nil, nil, nil, 3)
 local timerGouge		= mod:NewTargetTimer(4, 12540, nil, nil, nil, 3)
 
 
-function mod:OnCombatStart(delay)
+function mod:OnCombatStart()
 	self:SetStage(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[11347] = true,
 			[11348] = true,
+			[14509] = true,
 		})
 		self.bossHealthUpdateTime = 0.5
 	end
 end
 
 function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Hide()
+	end
 end
 
 function mod:SPELL_CAST_START(args)
@@ -101,8 +104,8 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if (msg == L.YellPhase2 or msg:find(L.YellPhase2)) and self.vb.phase < 2 then -- Bossfight (tank and spank)
-		self:SendSync("YellPhase2")
+	if self:GetStage(1) and (msg == L.YellPhase2 or msg:find(L.YellPhase2)) then
+		self:SendSync("Phase2")
 	end
 end
 
@@ -113,10 +116,13 @@ function mod:OnSync(msg)
 			warnSimulKill:Show()
 			timerSimulKill:Start()
 		end
-	elseif msg == "YellPhase2" and self.vb.phase < 2 then
-		DBM.InfoFrame:Hide()
+	elseif msg == "Phase2" then
 		self:SetStage(2)
-		warnPhase2:Show()
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		warnPhase:Play("ptwo")
 		timerSimulKill:Stop()
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Hide()
+		end
 	end
 end

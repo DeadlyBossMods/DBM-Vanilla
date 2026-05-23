@@ -23,7 +23,7 @@ mod:RegisterEvents(
 	"ENCOUNTER_END",
 	"SPELL_AURA_APPLIED 26556 25698 26079 1215202 1215421 24573 2855",
 	"SPELL_AURA_REMOVED 26556 26079",
-	"SPELL_CAST_SUCCESS 26586 26073",
+	"SPELL_CAST_SUCCESS 19134 26586 26073",
 	"SPELL_CAST_START 26069 26070 26071 26072",
 	"SPELL_DAMAGE 26555 26558 26554 25779 26546 24340 8732",
 	"SPELL_PERIODIC_DAMAGE 1215421",
@@ -34,39 +34,42 @@ mod:RegisterEvents(
 	"NAME_PLATE_UNIT_ADDED"
 )
 
-
--- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
--- This is a problem out of combat often enough
-local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
-
 --TODO, meteor those big guys use, maybe some other stuff
 --local specWarnPrimalRampage			= mod:NewSpecialWarningDodge(198379, "Melee", nil, nil, 1, 2)
 
 -- Anubisath Plague/Explode - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
 local warnPlague                    = mod:NewTargetNoFilterAnnounce(26556, 2)
 local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
-local warnExplosion					= mod:NewAnnounce("WarnExplosion", 3, nil, false)
+local warnIntimidatingShout			= mod:NewSpellAnnounce(19134, 2)
 -- Not sure if both can happen in AQ40
-local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802)
-local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802)
+local warnAdd1						= mod:NewSpellAnnounce(17430, 1, 802, "Dps")
+local warnAdd2						= mod:NewSpellAnnounce(17431, 1, 802, "Dps")
 
-local specWarnExplosion				= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
 -- Anubisath Reflect - keep in sync - AQ40/AQ40Trash.lua AQ20/AQ20Trash.lua
-local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, nil, nil, nil, 1, 2)
-local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, nil, nil, nil, 1, 2)
+local specWarnShadowFrostReflect	= mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2)
+local specWarnFireArcaneReflect		= mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2)
 local specWarnShadowStorm			= mod:NewSpecialWarningMoveTo(26555, nil, nil, nil, 1, 2)
 local specWarnPlague                = mod:NewSpecialWarningMoveAway(26556, nil, nil, nil, 1, 2)
 local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2)
-local specWarnBurst					= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
 
-local timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
-local timerBurst					= mod:NewNextTimer(30, 1215202)
-local timerSpecWarnExplosion		= mod:NewCastTimer(6, 25698) -- Duration is 7s but it expires after 6s
+local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698, nil, nil, nil, 2) -- Duration is 7s but it expires after 6s
 local timerCauseInsanity			= mod:NewTargetTimer(10, 26079, nil, nil, nil, 3)
 local timerThunderClapCD			= mod:NewNextNPTimer(7, 26554, nil, nil, nil, 2)
 
 local yellPlague                    = mod:NewYell(26556)
-local yellBurst						= mod:NewIconTargetYell(1215202)
+
+local warnExplosion, yellBurst, specWarnBurst, specWarnExplosion, timerExplosion, timerBurst, specWarnGTFO
+if DBM:IsSeasonal("SeasonOfDiscovery") then
+warnExplosion				= mod:NewAnnounce("WarnExplosion", 3, nil, false)
+yellBurst					= mod:NewIconTargetYell(1215202)
+specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
+-- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
+-- This is a problem out of combat often enough
+specWarnGTFO 				= mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8)
+specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
+timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
+timerBurst					= mod:NewNextTimer(30, 1215202)
+end
 
 mod:AddSpeedClearOption("AQ40", true)
 mod:AddInfoFrameOption(nil, true)
@@ -116,7 +119,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(25698) and not self:IsTrivial() then
 		specWarnExplode:Show()
 		specWarnExplode:Play("justrun")
-		timerSpecWarnExplosion:Start()
+		timerSpecWarnExplode:Start(nil, args.sourceGUID)
 	elseif args:IsSpell(26079) then
 		warnCauseInsanity:CombinedShow(0.75, args.destName)
 		timerCauseInsanity:Start(args.destName)
@@ -142,6 +145,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 		self:ExplodingGhost(warnExplosion, specWarnExplosion, timerExplosion)
 	elseif args:IsSpell(26073) then
 		self:TrackTrashAbility(args.sourceGUID, "FireNova", args.sourceRaidFlags, args.sourceName)
+	elseif args:IsSpell(19134) and self:AntiSpam(3) then
+		warnIntimidatingShout:Show()
 	end
 end
 
@@ -198,6 +203,10 @@ end
 
 function mod:UNIT_DIED(args)
 	self:RemoveTrackTrashAbilityMob(args.destGUID)
+	local cid = self:GetCIDFromGUID(args.destGUID)
+	if cid == 15277 then
+		timerSpecWarnExplode:Stop(args.destGUID)
+	end
 end
 
 do

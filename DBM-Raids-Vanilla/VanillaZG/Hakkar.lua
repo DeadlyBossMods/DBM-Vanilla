@@ -32,15 +32,13 @@ mod:RegisterEventsInCombat(
 --[[
 (ability.id = 24324 or ability.id = 24686 or ability.id = 24687 or ability.id = 24688 or ability.id = 24689 or ability.id = 24690) and type = "cast"
 --]]
-local warnSiphonSoon			= mod:NewSoonAnnounce(24324)
+local warnSiphonSoon			= mod:NewSoonAnnounce(24324, 3)
 local warnInsanity				= mod:NewTargetNoFilterAnnounce(24327, 4)
 local warnBlood					= mod:NewTargetAnnounce(24328, 2)--Not excempt from filter since it could be spammy
 local warnAspectOfMarli			= mod:NewTargetNoFilterAnnounce(24686, 2)
 local warnAspectOfThekal		= mod:NewSpellAnnounce(24689, 3, nil, "Tank|RemoveEnrage|Healer", 4)
 local warnAspectOfArlokk		= mod:NewTargetNoFilterAnnounce(24690, 3)
 
-local specWarnBlood				= mod:NewSpecialWarningMoveAway(24328, nil, nil, nil, 1, 2)
-local yellBlood					= mod:NewYell(24328, nil, false, 2)
 local specWarnAspectOfThekal	= mod:NewSpecialWarningDispel(24689, "RemoveEnrage", nil, nil, 1, 6)
 
 local timerSiphon				= mod:NewNextTimer(90, 24324, nil, nil, nil, 2)
@@ -57,7 +55,6 @@ local timerNextAspect, timerSilenced
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	timerNextAspect				= mod:NewNextSpecialTimer(20, 24687)
 	timerSilenced				= mod:NewBuffFadesTimer(10, 468012)
-	timerAspectOfThekal			= mod:NewBuffActiveTimer(8, 24689, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
 else
 	timerAspectOfMarli			= mod:NewTargetTimer(6, 24686, nil, nil, nil, 5)
 	timerAspectOfMarliCD		= mod:NewCDTimer(16, 24686, nil, nil, nil, 2)--16-20
@@ -69,8 +66,8 @@ else
 	timerAspectOfArlokk			= mod:NewTargetTimer(2, 24690, nil, nil, nil, 2)
 	timerAspectOfArlokkCD		= mod:NewNextTimer(30, 24690, nil, nil, nil, 2)--Needs more data to verify it's a next timer, rest aren't
 end
-local timerInsanity				= mod:NewTargetTimer(10, 24327, nil, nil, nil, 5)
-local timerInsanityCD			= mod:NewCDTimer(20, 24327, nil, nil, nil, 3)
+local timerInsanity				= mod:NewTargetTimer(10, 24327, nil, nil, nil, 3)
+local timerInsanityCD			= mod:NewCDTimer(21, 24327, nil, nil, nil, 3)
 
 local enrageTimer				= mod:NewBerserkTimer(585)
 
@@ -131,10 +128,11 @@ function mod:AspectTimer(delay)
 	self:ScheduleMethod(22 - delay, "AspectTimer", 2)
 end
 
-function mod:OnCombatStart(delay)
-	enrageTimer:Start(585-delay)
-	warnSiphonSoon:Schedule(80-delay)
-	timerSiphon:Start(90-delay)
+function mod:OnCombatStart()
+	enrageTimer:Start(585)
+	warnSiphonSoon:Schedule(80)
+	timerSiphon:Start(90)
+	timerInsanityCD:Start("v20.7-22.7")
 	--Hard Mode Timers
 	--This just checks for Hakkar's health which is higher on hard mode
 	--Can't just start these on all normal mode pulls
@@ -142,11 +140,11 @@ function mod:OnCombatStart(delay)
 		if timerNextAspect then
 			self:AspectTimer()
 		else
-			timerAspectOfMarliCD:Start(10-delay)
-			timerAspectOfThekalCD:Start(10-delay)
-			timerAspectOfVenoxisCD:Start(14-delay)
-			timerAspectOfJeklikCD:Start(21-delay)
-			timerAspectOfArlokkCD:Start(30-delay)
+			timerAspectOfMarliCD:Start(10)
+			timerAspectOfThekalCD:Start(10)
+			timerAspectOfVenoxisCD:Start(14)
+			timerAspectOfJeklikCD:Start(21)
+			timerAspectOfArlokkCD:Start(30)
 		end
 	end
 end
@@ -179,13 +177,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerInsanity:Start(args.destName)
 		timerInsanityCD:Start()
 	elseif args:IsSpell(24328) then
-		if args:IsPlayer() then
-			specWarnBlood:Show()
-			specWarnBlood:Play("runout")
-			yellBlood:Yell()
-		else
-			warnBlood:Show(args.destName)
-		end
+		warnBlood:Show(args.destName)
 	elseif args:IsSpell(24686) then
 		warnAspectOfMarli:Show(args.destName)
 		timerAspectOfMarli:Start(args.destName)
