@@ -32,7 +32,7 @@ local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 4)
 local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 3)
 
 local specWarnWebWrap	= mod:NewSpecialWarningSwitch(28622, "RangedDps|Healer", nil, 2, 1, 2)
-local specWarnSpiders	= mod:NewSpecialWarningSwitch(29434, "Dps", nil, nil, 1, 2, nil, "134321", "killmob")
+local specWarnSpiders	= mod:NewSpecialWarningAdds(29434, "Dps", nil, nil, 2, 2, nil, "134321", "killmob")
 local yellWebWrap		= mod:NewYell(28622)
 
 local timerWebSpray		= mod:NewNextTimer(40.5, 29484, nil, nil, nil, 2)
@@ -104,7 +104,7 @@ function mod:OnSync(msg)
 		warnEnrageSoon:Show()
 	elseif msg == "SpidersNow" then
 		timerSpider:Stop()
-		if self.Options.SpecWarn29434switch then
+		if self.Options.SpecWarn29434adds then
 			specWarnSpiders:Show()
 			specWarnSpiders:Play("killmob")
 		else
