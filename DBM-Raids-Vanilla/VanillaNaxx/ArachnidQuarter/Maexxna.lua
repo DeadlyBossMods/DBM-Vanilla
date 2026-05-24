@@ -26,7 +26,7 @@ mod:RegisterEventsInCombat(
 local warnWebWrap		= mod:NewTargetAnnounce(28622, 2, nil, "RangedDps|Healer")
 local warnEnrage 		= mod:NewSpellAnnounce(28747, 4)
 local warnEnrageSoon	= mod:NewSoonAnnounce(28747, 2)
-local warnSpidersNow	= mod:NewSpellAnnounce(29434, 4, "134321")
+local warnSpidersNow	= mod:NewSpellAnnounce(29434, 4, "134321", "-Dps")
 local warnSpidersSoon	= mod:NewSoonAnnounce(29434, 2, "134321")
 local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 4)
 local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 3)
