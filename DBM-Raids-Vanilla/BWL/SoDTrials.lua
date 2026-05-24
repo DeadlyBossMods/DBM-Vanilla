@@ -24,6 +24,8 @@ mod:RegisterEvents(
 -- Though there is some indication that the time is ever so slightly longer during out of combat phases, but it was only off by 0.1s across a 10 minute break.
 
 
+DBM:RegisterAltSpellName(466357, L.BlueBomb)
+DBM:RegisterAltSpellName(466435, L.GreenBomb)
 local timerBombs		= mod:NewTimer(47.36, "TimerBombs", 3823)
 timerBombs.simpType = "next"
 local timerBlueBomb		= mod:NewNextTimer(47.36, 466357)
@@ -31,9 +33,9 @@ local timerGreenBomb	= mod:NewNextTimer(47.36, 466435)
 
 mod:AddOptionLine(L.BlueTrial)
 -- Blue Trial
-local specWarnBlueTrial = mod:NewSpecialWarningTarget(466357, false, nil, L.BlueBomb, 2, 2, nil, nil, "helpsoak") -- Somewhat spammy and mostly not actionable because you are already stacked
-local specWarnBlueYou	= mod:NewSpecialWarningYou(466357, nil, nil, L.BlueBomb, 3, 2, nil, nil, "gather")
-local warnBlueTrial		= mod:NewTargetNoFilterAnnounce(466357, nil, nil, nil, nil, nil, L.BlueBomb)
+local specWarnBlueTrial = mod:NewSpecialWarningTarget(466357, false, nil, nil, 2, 2, nil, nil, "helpsoak") -- Somewhat spammy and mostly not actionable because you are already stacked
+local specWarnBlueYou	= mod:NewSpecialWarningYou(466357, nil, nil, nil, 3, 2, nil, nil, "gather")
+local warnBlueTrial		= mod:NewTargetNoFilterAnnounce(466357)
 local yellBlueTrial     = mod:NewIconTargetYell(466357, nil, nil, nil, "YELL")
 local yellBlueFades     = mod:NewIconFadesYell(466357, nil, nil, nil, "YELL")
 mod:AddSetIconOption("SetIconOnBlueBombTarget", 466357, true, 0, {6})
@@ -42,8 +44,8 @@ mod:AddOptionLine(L.GreenTrial)
 -- Green Trial
 local yellGreenTrial      = mod:NewIconTargetYell(466435)
 local yellGreenTrialFades = mod:NewIconFadesYell(466435)
-local specWarnGreenTrial  = mod:NewSpecialWarningMoveAway(466435, nil, nil, L.GreenBomb, 3, 2, nil, nil, "runout")
-local warnGreenTrial      = mod:NewTargetNoFilterAnnounce(466435, 4, nil, nil, nil, nil, L.GreenBomb)
+local specWarnGreenTrial  = mod:NewSpecialWarningMoveAway(466435, nil, nil, nil, 3, 2, nil, nil, "runout")
+local warnGreenTrial      = mod:NewTargetNoFilterAnnounce(466435)
 local specWarnGTFO        = mod:NewSpecialWarningGTFO(466448, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 mod:AddSetIconOption("SetIconOnGreenBombTarget", 466435, true, 0, {4})
 
