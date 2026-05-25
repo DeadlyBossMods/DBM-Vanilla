@@ -53,7 +53,7 @@ local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3, nil, isWarlock)
 local warnHealSoon, warnHealNow, timerAura, timerNextAura
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 1225419, nil, nil, nil, 1225419)
-	warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, 2, 8, nil, 1225419, 1225419) -- keep name like a warning, not special warning to use same logic/locales as era above
+	warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, 2, 8, nil, 1225419, 1225419, nil, "healall") -- keep name like a warning, not special warning to use same logic/locales as era above
 	timerAura				= mod:NewBuffActiveTimer(17, 1225419, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 	timerNextAura			= mod:NewVarTimer("v20.1-21.5", 1225419)
 else
