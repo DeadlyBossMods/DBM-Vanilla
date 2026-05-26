@@ -31,7 +31,7 @@ local warnSpidersSoon	= mod:NewSoonAnnounce(29434, 2, "134321")
 local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 4)
 local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 3)
 
-local specWarnWebWrap	= mod:NewSpecialWarningSwitch(28622, "RangedDps|Healer", nil, 2, 1, 2)
+local specWarnWebWrap	= mod:NewSpecialWarningSwitch(28622, "RangedDps|Healer", nil, 2, 1, 2, nil, nil, "targetchange")
 local specWarnSpiders	= mod:NewSpecialWarningAdds(29434, "Dps", nil, nil, 2, 2, nil, "134321", "killmob")
 local yellWebWrap		= mod:NewYell(28622)
 
