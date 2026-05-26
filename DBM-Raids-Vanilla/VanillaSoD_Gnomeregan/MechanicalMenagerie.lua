@@ -39,6 +39,7 @@ mod:RegisterEventsInCombat(
 (ability.id = 436692 or ability.id = 440073 or ability.id = 436833 or ability.id = 436836 or ability.id = 436824 or ability.id = 436816 or ability.id = 436695) and type = "begincast"
  or (ability.id = 436828 or ability.id = 436570) and type = "cast"
 --]]
+DBM:RegisterAltSpellName(436816, 18351)--Sprocketfire Breath -> Breath
 
 mod:AddInfoFrameOption()
 
@@ -76,7 +77,7 @@ local warnOverheat						= mod:NewCastAnnounce(436741, 1, 3)
 local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, 18351, nil, 2, 2, nil, nil, "breathsoon")--Short name "Breath"
 
 local timerOverheat						= mod:NewBuffActiveTimer(15, 436741, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
-local timerSprocketfireBreathCD			= mod:NewCDTimer(21, 436816, 18351, nil, nil, 3)--21-26, first timer that's not too radically variable and we can include
+local timerSprocketfireBreathCD			= mod:NewCDTimer(21, 436816, nil, nil, nil, 3)--21-26, first timer that's not too radically variable and we can include
 
 local bossRenames = {
 	[218245] = L.Chicken,

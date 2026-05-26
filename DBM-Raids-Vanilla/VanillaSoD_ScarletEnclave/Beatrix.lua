@@ -26,7 +26,7 @@ local startTimer = mod:NewCombatTimer(185)
 -- Froggers
 local timerFroggers = mod:NewCastTimer(30, 1232690)
 local warnFroggers = mod:NewSoonAnnounce(1232690)
-local specWarnFroggers = mod:NewSpecialWarningDodgeLoc(1232690, nil, nil, nil, 2, 8)
+local specWarnFroggers = mod:NewSpecialWarningDodgeLoc(1232690, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
 -- Cannons
 local timerCannons = mod:NewCastTimer(15, 24933)

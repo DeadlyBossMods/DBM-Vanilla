@@ -30,7 +30,7 @@ local warnStaticArc					= mod:NewCountAnnounce(433251, 3)
 
 local specWarnMagneticPulse			= mod:NewSpecialWarningMoveAway(433359, nil, nil, nil, 1, 2, nil, nil, "runout")
 local yellMagneticPulse				= mod:NewYell(433359)
-local specWarnDiscombobulation		= mod:NewSpecialWarningSpell(433398, nil, nil, nil, 2, 2)
+local specWarnDiscombobulation		= mod:NewSpecialWarningSpell(433398, nil, nil, nil, 2, 2, nil, nil, "carefly")
 
 local timerStaticArcCD				= mod:NewCDCountTimer(14.5, 433251, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)--14.5-16.2 (might also be as low as 12.9)
 local timerMagneticPulseCD			= mod:NewCDTimer(12.9, 433359, nil, nil, nil, 3)--12.9-16.2
