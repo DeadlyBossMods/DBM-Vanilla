@@ -752,21 +752,6 @@ L:SetGeneralLocalization({
 	name = "梅克絲娜"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "梅克絲娜之子5秒後出現",
-	WarningSpidersNow	= "梅克絲娜之子出現了"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "梅克絲娜之子"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "為梅克絲娜之子顯示預先警告",
-	WarningSpidersNow	= "為梅克絲娜之子顯示警告",
-	TimerSpider			= "為下一次梅克絲娜之子顯示計時器"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------

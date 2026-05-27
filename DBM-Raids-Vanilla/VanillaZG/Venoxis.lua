@@ -93,7 +93,7 @@ function mod:UNIT_HEALTH(uId)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
    if self:GetStage(1.5) and spellId == 23849 then
 		self:SendSync("Phase", 2)
    end

@@ -193,6 +193,7 @@ L = DBM:GetModLocalization("Huhuran")
 L:SetGeneralLocalization{
 	name = "Princesa Huhuran"
 }
+
 ---------------
 -- Twin Emps --
 ---------------
@@ -242,6 +243,7 @@ L:SetMiscLocalization{
 	Weakened 	= "enfraquece!",
 	NotValid	= "AQ40 parcialmente limpo. %s chefes opcionais permanecem."
 }
+
 ----------------
 -- Ouro --
 ----------------
@@ -401,6 +403,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Ghosts = "Fantasmas"
 }
+
 -----------------
 --  Razorgore  --
 -----------------
@@ -430,6 +433,7 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization{
 	Event				= "É tarde demais, meus amigos! A corrupção de Nefarius se espalhou... não consigo... me controlar."
 }
+
 -----------------
 --  Broodlord  --
 -----------------
@@ -469,6 +473,7 @@ L = DBM:GetModLocalization("Flamegor")
 L:SetGeneralLocalization{
 	name = "Flamagor"
 }
+
 ----------------
 --  Ebonroc and Flamegor  --
 ----------------
@@ -489,6 +494,7 @@ L:SetMiscLocalization{
 	Ebonroc		= "Petrébano",
 	Flamegor	= "Flamagor"
 }
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------
@@ -608,6 +614,7 @@ SpecWarnBothBombs			= "Exibir anúncio especial se as bombas azul e verde estive
 SpecWarnBothBombsYou		= "Exibir anúncio especial se as bombas azul e verde estiverem em você",
 TimerBombs					= "Exibir cronômetro para as bombas de teste azul e verde"
 }
+
 ----------------
 --  Lucifron  --
 ----------------
@@ -739,6 +746,7 @@ L:SetOptionLocalization{
 L:SetWarningLocalization{
 	WarnBossPower		= "Energia do chefe em %d%%"
 }
+
 -----------------
 --  MC: Trash  --
 -----------------
@@ -824,21 +832,6 @@ L = DBM:GetModLocalization("MaexxnaVanilla")
 
 L:SetGeneralLocalization({
 	name = "Maexxna"
-})
-
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Proles de Maexxna em 5 segundos",
-	WarningSpidersNow	= "Proles de Maexxna"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "Proles"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Exibir anúncio antecipado para quando as Proles de Maexxna aparecerem",
-	WarningSpidersNow	= "Exibir anúncio quando as Proles de Maexxna aparecerem",
-	TimerSpider			= "Exibir cronômetro para as próximas Proles de Maexxna"
 })
 
 -----------------------
@@ -927,7 +920,7 @@ L:SetOptionLocalization({
 })
 
 ---------------
--- Retalhoso --
+-- Patchwerk --
 ---------------
 L = DBM:GetModLocalization("PatchwerkVanilla")
 
@@ -1076,6 +1069,7 @@ L:SetMiscLocalization({
 	Blaumeux	= "Lady Blaumeux",
 	Zeliek		= "Sir Zeliek"
 })
+
 ---------------
 -- Sapphiron --
 ---------------

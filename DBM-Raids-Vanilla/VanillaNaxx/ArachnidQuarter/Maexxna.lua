@@ -8,7 +8,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
-mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
+mod:SetMinSyncRevision(20260523000000) -- 2026, May 23rd
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15952)
 mod:SetEncounterID(1116)
@@ -19,23 +19,25 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 28622 28747",
-	"SPELL_CAST_SUCCESS 29484"
+	"SPELL_CAST_SUCCESS 29484",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 local warnWebWrap		= mod:NewTargetAnnounce(28622, 2, nil, "RangedDps|Healer")
-local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 4)
-local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 3)
-local warnSpidersSoon	= mod:NewAnnounce("WarningSpidersSoon", 2, 17332)
-local warnSpidersNow	= mod:NewAnnounce("WarningSpidersNow", 4, 17332)
 local warnEnrage 		= mod:NewSpellAnnounce(28747, 4)
 local warnEnrageSoon	= mod:NewSoonAnnounce(28747, 2)
+local warnSpidersNow	= mod:NewSpellAnnounce(29434, 4, "134321")
+local warnSpidersSoon	= mod:NewSoonAnnounce(29434, 2, "134321")
+local warnWebSprayNow	= mod:NewSpellAnnounce(29484, 4)
+local warnWebSpraySoon	= mod:NewSoonAnnounce(29484, 3)
 
 local specWarnWebWrap	= mod:NewSpecialWarningSwitch(28622, "RangedDps|Healer", nil, 2, 1, 2, nil, nil, "targetchange")
+local specWarnSpiders	= mod:NewSpecialWarningAdds(29434, "Dps", nil, nil, 2, 2, nil, "134321", "killmob")
 local yellWebWrap		= mod:NewYell(28622)
 
 local timerWebSpray		= mod:NewNextTimer(40.5, 29484, nil, nil, nil, 2)
 local timerWebWrap		= mod:NewVarTimer("v39.6-40.9", 28622, nil, "RangedDps|Healer", nil, 3)
-local timerSpider		= mod:NewTimer(30.7, "TimerSpider", 17332, nil, nil, 1)
+local timerSpider		= mod:NewNextTimer(30.7, 29434, nil, nil, nil, 1, "134321")
 
 mod.vb.warnEnrageSoon = false
 
@@ -45,7 +47,6 @@ function mod:OnCombatStart()
 	timerWebSpray:Start()
 	timerWebWrap:Start("v18.2-20.1")
 	warnSpidersSoon:Schedule(25.7)
-	warnSpidersNow:Schedule(30.7)
 	timerSpider:Start()
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
@@ -78,9 +79,14 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnWebSprayNow:Show()
 		warnWebSpraySoon:Schedule(35.5)
 		timerWebSpray:Start()
-		warnSpidersSoon:Schedule(25)
-		warnSpidersNow:Schedule(30)
+		warnSpidersSoon:Schedule(25.7)
 		timerSpider:Start()
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+	if spellId == 29434 then
+		self:SendSync("SpidersNow")
 	end
 end
 
@@ -96,5 +102,13 @@ function mod:OnSync(msg)
 	if msg == "EnrageSoon" and not self.vb.warnEnrageSoon then
 		self.vb.warnEnrageSoon = true
 		warnEnrageSoon:Show()
+	elseif msg == "SpidersNow" then
+		timerSpider:Stop()
+		if self.Options.SpecWarn29434adds then
+			specWarnSpiders:Show()
+			specWarnSpiders:Play("killmob")
+		else
+			warnSpidersNow:Show()
+		end
 	end
 end

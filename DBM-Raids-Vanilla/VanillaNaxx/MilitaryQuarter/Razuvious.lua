@@ -30,7 +30,7 @@ local warnShoutNow			= mod:NewSpellAnnounce(29107, 4, 6673)
 local warnShoutSoon			= mod:NewSoonAnnounce(29107, 3, 6673, "ManaUser")
 local warnShieldWall		= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 
-local timerShout			= mod:NewCDTimer(25.9, 29107, nil, "ManaUser", nil, 2, 6673, DBM_COMMON_L.DEADLY_ICON, true, 1, 5)
+local timerShout			= mod:NewCDTimer(25.9, 29107, nil, "ManaUser", nil, 2, 6673, DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
 local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)

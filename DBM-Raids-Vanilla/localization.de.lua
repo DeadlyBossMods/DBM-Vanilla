@@ -802,21 +802,6 @@ L:SetGeneralLocalization({
 	name = "Maexxna"
 })
 
-L:SetWarningLocalization({
-	WarningSpidersSoon	= "Maexxnaspinnlinge in 5 Sek",
-	WarningSpidersNow	= "Maexxnaspinnlinge erschienen"
-})
-
-L:SetTimerLocalization({
-	TimerSpider	= "Maexxnaspinnlinge"
-})
-
-L:SetOptionLocalization({
-	WarningSpidersSoon	= "Zeige Vorwarnung für Maexxnaspinnlinge",
-	WarningSpidersNow	= "Zeige Warnung für Maexxnaspinnlinge",
-	TimerSpider			= "Zeige Zeit bis nächste Maexxnaspinnlinge erscheinen"
-})
-
 ------------------------------
 --  Noth the Plaguebringer  --
 ------------------------------

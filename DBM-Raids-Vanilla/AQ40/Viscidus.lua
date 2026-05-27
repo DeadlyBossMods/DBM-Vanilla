@@ -149,7 +149,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
 	if spellId == 25926 or spellId == 1215736 then
 		self:SendSync("FrostWeakness", spellId)
 	end
