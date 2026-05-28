@@ -31,7 +31,7 @@ mod:RegisterEventsInCombat(
 --[[
 (ability.id = 28832 or ability.id = 28833 or ability.id = 28834 or ability.id = 28835 or ability.id = 28863 or ability.id = 28883 or ability.id = 28884) and type = "cast"
 --]]
---TODO, shouldn't timers stop when horseman die?
+
 mod:AddInfoFrameOption()
 
 local warnMarkSoon				= mod:NewAnnounce("WarningMarkSoon", 1, 28835, false)
