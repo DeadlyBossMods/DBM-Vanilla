@@ -40,6 +40,7 @@ mod:RegisterEventsInCombat(
  or (ability.id = 436828 or ability.id = 436570) and type = "cast"
 --]]
 DBM:RegisterAltSpellName(436816, 18351)--Sprocketfire Breath -> Breath
+DBM:RegisterAltSpellName(436825, 27564)--Frayed Wiring -> Reflection
 
 mod:AddInfoFrameOption()
 
@@ -66,15 +67,15 @@ local specWarnWidgetFortress		= mod:NewSpecialWarningMove(436836, "Tank", nil, n
 --local timerWidgetFortressCD		= mod:NewCDTimer(6.5, 436836, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--50-89 so no timer for now
 -- STX-13/LL
 local warnBinaryBleat				= mod:NewTargetNoFilterAnnounce(436828, 3, nil, false)--off by default optioanl announce for anyone who gets silenced for 10 seconds. ALso, no timer since 11-21 variation
-local warnFrayedOver				= mod:NewFadesAnnounce(436825, 1, nil, nil, 27564)
+local warnFrayedOver				= mod:NewFadesAnnounce(436825, 1)
 
-local specWarnFrayedWiring			= mod:NewSpecialWarningReflect(436825, nil, 27564, nil, 1, 2, nil, nil, "stopattack")--Short name "Reflection"
+local specWarnFrayedWiring			= mod:NewSpecialWarningReflect(436825, nil, nil, nil, 1, 2, nil, nil, "stopattack")--Short name "Reflection"
 
 mod:AddNamePlateOption("NPAuraOnFrayed", 436825)
 --STX-04/BD
 local warnOverheat						= mod:NewCastAnnounce(436741, 1, 3)
 
-local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, 18351, nil, 2, 2, nil, nil, "breathsoon")--Short name "Breath"
+local specWarnSprocketfireBreath		= mod:NewSpecialWarningSpell(436816, nil, nil, nil, 2, 2, nil, nil, "breathsoon")--Short name "Breath"
 
 local timerOverheat						= mod:NewBuffActiveTimer(15, 436741, nil, nil, nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerSprocketfireBreathCD			= mod:NewCDTimer(21, 436816, nil, nil, nil, 3)--21-26, first timer that's not too radically variable and we can include
