@@ -181,16 +181,18 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnSiphonSoon:Cancel()
 		warnSiphonSoon:Schedule(80)
 		timerSiphon:Start()
-	elseif args:IsSpell(24686) and timerAspectOfMarliCD then
+	elseif args:IsSpell(24686) then
 		timerAspectOfMarliCD:Start()
-	elseif args:IsSpell(24687) and timerAspectOfJeklikCD then
+	elseif args:IsSpell(24687) then
+		warnAspectOfJeklik:Show()
+		timerAspectOfJeklik:Start()
 		timerAspectOfJeklikCD:Start()
-	elseif args:IsSpell(24688) and timerAspectOfVenoxisCD then
+	elseif args:IsSpell(24688) then
 		warnAspectOfVenoxis:Show()
 		timerAspectOfVenoxisCD:Start()
-	elseif args:IsSpell(24689) and timerAspectOfThekalCD then
+	elseif args:IsSpell(24689) then
 		timerAspectOfThekalCD:Start()
-	elseif args:IsSpell(24690) and timerAspectOfArlokkCD then
+	elseif args:IsSpell(24690) then
 		timerAspectOfArlokkCD:Start()
 	end
 end
@@ -206,8 +208,6 @@ function mod:SPELL_AURA_APPLIED(args)
 		warnAspectOfMarli:Show(args.destName)
 		timerAspectOfMarli:Start(args.destName)
 	elseif args:IsSpell(24687) then
-		warnAspectOfJeklik:Show()
-		timerAspectOfJeklik:Start()
 		silenceTargets[args.destName] = true
 		DBM.InfoFrame:UpdateTable(updateInfoFrame)
 	elseif (args:IsSpell(24689) or args:IsSpell(468408)) and args:IsDestTypeHostile() then
