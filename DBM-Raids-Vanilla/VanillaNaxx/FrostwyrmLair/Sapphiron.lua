@@ -30,8 +30,8 @@ ability.id = 28524 and type = "begincast"
 --]]
 local airPhaseTimer = "v54.3-70.8"
 
-local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 2)
-local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 1, nil, "RemoveCurse")
+local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 3)
+local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 2, nil, "RemoveCurse")
 local warnIceBlock
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
