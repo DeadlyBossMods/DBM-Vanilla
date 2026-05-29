@@ -154,9 +154,6 @@ function mod:OnCombatStart()
 	--Hard Mode Timers
 	--This just checks for Hakkar's health which is higher on hard mode
 	--Can't just start these on all normal mode pulls
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Show(10, "function", updateInfoFrame)
-	end
 	if IsHardMode(self) then
 		if timerNextAspect then
 			self:AspectTimer()
@@ -174,6 +171,20 @@ function mod:OnCombatEnd()
 	self:UnscheduleMethod("AspectTimer")
 	DBM.InfoFrame:Hide()
 	table.wipe(silenceTargets)
+end
+
+local function UpdateSilenceFrame()
+	if not mod.Options.InfoFrame then return end
+	if next(silenceTargets) then
+		if not DBM.InfoFrame:IsShown() then
+			DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(24687))
+			DBM.InfoFrame:Show(10, "function", updateInfoFrame)
+		else
+			DBM.InfoFrame:UpdateTable(updateInfoFrame)
+		end
+	else
+		DBM.InfoFrame:Hide()
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -209,7 +220,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerAspectOfMarli:Start(args.destName)
 	elseif args:IsSpell(24687) then
 		silenceTargets[args.destName] = true
-		DBM.InfoFrame:UpdateTable(updateInfoFrame)
+		UpdateSilenceFrame()
 	elseif (args:IsSpell(24689) or args:IsSpell(468408)) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn24689dispel then
 			specWarnAspectOfThekal:Show(args.destName)
@@ -233,7 +244,7 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(24687) then
 		silenceTargets[args.destName] = nil
-		DBM.InfoFrame:UpdateTable(updateInfoFrame)
+		UpdateSilenceFrame()
 	elseif args:IsSpell(24689) and args:IsDestTypeHostile() then
 		timerAspectOfThekal:Stop()
 	end
