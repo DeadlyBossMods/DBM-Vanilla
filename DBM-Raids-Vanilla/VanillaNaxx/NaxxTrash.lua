@@ -14,7 +14,7 @@ mod:RegisterEvents(
 local warnIntimidatingShout		= mod:NewSpellAnnounce(19134, 2)
 local warnFear					= mod:NewSpellAnnounce(27990, 2)
 local specWarnLightningTotem	= mod:NewSpecialWarningSwitch(28294, "Dps", nil, nil, 3, 2, nil, nil, "attacktotem")
-local warnPoisonCharge			= mod:NewSpellAnnounce(28431, 2, nil, "RemovePoison")
+local warnPoisonCharge			= mod:NewSpellAnnounce(28431, 2)
 local warnVeilofShadow			= mod:NewSpellAnnounce(28440, 2, nil, "RemoveCurse|Healer")
 
 function mod:SPELL_SUMMON(args)
