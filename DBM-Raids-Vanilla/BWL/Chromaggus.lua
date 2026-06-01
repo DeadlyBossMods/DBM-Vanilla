@@ -184,7 +184,6 @@ function mod:OnCombatStart()
 	timerBreathCD:Start(string.format("v%s-%s", 27, 37.2), L.Breath1)
 	timerBreathCD:Start(string.format("v%s-%s", 57.3, 68.1), L.Breath2)
 	timerFrenzyCD:Start("v12.5-22.5")
-	specWarnBreathSoon:CancelVoice()
 	specWarnBreathSoon:Schedule(27) -- +2 sec casting time == you got 5 seconds to run
 	specWarnBreathSoon:ScheduleVoiceOverLap(27, "breathsoon")
 	specWarnBreathSoon:Schedule(57)
@@ -209,7 +208,6 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd()
-	specWarnBreathSoon:CancelVoice()
 	self:UnregisterShortTermEvents()
 	if self.Options.NPAuraOnVulnerable  then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)--isGUID, unit, spellId, texture, force, isHostile, isFriendly
