@@ -73,7 +73,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(19714) and not args:IsDestTypePlayer() then
-		if self.Options.SpecWarn19714dispel then
+		if self.Options.SpecWarn19714dispel2 then
 			specWarnDeadenMagic:Show(args.destName)
 			specWarnDeadenMagic:Play("dispelboss")
 		else
@@ -81,7 +81,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 		timerDeadenMagic:Start()
 	elseif args:IsSpell(460856) and not args:IsDestTypePlayer() then
-		if self.Options.SpecWarn19714dispel then
+		if self.Options.SpecWarn19714dispel2 then
 			specWarnReflectMagicDispel:Show(args.destName)
 			specWarnReflectMagicDispel:Play("dispelboss")
 		end
