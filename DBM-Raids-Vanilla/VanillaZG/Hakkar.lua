@@ -23,8 +23,8 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 24324 24686 24687 24688 24689 24690",
-	"SPELL_AURA_APPLIED 24327 24328 24686 24687 24689 24690 468408 468012 468491",
-	"SPELL_AURA_REMOVED 24687 24689"
+	"SPELL_AURA_APPLIED 24327 24328 24686 24687 24688 24689 24690 468408 468012 468491",
+	"SPELL_AURA_REMOVED 24687 24688 24689"
 )
 
 --[[
@@ -32,7 +32,8 @@ mod:RegisterEventsInCombat(
 --]]
 local warnSiphonSoon			= mod:NewSoonAnnounce(24324, 3)
 local warnInsanity				= mod:NewTargetNoFilterAnnounce(24327, 4)
-local warnBlood					= mod:NewTargetAnnounce(24328, 2)--Not excempt from filter since it could be spammy
+local warnBlood					= mod:NewTargetAnnounce(24328, 2)--Not exempt from filter since it could be spammy
+local yellBlood					= mod:NewYell(24328, nil, false, 2)
 local warnAspectOfMarli			= mod:NewTargetNoFilterAnnounce(24686, 4)
 local warnAspectOfJeklik		= mod:NewSpellAnnounce(24687, 2, nil, "SpellCaster")
 local warnAspectOfVenoxis		= mod:NewSpellAnnounce(24688, 2)
@@ -40,6 +41,7 @@ local warnAspectOfThekal		= mod:NewSpellAnnounce(24689, 3, nil, "Tank|RemoveEnra
 local warnAspectOfArlokk		= mod:NewTargetNoFilterAnnounce(24690, 4)
 
 local specWarnAspectOfThekal	= mod:NewSpecialWarningDispel(24689, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
+local specWarnBlood				= mod:NewSpecialWarningMoveAway(24328, nil, nil, nil, 1, 2, nil, nil, "runout")
 
 local timerSiphon				= mod:NewNextTimer(90, 24324, nil, nil, nil, 2)
 local timerAspectOfMarli
@@ -80,6 +82,7 @@ mod:AddInfoFrameOption(24687, "SpellCaster")
 
 local lines, sortedLines = {}, {}
 local silenceTargets = {}
+local hasVenoxis = false
 local function updateInfoFrame()
 	table.wipe(lines)
 	table.wipe(sortedLines)
@@ -147,6 +150,7 @@ end
 
 function mod:OnCombatStart()
 	table.wipe(silenceTargets)
+	hasVenoxis = false
 	enrageTimer:Start(585)
 	warnSiphonSoon:Schedule(80)
 	timerSiphon:Start(90)
@@ -215,12 +219,19 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerInsanityCD:Start()
 	elseif args:IsSpell(24328) then
 		warnBlood:Show(args.destName)
+		if hasVenoxis and args:IsPlayer() then
+			specWarnBlood:Show()
+			specWarnBlood:Play("runout")
+			yellBlood:Yell()
+		end
 	elseif args:IsSpell(24686) then
 		warnAspectOfMarli:Show(args.destName)
 		timerAspectOfMarli:Start(args.destName)
 	elseif args:IsSpell(24687) then
 		silenceTargets[args.destName] = true
 		UpdateSilenceFrame()
+	elseif args:IsSpell(24688) and args:IsPlayer() then
+		hasVenoxis = true
 	elseif (args:IsSpell(24689) or args:IsSpell(468408)) and args:IsDestTypeHostile() then
 		if self.Options.SpecWarn24689dispel then
 			specWarnAspectOfThekal:Show(args.destName)
@@ -245,6 +256,8 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(24687) then
 		silenceTargets[args.destName] = nil
 		UpdateSilenceFrame()
+	elseif args:IsSpell(24688) and args:IsPlayer() then
+		hasVenoxis = false
 	elseif args:IsSpell(24689) and args:IsDestTypeHostile() then
 		timerAspectOfThekal:Stop()
 	end
