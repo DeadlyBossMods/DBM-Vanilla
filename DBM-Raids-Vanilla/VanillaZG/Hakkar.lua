@@ -33,7 +33,7 @@ mod:RegisterEventsInCombat(
 local warnSiphonSoon			= mod:NewSoonAnnounce(24324, 3)
 local warnInsanity				= mod:NewTargetNoFilterAnnounce(24327, 4)
 local warnBlood					= mod:NewTargetAnnounce(24328, 2)--Not exempt from filter since it could be spammy
-local yellBlood					= mod:NewYell(24328, nil, false, 2)
+local yellBlood					= mod:NewYell(24328, nil, nil, 2)
 local warnAspectOfMarli			= mod:NewTargetNoFilterAnnounce(24686, 4)
 local warnAspectOfJeklik		= mod:NewSpellAnnounce(24687, 2, nil, "SpellCaster")
 local warnAspectOfVenoxis		= mod:NewSpellAnnounce(24688, 2)
