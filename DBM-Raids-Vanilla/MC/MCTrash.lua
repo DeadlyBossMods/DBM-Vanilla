@@ -220,7 +220,7 @@ function mod:OnSync(msg, startTime)
 		if self.Options.FastestClear2 and self.Options.SpeedClearTimer then
 			--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
 			local adjustment = GetServerTime() - self.vb.firstEngageTime
-			DBT:CreateBar(self.Options.FastestClear2 - adjustment, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106, 136106)
+			DBT:CreateBar(self.Options.FastestClear2 - adjustment, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
 		end
 	elseif msg == "IsMCStarted" and self.vb.firstEngageTime then
 		--Sadly this has to be done with two syncs, one for variables for bosses that have been killed and one to instruct starting of timer
