@@ -73,7 +73,7 @@ local timerInsanityCD			= mod:NewCDTimer(21, 24327, nil, nil, nil, 3)
 
 local enrageTimer				= mod:NewBerserkTimer(585)
 
-mod:AddInfoFrameOption(24687, "SpellCaster")
+mod:AddInfoFrameOption(24687, true)
 
 -- Aspects in SoD: Cast exactly every 20 seconds, order seems to be random, but he casts them all before repeating one as far as I can tell
 -- The second cycle is random again
