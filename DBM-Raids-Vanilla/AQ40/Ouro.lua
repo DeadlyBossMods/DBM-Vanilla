@@ -78,10 +78,8 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.berserked = true
 		warnBerserk:Show()
 		timerSubmerge:Stop()
-		if timerBlastCD then
-			timerBlastCD:Stop()
-            timerBlastCD:Start()
-		end
+		timerBlastCD:Stop() -- Sand Blast timer resets when Ouro enrages
+        timerBlastCD:Start()
 	end
 end
 
