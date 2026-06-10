@@ -205,7 +205,7 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == "CancelAirPhaseTimer" and timerAirPhase:IsStarted() then
+	if msg == "CancelAirPhaseTimer" then
 		warnAirPhaseSoon:Cancel()
 		timerAirPhase:Stop()
 	end
