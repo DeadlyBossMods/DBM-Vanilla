@@ -78,7 +78,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		self.vb.berserked = true
 		warnBerserk:Show()
 		timerSubmerge:Stop()
-		if timerBlastCD:IsStarted() then
+		if timerBlastCD then
 			timerBlastCD:Stop()
             timerBlastCD:Start()
 		end
