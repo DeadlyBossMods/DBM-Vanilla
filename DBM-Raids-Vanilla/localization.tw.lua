@@ -887,6 +887,7 @@ L:SetOptionLocalization({
 	WarningChargeChanged	= "當你的極性改變時顯示特別警告",
 	WarningChargeNotChanged	= "當你的極性沒有改變時顯示特別警告",
 	AirowsEnabled			= "顯示箭頭 (正常 \"二邊\" 站位打法)",
+	Never					= "不要顯示",
 	ArrowsRightLeft			= "顯示左/右箭頭 給 \"四角\" 站位打法 (如果極性改變顯示左箭頭, 沒變顯示左箭頭)",
 	ArrowsInverse			= "顯示倒轉的 \"四角\" 站位打法 (如果極性改變顯示左箭頭, 沒變顯示右箭頭)"
 })
