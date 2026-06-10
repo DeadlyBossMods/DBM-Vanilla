@@ -19,14 +19,18 @@ mod:SetZone(531)
 mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
-	"SPELL_SUMMON 518 25832 25831"
+	"SPELL_SUMMON 518 25832 25831",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
+local warnEntangle			= mod:NewTargetNoFilterAnnounce(720, 2)
 local warnWound				= mod:NewStackAnnounce(25646, 3, nil, "Tank", 2)
 local warnWorm				= mod:NewSpellAnnounce(25831, 3, "133973") -- Using the icon added in TBC for this spell since Era icon is default Samwise
+local warnSpawns			= mod:NewSpellAnnounce(26631, 3, "132195")
 
 local specWarnWound			= mod:NewSpecialWarningStack(25646, "Tank", 5, nil, nil, 1, 6, nil, nil, "stackhigh")
 local specWarnWoundTaunt	= mod:NewSpecialWarningTaunt(25646, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
+local specWarnSpawns		= mod:NewSpecialWarningAdds(26631, "Dps", nil, nil, 2, 2, nil, "132195", "killmob")
 
 local timerWound			= mod:NewTargetTimer(20, 25646, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerEntangle			= mod:NewTargetTimer(8, 720, nil, nil, nil, 3)
@@ -47,6 +51,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(720, 731, 1121) then
+		warnEntangle:Show(args.destName)
 		timerEntangle:Start(args.destName)
 	elseif args:IsSpell(25646) then
 		local amount = args.amount or 1
@@ -79,5 +84,22 @@ end
 function mod:SPELL_SUMMON(args)
 	if args:IsSpell(518, 25832, 25831) and self:AntiSpam(3, "SummonWorm") then
 		warnWorm:Show()
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+	if spellId == 26631 then
+		self:SendSync("Spawns")
+	end
+end
+
+function mod:OnSync(msg)
+	if msg == "Spawns" then
+		if self.Options.SpecWarn26631adds then
+			specWarnSpawns:Show()
+			specWarnSpawns:Play("killmob")
+		else
+			warnSpawns:Show()
+		end
 	end
 end
