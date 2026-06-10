@@ -939,8 +939,8 @@ L:SetOptionLocalization({
 	AirowsEnabled 			= "Pfeile während $spell:28089 anzeigen",
 	Never					= "Nie",
 	TwoCamp					= "Zeige Pfeile (normale \"2-Camps\"-Strategie)",
-	ArrowsRightLeft			= "Zeige Links-/Rechtspfeil für die \"4-Camps\"-Strategie<br/>(Linkspfeil bei Polaritätsänderung, Rechtspfeil bei keiner Änderung)",
-	ArrowsInverse			= "Umgedrehte \"4-Camps\"-Strategie<br/>(Rechtspfeil bei Polaritätsänderung, Linkspfeil bei keiner Änderung)"
+	ArrowsRightLeft			= "Zeige Links-/Rechtspfeil für die \"4-Camps\"-Strategie (Linkspfeil bei Polaritätsänderung, Rechtspfeil bei keiner Änderung)",
+	ArrowsInverse			= "Umgedrehte \"4-Camps\"-Strategie (Rechtspfeil bei Polaritätsänderung, Linkspfeil bei keiner Änderung)"
 })
 
 L:SetWarningLocalization({
