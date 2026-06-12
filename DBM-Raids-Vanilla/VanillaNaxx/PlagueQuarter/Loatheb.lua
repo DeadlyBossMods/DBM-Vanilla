@@ -44,7 +44,7 @@ mod:RegisterEventsInCombat(
 )
 
 local isWarlock 			= select(2, UnitClass("player")) == "WARLOCK"
-local warnSporeNow			= mod:NewCountAnnounce(29234, 2, "134530", "RangedDps")
+local warnSporeNow			= mod:NewCountAnnounce(29234, 1, "134530", "RangedDps")
 local warnSporeSoon			= mod:NewSoonAnnounce(29234, 1, "134530", "RangedDps")
 local warnDoomNow			= mod:NewCountAnnounce(29204, 3)
 local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3, nil, isWarlock)
