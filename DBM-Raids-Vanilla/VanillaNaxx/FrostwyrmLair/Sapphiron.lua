@@ -96,7 +96,7 @@ function mod:OnCombatStart()
 		"UNIT_HEALTH"
 	)
 	-- TODO: confirm this, it seems to have changed with the Mythic hot fixes for both mythic and normal?
-	local initialAirPhaseTimer = isMythic and 39.66 or DBM:IsSeasonal("SeasonOfDiscovery") and 31 or "v32.9-45.9" -- Air phase timer is variable on Era
+	local initialAirPhaseTimer = isMythic and 39.66 or DBM:IsSeasonal("SeasonOfDiscovery") and 31 or "v31.2-45.9" -- Air phase timer is variable on Era
 	if isMythic or DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnAirPhaseSoon:Schedule(initialAirPhaseTimer - 10)
 	else
