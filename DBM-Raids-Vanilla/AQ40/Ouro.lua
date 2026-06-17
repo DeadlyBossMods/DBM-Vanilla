@@ -51,8 +51,8 @@ mod.vb.berserked = false
 function mod:OnCombatStart()
 	self.vb.prewarn_berserk = false
 	self.vb.berserked = false
-	timerBlastCD:Start("v22.1-28.3")
-	timerSweepCD:Start("v24.1-27.4")
+	timerBlastCD:Start("v20.1-26.3")
+	timerSweepCD:Start("v22.6-25.9")
 	timerSubmerge:Start(184)
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
@@ -68,8 +68,8 @@ end
 
 function mod:Emerge()
 	warnEmerge:Show()
-	timerSweepCD:Start(23)--23-24 (it might be 22-25 like pull)
-	timerBlastCD:Start(24)--24-26 (it might be 20-26 like pull)
+	timerBlastCD:Start("v20.1-26.3")
+	timerSweepCD:Start("v22.6-25.9")
 	timerSubmerge:Start(184)
 end
 
