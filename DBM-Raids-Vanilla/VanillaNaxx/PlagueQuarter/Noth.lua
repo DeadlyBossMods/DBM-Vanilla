@@ -166,7 +166,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29213) then -- Curse of the Plaguebringer
 		self.vb.curseCount = self.vb.curseCount + 1
 		warnCurse:Show()
-		timerCurse:Show()
+		timerCurse:Start()
 		if self.vb.teleCount == 2 and self.vb.curseCount == 2 or self.vb.teleCount == 3 and self.vb.curseCount == 1 then
 			timerCurseCD:Start(67)--Niche cases it's 67 and not 53-55
 		elseif self.vb.curseCount < 2 then
