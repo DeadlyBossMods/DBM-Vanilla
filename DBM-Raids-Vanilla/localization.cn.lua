@@ -878,8 +878,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1				= "主人要吃了你！",
-	Yell2P1				= "斯塔拉格要碾碎你！"
+	Yell1P1		= "主人要吃了你！",
+	Yell2P1		= "斯塔拉格要碾碎你！",
+	Yell1P2 	= "咬碎……你的……骨头……",
+	Yell2P2 	= "打……烂……你！",
+	Yell3P2 	= "杀……",
+	EmoteDies 	= "%s死了。",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({

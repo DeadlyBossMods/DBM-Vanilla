@@ -10,7 +10,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
-mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
+mod:SetMinSyncRevision(20260618000000) -- 2026, June 18th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15928)
 mod:SetEncounterID(1120)
@@ -20,8 +20,10 @@ mod:SetZone(533)
 mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 28089",
-	"UNIT_AURA player"
+    "SPELL_CAST_START 28089",
+    "UNIT_AURA player",
+    "CHAT_MSG_MONSTER_EMOTE",
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 --TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
@@ -40,7 +42,7 @@ local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2)
 local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerIntermission		= mod:NewIntermissionTimer("v1.6-4.8", nil, CL.INTERMISSION, true, nil, nil, "136106")
+local timerIntermission		= mod:NewIntermissionTimer("v12.8-16", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
 
@@ -48,32 +50,16 @@ mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "
 
 local currentCharge
 local lastShift = 0
+local deaths = 0
 
 function mod:OnCombatStart()
 	self:SetStage(1)
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	currentCharge = nil
-	self:ScheduleMethod(40.6, "TankThrow")
-	timerThrow:Start(20.6)
-	warnThrowSoon:Schedule(37.6)
-	self:RegisterOnUpdateHandler(function()
-	if not IsEncounterInProgress() and self:GetStage(1) then
-		self:SetStage(1.5)
-		self:UnscheduleMethod("TankThrow")
-		warnPhase2Soon:Show()
-		warnThrowSoon:Cancel()
-		timerThrow:Stop()
-		timerIntermission:Start()
-		DBM.InfoFrame:Hide()
-	elseif IsEncounterInProgress() and self:GetStage(1.5) then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-        timerEnrage:Start()
-		timerIntermission:Stop()
-		warnPhase:Play("ptwo")
-        self:UnregisterOnUpdateHandler()
-	end
-    end, 0.2)
+	deaths = 0
+    self:ScheduleMethod(40.6, "TankThrow")
+    timerThrow:Start(20.6)
+    warnThrowSoon:Schedule(37.6)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(10, "bosshealth", {
 			[15929] = true,
@@ -93,9 +79,7 @@ function mod:BossHealthUpdate()
 	end
 end
 
-
 function mod:OnCombatEnd(wipe, isSecondRun)
-	self:UnregisterOnUpdateHandler()
 	if wipe and not isSecondRun then
 		DBM:AddMsg("Arrow Options can be changed for this encounter. Mod supports 3 different strats. Choose one that matches your strat")
 	end
@@ -157,6 +141,39 @@ function mod:UNIT_AURA()
 			end
 		end
 		currentCharge = charge
+	end
+end
+
+function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+    if msg == L.EmoteDies or msg:find(L.EmoteDies) then
+        deaths = math.min(2, deaths + 1)
+        if deaths == 2 then
+			self:SetStage(1.5)
+			self:UnscheduleMethod("TankThrow")
+			warnPhase2Soon:Show()
+			warnThrowSoon:Cancel()
+			timerThrow:Stop()
+			timerIntermission:Start()
+			DBM.InfoFrame:Hide()
+        end
+    elseif msg == L.EmoteRevive then
+        deaths = deaths - 1
+    end
+end
+
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
+		self:SendSync("Phase2")
+	end
+end
+
+function mod:OnSync(msg)
+	if msg == "Phase2" then
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+        timerEnrage:Start()
+		timerIntermission:Stop()
+		warnPhase:Play("ptwo")
 	end
 end
 

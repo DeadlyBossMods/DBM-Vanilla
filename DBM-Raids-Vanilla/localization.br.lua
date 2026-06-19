@@ -961,8 +961,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1	= "Vou te dar de comer pro mestre!",
-	Yell2P1 = "Stalagg esmaga você!"
+	Yell1P1		= "Vou te dar de comer pro mestre!",
+	Yell2P1 	= "Stalagg esmaga você!",
+	Yell1P2 	= "Comer... seus... osso...",
+	Yell2P2 	= "Matar... Vocês...!",
+	Yell3P2 	= "Matar...",
+	EmoteDies 	= "%s morre.",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({

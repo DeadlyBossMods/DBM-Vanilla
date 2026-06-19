@@ -981,8 +981,13 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1	= "На корм хозяину!",
-	Yell2P1	= "Сталагг тебя раздавит!"
+	Yell1P1		= "На корм хозяину!",
+	Yell2P1		= "Сталагг тебя раздавит!",
+	Yell1P2 	= "Отведайте... своих... костей...",
+	Yell2P2 	= "Растерзаю!!!",
+	Yell3P2 	= "Убей...",
+	EmoteDies 	= "%s умирает.",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({
