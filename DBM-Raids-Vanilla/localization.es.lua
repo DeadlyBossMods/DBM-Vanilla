@@ -803,7 +803,7 @@ L:SetGeneralLocalization({
 
 L:SetMiscLocalization({
 	Pull1				= "Eso... ¡Corred! ¡Así la sangre bombeará más rápido!",
-	Pull2				= "Solo un bocado...",
+	Pull2				= "Solo un poco...",
 	Pull3				= "No hay salida."
 })
 
@@ -997,7 +997,7 @@ L:SetGeneralLocalization({
 L:SetMiscLocalization({
 	Pull1 = "¡No muestres misericordia!",
 	Pull2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
-	Pull3 = "¡Poned en práctica lo que os he enseñado!",
+	Pull3 = "¡Hazlo como te enseñé!",
 	Pull4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
 })
 

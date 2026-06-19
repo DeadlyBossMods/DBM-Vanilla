@@ -30,8 +30,8 @@ ability.id = 28524 and type = "begincast"
 --]]
 local airPhaseTimer = "v54.3-70.8"
 
-local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 2)
-local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 1, nil, "RemoveCurse")
+local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 3)
+local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 2, nil, "RemoveCurse")
 local warnIceBlock
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
@@ -96,7 +96,7 @@ function mod:OnCombatStart()
 		"UNIT_HEALTH"
 	)
 	-- TODO: confirm this, it seems to have changed with the Mythic hot fixes for both mythic and normal?
-	local initialAirPhaseTimer = isMythic and 39.66 or DBM:IsSeasonal("SeasonOfDiscovery") and 31 or "v32.9-45.9" -- Air phase timer is variable on Era
+	local initialAirPhaseTimer = isMythic and 39.66 or DBM:IsSeasonal("SeasonOfDiscovery") and 31 or "v31.2-45.9" -- Air phase timer is variable on Era
 	if isMythic or DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnAirPhaseSoon:Schedule(initialAirPhaseTimer - 10)
 	else
@@ -205,7 +205,7 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == "CancelAirPhaseTimer" and timerAirPhase:IsStarted() then
+	if msg == "CancelAirPhaseTimer" then
 		warnAirPhaseSoon:Cancel()
 		timerAirPhase:Stop()
 	end
