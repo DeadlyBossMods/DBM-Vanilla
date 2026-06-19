@@ -144,7 +144,7 @@ local function UpdateCurseFrame()
 		end
 	else
 		DBM.InfoFrame:Hide()
-		timerCurse:Cancel()
+		timerCurse:Stop()
 	end
 end
 
