@@ -220,7 +220,7 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
 	if spellId == 28025 then
 		self:SendSync("TeleportTimer")
-	elseif SpellId == 28026 then
+	elseif spellId == 28026 then
 		self:SendSync("Teleported")
 	end
 end
