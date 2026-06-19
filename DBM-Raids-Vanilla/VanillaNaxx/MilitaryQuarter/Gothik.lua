@@ -228,7 +228,7 @@ end
 function mod:OnSync(event)
     if event == "TeleportTimer" then
 		warnTeleport:Schedule(14.5)
-    	timerTeleport:Start()
+		timerTeleport:Start()
 	elseif event == "Teleported" then
 		timerTeleport:Cancel()
 		warnTeleport:Cancel()
