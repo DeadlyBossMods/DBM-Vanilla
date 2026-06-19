@@ -18,6 +18,8 @@ mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29213 29212 29208",
+	"SPELL_AURA_APPLIED 29213",
+	"SPELL_AURA_REMOVED 29213",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
@@ -36,8 +38,28 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
+local timerCurse       	= mod:NewBuffActiveTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
+
+mod:AddInfoFrameOption(29213, "RemoveCurse")
+
+local lines, sortedLines = {}, {}
+local curseTargets = {}
+local function updateInfoFrame()
+	table.wipe(lines)
+	table.wipe(sortedLines)
+
+	local i = 0
+
+	for name in pairs(curseTargets) do
+		i = i + 1
+		sortedLines[i] = name
+		lines[name] = ""
+	end
+
+	return lines, sortedLines
+end
 
 mod.vb.teleCount = 0
 mod.vb.addsCount = 0
@@ -95,6 +117,7 @@ function mod:BackInRoom()
 end
 
 function mod:OnCombatStart()
+	table.wipe(curseTargets)
 	self.vb.teleCount = 0
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
@@ -105,10 +128,45 @@ function mod:OnCombatStart()
 	self:ScheduleMethod(90.8, "Balcony")
 end
 
+function mod:OnCombatEnd()
+	DBM.InfoFrame:Hide()
+	table.wipe(curseTargets)
+end
+
+local function UpdateCurseFrame()
+	if not mod.Options.InfoFrame then return end
+	if next(curseTargets) then
+		if not DBM.InfoFrame:IsShown() then
+			DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(29213))
+			DBM.InfoFrame:Show(20, "function", updateInfoFrame)
+		else
+			DBM.InfoFrame:UpdateTable(updateInfoFrame)
+		end
+	else
+		DBM.InfoFrame:Hide()
+		timerCurse:Cancel()
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(29213) then
+		curseTargets[args.destName] = true
+		UpdateCurseFrame()
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(29213) then
+		curseTargets[args.destName] = nil
+		UpdateCurseFrame()
+	end
+end
+
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29213) then -- Curse of the Plaguebringer
 		self.vb.curseCount = self.vb.curseCount + 1
 		warnCurse:Show()
+		timerCurse:Show()
 		if self.vb.teleCount == 2 and self.vb.curseCount == 2 or self.vb.teleCount == 3 and self.vb.curseCount == 1 then
 			timerCurseCD:Start(67)--Niche cases it's 67 and not 53-55
 		elseif self.vb.curseCount < 2 then
