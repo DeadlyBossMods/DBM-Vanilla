@@ -18,7 +18,8 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"UNIT_DIED",
-	"UNIT_HEALTH"
+	"UNIT_HEALTH",
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 -- New spell ID found in logs on SoD
@@ -38,6 +39,9 @@ local timerTeleport, warnTeleport
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnTeleport		= mod:NewSoonAnnounce(1222332, 3)
 	timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
+else
+	warnTeleport		= mod:NewSoonAnnounce(28026, 3, "135736")
+	timerTeleport		= mod:NewNextTimer(19.4, 28026, nil, nil, nil, 6, "135736")
 end
 
 mod:AddInfoFrameOption(nil, true)
@@ -203,8 +207,28 @@ function mod:UNIT_DIED(args)
 end
 
 function mod:UNIT_HEALTH(uId)
-	if DBM:IsSeasonal("SeasonOfDiscovery") and self:GetUnitCreatureId(uId) == 16060 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.3 then
-		self:UnscheduleMethod("Teleport")
+	if self:GetUnitCreatureId(uId) == 16060 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.3 then
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			self:UnscheduleMethod("Teleport")
+		end
+		timerTeleport:Cancel()
+		warnTeleport:Cancel()
+	end
+end
+
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+	if spellId == 28025 then
+		self:SendSync("TeleportTimer")
+	elseif SpellId == 28026 then
+		self:SendSync("Teleported")
+	end
+end
+
+function mod:OnSync(event)
+    if event == "TeleportTimer" then
+		warnTeleport:Schedule(14.5)
+    	timerTeleport:Start()
+	elseif event == "Teleported" then
 		timerTeleport:Cancel()
 		warnTeleport:Cancel()
 	end
