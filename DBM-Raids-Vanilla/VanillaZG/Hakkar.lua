@@ -188,7 +188,7 @@ local function UpdateSilenceFrame()
 		end
 	else
 		DBM.InfoFrame:Hide()
-		timerAspectOfJeklik:Cancel()
+		timerAspectOfJeklik:Stop()
 	end
 end
 
