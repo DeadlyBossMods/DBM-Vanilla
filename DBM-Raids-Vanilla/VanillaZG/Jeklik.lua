@@ -33,8 +33,8 @@ local warnPain			= mod:NewTargetNoFilterAnnounce(23952, 2, nil, "RemoveMagic")
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(23954, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
-local timerSonicBurst	= mod:NewBuffActiveTimer(10, 23918, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerScream		= mod:NewBuffActiveTimer(4, 22884, nil, nil, nil, 3)
+local timerSonicBurst	= mod:NewBuffFadesTimer(10, 23918, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
+local timerScream		= mod:NewBuffFadesTimer(4, 22884, nil, nil, nil, 3)
 local timerPain			= mod:NewTargetTimer(18, 23952, nil, "RemoveMagic", nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 local timerHealCD		= mod:NewNextTimer(20, 23954, nil, "HasInterrupt", nil, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 
