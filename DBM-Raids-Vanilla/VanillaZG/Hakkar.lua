@@ -60,7 +60,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 else
 	timerAspectOfMarli			= mod:NewTargetTimer(6, 24686, nil, nil, nil, 3)
 	timerAspectOfMarliCD		= mod:NewVarTimer("v16.1-22.8", 24686, nil, nil, nil, 3)
-	timerAspectOfJeklik			= mod:NewBuffActiveTimer(5, 24687, nil, false, 2, 2)--Could be spammy so off by default. Users can turn it on who want to see this
+	timerAspectOfJeklik			= mod:NewBuffFadesTimer(5, 24687, nil, false, 2, 2)--Could be spammy so off by default. Users can turn it on who want to see this
 	timerAspectOfJeklikCD		= mod:NewVarTimer("v21-32.4", 24687, nil, nil, nil, 2)
 	timerAspectOfVenoxisCD		= mod:NewVarTimer("v16.2-24.3", 24688, nil, nil, nil, 2)
 	timerAspectOfThekal			= mod:NewBuffActiveTimer(8, 24689, nil, "Tank|RemoveEnrage|Healer", 3, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.ENRAGE_ICON)
