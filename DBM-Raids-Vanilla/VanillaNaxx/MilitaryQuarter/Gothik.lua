@@ -212,7 +212,7 @@ function mod:UNIT_HEALTH(uId)
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
 			self:UnscheduleMethod("Teleport")
 		end
-		timerTeleport:Cancel()
+		timerTeleport:Stop()
 		warnTeleport:Cancel()
 	end
 end
@@ -230,7 +230,7 @@ function mod:OnSync(event)
 		warnTeleport:Schedule(14.5)
 		timerTeleport:Start()
 	elseif event == "Teleported" then
-		timerTeleport:Cancel()
+		timerTeleport:Stop()
 		warnTeleport:Cancel()
 	end
 end
