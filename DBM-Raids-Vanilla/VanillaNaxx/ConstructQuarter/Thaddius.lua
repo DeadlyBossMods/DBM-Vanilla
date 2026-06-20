@@ -155,7 +155,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 			timerIntermission:Start()
 			DBM.InfoFrame:Hide()
         end
-    elseif msg == L.EmoteRevive then
+    elseif msg == L.EmoteRevive or msg:find(L.EmoteRevive) then
         deaths = deaths - 1
     end
 end
