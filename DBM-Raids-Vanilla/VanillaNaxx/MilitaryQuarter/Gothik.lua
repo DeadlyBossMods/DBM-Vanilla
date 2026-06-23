@@ -36,12 +36,13 @@ local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
 
-local timerTeleport, warnTeleport
+local timerTeleport, warnTeleport, warnTeleportSoon
 if DBM:IsSeasonal("SeasonOfDiscovery") then
-	warnTeleport		= mod:NewSoonAnnounce(1222332, 3)
+	warnTeleportSoon	= mod:NewSoonAnnounce(1222332, 3)
 	timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
 else
-	warnTeleport		= mod:NewSoonAnnounce(28026, 3, "135736")
+	warnTeleport		= mod:NewSpellAnnounce(28026, 3, "135736")
+	warnTeleportSoon	= mod:NewSoonAnnounce(28026, 2, "135736")
 	timerTeleport		= mod:NewNextTimer(19.4, 28026, nil, nil, nil, 6, "135736")
 end
 
@@ -152,7 +153,7 @@ end
 
 function mod:Teleport()
 	timerTeleport:Start()
-	warnTeleport:Schedule(27)
+	warnTeleportSoon:Schedule(27)
 	self:ScheduleMethod(20, "Teleport")
 end
 
@@ -213,7 +214,7 @@ function mod:UNIT_HEALTH(uId)
 			self:UnscheduleMethod("Teleport")
 		end
 		timerTeleport:Stop()
-		warnTeleport:Cancel()
+		warnTeleportSoon:Cancel()
 	end
 end
 
@@ -227,10 +228,11 @@ end
 
 function mod:OnSync(event)
     if event == "TeleportTimer" then
-		warnTeleport:Schedule(14.5)
+		warnTeleportSoon:Schedule(14.5)
 		timerTeleport:Start()
 	elseif event == "Teleported" then
+		warnTeleport:Show()
 		timerTeleport:Stop()
-		warnTeleport:Cancel()
+		warnTeleportSoon:Cancel()
 	end
 end
