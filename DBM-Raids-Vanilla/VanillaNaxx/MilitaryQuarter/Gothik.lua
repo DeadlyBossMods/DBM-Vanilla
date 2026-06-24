@@ -213,11 +213,7 @@ end
 
 function mod:UNIT_HEALTH(uId)
 	if self:GetUnitCreatureId(uId) == 16060 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.3 then
-		if DBM:IsSeasonal("SeasonOfDiscovery") then
-			self:UnscheduleMethod("Teleport")
-		end
-		timerTeleport:Stop()
-		warnTeleportSoon:Cancel()
+		self:SendSync("LowHPThreshold")
 		self:UnregisterShortTermEvents()
 	end
 end
@@ -236,6 +232,12 @@ function mod:OnSync(event)
 		timerTeleport:Start()
 	elseif event == "Teleported" then
 		warnTeleport:Show()
+		timerTeleport:Stop()
+		warnTeleportSoon:Cancel()
+	elseif event == "LowHPThreshold" then
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			self:UnscheduleMethod("Teleport")
+		end
 		timerTeleport:Stop()
 		warnTeleportSoon:Cancel()
 	end
