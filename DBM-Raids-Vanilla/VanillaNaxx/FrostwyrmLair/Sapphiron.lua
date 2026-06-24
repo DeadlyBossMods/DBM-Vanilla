@@ -204,7 +204,6 @@ end
 
 function mod:UNIT_HEALTH(uId)
 	if self:GetUnitCreatureId(uId) == 15989 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.10 then
-		self.vb.airPhaseHPThreshold = true
 		self:SendSync("CancelAirPhaseTimer")
 		self:UnregisterShortTermEvents()
 	end
@@ -213,6 +212,7 @@ end
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
 	if msg == "CancelAirPhaseTimer" then
+		self.vb.airPhaseHPThreshold = true
 		warnAirPhaseSoon:Cancel()
 		timerAirPhase:Stop()
 	end
