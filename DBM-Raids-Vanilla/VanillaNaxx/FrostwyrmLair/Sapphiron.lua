@@ -89,7 +89,7 @@ local function Landing()
 		timerAirPhase:Start(airPhaseTimer)
 	end
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-	mod:Schedule(airPhaseTimer + 1, timerBomb.Stop, timerBomb)
+		mod:Schedule(airPhaseTimer + 1, timerBomb.Stop, timerBomb)
 	end
 end
 
