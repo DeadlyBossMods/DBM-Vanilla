@@ -80,7 +80,7 @@ local function Landing()
 	if isMythic or DBM:IsSeasonal("SeasonOfDiscovery") then
 		warnAirPhaseSoon:Schedule(airPhaseTimer - 10)
 	else
-		if not mod.vb.airPhaseHPThreshold then 
+		if not mod.vb.airPhaseHPThreshold then
 			warnAirPhaseSoon:Schedule(50)
 		end
 	end
