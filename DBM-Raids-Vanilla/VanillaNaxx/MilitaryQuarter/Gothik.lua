@@ -19,7 +19,6 @@ mod:RegisterCombat("combat")
 
 mod:RegisterEventsInCombat(
 	"UNIT_DIED",
-	"UNIT_HEALTH",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
@@ -159,6 +158,9 @@ end
 
 function mod:OnCombatStart()
 	self.vb.wave = 0
+	self:RegisterShortTermEvents(
+		"UNIT_HEALTH"
+	)
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	timerPhase2:Start()
 	self:Schedule(270, function()
@@ -181,6 +183,7 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd()
+	self:UnregisterShortTermEvents()
 	if DBM.InfoFrame:IsShown() then
 		DBM.InfoFrame:Hide()
 	end
@@ -215,6 +218,7 @@ function mod:UNIT_HEALTH(uId)
 		end
 		timerTeleport:Stop()
 		warnTeleportSoon:Cancel()
+		self:UnregisterShortTermEvents()
 	end
 end
 
