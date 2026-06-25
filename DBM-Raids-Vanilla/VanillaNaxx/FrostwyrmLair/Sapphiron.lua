@@ -79,10 +79,8 @@ local function Landing()
 	mod.vb.iceBlocks = 0
 	if isMythic or DBM:IsSeasonal("SeasonOfDiscovery") then
 		warnAirPhaseSoon:Schedule(airPhaseTimer - 10)
-	else
-		if not mod.vb.airPhaseHPThreshold then
-			warnAirPhaseSoon:Schedule(50)
-		end
+	elseif not mod.vb.airPhaseHPThreshold then
+		warnAirPhaseSoon:Schedule(50)
 	end
 	warnLanded:Show()
 	if not mod.vb.airPhaseHPThreshold then
