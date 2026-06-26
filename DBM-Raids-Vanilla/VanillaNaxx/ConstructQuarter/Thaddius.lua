@@ -19,13 +19,16 @@ mod:SetZone(533)
 
 mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
+mod:RegisterEvents(
+	"CHAT_MSG_MONSTER_YELL"
+)
 mod:RegisterEventsInCombat(
     "SPELL_CAST_START 28089",
     "UNIT_AURA player",
-    "CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_MONSTER_YELL"
+    "CHAT_MSG_MONSTER_EMOTE"
 )
 
+--TODO, UNIT_AURA might not work in classic? I didn't see any warnings on stream. May have to just do UnitDebuff() on self when cast finishes
 local warnShiftSoon			= mod:NewSoonAnnounce(28089, 3)
 local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
 local warnThrow				= mod:NewSpellAnnounce(28338, 3)
@@ -161,7 +164,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
+	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2)  or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
 		self:SendSync("Phase2")
 	end
 end
