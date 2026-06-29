@@ -39,7 +39,7 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
 local timerCurse       	= mod:NewBuffFadesTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD		= mod:NewVarTimer("v51.8-115.6", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
 
 mod:AddInfoFrameOption(29213, "RemoveCurse")
@@ -122,7 +122,7 @@ function mod:OnCombatStart()
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
 	timerAddsCD:Start(12)
-	timerCurseCD:Start("v6.4-26.8")
+	timerCurseCD:Start("v6.5-25.9")
 	timerTeleport:Start(90.8)
 	warnTeleportSoon:Schedule(70.8)
 	self:ScheduleMethod(90.8, "Balcony")
