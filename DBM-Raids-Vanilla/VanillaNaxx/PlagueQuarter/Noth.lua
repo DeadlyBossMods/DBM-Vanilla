@@ -181,7 +181,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if if msg == L.AddsYell or msg:find(L.AddsYell) then
+	if msg == L.AddsYell or msg:find(L.AddsYell) then
 		self:SendSync("Adds")
 	end
 end
