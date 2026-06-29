@@ -39,7 +39,7 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29252, "-Healer", nil, nil, 1, 2
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
 local timerCurse       	= mod:NewBuffFadesTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerCurseCD		= mod:NewVarTimer("v51.7-68", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD		= mod:NewVarTimer("v51.8-68", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29252, nil, "-Healer", nil, 1, "136187")
 
 mod:AddInfoFrameOption(29213, "RemoveCurse")
