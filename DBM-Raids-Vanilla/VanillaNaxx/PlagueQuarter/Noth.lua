@@ -38,8 +38,8 @@ local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
-local timerCurse       	= mod:NewBuffFadesTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerCurseCD		= mod:NewVarTimer("v51.8-115.6", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurse       	= mod:NewBuffActiveTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD		= mod:NewVarTimer("v51.7-68", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
 
 mod:AddInfoFrameOption(29213, "RemoveCurse")
@@ -180,8 +180,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
-	if msg == L.AddsYell or msg:find(L.AddsYell) then
+function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+	if spellId == 29237 or spellId == 29252 or spellId == 29265 or spellId == 29270 then
 		self:SendSync("Adds")
 	end
 end
