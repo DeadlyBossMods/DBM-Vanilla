@@ -121,7 +121,7 @@ function mod:OnCombatStart()
 	self.vb.teleCount = 0
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
-	timerAddsCD:Start(12)
+	timerAddsCD:Start("v8.1-21")
 	timerCurseCD:Start("v6.5-25.9")
 	timerTeleport:Start(90.8)
 	warnTeleportSoon:Schedule(70.8)
