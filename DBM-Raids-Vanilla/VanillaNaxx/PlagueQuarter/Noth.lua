@@ -8,7 +8,6 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
-mod:SetMinSyncRevision(20260618000000) -- 2026, June 18th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15954)
 mod:SetEncounterID(1117)
@@ -21,7 +20,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29213 29212 29208",
 	"SPELL_AURA_APPLIED 29213",
 	"SPELL_AURA_REMOVED 29213",
-	"UNIT_SPELLCAST_SUCCEEDED"
+	"CHAT_MSG_MONSTER_YELL"
 )
 
 --TODO, determine if old way is required or if new way is still functional
@@ -181,8 +180,8 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
-	if spellId == 29237 or spellId == 29252 or spellId == 29265 or spellId == 29270 then
+function mod:CHAT_MSG_MONSTER_YELL(msg)
+	if if msg == L.AddsYell or msg:find(L.AddsYell) then
 		self:SendSync("Adds")
 	end
 end
