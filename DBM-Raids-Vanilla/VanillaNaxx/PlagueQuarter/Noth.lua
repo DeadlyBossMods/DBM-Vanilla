@@ -194,7 +194,7 @@ function mod:OnSync(msg)
 		specWarnAdds:Play("killmob")
 		if self.vb.teleCount < 4 then
 			if self.vb.teleCount == 0 and self.vb.addsCount < 3 then--3 waves, 12, 34, 34
-				timerAddsCD:Start("v25.9-37.2)
+				timerAddsCD:Start("v25.9-37.2")
 			elseif self.vb.teleCount == 1 then--3 waves, 3, 34, 30 (3 iffy)
 				if self.vb.addsCount == 1 then
 					timerAddsCD:Start(33.9)
