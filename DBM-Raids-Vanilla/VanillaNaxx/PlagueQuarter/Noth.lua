@@ -8,6 +8,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:SetMinSyncRevision(20260618000000) -- 2026, June 18th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15954)
 mod:SetEncounterID(1117)
@@ -20,7 +21,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29213 29212 29208",
 	"SPELL_AURA_APPLIED 29213",
 	"SPELL_AURA_REMOVED 29213",
-	"CHAT_MSG_MONSTER_YELL"
+	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
 --TODO, determine if old way is required or if new way is still functional
