@@ -78,7 +78,7 @@ do
 						if timeLeft > 0 then
 							lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
 						else
-							lines[label] = "|cff00ff000|r"
+							lines[label] = ("|cff00ff00%d|r"):format(0)
 						end
 					end
 				end
