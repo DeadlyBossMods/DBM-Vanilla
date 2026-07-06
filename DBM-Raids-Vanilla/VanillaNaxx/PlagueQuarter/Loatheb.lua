@@ -125,7 +125,7 @@ do
 			if remaining > 0 then
 				lines[name] = ("|cffff0000%d|r"):format(remaining)
 			else
-				lines[name] = "|cff00ff000|r"
+				lines[name] = ("|cff00ff00%d|r"):format(0)
 			end
 		end
 
