@@ -34,7 +34,7 @@ local warnThrowSoon			= mod:NewSoonAnnounce(28338, 2)
 local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
-local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged", nil, nil, nil, 3, 12, nil, nil, 28089, nil, "movesoon")
+local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged", nil, nil, nil, 3, 2, nil, nil, 28089, nil, "movesoon")
 local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false, nil, nil, 1, 12, nil, nil, 28089, nil, "dontmove")
 local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
@@ -127,11 +127,13 @@ function mod:UNIT_AURA()
 			elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
 				self:ShowRightArrow()
 			end
-		--Changed
+		--Changed (only play voice on actual polarity flip, not first application)
 		else
 			warnChargeChanged:UpdateIcon(chargeIcon)
 			warnChargeChanged:Show(charge)
-			warnChargeChanged:Play("movesoon")
+			if currentCharge then
+				warnChargeChanged:Play("movesoon")
+			end
 			if self.Options.AirowsEnabled == "ArrowsInverse" then
 				self:ShowRightArrow()
 			elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
@@ -162,7 +164,7 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 end
 
 function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
+	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2)  or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
 		self:SendSync("Phase2")
 	end
 end
