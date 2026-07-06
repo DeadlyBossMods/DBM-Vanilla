@@ -35,9 +35,69 @@ local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_C
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
+mod:AddInfoFrameOption(29051, isPriest)
+
+local understudyME = {}
+local understudyDeaths = 0
+
+local RAID_ICONS = {
+	[1] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0:0.5:0:0.25|t",
+	[2] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0.5:1:0:0.25|t",
+	[3] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0:0.5:0.25:0.5|t",
+	[4] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0.5:1:0.25:0.5|t",
+	[5] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0:0.5:0.5:0.75|t",
+	[6] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0.5:1:0.5:0.75|t",
+	[7] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0:0.5:0.75:1|t",
+	[8] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0.5:1:0.75:1|t",
+}
+
+local updateInfoFrame
+do
+	local lines, sortedLines = {}, {}
+	updateInfoFrame = function()
+		table.wipe(lines)
+		table.wipe(sortedLines)
+		local index = 0
+		for i = 1, 40 do
+			local unitId = "nameplate" .. i
+			local guid = UnitGUID(unitId)
+			if guid then
+				local cid = DBM:GetCIDFromGUID(guid)
+				if cid == 16803 then
+					local marker = GetRaidTargetIndex(unitId)
+					if marker and marker > 0 then
+						local name = UnitName(unitId)
+						local timeLeft = math.max(0, (understudyME[guid] or 0) - GetTime())
+						index = index + 1
+						local label = RAID_ICONS[marker] .. " " .. name
+						sortedLines[index] = label
+						if timeLeft > 0 then
+							lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
+						else
+							lines[label] = "|cff00ff000|r"
+						end
+					end
+				end
+			end
+		end
+		return lines, sortedLines
+	end
+end
+
 function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
+	table.wipe(understudyME)
+	understudyDeaths = 0
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29051))
+		DBM.InfoFrame:Show(4, "function", updateInfoFrame)
+	end
+end
+
+function mod:OnCombatEnd()
+	DBM.InfoFrame:Hide()
+	table.wipe(understudyME)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -64,6 +124,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		if guid then
 			local cid = self:GetCIDFromGUID(guid)
 			if cid == 16803 then
+				understudyME[guid] = GetTime() + 60
 				self:SendSync("MindExhaustion", guid)
 			end
 		end
@@ -72,6 +133,7 @@ end
 
 function mod:OnSync(event, guid)
     if event == "MindExhaustion" and guid then
+        understudyME[guid] = GetTime() + 60
         timerMindExhaustionCD:Start(guid)
     end
 end
@@ -81,5 +143,10 @@ function mod:UNIT_DIED(args)
 		timerTaunt:Stop(args.destGUID)
 		timerShieldWall:Stop(args.destGUID)
 		timerMindExhaustionCD:Stop(args.destGUID)
+		understudyME[args.destGUID] = nil
+		understudyDeaths = understudyDeaths + 1
+		if understudyDeaths == 4 then
+			DBM.InfoFrame:Hide()
+		end
 	end
 end
