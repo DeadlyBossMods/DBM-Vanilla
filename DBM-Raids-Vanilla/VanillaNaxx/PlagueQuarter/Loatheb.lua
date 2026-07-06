@@ -123,7 +123,7 @@ do
 
 			sortedLines[i] = name
 			if remaining > 0 then
-				lines[name] = ("|cffff0000%d|r"):format(remaining)
+				lines[name] = ("|cffff0000%.0f|r"):format(remaining)
 			else
 				lines[name] = ("|cff00ff00%d|r"):format(0)
 			end
