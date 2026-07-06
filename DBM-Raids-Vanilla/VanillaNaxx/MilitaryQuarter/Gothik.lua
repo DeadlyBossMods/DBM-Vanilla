@@ -230,6 +230,7 @@ function mod:OnSync(event)
     if event == "TeleportTimer" then
 		warnTeleportSoon:Schedule(14.5)
 		timerTeleport:Start()
+		DBM.InfoFrame:Hide()
 	elseif event == "Teleported" then
 		warnTeleport:Show()
 		timerTeleport:Stop()
