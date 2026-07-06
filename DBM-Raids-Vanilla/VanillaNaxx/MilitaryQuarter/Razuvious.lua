@@ -124,7 +124,6 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 		if guid then
 			local cid = self:GetCIDFromGUID(guid)
 			if cid == 16803 then
-				understudyME[guid] = GetTime() + 60
 				self:SendSync("MindExhaustion", guid)
 			end
 		end
