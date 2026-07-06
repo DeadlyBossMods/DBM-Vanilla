@@ -35,6 +35,7 @@ local warnCurse			= mod:NewSpellAnnounce(29213, 2)
 local warnBlink			= mod:NewSpellAnnounce(29208, 3)
 
 local specWarnAdds		= mod:NewSpecialWarningAdds(29252, "-Healer", nil, nil, 1, 2, nil, "136187", "killmob")
+local specWarnCurse 	= mod:NewSpecialWarningDispel(29213, "RemoveCurse", nil, nil, 1, 2, nil, nil, "dispelnow")
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
@@ -152,6 +153,10 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(29213) then
 		curseTargets[args.destName] = true
 		UpdateCurseFrame()
+		if self.Options.SpecWarn29213dispel and self:AntiSpam(3, 1) then
+			specWarnCurse:CombinedShow(0.5, args.destName)
+			specWarnCurse:ScheduleVoice(0.5, "dispelnow")
+		end
 	end
 end
 
@@ -165,8 +170,10 @@ end
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29213) then -- Curse of the Plaguebringer
 		self.vb.curseCount = self.vb.curseCount + 1
-		warnCurse:Show()
 		timerCurse:Start()
+		if not self.Options.SpecWarn29213dispel then
+			warnCurse:Show()
+		end
 		if self.vb.teleCount == 2 and self.vb.curseCount == 2 or self.vb.teleCount == 3 and self.vb.curseCount == 1 then
 			timerCurseCD:Start(67)--Niche cases it's 67 and not 53-55
 		elseif self.vb.curseCount < 2 then
