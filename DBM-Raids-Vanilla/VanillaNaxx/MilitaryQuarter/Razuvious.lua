@@ -58,6 +58,7 @@ do
 		table.wipe(lines)
 		table.wipe(sortedLines)
 		local index = 0
+		local hasActive = false
 		for i = 1, 40 do
 			local unitId = "nameplate" .. i
 			local guid = UnitGUID(unitId)
@@ -68,6 +69,9 @@ do
 					if marker and marker > 0 then
 						local name = UnitName(unitId)
 						local timeLeft = math.max(0, (understudyME[guid] or 0) - GetTime())
+						if timeLeft > 0 then
+							hasActive = true
+						end
 						index = index + 1
 						local label = RAID_ICONS[marker] .. " " .. name
 						sortedLines[index] = label
@@ -80,6 +84,9 @@ do
 				end
 			end
 		end
+		if not hasActive then
+			DBM.InfoFrame:Hide()
+		end
 		return lines, sortedLines
 	end
 end
@@ -89,7 +96,10 @@ function mod:OnCombatStart()
 	warnShoutSoon:Schedule(19)
 	table.wipe(understudyME)
 	understudyDeaths = 0
-	if self.Options.InfoFrame then
+end
+
+local function ShowInfoFrame()
+	if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29051))
 		DBM.InfoFrame:Show(4, "function", updateInfoFrame)
 	end
@@ -133,6 +143,7 @@ end
 function mod:OnSync(event, guid)
     if event == "MindExhaustion" and guid then
         understudyME[guid] = GetTime() + 60
+        ShowInfoFrame()
         timerMindExhaustionCD:Start(guid)
     end
 end
