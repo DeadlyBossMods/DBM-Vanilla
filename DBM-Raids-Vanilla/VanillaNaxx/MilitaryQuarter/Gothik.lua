@@ -42,7 +42,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 else
 	warnTeleport		= mod:NewSpellAnnounce(28026, 3, "135736")
 	warnTeleportSoon	= mod:NewSoonAnnounce(28026, 2, "135736")
-	timerTeleport		= mod:NewNextTimer(19.4, 28026, nil, nil, nil, 6, "135736")
+	timerTeleport		= mod:NewNextTimer("v19.4-20.4", 28026, nil, nil, nil, 6, "135736")
 end
 
 mod:AddInfoFrameOption(nil, true)
