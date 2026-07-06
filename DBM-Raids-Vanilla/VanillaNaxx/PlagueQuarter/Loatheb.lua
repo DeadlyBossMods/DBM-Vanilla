@@ -122,7 +122,11 @@ do
 			end
 
 			sortedLines[i] = name
-			lines[name] = remaining
+			if remaining > 0 then
+				lines[name] = ("|cffff0000%d|r"):format(remaining)
+			else
+				lines[name] = "|cff00ff000|r"
+			end
 		end
 
 		return lines, sortedLines
