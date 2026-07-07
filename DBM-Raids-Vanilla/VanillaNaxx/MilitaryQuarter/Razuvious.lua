@@ -19,6 +19,7 @@ end
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29107 29060 29061",
+	"SPELL_AURA_APPLIED 10912",
 	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_DIED"
 )
@@ -37,8 +38,26 @@ local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
 mod:AddInfoFrameOption(29051, isPriest)
 
-local understudyME = {}
-local understudyDeaths = 0
+local mindExhaustionTimers = {}
+local mindExhaustionList = {}
+local mindExhaustionIcons = {}
+local mindExhaustionNames = {}
+
+local RAID_TARGET_FLAGS = {
+	[0x00000001] = 1,
+	[0x00000002] = 2,
+	[0x00000004] = 3,
+	[0x00000008] = 4,
+	[0x00000010] = 5,
+	[0x00000020] = 6,
+	[0x00000040] = 7,
+	[0x00000080] = 8,
+}
+
+local function GetIconFromFlags(flags)
+	local flag = bit.band(flags, 255)
+	return RAID_TARGET_FLAGS[flag]
+end
 
 local RAID_ICONS = {
 	[1] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0:0.5:0:0.25|t",
@@ -51,6 +70,25 @@ local RAID_ICONS = {
 	[8] = "|TInterface\\TargetingFrame\\UI-RaidTargetingIcons:16:16:0:0:64:64:0.5:1:0.75:1|t",
 }
 
+local function DeleteFromTable(t, value)
+	for i = #t, 1, -1 do
+		if t[i] == value then
+			table.remove(t, i)
+			return
+		end
+	end
+end
+
+local function TrackUnderstudy(guid, name, flags)
+	local marker = GetIconFromFlags(flags)
+	if marker and name then
+		DeleteFromTable(mindExhaustionList, guid)
+		mindExhaustionList[#mindExhaustionList + 1] = guid
+		mindExhaustionIcons[guid] = RAID_ICONS[marker]
+		mindExhaustionNames[guid] = name
+	end
+end
+
 local updateInfoFrame
 do
 	local lines, sortedLines = {}, {}
@@ -58,33 +96,24 @@ do
 		table.wipe(lines)
 		table.wipe(sortedLines)
 		local index = 0
-		local hasActive = false
-		for i = 1, 40 do
-			local unitId = "nameplate" .. i
-			local guid = UnitGUID(unitId)
-			if guid then
-				local cid = DBM:GetCIDFromGUID(guid)
-				if cid == 16803 then
-					local marker = GetRaidTargetIndex(unitId)
-					if marker and marker > 0 then
-						local name = UnitName(unitId)
-						local timeLeft = math.max(0, (understudyME[guid] or 0) - GetTime())
-						if timeLeft > 0 then
-							hasActive = true
-						end
-						index = index + 1
-						local label = RAID_ICONS[marker] .. " " .. name
-						sortedLines[index] = label
-						if timeLeft > 0 then
-							lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
-						else
-							lines[label] = ("|cff00ff00%d|r"):format(0)
-						end
-					end
-				end
+		local t = GetTime()
+		for i = 1, #mindExhaustionList do
+			local guid = mindExhaustionList[i]
+			local name = mindExhaustionNames[guid]
+			local icon = mindExhaustionIcons[guid]
+			local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
+			index = index + 1
+			local label = icon .. " " .. name
+			sortedLines[index] = label
+			if mindExhaustionTimers[guid] == -1 then
+				lines[label] = ("|cffff0000%s|r"):format(DEAD)
+			elseif timeLeft > 0 then
+				lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
+			else
+				lines[label] = ("|cff00ff00%d|r"):format(0)
 			end
 		end
-		if not hasActive then
+		if index == 0 then
 			DBM.InfoFrame:Hide()
 		end
 		return lines, sortedLines
@@ -94,8 +123,10 @@ end
 function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
-	table.wipe(understudyME)
-	understudyDeaths = 0
+	table.wipe(mindExhaustionTimers)
+	table.wipe(mindExhaustionList)
+	table.wipe(mindExhaustionIcons)
+	table.wipe(mindExhaustionNames)
 end
 
 local function ShowInfoFrame()
@@ -107,7 +138,19 @@ end
 
 function mod:OnCombatEnd()
 	DBM.InfoFrame:Hide()
-	table.wipe(understudyME)
+	table.wipe(mindExhaustionTimers)
+	table.wipe(mindExhaustionList)
+	table.wipe(mindExhaustionIcons)
+	table.wipe(mindExhaustionNames)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(10912) then
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if cid == 16803 then
+			TrackUnderstudy(args.destGUID, args.destName, args.destRaidFlags)
+		end
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -142,7 +185,7 @@ end
 
 function mod:OnSync(event, guid)
     if event == "MindExhaustion" and guid then
-        understudyME[guid] = GetTime() + 60
+        mindExhaustionTimers[guid] = GetTime() + 60
         ShowInfoFrame()
         timerMindExhaustionCD:Start(guid)
     end
@@ -153,10 +196,10 @@ function mod:UNIT_DIED(args)
 		timerTaunt:Stop(args.destGUID)
 		timerShieldWall:Stop(args.destGUID)
 		timerMindExhaustionCD:Stop(args.destGUID)
-		understudyME[args.destGUID] = nil
-		understudyDeaths = understudyDeaths + 1
-		if understudyDeaths == 4 then
-			DBM.InfoFrame:Hide()
+		if mindExhaustionIcons[args.destGUID] then
+			mindExhaustionTimers[args.destGUID] = -1
+		else
+			mindExhaustionTimers[args.destGUID] = nil
 		end
 	end
 end
