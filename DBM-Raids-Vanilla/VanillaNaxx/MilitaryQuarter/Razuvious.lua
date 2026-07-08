@@ -56,7 +56,11 @@ local RAID_TARGET_FLAGS = {
 
 local function GetIconFromFlags(flags)
 	local flag = bit.band(flags, 255)
-	return RAID_TARGET_FLAGS[flag]
+	local marker = RAID_TARGET_FLAGS[flag]
+	if not marker and flag >= 1 and flag <= 8 then
+		marker = flag
+	end
+	return marker
 end
 
 local RAID_ICONS = {
@@ -89,6 +93,21 @@ local function TrackUnderstudy(guid, name, flags)
 	end
 end
 
+local function AddLine(guid, label, timeLeft, index, lines, sortedLines, hasActive)
+	if mindExhaustionTimers[guid] == -1 then
+		sortedLines[index] = label
+		lines[label] = ("|cffff0000%s|r"):format(DEAD)
+	elseif timeLeft > 0 then
+		sortedLines[index] = label
+		lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
+		hasActive = true
+	else
+		sortedLines[index] = label
+		lines[label] = ("|cff00ff00%d|r"):format(0)
+	end
+	return hasActive
+end
+
 local updateInfoFrame
 do
 	local lines, sortedLines = {}, {}
@@ -96,24 +115,39 @@ do
 		table.wipe(lines)
 		table.wipe(sortedLines)
 		local index = 0
+		local hasActive = false
 		local t = GetTime()
-		for i = 1, #mindExhaustionList do
-			local guid = mindExhaustionList[i]
-			local name = mindExhaustionNames[guid]
-			local icon = mindExhaustionIcons[guid]
-			local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
-			index = index + 1
-			local label = icon .. " " .. name
-			sortedLines[index] = label
-			if mindExhaustionTimers[guid] == -1 then
-				lines[label] = ("|cffff0000%s|r"):format(DEAD)
-			elseif timeLeft > 0 then
-				lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
-			else
-				lines[label] = ("|cff00ff00%d|r"):format(0)
+		local seen = {}
+		for i = 1, 40 do
+			local unitId = "nameplate" .. i
+			local guid = UnitGUID(unitId)
+			if guid then
+				local cid = DBM:GetCIDFromGUID(guid)
+				if cid == 16803 then
+					local marker = GetRaidTargetIndex(unitId)
+					if marker and marker > 0 then
+						index = index + 1
+						seen[guid] = true
+						local name = UnitName(unitId)
+						local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
+						hasActive = AddLine(guid, RAID_ICONS[marker] .. " " .. name, timeLeft, index, lines, sortedLines, hasActive)
+					end
+				end
 			end
 		end
-		if index == 0 then
+		for i = 1, #mindExhaustionList do
+			local guid = mindExhaustionList[i]
+			if not seen[guid] then
+				local name = mindExhaustionNames[guid]
+				local icon = mindExhaustionIcons[guid]
+				if name and icon then
+					index = index + 1
+					local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
+					hasActive = AddLine(guid, icon .. " " .. name, timeLeft, index, lines, sortedLines, hasActive)
+				end
+			end
+		end
+		if not hasActive then
 			DBM.InfoFrame:Hide()
 		end
 		return lines, sortedLines
