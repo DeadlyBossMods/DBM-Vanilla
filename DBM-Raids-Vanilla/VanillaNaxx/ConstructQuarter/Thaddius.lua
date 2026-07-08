@@ -173,6 +173,7 @@ function mod:OnSync(msg)
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
         timerEnrage:Start()
+		timerNextShift:Start(11.3)
 		timerIntermission:Stop()
 		warnPhase:Play("ptwo")
 	end
