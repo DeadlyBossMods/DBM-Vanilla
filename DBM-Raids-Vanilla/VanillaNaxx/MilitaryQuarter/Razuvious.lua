@@ -93,21 +93,6 @@ local function TrackUnderstudy(guid, name, flags)
 	end
 end
 
-local function AddLine(guid, label, timeLeft, index, lines, sortedLines, hasActive)
-	if mindExhaustionTimers[guid] == -1 then
-		sortedLines[index] = label
-		lines[label] = ("|cffff0000%s|r"):format(DEAD)
-	elseif timeLeft > 0 then
-		sortedLines[index] = label
-		lines[label] = ("|cffff0000%.0f|r"):format(timeLeft)
-		hasActive = true
-	else
-		sortedLines[index] = label
-		lines[label] = ("|cff00ff00%d|r"):format(0)
-	end
-	return hasActive
-end
-
 local updateInfoFrame
 do
 	local lines, sortedLines = {}, {}
@@ -117,6 +102,7 @@ do
 		local index = 0
 		local hasActive = false
 		local t = GetTime()
+		local items = {}
 		local seen = {}
 		for i = 1, 5 do
 			local unitId = "nameplate" .. i
@@ -126,11 +112,12 @@ do
 				if cid == 16803 then
 					local marker = GetRaidTargetIndex(unitId)
 					if marker and marker > 0 then
-						index = index + 1
 						seen[guid] = true
-						local name = UnitName(unitId)
-						local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
-						hasActive = AddLine(guid, RAID_ICONS[marker] .. " " .. name, timeLeft, index, lines, sortedLines, hasActive)
+						index = index + 1
+						items[index] = {
+							guid = guid,
+							label = RAID_ICONS[marker] .. " " .. UnitName(unitId),
+						}
 					end
 				end
 			end
@@ -142,9 +129,24 @@ do
 				local icon = mindExhaustionIcons[guid]
 				if name and icon then
 					index = index + 1
-					local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
-					hasActive = AddLine(guid, icon .. " " .. name, timeLeft, index, lines, sortedLines, hasActive)
+					items[index] = {
+						guid = guid,
+						label = icon .. " " .. name,
+					}
 				end
+			end
+		end
+		for i = 1, index do
+			local item = items[i]
+			local timeLeft = math.max(0, (mindExhaustionTimers[item.guid] or 0) - t)
+			sortedLines[i] = item.label
+			if mindExhaustionTimers[item.guid] == -1 then
+				lines[item.label] = ("|cffff0000%s|r"):format(DEAD)
+			elseif timeLeft > 0 then
+				lines[item.label] = ("|cffff0000%.0f|r"):format(timeLeft)
+				hasActive = true
+			else
+				lines[item.label] = ("|cff00ff00%d|r"):format(0)
 			end
 		end
 		if not hasActive then
