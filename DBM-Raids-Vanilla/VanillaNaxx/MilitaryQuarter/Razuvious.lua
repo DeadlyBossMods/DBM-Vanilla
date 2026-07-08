@@ -118,7 +118,7 @@ do
 		local hasActive = false
 		local t = GetTime()
 		local seen = {}
-		for i = 1, 40 do
+		for i = 1, 5 do
 			local unitId = "nameplate" .. i
 			local guid = UnitGUID(unitId)
 			if guid then
