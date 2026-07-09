@@ -226,7 +226,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(438710) then
 		local amount = args.amount or 1
 		if amount >= 3 then--ability is cast in 3s for most part so a good starting point
-			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName), DBM:GetUnitIdFromCID(218538), DBM:GetUnitIdFromCID(218974)
+			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName, true), DBM:GetUnitIdFromCID(218538), DBM:GetUnitIdFromCID(218974)
 			--Freezing is also applied ot others who walk through ice on ground, so we try to scope it to tanks only by only reporting units who are highest threat on bots threat table
 			if (bossUID or bossUIDTwo) and self:IsTanking(playerUID, bossUIDTwo or bossUID, nil, true) then
 				warnSprocketFireDebuff:Cancel()
@@ -236,7 +236,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	elseif args:IsSpell(438720) then
 		local amount = args.amount or 1
 		if amount >= 3 then--ability is cast in 3s for most part so a good starting point
-			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName), DBM:GetUnitIdFromCID(218972), DBM:GetUnitIdFromCID(218974)
+			local playerUID, bossUID, bossUIDTwo = DBM:GetRaidUnitId(args.destName, true), DBM:GetUnitIdFromCID(218972), DBM:GetUnitIdFromCID(218974)
 			--Freezing is also applied ot others who walk through ice on ground, so we try to scope it to tanks only by only reporting units who are highest threat on bots threat table
 			if (bossUID or bossUIDTwo) and self:IsTanking(playerUID, bossUIDTwo or bossUID, nil, true) then
 				warnFreezing:Cancel()

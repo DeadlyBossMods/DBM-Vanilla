@@ -78,7 +78,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		timerWingBuffetCD:Stop()
 		timerWingBuffetCD:Start(5)
 	elseif spellId == 442622 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		--Makes sure the target of the debuff, is highest threat of the caster
 		--(basically filters everyone who's not actively tanking mob such as melee in wrong place)
 		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then--playerUnitID, enemyUnitID, isName, onlyRequested, enemyGUID

@@ -60,7 +60,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(1229005) then
 		local amount = args.amount or 1
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then
 			warnMortalWoundStack:Show(args.destName, amount)
 		end
