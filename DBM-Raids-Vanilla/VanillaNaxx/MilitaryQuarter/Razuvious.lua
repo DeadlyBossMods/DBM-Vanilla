@@ -76,7 +76,7 @@ do
 				local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
 				sortedLines[lineIndex] = name
 				if mindExhaustionTimers[guid] == -1 then
-					lines[name] = ("|cffff0000%s|r"):format(DEAD)
+					lines[name] = DEAD
 				elseif timeLeft > 0 then
 					lines[name] = ("|cffff0000%.0f|r"):format(timeLeft)
 					hasActive = true
