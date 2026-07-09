@@ -19,6 +19,7 @@ end
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29107 29060 29061",
+	"NAME_PLATE_UNIT_ADDED",
 	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_DIED"
 )
@@ -26,18 +27,98 @@ mod:RegisterEventsInCombat(
 -- New spell ID found in logs on SoD
 -- 1225423 (Disarm) cast by Understudies, TBD if we want to do something with that
 local isPriest 				= select(2, UnitClass("player")) == "PRIEST"
-local warnShoutNow			= mod:NewSpellAnnounce(29107, 4, 6673)
-local warnShoutSoon			= mod:NewSoonAnnounce(29107, 3, 6673, "ManaUser")
+local warnShoutNow			= mod:NewSpellAnnounce(29107, 4, "132352")
+local warnShoutSoon			= mod:NewSoonAnnounce(29107, 3, "132352", "ManaUser")
 local warnShieldWall		= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 
-local timerShout			= mod:NewCDTimer(25.9, 29107, nil, "ManaUser", nil, 2, 6673, DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
+local timerShout			= mod:NewCDTimer(25.9, 29107, nil, "ManaUser", nil, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
 local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
+mod:AddInfoFrameOption(29051, isPriest)
+
+local mindExhaustionTimers = {}
+local mindExhaustionList = {}
+local mindExhaustionNames = {}
+
+local function DeleteFromTable(t, value)
+	for i = #t, 1, -1 do
+		if t[i] == value then
+			table.remove(t, i)
+			return
+		end
+	end
+end
+
+local function TrackUnderstudy(guid, name)
+	if name then
+		DeleteFromTable(mindExhaustionList, guid)
+		mindExhaustionList[#mindExhaustionList + 1] = guid
+		mindExhaustionNames[guid] = name
+	end
+end
+
+local updateInfoFrame
+do
+	local lines, sortedLines = {}, {}
+	updateInfoFrame = function()
+		table.wipe(lines)
+		table.wipe(sortedLines)
+	local t = GetTime()
+		local lineIndex = 0
+		for i = 1, #mindExhaustionList do
+			local guid = mindExhaustionList[i]
+			local name = mindExhaustionNames[guid]
+			if name then
+				lineIndex = lineIndex + 1
+				local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
+				sortedLines[lineIndex] = name
+				if mindExhaustionTimers[guid] == -1 then
+					lines[name] = DEAD
+				elseif timeLeft > 0 then
+					lines[name] = ("|cffff0000%.0f|r"):format(timeLeft)
+				else
+					lines[name] = ("|cff00ff00%d|r"):format(0)
+				end
+			end
+		end
+		return lines, sortedLines
+	end
+end
+
 function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
+	table.wipe(mindExhaustionTimers)
+	table.wipe(mindExhaustionList)
+	table.wipe(mindExhaustionNames)
+end
+
+local function ShowInfoFrame()
+	if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
+		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29051))
+		DBM.InfoFrame:Show(4, "function", updateInfoFrame, nil, true)
+	end
+end
+
+function mod:OnCombatEnd()
+	DBM.InfoFrame:Hide()
+	table.wipe(mindExhaustionTimers)
+	table.wipe(mindExhaustionList)
+	table.wipe(mindExhaustionNames)
+end
+
+function mod:NAME_PLATE_UNIT_ADDED(unitId)
+	if #mindExhaustionList >= 4 then return end
+	local guid = UnitGUID(unitId)
+	if guid then
+		local cid = self:GetCIDFromGUID(guid)
+		if cid == 16803 then
+			TrackUnderstudy(guid, UnitName(unitId))
+			ShowInfoFrame()
+		end
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -72,6 +153,7 @@ end
 
 function mod:OnSync(event, guid)
     if event == "MindExhaustion" and guid then
+        mindExhaustionTimers[guid] = GetTime() + 60
         timerMindExhaustionCD:Start(guid)
     end
 end
@@ -81,5 +163,10 @@ function mod:UNIT_DIED(args)
 		timerTaunt:Stop(args.destGUID)
 		timerShieldWall:Stop(args.destGUID)
 		timerMindExhaustionCD:Stop(args.destGUID)
+		if mindExhaustionNames[args.destGUID] then
+			mindExhaustionTimers[args.destGUID] = -1
+		else
+			mindExhaustionTimers[args.destGUID] = nil
+		end
 	end
 end
