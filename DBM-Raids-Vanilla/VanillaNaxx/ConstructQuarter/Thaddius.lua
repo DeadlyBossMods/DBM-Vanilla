@@ -74,7 +74,9 @@ end
 function mod:BossHealthUpdate()
 	self:GetBossHP(15929)
 	self:GetBossHP(15930)
-	self:ScheduleMethod(0.5, "BossHealthUpdate")
+	if self:GetStage(2, 3) then
+		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
+	end
 end
 
 function mod:OnCombatStart()
