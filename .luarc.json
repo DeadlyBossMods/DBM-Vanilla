@@ -19,6 +19,7 @@
 		"DBMRaidsVanilla_AllSavedVars",
 		"UNKNOWN",
 		"RAID",
+		"READY",
 		"UnitDebuff",
 		"LOCALIZED_CLASS_NAMES_MALE"
 	]
