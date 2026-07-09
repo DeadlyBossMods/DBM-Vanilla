@@ -19,7 +19,7 @@ end
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29107 29060 29061",
-	"SPELL_AURA_APPLIED 10912",
+	"NAME_PLATE_UNIT_ADDED",
 	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_DIED"
 )
@@ -114,11 +114,12 @@ function mod:OnCombatEnd()
 	table.wipe(mindExhaustionNames)
 end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(10912) then
-		local cid = self:GetCIDFromGUID(args.destGUID)
+function mod:NAME_PLATE_UNIT_ADDED(uid)
+	local guid = UnitGUID(uid)
+	if guid then
+		local cid = self:GetCIDFromGUID(guid)
 		if cid == 16803 then
-			TrackUnderstudy(args.destGUID, args.destName)
+			TrackUnderstudy(guid, UnitName(uid))
 		end
 	end
 end
