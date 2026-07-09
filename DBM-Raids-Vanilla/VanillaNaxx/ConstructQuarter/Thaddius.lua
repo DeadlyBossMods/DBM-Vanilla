@@ -56,6 +56,7 @@ do
 	local lines = {}
 	updateInfoFrame = function()
 		table.wipe(lines)
+		local bossHealth = DBM:GetCachedBossHealth()
 		if not deadBosses[15929] then
 			lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929] or 100)
 		else
