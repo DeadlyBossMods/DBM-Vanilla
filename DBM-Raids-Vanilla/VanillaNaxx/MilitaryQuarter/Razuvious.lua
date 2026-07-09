@@ -110,6 +110,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
+	if #mindExhaustionList >= 4 then return end
 	local guid = UnitGUID(unitId)
 	if guid then
 		local cid = self:GetCIDFromGUID(guid)
