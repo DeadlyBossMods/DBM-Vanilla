@@ -65,8 +65,7 @@ do
 	updateInfoFrame = function()
 		table.wipe(lines)
 		table.wipe(sortedLines)
-		local hasActive = false
-		local t = GetTime()
+	local t = GetTime()
 		local lineIndex = 0
 		for i = 1, #mindExhaustionList do
 			local guid = mindExhaustionList[i]
@@ -79,14 +78,10 @@ do
 					lines[name] = DEAD
 				elseif timeLeft > 0 then
 					lines[name] = ("|cffff0000%.0f|r"):format(timeLeft)
-					hasActive = true
 				else
 					lines[name] = ("|cff00ff00%d|r"):format(0)
 				end
 			end
-		end
-		if not hasActive then
-			DBM.InfoFrame:Hide()
 		end
 		return lines, sortedLines
 	end
@@ -114,12 +109,13 @@ function mod:OnCombatEnd()
 	table.wipe(mindExhaustionNames)
 end
 
-function mod:NAME_PLATE_UNIT_ADDED(uid)
-	local guid = UnitGUID(uid)
+function mod:NAME_PLATE_UNIT_ADDED(unitId)
+	local guid = UnitGUID(unitId)
 	if guid then
 		local cid = self:GetCIDFromGUID(guid)
 		if cid == 16803 then
-			TrackUnderstudy(guid, UnitName(uid))
+			TrackUnderstudy(guid, UnitName(unitId))
+			ShowInfoFrame()
 		end
 	end
 end
@@ -157,7 +153,6 @@ end
 function mod:OnSync(event, guid)
     if event == "MindExhaustion" and guid then
         mindExhaustionTimers[guid] = GetTime() + 60
-        ShowInfoFrame()
         timerMindExhaustionCD:Start(guid)
     end
 end
