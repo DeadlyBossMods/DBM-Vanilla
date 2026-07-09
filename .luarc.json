@@ -7,9 +7,6 @@
 		"deprecated",
 		"duplicate-doc-field"
 	],
-	"diagnostics.neededFileStatus": {
-		"global-element": "Any"
-	},
 	"diagnostics.globals": [
 		"GetGossipOptions",
 		"UIDropDownMenu_AddButton",
