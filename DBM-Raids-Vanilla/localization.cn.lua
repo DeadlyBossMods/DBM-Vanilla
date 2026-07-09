@@ -878,6 +878,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Stalagg 	= "斯塔拉格",
+	Feugen 		= "费尔根",
 	Yell1P1		= "主人要吃了你！",
 	Yell2P1		= "斯塔拉格要碾碎你！",
 	Yell1P2 	= "咬碎……你的……骨头……",

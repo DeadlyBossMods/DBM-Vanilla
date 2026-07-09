@@ -977,6 +977,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Stalagg 	= "스탈라그",
+	Feugen 		= "퓨진",
 	Yell1P1		= "너 주인님께 바칠 거야!",
 	Yell2P1		= "스탈라그, 박살낸다!",
 	Yell1P2 	= "잡아... 먹어주마...",

@@ -49,23 +49,24 @@ mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "
 
 local currentCharge
 local lastShift = 0
-local deaths = 0
+local deadBosses = {}
 
-function mod:OnCombatStart()
-	self:SetStage(1)
-	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	currentCharge = nil
-	deaths = 0
-    self:ScheduleMethod(40.6, "TankThrow")
-    timerThrow:Start(20.6)
-    warnThrowSoon:Schedule(37.6)
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Show(10, "bosshealth", {
-			[15929] = true,
-			[15930] = true,
-		})
-		self.bossHealthUpdateTime = 0.5
-		self:BossHealthUpdate()
+local updateInfoFrame
+do
+	local lines = {}
+	updateInfoFrame = function()
+		table.wipe(lines)
+		if not deadBosses[15929] then
+			lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929] or 100)
+		else
+			lines[L.Stalagg] = DEAD
+		end
+		if not deadBosses[15930] then
+			lines[L.Feugen] = ("%d%%"):format(bossHealth[15930] or 100)
+		else
+			lines[L.Feugen] = DEAD
+		end
+		return lines
 	end
 end
 
@@ -73,8 +74,20 @@ end
 function mod:BossHealthUpdate()
 	self:GetBossHP(15929)
 	self:GetBossHP(15930)
-	if self:GetStage(2, 3) then
-		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
+	self:ScheduleMethod(0.5, "BossHealthUpdate")
+end
+
+function mod:OnCombatStart()
+	self:SetStage(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
+	currentCharge = nil
+	deadBosses = {}
+    self:ScheduleMethod(40.6, "TankThrow")
+    timerThrow:Start(20.6)
+    warnThrowSoon:Schedule(37.6)
+	if self.Options.InfoFrame then
+		DBM.InfoFrame:Show(2, "function", updateInfoFrame, false, false)
+		self:BossHealthUpdate()
 	end
 end
 
@@ -146,10 +159,14 @@ function mod:UNIT_AURA()
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg)
+function mod:CHAT_MSG_MONSTER_EMOTE(msg, sender)
     if msg == L.EmoteDies or msg:find(L.EmoteDies) then
-        deaths = math.min(2, deaths + 1)
-        if deaths == 2 then
+		if sender == L.Stalagg then
+			deadBosses[15929] = true
+		elseif sender == L.Feugen then
+			deadBosses[15930] = true
+		end
+        if deadBosses[15929] and deadBosses[15930] then
 			self:SetStage(1.5)
 			self:UnscheduleMethod("TankThrow")
 			warnPhase2Soon:Show()
@@ -159,7 +176,11 @@ function mod:CHAT_MSG_MONSTER_EMOTE(msg)
 			DBM.InfoFrame:Hide()
         end
     elseif msg == L.EmoteRevive or msg:find(L.EmoteRevive) then
-        deaths = deaths - 1
+		if sender == L.Stalagg then
+			deadBosses[15929] = nil
+		elseif sender == L.Feugen then
+			deadBosses[15930] = nil
+		end
     end
 end
 

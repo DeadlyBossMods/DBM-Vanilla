@@ -929,6 +929,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Stalagg 	= "Stalagg",
+	Feugen 		= "Feugen",
 	Yell1P1		= "Verfüttere euch an Meister!",
 	Yell2P1		= "Stalagg zerquetschen!",
 	Yell1P2 	= "Eure... Knochen... zermalmen...",

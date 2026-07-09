@@ -975,6 +975,8 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
+	Stalagg 	= "Stalagg",
+	Feugen 		= "Feugen",
 	Yell1P1		= "Feed you to master!",
 	Yell2P1		= "Stalagg crush you!",
 	Yell1P2 	= "Eat... your... bones...",
