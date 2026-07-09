@@ -58,12 +58,12 @@ do
 		table.wipe(lines)
 		local bossHealth = DBM:GetCachedBossHealth()
 		if not deadBosses[15929] then
-			lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929] or 100)
+			lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929])
 		else
 			lines[L.Stalagg] = DEAD
 		end
 		if not deadBosses[15930] then
-			lines[L.Feugen] = ("%d%%"):format(bossHealth[15930] or 100)
+			lines[L.Feugen] = ("%d%%"):format(bossHealth[15930])
 		else
 			lines[L.Feugen] = DEAD
 		end
