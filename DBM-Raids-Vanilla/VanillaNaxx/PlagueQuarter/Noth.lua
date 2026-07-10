@@ -53,7 +53,7 @@ local function updateInfoFrame()
 	twipe(sortedLines)
 
 	for name in pairs(curseTargets) do
-		sortedLines[#sortedlines + 1] = name
+		sortedLines[#sortedLines + 1] = name
 		lines[name] = ""
 	end
 
