@@ -114,7 +114,7 @@ function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if guid then
 		local cid = self:GetCIDFromGUID(guid)
-		if cid == 16803 then
+		if cid == 16803 and not mindExhaustionNames[guid] then
 			TrackUnderstudy(guid, UnitName(unitId))
 			ShowInfoFrame()
 		end
