@@ -18,6 +18,8 @@ mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29213 29212 29208",
+	"SPELL_AURA_APPLIED 29213",
+	"SPELL_AURA_REMOVED 29213",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
@@ -32,12 +34,31 @@ local warnTeleportSoon	= mod:NewAnnounce("WarningTeleportSoon", 1, "135736")
 local warnCurse			= mod:NewSpellAnnounce(29213, 2)
 local warnBlink			= mod:NewSpellAnnounce(29208, 3)
 
-local specWarnAdds		= mod:NewSpecialWarningAdds(29212, "-Healer", nil, nil, 1, 2, nil, nil, "killmob")
+local specWarnAdds		= mod:NewSpecialWarningAdds(29252, "-Healer", nil, nil, 1, 2, nil, "136187", "killmob")
+local specWarnCurse 	= mod:NewSpecialWarningDispel(29213, "RemoveCurse", nil, nil, 1, 2, nil, nil, "dispelnow")
 
 local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
-local timerCurseCD		= mod:NewVarTimer("v51.8-118.9", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerAddsCD		= mod:NewAddsTimer(30, 29212, nil, "-Healer")
+local timerCurse       	= mod:NewBuffFadesTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerCurseCD		= mod:NewVarTimer("v51.8-66.8", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+local timerAddsCD		= mod:NewAddsTimer(30, 29252, nil, "-Healer", nil, 1, "136187")
+
+mod:AddInfoFrameOption(29213, "RemoveCurse")
+
+local twipe = table.wipe
+local lines, sortedLines = {}, {}
+local curseTargets = {}
+local function updateInfoFrame()
+	twipe(lines)
+	twipe(sortedLines)
+
+	for name in pairs(curseTargets) do
+		sortedLines[#sortedLines + 1] = name
+		lines[name] = ""
+	end
+
+	return lines, sortedLines
+end
 
 mod.vb.teleCount = 0
 mod.vb.addsCount = 0
@@ -95,20 +116,62 @@ function mod:BackInRoom()
 end
 
 function mod:OnCombatStart()
+	table.wipe(curseTargets)
 	self.vb.teleCount = 0
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
-	timerAddsCD:Start(12)
-	timerCurseCD:Start("v6.4-26.8")
+	timerAddsCD:Start("v8.1-22.7")
+	timerCurseCD:Start("v6.5-25.9")
 	timerTeleport:Start(90.8)
 	warnTeleportSoon:Schedule(70.8)
 	self:ScheduleMethod(90.8, "Balcony")
 end
 
+function mod:OnCombatEnd()
+	DBM.InfoFrame:Hide()
+	table.wipe(curseTargets)
+end
+
+local function UpdateCurseFrame()
+	if not mod.Options.InfoFrame then return end
+	if next(curseTargets) then
+		if not DBM.InfoFrame:IsShown() then
+			DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(29213))
+			DBM.InfoFrame:Show(20, "function", updateInfoFrame)
+		else
+			DBM.InfoFrame:UpdateTable(updateInfoFrame)
+		end
+	else
+		DBM.InfoFrame:Hide()
+		timerCurse:Stop()
+	end
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(29213) then
+		curseTargets[args.destName] = true
+		UpdateCurseFrame()
+		if self.Options.SpecWarn29213dispel and self:AntiSpam(3, 1) then
+			specWarnCurse:CombinedShow(0.5, args.destName)
+			specWarnCurse:ScheduleVoice(0.5, "dispelnow")
+		end
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(29213) then
+		curseTargets[args.destName] = nil
+		UpdateCurseFrame()
+	end
+end
+
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29213) then -- Curse of the Plaguebringer
 		self.vb.curseCount = self.vb.curseCount + 1
-		warnCurse:Show()
+		timerCurse:Start()
+		if not self.Options.SpecWarn29213dispel then
+			warnCurse:Show()
+		end
 		if self.vb.teleCount == 2 and self.vb.curseCount == 2 or self.vb.teleCount == 3 and self.vb.curseCount == 1 then
 			timerCurseCD:Start(67)--Niche cases it's 67 and not 53-55
 		elseif self.vb.curseCount < 2 then
@@ -122,7 +185,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 	end
 end
 
-function mod:CHAT_MSG_MONSTER_YELL(msg, npc, _, _, target)
+function mod:CHAT_MSG_MONSTER_YELL(msg)
 	if msg == L.AddsYell or msg:find(L.AddsYell) then
 		self:SendSync("Adds")
 	end
@@ -136,7 +199,7 @@ function mod:OnSync(msg)
 		specWarnAdds:Play("killmob")
 		if self.vb.teleCount < 4 then
 			if self.vb.teleCount == 0 and self.vb.addsCount < 3 then--3 waves, 12, 34, 34
-				timerAddsCD:Start(34)--30 in Wrath
+				timerAddsCD:Start("v25.9-37.2")
 			elseif self.vb.teleCount == 1 then--3 waves, 3, 34, 30 (3 iffy)
 				if self.vb.addsCount == 1 then
 					timerAddsCD:Start(33.9)
