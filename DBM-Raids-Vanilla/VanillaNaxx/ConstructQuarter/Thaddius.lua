@@ -215,6 +215,15 @@ end
 
 local function arrowOnUpdate(self, elapsed)
 	self.elapsed = (self.elapsed or 0) + elapsed
+	local vibration = math.sin(self.elapsed * 20) * 5
+	local x, y = self.baseX, self.baseY
+	if self.vibrateX then
+		x = x + vibration
+	else
+		y = y + vibration
+	end
+	self:ClearAllPoints()
+	self:SetPoint("CENTER", UIParent, "CENTER", x, y)
 	if self.elapsed >= 3.5 and self.elapsed < 4.5 then
 		self:SetAlpha(4.5 - self.elapsed)
 	elseif self.elapsed >= 4.5 then
@@ -229,36 +238,41 @@ end
 
 local arrowLeft = CreateFrame("Frame", nil, UIParent)
 arrowLeft:Hide()
+arrowLeft.baseX, arrowLeft.baseY = -150, -30
+arrowLeft.vibrateX = true
 local arrowLeftTexture = arrowLeft:CreateTexture(nil, "BACKGROUND")
 arrowLeftTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
 arrowLeftTexture:SetPoint("CENTER", arrowLeft, "CENTER")
 arrowLeft:SetHeight(1)
 arrowLeft:SetWidth(1)
-arrowLeft:SetPoint("CENTER", UIParent, "CENTER", -150, -30)
+arrowLeft:SetPoint("CENTER", UIParent, "CENTER", arrowLeft.baseX, arrowLeft.baseY)
 arrowLeft:SetScript("OnShow", arrowOnShow)
 arrowLeft:SetScript("OnUpdate", arrowOnUpdate)
 
 local arrowRight = CreateFrame("Frame", nil, UIParent)
 arrowRight:Hide()
+arrowRight.baseX, arrowRight.baseY = 150, -30
+arrowRight.vibrateX = true
 local arrowRightTexture = arrowRight:CreateTexture(nil, "BACKGROUND")
 arrowRightTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
 arrowRightTexture:SetPoint("CENTER", arrowRight, "CENTER")
 arrowRightTexture:SetTexCoord(1, 0, 0, 1)
 arrowRight:SetHeight(1)
 arrowRight:SetWidth(1)
-arrowRight:SetPoint("CENTER", UIParent, "CENTER", 150, -30)
+arrowRight:SetPoint("CENTER", UIParent, "CENTER", arrowRight.baseX, arrowRight.baseY)
 arrowRight:SetScript("OnShow", arrowOnShow)
 arrowRight:SetScript("OnUpdate", arrowOnUpdate)
 
 local arrowUp = CreateFrame("Frame", nil, UIParent)
 arrowUp:Hide()
+arrowUp.baseX, arrowUp.baseY = 0, 150
 local arrowUpTexture = arrowUp:CreateTexture(nil, "BACKGROUND")
 arrowUpTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
 arrowUpTexture:SetRotation(math.pi * 3 / 2)
 arrowUpTexture:SetPoint("CENTER", arrowUp, "CENTER")
 arrowUp:SetHeight(1)
 arrowUp:SetWidth(1)
-arrowUp:SetPoint("CENTER", UIParent, "CENTER", 0, 40)
+arrowUp:SetPoint("CENTER", UIParent, "CENTER", arrowUp.baseX, arrowUp.baseY)
 arrowUp:SetScript("OnShow", arrowOnShow)
 arrowUp:SetScript("OnUpdate", arrowOnUpdate)
 
