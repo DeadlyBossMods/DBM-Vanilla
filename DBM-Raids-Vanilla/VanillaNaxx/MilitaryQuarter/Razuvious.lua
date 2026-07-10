@@ -43,11 +43,6 @@ local mindExhaustionNames = {}
 local mindExhaustionUnitIds = {}
 local mindExhaustionCount = 0
 
-local function TrackUnderstudy(guid, name)
-	mindExhaustionNames[guid] = name
-	mindExhaustionCount = mindExhaustionCount + 1
-end
-
 local updateInfoFrame
 do
 	local lines, sortedLines = {}, {}
@@ -100,11 +95,11 @@ end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
-	if not guid then return end
-	if self:GetCIDFromGUID(guid) ~= 16803 then return end
+	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
 	mindExhaustionUnitIds[guid] = unitId
 	if mindExhaustionCount >= 4 or mindExhaustionNames[guid] then return end
-	TrackUnderstudy(guid, UnitName(unitId))
+	mindExhaustionNames[guid] = UnitName(unitId)
+	mindExhaustionCount = mindExhaustionCount + 1
 	ShowInfoFrame()
 end
 
@@ -129,11 +124,8 @@ end
 function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	if spellId == 29051 then
 		local guid = UnitGUID(uId)
-		if guid then
-			local cid = self:GetCIDFromGUID(guid)
-			if cid == 16803 then
-				self:SendSync("MindExhaustion", guid)
-			end
+		if guid and self:GetCIDFromGUID(guid) == 16803 then
+			self:SendSync("MindExhaustion", guid)
 		end
 	end
 end
