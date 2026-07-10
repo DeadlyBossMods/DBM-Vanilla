@@ -42,18 +42,8 @@ local mindExhaustionTimers = {}
 local mindExhaustionList = {}
 local mindExhaustionNames = {}
 
-local function DeleteFromTable(t, value)
-	for i = #t, 1, -1 do
-		if t[i] == value then
-			table.remove(t, i)
-			return
-		end
-	end
-end
-
 local function TrackUnderstudy(guid, name)
 	if name then
-		DeleteFromTable(mindExhaustionList, guid)
 		mindExhaustionList[#mindExhaustionList + 1] = guid
 		mindExhaustionNames[guid] = name
 	end
