@@ -39,14 +39,14 @@ local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 mod:AddInfoFrameOption(29051, isPriest)
 
 local mindExhaustionTimers = {}
-local mindExhaustionList = {}
 local mindExhaustionNames = {}
 local mindExhaustionUnitIds = {}
+local mindExhaustionCount = 0
 
 local function TrackUnderstudy(guid, name)
 	if name then
-		mindExhaustionList[#mindExhaustionList + 1] = guid
 		mindExhaustionNames[guid] = name
+		mindExhaustionCount = mindExhaustionCount + 1
 	end
 end
 
@@ -58,9 +58,7 @@ do
 		table.wipe(sortedLines)
 		local t = GetTime()
 		local lineIndex = 0
-		for i = 1, #mindExhaustionList do
-			local guid = mindExhaustionList[i]
-			local name = mindExhaustionNames[guid]
+		for guid, name in pairs(mindExhaustionNames) do
 			if name then
 				lineIndex = lineIndex + 1
 				local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
@@ -85,9 +83,9 @@ function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
 	table.wipe(mindExhaustionTimers)
-	table.wipe(mindExhaustionList)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionUnitIds)
+	mindExhaustionCount = 0
 end
 
 local function ShowInfoFrame()
@@ -100,9 +98,9 @@ end
 function mod:OnCombatEnd()
 	DBM.InfoFrame:Hide()
 	table.wipe(mindExhaustionTimers)
-	table.wipe(mindExhaustionList)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionUnitIds)
+	mindExhaustionCount = 0
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
@@ -110,7 +108,7 @@ function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	if not guid then return end
 	if self:GetCIDFromGUID(guid) ~= 16803 then return end
 	mindExhaustionUnitIds[guid] = unitId
-	if #mindExhaustionList >= 4 or mindExhaustionNames[guid] then return end
+	if mindExhaustionCount >= 4 or mindExhaustionNames[guid] then return end
 	TrackUnderstudy(guid, UnitName(unitId))
 	ShowInfoFrame()
 end
