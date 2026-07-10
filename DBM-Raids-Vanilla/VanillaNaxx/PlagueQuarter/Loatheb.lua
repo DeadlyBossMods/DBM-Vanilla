@@ -61,7 +61,7 @@ else
 	warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
 end
 
-local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, "RangedDps", nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)
+local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, "Dps", nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)
 local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
 local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, isWarlock, nil, 5)
 
@@ -122,7 +122,11 @@ do
 			end
 
 			sortedLines[i] = name
-			lines[name] = remaining
+			if remaining > 0 then
+				lines[name] = ("|cffff0000%d|r"):format(remaining)
+			else
+				lines[name] = ("|cff00ff00%s|r"):format(READY)
+			end
 		end
 
 		return lines, sortedLines
