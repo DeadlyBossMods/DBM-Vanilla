@@ -59,20 +59,18 @@ do
 		local t = GetTime()
 		local lineIndex = 0
 		for guid, name in pairs(mindExhaustionNames) do
-			if name then
-				lineIndex = lineIndex + 1
-				local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
-				local icon = mindExhaustionUnitIds[guid] and GetRaidTargetIndex(mindExhaustionUnitIds[guid])
-				local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
-				local key = guid .. "*" .. displayName
-				sortedLines[lineIndex] = key
-				if mindExhaustionTimers[guid] == -1 then
-					lines[key] = DEAD
-				elseif timeLeft > 0 then
-					lines[key] = ("|cffff0000%.0f|r"):format(timeLeft)
-				else
-					lines[key] = ("|cff00ff00%d|r"):format(0)
-				end
+			lineIndex = lineIndex + 1
+			local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
+			local icon = mindExhaustionUnitIds[guid] and GetRaidTargetIndex(mindExhaustionUnitIds[guid])
+			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
+			local key = guid .. "*" .. displayName
+			sortedLines[lineIndex] = key
+			if mindExhaustionTimers[guid] == -1 then
+				lines[key] = DEAD
+			elseif timeLeft > 0 then
+				lines[key] = ("|cffff0000%.0f|r"):format(timeLeft)
+			else
+				lines[key] = ("|cff00ff00%d|r"):format(0)
 			end
 		end
 		return lines, sortedLines
