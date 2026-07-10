@@ -215,7 +215,7 @@ end
 
 local function arrowOnUpdate(self, elapsed)
 	self.elapsed = (self.elapsed or 0) + elapsed
-	local vibration = math.sin(self.elapsed * 20) * 5
+	local vibration = math.sin(self.elapsed * 20) * 10
 	local x, y = self.baseX, self.baseY
 	if self.vibrateX then
 		x = x + vibration
