@@ -106,18 +106,13 @@ function mod:OnCombatEnd()
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
-	if #mindExhaustionList >= 4 then return end
 	local guid = UnitGUID(unitId)
-	if guid then
-		local cid = self:GetCIDFromGUID(guid)
-		if cid == 16803 then
-			mindExhaustionUnitIds[guid] = unitId
-			if not mindExhaustionNames[guid] then
-				TrackUnderstudy(guid, UnitName(unitId))
-				ShowInfoFrame()
-			end
-		end
-	end
+	if not guid then return end
+	if self:GetCIDFromGUID(guid) ~= 16803 then return end
+	mindExhaustionUnitIds[guid] = unitId
+	if #mindExhaustionList >= 4 or mindExhaustionNames[guid] then return end
+	TrackUnderstudy(guid, UnitName(unitId))
+	ShowInfoFrame()
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
