@@ -80,10 +80,10 @@ end
 function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
+	mindExhaustionCount = 0
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionUnitIds)
-	mindExhaustionCount = 0
 end
 
 local function ShowInfoFrame()
@@ -98,7 +98,6 @@ function mod:OnCombatEnd()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionUnitIds)
-	mindExhaustionCount = 0
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
