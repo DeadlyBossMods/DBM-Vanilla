@@ -41,6 +41,7 @@ mod:AddInfoFrameOption(29051, isPriest)
 local mindExhaustionTimers = {}
 local mindExhaustionList = {}
 local mindExhaustionNames = {}
+local mindExhaustionUnitIds = {}
 
 local function TrackUnderstudy(guid, name)
 	if name then
@@ -55,7 +56,7 @@ do
 	updateInfoFrame = function()
 		table.wipe(lines)
 		table.wipe(sortedLines)
-	local t = GetTime()
+		local t = GetTime()
 		local lineIndex = 0
 		for i = 1, #mindExhaustionList do
 			local guid = mindExhaustionList[i]
@@ -63,13 +64,16 @@ do
 			if name then
 				lineIndex = lineIndex + 1
 				local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
-				sortedLines[lineIndex] = name
+				local icon = mindExhaustionUnitIds[guid] and GetRaidTargetIndex(mindExhaustionUnitIds[guid])
+				local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
+				local key = guid .. "*" .. displayName
+				sortedLines[lineIndex] = key
 				if mindExhaustionTimers[guid] == -1 then
-					lines[name] = DEAD
+					lines[key] = DEAD
 				elseif timeLeft > 0 then
-					lines[name] = ("|cffff0000%.0f|r"):format(timeLeft)
+					lines[key] = ("|cffff0000%.0f|r"):format(timeLeft)
 				else
-					lines[name] = ("|cff00ff00%d|r"):format(0)
+					lines[key] = ("|cff00ff00%d|r"):format(0)
 				end
 			end
 		end
@@ -83,12 +87,13 @@ function mod:OnCombatStart()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionList)
 	table.wipe(mindExhaustionNames)
+	table.wipe(mindExhaustionUnitIds)
 end
 
 local function ShowInfoFrame()
 	if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29051))
-		DBM.InfoFrame:Show(4, "function", updateInfoFrame, nil, true)
+		DBM.InfoFrame:Show(4, "function", updateInfoFrame)
 	end
 end
 
@@ -97,6 +102,7 @@ function mod:OnCombatEnd()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionList)
 	table.wipe(mindExhaustionNames)
+	table.wipe(mindExhaustionUnitIds)
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
@@ -105,6 +111,7 @@ function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	if guid then
 		local cid = self:GetCIDFromGUID(guid)
 		if cid == 16803 and not mindExhaustionNames[guid] then
+			mindExhaustionUnitIds[guid] = unitId
 			TrackUnderstudy(guid, UnitName(unitId))
 			ShowInfoFrame()
 		end
