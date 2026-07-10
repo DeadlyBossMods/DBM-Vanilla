@@ -44,10 +44,8 @@ local mindExhaustionUnitIds = {}
 local mindExhaustionCount = 0
 
 local function TrackUnderstudy(guid, name)
-	if name then
-		mindExhaustionNames[guid] = name
-		mindExhaustionCount = mindExhaustionCount + 1
-	end
+	mindExhaustionNames[guid] = name
+	mindExhaustionCount = mindExhaustionCount + 1
 end
 
 local updateInfoFrame
