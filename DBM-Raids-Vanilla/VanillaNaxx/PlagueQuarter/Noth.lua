@@ -45,17 +45,15 @@ local timerAddsCD		= mod:NewAddsTimer(30, 29252, nil, "-Healer", nil, 1, "136187
 
 mod:AddInfoFrameOption(29213, "RemoveCurse")
 
+local twipe = table.wipe
 local lines, sortedLines = {}, {}
 local curseTargets = {}
 local function updateInfoFrame()
-	table.wipe(lines)
-	table.wipe(sortedLines)
-
-	local i = 0
+	twipe(lines)
+	twipe(sortedLines)
 
 	for name in pairs(curseTargets) do
-		i = i + 1
-		sortedLines[i] = name
+		sortedLines[#sortedlines + 1] = name
 		lines[name] = ""
 	end
 
