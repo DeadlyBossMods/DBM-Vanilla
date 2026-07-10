@@ -54,7 +54,7 @@ mod:RegisterEventsInCombat(
 -- "<1632.86 21:01:34> [IsEncounterInProgress()] true",
 
 local phase1DurationSoD = 230.1
-local phase1DurationEra = "v229.2-243.6"
+local phase1DurationEra = "v229.2-244.5"
 
 --[[
 ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
