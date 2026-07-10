@@ -149,13 +149,13 @@ function mod:UNIT_AURA()
 			warnChargeChanged:Show(charge)
 			if currentCharge then
 				warnChargeChanged:Play("movesoon")
-			end
-			if self.Options.AirowsEnabled == "ArrowsInverse" then
-				self:ShowRightArrow()
-			elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
-				self:ShowLeftArrow()
-			elseif self.Options.AirowsEnabled == "TwoCamp" then
-				self:ShowUpArrow()
+				if self.Options.AirowsEnabled == "ArrowsInverse" then
+					self:ShowRightArrow()
+				elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
+					self:ShowLeftArrow()
+				elseif self.Options.AirowsEnabled == "TwoCamp" then
+					self:ShowUpArrow()
+				end
 			end
 		end
 		currentCharge = charge
