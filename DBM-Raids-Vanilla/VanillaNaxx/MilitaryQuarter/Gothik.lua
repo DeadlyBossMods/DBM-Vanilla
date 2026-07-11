@@ -35,7 +35,7 @@ local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
 
-local timerTeleport, warnTeleport, warnTeleportSoon, warnTeleportDead, warnTeleportDeadSoon, timerTeleportDead, warnTeleportLive, warnTeleportLiveSoon, timerTeleportLive
+local timerTeleport, warnTeleportSoon, warnTeleportDead, warnTeleportDeadSoon, timerTeleportDead, warnTeleportLive, warnTeleportLiveSoon, timerTeleportLive
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnTeleportSoon	= mod:NewSoonAnnounce(1222332, 3)
 	timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
