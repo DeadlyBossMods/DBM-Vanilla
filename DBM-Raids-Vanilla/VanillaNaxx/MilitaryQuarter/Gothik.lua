@@ -35,14 +35,17 @@ local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
 local timerPhase2		= mod:NewTimer(270, "TimerPhase2", "136116", nil, nil, 6)
 local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
 
-local timerTeleport, warnTeleport, warnTeleportSoon
+local timerTeleport, warnTeleport, warnTeleportSoon, warnTeleportDead, warnTeleportDeadSoon, timerTeleportDead, warnTeleportLive, warnTeleportLiveSoon, timerTeleportLive
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnTeleportSoon	= mod:NewSoonAnnounce(1222332, 3)
 	timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
 else
-	warnTeleport		= mod:NewSpellAnnounce(28026, 3, "135736")
-	warnTeleportSoon	= mod:NewSoonAnnounce(28026, 2, "135736")
-	timerTeleport		= mod:NewNextTimer("v19.4-20.4", 28026, nil, nil, nil, 6, "135736")
+	warnTeleportLive		= mod:NewSpellAnnounce(28025, 3, "135736")
+	warnTeleportLiveSoon	= mod:NewSoonAnnounce(28025, 2, "135736")
+	timerTeleportLive		= mod:NewNextTimer("v19.4-20.4", 28025, nil, nil, nil, 6, "135736")
+	warnTeleportDead		= mod:NewSpellAnnounce(28026, 3, "135736")
+	warnTeleportDead		= mod:NewSoonAnnounce(28026, 2, "135736")
+	timerTeleportDead		= mod:NewNextTimer("v19.4-20.4", 28026, nil, nil, nil, 6, "135736")
 end
 
 mod:AddInfoFrameOption(nil, true)
@@ -158,14 +161,19 @@ end
 
 function mod:OnCombatStart()
 	self.vb.wave = 0
+	self:SetStage(1)
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	timerPhase2:Start()
-	self:Schedule(270, function()
-    warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-	end)
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		self:Schedule(270, function()
+    	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		self:SetStage(2)
+		DBM.InfoFrame:Hide()
+		end)
+	end
 	timerWave:Start(27, self.vb.wave + 1)
 	warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
 	self:ScheduleMethod(27, "NextWave")
@@ -220,26 +228,38 @@ end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
 	if spellId == 28025 then
-		self:SendSync("TeleportTimer")
+		self:SendSync("TeleportLive")
 	elseif spellId == 28026 then
-		self:SendSync("Teleported")
+		self:SendSync("TeleportDead")
 	end
 end
 
 function mod:OnSync(event)
-    if event == "TeleportTimer" then
-		warnTeleportSoon:Schedule(14.5)
-		timerTeleport:Start()
-		DBM.InfoFrame:Hide()
-	elseif event == "Teleported" then
-		warnTeleport:Show()
-		timerTeleport:Stop()
-		warnTeleportSoon:Cancel()
+    if event == "TeleportLive" then
+		if self:GetStage(1) then
+			self:SetStage(2)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+			DBM.InfoFrame:Hide()
+		else
+			warnTeleportLive:Show()
+		end
+		warnTeleportLiveSoon:Cancel()
+		timerTeleportLive:Stop()
+		warnTeleportDeadSoon:Schedule(14.5)
+		timerTeleportDead:Start()
+	elseif event == "TeleportDead" then
+		warnTeleportDead:Show()
+		warnTeleportDeadSoon:Cancel()
+		timerTeleportDead:Stop()
+		warnTeleportLiveSoon:Schedule(14.5)
+		timerTeleportLive:Start()
 	elseif event == "LowHPThreshold" then
 		if DBM:IsSeasonal("SeasonOfDiscovery") then
 			self:UnscheduleMethod("Teleport")
 		end
-		timerTeleport:Stop()
-		warnTeleportSoon:Cancel()
+		timerTeleportLive:Stop()
+		timerTeleportDead:Stop()
+		warnTeleportLiveSoon:Cancel()
+		warnTeleportDeadSoon:Cancel()
 	end
 end
