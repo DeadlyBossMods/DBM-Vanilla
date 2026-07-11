@@ -44,7 +44,7 @@ else
 	warnTeleportLiveSoon	= mod:NewSoonAnnounce(28025, 2, "135736")
 	timerTeleportLive		= mod:NewNextTimer("v19.4-20.4", 28025, nil, nil, nil, 6, "135736")
 	warnTeleportDead		= mod:NewSpellAnnounce(28026, 3, "135736")
-	warnTeleportDead		= mod:NewSoonAnnounce(28026, 2, "135736")
+	warnTeleportDeadSoon	= mod:NewSoonAnnounce(28026, 2, "135736")
 	timerTeleportDead		= mod:NewNextTimer("v19.4-20.4", 28026, nil, nil, nil, 6, "135736")
 end
 
