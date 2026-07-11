@@ -169,7 +169,7 @@ function mod:OnCombatStart()
 	timerPhase2:Start()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		self:Schedule(270, function()
-    	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
 		self:SetStage(2)
 		DBM.InfoFrame:Hide()
 		end)
