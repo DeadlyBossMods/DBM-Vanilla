@@ -185,14 +185,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 end
 
 function mod:OnSync(msg, arg)
-	if msg == "Phase2" then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-        timerEnrage:Start()
-		timerNextShift:Start(11.3)
-		timerIntermission:Stop()
-		warnPhase:Play("ptwo")
-	elseif msg == "BossDies" then
+	if msg == "BossDies" then
 		local cid = tonumber(arg)
 		if cid then
 			deadBosses[cid] = true
@@ -211,6 +204,13 @@ function mod:OnSync(msg, arg)
 		if cid then
 			deadBosses[cid] = nil
 		end
+	elseif msg == "Phase2" then
+		self:SetStage(2)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+        timerEnrage:Start()
+		timerNextShift:Start(11.3)
+		timerIntermission:Stop()
+		warnPhase:Play("ptwo")
 	end
 end
 
