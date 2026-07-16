@@ -36,12 +36,11 @@ local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_C
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
-mod:AddInfoFrameOption(29051, isPriest)
+mod:AddInfoFrameOption(29051, IsPriest)
 
 local mindExhaustionTimers = {}
 local mindExhaustionNames = {}
 local mindExhaustionIcons = {}
-local mindExhaustionCount = 0
 
 local updateInfoFrame
 do
@@ -73,7 +72,6 @@ end
 function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
-	mindExhaustionCount = 0
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionIcons)
@@ -131,13 +129,12 @@ function mod:OnSync(event, guid, name, icon)
         mindExhaustionTimers[guid] = GetTime() + 60
         timerMindExhaustionCD:Start(guid)
     elseif event == "UnderstudyFound" and guid and name then
-        if not mindExhaustionNames[guid] and mindExhaustionCount < 4 then
+        if not mindExhaustionNames[guid] then
             mindExhaustionNames[guid] = name
             local iconNum = tonumber(icon)
             if iconNum and iconNum > 0 then
                 mindExhaustionIcons[guid] = iconNum
             end
-            mindExhaustionCount = mindExhaustionCount + 1
             ShowInfoFrame()
         end
     end
