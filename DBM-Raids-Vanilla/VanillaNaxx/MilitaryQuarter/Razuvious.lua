@@ -36,7 +36,7 @@ local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_C
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
-mod:AddInfoFrameOption(29051, true)
+mod:AddInfoFrameOption(29051, isPriest)
 
 local mindExhaustionTimers = {}
 local mindExhaustionNames = {}
