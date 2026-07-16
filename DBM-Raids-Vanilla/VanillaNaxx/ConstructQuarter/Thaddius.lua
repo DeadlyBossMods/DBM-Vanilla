@@ -165,24 +165,15 @@ end
 function mod:CHAT_MSG_MONSTER_EMOTE(msg, sender)
     if msg == L.EmoteDies or msg:find(L.EmoteDies) then
 		if sender == L.Stalagg then
-			deadBosses[15929] = true
+			self:SendSync("BossDies", 15929)
 		elseif sender == L.Feugen then
-			deadBosses[15930] = true
+			self:SendSync("BossDies", 15930)
 		end
-        if deadBosses[15929] and deadBosses[15930] then
-			self:SetStage(1.5)
-			self:UnscheduleMethod("TankThrow")
-			warnPhase2Soon:Show()
-			warnThrowSoon:Cancel()
-			timerThrow:Stop()
-			timerIntermission:Start()
-			DBM.InfoFrame:Hide()
-        end
     elseif msg == L.EmoteRevive or msg:find(L.EmoteRevive) then
 		if sender == L.Stalagg then
-			deadBosses[15929] = nil
+			self:SendSync("BossRevive", 15929)
 		elseif sender == L.Feugen then
-			deadBosses[15930] = nil
+			self:SendSync("BossRevive", 15930)
 		end
     end
 end
@@ -193,7 +184,7 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 	end
 end
 
-function mod:OnSync(msg)
+function mod:OnSync(msg, arg)
 	if msg == "Phase2" then
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
@@ -201,6 +192,25 @@ function mod:OnSync(msg)
 		timerNextShift:Start(11.3)
 		timerIntermission:Stop()
 		warnPhase:Play("ptwo")
+	elseif msg == "BossDies" then
+		local cid = tonumber(arg)
+		if cid then
+			deadBosses[cid] = true
+			if deadBosses[15929] and deadBosses[15930] then
+				self:SetStage(1.5)
+				self:UnscheduleMethod("TankThrow")
+				warnPhase2Soon:Show()
+				warnThrowSoon:Cancel()
+				timerThrow:Stop()
+				timerIntermission:Start()
+				DBM.InfoFrame:Hide()
+			end
+		end
+	elseif msg == "BossRevive" then
+		local cid = tonumber(arg)
+		if cid then
+			deadBosses[cid] = nil
+		end
 	end
 end
 
