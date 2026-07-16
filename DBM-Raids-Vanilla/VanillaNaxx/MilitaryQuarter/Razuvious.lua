@@ -40,7 +40,7 @@ mod:AddInfoFrameOption(29051, isPriest)
 
 local mindExhaustionTimers = {}
 local mindExhaustionNames = {}
-local mindExhaustionUnitIds = {}
+local mindExhaustionIcons = {}
 local mindExhaustionCount = 0
 
 local updateInfoFrame
@@ -54,7 +54,7 @@ do
 		for guid, name in pairs(mindExhaustionNames) do
 			lineIndex = lineIndex + 1
 			local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
-			local icon = mindExhaustionUnitIds[guid] and GetRaidTargetIndex(mindExhaustionUnitIds[guid])
+			local icon = mindExhaustionIcons[guid]
 			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
 			local key = guid .. "*" .. displayName
 			sortedLines[lineIndex] = key
@@ -76,7 +76,7 @@ function mod:OnCombatStart()
 	mindExhaustionCount = 0
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
-	table.wipe(mindExhaustionUnitIds)
+	table.wipe(mindExhaustionIcons)
 end
 
 local function ShowInfoFrame()
@@ -90,15 +90,15 @@ function mod:OnCombatEnd()
 	DBM.InfoFrame:Hide()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
-	table.wipe(mindExhaustionUnitIds)
+	table.wipe(mindExhaustionIcons)
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
-	mindExhaustionUnitIds[guid] = unitId
 	if mindExhaustionCount >= 4 or mindExhaustionNames[guid] then return end
 	mindExhaustionNames[guid] = UnitName(unitId)
+	mindExhaustionIcons[guid] = GetRaidTargetIndex(unitId)
 	mindExhaustionCount = mindExhaustionCount + 1
 	ShowInfoFrame()
 end
