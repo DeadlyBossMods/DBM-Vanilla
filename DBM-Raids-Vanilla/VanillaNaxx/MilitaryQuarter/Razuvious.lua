@@ -96,7 +96,6 @@ end
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
-	if mindExhaustionNames[guid] then return end
 	self:SendSync("UnderstudyFound", guid, UnitName(unitId), GetRaidTargetIndex(unitId) or 0)
 end
 
