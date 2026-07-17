@@ -956,8 +956,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1					= "À manger pour maître !",
-	Yell2P1					= "Stalagg écraser toi !"
+	Stalagg 	= "Stalagg",
+	Feugen 		= "Feugen",
+	Yell1P1		= "À manger pour maître !",
+	Yell2P1		= "Stalagg écraser toi !",
+	Yell1P2 	= "Manger… tes… os…",
+	Yell2P2 	= "Casser… toi !",
+	Yell3P2 	= "Tuer…",
+	EmoteDies 	= "%s meurt.",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({
@@ -985,10 +992,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 					= "Pas de quartier !",
-	Pull2 					= "Les cours sont terminés ! Montrez-moi ce que vous avez appris !",
-	Pull3 					= "Faites ce que vous ai appris !",
-	Pull4 					= "Frappe-le à la jambe… Ça te pose un problème ?"
+	Pull1 			= "Pas de quartier !",
+	Pull2 			= "Les cours sont terminés ! Montrez-moi ce que vous avez appris !",
+	Pull3 			= "Faites ce que vous ai appris !",
+	Pull4 			= "Frappe-le à la jambe… Ça te pose un problème ?",
+	Understudy		= "Doublure de chevalier de la mort"
 })
 
 --------------

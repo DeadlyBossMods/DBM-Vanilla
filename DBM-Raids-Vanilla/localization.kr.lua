@@ -977,8 +977,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1	= "너 주인님께 바칠 거야!",
-	Yell2P1	= "스탈라그, 박살낸다!"
+	Stalagg 	= "스탈라그",
+	Feugen 		= "퓨진",
+	Yell1P1		= "너 주인님께 바칠 거야!",
+	Yell2P1		= "스탈라그, 박살낸다!",
+	Yell1P2 	= "잡아... 먹어주마...",
+	Yell2P2 	= "박살을 내주겠다!",
+	Yell3P2 	= "죽여주마...",
+	EmoteDies 	= "%s|1이;가; 죽습니다.",
+	EmoteRevive = "%s|1이;가; 다시 살아납니다!"
 })
 
 L:SetOptionLocalization({
@@ -1006,10 +1013,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "절대 봐주지 마라!",
-	Pull2 = "훈련은 끝났다! 배운 걸 보여줘라!",
-	Pull3 = "훈련받은 대로 해!",
-	Pull4 = "다리를 후려 차라! 무슨 문제 있나?"
+	Pull1 		= "절대 봐주지 마라!",
+	Pull2 		= "훈련은 끝났다! 배운 걸 보여줘라!",
+	Pull3 		= "훈련받은 대로 해!",
+	Pull4 		= "다리를 후려 차라! 무슨 문제 있나?",
+	Understudy	= "죽음의 기사 수습생"
 })
 
 ----------------------------

@@ -878,8 +878,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1				= "主人要吃了你！",
-	Yell2P1				= "斯塔拉格要碾碎你！"
+	Stalagg 	= "斯塔拉格",
+	Feugen 		= "费尔根",
+	Yell1P1		= "主人要吃了你！",
+	Yell2P1		= "斯塔拉格要碾碎你！",
+	Yell1P2 	= "咬碎……你的……骨头……",
+	Yell2P2 	= "打……烂……你！",
+	Yell3P2 	= "杀……",
+	EmoteDies 	= "%s死了。",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({
@@ -910,7 +917,8 @@ L:SetMiscLocalization({
 	Pull1 				= "仁慈无用！",
 	Pull2 				= "练习时间到此为止！都拿出真本事来！",
 	Pull3 				= "按我教导的去做！",
-	Pull4 				= "绊腿……有什么问题么？"
+	Pull4 				= "绊腿……有什么问题么？",
+	Understudy			= "见习死亡骑士"
 })
 
 ----------------------------

@@ -975,8 +975,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1	= "Feed you to master!",
-	Yell2P1	= "Stalagg crush you!"
+	Stalagg 	= "Stalagg",
+	Feugen 		= "Feugen",
+	Yell1P1		= "Feed you to master!",
+	Yell2P1		= "Stalagg crush you!",
+	Yell1P2 	= "Eat... your... bones...",
+	Yell2P2 	= "Break... you!!",
+	Yell3P2 	= "Kill...",
+	EmoteDies 	= "%s dies.",
+	EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({
@@ -1004,10 +1011,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "Show them no mercy!",
-	Pull2 = "The time for practice is over! Show me what you have learned!",
-	Pull3 = "Do as I taught you!",
-	Pull4 = "Sweep the leg... Do you have a problem with that?"
+	Pull1 		= "Show them no mercy!",
+	Pull2 		= "The time for practice is over! Show me what you have learned!",
+	Pull3 		= "Do as I taught you!",
+	Pull4 		= "Sweep the leg... Do you have a problem with that?",
+	Understudy	= "Deathknight Understudy"
 })
 
 ----------------------------
