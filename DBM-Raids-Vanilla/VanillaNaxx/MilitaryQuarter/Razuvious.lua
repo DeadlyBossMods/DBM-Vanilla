@@ -44,10 +44,11 @@ local mindExhaustionIcons = {}
 
 local updateInfoFrame
 do
+	local twipe = table.wipe
 	local lines, sortedLines = {}, {}
 	updateInfoFrame = function()
-		table.wipe(lines)
-		table.wipe(sortedLines)
+		twipe(lines)
+		twipe(sortedLines)
 		local t = GetTime()
 		for guid, name in pairs(mindExhaustionNames) do
 			local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
