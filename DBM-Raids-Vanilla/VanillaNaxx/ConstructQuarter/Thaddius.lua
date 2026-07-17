@@ -53,9 +53,10 @@ local deadBosses = {}
 
 local updateInfoFrame
 do
+	local twipe = table.wipe
 	local lines = {}
 	updateInfoFrame = function()
-		table.wipe(lines)
+		twipe(lines)
 		local bossHealth = DBM:GetCachedBossHealth()
 		if not deadBosses[15929] then
 			lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929])
