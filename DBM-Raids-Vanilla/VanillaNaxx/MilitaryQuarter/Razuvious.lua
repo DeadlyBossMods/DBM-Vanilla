@@ -92,7 +92,7 @@ end
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
-	self:SendSync("UnderstudyFound", guid, UnitName(unitId), GetRaidTargetIndex(unitId) or 0)
+	self:SendSync("UnderstudyFound", guid, GetRaidTargetIndex(unitId) or 0)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -122,18 +122,18 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	end
 end
 
-function mod:OnSync(event, guid, name, icon)
+function mod:OnSync(event, guid, icon)
     if event == "MindExhaustion" and guid then
         mindExhaustionTimers[guid] = GetTime() + 60
         timerMindExhaustionCD:Start(guid)
-    elseif event == "UnderstudyFound" and guid and name then
+    elseif event == "UnderstudyFound" and guid then
         if not mindExhaustionNames[guid] then
-            mindExhaustionNames[guid] = name
-            local iconNum = tonumber(icon)
-            if iconNum and iconNum > 0 then
-                mindExhaustionIcons[guid] = iconNum
-            end
+            mindExhaustionNames[guid] = L.Understudy
             ShowInfoFrame()
+        end
+        local iconNum = tonumber(icon)
+        if iconNum and iconNum > 0 and mindExhaustionIcons[guid] ~= iconNum then
+            mindExhaustionIcons[guid] = iconNum
         end
     end
 end
