@@ -129,11 +129,11 @@ function mod:OnSync(event, guid, icon)
     elseif event == "UnderstudyFound" and guid then
         if not mindExhaustionNames[guid] then
             mindExhaustionNames[guid] = L.Understudy
+            local iconNum = tonumber(icon)
+            if iconNum and iconNum > 0 then
+                mindExhaustionIcons[guid] = iconNum
+            end
             ShowInfoFrame()
-        end
-        local iconNum = tonumber(icon)
-        if iconNum and iconNum > 0 and mindExhaustionIcons[guid] ~= iconNum then
-            mindExhaustionIcons[guid] = iconNum
         end
     end
 end
