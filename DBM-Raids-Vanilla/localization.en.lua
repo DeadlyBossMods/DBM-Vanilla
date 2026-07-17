@@ -1011,10 +1011,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "Show them no mercy!",
-	Pull2 = "The time for practice is over! Show me what you have learned!",
-	Pull3 = "Do as I taught you!",
-	Pull4 = "Sweep the leg... Do you have a problem with that?"
+	Pull1 		= "Show them no mercy!",
+	Pull2 		= "The time for practice is over! Show me what you have learned!",
+	Pull3 		= "Do as I taught you!",
+	Pull4 		= "Sweep the leg... Do you have a problem with that?",
+	Understudy	= "Deathknight Understudy"
 })
 
 ----------------------------

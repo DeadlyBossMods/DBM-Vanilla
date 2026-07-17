@@ -992,10 +992,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "¡No tengan piedad!",
-	Pull2 = "¡Se ha acabado el tiempo de práctica! ¡Quiero ver lo que han aprendido!",
-	Pull3 = "¡Hagan lo que les enseñé!",
-	Pull4 = "Un barrido con pierna... ¿Tienes algún problema?"
+	Pull1 		= "¡No tengan piedad!",
+	Pull2 		= "¡Se ha acabado el tiempo de práctica! ¡Quiero ver lo que han aprendido!",
+	Pull3 		= "¡Hagan lo que les enseñé!",
+	Pull4 		= "Un barrido con pierna... ¿Tienes algún problema?",
+	Understudy	= "Discípulo caballero de la muerte"
 })
 
 --------------------------

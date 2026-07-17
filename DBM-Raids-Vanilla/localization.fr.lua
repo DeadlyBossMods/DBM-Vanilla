@@ -992,10 +992,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 					= "Pas de quartier !",
-	Pull2 					= "Les cours sont terminés ! Montrez-moi ce que vous avez appris !",
-	Pull3 					= "Faites ce que vous ai appris !",
-	Pull4 					= "Frappe-le à la jambe… Ça te pose un problème ?"
+	Pull1 			= "Pas de quartier !",
+	Pull2 			= "Les cours sont terminés ! Montrez-moi ce que vous avez appris !",
+	Pull3 			= "Faites ce que vous ai appris !",
+	Pull4 			= "Frappe-le à la jambe… Ça te pose un problème ?",
+	Understudy		= "Doublure de chevalier de la mort"
 })
 
 --------------

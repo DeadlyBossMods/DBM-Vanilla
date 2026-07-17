@@ -965,10 +965,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "Lasst keine Gnade walten!",
-	Pull2 = "Die Zeit des Übens ist vorbei! Zeigt mir, was ihr gelernt habt!",
-	Pull3 = "Befolgt meine Befehle!",
-	Pull4 = "Streckt sie nieder... oder habt ihr ein Problem damit?"
+	Pull1 		= "Lasst keine Gnade walten!",
+	Pull2 		= "Die Zeit des Übens ist vorbei! Zeigt mir, was ihr gelernt habt!",
+	Pull3 		= "Befolgt meine Befehle!",
+	Pull4 		= "Streckt sie nieder... oder habt ihr ein Problem damit?",
+	Understudy	= "Reservist der Todesritter"
 })
 
 ----------------------------

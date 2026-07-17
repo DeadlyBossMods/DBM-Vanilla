@@ -997,10 +997,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "Não há compaixão nesta luta!",
-	Pull2 = "Acabou o treinamento! Agora é pra valer!",
-	Pull3 = "Façam como eu ensinei!",
-	Pull4 = "Chutem entre as pernas... Ou vão ficar de frescura?!"
+	Pull1 		= "Não há compaixão nesta luta!",
+	Pull2 		= "Acabou o treinamento! Agora é pra valer!",
+	Pull3 		= "Façam como eu ensinei!",
+	Pull4 		= "Chutem entre as pernas... Ou vão ficar de frescura?!",
+	Understudy	= "Cavaleiro da Morte Substituto"
 })
 
 --------------------------
