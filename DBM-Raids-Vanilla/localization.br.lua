@@ -961,8 +961,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1	= "Vou te dar de comer pro mestre!",
-	Yell2P1 = "Stalagg esmaga você!"
+	Stalagg 	= "Stalagg",
+	Feugen 		= "Feugen",
+	Yell1P1		= "Vou te dar de comer pro mestre!",
+	Yell2P1 	= "Stalagg esmaga você!",
+	Yell1P2 	= "Comer... seus... osso...",
+	Yell2P2 	= "Matar... Vocês...!",
+	Yell3P2 	= "Matar...",
+	EmoteDies 	= "%s morre.",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({
@@ -990,10 +997,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "Não há compaixão nesta luta!",
-	Pull2 = "Acabou o treinamento! Agora é pra valer!",
-	Pull3 = "Façam como eu ensinei!",
-	Pull4 = "Chutem entre as pernas... Ou vão ficar de frescura?!"
+	Pull1 		= "Não há compaixão nesta luta!",
+	Pull2 		= "Acabou o treinamento! Agora é pra valer!",
+	Pull3 		= "Façam como eu ensinei!",
+	Pull4 		= "Chutem entre as pernas... Ou vão ficar de frescura?!",
+	Understudy	= "Cavaleiro da Morte Substituto"
 })
 
 --------------------------

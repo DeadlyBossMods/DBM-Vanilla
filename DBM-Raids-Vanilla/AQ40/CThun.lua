@@ -70,7 +70,7 @@ do
 		twipe(sortedLines)
 		--First, process players in stomach and gather tentacle information and debuff stacks
 		for name in pairs(playersInStomach) do
-			local uId = DBM:GetRaidUnitId(name)
+			local uId = DBM:GetRaidUnitId(name, true)
 			if uId then
 				--First, display their stomach debuff stacks
 				local spellName, _, count, _, _, _, _, _, _, _, _, _, _, _, _, count2 = DBM:UnitDebuff(uId, 26476)

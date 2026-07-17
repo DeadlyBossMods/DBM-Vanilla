@@ -169,7 +169,7 @@ function mod:SPELL_AURA_APPLIED(args)
 			DBM.InfoFrame:UpdateTable(MagmaStacks)
 		end
 	elseif spellId == 400279 then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		--(basically filters everyone who's not actively tanking mob such as melee in wrong place)
 		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
 			local amount = args.amount or 1

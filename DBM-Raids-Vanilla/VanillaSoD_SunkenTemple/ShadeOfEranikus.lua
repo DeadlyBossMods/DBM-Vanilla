@@ -165,7 +165,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(437353) and not args:IsPlayer() then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId, nil, nil, true, args.sourceGUID) then
 			specWarnCorrosiveBreathTaunt:Show(args.destName)
 			specWarnCorrosiveBreathTaunt:Play("tauntboss")

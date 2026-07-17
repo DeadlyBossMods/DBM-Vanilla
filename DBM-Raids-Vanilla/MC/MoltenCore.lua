@@ -78,7 +78,7 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(460890) then
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		local amount = args.amount or 1
 		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) and amount >= 5 and amount % 2 == 0 then
 			warnMeltArmor:Show(args.destName, amount)

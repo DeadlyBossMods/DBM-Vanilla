@@ -967,8 +967,15 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Yell1P1	= "¡Eres pasto del maestro!",
-	Yell2P1	= "¡Stalagg machacarte!"
+	Stalagg 	= "Stalagg",
+	Feugen 		= "Feugen",
+	Yell1P1		= "¡Eres pasto del maestro!",
+	Yell2P1		= "¡Stalagg machacarte!",
+	Yell1P2 	= "Comer... tus... huesos...",
+	Yell2P2 	= "¡¡Despedazarte!!",
+	Yell3P2 	= "Matar...",
+	EmoteDies 	= "%s muere.",
+	--EmoteRevive = "%s is jolted back to life!"
 })
 
 L:SetOptionLocalization({
@@ -995,10 +1002,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1 = "¡No muestres misericordia!",
-	Pull2 = "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
-	Pull3 = "¡Hazlo como te enseñé!",
-	Pull4 = "Arrastra la pierna... ¿Tienes algún problema con eso?"
+	Pull1 		= "¡No muestres misericordia!",
+	Pull2 		= "¡Se acabado la práctica! ¡Enseñadme lo que habéis aprendido!",
+	Pull3 		= "¡Hazlo como te enseñé!",
+	Pull4 		= "Arrastra la pierna... ¿Tienes algún problema con eso?",
+	Understudy	= "Suplente Caballero de la Muerte"
 })
 
 --------------------------

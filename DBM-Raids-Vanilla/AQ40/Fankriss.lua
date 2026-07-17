@@ -89,7 +89,7 @@ function mod:SPELL_SUMMON(args)
 end
 
 function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
-	if spellId == 26631 then
+	if spellId == 26630 or spellId == 26631 or spellId == 26632 then
 		self:SendSync("Spawns")
 	end
 end

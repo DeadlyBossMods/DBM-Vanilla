@@ -114,7 +114,7 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(1231993) then
 		local amount = args.amount or 1
-		local uId = DBM:GetRaidUnitId(args.destName)
+		local uId = DBM:GetRaidUnitId(args.destName, true)
 		if self:IsTanking(uId, nil, nil, false, args.sourceGUID) then
 			warnBreathStack:Show(args.destName, amount)
 			if args:IsPlayer() then
