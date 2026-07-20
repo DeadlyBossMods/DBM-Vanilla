@@ -198,11 +198,11 @@ function mod:OnSync(msg, arg)
 		local cid = tonumber(arg)
 		if cid then
 			deadBosses[cid] = true
+			warnThrowSoon:Cancel()
+			timerThrow:Stop()
 			if deadBosses[15929] and deadBosses[15930] then
 				self:SetStage(1.5)
 				warnPhase2Soon:Show()
-				warnThrowSoon:Cancel()
-				timerThrow:Stop()
 				timerIntermission:Start()
 				DBM.InfoFrame:Hide()
 			end
