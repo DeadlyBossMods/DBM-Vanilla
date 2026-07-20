@@ -21,6 +21,7 @@ mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
 
 mod:RegisterEventsInCombat(
     "SPELL_CAST_START 28089",
+	"SPELL_CAST_SUCCESS 28338 28339",
     "UNIT_AURA player",
     "CHAT_MSG_MONSTER_EMOTE",
 	"CHAT_MSG_MONSTER_YELL"
@@ -40,7 +41,7 @@ local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSI
 local timerEnrage			= mod:NewBerserkTimer(300)
 local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2)
-local timerThrow			= mod:NewCDTimer(20.6, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+local timerThrow			= mod:NewCDTimer(21, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerIntermission		= mod:NewIntermissionTimer("v12.8-16", nil, CL.INTERMISSION, true, nil, nil, "136106")
 
 mod:AddInfoFrameOption()
@@ -86,9 +87,8 @@ function mod:OnCombatStart()
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	currentCharge = nil
 	deadBosses = {}
-    self:ScheduleMethod(40.6, "TankThrow")
-    timerThrow:Start(20.6)
-    warnThrowSoon:Schedule(37.6)
+    timerThrow:Start()
+    warnThrowSoon:Schedule(16)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(2, "function", updateInfoFrame, false, false)
 		self:BossHealthUpdate()
@@ -109,6 +109,13 @@ function mod:SPELL_CAST_START(args)
 		warnShiftCasting:Show()
 		warnShiftSoon:Schedule(20)
 		lastShift = GetTime()
+	end
+end
+
+function mod:SPELL_CAST_SUCCESS(args)
+	if (args:IsSpell(28338) or args:IsSpell(28339)) and self:AntiSpam(3,1) then
+		timerThrow:Start()
+		warnThrowSoon:Schedule(16)
 	end
 end
 
@@ -192,7 +199,6 @@ function mod:OnSync(msg, arg)
 			deadBosses[cid] = true
 			if deadBosses[15929] and deadBosses[15930] then
 				self:SetStage(1.5)
-				self:UnscheduleMethod("TankThrow")
 				warnPhase2Soon:Show()
 				warnThrowSoon:Cancel()
 				timerThrow:Stop()
@@ -213,15 +219,6 @@ function mod:OnSync(msg, arg)
 		timerIntermission:Stop()
 		warnPhase:Play("ptwo")
 	end
-end
-
-function mod:TankThrow()
-	if not self:IsInCombat() or self:GetStage(2) then
-		return
-	end
-	timerThrow:Start()
-	warnThrowSoon:Schedule(37.6)
-	self:ScheduleMethod(40.6, "TankThrow")
 end
 
 local function arrowOnUpdate(self, elapsed)
