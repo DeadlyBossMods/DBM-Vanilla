@@ -114,6 +114,7 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if (args:IsSpell(28338) or args:IsSpell(28339)) and self:AntiSpam(3,1) then
+		warnThrow:Show()
 		timerThrow:Start()
 		warnThrowSoon:Schedule(16)
 	end
