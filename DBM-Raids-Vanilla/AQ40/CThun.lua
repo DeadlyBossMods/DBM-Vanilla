@@ -114,7 +114,25 @@ function mod:OnCombatEnd(wipe, isSecondRun)
 	end
 	--Only run on second run, to ensure trash mod has had enough time to update requiredBosses
 	if not wipe and isSecondRun and firstBossMod.vb.firstEngageTime and firstBossMod.Options.SpeedClearTimer then
-		if firstBossMod.vb.requiredBosses < 5 then
+		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
+		if firstBossMod.vb.requiredBosses == 5 then
+			local thisTime = GetServerTime() - firstBossMod.vb.firstEngageTime
+			if thisTime and thisTime > 0 then
+				if not firstBossMod.Options.FastestClear3 then
+					--First clear, just show current clear time
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(531), DBM:strFromTime(thisTime)))
+					firstBossMod.Options.FastestClear3 = thisTime
+				elseif (firstBossMod.Options.FastestClear3 > thisTime) then
+					--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear3)))
+					firstBossMod.Options.FastestClear3 = thisTime
+				else
+					--Just show this clear time, and current record time (that you did NOT beat)
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear3)))
+				end
+			end
+			firstBossMod.vb.firstEngageTime = nil
+		else
 			DBM:AddMsg(L.NotValid:format(5 - firstBossMod.vb.requiredBosses .. "/4"))
 		end
 	end
