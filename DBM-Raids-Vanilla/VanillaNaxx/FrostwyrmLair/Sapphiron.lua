@@ -32,13 +32,9 @@ local airPhaseTimer = "v54.3-70.8"
 
 local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 3)
 local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 2, nil, "RemoveCurse")
-local warnIceBlock
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
+local warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
 	warnIceBlock.noFilter = true
-else
-	warnIceBlock		= mod:NewTargetNoFilterAnnounce(28522, 2)
-end
+
 local warnAirPhaseSoon	= mod:NewAnnounce("WarningAirPhaseSoon", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
@@ -209,7 +205,7 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == "CancelAirPhaseTimer" then
+	if msg == "CancelAirPhaseTimer" and not self.vb.airPhaseHPThreshold then
 		self.vb.airPhaseHPThreshold = true
 		warnAirPhaseSoon:Cancel()
 		timerAirPhase:Stop()
