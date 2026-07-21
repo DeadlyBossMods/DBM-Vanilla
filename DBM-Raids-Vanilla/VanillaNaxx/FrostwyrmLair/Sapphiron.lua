@@ -146,12 +146,8 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(28522) and args:IsDestTypePlayer() then
 		self.vb.iceBlocks = self.vb.iceBlocks + 1
-		if DBM:IsSeasonal("SeasonOfDiscovery") then -- They're a few seconds apart on SoD and she lands after 5
 			---@diagnostic disable-next-line: param-type-mismatch
 			warnIceBlock:Show(self.vb.iceBlocks, args.destName)
-		else -- I don't remember how it worked on Era back in the day, but the combined show may be redundant
-			warnIceBlock:CombinedShow(0.5, args.destName)
-		end
 		if args:IsPlayer() then
 			yellIceBlock:Yell()
 		end
