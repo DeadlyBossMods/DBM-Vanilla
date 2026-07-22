@@ -57,6 +57,7 @@ mod:AddInfoFrameOption(nil, true)
 -- TODO: "Viscidus Frost Weakness" (25926 and 1215736), seems to happen after he respawns (only UCS events), but well after he is targetable.
 -- It might be useless or it might be the relevant trigger for counting frost attacks? Let's see how wrong our count is
 
+local firstBossMod = DBM:GetModByName("AQ40Trash")
 local meleeHits = 0
 local frostHits = 0
 local meleeHitTimes = {}
@@ -110,11 +111,14 @@ function mod:OnCombatStart()
 	end
 end
 
-function mod:OnCombatEnd()
+function mod:OnCombatEnd(wipe)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
 	resetHitCounts()
+	if not wipe then
+		firstBossMod.vb.optionalBosses = firstBossMod.vb.optionalBosses + 1
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

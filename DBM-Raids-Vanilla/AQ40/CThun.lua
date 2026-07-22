@@ -107,15 +107,29 @@ function mod:OnCombatStart()
 	self:ScheduleMethod(48, "DarkGlare")
 end
 
-function mod:OnCombatEnd(wipe, isSecondRun)
+function mod:OnCombatEnd(wipe)
 	table.wipe(diedTentacles)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Hide()
 	end
-	--Only run on second run, to ensure trash mod has had enough time to update requiredBosses
-	if not wipe and isSecondRun and firstBossMod.vb.firstEngageTime and firstBossMod.Options.SpeedClearTimer then
-		if firstBossMod.vb.requiredBosses < 5 then
-			DBM:AddMsg(L.NotValid:format(5 - firstBossMod.vb.requiredBosses .. "/4"))
+	if not wipe and firstBossMod.vb.firstEngageTime and firstBossMod.Options.SpeedClearTimer then
+		if firstBossMod.vb.optionalBosses == 3 then
+			DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
+			local thisTime = GetServerTime() - firstBossMod.vb.firstEngageTime
+			if thisTime and thisTime > 0 then
+				if not firstBossMod.Options.FastestClear3 then
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(531), DBM:strFromTime(thisTime)))
+					firstBossMod.Options.FastestClear3 = thisTime
+				elseif (firstBossMod.Options.FastestClear3 > thisTime) then
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear3)))
+					firstBossMod.Options.FastestClear3 = thisTime
+				else
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear3)))
+				end
+			end
+			firstBossMod.vb.firstEngageTime = nil
+		else
+			DBM:AddMsg(L.NotValid:format(3 - firstBossMod.vb.optionalBosses .. "/3"))
 		end
 	end
 end

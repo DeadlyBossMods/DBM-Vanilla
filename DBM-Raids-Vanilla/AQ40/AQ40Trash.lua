@@ -20,7 +20,6 @@ mod.isTrashMod = true
 mod.isTrashModBossFightAllowed = true
 
 mod:RegisterEvents(
-	"ENCOUNTER_END",
 	"SPELL_AURA_APPLIED 26556 25698 26079 1215202 1215421 24573 2855",
 	"SPELL_AURA_REMOVED 26556 26079",
 	"SPELL_CAST_SUCCESS 19134 26586 26073",
@@ -76,7 +75,7 @@ mod:AddInfoFrameOption(nil, true)
 
 --Speed Clear variables
 mod.vb.firstEngageTime = nil
-mod.vb.requiredBosses = 0
+mod.vb.optionalBosses = 0
 
 --Request speed clear variables, in case it was already started before mod loaded
 mod:SendSync("IsAQ40Started")
@@ -233,35 +232,6 @@ do
 		end
 	end
 
-	local function updateDefeatedBosses(self, encounterId)
-		if self:AntiSpam(10, encounterId) then
-			if encounterId == 710 or encounterId == 713 or encounterId == 716 or encounterId == 717 or encounterId == 714 then
-				self.vb.requiredBosses = self.vb.requiredBosses + 1
-				if self.vb.requiredBosses == 5 then
-					DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
-					if self.vb.firstEngageTime then
-						local thisTime = GetServerTime() - self.vb.firstEngageTime
-						if thisTime and thisTime > 0 then
-							if not self.Options.FastestClear3 then
-								--First clear, just show current clear time
-								DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(531), DBM:strFromTime(thisTime)))
-								self.Options.FastestClear3 = thisTime
-							elseif (self.Options.FastestClear3 > thisTime) then
-								--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
-								DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
-								self.Options.FastestClear3 = thisTime
-							else
-								--Just show this clear time, and current record time (that you did NOT beat)
-								DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
-							end
-						end
-						self.vb.firstEngageTime = nil
-					end
-				end
-			end
-		end
-	end
-
 	function mod:OnSync(msg, timeOrEncounter, sender)
 		--Sync recieved with start time and ours is currently not started
 		--The reason this doesn't just check self.vb.firstEngageTime is nil, because it might not be if SendVariableInfo send it first
@@ -283,17 +253,6 @@ do
 			--This is sadly still going to generate a LOT of comm traffic on zone in. upwards of 4-117 syncs, per player zone in
 			--Reviewing code, it's hard to do this in less comms, it's either don't support recovering the speed clear timer in all situations (disconnect, reloadui, zoning in late) or cause a burst of syncs :\
 			DBM:SendVariableInfo(self, sender)
-		elseif msg == "EncounterEnd" and timeOrEncounter then
-			updateDefeatedBosses(self, timeOrEncounter)--In case player misses event (ie they released or are outside the raid for that particular boss
-		end
-	end
-
-	function mod:ENCOUNTER_END(encounterId, _, _, _, success)
-		if success == 0 then return end--wipe
-		--All the required bosses for the raid to be full cleared.
-		if encounterId == 710 or encounterId == 713 or encounterId == 716 or encounterId == 717 or encounterId == 714 then
-			updateDefeatedBosses(self, encounterId)--Still want to fire this on event because the event will always be faster than sync
-			self:SendSync("EncounterEnd", encounterId)
 		end
 	end
 end

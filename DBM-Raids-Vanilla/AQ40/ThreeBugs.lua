@@ -37,6 +37,7 @@ local specWarnGTFO			= mod:NewSpecialWarningGTFO(25786, nil, nil, nil, 1, 8, nil
 local timerFearCD			= mod:NewVarTimer("v20.3-29.4", 26580, nil, nil, nil, 2)
 local timerToxicVolleyCD 	= mod:NewVarTimer("v8.1-35.1", 25812, nil, "RemovePoison", nil, 2, nil, DBM_COMMON_L.POISON_ICON)
 
+local firstBossMod = DBM:GetModByName("AQ40Trash")
 local bugsGuidCheck = {}
 
 mod.vb.bugsRemaining = 3
@@ -64,12 +65,15 @@ function mod:OnCombatStart()
 	end
 end
 
-function mod:OnCombatEnd()
+function mod:OnCombatEnd(wipe)
 	-- Poison cloud stays around after the boss dies
 	table.wipe(bugsGuidCheck)
 	self:ScheduleMethod(60, "UnregisterShortTermEvents")
 	if self.Options.InfoFrame then
 	DBM.InfoFrame:Hide()
+	end
+	if not wipe then
+		firstBossMod.vb.optionalBosses = firstBossMod.vb.optionalBosses + 1
 	end
 end
 

@@ -45,6 +45,8 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2, nil, nil, nil, nil, "safenow")
 end
 
+local firstBossMod = DBM:GetModByName("AQ40Trash")
+
 mod.vb.prewarn_berserk = false
 mod.vb.berserked = false
 
@@ -62,8 +64,11 @@ function mod:OnCombatStart()
 	end
 end
 
-function mod:OnCombatEnd()
+function mod:OnCombatEnd(wipe)
 	self:UnregisterShortTermEvents()
+	if not wipe then
+		firstBossMod.vb.optionalBosses = firstBossMod.vb.optionalBosses + 1
+	end
 end
 
 function mod:Emerge()
