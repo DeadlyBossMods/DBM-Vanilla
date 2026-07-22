@@ -37,9 +37,19 @@ local yellImpale			= mod:NewYell(28783)
 local timerLocustCD			= mod:NewVarTimer("v81.3-104.5", 28785, nil, nil, nil, 2)
 local timerLocustFade 		= mod:NewBuffActiveTimer(23, 28785, nil, nil, nil, 2)
 
+local firstBossMod = DBM:GetModByName("NaxxTrash")
+
 function mod:OnCombatStart()
 	timerLocustCD:Start("v77.3-109.3")
 	warningLocustSoon:Schedule(75)
+	if not firstBossMod.vb.firstEngageTime then
+		firstBossMod.vb.firstEngageTime = GetServerTime()
+		if firstBossMod.Options.FastestClear4 and firstBossMod.Options.SpeedClearTimer then
+			--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
+			DBT:CreateBar(firstBossMod.Options.FastestClear4, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
+		end
+		firstBossMod:SendSync("NaxxStarted", firstBossMod.vb.firstEngageTime)--Also sync engage time
+	end
 end
 
 function mod:ImpaleTarget(targetname, uId)
