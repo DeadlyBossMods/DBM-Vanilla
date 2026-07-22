@@ -253,10 +253,10 @@ do
 					end
 				end
 				self.vb.firstEngageTime = nil
-			elseif cthunKilled then
-				DBM:AddMsg(L.NotValid:format(3 - self.vb.optionalBosses .. "/3"))
+				return true
 			end
 		end
+		return false
 	end
 
 	function mod:OnSync(msg, timeOrEncounter, sender)
