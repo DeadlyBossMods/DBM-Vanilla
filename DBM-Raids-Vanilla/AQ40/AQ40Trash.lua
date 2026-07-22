@@ -76,6 +76,7 @@ mod:AddInfoFrameOption(nil, true)
 --Speed Clear variables
 mod.vb.firstEngageTime = nil
 mod.vb.optionalBosses = 0
+mod.vb.cthunKilled = false
 
 --Request speed clear variables, in case it was already started before mod loaded
 mod:SendSync("IsAQ40Started")
@@ -229,6 +230,32 @@ do
 			checkFirstPull(self)
 		elseif cid == 15262 then--Obsidian Eradicator
 			checkFirstPull(self)
+		end
+	end
+
+	function mod:TryCompleteSpeedClear(cthunKilled)
+		if cthunKilled then
+			self.vb.cthunKilled = true
+		end
+		if self.vb.firstEngageTime and self.Options.SpeedClearTimer then
+			if self.vb.optionalBosses == 3 and self.vb.cthunKilled then
+				DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
+				local thisTime = GetServerTime() - self.vb.firstEngageTime
+				if thisTime and thisTime > 0 then
+					if not self.Options.FastestClear3 then
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(531), DBM:strFromTime(thisTime)))
+						self.Options.FastestClear3 = thisTime
+					elseif (self.Options.FastestClear3 > thisTime) then
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
+						self.Options.FastestClear3 = thisTime
+					else
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(531), DBM:strFromTime(thisTime), DBM:strFromTime(self.Options.FastestClear3)))
+					end
+				end
+				self.vb.firstEngageTime = nil
+			elseif cthunKilled then
+				DBM:AddMsg(L.NotValid:format(3 - self.vb.optionalBosses .. "/3"))
+			end
 		end
 	end
 

@@ -74,6 +74,7 @@ function mod:OnCombatEnd(wipe)
 	end
 	if not wipe then
 		firstBossMod.vb.optionalBosses = firstBossMod.vb.optionalBosses + 1
+		firstBossMod:TryCompleteSpeedClear(false)
 	end
 end
 
