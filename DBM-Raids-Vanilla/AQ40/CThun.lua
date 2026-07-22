@@ -113,7 +113,10 @@ function mod:OnCombatEnd(wipe)
 		DBM.InfoFrame:Hide()
 	end
 	if not wipe then
-		if not firstBossMod:TryCompleteSpeedClear(true) then
+		firstBossMod.vb.cthunKilled = true
+		if firstBossMod.vb.cthunKilled and firstBossMod.vb.optionalBosses == 3 then
+			firstBossMod:CompleteSpeedClear()
+		else
 			DBM:AddMsg(L.NotValid:format(3 - firstBossMod.vb.optionalBosses .. "/3"))
 		end
 	end

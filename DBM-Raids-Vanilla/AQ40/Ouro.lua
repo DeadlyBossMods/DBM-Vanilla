@@ -68,7 +68,9 @@ function mod:OnCombatEnd(wipe)
 	self:UnregisterShortTermEvents()
 	if not wipe then
 		firstBossMod.vb.optionalBosses = firstBossMod.vb.optionalBosses + 1
-		firstBossMod:TryCompleteSpeedClear(false)
+		if firstBossMod.vb.cthunKilled and firstBossMod.vb.optionalBosses == 3 then
+			firstBossMod:CompleteSpeedClear()
+		end
 	end
 end
 
