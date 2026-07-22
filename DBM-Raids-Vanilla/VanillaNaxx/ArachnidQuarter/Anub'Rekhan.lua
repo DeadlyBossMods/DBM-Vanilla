@@ -48,7 +48,6 @@ function mod:OnCombatStart()
 			--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
 			DBT:CreateBar(firstBossMod.Options.FastestClear4, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
 		end
-		firstBossMod:SendSync("NaxxStarted", firstBossMod.vb.firstEngageTime)--Also sync engage time
 	end
 end
 
