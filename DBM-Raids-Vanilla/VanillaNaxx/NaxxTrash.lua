@@ -46,7 +46,7 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:StartEngageTimers(guid, cid, delay)
-	if cid == 15977 or cid == 16244 or cid == 16243 or cid == 16146 or cid == 16154 or cid == 15974 or cid == 15975 or cid == 15976 or cid == 16017 then
+	if cid == 15977 or cid == 16244 or cid == 16243 or cid == 16146 or cid == 16154 or cid == 15974 or cid == 15975 or cid == 15976 or cid == 16017 or cid == 16165 or cid == 16164 then
 		if not self.vb.firstEngageTime then
 			self.vb.firstEngageTime = GetServerTime()
 			if self.Options.FastestClear4 and self.Options.SpeedClearTimer then
