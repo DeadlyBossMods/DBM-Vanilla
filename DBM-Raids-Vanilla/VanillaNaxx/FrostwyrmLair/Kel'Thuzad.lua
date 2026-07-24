@@ -292,7 +292,7 @@ function mod:OnSync(msg, arg)
 				warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			end
 			if phase == 2 then
-        		timerPhase2:Stop()
+			timerPhase2:Stop()
 				warnPhase:Play("ptwo")
 				timerFissureCD:Start("v10.4-38.4")
 				timerFrostboltCD:Start("v15.3-85.9")
@@ -302,7 +302,7 @@ function mod:OnSync(msg, arg)
 				if DBM:IsSeasonal("SeasonOfDiscovery") then
 					warnPhase:Cancel()
 					warnPhase:CancelVoice()
-				end 
+				end
 			elseif phase == 2.5 then
 				warnPhase3Soon:Show()
 			elseif phase == 3 then
