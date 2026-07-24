@@ -96,6 +96,7 @@ mod:AddSetIconOption("SetIconOnFrostTomb2", 27808, false, 0, {1, 2, 3, 4, 5, 6, 
 mod.vb.MCIcon1 = 1
 mod.vb.MCIcon2 = 5
 local frostBlastTargets = {}
+local firstBossMod = DBM:GetModByName("NaxxTrash")
 
 local function AnnounceBlastTargets(self)
 	if self.Options.SetIconOnFrostTomb2 then
@@ -144,9 +145,30 @@ end, 0.2)
 	end
 end
 
-function mod:OnCombatEnd()
+function mod:OnCombatEnd(wipe)
 	self:UnregisterOnUpdateHandler()
 	self:UnregisterShortTermEvents()
+	if not wipe then
+		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
+		if firstBossMod.vb.firstEngageTime then
+			local thisTime = GetServerTime() - firstBossMod.vb.firstEngageTime
+			if thisTime and thisTime > 0 then
+				if not firstBossMod.Options.FastestClear4 then
+					--First clear, just show current clear time
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(533), DBM:strFromTime(thisTime)))
+					firstBossMod.Options.FastestClear4 = thisTime
+				elseif (firstBossMod.Options.FastestClear4 > thisTime) then
+					--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(533), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear4)))
+					firstBossMod.Options.FastestClear4 = thisTime
+				else
+					--Just show this clear time, and current record time (that you did NOT beat)
+					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(533), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear4)))
+				end
+			end
+			firstBossMod.vb.firstEngageTime = nil
+		end
+	end
 end
 
 function mod:SPELL_CAST_START(args)
