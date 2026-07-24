@@ -185,6 +185,7 @@ end
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if not guid or self:GetCIDFromGUID(guid) ~= 15990 then return end
+	if self:GetStage(1, 2) then return end
 	self:SendSync("Phase", 2)
 end
 
