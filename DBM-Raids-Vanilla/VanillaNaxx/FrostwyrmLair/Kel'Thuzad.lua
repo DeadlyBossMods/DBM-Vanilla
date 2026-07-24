@@ -31,7 +31,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_REMOVED 28410",
 	"SPELL_CAST_START 28478",
 	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
-	"SPELL_INTERRUPT"
+	"SPELL_INTERRUPT",
+	"NAME_PLATE_UNIT_ADDED"
 )
 
 -- SoD
@@ -115,7 +116,7 @@ function mod:OnCombatStart()
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
-	self:RegisterOnUpdateHandler(function()
+	--[[ self:RegisterOnUpdateHandler(function()
     if IsEncounterInProgress() and self:GetStage(1) then
 		self:SetStage(2)
 		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
@@ -132,7 +133,7 @@ function mod:OnCombatStart()
 		end
         self:UnregisterOnUpdateHandler()
     end
-end, 0.2)
+end, 0.2) --]]
 	table.wipe(frostBlastTargets)
 	self.vb.MCIcon1 = 1
 	self.vb.MCIcon2 = 5
@@ -146,7 +147,7 @@ end, 0.2)
 end
 
 function mod:OnCombatEnd(wipe)
-	self:UnregisterOnUpdateHandler()
+	--self:UnregisterOnUpdateHandler()
 	self:UnregisterShortTermEvents()
 	if not wipe then
 		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
@@ -179,6 +180,12 @@ function mod:SPELL_CAST_START(args)
 			specWarnFrostbolt:Play("kickcast")
 		end
 	end
+end
+
+function mod:NAME_PLATE_UNIT_ADDED(unitId)
+	local guid = UnitGUID(unitId)
+	if not guid or self:GetCIDFromGUID(guid) ~= 15990 then return end
+	self:SendSync("Phase", 2)
 end
 
 function mod:SPELL_INTERRUPT(args)
@@ -284,7 +291,19 @@ function mod:OnSync(msg, arg)
 			if phase % 1 == 0 then
 				warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 			end
-			if phase == 2.5 then
+			if phase == 2 then
+				timerPhase2:Stop()
+				warnPhase:Play("ptwo")
+				timerFissureCD:Start("v10.4-38.4")
+				timerFrostboltCD:Start("v15.3-85.9")
+				timerManaBombCD:Start("v20.2-46.5")
+				timerFrostBlastCD:Start("v30.3-92.7")
+				timerMCCD:Start("v21.8-103.4")
+				if DBM:IsSeasonal("SeasonOfDiscovery") then
+					warnPhase:Cancel()
+					warnPhase:CancelVoice()
+				end
+			elseif phase == 2.5 then
 				warnPhase3Soon:Show()
 			elseif phase == 3 then
 				warnPhase:Play("pthree")
