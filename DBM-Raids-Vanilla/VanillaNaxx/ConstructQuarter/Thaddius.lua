@@ -87,7 +87,7 @@ function mod:OnCombatStart()
 	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	currentCharge = nil
 	deadBosses = {}
-    timerThrow:Start("v20.7-21.1")
+    timerThrow:Start()
     warnThrowSoon:Schedule(16)
 	if self.Options.InfoFrame then
 		DBM.InfoFrame:Show(2, "function", updateInfoFrame, false, false)
