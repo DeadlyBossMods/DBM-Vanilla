@@ -32,13 +32,9 @@ local airPhaseTimer = "v54.3-70.8"
 
 local warnDrainLifeNow	= mod:NewSpellAnnounce(28542, 3)
 local warnDrainLifeSoon	= mod:NewSoonAnnounce(28542, 2, nil, "RemoveCurse")
-local warnIceBlock
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
+local warnIceBlock		= mod:NewTargetCountAnnounce(28522, 2)
 	warnIceBlock.noFilter = true
-else
-	warnIceBlock		= mod:NewTargetNoFilterAnnounce(28522, 2)
-end
+
 local warnAirPhaseSoon	= mod:NewAnnounce("WarningAirPhaseSoon", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnAirPhaseNow	= mod:NewAnnounce("WarningAirPhaseNow", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
 local warnLanded		= mod:NewAnnounce("WarningLanded", 4, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
@@ -150,12 +146,8 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(28522) and args:IsDestTypePlayer() then
 		self.vb.iceBlocks = self.vb.iceBlocks + 1
-		if DBM:IsSeasonal("SeasonOfDiscovery") then -- They're a few seconds apart on SoD and she lands after 5
 			---@diagnostic disable-next-line: param-type-mismatch
 			warnIceBlock:Show(self.vb.iceBlocks, args.destName)
-		else -- I don't remember how it worked on Era back in the day, but the combined show may be redundant
-			warnIceBlock:CombinedShow(0.5, args.destName)
-		end
 		if args:IsPlayer() then
 			yellIceBlock:Yell()
 		end
@@ -209,7 +201,7 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == "CancelAirPhaseTimer" then
+	if msg == "CancelAirPhaseTimer" and not self.vb.airPhaseHPThreshold then
 		self.vb.airPhaseHPThreshold = true
 		warnAirPhaseSoon:Cancel()
 		timerAirPhase:Stop()
