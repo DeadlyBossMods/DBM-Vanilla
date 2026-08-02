@@ -169,7 +169,7 @@ L:SetOptionLocalization{
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "Трэш мобы Ан'Кираж 40"
+	name = "Трэш: Ан'Кираж 40"
 }
 
 L:SetTimerLocalization{
@@ -275,7 +275,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "Трэш мобы Ан'Кираж 20"
+	name = "Трэш: Ан'Кираж 20"
 }
 
 L:SetTimerLocalization{
@@ -390,7 +390,7 @@ L:SetMiscLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "Трэш мобы Логово Крыла Тьмы"
+	name = "Трэш: Логово Крыла Тьмы"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "Уязвимость к %s"
@@ -658,7 +658,7 @@ L:SetWarningLocalization{
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "Трэш мобы Огненные Недра"
+	name = "Трэш: Огненные Недра"
 }
 
 -------------------
@@ -1151,7 +1151,7 @@ L:SetTimerLocalization({
 L = DBM:GetModLocalization("NaxxTrash")
 
 L:SetGeneralLocalization({
-	name = "Трэш мобы"
+	name = "Трэш: Наксрамас"
 })
 
 --------------------
@@ -1388,7 +1388,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("STTrashSoD")
 
 L:SetGeneralLocalization{
-	name = "Трэш мобы Затонувший храм"
+	name = "Трэш: Затонувший храм"
 }
 
 ---------------------------
@@ -1564,7 +1564,7 @@ L:SetMiscLocalization{
 
 L = DBM:GetModLocalization("SE_Trash")
 L:SetGeneralLocalization{
-	name = "Трэш мобы Анклав Алого Ордена"
+	name = "Трэш: Анклав Алого Ордена"
 }
 
 L:SetOptionLocalization{
