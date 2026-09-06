@@ -38,7 +38,7 @@ local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_C
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
-mod:AddInfoFrameOption(L.Understudy, true)
+mod:AddInfoFrameOption(nil, true)
 
 local mindExhaustionTimers = {}
 local mindExhaustionNames = {}
@@ -54,16 +54,6 @@ do
 	local RAID_CLASS_COLORS = _G["CUSTOM_CLASS_COLORS"] or RAID_CLASS_COLORS
 	local twipe = table.wipe
 	local lines, sortedLines = {}, {}
-	local classColorCache = {}
-	local function priestColorHex(name)
-		local hex = classColorCache[name]
-		if not hex then
-			local color = RAID_CLASS_COLORS[DBM:GetRaidClass(name)]
-			hex = color and color.colorStr or "ffffff"
-			classColorCache[name] = hex
-		end
-		return hex
-	end
 	updateInfoFrame = function()
 		twipe(lines)
 		twipe(sortedLines)
@@ -73,7 +63,11 @@ do
 			local mcTimeLeft = (mindControlTimers[guid] or 0) - t
 			local exhaustionTimeLeft = (mindExhaustionTimers[guid] or 0) - t
 			local icon = mindExhaustionIcons[guid]
-			local displayName = mcOwner and ("|c%s%s|r"):format(priestColorHex(mcOwner), mcOwner) or name
+			local displayName = name
+			if mcOwner then
+				local color = RAID_CLASS_COLORS[DBM:GetRaidClass(mcOwner)]
+				displayName = ("|c%s%s|r"):format(color and color.colorStr or "ffffff", mcOwner)
+			end
 			displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, displayName) or displayName
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
