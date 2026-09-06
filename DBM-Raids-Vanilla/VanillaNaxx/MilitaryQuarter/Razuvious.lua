@@ -118,13 +118,23 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(10912) and self:GetCIDFromGUID(args.destGUID) == 16803 and args:IsSrcTypePlayer() then
-		self:SendSync("UnderstudyMC", args.destGUID, args.sourceName)
+		local guid = args.destGUID
+		if mindExhaustionTimers[guid] ~= -1 then
+			mindControlOwners[guid] = args.sourceName
+			mindControlTimers[guid] = GetTime() + 60
+			if not mindExhaustionNames[guid] then
+				mindExhaustionNames[guid] = L.Understudy
+			end
+			ShowInfoFrame()
+		end
 	end
 end
 
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(10912) and self:GetCIDFromGUID(args.destGUID) == 16803 then
-		self:SendSync("UnderstudyMCBreak", args.destGUID)
+		local guid = args.destGUID
+		mindControlOwners[guid] = nil
+		mindControlTimers[guid] = nil
 	end
 end
 
@@ -157,35 +167,19 @@ end
 
 function mod:OnSync(event, guid, value)
 	if not self:IsInCombat() then return end
-    if event == "MindExhaustion" then
-        mindExhaustionTimers[guid] = GetTime() + 60
-        timerMindExhaustionCD:Start(guid)
-    elseif event == "UnderstudyFound" then
-        if not mindExhaustionNames[guid] then
-            mindExhaustionNames[guid] = L.Understudy
-            local iconNum = tonumber(value)
-            if iconNum and iconNum > 0 then
-                mindExhaustionIcons[guid] = iconNum
-            end
-            ShowInfoFrame()
-        end
-    elseif event == "UnderstudyMC" then
-        if mindExhaustionTimers[guid] ~= -1 then
-            mindControlOwners[guid] = value
-            mindControlTimers[guid] = GetTime() + 60
-            if not mindExhaustionNames[guid] then
-                mindExhaustionNames[guid] = L.Understudy
-            end
-            ShowInfoFrame()
-        end
-    elseif event == "UnderstudyMCBreak" then
-        mindControlOwners[guid] = nil
-        mindControlTimers[guid] = nil
-        if mindExhaustionNames[guid] and mindExhaustionTimers[guid] ~= -1 then
-            mindExhaustionTimers[guid] = GetTime() + 60
-            timerMindExhaustionCD:Start(guid)
-        end
-    end
+	if event == "MindExhaustion" then
+		mindExhaustionTimers[guid] = GetTime() + 60
+		timerMindExhaustionCD:Start(guid)
+	elseif event == "UnderstudyFound" then
+		if not mindExhaustionNames[guid] then
+			mindExhaustionNames[guid] = L.Understudy
+			local iconNum = tonumber(value)
+			if iconNum and iconNum > 0 then
+				mindExhaustionIcons[guid] = iconNum
+			end
+			ShowInfoFrame()
+		end
+	end
 end
 
 function mod:UNIT_DIED(args)
