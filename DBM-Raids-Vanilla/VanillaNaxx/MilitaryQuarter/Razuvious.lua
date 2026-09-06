@@ -19,6 +19,8 @@ end
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29107 29060 29061",
+	"SPELL_AURA_APPLIED 10912",
+	"SPELL_AURA_REMOVED 10912",
 	"NAME_PLATE_UNIT_ADDED",
 	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_DIED"
@@ -36,30 +38,51 @@ local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_C
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
-mod:AddInfoFrameOption(29051, isPriest)
+mod:AddInfoFrameOption(L.Understudy, true)
 
 local mindExhaustionTimers = {}
 local mindExhaustionNames = {}
 local mindExhaustionIcons = {}
+local mindControlOwners = {}
+local mindControlTimers = {}
+
+local MC_TEXTURE = "Spell_shadow_shadowworddominate"
+local MIND_EXHAUST_TEXTURE = "Spell_shadow_teleport"
 
 local updateInfoFrame
 do
+	local RAID_CLASS_COLORS = _G["CUSTOM_CLASS_COLORS"] or RAID_CLASS_COLORS
 	local twipe = table.wipe
 	local lines, sortedLines = {}, {}
+	local classColorCache = {}
+	local function priestColorHex(name)
+		local hex = classColorCache[name]
+		if not hex then
+			local color = RAID_CLASS_COLORS[DBM:GetRaidClass(name)]
+			hex = color and color.colorStr or "ffffff"
+			classColorCache[name] = hex
+		end
+		return hex
+	end
 	updateInfoFrame = function()
 		twipe(lines)
 		twipe(sortedLines)
 		local t = GetTime()
 		for guid, name in pairs(mindExhaustionNames) do
-			local timeLeft = math.max(0, (mindExhaustionTimers[guid] or 0) - t)
+			local mcOwner = mindControlOwners[guid]
+			local mcTimeLeft = (mindControlTimers[guid] or 0) - t
+			local exhaustionTimeLeft = (mindExhaustionTimers[guid] or 0) - t
 			local icon = mindExhaustionIcons[guid]
-			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
+			local displayName = mcOwner and ("|c%s%s|r"):format(priestColorHex(mcOwner), mcOwner) or name
+			displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, displayName) or displayName
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
 			if mindExhaustionTimers[guid] == -1 then
 				lines[key] = DEAD
-			elseif timeLeft > 0 then
-				lines[key] = ("|cffff0000%.0f|r"):format(timeLeft)
+			elseif mcOwner and mcTimeLeft >= 0 then
+				lines[key] = ("|T%s:0|t|cffff7f00%.0f|r"):format(MC_TEXTURE, mcTimeLeft)
+			elseif exhaustionTimeLeft > 0 then
+				lines[key] = ("|T%s:0|t|cffff0000%.0f|r"):format(MIND_EXHAUST_TEXTURE, exhaustionTimeLeft)
 			else
 				lines[key] = ("|cff00ff00%d|r"):format(0)
 			end
@@ -74,6 +97,8 @@ function mod:OnCombatStart()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionIcons)
+	table.wipe(mindControlOwners)
+	table.wipe(mindControlTimers)
 end
 
 local function ShowInfoFrame()
@@ -84,16 +109,29 @@ local function ShowInfoFrame()
 end
 
 function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionIcons)
+	table.wipe(mindControlOwners)
+	table.wipe(mindControlTimers)
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
 	self:SendSync("UnderstudyFound", guid, GetRaidTargetIndex(unitId) or 0)
+end
+
+function mod:SPELL_AURA_APPLIED(args)
+	if args:IsSpell(10912) and self:GetCIDFromGUID(args.destGUID) == 16803 and args:IsSrcTypePlayer() then
+		self:SendSync("UnderstudyMC", args.destGUID, args.sourceName)
+	end
+end
+
+function mod:SPELL_AURA_REMOVED(args)
+	if args:IsSpell(10912) and self:GetCIDFromGUID(args.destGUID) == 16803 then
+		self:SendSync("UnderstudyMCBreak", args.destGUID)
+	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -123,7 +161,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	end
 end
 
-function mod:OnSync(event, guid, icon)
+function mod:OnSync(event, guid, value)
 	if not self:IsInCombat() then return end
     if event == "MindExhaustion" then
         mindExhaustionTimers[guid] = GetTime() + 60
@@ -131,11 +169,27 @@ function mod:OnSync(event, guid, icon)
     elseif event == "UnderstudyFound" then
         if not mindExhaustionNames[guid] then
             mindExhaustionNames[guid] = L.Understudy
-            local iconNum = tonumber(icon)
+            local iconNum = tonumber(value)
             if iconNum and iconNum > 0 then
                 mindExhaustionIcons[guid] = iconNum
             end
             ShowInfoFrame()
+        end
+    elseif event == "UnderstudyMC" then
+        if mindExhaustionTimers[guid] ~= -1 then
+            mindControlOwners[guid] = value
+            mindControlTimers[guid] = GetTime() + 60
+            if not mindExhaustionNames[guid] then
+                mindExhaustionNames[guid] = L.Understudy
+            end
+            ShowInfoFrame()
+        end
+    elseif event == "UnderstudyMCBreak" then
+        mindControlOwners[guid] = nil
+        mindControlTimers[guid] = nil
+        if mindExhaustionNames[guid] and mindExhaustionTimers[guid] ~= -1 then
+            mindExhaustionTimers[guid] = GetTime() + 60
+            timerMindExhaustionCD:Start(guid)
         end
     end
 end
@@ -150,5 +204,7 @@ function mod:UNIT_DIED(args)
 		else
 			mindExhaustionTimers[args.destGUID] = nil
 		end
+		mindControlOwners[args.destGUID] = nil
+		mindControlTimers[args.destGUID] = nil
 	end
 end
