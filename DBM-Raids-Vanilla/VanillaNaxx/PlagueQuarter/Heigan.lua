@@ -41,6 +41,7 @@ local timerDance		= mod:NewBuffActiveTimer(45, 29350, nil, nil, nil, 6)
 
 mod.vb.eruptionCount = 1
 mod.vb.eruptionDirection = 1
+mod.vb.eruptionWave = 1
 
 mod:AddInfoFrameOption(29998, "RemoveDisease")
 
@@ -62,6 +63,7 @@ end
 function mod:OnCombatStart()
 	self.vb.eruptionCount = 1
 	self.vb.eruptionDirection = 1
+	self.vb.eruptionWave = 1
 	table.wipe(feverTargets)
 	warnTeleportSoon:Schedule(80.6)
 	warnEruptionSoon:Schedule(13.5, self.vb.eruptionCount)
@@ -82,6 +84,7 @@ function mod:OnCombatEnd()
 end
 
 function mod:EruptionTick(interval)
+	self.vb.eruptionWave = self.vb.eruptionWave + 1
 	if self.vb.eruptionCount >= 4 then
 		self.vb.eruptionDirection = -1
 	elseif self.vb.eruptionCount <= 1 then
@@ -92,7 +95,9 @@ function mod:EruptionTick(interval)
 		warnEruptionSoon:Schedule(interval - 3, self.vb.eruptionCount)
 	end
 	timerEruption:Start(interval, self.vb.eruptionCount)
-	self:ScheduleMethod(interval, "EruptionTick", interval)
+	if not (interval == 10 and self.vb.eruptionWave >= 8) then
+		self:ScheduleMethod(interval, "EruptionTick", interval)
+	end
 end
 
 local function UpdateFeverFrame()
@@ -167,6 +172,7 @@ function mod:OnSync(event)
     if event == "Teleport" then
 		self.vb.eruptionCount = 1
 		self.vb.eruptionDirection = 1
+		self.vb.eruptionWave = 1
 		warnTeleport:Show()
 		warnTeleportSoon:Cancel()
 		warnEruptionSoon:Cancel()
@@ -189,6 +195,7 @@ function mod:OnSync(event)
 	elseif event == "EruptionStart" then
 		self.vb.eruptionCount = 1
 		self.vb.eruptionDirection = 1
+		self.vb.eruptionWave = 1
 		warnEruptionSoon:Schedule(7, self.vb.eruptionCount)
 		timerEruption:Start(10, self.vb.eruptionCount)
 		self:ScheduleMethod(10, "EruptionTick", 10)
