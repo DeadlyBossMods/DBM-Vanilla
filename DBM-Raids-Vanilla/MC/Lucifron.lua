@@ -178,7 +178,7 @@ end
 function mod:UNIT_DIED(args)
 	local guid = args.destGUID
 	local cid = self:GetCIDFromGUID(guid)
-	if cid == 12119 then -- Flamewaker Protector
+	if cid == 12119 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228441) then -- Flamewaker Protector
 		if not guardsGuidCheck[guid] then
 			guardsGuidCheck[guid] = true
 			self.vb.guardsRemaining = self.vb.guardsRemaining - 1
