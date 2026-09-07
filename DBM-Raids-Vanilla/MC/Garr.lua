@@ -103,7 +103,7 @@ end
 local function ShowInfoFrame()
 	if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
 		DBM.InfoFrame:SetHeader(DBM_COMMON_L.ADDS)
-		DBM.InfoFrame:Show(0.5, "function", updateInfoFrame)
+		DBM.InfoFrame:Show(8, "function", updateInfoFrame)
 	end
 end
 
