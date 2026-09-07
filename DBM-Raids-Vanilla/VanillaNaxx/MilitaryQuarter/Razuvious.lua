@@ -165,7 +165,7 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
 	end
 end
 
-function mod:OnSync(event, guid, value)
+function mod:OnSync(event, guid, icon)
 	if not self:IsInCombat() then return end
 	if event == "MindExhaustion" then
 		mindExhaustionTimers[guid] = GetTime() + 60
@@ -173,7 +173,7 @@ function mod:OnSync(event, guid, value)
 	elseif event == "UnderstudyFound" then
 		if not mindExhaustionNames[guid] then
 			mindExhaustionNames[guid] = L.Understudy
-			local iconNum = tonumber(value)
+			local iconNum = tonumber(icon)
 			if iconNum and iconNum > 0 then
 				mindExhaustionIcons[guid] = iconNum
 			end
