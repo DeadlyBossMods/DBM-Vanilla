@@ -638,6 +638,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Despiertallamas: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Despiertallamas restantes"
+}
 
 ------------
 --  Garr  --

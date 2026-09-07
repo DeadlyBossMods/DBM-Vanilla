@@ -456,6 +456,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "基赫纳斯"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者：%d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩余烈焰行者数量"
+}
 
 ------------
 --  Garr  --

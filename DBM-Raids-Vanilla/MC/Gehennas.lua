@@ -25,16 +25,18 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 19716 19717 461232",
 	"SPELL_SUMMON 365100",
-	"SPELL_AURA_APPLIED 20277"
+	"SPELL_AURA_APPLIED 20277",
+	"UNIT_DIED"
 )
 
 --[[
 (ability.id = 19716 or ability.id = 19717 or ability.id = 461232) and type = "cast"
  or ability.id = 365100 and type = "summon"
 --]]
-local warnCurse		= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
-local warnRainFire	= mod:NewSpellAnnounce(19717, 2, nil, false)
-local warnFist		= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
+local warnCurse			= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
+local warnRainFire		= mod:NewSpellAnnounce(19717, 2, nil, false)
+local warnFist			= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
+local warnFlamewakerDied	= mod:NewAnnounce("WarnGuardDied", 2, "626004")
 
 local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
@@ -42,7 +44,15 @@ local timerCurseCD	= mod:NewVarTimer("v25.9-35.6", 19716, nil, "RemoveCurse|Heal
 local timerRoF		= mod:NewCDTimer(4.8, 19717, nil, false, nil, 3)
 --local timerFist	= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 
+local addsGuidCheck = {}
+
+mod.vb.addsRemaining = 2
+mod.vb.addsTotal = 2
+
 function mod:OnCombatStart()
+	table.wipe(addsGuidCheck)
+	self.vb.addsTotal = DBM:IsSeasonal("SeasonOfDiscovery") and 4 or 2
+	self.vb.addsRemaining = self.vb.addsTotal
 	timerCurseCD:Start("v6.4-14.5")
 	if self:IsEvent() or not self:IsTrivial() then
 		self:RegisterShortTermEvents(
@@ -53,6 +63,7 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd()
+	table.wipe(addsGuidCheck)
 	self:UnregisterShortTermEvents()
 end
 
@@ -78,6 +89,18 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(20277) and args:IsDestTypePlayer() then
 		warnFist:CombinedShow(0.3, args.destName)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local guid = args.destGUID
+	local cid = self:GetCIDFromGUID(guid)
+	if cid == 11661 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228833) then -- Flamewaker
+		if not addsGuidCheck[guid] then
+			addsGuidCheck[guid] = true
+			self.vb.addsRemaining = self.vb.addsRemaining - 1
+			warnFlamewakerDied:Show(self.vb.addsRemaining, self.vb.addsTotal)
+		end
 	end
 end
 

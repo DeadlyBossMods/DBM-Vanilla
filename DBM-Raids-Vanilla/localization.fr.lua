@@ -639,6 +639,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Attise-flammes : %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Afficher une annonce pour les Attise-flammes restants"
+}
 
 ------------
 --  Garr  --

@@ -543,6 +543,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Гееннас"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Поджигатель: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Сообщать, сколько Поджигателей осталось"
+}
 
 ------------
 --  Garr  --

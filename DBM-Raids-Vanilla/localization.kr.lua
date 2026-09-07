@@ -541,6 +541,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "게헨나스"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "불꽃꼬리일족 전사: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "남은 불꽃꼬리일족 전사 수 알림"
+}
 
 ------------
 --  Garr  --
