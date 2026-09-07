@@ -46,12 +46,12 @@ local timerRoF		= mod:NewCDTimer(4.8, 19717, nil, false, nil, 3)
 
 local guardsGuidCheck = {}
 
-mod.vb.addsRemaining = 2
-mod.vb.addsTotal = 2
+mod.vb.guardsRemaining = 2
+mod.vb.guardsTotal = 2
 
 function mod:OnCombatStart()
-	self.vb.addsTotal = DBM:IsSeasonal("SeasonOfDiscovery") and 4 or 2
-	self.vb.addsRemaining = self.vb.addsTotal
+	self.vb.guardsTotal = DBM:IsSeasonal("SeasonOfDiscovery") and 4 or 2
+	self.vb.guardsRemaining = self.vb.guardsTotal
 	table.wipe(guardsGuidCheck)
 	timerCurseCD:Start("v6.4-14.5")
 	if self:IsEvent() or not self:IsTrivial() then
@@ -98,8 +98,8 @@ function mod:UNIT_DIED(args)
 	if cid == 11661 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228833) then -- Flamewaker
 		if not guardsGuidCheck[guid] then
 			guardsGuidCheck[guid] = true
-			self.vb.addsRemaining = self.vb.addsRemaining - 1
-			warnGuardDied:Show(self.vb.addsRemaining, self.vb.addsTotal)
+			self.vb.guardsRemaining = self.vb.guardsRemaining - 1
+			warnGuardDied:Show(self.vb.guardsRemaining, self.vb.guardsTotal)
 		end
 	end
 end
