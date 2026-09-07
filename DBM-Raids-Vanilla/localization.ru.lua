@@ -547,7 +547,7 @@ L:SetWarningLocalization({
 	WarnGuardDied = "Поджигатель: %d/%d" -- NPC ID 11661
 })
 L:SetOptionLocalization{
-	WarnGuardDied = "Сообщать, сколько Поджигателей осталось"
+	WarnGuardDied = "Показывать предупреждение об оставшихся поджигателях"
 }
 
 ------------
