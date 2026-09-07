@@ -36,7 +36,7 @@ mod:RegisterEventsInCombat(
 local warnCurse			= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
 local warnRainFire		= mod:NewSpellAnnounce(19717, 2, nil, false)
 local warnFist			= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
-local warnFlamewakerDied	= mod:NewAnnounce("WarnGuardDied", 2, "626004")
+local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 2, "135829")
 
 local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
@@ -99,7 +99,7 @@ function mod:UNIT_DIED(args)
 		if not addsGuidCheck[guid] then
 			addsGuidCheck[guid] = true
 			self.vb.addsRemaining = self.vb.addsRemaining - 1
-			warnFlamewakerDied:Show(self.vb.addsRemaining, self.vb.addsTotal)
+			warnGuardDied:Show(self.vb.addsRemaining, self.vb.addsTotal)
 		end
 	end
 end
