@@ -545,7 +545,7 @@ L:SetWarningLocalization({
 	WarnGuardDied = "불꽃꼬리일족 전사: %d/%d" -- NPC ID 11661
 })
 L:SetOptionLocalization{
-	WarnGuardDied = "남은 불꽃꼬리일족 전사 수 알림"
+	WarnGuardDied = "불꽃꼬리일족 전사 남은 수 알림"
 }
 
 ------------
