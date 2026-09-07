@@ -50,15 +50,15 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 end
 
 mod.vb.guardsRemaining = 4
-local priestsGuidCheck = {}
+local guardsGuidCheck = {}
 
 function mod:OnCombatStart()
 	self.vb.guardsRemaining = 4
-	table.wipe(priestsGuidCheck)
+	table.wipe(guardsGuidCheck)
 end
 
 function mod:OnCombatEnd()
-	table.wipe(priestsGuidCheck)
+	table.wipe(guardsGuidCheck)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -111,9 +111,9 @@ end
 function mod:UNIT_DIED(args)
 	local guid = args.destGUID
 	local cid = self:GetCIDFromGUID(guid)
-	if cid == 11662 then -- Flamewaker Priest
-		if not priestsGuidCheck[guid] then
-			priestsGuidCheck[guid] = true
+	if cid == 11662 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228838) then -- Flamewaker Priest
+		if not guardsGuidCheck[guid] then
+			guardsGuidCheck[guid] = true
 			self.vb.guardsRemaining = self.vb.guardsRemaining - 1
 			warnGuardDied:Show(self.vb.guardsRemaining, 4)
 		end
