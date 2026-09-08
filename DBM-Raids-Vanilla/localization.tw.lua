@@ -42,7 +42,7 @@ L:SetWarningLocalization({
     WarnGuardDied = "沙爾圖拉皇家衛士：%d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
-    WarnGuardDied = "提示沙爾圖拉皇家衛士剩餘"
+    WarnGuardDied = "提示剩餘的沙爾圖拉皇家衛士"
 }
 
 --------------
