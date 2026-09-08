@@ -41,7 +41,7 @@ local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
 local timerCurse       	= mod:NewBuffFadesTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerCurseCD		= mod:NewVarTimer("v51.8-66.8", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerAddsCD		= mod:NewAddsTimer(30, 29252, nil, "-Healer", nil, 1, "136187")
+local timerAddsCD		= mod:NewAddsCountTimer(30, 29252, nil, "-Healer", nil, 1, "136187")
 
 mod:AddInfoFrameOption(29213, "RemoveCurse")
 
@@ -70,7 +70,7 @@ function mod:OnCombatStart()
 	self.vb.addsCount = 0
 	self.vb.curseCount = 0
 	warnTeleportSoon:Schedule(70.6)
-	timerAddsCD:Start("v6.5-22.7")
+	timerAddsCD:Start("v6.5-22.7", self.vb.addsCount + 1)
 	timerCurseCD:Start("v6.5-25.9")
 	timerTeleport:Start(90.6)
 end
@@ -90,10 +90,10 @@ function mod:BackInRoom()
 	local timer
 	if self.vb.teleCount == 1 then
 		timer = 109--Unknown in Classic
-		timerAddsCD:Start("v3.4-7.8")
+		timerAddsCD:Start("v3.4-7.8", self.vb.addsCount + 1)
 	elseif self.vb.teleCount == 2 then
 		timer = 173--Unknown in Classic
-		timerAddsCD:Start(17)
+		timerAddsCD:Start(17, self.vb.addsCount + 1)
 	elseif self.vb.teleCount == 3 then
 		timer = 93--Unknown in Classic
 	else
@@ -171,13 +171,13 @@ function mod:OnSync(msg)
 		local timer
 		if self.vb.teleCount == 1 then
 			timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
-			timerAddsCD:Start(3)
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
 		elseif self.vb.teleCount == 2 then
 			timer = 97--Unknown in Classic
-			timerAddsCD:Start(3)
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
 		elseif self.vb.teleCount == 3 then
 			timer = 126--Unknown in Classic
-			timerAddsCD:Start(3)
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
 		else
 			timer = 55--Unknown in Classic
 		end
@@ -191,21 +191,21 @@ function mod:OnSync(msg)
 		specWarnAdds:Play("killmob")
 		if self.vb.teleCount == 0 then
 			if self.vb.addsCount < 3 then
-				timerAddsCD:Start("v25.9-42")
+				timerAddsCD:Start("v25.9-42", self.vb.addsCount + 1)
 			else
 				timerAddsCD:Stop()
 			end
 		elseif self.vb.teleCount == 1 then
 			if self.vb.addsCount == 1 then
-				timerAddsCD:Start(33.9)
+				timerAddsCD:Start(33.9, self.vb.addsCount + 1)
 			elseif self.vb.addsCount == 2 then
-				timerAddsCD:Start(30)
+				timerAddsCD:Start(30, self.vb.addsCount + 1)
 			end
 		elseif self.vb.teleCount == 2 then--30, 32, 32, 30
 			if self.vb.addsCount == 1 or self.vb.addsCount == 4 then
-				timerAddsCD:Start(30)
+				timerAddsCD:Start(30, self.vb.addsCount + 1)
 			elseif self.vb.addsCount == 2 or self.vb.addsCount == 3 then
-				timerAddsCD:Start(32)
+				timerAddsCD:Start(32, self.vb.addsCount + 1)
 			end
 		end
 	end
