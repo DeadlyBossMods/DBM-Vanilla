@@ -36,6 +36,7 @@ or (ability.id = 19713 or ability.id = 19715 or ability.id = 23138 or ability.id
 local warnCurse					= mod:NewSpellAnnounce(19713, 3)
 local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, "CasterDps", 2)
 local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
+local warnGate					= mod:NewSpellAnnounce(23138, 2)
 
 local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, "MagicDispeller", nil, 2, 1, 2, nil, nil, "dispelboss")
 local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")--aggro wipe, needs fresh taunt
@@ -103,8 +104,12 @@ function mod:SPELL_CAST_SUCCESS(args)
 		warnCounterSpell:Show()
 		timerCounterSpellCD:Start()
 	elseif args:IsSpell(23138) then
-		specWarnGate:Show(args.sourceName)
-		specWarnGate:Play("tauntboss")
+		if self.Options.SpecWarn23138taunt then
+			specWarnGate:Show(args.sourceName)
+			specWarnGate:Play("tauntboss")
+		else
+			warnGate:Show()
+		end
 		timerGateCD:Start()
 	end
 end
