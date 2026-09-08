@@ -260,12 +260,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Razorgore der Ungezähmte"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds erscheinen"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Zeige Zeit bis die ersten Adds erscheinen"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Eindringlinge sind in die Brutstätte vorgestoßen! Schlagt Alarm! Beschützt die Eier um jeden Preis!"
 }
@@ -428,6 +423,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Lasst die Spiele beginnen!",
+	YellP2		= "Sehr gut, meine Diener. Der Mut der Sterblichen scheint zu schwinden! Nun lasst uns sehen, wie sie sich gegen den wahren Herrscher des Blackrock behaupten werden!",
 	YellP3		= "Unmöglich! Erhebt euch meine Diener! Kämpft erneut für Euren Meister!",
 	YellShaman	= "Schamane, zeigt mir was eure Totems können!",
 	YellPaladin	= "Paladine... ich habe gehört, dass Ihr viele Leben habt. Zeigt es mir.",
@@ -474,6 +470,12 @@ L = DBM:GetModLocalization("Lucifron")
 
 L:SetGeneralLocalization{
 	name = "Lucifron"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "Feuerschuppenbeschützer: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Verkünde verbleibende Feuerschuppenbeschützer"
 }
 
 ----------------
@@ -528,6 +530,12 @@ L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
 	name = "Sulfuronherold"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "Feuerschuppenpriester: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Verkünde verbleibende Feuerschuppenpriester"
 }
 
 ----------------

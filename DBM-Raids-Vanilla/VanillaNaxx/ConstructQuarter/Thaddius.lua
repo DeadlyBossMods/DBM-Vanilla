@@ -96,7 +96,6 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd(wipe, isSecondRun)
-	DBM.InfoFrame:Hide()
 	if wipe and not isSecondRun then
 		DBM:AddMsg("Arrow Options can be changed for this encounter. Mod supports 3 different strats. Choose one that matches your strat")
 	end

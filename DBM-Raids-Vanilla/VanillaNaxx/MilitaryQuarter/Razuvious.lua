@@ -84,7 +84,6 @@ local function ShowInfoFrame()
 end
 
 function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
 	table.wipe(mindExhaustionTimers)
 	table.wipe(mindExhaustionNames)
 	table.wipe(mindExhaustionIcons)

@@ -79,9 +79,6 @@ end
 
 function mod:OnCombatEnd()
 	table.wipe(horsemenGuidCheck)
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Hide()
-	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
@@ -111,6 +108,7 @@ end
 function mod:SPELL_AURA_APPLIED_DOSE(args)
 	if args:IsSpell(28832, 28833, 28834, 28835) and args:IsPlayer() then
 		if args.amount >= 4 then
+			specWarnMarkOnPlayer:UpdateIcon(args.spellId)
 			specWarnMarkOnPlayer:Show(args.spellName, args.amount)
 			specWarnMarkOnPlayer:Play("stackhigh")
 		end

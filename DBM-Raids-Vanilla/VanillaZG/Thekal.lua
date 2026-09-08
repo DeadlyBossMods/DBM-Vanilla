@@ -58,12 +58,6 @@ function mod:OnCombatStart()
 	end
 end
 
-function mod:OnCombatEnd()
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Hide()
-	end
-end
-
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(24208) and args:IsSrcTypeHostile() then
 		if self:CheckInterruptFilter(args.sourceGUID, false, true) then

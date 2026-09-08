@@ -26,6 +26,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 19451",
 	"SPELL_AURA_REMOVED 19451",
 	"SPELL_CAST_SUCCESS 19408 19451 461125",
+	"SPELL_AURA_APPLIED 19428",
 	"UNIT_SPELLCAST_SUCCEEDED"
 )
 
@@ -38,6 +39,7 @@ local warnPanic			= mod:NewSpellAnnounce(19408, 2)
 local warnFrenzy		= mod:NewSpellAnnounce(19451, 3, nil, "Tank|RemoveEnrage|Healer")
 
 local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2, nil, nil, "enrage")
+local specWarnGTFO 		= mod:NewSpecialWarningGTFO(19428, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 local timerPanicCD		= mod:NewVarTimer("v37.3-66.4", 19408, nil, nil, nil, 2)
 local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
@@ -63,6 +65,9 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnFrenzy:Show()
 		end
 		timerFrenzy:Start()
+	elseif args:IsSpell(19428) and args:IsPlayer() and self:AntiSpam(8, 2) then
+		specWarnGTFO:Show(args.spellName)
+		specWarnGTFO:Play("watchfeet")
 	end
 end
 
