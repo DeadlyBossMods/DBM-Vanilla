@@ -268,12 +268,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "狂野的拉佐格尔"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "小怪重生"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "为第一次小怪重生显示计时器"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "入侵者闯进了孵化间！我们要不惜一切代价保护龙蛋！"
 }

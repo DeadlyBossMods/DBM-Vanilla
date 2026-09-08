@@ -300,12 +300,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "폭군 서슬송곳니"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "쫄 등장"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "첫번째 쫄 등장 타이머 바 보기"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "침입자들이 들어왔다! 어떤 희생이 있더라도 알을 반드시 수호하라!"
 }

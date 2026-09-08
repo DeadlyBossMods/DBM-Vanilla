@@ -411,12 +411,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Violâminus, o Indomado"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Primeiros lacaios"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Exibir cronômetro quando os primeiros lacaios aparecerem"
-}
+
 L:SetMiscLocalization{
 	Pull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
 }

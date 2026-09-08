@@ -409,12 +409,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Sangrevaja el Indomable"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Primeros esbirros"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Mostrar temporizador para cuando aparezcan los primeros esbirros"
-}
+
 L:SetMiscLocalization{
 	Pull	= "¡Los invasores han penetrado en El Criadero! ¡Activa la alarma! ¡Hay que proteger los huevos a toda costa!"
 }

@@ -294,12 +294,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Razorgore the Untamed"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds spawning"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Show timer for first adds spawning"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
 }

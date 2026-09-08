@@ -260,12 +260,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Razorgore der Ungezähmte"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds erscheinen"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Zeige Zeit bis die ersten Adds erscheinen"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Eindringlinge sind in die Brutstätte vorgestoßen! Schlagt Alarm! Beschützt die Eier um jeden Preis!"
 }

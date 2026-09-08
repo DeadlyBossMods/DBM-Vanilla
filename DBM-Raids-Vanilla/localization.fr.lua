@@ -409,12 +409,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Tranchetripe l'Indompté"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Premiers serviteurs"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Afficher un chronomètre pour les premiers serviteurs"
-}
+
 L:SetMiscLocalization{
 	Pull = "La chambre des œufs est envahie ! Sonnez l'alarme ! Protégez les œufs à tout prix !"
 }

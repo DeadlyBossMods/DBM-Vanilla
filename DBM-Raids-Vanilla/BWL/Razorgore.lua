@@ -47,7 +47,7 @@ local warnEggsLeft			= mod:NewCountAnnounce(19873, 1) ---@type Announce -- strin
 
 local specWarnFireballVolley= mod:NewSpecialWarningMoveTo(22425, false, nil, nil, 2, 2, nil, nil, "findshelter")
 
-local timerAddsSpawn		= mod:NewTimer(47, "TimerAddsSpawn", 19879, nil, nil, 1)--Only for start of adds, not adds after the adds.
+local timerAddsSpawn		= mod:NewAddsTimer(47, nil, nil, nil, nil, 1, "134153")--Only for start of adds, not adds after the adds.
 
 local timerDrakeSpawn, warnDrakeSpawn
 if DBM:IsSeasonal("SeasonOfDiscovery") then

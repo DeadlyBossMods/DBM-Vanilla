@@ -299,12 +299,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Бритвосмерт Неукротимый"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Появление аддов"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Отсчет времени до первого появления аддов"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Нападение на инкубатор! Поднимайте тревогу! Все на защиту кладки!"
 }
