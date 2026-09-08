@@ -58,11 +58,6 @@ function mod:OnCombatStart(delay)
 	end
 end
 
-function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
-end
-
-
 function mod:UNIT_POWER_UPDATE_UNFILTERED(uId)
 	if self:GetUnitCreatureId(uId) == 240795 then
 		local guid = UnitGUID(uId)

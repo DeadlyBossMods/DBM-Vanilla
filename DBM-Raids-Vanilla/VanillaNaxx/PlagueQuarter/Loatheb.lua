@@ -160,12 +160,6 @@ function mod:OnCombatStart()
 	end
 end
 
-function mod:OnCombatEnd()
-	if DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:Hide()
-	end
-end
-
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29234) then
 		self.vb.sporeCounter = self.vb.sporeCounter + 1

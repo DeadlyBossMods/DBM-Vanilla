@@ -294,12 +294,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Razorgore the Untamed"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds spawning"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Show timer for first adds spawning"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
 }
@@ -463,6 +458,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Let the games begin!",
+	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",
 	YellP3		= "Impossible! Rise my minions! Serve your master once more!",
 	YellShaman	= "Shamans, show me what your totems can do!",
 	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",
@@ -519,6 +515,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lucifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker Protector: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewaker Protectors remaining"
+}
 
 ----------------
 --  Magmadar  --
@@ -572,6 +574,12 @@ L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
 	name = "Sulfuron Harbinger"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker Priest: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewaker Priests remaining"
 }
 
 ----------------

@@ -192,9 +192,6 @@ end
 
 function mod:OnCombatEnd()
 	self:UnregisterShortTermEvents()
-	if DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:Hide()
-	end
 end
 
 function mod:UNIT_DIED(args)

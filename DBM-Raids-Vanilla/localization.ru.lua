@@ -299,12 +299,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Бритвосмерт Неукротимый"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Появление аддов"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Отсчет времени до первого появления аддов"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Нападение на инкубатор! Поднимайте тревогу! Все на защиту кладки!"
 }
@@ -469,6 +464,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Ну что ж, поиграем!",
+	YellP2		= "Отлично, слуги мои! Смертные уже не столь дерзки! Посмотрим, как они справятся с истинным Повелителем Пика Черной горы!!!",
 	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
 	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",
 	YellPaladin	= "Паладины… Я слышал, у вас несколько жизней. Докажите.",
@@ -525,6 +521,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Люцифрон"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Заступник-поджигатель: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся заступниках-поджигателях"
+}
 
 ----------------
 --  Magmadar  --
@@ -578,6 +580,12 @@ L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
 	name = "Предвестник Сульфурон"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "Поджигатель-жрец: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся поджигателях-жрецах"
 }
 
 ----------------
@@ -903,7 +911,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Теперь вы принадлежите мне!",
+	Pull1				= "Теперь ты принадлежишь мне.",
 	Pull2				= "Я вижу тебя…",
 	Pull3 				= "Пришло ваше время…"
 })
@@ -914,7 +922,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("LoathebVanilla")
 
 L:SetGeneralLocalization({
-	name = "Лотхиб"
+	name = "Мерзот"
 })
 
 L:SetWarningLocalization({

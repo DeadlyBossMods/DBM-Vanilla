@@ -111,9 +111,6 @@ function mod:OnCombatEnd(wipe, isSecondRun)
 	table.wipe(playersInStomach)
 	table.wipe(fleshTentacles)
 	table.wipe(diedTentacles)
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Hide()
-	end
 	--Only run on second run, to ensure trash mod has had enough time to update requiredBosses
 	if not wipe and isSecondRun and firstBossMod.vb.firstEngageTime and firstBossMod.Options.SpeedClearTimer then
 		if firstBossMod.vb.requiredBosses < 4 then

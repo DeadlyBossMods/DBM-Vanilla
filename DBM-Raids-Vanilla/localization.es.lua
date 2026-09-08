@@ -299,12 +299,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Sangrevaja el Indomable"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Primeros esbirros"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Mostrar temporizador para cuando aparezcan los primeros esbirros"
-}
+
 L:SetMiscLocalization{
 	Pull	= "¡Los invasores han penetrado en El Criadero! ¡Activad la alarma! ¡Hay que proteger los huevos a toda costa!"
 }
@@ -470,6 +465,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "¡Que comiencen los juegos!",
+	YellP2		= "Bien hecho, mis esbirros. El coraje de los mortales empieza a mermar. ¡Veamos ahora cómo se enfrentan al verdadero Señor de la Cumbre de Roca Negra!",
 	YellP3		= "¡Imposible! ¡Levantaos, esbirros! ¡Servid a vuestro maestro una vez más!",
 	YellShaman	= "¡Chamanes, mostradme lo que pueden hacer vuestros tótems!",
 	YellPaladin	= "Paladines... He oído que tenéis muchas vidas. Demostrádmelo.",
@@ -513,6 +509,12 @@ L = DBM:GetModLocalization("Lucifron")
 
 L:SetGeneralLocalization{
 	name = "Lucifron"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "Protector Caminallamas: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Protectores Caminallamas restantes"
 }
 
 ----------------
@@ -567,6 +569,12 @@ L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
 	name = "Sulfuron Presagista"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "Sacerdote Caminallamas: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Sacerdotes Caminallamas restantes"
 }
 
 ----------------

@@ -300,12 +300,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "폭군 서슬송곳니"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "쫄 등장"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "첫번째 쫄 등장 타이머 바 보기"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "침입자들이 들어왔다! 어떤 희생이 있더라도 알을 반드시 수호하라!"
 }
@@ -470,6 +465,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "흐흐흐흐... 게임을 시작하자!",
+	YellP2		= "잘했다! 적들의 사기가 떨어지고 있다! 검은바위 첨탑의 군주에게 도전한 대가를 치르게 해주자!",
 	YellP3		= "말도 안 돼! 일어나라! 다시 한 번 너희 주인을 섬겨라!",
 	YellShaman	= "주술사, 네 놈의 토템이 얼마나 쓸모 있는지 한번 보자!",
 	YellPaladin	= "성기사여... 네 목숨은 여러 개라고 하던데 어디 한번 보여 다오.",
@@ -522,6 +518,12 @@ L = DBM:GetModLocalization("Lucifron")
 
 L:SetGeneralLocalization{
 	name = "루시프론"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "불꽃꼬리일족 수호병: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "불꽃꼬리일족 수호병 남은 수 알림"
 }
 
 ----------------
@@ -576,6 +578,12 @@ L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
 	name = "설퍼론 사자"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "불꽃꼬리일족 사제: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "불꽃꼬리일족 사제 남은 수 알림"
 }
 
 ----------------

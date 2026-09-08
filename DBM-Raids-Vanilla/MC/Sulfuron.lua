@@ -28,7 +28,8 @@ mod:RegisterEventsInCombat(
 	"SPELL_PERIODIC_MISSED 461103",
 	"SPELL_AURA_REMOVED 19779",
 	"SPELL_CAST_START 19775",
-	"SPELL_INTERRUPT"
+	"SPELL_INTERRUPT",
+	"UNIT_DIED"
 )
 
 --TODO, nameplate aura if classic API supports it enough
@@ -38,6 +39,7 @@ local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
 local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
 
 local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 2, "626004")
 
 local timerHeal			= mod:NewCastNPTimer(2, 19775, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
 local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
@@ -45,6 +47,18 @@ local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, 
 local specWarnGTFO
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	specWarnGTFO		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
+end
+
+mod.vb.guardsRemaining = 4
+local guardsGuidCheck = {}
+
+function mod:OnCombatStart()
+	self.vb.guardsRemaining = 4
+	table.wipe(guardsGuidCheck)
+end
+
+function mod:OnCombatEnd()
+	table.wipe(guardsGuidCheck)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
@@ -91,5 +105,17 @@ function mod:SPELL_INTERRUPT(args)
 	if type(args.extraSpellId) ~= "number" then return end
 	if args.extraSpellId == 19775 then
 		timerHeal:Stop(args.destGUID)
+	end
+end
+
+function mod:UNIT_DIED(args)
+	local guid = args.destGUID
+	local cid = self:GetCIDFromGUID(guid)
+	if cid == 11662 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228838) then -- Flamewaker Priest
+		if not guardsGuidCheck[guid] then
+			guardsGuidCheck[guid] = true
+			self.vb.guardsRemaining = self.vb.guardsRemaining - 1
+			warnGuardDied:Show(self.vb.guardsRemaining, 4)
+		end
 	end
 end

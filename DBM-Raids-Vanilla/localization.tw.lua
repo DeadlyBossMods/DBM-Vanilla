@@ -42,7 +42,7 @@ L:SetWarningLocalization({
     WarnGuardDied = "沙爾圖拉皇家衛士：%d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
-    WarnGuardDied = "提示沙爾圖拉皇家衛士剩餘"
+    WarnGuardDied = "提示剩餘的沙爾圖拉皇家衛士"
 }
 
 --------------
@@ -270,12 +270,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "狂野的拉佐格爾"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "小怪重生"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "為第一次小怪重生顯示計時器"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
@@ -417,6 +412,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "讓賽事開始吧！",
+	YellP2		= "幹得好，手下們。凡人的勇氣開始消退了！現在，我們就來看看他們怎麼面對黑石之王的力量吧！",
 	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
 	YellShaman	= "薩滿，讓我看看你圖騰到底是什麼用處的！",
 	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
@@ -438,6 +434,12 @@ L = DBM:GetModLocalization("Lucifron")
 
 L:SetGeneralLocalization{
 	name = "魯西弗隆"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者護衛：%d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者護衛"
 }
 
 ----------------
@@ -492,6 +494,12 @@ L = DBM:GetModLocalization("Sulfuron")
 
 L:SetGeneralLocalization{
 	name = "薩弗隆先驅者"
+}
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者祭司：%d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者祭司"
 }
 
 ----------------
