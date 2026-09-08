@@ -59,9 +59,9 @@ local timerFrostbolt		= mod:NewCastNPTimer(2, 28478, nil, "HasInterrupt", 2, 4, 
 local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, false, nil, 2)
 local timerManaBombCD		= mod:NewVarTimer("v20.2-50.9", 27819, nil, "ManaUser", nil, 3)
 local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v30.3-82.4", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
-local timerfrostBlast		= mod:NewBuffFadesTimer(4, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+local timerfrostBlast		= mod:NewBuffFadesTimer(5, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 local timerMCCD				= mod:NewVarTimer("v63.1-145.4", 28410, nil, nil, nil, 3)
-local timerPhase2			= mod:NewStageCountTimer(230) -- Variance used to be 229.2-245.8, but patch on July 21, 2026 tightened up the variance. Now it's a <2 second variance for a nearly 4 minute timer, so no point to show variance
+local timerPhase2			= mod:NewStageCountTimer("v229.2-231") -- Variance used to be 229.2-245.8, but patch on July 21, 2026 tightened up the variance.
 
 mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
@@ -79,7 +79,6 @@ local function AnnounceBlastTargets(self)
 			frostBlastTargets[i] = nil
 		end
 	end
-	timerfrostBlast:Start()
 end
 
 function mod:OnCombatStart()
@@ -171,8 +170,11 @@ function mod:SPELL_CAST_SUCCESS(args)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(27808) then -- Frost Blast
+	if args:IsSpell(27808) then
 		table.insert(frostBlastTargets, args.destName)
+		if not timerfrostBlast:IsStarted() then
+			timerfrostBlast:Start()
+		end
 		self:Unschedule(AnnounceBlastTargets)
 		self:Schedule(0.5, AnnounceBlastTargets, self)
 		if self.Options.SpecWarn27808target then
