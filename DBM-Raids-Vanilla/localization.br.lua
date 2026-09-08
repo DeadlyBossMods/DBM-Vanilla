@@ -672,6 +672,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Emissário de Sulfuron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Sacerdote Ardilante: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Exibir anúncio para Sacerdotes Ardilantes restantes"
+}
 
 ----------------
 --  Golemagg  --

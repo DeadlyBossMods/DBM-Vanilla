@@ -569,6 +569,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Sulfuron Harbinger"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker Priest: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewaker Priests remaining"
+}
 
 ----------------
 --  Golemagg  --

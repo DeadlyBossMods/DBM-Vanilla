@@ -575,6 +575,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Предвестник Сульфурон"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Поджигатель-жрец: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся поджигателях-жрецах"
+}
 
 ----------------
 --  Golemagg  --

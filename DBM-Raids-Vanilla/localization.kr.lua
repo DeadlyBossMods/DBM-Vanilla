@@ -573,6 +573,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "설퍼론 사자"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "불꽃꼬리일족 사제: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "불꽃꼬리일족 사제 남은 수 알림"
+}
 
 ----------------
 --  Golemagg  --

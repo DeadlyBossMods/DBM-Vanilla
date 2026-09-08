@@ -525,6 +525,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Sulfuronherold"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Feuerschuppenpriester: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Verkünde verbleibende Feuerschuppenpriester"
+}
 
 ----------------
 --  Golemagg  --

@@ -670,6 +670,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Presagista de Sulfuron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Sacerdote despiertallamas: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Sacerdotes despiertallamas restantes"
+}
 
 ----------------
 --  Golemagg  --

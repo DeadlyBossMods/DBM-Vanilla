@@ -489,6 +489,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "薩弗隆先驅者"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者祭司：%d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者祭司"
+}
 
 ----------------
 --  Golemagg  --
