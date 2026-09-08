@@ -258,10 +258,10 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Émersion"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Afficher une annonce pour la submersion d'Ouro",
-	TimerSubmerge		= "Afficher un chronomètre pour la submersion d'Ouro",
-	WarnEmerge			= "Afficher une annonce pour l'émersion d'Ouro",
-	TimerEmerge			= "Afficher un chronomètre pour l'émersion d'Ouro",
+	WarnSubmerge		= "Afficher une annonce pour submersion",
+	TimerSubmerge		= "Afficher un chronomètre pour submersion",
+	WarnEmerge			= "Afficher une annonce pour émersion",
+	TimerEmerge			= "Afficher un chronomètre pour émersion",
 	SpecWarnEye			= "Afficher une annonce pour l'œil géant"
 }
 
@@ -704,18 +704,18 @@ L:SetGeneralLocalization{
 	name = "Ragnaros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submergé",
-	WarnEmerge			= "Émergé"
+	WarnSubmerge		= "Submersion",
+	WarnEmerge			= "Émersion"
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submergé",
-	TimerEmerge			= "Émergé",
+	TimerSubmerge		= "Submersion",
+	TimerEmerge			= "Émersion",
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Afficher une annonce pour submergé",
-	TimerSubmerge		= "Afficher un chronomètre pour submergé",
-	WarnEmerge			= "Afficher une annonce pour émergé",
-	TimerEmerge			= "Afficher un chronomètre pour émergé",
+	WarnSubmerge		= "Afficher une annonce pour submersion",
+	TimerSubmerge		= "Afficher un chronomètre pour submersion",
+	WarnEmerge			= "Afficher une annonce pour émersion",
+	TimerEmerge			= "Afficher un chronomètre pour émersion",
 }
 L:SetMiscLocalization{
 	Submerge	= "VENEZ, MES SERVITEURS ! DÉFENDEZ VOTRE MAÎTRE !",
