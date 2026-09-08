@@ -223,7 +223,7 @@ L:SetTimerLocalization{
 	TimerClawTentacle		= "Tentáculo de Garra",
 	TimerGiantEyeTentacle	= "Tentóculo Gigante",
 	TimerGiantClawTentacle	= "Tentáculo de Garra Gigante",
-	TimerWeakened			= "Enfraquece acaba"
+	TimerWeakened			= "Enfraquecimento acaba"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Exibir anúncio para Tentóculo",
@@ -260,10 +260,10 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Emersão"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Exibir anúncio para a submersão de Ouroboros",
-	TimerSubmerge		= "Exibir cronômetro para a submersão de Ouroboros",
-	WarnEmerge			= "Exibir anúncio para a emersão de Ouroboros",
-	TimerEmerge			= "Exibir cronômetro para a emersão de Ouroboros",
+	WarnSubmerge		= "Exibir anúncio para submersão",
+	TimerSubmerge		= "Exibir cronômetro para submersão",
+	WarnEmerge			= "Exibir anúncio para emersão",
+	TimerEmerge			= "Exibir cronômetro para emersão",
 	SpecWarnEye 		= "Exibir anúncio para o olho gigante"
 }
 
