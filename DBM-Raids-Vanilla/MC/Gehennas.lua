@@ -36,7 +36,7 @@ mod:RegisterEventsInCombat(
 local warnCurse			= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
 local warnRainFire		= mod:NewSpellAnnounce(19717, 2, nil, false)
 local warnFist			= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
-local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "135829")
+local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "132093")
 
 local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
