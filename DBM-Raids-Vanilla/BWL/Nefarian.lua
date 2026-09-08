@@ -29,7 +29,7 @@ end
 mod:RegisterCombat("combat_yell", L.YellP1)
 mod:SetWipeTime(50)--guesswork
 mod:SetHotfixNoticeRev(20200310000000)--2020, Mar, 10th
-mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
+mod:SetMinSyncRevision(20260824000000) -- 2026, August 24th
 mod:SetZone(469)
 
 mod:RegisterEventsInCombat(
@@ -37,6 +37,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 22667 22687",
 	"SPELL_AURA_REMOVED 22667",
 	"CHAT_MSG_MONSTER_YELL",
+	"NAME_PLATE_UNIT_ADDED",
 	"UNIT_DIED"
 )
 
@@ -52,13 +53,12 @@ local specwarnShadowCommand	= mod:NewSpecialWarningTarget(22667, nil, nil, 2, 1,
 local specwarnVeilShadow	= mod:NewSpecialWarningDispel(22687, "RemoveCurse", nil, nil, 1, 2, nil, nil, "dispelnow")
 local specwarnClassCall		= mod:NewSpecialWarning("specwarnClassCall", nil, nil, nil, 1, 2, nil, nil, nil, nil, "targetyou")
 
-local timerPhase2			= mod:NewStageCountTimer("v12.9-14.9")
+local timerPhase2			= mod:NewStageCountTimer("v14.2-17.6")
 local timerClassCall 		= mod:NewTimer(30, "TimerClassCall", nil, nil, nil, 5)
 local timerFearCD			= mod:NewVarTimer("v27-90.1", 22686, nil, nil, nil, 2)
 local timerShadowFlameCD	= mod:NewVarTimer("v8.1-37.2", 22539, nil, false)
 local timerShadowCommand	= mod:NewTargetTimer(15, 22667, nil, nil, nil, 3)
 
-mod.vb.triggerEncounterStart = false
 mod.vb.addLeft = 42
 local addsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("Razorgore")
@@ -66,34 +66,16 @@ local firstBossMod = DBM:GetModByName("Razorgore")
 function mod:OnCombatStart()
 	table.wipe(addsGuidCheck)
 	self.vb.addLeft = 42
-	self.vb.triggerEncounterStart = false
+	self:SetStage(1)
+	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
-	self:RegisterOnUpdateHandler(function()
-    if IsEncounterInProgress() and not self.vb.triggerEncounterStart then
-		self.vb.triggerEncounterStart = true
-		self:SetStage(1)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	elseif not IsEncounterInProgress() and self:GetStage(1) then
-		self:SetStage(1.5)
-        warnPhase2Soon:Show()
-		timerPhase2:Start(nil, 2)
-	elseif IsEncounterInProgress() and self:GetStage(1.5) then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-		warnPhase:Play("ptwo")
-		timerPhase2:Stop()
-		timerFearCD:Start()
-		timerShadowFlameCD:Start()
-        self:UnregisterOnUpdateHandler()
-    end
-	end, 0.2)
 end
 
 function mod:OnCombatEnd(wipe)
-	self:UnregisterOnUpdateHandler()
 	self:UnregisterShortTermEvents()
+	table.wipe(addsGuidCheck)
 	if not wipe then
 		local sodTrialMod = DBM:GetModByName("SoDBWLTrials")
 		if sodTrialMod then
@@ -192,11 +174,18 @@ function mod:CHAT_MSG_MONSTER_YELL(msg)
 		self:SendSync("ClassCall", "MONK")
 --	elseif msg == L.YellEvoker or msg:find(L.YellEvoker) then
 --		self:SendSync("ClassCall", "EVOKER")
---	elseif msg == L.YellP2 or msg:find(L.YellP2) then
---		self:SendSync("Phase", 1.5)
+	elseif msg == L.YellP2 or msg:find(L.YellP2) then
+		self:SendSync("Phase", 1.5)
 	elseif msg == L.YellP3 or msg:find(L.YellP3) then
 		self:SendSync("Phase", 3)
 	end
+end
+
+function mod:NAME_PLATE_UNIT_ADDED(unitId)
+	local guid = UnitGUID(unitId)
+	if not guid or self:GetCIDFromGUID(guid) ~= 11583 then return end
+	if self:GetStage(1.5, 2) then return end
+	self:SendSync("Phase", 2)
 end
 
 function mod:UNIT_HEALTH(uId)
@@ -233,7 +222,15 @@ do
 				if phase % 1 == 0 then
 					warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
 				end
-				if phase == 2.5 then
+				if phase == 1.5 then
+					warnPhase2Soon:Show()
+					timerPhase2:Start(nil, 2)
+				elseif phase == 2 then
+					warnPhase:Play("ptwo")
+					timerPhase2:Stop()
+					timerFearCD:Start()
+					timerShadowFlameCD:Start()
+				elseif phase == 2.5 then
 					warnPhase3Soon:Show()
 				elseif phase == 3 then
 					warnPhase:Play("pthree")
@@ -249,9 +246,12 @@ do
 			if arg == "SHAMAN" then
 				specwarnClassCall:Play("attacktotem")
 			end
-			if playerClass == className and arg ~= "SHAMAN" then
+			if playerClass == className then
+				specwarnClassCall:UpdateIcon(classIcons[arg])
 				specwarnClassCall:Show()
-				specwarnClassCall:Play("targetyou")
+				if arg ~= "SHAMAN" then
+					specwarnClassCall:Play("targetyou")
+				end
 			else
 				warnClassCall:UpdateIcon(classIcons[arg])
 				warnClassCall:Show(classNameColored)
