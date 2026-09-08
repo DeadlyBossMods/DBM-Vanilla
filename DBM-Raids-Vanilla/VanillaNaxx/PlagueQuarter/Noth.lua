@@ -62,13 +62,11 @@ end
 
 mod.vb.teleCount = 0
 mod.vb.addsCount = 0
-mod.vb.curseCount = 0
 
 function mod:OnCombatStart()
 	table.wipe(curseTargets)
 	self.vb.teleCount = 0
 	self.vb.addsCount = 0
-	self.vb.curseCount = 0
 	warnTeleportSoon:Schedule(70.6)
 	timerAddsCD:Start("v6.5-22.7", self.vb.addsCount + 1)
 	timerCurseCD:Start("v6.5-25.9")
@@ -85,7 +83,6 @@ end
 
 function mod:BackInRoom()
 	self.vb.addsCount = 0
-	self.vb.curseCount = 0
 	timerAddsCD:Stop()
 	local timer
 	if self.vb.teleCount == 1 then
@@ -144,7 +141,6 @@ end
 
 function mod:SPELL_CAST_SUCCESS(args)
 	if args:IsSpell(29213) then
-		self.vb.curseCount = self.vb.curseCount + 1
 		if not self.Options.SpecWarn29213dispel then
 			warnCurse:Show()
 		end
