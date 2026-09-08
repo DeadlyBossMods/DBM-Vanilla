@@ -68,9 +68,6 @@ function mod:OnCombatEnd()
 	-- Poison cloud stays around after the boss dies
 	table.wipe(bugsGuidCheck)
 	self:ScheduleMethod(60, "UnregisterShortTermEvents")
-	if self.Options.InfoFrame then
-	DBM.InfoFrame:Hide()
-	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

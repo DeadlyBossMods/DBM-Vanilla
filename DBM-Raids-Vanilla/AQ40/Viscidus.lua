@@ -111,9 +111,6 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd()
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Hide()
-	end
 	resetHitCounts()
 end
 

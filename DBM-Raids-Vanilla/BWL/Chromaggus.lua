@@ -212,9 +212,6 @@ function mod:OnCombatEnd()
 	if self.Options.NPAuraOnVulnerable  then
 		DBM.Nameplate:Hide(true, nil, nil, nil, true, true)--isGUID, unit, spellId, texture, force, isHostile, isFriendly
 	end
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Hide()
-	end
 end
 
 function mod:SPELL_CAST_SUCCESS(args)

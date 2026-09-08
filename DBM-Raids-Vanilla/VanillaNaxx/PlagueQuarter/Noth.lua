@@ -128,7 +128,6 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd()
-	DBM.InfoFrame:Hide()
 	table.wipe(curseTargets)
 end
 

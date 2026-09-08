@@ -138,12 +138,6 @@ function mod:OnCombatStart(delay)
 	end
 end
 
-function mod:OnCombatEnd()
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Hide()
-	end
-end
-
 function mod:SPELL_CAST_START(args)
 	if args:IsSpell(438713) then
 		timerSummonBombCD:Stop()
