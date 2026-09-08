@@ -37,7 +37,7 @@ mod:RegisterEventsInCombat(
 local warnDoom		= mod:NewSpellAnnounce(19702, 2)
 local warnCurse		= mod:NewSpellAnnounce(19703, 3)
 local warnMC		= mod:NewTargetNoFilterAnnounce(20604, 4)
-local warnGuardDied	= mod:NewAnnounce("WarnGuardDied", 2, "135829")
+local warnGuardDied	= mod:NewAnnounce("WarnGuardDied", 1, "135829")
 
 local specWarnMC	= mod:NewSpecialWarningYou(20604, nil, nil, nil, 1, 2, nil, nil, "targetyou")
 local specWarnDoom	= mod:NewSpecialWarningDispel(19702, "RemoveMagic", nil, nil, 1, 2, nil, nil, "dispelnow")
