@@ -519,6 +519,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "루시프론"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "불꽃꼬리일족 수호병: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "불꽃꼬리일족 수호병 남은 수 알림"
+}
 
 ----------------
 --  Magmadar  --

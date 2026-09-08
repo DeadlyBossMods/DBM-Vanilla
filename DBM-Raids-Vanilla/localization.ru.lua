@@ -521,6 +521,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Люцифрон"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Заступник-поджигатель: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся заступниках-поджигателях"
+}
 
 ----------------
 --  Magmadar  --

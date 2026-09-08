@@ -515,6 +515,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lucifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker Protector: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewaker Protectors remaining"
+}
 
 ----------------
 --  Magmadar  --

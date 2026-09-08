@@ -616,6 +616,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lucifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Protector despiertallamas: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Protectores despiertallamas restantes"
+}
 
 ----------------
 --  Magmadar  --

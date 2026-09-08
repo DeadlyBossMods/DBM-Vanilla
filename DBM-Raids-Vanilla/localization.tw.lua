@@ -435,6 +435,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "魯西弗隆"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者護衛：%d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者護衛"
+}
 
 ----------------
 --  Magmadar  --

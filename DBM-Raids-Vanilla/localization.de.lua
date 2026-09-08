@@ -471,6 +471,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lucifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Feuerschuppenbeschützer: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Verkünde verbleibende Feuerschuppenbeschützer"
+}
 
 ----------------
 --  Magmadar  --
