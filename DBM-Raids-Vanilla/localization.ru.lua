@@ -899,7 +899,7 @@ L:SetOptionLocalization({
 })
 
 L:SetMiscLocalization({
-	Pull1				= "Теперь вы принадлежите мне!",
+	Pull1				= "Теперь ты принадлежишь мне.",
 	Pull2				= "Я вижу тебя…",
 	Pull3 				= "Пришло ваше время…"
 })
@@ -910,7 +910,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("LoathebVanilla")
 
 L:SetGeneralLocalization({
-	name = "Лотхиб"
+	name = "Мерзот"
 })
 
 L:SetWarningLocalization({
@@ -973,7 +973,7 @@ L:SetMiscLocalization({
 	Yell1P1		= "На корм хозяину!",
 	Yell2P1		= "Сталагг тебя раздавит!",
 	Yell1P2 	= "Отведайте… своих… костей…",
-	Yell2P2 	= "Растерзаю!!!",
+	Yell2P2 	= "Проломить… тебя!!!",
 	Yell3P2 	= "Убей…",
 	EmoteDies 	= "%s умирает.",
 	--EmoteRevive = "%s is jolted back to life!"
