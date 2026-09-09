@@ -46,8 +46,8 @@ local mindExhaustionIcons = {}
 local mindControlOwners = {}
 local mindControlTimers = {}
 
-local MC_TEXTURE = "Spell_shadow_shadowworddominate"
-local MIND_EXHAUST_TEXTURE = "Spell_shadow_teleport"
+local MC_TEXTURE = "Interface\\Icons\\Spell_shadow_shadowworddominate"
+local MIND_EXHAUST_TEXTURE = "Interface\\Icons\\Spell_shadow_teleport"
 
 local updateInfoFrame
 do
