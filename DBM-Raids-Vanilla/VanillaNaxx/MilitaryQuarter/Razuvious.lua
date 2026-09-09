@@ -73,7 +73,7 @@ do
 			sortedLines[#sortedLines + 1] = key
 			if mindExhaustionTimers[guid] == -1 then
 				lines[key] = DEAD
-			elseif mcOwner and mcTimeLeft >= 0 then
+			elseif mcTimeLeft > 0 then
 				lines[key] = ("|T%s:0|t|cffff7f00%.0f|r"):format(MC_TEXTURE, mcTimeLeft)
 			elseif exhaustionTimeLeft > 0 then
 				lines[key] = ("|T%s:0|t|cffff0000%.0f|r"):format(MIND_EXHAUST_TEXTURE, exhaustionTimeLeft)
