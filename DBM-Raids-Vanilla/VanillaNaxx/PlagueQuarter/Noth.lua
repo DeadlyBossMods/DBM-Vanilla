@@ -8,6 +8,7 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+mod:SetMinSyncRevision(20260828000000) -- 2026, August 28th
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15954)
 mod:SetEncounterID(1117)
@@ -20,19 +21,18 @@ mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29213 29212 29208",
 	"SPELL_AURA_APPLIED 29213",
 	"SPELL_AURA_REMOVED 29213",
+	"UNIT_TARGETABLE_CHANGED",
 	"CHAT_MSG_MONSTER_YELL"
 )
 
---TODO, determine if old way is required or if new way is still functional
---TODO, add adds warning/timer scheduling for phase 2, since emote triggers are gone. It's a lot of annoying effort though so I'll wait to assess the need
 --[[
 source.id = 15954 and (type = "begincast" or type = "cast")
  or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
 --]]
 local warnTeleportNow	= mod:NewAnnounce("WarningTeleportNow", 3, "135736")
-local warnTeleportSoon	= mod:NewAnnounce("WarningTeleportSoon", 1, "135736")
-local warnCurse			= mod:NewSpellAnnounce(29213, 2)
+local warnTeleportSoon	= mod:NewAnnounce("WarningTeleportSoon", 2, "135736")
 local warnBlink			= mod:NewSpellAnnounce(29208, 3)
+local warnCurse			= mod:NewSpellAnnounce(29213, 2)
 
 local specWarnAdds		= mod:NewSpecialWarningAdds(29252, "-Healer", nil, nil, 1, 2, nil, "136187", "killmob")
 local specWarnCurse 	= mod:NewSpecialWarningDispel(29213, "RemoveCurse", nil, nil, 1, 2, nil, nil, "dispelnow")
@@ -41,7 +41,7 @@ local timerTeleport		= mod:NewTimer(90, "TimerTeleport", "135736", nil, nil, 6)
 local timerTeleportBack	= mod:NewTimer(70, "TimerTeleportBack", "135736", nil, nil, 6)
 local timerCurse       	= mod:NewBuffFadesTimer(10, 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
 local timerCurseCD		= mod:NewVarTimer("v51.8-66.8", 29213, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerAddsCD		= mod:NewAddsTimer(30, 29252, nil, "-Healer", nil, 1, "136187")
+local timerAddsCD		= mod:NewAddsCountTimer(30, 29252, nil, "-Healer", nil, 1, "136187")
 
 mod:AddInfoFrameOption(29213, "RemoveCurse")
 
@@ -62,43 +62,35 @@ end
 
 mod.vb.teleCount = 0
 mod.vb.addsCount = 0
-mod.vb.curseCount = 0
 
-function mod:Balcony()
-	self.vb.teleCount = self.vb.teleCount + 1
+function mod:OnCombatStart()
+	table.wipe(curseTargets)
+	self.vb.teleCount = 0
 	self.vb.addsCount = 0
-	timerCurseCD:Stop()
-	timerAddsCD:Stop()
-	local timer
-	if self.vb.teleCount == 1 then
-		timer = 75--70-75 in classic, can't confirm because numpty was looking in bumfuck in vdieo, it's 70 in wrath
-		timerAddsCD:Start(5)--Always 5
-	elseif self.vb.teleCount == 2 then
-		timer = 97--Unknown in Classic
-		timerAddsCD:Start(5)--Always 5
-	elseif self.vb.teleCount == 3 then
-		timer = 126--Unknown in Classic
-		timerAddsCD:Start(5)--Always 5
-	else
-		timer = 55--Unknown in Classic
-	end
-	timerTeleportBack:Start(timer)
-	warnTeleportSoon:Schedule(timer - 20)
-	warnTeleportNow:Show()
-	self:ScheduleMethod(timer, "BackInRoom")
+	warnTeleportSoon:Schedule(70.6)
+	timerAddsCD:Start("v6.5-22.7", self.vb.addsCount + 1)
+	timerCurseCD:Start("v6.5-25.9")
+	timerTeleport:Start(90.6)
+end
+
+function mod:OnCombatEnd()
+	table.wipe(curseTargets)
+end
+
+function mod:UNIT_TARGETABLE_CHANGED()
+	self:SendSync("TeleportBalcony")
 end
 
 function mod:BackInRoom()
 	self.vb.addsCount = 0
-	self.vb.curseCount = 0
 	timerAddsCD:Stop()
 	local timer
 	if self.vb.teleCount == 1 then
 		timer = 109--Unknown in Classic
-		timerAddsCD:Start(3)--Unknown until I can get a less numpty POV
+		timerAddsCD:Start("v3.4-7.8", self.vb.addsCount + 1)
 	elseif self.vb.teleCount == 2 then
 		timer = 173--Unknown in Classic
-		timerAddsCD:Start(17)
+		timerAddsCD:Start(17, self.vb.addsCount + 1)
 	elseif self.vb.teleCount == 3 then
 		timer = 93--Unknown in Classic
 	else
@@ -112,23 +104,6 @@ function mod:BackInRoom()
 	else
 		timerCurseCD:Start(10)--11 in wrath, 9 or 10 in classic, well based off numpty POV
 	end
-	self:ScheduleMethod(timer, "Balcony")
-end
-
-function mod:OnCombatStart()
-	table.wipe(curseTargets)
-	self.vb.teleCount = 0
-	self.vb.addsCount = 0
-	self.vb.curseCount = 0
-	timerAddsCD:Start("v6.5-22.7")
-	timerCurseCD:Start("v6.5-25.9")
-	timerTeleport:Start(90.8)
-	warnTeleportSoon:Schedule(70.8)
-	self:ScheduleMethod(90.8, "Balcony")
-end
-
-function mod:OnCombatEnd()
-	table.wipe(curseTargets)
 end
 
 local function UpdateCurseFrame()
@@ -165,20 +140,12 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(29213) then -- Curse of the Plaguebringer
-		self.vb.curseCount = self.vb.curseCount + 1
-		timerCurse:Start()
+	if args:IsSpell(29213) then
 		if not self.Options.SpecWarn29213dispel then
 			warnCurse:Show()
 		end
-		if self.vb.teleCount == 2 and self.vb.curseCount == 2 or self.vb.teleCount == 3 and self.vb.curseCount == 1 then
-			timerCurseCD:Start(67)--Niche cases it's 67 and not 53-55
-		elseif self.vb.curseCount < 2 then
-			timerCurseCD:Start()
-		end
-	--elseif args:IsSpell(29212 then--Cripple that's always cast when he teleports away
-		--self:UnscheduleMethod("Balcony")
-		--self:Balcony()
+		timerCurse:Start()
+		timerCurseCD:Start()
 	elseif args:IsSpell(29208) and args:IsSrcTypeHostile() then
 		warnBlink:Show()
 	end
@@ -192,25 +159,49 @@ end
 
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
-	if msg == "Adds" then--Boss Grounded
+	if msg == "TeleportBalcony" then
+		self.vb.teleCount = self.vb.teleCount + 1
+		self.vb.addsCount = 0
+		timerCurseCD:Stop()
+		timerAddsCD:Stop()
+		local timer
+		if self.vb.teleCount == 1 then
+			timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
+		elseif self.vb.teleCount == 2 then
+			timer = 97--Unknown in Classic
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
+		elseif self.vb.teleCount == 3 then
+			timer = 126--Unknown in Classic
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
+		else
+			timer = 55--Unknown in Classic
+		end
+		timerTeleportBack:Start(timer)
+		warnTeleportSoon:Schedule(timer - 20)
+		warnTeleportNow:Show()
+		self:ScheduleMethod(timer, "BackInRoom")
+	elseif msg == "Adds" then
 		self.vb.addsCount = self.vb.addsCount + 1
 		specWarnAdds:Show()
 		specWarnAdds:Play("killmob")
-		if self.vb.teleCount < 4 then
-			if self.vb.teleCount == 0 and self.vb.addsCount < 3 then--3 waves, 12, 34, 34
-				timerAddsCD:Start("v25.9-38.9")
-			elseif self.vb.teleCount == 1 then--3 waves, 3, 34, 30 (3 iffy)
-				if self.vb.addsCount == 1 then
-					timerAddsCD:Start(33.9)
-				elseif self.vb.addsCount == 2 then
-					timerAddsCD:Start(30)--47.3 in wrath
-				end
-			elseif self.vb.teleCount == 2 then--30, 32, 32, 30
-				if self.vb.addsCount == 1 or self.vb.addsCount == 4 then
-					timerAddsCD:Start(30)
-				elseif self.vb.addsCount == 2 or self.vb.addsCount == 3 then
-					timerAddsCD:Start(32)
-				end
+		if self.vb.teleCount == 0 then
+			if self.vb.addsCount < 3 then
+				timerAddsCD:Start("v25.9-42", self.vb.addsCount + 1)
+			else
+				timerAddsCD:Stop()
+			end
+		elseif self.vb.teleCount == 1 then
+			if self.vb.addsCount == 1 then
+				timerAddsCD:Start(33.9, self.vb.addsCount + 1)
+			elseif self.vb.addsCount == 2 then
+				timerAddsCD:Start(30, self.vb.addsCount + 1)
+			end
+		elseif self.vb.teleCount == 2 then--30, 32, 32, 30
+			if self.vb.addsCount == 1 or self.vb.addsCount == 4 then
+				timerAddsCD:Start(30, self.vb.addsCount + 1)
+			elseif self.vb.addsCount == 2 or self.vb.addsCount == 3 then
+				timerAddsCD:Start(32, self.vb.addsCount + 1)
 			end
 		end
 	end
