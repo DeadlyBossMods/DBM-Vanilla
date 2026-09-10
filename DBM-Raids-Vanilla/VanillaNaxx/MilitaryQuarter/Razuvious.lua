@@ -97,7 +97,6 @@ end
 
 local function ShowInfoFrame()
 	if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
-		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29051))
 		DBM.InfoFrame:Show(4, "function", updateInfoFrame)
 	end
 end
