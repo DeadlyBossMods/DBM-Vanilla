@@ -34,7 +34,7 @@ mod:RegisterEventsInCombat(
 
 mod:AddInfoFrameOption()
 
-local warnMarkSoon				= mod:NewAnnounce("WarningMarkSoon", 1, 28835, false)
+local warnMarkSoon				= mod:NewAnnounce("WarningMarkSoon", 2, 28835, false)
 local warnMeteor				= mod:NewSpellAnnounce(28884, 4)
 local warnVoidZone				= mod:NewTargetNoFilterAnnounce(28863, 3)--Only warns for nearby targets, to reduce spam
 local warnHolyWrath				= mod:NewTargetNoFilterAnnounce(28883, 3, nil, false)
