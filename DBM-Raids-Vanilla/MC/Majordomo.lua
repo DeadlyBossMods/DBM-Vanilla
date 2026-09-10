@@ -41,6 +41,7 @@ local warnDamageShield		= mod:NewSpellAnnounce(21075, 2, nil, "Melee")
 
 local specWarnMagicReflect	= mod:NewSpecialWarningReflect(20619, "-Melee", nil, nil, 1, 2, nil, nil, "stopattack")
 local specWarnDamageShield	= mod:NewSpecialWarningReflect(21075, "Melee", nil, nil, 1, 2, nil, nil, "stopattack")
+local specWarnTeleport		= mod:NewSpecialWarningYou(20534, nil, nil, nil, 2, 5, nil, nil, "teleyou")
 
 local timerTeleportCD      = mod:NewVarTimer("v25.9-30.8", 20534, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerMagicReflect    = mod:NewBuffActiveTimer(10, 20619, nil, "-Melee", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
@@ -230,7 +231,12 @@ function mod:SPELL_CAST_SUCCESS(args)
 		timerDamageShield:Start()
 		timerShieldCD:Start()
 	elseif args:IsSpell(20534) then
-		warnTeleport:Show(args.destName)
+		if args:IsPlayer() then
+			specWarnTeleport:Show()
+			specWarnTeleport:Play("teleyou")
+		else
+			warnTeleport:Show(args.destName)
+		end
 		timerTeleportCD:Start()
 	elseif args:IsSpell(461056) then
 		-- Next cast is always 30 seconds after *success*, if the cast fails (e.g., mage ice block) then it just tries again ~immediately
