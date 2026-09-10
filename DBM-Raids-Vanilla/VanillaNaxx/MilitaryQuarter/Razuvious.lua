@@ -46,8 +46,8 @@ local mindExhaustionIcons = {}
 local mindControlOwners = {}
 local mindControlTimers = {}
 
-local MC_TEXTURE = "Interface\\Icons\\Spell_shadow_shadowworddominate"
-local MIND_EXHAUST_TEXTURE = "Interface\\Icons\\Spell_shadow_teleport"
+local mindControlIcon = "Interface\\Icons\\Spell_shadow_shadowworddominate"
+local mindExhaustionIcon = "Interface\\Icons\\Spell_shadow_teleport"
 
 local updateInfoFrame
 do
@@ -74,9 +74,9 @@ do
 			if mindExhaustionTimers[guid] == -1 then
 				lines[key] = DEAD
 			elseif mcTimeLeft > 0 then
-				lines[key] = ("|T%s:0|t|cffff7f00%.0f|r"):format(MC_TEXTURE, mcTimeLeft)
+				lines[key] = ("|T%s:0|t|cffff7f00%.0f|r"):format(mindControlIcon, mcTimeLeft)
 			elseif exhaustionTimeLeft > 0 then
-				lines[key] = ("|T%s:0|t|cffff0000%.0f|r"):format(MIND_EXHAUST_TEXTURE, exhaustionTimeLeft)
+				lines[key] = ("|T%s:0|t|cffff0000%.0f|r"):format(mindExhaustionIcon, exhaustionTimeLeft)
 			else
 				lines[key] = ("|cff00ff00%d|r"):format(0)
 			end
