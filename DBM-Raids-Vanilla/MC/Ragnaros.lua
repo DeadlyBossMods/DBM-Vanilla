@@ -61,7 +61,7 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 end
 
-mod.vb.guardsRemaining = 0
+mod.vb.guardsRemaining = 8
 mod.vb.ragnarosEmerged = true
 mod.vb.submergeHealthPrewarnShown = false
 local guardsGuidCheck = {}
