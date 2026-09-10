@@ -58,15 +58,14 @@ end
 local banishDurations = {
 	[710] = 20, [18647] = 30
 }
-local banishIcon = "|TInterface\\Icons\\Spell_shadow_cripple:0|t"
+local banishIcon = "Interface\\Icons\\Spell_shadow_cripple"
 
 mod:AddInfoFrameOption(nil, true)
 
 local addNames = {}
 local addIcons = {}
 local addDead = {}
-local ccExpires = {}
-local ccIcons = {}
+local banishExpires = {}
 
 local updateInfoFrame
 do
@@ -82,11 +81,11 @@ do
 			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
-			local ccTimeLeft = ccExpires[guid] and (ccExpires[guid] - t) or 0
+			local banishTimeLeft = banishExpires[guid] and (banishExpires[guid] - t) or 0
 			if addDead[guid] then
 				lines[key] = DEAD
-			elseif ccTimeLeft > 0 then
-				lines[key] = ccIcons[guid] .. ("|cff00ff00%.0f|r"):format(ccTimeLeft)
+			elseif banishTimeLeft > 0 then
+				lines[key] = ("|T%s:0|t|cffff0000%.0f|r"):format(banishIcon, banishTimeLeft)
 			else
 				local hp = DBM:GetBossHP(guid)
 				if hp and hp > 0 then
@@ -111,8 +110,7 @@ function mod:OnCombatStart()
 	table.wipe(addNames)
 	table.wipe(addIcons)
 	table.wipe(addDead)
-	table.wipe(ccExpires)
-	table.wipe(ccIcons)
+	table.wipe(banishExpires)
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		timerMagmakinCD:Start(4.9)
 	end
@@ -124,8 +122,7 @@ function mod:OnCombatEnd()
 	table.wipe(addNames)
 	table.wipe(addIcons)
 	table.wipe(addDead)
-	table.wipe(ccExpires)
-	table.wipe(ccIcons)
+	table.wipe(banishExpires)
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
@@ -152,8 +149,7 @@ function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(710, 18647) and args:IsDestTypeHostile() then
 		local guid = args.destGUID
 		if guid and addCIDs[self:GetCIDFromGUID(guid)] then
-			ccExpires[guid] = GetTime() + banishDurations[args.spellId]
-			ccIcons[guid] = banishIcon
+			banishExpires[guid] = GetTime() + banishDurations[args.spellId]
 			ShowInfoFrame()
 		end
 	elseif args:IsSpell(15732) and args:IsDestTypePlayer() then
@@ -165,8 +161,7 @@ function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(710, 18647) and args:IsDestTypeHostile() then
 		local guid = args.destGUID
 		if guid and addCIDs[self:GetCIDFromGUID(guid)] then
-			ccExpires[guid] = nil
-			ccIcons[guid] = nil
+			banishExpires[guid] = nil
 		end
 	end
 end
