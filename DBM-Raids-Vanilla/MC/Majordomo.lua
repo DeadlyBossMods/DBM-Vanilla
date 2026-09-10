@@ -67,9 +67,9 @@ end
 local polymorphSpells = {118, 12824, 12825, 12826}
 local fearSpells = {5782, 6213, 6215}
 local freezingTrapSpells = {3355, 14308, 14309}
-local polymorphIcon = "|TInterface\\Icons\\Spell_nature_polymorph:0|t"
-local fearIcon = "|TInterface\\Icons\\Spell_shadow_possession:0|t"
-local freezingTrapIcon = "|TInterface\\Icons\\Spell_frost_chainsofice:0|t"
+local polymorphIcon = "Interface\\Icons\\Spell_nature_polymorph"
+local fearIcon = "Interface\\Icons\\Spell_shadow_possession"
+local freezingTrapIcon = "Interface\\Icons\\Spell_frost_chainsofice"
 local ccDurations = {
 	[118] = 20, [12824] = 30, [12825] = 40, [12826] = 50,
 	[5782] = 10, [6213] = 15, [6215] = 20,
@@ -114,7 +114,7 @@ do
 			if addDead[guid] then
 				lines[key] = DEAD
 			elseif ccTimeLeft > 0 then
-				lines[key] = ccIcons[guid] .. ("|cff00ff00%.0f|r"):format(ccTimeLeft)
+				lines[key] = ("|T%s:0|t|cffff0000%.0f|r"):format(ccIcons[guid], ccTimeLeft)
 			else
 				local hp = DBM:GetBossHP(guid)
 				if hp and hp > 0 then
