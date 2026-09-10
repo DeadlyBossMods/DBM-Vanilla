@@ -572,7 +572,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Abtauchen",
-	WarnEmerge			= "Auftauchen"
+	WarnEmerge			= "Auftauchen",
+	WarnGuardDied		= "Sohn der Flamme: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Abtauchen",
@@ -582,7 +583,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "Zeige Warnung für Abtauchen",
 	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
 	WarnEmerge			= "Zeige Warnung für Auftauchen",
-	TimerEmerge			= "Zeige Zeit bis Auftauchen"
+	TimerEmerge			= "Zeige Zeit bis Auftauchen",
+	WarnGuardDied		= "Verkünde verbleibende Söhne der Flamme"
 }
 L:SetMiscLocalization{
 	Submerge	= "KOMMT HERBEI, MEINE DIENER! VERTEIDIGT EUREN HERRN!",

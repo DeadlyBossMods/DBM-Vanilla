@@ -48,6 +48,7 @@ ability.id = 20566 and type = "cast" or target.id = 12143 and type = "death"
 local warnWrathRag		= mod:NewSpellAnnounce(20566, 3)
 local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
 local warnEmerge		= mod:NewAnnounce("WarnEmerge", 2, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
+local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "135819")
 
 local timerWrathRag		= mod:NewVarTimer("v25.9-34.7", 20566, nil, nil, nil, 2)
 local timerSubmerge		= mod:NewTimer(180, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
@@ -60,17 +61,17 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 	warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 end
 
-mod.vb.addLeft = 8
+mod.vb.guardsRemaining = 0
 mod.vb.ragnarosEmerged = true
 mod.vb.submergeHealthPrewarnShown = false
-local addsGuidCheck = {}
+local guardsGuidCheck = {}
 local firstBossMod = DBM:GetModByName("MCTrash")
 
 
 function mod:OnCombatStart()
 	self:SetStage(1)
-	table.wipe(addsGuidCheck)
-	self.vb.addLeft = 0
+	table.wipe(guardsGuidCheck)
+	self.vb.guardsRemaining = 0
 	self.vb.ragnarosEmerged = true
 	self.vb.submergeHealthPrewarnShown = false
 	timerSubmerge:Start()
@@ -82,6 +83,7 @@ function mod:OnCombatStart()
 end
 
 function mod:OnCombatEnd(wipe)
+	table.wipe(guardsGuidCheck)
 	if not wipe then
 		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
 		if firstBossMod.vb.firstEngageTime then
@@ -139,11 +141,13 @@ end
 
 function mod:UNIT_DIED(args)
 	local guid = args.destGUID
-	if self:GetCIDFromGUID(guid) == 12143 then--Son of Flame
-		if not addsGuidCheck[guid] then
-			addsGuidCheck[guid] = true
-			self.vb.addLeft = self.vb.addLeft - 1
-			if not self.vb.ragnarosEmerged and self.vb.addLeft == 0 then--After all 8 die he emerges immediately
+	local cid = self:GetCIDFromGUID(guid)
+	if cid == 12143 then--Son of Flame
+		if not guardsGuidCheck[guid] then
+			guardsGuidCheck[guid] = true
+			self.vb.guardsRemaining = self.vb.guardsRemaining - 1
+			warnGuardDied:Show(self.vb.guardsRemaining, 8)
+			if not self.vb.ragnarosEmerged and self.vb.guardsRemaining == 0 then--After all 8 die he emerges immediately
 				self:Unschedule(emerged)
 				emerged(self)
 			end
@@ -200,7 +204,7 @@ function mod:OnSync(msg)
 		warnSubmerge:Show()
 		timerEmerge:Start(90)
 		self:Schedule(90, emerged, self)
-		self.vb.addLeft = self.vb.addLeft + 8
+		self.vb.guardsRemaining = self.vb.guardsRemaining + 8
 	elseif msg == "DomoDeath" and self:AntiSpam(5, 3) then
 		--The timer between yell/summon start and ragnaros being attackable is variable, but time between domo death and him being attackable is not.
 		--As such, we start with a reasonable guess on the RP start, but adjust timer to 10 seconds once domo dies.
