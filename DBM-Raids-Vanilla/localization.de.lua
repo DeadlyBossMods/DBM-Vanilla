@@ -495,6 +495,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Feuerschuppe: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Verkünde verbleibende Feuerschuppen"
+}
 
 ------------
 --  Garr  --
