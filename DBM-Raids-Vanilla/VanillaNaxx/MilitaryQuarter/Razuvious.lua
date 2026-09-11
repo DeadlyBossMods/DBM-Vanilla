@@ -22,6 +22,7 @@ mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 10912",
 	"SPELL_AURA_REMOVED 10912",
 	"NAME_PLATE_UNIT_ADDED",
+	"UNIT_AURA",
 	"UNIT_SPELLCAST_SUCCEEDED",
 	"UNIT_DIED"
 )
@@ -113,6 +114,17 @@ function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	local guid = UnitGUID(unitId)
 	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
 	self:SendSync("UnderstudyFound", guid, GetRaidTargetIndex(unitId) or 0)
+end
+
+function mod:UNIT_AURA(unitId)
+	local guid = UnitGUID(unitId)
+	if guid and self:GetCIDFromGUID(guid) == 16803 then
+		local _, _, _, _, _, _, expirationTime = DBM:UnitDebuff(unitId, 29051)
+		if expirationTime then
+			mindExhaustionTimers[guid] = expirationTime
+			timerMindExhaustionCD:Start(expirationTime - GetTime(), guid)
+		end
+	end
 end
 
 function mod:SPELL_AURA_APPLIED(args)
