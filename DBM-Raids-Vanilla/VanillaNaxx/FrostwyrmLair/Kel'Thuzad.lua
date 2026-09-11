@@ -28,7 +28,7 @@ mod:SetWipeTime(15)
 
 mod:RegisterEventsInCombat(
 	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
-	"SPELL_AURA_REMOVED 27808 28410",
+	"SPELL_AURA_REMOVED 27808 27819 28410",
 	"SPELL_CAST_START 28478",
 	"SPELL_CAST_SUCCESS 27810 27819 27808 28408 28479",
 	"SPELL_INTERRUPT",
@@ -170,7 +170,7 @@ function mod:SPELL_AURA_APPLIED(args)
 		end
 	elseif args:IsSpell(27819) then -- Mana Bomb
 		if self.Options.SetIconOnManaBomb then
-			self:SetIcon(args.destName, 8, 5.5)
+			self:SetIcon(args.destName, 8)
 		end
 		if args:IsPlayer() then
 			specWarnManaBomb:Show()
@@ -194,6 +194,10 @@ end
 function mod:SPELL_AURA_REMOVED(args)
 	if args:IsSpell(27808) then
 		if self.Options.SetIconOnFrostTomb then
+			self:SetIcon(args.destName, 0)
+		end
+	elseif args:IsSpell(27819) then
+		if self.Options.SetIconOnManaBomb then
 			self:SetIcon(args.destName, 0)
 		end
 	elseif args:IsSpell(28410) then
