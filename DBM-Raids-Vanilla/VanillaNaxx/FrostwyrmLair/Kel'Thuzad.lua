@@ -63,23 +63,11 @@ local timerfrostBlast		= mod:NewBuffFadesTimer(5, 27808, nil, nil, nil, 5, nil, 
 local timerMCCD				= mod:NewVarTimer("v63.1-145.4", 28410, nil, nil, nil, 3)
 local timerPhase2			= mod:NewStageCountTimer("v229.2-231") -- Variance used to be 229.2-245.8, but patch on July 21, 2026 tightened up the variance.
 
-mod:AddSetIconOption("SetIconOnMC2", 28410, false, 0, {1, 2, 3, 4, 5})
+mod:AddSetIconOption("SetIconOnMC2", 28410, false, 7, {1, 2, 3, 4, 5})
 mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
-mod:AddSetIconOption("SetIconOnFrostTomb2", 27808, false, 0, {1, 2, 3, 4, 5, 6, 7, 8})
+mod:AddSetIconOption("SetIconOnFrostTomb", 27808, true, 7, {1, 2, 3, 4, 5, 6, 7, 8})
 
-mod.vb.MCIcon1 = 1
-mod.vb.MCIcon2 = 5
-local frostBlastTargets = {}
 local firstBossMod = DBM:GetModByName("NaxxTrash")
-
-local function AnnounceBlastTargets(self)
-	if self.Options.SetIconOnFrostTomb2 then
-		for i = #frostBlastTargets, 1, -1 do
-			self:SetIcon(frostBlastTargets[i], 8 - i, 4.5)
-			frostBlastTargets[i] = nil
-		end
-	end
-end
 
 function mod:OnCombatStart()
 	self:SetStage(1)
@@ -88,15 +76,11 @@ function mod:OnCombatStart()
 	self:RegisterShortTermEvents(
 		"UNIT_HEALTH"
 	)
-	table.wipe(frostBlastTargets)
-	self.vb.MCIcon1 = 1
-	self.vb.MCIcon2 = 5
 	warnPhase2Soon:Schedule(220)
 end
 
 function mod:OnCombatEnd(wipe)
 	self:UnregisterShortTermEvents()
-	table.wipe(frostBlastTargets)
 	if not wipe then
 		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
 		if firstBossMod.vb.firstEngageTime then
@@ -171,17 +155,18 @@ end
 
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(27808) then
-		table.insert(frostBlastTargets, args.destName)
 		if not timerfrostBlast:IsStarted() then
 			timerfrostBlast:Start()
 		end
-		self:Unschedule(AnnounceBlastTargets)
-		self:Schedule(0.5, AnnounceBlastTargets, self)
 		if self.Options.SpecWarn27808target then
 			specWarnBlast:CombinedShow(0.5, args.destName)
 			specWarnBlast:ScheduleVoice(0.5, "healall")
 		else
 			warnBlastTargets:CombinedShow(0.5, args.destName)
+		end
+		if self.Options.SetIconOnFrostTomb then
+			--Sets icons 1-8 using raid roster index sorting (meaning it tries to use star in group 1 and so on)
+			self:SetSortedIcon("roster", 0.5, args.destName, 1, 8, false, nil, 1)
 		end
 	elseif args:IsSpell(27819) then -- Mana Bomb
 		if self.Options.SetIconOnManaBomb then
@@ -195,17 +180,8 @@ function mod:SPELL_AURA_APPLIED(args)
 			warnMana:Show(args.destName)
 		end
 	elseif args:IsSpell(28410) and self:AntiSpam(5, 1) then -- Chains of Kel'Thuzad
-			self.vb.MCIcon1 = 1
-			self.vb.MCIcon2 = 5
 		if self.Options.SetIconOnMC2 then
-			local _, _, group = GetRaidRosterInfo(UnitInRaid(args.destName) or 0)
-			if group % 2 == 1 then
-				self:SetIcon(args.destName, self.vb.MCIcon1)
-				self.vb.MCIcon1 = self.vb.MCIcon1 + 1
-			else
-				self:SetIcon(args.destName, self.vb.MCIcon2)
-				self.vb.MCIcon2 = self.vb.MCIcon2 - 1
-			end
+			self:SetSortedIcon("roster", 0.5, args.destName, 1, 5, false, nil, 2)
 		end
 		warnChainsTargets:CombinedShow(1, args.destName)
 	elseif args:IsSpell(1222430) then -- SoD Mythic extra phase

@@ -30,7 +30,7 @@ mod:NewGtfo{spell = 26084, spellAura = false, spellPeriodicDamage = false}
 local warnEnrageSoon	= mod:NewSoonAnnounce(8269, 2)
 local warnEnrage		= mod:NewSpellAnnounce(8269, 4)
 local warnWhirlwind		= mod:NewSpellAnnounce(26083, 3)
-local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 2, "133572")
+local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "133572")
 
 local specWarnWhirlwind	= mod:NewSpecialWarningRun(26083, nil, nil, 2, 4, 2, nil, nil, "justrun")
 local addsGuidCheck = {}
