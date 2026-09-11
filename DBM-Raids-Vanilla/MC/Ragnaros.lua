@@ -76,9 +76,9 @@ function mod:OnCombatStart()
 	self.vb.submergeHealthPrewarnShown = false
 	timerSubmerge:Start()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerWrathRag:Start(26)
+		timerWrathRag:Start(26)
 	else
-	timerWrathRag:Start("v25.9-33.8")
+		timerWrathRag:Start("v25.9-33.8")
 	end
 end
 
@@ -113,9 +113,9 @@ local function emerged(self)
 	timerEmerge:Cancel()
 	warnEmerge:Show()
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerWrathRag:Start(26)
+		timerWrathRag:Start(26)
 	else
-	timerWrathRag:Start("v25.5-31.9")
+		timerWrathRag:Start("v25.5-31.9")
 	end
 	if DBM:GetModifierLevel() ~= 1 then -- No second submerge on SoD heat level 1 (non-SoD always returns 0 here)
 		timerSubmerge:Start(180)
