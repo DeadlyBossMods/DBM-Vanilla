@@ -871,21 +871,6 @@ L:SetGeneralLocalization({
 	name = "Heigan l'Impur"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation",
-	WarningTeleportSoon		= "Téléporation dans %d sec"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport			= "Téléporation"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow		= "Afficher une annonce de la téléporation",
-	WarningTeleportSoon		= "Afficher une pré-annonce de la téléporation",
-	TimerTeleport			= "Afficher un chronomètre pour la téléporation"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "Vous êtes à moi, maintenant.",
 	Pull2				= "Je vous vois…",

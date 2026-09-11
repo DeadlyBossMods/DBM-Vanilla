@@ -889,21 +889,6 @@ L:SetGeneralLocalization({
 	name = "Heigan the Unclean"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleported",
-	WarningTeleportSoon	= "Teleport in %d seconds"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleport"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Show warning for Teleport",
-	WarningTeleportSoon	= "Show pre-warning for Teleport",
-	TimerTeleport		= "Show timer for Teleport"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "You are mine now.",
 	Pull2				= "I see you...",

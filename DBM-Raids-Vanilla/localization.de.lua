@@ -843,21 +843,6 @@ L:SetGeneralLocalization({
 	name = "Heigan der Unreine"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleportiert",
-	WarningTeleportSoon	= "Teleport in %d Sek"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleport"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Zeige Warnung für Teleport",
-	WarningTeleportSoon	= "Zeige Vorwarnung für Teleport",
-	TimerTeleport		= "Zeige Zeit bis Teleport"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "Ihr gehört mir...",
 	Pull2				= "Ihr entgeht mir nicht...",

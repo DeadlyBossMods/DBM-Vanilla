@@ -891,21 +891,6 @@ L:SetGeneralLocalization({
 	name = "부정의 헤이건"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow	= "순간이동",
-	WarningTeleportSoon	= "%d초 후 순간이동"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport		= "순간이동"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow		= "순간이동 알림 보기",
-	WarningTeleportSoon		= "순간이동 사전 경고 보기",
-	TimerTeleport			= "순간이동 타이머 바 보기"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "이제 넌 내 것이다.",
 	Pull2				= "네가 보인다...",

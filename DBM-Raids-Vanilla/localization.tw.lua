@@ -793,21 +793,6 @@ L:SetGeneralLocalization({
 	name = "骯髒者海根"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow	= "傳送",
-	WarningTeleportSoon	= "%d秒後傳送"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "傳送"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "為傳送顯示警告",
-	WarningTeleportSoon	= "為傳送顯示預先警告",
-	TimerTeleport		= "為傳送顯示計時器"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "你是我的了。",
 	Pull2				= "我看到你了……",

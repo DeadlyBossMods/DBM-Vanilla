@@ -895,21 +895,6 @@ L:SetGeneralLocalization({
 	name = "Хейган Нечестивый"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Телепортация",
-	WarningTeleportSoon	= "Телепортация через %d сек."
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Телепортация"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Показывать предупреждение о телепортации",
-	WarningTeleportSoon	= "Показывать предупреждение перед следующей телепортацией",
-	TimerTeleport		= "Отсчет времени до телепортации"
-})
-
 L:SetMiscLocalization({
 	Pull1				= "Теперь ты принадлежишь мне.",
 	Pull2				= "Я вижу тебя…",
