@@ -70,8 +70,10 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(785) and self.Options.SetIconOnMC then
-		self:SetIcon(args.destName, 0)
+	if args:IsSpell(785) then
+		if self.Options.SetIconOnMC then
+			self:SetIcon(args.destName, 0)
+		end
 		timerMindControl:Stop(args.destName)
 	end
 end
