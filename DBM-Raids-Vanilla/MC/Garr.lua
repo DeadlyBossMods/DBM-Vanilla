@@ -78,7 +78,7 @@ do
 		local t = GetTime()
 		for guid, name in pairs(addNames) do
 			local icon = addIcons[guid]
-			local banishTimeLeft = banishExpires[guid] and (banishExpires[guid] - t) or 0
+			local banishTimeLeft = banishExpires[guid] and (banishExpires[guid] or 0) - t
 			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
