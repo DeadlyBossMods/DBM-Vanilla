@@ -110,15 +110,12 @@ do
 			local icon = addIcons[guid]
 			local ccTimeLeft = ccExpires[guid] and (ccExpires[guid] - t) or 0
 			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
-			if not addDead[guid] and ccTimeLeft > 0 and ccIcons[guid] then
-				displayName = displayName .. ("|T%s:0|t"):format(ccIcons[guid])
-			end
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
 			if addDead[guid] then
 				lines[key] = DEAD
 			elseif ccTimeLeft > 0 then
-				lines[key] = ("|cffff0000%.0f|r"):format(ccTimeLeft)
+				lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(ccTimeLeft, ccIcons[guid])
 			else
 				local hp = DBM:GetBossHP(guid)
 				if hp and hp > 0 then
