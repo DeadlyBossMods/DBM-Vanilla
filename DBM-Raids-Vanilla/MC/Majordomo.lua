@@ -108,7 +108,7 @@ do
 		local t = GetTime()
 		for guid, name in pairs(addNames) do
 			local icon = addIcons[guid]
-			local ccTimeLeft = ccExpires[guid] and (ccExpires[guid] - t) or 0
+			local ccTimeLeft = ccExpires[guid] and (ccExpires[guid] or 0) - t
 			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
