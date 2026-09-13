@@ -718,7 +718,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submersion",
-	WarnEmerge			= "Émersion"
+	WarnEmerge			= "Émersion",
+	WarnGuardDied		= "Fils des flammes : %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersion",
@@ -729,6 +730,7 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Afficher un chronomètre pour submersion",
 	WarnEmerge			= "Afficher une annonce pour émersion",
 	TimerEmerge			= "Afficher un chronomètre pour émersion",
+	WarnGuardDied		= "Afficher une annonce pour les Fils des flammes restants"
 }
 L:SetMiscLocalization{
 	Submerge	= "VENEZ, MES SERVITEURS ! DÉFENDEZ VOTRE MAÎTRE !",

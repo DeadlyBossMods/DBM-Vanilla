@@ -611,7 +611,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Sumersión",
-	WarnEmerge			= "Emersión"
+	WarnEmerge			= "Emersión",
+	WarnGuardDied		= "Hijo de Flama: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Sumersión",
@@ -621,7 +622,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "Mostrar anuncio cuando Ragnaros se sumerja",
 	TimerSubmerge		= "Mostrar temporizador para cuando Ragnaros se sumerja",
 	WarnEmerge			= "Mostrar anuncio cuando Ragnaros regrese a la superficie",
-	TimerEmerge			= "Mostrar temporizador para cuando Ragnaros regrese a la superficie"
+	TimerEmerge			= "Mostrar temporizador para cuando Ragnaros regrese a la superficie",
+	WarnGuardDied		= "Mostrar anuncio para Hijos de Flama restantes"
 }
 L:SetMiscLocalization{
 	Submerge	= "¡SIERVOS, A MÍ! ¡DEFENDED A VUESTRO MAESTRO!",
