@@ -25,7 +25,6 @@ mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
---mod:RegisterKill("yell", L.Kill)
 
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 461056 364908",
