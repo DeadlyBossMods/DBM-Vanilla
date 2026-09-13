@@ -49,6 +49,7 @@ local mindExhaustionNames = {}
 local mindExhaustionIcons = {}
 local mindControlOwners = {}
 local mindControlTimers = {}
+local addDead = {}
 
 local mindControlIcon = "Interface\\Icons\\Spell_shadow_shadowworddominate"
 local mindExhaustionIcon = "Interface\\Icons\\Spell_shadow_teleport"
@@ -75,7 +76,7 @@ do
 			displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, displayName) or displayName
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
-			if mindExhaustionTimers[guid] == -1 then
+			if addDead[guid] then
 				lines[key] = DEAD
 			elseif mcTimeLeft > 0 then
 				lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon)
@@ -106,6 +107,7 @@ function mod:OnCombatEnd()
 	table.wipe(mindExhaustionIcons)
 	table.wipe(mindControlOwners)
 	table.wipe(mindControlTimers)
+	table.wipe(addDead)
 end
 
 function mod:NAME_PLATE_UNIT_ADDED(unitId)
@@ -119,7 +121,7 @@ function mod:UNIT_AURA_UNFILTERED(unitId)
 	if guid and self:GetCIDFromGUID(guid) == 16803 then
 		local _, _, _, _, _, _, expirationTime = DBM:UnitDebuff(unitId, 29051)
 		local existingTimer = mindExhaustionTimers[guid]
-		if expirationTime and (not existingTimer or existingTimer < GetTime()) then
+		if expirationTime and (not existingTimer or existingTimer < GetTime()) and not addDead[guid] then
 			DBM:Debug(("UNIT_AURA MindExhaustion scan processed for %s: expiration=%s remaining=%s"):format(UnitName(unitId), tostring(expirationTime), ("%.1f"):format(expirationTime - GetTime())))
 			mindExhaustionTimers[guid] = expirationTime
 			timerMindExhaustionCD:Start(expirationTime - GetTime(), guid)
@@ -130,23 +132,21 @@ end
 function mod:SPELL_AURA_APPLIED(args)
 	if args:IsSpell(10912) and self:GetCIDFromGUID(args.destGUID) == 16803 and args:IsSrcTypePlayer() then
 		local guid = args.destGUID
-		if mindExhaustionTimers[guid] ~= -1 then
-			mindControlOwners[guid] = args.sourceName
-			mindControlTimers[guid] = GetTime() + 60
-			if not mindExhaustionNames[guid] then
-				mindExhaustionNames[guid] = L.Understudy
-			end
-			if not mindExhaustionIcons[guid] then
-				local uId = DBM:GetUnitIdFromGUID(guid)
-				if uId then
-					local icon = GetRaidTargetIndex(uId)
-					if icon and icon > 0 then
-						mindExhaustionIcons[guid] = icon
-					end
+		mindControlOwners[guid] = args.sourceName
+		mindControlTimers[guid] = GetTime() + 60
+		if not mindExhaustionNames[guid] then
+			mindExhaustionNames[guid] = L.Understudy
+		end
+		if not mindExhaustionIcons[guid] then
+			local uId = DBM:GetUnitIdFromGUID(guid)
+			if uId then
+				local icon = GetRaidTargetIndex(uId)
+				if icon and icon > 0 then
+					mindExhaustionIcons[guid] = icon
 				end
 			end
-			ShowInfoFrame()
 		end
+		ShowInfoFrame()
 	end
 end
 
@@ -209,11 +209,7 @@ function mod:UNIT_DIED(args)
 		timerTaunt:Stop(args.destGUID)
 		timerShieldWall:Stop(args.destGUID)
 		timerMindExhaustionCD:Stop(args.destGUID)
-		if mindExhaustionNames[args.destGUID] then
-			mindExhaustionTimers[args.destGUID] = -1
-		else
-			mindExhaustionTimers[args.destGUID] = nil
-		end
+		addDead[args.destGUID] = true
 		mindControlOwners[args.destGUID] = nil
 		mindControlTimers[args.destGUID] = nil
 	end
