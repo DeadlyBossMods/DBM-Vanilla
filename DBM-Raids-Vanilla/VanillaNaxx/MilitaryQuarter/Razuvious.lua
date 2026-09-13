@@ -17,9 +17,12 @@ else
 	mod.statTypes = "normal"
 end
 
+mod:RegisterEvents(
+	"SPELL_AURA_APPLIED 10912"
+)
+
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_SUCCESS 29107 29060 29061",
-	"SPELL_AURA_APPLIED 10912",
 	"SPELL_AURA_REMOVED 10912",
 	"NAME_PLATE_UNIT_ADDED",
 	"UNIT_AURA",
@@ -34,7 +37,7 @@ local warnShoutNow			= mod:NewSpellAnnounce(29107, 4, "132352")
 local warnShoutSoon			= mod:NewSoonAnnounce(29107, 3, "132352", "ManaUser")
 local warnShieldWall		= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
 
-local timerShout			= mod:NewCDTimer(25.9, 29107, nil, "ManaUser", nil, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
+local timerShout			= mod:NewNextTimer(25.9, 29107, nil, "ManaUser", nil, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
 local timerTaunt			= mod:NewCDTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
@@ -89,11 +92,6 @@ end
 function mod:OnCombatStart()
 	timerShout:Start()
 	warnShoutSoon:Schedule(19)
-	table.wipe(mindExhaustionTimers)
-	table.wipe(mindExhaustionNames)
-	table.wipe(mindExhaustionIcons)
-	table.wipe(mindControlOwners)
-	table.wipe(mindControlTimers)
 end
 
 local function ShowInfoFrame()
@@ -116,11 +114,13 @@ function mod:NAME_PLATE_UNIT_ADDED(unitId)
 	self:SendSync("UnderstudyFound", guid, GetRaidTargetIndex(unitId) or 0)
 end
 
-function mod:UNIT_AURA(unitId)
+function mod:UNIT_AURA_UNFILTERED(unitId)
 	local guid = UnitGUID(unitId)
 	if guid and self:GetCIDFromGUID(guid) == 16803 then
 		local _, _, _, _, _, _, expirationTime = DBM:UnitDebuff(unitId, 29051)
-		if expirationTime then
+		local existingTimer = mindExhaustionTimers[guid]
+		if expirationTime and (not existingTimer or existingTimer < GetTime()) then
+			DBM:Debug(("UNIT_AURA MindExhaustion scan processed for %s: expiration=%s remaining=%s"):format(UnitName(unitId), tostring(expirationTime), ("%.1f"):format(expirationTime - GetTime())))
 			mindExhaustionTimers[guid] = expirationTime
 			timerMindExhaustionCD:Start(expirationTime - GetTime(), guid)
 		end
@@ -135,6 +135,15 @@ function mod:SPELL_AURA_APPLIED(args)
 			mindControlTimers[guid] = GetTime() + 60
 			if not mindExhaustionNames[guid] then
 				mindExhaustionNames[guid] = L.Understudy
+			end
+			if not mindExhaustionIcons[guid] then
+				local uId = DBM:GetUnitIdFromGUID(guid)
+				if uId then
+					local icon = GetRaidTargetIndex(uId)
+					if icon and icon > 0 then
+						mindExhaustionIcons[guid] = icon
+					end
+				end
 			end
 			ShowInfoFrame()
 		end
@@ -180,16 +189,16 @@ function mod:OnSync(event, guid, icon)
 	if not self:IsInCombat() then return end
 	if event == "MindExhaustion" then
 		mindExhaustionTimers[guid] = GetTime() + 60
-		timerMindExhaustionCD:Start(guid)
+		timerMindExhaustionCD:Start(nil, guid)
 	elseif event == "UnderstudyFound" then
 		if not mindExhaustionNames[guid] then
 			mindExhaustionNames[guid] = L.Understudy
-			local iconNum = tonumber(icon)
-			if iconNum and iconNum > 0 then
-				mindExhaustionIcons[guid] = iconNum
-			end
-			ShowInfoFrame()
 		end
+		local iconNum = tonumber(icon)
+		if iconNum and iconNum > 0 then
+			mindExhaustionIcons[guid] = iconNum
+		end
+		ShowInfoFrame()
 	end
 end
 
