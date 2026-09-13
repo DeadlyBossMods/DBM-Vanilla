@@ -167,7 +167,7 @@ function mod:SPELL_AURA_REMOVED(args)
 end
 
 function mod:UNIT_DIED(args)
-	if args.destGUID and addCIDs[self:GetCIDFromGUID(args.destGUID)] then
+	if addCIDs[self:GetCIDFromGUID(args.destGUID)] then
 		addDead[args.destGUID] = true
 	end
 end
