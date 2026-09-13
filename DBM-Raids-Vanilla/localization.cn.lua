@@ -518,6 +518,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "管理者埃克索图斯"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "烈焰行者精英",
+	FlamewakerHealer	= "烈焰行者医师"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "护盾"
 }
