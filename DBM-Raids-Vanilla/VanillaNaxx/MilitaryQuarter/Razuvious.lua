@@ -67,29 +67,20 @@ do
 			local mcTimeLeft = (mindControlTimers[guid] or 0) - t
 			local exhaustionTimeLeft = (mindExhaustionTimers[guid] or 0) - t
 			local icon = mindExhaustionIcons[guid]
-			local statusIcon
-			if mcTimeLeft > 0 then
-				statusIcon = mindControlIcon
-			elseif exhaustionTimeLeft > 0 then
-				statusIcon = mindExhaustionIcon
-			end
 			local displayName = name
 			if mcOwner then
 				local color = RAID_CLASS_COLORS[DBM:GetRaidClass(mcOwner)]
 				displayName = ("|c%s%s|r"):format(color and color.colorStr or "ffffff", mcOwner)
 			end
 			displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, displayName) or displayName
-			if statusIcon then
-				displayName = displayName .. ("|T%s:0|t"):format(statusIcon)
-			end
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
 			if mindExhaustionTimers[guid] == -1 then
 				lines[key] = DEAD
 			elseif mcTimeLeft > 0 then
-				lines[key] = ("|cffff7f00%.0f|r"):format(mcTimeLeft)
+				lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon)
 			elseif exhaustionTimeLeft > 0 then
-				lines[key] = ("|cffff0000%.0f|r"):format(exhaustionTimeLeft)
+				lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon)
 			else
 				lines[key] = ("|cff00ff00%d|r"):format(0)
 			end
