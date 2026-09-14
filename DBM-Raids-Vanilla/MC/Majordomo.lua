@@ -29,8 +29,8 @@ mod:RegisterCombat("combat")
 mod:RegisterEventsInCombat(
 	"SPELL_CAST_START 461056 364908",
 	"SPELL_CAST_SUCCESS 20619 21075 20534 461056",
-	"SPELL_AURA_APPLIED 118 12824 12825 12826 28271 5782 6213 6215 3355 14308 14309",
-	"SPELL_AURA_REMOVED 118 12824 12825 12826 28271 5782 6213 6215 3355 14308 14309",
+	"SPELL_AURA_APPLIED 118 12824 12825 12826 28271 28272 5782 6213 6215 3355 14308 14309",
+	"SPELL_AURA_REMOVED 118 12824 12825 12826 28271 28272 5782 6213 6215 3355 14308 14309",
 	"NAME_PLATE_UNIT_ADDED",
 	"UNIT_DIED"
 )
@@ -64,14 +64,14 @@ do
 	end
 end
 
-local polymorphSpells = {118, 12824, 12825, 12826, 28271}
+local polymorphSpells = {118, 12824, 12825, 12826, 28271, 28272}
 local fearSpells = {5782, 6213, 6215}
 local freezingTrapSpells = {3355, 14308, 14309}
 local polymorphIcon = "Interface\\Icons\\Spell_nature_polymorph"
 local fearIcon = "Interface\\Icons\\Spell_shadow_possession"
 local freezingTrapIcon = "Interface\\Icons\\Spell_frost_chainsofice"
 local ccDurations = {
-	[118] = 20, [12824] = 30, [12825] = 40, [12826] = 50, [28271] = 50,
+	[118] = 20, [12824] = 30, [12825] = 40, [12826] = 50, [28271] = 50, [28272] = 50,
 	[5782] = 10, [6213] = 15, [6215] = 20,
 	[3355] = 10, [14308] = 15, [14309] = 20
 }
@@ -178,7 +178,7 @@ function mod:OnSync(event, guid, icon)
 end
 
 function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(118, 12824, 12825, 12826, 28271, 5782, 6213, 6215, 3355, 14308, 14309) and args:IsDestTypeHostile() then
+	if args:IsSpell(118, 12824, 12825, 12826, 28271, 28272, 5782, 6213, 6215, 3355, 14308, 14309) and args:IsDestTypeHostile() then
 		local guid = args.destGUID
 		if guid and addCIDs[self:GetCIDFromGUID(guid)] then
 			ccExpires[guid] = GetTime() + ccDurations[args.spellId]
@@ -189,7 +189,7 @@ function mod:SPELL_AURA_APPLIED(args)
 end
 
 function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(118, 12824, 12825, 12826, 28271, 5782, 6213, 6215, 3355, 14308, 14309) and args:IsDestTypeHostile() then
+	if args:IsSpell(118, 12824, 12825, 12826, 28271, 28272, 5782, 6213, 6215, 3355, 14308, 14309) and args:IsDestTypeHostile() then
 		local guid = args.destGUID
 		if guid and addCIDs[self:GetCIDFromGUID(guid)] then
 			ccExpires[guid] = nil
