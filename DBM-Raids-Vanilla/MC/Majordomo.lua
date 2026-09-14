@@ -113,7 +113,7 @@ do
 			sortedLines[#sortedLines + 1] = key
 			if addDead[guid] then
 				lines[key] = DEAD
-			elseif ccTimeLeft > 0 then
+			elseif ccTimeLeft and ccTimeLeft > 0 then
 				lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(ccTimeLeft, ccIcons[guid])
 			else
 				local hp = DBM:GetBossHP(guid)
