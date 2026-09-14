@@ -84,7 +84,7 @@ do
 			sortedLines[#sortedLines + 1] = key
 			if addDead[guid] then
 				lines[key] = DEAD
-			elseif banishTimeLeft > 0 then
+			elseif banishTimeLeft and banishTimeLeft > 0 then
 				lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(banishTimeLeft, banishIcon)
 			else
 				local hp = DBM:GetBossHP(guid)
