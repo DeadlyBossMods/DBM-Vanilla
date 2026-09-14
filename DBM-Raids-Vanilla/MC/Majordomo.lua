@@ -114,7 +114,7 @@ do
 			if addDead[guid] then
 				lines[key] = DEAD
 			elseif ccTimeLeft > 0 then
-				lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(ccTimeLeft, ccIcons[guid])
+				lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(ccTimeLeft, ccIcons[guid])
 			else
 				local hp = DBM:GetBossHP(guid)
 				if hp and hp > 0 then
