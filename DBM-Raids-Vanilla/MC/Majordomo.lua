@@ -107,13 +107,13 @@ do
 		local t = GetTime()
 		for guid, name in pairs(addNames) do
 			local icon = addIcons[guid]
-			local ccTimeLeft = ccExpires[guid] and (ccExpires[guid] or 0) - t
+			local ccTimeLeft = (ccExpires[guid] or 0) - t
 			local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
 			local key = guid .. "*" .. displayName
 			sortedLines[#sortedLines + 1] = key
 			if addDead[guid] then
 				lines[key] = DEAD
-			elseif ccTimeLeft and ccTimeLeft > 0 then
+			elseif ccTimeLeft > 0 then
 				lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(ccTimeLeft, ccIcons[guid])
 			else
 				local hp = DBM:GetBossHP(guid)
