@@ -121,7 +121,7 @@ function mod:UNIT_AURA_UNFILTERED(unitId)
 	if guid and self:GetCIDFromGUID(guid) == 16803 then
 		local _, _, _, _, _, _, expirationTime = DBM:UnitDebuff(unitId, 29051)
 		local existingTimer = mindExhaustionTimers[guid]
-		if expirationTime and (not existingTimer or existingTimer < GetTime()) and not addDead[guid] then
+		if expirationTime and (not existingTimer or existingTimer ~= expirationTime) and not addDead[guid] then
 			DBM:Debug(("UNIT_AURA MindExhaustion scan processed for %s: expiration=%s remaining=%s"):format(UnitName(unitId), tostring(expirationTime), ("%.1f"):format(expirationTime - GetTime())))
 			mindExhaustionTimers[guid] = expirationTime
 			timerMindExhaustionCD:Start(expirationTime - GetTime(), guid)
