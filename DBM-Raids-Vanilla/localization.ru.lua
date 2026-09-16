@@ -622,7 +622,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Погружение",
-	WarnEmerge			= "Появление"
+	WarnEmerge			= "Появление",
+	WarnGuardDied		= "Сын Пламени: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Погружение",
@@ -634,7 +635,8 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Отсчет времени до погружения",
 	WarnEmerge			= "Показывать предупреждение о появлении",
 	TimerEmerge			= "Отсчет времени до появления",
-	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat,
+	WarnGuardDied		= "Показывать предупреждение об оставшихся сынах пламени"
 }
 L:SetMiscLocalization{
 	Submerge	= "ПРИДИТЕ, СЛУГИ МОИ! ЗАЩИТИТЕ СВОЕГО ГОСПОДИНА!",

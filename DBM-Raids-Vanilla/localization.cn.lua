@@ -535,7 +535,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "隐没",
-	WarnEmerge			= "现身"
+	WarnEmerge			= "现身",
+	WarnGuardDied		= "烈焰之子：%d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "隐没",
@@ -545,7 +546,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "为隐没显示警告",
 	TimerSubmerge		= "为隐没显示计时器",
 	WarnEmerge			= "为现身显示警告",
-	TimerEmerge			= "为现身显示计时器"
+	TimerEmerge			= "为现身显示计时器",
+	WarnGuardDied		= "提示剩余的烈焰之子"
 }
 L:SetMiscLocalization{
 	Submerge	= "出现吧，我的奴仆！ 保卫你们的主人！",

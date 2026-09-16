@@ -620,7 +620,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnEmerge			= "등장"
+	WarnEmerge			= "등장",
+	WarnGuardDied		= "화염의 피조물: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "잠수",
@@ -630,7 +631,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
 	TimerSubmerge		= "잠수 타이머 바 보기",
 	WarnEmerge			= "등장 알림 보기",
-	TimerEmerge			= "등장 타이머 바 보기"
+	TimerEmerge			= "등장 타이머 바 보기",
+	WarnGuardDied		= "화염의 피조물 남은 수 알림"
 }
 L:SetMiscLocalization{
 	Submerge	= "나의 종들아! 어서 나와 주인을 돕거라!",
