@@ -473,6 +473,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 L:SetGeneralLocalization{
 	name = "加尔"
 }
+L:SetMiscLocalization{
+	Firesworn = "火誓者"
+}
 
 --------------
 --  Geddon  --
