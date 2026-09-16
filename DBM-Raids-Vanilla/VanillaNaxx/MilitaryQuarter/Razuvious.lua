@@ -18,7 +18,7 @@ else
 end
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED 10912"
+	"SPELL_AURA_APPLIED 10912" -- First Mind Control is cast out of combat to start encounter
 )
 
 mod:RegisterEventsInCombat(
