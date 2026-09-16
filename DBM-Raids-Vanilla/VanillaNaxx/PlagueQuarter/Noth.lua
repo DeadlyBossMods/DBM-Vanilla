@@ -71,6 +71,7 @@ function mod:OnCombatStart()
 	timerAddsCD:Start("v6.5-22.7", self.vb.addsCount + 1)
 	timerCurseCD:Start("v6.5-25.9")
 	timerTeleport:Start(90.6)
+	self:ScheduleMethod(90.6, "Balcony")
 end
 
 function mod:OnCombatEnd()
@@ -78,7 +79,33 @@ function mod:OnCombatEnd()
 end
 
 function mod:UNIT_TARGETABLE_CHANGED()
-	self:SendSync("TeleportBalcony")
+	if self:LatencyCheck() then
+		self:SendSync("TeleportBalcony")
+	end
+end
+
+function mod:Balcony()
+	self.vb.teleCount = self.vb.teleCount + 1
+	self.vb.addsCount = 0
+	timerCurseCD:Stop()
+	timerAddsCD:Stop()
+	local timer
+	if self.vb.teleCount == 1 then
+		timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
+		timerAddsCD:Start(3, self.vb.addsCount + 1)
+	elseif self.vb.teleCount == 2 then
+		timer = 97--Unknown in Classic
+		timerAddsCD:Start(3, self.vb.addsCount + 1)
+	elseif self.vb.teleCount == 3 then
+		timer = 126--Unknown in Classic
+		timerAddsCD:Start(3, self.vb.addsCount + 1)
+	else
+		timer = 55--Unknown in Classic
+	end
+	timerTeleportBack:Start(timer)
+	warnTeleportSoon:Schedule(timer - 20)
+	warnTeleportNow:Show()
+	self:ScheduleMethod(timer, "BackInRoom")
 end
 
 function mod:BackInRoom()
@@ -104,6 +131,7 @@ function mod:BackInRoom()
 	else
 		timerCurseCD:Start(10)--11 in wrath, 9 or 10 in classic, well based off numpty POV
 	end
+	self:ScheduleMethod(timer, "Balcony")
 end
 
 local function UpdateCurseFrame()
@@ -160,27 +188,8 @@ end
 function mod:OnSync(msg)
 	if not self:IsInCombat() then return end
 	if msg == "TeleportBalcony" then
-		self.vb.teleCount = self.vb.teleCount + 1
-		self.vb.addsCount = 0
-		timerCurseCD:Stop()
-		timerAddsCD:Stop()
-		local timer
-		if self.vb.teleCount == 1 then
-			timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
-			timerAddsCD:Start(3, self.vb.addsCount + 1)
-		elseif self.vb.teleCount == 2 then
-			timer = 97--Unknown in Classic
-			timerAddsCD:Start(3, self.vb.addsCount + 1)
-		elseif self.vb.teleCount == 3 then
-			timer = 126--Unknown in Classic
-			timerAddsCD:Start(3, self.vb.addsCount + 1)
-		else
-			timer = 55--Unknown in Classic
-		end
-		timerTeleportBack:Start(timer)
-		warnTeleportSoon:Schedule(timer - 20)
-		warnTeleportNow:Show()
-		self:ScheduleMethod(timer, "BackInRoom")
+		self:UnscheduleMethod("Balcony")
+		self:Balcony()
 	elseif msg == "Adds" then
 		self.vb.addsCount = self.vb.addsCount + 1
 		specWarnAdds:Show()
