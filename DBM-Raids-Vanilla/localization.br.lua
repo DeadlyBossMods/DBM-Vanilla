@@ -642,6 +642,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Geena"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Ardilante: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Exibir anúncio para Ardilantes restantes"
+}
 
 ------------
 --  Garr  --
