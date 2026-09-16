@@ -92,7 +92,7 @@ end
 
 function mod:OnCombatStart()
 	timerShout:Start("v25.9-26.3")
-	warnShoutSoon:Schedule(19)
+	warnShoutSoon:Schedule(20)
 end
 
 local function ShowInfoFrame()
