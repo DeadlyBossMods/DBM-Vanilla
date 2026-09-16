@@ -612,6 +612,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "청지기 이그젝큐투스"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "불꽃꼬리일족 정예병",
+	FlamewakerHealer	= "불꽃꼬리일족 치유사"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "다음 보호막"
 }

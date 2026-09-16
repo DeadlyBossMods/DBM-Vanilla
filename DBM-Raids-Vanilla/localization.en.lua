@@ -608,6 +608,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Majordomo Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Flamewaker Elite",
+	FlamewakerHealer	= "Flamewaker Healer"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Next Shield"
 }
