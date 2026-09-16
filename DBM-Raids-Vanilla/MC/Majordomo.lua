@@ -27,7 +27,7 @@ mod:SetZone(409)
 mod:RegisterCombat("combat")
 
 mod:RegisterEvents(
-	"SPELL_AURA_APPLIED 118, 12824, 12825, 12826, 28271, 28272" -- Polymorph has enough range to cast before encounter begins
+	"SPELL_AURA_APPLIED 118 12824 12825 12826 28271 28272" -- Polymorph has enough range to cast before encounter begins
 )
 
 mod:RegisterEventsInCombat(
