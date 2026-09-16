@@ -91,7 +91,7 @@ do
 end
 
 function mod:OnCombatStart()
-	timerShout:Start()
+	timerShout:Start("v25.9-26.3")
 	warnShoutSoon:Schedule(19)
 end
 
