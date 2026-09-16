@@ -133,11 +133,6 @@ do
 end
 
 function mod:OnCombatStart()
-	table.wipe(addNames)
-	table.wipe(addIcons)
-	table.wipe(addDead)
-	table.wipe(ccExpires)
-	table.wipe(ccIcons)
 	timerTeleportCD:Start("v15.8-21.1")
 	timerShieldCD:Start(string.format("v%s-%s", 25.6, 30.7))
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
