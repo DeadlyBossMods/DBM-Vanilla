@@ -87,9 +87,9 @@ end
 function mod:Balcony()
 	self.vb.teleCount = self.vb.teleCount + 1
 	self.vb.addsCount = 0
-	timerTeleport:Stop()
-	timerCurseCD:Stop()
 	timerAddsCD:Stop()
+	timerCurseCD:Stop()
+	timerTeleport:Stop()
 	local timer
 	if self.vb.teleCount == 1 then
 		timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
@@ -111,8 +111,8 @@ end
 
 function mod:BackInRoom()
 	self.vb.addsCount = 0
-	timerTeleportBack:Stop()
 	timerAddsCD:Stop()
+	timerTeleportBack:Stop()
 	local timer
 	if self.vb.teleCount == 1 then
 		timer = 109--Unknown in Classic
