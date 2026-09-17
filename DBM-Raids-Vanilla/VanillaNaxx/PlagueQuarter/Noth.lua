@@ -87,6 +87,7 @@ end
 function mod:Balcony()
 	self.vb.teleCount = self.vb.teleCount + 1
 	self.vb.addsCount = 0
+	timerTeleport:Stop()
 	timerCurseCD:Stop()
 	timerAddsCD:Stop()
 	local timer
@@ -110,6 +111,7 @@ end
 
 function mod:BackInRoom()
 	self.vb.addsCount = 0
+	timerTeleportBack:Stop()
 	timerAddsCD:Stop()
 	local timer
 	if self.vb.teleCount == 1 then
