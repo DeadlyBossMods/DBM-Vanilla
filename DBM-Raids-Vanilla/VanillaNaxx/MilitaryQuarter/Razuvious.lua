@@ -14,6 +14,8 @@ if DBM:IsSeasonal("SeasonOfDiscovery") then
 else
 	mod.statTypes = "normal"
 end
+
+mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3, L.Pull4)
 if DBM:IsRestricted() then
 	--do stuff
 	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
@@ -86,8 +88,8 @@ else
 				else
 					lines[key] = ("|cff00ff00%d|r"):format(0)
 				end
-				return lines, sortedLines
 			end
+			return lines, sortedLines
 		end
 	end
 
@@ -167,6 +169,13 @@ else
 			else
 				timerShout:Start()
 			end
+			warnShoutNow:Show()
+			warnShoutSoon:Schedule(20)
+		elseif args:IsSpell(29060) and args:IsPetSource() then -- Taunt
+			timerTaunt:Start(60, args.sourceGUID)
+		elseif args:IsSpell(29061) and args:IsPetSource() then -- ShieldWall
+			timerShieldWall:Start(20, args.sourceGUID)
+			warnShieldWall:Schedule(15)
 		end
 	end
 
