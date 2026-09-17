@@ -168,15 +168,16 @@ else
 				timerShout:Start()
 			end
 		end
+	end
 
-		function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-			if spellId == 29051 then
-				local guid = UnitGUID(uId)
-				if guid and self:GetCIDFromGUID(guid) == 16803 then
-					self:SendSync("MindExhaustion", guid)
-				end
+	function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+		if spellId == 29051 then
+			local guid = UnitGUID(uId)
+			if guid and self:GetCIDFromGUID(guid) == 16803 then
+				self:SendSync("MindExhaustion", guid)
 			end
 		end
+	end
 
 	function mod:OnSync(event, guid, icon)
 		if not self:IsInCombat() then return end
