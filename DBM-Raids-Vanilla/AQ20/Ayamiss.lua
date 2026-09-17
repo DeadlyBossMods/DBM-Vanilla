@@ -18,63 +18,68 @@ mod:SetModelID(15431)
 mod:SetZone(509)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 25725",
-	"SPELL_AURA_REMOVED 25725"
-)
-local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
-local warnParalyze		= mod:NewTargetAnnounce(25725, 3)
-local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
-
-local timerParalyze		= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)
-
-function mod:OnCombatStart()
-	self:SetStage(1)
-	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	self:RegisterShortTermEvents(
-		"UNIT_HEALTH"
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 25725",
+		"SPELL_AURA_REMOVED 25725"
 	)
-end
+	local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+	local warnParalyze		= mod:NewTargetAnnounce(25725, 3)
+	local warnPhase2Soon	= mod:NewPrePhaseAnnounce(2)
 
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
-end
+	local timerParalyze		= mod:NewTargetTimer(10, 25725, nil, nil, nil, 3)
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(25725) then
-		warnParalyze:Show(args.destName)
-		timerParalyze:Start(args.destName)
+	function mod:OnCombatStart()
+		self:SetStage(1)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
+		self:RegisterShortTermEvents(
+			"UNIT_HEALTH"
+		)
 	end
-end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(25725) then
-		timerParalyze:Stop(args.destName)
-	end
-end
-
-function mod:UNIT_HEALTH(uId)
-	if self:GetStage(1) and self:GetUnitCreatureId(uId) == 15369 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
-		self:SendSync("Phase", 1.5)
-	elseif self:GetStage(1.5) and self:GetUnitCreatureId(uId) == 15369 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
-		self:SendSync("Phase", 2)
+	function mod:OnCombatEnd()
 		self:UnregisterShortTermEvents()
 	end
-end
 
-function mod:OnSync(msg, arg)
-	if not self:IsInCombat() then return end
-	if msg == "Phase" then
-		local phase = tonumber(arg)
-		if not phase then return end
-		if self:GetStage(phase, 1) then
-			self:SetStage(phase)
-			if phase % 1 == 0 then
-				warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
-			end
-			if phase == 1.5 then
-				warnPhase2Soon:Show()
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(25725) then
+			warnParalyze:Show(args.destName)
+			timerParalyze:Start(args.destName)
+		end
+	end
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(25725) then
+			timerParalyze:Stop(args.destName)
+		end
+	end
+
+	function mod:UNIT_HEALTH(uId)
+		if self:GetStage(1) and self:GetUnitCreatureId(uId) == 15369 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.75 then
+			self:SendSync("Phase", 1.5)
+		elseif self:GetStage(1.5) and self:GetUnitCreatureId(uId) == 15369 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.70 then
+			self:SendSync("Phase", 2)
+			self:UnregisterShortTermEvents()
+		end
+	end
+
+	function mod:OnSync(msg, arg)
+		if not self:IsInCombat() then return end
+		if msg == "Phase" then
+			local phase = tonumber(arg)
+			if not phase then return end
+			if self:GetStage(phase, 1) then
+				self:SetStage(phase)
+				if phase % 1 == 0 then
+					warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+				end
+				if phase == 1.5 then
+					warnPhase2Soon:Show()
+				end
 			end
 		end
 	end

@@ -21,96 +21,101 @@ mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 19716 19717 461232",
-	"SPELL_SUMMON 365100",
-	"SPELL_AURA_APPLIED 20277",
-	"UNIT_DIED"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_CAST_SUCCESS 19716 19717 461232",
+		"SPELL_SUMMON 365100",
+		"SPELL_AURA_APPLIED 20277",
+		"UNIT_DIED"
+	)
 
---[[
-(ability.id = 19716 or ability.id = 19717 or ability.id = 461232) and type = "cast"
- or ability.id = 365100 and type = "summon"
---]]
-local warnCurse			= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
-local warnRainFire		= mod:NewSpellAnnounce(19717, 2, nil, false)
-local warnFist			= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
-local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "132093")
+	--[[
+	(ability.id = 19716 or ability.id = 19717 or ability.id = 461232) and type = "cast"
+	 or ability.id = 365100 and type = "summon"
+	--]]
+	local warnCurse			= mod:NewSpellAnnounce(19716, 3, nil, "RemoveCurse|Healer")
+	local warnRainFire		= mod:NewSpellAnnounce(19717, 2, nil, false)
+	local warnFist			= mod:NewTargetAnnounce(20277, 2, nil, false, 2)
+	local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "132093")
 
-local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
+	local specWarnGTFO	= mod:NewSpecialWarningGTFO(19717, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
-local timerCurseCD	= mod:NewVarTimer("v25.9-35.6", 19716, nil, "RemoveCurse|Healer", nil, 5, nil, DBM_COMMON_L.HEALER_ICON..DBM_COMMON_L.CURSE_ICON)
-local timerRoF		= mod:NewCDTimer(4.8, 19717, nil, false, nil, 3)
---local timerFist	= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
+	local timerCurseCD	= mod:NewVarTimer("v25.9-35.6", 19716, nil, "RemoveCurse|Healer", nil, 5, nil, DBM_COMMON_L.HEALER_ICON..DBM_COMMON_L.CURSE_ICON)
+	local timerRoF		= mod:NewCDTimer(4.8, 19717, nil, false, nil, 3)
+	--local timerFist	= mod:NewBuffActiveTimer(4, 20277, nil, false, 2, 3)
 
-local guardsGuidCheck = {}
+	local guardsGuidCheck = {}
 
-mod.vb.guardsRemaining = 2
-mod.vb.guardsTotal = 2
+	mod.vb.guardsRemaining = 2
+	mod.vb.guardsTotal = 2
 
-function mod:OnCombatStart()
-	self.vb.guardsTotal = DBM:IsSeasonal("SeasonOfDiscovery") and 4 or 2
-	self.vb.guardsRemaining = self.vb.guardsTotal
-	table.wipe(guardsGuidCheck)
-	timerCurseCD:Start("v6.4-14.5")
-	if self:IsEvent() or not self:IsTrivial() then
-		self:RegisterShortTermEvents(
-			"SPELL_PERIODIC_DAMAGE 19717",
-			"SPELL_PERIODIC_MISSED 19717"
-		)
-	end
-end
-
-function mod:OnCombatEnd()
-	table.wipe(guardsGuidCheck)
-	self:UnregisterShortTermEvents()
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19716, 461232) and args:IsSrcTypeHostile() then
-		warnCurse:Show()
-		timerCurseCD:Start()
-	--Classic Era and retail version (this ID on SoD fires on players getting hit by it for some reason, so we MUST ignore it)
-	elseif args:IsSpell(19717) and args:IsSrcTypeHostile() and not DBM:IsSeasonal("SeasonOfDiscovery") then
-		warnRainFire:Show()
-		timerRoF:Start()
-	end
-end
-
-function mod:SPELL_SUMMON(args)
-	--Season of Mastery and Season of Discovery version
-	if args.spellId == 365100 then
-		warnRainFire:Show()
-		timerRoF:Start()
-	end
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(20277) and args:IsDestTypePlayer() then
-		warnFist:CombinedShow(0.3, args.destName)
-	end
-end
-
-function mod:UNIT_DIED(args)
-	local guid = args.destGUID
-	local cid = self:GetCIDFromGUID(guid)
-	if cid == 11661 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228833) then -- Flamewaker
-		if not guardsGuidCheck[guid] then
-			guardsGuidCheck[guid] = true
-			self.vb.guardsRemaining = self.vb.guardsRemaining - 1
-			warnGuardDied:Show(self.vb.guardsRemaining, self.vb.guardsTotal)
+	function mod:OnCombatStart()
+		self.vb.guardsTotal = DBM:IsSeasonal("SeasonOfDiscovery") and 4 or 2
+		self.vb.guardsRemaining = self.vb.guardsTotal
+		table.wipe(guardsGuidCheck)
+		timerCurseCD:Start("v6.4-14.5")
+		if self:IsEvent() or not self:IsTrivial() then
+			self:RegisterShortTermEvents(
+				"SPELL_PERIODIC_DAMAGE 19717",
+				"SPELL_PERIODIC_MISSED 19717"
+			)
 		end
 	end
-end
 
-do
-	local RainofFire = DBM:GetSpellName(19717)--Classic Note
-	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
-		if (spellId == 19717 or spellName == RainofFire) and destGUID == UnitGUID("player") and self:AntiSpam() then
-			specWarnGTFO:Show(spellName)
-			specWarnGTFO:Play("watchfeet")
+	function mod:OnCombatEnd()
+		table.wipe(guardsGuidCheck)
+		self:UnregisterShortTermEvents()
+	end
+
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(19716, 461232) and args:IsSrcTypeHostile() then
+			warnCurse:Show()
+			timerCurseCD:Start()
+		--Classic Era and retail version (this ID on SoD fires on players getting hit by it for some reason, so we MUST ignore it)
+		elseif args:IsSpell(19717) and args:IsSrcTypeHostile() and not DBM:IsSeasonal("SeasonOfDiscovery") then
+			warnRainFire:Show()
+			timerRoF:Start()
 		end
 	end
-	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+
+	function mod:SPELL_SUMMON(args)
+		--Season of Mastery and Season of Discovery version
+		if args.spellId == 365100 then
+			warnRainFire:Show()
+			timerRoF:Start()
+		end
+	end
+
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(20277) and args:IsDestTypePlayer() then
+			warnFist:CombinedShow(0.3, args.destName)
+		end
+	end
+
+	function mod:UNIT_DIED(args)
+		local guid = args.destGUID
+		local cid = self:GetCIDFromGUID(guid)
+		if cid == 11661 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228833) then -- Flamewaker
+			if not guardsGuidCheck[guid] then
+				guardsGuidCheck[guid] = true
+				self.vb.guardsRemaining = self.vb.guardsRemaining - 1
+				warnGuardDied:Show(self.vb.guardsRemaining, self.vb.guardsTotal)
+			end
+		end
+	end
+
+	do
+		local RainofFire = DBM:GetSpellName(19717)--Classic Note
+		function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, destName, _, _, spellId, spellName)
+			if (spellId == 19717 or spellName == RainofFire) and destGUID == UnitGUID("player") and self:AntiSpam() then
+				specWarnGTFO:Show(spellName)
+				specWarnGTFO:Play("watchfeet")
+			end
+		end
+		mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+	end
 end
