@@ -17,35 +17,40 @@ mod:SetModelID(15392)
 mod:SetZone(509)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 25685",
-	"SPELL_AURA_REMOVED 25685"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 25685",
+		"SPELL_AURA_REMOVED 25685"
+	)
 
---Energize is mode boss goes in during Summon Mana Fiend Phase
---TODO, update timrs on mana drains/etc
---TODO, verify if arcane eruption wll always be the same
---"Arcane Eruption-25672-npc:15340 = pull:325.8", -- [1]
-local warnStoneform		= mod:NewSpellAnnounce(25685, 3)
+	--Energize is mode boss goes in during Summon Mana Fiend Phase
+	--TODO, update timrs on mana drains/etc
+	--TODO, verify if arcane eruption wll always be the same
+	--"Arcane Eruption-25672-npc:15340 = pull:325.8", -- [1]
+	local warnStoneform		= mod:NewSpellAnnounce(25685, 3)
 
-local timerStoneform	= mod:NewNextTimer(90, 25685, nil, nil, nil, 6)
-local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685, nil, nil, nil, 6)
+	local timerStoneform	= mod:NewNextTimer(90, 25685, nil, nil, nil, 6)
+	local timerStoneformDur	= mod:NewBuffActiveTimer(90, 25685, nil, nil, nil, 6)
 
-function mod:OnCombatStart()
-	timerStoneform:Start()
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(25685) then
-		warnStoneform:Show()
-		timerStoneformDur:Start()
-	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(25685) then
-		timerStoneformDur:Stop()
+	function mod:OnCombatStart()
 		timerStoneform:Start()
+	end
+
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(25685) then
+			warnStoneform:Show()
+			timerStoneformDur:Start()
+		end
+	end
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(25685) then
+			timerStoneformDur:Stop()
+			timerStoneform:Start()
+		end
 	end
 end

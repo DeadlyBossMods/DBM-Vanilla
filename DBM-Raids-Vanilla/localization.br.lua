@@ -223,7 +223,7 @@ L:SetTimerLocalization{
 	TimerClawTentacle		= "Tentáculo de Garra",
 	TimerGiantEyeTentacle	= "Tentóculo Gigante",
 	TimerGiantClawTentacle	= "Tentáculo de Garra Gigante",
-	TimerWeakened			= "Enfraquece acaba"
+	TimerWeakened			= "Enfraquecimento acaba"
 }
 L:SetOptionLocalization{
 	WarnEyeTentacle			= "Exibir anúncio para Tentóculo",
@@ -260,10 +260,10 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Emersão"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Exibir anúncio para a submersão de Ouroboros",
-	TimerSubmerge		= "Exibir cronômetro para a submersão de Ouroboros",
-	WarnEmerge			= "Exibir anúncio para a emersão de Ouroboros",
-	TimerEmerge			= "Exibir cronômetro para a emersão de Ouroboros",
+	WarnSubmerge		= "Exibir anúncio para submersão",
+	TimerSubmerge		= "Exibir cronômetro para submersão",
+	WarnEmerge			= "Exibir anúncio para emersão",
+	TimerEmerge			= "Exibir cronômetro para emersão",
 	SpecWarnEye 		= "Exibir anúncio para o olho gigante"
 }
 
@@ -411,12 +411,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Violâminus, o Indomado"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Primeiros lacaios"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Exibir cronômetro quando os primeiros lacaios aparecerem"
-}
+
 L:SetMiscLocalization{
 	Pull	= "Invasores violaram a incubadora! Soem o alarme! Protejam os ovos a todo custo!"
 }
@@ -581,6 +576,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Que comecem os jogos!",
+	YellP2		= "Muito bem, meus lacaios. A coragem dos mortais começa a vacilar! Agora vejamos como eles enfrentarão o verdadeiro Senhor dos Rocha Negra!!!",
 	YellP3		= "Impossível! Ergam-se, meus lacaios! Sirvam ao seu mestre mais uma vez!",
 	YellShaman	= "Xamãs, mostrem-me do que seus totens são capazes!",
 	YellPaladin	= "Paladinos... ouvi dizer que vocês têm muitas vidas. Isso eu quero ver.",
@@ -622,6 +618,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lúcifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Protetor Ardilante: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Exibir anúncio para Protectores Ardilantes restantes"
+}
 
 ----------------
 --  Magmadar  --
@@ -640,6 +642,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Geena"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Ardilante: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Exibir anúncio para Ardilantes restantes"
+}
 
 ------------
 --  Garr  --
@@ -648,6 +656,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Devoto do Fogo"
 }
 
 --------------
@@ -676,6 +687,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Emissário de Sulfuron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Sacerdote Ardilante: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Exibir anúncio para Sacerdotes Ardilantes restantes"
+}
 
 ----------------
 --  Golemagg  --
@@ -694,6 +711,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Senescal Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Elite Ardilante",
+	FlamewakerHealer	= "Curandeiro Ardilante"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Escudo"
 }
@@ -711,7 +732,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submersão",
-	WarnEmerge			= "Emersão"
+	WarnEmerge			= "Emersão",
+	WarnGuardDied		= "Filho das Chamas: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersão",
@@ -722,6 +744,7 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Exibir cronômetro para submersão",
 	WarnEmerge			= "Exibir anúncio para emersão",
 	TimerEmerge			= "Exibir cronômetro para emersão",
+	WarnGuardDied		= "Exibir anúncio para Filhos das Chamas restantes"
 }
 L:SetMiscLocalization{
 	Submerge	= "VENHAM, MEUS SERVOS! DEFENDAM SEU SENHOR!",
@@ -865,21 +888,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan, o Sujo"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleporte",
-	WarningTeleportSoon	= "Teleporte em %d |4segundo:segundos;"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleporte"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Exibir anúncio para Teleporte",
-	WarningTeleportSoon	= "Exibir anúncio antecipado para Teleporte",
-	TimerTeleport		= "Exibir cronômetro para Teleporte"
 })
 
 L:SetMiscLocalization({

@@ -28,62 +28,67 @@ end
 mod:SetZone(469)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 23339 22539",
-	"SPELL_AURA_APPLIED_DOSE 23341 366305",
-	"SPELL_AURA_APPLIED 366305"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_CAST_START 23339 22539",
+		"SPELL_AURA_APPLIED_DOSE 23341 366305",
+		"SPELL_AURA_APPLIED 366305"
+	)
 
---(ability.id = 23339 or ability.id = 22539) and type = "begincast" or ability.id = 23341 and type = "cast"
-local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, nil, "Tank")
-local warnShadowFlame		= mod:NewCastAnnounce(22539, 2, nil, nil, "Tank|Healer")
-local warnFlameBuffet		= mod:NewStackAnnounce(23341, 3)
-local specWarnWingBuffet	= mod:NewSpecialWarningSpell(23339, "Tank")
+	--(ability.id = 23339 or ability.id = 22539) and type = "begincast" or ability.id = 23341 and type = "cast"
+	local warnWingBuffet		= mod:NewCastAnnounce(23339, 2, nil, nil, "Tank")
+	local warnShadowFlame		= mod:NewCastAnnounce(22539, 2, nil, nil, "Tank|Healer")
+	local warnFlameBuffet		= mod:NewStackAnnounce(23341, 3)
+	local specWarnWingBuffet	= mod:NewSpecialWarningSpell(23339, "Tank")
 
-local timerWingBuffetCD		= mod:NewVarTimer("v31.6-42.1", 23339, nil, "Tank", nil, 2)
-local timerShadowFlameCD	= mod:NewVarTimer("v13-25.9", 22539, nil, false)
+	local timerWingBuffetCD		= mod:NewVarTimer("v31.6-42.1", 23339, nil, "Tank", nil, 2)
+	local timerShadowFlameCD	= mod:NewVarTimer("v13-25.9", 22539, nil, false)
 
-local specWarnStatic, yellStaticHigh
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2, nil, nil, "runout")
-	yellStaticHigh		= mod:NewCountYell(366305)
-end
-
-function mod:OnCombatStart()
-	timerShadowFlameCD:Start("v11.3-24.3")
-	timerWingBuffetCD:Start("v30.6-40.4")
-end
-
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(23339) then
-		if not self.Options[specWarnWingBuffet.option] then -- Don't show warning as both normal and special
-			warnWingBuffet:Show()
-		end
-		timerWingBuffetCD:Start()
-		specWarnWingBuffet:Show()
-	elseif args:IsSpell(22539) then
-		warnShadowFlame:Show()
-		timerShadowFlameCD:Start()
+	local specWarnStatic, yellStaticHigh
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		specWarnStatic		= mod:NewSpecialWarningMoveAway(366305, nil, nil, nil, 1, 2, nil, nil, "runout")
+		yellStaticHigh		= mod:NewCountYell(366305)
 	end
-end
 
-function mod:SPELL_AURA_APPLIED_DOSE(args)
-	if args:IsSpell(23341) and args:IsPlayer() then
-		local amount = args.amount or 1
-		if (amount >= 4) and (amount % 2 == 0) then--Starting at 4, every even amount warn stack
-			warnFlameBuffet:Show(args.destName, amount)
-		end
-	elseif args:IsSpell(366305) then -- Stacks up to 10 then explode, good idea to spread at ~7
-		local amount = args.amount or 1
-		if (amount == 7 or amount == 9) and args:IsPlayer() then
-			specWarnStatic:Show()
-			specWarnStatic:Play("runout")
-		end
-		if amount >= 7 and args:IsPlayer() then
-			yellStaticHigh:Show(amount)
+	function mod:OnCombatStart()
+		timerShadowFlameCD:Start("v11.3-24.3")
+		timerWingBuffetCD:Start("v30.6-40.4")
+	end
+
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(23339) then
+			if not self.Options[specWarnWingBuffet.option] then -- Don't show warning as both normal and special
+				warnWingBuffet:Show()
+			end
+			timerWingBuffetCD:Start()
+			specWarnWingBuffet:Show()
+		elseif args:IsSpell(22539) then
+			warnShadowFlame:Show()
+			timerShadowFlameCD:Start()
 		end
 	end
-end
 
-mod.SPELL_AURA_APPLIED = mod.SPELL_AURA_APPLIED_DOSE
+	function mod:SPELL_AURA_APPLIED_DOSE(args)
+		if args:IsSpell(23341) and args:IsPlayer() then
+			local amount = args.amount or 1
+			if (amount >= 4) and (amount % 2 == 0) then--Starting at 4, every even amount warn stack
+				warnFlameBuffet:Show(args.destName, amount)
+			end
+		elseif args:IsSpell(366305) then -- Stacks up to 10 then explode, good idea to spread at ~7
+			local amount = args.amount or 1
+			if (amount == 7 or amount == 9) and args:IsPlayer() then
+				specWarnStatic:Show()
+				specWarnStatic:Play("runout")
+			end
+			if amount >= 7 and args:IsPlayer() then
+				yellStaticHigh:Show(amount)
+			end
+		end
+	end
+
+	mod.SPELL_AURA_APPLIED = mod.SPELL_AURA_APPLIED_DOSE
+end

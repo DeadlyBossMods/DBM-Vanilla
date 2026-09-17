@@ -1,5 +1,5 @@
-## Interface: 120100
-## X-Min-Interface: 80000
+## Interface: 16001
+## X-Min-Interface-Classic: 16001
 ## Category: DBM
 
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
@@ -22,7 +22,7 @@
 ## X-DBM-Mod-Type: RAID
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
-## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 230
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249
 ## X-DBM-Mod-Name: Raids (Vanilla)
 ## X-DBM-Mod-Name-deDE: Schlachtzüge (Classic)
 ## X-DBM-Mod-Name-esES: Bandas (Clásico)
@@ -34,7 +34,7 @@
 ## X-DBM-Mod-name-zhCN: 团队副本（经典旧世）
 ## X-DBM-Mod-name-zhTW: 團隊副本（經典舊世）
 ## X-DBM-Mod-Sort: 1101
-## X-DBM-Mod-MapID: 531, 509, 469, 409, 2792
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249
 ## X-DBM-Mod-MinCoreRevision: 20260522000000
 ## X-DBM-Mod-MinExpansion: 0
 ## X-Curse-Project-ID: 16442
@@ -59,6 +59,24 @@ Polyfills.lua
 # Temporary, will be moved to Core
 Blocks\Gtfo.lua
 
+VanillaNaxx\SoD_Hardmode.lua
+VanillaNaxx\NaxxTrash.lua
+VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua
+VanillaNaxx\ArachnidQuarter\Faerlina.lua
+VanillaNaxx\ArachnidQuarter\Maexxna.lua
+VanillaNaxx\ConstructQuarter\Patchwerk.lua
+VanillaNaxx\ConstructQuarter\Grobbulus.lua
+VanillaNaxx\ConstructQuarter\Gluth.lua
+VanillaNaxx\ConstructQuarter\Thaddius.lua
+VanillaNaxx\PlagueQuarter\Noth.lua
+VanillaNaxx\PlagueQuarter\Heigan.lua
+VanillaNaxx\PlagueQuarter\Loatheb.lua
+VanillaNaxx\MilitaryQuarter\Razuvious.lua
+VanillaNaxx\MilitaryQuarter\Gothik.lua
+VanillaNaxx\MilitaryQuarter\Horsemen.lua
+VanillaNaxx\FrostwyrmLair\Sapphiron.lua
+VanillaNaxx\FrostwyrmLair\Kel'Thuzad.lua
+
 AQ40\AQ40Trash.lua
 AQ40\Skeram.lua
 AQ40\ThreeBugs.lua
@@ -78,13 +96,26 @@ AQ20\Buru.lua
 AQ20\Ayamiss.lua
 AQ20\Ossirian.lua
 
+VanillaZG\Venoxis.lua
+VanillaZG\Jeklik.lua
+VanillaZG\Marli.lua
+VanillaZG\Thekal.lua
+VanillaZG\Arlokk.lua
+VanillaZG\Hakkar.lua
+VanillaZG\Bloodlord.lua
+VanillaZG\EdgeOfMadness.lua
+VanillaZG\Gahzranka.lua
+VanillaZG\Jindo.lua
+
 BWL\BWLTrash.lua
+BWL\SoDTrials.lua
 BWL\Razorgore.lua
 BWL\Vaelastrasz.lua
 BWL\Broodlord.lua
 BWL\Firemaw.lua
 BWL\Ebonroc.lua
 BWL\Flamegor.lua
+BWL\Ebonroc_and_Flamegor.lua
 BWL\Chromaggus.lua
 BWL\Nefarian.lua
 
@@ -99,12 +130,6 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
+MC\MoltenCore.lua
 
-BlackrockDepths\LordRoccor.lua
-BlackrockDepths\BaelGar.lua
-BlackrockDepths\LordIncendius.lua
-BlackrockDepths\GolemLordArgelmach.lua
-BlackrockDepths\TheSeven.lua
-BlackrockDepths\GeneralAngerforge.lua
-BlackrockDepths\AmbassadorFlamelash.lua
-BlackrockDepths\EmperorDagranThaurissan.lua
+VanillaOnyxia\Onyxia.lua

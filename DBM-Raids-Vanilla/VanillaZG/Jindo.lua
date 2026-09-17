@@ -19,69 +19,74 @@ mod:SetEncounterID(792)
 mod:SetZone(309)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 24306 17172 24261",
-	"SPELL_AURA_REMOVED 17172 24306",
-	"SPELL_CAST_SUCCESS 24466",
-	"SPELL_SUMMON 24309 24262"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 24306 17172 24261",
+		"SPELL_AURA_REMOVED 17172 24306",
+		"SPELL_CAST_SUCCESS 24466",
+		"SPELL_SUMMON 24309 24262"
+	)
 
-local warnDelusion			= mod:NewTargetNoFilterAnnounce(24306, 2, nil, "RemoveCurse")
-local warnHex				= mod:NewTargetNoFilterAnnounce(17172, 2, nil, "RemoveMagic")
-local warnBrainWash			= mod:NewTargetNoFilterAnnounce(24261, 4)
-local warnBanish			= mod:NewTargetNoFilterAnnounce(24466, 2)
+	local warnDelusion			= mod:NewTargetNoFilterAnnounce(24306, 2, nil, "RemoveCurse")
+	local warnHex				= mod:NewTargetNoFilterAnnounce(17172, 2, nil, "RemoveMagic")
+	local warnBrainWash			= mod:NewTargetNoFilterAnnounce(24261, 4)
+	local warnBanish			= mod:NewTargetNoFilterAnnounce(24466, 2)
 
-local specWarnHealingWard	= mod:NewSpecialWarningSwitch(24309, "Dps", nil, nil, 1, 2, nil, nil, "attacktotem")
-local specWarnBrainTotem	= mod:NewSpecialWarningSwitch(24262, "Dps", nil, nil, 1, 2, nil, nil, "attacktotem")
-local specWarnDelusion		= mod:NewSpecialWarningTargetChange(24306, nil, nil, nil, 1, 2, nil, nil, "targetchange")
+	local specWarnHealingWard	= mod:NewSpecialWarningSwitch(24309, "Dps", nil, nil, 1, 2, nil, nil, "attacktotem")
+	local specWarnBrainTotem	= mod:NewSpecialWarningSwitch(24262, "Dps", nil, nil, 1, 2, nil, nil, "attacktotem")
+	local specWarnDelusion		= mod:NewSpecialWarningTargetChange(24306, nil, nil, nil, 1, 2, nil, nil, "targetchange")
 
-local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
-local timerBrainTotemCD		= mod:NewVarTimer("v11.3-26.2", 24262, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+	local timerHex				= mod:NewTargetTimer(5, 17172, nil, "RemoveMagic", nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+	local timerDelusion			= mod:NewTargetTimer(20, 24306, nil, "RemoveCurse", nil, 3, nil, DBM_COMMON_L.CURSE_ICON)
+	local timerBrainTotemCD		= mod:NewVarTimer("v11.3-26.2", 24262, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 
-function mod:OnCombatStart()
-	timerBrainTotemCD:Start("v11.3-30.9")
-end
+	function mod:OnCombatStart()
+		timerBrainTotemCD:Start("v11.3-30.9")
+	end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(24306) then
-		timerDelusion:Start(args.destName)
-		if args:IsPlayer() then
-			specWarnDelusion:Show(L.Ghosts)
-			specWarnDelusion:Play("targetchange")
-		else
-			warnDelusion:Show(args.destName)
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(24306) then
+			timerDelusion:Start(args.destName)
+			if args:IsPlayer() then
+				specWarnDelusion:Show(L.Ghosts)
+				specWarnDelusion:Play("targetchange")
+			else
+				warnDelusion:Show(args.destName)
+			end
+		elseif args:IsSpell(17172) and args:IsDestTypePlayer() then
+			timerHex:Start(args.destName)
+			warnHex:Show(args.destName)
+		elseif args:IsSpell(24261) then
+			warnBrainWash:Show(args.destName)
 		end
-	elseif args:IsSpell(17172) and args:IsDestTypePlayer() then
-		timerHex:Start(args.destName)
-		warnHex:Show(args.destName)
-	elseif args:IsSpell(24261) then
-		warnBrainWash:Show(args.destName)
 	end
-end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(17172) and args:IsDestTypePlayer() then
-		timerHex:Stop(args.destName)
-	elseif args:IsSpell(24306) then
-		timerDelusion:Stop(args.destName)
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(17172) and args:IsDestTypePlayer() then
+			timerHex:Stop(args.destName)
+		elseif args:IsSpell(24306) then
+			timerDelusion:Stop(args.destName)
+		end
 	end
-end
 
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(24466) and args:IsSrcTypeHostile() then
-		warnBanish:Show(args.destName)
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(24466) and args:IsSrcTypeHostile() then
+			warnBanish:Show(args.destName)
+		end
 	end
-end
 
-function mod:SPELL_SUMMON(args)
-	if args:IsSpell(24309) and args:IsDestTypeHostile() then
-		specWarnHealingWard:Show()
-		specWarnHealingWard:Play("attacktotem")
-	elseif args:IsSpell(24262) then
-		specWarnBrainTotem:Show()
-		specWarnBrainTotem:Play("attacktotem")
-		timerBrainTotemCD:Start()
+	function mod:SPELL_SUMMON(args)
+		if args:IsSpell(24309) and args:IsDestTypeHostile() then
+			specWarnHealingWard:Show()
+			specWarnHealingWard:Play("attacktotem")
+		elseif args:IsSpell(24262) then
+			specWarnBrainTotem:Show()
+			specWarnBrainTotem:Play("attacktotem")
+			timerBrainTotemCD:Start()
+		end
 	end
 end

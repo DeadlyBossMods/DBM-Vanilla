@@ -16,251 +16,253 @@ mod:SetModelID(16279)
 mod:SetZone(533)
 
 mod:RegisterCombat("combat")
-
-mod:RegisterEventsInCombat(
-	"UNIT_DIED",
-	"UNIT_SPELLCAST_SUCCEEDED"
-)
-
--- New spell ID found in logs on SoD
--- 1226282 Just some new Shadow Bolt
-
---(source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
-local warnWaveNow		= mod:NewAnnounce("WarningWaveSpawned", 3, nil, false)
-local warnWaveSoon		= mod:NewAnnounce("WarningWaveSoon", 2)
-local warnRiderDown		= mod:NewAnnounce("WarningRiderDown", 4)
-local warnKnightDown	= mod:NewAnnounce("WarningKnightDown", 2)
-local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
-
-local timerPhase2		= mod:NewStageCountTimer(270)
-local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
-
-local timerTeleport, warnTeleportSoon, warnTeleportLive, warnTeleportLiveSoon, timerTeleportLive, warnTeleportDead, warnTeleportDeadSoon, timerTeleportDead
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	warnTeleportSoon	= mod:NewSoonAnnounce(1222332, 3)
-	timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
 else
-	warnTeleportLive		= mod:NewSpellAnnounce(28025, 3, "135736")
-	warnTeleportLiveSoon	= mod:NewSoonAnnounce(28025, 2, "135736")
-	timerTeleportLive		= mod:NewNextTimer("v19.4-21", 28025, nil, nil, nil, 6, "135736")
-	warnTeleportDead		= mod:NewSpellAnnounce(28026, 3, "135736")
-	warnTeleportDeadSoon	= mod:NewSoonAnnounce(28026, 2, "135736")
-	timerTeleportDead		= mod:NewNextTimer("v19.4-21", 28026, nil, nil, nil, 6, "135736")
-end
 
-mod:AddInfoFrameOption(nil, true)
-
-mod.vb.wave = 0
-local mobCounts = {}
-
-local liveMobIds = {
-	[16124] = L.Trainee,
-	[16125] = L.Knight,
-	[16126] = L.Rider
-}
-local liveMobNames = {
-	[L.Trainee] = 16124,
-	[L.Knight] = 16125,
-	[L.Rider] = 16126
-}
-local undeadMobIds = {
-	[16127] = L.Trainee,
-	[16148] = L.Knight,
-	[16150] = L.Rider,
-	[16149] = L.Horse
-}
-local undeadMobNames = {
-	[L.Trainee] = 16127,
-	[L.Knight] = 16148,
-	[L.Rider] = 16150,
-	[L.Horse] = 16149
-}
--- pick up localized names from UNIT_DEAD
-local mobNames = {}
-
-local updateInfoFrame
-do
-	local tostring, twipe = tostring, table.wipe
-	local lines, sortedLines = {}, {}
-	local function addLine(key, value)
-		-- sort by insertion order
-		lines[key] = value
-		sortedLines[#sortedLines + 1] = key
-	end
-	updateInfoFrame = function()
-		twipe(lines)
-		twipe(sortedLines)
-		for name, cid in pairs(liveMobNames) do
-			if mobCounts[cid] then
-				addLine(tostring(cid) .. '*' .. (mobNames[cid] or name), tostring(mobCounts[cid]))
-			end
-		end
-		for name, cid in pairs(undeadMobNames) do
-			if mobCounts[cid] then
-				addLine(tostring(cid) .. '*' .. (mobNames[cid] or name), tostring(mobCounts[cid]))
-			end
-		end
-		return lines, sortedLines
-	end
-end
-
-local wavesClassic = {
-	{3, L.Trainee, next = 20},
-	{3, L.Trainee, next = 20},
-	{3, L.Trainee, next = 10},
-	{2, L.Knight, next = 10},
-	{3, L.Trainee, next = 15},
-	{2, L.Knight, next = 5},
-	{3, L.Trainee, next = 20},
-	{2, L.Knight, 3, L.Trainee, next = 10},
-	{1, L.Rider, next = 10},
-	{3, L.Trainee, next = 5},
-	{2, L.Knight, next = 15},
-	{1, L.Rider, 3, L.Trainee, next = 10},
-	{2, L.Knight, next = 10},
-	{3, L.Trainee, next = 10},
-	{1, L.Rider, next = 5},
-	{2, L.Knight, next = 5},
-	{3, L.Trainee, next = 20},
-	{1, L.Rider, 2, L.Knight, 3, L.Trainee},
-}
-
-local function getWaveString(wave)
-	local waveInfo = wavesClassic[wave]
-	if #waveInfo == 2 then
-		return L.WarningWave1:format(unpack(waveInfo))
-	elseif #waveInfo == 4 then
-		return L.WarningWave2:format(unpack(waveInfo))
-	elseif #waveInfo == 6 then
-		return L.WarningWave3:format(unpack(waveInfo))
-	end
-end
-
-function mod:NextWave()
-	self.vb.wave = self.vb.wave + 1
-	warnWaveNow:Show(self.vb.wave, getWaveString(self.vb.wave))
-	for i, num in ipairs(wavesClassic[self.vb.wave]) do
-		if i % 2 == 1 then
-			local cid = liveMobNames[wavesClassic[self.vb.wave][i + 1]]
-			mobCounts[cid] = (mobCounts[cid] or 0) + num
-		end
-	end
-	local next = wavesClassic[self.vb.wave].next
-	if next then
-		timerWave:Start(next, self.vb.wave + 1)
-		warnWaveSoon:Schedule(next - 3, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
-		self:ScheduleMethod(next, "NextWave")
-	end
-end
-
-function mod:Teleport()
-	timerTeleport:Start()
-	warnTeleportSoon:Schedule(27)
-	self:ScheduleMethod(20, "Teleport")
-end
-
-function mod:OnCombatStart()
-	self.vb.wave = 0
-	self:SetStage(1)
-	self:RegisterShortTermEvents(
-		"UNIT_HEALTH"
+	mod:RegisterEventsInCombat(
+		"UNIT_DIED",
+		"UNIT_SPELLCAST_SUCCEEDED"
 	)
-	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	timerPhase2:Start(nil, 2)
+
+	-- New spell ID found in logs on SoD
+	-- 1226282 Just some new Shadow Bolt
+
+	--(source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
+	local warnWaveNow		= mod:NewAnnounce("WarningWaveSpawned", 3, nil, false)
+	local warnWaveSoon		= mod:NewAnnounce("WarningWaveSoon", 2)
+	local warnRiderDown		= mod:NewAnnounce("WarningRiderDown", 4)
+	local warnKnightDown	= mod:NewAnnounce("WarningKnightDown", 2)
+	local warnPhase 		= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+
+	local timerPhase2		= mod:NewStageCountTimer(270)
+	local timerWave			= mod:NewTimer(20, "TimerWave", "135974", nil, nil, 1)
+
+	local timerTeleport, warnTeleportSoon, warnTeleportLive, warnTeleportLiveSoon, timerTeleportLive, warnTeleportDead, warnTeleportDeadSoon, timerTeleportDead
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		self:Schedule(270, function()
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-		self:SetStage(2)
-		DBM.InfoFrame:Hide()
-		end)
+		warnTeleportSoon	= mod:NewSoonAnnounce(1222332, 3)
+		timerTeleport		= mod:NewNextTimer(20, 1222332, nil, nil, nil, 6) -- TODO: might warrant a short countdown, but confirm exactness of this first due to lack of good trigger
+	else
+		warnTeleportLive		= mod:NewSpellAnnounce(28025, 3, "135736")
+		warnTeleportLiveSoon	= mod:NewSoonAnnounce(28025, 2, "135736")
+		timerTeleportLive		= mod:NewNextTimer("v19.4-21", 28025, nil, nil, nil, 6, "135736")
+		warnTeleportDead		= mod:NewSpellAnnounce(28026, 3, "135736")
+		warnTeleportDeadSoon	= mod:NewSoonAnnounce(28026, 2, "135736")
+		timerTeleportDead		= mod:NewNextTimer("v19.4-21", 28026, nil, nil, nil, 6, "135736")
 	end
-	timerWave:Start(27, self.vb.wave + 1)
-	warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
-	self:ScheduleMethod(27, "NextWave")
-	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		self:ScheduleMethod(270.7, "Teleport") -- Seems to be a bit of an offset between phase 2 starting and teleport being active
-	end
-	table.wipe(mobNames)
-	table.wipe(mobCounts)
 
-	if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:SetHeader(DBM_COMMON_L.ADDS)
-		DBM.InfoFrame:Show(8, "function", updateInfoFrame, false, false)
-		DBM.InfoFrame:SetColumns(1)
-	end
-end
+	mod:AddInfoFrameOption(nil, true)
 
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
-	if DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:Hide()
-	end
-end
+	mod.vb.wave = 0
+	local mobCounts = {}
 
-function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 16126 then -- Unrelenting Rider
-		warnRiderDown:Show()
-	elseif cid == 16125 then -- Unrelenting Deathknight
-		warnKnightDown:Show()
-	end
-	if liveMobIds[cid] then
-		local undeadId = undeadMobNames[liveMobIds[cid]]
-		mobCounts[cid] = (mobCounts[cid] or 0) - 1
-		mobCounts[undeadId] = (mobCounts[undeadId] or 0) + 1
-		mobNames[cid] = args.destName
-		if cid == 16126 then
-			-- When a rider dies it spawns a rider 16150 and a horse 16149
-			mobCounts[16149] = (mobCounts[16149] or 0) + 1
+	local liveMobIds = {
+		[16124] = L.Trainee,
+		[16125] = L.Knight,
+		[16126] = L.Rider
+	}
+	local liveMobNames = {
+		[L.Trainee] = 16124,
+		[L.Knight] = 16125,
+		[L.Rider] = 16126
+	}
+	local undeadMobIds = {
+		[16127] = L.Trainee,
+		[16148] = L.Knight,
+		[16150] = L.Rider,
+		[16149] = L.Horse
+	}
+	local undeadMobNames = {
+		[L.Trainee] = 16127,
+		[L.Knight] = 16148,
+		[L.Rider] = 16150,
+		[L.Horse] = 16149
+	}
+	-- pick up localized names from UNIT_DEAD
+	local mobNames = {}
+
+	local updateInfoFrame
+	do
+		local tostring, twipe = tostring, table.wipe
+		local lines, sortedLines = {}, {}
+		local function addLine(key, value)
+			-- sort by insertion order
+			lines[key] = value
+			sortedLines[#sortedLines + 1] = key
 		end
-	elseif undeadMobIds[cid] then
-		mobCounts[cid] = (mobCounts[cid] or 0) - 1
-		mobNames[cid] = args.destName
+		updateInfoFrame = function()
+			twipe(lines)
+			twipe(sortedLines)
+			for name, cid in pairs(liveMobNames) do
+				if mobCounts[cid] then
+					addLine(tostring(cid) .. '*' .. (mobNames[cid] or name), tostring(mobCounts[cid]))
+				end
+			end
+			for name, cid in pairs(undeadMobNames) do
+				if mobCounts[cid] then
+					addLine(tostring(cid) .. '*' .. (mobNames[cid] or name), tostring(mobCounts[cid]))
+				end
+			end
+			return lines, sortedLines
+		end
 	end
-end
 
-function mod:UNIT_HEALTH(uId)
-	if self:GetUnitCreatureId(uId) == 16060 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.3 then
-		self:SendSync("LowHPThreshold")
+	local wavesClassic = {
+		{3, L.Trainee, next = 20},
+		{3, L.Trainee, next = 20},
+		{3, L.Trainee, next = 10},
+		{2, L.Knight, next = 10},
+		{3, L.Trainee, next = 15},
+		{2, L.Knight, next = 5},
+		{3, L.Trainee, next = 20},
+		{2, L.Knight, 3, L.Trainee, next = 10},
+		{1, L.Rider, next = 10},
+		{3, L.Trainee, next = 5},
+		{2, L.Knight, next = 15},
+		{1, L.Rider, 3, L.Trainee, next = 10},
+		{2, L.Knight, next = 10},
+		{3, L.Trainee, next = 10},
+		{1, L.Rider, next = 5},
+		{2, L.Knight, next = 5},
+		{3, L.Trainee, next = 20},
+		{1, L.Rider, 2, L.Knight, 3, L.Trainee},
+	}
+
+	local function getWaveString(wave)
+		local waveInfo = wavesClassic[wave]
+		if #waveInfo == 2 then
+			return L.WarningWave1:format(unpack(waveInfo))
+		elseif #waveInfo == 4 then
+			return L.WarningWave2:format(unpack(waveInfo))
+		elseif #waveInfo == 6 then
+			return L.WarningWave3:format(unpack(waveInfo))
+		end
+	end
+
+	function mod:NextWave()
+		self.vb.wave = self.vb.wave + 1
+		warnWaveNow:Show(self.vb.wave, getWaveString(self.vb.wave))
+		for i, num in ipairs(wavesClassic[self.vb.wave]) do
+			if i % 2 == 1 then
+				local cid = liveMobNames[wavesClassic[self.vb.wave][i + 1]]
+				mobCounts[cid] = (mobCounts[cid] or 0) + num
+			end
+		end
+		local next = wavesClassic[self.vb.wave].next
+		if next then
+			timerWave:Start(next, self.vb.wave + 1)
+			warnWaveSoon:Schedule(next - 3, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
+			self:ScheduleMethod(next, "NextWave")
+		end
+	end
+
+	function mod:Teleport()
+		timerTeleport:Start()
+		warnTeleportSoon:Schedule(27)
+		self:ScheduleMethod(20, "Teleport")
+	end
+
+	function mod:OnCombatStart()
+		self.vb.wave = 0
+		self:SetStage(1)
+		self:RegisterShortTermEvents(
+			"UNIT_HEALTH"
+		)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
+		timerPhase2:Start(nil, 2)
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			self:Schedule(270, function()
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+			self:SetStage(2)
+			DBM.InfoFrame:Hide()
+			end)
+		end
+		timerWave:Start(27, self.vb.wave + 1)
+		warnWaveSoon:Schedule(24, self.vb.wave + 1, getWaveString(self.vb.wave + 1))
+		self:ScheduleMethod(27, "NextWave")
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			self:ScheduleMethod(270.7, "Teleport") -- Seems to be a bit of an offset between phase 2 starting and teleport being active
+		end
+		table.wipe(mobNames)
+		table.wipe(mobCounts)
+
+		if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
+			DBM.InfoFrame:SetHeader(DBM_COMMON_L.ADDS)
+			DBM.InfoFrame:Show(8, "function", updateInfoFrame, false, false)
+			DBM.InfoFrame:SetColumns(1)
+		end
+	end
+
+	function mod:OnCombatEnd()
 		self:UnregisterShortTermEvents()
 	end
-end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
-	if spellId == 28025 then
-		self:SendSync("TeleportLive")
-	elseif spellId == 28026 then
-		self:SendSync("TeleportDead")
+	function mod:UNIT_DIED(args)
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if cid == 16126 then -- Unrelenting Rider
+			warnRiderDown:Show()
+		elseif cid == 16125 then -- Unrelenting Deathknight
+			warnKnightDown:Show()
+		end
+		if liveMobIds[cid] then
+			local undeadId = undeadMobNames[liveMobIds[cid]]
+			mobCounts[cid] = (mobCounts[cid] or 0) - 1
+			mobCounts[undeadId] = (mobCounts[undeadId] or 0) + 1
+			mobNames[cid] = args.destName
+			if cid == 16126 then
+				-- When a rider dies it spawns a rider 16150 and a horse 16149
+				mobCounts[16149] = (mobCounts[16149] or 0) + 1
+			end
+		elseif undeadMobIds[cid] then
+			mobCounts[cid] = (mobCounts[cid] or 0) - 1
+			mobNames[cid] = args.destName
+		end
 	end
-end
 
-function mod:OnSync(event)
-	if not self:IsInCombat() then return end
-    if event == "TeleportLive" then
-		if self:GetStage(1) then
-			self:SetStage(2)
-			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-			DBM.InfoFrame:Hide()
-		else
-			warnTeleportLive:Show()
+	function mod:UNIT_HEALTH(uId)
+		if self:GetUnitCreatureId(uId) == 16060 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.3 then
+			self:SendSync("LowHPThreshold")
+			self:UnregisterShortTermEvents()
 		end
-		warnTeleportLiveSoon:Cancel()
-		timerTeleportLive:Stop()
-		warnTeleportDeadSoon:Schedule(14.5)
-		timerTeleportDead:Start()
-	elseif event == "TeleportDead" then
-		warnTeleportDead:Show()
-		warnTeleportDeadSoon:Cancel()
-		timerTeleportDead:Stop()
-		warnTeleportLiveSoon:Schedule(14.5)
-		timerTeleportLive:Start()
-	elseif event == "LowHPThreshold" then
-		if DBM:IsSeasonal("SeasonOfDiscovery") then
-			self:UnscheduleMethod("Teleport")
+	end
+
+	function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+		if spellId == 28025 then
+			self:SendSync("TeleportLive")
+		elseif spellId == 28026 then
+			self:SendSync("TeleportDead")
 		end
-		timerTeleportLive:Stop()
-		timerTeleportDead:Stop()
-		warnTeleportLiveSoon:Cancel()
-		warnTeleportDeadSoon:Cancel()
+	end
+
+	function mod:OnSync(event)
+		if not self:IsInCombat() then return end
+	    if event == "TeleportLive" then
+			if self:GetStage(1) then
+				self:SetStage(2)
+				warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+				DBM.InfoFrame:Hide()
+			else
+				warnTeleportLive:Show()
+			end
+			warnTeleportLiveSoon:Cancel()
+			timerTeleportLive:Stop()
+			warnTeleportDeadSoon:Schedule(14.5)
+			timerTeleportDead:Start()
+		elseif event == "TeleportDead" then
+			warnTeleportDead:Show()
+			warnTeleportDeadSoon:Cancel()
+			timerTeleportDead:Stop()
+			warnTeleportLiveSoon:Schedule(14.5)
+			timerTeleportLive:Start()
+		elseif event == "LowHPThreshold" then
+			if DBM:IsSeasonal("SeasonOfDiscovery") then
+				self:UnscheduleMethod("Teleport")
+			end
+			timerTeleportLive:Stop()
+			timerTeleportDead:Stop()
+			warnTeleportLiveSoon:Cancel()
+			warnTeleportDeadSoon:Cancel()
+		end
 	end
 end

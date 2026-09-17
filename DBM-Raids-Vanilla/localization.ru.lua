@@ -299,12 +299,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Бритвосмерт Неукротимый"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Появление аддов"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Отсчет времени до первого появления аддов"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Нападение на инкубатор! Поднимайте тревогу! Все на защиту кладки!"
 }
@@ -469,6 +464,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Ну что ж, поиграем!",
+	YellP2		= "Отлично, слуги мои! Смертные уже не столь дерзки! Посмотрим, как они справятся с истинным Повелителем Пика Черной горы!!!",
 	YellP3		= "Не может быть! Восстаньте, мои прислужники! Послужите господину еще раз!",
 	YellShaman	= "Шаманы, покажите, на что способны ваши тотемы!",
 	YellPaladin	= "Паладины… Я слышал, у вас несколько жизней. Докажите.",
@@ -525,6 +521,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Люцифрон"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Заступник-поджигатель: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся заступниках-поджигателях"
+}
 
 ----------------
 --  Magmadar  --
@@ -543,6 +545,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Гееннас"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Поджигатель: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся поджигателях"
+}
 
 ------------
 --  Garr  --
@@ -551,6 +559,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Гарр"
+}
+L:SetMiscLocalization{
+	Firesworn = "Огнекамень"
 }
 
 --------------
@@ -579,6 +590,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Предвестник Сульфурон"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Поджигатель-жрец: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся поджигателях-жрецах"
+}
 
 ----------------
 --  Golemagg  --
@@ -597,6 +614,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Мажордом Экзекутус"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Поджигатель-гвардеец",
+	FlamewakerHealer	= "Поджигатель-целитель"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Следующий щит"
 }
@@ -614,7 +635,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Погружение",
-	WarnEmerge			= "Появление"
+	WarnEmerge			= "Появление",
+	WarnGuardDied		= "Сын Пламени: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Погружение",
@@ -626,7 +648,8 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Отсчет времени до погружения",
 	WarnEmerge			= "Показывать предупреждение о появлении",
 	TimerEmerge			= "Отсчет времени до появления",
-	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat,
+	WarnGuardDied		= "Показывать предупреждение об оставшихся сынах пламени"
 }
 L:SetMiscLocalization{
 	Submerge	= "ПРИДИТЕ, СЛУГИ МОИ! ЗАЩИТИТЕ СВОЕГО ГОСПОДИНА!",
@@ -887,23 +910,8 @@ L:SetGeneralLocalization({
 	name = "Хейган Нечестивый"
 })
 
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Телепортация",
-	WarningTeleportSoon	= "Телепортация через %d сек."
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Телепортация"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Показывать предупреждение о телепортации",
-	WarningTeleportSoon	= "Показывать предупреждение перед следующей телепортацией",
-	TimerTeleport		= "Отсчет времени до телепортации"
-})
-
 L:SetMiscLocalization({
-	Pull1				= "Теперь вы принадлежите мне!",
+	Pull1				= "Теперь ты принадлежишь мне.",
 	Pull2				= "Я вижу тебя…",
 	Pull3 				= "Пришло ваше время…"
 })
@@ -914,7 +922,7 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("LoathebVanilla")
 
 L:SetGeneralLocalization({
-	name = "Лотхиб"
+	name = "Мерзот"
 })
 
 L:SetWarningLocalization({
@@ -977,7 +985,7 @@ L:SetMiscLocalization({
 	Yell1P1		= "На корм хозяину!",
 	Yell2P1		= "Сталагг тебя раздавит!",
 	Yell1P2 	= "Отведайте… своих… костей…",
-	Yell2P2 	= "Растерзаю!!!",
+	Yell2P2 	= "Проломить… тебя!!!",
 	Yell3P2 	= "Убей…",
 	EmoteDies 	= "%s умирает.",
 	--EmoteRevive = "%s is jolted back to life!"

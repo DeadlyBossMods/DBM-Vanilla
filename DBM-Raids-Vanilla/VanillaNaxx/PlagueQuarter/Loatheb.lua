@@ -15,206 +15,205 @@ mod:SetModelID(16110)
 mod:SetZone(533)
 
 mod:RegisterCombat("combat")--Maybe change to a yell later so pull detection works if you chain pull him from tash gauntlet
-
--- New spell ID found in logs on SoD
--- 1225419 (Necrotic Aura)
--- That's the WotLK healer mechanic. On PTR it was using the Classic stuff, but they forgot to add the new SoD healing spells, so they weren't blocked :>
--- Maybe they were too lazy to fix that or tuning for 20 players needed the different mechanic?
-
--- There are two types of Corrupted Mind spells for each class.
--- Let's refer to them as "Corrupted Mind Aura" and "Corrupted Mind Debuff" for clarify
--- Corrupted Mind Aura
---   * This is a 2 min debuff that gives you a Corrupted Mind Debuff if you cast a heal.
---   * This is refreshed every 11 seconds if you're in combat with Loatheb.
--- Corrupted Mind Debuff
---   * This is a 1 min debuff that doesn't let you heal.
---   * This is applied if you heal when you have the Corrupted Mind Aura.
-
--- Corrupted Mind Aura spell IDs (in the order of Priest, Druid, Paladin, Shaman)
--- 29185 29194 29196 29198
-
--- Corrupted Mind Debuff spell IDs (in the order of Priest, Druid, Paladin, Shaman)
--- 29184 29195 29197 29199
-
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 29184 29195 29197 29199",
-	"SPELL_AURA_REMOVED 29184 29195 29197 29199",
-	"SPELL_CAST_SUCCESS 29234 29204 30281 1225419",
-	"UNIT_DIED"
-)
-
-local isWarlock 			= select(2, UnitClass("player")) == "WARLOCK"
-local warnSporeNow			= mod:NewCountAnnounce(29234, 1, "134530", "Dps")
-local warnSporeSoon			= mod:NewSoonAnnounce(29234, 1, "134530", "Dps")
-local warnDoomNow			= mod:NewCountAnnounce(29204, 3)
-local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3, nil, isWarlock)
--- SoD
--- TODO: remove alerts from non-SoD clients to fix UI, but I real want to handle that better in Core rather than special-casing it in all the mods
-local warnHealSoon, warnHealNow, timerAura, timerNextAura
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 1225419, nil, nil, nil, 1225419)
-	warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, 2, 8, nil, 1225419, 1225419, nil, "healall") -- keep name like a warning, not special warning to use same logic/locales as era above
-	timerAura				= mod:NewBuffActiveTimer(17, 1225419, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-	timerNextAura			= mod:NewVarTimer("v20.1-21.5", 1225419)
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
 else
-	warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184, "Healer")
-	warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
-end
 
-local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, "Dps", nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)
-local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
-local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, isWarlock, nil, 5)
+	-- New spell ID found in logs on SoD
+	-- 1225419 (Necrotic Aura)
+	-- That's the WotLK healer mechanic. On PTR it was using the Classic stuff, but they forgot to add the new SoD healing spells, so they weren't blocked :>
+	-- Maybe they were too lazy to fix that or tuning for 20 players needed the different mechanic?
 
-mod:AddInfoFrameOption(29184, "Tank|Healer")
-mod:AddDropdownOption("Sorting", {"Alphabetical", "Duration"}, "Duration", "misc", nil, 29184)
+	-- There are two types of Corrupted Mind spells for each class.
+	-- Let's refer to them as "Corrupted Mind Aura" and "Corrupted Mind Debuff" for clarify
+	-- Corrupted Mind Aura
+	--   * This is a 2 min debuff that gives you a Corrupted Mind Debuff if you cast a heal.
+	--   * This is refreshed every 11 seconds if you're in combat with Loatheb.
+	-- Corrupted Mind Debuff
+	--   * This is a 1 min debuff that doesn't let you heal.
+	--   * This is applied if you heal when you have the Corrupted Mind Aura.
 
-mod.vb.doomCounter	= 0
-mod.vb.sporeTimer	= 12.9
-mod.vb.sporeCounter = 0
-local hadCorrupted = {}
+	-- Corrupted Mind Aura spell IDs (in the order of Priest, Druid, Paladin, Shaman)
+	-- 29185 29194 29196 29198
 
-local updateInfoFrame
-do
-	local mfloor, mmax = math.floor, math.max
-	local tinsert, tsort = table.insert, table.sort
-	local twipe = table.wipe or wipe
-	local GetTime = GetTime
+	-- Corrupted Mind Debuff spell IDs (in the order of Priest, Druid, Paladin, Shaman)
+	-- 29184 29195 29197 29199
 
-	local lines, sortedLines, corruptKeys = {}, {}, {}
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 29184 29195 29197 29199",
+		"SPELL_AURA_REMOVED 29184 29195 29197 29199",
+		"SPELL_CAST_SUCCESS 29234 29204 30281 1225419",
+		"UNIT_DIED"
+	)
 
-	updateInfoFrame = function()
-		twipe(lines)
-		twipe(sortedLines)
-		twipe(corruptKeys)
+	local isWarlock 			= select(2, UnitClass("player")) == "WARLOCK"
+	local warnSporeNow			= mod:NewCountAnnounce(29234, 1, "134530", "Dps")
+	local warnSporeSoon			= mod:NewSoonAnnounce(29234, 1, "134530", "Dps")
+	local warnDoomNow			= mod:NewCountAnnounce(29204, 3)
+	local warnRemoveCurse		= mod:NewSpellAnnounce(30281, 3, nil, isWarlock)
+	-- SoD
+	-- TODO: remove alerts from non-SoD clients to fix UI, but I real want to handle that better in Core rather than special-casing it in all the mods
+	local warnHealSoon, warnHealNow, timerAura, timerNextAura
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 1225419, nil, nil, nil, 1225419)
+		warnHealNow				= mod:NewSpecialWarning("WarningHealNow", "Healer", nil, nil, 2, 8, nil, 1225419, 1225419, nil, "healall") -- keep name like a warning, not special warning to use same logic/locales as era above
+		timerAura				= mod:NewBuffActiveTimer(17, 1225419, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+		timerNextAura			= mod:NewVarTimer("v20.1-21.5", 1225419)
+	else
+		warnHealSoon			= mod:NewAnnounce("WarningHealSoon", 4, 29184, "Healer")
+		warnHealNow				= mod:NewAnnounce("WarningHealNow", 1, 29184, false)
+	end
 
-		local now = GetTime()
-		local sortMode = mod.Options and mod.Options.Sorting
+	local timerSpore			= mod:NewNextCountTimer(12.9, 29234, nil, "Dps", nil, 5, "134530", DBM_COMMON_L.DAMAGE_ICON)
+	local timerDoom				= mod:NewNextTimer("v29.1-32.4", 29204, nil, nil, nil, 2)
+	local timerRemoveCurseCD	= mod:NewNextTimer(30.7, 30281, nil, isWarlock, nil, 5)
 
-		for name in pairs(hadCorrupted) do
-			corruptKeys[#corruptKeys + 1] = name
-		end
+	mod:AddInfoFrameOption(29184, "Tank|Healer")
+	mod:AddDropdownOption("Sorting", {"Alphabetical", "Duration"}, "Duration", "misc", nil, 29184)
 
-		if sortMode == "Duration" then
-			tsort(corruptKeys, function(a, b)
-				local ta = hadCorrupted[a]
-				local tb = hadCorrupted[b]
+	mod.vb.doomCounter	= 0
+	mod.vb.sporeTimer	= 12.9
+	mod.vb.sporeCounter = 0
+	local hadCorrupted = {}
 
-				if ta and tb then
-					if ta == tb then
-						return a < b
+	local updateInfoFrame
+	do
+		local mfloor, mmax = math.floor, math.max
+		local tinsert, tsort = table.insert, table.sort
+		local twipe = table.wipe or wipe
+		local GetTime = GetTime
+
+		local lines, sortedLines, corruptKeys = {}, {}, {}
+
+		updateInfoFrame = function()
+			twipe(lines)
+			twipe(sortedLines)
+			twipe(corruptKeys)
+
+			local now = GetTime()
+			local sortMode = mod.Options and mod.Options.Sorting
+
+			for name in pairs(hadCorrupted) do
+				corruptKeys[#corruptKeys + 1] = name
+			end
+
+			if sortMode == "Duration" then
+				tsort(corruptKeys, function(a, b)
+					local ta = hadCorrupted[a]
+					local tb = hadCorrupted[b]
+
+					if ta and tb then
+						if ta == tb then
+							return a < b
+						end
+						return ta > tb
 					end
-					return ta > tb
+
+					return ta ~= nil
+				end)
+			else
+				tsort(corruptKeys)
+			end
+
+			for i = 1, #corruptKeys do
+				local name = corruptKeys[i]
+				local exp = hadCorrupted[name]
+
+				local remaining = 0
+				if exp then
+					remaining = mfloor(mmax(exp - now, 0))
 				end
 
-				return ta ~= nil
-			end)
-		else
-			tsort(corruptKeys)
-		end
-
-		for i = 1, #corruptKeys do
-			local name = corruptKeys[i]
-			local exp = hadCorrupted[name]
-
-			local remaining = 0
-			if exp then
-				remaining = mfloor(mmax(exp - now, 0))
+				sortedLines[i] = name
+				if remaining > 0 then
+					lines[name] = ("|cffff0000%d|r"):format(remaining)
+				else
+					lines[name] = ("|cff00ff00%s|r"):format(READY)
+				end
 			end
 
-			sortedLines[i] = name
-			if remaining > 0 then
-				lines[name] = ("|cffff0000%d|r"):format(remaining)
-			else
-				lines[name] = ("|cff00ff00%s|r"):format(READY)
-			end
-		end
-
-		return lines, sortedLines
-	end
-end
-
-function mod:OnCombatStart()
-	self.vb.doomCounter = 0
-	self.vb.sporeCounter = 0
-	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerNextAura:Start(10) -- TODO: exact timer unclear? seen as early as 11, but also not too important
-	end
-	timerRemoveCurseCD:Start("v0.5-8.2")
-	timerSpore:Start(11.3, 1)
-	warnSporeSoon:Schedule(self.vb.sporeTimer - 5)
-	timerDoom:Start(121.3, self.vb.doomCounter + 1)
-
-	local startTime = GetTime()
-	table.wipe(hadCorrupted)
-	for uId in DBM:GetGroupMembers() do
-		local _, cls = UnitClass(uId)
-		local _, _, _, mapId = UnitPosition(uId)
-		if not UnitIsDeadOrGhost(uId) and mapId == 533 and (cls == "DRUID" or cls == "PALADIN" or cls == "PRIEST" or cls == "SHAMAN") then
-			hadCorrupted[DBM:GetUnitFullName(uId)] = startTime
+			return lines, sortedLines
 		end
 	end
-	if not DBM:IsSeasonal("SeasonOfDiscovery") and self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:SetHeader(DBM:GetSpellName(29184))
-		DBM.InfoFrame:Show(40, "function", updateInfoFrame, false, false)
-		DBM.InfoFrame:SetColumns(2)
-	end
-end
 
-function mod:OnCombatEnd()
-	if DBM.InfoFrame:IsShown() then
-		DBM.InfoFrame:Hide()
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(29234) then
-		self.vb.sporeCounter = self.vb.sporeCounter + 1
-		timerSpore:Start(self.vb.sporeTimer, self.vb.sporeCounter+1)
-		warnSporeNow:Show(self.vb.sporeCounter)
+	function mod:OnCombatStart()
+		self.vb.doomCounter = 0
+		self.vb.sporeCounter = 0
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			timerNextAura:Start(10) -- TODO: exact timer unclear? seen as early as 11, but also not too important
+		end
+		timerRemoveCurseCD:Start("v0.5-8.2")
+		timerSpore:Start(11.3, 1)
 		warnSporeSoon:Schedule(self.vb.sporeTimer - 5)
-	elseif args:IsSpell(29204) then
-		self.vb.doomCounter = self.vb.doomCounter + 1
-		local timer = self.vb.doomCounter % 2 == 0 and 32.4 or 29.1
-		if self.vb.doomCounter >= 7 then
-			timer = self.vb.doomCounter == 7 and 9.7 or self.vb.doomCounter % 2 == 0 and 19.4 or 11.3
-		end
-		warnDoomNow:Show(self.vb.doomCounter)
-		timerDoom:Start(timer, self.vb.doomCounter + 1)
-	elseif args:IsSpell(30281) then
-		warnRemoveCurse:Show()
-		timerRemoveCurseCD:Start()
-	elseif args:IsSpell(1225419) then -- SoD spell ID
-		timerAura:Start()
-		timerNextAura:Start()
-		warnHealSoon:Schedule(14)
-		warnHealNow:Schedule(17)
-		warnHealNow:ScheduleVoice(17, "healall")
-	end
-end
+		timerDoom:Start(121.3, self.vb.doomCounter + 1)
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(29184, 29195, 29197, 29199) then
-		hadCorrupted[args.destName] = GetTime() + 60
-		if args:IsPlayer() then
-			warnHealSoon:Schedule(55)
+		local startTime = GetTime()
+		table.wipe(hadCorrupted)
+		for uId in DBM:GetGroupMembers() do
+			local _, cls = UnitClass(uId)
+			local _, _, _, mapId = UnitPosition(uId)
+			if not UnitIsDeadOrGhost(uId) and mapId == 533 and (cls == "DRUID" or cls == "PALADIN" or cls == "PRIEST" or cls == "SHAMAN") then
+				hadCorrupted[DBM:GetUnitFullName(uId)] = startTime
+			end
+		end
+		if not DBM:IsSeasonal("SeasonOfDiscovery") and self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
+			DBM.InfoFrame:SetHeader(DBM:GetSpellName(29184))
+			DBM.InfoFrame:Show(40, "function", updateInfoFrame, false, false)
+			DBM.InfoFrame:SetColumns(2)
 		end
 	end
-end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(29184, 29195, 29197, 29199) then
-		if args:IsPlayer() then
-			warnHealNow:Show()
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(29234) then
+			self.vb.sporeCounter = self.vb.sporeCounter + 1
+			timerSpore:Start(self.vb.sporeTimer, self.vb.sporeCounter+1)
+			warnSporeNow:Show(self.vb.sporeCounter)
+			warnSporeSoon:Schedule(self.vb.sporeTimer - 5)
+		elseif args:IsSpell(29204) then
+			self.vb.doomCounter = self.vb.doomCounter + 1
+			local timer = self.vb.doomCounter % 2 == 0 and 32.4 or 29.1
+			if self.vb.doomCounter >= 7 then
+				timer = self.vb.doomCounter == 7 and 9.7 or self.vb.doomCounter % 2 == 0 and 19.4 or 11.3
+			end
+			warnDoomNow:Show(self.vb.doomCounter)
+			timerDoom:Start(timer, self.vb.doomCounter + 1)
+		elseif args:IsSpell(30281) then
+			warnRemoveCurse:Show()
+			timerRemoveCurseCD:Start()
+		elseif args:IsSpell(1225419) then -- SoD spell ID
+			timerAura:Start()
+			timerNextAura:Start()
+			warnHealSoon:Schedule(14)
+			warnHealNow:Schedule(17)
+			warnHealNow:ScheduleVoice(17, "healall")
 		end
 	end
-end
 
---because in all likelyhood, pull detection failed (cause 90s like to charge in there trash and all and pull it
---We unschedule the pre warnings on death as a failsafe
-function mod:UNIT_DIED(args)
-	if self:GetCIDFromGUID(args.destGUID) == 16011 then
-		warnSporeSoon:Cancel()
-	elseif hadCorrupted[args.destName] then
-		hadCorrupted[args.destName] = nil
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(29184, 29195, 29197, 29199) then
+			hadCorrupted[args.destName] = GetTime() + 60
+			if args:IsPlayer() then
+				warnHealSoon:Schedule(55)
+			end
+		end
+	end
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(29184, 29195, 29197, 29199) then
+			if args:IsPlayer() then
+				warnHealNow:Show()
+			end
+		end
+	end
+
+	--because in all likelyhood, pull detection failed (cause 90s like to charge in there trash and all and pull it
+	--We unschedule the pre warnings on death as a failsafe
+	function mod:UNIT_DIED(args)
+		if self:GetCIDFromGUID(args.destGUID) == 16011 then
+			warnSporeSoon:Cancel()
+		elseif hadCorrupted[args.destName] then
+			hadCorrupted[args.destName] = nil
+		end
 	end
 end

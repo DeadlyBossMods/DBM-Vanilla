@@ -21,164 +21,169 @@ mod:RegisterZoneCombat(509)
 mod.isTrashMod = true
 mod.isTrashModBossFightAllowed = true -- Toxic Pool also shows up during boss fights
 
-mod:RegisterEvents(
-	"SPELL_AURA_APPLIED 22997 25698 26079 1215202 1215421 2855",
-	"SPELL_PERIODIC_DAMAGE 1215421",
-	"SPELL_CAST_SUCCESS 26586",
-	"SPELL_SUMMON 17430 17431",
-	"SPELL_MISSED",
-	"UNIT_DIED",
-	"SPELL_DAMAGE 14297 24340 8732 26546 26558 26554 25779",
-	"PLAYER_TARGET_CHANGED",
-	"NAME_PLATE_UNIT_ADDED"
-)
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
+	mod:RegisterEvents(
+		"SPELL_AURA_APPLIED 22997 25698 26079 1215202 1215421 2855",
+		"SPELL_PERIODIC_DAMAGE 1215421",
+		"SPELL_CAST_SUCCESS 26586",
+		"SPELL_SUMMON 17430 17431",
+		"SPELL_MISSED",
+		"UNIT_DIED",
+		"SPELL_DAMAGE 14297 24340 8732 26546 26558 26554 25779",
+		"PLAYER_TARGET_CHANGED",
+		"NAME_PLATE_UNIT_ADDED"
+	)
 
-mod:AddNamePlateOption("ThunderclapNameplate", 8732)
+	mod:AddNamePlateOption("ThunderclapNameplate", 8732)
 
--- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
--- This is a problem out of combat often enough
-local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
+	-- Toxic Pool, not using the new NewGtfo() thing because it uses the new event handler type that currently only supports combat-only events
+	-- This is a problem out of combat often enough
+	local specWarnGTFO = mod:NewSpecialWarningGTFO(1215421, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
 
---local eventsRegistered = false
+	--local eventsRegistered = false
 
-local warnPlague                    = mod:NewTargetAnnounce(22997, 2)
-local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
-local warnAdd1						= mod:NewSpellAnnounce(17430, 2, 802, "Dps")
-local warnAdd2						= mod:NewSpellAnnounce(17431, 2, 802, "Dps")
+	local warnPlague                    = mod:NewTargetAnnounce(22997, 2)
+	local warnCauseInsanity             = mod:NewTargetNoFilterAnnounce(26079, 2)
+	local warnAdd1						= mod:NewSpellAnnounce(17430, 2, 802, "Dps")
+	local warnAdd2						= mod:NewSpellAnnounce(17431, 2, 802, "Dps")
 
-local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2, nil, nil, "runout")
-local yellPlague                    = mod:NewYell(22997)
-local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2, nil, nil, "justrun")
-local specWarnShadowFrostReflect    = mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
-local specWarnFireArcaneReflect     = mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
+	local specWarnPlague                = mod:NewSpecialWarningMoveAway(22997, nil, nil, nil, 1, 2, nil, nil, "runout")
+	local yellPlague                    = mod:NewYell(22997)
+	local specWarnExplode               = mod:NewSpecialWarningRun(25698, "Melee", nil, 3, 4, 2, nil, nil, "justrun")
+	local specWarnShadowFrostReflect    = mod:NewSpecialWarningReflect(19595, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
+	local specWarnFireArcaneReflect     = mod:NewSpecialWarningReflect(13022, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopattack")
 
-local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698, nil, nil, nil, 2) -- Duration is 7s but it expires after 6s
+	local timerSpecWarnExplode			= mod:NewCastTimer(6, 25698, nil, nil, nil, 2) -- Duration is 7s but it expires after 6s
 
-local warnExplosion, yellBurst, specWarnBurst, specWarnExplosion, timerExplosion, timerBurst
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-warnExplosion				= mod:NewAnnounce("WarnExplosion", 3, nil, false)
-yellBurst					= mod:NewIconTargetYell(1215202)
-specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
-specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
-timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
-timerBurst					= mod:NewNextTimer(30, 1215202)
-end
-
-local aq40Trash = DBM:GetModByName("AQ40Trash")
-
--- aura applied didn't seem to catch the reflects and other buffs
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(22997) and not self:IsTrivial() then
-		if args:IsPlayer() then
-			specWarnPlague:Show()
-			specWarnPlague:Play("runout")
-			yellPlague:Yell()
-		elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
-			specWarnPlague:Show()
-			specWarnPlague:Play("runout")
-		else
-			warnPlague:Show(args.destName)
-		end
-		aq40Trash:TrackTrashAbility(args.sourceGUID, "Plague", args.sourceRaidFlags, args.sourceName)
-	elseif args:IsSpell(25698) and not self:IsTrivial() then
-		specWarnExplode:Show()
-		specWarnExplode:Play("justrun")
-		timerSpecWarnExplode:Start(nil, args.sourceGUID)
-	elseif args:IsSpell(26079) then
-		warnCauseInsanity:CombinedShow(0.75, args.destName)
-	elseif args:IsSpell(1215202) then
-		aq40Trash:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
-	elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then
-		specWarnGTFO:Show(args.spellName)
-		specWarnGTFO:Play("watchfeet")
-	elseif args:IsSpell(2855) and not args:IsDestTypePlayer() then
-		local caster = DBM:GetRaidUnitIdByGuid(args.sourceGUID)
-		if caster and UnitExists(caster .. "target") then
-			aq40Trash:ScheduleMethod(0.01, "ScanTrashAbilities", caster .. "target")
-			-- TODO: check if the schedule/delay is necessary
-		end
+	local warnExplosion, yellBurst, specWarnBurst, specWarnExplosion, timerExplosion, timerBurst
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+	warnExplosion				= mod:NewAnnounce("WarnExplosion", 3, nil, false)
+	yellBurst					= mod:NewIconTargetYell(1215202)
+	specWarnBurst				= mod:NewSpecialWarningDodge(1215202, nil, nil, nil, 2, 2)
+	specWarnExplosion			= mod:NewSpecialWarning("SpecWarnExplosion", nil, nil, nil, 1, 8)
+	timerExplosion				= mod:NewTimer(30, "TimerExplosion") -- Default icon looks good cause they cast Arcane Explosion
+	timerBurst					= mod:NewNextTimer(30, 1215202)
 	end
-end
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
-	if spellId == 1215421 and destGUID == UnitGUID("player") and self:AntiSpam(4, "ToxicPool") then
-		specWarnGTFO:Show(spellName)
-		specWarnGTFO:Play("watchfeet")
-	end
-end
+	local aq40Trash = DBM:GetModByName("AQ40Trash")
 
-function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _, spellId)
-	if spellId == 14297 or spellId == 26546 then
-		aq40Trash:TrackTrashAbility(sourceGUID, "ShadowStorm", sourceRaidFlags, sourceName)
-	elseif spellId == 26558 or spellId == 24340 then
-		aq40Trash:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
-	elseif spellId == 26554 or spellId == 8732 then
-		aq40Trash:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
-		if self.Options.ThunderclapNameplate and self:AntiSpam(1, "Thunderclap", sourceGUID) then
-			DBM.Nameplate:Show(true, sourceGUID, spellId, nil, 7)
-		end
-	elseif spellId == 25779 then
-		aq40Trash:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	-- 26586 (Birth) is used by a lot, here it indicates that Eye Tentacles (ghosts that don't look like Eye Tentacles at all) spawned that explode if they walk into you
-	if args:IsSpell(26586) and (DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528) then
-		aq40Trash:ExplodingGhost(warnExplosion, specWarnExplosion, timerExplosion)
-	end
-end
-
-local playerGUID = UnitGUID("player")
-function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, destRaidFlags, _, _, spellSchool, missType)
-	if missType == "REFLECT" or missType == "DEFLECT" then
-		if spellSchool == 32 or spellSchool == 16 then
-			if sourceGUID == playerGUID and self:AntiSpam(3, 1) then
-				specWarnShadowFrostReflect:Show(destName)
-				specWarnShadowFrostReflect:Play("stopattack")
+	-- aura applied didn't seem to catch the reflects and other buffs
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(22997) and not self:IsTrivial() then
+			if args:IsPlayer() then
+				specWarnPlague:Show()
+				specWarnPlague:Play("runout")
+				yellPlague:Yell()
+			elseif UnitGUID("pet") and UnitGUID("pet") == args.destGUID then
+				specWarnPlague:Show()
+				specWarnPlague:Play("runout")
+			else
+				warnPlague:Show(args.destName)
 			end
-			aq40Trash:TrackTrashAbility(destGUID, "ShadowFrostReflect", destRaidFlags, destName)
-		elseif spellSchool == 4 or spellSchool == 64 then
-			if sourceGUID == playerGUID and self:AntiSpam(3, 2) then
-				specWarnFireArcaneReflect:Show(destName)
-				specWarnFireArcaneReflect:Play("stopattack")
+			aq40Trash:TrackTrashAbility(args.sourceGUID, "Plague", args.sourceRaidFlags, args.sourceName)
+		elseif args:IsSpell(25698) and not self:IsTrivial() then
+			specWarnExplode:Show()
+			specWarnExplode:Play("justrun")
+			timerSpecWarnExplode:Start(nil, args.sourceGUID)
+		elseif args:IsSpell(26079) then
+			warnCauseInsanity:CombinedShow(0.75, args.destName)
+		elseif args:IsSpell(1215202) then
+			aq40Trash:NoxiousBurst(args, specWarnBurst, yellBurst, timerBurst)
+		elseif args:IsSpell(1215421) and args:IsPlayer() and self:AntiSpam(4, "ToxicPool") then
+			specWarnGTFO:Show(args.spellName)
+			specWarnGTFO:Play("watchfeet")
+		elseif args:IsSpell(2855) and not args:IsDestTypePlayer() then
+			local caster = DBM:GetRaidUnitIdByGuid(args.sourceGUID)
+			if caster and UnitExists(caster .. "target") then
+				aq40Trash:ScheduleMethod(0.01, "ScanTrashAbilities", caster .. "target")
+				-- TODO: check if the schedule/delay is necessary
 			end
-			aq40Trash:TrackTrashAbility(destGUID, "FireArcaneReflect", destRaidFlags, destName)
 		end
 	end
-end
 
-function mod:SPELL_SUMMON(args)
-	if args:IsSpell(17430) then
-		warnAdd1:Show()
-		aq40Trash:TrackTrashAbility(args.sourceGUID, "Summon1", args.sourceRaidFlags, args.sourceName)
-	elseif args:IsSpell(17431) then
-		warnAdd2:Show()
-		aq40Trash:TrackTrashAbility(args.sourceGUID, "Summon2", args.sourceRaidFlags, args.sourceName)
+	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+		if spellId == 1215421 and destGUID == UnitGUID("player") and self:AntiSpam(4, "ToxicPool") then
+			specWarnGTFO:Show(spellName)
+			specWarnGTFO:Play("watchfeet")
+		end
 	end
-end
 
-function mod:PLAYER_TARGET_CHANGED()
-	aq40Trash:ScanTrashAbilities("target")
-end
+	function mod:SPELL_DAMAGE(sourceGUID, sourceName, _, sourceRaidFlags, _, _, _, _, spellId)
+		if spellId == 14297 or spellId == 26546 then
+			aq40Trash:TrackTrashAbility(sourceGUID, "ShadowStorm", sourceRaidFlags, sourceName)
+		elseif spellId == 26558 or spellId == 24340 then
+			aq40Trash:TrackTrashAbility(sourceGUID, "Meteor", sourceRaidFlags, sourceName)
+		elseif spellId == 26554 or spellId == 8732 then
+			aq40Trash:TrackTrashAbility(sourceGUID, "Thunderclap", sourceRaidFlags, sourceName)
+			if self.Options.ThunderclapNameplate and self:AntiSpam(1, "Thunderclap", sourceGUID) then
+				DBM.Nameplate:Show(true, sourceGUID, spellId, nil, 7)
+			end
+		elseif spellId == 25779 then
+			aq40Trash:TrackTrashAbility(sourceGUID, "ManaBurn", sourceRaidFlags, sourceName)
+		end
+	end
 
-function mod:NAME_PLATE_UNIT_ADDED(uid)
-	aq40Trash:ScanTrashAbilities(uid)
-end
+	function mod:SPELL_CAST_SUCCESS(args)
+		-- 26586 (Birth) is used by a lot, here it indicates that Eye Tentacles (ghosts that don't look like Eye Tentacles at all) spawned that explode if they walk into you
+		if args:IsSpell(26586) and (DBM:GetCIDFromGUID(args.sourceGUID) == 235668 or DBM:GetCIDFromGUID(args.sourceGUID) == 235528) then
+			aq40Trash:ExplodingGhost(warnExplosion, specWarnExplosion, timerExplosion)
+		end
+	end
 
-function mod:OnCombatStart()
-	aq40Trash:NameplateScanningLoop()
-end
+	local playerGUID = UnitGUID("player")
+	function mod:SPELL_MISSED(sourceGUID, _, _, _, destGUID, destName, _, destRaidFlags, _, _, spellSchool, missType)
+		if missType == "REFLECT" or missType == "DEFLECT" then
+			if spellSchool == 32 or spellSchool == 16 then
+				if sourceGUID == playerGUID and self:AntiSpam(3, 1) then
+					specWarnShadowFrostReflect:Show(destName)
+					specWarnShadowFrostReflect:Play("stopattack")
+				end
+				aq40Trash:TrackTrashAbility(destGUID, "ShadowFrostReflect", destRaidFlags, destName)
+			elseif spellSchool == 4 or spellSchool == 64 then
+				if sourceGUID == playerGUID and self:AntiSpam(3, 2) then
+					specWarnFireArcaneReflect:Show(destName)
+					specWarnFireArcaneReflect:Play("stopattack")
+				end
+				aq40Trash:TrackTrashAbility(destGUID, "FireArcaneReflect", destRaidFlags, destName)
+			end
+		end
+	end
 
-function mod:OnCombatEnd()
-	aq40Trash:UnscheduleMethod("NameplateScanningLoop")
-end
+	function mod:SPELL_SUMMON(args)
+		if args:IsSpell(17430) then
+			warnAdd1:Show()
+			aq40Trash:TrackTrashAbility(args.sourceGUID, "Summon1", args.sourceRaidFlags, args.sourceName)
+		elseif args:IsSpell(17431) then
+			warnAdd2:Show()
+			aq40Trash:TrackTrashAbility(args.sourceGUID, "Summon2", args.sourceRaidFlags, args.sourceName)
+		end
+	end
 
-function mod:UNIT_DIED(args)
-	aq40Trash:RemoveTrackTrashAbilityMob(args.destGUID)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 15355 then
-		timerSpecWarnExplode:Stop(args.destGUID)
+	function mod:PLAYER_TARGET_CHANGED()
+		aq40Trash:ScanTrashAbilities("target")
+	end
+
+	function mod:NAME_PLATE_UNIT_ADDED(uid)
+		aq40Trash:ScanTrashAbilities(uid)
+	end
+
+	function mod:OnCombatStart()
+		aq40Trash:NameplateScanningLoop()
+	end
+
+	function mod:OnCombatEnd()
+		aq40Trash:UnscheduleMethod("NameplateScanningLoop")
+	end
+
+	function mod:UNIT_DIED(args)
+		aq40Trash:RemoveTrackTrashAbilityMob(args.destGUID)
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if cid == 15355 then
+			timerSpecWarnExplode:Stop(args.destGUID)
+		end
 	end
 end

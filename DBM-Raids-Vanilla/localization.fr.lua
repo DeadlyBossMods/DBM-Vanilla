@@ -258,10 +258,10 @@ L:SetTimerLocalization{
 	TimerEmerge			= "Émersion"
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Afficher une annonce pour la submersion d'Ouro",
-	TimerSubmerge		= "Afficher un chronomètre pour la submersion d'Ouro",
-	WarnEmerge			= "Afficher une annonce pour l'émersion d'Ouro",
-	TimerEmerge			= "Afficher un chronomètre pour l'émersion d'Ouro",
+	WarnSubmerge		= "Afficher une annonce pour submersion",
+	TimerSubmerge		= "Afficher un chronomètre pour submersion",
+	WarnEmerge			= "Afficher une annonce pour émersion",
+	TimerEmerge			= "Afficher un chronomètre pour émersion",
 	SpecWarnEye			= "Afficher une annonce pour l'œil géant"
 }
 
@@ -409,12 +409,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Tranchetripe l'Indompté"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Premiers serviteurs"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Afficher un chronomètre pour les premiers serviteurs"
-}
+
 L:SetMiscLocalization{
 	Pull = "La chambre des œufs est envahie ! Sonnez l'alarme ! Protégez les œufs à tout prix !"
 }
@@ -580,6 +575,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
     YellP1			= "Que les jeux commencent !",
+	YellP2			= "Beau travail ! Le courage des mortels commence à faiblir ! Voyons maintenant s'ils peuvent lutter contre le véritable seigneur du pic Blackrock !",
     YellP3			= "C'est impossible ! Relevez-vous, serviteurs ! Servez une nouvelle fois votre maître !",
     YellShaman		= "Chamans, montrez-moi ce que vos totems peuvent faire !",
     YellPaladin		= "Les paladins... J'en entendu dire que vous aviez de nombreuses vies... Montrez-moi.",
@@ -621,6 +617,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lucifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Protecteur Attise-flammes : %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Afficher une annonce pour les Protecteurs Attise-flammes restants"
+}
 
 ----------------
 --  Magmadar  --
@@ -639,6 +641,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Attise-flammes : %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Afficher une annonce pour les Attise-flammes restants"
+}
 
 ------------
 --  Garr  --
@@ -647,6 +655,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Lige du feu"
 }
 
 --------------
@@ -675,6 +686,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Messager de Sulfuron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Prêtre Attise-flammes : %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Afficher une annonce pour les Prêtres Attise-flammes restants"
+}
 
 ----------------
 --  Golemagg  --
@@ -693,6 +710,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Chambellan Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Elite Attise-flammes",
+	FlamewakerHealer	= "Soigneur Attise-flammes"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Bouclier"
 }
@@ -709,18 +730,20 @@ L:SetGeneralLocalization{
 	name = "Ragnaros"
 }
 L:SetWarningLocalization{
-	WarnSubmerge		= "Submergé",
-	WarnEmerge			= "Émergé"
+	WarnSubmerge		= "Submersion",
+	WarnEmerge			= "Émersion",
+	WarnGuardDied		= "Fils des flammes : %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
-	TimerSubmerge		= "Submergé",
-	TimerEmerge			= "Émergé",
+	TimerSubmerge		= "Submersion",
+	TimerEmerge			= "Émersion",
 }
 L:SetOptionLocalization{
-	WarnSubmerge		= "Afficher une annonce pour submergé",
-	TimerSubmerge		= "Afficher un chronomètre pour submergé",
-	WarnEmerge			= "Afficher une annonce pour émergé",
-	TimerEmerge			= "Afficher un chronomètre pour émergé",
+	WarnSubmerge		= "Afficher une annonce pour submersion",
+	TimerSubmerge		= "Afficher un chronomètre pour submersion",
+	WarnEmerge			= "Afficher une annonce pour émersion",
+	TimerEmerge			= "Afficher un chronomètre pour émersion",
+	WarnGuardDied		= "Afficher une annonce pour les Fils des flammes restants"
 }
 L:SetMiscLocalization{
 	Submerge	= "VENEZ, MES SERVITEURS ! DÉFENDEZ VOTRE MAÎTRE !",
@@ -861,21 +884,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan l'Impur"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation",
-	WarningTeleportSoon		= "Téléporation dans %d sec"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport			= "Téléporation"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow		= "Afficher une annonce de la téléporation",
-	WarningTeleportSoon		= "Afficher une pré-annonce de la téléporation",
-	TimerTeleport			= "Afficher un chronomètre pour la téléporation"
 })
 
 L:SetMiscLocalization({

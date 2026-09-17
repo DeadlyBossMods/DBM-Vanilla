@@ -21,75 +21,105 @@ mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 19779 19780 19776 20294 461103",
-	"SPELL_PERIODIC_DAMAGE 461103",
-	"SPELL_PERIODIC_MISSED 461103",
-	"SPELL_AURA_REMOVED 19779",
-	"SPELL_CAST_START 19775",
-	"SPELL_INTERRUPT"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 19779 19780 19776 20294 461103",
+		"SPELL_PERIODIC_DAMAGE 461103",
+		"SPELL_PERIODIC_MISSED 461103",
+		"SPELL_AURA_REMOVED 19779",
+		"SPELL_CAST_START 19775",
+		"SPELL_INTERRUPT",
+		"UNIT_DIED"
+	)
 
---TODO, nameplate aura if classic API supports it enough
-local warnShadowPain	= mod:NewTargetAnnounce(19776, 2, nil, false, 2)
-local warnInspire		= mod:NewTargetNoFilterAnnounce(19779, 2, nil, "Tank|Healer")
-local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
-local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
+	local warnShadowPain	= mod:NewTargetAnnounce(19776, 2, nil, false, 2)
+	local warnInspire		= mod:NewTargetNoFilterAnnounce(19779, 2, nil, "Tank|Healer")
+	local warnHandRagnaros	= mod:NewTargetAnnounce(19780, 2, nil, false, 2)
+	local warnImmolate		= mod:NewTargetAnnounce(20294, 2, nil, false, 2)
+	local warnGuardDied		= mod:NewAnnounce("WarnGuardDied", 1, "626004")
 
-local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+	local specWarnHeal		= mod:NewSpecialWarningInterrupt(19775, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
 
-local timerHeal			= mod:NewCastNPTimer(2, 19775, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
-local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
+	local timerHeal			= mod:NewCastNPTimer(2, 19775, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+	local timerInspire		= mod:NewTargetTimer(10, 19779, nil, "Tank|Healer", nil, 5, nil, DBM_COMMON_L.TANK_ICON..DBM_COMMON_L.HEALER_ICON)
 
-local specWarnGTFO
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnGTFO		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(19779) then
-		warnInspire:Show(args.destName)
-		timerInspire:Start(args.destName)
-	elseif args:IsSpell(19780) and args:IsDestTypePlayer() then
-		warnHandRagnaros:CombinedShow(0.3, args.destName)
-	elseif args:IsSpell(19776) and args:IsDestTypePlayer() then
-		warnShadowPain:CombinedShow(0.3, args.destName)
-	elseif args:IsSpell(20294) and args:IsDestTypePlayer() then
-		warnImmolate:CombinedShow(0.3, args.destName)
-	elseif args:IsSpell(461103) and args:IsPlayer() and self:AntiSpam(3, "gtfo") and specWarnGTFO then
-		specWarnGTFO:Show(args.spellName)
-		specWarnGTFO:Play("watchfeet")
+	local specWarnGTFO
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		specWarnGTFO		= mod:NewSpecialWarningGTFO(461103, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 	end
-end
 
-function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
-	if spellId == 461103 and destGUID == UnitGUID("player") and self:AntiSpam(3, "gtfo") and specWarnGTFO then
-		specWarnGTFO:Show(spellName)
-		specWarnGTFO:Play("watchfeet")
+	mod.vb.guardsRemaining = 4
+	local guardsGuidCheck = {}
+
+	function mod:OnCombatStart()
+		self.vb.guardsRemaining = 4
+		table.wipe(guardsGuidCheck)
 	end
-end
-mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(19779) then
-		timerInspire:Stop(args.destName)
+	function mod:OnCombatEnd()
+		table.wipe(guardsGuidCheck)
 	end
-end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(19775) and args:IsSrcTypeHostile() then--Only show warning/timer for your own target.
-		timerHeal:Start(nil, args.sourceGUID)
-		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
-			specWarnHeal:Show(args.sourceName)
-			specWarnHeal:Play("kickcast")
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(19779) then
+			warnInspire:Show(args.destName)
+			timerInspire:Start(args.destName)
+		elseif args:IsSpell(19780) and args:IsDestTypePlayer() then
+			warnHandRagnaros:CombinedShow(0.3, args.destName)
+		elseif args:IsSpell(19776) and args:IsDestTypePlayer() then
+			warnShadowPain:CombinedShow(0.3, args.destName)
+		elseif args:IsSpell(20294) and args:IsDestTypePlayer() then
+			warnImmolate:CombinedShow(0.3, args.destName)
+		elseif args:IsSpell(461103) and args:IsPlayer() and self:AntiSpam(3, "gtfo") and specWarnGTFO then
+			specWarnGTFO:Show(args.spellName)
+			specWarnGTFO:Play("watchfeet")
 		end
 	end
-end
 
-function mod:SPELL_INTERRUPT(args)
-	if type(args.extraSpellId) ~= "number" then return end
-	if args.extraSpellId == 19775 then
-		timerHeal:Stop(args.destGUID)
+	function mod:SPELL_PERIODIC_DAMAGE(_, _, _, _, destGUID, _, _, _, spellId, spellName)
+		if spellId == 461103 and destGUID == UnitGUID("player") and self:AntiSpam(3, "gtfo") and specWarnGTFO then
+			specWarnGTFO:Show(spellName)
+			specWarnGTFO:Play("watchfeet")
+		end
+	end
+	mod.SPELL_PERIODIC_MISSED = mod.SPELL_PERIODIC_DAMAGE
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(19779) then
+			timerInspire:Stop(args.destName)
+		end
+	end
+
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(19775) and args:IsSrcTypeHostile() then--Only show warning/timer for your own target.
+			timerHeal:Start(nil, args.sourceGUID)
+			if self:CheckInterruptFilter(args.sourceGUID, false, true) then
+				specWarnHeal:Show(args.sourceName)
+				specWarnHeal:Play("kickcast")
+			end
+		end
+	end
+
+	function mod:SPELL_INTERRUPT(args)
+		if type(args.extraSpellId) ~= "number" then return end
+		if args.extraSpellId == 19775 then
+			timerHeal:Stop(args.destGUID)
+		end
+	end
+
+	function mod:UNIT_DIED(args)
+		local guid = args.destGUID
+		local cid = self:GetCIDFromGUID(guid)
+		if cid == 11662 or (DBM:IsSeasonal("SeasonOfDiscovery") and cid == 228838) then -- Flamewaker Priest
+			if not guardsGuidCheck[guid] then
+				guardsGuidCheck[guid] = true
+				self.vb.guardsRemaining = self.vb.guardsRemaining - 1
+				warnGuardDied:Show(self.vb.guardsRemaining, 4)
+			end
+		end
 	end
 end

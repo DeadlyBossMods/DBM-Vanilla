@@ -294,12 +294,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "Razorgore the Untamed"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "Adds spawning"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "Show timer for first adds spawning"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "Intruders have breached the hatchery! Sound the alarm! Protect the eggs at all costs!\r\n"--Yes this yell actually has a return and new line in it. as grabbed by transcriptor
 }
@@ -463,6 +458,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "Let the games begin!",
+	YellP2		= "Well done, my minions. The mortals' courage begins to wane! Now, let's see how they contend with the true Lord of Blackrock Spire!!!",
 	YellP3		= "Impossible! Rise my minions! Serve your master once more!",
 	YellShaman	= "Shamans, show me what your totems can do!",
 	YellPaladin	= "Paladins... I've heard you have many lives. Show me.",
@@ -519,6 +515,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "Lucifron"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker Protector: %d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewaker Protectors remaining"
+}
 
 ----------------
 --  Magmadar  --
@@ -537,6 +539,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewakers remaining"
+}
 
 ------------
 --  Garr  --
@@ -545,6 +553,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Firesworn"
 }
 
 --------------
@@ -573,6 +584,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "Sulfuron Harbinger"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker Priest: %d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewaker Priests remaining"
+}
 
 ----------------
 --  Golemagg  --
@@ -591,6 +608,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Majordomo Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Flamewaker Elite",
+	FlamewakerHealer	= "Flamewaker Healer"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Next Shield"
 }
@@ -608,7 +629,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submerge",
-	WarnEmerge			= "Emerge"
+	WarnEmerge			= "Emerge",
+	WarnGuardDied		= "Son of Flame: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submerge",
@@ -620,7 +642,8 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Show timer for submerge",
 	WarnEmerge			= "Show warning for emerge",
 	TimerEmerge			= "Show timer for emerge",
-	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat,
+	WarnGuardDied		= "Announce Sons of Flame remaining"
 }
 L:SetMiscLocalization{
 	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",
@@ -879,21 +902,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan the Unclean"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleported",
-	WarningTeleportSoon	= "Teleport in %d seconds"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleport"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Show warning for Teleport",
-	WarningTeleportSoon	= "Show pre-warning for Teleport",
-	TimerTeleport		= "Show timer for Teleport"
 })
 
 L:SetMiscLocalization({

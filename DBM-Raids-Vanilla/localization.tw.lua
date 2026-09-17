@@ -42,7 +42,7 @@ L:SetWarningLocalization({
     WarnGuardDied = "沙爾圖拉皇家衛士：%d/3" -- NPC ID 15984
 })
 L:SetOptionLocalization{
-    WarnGuardDied = "提示沙爾圖拉皇家衛士剩餘"
+    WarnGuardDied = "提示剩餘的沙爾圖拉皇家衛士"
 }
 
 --------------
@@ -270,12 +270,7 @@ L = DBM:GetModLocalization("Razorgore")
 L:SetGeneralLocalization{
 	name = "狂野的拉佐格爾"
 }
-L:SetTimerLocalization{
-	TimerAddsSpawn	= "小怪重生"
-}
-L:SetOptionLocalization{
-	TimerAddsSpawn	= "為第一次小怪重生顯示計時器"
-}
+
 L:SetMiscLocalization{
 	Pull 	= "入侵者闖進孵化室了！拉響警報！無論如何都要保護蛋！"
 }
@@ -417,6 +412,7 @@ L:SetOptionLocalization{
 }
 L:SetMiscLocalization{
 	YellP1		= "讓賽事開始吧！",
+	YellP2		= "幹得好，手下們。凡人的勇氣開始消退了！現在，我們就來看看他們怎麼面對黑石之王的力量吧！",
 	YellP3		= "不可能！來吧，我的僕人！再次為你們的主人服務！",
 	YellShaman	= "薩滿，讓我看看你圖騰到底是什麼用處的！",
 	YellPaladin	= "聖騎士……聽說你有無數條命。讓我看看到底是怎麼樣的吧。",
@@ -439,6 +435,12 @@ L = DBM:GetModLocalization("Lucifron")
 L:SetGeneralLocalization{
 	name = "魯西弗隆"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者護衛：%d/2" -- NPC ID 12119
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者護衛"
+}
 
 ----------------
 --  Magmadar  --
@@ -457,6 +459,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "基赫納斯"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者：%d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者"
+}
 
 ------------
 --  Garr  --
@@ -465,6 +473,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "加爾"
+}
+L:SetMiscLocalization{
+	Firesworn = "火誓者"
 }
 
 --------------
@@ -493,6 +504,12 @@ L = DBM:GetModLocalization("Sulfuron")
 L:SetGeneralLocalization{
 	name = "薩弗隆先驅者"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者祭司：%d/4" -- NPC ID 11662
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者祭司"
+}
 
 ----------------
 --  Golemagg  --
@@ -511,6 +528,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "管理者埃克索圖斯"
 }
+L:SetMiscLocalization{
+    FlamewakerElite		= "烈焰行者精英",
+    FlamewakerHealer	= "烈焰行者醫師"
+}
 L:SetTimerLocalization{
     timerShieldCD = "護盾"
 }
@@ -528,7 +549,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "隱沒",
-	WarnEmerge			= "現身"
+	WarnEmerge			= "現身",
+	WarnGuardDied		= "烈焰之子：%d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "隱沒",
@@ -538,7 +560,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "為隱沒顯示警告",
 	TimerSubmerge		= "為隱沒顯示計時器",
 	WarnEmerge			= "為現身顯示警告",
-	TimerEmerge			= "為現身顯示計時器"
+	TimerEmerge			= "為現身顯示計時器",
+	WarnGuardDied		= "提示剩餘的烈焰之子"
 }
 L:SetMiscLocalization{
 	Submerge	= "出現吧，我的奴僕！ 保衛你們的主人！",
@@ -783,21 +806,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "骯髒者海根"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "傳送",
-	WarningTeleportSoon	= "%d秒後傳送"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "傳送"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "為傳送顯示警告",
-	WarningTeleportSoon	= "為傳送顯示預先警告",
-	TimerTeleport		= "為傳送顯示計時器"
 })
 
 L:SetMiscLocalization({

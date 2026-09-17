@@ -9,8 +9,6 @@ mod:SetEncounterID(1113)
 mod:SetModelID(16582)
 mod:SetZone(533)
 
-mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2, L.Pull3, L.Pull4)
-
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
 else
@@ -85,10 +83,9 @@ do
 			else
 				lines[key] = ("|cff00ff00%d|r"):format(0)
 			end
+			return lines, sortedLines
 		end
-		return lines, sortedLines
 	end
-end
 
 function mod:OnCombatStart()
 	timerShout:Start("v25.9-26.3")
@@ -99,7 +96,6 @@ local function ShowInfoFrame()
 	if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
 		DBM.InfoFrame:Show(4, "function", updateInfoFrame)
 	end
-end
 
 function mod:OnCombatEnd()
 	table.wipe(mindExhaustionTimers)
@@ -110,11 +106,11 @@ function mod:OnCombatEnd()
 	table.wipe(addDead)
 end
 
-function mod:NAME_PLATE_UNIT_ADDED(unitId)
-	local guid = UnitGUID(unitId)
-	if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
-	self:SendSync("UnderstudyFound", guid, GetRaidTargetIndex(unitId) or 0)
-end
+	function mod:NAME_PLATE_UNIT_ADDED(unitId)
+		local guid = UnitGUID(unitId)
+		if not guid or self:GetCIDFromGUID(guid) ~= 16803 then return end
+		self:SendSync("UnderstudyFound", guid, GetRaidTargetIndex(unitId) or 0)
+	end
 
 function mod:UNIT_AURA_UNFILTERED(unitId)
 	local guid = UnitGUID(unitId)
@@ -166,24 +162,16 @@ function mod:SPELL_CAST_SUCCESS(args)
 		else
 			timerShout:Start()
 		end
-		warnShoutNow:Show()
-		warnShoutSoon:Schedule(20)
-	elseif args:IsSpell(29060) and args:IsPetSource() then -- Taunt
-		timerTaunt:Start(60, args.sourceGUID)
-	elseif args:IsSpell(29061) and args:IsPetSource() then -- ShieldWall
-		timerShieldWall:Start(20, args.sourceGUID)
-		warnShieldWall:Schedule(15)
 	end
-end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
-	if spellId == 29051 then
-		local guid = UnitGUID(uId)
-		if guid and self:GetCIDFromGUID(guid) == 16803 then
-			self:SendSync("MindExhaustion", guid)
+	function mod:UNIT_SPELLCAST_SUCCEEDED(uId, _, spellId)
+		if spellId == 29051 then
+			local guid = UnitGUID(uId)
+			if guid and self:GetCIDFromGUID(guid) == 16803 then
+				self:SendSync("MindExhaustion", guid)
+			end
 		end
 	end
-end
 
 function mod:OnSync(event, guid, icon)
 	if not self:IsInCombat() then return end
