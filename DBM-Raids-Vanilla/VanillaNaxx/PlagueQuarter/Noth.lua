@@ -82,46 +82,43 @@ else
 		table.wipe(curseTargets)
 	end
 
-function mod:Balcony()
-	self.vb.teleCount = self.vb.teleCount + 1
-	self.vb.addsCount = 0
-	timerAddsCD:Stop()
-	timerCurseCD:Stop()
-	timerTeleport:Stop()
-	local timer
-	if self.vb.teleCount == 1 then
-		timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
-		timerAddsCD:Start(3, self.vb.addsCount + 1)
-	elseif self.vb.teleCount == 2 then
-		timer = 97--Unknown in Classic
-		timerAddsCD:Start(3, self.vb.addsCount + 1)
-	elseif self.vb.teleCount == 3 then
-		timer = 126--Unknown in Classic
-		timerAddsCD:Start(3, self.vb.addsCount + 1)
-	else
-		timer = 55--Unknown in Classic
+	function mod:UNIT_TARGETABLE_CHANGED()
+		if self:LatencyCheck() then
+			self:SendSync("TeleportBalcony")
+		end
 	end
 
-function mod:BackInRoom()
-	self.vb.addsCount = 0
-	timerAddsCD:Stop()
-	timerTeleportBack:Stop()
-	local timer
-	if self.vb.teleCount == 1 then
-		timer = 109--Unknown in Classic
-		timerAddsCD:Start("v3.4-7.8", self.vb.addsCount + 1)
-	elseif self.vb.teleCount == 2 then
-		timer = 173--Unknown in Classic
-		timerAddsCD:Start(17, self.vb.addsCount + 1)
-	elseif self.vb.teleCount == 3 then
-		timer = 93--Unknown in Classic
-	else
-		timer = 35--Unknown in Classic
+	function mod:Balcony()
+		self.vb.teleCount = self.vb.teleCount + 1
+		self.vb.addsCount = 0
+		warnTeleportSoon:Cancel()
+		timerAddsCD:Stop()
+		timerCurseCD:Stop()
+		timerTeleport:Stop()
+		local timer
+		if self.vb.teleCount == 1 then
+			timer = 72.8 -- Variation 72.8-74.8, but cannot schedule a string
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
+		elseif self.vb.teleCount == 2 then
+			timer = 97--Unknown in Classic
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
+		elseif self.vb.teleCount == 3 then
+			timer = 126--Unknown in Classic
+			timerAddsCD:Start(3, self.vb.addsCount + 1)
+		else
+			timer = 55--Unknown in Classic
+		end
+		timerTeleportBack:Start(timer)
+		warnTeleportSoon:Schedule(timer - 20)
+		warnTeleportNow:Show()
+		self:ScheduleMethod(timer, "BackInRoom")
 	end
 
 	function mod:BackInRoom()
 		self.vb.addsCount = 0
+		warnTeleportSoon:Cancel()
 		timerAddsCD:Stop()
+		timerTeleportBack:Stop()
 		local timer
 		if self.vb.teleCount == 1 then
 			timer = 109--Unknown in Classic
