@@ -100,6 +100,7 @@ else
 		if not DBM.InfoFrame:IsShown() and mod.Options.InfoFrame then
 			DBM.InfoFrame:Show(4, "function", updateInfoFrame)
 		end
+	end
 
 	function mod:OnCombatEnd()
 		table.wipe(mindExhaustionTimers)
