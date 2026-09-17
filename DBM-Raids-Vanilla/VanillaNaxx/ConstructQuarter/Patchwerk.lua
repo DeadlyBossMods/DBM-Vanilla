@@ -7,11 +7,6 @@ else
 	mod.statTypes = "normal"
 end
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 28131",
-	"SPELL_CAST_START"
-)
-
 mod:SetRevision("@file-date-integer@")
 mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:DisableHardcodedOptions()
@@ -21,50 +16,59 @@ mod:SetModelID(16174)
 mod:SetZone(533)
 
 mod:RegisterCombat("combat_yell", L.Pull1, L.Pull2)
-
-local warnEnrage 		= mod:NewSpellAnnounce(28131, 4)
-local warnEnrageSoon	= mod:NewSoonAnnounce(28131, 2)
-local warnSlimeBolt		= mod:NewCastAnnounce(28311, 4)
-
-local timerBerserk		= mod:NewBerserkTimer(420)
-
-mod.vb.warnEnrageSoon = false
-
-function mod:OnCombatStart()
-	timerBerserk:Start()
-	self.vb.warnEnrageSoon = false
-	self:RegisterShortTermEvents(
-		"UNIT_HEALTH"
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 28131",
+		"SPELL_CAST_START"
 	)
-end
 
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
-end
+	local warnEnrage 		= mod:NewSpellAnnounce(28131, 4)
+	local warnEnrageSoon	= mod:NewSoonAnnounce(28131, 2)
+	local warnSlimeBolt		= mod:NewCastAnnounce(28311, 4)
 
-function mod:UNIT_HEALTH(uId)
-	if self:GetUnitCreatureId(uId) == 16028 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.10 then
-		self:SendSync("EnrageSoon")
+	local timerBerserk		= mod:NewBerserkTimer(420)
+
+	mod.vb.warnEnrageSoon = false
+
+	function mod:OnCombatStart()
+		timerBerserk:Start()
+		self.vb.warnEnrageSoon = false
+		self:RegisterShortTermEvents(
+			"UNIT_HEALTH"
+		)
+	end
+
+	function mod:OnCombatEnd()
 		self:UnregisterShortTermEvents()
 	end
-end
 
-function mod:OnSync(msg)
-	if not self:IsInCombat() then return end
-	if msg == "EnrageSoon" and not self.vb.warnEnrageSoon then
-		self.vb.warnEnrageSoon = true
-		warnEnrageSoon:Show()
+	function mod:UNIT_HEALTH(uId)
+		if self:GetUnitCreatureId(uId) == 16028 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.10 then
+			self:SendSync("EnrageSoon")
+			self:UnregisterShortTermEvents()
+		end
 	end
-end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(28131) then
-		warnEnrage:Show()
+	function mod:OnSync(msg)
+		if not self:IsInCombat() then return end
+		if msg == "EnrageSoon" and not self.vb.warnEnrageSoon then
+			self.vb.warnEnrageSoon = true
+			warnEnrageSoon:Show()
+		end
 	end
-end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(28311) then
-		warnSlimeBolt:Show()
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(28131) then
+			warnEnrage:Show()
+		end
+	end
+
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(28311) then
+			warnSlimeBolt:Show()
+		end
 	end
 end

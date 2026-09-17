@@ -17,72 +17,77 @@ mod:SetModelID(15654)
 mod:SetZone(509)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"CHAT_MSG_MONSTER_EMOTE"
-)
+	mod:RegisterEventsInCombat(
+		"CHAT_MSG_MONSTER_EMOTE"
+	)
 
---TODO, see if CLASSIC data set has a spellID for pursuit before it can use generic alerts and voice pack suppot
-local WarnDismember				= mod:NewStackAnnounce(96, 3, nil, "Tank", 2)
-local warnPursue				= mod:NewAnnounce("WarnPursue", 3, 62374)
+	--TODO, see if CLASSIC data set has a spellID for pursuit before it can use generic alerts and voice pack suppot
+	local WarnDismember				= mod:NewStackAnnounce(96, 3, nil, "Tank", 2)
+	local warnPursue				= mod:NewAnnounce("WarnPursue", 3, 62374)
 
-local specWarnDismember			= mod:NewSpecialWarningStack(96, "Tank", 5, nil, nil, 1, 6, nil, nil, "stackhigh")
-local specWarnDismemberTaunt	= mod:NewSpecialWarningTaunt(96, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
-local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 4, 2, nil, nil, nil, nil, "justrun")
+	local specWarnDismember			= mod:NewSpecialWarningStack(96, "Tank", 5, nil, nil, 1, 6, nil, nil, "stackhigh")
+	local specWarnDismemberTaunt	= mod:NewSpecialWarningTaunt(96, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")
+	local specWarnPursue			= mod:NewSpecialWarning("SpecWarnPursue", nil, nil, nil, 4, 2, nil, nil, nil, nil, "justrun")
 
-local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
+	local timerDismember			= mod:NewTargetTimer(10, 96, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-function mod:OnCombatStart()
-	if not self:IsTrivial() then
-		self:RegisterShortTermEvents(
-			"SPELL_AURA_APPLIED 96",
-			"SPELL_AURA_APPLIED_DOSE 96",
-			"SPELL_AURA_REMOVED 96"
-		)
+	function mod:OnCombatStart()
+		if not self:IsTrivial() then
+			self:RegisterShortTermEvents(
+				"SPELL_AURA_APPLIED 96",
+				"SPELL_AURA_APPLIED_DOSE 96",
+				"SPELL_AURA_REMOVED 96"
+			)
+		end
 	end
-end
 
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
-end
+	function mod:OnCombatEnd()
+		self:UnregisterShortTermEvents()
+	end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(96) then
-		local amount = args.amount or 1
-		timerDismember:Start(args.destName)
-		if amount >= 5 then
-			if args:IsPlayer() then
-				specWarnDismember:Show(amount)
-				specWarnDismember:Play("stackhigh")
-			elseif not DBM:UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
-				specWarnDismemberTaunt:Show(args.destName)
-				specWarnDismemberTaunt:Play("tauntboss")
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(96) then
+			local amount = args.amount or 1
+			timerDismember:Start(args.destName)
+			if amount >= 5 then
+				if args:IsPlayer() then
+					specWarnDismember:Show(amount)
+					specWarnDismember:Play("stackhigh")
+				elseif not DBM:UnitDebuff("player", args.spellName) and not UnitIsDeadOrGhost("player") then
+					specWarnDismemberTaunt:Show(args.destName)
+					specWarnDismemberTaunt:Play("tauntboss")
+				else
+					WarnDismember:Show(args.destName, amount)
+				end
 			else
 				WarnDismember:Show(args.destName, amount)
 			end
-		else
-			WarnDismember:Show(args.destName, amount)
 		end
 	end
-end
-mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
+	mod.SPELL_AURA_APPLIED_DOSE = mod.SPELL_AURA_APPLIED
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(96) then
-		timerDismember:Stop(args.destName)
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(96) then
+			timerDismember:Stop(args.destName)
+		end
 	end
-end
 
-function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
-	-- "<15.57 22:24:07> [CHAT_MSG_MONSTER_EMOTE] %s sets eyes on Exikør!#Buru the Gorger###Exikør##0#0##0#914#nil#0#false#false#false#false",
-	if not msg:find(L.PursueEmote) then return end
-	if target then
-		target = DBM:GetUnitFullName(target)
-		if target == UnitName("player") then
-			specWarnPursue:Show()
-			specWarnPursue:Play("justrun")
-		else
-			warnPursue:Show(target)
+	function mod:CHAT_MSG_MONSTER_EMOTE(msg, _, _, _, target)
+		-- "<15.57 22:24:07> [CHAT_MSG_MONSTER_EMOTE] %s sets eyes on Exikør!#Buru the Gorger###Exikør##0#0##0#914#nil#0#false#false#false#false",
+		if not msg:find(L.PursueEmote) then return end
+		if target then
+			target = DBM:GetUnitFullName(target)
+			if target == UnitName("player") then
+				specWarnPursue:Show()
+				specWarnPursue:Play("justrun")
+			else
+				warnPursue:Show(target)
+			end
 		end
 	end
 end

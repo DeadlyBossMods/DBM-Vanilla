@@ -21,88 +21,93 @@ mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 19451",
-	"SPELL_AURA_REMOVED 19451",
-	"SPELL_CAST_SUCCESS 19408 19451 461125",
-	"SPELL_AURA_APPLIED 19428",
-	"UNIT_SPELLCAST_SUCCEEDED"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 19451",
+		"SPELL_AURA_REMOVED 19451",
+		"SPELL_CAST_SUCCESS 19408 19451 461125",
+		"SPELL_AURA_APPLIED 19428",
+		"UNIT_SPELLCAST_SUCCEEDED"
+	)
 
---[[
-(ability.id = 19408 or ability.id = 19451 or ability.id = 461125) and type = "cast"
- or ability.id = 19428 and type = "applydebuff"
---]]
---TODO, core hound summon not in combat log, so need transcriptor to add alert/timer for that
-local warnPanic			= mod:NewSpellAnnounce(19408, 2)
-local warnFrenzy		= mod:NewSpellAnnounce(19451, 3, nil, "Tank|RemoveEnrage|Healer")
+	--[[
+	(ability.id = 19408 or ability.id = 19451 or ability.id = 461125) and type = "cast"
+	 or ability.id = 19428 and type = "applydebuff"
+	--]]
+	--TODO, core hound summon not in combat log, so need transcriptor to add alert/timer for that
+	local warnPanic			= mod:NewSpellAnnounce(19408, 2)
+	local warnFrenzy		= mod:NewSpellAnnounce(19451, 3, nil, "Tank|RemoveEnrage|Healer")
 
-local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2, nil, nil, "enrage")
-local specWarnGTFO 		= mod:NewSpecialWarningGTFO(19428, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
+	local specWarnFrenzy	= mod:NewSpecialWarningDispel(19451, "RemoveEnrage", nil, nil, 1, 2, nil, nil, "enrage")
+	local specWarnGTFO 		= mod:NewSpecialWarningGTFO(19428, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 
-local timerPanicCD		= mod:NewVarTimer("v37.3-66.4", 19408, nil, nil, nil, 2)
-local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+	local timerPanicCD		= mod:NewVarTimer("v37.3-66.4", 19408, nil, nil, nil, 2)
+	local timerFrenzyCD		= mod:NewVarTimer("v16.1-21.1", 19451, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
+	local timerFrenzy		= mod:NewBuffActiveTimer(8, 19451, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 
-local warnCoreHound--timerCoreHound
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	warnCoreHound		= mod:NewSpellAnnounce(364727, 2)
---	timerCoreHound		= mod:NewCDTimer(30, 364727, nil, nil, nil, 1)
-end
+	local warnCoreHound--timerCoreHound
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		warnCoreHound		= mod:NewSpellAnnounce(364727, 2)
+	--	timerCoreHound		= mod:NewCDTimer(30, 364727, nil, nil, nil, 1)
+	end
 
-function mod:OnCombatStart()
-	timerPanicCD:Start("v6.2-11.3")
-	timerFrenzyCD:Start("v6.4-11.3")
-end
+	function mod:OnCombatStart()
+		timerPanicCD:Start("v6.2-11.3")
+		timerFrenzyCD:Start("v6.4-11.3")
+	end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(19451) and args:IsDestTypeHostile() then
-		if self.Options.SpecWarn19451dispel then
-			specWarnFrenzy:Show(args.destName)
-			specWarnFrenzy:Play("enrage")
-		else
-			warnFrenzy:Show()
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(19451) and args:IsDestTypeHostile() then
+			if self.Options.SpecWarn19451dispel then
+				specWarnFrenzy:Show(args.destName)
+				specWarnFrenzy:Play("enrage")
+			else
+				warnFrenzy:Show()
+			end
+			timerFrenzy:Start()
+		elseif args:IsSpell(19428) and args:IsPlayer() and self:AntiSpam(8, 2) then
+			specWarnGTFO:Show(args.spellName)
+			specWarnGTFO:Play("watchfeet")
 		end
-		timerFrenzy:Start()
-	elseif args:IsSpell(19428) and args:IsPlayer() and self:AntiSpam(8, 2) then
-		specWarnGTFO:Show(args.spellName)
-		specWarnGTFO:Play("watchfeet")
 	end
-end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(19451) and args:IsDestTypeHostile() then
-		timerFrenzy:Stop()
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(19451) and args:IsDestTypeHostile() then
+			timerFrenzy:Stop()
+		end
 	end
-end
 
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19408, 461125) then
-		warnPanic:Show()
-		timerPanicCD:Start()
-	elseif args:IsSpell(19451) then
-		timerFrenzyCD:Start()
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(19408, 461125) then
+			warnPanic:Show()
+			timerPanicCD:Start()
+		elseif args:IsSpell(19451) then
+			timerFrenzyCD:Start()
+		end
 	end
-end
 
-function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
-	if spellId == 364727 or spellId == 461131 then--Lower heat levels (confirmed), higher heat levels?
-		self:SendSync("CoreHound")
+	function mod:UNIT_SPELLCAST_SUCCEEDED(_, _, spellId)
+		if spellId == 364727 or spellId == 461131 then--Lower heat levels (confirmed), higher heat levels?
+			self:SendSync("CoreHound")
+		end
 	end
-end
 
-function mod:OnSync(msg)
-	if msg == "CoreHound" and self:AntiSpam(5, 1) then
-		warnCoreHound:Show()
---		timerCoreHound:Start()
+	function mod:OnSync(msg)
+		if msg == "CoreHound" and self:AntiSpam(5, 1) then
+			warnCoreHound:Show()
+	--		timerCoreHound:Start()
+		end
 	end
-end
 
---Snoop BW comms for event as well
-function mod:OnBWSync(msg)
-	if msg == "sum" and self:AntiSpam(5, 1) then
-		warnCoreHound:Show()
---		timerCoreHound:Start()
+	--Snoop BW comms for event as well
+	function mod:OnBWSync(msg)
+		if msg == "sum" and self:AntiSpam(5, 1) then
+			warnCoreHound:Show()
+	--		timerCoreHound:Start()
+		end
 	end
 end

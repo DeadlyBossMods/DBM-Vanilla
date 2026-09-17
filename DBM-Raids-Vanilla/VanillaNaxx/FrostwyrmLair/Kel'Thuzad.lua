@@ -25,220 +25,225 @@ else
 end
 
 mod:SetWipeTime(15)
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
-	"SPELL_AURA_REMOVED 27808 27819 28410",
-	"SPELL_CAST_START 28478",
-	"SPELL_CAST_SUCCESS 27808 27810 27819 28408 28479",
-	"SPELL_INTERRUPT",
-	"NAME_PLATE_UNIT_ADDED"
-)
-
---[[
-ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
- or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
---]]
-local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
-local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
-local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
-local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
-local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
-local warnMana				= mod:NewTargetAnnounce(27819, 2)
-local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
-
-local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, "ManaUser", nil, nil, 1, 2, nil, nil, "scatter")
-local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2, nil, nil, "healall")
-local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2, nil, nil, "targetyou")
-local specWarnFrostbolt		= mod:NewSpecialWarningInterrupt(28478, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
-local yellManaBomb			= mod:NewShortYell(27819, nil, "ManaUser")
-local yellFissure			= mod:NewYell(27810)
-
-local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, false, nil, 2)
-local timerFrostbolt		= mod:NewCastNPTimer(2, 28478, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
-local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, false, nil, 2)
-local timerManaBombCD		= mod:NewVarTimer("v20.2-50.9", 27819, nil, "ManaUser", nil, 3)
-local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v30.3-82.4", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
-local timerfrostBlast		= mod:NewBuffFadesTimer(5, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
-local timerMCCD				= mod:NewVarTimer("v63.1-145.4", 28410, nil, nil, nil, 3)
-local timerPhase2			= mod:NewStageCountTimer("v229.2-231") -- Variance used to be 229.2-245.8, but patch on July 21, 2026 tightened up the variance.
-
-mod:AddSetIconOption("SetIconOnMC2", 28410, false, 7, {1, 2, 3, 4, 5})
-mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
-mod:AddSetIconOption("SetIconOnFrostTomb", 27808, true, 7, {1, 2, 3, 4, 5, 6, 7, 8})
-
-local firstBossMod = DBM:GetModByName("NaxxTrash")
-
-function mod:OnCombatStart()
-	self:SetStage(1)
-	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	timerPhase2:Start(nil, 2)
-	self:RegisterShortTermEvents(
-		"UNIT_HEALTH"
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 27808 27819 28410 1222430",
+		"SPELL_AURA_REMOVED 27808 27819 28410",
+		"SPELL_CAST_START 28478",
+		"SPELL_CAST_SUCCESS 27808 27810 27819 28408 28479",
+		"SPELL_INTERRUPT",
+		"NAME_PLATE_UNIT_ADDED"
 	)
-	warnPhase2Soon:Schedule(220)
-end
 
-function mod:OnCombatEnd(wipe)
-	self:UnregisterShortTermEvents()
-	if not wipe then
-		DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
-		if firstBossMod.vb.firstEngageTime then
-			local thisTime = GetServerTime() - firstBossMod.vb.firstEngageTime
-			if thisTime and thisTime > 0 then
-				if not firstBossMod.Options.FastestClear4 then
-					--First clear, just show current clear time
-					DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(533), DBM:strFromTime(thisTime)))
-					firstBossMod.Options.FastestClear4 = thisTime
-				elseif (firstBossMod.Options.FastestClear4 > thisTime) then
-					--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
-					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(533), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear4)))
-					firstBossMod.Options.FastestClear4 = thisTime
-				else
-					--Just show this clear time, and current record time (that you did NOT beat)
-					DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(533), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear4)))
-				end
-			end
-			firstBossMod.vb.firstEngageTime = nil
-		end
+	--[[
+	ability.id = 27810 or ability.id = 27819 or ability.id = 27808 and type = "cast"
+	 or (source.type = "NPC" and source.firstSeen = timestamp) or (target.type = "NPC" and target.firstSeen = timestamp)
+	--]]
+	local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+	local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
+	local warnPhase3Soon		= mod:NewPrePhaseAnnounce(3)
+	local warnBlastTargets		= mod:NewTargetAnnounce(27808, 2)
+	local warnFissure			= mod:NewTargetAnnounce(27810, 4, nil, nil, nil, nil, nil, 2)
+	local warnMana				= mod:NewTargetAnnounce(27819, 2)
+	local warnChainsTargets		= mod:NewTargetNoFilterAnnounce(28410, 4)
+
+	local specWarnManaBomb		= mod:NewSpecialWarningMoveAway(27819, "ManaUser", nil, nil, 1, 2, nil, nil, "scatter")
+	local specWarnBlast			= mod:NewSpecialWarningTarget(27808, "Healer", nil, nil, 1, 2, nil, nil, "healall")
+	local specWarnFissureYou	= mod:NewSpecialWarningYou(27810, nil, nil, nil, 3, 2, nil, nil, "targetyou")
+	local specWarnFrostbolt		= mod:NewSpecialWarningInterrupt(28478, "HasInterrupt", nil, nil, 1, 2, nil, nil, "kickcast")
+	local yellManaBomb			= mod:NewShortYell(27819, nil, "ManaUser")
+	local yellFissure			= mod:NewYell(27810)
+
+	local timerFissureCD		= mod:NewVarTimer("v10.9-42.1", 27810, nil, false, nil, 2)
+	local timerFrostbolt		= mod:NewCastNPTimer(2, 28478, nil, "HasInterrupt", 2, 4, nil, DBM_COMMON_L.INTERRUPT_ICON)
+	local timerFrostboltCD		= mod:NewVarTimer("v15.7-63.1", 28479, nil, false, nil, 2)
+	local timerManaBombCD		= mod:NewVarTimer("v20.2-50.9", 27819, nil, "ManaUser", nil, 3)
+	local timerFrostBlastCD		= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and "v30.3-58.2" or "v30.3-82.4", 27808, nil, nil, nil, 3, nil, DBM_COMMON_L.DEADLY_ICON)
+	local timerfrostBlast		= mod:NewBuffFadesTimer(5, 27808, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
+	local timerMCCD				= mod:NewVarTimer("v63.1-145.4", 28410, nil, nil, nil, 3)
+	local timerPhase2			= mod:NewStageCountTimer("v229.2-231") -- Variance used to be 229.2-245.8, but patch on July 21, 2026 tightened up the variance.
+
+	mod:AddSetIconOption("SetIconOnMC2", 28410, false, 7, {1, 2, 3, 4, 5})
+	mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
+	mod:AddSetIconOption("SetIconOnFrostTomb", 27808, true, 7, {1, 2, 3, 4, 5, 6, 7, 8})
+
+	local firstBossMod = DBM:GetModByName("NaxxTrash")
+
+	function mod:OnCombatStart()
+		self:SetStage(1)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
+		timerPhase2:Start(nil, 2)
+		self:RegisterShortTermEvents(
+			"UNIT_HEALTH"
+		)
+		warnPhase2Soon:Schedule(220)
 	end
-end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(28478) and args:IsSrcTypeHostile() then
-		timerFrostbolt:Start(nil, args.sourceGUID)
-		if self:CheckInterruptFilter(args.sourceGUID, false, true) then
-			specWarnFrostbolt:Show(args.sourceName)
-			specWarnFrostbolt:Play("kickcast")
-		end
-	end
-end
-
-function mod:NAME_PLATE_UNIT_ADDED(unitId)
-	local guid = UnitGUID(unitId)
-	if not guid or self:GetCIDFromGUID(guid) ~= 15990 then return end
-	if self:GetStage(1, 2) then return end
-	self:SendSync("Phase", 2)
-end
-
-function mod:SPELL_INTERRUPT(args)
-	if type(args.extraSpellId) ~= "number" then return end
-	if args.extraSpellId == 28478 then
-		timerFrostbolt:Stop(args.destGUID)
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(27810) then
-		timerFissureCD:Start()
-		if args.destName then
-			if args:IsPlayer() then
-				specWarnFissureYou:Show()
-				specWarnFissureYou:Play("targetyou")
-				yellFissure:Yell()
-			else
-				warnFissure:Show(args.destName)
-			end
-		else
-			warnFissure:Show(DBM_COMMON_L.UNKNOWN)
-		end
-	elseif args:IsSpell(27819) then
-		timerManaBombCD:Start()
-	elseif args:IsSpell(27808) then
-		timerFrostBlastCD:Start()
-	elseif args:IsSpell(28408) then
-		timerMCCD:Start()
-	elseif args:IsSpell(28479) then
-		timerFrostboltCD:Start()
-	end
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(27808) then
-		if not timerfrostBlast:IsStarted() then
-			timerfrostBlast:Start()
-		end
-		if self.Options.SpecWarn27808target then
-			specWarnBlast:CombinedShow(0.5, args.destName)
-			specWarnBlast:ScheduleVoice(0.5, "healall")
-		else
-			warnBlastTargets:CombinedShow(0.5, args.destName)
-		end
-		if self.Options.SetIconOnFrostTomb then
-			--Sets icons 1-8 using raid roster index sorting (meaning it tries to use star in group 1 and so on)
-			self:SetSortedIcon("roster", 0.5, args.destName, 1, 8, false, nil, 1)
-		end
-	elseif args:IsSpell(27819) then
-		if args:IsPlayer() then
-			specWarnManaBomb:Show()
-			specWarnManaBomb:Play("scatter")
-			yellManaBomb:Yell()
-		else
-			warnMana:Show(args.destName)
-		end
-		if self.Options.SetIconOnManaBomb then
-			self:SetIcon(args.destName, 8)
-		end
-	elseif args:IsSpell(28410) then
-		if self.Options.SetIconOnMC2 then
-			self:SetSortedIcon("roster", 0.5, args.destName, 1, 5, false, nil, 2)
-		end
-		warnChainsTargets:CombinedShow(1, args.destName)
-	elseif args:IsSpell(1222430) then -- SoD Mythic extra phase
-		self:SetStage(3)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(3))
-		warnPhase:Play("pthree")
-	end
-end
-
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(27808) then
-		if self.Options.SetIconOnFrostTomb then
-			self:SetIcon(args.destName, 0)
-		end
-	elseif args:IsSpell(27819) then
-		if self.Options.SetIconOnManaBomb then
-			self:SetIcon(args.destName, 0)
-		end
-	elseif args:IsSpell(28410) then
-		if self.Options.SetIconOnMC2 then
-			self:SetIcon(args.destName, 0)
-		end
-	end
-end
-
-function mod:UNIT_HEALTH(uId)
-	local cid = self:GetUnitCreatureId(uId)
-	if self:GetStage(2) and cid == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
-		self:SendSync("Phase", 2.5)
-	elseif self:GetStage(2.5) and cid == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
-		self:SendSync("Phase", 3)
+	function mod:OnCombatEnd(wipe)
 		self:UnregisterShortTermEvents()
-	end
-end
-
-function mod:OnSync(msg, arg)
-	if not self:IsInCombat() then return end
-	if msg == "Phase" then
-		local phase = tonumber(arg)
-		if not phase then return end
-		if self:GetStage(phase, 1) then
-			self:SetStage(phase)
-			if phase % 1 == 0 then
-				warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+		if not wipe then
+			DBT:CancelBar(DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT)
+			if firstBossMod.vb.firstEngageTime then
+				local thisTime = GetServerTime() - firstBossMod.vb.firstEngageTime
+				if thisTime and thisTime > 0 then
+					if not firstBossMod.Options.FastestClear4 then
+						--First clear, just show current clear time
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN:format(GetRealZoneText(533), DBM:strFromTime(thisTime)))
+						firstBossMod.Options.FastestClear4 = thisTime
+					elseif (firstBossMod.Options.FastestClear4 > thisTime) then
+						--Update record time if this clear shorter than current saved record time and show users new time, compared to old time
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN_NR:format(GetRealZoneText(533), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear4)))
+						firstBossMod.Options.FastestClear4 = thisTime
+					else
+						--Just show this clear time, and current record time (that you did NOT beat)
+						DBM:AddMsg(DBM_CORE_L.RAID_DOWN_L:format(GetRealZoneText(533), DBM:strFromTime(thisTime), DBM:strFromTime(firstBossMod.Options.FastestClear4)))
+					end
+				end
+				firstBossMod.vb.firstEngageTime = nil
 			end
-			if phase == 2 then
-				timerPhase2:Stop()
-				warnPhase:Play("ptwo")
-				timerFissureCD:Start("v10.4-38.4")
-				timerFrostboltCD:Start("v15.3-85.9")
-				timerManaBombCD:Start("v20.2-46.5")
-				timerFrostBlastCD:Start("v30.3-92.7")
-				timerMCCD:Start("v21.8-103.4")
-			elseif phase == 2.5 then
-				warnPhase3Soon:Show()
-			elseif phase == 3 then
-				warnPhase:Play("pthree")
+		end
+	end
+
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(28478) and args:IsSrcTypeHostile() then
+			timerFrostbolt:Start(nil, args.sourceGUID)
+			if self:CheckInterruptFilter(args.sourceGUID, false, true) then
+				specWarnFrostbolt:Show(args.sourceName)
+				specWarnFrostbolt:Play("kickcast")
+			end
+		end
+	end
+
+	function mod:NAME_PLATE_UNIT_ADDED(unitId)
+		local guid = UnitGUID(unitId)
+		if not guid or self:GetCIDFromGUID(guid) ~= 15990 then return end
+		if self:GetStage(1, 2) then return end
+		self:SendSync("Phase", 2)
+	end
+
+	function mod:SPELL_INTERRUPT(args)
+		if type(args.extraSpellId) ~= "number" then return end
+		if args.extraSpellId == 28478 then
+			timerFrostbolt:Stop(args.destGUID)
+		end
+	end
+
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(27810) then
+			timerFissureCD:Start()
+			if args.destName then
+				if args:IsPlayer() then
+					specWarnFissureYou:Show()
+					specWarnFissureYou:Play("targetyou")
+					yellFissure:Yell()
+				else
+					warnFissure:Show(args.destName)
+				end
+			else
+				warnFissure:Show(DBM_COMMON_L.UNKNOWN)
+			end
+		elseif args:IsSpell(27819) then
+			timerManaBombCD:Start()
+		elseif args:IsSpell(27808) then
+			timerFrostBlastCD:Start()
+		elseif args:IsSpell(28408) then
+			timerMCCD:Start()
+		elseif args:IsSpell(28479) then
+			timerFrostboltCD:Start()
+		end
+	end
+
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(27808) then
+			if not timerfrostBlast:IsStarted() then
+				timerfrostBlast:Start()
+			end
+			if self.Options.SpecWarn27808target then
+				specWarnBlast:CombinedShow(0.5, args.destName)
+				specWarnBlast:ScheduleVoice(0.5, "healall")
+			else
+				warnBlastTargets:CombinedShow(0.5, args.destName)
+			end
+			if self.Options.SetIconOnFrostTomb then
+				--Sets icons 1-8 using raid roster index sorting (meaning it tries to use star in group 1 and so on)
+				self:SetSortedIcon("roster", 0.5, args.destName, 1, 8, false, nil, 1)
+			end
+		elseif args:IsSpell(27819) then
+			if args:IsPlayer() then
+				specWarnManaBomb:Show()
+				specWarnManaBomb:Play("scatter")
+				yellManaBomb:Yell()
+			else
+				warnMana:Show(args.destName)
+			end
+			if self.Options.SetIconOnManaBomb then
+				self:SetIcon(args.destName, 8)
+			end
+		elseif args:IsSpell(28410) then
+			if self.Options.SetIconOnMC2 then
+				self:SetSortedIcon("roster", 0.5, args.destName, 1, 5, false, nil, 2)
+			end
+			warnChainsTargets:CombinedShow(1, args.destName)
+		elseif args:IsSpell(1222430) then -- SoD Mythic extra phase
+			self:SetStage(3)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(3))
+			warnPhase:Play("pthree")
+		end
+	end
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(27808) then
+			if self.Options.SetIconOnFrostTomb then
+				self:SetIcon(args.destName, 0)
+			end
+		elseif args:IsSpell(27819) then
+			if self.Options.SetIconOnManaBomb then
+				self:SetIcon(args.destName, 0)
+			end
+		elseif args:IsSpell(28410) then
+			if self.Options.SetIconOnMC2 then
+				self:SetIcon(args.destName, 0)
+			end
+		end
+	end
+
+	function mod:UNIT_HEALTH(uId)
+		local cid = self:GetUnitCreatureId(uId)
+		if self:GetStage(2) and cid == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.45 then
+			self:SendSync("Phase", 2.5)
+		elseif self:GetStage(2.5) and cid == 15990 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.40 and not DBM:IsSeasonal("SeasonOfDiscovery") then
+			self:SendSync("Phase", 3)
+			self:UnregisterShortTermEvents()
+		end
+	end
+
+	function mod:OnSync(msg, arg)
+		if not self:IsInCombat() then return end
+		if msg == "Phase" then
+			local phase = tonumber(arg)
+			if not phase then return end
+			if self:GetStage(phase, 1) then
+				self:SetStage(phase)
+				if phase % 1 == 0 then
+					warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(phase))
+				end
+				if phase == 2 then
+					timerPhase2:Stop()
+					warnPhase:Play("ptwo")
+					timerFissureCD:Start("v10.4-38.4")
+					timerFrostboltCD:Start("v15.3-85.9")
+					timerManaBombCD:Start("v20.2-46.5")
+					timerFrostBlastCD:Start("v30.3-92.7")
+					timerMCCD:Start("v21.8-103.4")
+				elseif phase == 2.5 then
+					warnPhase3Soon:Show()
+				elseif phase == 3 then
+					warnPhase:Play("pthree")
+				end
 			end
 		end
 	end

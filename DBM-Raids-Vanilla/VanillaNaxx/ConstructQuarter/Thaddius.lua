@@ -18,277 +18,282 @@ mod:SetModelID(16137)
 mod:SetZone(533)
 
 mod:RegisterCombat("combat_yell", L.Yell1P1, L.Yell2P1)
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-    "SPELL_CAST_START 28089",
-	"SPELL_CAST_SUCCESS 28338 28339",
-    "SPELL_AURA_APPLIED 28059 28084",
-	"SPELL_AURA_REFRESH 28059 28084",
-    "CHAT_MSG_MONSTER_EMOTE",
-	"CHAT_MSG_MONSTER_YELL"
-)
+	mod:RegisterEventsInCombat(
+	    "SPELL_CAST_START 28089",
+		"SPELL_CAST_SUCCESS 28338 28339",
+	    "SPELL_AURA_APPLIED 28059 28084",
+		"SPELL_AURA_REFRESH 28059 28084",
+	    "CHAT_MSG_MONSTER_EMOTE",
+		"CHAT_MSG_MONSTER_YELL"
+	)
 
-local warnShiftSoon			= mod:NewSoonAnnounce(28089, 3)
-local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
-local warnThrow				= mod:NewSpellAnnounce(28338, 3)
-local warnThrowSoon			= mod:NewSoonAnnounce(28338, 2)
-local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
-local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
+	local warnShiftSoon			= mod:NewSoonAnnounce(28089, 3)
+	local warnShiftCasting		= mod:NewCastAnnounce(28089, 4)
+	local warnThrow				= mod:NewSpellAnnounce(28338, 3)
+	local warnThrowSoon			= mod:NewSoonAnnounce(28338, 2)
+	local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+	local warnPhase2Soon		= mod:NewPrePhaseAnnounce(2)
 
-local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged", nil, nil, nil, 3, 12, nil, nil, 28089, nil, "movesoon")
-local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false, nil, nil, 1, 12, nil, nil, 28089, nil, "dontmove")
-local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
+	local warnChargeChanged		= mod:NewSpecialWarning("WarningChargeChanged", nil, nil, nil, 3, 12, nil, nil, 28089, nil, "movesoon")
+	local warnChargeNotChanged	= mod:NewSpecialWarning("WarningChargeNotChanged", false, nil, nil, 1, 12, nil, nil, 28089, nil, "dontmove")
+	local yellShift				= mod:NewShortPosYell(28089, DBM_CORE_L.AUTO_YELL_CUSTOM_POSITION)
 
-local timerEnrage			= mod:NewBerserkTimer(300)
-local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
-local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2)
-local timerThrow			= mod:NewNextTimer(21, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
-local timerPhase2			= mod:NewStageCountTimer("v11.3-16")
+	local timerEnrage			= mod:NewBerserkTimer(300)
+	local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
+	local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2)
+	local timerThrow			= mod:NewNextTimer(21, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+	local timerPhase2			= mod:NewStageCountTimer("v11.3-16")
 
-mod:AddInfoFrameOption()
+	mod:AddInfoFrameOption()
 
-mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
+	mod:AddDropdownOption("AirowsEnabled", {"Never", "TwoCamp", "ArrowsRightLeft", "ArrowsInverse"}, "Never", "misc", nil, 28089)
 
-local currentCharge
-local deadBosses = {}
+	local currentCharge
+	local deadBosses = {}
 
-local updateInfoFrame
-do
-	local twipe = table.wipe
-	local lines = {}
-	updateInfoFrame = function()
-		twipe(lines)
-		local bossHealth = DBM:GetCachedBossHealth()
-		if not deadBosses[15929] then
-			lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929])
-		else
-			lines[L.Stalagg] = DEAD
-		end
-		if not deadBosses[15930] then
-			lines[L.Feugen] = ("%d%%"):format(bossHealth[15930])
-		else
-			lines[L.Feugen] = DEAD
-		end
-		return lines
-	end
-end
-
--- FIXME: this is required because core by default only checks mod creature IDs, but it should really check everything that info frame wants to see as well
-function mod:BossHealthUpdate()
-	self:GetBossHP(15929)
-	self:GetBossHP(15930)
-	if self:GetStage(2, 3) then
-		self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
-	end
-end
-
-function mod:OnCombatStart()
-	self:SetStage(1)
-	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	currentCharge = nil
-	deadBosses = {}
-    timerThrow:Start()
-    warnThrowSoon:Schedule(16)
-	if self.Options.InfoFrame then
-		DBM.InfoFrame:Show(2, "function", updateInfoFrame, false, false)
-		self:BossHealthUpdate()
-	end
-end
-
-function mod:OnCombatEnd(wipe, isSecondRun)
-	if wipe and not isSecondRun then
-		DBM:AddMsg("Arrow Options can be changed for this encounter. Mod supports 3 different strats. Choose one that matches your strat")
-	end
-end
-
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(28089) then
-		timerNextShift:Start()
-		timerShiftCast:Start()
-		warnShiftCasting:Show()
-		warnShiftSoon:Schedule(20)
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(28338, 28339) and self:AntiSpam(3, 1) then
-		warnThrow:Show()
-		timerThrow:Start()
-		warnThrowSoon:Schedule(16)
-	end
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if not args:IsPlayer() then return end
-	local charge, chargeIcon
-	if args:IsSpell(28059) then
-		charge = CL.POSITIVE
-		chargeIcon = "135769"
-		yellShift:Yell(6, "+ +")
-	elseif args:IsSpell(28084) then
-		charge = CL.NEGATIVE
-		chargeIcon = "135768"
-		yellShift:Yell(7, "- -")
-	end
-	warnChargeChanged:UpdateIcon(chargeIcon)
-	warnChargeChanged:Show(charge)
-	--Only play voice on actual polarity flip, not first application
-	if currentCharge then
-		warnChargeChanged:Play("movesoon")
-		if self.Options.AirowsEnabled == "ArrowsInverse" then
-			self:ShowRightArrow()
-		elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
-			self:ShowLeftArrow()
-		elseif self.Options.AirowsEnabled == "TwoCamp" then
-			self:ShowUpArrow()
+	local updateInfoFrame
+	do
+		local twipe = table.wipe
+		local lines = {}
+		updateInfoFrame = function()
+			twipe(lines)
+			local bossHealth = DBM:GetCachedBossHealth()
+			if not deadBosses[15929] then
+				lines[L.Stalagg] = ("%d%%"):format(bossHealth[15929])
+			else
+				lines[L.Stalagg] = DEAD
+			end
+			if not deadBosses[15930] then
+				lines[L.Feugen] = ("%d%%"):format(bossHealth[15930])
+			else
+				lines[L.Feugen] = DEAD
+			end
+			return lines
 		end
 	end
-	currentCharge = charge
-end
 
-function mod:SPELL_AURA_REFRESH(args)
-	if not args:IsPlayer() then return end
-	local chargeIcon
-	if args:IsSpell(28059) then
-		chargeIcon = "135769"
-		yellShift:Yell(6, "+ +")
-	elseif args:IsSpell(28084) then
-		chargeIcon = "135768"
-		yellShift:Yell(7, "- -")
-	end
-	warnChargeNotChanged:UpdateIcon(chargeIcon)
-	warnChargeNotChanged:Show()
-	warnChargeNotChanged:Play("dontmove")
-	if self.Options.AirowsEnabled == "ArrowsInverse" then
-		self:ShowLeftArrow()
-	elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
-		self:ShowRightArrow()
-	end
-end
-
-function mod:CHAT_MSG_MONSTER_EMOTE(msg, sender)
-    if msg == L.EmoteDies or msg:find(L.EmoteDies) then
-		if sender == L.Stalagg then
-			self:SendSync("BossDies", 15929)
-		elseif sender == L.Feugen then
-			self:SendSync("BossDies", 15930)
+	-- FIXME: this is required because core by default only checks mod creature IDs, but it should really check everything that info frame wants to see as well
+	function mod:BossHealthUpdate()
+		self:GetBossHP(15929)
+		self:GetBossHP(15930)
+		if self:GetStage(2, 3) then
+			self:ScheduleMethod(0.5, "BossHealthUpdate") -- also canceled on combat end implicitly
 		end
-    elseif msg == L.EmoteRevive or msg:find(L.EmoteRevive) then
-		if sender == L.Stalagg then
-			self:SendSync("BossRevive", 15929)
-		elseif sender == L.Feugen then
-			self:SendSync("BossRevive", 15930)
-		end
-    end
-end
-
-function mod:CHAT_MSG_MONSTER_YELL(msg)
-	if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
-		self:SendSync("Phase2")
 	end
-end
 
-function mod:OnSync(msg, arg)
-	if not self:IsInCombat() then return end
-	if msg == "BossDies" then
-		local cid = tonumber(arg)
-		if cid then
-			deadBosses[cid] = true
-			warnThrowSoon:Cancel()
-			timerThrow:Stop()
-			if deadBosses[15929] and deadBosses[15930] then
-				self:SetStage(1.5)
-				warnPhase2Soon:Show()
-				timerPhase2:Start(nil, 2)
-				DBM.InfoFrame:Hide()
+	function mod:OnCombatStart()
+		self:SetStage(1)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
+		currentCharge = nil
+		deadBosses = {}
+	    timerThrow:Start()
+	    warnThrowSoon:Schedule(16)
+		if self.Options.InfoFrame then
+			DBM.InfoFrame:Show(2, "function", updateInfoFrame, false, false)
+			self:BossHealthUpdate()
+		end
+	end
+
+	function mod:OnCombatEnd(wipe, isSecondRun)
+		if wipe and not isSecondRun then
+			DBM:AddMsg("Arrow Options can be changed for this encounter. Mod supports 3 different strats. Choose one that matches your strat")
+		end
+	end
+
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(28089) then
+			timerNextShift:Start()
+			timerShiftCast:Start()
+			warnShiftCasting:Show()
+			warnShiftSoon:Schedule(20)
+		end
+	end
+
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(28338, 28339) and self:AntiSpam(3, 1) then
+			warnThrow:Show()
+			timerThrow:Start()
+			warnThrowSoon:Schedule(16)
+		end
+	end
+
+	function mod:SPELL_AURA_APPLIED(args)
+		if not args:IsPlayer() then return end
+		local charge, chargeIcon
+		if args:IsSpell(28059) then
+			charge = CL.POSITIVE
+			chargeIcon = "135769"
+			yellShift:Yell(6, "+ +")
+		elseif args:IsSpell(28084) then
+			charge = CL.NEGATIVE
+			chargeIcon = "135768"
+			yellShift:Yell(7, "- -")
+		end
+		warnChargeChanged:UpdateIcon(chargeIcon)
+		warnChargeChanged:Show(charge)
+		--Only play voice on actual polarity flip, not first application
+		if currentCharge then
+			warnChargeChanged:Play("movesoon")
+			if self.Options.AirowsEnabled == "ArrowsInverse" then
+				self:ShowRightArrow()
+			elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
+				self:ShowLeftArrow()
+			elseif self.Options.AirowsEnabled == "TwoCamp" then
+				self:ShowUpArrow()
 			end
 		end
-	elseif msg == "BossRevive" then
-		local cid = tonumber(arg)
-		if cid then
-			deadBosses[cid] = nil
+		currentCharge = charge
+	end
+
+	function mod:SPELL_AURA_REFRESH(args)
+		if not args:IsPlayer() then return end
+		local chargeIcon
+		if args:IsSpell(28059) then
+			chargeIcon = "135769"
+			yellShift:Yell(6, "+ +")
+		elseif args:IsSpell(28084) then
+			chargeIcon = "135768"
+			yellShift:Yell(7, "- -")
 		end
-	elseif msg == "Phase2" then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-        timerEnrage:Start()
-		timerNextShift:Start(11.3)
-		timerPhase2:Stop()
-		warnPhase:Play("ptwo")
+		warnChargeNotChanged:UpdateIcon(chargeIcon)
+		warnChargeNotChanged:Show()
+		warnChargeNotChanged:Play("dontmove")
+		if self.Options.AirowsEnabled == "ArrowsInverse" then
+			self:ShowLeftArrow()
+		elseif self.Options.AirowsEnabled == "ArrowsRightLeft" then
+			self:ShowRightArrow()
+		end
 	end
-end
 
-local function arrowOnUpdate(self, elapsed)
-	self.elapsed = (self.elapsed or 0) + elapsed
-	local vibration = math.sin(self.elapsed * 20) * 10
-	local x, y = self.baseX, self.baseY
-	if self.vibrateX then
-		x = x + vibration
-	else
-		y = y + vibration
+	function mod:CHAT_MSG_MONSTER_EMOTE(msg, sender)
+	    if msg == L.EmoteDies or msg:find(L.EmoteDies) then
+			if sender == L.Stalagg then
+				self:SendSync("BossDies", 15929)
+			elseif sender == L.Feugen then
+				self:SendSync("BossDies", 15930)
+			end
+	    elseif msg == L.EmoteRevive or msg:find(L.EmoteRevive) then
+			if sender == L.Stalagg then
+				self:SendSync("BossRevive", 15929)
+			elseif sender == L.Feugen then
+				self:SendSync("BossRevive", 15930)
+			end
+	    end
 	end
-	self:ClearAllPoints()
-	self:SetPoint("CENTER", UIParent, "CENTER", x, y)
-	if self.elapsed >= 3.5 and self.elapsed < 4.5 then
-		self:SetAlpha(4.5 - self.elapsed)
-	elseif self.elapsed >= 4.5 then
-		self:Hide()
+
+	function mod:CHAT_MSG_MONSTER_YELL(msg)
+		if msg == L.Yell1P2 or msg:find(L.Yell1P2) or msg == L.Yell2P2 or msg:find(L.Yell2P2) or msg == L.Yell3P2 or msg:find(L.Yell3P2) then
+			self:SendSync("Phase2")
+		end
 	end
-end
 
-local function arrowOnShow(self)
-	self.elapsed = 0
-	self:SetAlpha(1)
-end
+	function mod:OnSync(msg, arg)
+		if not self:IsInCombat() then return end
+		if msg == "BossDies" then
+			local cid = tonumber(arg)
+			if cid then
+				deadBosses[cid] = true
+				warnThrowSoon:Cancel()
+				timerThrow:Stop()
+				if deadBosses[15929] and deadBosses[15930] then
+					self:SetStage(1.5)
+					warnPhase2Soon:Show()
+					timerPhase2:Start(nil, 2)
+					DBM.InfoFrame:Hide()
+				end
+			end
+		elseif msg == "BossRevive" then
+			local cid = tonumber(arg)
+			if cid then
+				deadBosses[cid] = nil
+			end
+		elseif msg == "Phase2" then
+			self:SetStage(2)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+	        timerEnrage:Start()
+			timerNextShift:Start(11.3)
+			timerPhase2:Stop()
+			warnPhase:Play("ptwo")
+		end
+	end
 
-local arrowLeft = CreateFrame("Frame", nil, UIParent)
-arrowLeft:Hide()
-arrowLeft.baseX, arrowLeft.baseY = -150, -30
-arrowLeft.vibrateX = true
-local arrowLeftTexture = arrowLeft:CreateTexture(nil, "BACKGROUND")
-arrowLeftTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
-arrowLeftTexture:SetPoint("CENTER", arrowLeft, "CENTER")
-arrowLeft:SetHeight(1)
-arrowLeft:SetWidth(1)
-arrowLeft:SetPoint("CENTER", UIParent, "CENTER", arrowLeft.baseX, arrowLeft.baseY)
-arrowLeft:SetScript("OnShow", arrowOnShow)
-arrowLeft:SetScript("OnUpdate", arrowOnUpdate)
+	local function arrowOnUpdate(self, elapsed)
+		self.elapsed = (self.elapsed or 0) + elapsed
+		local vibration = math.sin(self.elapsed * 20) * 10
+		local x, y = self.baseX, self.baseY
+		if self.vibrateX then
+			x = x + vibration
+		else
+			y = y + vibration
+		end
+		self:ClearAllPoints()
+		self:SetPoint("CENTER", UIParent, "CENTER", x, y)
+		if self.elapsed >= 3.5 and self.elapsed < 4.5 then
+			self:SetAlpha(4.5 - self.elapsed)
+		elseif self.elapsed >= 4.5 then
+			self:Hide()
+		end
+	end
 
-local arrowRight = CreateFrame("Frame", nil, UIParent)
-arrowRight:Hide()
-arrowRight.baseX, arrowRight.baseY = 150, -30
-arrowRight.vibrateX = true
-local arrowRightTexture = arrowRight:CreateTexture(nil, "BACKGROUND")
-arrowRightTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
-arrowRightTexture:SetPoint("CENTER", arrowRight, "CENTER")
-arrowRightTexture:SetTexCoord(1, 0, 0, 1)
-arrowRight:SetHeight(1)
-arrowRight:SetWidth(1)
-arrowRight:SetPoint("CENTER", UIParent, "CENTER", arrowRight.baseX, arrowRight.baseY)
-arrowRight:SetScript("OnShow", arrowOnShow)
-arrowRight:SetScript("OnUpdate", arrowOnUpdate)
+	local function arrowOnShow(self)
+		self.elapsed = 0
+		self:SetAlpha(1)
+	end
 
-local arrowUp = CreateFrame("Frame", nil, UIParent)
-arrowUp:Hide()
-arrowUp.baseX, arrowUp.baseY = 0, 150
-local arrowUpTexture = arrowUp:CreateTexture(nil, "BACKGROUND")
-arrowUpTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
-arrowUpTexture:SetRotation(math.pi * 3 / 2)
-arrowUpTexture:SetPoint("CENTER", arrowUp, "CENTER")
-arrowUp:SetHeight(1)
-arrowUp:SetWidth(1)
-arrowUp:SetPoint("CENTER", UIParent, "CENTER", arrowUp.baseX, arrowUp.baseY)
-arrowUp:SetScript("OnShow", arrowOnShow)
-arrowUp:SetScript("OnUpdate", arrowOnUpdate)
+	local arrowLeft = CreateFrame("Frame", nil, UIParent)
+	arrowLeft:Hide()
+	arrowLeft.baseX, arrowLeft.baseY = -150, -30
+	arrowLeft.vibrateX = true
+	local arrowLeftTexture = arrowLeft:CreateTexture(nil, "BACKGROUND")
+	arrowLeftTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
+	arrowLeftTexture:SetPoint("CENTER", arrowLeft, "CENTER")
+	arrowLeft:SetHeight(1)
+	arrowLeft:SetWidth(1)
+	arrowLeft:SetPoint("CENTER", UIParent, "CENTER", arrowLeft.baseX, arrowLeft.baseY)
+	arrowLeft:SetScript("OnShow", arrowOnShow)
+	arrowLeft:SetScript("OnUpdate", arrowOnUpdate)
 
-function mod:ShowRightArrow()
-	arrowRight:Show()
-end
+	local arrowRight = CreateFrame("Frame", nil, UIParent)
+	arrowRight:Hide()
+	arrowRight.baseX, arrowRight.baseY = 150, -30
+	arrowRight.vibrateX = true
+	local arrowRightTexture = arrowRight:CreateTexture(nil, "BACKGROUND")
+	arrowRightTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
+	arrowRightTexture:SetPoint("CENTER", arrowRight, "CENTER")
+	arrowRightTexture:SetTexCoord(1, 0, 0, 1)
+	arrowRight:SetHeight(1)
+	arrowRight:SetWidth(1)
+	arrowRight:SetPoint("CENTER", UIParent, "CENTER", arrowRight.baseX, arrowRight.baseY)
+	arrowRight:SetScript("OnShow", arrowOnShow)
+	arrowRight:SetScript("OnUpdate", arrowOnUpdate)
 
-function mod:ShowLeftArrow()
-	arrowLeft:Show()
-end
+	local arrowUp = CreateFrame("Frame", nil, UIParent)
+	arrowUp:Hide()
+	arrowUp.baseX, arrowUp.baseY = 0, 150
+	local arrowUpTexture = arrowUp:CreateTexture(nil, "BACKGROUND")
+	arrowUpTexture:SetTexture("Interface\\AddOns\\DBM-Raids-Vanilla\\VanillaNaxx\\ConstructQuarter\\Textures\\arrow")
+	arrowUpTexture:SetRotation(math.pi * 3 / 2)
+	arrowUpTexture:SetPoint("CENTER", arrowUp, "CENTER")
+	arrowUp:SetHeight(1)
+	arrowUp:SetWidth(1)
+	arrowUp:SetPoint("CENTER", UIParent, "CENTER", arrowUp.baseX, arrowUp.baseY)
+	arrowUp:SetScript("OnShow", arrowOnShow)
+	arrowUp:SetScript("OnUpdate", arrowOnUpdate)
 
-function mod:ShowUpArrow()
-	arrowUp:Show()
+	function mod:ShowRightArrow()
+		arrowRight:Show()
+	end
+
+	function mod:ShowLeftArrow()
+		arrowLeft:Show()
+	end
+
+	function mod:ShowUpArrow()
+		arrowUp:Show()
+	end
 end

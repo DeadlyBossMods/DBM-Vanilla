@@ -12,13 +12,11 @@ end
 local mod	= DBM:NewMod("Razorgore", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 local CL	= DBM_COMMON_L
-
 if DBM:IsSeasonal("SeasonOfDiscovery") then
 	mod.statTypes = "normal,heroic,mythic"
 else
 	mod.statTypes = "normal"
 end
-
 mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
@@ -28,125 +26,115 @@ mod:SetModelID(10115)
 mod:SetHotfixNoticeRev(20200904000000)--2020, September, 4th
 mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:SetZone(469)
-
 mod:RegisterCombat("combat_yell", L.Pull)
-mod:SetWipeTime(180)--guesswork
-
-mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 22425",
-	"SPELL_CAST_SUCCESS 23040 19873",
-	"SPELL_AURA_APPLIED 23023",
-	"UNIT_DIED"
-)
-
---ability.id = 22425 and type = "begincast" or (ability.id = 23040 or ability.id = 19873) and type = "cast"
-local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
-local warnFireballVolley	= mod:NewCastAnnounce(22425, 3)
-local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
-local warnEggsLeft			= mod:NewCountAnnounce(19873, 1) ---@type Announce -- string as count in :Show() is unusual but valid
-
-local specWarnFireballVolley= mod:NewSpecialWarningMoveTo(22425, false, nil, nil, 2, 2, nil, nil, "findshelter")
-
-local timerAddsSpawn		= mod:NewAddsTimer(47, nil, nil, nil, nil, 1, "134153")--Only for start of adds, not adds after the adds.
-
-local timerDrakeSpawn, warnDrakeSpawn
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerDrakeSpawn = mod:NewTimer(90, CL.BIG_ADD, 466277, nil, nil, 1) -- Big drake after 1:30 min or after 10 eggs (some sources suggest 2:00, but warcraftlogs has him appearing at exactly 1:30 in slow kills)
-	warnDrakeSpawn = mod:NewAnnounce(CL.BIG_ADD, 3)
-end
-
-mod:AddSpeedClearOption("BWL", true)
-
-mod.vb.eggsLeft = 30
-mod.vb.firstEngageTime = nil
-
---Request speed clear variables, in case it was already started before mod loaded
-mod:SendSync("IsBWLStarted")
-
--- Polyfill because I don't feel like this justifies a forced core update
-local function isBlackEssenceEnabled()
-	if mod.IsBwlBlackEssenceEnabled then
-		return mod:IsBwlBlackEssenceEnabled()
-	else
-		return DBM:UnitDebuff("player", 467047) ~= nil
+mod:SetWipeTime(180)
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
+	--guesswork
+	mod:RegisterEventsInCombat(
+		"SPELL_CAST_START 22425",
+		"SPELL_CAST_SUCCESS 23040 19873",
+		"SPELL_AURA_APPLIED 23023",
+		"UNIT_DIED"
+	)
+	--ability.id = 22425 and type = "begincast" or (ability.id = 23040 or ability.id = 19873) and type = "cast"
+	local warnPhase 			= mod:NewPhaseChangeAnnounce(2, nil, nil, nil, nil, nil, 2)
+	local warnFireballVolley	= mod:NewCastAnnounce(22425, 3)
+	local warnConflagration		= mod:NewTargetAnnounce(23023, 2)
+	local warnEggsLeft			= mod:NewCountAnnounce(19873, 1) ---@type Announce -- string as count in :Show() is unusual but valid
+	local specWarnFireballVolley= mod:NewSpecialWarningMoveTo(22425, false, nil, nil, 2, 2, nil, nil, "findshelter")
+	local timerAddsSpawn		= mod:NewAddsTimer(47, nil, nil, nil, nil, 1, "134153")--Only for start of adds, not adds after the adds.
+	local timerDrakeSpawn, warnDrakeSpawn
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		timerDrakeSpawn = mod:NewTimer(90, CL.BIG_ADD, 466277, nil, nil, 1) -- Big drake after 1:30 min or after 10 eggs (some sources suggest 2:00, but warcraftlogs has him appearing at exactly 1:30 in slow kills)
+		warnDrakeSpawn = mod:NewAnnounce(CL.BIG_ADD, 3)
 	end
-end
-
-function mod:OnCombatStart()
-	self:SetStage(1)
-	warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
-	timerAddsSpawn:Start()
-	self.vb.eggsLeft = 30
-	if not self.vb.firstEngageTime then
-		self.vb.firstEngageTime = GetServerTime()
-		if self.Options.FastestClear and self.Options.SpeedClearTimer then
-			--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
-			DBT:CreateBar(self.Options.FastestClear, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
-		end
-	end
-	if timerDrakeSpawn and isBlackEssenceEnabled() then
-		timerDrakeSpawn:Start()
-	end
-end
-
-function mod:OnSync(msg, startTime)
-	--Sync recieved with start time and ours is currently not started
-	if msg == "BWLStarted" and startTime and not self.vb.firstEngageTime then
-		self.vb.firstEngageTime = tonumber(startTime)
-		if self.Options.FastestClear and self.Options.SpeedClearTimer then
-			--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
-			local adjustment = GetServerTime() - self.vb.firstEngageTime
-			DBT:CreateBar(self.Options.FastestClear - adjustment, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
-		end
-	elseif msg == "IsBWLStarted" and self.vb.firstEngageTime then
-		self:SendSync("BWLStarted", self.vb.firstEngageTime)
-	end
-end
-
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(22425) and args:IsDestTypePlayer() then
-		if self.Options.SpecWarn22425moveto then
-			specWarnFireballVolley:Show(DBM_COMMON_L.BREAK_LOS)
-			specWarnFireballVolley:Play("findshelter")
+	mod:AddSpeedClearOption("BWL", true)
+	mod.vb.eggsLeft = 30
+	mod.vb.firstEngageTime = nil
+	--Request speed clear variables, in case it was already started before mod loaded
+	mod:SendSync("IsBWLStarted")
+	-- Polyfill because I don't feel like this justifies a forced core update
+	local function isBlackEssenceEnabled()
+		if mod.IsBwlBlackEssenceEnabled then
+			return mod:IsBwlBlackEssenceEnabled()
 		else
-			warnFireballVolley:Show()
+			return DBM:UnitDebuff("player", 467047) ~= nil
 		end
 	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(23040) and self:GetStage(1) then
-		self:SetStage(2)
-		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
-	elseif args:IsSpell(19873) then
-		self.vb.eggsLeft = self.vb.eggsLeft - 1
-		if self:IsRetail() then
-			if self.vb.eggsLeft % 3 == 0 then
+	function mod:OnCombatStart()
+		self:SetStage(1)
+		warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(1))
+		timerAddsSpawn:Start()
+		self.vb.eggsLeft = 30
+		if not self.vb.firstEngageTime then
+			self.vb.firstEngageTime = GetServerTime()
+			if self.Options.FastestClear and self.Options.SpeedClearTimer then
+				--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
+				DBT:CreateBar(self.Options.FastestClear, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
+			end
+		end
+		if timerDrakeSpawn and isBlackEssenceEnabled() then
+			timerDrakeSpawn:Start()
+		end
+	end
+	function mod:OnSync(msg, startTime)
+		--Sync recieved with start time and ours is currently not started
+		if msg == "BWLStarted" and startTime and not self.vb.firstEngageTime then
+			self.vb.firstEngageTime = tonumber(startTime)
+			if self.Options.FastestClear and self.Options.SpeedClearTimer then
+				--Custom bar creation that's bound to core, not mod, so timer doesn't stop when mod stops it's own timers
+				local adjustment = GetServerTime() - self.vb.firstEngageTime
+				DBT:CreateBar(self.Options.FastestClear - adjustment, DBM_CORE_L.SPEED_CLEAR_TIMER_TEXT, 136106)
+			end
+		elseif msg == "IsBWLStarted" and self.vb.firstEngageTime then
+			self:SendSync("BWLStarted", self.vb.firstEngageTime)
+		end
+	end
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(22425) and args:IsDestTypePlayer() then
+			if self.Options.SpecWarn22425moveto then
+				specWarnFireballVolley:Show(DBM_COMMON_L.BREAK_LOS)
+				specWarnFireballVolley:Play("findshelter")
+			else
+				warnFireballVolley:Show()
+			end
+		end
+	end
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(23040) and self:GetStage(1) then
+			self:SetStage(2)
+			warnPhase:Show(DBM_CORE_L.AUTO_ANNOUNCE_TEXTS.stage:format(2))
+		elseif args:IsSpell(19873) then
+			self.vb.eggsLeft = self.vb.eggsLeft - 1
+			if self:IsRetail() then
+				if self.vb.eggsLeft % 3 == 0 then
+					warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
+				end
+			else
 				warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
 			end
-		else
-			warnEggsLeft:Show(string.format("%d/%d",30-self.vb.eggsLeft,30))
-		end
-		if self.vb.eggsLeft == 20 and timerDrakeSpawn and isBlackEssenceEnabled() and GetTime() - (self.combatInfo.pull or 0) <= 90 then
-			warnDrakeSpawn:Show()
-			timerDrakeSpawn:Stop()
+			if self.vb.eggsLeft == 20 and timerDrakeSpawn and isBlackEssenceEnabled() and GetTime() - (self.combatInfo.pull or 0) <= 90 then
+				warnDrakeSpawn:Show()
+				timerDrakeSpawn:Stop()
+			end
 		end
 	end
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(23023) and args:IsDestTypePlayer() then
-		warnConflagration:CombinedShow(0.3, args.destName)
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(23023) and args:IsDestTypePlayer() then
+			warnConflagration:CombinedShow(0.3, args.destName)
+		end
 	end
-end
-
-function mod:UNIT_DIED(args)
-	local cid = self:GetCIDFromGUID(args.destGUID)
-	if cid == 12435 then--Only trigger kill for unit_died if he dies in phase 2 with everyone alive, otherwise it's an auto wipe.
-		if DBM:NumRealAlivePlayers() > 0 and self:GetStage(2) then
-			DBM:EndCombat(self)
-		else
-			DBM:EndCombat(self, true)--Pass wipe arg end combat
+	function mod:UNIT_DIED(args)
+		local cid = self:GetCIDFromGUID(args.destGUID)
+		if cid == 12435 then--Only trigger kill for unit_died if he dies in phase 2 with everyone alive, otherwise it's an auto wipe.
+			if DBM:NumRealAlivePlayers() > 0 and self:GetStage(2) then
+				DBM:EndCombat(self)
+			else
+				DBM:EndCombat(self, true)--Pass wipe arg end combat
+			end
 		end
 	end
 end

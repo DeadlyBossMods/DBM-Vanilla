@@ -18,120 +18,125 @@ mod:SetModelID(15509)
 mod:SetZone(531)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_AURA_APPLIED 26615",
-	"SPELL_CAST_START 26102 26103",
-	"SPELL_CAST_SUCCESS 26058 26586",
-	"SPELL_DAMAGE 1215745"
-)
-
-local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
-local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
-local warnSweep			= mod:NewSpellAnnounce(26103, 2, nil, "Tank", 2)
-local warnBerserk		= mod:NewSpellAnnounce(26615, 3)
-local warnBerserkSoon	= mod:NewSoonAnnounce(26615, 2)
-
-local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2, nil, nil, "stunsoon")
-
-local timerSubmerge		= mod:NewTimer(184.6, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
-local timerEmerge		= mod:NewTimer(30.1, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
-local timerBlastCD		= mod:NewVarTimer("v22.1-26.8", 26102, nil, nil, nil, 2)
-local timerSweepCD		= mod:NewVarTimer("v20.6-22.6", 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
-
-local timerNextEye, specWarnEye
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerNextEye 	= mod:NewNextTimer(30, 1215744)
-	specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2, nil, nil, nil, nil, "safenow")
-end
-
-mod.vb.prewarn_berserk = false
-mod.vb.berserked = false
-mod.vb.submerged = false
-
-function mod:OnCombatStart()
-	self.vb.prewarn_berserk = false
-	self.vb.berserked = false
-	self.vb.submerged = false
-	timerBlastCD:Start("v20.1-26.3")
-	timerSweepCD:Start("v22.6-25.9")
-	timerSubmerge:Start()
-	self:RegisterShortTermEvents(
-		"UNIT_HEALTH"
+	mod:RegisterEventsInCombat(
+		"SPELL_AURA_APPLIED 26615",
+		"SPELL_CAST_START 26102 26103",
+		"SPELL_CAST_SUCCESS 26058 26586",
+		"SPELL_DAMAGE 1215745"
 	)
-	if DBM:UnitDebuff("player", 1213261) then
-		self:BlindingAdmiration()
+
+	local warnSubmerge		= mod:NewAnnounce("WarnSubmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp")
+	local warnEmerge		= mod:NewAnnounce("WarnEmerge", 3, "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp")
+	local warnSweep			= mod:NewSpellAnnounce(26103, 2, nil, "Tank", 2)
+	local warnBerserk		= mod:NewSpellAnnounce(26615, 3)
+	local warnBerserkSoon	= mod:NewSoonAnnounce(26615, 2)
+
+	local specWarnBlast		= mod:NewSpecialWarningSpell(26102, nil, nil, nil, 2, 2, nil, nil, "stunsoon")
+
+	local timerSubmerge		= mod:NewTimer(184.6, "TimerSubmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendBurrow.blp", nil, nil, 6)
+	local timerEmerge		= mod:NewTimer(30.1, "TimerEmerge", "Interface\\AddOns\\DBM-Core\\textures\\CryptFiendUnBurrow.blp", nil, nil, 6)
+	local timerBlastCD		= mod:NewVarTimer("v22.1-26.8", 26102, nil, nil, nil, 2)
+	local timerSweepCD		= mod:NewVarTimer("v20.6-22.6", 26103, nil, "Tank", 2, 5, nil, DBM_COMMON_L.TANK_ICON)
+
+	local timerNextEye, specWarnEye
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		timerNextEye 	= mod:NewNextTimer(30, 1215744)
+		specWarnEye		= mod:NewSpecialWarning("SpecWarnEye", nil, nil, nil, 3, 2, nil, nil, nil, nil, "safenow")
 	end
-end
 
-function mod:OnCombatEnd()
-	self:UnregisterShortTermEvents()
-end
+	mod.vb.prewarn_berserk = false
+	mod.vb.berserked = false
+	mod.vb.submerged = false
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(26615) and args:IsDestTypeHostile() then
-		self.vb.berserked = true
-		warnBerserk:Show()
-		timerSubmerge:Stop()
-		timerBlastCD:Stop() -- Sand Blast timer resets when Ouro enrages
-        timerBlastCD:Start()
-	end
-end
-
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(26102) then
-		specWarnBlast:Show()
-		specWarnBlast:Play("stunsoon")
-		timerBlastCD:Start()
-	elseif args:IsSpell(26103) then
-		warnSweep:Show()
-		timerSweepCD:Start()
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if 	args:IsSpell(26058) and not self.vb.berserked then
-		self.vb.submerged = true
-		warnSubmerge:Show()
-		timerSubmerge:Stop()
-		timerBlastCD:Stop()
-		timerSweepCD:Stop()
-		timerEmerge:Start()
-	elseif args:IsSpell(26586) and self.vb.submerged then
+	function mod:OnCombatStart()
+		self.vb.prewarn_berserk = false
+		self.vb.berserked = false
 		self.vb.submerged = false
-		warnEmerge:Show()
-		timerEmerge:Stop()
 		timerBlastCD:Start("v20.1-26.3")
 		timerSweepCD:Start("v22.6-25.9")
 		timerSubmerge:Start()
+		self:RegisterShortTermEvents(
+			"UNIT_HEALTH"
+		)
+		if DBM:UnitDebuff("player", 1213261) then
+			self:BlindingAdmiration()
+		end
 	end
-end
 
-function mod:UNIT_HEALTH(uId)
-	if self:GetUnitCreatureId(uId) == 15517 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
-		self:SendSync("BerserkSoon")
+	function mod:OnCombatEnd()
 		self:UnregisterShortTermEvents()
 	end
-end
 
-function mod:OnSync(msg)
-	if not self:IsInCombat() then return end
-	if msg == "BerserkSoon" and not self.vb.prewarn_berserk then
-		self.vb.prewarn_berserk = true
-		warnBerserkSoon:Show()
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(26615) and args:IsDestTypeHostile() then
+			self.vb.berserked = true
+			warnBerserk:Show()
+			timerSubmerge:Stop()
+			timerBlastCD:Stop() -- Sand Blast timer resets when Ouro enrages
+	        timerBlastCD:Start()
+		end
 	end
-end
 
-function mod:BlindingAdmiration(delay)
-	if delay == 0 then delay = 0.001 end -- FIXME: remove after core fixes
-	timerNextEye:Start(-delay)
-	specWarnEye:Schedule(26 - delay)
-	specWarnEye:ScheduleVoice(26 - delay, "turnaway")
-end
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(26102) then
+			specWarnBlast:Show()
+			specWarnBlast:Play("stunsoon")
+			timerBlastCD:Start()
+		elseif args:IsSpell(26103) then
+			warnSweep:Show()
+			timerSweepCD:Start()
+		end
+	end
 
-function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
-	if spellId == 1215745 and self:AntiSpam(10, "BlindingAdmiration") then
-		self:BlindingAdmiration(0)
-		specWarnEye:Play("safenow")
+	function mod:SPELL_CAST_SUCCESS(args)
+		if 	args:IsSpell(26058) and not self.vb.berserked then
+			self.vb.submerged = true
+			warnSubmerge:Show()
+			timerSubmerge:Stop()
+			timerBlastCD:Stop()
+			timerSweepCD:Stop()
+			timerEmerge:Start()
+		elseif args:IsSpell(26586) and self.vb.submerged then
+			self.vb.submerged = false
+			warnEmerge:Show()
+			timerEmerge:Stop()
+			timerBlastCD:Start("v20.1-26.3")
+			timerSweepCD:Start("v22.6-25.9")
+			timerSubmerge:Start()
+		end
+	end
+
+	function mod:UNIT_HEALTH(uId)
+		if self:GetUnitCreatureId(uId) == 15517 and UnitHealth(uId) / UnitHealthMax(uId) <= 0.25 then
+			self:SendSync("BerserkSoon")
+			self:UnregisterShortTermEvents()
+		end
+	end
+
+	function mod:OnSync(msg)
+		if not self:IsInCombat() then return end
+		if msg == "BerserkSoon" and not self.vb.prewarn_berserk then
+			self.vb.prewarn_berserk = true
+			warnBerserkSoon:Show()
+		end
+	end
+
+	function mod:BlindingAdmiration(delay)
+		if delay == 0 then delay = 0.001 end -- FIXME: remove after core fixes
+		timerNextEye:Start(-delay)
+		specWarnEye:Schedule(26 - delay)
+		specWarnEye:ScheduleVoice(26 - delay, "turnaway")
+	end
+
+	function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId)
+		if spellId == 1215745 and self:AntiSpam(10, "BlindingAdmiration") then
+			self:BlindingAdmiration(0)
+			specWarnEye:Play("safenow")
+		end
 	end
 end

@@ -23,42 +23,47 @@ mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 20553 19798 461463"
-)
-local specWarnFallingRocks, yellFallingRocks, timerFallingRocks
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	timerFallingRocks		= mod:NewCDTimer(25, 461463)
-	specWarnFallingRocks	= mod:NewSpecialWarningDodge(461463, nil, nil, nil, 2, 2, nil, nil, "watchstep")
-	yellFallingRocks		= mod:NewIconRepeatYell(461463)
-end
-local warnQuake				= mod:NewSpellAnnounce(19798, 2, nil, "Melee")
-
---[=[
-Falling Rocks looks like it has the target on CAST_SUCCESS, but only exactly at that moment, it switches immediately after that event
-"<212.30 21:47:43> [UNIT_SPELLCAST_SUCCEEDED] Golemagg the Incinerator(25.8%-0.0%){Target:Preyxy} -Falling Rocks- [[nameplate1:Cast-3-5210-409-10629-461463-000DB3CF61:461463]]",
-"<212.30 21:47:43> [UNIT_SPELLCAST_SUCCEEDED] Golemagg the Incinerator(25.8%-0.0%){Target:Preyxy} -Falling Rocks- [[target:Cast-3-5210-409-10629-461463-000DB3CF61:461463]]",
-"<212.30 21:47:43> [CLEU] SPELL_CAST_SUCCESS##nil##nil#461463#Falling Rocks#nil#nil#nil#nil#nil#nil",
-"<212.30 21:47:43> [UNIT_TARGET] nameplate1#Golemagg the Incinerator#Target: Mafakacoil#TargetOfTarget: Golemagg the Incinerator",
-]=]
-
-function mod:OnCombatStart()
-	if timerFallingRocks then
-		timerFallingRocks:Start()
+	mod:RegisterEventsInCombat(
+		"SPELL_CAST_SUCCESS 20553 19798 461463"
+	)
+	local specWarnFallingRocks, yellFallingRocks, timerFallingRocks
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		timerFallingRocks		= mod:NewCDTimer(25, 461463)
+		specWarnFallingRocks	= mod:NewSpecialWarningDodge(461463, nil, nil, nil, 2, 2, nil, nil, "watchstep")
+		yellFallingRocks		= mod:NewIconRepeatYell(461463)
 	end
-end
+	local warnQuake				= mod:NewSpellAnnounce(19798, 2, nil, "Melee")
 
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19798) then
-		warnQuake:Show()
-	elseif args:IsSpell(461463) then
-		specWarnFallingRocks:Show()
-		specWarnFallingRocks:Play("watchstep")
-		timerFallingRocks:Start()
-		local name, _, bossUid = self:GetBossTarget(228435) -- The event somehow doesn't have a source
-		if name == UnitName("player") and not self:IsTanking("player", bossUid) then -- Exclude tank cause I'm not sure if this logic is even correct
-			yellFallingRocks:Show()
+	--[=[
+	Falling Rocks looks like it has the target on CAST_SUCCESS, but only exactly at that moment, it switches immediately after that event
+	"<212.30 21:47:43> [UNIT_SPELLCAST_SUCCEEDED] Golemagg the Incinerator(25.8%-0.0%){Target:Preyxy} -Falling Rocks- [[nameplate1:Cast-3-5210-409-10629-461463-000DB3CF61:461463]]",
+	"<212.30 21:47:43> [UNIT_SPELLCAST_SUCCEEDED] Golemagg the Incinerator(25.8%-0.0%){Target:Preyxy} -Falling Rocks- [[target:Cast-3-5210-409-10629-461463-000DB3CF61:461463]]",
+	"<212.30 21:47:43> [CLEU] SPELL_CAST_SUCCESS##nil##nil#461463#Falling Rocks#nil#nil#nil#nil#nil#nil",
+	"<212.30 21:47:43> [UNIT_TARGET] nameplate1#Golemagg the Incinerator#Target: Mafakacoil#TargetOfTarget: Golemagg the Incinerator",
+	]=]
+
+	function mod:OnCombatStart()
+		if timerFallingRocks then
+			timerFallingRocks:Start()
+		end
+	end
+
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(19798) then
+			warnQuake:Show()
+		elseif args:IsSpell(461463) then
+			specWarnFallingRocks:Show()
+			specWarnFallingRocks:Play("watchstep")
+			timerFallingRocks:Start()
+			local name, _, bossUid = self:GetBossTarget(228435) -- The event somehow doesn't have a source
+			if name == UnitName("player") and not self:IsTanking("player", bossUid) then -- Exclude tank cause I'm not sure if this logic is even correct
+				yellFallingRocks:Show()
+			end
 		end
 	end
 end

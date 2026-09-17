@@ -21,95 +21,100 @@ mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
+if DBM:IsRestricted() then
+	--do stuff
+	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_CAST_START 460856",
-	"SPELL_AURA_APPLIED 19714 460856",
-	"SPELL_AURA_REMOVED 19714",
-	"SPELL_CAST_SUCCESS 19713 19715 23138 461343"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_CAST_START 460856",
+		"SPELL_AURA_APPLIED 19714 460856",
+		"SPELL_AURA_REMOVED 19714",
+		"SPELL_CAST_SUCCESS 19713 19715 23138 461343"
+	)
 
---[[
-ability.id = 461343 and type = "begincast"
-or (ability.id = 19713 or ability.id = 19715 or ability.id = 23138 or ability.id = 19714) and type = "cast"
---]]
-local warnCurse					= mod:NewSpellAnnounce(19713, 3)
-local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, "CasterDps", 2)
-local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
-local warnGate					= mod:NewSpellAnnounce(23138, 2)
+	--[[
+	ability.id = 461343 and type = "begincast"
+	or (ability.id = 19713 or ability.id = 19715 or ability.id = 23138 or ability.id = 19714) and type = "cast"
+	--]]
+	local warnCurse					= mod:NewSpellAnnounce(19713, 3)
+	local warnDeadenMagic			= mod:NewTargetNoFilterAnnounce(19714, 2, nil, "CasterDps", 2)
+	local warnCounterSpell			= mod:NewSpellAnnounce(19715, 3, nil, "SpellCaster", 2)
+	local warnGate					= mod:NewSpellAnnounce(23138, 2)
 
-local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, "MagicDispeller", nil, 2, 1, 2, nil, nil, "dispelboss")
-local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")--aggro wipe, needs fresh taunt
+	local specWarnDeadenMagic		= mod:NewSpecialWarningDispel(19714, "MagicDispeller", nil, 2, 1, 2, nil, nil, "dispelboss")
+	local specWarnGate				= mod:NewSpecialWarningTaunt(23138, "Tank", nil, nil, 1, 2, nil, nil, "tauntboss")--aggro wipe, needs fresh taunt
 
-local timerCurseCD           	= mod:NewVarTimer("v21-26.4", 19713, nil, "RemoveCurse", nil, 2, nil, DBM_COMMON_L.CURSE_ICON)
-local timerDeadenMagic       	= mod:NewBuffActiveTimer(30, 19714, nil, "MagicDispeller", 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-local timerCounterSpellCD    	= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 9.6 or "v15.7-21.1", 19715, nil, "SpellCaster", nil, 2)
-local timerGateCD            	= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 25.8 or "v42.1-48.6", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+	local timerCurseCD           	= mod:NewVarTimer("v21-26.4", 19713, nil, "RemoveCurse", nil, 2, nil, DBM_COMMON_L.CURSE_ICON)
+	local timerDeadenMagic       	= mod:NewBuffActiveTimer(30, 19714, nil, "MagicDispeller", 3, 5, nil, DBM_COMMON_L.MAGIC_ICON)
+	local timerCounterSpellCD    	= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 9.6 or "v15.7-21.1", 19715, nil, "SpellCaster", nil, 2)
+	local timerGateCD            	= mod:NewVarTimer(DBM:IsSeasonal("SeasonOfDiscovery") and 25.8 or "v42.1-48.6", 23138, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 
-local specWarnReflectMagic, specWarnReflectMagicDispel, timerReflectMagicCD
-if DBM:IsSeasonal("SeasonOfDiscovery") then
-	specWarnReflectMagic		= mod:NewSpecialWarningCast(460856, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopcast")
-	specWarnReflectMagicDispel	= mod:NewSpecialWarningDispel(460856, false, nil, 2, 1, 2, nil, nil, "dispelboss")
-	timerReflectMagicCD			= mod:NewCDTimer(22.6, 460856, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
-end
-
-function mod:OnCombatStart()
-	timerCurseCD:Start("v6.1-13")
-	timerCounterSpellCD:Start("v8.1-14.5")
+	local specWarnReflectMagic, specWarnReflectMagicDispel, timerReflectMagicCD
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
-		timerReflectMagicCD:Start(16.1)
-		timerGateCD:Start(22.6)--22.6-?
-	else
-		timerGateCD:Start("v30.3-34.1")
+		specWarnReflectMagic		= mod:NewSpecialWarningCast(460856, "SpellCaster", nil, nil, 1, 2, nil, nil, "stopcast")
+		specWarnReflectMagicDispel	= mod:NewSpecialWarningDispel(460856, false, nil, 2, 1, 2, nil, nil, "dispelboss")
+		timerReflectMagicCD			= mod:NewCDTimer(22.6, 460856, nil, nil, nil, 5, nil, DBM_COMMON_L.MAGIC_ICON)
 	end
-end
 
-function mod:SPELL_CAST_START(args)
-	if args:IsSpell(460856) then
-		specWarnReflectMagic:Show()
-		specWarnReflectMagic:Play("stopcast")
-		timerReflectMagicCD:Start()
-	end
-end
-
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(19714) and not args:IsDestTypePlayer() then
-		if self.Options.SpecWarn19714dispel2 then
-			specWarnDeadenMagic:Show(args.destName)
-			specWarnDeadenMagic:Play("dispelboss")
+	function mod:OnCombatStart()
+		timerCurseCD:Start("v6.1-13")
+		timerCounterSpellCD:Start("v8.1-14.5")
+		if DBM:IsSeasonal("SeasonOfDiscovery") then
+			timerReflectMagicCD:Start(16.1)
+			timerGateCD:Start(22.6)--22.6-?
 		else
-			warnDeadenMagic:Show(args.destName)
+			timerGateCD:Start("v30.3-34.1")
 		end
-		timerDeadenMagic:Start()
-	elseif args:IsSpell(460856) and not args:IsDestTypePlayer() then
-		if self.Options.SpecWarn19714dispel2 then
-			specWarnReflectMagicDispel:Show(args.destName)
-			specWarnReflectMagicDispel:Play("dispelboss")
-		end
-		timerDeadenMagic:Start()
 	end
-end
 
-function mod:SPELL_AURA_REMOVED(args)
-	if args:IsSpell(19714) then
-		timerDeadenMagic:Stop()
-	end
-end
-
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(19713, 461343) then
-		warnCurse:Show()
-		timerCurseCD:Start()
-	elseif args:IsSpell(19715) then
-		warnCounterSpell:Show()
-		timerCounterSpellCD:Start()
-	elseif args:IsSpell(23138) then
-		if self.Options.SpecWarn23138taunt then
-			specWarnGate:Show(args.sourceName)
-			specWarnGate:Play("tauntboss")
-		else
-			warnGate:Show()
+	function mod:SPELL_CAST_START(args)
+		if args:IsSpell(460856) then
+			specWarnReflectMagic:Show()
+			specWarnReflectMagic:Play("stopcast")
+			timerReflectMagicCD:Start()
 		end
-		timerGateCD:Start()
+	end
+
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(19714) and not args:IsDestTypePlayer() then
+			if self.Options.SpecWarn19714dispel2 then
+				specWarnDeadenMagic:Show(args.destName)
+				specWarnDeadenMagic:Play("dispelboss")
+			else
+				warnDeadenMagic:Show(args.destName)
+			end
+			timerDeadenMagic:Start()
+		elseif args:IsSpell(460856) and not args:IsDestTypePlayer() then
+			if self.Options.SpecWarn19714dispel2 then
+				specWarnReflectMagicDispel:Show(args.destName)
+				specWarnReflectMagicDispel:Play("dispelboss")
+			end
+			timerDeadenMagic:Start()
+		end
+	end
+
+	function mod:SPELL_AURA_REMOVED(args)
+		if args:IsSpell(19714) then
+			timerDeadenMagic:Stop()
+		end
+	end
+
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(19713, 461343) then
+			warnCurse:Show()
+			timerCurseCD:Start()
+		elseif args:IsSpell(19715) then
+			warnCounterSpell:Show()
+			timerCounterSpellCD:Start()
+		elseif args:IsSpell(23138) then
+			if self.Options.SpecWarn23138taunt then
+				specWarnGate:Show(args.sourceName)
+				specWarnGate:Play("tauntboss")
+			else
+				warnGate:Show()
+			end
+			timerGateCD:Start()
+		end
 	end
 end
