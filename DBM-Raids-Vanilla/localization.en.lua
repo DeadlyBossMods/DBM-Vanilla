@@ -539,6 +539,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Flamewaker: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Announce Flamewakers remaining"
+}
 
 ------------
 --  Garr  --
@@ -547,6 +553,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Firesworn"
 }
 
 --------------
@@ -599,6 +608,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Majordomo Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Flamewaker Elite",
+	FlamewakerHealer	= "Flamewaker Healer"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Next Shield"
 }
@@ -616,7 +629,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submerge",
-	WarnEmerge			= "Emerge"
+	WarnEmerge			= "Emerge",
+	WarnGuardDied		= "Son of Flame: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submerge",
@@ -628,7 +642,8 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Show timer for submerge",
 	WarnEmerge			= "Show warning for emerge",
 	TimerEmerge			= "Show timer for emerge",
-	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat,
+	WarnGuardDied		= "Announce Sons of Flame remaining"
 }
 L:SetMiscLocalization{
 	Submerge	= "COME FORTH, MY SERVANTS! DEFEND YOUR MASTER!",
@@ -887,21 +902,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan the Unclean"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleported",
-	WarningTeleportSoon	= "Teleport in %d seconds"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleport"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Show warning for Teleport",
-	WarningTeleportSoon	= "Show pre-warning for Teleport",
-	TimerTeleport		= "Show timer for Teleport"
 })
 
 L:SetMiscLocalization({

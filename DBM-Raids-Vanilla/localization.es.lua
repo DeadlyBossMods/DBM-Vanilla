@@ -534,6 +534,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Caminallamas: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Mostrar anuncio para Caminallamas restantes"
+}
 
 ------------
 --  Garr  --
@@ -542,6 +548,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Jurafuego"
 }
 
 --------------
@@ -594,6 +603,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Mayordomo Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Élite Caminallamas",
+	FlamewakerHealer	= "Sanador Caminallamas"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Escudo"
 }
@@ -611,7 +624,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Sumersión",
-	WarnEmerge			= "Emersión"
+	WarnEmerge			= "Emersión",
+	WarnGuardDied		= "Hijo de Flama: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Sumersión",
@@ -621,7 +635,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "Mostrar anuncio cuando Ragnaros se sumerja",
 	TimerSubmerge		= "Mostrar temporizador para cuando Ragnaros se sumerja",
 	WarnEmerge			= "Mostrar anuncio cuando Ragnaros regrese a la superficie",
-	TimerEmerge			= "Mostrar temporizador para cuando Ragnaros regrese a la superficie"
+	TimerEmerge			= "Mostrar temporizador para cuando Ragnaros regrese a la superficie",
+	WarnGuardDied		= "Mostrar anuncio para Hijos de Flama restantes"
 }
 L:SetMiscLocalization{
 	Submerge	= "¡SIERVOS, A MÍ! ¡DEFENDED A VUESTRO MAESTRO!",
@@ -879,21 +894,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan el Impuro"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teletransporte",
-	WarningTeleportSoon	= "Teletransporte en %d |4segundo:segundos;"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teletransporte"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Mostrar anuncio para Teletransporte",
-	WarningTeleportSoon	= "Mostrar anuncio anticipado para Teletransporte",
-	TimerTeleport		= "Mostrar temporizador para Teletransporte"
 })
 
 L:SetMiscLocalization({

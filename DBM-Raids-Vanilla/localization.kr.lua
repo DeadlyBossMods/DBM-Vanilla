@@ -543,6 +543,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "게헨나스"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "불꽃꼬리일족 전사: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "불꽃꼬리일족 전사 남은 수 알림"
+}
 
 ------------
 --  Garr  --
@@ -551,6 +557,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "가르"
+}
+L:SetMiscLocalization{
+	Firesworn = "불꽃의 추종자"
 }
 
 --------------
@@ -603,6 +612,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "청지기 이그젝큐투스"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "불꽃꼬리일족 정예병",
+	FlamewakerHealer	= "불꽃꼬리일족 치유사"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "다음 보호막"
 }
@@ -620,7 +633,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "잠수",
-	WarnEmerge			= "등장"
+	WarnEmerge			= "등장",
+	WarnGuardDied		= "화염의 피조물: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "잠수",
@@ -630,7 +644,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "잠수 알림 보기",
 	TimerSubmerge		= "잠수 타이머 바 보기",
 	WarnEmerge			= "등장 알림 보기",
-	TimerEmerge			= "등장 타이머 바 보기"
+	TimerEmerge			= "등장 타이머 바 보기",
+	WarnGuardDied		= "화염의 피조물 남은 수 알림"
 }
 L:SetMiscLocalization{
 	Submerge	= "나의 종들아! 어서 나와 주인을 돕거라!",
@@ -889,21 +904,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "부정의 헤이건"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "순간이동",
-	WarningTeleportSoon	= "%d초 후 순간이동"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport		= "순간이동"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow		= "순간이동 알림 보기",
-	WarningTeleportSoon		= "순간이동 사전 경고 보기",
-	TimerTeleport			= "순간이동 타이머 바 보기"
 })
 
 L:SetMiscLocalization({

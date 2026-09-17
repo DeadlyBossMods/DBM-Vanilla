@@ -39,7 +39,7 @@ mod:RegisterEventsInCombat(
 
 --(ability.id = 23309 or ability.id = 23313 or ability.id = 23189 or ability.id = 23315 or ability.id = 23312 or ability.id = 23314) and type = "begincast"
 local warnBreath		= mod:NewAnnounce("WarnBreath", 2, 23316)
-local warnRed			= mod:NewSpellAnnounce(23155, 2, nil, false)
+local warnRed			= mod:NewSpellAnnounce(23155, 2, nil, "RemoveDisease")
 local warnGreen			= mod:NewSpellAnnounce(23169, 2, nil, "RemovePoison")
 local warnBlue			= mod:NewSpellAnnounce(23153, 2, nil, "RemoveMagic")
 local warnBlack			= mod:NewSpellAnnounce(23154, 2, nil, "RemoveCurse")

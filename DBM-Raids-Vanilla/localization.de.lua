@@ -495,6 +495,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Feuerschuppe: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Verkünde verbleibende Feuerschuppen"
+}
 
 ------------
 --  Garr  --
@@ -503,6 +509,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Feueranbeter"
 }
 
 --------------
@@ -555,6 +564,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Majordomus Exekutus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Feuerschuppenelite",
+	FlamewakerHealer	= "Feuerschuppenheiler"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Schild"
 }
@@ -572,7 +585,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Abtauchen",
-	WarnEmerge			= "Auftauchen"
+	WarnEmerge			= "Auftauchen",
+	WarnGuardDied		= "Sohn der Flamme: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Abtauchen",
@@ -582,7 +596,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "Zeige Warnung für Abtauchen",
 	TimerSubmerge		= "Zeige Zeit bis Abtauchen",
 	WarnEmerge			= "Zeige Warnung für Auftauchen",
-	TimerEmerge			= "Zeige Zeit bis Auftauchen"
+	TimerEmerge			= "Zeige Zeit bis Auftauchen",
+	WarnGuardDied		= "Verkünde verbleibende Söhne der Flamme"
 }
 L:SetMiscLocalization{
 	Submerge	= "KOMMT HERBEI, MEINE DIENER! VERTEIDIGT EUREN HERRN!",
@@ -841,21 +856,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan der Unreine"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleportiert",
-	WarningTeleportSoon	= "Teleport in %d Sek"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleport"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Zeige Warnung für Teleport",
-	WarningTeleportSoon	= "Zeige Vorwarnung für Teleport",
-	TimerTeleport		= "Zeige Zeit bis Teleport"
 })
 
 L:SetMiscLocalization({

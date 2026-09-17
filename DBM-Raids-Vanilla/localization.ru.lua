@@ -545,6 +545,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Гееннас"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Поджигатель: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Показывать предупреждение об оставшихся поджигателях"
+}
 
 ------------
 --  Garr  --
@@ -553,6 +559,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Гарр"
+}
+L:SetMiscLocalization{
+	Firesworn = "Огнекамень"
 }
 
 --------------
@@ -605,6 +614,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Мажордом Экзекутус"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Поджигатель-гвардеец",
+	FlamewakerHealer	= "Поджигатель-целитель"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Следующий щит"
 }
@@ -622,7 +635,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Погружение",
-	WarnEmerge			= "Появление"
+	WarnEmerge			= "Появление",
+	WarnGuardDied		= "Сын Пламени: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Погружение",
@@ -634,7 +648,8 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Отсчет времени до погружения",
 	WarnEmerge			= "Показывать предупреждение о появлении",
 	TimerEmerge			= "Отсчет времени до появления",
-	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat,
+	WarnGuardDied		= "Показывать предупреждение об оставшихся сынах пламени"
 }
 L:SetMiscLocalization{
 	Submerge	= "ПРИДИТЕ, СЛУГИ МОИ! ЗАЩИТИТЕ СВОЕГО ГОСПОДИНА!",
@@ -893,21 +908,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Хейган Нечестивый"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Телепортация",
-	WarningTeleportSoon	= "Телепортация через %d сек."
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Телепортация"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Показывать предупреждение о телепортации",
-	WarningTeleportSoon	= "Показывать предупреждение перед следующей телепортацией",
-	TimerTeleport		= "Отсчет времени до телепортации"
 })
 
 L:SetMiscLocalization({

@@ -642,6 +642,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Geena"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Ardilante: %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Exibir anúncio para Ardilantes restantes"
+}
 
 ------------
 --  Garr  --
@@ -650,6 +656,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Devoto do Fogo"
 }
 
 --------------
@@ -702,6 +711,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Senescal Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Elite Ardilante",
+	FlamewakerHealer	= "Curandeiro Ardilante"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Escudo"
 }
@@ -719,7 +732,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submersão",
-	WarnEmerge			= "Emersão"
+	WarnEmerge			= "Emersão",
+	WarnGuardDied		= "Filho das Chamas: %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersão",
@@ -730,6 +744,7 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Exibir cronômetro para submersão",
 	WarnEmerge			= "Exibir anúncio para emersão",
 	TimerEmerge			= "Exibir cronômetro para emersão",
+	WarnGuardDied		= "Exibir anúncio para Filhos das Chamas restantes"
 }
 L:SetMiscLocalization{
 	Submerge	= "VENHAM, MEUS SERVOS! DEFENDAM SEU SENHOR!",
@@ -873,21 +888,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan, o Sujo"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "Teleporte",
-	WarningTeleportSoon	= "Teleporte em %d |4segundo:segundos;"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "Teleporte"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "Exibir anúncio para Teleporte",
-	WarningTeleportSoon	= "Exibir anúncio antecipado para Teleporte",
-	TimerTeleport		= "Exibir cronômetro para Teleporte"
 })
 
 L:SetMiscLocalization({

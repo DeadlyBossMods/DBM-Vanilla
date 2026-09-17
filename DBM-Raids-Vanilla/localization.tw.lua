@@ -459,6 +459,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "基赫納斯"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "烈焰行者：%d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "提示剩餘的烈焰行者"
+}
 
 ------------
 --  Garr  --
@@ -467,6 +473,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "加爾"
+}
+L:SetMiscLocalization{
+	Firesworn = "火誓者"
 }
 
 --------------
@@ -519,6 +528,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "管理者埃克索圖斯"
 }
+L:SetMiscLocalization{
+    FlamewakerElite		= "烈焰行者精英",
+    FlamewakerHealer	= "烈焰行者醫師"
+}
 L:SetTimerLocalization{
     timerShieldCD = "護盾"
 }
@@ -536,7 +549,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "隱沒",
-	WarnEmerge			= "現身"
+	WarnEmerge			= "現身",
+	WarnGuardDied		= "烈焰之子：%d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "隱沒",
@@ -546,7 +560,8 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "為隱沒顯示警告",
 	TimerSubmerge		= "為隱沒顯示計時器",
 	WarnEmerge			= "為現身顯示警告",
-	TimerEmerge			= "為現身顯示計時器"
+	TimerEmerge			= "為現身顯示計時器",
+	WarnGuardDied		= "提示剩餘的烈焰之子"
 }
 L:SetMiscLocalization{
 	Submerge	= "出現吧，我的奴僕！ 保衛你們的主人！",
@@ -791,21 +806,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "骯髒者海根"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow	= "傳送",
-	WarningTeleportSoon	= "%d秒後傳送"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport	= "傳送"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow	= "為傳送顯示警告",
-	WarningTeleportSoon	= "為傳送顯示預先警告",
-	TimerTeleport		= "為傳送顯示計時器"
 })
 
 L:SetMiscLocalization({

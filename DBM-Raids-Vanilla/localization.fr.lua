@@ -641,6 +641,12 @@ L = DBM:GetModLocalization("Gehennas")
 L:SetGeneralLocalization{
 	name = "Gehennas"
 }
+L:SetWarningLocalization({
+	WarnGuardDied = "Attise-flammes : %d/%d" -- NPC ID 11661
+})
+L:SetOptionLocalization{
+	WarnGuardDied = "Afficher une annonce pour les Attise-flammes restants"
+}
 
 ------------
 --  Garr  --
@@ -649,6 +655,9 @@ L = DBM:GetModLocalization("Garr-Classic")
 
 L:SetGeneralLocalization{
 	name = "Garr"
+}
+L:SetMiscLocalization{
+	Firesworn = "Lige du feu"
 }
 
 --------------
@@ -701,6 +710,10 @@ L = DBM:GetModLocalization("Majordomo")
 L:SetGeneralLocalization{
 	name = "Chambellan Executus"
 }
+L:SetMiscLocalization{
+	FlamewakerElite		= "Elite Attise-flammes",
+	FlamewakerHealer	= "Soigneur Attise-flammes"
+}
 L:SetTimerLocalization{
 	timerShieldCD		= "Bouclier"
 }
@@ -718,7 +731,8 @@ L:SetGeneralLocalization{
 }
 L:SetWarningLocalization{
 	WarnSubmerge		= "Submersion",
-	WarnEmerge			= "Émersion"
+	WarnEmerge			= "Émersion",
+	WarnGuardDied		= "Fils des flammes : %d/8" -- NPC ID 12143
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "Submersion",
@@ -729,6 +743,7 @@ L:SetOptionLocalization{
 	TimerSubmerge		= "Afficher un chronomètre pour submersion",
 	WarnEmerge			= "Afficher une annonce pour émersion",
 	TimerEmerge			= "Afficher un chronomètre pour émersion",
+	WarnGuardDied		= "Afficher une annonce pour les Fils des flammes restants"
 }
 L:SetMiscLocalization{
 	Submerge	= "VENEZ, MES SERVITEURS ! DÉFENDEZ VOTRE MAÎTRE !",
@@ -869,21 +884,6 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name = "Heigan l'Impur"
-})
-
-L:SetWarningLocalization({
-	WarningTeleportNow		= "Téléportation",
-	WarningTeleportSoon		= "Téléporation dans %d sec"
-})
-
-L:SetTimerLocalization({
-	TimerTeleport			= "Téléporation"
-})
-
-L:SetOptionLocalization({
-	WarningTeleportNow		= "Afficher une annonce de la téléporation",
-	WarningTeleportSoon		= "Afficher une pré-annonce de la téléporation",
-	TimerTeleport			= "Afficher un chronomètre pour la téléporation"
 })
 
 L:SetMiscLocalization({
