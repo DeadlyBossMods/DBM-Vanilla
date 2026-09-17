@@ -89,6 +89,7 @@ else
 				return lines, sortedLines
 			end
 		end
+	end
 
 	function mod:OnCombatStart()
 		timerShout:Start("v25.9-26.3")
@@ -205,3 +206,4 @@ else
 			mindControlTimers[args.destGUID] = nil
 		end
 	end
+end
