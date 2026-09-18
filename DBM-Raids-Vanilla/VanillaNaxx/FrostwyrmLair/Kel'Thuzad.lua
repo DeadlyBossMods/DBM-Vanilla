@@ -69,7 +69,7 @@ else
 
 	mod:AddSetIconOption("SetIconOnMC2", 28410, false, 7, {1, 2, 3, 4, 5})
 	mod:AddSetIconOption("SetIconOnManaBomb", 27819, false, 0, {8})
-	mod:AddSetIconOption("SetIconOnFrostTomb", 27808, true, 7, {1, 2, 3, 4, 5, 6, 7, 8})
+	mod:AddSetIconOption("SetIconOnFrostTomb", 27808, false, 7, {1, 2, 3, 4, 5, 6, 7, 8})
 
 	local firstBossMod = DBM:GetModByName("NaxxTrash")
 
