@@ -1,0 +1,186 @@
+## Interface: 11509, 16001, 20506, 30405, 38002, 40402, 50504, 120100
+## AllowLoadGameType: classic, mainline
+## Category: DBM
+
+## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
+## Title-deDE:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Schlachtzüge (Classic)|r
+## Title-esES:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-esMX:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Bandas (Clásico)|r
+## Title-frFR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Classic)|r
+## Title-ptBR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raides (Clássico)|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010공격대 (클래식)|r
+## Title-ruRU:|cffffe00a<|r|cffff7d0aDBM Мод|r|cffffe00a>|r |cffff6010Рейды (классический)|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010团队副本（经典旧世）|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010團隊副本（經典舊世）|r
+## Author: MysticalOS
+## LoadOnDemand: 1
+## RequiredDeps: DBM-Core
+## SavedVariables: DBMRaidsVanilla_AllSavedVars
+## SavedVariablesPerCharacter: DBMRaidsVanilla_SavedStats
+## IconTexture: Interface\AddOns\DBM-Core\textures\dbm_airhorn
+## X-DBM-Mod: 1
+## X-DBM-Mod-Type: RAID
+## X-DBM-Mod-Category: Classic
+## X-DBM-StatTypes: normal
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2856 [AllowLoadGameType vanilla]
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249 [AllowLoadGameType camelot, tbc]
+## X-DBM-Mod-SubCategoriesID: 531, 509, 309, 469, 409 [AllowLoadGameType wrath]
+## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 309 [AllowLoadGameType cata, mists]
+## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 230 [AllowLoadGameType standard]
+## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DBM-Mod-Name-deDE: Schlachtzüge (Classic)
+## X-DBM-Mod-Name-esES: Bandas (Clásico)
+## X-DBM-Mod-Name-esMX: Bandas (Clásico)
+## X-DBM-Mod-Name-ptBR: Raides (Clássico)
+## X-DBM-Mod-Name-frFR: Raids (Classic)
+## X-DBM-Mod-Name-koKR: 공격대 (클래식)
+## X-DBM-Mod-Name-ruRU: Рейды (классический)
+## X-DBM-Mod-name-zhCN: 团队副本（经典旧世）
+## X-DBM-Mod-name-zhTW: 團隊副本（經典舊世）
+## X-DBM-Mod-Sort: 1101
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2835, 2856 [AllowLoadGameType vanilla]
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249 [AllowLoadGameType camelot, tbc]
+## X-DBM-Mod-MapID: 531, 509, 309, 469, 409 [AllowLoadGameType wrath, cata, mists]
+## X-DBM-Mod-MapID: 531, 509, 469, 409, 2792 [AllowLoadGameType standard]
+## X-DBM-Mod-MinCoreRevision: 20260522000000
+## X-DBM-Mod-MinExpansion: 0
+## X-Curse-Project-ID: 16442
+## X-Wago-ID: 7x61xpN1
+## Version: @project-version@
+
+locale.generated.lua
+
+localization.en.lua
+localization.tw.lua
+localization.br.lua
+localization.cn.lua
+localization.de.lua
+localization.es.lua
+localization.fr.lua
+localization.kr.lua
+localization.mx.lua
+localization.ru.lua
+
+Polyfills.lua
+
+# Temporary, will be moved to Core
+Blocks\Gtfo.lua
+
+VanillaNaxx\SoD_Hardmode.lua [AllowLoadGameType vanilla]
+VanillaNaxx\NaxxTrash.lua [AllowLoadGameType vanilla, camelot]
+VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\ArachnidQuarter\Faerlina.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\ArachnidQuarter\Maexxna.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\ConstructQuarter\Patchwerk.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\ConstructQuarter\Grobbulus.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\ConstructQuarter\Gluth.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\ConstructQuarter\Thaddius.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\PlagueQuarter\Noth.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\PlagueQuarter\Heigan.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\PlagueQuarter\Loatheb.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\MilitaryQuarter\Razuvious.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\MilitaryQuarter\Gothik.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\MilitaryQuarter\Horsemen.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\FrostwyrmLair\Sapphiron.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\FrostwyrmLair\Kel'Thuzad.lua [AllowLoadGameType vanilla, camelot, tbc]
+
+AQ40\AQ40Trash.lua
+AQ40\Skeram.lua
+AQ40\ThreeBugs.lua
+AQ40\Sartura.lua
+AQ40\Fankriss.lua
+AQ40\Viscidus.lua
+AQ40\Huhuran.lua
+AQ40\TwinEmps.lua
+AQ40\CThun.lua
+AQ40\Ouro.lua
+
+AQ20\AQ20Trash.lua
+AQ20\Kurinnaxx.lua
+AQ20\Rajaxx.lua
+AQ20\Moam.lua
+AQ20\Buru.lua
+AQ20\Ayamiss.lua
+AQ20\Ossirian.lua
+
+VanillaZG\Venoxis.lua
+VanillaZG\Jeklik.lua
+VanillaZG\Marli.lua
+VanillaZG\Thekal.lua
+VanillaZG\Arlokk.lua
+VanillaZG\Hakkar.lua
+VanillaZG\Bloodlord.lua
+VanillaZG\EdgeOfMadness.lua
+VanillaZG\Gahzranka.lua
+VanillaZG\Jindo.lua
+
+BWL\BWLTrash.lua
+BWL\SoDTrials.lua [AllowLoadGameType vanilla]
+BWL\Razorgore.lua
+BWL\Vaelastrasz.lua
+BWL\Broodlord.lua
+BWL\Firemaw.lua
+BWL\Ebonroc.lua
+BWL\Flamegor.lua
+BWL\Ebonroc_and_Flamegor.lua [AllowLoadGameType vanilla]
+BWL\Chromaggus.lua
+BWL\Nefarian.lua
+
+MC\MCTrash.lua
+MC\Lucifron.lua
+MC\Magmadar.lua
+MC\Gehennas.lua
+MC\Garr.lua
+MC\Geddon.lua
+MC\Shazzrah.lua
+MC\Sulfuron.lua
+MC\Golemagg.lua
+MC\Majordomo.lua
+MC\Ragnaros.lua
+MC\MoltenCore.lua [AllowLoadGameType vanilla, camelot]
+
+VanillaOnyxia\Onyxia.lua [AllowLoadGameType vanilla, camelot, tbc]
+
+VanillaSoD_Gnomeregan\Grubbis.lua [AllowLoadGameType vanilla]
+VanillaSoD_Gnomeregan\ViscousFallout.lua [AllowLoadGameType vanilla]
+VanillaSoD_Gnomeregan\Electrocutioner6000.lua [AllowLoadGameType vanilla]
+VanillaSoD_Gnomeregan\CrowdPummeler.lua [AllowLoadGameType vanilla]
+VanillaSoD_Gnomeregan\MechanicalMenagerie.lua [AllowLoadGameType vanilla]
+VanillaSoD_Gnomeregan\MekgineerThermaplugg.lua [AllowLoadGameType vanilla]
+
+VanillaSoD_BFD\BaronAuanis.lua [AllowLoadGameType vanilla]
+VanillaSoD_BFD\Ghamoora.lua [AllowLoadGameType vanilla]
+VanillaSoD_BFD\LadySarevess.lua [AllowLoadGameType vanilla]
+VanillaSoD_BFD\Gelihast.lua [AllowLoadGameType vanilla]
+VanillaSoD_BFD\LorgusJett.lua [AllowLoadGameType vanilla]
+VanillaSoD_BFD\TwilightLordKelris.lua [AllowLoadGameType vanilla]
+VanillaSoD_BFD\Akumai.lua [AllowLoadGameType vanilla]
+
+VanillaSoD_SunkenTemple\Trash.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\Atalalarion.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\FesteringRotslime.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\AtalaiDefenders.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\DreamscytheAndWeaver.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\JammalanAndOgom.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\MorphazAndHazzas.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\ShadeOfEranikus.lua [AllowLoadGameType vanilla]
+VanillaSoD_SunkenTemple\AvatarofHakkar.lua [AllowLoadGameType vanilla]
+
+VanillaSoD_ScarletEnclave\Trash.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\Balnazzar.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\Beatrix.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\Solistrasza.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\Beastmaster.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\Mason.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\RebornCouncil.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\LillianVoss.lua [AllowLoadGameType vanilla]
+VanillaSoD_ScarletEnclave\Caldoran.lua [AllowLoadGameType vanilla]
+
+BlackrockDepths\LordRoccor.lua [AllowLoadGameType standard]
+BlackrockDepths\BaelGar.lua [AllowLoadGameType standard]
+BlackrockDepths\LordIncendius.lua [AllowLoadGameType standard]
+BlackrockDepths\GolemLordArgelmach.lua [AllowLoadGameType standard]
+BlackrockDepths\TheSeven.lua [AllowLoadGameType standard]
+BlackrockDepths\GeneralAngerforge.lua [AllowLoadGameType standard]
+BlackrockDepths\AmbassadorFlamelash.lua [AllowLoadGameType standard]
+BlackrockDepths\EmperorDagranThaurissan.lua [AllowLoadGameType standard]

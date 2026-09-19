@@ -1,5 +1,5 @@
-## Interface: 50504
-## X-Min-Interface: 50500
+## Interface: 11509, 20506, 30405, 38002, 40402, 50504
+## AllowLoadGameType: classic
 ## Category: DBM
 
 ## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff69ccf0World Bosses (Vanilla)|r
@@ -32,7 +32,8 @@
 ## X-DBM-Mod-Name-zhTW: 艾澤拉斯 (經典)
 ## X-DBM-Mod-Name-zhCN: 世界首领 (经典)
 ## X-DBM-Mod-Sort: 1106
-## X-DBM-Mod-MapID: 0, 1
+## X-DBM-Mod-MapID: 0, 1, 2789, 2791, 2804, 2832 [AllowLoadGameType vanilla]
+## X-DBM-Mod-MapID: 0, 1 [AllowLoadGameType tbc, wrath, cata, mists]
 ## X-DBM-Mod-LoadCID: 14889,14888,14887,14890,12397,6109
 ## X-DBM-Mod-MinCoreRevision: 20260522000000
 ## X-DBM-Mod-MinExpansion: 0
@@ -55,3 +56,4 @@ Taerar.lua
 Ysondre.lua
 Lethon.lua
 Emeriss.lua
+Thunderaan.lua [AllowLoadGameType vanilla]
