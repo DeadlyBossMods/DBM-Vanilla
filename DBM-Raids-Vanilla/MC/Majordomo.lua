@@ -72,7 +72,7 @@ else
 	end
 
 	local polymorphDurations = {
-		[118] = 20, [12824] = 30, [12825] = 40, [12826] = 50, [28271] = 50, [28272] = 50,
+		[118] = 20, [12824] = 30, [12825] = 40, [12826] = 50, [28271] = 50, [28272] = 50
 	}
 	local polymorphIcon = "Interface\\Icons\\Spell_nature_polymorph"
 
