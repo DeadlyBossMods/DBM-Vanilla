@@ -37,8 +37,7 @@ else
 	mod:RegisterEventsInCombat(
 		"SPELL_CAST_START 461056 364908",
 		"SPELL_CAST_SUCCESS 20619 21075 20534 461056",
-		"SPELL_AURA_APPLIED 5782 6213 6215 3355 14308 14309",
-		"SPELL_AURA_REMOVED 118 12824 12825 12826 28271 28272 5782 6213 6215 3355 14308 14309",
+		"SPELL_AURA_REMOVED 118 12824 12825 12826 28271 28272",
 		"NAME_PLATE_UNIT_ADDED",
 		"UNIT_DIED"
 	)
@@ -72,37 +71,17 @@ else
 		end
 	end
 
-	local polymorphSpells = {118, 12824, 12825, 12826, 28271, 28272}
-	local fearSpells = {5782, 6213, 6215}
-	local freezingTrapSpells = {3355, 14308, 14309}
-	local polymorphIcon = "Interface\\Icons\\Spell_nature_polymorph"
-	local fearIcon = "Interface\\Icons\\Spell_shadow_possession"
-	local freezingTrapIcon = "Interface\\Icons\\Spell_frost_chainsofice"
-	local ccDurations = {
+	local polymorphDurations = {
 		[118] = 20, [12824] = 30, [12825] = 40, [12826] = 50, [28271] = 50, [28272] = 50,
-		[5782] = 10, [6213] = 15, [6215] = 20,
-		[3355] = 10, [14308] = 15, [14309] = 20
 	}
-	local ccSpellIcons = {}
-	do
-		for _, spellId in ipairs(polymorphSpells) do
-			ccSpellIcons[spellId] = polymorphIcon
-		end
-		for _, spellId in ipairs(fearSpells) do
-			ccSpellIcons[spellId] = fearIcon
-		end
-		for _, spellId in ipairs(freezingTrapSpells) do
-			ccSpellIcons[spellId] = freezingTrapIcon
-		end
-	end
+	local polymorphIcon = "Interface\\Icons\\Spell_nature_polymorph"
 
 	mod:AddInfoFrameOption(nil, true)
 
 	local addNames = {}
 	local addIcons = {}
 	local addDead = {}
-	local ccExpires = {}
-	local ccIcons = {}
+	local polymorphExpires = {}
 
 	local updateInfoFrame
 	do
@@ -115,14 +94,14 @@ else
 			local t = GetTime()
 			for guid, name in pairs(addNames) do
 				local icon = addIcons[guid]
-				local ccTimeLeft = (ccExpires[guid] or 0) - t
+				local polymorphTimeLeft = (polymorphExpires[guid] or 0) - t
 				local displayName = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name) or name
 				local key = guid .. "*" .. displayName
 				sortedLines[#sortedLines + 1] = key
 				if addDead[guid] then
 					lines[key] = DEAD
-				elseif ccTimeLeft > 0 then
-					lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(ccTimeLeft, ccIcons[guid])
+				elseif polymorphTimeLeft > 0 then
+					lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(polymorphTimeLeft, polymorphIcon)
 				else
 					local hp = DBM:GetBossHP(guid)
 					if hp and hp > 0 then
@@ -155,8 +134,7 @@ else
 		table.wipe(addNames)
 		table.wipe(addIcons)
 		table.wipe(addDead)
-		table.wipe(ccExpires)
-		table.wipe(ccIcons)
+		table.wipe(polymorphExpires)
 	end
 
 	function mod:NAME_PLATE_UNIT_ADDED(unitId)
@@ -181,22 +159,20 @@ else
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		if args:IsSpell(118, 12824, 12825, 12826, 28271, 28272, 5782, 6213, 6215, 3355, 14308, 14309) and args:IsDestTypeHostile() then
+		if args:IsSpell(118, 12824, 12825, 12826, 28271, 28272) and args:IsDestTypeHostile() then
 			local guid = args.destGUID
 			if guid and addCIDs[self:GetCIDFromGUID(guid)] then
-				ccExpires[guid] = GetTime() + ccDurations[args.spellId]
-				ccIcons[guid] = ccSpellIcons[args.spellId]
+				polymorphExpires[guid] = GetTime() + polymorphDurations[args.spellId]
 				ShowInfoFrame()
 			end
 		end
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args:IsSpell(118, 12824, 12825, 12826, 28271, 28272, 5782, 6213, 6215, 3355, 14308, 14309) and args:IsDestTypeHostile() then
+		if args:IsSpell(118, 12824, 12825, 12826, 28271, 28272) and args:IsDestTypeHostile() then
 			local guid = args.destGUID
 			if guid and addCIDs[self:GetCIDFromGUID(guid)] then
-				ccExpires[guid] = nil
-				ccIcons[guid] = nil
+				polymorphExpires[guid] = nil
 			end
 		end
 	end
