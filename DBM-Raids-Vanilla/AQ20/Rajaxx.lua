@@ -1,5 +1,5 @@
-local isClassic = WOW_PROJECT_ID == (WOW_PROJECT_CLASSIC or 2)
-local isBCC = WOW_PROJECT_ID == (WOW_PROJECT_BURNING_CRUSADE_CLASSIC or 5)
+local isClassic = DBM:IsVanillaEra()
+local isBCC = DBM:IsTBC()
 local catID
 if isBCC or isClassic then
 	catID = 3
