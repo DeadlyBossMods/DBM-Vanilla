@@ -12,7 +12,6 @@ mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15990)
 mod:SetEncounterID(1114)
---mod:SetModelID(15945)--Doesn't work at all, doesn't even render.
 mod:SetMinCombatTime(60)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7, 8)
 mod:SetZone(533)
@@ -26,8 +25,7 @@ end
 
 mod:SetWipeTime(15)
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(15945)
 else
 
 	mod:RegisterEventsInCombat(

@@ -17,8 +17,7 @@ mod:SetZone(531)
 mod:RegisterCombat("combat")
 mod:SetWipeTime(25)
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(15787)
 else
 	mod:RegisterEventsInCombat(
 		"SPELL_CAST_START 26134 341722",

@@ -20,8 +20,7 @@ if not mod:IsClassic() then
 end
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(15376)
 else
 
 	mod:RegisterEvents(--An exception to not use incombat events, cause boss might not engage until after his waves

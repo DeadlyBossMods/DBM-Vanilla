@@ -17,6 +17,7 @@ mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(14515)
 mod:SetEncounterID(791)
+mod:SetModelID(15218)
 mod:SetZone(309)
 
 mod:RegisterCombat("combat")
