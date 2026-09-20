@@ -1,4 +1,4 @@
-local isClassic = DBM:IsVanillaEra()
+local isClassic = DBM:IsVanilla()
 local isBCC = DBM:IsTBC()
 local isWrath = DBM:IsWrath()
 local catID

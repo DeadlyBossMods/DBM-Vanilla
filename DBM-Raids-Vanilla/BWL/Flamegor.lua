@@ -1,5 +1,5 @@
 if DBM:IsSeasonal("SeasonOfDiscovery") then return end--If SoM/SoD, this is handled by combo mod
-local isClassic = DBM:IsVanillaEra()
+local isClassic = DBM:IsVanilla()
 local isBCC = DBM:IsTBC()
 local isWrath = DBM:IsWrath()
 local catID
