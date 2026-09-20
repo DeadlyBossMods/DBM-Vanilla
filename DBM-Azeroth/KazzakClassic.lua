@@ -9,71 +9,74 @@ else
 	mod:SetCreatureID(12397)--121818 TW ID, 12397 classic ID
 end
 mod:SetEncounterID(3026)--Sod Encounter ID
---mod:SetModelID(17887)
 mod:EnableWBEngageSync()--Enable syncing engage in outdoors
 
 mod:RegisterCombat("combat_yell", L.Pull)
+if DBM:IsRestricted() then
+	mod:SetModelID(12449)
+else
 
-mod:RegisterEventsInCombat(
-	"SPELL_CAST_SUCCESS 21341",
-	"SPELL_AURA_APPLIED 21056"
-)
+	mod:RegisterEventsInCombat(
+		"SPELL_CAST_SUCCESS 21341",
+		"SPELL_AURA_APPLIED 21056"
+	)
 
-local warningMark				= mod:NewTargetNoFilterAnnounce(21056, 4)
-local warningShadowBoltVolley	= mod:NewSpellAnnounce(21341, 2)
+	local warningMark				= mod:NewTargetNoFilterAnnounce(21056, 4)
+	local warningShadowBoltVolley	= mod:NewSpellAnnounce(21341, 2)
 
-local specWarnMark				= mod:NewSpecialWarningYou(21056, nil, nil, nil, 1, 2, nil, nil, "targetyou")--No Yell on purpose, outdoor chat restrictions and all
+	local specWarnMark				= mod:NewSpecialWarningYou(21056, nil, nil, nil, 1, 2, nil, nil, "targetyou")--No Yell on purpose, outdoor chat restrictions and all
 
-local enrageTimer				= mod:NewBerserkTimer(180)
+	local enrageTimer				= mod:NewBerserkTimer(180)
 
---Timers seem totally random, like 5-40 type random nonsense, so are utterly worthless
---local timerMarkCD				= mod:NewCDTimer(19.1, 21056, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
---local timerShadowBoltVolleyCD	= mod:NewCDTimer(7.6, 21341, nil, nil, nil, 2)
+	--Timers seem totally random, like 5-40 type random nonsense, so are utterly worthless
+	--local timerMarkCD				= mod:NewCDTimer(19.1, 21056, nil, nil, nil, 3, nil, DBM_COMMON_L.MAGIC_ICON)
+	--local timerShadowBoltVolleyCD	= mod:NewCDTimer(7.6, 21341, nil, nil, nil, 2)
 
---mod:AddReadyCheckOption(48620, false)
+	--mod:AddReadyCheckOption(48620, false)
 
-function mod:OnCombatStart(delay, yellTriggered)
-	if yellTriggered then
-		--timerShadowBoltVolleyCD:Start(11.5-delay)
-		--timerMarkCD:Start(14.1-delay)
+	function mod:OnCombatStart(delay, yellTriggered)
+		if yellTriggered then
+			--timerShadowBoltVolleyCD:Start(11.5-delay)
+			--timerMarkCD:Start(14.1-delay)
+		end
+		if IsInInstance() or yellTriggered then -- To unreliable for random outdoor pull timers
+			enrageTimer:Start(180-delay)
+		end
 	end
-	if IsInInstance() or yellTriggered then -- To unreliable for random outdoor pull timers
-		enrageTimer:Start(180-delay)
-	end
-end
 
-function mod:SPELL_CAST_SUCCESS(args)
-	if args:IsSpell(21341) and args:IsSrcTypeHostile() then
-		warningShadowBoltVolley:Show()
-		--timerShadowBoltVolleyCD:Start()
+	function mod:SPELL_CAST_SUCCESS(args)
+		if args:IsSpell(21341) and args:IsSrcTypeHostile() then
+			warningShadowBoltVolley:Show()
+			--timerShadowBoltVolleyCD:Start()
+		end
 	end
-end
 
-function mod:SPELL_AURA_APPLIED(args)
-	if args:IsSpell(21056) then
-		self:SendSync("Mark", args.destName)
-		if self:AntiSpam(5, 1) then
-			if args:IsPlayer() then
-				specWarnMark:Show()
-				specWarnMark:Play("targetyou")
-			else
-				warningMark:Show(args.destName)
+	function mod:SPELL_AURA_APPLIED(args)
+		if args:IsSpell(21056) then
+			self:SendSync("Mark", args.destName)
+			if self:AntiSpam(5, 1) then
+				if args:IsPlayer() then
+					specWarnMark:Show()
+					specWarnMark:Play("targetyou")
+				else
+					warningMark:Show(args.destName)
+				end
 			end
 		end
 	end
-end
 
-do
-	local playerName = UnitName("player")
+	do
+		local playerName = UnitName("player")
 
-	function mod:OnSync(msg, targetName, sender)
-		if not self:IsInCombat() then return end
-		if msg == "Mark" and sender and self:AntiSpam(5, 1) then
-			if targetName == playerName then
-				specWarnMark:Show()
-				specWarnMark:Play("targetyou")
-			else
-				warningMark:Show(targetName)
+		function mod:OnSync(msg, targetName, sender)
+			if not self:IsInCombat() then return end
+			if msg == "Mark" and sender and self:AntiSpam(5, 1) then
+				if targetName == playerName then
+					specWarnMark:Show()
+					specWarnMark:Play("targetyou")
+				else
+					warningMark:Show(targetName)
+				end
 			end
 		end
 	end
