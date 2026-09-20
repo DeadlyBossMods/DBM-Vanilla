@@ -5,7 +5,6 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(10184)
 mod:SetEncounterID(1084)
-mod:SetModelID(8570)
 mod:SetUsedIcons(8)
 mod:SetHotfixNoticeRev(20191122000000)--2019, 11, 22
 mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
@@ -13,8 +12,7 @@ mod:SetZone(249)
 
 mod:RegisterCombat("combat_yell", L.YellP1)
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(8570)
 else
 
 	--[[

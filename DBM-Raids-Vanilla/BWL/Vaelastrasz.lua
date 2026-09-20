@@ -22,15 +22,11 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(13020)
 mod:SetEncounterID(611)
-if not mod:IsClassic() then
-	mod:SetModelID(13992)
-end
 mod:SetZone(469)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(13992)
 else
 	mod:SetUsedIcons(8, 7, 6)
 	mod:RegisterEvents(

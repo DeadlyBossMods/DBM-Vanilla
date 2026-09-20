@@ -16,16 +16,12 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228435 or 11988)--, 11672
 mod:SetEncounterID(670)
-if not mod:IsClassic() then
-	mod:SetModelID(11986)--Totally fucked on classic
-end
 mod:SetHotfixNoticeRev(20240724000000)
 mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(11986)
 else
 
 	mod:RegisterEventsInCombat(

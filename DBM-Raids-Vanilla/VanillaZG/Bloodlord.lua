@@ -16,6 +16,7 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(11382, 14988)
 mod:SetEncounterID(787)
+mod:SetModelID(11288)
 mod:SetHotfixNoticeRev(20200418000000)--2020, 04, 18
 mod:SetZone(309)
 

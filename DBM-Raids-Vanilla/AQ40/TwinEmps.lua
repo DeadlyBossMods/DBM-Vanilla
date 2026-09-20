@@ -13,15 +13,11 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15276, 15275)
 mod:SetEncounterID(715)
-if not mod:IsClassic() then
-	mod:SetModelID(15778)--Renders too close in classic
-end
 mod:SetZone(531)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(15778)
 else
 
 	mod:RegisterEventsInCombat(

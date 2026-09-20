@@ -13,9 +13,6 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 176525 or 15263)
 mod:SetEncounterID(709)
-if not mod:IsClassic() then
-	mod:SetModelID(15345)
-end
 mod:SetUsedIcons(4, 5, 6, 7, 8)
 mod:DisableBossDeathKill()
 mod:SetHotfixNoticeRev(20210522000000)--2021-05-22
@@ -24,8 +21,7 @@ mod:SetZone(531)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(15345)
 else
 
 	mod:RegisterEventsInCombat(

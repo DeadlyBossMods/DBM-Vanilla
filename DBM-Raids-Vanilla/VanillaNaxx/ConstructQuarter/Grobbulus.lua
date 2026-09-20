@@ -16,10 +16,8 @@ mod:SetZone(533)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(16035)
 else
-	--mod:SetModelID(16035)--Renders too close
 
 	mod:RegisterEventsInCombat(
 		"SPELL_AURA_APPLIED 28169",

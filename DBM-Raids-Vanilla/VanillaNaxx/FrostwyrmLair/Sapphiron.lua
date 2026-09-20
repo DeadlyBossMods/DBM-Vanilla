@@ -12,14 +12,12 @@ mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(15989)
 mod:SetEncounterID(1119)
---mod:SetModelID(16033)--Scales incorrectly
 mod:SetZone(533)
 mod:SetUsedIcons(3, 6)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(16033)
 else
 
 	mod:RegisterEventsInCombat(

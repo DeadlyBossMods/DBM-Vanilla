@@ -21,10 +21,6 @@ mod:SetRevision("@file-date-integer@")
 mod:DisableHardcodedOptions()
 mod:SetCreatureID(11583)
 mod:SetEncounterID(617)
-if not mod:IsClassic() then
-	mod:SetModelID(11380)
-end
---guesswork
 mod:SetHotfixNoticeRev(20200310000000)--2020, Mar, 10th
 mod:SetMinSyncRevision(20260824000000) -- 2026, August 24th
 mod:SetZone(469)
@@ -32,8 +28,7 @@ mod:SetZone(469)
 mod:RegisterCombat("combat_yell", L.YellP1)
 mod:SetWipeTime(50)
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:SetModelID(11380)
 else
 	mod:RegisterEventsInCombat(
 		"SPELL_CAST_START 22539 22686",
