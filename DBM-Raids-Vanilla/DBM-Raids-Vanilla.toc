@@ -1,5 +1,4 @@
 ## Interface: 11509, 16001, 20506, 30405, 38002, 40402, 50504, 120100
-## AllowLoadGameType: classic, mainline
 ## Category: DBM
 
 ## Title:|cffffe00a<|r|cffff7d0aDBM Mod|r|cffffe00a>|r |cffff6010Raids (Vanilla)|r
@@ -23,7 +22,7 @@
 ## X-DBM-Mod-Category: Classic
 ## X-DBM-StatTypes: normal
 ## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2856 [AllowLoadGameType vanilla]
-## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249 [AllowLoadGameType camelot, tbc]
+## X-DBM-Mod-SubCategoriesID: 533, 531, 509, 309, 469, 409, 249 [ExcludeLoadGameType standard, vanilla, wrath, cata, mists]
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 309, 469, 409 [AllowLoadGameType wrath]
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 309 [AllowLoadGameType cata, mists]
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 230 [AllowLoadGameType standard]
@@ -39,7 +38,7 @@
 ## X-DBM-Mod-name-zhTW: 團隊副本（經典舊世）
 ## X-DBM-Mod-Sort: 1101
 ## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249, 109, 90, 48, 2835, 2856 [AllowLoadGameType vanilla]
-## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249 [AllowLoadGameType camelot, tbc]
+## X-DBM-Mod-MapID: 533, 531, 509, 309, 469, 409, 249 [ExcludeLoadGameType standard, vanilla, wrath, cata, mists]
 ## X-DBM-Mod-MapID: 531, 509, 309, 469, 409 [AllowLoadGameType wrath, cata, mists]
 ## X-DBM-Mod-MapID: 531, 509, 469, 409, 2792 [AllowLoadGameType standard]
 ## X-DBM-Mod-MinCoreRevision: 20260522000000
@@ -67,22 +66,22 @@ Polyfills.lua
 Blocks\Gtfo.lua
 
 VanillaNaxx\SoD_Hardmode.lua [AllowLoadGameType vanilla]
-VanillaNaxx\NaxxTrash.lua [AllowLoadGameType vanilla, camelot]
-VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\ArachnidQuarter\Faerlina.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\ArachnidQuarter\Maexxna.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\ConstructQuarter\Patchwerk.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\ConstructQuarter\Grobbulus.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\ConstructQuarter\Gluth.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\ConstructQuarter\Thaddius.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\PlagueQuarter\Noth.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\PlagueQuarter\Heigan.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\PlagueQuarter\Loatheb.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\MilitaryQuarter\Razuvious.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\MilitaryQuarter\Gothik.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\MilitaryQuarter\Horsemen.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\FrostwyrmLair\Sapphiron.lua [AllowLoadGameType vanilla, camelot, tbc]
-VanillaNaxx\FrostwyrmLair\Kel'Thuzad.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaNaxx\NaxxTrash.lua [ExcludeLoadGameType standard, tbc, wrath, cata, mists]
+VanillaNaxx\ArachnidQuarter\Anub'Rekhan.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\ArachnidQuarter\Faerlina.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\ArachnidQuarter\Maexxna.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\ConstructQuarter\Patchwerk.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\ConstructQuarter\Grobbulus.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\ConstructQuarter\Gluth.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\ConstructQuarter\Thaddius.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\PlagueQuarter\Noth.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\PlagueQuarter\Heigan.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\PlagueQuarter\Loatheb.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\MilitaryQuarter\Razuvious.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\MilitaryQuarter\Gothik.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\MilitaryQuarter\Horsemen.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\FrostwyrmLair\Sapphiron.lua [ExcludeLoadGameType standard, wrath, cata, mists]
+VanillaNaxx\FrostwyrmLair\Kel'Thuzad.lua [ExcludeLoadGameType standard, wrath, cata, mists]
 
 AQ40\AQ40Trash.lua
 AQ40\Skeram.lua
@@ -137,9 +136,9 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
-MC\MoltenCore.lua [AllowLoadGameType vanilla, camelot]
+MC\MoltenCore.lua [ExcludeLoadGameType standard, tbc, wrath, cata, mists]
 
-VanillaOnyxia\Onyxia.lua [AllowLoadGameType vanilla, camelot, tbc]
+VanillaOnyxia\Onyxia.lua [ExcludeLoadGameType standard, wrath, cata, mists]
 
 VanillaSoD_Gnomeregan\Grubbis.lua [AllowLoadGameType vanilla]
 VanillaSoD_Gnomeregan\ViscousFallout.lua [AllowLoadGameType vanilla]
