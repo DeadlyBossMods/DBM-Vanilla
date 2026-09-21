@@ -162,6 +162,15 @@ L:SetOptionLocalization{
 	TimerEmerge			= "Zeige Zeit bis Auftauchen"
 }
 
+----------------
+-- AQ40 Trash --
+----------------
+L = DBM:GetModLocalization("AQ40Trash")
+
+L:SetGeneralLocalization{
+	name = "Trash"
+}
+
 ---------------
 -- Kurinnaxx --
 ---------------
