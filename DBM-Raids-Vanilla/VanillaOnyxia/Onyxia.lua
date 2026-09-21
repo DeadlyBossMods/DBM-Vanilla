@@ -13,6 +13,7 @@ mod:SetZone(249)
 mod:RegisterCombat("combat_yell", L.YellP1)
 if DBM:IsRestricted() then
 	mod:SetModelID(8570)
+	--TODO, since fireball is all she casts when airborn, we may still be able to do secret target announce messages using UNIT_SPELLCAST_START
 else
 
 	--[[

@@ -23,6 +23,7 @@ mod:SetZone(409)
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
 	mod:SetModelID(11121)
+	--TODO, add aura sound for 461062 if it's used in forever
 else
 
 	mod:RegisterEvents(

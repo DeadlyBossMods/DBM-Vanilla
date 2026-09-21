@@ -136,7 +136,7 @@ MC\Sulfuron.lua
 MC\Golemagg.lua
 MC\Majordomo.lua
 MC\Ragnaros.lua
-MC\MoltenCore.lua [ExcludeLoadGameType standard, tbc, wrath, cata, mists]
+MC\MoltenCore.lua [AllowLoadGameType vanilla]
 
 VanillaOnyxia\Onyxia.lua [ExcludeLoadGameType standard, wrath, cata, mists]
 

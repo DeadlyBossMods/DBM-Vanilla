@@ -22,8 +22,8 @@ mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(20475, true, 20475, 1, 1, "bombyou", 12, 0)--TODO, add SoD spellids?
+	mod:AddAuraSoundOption(19659, "SpellCaster", 19659, 1, 1, "debuffyou", 17, 0)
 else
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		mod:SetUsedIcons(8, 7, 6)
@@ -41,7 +41,7 @@ else
 	--[[
 	(ability.id = 19695 or ability.id = 19659 or ability.id = 20478 or ability.id = 461090 or ability.id = 461105 or ability.id = 462402 or ability.id = 461110 or ability.id = 461121) and type = "cast"
 	--]]
-	local warnIgnite		= mod:NewSpellAnnounce(19659, 3, nil, "ManaUser")
+--	local warnIgnite		= mod:NewSpellAnnounce(19659, 3, nil, "ManaUser")
 	local warnInferno		= mod:NewSpellAnnounce(19695, 3)
 	local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
 

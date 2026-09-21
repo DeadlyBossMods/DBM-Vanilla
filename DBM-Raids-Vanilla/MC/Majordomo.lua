@@ -26,7 +26,7 @@ mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
+	--Maybe do 20534 if it has aura icon at all, even if it's for a split second
 	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
 else
 
