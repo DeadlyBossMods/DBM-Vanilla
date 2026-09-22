@@ -122,7 +122,7 @@ else
 		if args:IsSpell(29998) then
 			feverTargets[args.destName] = true
 			UpdateFeverFrame()
-			if self.Options.SpecWarn29998dispel and self:AntiSpam(3, 1) then
+			if self.Options.SpecWarn29998dispel then
 				specWarnFever:CombinedShow(0.5, args.destName)
 				specWarnFever:ScheduleVoice(0.5, "dispelnow")
 			end
