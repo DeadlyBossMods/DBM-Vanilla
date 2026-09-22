@@ -153,7 +153,7 @@ else
 		elseif args:IsSpell(19659) and args:IsDestTypePlayer() then
 			igniteTargets[args.destName] = true
 			UpdateIgniteFrame()
-			if self.Options.SpecWarn19659dispel and args:IsDestTypePlayer() then
+			if self.Options.SpecWarn19659dispel then
 				specWarnIgnite:CombinedShow(0.5, args.destName)
 				specWarnIgnite:ScheduleVoice(0.5, "dispelnow")
 			end
