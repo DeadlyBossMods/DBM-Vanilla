@@ -120,8 +120,6 @@ else
 			if self.Options.SpecWarn19659dispel then
 				specWarnIgnite:CombinedShow(0.3, args.destName)
 				specWarnIgnite:ScheduleVoice(0.3, "dispelnow")
-			else
-				warnIgnite:Show()
 			end
 		end
 	end
@@ -149,6 +147,9 @@ else
 			timerInferno:Start()
 			timerInfernoCD:Start()
 		elseif args:IsSpell(19659) then
+			if not self.Options.SpecWarn19659dispel then
+				warnIgnite:Show()
+			end
 			timerIgniteManaCD:Start()
 		elseif args:IsSpell(20478, 461121) then
 			specWarnArma:Show()
