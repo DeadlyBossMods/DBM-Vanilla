@@ -136,7 +136,7 @@ else
 				specWarnDoom:CombinedShow(0.5, args.destName)
 				specWarnDoom:ScheduleVoice(0.5, "dispelnow")
 			end
-		elseif args:IsSpell(19703, 460932) then
+		elseif args:IsSpell(19703, 460932) and args:IsDestTypePlayer() then
 			if self.Options.SpecWarn19703dispel then
 				specWarnCurse:CombinedShow(0.5, args.destName)
 				specWarnCurse:ScheduleVoice(0.5, "dispelnow")
