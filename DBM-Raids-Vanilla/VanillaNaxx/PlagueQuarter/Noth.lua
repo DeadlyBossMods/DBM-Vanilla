@@ -158,7 +158,7 @@ else
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		if args:IsSpell(29213) then
+		if args:IsSpell(29213) and args:IsDestTypePlayer() then
 			curseTargets[args.destName] = true
 			UpdateCurseFrame()
 			if self.Options.SpecWarn29213dispel then
@@ -169,7 +169,7 @@ else
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args:IsSpell(29213) then
+		if args:IsSpell(29213) and args:IsDestTypePlayer() then
 			curseTargets[args.destName] = nil
 			UpdateCurseFrame()
 		end

@@ -150,7 +150,7 @@ else
 				end
 			end
 			warnBomb:CombinedShow(0.1, args.destName)
-		elseif args:IsSpell(19659) then
+		elseif args:IsSpell(19659) and args:IsDestTypePlayer() then
 			igniteTargets[args.destName] = true
 			UpdateIgniteFrame()
 			if self.Options.SpecWarn19659dispel then
@@ -169,7 +169,7 @@ else
 			if args:IsPlayer() then
 				yellBombFades:Cancel()
 			end
-		elseif args:IsSpell(19659) then
+		elseif args:IsSpell(19659) and args:IsDestTypePlayer() then
 			igniteTargets[args.destName] = nil
 			UpdateIgniteFrame()
 		end

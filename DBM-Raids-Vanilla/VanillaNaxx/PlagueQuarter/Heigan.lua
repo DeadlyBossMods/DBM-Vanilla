@@ -119,10 +119,10 @@ else
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		if args:IsSpell(29998) then
+		if args:IsSpell(29998) and args:IsDestTypePlayer() then
 			feverTargets[args.destName] = true
 			UpdateFeverFrame()
-			if self.Options.SpecWarn29998dispel and self:AntiSpam(3, 1) then
+			if self.Options.SpecWarn29998dispel then
 				specWarnFever:CombinedShow(0.5, args.destName)
 				specWarnFever:ScheduleVoice(0.5, "dispelnow")
 			end
@@ -130,7 +130,7 @@ else
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args:IsSpell(29998) then
+		if args:IsSpell(29998) and args:IsDestTypePlayer() then
 			feverTargets[args.destName] = nil
 			UpdateFeverFrame()
 		end
