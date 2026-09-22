@@ -23,7 +23,7 @@ mod:SetZone(409)
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
 	mod:AddAuraSoundOption(20475, true, 20475, 1, 1, "bombyou", 12, 0)--TODO, add SoD spellids?
-	mod:AddAuraSoundOption(19659, "SpellCaster", 19659, 1, 1, "debuffyou", 17, 0)
+	mod:AddAuraSoundOption(19659, "ManaUser", 19659, 1, 1, "debuffyou", 17, 0)
 else
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		mod:SetUsedIcons(8, 7, 6)
@@ -41,12 +41,12 @@ else
 	--[[
 	(ability.id = 19695 or ability.id = 19659 or ability.id = 20478 or ability.id = 461090 or ability.id = 461105 or ability.id = 462402 or ability.id = 461110 or ability.id = 461121) and type = "cast"
 	--]]
---	local warnIgnite		= mod:NewSpellAnnounce(19659, 3, nil, "ManaUser")
+	local warnIgnite		= mod:NewSpellAnnounce(19659, 3, nil, "ManaUser")
 	local warnInferno		= mod:NewSpellAnnounce(19695, 3)
 	local warnBomb			= mod:NewTargetNoFilterAnnounce(20475, 4)
 
 	local specWarnArma		= mod:NewSpecialWarningSpell(20478)
-	local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2, nil, nil, "helpdispel")
+	local specWarnIgnite	= mod:NewSpecialWarningDispel(19659, "RemoveMagic", nil, nil, 1, 2, nil, nil, "dispelnow")
 	local specWarnInferno	= mod:NewSpecialWarningRun(19695, "Melee", nil, nil, 4, 2, nil, nil, "aesoon")
 	local specWarnBomb		= mod:NewSpecialWarningYou(20475, nil, nil, nil, 3, 2, nil, nil, "bombyou")
 	local yellBomb			= mod:NewYell(20475)
@@ -116,9 +116,13 @@ else
 				end
 			end
 			warnBomb:CombinedShow(0.1, args.destName)
-		elseif args:IsSpell(19659) and self:CheckDispelFilter("magic") then
-			specWarnIgnite:CombinedShow(0.3, args.destName)
-			specWarnIgnite:ScheduleVoice(0.3, "helpdispel")
+		elseif args:IsSpell(19659) then
+			if self.Options.SpecWarn19659dispel then
+				specWarnIgnite:CombinedShow(0.3, args.destName)
+				specWarnIgnite:ScheduleVoice(0.3, "dispelnow")
+			else
+				warnIgnite:Show()
+			end
 		end
 	end
 
