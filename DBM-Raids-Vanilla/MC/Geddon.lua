@@ -32,7 +32,7 @@ else
 	end
 	mod:RegisterEventsInCombat(
 		"SPELL_AURA_APPLIED 20475 19659 461090 461105 462402 465725",
-		"SPELL_AURA_REMOVED 20475 461090 461105 462402 465725",
+		"SPELL_AURA_REMOVED 20475 19659 461090 461105 462402 465725",
 		"SPELL_CAST_SUCCESS 19695 19659 20478 20475 461090 461105 462402 461110 461121 465725 461087"
 	)
 
@@ -58,6 +58,24 @@ else
 	local timerBombCD        = mod:NewVarTimer("v11.3-30.1", 20475, nil, nil, nil, 3)
 	local timerBomb          = mod:NewTargetTimer(8, 20475, nil, nil, nil, 5, nil, DBM_COMMON_L.HEALER_ICON)
 	local timerArmageddon    = mod:NewCastTimer(8, 20478, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON, nil, nil, nil, nil, nil, nil, nil, true)
+
+	mod:AddInfoFrameOption(19659, "RemoveMagic")
+
+	local igniteTargets = {}
+	local updateIgniteFrame
+	do
+		local twipe = table.wipe
+		local lines, sortedLines = {}, {}
+		updateIgniteFrame = function()
+			twipe(lines)
+			twipe(sortedLines)
+			for name in pairs(igniteTargets) do
+				sortedLines[#sortedLines + 1] = name
+				lines[name] = ""
+			end
+			return lines, sortedLines
+		end
+	end
 
 	mod:AddSetIconOption("SetIconOnBombTarget", 20475, false, 0, {8, 7, 6}) -- up to 3 bombs on heat level 3 (TODO: confirm)
 
@@ -85,16 +103,32 @@ else
 	end
 
 	function mod:OnCombatStart()
+		table.wipe(igniteTargets)
 		timerIgniteManaCD:Start("v6.3-27.5")
 		timerInfernoCD:Start("v11.3-33.4")
 		timerBombCD:Start("v11.3-30.7")
 	end
 
 	function mod:OnCombatEnd()
+		table.wipe(igniteTargets)
 		if DBM:UnitDebuff("player", 20475) then
 			specWarnBomb:Show()
 			specWarnBomb:Play("bombyou")
 			yellBomb:Yell()
+		end
+	end
+
+	local function UpdateIgniteFrame()
+		if not mod.Options.InfoFrame then return end
+		if next(igniteTargets) then
+			if not DBM.InfoFrame:IsShown() then
+				DBM.InfoFrame:SetHeader(DBM:GetSpellInfo(19659))
+				DBM.InfoFrame:Show(20, "function", updateIgniteFrame)
+			else
+				DBM.InfoFrame:UpdateTable(updateIgniteFrame)
+			end
+		else
+			DBM.InfoFrame:Hide()
 		end
 	end
 
@@ -117,9 +151,11 @@ else
 			end
 			warnBomb:CombinedShow(0.1, args.destName)
 		elseif args:IsSpell(19659) then
+			igniteTargets[args.destName] = true
+			UpdateIgniteFrame()
 			if self.Options.SpecWarn19659dispel then
-				specWarnIgnite:CombinedShow(0.3, args.destName)
-				specWarnIgnite:ScheduleVoice(0.3, "dispelnow")
+				specWarnIgnite:CombinedShow(0.5, args.destName)
+				specWarnIgnite:ScheduleVoice(0.5, "dispelnow")
 			end
 		end
 	end
@@ -133,6 +169,9 @@ else
 			if args:IsPlayer() then
 				yellBombFades:Cancel()
 			end
+		elseif args:IsSpell(19659) then
+			igniteTargets[args.destName] = nil
+			UpdateIgniteFrame()
 		end
 	end
 

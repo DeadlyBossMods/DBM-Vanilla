@@ -161,7 +161,7 @@ else
 		if args:IsSpell(29213) then
 			curseTargets[args.destName] = true
 			UpdateCurseFrame()
-			if self.Options.SpecWarn29213dispel and self:AntiSpam(3, 1) then
+			if self.Options.SpecWarn29213dispel then
 				specWarnCurse:CombinedShow(0.5, args.destName)
 				specWarnCurse:ScheduleVoice(0.5, "dispelnow")
 			end
