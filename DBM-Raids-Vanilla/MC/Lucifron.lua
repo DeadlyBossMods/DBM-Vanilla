@@ -132,12 +132,12 @@ else
 		if args:IsSpell(19702, 460931) then
 			doomTargets[args.destName] = true
 			UpdateDoomFrame()
-			if self.Options.SpecWarn19702dispel then
+			if self.Options.SpecWarn19702dispel and args:IsDestTypePlayer() then
 				specWarnDoom:CombinedShow(0.5, args.destName)
 				specWarnDoom:ScheduleVoice(0.5, "dispelnow")
 			end
 		elseif args:IsSpell(19703, 460932) then
-			if self.Options.SpecWarn19703dispel then
+			if self.Options.SpecWarn19703dispel and args:IsDestTypePlayer() then
 				specWarnCurse:CombinedShow(0.5, args.destName)
 				specWarnCurse:ScheduleVoice(0.5, "dispelnow")
 			end
@@ -148,7 +148,7 @@ else
 	end
 
 	function mod:SPELL_AURA_REMOVED(args)
-		if args:IsSpell(19702, 460931) then
+		if args:IsSpell(19702, 460931) and args:IsDestTypePlayer() then
 			doomTargets[args.destName] = nil
 			UpdateDoomFrame()
 		elseif args:IsSpell(20604) then
