@@ -45,7 +45,7 @@ else
 
 	local timerEnrage			= mod:NewBerserkTimer(300)
 	local timerNextShift		= mod:NewVarTimer("v25.9-35.7", 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
-	local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2)
+	local timerShiftCast		= mod:NewCastTimer(3, 28089, nil, nil, nil, 2, nil, DBM_COMMON_L.DEADLY_ICON)
 	local timerThrow			= mod:NewNextTimer(21, 28338, nil, nil, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
 	local timerPhase2			= mod:NewStageCountTimer("v11.3-16")
 
