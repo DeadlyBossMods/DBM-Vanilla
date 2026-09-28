@@ -62,7 +62,7 @@ else
 	mod:AddInfoFrameOption(19659, "RemoveMagic")
 
 	local igniteTargets = {}
-	-- Ignite Mana can only debuff classes that use mana, so keep non-mana users out of the ignite table/info frame
+	-- Ignite Mana can debuff all classes, but it doesn't do anything to classes that don't have mana
 	local manaUserClasses = {
 		PRIEST = true,
 		MAGE = true,
