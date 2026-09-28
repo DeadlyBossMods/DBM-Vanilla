@@ -62,21 +62,20 @@ else
 	mod:AddInfoFrameOption(19659, "RemoveMagic")
 
 	local igniteTargets = {}
-	-- Ignite Mana can debuff all classes, but it doesn't do anything to classes that don't have mana
-	local manaUserClasses = {
+	-- Ignite Mana can debuff all classes, but only these are worth tracking for the info frame
+	local relevantClasses = {
 		PRIEST = true,
 		MAGE = true,
 		WARLOCK = true,
 		PALADIN = true,
 		SHAMAN = true,
 		DRUID = true,
-		HUNTER = true
 	}
 	local function isIgniteRelevant(args)
 		local uId = DBM:GetRaidUnitIdByGuid(args.destGUID)
 		if uId then
 			local class = mod:UnitClass(uId)
-			return not class or manaUserClasses[class] ~= nil
+			return not class or relevantClasses[class] ~= nil
 		end
 		return true--Assume relevant if we can't look the target up (defaults to old behavior)
 	end
