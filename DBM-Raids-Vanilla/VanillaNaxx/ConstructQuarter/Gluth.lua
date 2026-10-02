@@ -36,12 +36,12 @@ else
 
 	local timerFrenzy		= mod:NewBuffActiveTimer(8, 28371, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 	local timerFrenzyCD		= mod:NewVarTimer("v8.1-11.4", 28371, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
-	local timerRoarCD		= mod:NewVarTimer("v17.8-24.2", 29685, nil, nil, nil, 2)
+	local timerRoarCD		= mod:NewVarTimer("v17.8-22.7", 29685, nil, nil, nil, 2)
 	local timerEnrage		= mod:NewBerserkTimer(420)
 
 	function mod:OnCombatStart()
 		timerFrenzyCD:Start("v9.6-11.3")
-		timerRoarCD:Start()
+		timerRoarCD:Start("v17.8-24.3")
 		timerEnrage:Start()
 	end
 
