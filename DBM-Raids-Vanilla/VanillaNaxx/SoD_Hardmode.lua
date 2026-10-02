@@ -110,12 +110,8 @@ else
 
 	function mod:DoEmote(emote, isGuess)
 		self:AntiSpam(5, "MarchingOrders") -- This prevents the special warning fallback from triggering
-		if DBM.Test.testRunning then
-			self:TestTrace("DoEmote", emote)
-		else
-			DoEmote(emote)
-			self:Schedule(0.2, DoEmote, emote)
-		end
+		DoEmote(emote)
+		self:Schedule(0.2, DoEmote, emote)
 		self:UnscheduleMethod("OrderFallback")
 		self:ScheduleMethod(0.5, "OrderFallback", emote)
 		if isGuess then

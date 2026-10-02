@@ -2,10 +2,3 @@
 
 local mod = DBM:NewMod("PolyfillDummy")
 mod.isDummyMod = true
-
-local bossModPrototype = getmetatable(mod).__index
-
--- Added to DBM-Core on 2024-12-19
-function bossModPrototype:TestTrace(...)
-	DBM.Test:Trace(self, "ModTrace", ...)
-end

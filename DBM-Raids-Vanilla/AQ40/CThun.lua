@@ -167,9 +167,6 @@ else
 	function mod:SPELL_AURA_APPLIED(args)
 		if args:IsSpell(26476) then
 			--I'm aware debuff stacks, but it's a context that doesn't matter to this mod
-			if not playersInStomach[args.destName] then
-				self:TestTrace("EnterStomach", args.destName)
-			end
 			playersInStomach[args.destName] = true
 			if self.Options.InfoFrame and not DBM.InfoFrame:IsShown() then
 				DBM.InfoFrame:SetHeader(L.Stomach)
@@ -181,7 +178,6 @@ else
 	function mod:SPELL_AURA_REMOVED(args)
 		if args:IsSpell(26476) then
 			playersInStomach[args.destName] = nil
-			self:TestTrace("LeaveStomach", args.destName)
 		end
 	end
 	function mod:UNIT_DIED(args)

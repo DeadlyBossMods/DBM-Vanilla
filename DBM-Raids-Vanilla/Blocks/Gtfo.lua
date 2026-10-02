@@ -1,14 +1,7 @@
 -- TODO: This should be moved to core, but the dependency on core is a bit annoying while this is in a mostly experimental state
 
--- A bit hacky, but works since the dev build requirement for tests was removed.
----@class DBMCoreNamespace
-local private = DBM.Test:GetPrivate()
-
----@class DBM
-local DBM = private:GetPrototype("DBM")
-
 ---@class DBMMod
-local bossMod = private:GetPrototype("DBMMod")
+local bossMod = getmetatable(DBM:GetModByName("PolyfillDummy")).__index
 
 ---@alias DBMBlockEventFilter fun(spellId: integer, spellName: string, srcGuid: string, dstGuid: string): boolean
 
