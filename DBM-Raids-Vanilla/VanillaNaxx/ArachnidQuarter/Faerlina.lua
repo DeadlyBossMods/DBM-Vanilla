@@ -22,6 +22,7 @@ else
 
 	mod:RegisterEventsInCombat(
 		"SPELL_AURA_APPLIED 28798 28732 28794",
+		"SPELL_AURA_REFRESH 28732",
 		"SPELL_AURA_REMOVED 28732",
 		"UNIT_DIED"
 	)
@@ -53,7 +54,7 @@ else
 			else
 				warnEnrage:Show()
 			end
-		elseif args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5) then
+		elseif args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5, "embrace") then
 			warnEmbraceExpire:Cancel()
 			timerEnrageCD:Stop()
 			if self.vb.enraged then
@@ -69,8 +70,16 @@ else
 		end
 	end
 
+	function mod:SPELL_AURA_REFRESH(args)
+		if args:IsSpell(28732) and args:GetDestCreatureID() == 15953 then
+			warnEmbraceExpire:Cancel()
+			timerEmbrace:Start()
+			warnEmbraceExpire:Schedule(25)
+		end
+	end
+
 	function mod:SPELL_AURA_REMOVED(args)
-		if args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5) then
+		if args:IsSpell(28732) and args:GetDestCreatureID() == 15953 and self:AntiSpam(5, "embraceRemove") then
 			warnEmbraceExpire:Cancel()
 			warnEmbraceExpired:Show()
 		end
