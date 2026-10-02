@@ -42,7 +42,7 @@ else
 	function mod:OnCombatStart()
 		timerFrenzyCD:Start("v9.6-11.3")
 		timerRoarCD:Start()
-		timerEnrage:Start(420)
+		timerEnrage:Start()
 	end
 
 	function mod:SPELL_CAST_SUCCESS(args)
