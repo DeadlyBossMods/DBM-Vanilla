@@ -31,18 +31,17 @@ else
 	local warnFrenzy		= mod:NewSpellAnnounce(28371, 3, nil, "Tank|RemoveEnrage|Healer", 2)
 	local warnRoar			= mod:NewSpellAnnounce(29685, 2)
 	local warnDecimate		= mod:NewSpellAnnounce(28374, 3, "136075") -- Retail uses this icon for Decimate
+	local warnEnrage		= mod:NewSpellAnnounce(26662, 4)
 
 	local specwarnFrenzy	= mod:NewSpecialWarningDispel(28371, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
 
 	local timerFrenzy		= mod:NewBuffActiveTimer(8, 28371, nil, "Tank|RemoveEnrage|Healer", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 	local timerFrenzyCD		= mod:NewVarTimer("v8.1-11.4", 28371, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 	local timerRoarCD		= mod:NewVarTimer("v17.8-22.7", 29685, nil, nil, nil, 2)
-	local timerEnrage		= mod:NewBerserkTimer(420)
 
 	function mod:OnCombatStart()
 		timerFrenzyCD:Start("v9.6-11.3")
 		timerRoarCD:Start("v17.8-24.3")
-		timerEnrage:Start()
 	end
 
 	function mod:SPELL_CAST_SUCCESS(args)
@@ -55,7 +54,7 @@ else
 	end
 
 	function mod:SPELL_AURA_APPLIED(args)
-		if args:IsSpell(28371) and args:IsDestTypeHostile() then
+		if args:IsSpell(28371) then
 			if self.Options.SpecWarn19451dispel then
 				specwarnFrenzy:Show(args.destName)
 				specwarnFrenzy:Play("enrage")
@@ -63,6 +62,8 @@ else
 				warnFrenzy:Show()
 			end
 			timerFrenzy:Start()
+		elseif args:IsSpell(26662) then
+			warnEnrage:Show()
 		end
 	end
 
