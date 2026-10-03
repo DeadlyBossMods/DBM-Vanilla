@@ -30,7 +30,7 @@ else
 	--TODO, is it really nessesarly to use SPELL_DAMAGE here?
 	local warnEnrage		= mod:NewSpellAnnounce(26662, 4)
 	local warnFrenzy		= mod:NewSpellAnnounce(28371, 3, nil, "Tank|RemoveEnrage|Healer", 2)
-	local warnDecimate		= mod:NewSpellAnnounce(28374, 3, "136075") -- Retail uses this icon for Decimate
+	local warnDecimate		= mod:NewCountAnnounce(28374, 3, "136075") -- Retail uses this icon for Decimate
 	local warnRoar			= mod:NewSpellAnnounce(29685, 2)
 
 	local specwarnFrenzy	= mod:NewSpecialWarningDispel(28371, "RemoveEnrage", nil, nil, 1, 6, nil, nil, "enrage")
@@ -39,7 +39,10 @@ else
 	local timerFrenzyCD		= mod:NewVarTimer("v8.1-11.4", 28371, nil, "RemoveEnrage", nil, 5, nil, DBM_COMMON_L.ENRAGE_ICON)
 	local timerRoarCD		= mod:NewVarTimer("v17.8-22.7", 29685, nil, nil, nil, 2)
 
+	mod.vb.decimateCount = 0
+
 	function mod:OnCombatStart()
+		self.vb.decimateCount = 0
 		timerFrenzyCD:Start("v9.6-11.3")
 		timerRoarCD:Start("v17.8-24.3")
 	end
@@ -77,7 +80,8 @@ else
 		local Decimate = DBM:GetSpellName(28375)--Classic Note
 		function mod:SPELL_DAMAGE(_, _, _, _, _, _, _, _, spellId, spellName)
 			if (spellId == 28375 or spellName == Decimate) and self:AntiSpam(20) then
-				warnDecimate:Show()
+				self.vb.decimateCount = self.vb.decimateCount + 1
+				warnDecimate:Show(self.vb.decimateCount)
 				--timerDecimate:Start()
 				--warnDecimateSoon:Schedule(96)
 			end
