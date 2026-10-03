@@ -58,7 +58,7 @@ else
 
 	function mod:OnCombatStart()
 		table.wipe(mutateIcons)
-		enrageTimer:Start(720)
+		enrageTimer:Start()
 	end
 
 	function mod:OnCombatEnd()

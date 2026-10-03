@@ -62,6 +62,23 @@ else
 	mod:AddInfoFrameOption(19659, "RemoveMagic")
 
 	local igniteTargets = {}
+	-- Ignite Mana can debuff all classes, but only these are worth tracking for the info frame
+	local relevantClasses = {
+		PRIEST = true,
+		MAGE = true,
+		WARLOCK = true,
+		PALADIN = true,
+		SHAMAN = true,
+		DRUID = true,
+	}
+	local function isIgniteRelevant(args)
+		local uId = DBM:GetRaidUnitIdByGuid(args.destGUID)
+		if uId then
+			local class = mod:UnitClass(uId)
+			return not class or relevantClasses[class] ~= nil
+		end
+		return true--Assume relevant if we can't look the target up (defaults to old behavior)
+	end
 	local updateIgniteFrame
 	do
 		local twipe = table.wipe
@@ -150,7 +167,7 @@ else
 				end
 			end
 			warnBomb:CombinedShow(0.1, args.destName)
-		elseif args:IsSpell(19659) and args:IsDestTypePlayer() then
+		elseif args:IsSpell(19659) and args:IsDestTypePlayer() and isIgniteRelevant(args) then
 			igniteTargets[args.destName] = true
 			UpdateIgniteFrame()
 			if self.Options.SpecWarn19659dispel then
