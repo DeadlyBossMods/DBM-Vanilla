@@ -39,7 +39,7 @@ else
 	local warnShoutNow				= mod:NewSpellAnnounce(29107, 4, "132352")
 	local warnShoutSoon				= mod:NewSoonAnnounce(29107, 3, "132352", "ManaUser")
 	local warnShieldWall			= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
-	local specWarnMindControlFade	= mod:NewSpecialWarningFades(10912, nil, nil, nil, 1, 2)
+	local specWarnMindControlFade	= mod:NewSpecialWarningFades(10912, nil, nil, nil, 1, 2, nil, nil, "targetchange")
 
 	local timerShout			= mod:NewNextTimer(25.9, 29107, nil, "ManaUser", nil, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
 	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
