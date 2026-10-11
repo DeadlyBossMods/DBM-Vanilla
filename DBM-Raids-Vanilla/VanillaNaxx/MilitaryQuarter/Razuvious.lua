@@ -39,8 +39,8 @@ else
 	local warnShoutNow				= mod:NewSpellAnnounce(29107, 4, "132352")
 	local warnShoutSoon				= mod:NewSoonAnnounce(29107, 3, "132352", "ManaUser")
 	local warnShieldWall			= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
-
-	local specWarnMindControlFade	= mod:NewSpecialWarningFades(10912, nil, nil, nil, 1, 2, nil, nil, "targetchange")
+	
+	local specWarnMindControlFade	= mod:NewSpecialWarningFades(10912, nil, nil, nil, 1, 2, nil, nil, nil, nil, "targetchange")
 
 	local timerShout			= mod:NewNextTimer(25.9, 29107, nil, "ManaUser", nil, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
 	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
@@ -176,13 +176,13 @@ else
 			local guid = args.destGUID
 			mindControlOwners[guid] = nil
 			mindControlTimers[guid] = nil
-			local icon = GetRaidTargetIndex(DBM:GetUnitIdFromGUID(args.destGUID))
+			local uId = DBM:GetUnitIdFromGUID(args.destGUID)
+			local icon = uId and GetRaidTargetIndex(uId)
+			local name = args.destName or L.Understudy
 			if icon and icon > 0 then
-				local dest = ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName or L.Understudy)
-				specWarnMindControlFade:Show(dest)
-			else
-				specWarnMindControlFade:Show(args.destName or L.Understudy)
+				name = ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, name)
 			end
+			specWarnMindControlFade:Show(name)
 			specWarnMindControlFade:Play("targetchange")
 		end
 	end
