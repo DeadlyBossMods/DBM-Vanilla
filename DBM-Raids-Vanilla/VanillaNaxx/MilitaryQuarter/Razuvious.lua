@@ -195,7 +195,7 @@ else
 			tauntTimers[args.sourceGUID] = GetTime() + 60
 		elseif args:IsSpell(29061) and args:IsPetSource() then -- ShieldWall
 			timerShieldWall:Start(20, args.sourceGUID)
-			warnShieldWall:Schedule(15)
+			warnShieldWall:Show(args.sourceName)
 		end
 	end
 
