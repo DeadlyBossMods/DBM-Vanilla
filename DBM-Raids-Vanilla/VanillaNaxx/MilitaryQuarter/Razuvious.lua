@@ -175,7 +175,7 @@ else
 			local guid = args.destGUID
 			mindControlOwners[guid] = nil
 			mindControlTimers[guid] = nil
-			specWarnMindControlFade:Show(args.destName or L.Understudy)
+			specWarnMindControlFade:Show()
 			specWarnMindControlFade:Play("targetchange")
 		end
 	end
