@@ -39,10 +39,12 @@ else
 	local warnShoutNow				= mod:NewSpellAnnounce(29107, 4, "132352")
 	local warnShoutSoon				= mod:NewSoonAnnounce(29107, 3, "132352", "ManaUser")
 	local warnShieldWall			= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
-	local specWarnMindControlFade	= mod:NewSpecialWarningFades(10912, nil, nil, nil, 1, 2, nil, nil, "targetchange")
+	local warnMindControlEnd		= mod:NewEndTargetAnnounce(10912, 3, nil, "Dps|Healer")
 
-	local timerShout			= mod:NewNextTimer(25.9, 29107, nil, "ManaUser", nil, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
-	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, isPriest, nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+	local specWarnMindControlEnd	= mod:NewSpecialWarningEndTarget(10912, "Tank", nil, nil, 1, 2, nil, nil, "targetchange")
+
+	local timerShout			= mod:NewNextTimer(25.9, 29107, nil, true, 1, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
+	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, "Melee", 1, 5, nil, DBM_COMMON_L.TANK_ICON)
 	local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 	local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
@@ -175,8 +177,15 @@ else
 			local guid = args.destGUID
 			mindControlOwners[guid] = nil
 			mindControlTimers[guid] = nil
-			specWarnMindControlFade:Show()
-			specWarnMindControlFade:Play("targetchange")
+			local uId = DBM:GetUnitIdFromGUID(guid)
+			local icon = GetRaidTargetIndex(uId) or 0
+			local name = icon > 0 and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName) or args.destName
+			if self.Options.SpecWarn10912endtarget then
+				specWarnMindControlEnd:Show(name)
+				specWarnMindControlEnd:Play("targetchange")
+			else
+				warnMindControlEnd:Show(name)
+			end
 		end
 	end
 
