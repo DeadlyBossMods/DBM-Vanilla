@@ -89,19 +89,19 @@ else
 					lines[key] = DEAD
 				elseif mcTimeLeft > 0 then
 					if tauntTimeLeft > 0 then
-						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t |cffffc0c0%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon, tauntTimeLeft, tauntIcon)
+						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t |cffff7f7f%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon, tauntTimeLeft, tauntIcon)
 					else
 						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon)
 					end
 				elseif exhaustionTimeLeft > 0 then
 					if tauntTimeLeft > 0 then
-						lines[key] = ("|cffff0000%.0f|r|T%s:0|t |cffffc0c0%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon, tauntTimeLeft, tauntIcon)
+						lines[key] = ("|cffff0000%.0f|r|T%s:0|t |cffff7f7f%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon, tauntTimeLeft, tauntIcon)
 					else
 						lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon)
 					end
 				else
 					if tauntTimeLeft > 0 then
-						lines[key] = ("|cff00ff00%d|r |cffffc0c0%.0f|r|T%s:0|t"):format(0, tauntTimeLeft, tauntIcon)
+						lines[key] = ("|cff00ff00%d|r |cffff7f7f%.0f|r|T%s:0|t"):format(0, tauntTimeLeft, tauntIcon)
 					else
 						lines[key] = ("|cff00ff00%d|r"):format(0)
 					end
