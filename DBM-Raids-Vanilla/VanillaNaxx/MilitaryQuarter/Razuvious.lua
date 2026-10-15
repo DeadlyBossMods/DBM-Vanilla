@@ -89,19 +89,19 @@ else
 					lines[key] = DEAD
 				elseif mcTimeLeft > 0 then
 					if tauntTimeLeft > 0 then
-						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t |cffff7f7f%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon, tauntTimeLeft, tauntIcon)
+						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t |cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon, tauntTimeLeft, tauntIcon)
 					else
 						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon)
 					end
 				elseif exhaustionTimeLeft > 0 then
 					if tauntTimeLeft > 0 then
-						lines[key] = ("|cffff0000%.0f|r|T%s:0|t |cffff7f7f%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon, tauntTimeLeft, tauntIcon)
+						lines[key] = ("|cffff0000%.0f|r|T%s:0|t |cffff7f00%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon, tauntTimeLeft, tauntIcon)
 					else
 						lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon)
 					end
 				else
 					if tauntTimeLeft > 0 then
-						lines[key] = ("|cff00ff00%d|r |cffff7f7f%.0f|r|T%s:0|t"):format(0, tauntTimeLeft, tauntIcon)
+						lines[key] = ("|cff00ff00%d|r |cffff7f00%.0f|r|T%s:0|t"):format(0, tauntTimeLeft, tauntIcon)
 					else
 						lines[key] = ("|cff00ff00%d|r"):format(0)
 					end
@@ -177,13 +177,15 @@ else
 			local guid = args.destGUID
 			mindControlOwners[guid] = nil
 			mindControlTimers[guid] = nil
-			local icon = mindExhaustionIcons[guid]
-			local name = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName) or args.destName
-			if self.Options.SpecWarn10912endtarget then
-				specWarnMindControlEnd:Show(name)
-				specWarnMindControlEnd:Play("targetchange")
-			else
-				warnMindControlEnd:Show(name)
+			if self:AntiSpam(3, "MindControlEnd") then
+				local icon = mindExhaustionIcons[guid]
+				local name = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName) or args.destName
+				if self.Options.SpecWarn10912endtarget then
+					specWarnMindControlEnd:Show(name)
+					specWarnMindControlEnd:Play("targetchange")
+				else
+					warnMindControlEnd:Show(name)
+				end
 			end
 		end
 	end
