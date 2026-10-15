@@ -177,9 +177,8 @@ else
 			local guid = args.destGUID
 			mindControlOwners[guid] = nil
 			mindControlTimers[guid] = nil
-			local uId = DBM:GetUnitIdFromGUID(guid)
-			local icon = GetRaidTargetIndex(uId) or 0
-			local name = icon > 0 and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName) or args.destName
+			local icon = mindExhaustionIcons[guid]
+			local name = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName) or args.destName
 			if self.Options.SpecWarn10912endtarget then
 				specWarnMindControlEnd:Show(name)
 				specWarnMindControlEnd:Play("targetchange")
