@@ -177,7 +177,11 @@ else
 			local guid = args.destGUID
 			mindControlOwners[guid] = nil
 			mindControlTimers[guid] = nil
-			if self:AntiSpam(3, "MindControlEnd") then
+			-- At the end of the fight every understudy's mind control goes at once, and a
+			-- warning for each is noise. Only a break while Razuvious still has health is
+			-- the unexpected one worth calling out.
+			local bossHP = self:GetBossHP(16061)
+			if (not bossHP or bossHP > 5) and self:AntiSpam(3, "MindControlEnd") then
 				local icon = mindExhaustionIcons[guid]
 				local name = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, args.destName) or args.destName
 				if self.Options.SpecWarn10912endtarget then
