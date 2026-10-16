@@ -44,7 +44,7 @@ else
 	local specWarnMindControlEnd	= mod:NewSpecialWarningEndTarget(10912, "Tank", nil, nil, 1, 2, nil, nil, "targetchange")
 
 	local timerShout			= mod:NewNextTimer(25.9, 29107, nil, true, 1, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
-	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, "Melee", 1, 5, nil, DBM_COMMON_L.TANK_ICON)
+	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, "Tank", 1, 5, nil, DBM_COMMON_L.TANK_ICON)
 	local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
 	local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
