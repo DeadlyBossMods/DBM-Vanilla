@@ -13,7 +13,9 @@ local mod	= DBM:NewMod("Lucifron", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228429 or 12118)--, 12119
 mod:SetEncounterID(663)
 mod:SetModelID(13031)

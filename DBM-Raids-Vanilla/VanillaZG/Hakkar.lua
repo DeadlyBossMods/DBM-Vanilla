@@ -13,7 +13,9 @@ local mod	= DBM:NewMod("Hakkar", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(14834)
 mod:SetEncounterID(793)
 mod:SetModelID(15295)

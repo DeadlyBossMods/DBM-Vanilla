@@ -10,7 +10,9 @@ local mod	= DBM:NewMod("Moam", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(15340)
 mod:SetEncounterID(720)
 mod:SetModelID(15392)

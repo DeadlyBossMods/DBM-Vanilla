@@ -13,8 +13,10 @@ local mod	= DBM:NewMod("Arlokk", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
-mod:DisableHardcodedOptions()
 mod:SetCreatureID(14515)
 mod:SetEncounterID(791)
 mod:SetModelID(15218)

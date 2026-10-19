@@ -13,7 +13,9 @@ local mod = DBM:NewMod("Bloodlord", "DBM-Raids-Vanilla", catID)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(11382, 14988)
 mod:SetEncounterID(787)
 mod:SetModelID(11288)

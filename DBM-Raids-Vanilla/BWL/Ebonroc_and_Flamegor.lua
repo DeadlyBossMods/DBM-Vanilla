@@ -8,7 +8,6 @@ else
 	mod.statTypes = "normal"
 end
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
 mod:SetCreatureID(14601, 11981)
 mod:SetEncounterID(614, 615, 2566)
 mod:SetModelID(6377)

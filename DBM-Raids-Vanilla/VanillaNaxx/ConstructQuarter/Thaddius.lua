@@ -10,8 +10,10 @@ else
 end
 
 mod:SetRevision("@file-date-integer@")
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetMinSyncRevision(20260618000000) -- 2026, June 18th
-mod:DisableHardcodedOptions()
 mod:SetCreatureID(15928)
 mod:SetEncounterID(1120)
 mod:SetModelID(16137)

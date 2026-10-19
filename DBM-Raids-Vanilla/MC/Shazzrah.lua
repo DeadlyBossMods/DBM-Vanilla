@@ -13,7 +13,9 @@ local mod	= DBM:NewMod("Shazzrah", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 228434 or 12264)
 mod:SetEncounterID(667)
 mod:SetModelID(13032)

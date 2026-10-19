@@ -18,7 +18,9 @@ else
 	mod.statTypes = "normal"
 end
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(11583)
 mod:SetEncounterID(617)
 mod:SetHotfixNoticeRev(20200310000000)--2020, Mar, 10th

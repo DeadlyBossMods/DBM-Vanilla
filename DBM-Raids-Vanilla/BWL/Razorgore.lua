@@ -18,7 +18,9 @@ else
 	mod.statTypes = "normal"
 end
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(12435, 99999)--Bogus detection to prevent invalid kill detection if razorgore happens to die in phase 1
 mod:SetEncounterID(610)--BOSS_KILL is valid, but ENCOUNTER_END is not
 mod:DisableEEKillDetection()--So disable only EE

@@ -4,7 +4,6 @@ local mod	= DBM:NewMod("DreamscytheAndWeaverSoD", "DBM-Raids-Vanilla", 8)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
 mod:SetCreatureID(220833, 220864)--Dreamscythe, Weaver
 mod:SetEncounterID(2955)
 mod:SetBossHPInfoToHighest()

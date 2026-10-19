@@ -14,7 +14,9 @@ local mod	= DBM:NewMod("Ebonroc", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(14601)
 mod:SetEncounterID(614)
 mod:SetZone(469)

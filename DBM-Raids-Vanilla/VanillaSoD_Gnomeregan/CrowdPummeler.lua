@@ -4,7 +4,6 @@ local mod	= DBM:NewMod("CrowdPummellerSoD", "DBM-Raids-Vanilla", 9)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
 mod:SetCreatureID(215728)
 mod:SetEncounterID(2899)
 mod:SetUsedIcons(8)

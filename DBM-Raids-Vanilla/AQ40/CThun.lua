@@ -9,7 +9,9 @@ end
 local mod	= DBM:NewMod("CThun", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(15589, 15727)
 mod:SetEncounterID(717)
 mod:SetHotfixNoticeRev(20200823000000)--2020, 8, 23

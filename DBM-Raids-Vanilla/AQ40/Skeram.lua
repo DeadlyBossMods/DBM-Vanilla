@@ -10,7 +10,9 @@ local mod	= DBM:NewMod("Skeram", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(DBM:IsSeasonal("SeasonOfDiscovery") and 176525 or 15263)
 mod:SetEncounterID(709)
 mod:SetUsedIcons(4, 5, 6, 7, 8)

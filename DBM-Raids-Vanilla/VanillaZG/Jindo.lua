@@ -13,7 +13,9 @@ local mod	= DBM:NewMod("Jindo", "DBM-Raids-Vanilla", catID)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(11380)
 mod:SetEncounterID(792)
 mod:SetModelID(11311)

@@ -13,7 +13,9 @@ local mod = DBM:NewMod("Thekal", "DBM-Raids-Vanilla", catID)
 local L = mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
-mod:DisableHardcodedOptions()
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetCreatureID(14509, 11348, 11347)
 mod:SetEncounterID(789)
 mod:SetModelID(15216)

@@ -2,8 +2,10 @@ local mod	= DBM:NewMod("RazuviousVanilla", "DBM-Raids-Vanilla", 1)
 local L		= mod:GetLocalizedStrings()
 
 mod:SetRevision("@file-date-integer@")
+if DBM:IsForever() then
+	mod:EnableGenericTrash()
+end
 mod:SetMinSyncRevision(20260522000000) -- 2026, May 22nd
-mod:DisableHardcodedOptions()
 mod:SetCreatureID(16061)
 mod:SetEncounterID(1113)
 mod:SetModelID(16582)
