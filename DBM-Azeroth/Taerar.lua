@@ -18,53 +18,45 @@ if DBM:IsRestricted() then
 else
 
 	mod:RegisterEventsInCombat(
-	--	"SPELL_CAST_START 24818 243401",
-		"SPELL_CAST_SUCCESS 24814 24813",
+		"SPELL_CAST_START 22686",
+		"SPELL_CAST_SUCCESS 24813 24814 24818",
 		"SPELL_AURA_APPLIED 24818",
 		"SPELL_AURA_APPLIED_DOSE 24818"
 	)
 
-	--TODO, maybe taunt special warnings for classic version when it matters more.
-	--TODO, needs valid spellIds for classic
 	local warnNoxiousBreath			= mod:NewStackAnnounce(24818, 2, nil, "Tank", 2)
-	--local warningBellowingRoar		= mod:NewSpellAnnounce(243661, 3)
+	local warningBellowingRoar		= mod:NewCastAnnounce(22686, 2)
 
 	local specWarnSleepingFog		= mod:NewSpecialWarningDodge(24814, nil, nil, nil, 2, 2, nil, nil, "watchstep")
 
-	--local timerNoxiousBreathCD		= mod:NewCDTimer(19.4, 24818, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)--Iffy
-	local timerSleepingFogCD		= mod:NewCDTimer(21.9, 24814, nil, nil, nil, 3)
-	--local timerBellowingRoarCD		= mod:NewCDTimer(7.2, 243661, nil, nil, nil, 2)
+	local timerNoxiousBreathCD		= mod:NewVarTimer("v9.7-11.2", 24818, nil, "Tank", nil, 5, nil, DBM_COMMON_L.TANK_ICON)
+	local timerBellowingRoarCD		= mod:NewVarTimer("v31.2-42.2", 22686, nil, nil, nil, 2)
+	local timerSleepingFogCD		= mod:NewVarTimer("v60.2-60.3", 24814, nil, nil, nil, 3)
 
-	--mod:AddReadyCheckOption(48620, false)
-
-	function mod:OnCombatStart(delay, yellTriggered)
+	function mod:OnCombatStart(_, yellTriggered)
 		if yellTriggered then
-			--timerBellowingRoarCD:Start(10.5-delay)
-			--timerNoxiousBreathCD:Start(14.3-delay)
-			timerSleepingFogCD:Start(21.5-delay)
+			timerNoxiousBreathCD:Start(15.4)
+			timerBellowingRoarCD:Start(33.3)
+			timerSleepingFogCD:Start(36.1)
 		end
 	end
 
-	--[[
 	function mod:SPELL_CAST_START(args)
-		if args.spellId == 243661 and self:AntiSpam(3, 1) then
+		if args:IsSpell(22686) then
 			warningBellowingRoar:Show()
 			timerBellowingRoarCD:Start()
-		elseif args.spellId == 24818 and self:AntiSpam(3, 2) then
-			timerNoxiousBreathCD:Start()
 		end
 	end
-	--]]
 
 	function mod:SPELL_CAST_SUCCESS(args)
-		if args:IsSpell(24814, 24813) then
+		if args:IsSpell(24818) then
+			timerNoxiousBreathCD:Start()
+		elseif args:IsSpell(24813, 24814) then
 			if self:AntiSpam(600, "SpecWarnFog") then -- It's more active than inactive, only warn for the initial one
 				specWarnSleepingFog:Show()
 				specWarnSleepingFog:Play("watchstep")
 			end
 			timerSleepingFogCD:Start()
-		--elseif args.spellId == 24818 and self:AntiSpam(3, 1) then
-			--timerNoxiousBreathCD
 		end
 	end
 

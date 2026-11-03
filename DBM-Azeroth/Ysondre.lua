@@ -19,7 +19,7 @@ if DBM:IsRestricted() then
 else
 
 	mod:RegisterEventsInCombat(
-		"SPELL_CAST_SUCCESS 24814 24813 24818 1214136",
+		"SPELL_CAST_SUCCESS 24813 24814 24818 1214136",
 		"SPELL_AURA_APPLIED 24818 1214136",
 		"SPELL_AURA_APPLIED_DOSE 24818",
 		"UNIT_SPELLCAST_SUCCEEDED"
@@ -35,13 +35,16 @@ else
 	local timerSleepingFogCD		= mod:NewCDTimer(16.0, 24814, nil, nil, nil, 3)
 	local timerLightningWaveCD		= mod:NewCDTimer(13.4, 24819, nil, nil, nil, 3)
 
-	mod:AddSetIconOption("SetIconOnBombTarget", 1214136, true, 0, {8, 7, 6})
+	local timerSoak, warnSoakTargets, specWarnSoak, yellSoakFades, yellSoak
+	if DBM:IsSeasonal("SeasonOfDiscovery") then
+		mod:AddSetIconOption("SetIconOnBombTarget", 1214136, true, 0, {8, 7, 6})
 
-	local timerSoak       = mod:NewCastTimer(1214136)
-	local warnSoakTargets = mod:NewTargetNoFilterAnnounce(1214136, 4)
-	local specWarnSoak    = mod:NewSpecialWarningSoak(1214136)
-	local yellSoakFades	  = mod:NewShortFadesYell(1214136)
-	local yellSoak        = mod:NewYell(1214136)
+		timerSoak       = mod:NewCastTimer(1214136)
+		warnSoakTargets = mod:NewTargetNoFilterAnnounce(1214136, 4)
+		specWarnSoak    = mod:NewSpecialWarningSoak(1214136)
+		yellSoakFades	  = mod:NewShortFadesYell(1214136)
+		yellSoak        = mod:NewYell(1214136)
+	end
 
 	--mod:AddReadyCheckOption(48620, false)
 	local bombIcon = 8
@@ -65,7 +68,7 @@ else
 
 
 	function mod:SPELL_CAST_SUCCESS(args)
-		if args:IsSpell(24814, 24813) then
+		if args:IsSpell(24813, 24814) then
 			if self:AntiSpam(600, "SpecWarnFog") then -- It's more active than inactive, only warn for the initial one
 				specWarnSleepingFog:Show()
 				specWarnSleepingFog:Play("watchstep")
