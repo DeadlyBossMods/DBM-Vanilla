@@ -40,14 +40,14 @@ else
 	local isPriest 					= select(2, UnitClass("player")) == "PRIEST"
 	local warnShoutNow				= mod:NewSpellAnnounce(29107, 4, "132352")
 	local warnShoutSoon				= mod:NewSoonAnnounce(29107, 3, "132352", "ManaUser")
-	local warnShieldWall			= mod:NewTargetNoFilterAnnounce(29061, 2, nil, "Dps")
+	local warnShieldWall			= mod:NewTargetNoFilterAnnounce(29061, 2)
 	local warnMindControlEnd		= mod:NewEndTargetAnnounce(10912, 3, nil, "Dps|Healer")
 
 	local specWarnMindControlEnd	= mod:NewSpecialWarningEndTarget(10912, "Tank", nil, nil, 1, 2, nil, nil, "targetchange")
 
 	local timerShout			= mod:NewNextTimer(25.9, 29107, nil, true, 1, 2, "132352", DBM_COMMON_L.DEADLY_ICON, nil, 1, 5)
 	local timerTaunt			= mod:NewCDNPTimer(60, 29060, nil, "Tank", 1, 5, nil, DBM_COMMON_L.TANK_ICON)
-	local timerShieldWall		= mod:NewBuffActiveTimer(20, 29061, nil, "Dps", nil, 5, nil, DBM_COMMON_L.DAMAGE_ICON)
+	local timerShieldWall		= mod:NewCDNPTimer(20, 29061, nil, true, nil, 5)
 	local timerMindExhaustionCD	= mod:NewCDNPTimer(60, 29051, nil, isPriest, nil, 5)
 
 	mod:AddInfoFrameOption(nil, true, 2)
@@ -58,11 +58,13 @@ else
 	local mindControlOwners = {}
 	local mindControlTimers = {}
 	local tauntTimers = {}
+	local shieldWallTimers = {}
 	local addDead = {}
 
 	local mindControlIcon = "Interface\\Icons\\Spell_shadow_shadowworddominate"
 	local mindExhaustionIcon = "Interface\\Icons\\Spell_shadow_teleport"
 	local tauntIcon = "Interface\\Icons\\Spell_nature_reincarnation"
+	local shieldWallIcon = "Interface\\Icons\\Ability_Warrior_ShieldWall"
 
 	local updateInfoFrame
 	do
@@ -78,6 +80,7 @@ else
 				local mcTimeLeft = (mindControlTimers[guid] or 0) - t
 				local exhaustionTimeLeft = (mindExhaustionTimers[guid] or 0) - t
 				local tauntTimeLeft = (tauntTimers[guid] or 0) - t
+				local shieldWallTimeLeft = (shieldWallTimers[guid] or 0) - t
 				local icon = mindExhaustionIcons[guid]
 				local displayName = name
 				if mcOwner then
@@ -89,24 +92,18 @@ else
 				sortedLines[#sortedLines + 1] = key
 				if addDead[guid] then
 					lines[key] = DEAD
-				elseif mcTimeLeft > 0 then
-					if tauntTimeLeft > 0 then
-						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t |cffffc0c0%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon, tauntTimeLeft, tauntIcon)
-					else
-						lines[key] = ("|cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon)
-					end
-				elseif exhaustionTimeLeft > 0 then
-					if tauntTimeLeft > 0 then
-						lines[key] = ("|cffff0000%.0f|r|T%s:0|t |cffffc0c0%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon, tauntTimeLeft, tauntIcon)
-					else
-						lines[key] = ("|cffff0000%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon)
-					end
 				else
-					if tauntTimeLeft > 0 then
-						lines[key] = ("|cff00ff00%d|r |cffffc0c0%.0f|r|T%s:0|t"):format(0, tauntTimeLeft, tauntIcon)
+					local statusText
+					if mcTimeLeft > 0 then
+						statusText = ("|cffff7f00%.0f|r|T%s:0|t"):format(mcTimeLeft, mindControlIcon)
+					elseif exhaustionTimeLeft > 0 then
+						statusText = ("|cffff0000%.0f|r|T%s:0|t"):format(exhaustionTimeLeft, mindExhaustionIcon)
 					else
-						lines[key] = ("|cff00ff00%d|r"):format(0)
+						statusText = ("|cff00ff00%d|r"):format(0)
 					end
+					local tauntText = tauntTimeLeft > 0 and (" |cffffc0c0%.0f|r|T%s:0|t"):format(tauntTimeLeft, tauntIcon) or ""
+					local shieldWallText = shieldWallTimeLeft > 0 and (" |cff00bfff%.0f|r|T%s:0|t"):format(shieldWallTimeLeft, shieldWallIcon) or ""
+					lines[key] = statusText .. tauntText .. shieldWallText
 				end
 			end
 			return lines, sortedLines
@@ -131,6 +128,7 @@ else
 		table.wipe(mindControlOwners)
 		table.wipe(mindControlTimers)
 		table.wipe(tauntTimers)
+		table.wipe(shieldWallTimers)
 		table.wipe(addDead)
 	end
 
@@ -211,7 +209,15 @@ else
 			tauntTimers[args.sourceGUID] = GetTime() + 60
 		elseif args:IsSpell(29061) and args:IsPetSource() then -- ShieldWall
 			timerShieldWall:Start(20, args.sourceGUID)
-			warnShieldWall:Show(args.sourceName)
+			shieldWallTimers[args.sourceGUID] = GetTime() + 20
+			local icon = mindExhaustionIcons[args.sourceGUID]
+			if not icon then
+				local unitId = DBM:GetUnitIdFromGUID(args.sourceGUID)
+				icon = unitId and GetRaidTargetIndex(unitId)
+			end
+			local sourceName = args.sourceName or DBM_COMMON_L.UNKNOWN
+			local name = icon and ("|TInterface\\TargetingFrame\\UI-RaidTargetingIcon_%d:0|t%s"):format(icon, sourceName) or sourceName
+			warnShieldWall:Show(name)
 		end
 	end
 
@@ -252,6 +258,7 @@ else
 			mindControlOwners[args.destGUID] = nil
 			mindControlTimers[args.destGUID] = nil
 			tauntTimers[args.destGUID] = nil
+			shieldWallTimers[args.destGUID] = nil
 		end
 	end
 end
