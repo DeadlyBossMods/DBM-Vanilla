@@ -38,8 +38,6 @@
 ## X-DBM-Mod-MinCoreRevision: 20260522000000
 ## X-DBM-Mod-MinExpansion: 0
 
-locale.generated.lua
-
 localization.en.lua
 localization.de.lua
 localization.br.lua
