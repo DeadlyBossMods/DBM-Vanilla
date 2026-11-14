@@ -27,6 +27,7 @@
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 309 [AllowLoadGameType cata, mists]
 ## X-DBM-Mod-SubCategoriesID: 531, 509, 469, 409, 230 [AllowLoadGameType standard]
 ## X-DBM-Mod-Name: Raids (Vanilla)
+## X-DBM-Mod-Name-zhCN: 团队副本 (经典旧世)
 ## X-DBM-Mod-Name-deDE: Schlachtzüge (Classic)
 ## X-DBM-Mod-Name-esES: Bandas (Clásico)
 ## X-DBM-Mod-Name-esMX: Bandas (Clásico)
@@ -45,7 +46,9 @@
 ## X-DBM-Mod-MinExpansion: 0
 ## X-Curse-Project-ID: 16442
 ## X-Wago-ID: 7x61xpN1
-## Version: @project-version@
+## Version: r835
+
+locale.generated.lua
 
 localization.en.lua
 localization.tw.lua
