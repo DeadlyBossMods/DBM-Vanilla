@@ -1,3 +1,4 @@
+-- 泰坦重铸时光服-时光2-法师-旺仔芒果/椰奶冻-2026.11.13--
 if GetLocale() ~= "zhCN" then return end
 local L
 
@@ -24,7 +25,7 @@ L:SetMiscLocalization{
 	Kri = "克里勋爵"
 }
 L:SetWarningLocalization({
-    WarnBugDied = "%s死了（剩餘%d隻）"
+    WarnBugDied = "%s死了（剩余%d只）"
 })
 L:SetOptionLocalization{
 	WarnBugDied = "提示安其拉三宝虫剩余"
@@ -126,16 +127,16 @@ L:SetOptionLocalization{
 	WarnClawTentacle2		= "为利爪触须显示警告",
 	WarnGiantEyeTentacle	= "为巨眼触须显示警告",
 	WarnGiantClawTentacle	= "为巨钩触须显示警告",
-	SpecWarnWeakened		= "当首领虚弱時显示特別警告",
+	SpecWarnWeakened		= "当首领虚弱时显示特别警告",
 	TimerEyeTentacle		= "为下一次眼球触须显示计时器",
 	TimerClawTentacle		= "为下一次利爪触须显示计时器",
 	TimerGiantEyeTentacle	= "为下一次巨眼触须显示计时器",
 	TimerGiantClawTentacle	= "为下一次巨钩触须显示计时器",
-	TimerWeakened			= "为首领虚弱時间显示计时器"
+	TimerWeakened			= "为首领虚弱时间显示计时器"
 }
 L:SetMiscLocalization{
 	Stomach		= "克苏恩的胃",
-	FleshTent	= "血肉触须", --Localized so it shows on frame in users language, not senders
+	FleshTent	= "血肉触须",
     NotValid	= "AQ40 击杀信息：%s首领未击杀。"
 }
 
@@ -159,16 +160,33 @@ L:SetOptionLocalization{
 	WarnSubmerge		= "为钻地显示警告",
 	TimerSubmerge		= "为钻地显示计时器",
 	WarnEmerge			= "为现身显示警告",
-	TimerEmerge			= "为现身显示计时器"
+	TimerEmerge			= "为现身显示计时器",
+	SpecWarnEye			= "为巨眼显示警告"
 }
+
 ----------------
 -- AQ40 Trash --
 ----------------
 L = DBM:GetModLocalization("AQ40Trash")
 
 L:SetGeneralLocalization{
-	name = "小怪"
+	name = "安其拉神殿小怪"
 }
+
+L:SetTimerLocalization{
+	TimerExplosion = "爆炸幽灵"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "单个爆炸幽灵出现 - 快躲开",
+	SpecWarnExplosion = "爆炸幽灵 - 快躲开",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "为爆炸幽灵显示警报（$spell:1214871）",
+	SpecWarnExplosion = "当多个爆炸幽灵出现时显示特殊警告（$spell:1214871）",
+	TimerExplosion = "为多个爆炸幽灵出现显示计时条（$spell:1214871）"
+}
+
 ---------------
 -- Kurinnaxx --
 ---------------
@@ -223,11 +241,12 @@ L:SetGeneralLocalization{
 L:SetWarningLocalization{
 	WarnPursue		= ">%s<被追击了",
 	SpecWarnPursue	= "你被追击了",
-	WarnDismember	= ">%2$s<中了%1$s(%s)"
+	WarnDismember	= "%s命中了>%s<(%s)"
 }
 L:SetOptionLocalization{
 	WarnPursue		= "提示被追击的目标",
-	SpecWarnPursue	= "当你被追击的时候显示特別警告"
+	SpecWarnPursue	= "当你被追击的时候显示特别警告",
+	WarnDismember	= DBM_CORE_L.AUTO_ANNOUNCE_OPTIONS.spell:format(96)
 }
 L:SetMiscLocalization{
 	PursueEmote 	= "凝视着"
@@ -257,7 +276,21 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("AQ20Trash")
 
 L:SetGeneralLocalization{
-	name = "小怪"
+	name = "安其拉废墟小怪"
+}
+
+L:SetTimerLocalization{
+	TimerExplosion = "爆炸幽灵"
+}
+
+L:SetWarningLocalization{
+	WarnExplosion = "单个爆炸幽灵出现 - 快躲开",
+	SpecWarnExplosion = "爆炸幽灵 - 快躲开",
+}
+L:SetOptionLocalization{
+	WarnExplosion = "为爆炸幽灵显示警报（$spell:1214871）",
+	SpecWarnExplosion = "当多个爆炸幽灵出现时显示特殊警告（$spell:1214871）",
+	TimerExplosion = "为多个爆炸幽灵出现显示计时条（$spell:1214871）"
 }
 
 -----------------
@@ -326,6 +359,27 @@ L:SetGeneralLocalization{
 	name = "弗莱格尔"
 }
 
+----------------
+--  Ebonroc and Flamegor  --
+----------------
+L = DBM:GetModLocalization("EbonrocandFlamegor")
+
+L:SetGeneralLocalization{
+	name = "埃博诺克与弗莱格尔"
+}
+
+L:SetTimerLocalization{
+	TimerBrandCD	= "烙印"
+}
+L:SetOptionLocalization{
+	TimerBrandCD	= "为烙印冷却显示计时条"
+}
+
+L:SetMiscLocalization{
+	Ebonroc		= "埃博诺克",
+	Flamegor	= "弗莱格尔"
+}
+
 -----------------------
 --  Vulnerabilities  --
 -----------------------
@@ -333,7 +387,7 @@ L:SetGeneralLocalization{
 L = DBM:GetModLocalization("BWLTrash")
 
 L:SetGeneralLocalization{
-	name = "龙人护卫"
+	name = "黑翼之巢小怪"
 }
 L:SetWarningLocalization{
 	WarnVulnerable		= "%s易伤"
@@ -365,19 +419,22 @@ L:SetWarningLocalization{
 L:SetTimerLocalization{
 	TimerBreathCD	= "%s",
 	TimerBreath		= "%s",
-	TimerVulnCD		= "易伤切换"
+	TimerVulnCD		= "易伤切换",
+	TimerAllBreaths = "吐息连射"
 }
 L:SetOptionLocalization{
 	WarnBreath			= "为克洛玛古斯其中一个吐息显示警告",
 	WarnVulnerableNew	= "为法术易伤显示提示",
 	TimerBreathCD		= "显示吐息冷却",
 	TimerBreath			= "显示吐息施法",
-	TimerVulnCD			= "显示易伤周期"
+	TimerVulnCD			= "显示易伤周期",
+	TimerAllBreaths = "为吐息连射显示计时条"
 }
 L:SetMiscLocalization{
 	Breath1		= "第一次吐息",
 	Breath2		= "第二次吐息",
 	VulnEmote	= "%s的皮肤闪着微光，它畏缩了。",
+	Vuln		= "易伤",
 	Fire		= "火焰",
 	Nature		= "自然",
 	Frost		= "冰霜",
@@ -423,7 +480,37 @@ L:SetMiscLocalization{
 	YellHunter	= "猎人们，还有你们那些讨厌的玩具枪！",
 	YellMage	= "你们也是法师？小心别玩火自焚……",
 	YellDK		= "死亡骑士士们...来这。",
-	YellMonk	= "武僧???...又是什么???"
+	YellMonk	= "武僧",
+	YellDH		= "恶魔猎手？遮住眼睛还真奇怪。这样还看得到周围的世界吗？"
+}
+
+----------------------
+--  SoD BWL Trials  --
+----------------------
+L = DBM:GetModLocalization("SoDBWLTrials")
+
+L:SetGeneralLocalization{
+	name = "探索赛季试炼"
+}
+L:SetWarningLocalization{
+	SpecWarnBothBombs		= ">%s<同时中了蓝绿炸弹",
+	SpecWarnBothBombsYou	= "你同时中了蓝绿炸弹",
+}
+L:SetTimerLocalization{
+	TimerBombs				= DBM_COMMON_L.BOMBS
+}
+L:SetOptionLocalization{
+	SpecWarnBothBombs		= "当同一玩家同时中了蓝绿炸弹时显示特殊警告。",
+	SpecWarnBothBombsYou	= "当你同时中了蓝绿炸弹时显示特殊警告。",
+	TimerBombs				= "为蓝绿试炼炸弹显示计时条"
+}
+
+L:SetMiscLocalization{
+	BlueBomb = (DBM_COMMON_L.BLUE or "蓝") .. " " .. DBM_COMMON_L.BOMB,
+	GreenBomb = (DBM_COMMON_L.GREEN or "绿") .. " " .. DBM_COMMON_L.BOMB,
+	BlueTrial = "蓝色试炼",
+	GreenTrial = "绿色试炼",
+	GreenAndBlue = "同一玩家同时中蓝绿",
 }
 
 ----------------
@@ -553,13 +640,15 @@ L:SetWarningLocalization{
 }
 L:SetTimerLocalization{
 	TimerSubmerge		= "隐没",
-	TimerEmerge			= "现身"
+	TimerEmerge			= "现身",
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_TEXTS.combat
 }
 L:SetOptionLocalization{
 	WarnSubmerge		= "为隐没显示警告",
 	TimerSubmerge		= "为隐没显示计时器",
 	WarnEmerge			= "为现身显示警告",
 	TimerEmerge			= "为现身显示计时器",
+	timerCombatStart	= DBM_CORE_L.AUTO_TIMER_OPTIONS.combat,
 	WarnGuardDied		= "提示剩余的烈焰之子"
 }
 L:SetMiscLocalization{
@@ -576,13 +665,22 @@ L:SetGeneralLocalization{
 	name = "熔火之心"
 }
 
+L:SetOptionLocalization{
+	YellHeartCleared	= "当灰烬/烬火之心被移除时大喊。",
+	WarnBossPower		= "当首领能量达到50%、75%、90%和100%时显示警告"
+}
+
+L:SetWarningLocalization{
+	WarnBossPower		= "首领能量达到%d%%"
+}
+
 -----------------
 --  MC: Trash  --
 -----------------
 L = DBM:GetModLocalization("MCTrash")
 
 L:SetGeneralLocalization{
-	name = "小怪"
+	name = "熔火之心小怪"
 
 }
 -------------------
@@ -696,6 +794,10 @@ L:SetGeneralLocalization{
 	name = "妖术师金度"
 }
 
+L:SetMiscLocalization{
+	Ghosts = "幽灵"
+}
+
 --------------
 --  Onyxia  --
 --------------
@@ -722,7 +824,8 @@ L:SetOptionLocalization{
 L:SetMiscLocalization{
 	YellP1 			= "真是走运。通常我必须离开窝才能找到食物。",
 	YellP2 			= "这毫无意义的行动让我很厌烦。我会从上空把你们都烧成灰！",
-	YellP3 			= "看起来需要再给你一次教训，凡人！"
+	YellP3 			= "看起来需要再给你一次教训，凡人！",
+	SoDWarning = "欢迎来到%s。DBM 将在战斗中播放一些来自经典传奇团队的趣味音效。你可以在 DBM 界面中关闭它：输入 /dbm，前往团队副本 -> 经典，找到奥妮克希亚模块。"
 }
 
 -------------------
@@ -805,6 +908,21 @@ L = DBM:GetModLocalization("HeiganVanilla")
 
 L:SetGeneralLocalization({
 	name 				= "肮脏的希尔盖"
+})
+
+L:SetWarningLocalization({
+	WarningTeleportNow		= "传送",
+	WarningTeleportSoon		= "%d秒后传送"
+})
+
+L:SetTimerLocalization({
+	TimerTeleport			= "传送"
+})
+
+L:SetOptionLocalization({
+	WarningTeleportNow		= "为传送显示警报",
+	WarningTeleportSoon		= "为传送显示提前警报",
+	TimerTeleport			= "为传送显示计时条"
 })
 
 L:SetMiscLocalization({
@@ -981,7 +1099,7 @@ L:SetTimerLocalization({
 L:SetWarningLocalization({
 	WarningMarkSoon				= "3秒后印记%d",
 	SpecialWarningMarkOnPlayer	= "%s：%s",
-	WarnHorsemanDied 			= "%s死了（剩餘%d隻）"
+	WarnHorsemanDied 			= "%s死了（剩余%d只）"
 })
 
 L:SetMiscLocalization({
@@ -1039,8 +1157,61 @@ L:SetMiscLocalization({
 L = DBM:GetModLocalization("NaxxTrash")
 
 L:SetGeneralLocalization({
-	name = "小怪"
+	name = "纳克萨玛斯小怪"
 })
+
+--------------------
+--  SoD Hardmode  --
+--------------------
+
+L = DBM:GetModLocalization("SoD_NaxxHardmode")
+
+L:SetGeneralLocalization({
+	name = "探索赛季困难模式"
+})
+
+L:SetOptionLocalization({
+	AutomateEmote		= "尝试为行军令自动触发正确的表情动作（可能因暴雪修复而失效）",
+	AffixTimer			= "为困难模式词缀显示计时条",
+	WarnEggs			= "显示虫卵生成的警报（蜘蛛区困难模式）",
+	SpecWarnOrders		= "当 DBM 无法自动执行行军令时显示特别警告"
+})
+
+L.MarchingOrderTranslationComplete = true
+L:SetMiscLocalization({
+	Affixes				= "词缀",
+	ConstructAffix		= "闪电炸弹",
+	SpiderAffix			= "爆炸虫卵",
+	UnsupportedLocale	= [[欢迎来到强化军事区！
+此处的困难模式机制会随机选择玩家，要求他们做出指定的表情动作。
+我们对你的客户端语言 %s 的支持仍不完整，DBM 可能会漏掉一些表情动作。
+你可以帮忙！把困难模式机制中使用的确切文本（截图、视频、Transcriptor 日志）分享到 discord.gg/deadlybossmods 给我们。
+]],
+	AutomatedEmote		= "DBM 尝试为行军令自动执行表情动作 %s（可能因暴雪阻止自动化而失效）。",
+	AutomatedEmoteGuess	= "DBM 基于猜测尝试为行军令自动执行表情动作 %s。这正确吗？请在 discord.gg/deadlybossmods 告诉我们",
+	OrderDance			= "给我跳舞！",
+	OrderRoar			= "让我听听你最响的咆哮！",
+	OrderSalute			= "敬礼，蛆虫！",
+	OrderBow			= "向我鞠躬，凡人！",
+	OrderPray			= "跪下祈祷！",
+	OrderKneel			= nil,
+	GuessOrderDance		= nil,
+	GuessOrderRoar		= nil,
+	GueesOrderSalute	= nil,
+	GuessOrderBow		= nil,
+	GuessOrderPray		= nil,
+	GuessOrderKneel		= nil,
+})
+
+L:SetWarningLocalization({
+	WarnEggs		= "虫卵出现",
+	SpecWarnOrders	= "行军令：%s"
+})
+
+L:SetTimerLocalization({
+	AffixTimer	= "词缀"
+})
+
 
 ---------------------------
 --  Season of Discovery  --
@@ -1091,11 +1262,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetTimerLocalization{
-	TimerImmune = "Immunity ends"
+	TimerImmune = "免疫结束"
 }
 
 L:SetOptionLocalization({
-	TimerImmune	= "Show timer for the duration of Gelihast's immunity during phase transitions."
+	TimerImmune	= "为格里哈斯特在阶段转换期间免疫的持续时间显示计时条。"
 })
 
 ------------------
@@ -1108,11 +1279,11 @@ L:SetGeneralLocalization({
 })
 
 L:SetWarningLocalization({
-	warnPriestRemaining		= "%s Priestesses remaining"
+	warnPriestRemaining		= "还剩%s名女祭司"
 })
 
 L:SetOptionLocalization({
-	warnPriestRemaining	= "Show warning for how maining Blackfathom Tide Priestesses are remaining"
+	warnPriestRemaining	= "显示黑渊潮汐女祭司剩余数量的警告"
 })
 
 ------------------
@@ -1121,7 +1292,7 @@ L:SetOptionLocalization({
 L = DBM:GetModLocalization("TwilightLordKelrisSoD")
 
 L:SetGeneralLocalization({
-	name = "梦游者克尔里斯"
+	name = "暮光领主克尔里斯"
 })
 
 ------------------
@@ -1203,16 +1374,25 @@ L:SetGeneralLocalization({
 })
 
 L:SetTimerLocalization{
-	timerTankCD = "Tank Ability"
+	timerTankCD = "坦克技能"
 }
 
 L:SetOptionLocalization({
-	timerTankCD	= "Show timer for random tank ability cooldown in stage 4"
+	timerTankCD	= "为第4阶段随机坦克技能冷却显示计时条"
 })
 
 ------------------
 --  Sunken Temple  --
 ------------------
+
+--------------
+-- ST Trash --
+--------------
+L = DBM:GetModLocalization("STTrashSoD")
+
+L:SetGeneralLocalization{
+	name = "沉没的神庙小怪"
+}
 
 ---------------------------
 --  Atal'alarion  --
@@ -1239,6 +1419,10 @@ L = DBM:GetModLocalization("AtalaiDefendersSoD")
 
 L:SetGeneralLocalization({
 	name = "阿塔莱防御者"
+})
+
+L:SetOptionLocalization({
+	SetIconsOnGhosts = "为幽灵首领设置图标"
 })
 
 ---------------------------
@@ -1286,3 +1470,76 @@ L:SetGeneralLocalization({
 	name = "伊兰尼库斯的阴影"
 })
 
+-----------------------------
+--  Scarlet Enclave (SoD)  --
+-----------------------------
+
+L = DBM:GetModLocalization("Balnazzar")
+
+L:SetMiscLocalization{
+	OtherPlayer = "另一名玩家",
+	Tick = "跳数"
+}
+
+L = DBM:GetModLocalization("Solistrasza")
+
+
+L = DBM:GetModLocalization("Beatrix")
+
+L:SetMiscLocalization{
+	YellFroggers1 = "冲破他们的阵线",
+	YellFroggers2 = "准备好骑枪",
+	CannonMistress = "炮台女主人林德",
+	YellPhase2 = "我们团结一致！让敌人在我们的力量面前颤抖吧！",
+	Footmen = "步兵",
+	Horses = "战马",
+	YellMeteor = "奥术师，把他们化为灰烬",
+}
+
+
+L = DBM:GetModLocalization("RebornCouncil")
+
+
+L = DBM:GetModLocalization("Caldoran")
+
+
+L = DBM:GetModLocalization("LillianVoss")
+
+
+L = DBM:GetModLocalization("Beastmaster")
+
+L:SetOptionLocalization({
+	TimerMark = "为下一次吸取/点燃印记显示计时条（带计数）",
+	WarnMark = "为吸取/点燃印记显示警告（带计数）"
+})
+
+L:SetTimerLocalization({
+	TimerMark	= "印记%d",
+})
+
+L:SetWarningLocalization({
+	WarnMark = "印记%d"
+})
+
+
+L = DBM:GetModLocalization("Mason")
+
+L:SetMiscLocalization{
+	Cannons1 = "开火！",
+	Cannons2 = "自由开火！",
+}
+
+L = DBM:GetModLocalization("SE_Trash")
+L:SetGeneralLocalization{
+	name = "血色领地小怪"
+}
+
+L:SetOptionLocalization{
+	FlightTimer = "为狮鹫飞行显示计时条",
+}
+
+L:SetMiscLocalization{
+	CentralTower = "中央塔",
+	Prison = "监狱",
+	Cathedral = "大教堂"
+}
