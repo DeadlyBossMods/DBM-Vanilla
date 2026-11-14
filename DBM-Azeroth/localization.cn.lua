@@ -1,6 +1,6 @@
+-- 泰坦重铸时光服-时光2-法师-旺仔芒果/椰奶冻-2026.11.13--
 if GetLocale() ~= "zhCN" then return end
 local L
---Last update: 2020/07/03 （重新整理）
 -- Lord Kazzak (Badlands)
 L = DBM:GetModLocalization("KazzakClassicVanilla")
 
@@ -66,3 +66,18 @@ L:SetGeneralLocalization{
 L:SetMiscLocalization({
 	Pull		= "希望是灵魂染上的疾病！这片土地应该枯竭，从此死气腾腾！"
 })
+
+-- Thunderaan (SoD only)
+L = DBM:GetModLocalization("Thunderaan")
+
+L:SetGeneralLocalization{
+	name = "桑德兰王子"
+}
+
+L:SetWarningLocalization{
+	AddIncoming = DBM_CORE_L.AUTO_SPEC_WARN_TEXTS.adds
+}
+
+L:SetOptionLocalization{
+	AddIncoming = "召唤物出现时显示警告"
+}
