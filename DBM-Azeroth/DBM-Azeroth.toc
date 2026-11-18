@@ -39,15 +39,15 @@
 ## X-DBM-Mod-MinExpansion: 0
 
 localization.en.lua
-localization.de.lua
-localization.br.lua
-localization.fr.lua
-localization.es.lua
-localization.mx.lua
-localization.ru.lua
-localization.kr.lua
-localization.tw.lua
-localization.cn.lua
+localization.de.lua [AllowLoadTextLocale deDE]
+localization.br.lua [AllowLoadTextLocale ptBR]
+localization.fr.lua [AllowLoadTextLocale frFR]
+localization.es.lua [AllowLoadTextLocale esES]
+localization.mx.lua [AllowLoadTextLocale esMX]
+localization.ru.lua [AllowLoadTextLocale ruRU]
+localization.kr.lua [AllowLoadTextLocale koKR]
+localization.tw.lua [AllowLoadTextLocale zhTW]
+localization.cn.lua [AllowLoadTextLocale zhCN]
 KazzakClassic.lua
 Azuregos.lua
 Taerar.lua

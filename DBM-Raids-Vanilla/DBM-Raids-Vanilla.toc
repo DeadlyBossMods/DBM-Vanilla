@@ -48,15 +48,15 @@
 ## Version: @project-version@
 
 localization.en.lua
-localization.tw.lua
-localization.br.lua
-localization.cn.lua
-localization.de.lua
-localization.es.lua
-localization.fr.lua
-localization.kr.lua
-localization.mx.lua
-localization.ru.lua
+localization.tw.lua [AllowLoadTextLocale zhTW]
+localization.br.lua [AllowLoadTextLocale ptBR]
+localization.cn.lua [AllowLoadTextLocale zhCN]
+localization.de.lua [AllowLoadTextLocale deDE]
+localization.es.lua [AllowLoadTextLocale esES]
+localization.fr.lua [AllowLoadTextLocale frFR]
+localization.kr.lua [AllowLoadTextLocale koKR]
+localization.mx.lua [AllowLoadTextLocale esMX]
+localization.ru.lua [AllowLoadTextLocale ruRU]
 
 Polyfills.lua
 
