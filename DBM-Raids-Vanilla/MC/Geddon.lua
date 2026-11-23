@@ -26,6 +26,7 @@ mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
 	mod:AddAuraSoundOption(20475, true, 20475, 1, 1, "bombyou", 12, 0)--TODO, add SoD spellids?
 	mod:AddAuraSoundOption(19659, "ManaUser", 19659, 1, 1, "debuffyou", 17, 0)
+	mod:AddAuraSoundOption(19695, "Melee", 19695, 1, 1, "bombyou", 2, 0, nil, nil, "nameplate") -- Iffy, needs testing. Scans nameplates for Inferno aura
 else
 	if DBM:IsSeasonal("SeasonOfDiscovery") then
 		mod:SetUsedIcons(8, 7, 6)

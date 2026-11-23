@@ -28,8 +28,8 @@ mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--Maybe do 20534 if it has aura icon at all, even if it's for a split second
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(20619, "-Melee", 20619, 1, 1, "stopattack", 2, 0, nil, nil, "nameplate")
+	mod:AddAuraSoundOption(21075, "Melee", 21075, 1, 1, "stopattack", 2, 0, nil, nil, "nameplate")
 else
 
 	mod:RegisterEvents(

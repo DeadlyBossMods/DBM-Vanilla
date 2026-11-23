@@ -24,8 +24,8 @@ mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(19451, "RemoveEnrage", 19451, 1, 1, "enrage", 2, 0, nil, nil, "nameplate")
+	mod:AddAuraSoundOption(19428, nil, 19428, 1, 2, "watchfeet", 8, 0)
 else
 
 	mod:RegisterEventsInCombat(

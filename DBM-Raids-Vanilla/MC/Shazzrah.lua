@@ -24,8 +24,10 @@ mod:SetZone(409)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	if DBM:IsForever() then
+		--Deaden can be spell stolen above vanilla/forever, and nameplate can't disambiguate hostile from friendly
+		mod:AddAuraSoundOption(19714, "MagicDispeller", 19714, 1, 2, "dispelboss", 8, 0, nil, nil, "nameplate")
+	end
 else
 
 	mod:RegisterEventsInCombat(
