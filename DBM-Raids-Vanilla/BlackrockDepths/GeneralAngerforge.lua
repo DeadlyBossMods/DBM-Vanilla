@@ -14,8 +14,8 @@ mod:SetZone(2792)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(464417, "MagicDispeller", 464417, 1, 1, "dispelboss", 8, 0, nil, nil, "boss")
+	mod:AddAuraSoundOption(466258, true, 466258, 1, 1, "fixateyou", 19, 0)
 else
 
 	mod:RegisterEventsInCombat(

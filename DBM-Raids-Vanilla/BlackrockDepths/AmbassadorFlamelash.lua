@@ -13,8 +13,8 @@ mod:SetZone(2792)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(470203, true, 470203, 1, 1, "helpsoak", 2, 0)
+	mod:AddAuraSoundOption(470207, "Tank", 470207, 1, 1, "tauntboss", 8, 0, nil, nil, "cotank")
 else
 
 	mod:RegisterEventsInCombat(

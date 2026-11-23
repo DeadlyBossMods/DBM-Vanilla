@@ -12,8 +12,10 @@ mod:SetZone(2792)
 mod:RegisterCombat("combat")
 mod:SetWipeTime(10)
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(464473, true, 464473, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(467926, true, 467926, 1, 1, "scatter", 2, 0)
+	mod:AddAuraSoundOption({463848,464609}, true, 463848, 1, 1, "linegather", 2, 0)
+	mod:AddAuraSoundOption(463837, true, 463837, 1, 1, "movetoflamethrower", 17, 0)
 else
 	mod:RegisterEventsInCombat(
 		"SPELL_CAST_START 463821 470014 470073 467919 463823 463829 463837",
@@ -40,7 +42,7 @@ else
 	--Ultimates cast every 22 seconds give or take (does energy start on cast finish or cast start, if cast start, 22 for all, if cast finish, it'll be 22-27)
 	--Golem Lord Argelmach
 	mod:AddTimerLine(DBM:EJ_GetSectionInfo(30783))
-	--local warnPossessed							= mod:NewTargetNoFilterAnnounce(464939, 2)
+	--local warnPossessed						= mod:NewTargetNoFilterAnnounce(464939, 2)
 	local specWarnChainLightning				= mod:NewSpecialWarningInterrupt(463821, nil, nil, nil, 1, 2, nil, nil, "kickcast")
 	local specWarnGTFO							= mod:NewSpecialWarningGTFO(464473, nil, nil, nil, 1, 8, nil, nil, "watchfeet")
 	mod:AddNamePlateOption("NPOnOverdrive", 463852)

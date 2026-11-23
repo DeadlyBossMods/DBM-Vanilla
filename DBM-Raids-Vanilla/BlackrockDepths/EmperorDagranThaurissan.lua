@@ -14,8 +14,10 @@ mod:SetZone(2792)
 
 mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
-	--do stuff
-	--mod:AddAuraSoundOption(372820, true, 372820, 1, 2, "watchfeet", 8, 0)
+	mod:AddAuraSoundOption(466447, true, 466447, 1, 1, "targetyou", 2, 0)
+	mod:AddAuraSoundOption(470603, true, 470603, 1, 3, "debuffyou", 17, 0)
+	mod:AddAuraSoundOption(465225, true, 465225, 1, 1, "gathershare", 2, 0)
+	mod:AddAuraSoundOption(470600, true, 470600, 1, 1, "range5", 2, 0)
 else
 
 	mod:RegisterEventsInCombat(
