@@ -1,6 +1,9 @@
 package-as: DBM-Raids-Vanilla
-changelog-title: DBM - Vanilla and Season of Discovery
+changelog-title: DBM - Vanilla and Forever
 enable-nolib-creation: no
+
+required-dependencies:
+  - deadly-boss-mods
 
 move-folders:
     DBM-Raids-Vanilla/DBM-Raids-Vanilla: DBM-Raids-Vanilla
