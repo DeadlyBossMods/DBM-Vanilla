@@ -1,10 +1,10 @@
 <p><img src="http://mysticalos.com/images/DBM/support_on_patreon.png" width="408" height="80" /></p>
 <p><a href="https://www.patreon.com/deadlybossmods">https://www.patreon.com/deadlybossmods</a></p>
-<h2 id="w-bc-and-vanilla-boss-mods-for-dbm"><strong>Vanilla and Season of Discovery boss mods for DBM</strong></h2>
-<p>Vanilla WoW and Season of Discovery mods for <a href="https://www.curseforge.com/wow/addons/deadly-boss-mods">Deadly Boss Mods</a></p>
+<h2 id="w-bc-and-vanilla-boss-mods-for-dbm"><strong>Vanilla and Forever boss mods for DBM</strong></h2>
+<p>Vanilla WoW and Forever mods for <a href="https://www.curseforge.com/wow/addons/deadly-boss-mods">Deadly Boss Mods</a></p>
 <h2 id="w-features"><strong>Features</strong></h2>
 <ul>
-<li>Boss mods for all Vanilla raids (including those added in Season of Discovery)</li>
+<li>Boss mods for all Vanilla raids (including those added in Season of Discovery and Forever)</li>
 <li>Supports both Retail and Classic</li>
 </ul>
 <h2><strong>Looking for Dungeons?</strong></h2>
