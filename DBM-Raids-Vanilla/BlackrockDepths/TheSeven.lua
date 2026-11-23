@@ -16,7 +16,7 @@ mod:RegisterCombat("combat")
 if DBM:IsRestricted() then
 	mod:AddAuraSoundOption(464339, true, 464339, 1, 2, "watchfeet", 8, 0)
 	mod:AddAuraSoundOption(464350, true, 464350, 1, 2, "watchfeet", 8, 0)
-	mod:AddAuraSoundOption(464356, true, 464356, 1, 1, "moveboss", 2, 0, nil, nil, "boss")
+	mod:AddAuraSoundOption(464356, "Tank", 464356, 1, 1, "moveboss", 2, 0, nil, nil, "boss")
 	mod:AddAuraSoundOption(464337, true, 464337, 1, 2, "watchfeet", 8, 0)
 	mod:AddAuraSoundOption(469723, true, 469723, 1, 1, "gathershare", 2, 0)
 else
